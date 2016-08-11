@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.dialect.command.MoveRepresentationCommand;
 import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
@@ -54,7 +53,6 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
 
@@ -289,16 +287,13 @@ public class SessionManagerListener2Tests extends SiriusDiagramTestCase implemen
 
         SessionManager.INSTANCE.removeSessionsListener(mock);
 
-        final IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
-        boolean saveMode = preferenceStore.getBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name());
-        preferenceStore.setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
 
         DAnalysis analysis = (DAnalysis) session.getSessionResource().getContents().get(0);
         DAnnotationEntry entry = DescriptionFactory.eINSTANCE.createDAnnotationEntry();
         Command addDAnnotationEntryCmd = AddCommand.create(session.getTransactionalEditingDomain(), analysis, ViewpointPackage.Literals.DANALYSIS__EANNOTATIONS, entry);
         session.getTransactionalEditingDomain().getCommandStack().execute(addDAnnotationEntryCmd);
         TestsUtil.synchronizationWithUIThread();
-        preferenceStore.setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), saveMode);
 
         SessionManager.INSTANCE.addSessionsListener(mock);
     }

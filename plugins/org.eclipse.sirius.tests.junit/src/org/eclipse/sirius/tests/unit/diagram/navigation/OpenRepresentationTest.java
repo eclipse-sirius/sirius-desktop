@@ -37,7 +37,6 @@ import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
@@ -106,14 +105,10 @@ public class OpenRepresentationTest extends GenericTestCase {
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 2, classDiagrams.size());
 
         /* set refresh on representation opening */
-        boolean refreshOn = SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
-        SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), true);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), true);
 
         DialectUIManager.INSTANCE.openEditor(session, pkgDiag, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
-
-        /* restore refresh parameter */
-        SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), refreshOn);
 
         IEditorPart editor = EclipseUIUtil.getActiveEditor();
         IWorkbenchPage page = EclipseUIUtil.getActivePage();

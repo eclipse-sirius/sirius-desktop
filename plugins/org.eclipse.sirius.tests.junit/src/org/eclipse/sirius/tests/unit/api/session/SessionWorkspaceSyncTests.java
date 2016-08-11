@@ -33,7 +33,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.business.api.session.ReloadingPolicy;
@@ -61,7 +60,6 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.PlatformUI;
@@ -88,21 +86,9 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         TestsUtil.emptyEventsFromUIThread();
     }
 
-    private void setSaveValueWhenNoEditorMode(boolean save) throws Exception {
-        final IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
-        saveMode = preferenceStore.getBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name());
-        preferenceStore.setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), save);
-        preferenceStore.setValue(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), save);
-    }
-
-    private void resetSaveWhenNoEditorMode() {
-        final IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
-        preferenceStore.setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), saveMode);
-        preferenceStore.setValue(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), saveMode);
-    }
-
     public void testCreateRepresentationMakesDirty() throws Exception {
-        setSaveValueWhenNoEditorMode(false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
         session.save(new NullProgressMonitor());
         assertEquals(SessionStatus.SYNC, session.getStatus());
         DDiagram diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
@@ -111,7 +97,6 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         assertEquals(SessionStatus.DIRTY, session.getStatus());
         session.save(new NullProgressMonitor());
         assertEquals(SessionStatus.SYNC, session.getStatus());
-        resetSaveWhenNoEditorMode();
     }
 
     public void testCreateRepresentationMakesSave() throws Exception {
@@ -119,7 +104,8 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         // Restore the default preference values of Sirius (not a
         // customer specific one)
         changePlatformUIPreference(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN, true);
-        setSaveValueWhenNoEditorMode(true);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), true);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), true);
 
         session.save(new NullProgressMonitor());
         assertEquals(SessionStatus.SYNC, session.getStatus());
@@ -130,7 +116,6 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
         assertEquals(SessionStatus.SYNC, session.getStatus());
 
-        resetSaveWhenNoEditorMode();
     }
 
     /**
@@ -141,7 +126,8 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
      * @throws Exception
      */
     public void testDeleteAirdDirtySession() throws Exception {
-        setSaveValueWhenNoEditorMode(false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
         session.save(new NullProgressMonitor());
         assertEquals(SessionStatus.SYNC, session.getStatus());
         DDiagram diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
@@ -161,7 +147,6 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
         assertFalse("The session should be closed !", session.isOpen());
         TestsUtil.synchronizationWithUIThread();
-        resetSaveWhenNoEditorMode();
     }
 
     private void assertSessionWithNoUICallBack() throws Exception {
@@ -220,7 +205,8 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
     }
 
     public void testMultipleSameNotifications() throws Exception {
-        setSaveValueWhenNoEditorMode(false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
         TestsUtil.synchronizationWithUIThread();
 
         SessionListener testListener = new SessionListener() {
@@ -243,11 +229,11 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         TestsUtil.synchronizationWithUIThread();
 
         session.removeListener(testListener);
-        resetSaveWhenNoEditorMode();
     }
 
     public void testRepresentationsNotifications() throws Exception {
-        setSaveValueWhenNoEditorMode(false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
         TestsUtil.synchronizationWithUIThread();
 
         SessionListener testListener = new SessionListener() {
@@ -280,7 +266,6 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         TestsUtil.synchronizationWithUIThread();
 
         session.removeListener(testListener);
-        resetSaveWhenNoEditorMode();
     }
 
     public void testOpenRepresentationInEditor() throws Exception {

@@ -117,13 +117,13 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     public void testSessionProvideOwnSaveable() {
         // Restore the default preference values of Sirius (not a customer
         // specific one)
-        oldValuePrefReloadOnLastEditorClose = SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name());
-        oldValuePrefSaveWhenNoEditor = SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name());
+
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), true);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), true);
+
         oldValuePrefPromptWhenSaveableStillOpen = PlatformUI.getPreferenceStore().getBoolean(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN);
         try {
             PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN, true);
-            SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), true);
-            SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), true);
             // Open session
             localSession = openSessionFromExistingAird(SESSION_FILE);
             // Open representation
@@ -136,8 +136,6 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
             checkSaveDialog();
         } finally {
             // Restore original preferences
-            SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), oldValuePrefReloadOnLastEditorClose);
-            SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), oldValuePrefSaveWhenNoEditor);
             PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN, oldValuePrefPromptWhenSaveableStillOpen);
         }
 
@@ -152,13 +150,11 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     public void testEscapeKeyEffectOnSaveDialog() {
         // Restore the default preference values of Sirius (not a customer
         // specific one)
-        oldValuePrefReloadOnLastEditorClose = SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name());
-        oldValuePrefSaveWhenNoEditor = SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name());
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), true);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), true);
         oldValuePrefPromptWhenSaveableStillOpen = PlatformUI.getPreferenceStore().getBoolean(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN);
         try {
             PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN, true);
-            SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), true);
-            SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), true);
             // Open session
             localSession = openSessionFromExistingAird(SESSION_FILE);
             // Open representation
@@ -175,8 +171,6 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("The editor must be still opened.", 1, editor.getReference().getPage().getEditorReferences().length);
         } finally {
             // Restore original preferences
-            SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), oldValuePrefReloadOnLastEditorClose);
-            SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), oldValuePrefSaveWhenNoEditor);
             PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN, oldValuePrefPromptWhenSaveableStillOpen);
         }
 
@@ -190,13 +184,11 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     public void testCloseEffectOnSaveDialog() {
         // Restore the default preference values of Sirius (not a customer
         // specific one)
-        oldValuePrefReloadOnLastEditorClose = SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name());
-        oldValuePrefSaveWhenNoEditor = SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name());
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), true);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), true);
         oldValuePrefPromptWhenSaveableStillOpen = PlatformUI.getPreferenceStore().getBoolean(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN);
         try {
             PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN, true);
-            SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), true);
-            SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), true);
             // Open session
             localSession = openSessionFromExistingAird(SESSION_FILE);
             // Open representation
@@ -213,8 +205,6 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("The editor must be still opened.", 1, editor.getReference().getPage().getEditorReferences().length);
         } finally {
             // Restore original preferences
-            SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), oldValuePrefReloadOnLastEditorClose);
-            SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), oldValuePrefSaveWhenNoEditor);
             PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN, oldValuePrefPromptWhenSaveableStillOpen);
         }
 

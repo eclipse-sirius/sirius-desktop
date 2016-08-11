@@ -47,7 +47,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -263,8 +262,7 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
     public void testFragmentedMigration() throws Exception {
         setErrorCatchActive(true);
         /* set refresh on representation opening */
-        boolean refreshOn = SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
-        SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
 
         runRepairProcess(TC_VP_2035_AIRD);
         TestsUtil.emptyEventsFromUIThread();
@@ -281,8 +279,7 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
         assertLoadOK(TC_VP_2035_P1_AIRD, "after second migration");
         assertLoadOK(TC_VP_2035_P2_AIRD, "after second migration");
         assertLoadOK(TC_VP_2035_P3_AIRD, "after second migration");
-        /* restore refresh parameter */
-        SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), refreshOn);
+
         setErrorCatchActive(false);
     }
 
@@ -408,71 +405,66 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
             return;
         }
         /* set refresh on representation opening */
-        boolean refreshOn = SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
-        SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
 
-        try {
-            String pathModel = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2552_MODEL;
-            String pathAird = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2552_AIRD;
-            String pathVSM = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2552_VSM;
-            String representationDescName = "tc2552";
-            String hideEAttributsFilterName = "HideAttributes";
+        String pathModel = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2552_MODEL;
+        String pathAird = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2552_AIRD;
+        String pathVSM = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2552_VSM;
+        String representationDescName = "tc2552";
+        String hideEAttributsFilterName = "HideAttributes";
 
-            genericSetUp(pathModel, pathVSM, pathAird);
+        genericSetUp(pathModel, pathVSM, pathAird);
 
-            Collection<DRepresentation> representations = getRepresentations(representationDescName);
-            assertFalse(representations.isEmpty());
-            DDiagram diagram = (DDiagram) representations.iterator().next();
-            assertNotNull(diagram);
-            DiagramEditor editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
-            TestsUtil.synchronizationWithUIThread();
+        Collection<DRepresentation> representations = getRepresentations(representationDescName);
+        assertFalse(representations.isEmpty());
+        DDiagram diagram = (DDiagram) representations.iterator().next();
+        assertNotNull(diagram);
+        DiagramEditor editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
 
-            // Activate filter that hide attributes
-            activateFilter(diagram, hideEAttributsFilterName);
-            session.save(new NullProgressMonitor());
-            DialectUIManager.INSTANCE.closeEditor(editor, true);
-            TestsUtil.synchronizationWithUIThread();
+        // Activate filter that hide attributes
+        activateFilter(diagram, hideEAttributsFilterName);
+        session.save(new NullProgressMonitor());
+        DialectUIManager.INSTANCE.closeEditor(editor, true);
+        TestsUtil.synchronizationWithUIThread();
 
-            // Create new attribute
-            RecordingCommand cmd = new RecordingCommand(session.getTransactionalEditingDomain(), "Create new attribute") {
-                @Override
-                protected void doExecute() {
-                    EPackage rootPackage = (EPackage) semanticModel;
-                    EClass firstClass = (EClass) rootPackage.getEClassifier("Class1");
-                    EAttribute eAttribute = EcoreFactory.eINSTANCE.createEAttribute();
-                    eAttribute.setName("newAttribute");
-                    firstClass.getEStructuralFeatures().add(eAttribute);
-                }
-            };
-            session.getTransactionalEditingDomain().getCommandStack().execute(cmd);
+        // Create new attribute
+        RecordingCommand cmd = new RecordingCommand(session.getTransactionalEditingDomain(), "Create new attribute") {
+            @Override
+            protected void doExecute() {
+                EPackage rootPackage = (EPackage) semanticModel;
+                EClass firstClass = (EClass) rootPackage.getEClassifier("Class1");
+                EAttribute eAttribute = EcoreFactory.eINSTANCE.createEAttribute();
+                eAttribute.setName("newAttribute");
+                firstClass.getEStructuralFeatures().add(eAttribute);
+            }
+        };
+        session.getTransactionalEditingDomain().getCommandStack().execute(cmd);
 
-            // Close and save the session
-            session.save(new NullProgressMonitor());
-            Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
-            closeSession(session);
-            TestsUtil.waitUntil(new OpenedSessionsCondition(0));
+        // Close and save the session
+        session.save(new NullProgressMonitor());
+        Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
+        closeSession(session);
+        TestsUtil.waitUntil(new OpenedSessionsCondition(0));
 
-            // Migrate the aird
-            runRepairProcess(TC_2552_AIRD);
+        // Migrate the aird
+        runRepairProcess(TC_2552_AIRD);
 
-            // Check that the session if not dirty after the opening of the
-            // diagram
-            createSession(getFileURI(TC_2552_AIRD));
-            Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
-            session.open(new NullProgressMonitor());
-            TestsUtil.waitUntil(new OpenedSessionsCondition(1));
+        // Check that the session if not dirty after the opening of the
+        // diagram
+        createSession(getFileURI(TC_2552_AIRD));
+        Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
+        session.open(new NullProgressMonitor());
+        TestsUtil.waitUntil(new OpenedSessionsCondition(1));
 
-            representations = getRepresentations(representationDescName);
-            assertFalse("The session should be opened and contain at least one representation. Session: " + (session.isOpen() ? "opened" : "closed") + "representations: " + representations.size(),
-                    representations.isEmpty());
-            diagram = (DDiagram) representations.iterator().next();
-            assertNotNull(diagram);
-            editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
-            TestsUtil.synchronizationWithUIThread();
-            assertEquals("The session should not be dirty.", SessionStatus.SYNC, session.getStatus());
-        } finally {
-            SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), refreshOn);
-        }
+        representations = getRepresentations(representationDescName);
+        assertFalse("The session should be opened and contain at least one representation. Session: " + (session.isOpen() ? "opened" : "closed") + "representations: " + representations.size(),
+                representations.isEmpty());
+        diagram = (DDiagram) representations.iterator().next();
+        assertNotNull(diagram);
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        assertEquals("The session should not be dirty.", SessionStatus.SYNC, session.getStatus());
     }
 
     /**
