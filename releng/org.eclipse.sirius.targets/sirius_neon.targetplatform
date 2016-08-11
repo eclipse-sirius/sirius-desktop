@@ -5,9 +5,13 @@ include "modules/swtbot-2.1.tpd"
 include "modules/shared-license.tpd"
 include "modules/aql-nightly.tpd"
 include "modules/acceleo-nightly.tpd"
-include "modules/eef-ng.tpd"
+include "modules/eef-17-nightly.tpd"
 
 with source, requirements
+
+location Sirius-Interpreter-Nightly-Neon "http://download.eclipse.org/sirius/updates/nightly/latest/neon/" {
+    org.eclipse.sirius.common.interpreter lazy
+}
 
 location Eclipse-Neon "http://download.eclipse.org/releases/neon" {
 	com.google.guava lazy

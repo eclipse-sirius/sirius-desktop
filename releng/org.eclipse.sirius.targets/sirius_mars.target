@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_mars" sequenceNumber="1467272116">
+<target name="sirius_mars" sequenceNumber="1470926368">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
@@ -36,12 +36,12 @@
       <repository id="EEF-1.5" location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.5/R201601141612"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
-      <repository id="Sirius-Interpreter-Nightly" location="http://download.eclipse.org/sirius/updates/nightly/latest/neon/"/>
+      <unit id="org.eclipse.eef.sdk.feature.feature.group" version="0.0.0"/>
+      <repository id="EEF-1.7-Latest" location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.eef.sdk.feature.feature.group" version="0.0.0"/>
-      <repository id="EEF-NG-Latest" location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon"/>
+      <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
+      <repository id="Sirius-Interpreter-Nightly-Mars" location="http://download.eclipse.org/sirius/updates/nightly/latest/mars/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="15.0.0.v201403281430"/>

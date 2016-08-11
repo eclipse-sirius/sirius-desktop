@@ -1,9 +1,0 @@
-target "EEF NG"
-
-location Sirius-Interpreter-Nightly "http://download.eclipse.org/sirius/updates/nightly/latest/neon/" {
-	org.eclipse.sirius.common.interpreter lazy
-}
-
-location EEF-NG-Latest "http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon" {
-	org.eclipse.eef.sdk.feature.feature.group lazy
-}
