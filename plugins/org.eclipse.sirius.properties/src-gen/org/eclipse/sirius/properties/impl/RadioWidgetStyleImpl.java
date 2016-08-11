@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.RadioWidgetStyle;
 public class RadioWidgetStyleImpl extends WidgetStyleImpl implements RadioWidgetStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RadioWidgetStyleImpl() {
@@ -33,7 +33,7 @@ public class RadioWidgetStyleImpl extends WidgetStyleImpl implements RadioWidget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

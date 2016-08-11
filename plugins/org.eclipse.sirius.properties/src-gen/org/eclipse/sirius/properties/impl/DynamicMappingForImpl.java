@@ -48,7 +48,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
     /**
      * The default value of the '{@link #getIterator() <em>Iterator</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIterator()
      * @generated
      * @ordered
@@ -58,7 +58,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
     /**
      * The cached value of the '{@link #getIterator() <em>Iterator</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIterator()
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
      * The default value of the '{@link #getDomainClassExpression()
      * <em>Domain Class Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClassExpression()
      * @generated
      * @ordered
@@ -80,7 +80,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
      * The cached value of the '{@link #getDomainClassExpression()
      * <em>Domain Class Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClassExpression()
      * @generated
      * @ordered
@@ -90,7 +90,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
     /**
      * The cached value of the '{@link #getIfs() <em>Ifs</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIfs()
      * @generated
      * @ordered
@@ -99,7 +99,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DynamicMappingForImpl() {
@@ -108,7 +108,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,7 +118,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -211,7 +211,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -234,7 +234,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -255,7 +255,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +274,7 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

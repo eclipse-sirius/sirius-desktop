@@ -74,7 +74,7 @@ public class FillLayoutDescriptionItemProvider extends LayoutDescriptionItemProv
     /**
      * This returns FillLayoutDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated NOT
      */
     @Override
@@ -90,7 +90,7 @@ public class FillLayoutDescriptionItemProvider extends LayoutDescriptionItemProv
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class FillLayoutDescriptionItemProvider extends LayoutDescriptionItemProv
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

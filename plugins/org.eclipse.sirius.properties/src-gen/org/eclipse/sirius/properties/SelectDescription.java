@@ -67,7 +67,7 @@ public interface SelectDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.SelectDescription#getValueExpression
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -95,7 +95,7 @@ public interface SelectDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.SelectDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.
@@ -124,7 +124,7 @@ public interface SelectDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.SelectDescription#getCandidatesExpression
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Candidates Expression</em>'
      *            attribute.
@@ -154,7 +154,7 @@ public interface SelectDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.SelectDescription#getCandidateDisplayExpression
      * <em>Candidate Display Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Candidate Display Expression</em>'
      *            attribute.
@@ -171,7 +171,7 @@ public interface SelectDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(SelectWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getSelectDescription_Style()
@@ -185,7 +185,7 @@ public interface SelectDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.SelectDescription#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

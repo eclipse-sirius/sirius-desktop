@@ -36,7 +36,7 @@ public interface GroupConditionalStyle extends WidgetConditionalStyle {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(GroupStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupConditionalStyle_Style()
@@ -50,7 +50,7 @@ public interface GroupConditionalStyle extends WidgetConditionalStyle {
      * {@link org.eclipse.sirius.properties.GroupConditionalStyle#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

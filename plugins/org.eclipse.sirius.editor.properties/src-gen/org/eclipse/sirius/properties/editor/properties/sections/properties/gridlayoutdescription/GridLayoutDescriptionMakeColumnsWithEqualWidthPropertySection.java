@@ -9,13 +9,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.properties.editor.properties.sections.properties.gridlayoutdescription;
 
+// Start of user code imports
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxPropertySection;
+// End of user code imports
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-// End of user code imports
 
 /**
  * A section for the makeColumnsWithEqualWidth property of a

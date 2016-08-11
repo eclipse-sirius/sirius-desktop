@@ -50,7 +50,7 @@ public interface WidgetStyle extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Font Name Expression</em>' attribute.
      * @see #setLabelFontNameExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetStyle_LabelFontNameExpression()
@@ -65,7 +65,7 @@ public interface WidgetStyle extends EObject {
      * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontNameExpression
      * <em>Label Font Name Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Font Name Expression</em>'
      *            attribute.
@@ -82,7 +82,7 @@ public interface WidgetStyle extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Font Size</em>' attribute.
      * @see #setLabelFontSize(int)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetStyle_LabelFontSize()
@@ -96,7 +96,7 @@ public interface WidgetStyle extends EObject {
      * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontSize
      * <em>Label Font Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Font Size</em>' attribute.
      * @see #getLabelFontSize()
@@ -112,7 +112,7 @@ public interface WidgetStyle extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Background Color</em>' reference.
      * @see #setLabelBackgroundColor(ColorDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetStyle_LabelBackgroundColor()
@@ -126,7 +126,7 @@ public interface WidgetStyle extends EObject {
      * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelBackgroundColor
      * <em>Label Background Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Background Color</em>'
      *            reference.
@@ -143,7 +143,7 @@ public interface WidgetStyle extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Foreground Color</em>' reference.
      * @see #setLabelForegroundColor(ColorDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetStyle_LabelForegroundColor()
@@ -157,7 +157,7 @@ public interface WidgetStyle extends EObject {
      * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelForegroundColor
      * <em>Label Foreground Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Foreground Color</em>'
      *            reference.

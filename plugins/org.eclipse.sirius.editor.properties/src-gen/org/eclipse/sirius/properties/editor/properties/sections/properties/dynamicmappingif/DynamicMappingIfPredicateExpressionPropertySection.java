@@ -11,8 +11,14 @@ package org.eclipse.sirius.properties.editor.properties.sections.properties.dyna
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
+import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
+import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
@@ -21,10 +27,10 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * A section for the predicateExpression property of a DynamicMappingIf object.
  */
-public class DynamicMappingIfPredicateExpressionPropertySection extends AbstractTextPropertySection {
+public class DynamicMappingIfPredicateExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /**
-     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
@@ -32,7 +38,7 @@ public class DynamicMappingIfPredicateExpressionPropertySection extends Abstract
     }
 
     /**
-     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getLabelText()
+     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
     @Override
     protected String getLabelText() {
@@ -45,7 +51,7 @@ public class DynamicMappingIfPredicateExpressionPropertySection extends Abstract
     }
 
     /**
-     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getFeature()
+     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
     @Override
     public EAttribute getFeature() {
@@ -53,7 +59,7 @@ public class DynamicMappingIfPredicateExpressionPropertySection extends Abstract
     }
 
     /**
-     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
+     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
     @Override
     protected Object getFeatureValue(String newText) {
@@ -61,7 +67,7 @@ public class DynamicMappingIfPredicateExpressionPropertySection extends Abstract
     }
 
     /**
-     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
+     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
     @Override
     protected boolean isEqual(String newText) {
@@ -74,13 +80,32 @@ public class DynamicMappingIfPredicateExpressionPropertySection extends Abstract
     @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
+        /*
+         * We set the color as it's a InterpretedExpression
+         */
+        text.setBackground(SiriusEditor.getColorRegistry().get("yellow"));
 
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
+
+        TypeContentProposalProvider.bindPluginsCompletionProcessors(this, text);
 
         // Start of user code create controls
 
         // End of user code create controls
 
+    }
+
+    @Override
+    protected SelectionListener createButtonListener() {
+        return new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), DynamicMappingIfPredicateExpressionPropertySection.this, text.getText());
+                dialog.open();
+                text.setText(dialog.getResult());
+                handleTextModified();
+            }
+        };
     }
 
     /**

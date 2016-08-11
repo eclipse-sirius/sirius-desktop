@@ -76,7 +76,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CustomDescriptionImpl() {
@@ -105,7 +105,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(CustomWidgetStyle newStyle, NotificationChain msgs) {
@@ -170,7 +170,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +207,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -227,7 +227,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +247,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -275,7 +275,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -299,7 +299,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -41,11 +41,13 @@ public interface DynamicMappingIf extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Predicate Expression</em>' attribute.
      * @see #setPredicateExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingIf_PredicateExpression()
-     * @model required="true"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        required="true"
      * @generated
      */
     String getPredicateExpression();
@@ -55,7 +57,7 @@ public interface DynamicMappingIf extends EObject {
      * {@link org.eclipse.sirius.properties.DynamicMappingIf#getPredicateExpression
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Predicate Expression</em>'
      *            attribute.
@@ -72,7 +74,7 @@ public interface DynamicMappingIf extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Widget</em>' containment reference.
      * @see #setWidget(WidgetDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingIf_Widget()
@@ -86,7 +88,7 @@ public interface DynamicMappingIf extends EObject {
      * {@link org.eclipse.sirius.properties.DynamicMappingIf#getWidget
      * <em>Widget</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Widget</em>' containment reference.
      * @see #getWidget()
