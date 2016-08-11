@@ -1,7 +1,0 @@
-target "xtext-2.4"
-
-with source, requirements
-
-location XText-2_4 "http://download.eclipse.org/modeling/tmf/xtext/updates/releases" {
-        org.eclipse.xtext.sdk.feature.group [2.4.1,2.5.0)
-}

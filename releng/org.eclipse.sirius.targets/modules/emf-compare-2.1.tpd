@@ -1,7 +1,0 @@
-target "emf-compare-2.1"
-
-with source, requirements
-
-location EMF-Compare-2_1 "http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1" {
-        org.eclipse.emf.compare.feature.group [2.1.0, 3.0.0)
-}
