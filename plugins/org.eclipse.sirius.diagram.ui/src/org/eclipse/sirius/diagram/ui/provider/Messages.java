@@ -189,6 +189,9 @@ public final class Messages {
     public static String CopyFormatAction_commandLabel;
 
     @TranslatableMessage
+    public static String CopyFormatAction_notifyEditors;
+
+    @TranslatableMessage
     public static String CopyFormatAction_storeFormatCommandLabel;
 
     @TranslatableMessage

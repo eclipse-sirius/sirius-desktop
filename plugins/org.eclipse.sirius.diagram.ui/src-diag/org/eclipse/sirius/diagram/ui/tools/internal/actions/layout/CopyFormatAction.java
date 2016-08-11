@@ -27,6 +27,7 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
@@ -35,9 +36,12 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistry;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.swt.SWT;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 
@@ -116,16 +120,6 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
             /**
              * {@inheritDoc}
              * 
-             * @see org.eclipse.gef.commands.Command#canExecute()
-             */
-            @Override
-            public boolean canExecute() {
-                return super.canExecute();
-            }
-
-            /**
-             * {@inheritDoc}
-             * 
              * @see org.eclipse.gef.commands.Command#execute()
              */
             @Override
@@ -148,6 +142,34 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
                 }
             }
         }
+        doStoreFormatsCmd.add(new Command(Messages.CopyFormatAction_notifyEditors) {
+            @Override
+            public boolean canUndo() {
+                return false;
+            }
+
+            @Override
+            public void execute() {
+                // Reinit tabbar of each open editor (to refresh PasteAction
+                // that depends on the layoutDataManager empty state)
+                IEditorReference[] editorReferences = null;
+
+                IWorkbenchPage page = EclipseUIUtil.getActivePage();
+                if (page != null) {
+                    editorReferences = page.getEditorReferences();
+                }
+
+                if (editorReferences != null) {
+                    for (IEditorReference ref : editorReferences) {
+                        IEditorPart editor = ref.getEditor(false);
+                        if (editor instanceof DDiagramEditorImpl) {
+                            DDiagramEditorImpl diagramEditor = (DDiagramEditorImpl) editor;
+                            diagramEditor.getTabbar().reinitToolBar(diagramEditor.getDiagramGraphicalViewer().getSelection());
+                        }
+                    }
+                }
+            }
+        });
         return doStoreFormatsCmd.unwrap();
     }
 

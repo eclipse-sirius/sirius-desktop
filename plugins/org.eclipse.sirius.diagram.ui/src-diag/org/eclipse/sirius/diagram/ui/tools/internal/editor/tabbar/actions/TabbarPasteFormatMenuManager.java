@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
+import org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
@@ -113,5 +114,24 @@ public class TabbarPasteFormatMenuManager extends PasteFormatMenuManager {
                 setDefaultAction(ActionIds.PASTE_FORMAT);
             }
         }
+    }
+
+    /**
+     * Refresh the enablement of the encapsulated action and then update this
+     * contribution.
+     *
+     * When the diagram part is selected, the update of the tabbar is done
+     * before the enablement refresh of the action for selection listener.
+     *
+     * {@inheritDoc}
+     */
+    @Override
+    public void update() {
+        DiagramAction diagramAction = (DiagramAction) getDefaultAction();
+        if (diagramAction != null) {
+            diagramAction.refresh();
+        }
+        action.setEnabled(diagramAction.isEnabled());
+        super.update();
     }
 }
