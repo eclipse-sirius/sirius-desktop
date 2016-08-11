@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -88,10 +88,10 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String FILE_DIR = "/";
 
-    private static final String[] DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange All", "Select &All", "Layers", "Filters" };
+    private static final String[] DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange All", "Select &All", "Layers", "Filters", Messages.PasteFormatAction_toolTipText };
 
     private static final String[] DIAGRAM_TOOLBARBUTTONS_TOOLTIPS = { Messages.SiriusDiagramActionBarContributor_refreshDiagram, Messages.SelectHiddenElementsAction_tooltip,
-            Messages.SelectPinnedElementsAction_tooltip, Messages.PasteFormatAction_toolTipText, "Zoom In (Ctrl+=)", "Zoom Out (Ctrl+-)", Messages.SaveAsImageFileAction_label };
+            Messages.SelectPinnedElementsAction_tooltip, "Zoom In (Ctrl+=)", "Zoom Out (Ctrl+-)", Messages.SaveAsImageFileAction_label };
 
     private static final String[] DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { Messages.LayoutingModeSwitchingAction_activate };
 
@@ -514,7 +514,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
         for (int i = 0; i < diagramSelectedTabbarButtons.size(); i++) {
             String expectedTooltip = diagramSelectedTabbarButtons.get(i);
             SWTBotToolbarButton button = editor.bot().toolbarButton(i);
-            if (i == 4) {
+            if (i == 3) {
                 final String zoomIn = "Zoom In (Ctrl+";
                 assertTrue("The toolbarButton index " + i + " does not have the expected tooltip, it does not starts with" + zoomIn, editor.bot().toolbarButton(i).getToolTipText().startsWith(zoomIn));
             } else {
