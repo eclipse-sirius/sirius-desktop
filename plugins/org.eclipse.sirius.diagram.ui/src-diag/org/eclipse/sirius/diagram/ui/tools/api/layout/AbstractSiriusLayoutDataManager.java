@@ -25,6 +25,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPartViewer;
@@ -998,18 +999,62 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
     protected void computeCustomFeatures(Style oldStyle, Style newStyle) {
         for (EAttribute attribute : newStyle.eClass().getEAllAttributes()) {
             if (!ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES.equals(attribute)) {
-                if (oldStyle.eClass().getEStructuralFeature(attribute.getName()) == null) {
-                    // When the attribute does not exist in old style, it is
-                    // considered as custom
-                    newStyle.getCustomFeatures().add(attribute.getName());
-                } else if (newStyle.eIsSet(attribute)) {
-                    if (!newStyle.eGet(attribute).equals(oldStyle.eGet(attribute))) {
-                        newStyle.getCustomFeatures().add(attribute.getName());
+                EAttribute attributeOfOldStyle = getCorrespondingEAttribute(attribute, oldStyle);
+                if (attributeOfOldStyle != null) {
+                    if (newStyle.eIsSet(attribute)) {
+                        if (!newStyle.eGet(attribute).equals(oldStyle.eGet(attributeOfOldStyle))) {
+                            newStyle.getCustomFeatures().add(attributeOfOldStyle.getName());
+                        }
+                    } else if (oldStyle.eIsSet(attributeOfOldStyle)) {
+                        newStyle.getCustomFeatures().add(attributeOfOldStyle.getName());
                     }
-                } else if (oldStyle.eIsSet(attribute)) {
-                    newStyle.getCustomFeatures().add(attribute.getName());
                 }
             }
         }
+    }
+
+    private EAttribute getCorrespondingEAttribute(EAttribute attribute, Style style) {
+        EAttribute result = null;
+        if (style.eClass().getFeatureID(attribute) != -1) {
+            result = attribute;
+        } else {
+            // This attribute does not exist in the style. Check specific
+            // mapping cases.
+            EStructuralFeature structuralFeature = style.eClass().getEStructuralFeature(attribute.getName());
+            if (structuralFeature instanceof EAttribute) {
+                result = (EAttribute) structuralFeature;
+            } else if ("color".equals(attribute.getName())) { //$NON-NLS-1$
+                structuralFeature = style.eClass().getEStructuralFeature("backgroundColor"); //$NON-NLS-1$
+                if (structuralFeature instanceof EAttribute) {
+                    result = (EAttribute) structuralFeature;
+                }
+            } else if ("backgroundColor".equals(attribute.getName())) { //$NON-NLS-1$
+                structuralFeature = style.eClass().getEStructuralFeature("color"); //$NON-NLS-1$
+                if (structuralFeature instanceof EAttribute) {
+                    result = (EAttribute) structuralFeature;
+                }
+            } else if ("width".equals(attribute.getName())) { //$NON-NLS-1$
+                structuralFeature = style.eClass().getEStructuralFeature("horizontalDiameter"); //$NON-NLS-1$
+                if (structuralFeature instanceof EAttribute) {
+                    result = (EAttribute) structuralFeature;
+                }
+            } else if ("horizontalDiameter".equals(attribute.getName())) { //$NON-NLS-1$
+                structuralFeature = style.eClass().getEStructuralFeature("width"); //$NON-NLS-1$
+                if (structuralFeature instanceof EAttribute) {
+                    result = (EAttribute) structuralFeature;
+                }
+            } else if ("height".equals(attribute.getName())) { //$NON-NLS-1$
+                structuralFeature = style.eClass().getEStructuralFeature("verticalDiameter"); //$NON-NLS-1$
+                if (structuralFeature instanceof EAttribute) {
+                    result = (EAttribute) structuralFeature;
+                }
+            } else if ("verticalDiameter".equals(attribute.getName())) { //$NON-NLS-1$
+                structuralFeature = style.eClass().getEStructuralFeature("height"); //$NON-NLS-1$
+                if (structuralFeature instanceof EAttribute) {
+                    result = (EAttribute) structuralFeature;
+                }
+            }
+        }
+        return result;
     }
 }

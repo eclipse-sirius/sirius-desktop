@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -98,6 +98,15 @@ public class DiagramStyleColorUpdater extends AbstractColorUpdater {
             if (descToStyleForColorFeatures.containsValue(feature) && description != null) {
                 if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(feature.getName())) {
                     EStructuralFeature eStructuralFeature = previousStyle.get().eClass().getEStructuralFeature(feature.getName());
+                    if (eStructuralFeature == null) {
+                        // If we don't found a matching feature, we search in
+                        // specific matching cases
+                        if ("color".equals(feature.getName())) { //$NON-NLS-1$
+                            eStructuralFeature = previousStyle.get().eClass().getEStructuralFeature("backgroundColor"); //$NON-NLS-1$
+                        } else if ("backgroundColor".equals(feature.getName())) { //$NON-NLS-1$
+                            eStructuralFeature = previousStyle.get().eClass().getEStructuralFeature("color"); //$NON-NLS-1$
+                        }
+                    }
                     // If we don't found a matching feature, we ignore the
                     // customization (probably a not compatible
                     // customization).
@@ -133,7 +142,6 @@ public class DiagramStyleColorUpdater extends AbstractColorUpdater {
         eAllReferences.addAll(styleReferences);
         return eAllReferences;
     }
-
 
     /**
      * Update the colors of a style instance using the specified description.
