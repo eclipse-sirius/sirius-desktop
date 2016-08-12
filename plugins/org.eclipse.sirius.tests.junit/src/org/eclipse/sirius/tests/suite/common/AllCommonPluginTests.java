@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -103,6 +103,7 @@ import org.eclipse.sirius.tests.unit.common.migration.GeneralMigrationMechanismT
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius0_9Test;
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius1_0_0_M5Test;
 import org.eclipse.sirius.tests.unit.common.migration.ModelsToSemanticResourcesMigrationTest;
+import org.eclipse.sirius.tests.unit.common.migration.NoteAttachmentMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.EObjectSelectionFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.BorderSizeMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ComputedStyleDescriptionCachePackingFileMigrationParticipantTests;
@@ -210,6 +211,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(ConvertViewpointModelingProjectToSiriusModelingProjectTest.class);
         suite.addTestSuite(FontFormatMigrationTest.class);
         suite.addTestSuite(BorderSizeMigrationTest.class);
+        suite.addTestSuite(NoteAttachmentMigrationTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));
         suite.addTest(new JUnit4TestAdapter(GroupingContentProviderTest.class));

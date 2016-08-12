@@ -103,7 +103,7 @@ public class BorderSizeMigrationTest extends SiriusTestCase {
         // (testBorderSizeComputationExpressionMigrationNotDoneOn3_1_0_files
         // ensures it will produce no effect)
         loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + REPRESENTATIONS_FILE_PATH + PATH_3_1_0 + REPRESENTATIONS_FILE_NAME, true),
-                false);
+                true);
         assertTrue("The current aird test data should be migrated.", BorderSizeRepresentationFileMigrationParticipant.MIGRATION_VERSION.compareTo(loadedVersion) < 0);
     }
 
