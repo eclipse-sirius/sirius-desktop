@@ -360,7 +360,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     private DialectEditorDialogFactory myDialogFactory = new DiagramDialectEditorDialogFactory(this);
 
-    private final IOperationHistoryListener operationHistoryListener = new DOperationHistoryListener(this);
+    private IOperationHistoryListener operationHistoryListener;
 
     private PaletteManager paletteManager;
 
@@ -391,6 +391,18 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      */
     public DDiagramEditorImpl() {
         super();
+        operationHistoryListener = new DOperationHistoryListener(this);
+    }
+
+    /**
+     * Create a new instance with a given {@link IOperationHistoryListener}.
+     * 
+     * @param operationHistoryListener
+     *            a specific {@link IOperationHistoryListener}.
+     */
+    public DDiagramEditorImpl(IOperationHistoryListener operationHistoryListener) {
+        super();
+        this.operationHistoryListener = operationHistoryListener;
     }
 
     @Override
