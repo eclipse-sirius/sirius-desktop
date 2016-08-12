@@ -46,6 +46,7 @@ import org.eclipse.sirius.tests.unit.api.semantic.XSDSemanticResourceTests;
 import org.eclipse.sirius.tests.unit.api.session.DAnalysisSessionTests;
 import org.eclipse.sirius.tests.unit.api.session.OpenSessionTest;
 import org.eclipse.sirius.tests.unit.api.session.ReloadSessionTest;
+import org.eclipse.sirius.tests.unit.api.session.ResourceVersionMismatchTest;
 import org.eclipse.sirius.tests.unit.api.session.SampleSessionTest;
 import org.eclipse.sirius.tests.unit.api.session.SessionEditorInputTests;
 import org.eclipse.sirius.tests.unit.api.session.SessionManagerListener2Tests;
@@ -54,7 +55,6 @@ import org.eclipse.sirius.tests.unit.api.session.SessionServiceTest;
 import org.eclipse.sirius.tests.unit.api.session.SiriusComparatorTests;
 import org.eclipse.sirius.tests.unit.api.session.SiriusRegistryListener2Tests;
 import org.eclipse.sirius.tests.unit.api.session.SiriusRegistryTests;
-import org.eclipse.sirius.tests.unit.api.session.ResourceVersionMismatchTest;
 import org.eclipse.sirius.tests.unit.api.session.ViewpointSelectionTests;
 import org.eclipse.sirius.tests.unit.api.tools.SiriusControlAndCrossReferenceInMultiSessionTest;
 import org.eclipse.sirius.tests.unit.api.vsm.edit.SiriusAdapterFactoryRegistryTest;
@@ -106,6 +106,7 @@ import org.eclipse.sirius.tests.unit.common.migration.GeneralMigrationMechanismT
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius0_9Test;
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius1_0_0_M5Test;
 import org.eclipse.sirius.tests.unit.common.migration.ModelsToSemanticResourcesMigrationTest;
+import org.eclipse.sirius.tests.unit.common.migration.NoteAttachmentMigrationTest;
 import org.eclipse.sirius.tests.unit.common.migration.VariableMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.EObjectSelectionFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.BorderSizeMigrationTest;
@@ -219,6 +220,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(VariableMigrationTest.class);
         suite.addTestSuite(DRepresentationContainerRemovalMigrationTest.class);
         suite.addTestSuite(DRepDescriptorCreationMigrationTest.class);
+        suite.addTestSuite(NoteAttachmentMigrationTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));
         suite.addTest(new JUnit4TestAdapter(GroupingContentProviderTest.class));
