@@ -16,26 +16,16 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.SharedCursors;
-import org.eclipse.gef.editparts.AbstractEditPart;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.DescriptionCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusTextEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.MoveInDiagramDragTracker;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.MouseEvent;
 
-import com.google.common.collect.Iterables;
-
 /**
  * A specific dragEditPartTracket that allows to change the behavior of
  * SnapToShape (capability to snap to all shapes and not only brothers one).
- * <br/>
- * Furthermore, a specific selection is operated for generic diagram notes in
- * order to trigger the direct edit mode with only two slow click, like any
- * other diagram element.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
@@ -160,29 +150,5 @@ public class SnapToAllDragEditPartsTracker extends DragEditPartsTrackerEx implem
             return true;
         }
         return super.handleDragInProgress();
-    }
-
-    /**
-     * Overridden for Note selection. It will also select the contained
-     * DescriptionCompartmentEditPart. This way the direct edit mode is accessed
-     * after a slow double-click like any other diagram element.
-     */
-    @Override
-    protected void performSelection() {
-        super.performSelection();
-        EditPart sourceEditPart = getSourceEditPart();
-        if (sourceEditPart instanceof SiriusNoteEditPart || sourceEditPart instanceof SiriusTextEditPart) {
-            AbstractEditPart siriusNoteEditPart = (AbstractEditPart) sourceEditPart;
-            EditPartViewer viewer = siriusNoteEditPart.getViewer();
-            Iterable<DescriptionCompartmentEditPart> descriptionCompartmentEditPartsfilter = Iterables.filter(sourceEditPart.getChildren(), DescriptionCompartmentEditPart.class);
-            if (Iterables.size(descriptionCompartmentEditPartsfilter) == 1) {
-                DescriptionCompartmentEditPart descriptionCompartmentEditPart = Iterables.getOnlyElement(descriptionCompartmentEditPartsfilter);
-                if (getCurrentInput().isModKeyDown(SWT.MOD1) && viewer.getSelectedEditParts().contains(descriptionCompartmentEditPart)) {
-                    viewer.deselect(descriptionCompartmentEditPart);
-                } else if (descriptionCompartmentEditPart.isSelectable()) {
-                    viewer.appendSelection(descriptionCompartmentEditPart);
-                }
-            }
-        }
     }
 }
