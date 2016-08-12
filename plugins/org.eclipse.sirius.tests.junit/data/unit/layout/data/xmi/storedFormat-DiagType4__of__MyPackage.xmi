@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0">
+  <formatdata:NodeFormatData id="//p4" width="223" height="80">
+    <location x="935"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p3" width="245" height="80">
+    <location x="649"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p2" width="260" height="80">
+    <location x="319"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1" width="245" height="80">
+    <location/>
+  </formatdata:NodeFormatData>
+</xmi:XMI>

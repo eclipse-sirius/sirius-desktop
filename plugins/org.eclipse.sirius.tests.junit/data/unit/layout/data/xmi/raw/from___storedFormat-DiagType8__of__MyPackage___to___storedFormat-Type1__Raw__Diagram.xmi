@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0">
+  <formatdata:NodeFormatData id="//p4" width="188" height="70">
+    <location x="1616" y="29"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p3" width="188" height="70">
+    <location x="1370" y="29"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p2" width="499" height="114">
+    <location x="826" y="29"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1" width="635" height="323">
+    <children id="//p1/C1-1" width="61" height="18">
+      <label id="//p1/C1-1">
+        <location y="5"/>
+      </label>
+      <outgoingEdges id="//p1/C1-1/aC1-2" sourceTerminal="(0.41666666,0.057142857)" targetTerminal="(0.57894737,0.94285715)">
+        <label id="//p1/C1-1/aC1-2" width="-1" height="-1">
+          <location x="10" y="27"/>
+        </label>
+        <pointList x="381" y="379"/>
+        <pointList x="632" y="379"/>
+        <sourceRefPoint x="348" y="371"/>
+        <targetRefPoint x="649" y="379"/>
+      </outgoingEdges>
+      <location x="120" y="-10"/>
+    </children>
+    <children id="//p1/C1-2" width="30" height="30">
+      <label id="//p1/C1-2">
+        <location y="5"/>
+      </label>
+      <location x="432" y="-22"/>
+    </children>
+    <children id="//p1/C1-3" width="30" height="30">
+      <label id="//p1/C1-3">
+        <location y="5"/>
+      </label>
+      <location x="-22" y="81"/>
+    </children>
+    <location x="200" y="380"/>
+  </formatdata:NodeFormatData>
+</xmi:XMI>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -96,8 +96,12 @@ import com.google.common.collect.Sets;
  * it's children.
  *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
+ * @deprecated since Sirius 4.1.0. Use
+ *             {@link org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager}
+ *             instead.
  *
  */
+@Deprecated
 public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDataManager {
 
     private static final Class<?>[] CLASS_EXCEPTIONS = new Class[] { DNodeListElement.class };
@@ -172,7 +176,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
         final EObject semanticElement = rootEditPart.resolveSemanticElement();
         final View toStoreView = (View) rootEditPart.getModel();
         if (toStoreView instanceof Edge) {
-            // TODO LRE : Manage the edge as root ?
+            // Currently not managed...
         } else if (toStoreView instanceof Diagram && semanticElement instanceof DDiagram) {
             applyFormat((DDiagram) semanticElement, (Diagram) toStoreView, rootEditPart.getRoot().getViewer(), applyLayout, applyStyle);
             centerEdgesEnds(toStoreView);

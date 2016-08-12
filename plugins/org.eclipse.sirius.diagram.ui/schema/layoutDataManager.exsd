@@ -7,6 +7,7 @@
       </appInfo>
       <documentation>
          Extension point to provide new layout data managers for &quot;Copy Layout&quot; and &quot;Paste Layout&quot; actions.
+Deprecated since Sirius 4.1.0. Use org.eclipse.sirius.diagram.ui.formatDataManager instead.
       </documentation>
    </annotation>
 
@@ -74,7 +75,7 @@
          <meta.section type="since"/>
       </appInfo>
       <documentation>
-         4.1
+         Sirius 0.9
       </documentation>
    </annotation>
 
@@ -104,14 +105,13 @@
       <appInfo>
          <meta.section type="copyright"/>
       </appInfo>
-            <documentation>
+      <documentation>
          Copyright (c) 2007, 2011 THALES GLOBAL SERVICES&lt;br&gt;
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License v1.0
 which accompanies this distribution, and is available at
 &lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
       </documentation>
-
    </annotation>
 
 </schema>

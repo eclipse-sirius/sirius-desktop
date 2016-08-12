@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,11 @@ import org.eclipse.sirius.diagram.DDiagram;
  * override the default behavior of Copy/Paste layout actions.
  * 
  * @author <a href="mailto:maxime.porhel@obeo.fr">Maxime Porhel</a>
+ * @deprecated since Sirius 4.1.0. Use
+ *             {@link org.eclipse.sirius.diagram.ui.tools.api.format.IFormatDataManagerProvider}
+ *             instead.
  */
+@Deprecated
 public interface ILayoutDataManagerProvider {
 
     /**

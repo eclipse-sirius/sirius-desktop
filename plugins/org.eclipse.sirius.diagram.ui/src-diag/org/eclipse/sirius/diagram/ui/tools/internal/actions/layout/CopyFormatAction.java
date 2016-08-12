@@ -33,10 +33,12 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
+import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.FormatDataManagerRegistry;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistry;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.swt.SWT;
@@ -124,6 +126,9 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
              */
             @Override
             public void execute() {
+                for (SiriusFormatDataManager formatDataManager : FormatDataManagerRegistry.getAllSiriusFormatDataManagers()) {
+                    formatDataManager.clearFormatData();
+                }
                 for (SiriusLayoutDataManager layoutDataManager : LayoutDataManagerRegistry.getAllSiriusLayoutDataManagers()) {
                     layoutDataManager.clearLayoutData();
                 }
@@ -223,6 +228,9 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
 
         @Override
         protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
+            for (SiriusFormatDataManager formatDataManager : FormatDataManagerRegistry.getSiriusFormatDataManagers(dDiagram)) {
+                formatDataManager.storeFormatData(toStore);
+            }
             for (SiriusLayoutDataManager layoutDataManager : LayoutDataManagerRegistry.getSiriusLayoutDataManagers(dDiagram)) {
                 layoutDataManager.storeLayoutData(toStore);
             }
@@ -237,6 +245,9 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
          */
         @Override
         protected IStatus doUndo(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
+            for (SiriusFormatDataManager formatDataManager : FormatDataManagerRegistry.getSiriusFormatDataManagers(dDiagram)) {
+                formatDataManager.clearFormatData();
+            }
             for (SiriusLayoutDataManager layoutDataManager : LayoutDataManagerRegistry.getSiriusLayoutDataManagers(dDiagram)) {
                 layoutDataManager.clearLayoutData();
             }

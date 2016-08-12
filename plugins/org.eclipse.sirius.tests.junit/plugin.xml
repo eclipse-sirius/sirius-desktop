@@ -72,14 +72,21 @@
          </constraintProvider>
    </extension>
    <extension
+         point="org.eclipse.sirius.diagram.ui.formatDataManager">
+      <formatDataManagerProvider
+            class="org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleDataProvider"
+            id="sampleDataProvider">
+      </formatDataManagerProvider>
+      <formatDataManagerProvider
+            class="org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider"
+            id="sampleNameDataProvider">
+      </formatDataManagerProvider>
+   </extension>
+   <extension
          point="org.eclipse.sirius.diagram.ui.layoutDataManager">
       <layoutDataManagerProvider
             class="org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.SampleDataProvider"
-            id="sampleDataProvider">
-      </layoutDataManagerProvider>
-      <layoutDataManagerProvider
-            class="org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.SampleNameDataProvider"
-            id="sampleNameDataProvider">
+            id="sampleDataProviderDeprecatedExtensionPoint">
       </layoutDataManagerProvider>
    </extension>
 </plugin>

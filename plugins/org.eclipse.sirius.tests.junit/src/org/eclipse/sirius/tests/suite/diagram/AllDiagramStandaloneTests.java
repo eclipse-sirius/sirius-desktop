@@ -14,6 +14,8 @@ import org.eclipse.sirius.tests.suite.diagram.sequence.AllSequenceDiagramsStanda
 import org.eclipse.sirius.tests.unit.api.mappings.ImportSpecClassesUnsetTests;
 import org.eclipse.sirius.tests.unit.common.mock.OpaquePixelFinderTest;
 import org.eclipse.sirius.tests.unit.diagram.DDiagramDAnnotationTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.SemanticEdgeFormatDataKeyTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.SemanticNodeFormatDataKeyTest;
 import org.eclipse.sirius.tests.unit.diagram.layers.EdgeMappingImportTests;
 import org.eclipse.sirius.tests.unit.diagram.layout.data.SemanticEdgeLayoutDataKeyTest;
 import org.eclipse.sirius.tests.unit.diagram.layout.data.SemanticNodeLayoutDataKeyTest;
@@ -74,6 +76,8 @@ public class AllDiagramStandaloneTests {
         suite.addTestSuite(ViewpointItemTest.class);
         suite.addTestSuite(SemanticNodeLayoutDataKeyTest.class);
         suite.addTestSuite(SemanticEdgeLayoutDataKeyTest.class);
+        suite.addTestSuite(SemanticNodeFormatDataKeyTest.class);
+        suite.addTestSuite(SemanticEdgeFormatDataKeyTest.class);
         suite.addTestSuite(DDiagramInternalQueryTest.class);
         suite.addTestSuite(DDiagramElementQueryTest.class);
         suite.addTestSuite(CreateInstanceOperationTest.class);

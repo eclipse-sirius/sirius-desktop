@@ -20,6 +20,7 @@ If a viewpoint  has been defined with a more recent version of Sirius than the o
 h3. Specifier-Visible Changes
 
 * The rules concerning the layout of compartments have been changed/completed. You can have a look at the "dedicated chapter":specifier/diagrams/Diagrams.html#compartments_layout in the specifier documentation for more details.
+* The extension point @org.eclipse.sirius.diagram.ui.layoutDataManager@ is deprecated. It is replaced by the new extension point @org.eclipse.sirius.diagram.ui.formatDataManager@. The deprecated extension point will be removed in the next 5.0 Sirius major release. Several classes associated with this deprecated extension point are also deprecated (see Developer-Visible Changes for details).
 
 h3. Developer-Visible Changes
 
@@ -65,6 +66,14 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 ** @PASTE_STYLE@: Action contribution id for the paste style.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery.isDescendantOf(View)@ has been added to know if a view is a descendant of another view.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.getAncestor(int...)@ has been added to retrieve the first ancestor of the view, or itself, that has at least one of the visualID passed as parameter.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.AbstractSiriusLayoutDataManager@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager@ instead.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.ILayoutDataManagerProvider@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.IFormatDataManagerProvider@ instead.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataHelper@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataHelper@ instead.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey@ instead.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager@ instead.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManagerForSemanticElementsFactory@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerForSemanticElementsFactory@ instead.
+
+
 
 h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
 

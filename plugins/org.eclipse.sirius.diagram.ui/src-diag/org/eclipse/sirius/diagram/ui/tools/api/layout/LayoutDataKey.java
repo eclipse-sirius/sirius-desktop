@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,11 @@ package org.eclipse.sirius.diagram.ui.tools.api.layout;
  * {@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData}.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
+ * @deprecated since Sirius 4.1.0. Use
+ *             {@link org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey}
+ *             instead.
  */
+@Deprecated
 public interface LayoutDataKey {
 
     /**

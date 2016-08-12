@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0">
+  <formatdata:NodeFormatData id="//p1/p1-3" width="146" height="58">
+    <location x="-11" y="11"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1/p1-1" width="311" height="113">
+    <children id="//p1/p1-1/C1-1-1" width="30" height="30">
+      <label id="//p1/p1-1/C1-1-1">
+        <location x="57" y="4"/>
+      </label>
+      <location x="8" y="-22"/>
+    </children>
+    <children id="//p1/p1-1/C1-1-2" width="30" height="30">
+      <label id="//p1/p1-1/C1-1-2">
+        <location y="5"/>
+      </label>
+      <location x="-22" y="8"/>
+    </children>
+    <location x="-11" y="11"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1/p1-2" width="157" height="58">
+    <children id="//p1/p1-2/C1-2-1" width="30" height="30">
+      <label id="//p1/p1-2/C1-2-1">
+        <location y="5"/>
+      </label>
+      <location x="6" y="-22"/>
+    </children>
+    <location x="-11" y="11"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p4" width="124" height="69">
+    <location x="-11" y="11"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p3" width="135" height="58">
+    <location x="-11" y="11"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p2" width="124" height="102">
+    <location x="-11" y="11"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p2/p2-1" width="135" height="69">
+    <children id="//p2/p2-1/new%20EClass%201" width="30" height="30">
+      <label id="//p2/p2-1/new%20EClass%201">
+        <location x="-79"/>
+      </label>
+      <location x="-22"/>
+    </children>
+    <location x="-11" y="11"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p2/p2-2" width="124" height="58">
+    <location x="-11" y="11"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1" width="179" height="102">
+    <children id="//p1/C1-1" width="61" height="18">
+      <label id="//p1/C1-1">
+        <location x="120" y="-15"/>
+      </label>
+      <location x="6" y="-22"/>
+    </children>
+    <children id="//p1/C1-2" width="30" height="30">
+      <label id="//p1/C1-2">
+        <location x="-41" y="18"/>
+      </label>
+      <location x="-22" y="8"/>
+    </children>
+    <children id="//p1/C1-3" width="30" height="30">
+      <label id="//p1/C1-3">
+        <location y="5"/>
+      </label>
+      <location x="-22" y="39"/>
+    </children>
+    <location x="-11" y="11"/>
+  </formatdata:NodeFormatData>
+</xmi:XMI>

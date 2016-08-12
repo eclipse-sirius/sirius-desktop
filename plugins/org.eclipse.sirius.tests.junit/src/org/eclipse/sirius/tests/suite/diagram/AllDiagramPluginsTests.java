@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,11 +9,6 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.diagram;
-
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.tests.suite.diagram.sequence.AllSequenceDiagramsPluginTests;
@@ -120,6 +115,14 @@ import org.eclipse.sirius.tests.unit.diagram.folding.ContainerFoldingTest;
 import org.eclipse.sirius.tests.unit.diagram.folding.FoldingPointsIdentificationTest;
 import org.eclipse.sirius.tests.unit.diagram.folding.FoldingQueriesTest;
 import org.eclipse.sirius.tests.unit.diagram.folding.NodeFoldingTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.FormatHelperImplEdgeFormatDataTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.FormatHelperImplNodeFormatData1Test;
+import org.eclipse.sirius.tests.unit.diagram.format.data.FormatHelperImplNodeFormatData2Test;
+import org.eclipse.sirius.tests.unit.diagram.format.data.SiriusFormatDataManagerForDDiagramElementWithSameSemanticElementsTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.SiriusFormatDataManagerForSemanticElementsApplyWithPredefinedDataTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.SiriusFormatDataManagerForSemanticElementsStoreWithPredefinedDataTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.SiriusFormatDataManagerForSemanticElementsTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.FormatDataManagerSelectionTest;
 import org.eclipse.sirius.tests.unit.diagram.layers.ActivateDeactivateOptionalLayersTest;
 import org.eclipse.sirius.tests.unit.diagram.layers.LayerEdgeOnEdgeTest;
 import org.eclipse.sirius.tests.unit.diagram.layers.Layers1203Tests;
@@ -134,10 +137,6 @@ import org.eclipse.sirius.tests.unit.diagram.layout.data.LabelPositionOnContaine
 import org.eclipse.sirius.tests.unit.diagram.layout.data.LayoutHelperImplEdgeLayoutDataTest;
 import org.eclipse.sirius.tests.unit.diagram.layout.data.LayoutHelperImplNodeLayoutData1Test;
 import org.eclipse.sirius.tests.unit.diagram.layout.data.LayoutHelperImplNodeLayoutData2Test;
-import org.eclipse.sirius.tests.unit.diagram.layout.data.SiriusLayoutDataManagerForDDiagramElementWithSameSemanticElementsTest;
-import org.eclipse.sirius.tests.unit.diagram.layout.data.SiriusLayoutDataManagerForSemanticElementsApplyWithPredefinedDataTest;
-import org.eclipse.sirius.tests.unit.diagram.layout.data.SiriusLayoutDataManagerForSemanticElementsStoreWithPredefinedDataTest;
-import org.eclipse.sirius.tests.unit.diagram.layout.data.SiriusLayoutDataManagerForSemanticElementsTest;
 import org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.LayoutDataManagerSelectionTest;
 import org.eclipse.sirius.tests.unit.diagram.layout.margin.BorderMarginTest;
 import org.eclipse.sirius.tests.unit.diagram.layout.pinning.PinnedElementsTest;
@@ -237,6 +236,11 @@ import org.eclipse.sirius.tests.unit.diagram.vsm.VSMWithCustomizationValidationT
 import org.eclipse.sirius.tests.unit.perf.diagram.refresh.connections.DCompartmentConnectionRefreshMgrTest;
 import org.eclipse.sirius.tests.unit.table.unit.migration.InitializeElementsToSelectExpressionForTableMigrationTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.SelectionInTableAfterToolExecutionTest;
+
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 public class AllDiagramPluginsTests {
 
@@ -396,9 +400,13 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(LayoutHelperImplEdgeLayoutDataTest.class);
         suite.addTestSuite(LayoutHelperImplNodeLayoutData1Test.class);
         suite.addTestSuite(LayoutHelperImplNodeLayoutData2Test.class);
+        suite.addTestSuite(FormatHelperImplEdgeFormatDataTest.class);
+        suite.addTestSuite(FormatHelperImplNodeFormatData1Test.class);
+        suite.addTestSuite(FormatHelperImplNodeFormatData2Test.class);
 
-        suite.addTestSuite(SiriusLayoutDataManagerForDDiagramElementWithSameSemanticElementsTest.class);
         suite.addTestSuite(LayoutDataManagerSelectionTest.class);
+        suite.addTestSuite(SiriusFormatDataManagerForDDiagramElementWithSameSemanticElementsTest.class);
+        suite.addTestSuite(FormatDataManagerSelectionTest.class);
         suite.addTestSuite(LabelPositionOnContainerAndListTest.class);
         suite.addTestSuite(LabelVisibilityOnDragAndDropTests.class);
         suite.addTestSuite(LabelVisibilityOnCreationTest.class);
@@ -517,8 +525,8 @@ public class AllDiagramPluginsTests {
 
         String platformVersion = Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
         if (!platformVersion.startsWith("3.5")) {
-            suite.addTestSuite(SiriusLayoutDataManagerForSemanticElementsTest.class);
-            suite.addTest(new JUnit4TestAdapter(SiriusLayoutDataManagerForSemanticElementsStoreWithPredefinedDataTest.class));
+            suite.addTestSuite(SiriusFormatDataManagerForSemanticElementsTest.class);
+            suite.addTest(new JUnit4TestAdapter(SiriusFormatDataManagerForSemanticElementsStoreWithPredefinedDataTest.class));
         }
     }
 
@@ -533,7 +541,7 @@ public class AllDiagramPluginsTests {
         String platformVersion = Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
         if (!platformVersion.startsWith("3.5") && TestsUtil.shouldRunLongTests()) {
             // This one is long (~9 minutes), so it is ignored when running
-            suite.addTest(new JUnit4TestAdapter(SiriusLayoutDataManagerForSemanticElementsApplyWithPredefinedDataTest.class));
+            suite.addTest(new JUnit4TestAdapter(SiriusFormatDataManagerForSemanticElementsApplyWithPredefinedDataTest.class));
         }
         suite.addTestSuite(TablesAndEntitiesDirtyTest.class);
     }

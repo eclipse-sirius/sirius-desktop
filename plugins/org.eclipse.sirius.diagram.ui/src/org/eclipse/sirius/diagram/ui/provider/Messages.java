@@ -471,6 +471,9 @@ public final class Messages {
     public static String DNodeContainerViewNodeContainerCompartmentEditPart_title;
 
     @TranslatableMessage
+    public static String DNodeFormatDataKey_wrongKeyMsg;
+
+    @TranslatableMessage
     public static String DNodeLayoutDataKey_wrongKeyMsg;
 
     @TranslatableMessage
@@ -550,6 +553,15 @@ public final class Messages {
 
     @TranslatableMessage
     public static String FontPropertySection_underline;
+
+    @TranslatableMessage
+    public static String FormatData_illegalTarget;
+
+    @TranslatableMessage
+    public static String FormatData_unhandledDiagramElementKind;
+
+    @TranslatableMessage
+    public static String FormatDataHelperImpl_unkownFormatData;
 
     @TranslatableMessage
     public static String GMFCommandWrapper_label;

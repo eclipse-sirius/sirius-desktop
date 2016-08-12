@@ -29,10 +29,13 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
+import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerForSemanticElementsFactory;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManagerForSemanticElementsFactory;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.FormatDataManagerRegistry;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
@@ -94,7 +97,8 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
     @Override
     protected Command getCommand() {
         Command pasteStyleCommand = UnexecutableCommand.INSTANCE;
-        if (SiriusLayoutDataManagerForSemanticElementsFactory.getInstance().getSiriusLayoutDataManager().containsData()) {
+        if (SiriusFormatDataManagerForSemanticElementsFactory.getInstance().getSiriusFormatDataManager().containsData()
+                || SiriusLayoutDataManagerForSemanticElementsFactory.getInstance().getSiriusLayoutDataManager().containsData()) {
 
             // Create a compound command to hold the paste commands
             CompoundCommand doPasteStylesCmd = new CompoundCommand(Messages.PasteStyleAction_restoreStyleCommandLabel);
@@ -158,10 +162,25 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
          */
         @Override
         protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
-            List<SiriusLayoutDataManager> layoutDataManagers = LayoutDataManagerRegistry.getSiriusLayoutDataManagers(dDiagram);
-
-            if (!layoutDataManagers.isEmpty()) {
-                layoutDataManagers.get(0).applyStyle(editPartToRestore);
+            List<SiriusFormatDataManager> formatDataManagers = FormatDataManagerRegistry.getSiriusFormatDataManagers(dDiagram);
+            if (!formatDataManagers.isEmpty()) {
+                boolean deprecatedLayoutManagerUsed = false;
+                if (formatDataManagers.size() == 1 && SiriusFormatDataManagerForSemanticElementsFactory.getInstance().getSiriusFormatDataManager().equals(formatDataManagers.get(0))) {
+                    // If there is only the default implementation of
+                    // formatDataManager, we search in deprecated
+                    // layoutDataManager
+                    List<SiriusLayoutDataManager> layoutDataManagers = LayoutDataManagerRegistry.getSiriusLayoutDataManagers(dDiagram);
+                    // If there is at least one extension point using the
+                    // deprecated layoutDataManager, the deprecated system is
+                    // used
+                    if (layoutDataManagers.size() > 1) {
+                        deprecatedLayoutManagerUsed = true;
+                        layoutDataManagers.get(0).applyStyle(editPartToRestore);
+                    }
+                }
+                if (!deprecatedLayoutManagerUsed) {
+                    formatDataManagers.get(0).applyStyle(editPartToRestore);
+                }
             }
 
             return CommandResult.newOKCommandResult();

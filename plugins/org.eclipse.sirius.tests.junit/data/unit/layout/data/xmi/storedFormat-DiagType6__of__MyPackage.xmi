@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0">
+  <formatdata:NodeFormatData id="//p1/p1-2/C1-2-1" width="30" height="30">
+    <label id="//p1/p1-2/C1-2-1">
+      <location y="5"/>
+    </label>
+    <location x="539" y="219"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p2/p2-1/new%20EClass%201" width="30" height="30">
+    <label id="//p2/p2-1/new%20EClass%201">
+      <location x="-79"/>
+    </label>
+    <location x="119" y="55"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1/p1-1/C1-1-2" width="30" height="30">
+    <label id="//p1/p1-1/C1-1-2">
+      <location y="5"/>
+    </label>
+    <location x="109" y="25"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1/C1-1" width="61" height="18">
+    <label id="//p1/C1-1">
+      <location x="120" y="-15"/>
+    </label>
+    <children id="//p1/C1-2" width="30" height="30">
+      <label id="//p1/C1-2">
+        <location x="-44" y="1"/>
+      </label>
+      <location x="-22" y="-12"/>
+    </children>
+    <children id="//p1/p1-1/C1-1-1" width="30" height="30">
+      <label id="//p1/p1-1/C1-1-1">
+        <location x="1" y="29"/>
+      </label>
+      <location x="18" y="10"/>
+    </children>
+    <outgoingEdges id="//p1/C1-1/aC1-2" sourceTerminal="(0.8032786885245902,0.1111111111111111)" targetTerminal="(0.5333333333333333,0.8)">
+      <label id="//p1/C1-1/aC1-2" width="32" height="22">
+        <location x="7" y="21"/>
+      </label>
+      <pointList x="230" y="97"/>
+      <pointList x="325" y="149"/>
+      <pointList x="447" y="147"/>
+      <pointList x="490" y="107"/>
+      <sourceRefPoint x="218" y="91"/>
+      <targetRefPoint x="497" y="101"/>
+    </outgoingEdges>
+    <outgoingEdges id="//p1/C1-1/aC1-1-1" sourceTerminal="(0.5081967213114754,0.05555555555555555)" targetTerminal="(0.16666666666666666,0.4666666666666667)">
+      <label id="//p1/C1-1/aC1-1-1" width="43" height="20">
+        <location x="19" y="-15"/>
+      </label>
+      <pointList x="200" y="89"/>
+      <pointList x="200" y="45"/>
+      <pointList x="267" y="39"/>
+      <sourceRefPoint x="200" y="90"/>
+      <targetRefPoint x="272" y="39"/>
+    </outgoingEdges>
+    <location x="169" y="89"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1/p1-1/C1-1-1" width="30" height="30">
+    <label id="//p1/p1-1/C1-1-1">
+      <location x="57" y="4"/>
+    </label>
+    <location x="267" y="25"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1/C1-2" width="30" height="30">
+    <label id="//p1/C1-2">
+      <location x="-41" y="18"/>
+    </label>
+    <location x="481" y="77"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1/C1-3" width="30" height="30">
+    <label id="//p1/C1-3">
+      <location y="5"/>
+    </label>
+    <location x="66" y="187"/>
+  </formatdata:NodeFormatData>
+</xmi:XMI>

@@ -46,6 +46,7 @@ import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.ui.business.internal.image.ImageSelectorDescriptorRegistryListener;
 import org.eclipse.sirius.diagram.ui.business.internal.image.refresh.WorkspaceImageFigureRefresher;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.WorkspaceFileResourceChangeListener;
+import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.FormatDataManagerRegistryListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistryListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.CustomSiriusDocumentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.ResourceMissingDocumentProvider;
@@ -140,6 +141,8 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
         private LayoutDataManagerRegistryListener layoutDataManagerRegistryListener;
 
+        private FormatDataManagerRegistryListener formatDataManagerRegistryListener;
+
         private ImageSelectorDescriptorRegistryListener imageSelectorDescriptorRegistryListener;
 
         private WorkspaceImageFigureRefresher workspaceImageFigureRefresher;
@@ -174,6 +177,9 @@ public final class DiagramUIPlugin extends EMFPlugin {
             imageSelectorDescriptorRegistryListener = new ImageSelectorDescriptorRegistryListener();
             imageSelectorDescriptorRegistryListener.init();
 
+            formatDataManagerRegistryListener = new FormatDataManagerRegistryListener();
+            formatDataManagerRegistryListener.init();
+
             layoutDataManagerRegistryListener = new LayoutDataManagerRegistryListener();
             layoutDataManagerRegistryListener.init();
         }
@@ -195,6 +201,9 @@ public final class DiagramUIPlugin extends EMFPlugin {
                 // can occur when using CDO (if the view is
                 // closed when transactions have been closed)
             }
+
+            formatDataManagerRegistryListener.dispose();
+            formatDataManagerRegistryListener = null;
 
             layoutDataManagerRegistryListener.dispose();
             layoutDataManagerRegistryListener = null;

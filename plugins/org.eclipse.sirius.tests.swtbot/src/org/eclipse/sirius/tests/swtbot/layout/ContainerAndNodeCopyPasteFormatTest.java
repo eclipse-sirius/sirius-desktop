@@ -33,7 +33,6 @@ import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
-import org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.SampleNameDataProvider;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
@@ -118,40 +117,43 @@ public class ContainerAndNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGef
 
     /**
      * Diagram on third representation using a specific copy/paste extension (
-     * {@link SampleNameDataProvider}).
+     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
+     * ).
      */
     private SWTBotSiriusDiagramEditor diagramEditor3;
 
     /**
      * Diagram on second representation using a specific copy/paste extension (
-     * {@link SampleNameDataProvider}).
+     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
+     * ).
      */
     private SWTBotSiriusDiagramEditor diagramEditor4;
 
     /**
      * Diagram on fifth representation using a specific copy/paste extension (
-     * {@link SampleNameDataProvider}), package are represented by gray square.
+     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
+     * ), package are represented by gray square.
      */
     private SWTBotSiriusDiagramEditor diagramEditor5;
 
     /**
      * Diagram on fifth representation using a specific copy/paste extension (
-     * {@link SampleNameDataProvider}), package are represented by orange
-     * diamond.
+     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
+     * ), package are represented by orange diamond.
      */
     private SWTBotSiriusDiagramEditor diagramEditor6;
 
     /**
      * Diagram on fifth representation using a specific copy/paste extension (
-     * {@link SampleNameDataProvider}), package are represented by yellow
-     * ellipse.
+     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
+     * ), package are represented by yellow ellipse.
      */
     private SWTBotSiriusDiagramEditor diagramEditor7;
 
     /**
      * Diagram on fifth representation using a specific copy/paste extension (
-     * {@link SampleNameDataProvider}), package are represented by workspace
-     * image.
+     * {@link org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.SampleNameDataProvider}
+     * ), package are represented by workspace image.
      */
     private SWTBotSiriusDiagramEditor diagramEditor8;
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,6 @@ package org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension;
 
 import java.util.List;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
@@ -22,6 +20,8 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistry;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic.SiriusLayoutDataManagerForSemanticElements;
+
+import junit.framework.TestCase;
 
 /**
  * Tests manager selection.
@@ -35,8 +35,8 @@ public class LayoutDataManagerSelectionTest extends TestCase {
      * Test sample extension presence and deployment.
      */
     public void testSampleExtensionDeployment() {
-        assertEquals("Sample layout data manager extension not found.", 2, LayoutDataManagerRegistry.getRegisteredExtensions().size());
-        assertEquals("Sample layout data manager extension instance not found.", 3, LayoutDataManagerRegistry.getAllSiriusLayoutDataManagers().size());
+        assertEquals("Sample layout data manager extension not found.", 1, LayoutDataManagerRegistry.getRegisteredExtensions().size());
+        assertEquals("Sample layout data manager extension instance not found.", 2, LayoutDataManagerRegistry.getAllSiriusLayoutDataManagers().size());
     }
 
     /**
@@ -54,7 +54,8 @@ public class LayoutDataManagerSelectionTest extends TestCase {
     }
 
     /**
-     * Test that the extension reacts to wanted models : a specific eannotation should be present.
+     * Test that the extension reacts to wanted models : a specific eannotation
+     * should be present.
      */
     public void testAvailableManagersWhenExtensionProvides() {
         EPackage p = EcoreFactory.eINSTANCE.createEPackage();

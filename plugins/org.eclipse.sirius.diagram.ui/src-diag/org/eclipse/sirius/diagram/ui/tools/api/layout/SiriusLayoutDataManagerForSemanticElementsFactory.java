@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,8 +17,11 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic.SiriusLayout
  * semantic elements.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * 
+ * @deprecated Since Sirius 4.1.0. Use
+ *             {@link org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerForSemanticElementsFactory}
+ *             instead.
  */
+@Deprecated
 public class SiriusLayoutDataManagerForSemanticElementsFactory {
     private static final SiriusLayoutDataManagerForSemanticElementsFactory INSTANCE = new SiriusLayoutDataManagerForSemanticElementsFactory();
 
@@ -37,8 +40,7 @@ public class SiriusLayoutDataManagerForSemanticElementsFactory {
     /**
      * Get the {@link SiriusLayoutDataManager}.
      * 
-     * @return an instance of
-     *         {@link SiriusLayoutDataManagerForSemanticElements}
+     * @return an instance of {@link SiriusLayoutDataManagerForSemanticElements}
      */
     public SiriusLayoutDataManager getSiriusLayoutDataManager() {
         return VIEWPOINT_LAYOUT_DATA_MANAGER;
