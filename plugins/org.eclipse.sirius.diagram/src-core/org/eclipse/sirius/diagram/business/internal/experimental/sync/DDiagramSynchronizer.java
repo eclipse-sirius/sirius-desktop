@@ -1065,7 +1065,7 @@ public class DDiagramSynchronizer {
         try {
             monitor.beginTask(Messages.DDiagramSynchronizer_nodeRefreshMsg, 3);
 
-            final AbstractNodeMapping nodeMapping = (AbstractNodeMapping) keptNode.getDiagramElementMapping();
+            final AbstractNodeMapping nodeMapping = keptCandidate.getMapping();
 
             if (keptNode instanceof DDiagramElementContainer && nodeMapping instanceof ContainerMapping) {
                 final ContainerMapping keptNodeMapping = (ContainerMapping) nodeMapping;
@@ -1406,7 +1406,7 @@ public class DDiagramSynchronizer {
             // EdgeImportMapping)
 
             if (!edgesDones.contains(edgeCandidate.getEdge())) {
-                if (edgeCandidate.getEdge().getActualMapping() != mapping) {
+                if (edgeCandidate.getMapping() != mapping) {
                     edgeCandidate.getEdge().setActualMapping(mapping);
                 }
                 this.sync.computeEdgeDecorations(edgeCandidate.getEdge(), edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
@@ -1493,7 +1493,7 @@ public class DDiagramSynchronizer {
          * there are not displayed on the diagram (it means that the edge is not
          * displayed).
          */
-        final Option<EdgeMapping> actualMapping = new IEdgeMappingQuery(edge.getActualMapping()).getEdgeMapping();
+        final Option<EdgeMapping> actualMapping = new IEdgeMappingQuery(edgeCandidate.getMapping()).getEdgeMapping();
 
         final Iterator<DiagramElementMapping> sourceMappings;
         final Iterator<DiagramElementMapping> targetMappings;
