@@ -509,6 +509,11 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBotToolbarDropDownButton toolbarDropDownButton = editor.bot().toolbarDropDownButton(i);
             String expectedTooltip = DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS[i];
             assertEquals("The toolbarDropDownButton index " + i + " does not have the expected tooltip", expectedTooltip, toolbarDropDownButton.getToolTipText());
+            if (expectedTooltip.equals(Messages.PasteFormatAction_toolTipText)) {
+                // Paste layout is not enabled if there is no previous copy
+                // layout.
+                continue;
+            }
             assertTrue("The toolbarDropDownButton with tooltip " + expectedTooltip + " should be enabled", toolbarDropDownButton.isEnabled());
         }
         for (int i = 0; i < diagramSelectedTabbarButtons.size(); i++) {
@@ -519,12 +524,6 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
                 assertTrue("The toolbarButton index " + i + " does not have the expected tooltip, it does not starts with" + zoomIn, editor.bot().toolbarButton(i).getToolTipText().startsWith(zoomIn));
             } else {
                 assertEquals("The toolbarButton index " + i + " does not have the expected tooltip", expectedTooltip, editor.bot().toolbarButton(i).getToolTipText());
-            }
-
-            if (expectedTooltip.equals(Messages.PasteFormatAction_toolTipText)) {
-                // Paste layout is not enabled if there is no previous copy
-                // layout.
-                continue;
             }
             assertTrue("The toolbarButton with tooltip " + expectedTooltip + " should be enabled", button.isEnabled());
         }
