@@ -103,11 +103,6 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
     }
 
     @Override
-    public Map<String, VariableType> getAvailableVariables() {
-        return super.getAvailableVariables();
-    }
-
-    @Override
     protected void addVariablesFromToolContext(EObject toolContext) {
         if (toolContext instanceof CreateCellTool) {
             CreateCellTool tool = (CreateCellTool) toolContext;
