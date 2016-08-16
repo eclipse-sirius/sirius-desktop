@@ -164,7 +164,9 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
                         IEditorPart editor = ref.getEditor(false);
                         if (editor instanceof DDiagramEditorImpl) {
                             DDiagramEditorImpl diagramEditor = (DDiagramEditorImpl) editor;
-                            diagramEditor.getTabbar().reinitToolBar(diagramEditor.getDiagramGraphicalViewer().getSelection());
+                            if (diagramEditor.getTabbar() != null) {
+                                diagramEditor.getTabbar().reinitToolBar(diagramEditor.getDiagramGraphicalViewer().getSelection());
+                            }
                         }
                     }
                 }
