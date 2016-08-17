@@ -11,9 +11,7 @@
 package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.ecore.EObject;
@@ -60,7 +58,6 @@ class TreeItemContainerChildSupport implements ChildCreationSupport {
     @Override
     public void reorderChilds(Iterable<CreatedOutput> outDesc) {
         final Multiset<TreeItemMapping> subMappings = LinkedHashMultiset.create();
-        Set<TreeItemMapping> mappings = new HashSet<TreeItemMapping>();
         final Map<EObject, CreatedOutput> outputToItem = Maps.newHashMap();
         for (CreatedOutput createdOutput : outDesc) {
             EObject createdElement = createdOutput.getCreatedElement();
@@ -69,52 +66,46 @@ class TreeItemContainerChildSupport implements ChildCreationSupport {
                 DTreeItem createdDTreeItem = (DTreeItem) createdElement;
                 TreeItemMapping actualMapping = createdDTreeItem.getActualMapping();
                 subMappings.add(actualMapping);
-                mappings.add(actualMapping);
             }
         }
 
-        // Does not need to sort DTreeItem according to their mapping if there
-        // is only one mapping
-        if (mappings.size() > 1) {
-
-            // Counts subMappings to correctly sort tree items regarding mapping
-            // order (items have been created regarding the semantic candidates
-            // order)
-            int startIndex = 0;
-            final Map<TreeItemMapping, Integer> startIndexes = Maps.newHashMap();
-            for (TreeItemMapping itemMapping : subMappings) {
-                startIndexes.put(itemMapping, startIndex);
-                startIndex += subMappings.count(itemMapping);
-            }
-
-            // Pre-compute the new indices
-            final Map<DTreeItem, Integer> newIndices = Maps.newHashMap();
-            for (DTreeItem treeItem : container.getOwnedTreeItems()) {
-                // init with element count : elements with unknown mapping
-                // will be placed at the end.
-                int index = outputToItem.size();
-                TreeItemMapping itemMapping = treeItem.getActualMapping();
-                if (itemMapping != null && startIndexes.containsKey(itemMapping)) {
-                    index = startIndexes.get(itemMapping);
-                }
-
-                CreatedOutput createdOutput = outputToItem.get(treeItem);
-                if (createdOutput != null) {
-                    index = index + createdOutput.getNewIndex();
-                } else {
-                    index = -1;
-                }
-
-                newIndices.put(treeItem, index);
-            }
-
-            ECollections.sort(container.getOwnedTreeItems(), new Comparator<DTreeItem>() {
-                @Override
-                public int compare(DTreeItem o1, DTreeItem o2) {
-                    return newIndices.get(o1).compareTo(newIndices.get(o2));
-                }
-            });
+        // Counts subMappings to correctly sort tree items regarding mapping
+        // order (items have been created regarding the semantic candidates
+        // order)
+        int startIndex = 0;
+        final Map<TreeItemMapping, Integer> startIndexes = Maps.newHashMap();
+        for (TreeItemMapping itemMapping : subMappings) {
+            startIndexes.put(itemMapping, startIndex);
+            startIndex += subMappings.count(itemMapping);
         }
+
+        // Pre-compute the new indices
+        final Map<DTreeItem, Integer> newIndices = Maps.newHashMap();
+        for (DTreeItem treeItem : container.getOwnedTreeItems()) {
+            // init with element count : elements with unknown mapping
+            // will be placed at the end.
+            int index = outputToItem.size();
+            TreeItemMapping itemMapping = treeItem.getActualMapping();
+            if (itemMapping != null && startIndexes.containsKey(itemMapping)) {
+                index = startIndexes.get(itemMapping);
+            }
+
+            CreatedOutput createdOutput = outputToItem.get(treeItem);
+            if (createdOutput != null) {
+                index = index + createdOutput.getNewIndex();
+            } else {
+                index = -1;
+            }
+
+            newIndices.put(treeItem, index);
+        }
+
+        ECollections.sort(container.getOwnedTreeItems(), new Comparator<DTreeItem>() {
+            @Override
+            public int compare(DTreeItem o1, DTreeItem o2) {
+                return newIndices.get(o1).compareTo(newIndices.get(o2));
+            }
+        });
     }
 
     @Override
