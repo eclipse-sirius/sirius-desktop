@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -118,7 +118,7 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
         }
     }
 
-    private void collectScopedListeners(final Notification msg, final EObject changedObj, Multimap<ModelChangeTrigger, Notification> result) {
+    private void collectScopedListeners(final Notification msg, Multimap<ModelChangeTrigger, Notification> result) {
         Iterable<NotificationFilter> filteredScoped = Iterables.filter(scopedTriggers.keys(), new Predicate<NotificationFilter>() {
             @Override
             public boolean apply(NotificationFilter input) {
@@ -146,10 +146,10 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
     private Multimap<ModelChangeTrigger, Notification> collectListenersToNotify(List<Notification> notifications) {
         Multimap<ModelChangeTrigger, Notification> result = HashMultimap.create();
         for (Notification msg : notifications) {
+            collectScopedListeners(msg, result);
             if (msg.getNotifier() instanceof EObject) {
                 EObject changedObj = (EObject) msg.getNotifier();
                 collectListeners(msg, changedObj, eObjectsToListeners, result);
-                collectScopedListeners(msg, changedObj, result);
                 if (msg.getFeature() instanceof EStructuralFeature) {
                     Multimap<EObject, ModelChangeTrigger> eObhectsToListenersMap = featuresToListeners.get(msg.getFeature());
                     if (eObhectsToListenersMap != null) {

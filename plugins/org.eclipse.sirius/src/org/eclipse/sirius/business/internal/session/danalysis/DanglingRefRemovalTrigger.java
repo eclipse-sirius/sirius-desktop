@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 Obeo.
+ * Copyright (c) 2014, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
@@ -34,6 +35,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
@@ -73,7 +75,21 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
             boolean potentialExplicitDetachment = input.getEventType() == Notification.REMOVE || input.getEventType() == Notification.REMOVE_MANY || input.getEventType() == Notification.UNSET;
             boolean potentialImplicitDetachment = input.getEventType() == Notification.SET && input.getNewValue() == null;
             if (potentialExplicitDetachment || potentialImplicitDetachment) {
-                return input.getFeature() instanceof EReference && ((EReference) input.getFeature()).isContainment();
+
+                boolean representationDetachment = false;
+                // A null feature corresponds to a detachment of a root element
+                // in a resource.
+                if (input.getFeature() == null) {
+                    // we ignore object that has been uncontrolled that is
+                    // object detached from the resource but not attached to its
+                    // parent because it already is.
+                    // In other words, we consider only the DRepresentation that
+                    // is the only object that can be moved as root object from
+                    // a resource to another
+                    Object value = input.getOldValue() != null ? input.getOldValue() : input.getNewValue();
+                    representationDetachment = value instanceof DRepresentation;
+                }
+                return representationDetachment || input.getFeature() instanceof EReference && ((EReference) input.getFeature()).isContainment();
             }
             return false;
         }
@@ -94,7 +110,9 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
             if (input.getEventType() == Notification.ADD || input.getEventType() == Notification.ADD_MANY || input.getEventType() == Notification.SET) {
                 // The input.getNewValue() check required to make IS_ATTACHMENT
                 // and IS_DETACHMENT mutually exclusive.
-                return input.getFeature() instanceof EReference && ((EReference) input.getFeature()).isContainment() && input.getNewValue() != null;
+                // Null feature corresponds to an attachment as root element in
+                // a resource.
+                return (input.getFeature() == null || (input.getFeature() instanceof EReference && ((EReference) input.getFeature()).isContainment())) && input.getNewValue() != null;
             }
             return false;
         }
@@ -191,7 +209,11 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY);
 
             // Predicate to ignore attachments to detached elements.
-            Predicate<EObject> ignoreNotifierInDetachedObjects = Predicates.in(allDetachedObjects);
+            Collection<Notifier> allDetachedObjectsAsNotifier = Lists.newArrayList();
+            for (Notifier notifier : allDetachedObjects) {
+                allDetachedObjectsAsNotifier.add(notifier);
+            }
+            Predicate<Notifier> ignoreNotifierInDetachedObjects = Predicates.in(allDetachedObjectsAsNotifier);
             final Set<EObject> allAttachedObjects = getChangedEObjectsAndChildren(Iterables.filter(notifications, IS_ATTACHMENT), ignoreNotifierInDetachedObjects);
             final Set<EObject> toRemoveXRefFrom = Sets.difference(allDetachedObjects, allAttachedObjects);
             if (toRemoveXRefFrom.size() > 0) {
@@ -226,16 +248,19 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
      * @return the EObjects which have been changed by the given notifications
      *         and their children.
      */
-    protected Set<EObject> getChangedEObjectsAndChildren(Iterable<Notification> notifications, Predicate<EObject> notifierToIgnore) {
+    protected Set<EObject> getChangedEObjectsAndChildren(Iterable<Notification> notifications, Predicate<Notifier> notifierToIgnore) {
         final Set<EObject> changedEObjects = Sets.newLinkedHashSet();
         for (Notification notification : notifications) {
-            if (notifierToIgnore == null || notification.getNotifier() instanceof EObject && !notifierToIgnore.apply((EObject) notification.getNotifier())) {
-                for (EObject root : getNotificationValues(notification)) {
-                    // Add the element and all its contents to the
-                    // changedEObjects set only once.
-                    if (!changedEObjects.contains(root)) {
-                        changedEObjects.add(root);
-                        Iterators.addAll(changedEObjects, root.eAllContents());
+            Object notifier = notification.getNotifier();
+            if (notifier instanceof Notifier) {
+                if (notifierToIgnore == null || !notifierToIgnore.apply((Notifier) notifier)) {
+                    for (EObject root : getNotificationValues(notification)) {
+                        // Add the element and all its contents to the
+                        // changedEObjects set only once.
+                        if (!changedEObjects.contains(root)) {
+                            changedEObjects.add(root);
+                            Iterators.addAll(changedEObjects, root.eAllContents());
+                        }
                     }
                 }
             }
