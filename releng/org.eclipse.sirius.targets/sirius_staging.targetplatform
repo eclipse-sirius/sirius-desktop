@@ -3,7 +3,7 @@ target "sirius_staging"
 include "modules/orbit.tpd"
 include "modules/swtbot-2.1.tpd"
 include "modules/shared-license.tpd"
-include "modules/eef-ng.tpd"
+include "modules/eef-17-nightly.tpd"
 
 with source, requirements
 

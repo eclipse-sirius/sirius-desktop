@@ -29,7 +29,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.eef.sdk.feature.feature.group" version="0.0.0"/>
-      <repository id="EEF-NG-Latest" location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon"/>
+      <repository id="EEF-1.7-Latest" location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="0.0.0"/>
