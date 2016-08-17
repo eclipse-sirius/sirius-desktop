@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -28,11 +29,9 @@ import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.Global
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
-import com.google.common.base.Function;
 import com.google.common.collect.LinkedHashMultiset;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multiset;
-import com.google.common.collect.Ordering;
 
 /**
  * A {@link ChildCreationSupport}.
@@ -88,29 +87,33 @@ class TreeItemContainerChildSupport implements ChildCreationSupport {
                 startIndex += subMappings.count(itemMapping);
             }
 
-            Function<DTreeItem, Integer> getNewIndex = new Function<DTreeItem, Integer>() {
-
-                @Override
-                public Integer apply(DTreeItem from) {
-                    // init with element count : elements with unknown mapping
-                    // will
-                    // be placed at
-                    // the end.
-                    int index = outputToItem.size();
-                    TreeItemMapping itemMapping = from.getActualMapping();
-                    if (itemMapping != null && startIndexes.containsKey(itemMapping)) {
-                        index = startIndexes.get(itemMapping);
-                    }
-
-                    CreatedOutput createdOutput = outputToItem.get(from);
-                    if (createdOutput != null) {
-                        return index + createdOutput.getNewIndex();
-                    }
-                    return -1;
+            // Pre-compute the new indices
+            final Map<DTreeItem, Integer> newIndices = Maps.newHashMap();
+            for (DTreeItem treeItem : container.getOwnedTreeItems()) {
+                // init with element count : elements with unknown mapping
+                // will be placed at the end.
+                int index = outputToItem.size();
+                TreeItemMapping itemMapping = treeItem.getActualMapping();
+                if (itemMapping != null && startIndexes.containsKey(itemMapping)) {
+                    index = startIndexes.get(itemMapping);
                 }
-            };
 
-            ECollections.sort(container.getOwnedTreeItems(), Ordering.natural().onResultOf(getNewIndex));
+                CreatedOutput createdOutput = outputToItem.get(treeItem);
+                if (createdOutput != null) {
+                    index = index + createdOutput.getNewIndex();
+                } else {
+                    index = -1;
+                }
+
+                newIndices.put(treeItem, index);
+            }
+
+            ECollections.sort(container.getOwnedTreeItems(), new Comparator<DTreeItem>() {
+                @Override
+                public int compare(DTreeItem o1, DTreeItem o2) {
+                    return newIndices.get(o1).compareTo(newIndices.get(o2));
+                }
+            });
         }
     }
 
