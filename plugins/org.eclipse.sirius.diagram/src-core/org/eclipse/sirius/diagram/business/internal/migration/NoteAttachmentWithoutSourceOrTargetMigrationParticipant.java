@@ -58,7 +58,7 @@ public class NoteAttachmentWithoutSourceOrTargetMigrationParticipant extends Abs
     }
 
     private void deleteNoteAttachmentWithoutSourceOrTarget(Diagram gmfDiagram) {
-        Iterable<Connector> noteAttachmentsToRemove = Iterables.filter(Iterables.filter(gmfDiagram.getEdges(), Connector.class), new Predicate<Connector>() {
+        Iterable<Connector> noteAttachmentsToRemoveIter = Iterables.filter(Iterables.filter(gmfDiagram.getEdges(), Connector.class), new Predicate<Connector>() {
             @Override
             public boolean apply(Connector connector) {
                 if (ViewType.NOTEATTACHMENT.equals(connector.getType())) {
@@ -69,6 +69,10 @@ public class NoteAttachmentWithoutSourceOrTargetMigrationParticipant extends Abs
                 return false;
             }
         });
+        // Make a copy to avoid modification of edges list during the iteration
+        // on it.
+        Connector[] noteAttachmentsToRemove = Iterables.toArray(noteAttachmentsToRemoveIter, Connector.class);
+        // Remove each invalid note attachments
         for (Connector connector : noteAttachmentsToRemove) {
             gmfDiagram.removeEdge(connector);
         }
