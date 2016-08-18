@@ -5,6 +5,10 @@ include "modules/eef-17-nightly.tpd"
 
 with source, requirements
 
+location Sirius-Interpreter-Nightly-Neo "http://download.eclipse.org/sirius/updates/nightly/latest/neon/" {
+    org.eclipse.sirius.common.interpreter lazy
+}
+
 location Eclipse-Oxygen-Integration "http://download.eclipse.org/eclipse/updates/4.7-N-builds/" {
 	org.eclipse.platform.ide lazy
 	org.eclipse.platform.sdk lazy

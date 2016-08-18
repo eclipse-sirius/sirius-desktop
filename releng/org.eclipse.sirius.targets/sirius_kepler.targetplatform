@@ -8,7 +8,7 @@ include "modules/swtbot-2.1.tpd"
 include "modules/xtext-2.4.tpd"
 include "modules/shared-license.tpd"
 include "modules/aql-nightly.tpd"
-include "modules/eef-ng.tpd"
+include "modules/eef-17-nightly.tpd"
 
 with source, requirements
 
