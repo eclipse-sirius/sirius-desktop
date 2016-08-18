@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.emf.edit;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.MoveCommand;
@@ -27,6 +29,7 @@ import org.eclipse.emf.edit.command.ReplaceCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -38,6 +41,8 @@ import org.eclipse.emf.edit.provider.ITableItemFontProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 
 /**
  * Provides access to common {@link EditingDomain} and
@@ -154,6 +159,15 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
  */
 // CHECKSTYLE:OFF
 public class EditingDomainServices {
+    private AdapterFactory defaultAdapterFactory;
+
+    public EditingDomainServices() {
+        List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
+        factories.add(new ResourceItemProviderAdapterFactory());
+        factories.add(new EcoreItemProviderAdapterFactory());
+        factories.add(new ReflectiveItemProviderAdapterFactory());
+        defaultAdapterFactory = new ComposedAdapterFactory(factories);
+    }
 
     public EditingDomain getEditingDomain(EObject self) {
         return AdapterFactoryEditingDomain.getEditingDomainFor(self);
@@ -174,7 +188,7 @@ public class EditingDomainServices {
         if (domain instanceof AdapterFactoryEditingDomain) {
             return ((AdapterFactoryEditingDomain) domain).getAdapterFactory();
         } else {
-            return null;
+            return defaultAdapterFactory;
         }
     }
 
