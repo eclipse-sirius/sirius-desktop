@@ -29,13 +29,13 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.emf.edit.EditingDomainServices;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
-import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.ui.properties.internal.tabprovider.SiriusTabDescriptorProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This class contains various services provided by the Sirius UI Properties
@@ -121,7 +121,7 @@ public class SiriusToolServices {
         ModelOperation modelOperation = findModelOperation(initialCommandUri, session);
         if (modelOperation != null) {
             ModelAccessor modelAccessor = session.getModelAccessor();
-            ICommandTask task = new TaskHelper(modelAccessor, new NoUICallback()).buildTaskFromModelOperation(eObject, modelOperation);
+            ICommandTask task = new TaskHelper(modelAccessor, SiriusEditPlugin.getPlugin().getUiCallback()).buildTaskFromModelOperation(eObject, modelOperation);
             SiriusCommand command = new SiriusCommand(session.getTransactionalEditingDomain(), "SiriusToolServices#executeOperation");
             command.getTasks().add(task);
             session.getTransactionalEditingDomain().getCommandStack().execute(command);
