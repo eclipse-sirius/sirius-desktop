@@ -102,6 +102,7 @@ import org.eclipse.sirius.tests.unit.diagram.decorators.DecoratorsTest;
 import org.eclipse.sirius.tests.unit.diagram.dragndrop.DraggedObjectTesterTests;
 import org.eclipse.sirius.tests.unit.diagram.dragndrop.LabelVisibilityOnCreationTest;
 import org.eclipse.sirius.tests.unit.diagram.dragndrop.LabelVisibilityOnDragAndDropTests;
+import org.eclipse.sirius.tests.unit.diagram.edge.AttachmentBetweenEdgeAndItsLabelsTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.CollapseExpandFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.CollapseFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.CompositeFilterTest;
@@ -366,6 +367,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(NodeSizeOnDiagramCreationTest.class);
         suite.addTestSuite(EdgeSizeTest.class);
         suite.addTestSuite(EdgeSizeComputationVariableTest.class);
+        suite.addTestSuite(AttachmentBetweenEdgeAndItsLabelsTest.class);
         suite.addTestSuite(CollapseExpandFilterTest.class);
         suite.addTestSuite(CollapseFilterTest.class);
         // Folding

@@ -109,8 +109,12 @@ public class SiriusWrapLabelWithAttachment extends SiriusWrapLabel {
             startPoint = midLeft;
         }
 
-        attachment.setStart(startPoint);
-        attachment.setEnd(referencePointOnEdge);
+        if (attachment.getPoints().size() == 0 || !startPoint.equals(attachment.getStart())) {
+            attachment.setStart(startPoint);
+        }
+        if (!referencePointOnEdge.equals(attachment.getEnd())) {
+            attachment.setEnd(referencePointOnEdge);
+        }
     }
 
     /**

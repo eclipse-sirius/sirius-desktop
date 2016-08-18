@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_RmyMUMHCEeCenq6NHvggaA" selectedViews="_SshsYMHCEeCenq6NHvggaA" version="8.0.0">
-  <models xmi:type="ecore:EPackage" href="TestComputeLabel.ecore#/"/>
-  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_SshsYMHCEeCenq6NHvggaA" initialized="true">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_RmyMUMHCEeCenq6NHvggaA" selectedViews="_SshsYMHCEeCenq6NHvggaA" version="11.1.0.201608120930">
+  <semanticResources>TestComputeLabel.ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_SshsYMHCEeCenq6NHvggaA">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']"/>
+    <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_uVWysGUnEeaY-7-IqK9LRQ" name="p1 package entities" representation="_aRIGQMHCEeCenq6NHvggaA">
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']"/>
+      <target xmi:type="ecore:EPackage" href="TestComputeLabel.ecore#/"/>
+    </ownedRepresentationDescriptors>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_aRIGQMHCEeCenq6NHvggaA" name="p1 package entities">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_aRItUMHCEeCenq6NHvggaA" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_aRItUcHCEeCenq6NHvggaA" type="Sirius" element="_aRIGQMHCEeCenq6NHvggaA" measurementUnit="Pixel">
@@ -29,6 +34,7 @@
             <children xmi:type="notation:Node" xmi:id="_aTMi08HCEeCenq6NHvggaA" type="5007"/>
             <children xmi:type="notation:Node" xmi:id="_aTNJ4MHCEeCenq6NHvggaA" type="7004">
               <children xmi:type="notation:Node" xmi:id="_aTO_EsHCEeCenq6NHvggaA" type="3010" element="_aS_ugMHCEeCenq6NHvggaA">
+                <styles xmi:type="notation:FontStyle" xmi:id="_uVXZwGUnEeaY-7-IqK9LRQ"/>
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_aTO_E8HCEeCenq6NHvggaA"/>
               </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_aTNJ4cHCEeCenq6NHvggaA"/>
@@ -41,6 +47,7 @@
             <children xmi:type="notation:Node" xmi:id="_aTNw8MHCEeCenq6NHvggaA" type="5007"/>
             <children xmi:type="notation:Node" xmi:id="_aTNw8cHCEeCenq6NHvggaA" type="7004">
               <children xmi:type="notation:Node" xmi:id="_aTPmIMHCEeCenq6NHvggaA" type="3010" element="_aTBjsMHCEeCenq6NHvggaA">
+                <styles xmi:type="notation:FontStyle" xmi:id="_uVXZwWUnEeaY-7-IqK9LRQ"/>
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_aTPmIcHCEeCenq6NHvggaA"/>
               </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_aTNw8sHCEeCenq6NHvggaA"/>
@@ -68,48 +75,37 @@
           </edges>
         </data>
       </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_uVWysWUnEeaY-7-IqK9LRQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_uVWysmUnEeaY-7-IqK9LRQ"/>
+      </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_aS5n4MHCEeCenq6NHvggaA" name="p1 package entitiesnew EPackage1" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="ecore:EPackage" href="TestComputeLabel.ecore#//new%20EPackage1"/>
         <semanticElements xmi:type="ecore:EPackage" href="TestComputeLabel.ecore#//new%20EPackage1"/>
         <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_aS6O8MHCEeCenq6NHvggaA">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_aS6O8cHCEeCenq6NHvggaA"/>
           <description xmi:type="style:LozengeNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@nodeMappings[name='Package']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_aS6O8sHCEeCenq6NHvggaA"/>
-          <color xmi:type="viewpoint:RGBValues" xmi:id="_aS6O88HCEeCenq6NHvggaA" red="136" green="136" blue="136"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@nodeMappings[name='Package']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_aS62AMHCEeCenq6NHvggaA" name="p1 package entitiesSC1" tooltipText="new EPackage0.SC1">
         <target xmi:type="ecore:EClass" href="TestComputeLabel.ecore#//SC1"/>
         <semanticElements xmi:type="ecore:EClass" href="TestComputeLabel.ecore#//SC1"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_aS7dEMHCEeCenq6NHvggaA" backgroundStyle="GradientTopToBottom">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_aS7dEcHCEeCenq6NHvggaA"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_aS7dEMHCEeCenq6NHvggaA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_aS7dEsHCEeCenq6NHvggaA"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_aS7dE8HCEeCenq6NHvggaA" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_aS7dFMHCEeCenq6NHvggaA" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_aS8EIMHCEeCenq6NHvggaA" name="p1 package entitiesC1" tooltipText="new EPackage0.C1" incomingEdges="_aTHDQMHCEeCenq6NHvggaA">
         <target xmi:type="ecore:EClass" href="TestComputeLabel.ecore#//C1"/>
         <semanticElements xmi:type="ecore:EClass" href="TestComputeLabel.ecore#//C1"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_aS8rMMHCEeCenq6NHvggaA" backgroundStyle="GradientTopToBottom">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_aS8rMcHCEeCenq6NHvggaA"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_aS8rMMHCEeCenq6NHvggaA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_aS8rMsHCEeCenq6NHvggaA"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_aS8rM8HCEeCenq6NHvggaA" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_aS8rNMHCEeCenq6NHvggaA" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_aS_ugMHCEeCenq6NHvggaA" name="p1 package entitiesc1a1">
           <target xmi:type="ecore:EAttribute" href="TestComputeLabel.ecore#//C1/c1a1"/>
           <semanticElements xmi:type="ecore:EAttribute" href="TestComputeLabel.ecore#//C1/c1a1"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_aTAVkMHCEeCenq6NHvggaA" labelAlignment="LEFT">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_aTA8oMHCEeCenq6NHvggaA"/>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_aTA8ocHCEeCenq6NHvggaA"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_aTA8osHCEeCenq6NHvggaA"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
@@ -117,41 +113,27 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_aS8rNcHCEeCenq6NHvggaA" name="p1 package entitiesC2" tooltipText="new EPackage0.C2" outgoingEdges="_aTHDQMHCEeCenq6NHvggaA">
         <target xmi:type="ecore:EClass" href="TestComputeLabel.ecore#//C2"/>
         <semanticElements xmi:type="ecore:EClass" href="TestComputeLabel.ecore#//C2"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_aS9SQMHCEeCenq6NHvggaA" backgroundStyle="GradientTopToBottom">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_aS9SQcHCEeCenq6NHvggaA"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_aS9SQMHCEeCenq6NHvggaA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_aS9SQsHCEeCenq6NHvggaA"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_aS9SQ8HCEeCenq6NHvggaA" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_aS9SRMHCEeCenq6NHvggaA" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_aTBjsMHCEeCenq6NHvggaA" name="p1 package entitiesc2a2">
           <target xmi:type="ecore:EAttribute" href="TestComputeLabel.ecore#//C2/c2a2"/>
           <semanticElements xmi:type="ecore:EAttribute" href="TestComputeLabel.ecore#//C2/c2a2"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_aTCKwMHCEeCenq6NHvggaA" labelAlignment="LEFT">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_aTCKwcHCEeCenq6NHvggaA"/>
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_aTCKwsHCEeCenq6NHvggaA"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_aTCKw8HCEeCenq6NHvggaA"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_aTHDQMHCEeCenq6NHvggaA" name="p1 package entitiesref" sourceNode="_aS8rNcHCEeCenq6NHvggaA" targetNode="_aS8EIMHCEeCenq6NHvggaA" beginLabel="p1 package entitiesref" endLabel="p1 package entitiesref">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_aTHDQMHCEeCenq6NHvggaA" name="center_p1 package entitiesref" sourceNode="_aS8rNcHCEeCenq6NHvggaA" targetNode="_aS8EIMHCEeCenq6NHvggaA" beginLabel="begin_p1 package entitiesref" endLabel="end_p1 package entitiesref">
         <target xmi:type="ecore:EReference" href="TestComputeLabel.ecore#//C2/ref"/>
         <semanticElements xmi:type="ecore:EReference" href="TestComputeLabel.ecore#//C2/ref"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_aTHDQcHCEeCenq6NHvggaA">
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_aTHDQsHCEeCenq6NHvggaA" red="136" green="136" blue="136"/>
-          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_aTHDQ8HCEeCenq6NHvggaA">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_aTHDRMHCEeCenq6NHvggaA"/>
-          </beginLabelStyle>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_aTHDRcHCEeCenq6NHvggaA" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_aTHDRsHCEeCenq6NHvggaA"/>
-          </centerLabelStyle>
-          <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_aTHDR8HCEeCenq6NHvggaA">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_aTHDSMHCEeCenq6NHvggaA"/>
-          </endLabelStyle>
+          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_aTHDQ8HCEeCenq6NHvggaA"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_aTHDRcHCEeCenq6NHvggaA" showIcon="false"/>
+          <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_aTHDR8HCEeCenq6NHvggaA"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
@@ -160,6 +142,5 @@
       <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']/@defaultLayer"/>
       <target xmi:type="ecore:EPackage" href="TestComputeLabel.ecore#/"/>
     </ownedRepresentations>
-    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']"/>
   </ownedViews>
 </viewpoint:DAnalysis>
