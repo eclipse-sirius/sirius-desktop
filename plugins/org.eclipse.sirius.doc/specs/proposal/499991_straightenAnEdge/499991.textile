@@ -1,0 +1,117 @@
+h1. Sirius Evolution Specification: Straighten an edge
+
+h2. Preamble
+
+_Summary_: The goal of this evolution is to have commands to straighten an edge (horizontally or vertically).
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2016-08-18 | lredor    | Initial version. |
+| v0.2        | PROPOSAL    | 2016-08-19 | lredor    | Reviewed version. |
+| v0.2        | PROPOSAL    | 2016-08-29 | lredor    | Remove change about _Remove Bend-points_ action (added in tradeoffs section), complete/refactor _Detailed Specification_ chapter. |
+
+
+_Relevant tickets_:
+* "Bug 499991 - Straighten an edge":https://bugs.eclipse.org/bugs/show_bug.cgi?id=499991
+
+h2. Introduction
+
+The goal of this feature is to have new actions to transform an edge to an horizontal, or vertical, straight edge (with only one starting point and one ending point).
+If the edge is connected to a border node, the border node is moved too.
+
+h2. Detailed Specification
+
+There are 4 cases to straighten an edge. The first step, common to all cases is to remove all bendpoints (intermediate points between starting and ending points). Then we can:
+* *Straighten to top*: Result is an horizontal edge where the lowest end point has been moved
+!images/straightenToTop.png!
+* *Straighten to bottom*: Result is an horizontal edge where the highest end point has been moved
+!images/straightenToBottom.png!
+* *Straighten to left*: Result is a vertical edge where the rightmost end point has been moved
+!images/straightenToLeft.png!
+* *Straighten to right*: Result is a vertical edge where the leftmost end point has been moved
+!images/straightenToRight.png!
+
+These actions will be available in contextual menu of an edge (or several edges) in the layout sub-menu:
+!images/straightenMenus.png!
+Each individual action mentioned above will only be available if it can be applied to *all* the edges selected.
+
+To summarize, the straighten actions will be authorized for edges:
+* between all kind of shapes
+** If the source or the target of an edge is a border node, this border node is also moved. The parent of the border node is not allowed to be moved or resized during this action. The border node is moved along its current side.
+** If the source or the target of an edge is not a border node, it is not allowed to be moved or resized during this action. The anchor of the edge, source anchor or target anchor, is moved along its current side.
+* with a rectilinear routing style or an oblique routing style (not for tree routing style).
+* with first point and last point on compatible sides on source and target (left and right or top and bottom)
+
+These actions are not a constraint on the edge. They are "one shot" actions. The user can next create bendpoints on this edge, move it, ...
+
+h3(#forbidden_cases). Forbidden cases
+
+If the action is not authorized, the corresponding menu will be disabled.
+Here is the list of forbidden cases, with illustration (see [1] for colors explanation). 
+
+Disclaimer: This list is here for information, to clarify main not supported cases. But is is not necessary comprehensive.
+
+* the source or target of the edge is a border node with several edges connected to it.
+!images/forbiddenCases-1.png!
+* action not possible because it does not respect the source (or target) boundaries
+!images/forbiddenCases-2.png!
+!images/forbiddenCases-3.png!
+* the source and the target of the edge are not on the same "axis" (left and right sides, or, top and bottom sides)
+!images/forbiddenCases-4.png!
+* the border node (source or target) will overlapped another border node
+!images/forbiddenCases-5.png!
+
+fn1. In illustration, the blue color is for edge and border nodes expected to be moved with action. And red color is for forbidden result (after the action if it had been launched).
+
+h3. External constraints
+
+All the rules explained before are also limited by the existing constraints:
+* "Authorized Sides":https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html#authorizedsides of border nodes
+** A straighten action will be disabled, if it needs to move the border node to an unauthorized side
+* "Edge centering":https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html#edgecentering
+** A straighten action will be disabled if the edge centering is activated on an edge. 
+
+h2. Backward Compatibility and Migration Paths
+
+h3. Metamodel Changes
+
+No metamodel change is necessary for these new actions.
+
+h3. API Changes
+
+No API change is needed for these new actions.
+
+h3. User Interface Changes
+
+The only change is the new menus for the 4 actions.
+
+h3. Documentation Changes
+
+A new chapter will be added in the user guide and a new entry in release notes.
+
+h2. Tests and Non-regression strategy
+
+* Check each invalid cases: menu must be disabled in this case
+* Check each action on edge connected to border nodes, with oblique edges and rectilinear edges
+* Check each action on edge connected to nodes or containers, with oblique edges and rectilinear edges
+* Check one of the actions with several edges selected
+* Check all actions are disabled when selection does not contain only valid edges.
+
+h2. Implementation choices and tradeoffs
+
+h3. Source and target not on same axis
+
+If the source and the target of the edge are not on the same axis (left and right, or, top and bottom), the straight could be authorized. It is a particular case, but the same rules seem to apply.
+Example:
+!images/particularCase.png!
+
+In the scope of this specification, this particular cases will be forbidden.
+
+h3. Move/Rename action _Remove Bend-points_ 
+
+To be coherent, the existing action "Remove Bend-points", could also be moved in the same actions group and renamed _Straighten > In Place_. This is out of scope of this feature for 2 reasons:
+* Discuss about right place is necessary
+** Move action _Remove Bend-points_ at same level of _Straighten_ sub menu
+** or rename and move it in _Straighten > In Place_
+** or ...
+!images/straightenMenus-tradeoffs.png!
+* Technically it is not just a move of menu but needs to use another extension point for _Remove Bend-points_ action.

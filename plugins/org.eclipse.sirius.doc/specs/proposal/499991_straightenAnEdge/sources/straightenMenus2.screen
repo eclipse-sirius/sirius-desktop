@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" theme="clean">
+  <widgets xsi:type="model:Popup" id="2" x="8" y="8" text="Navigate, >&#xA;---&#xA;Edit, >&#xA;---&#xA;Show/Hide, >&#xA;%(bgcolor:lightblue)Layout%, >&#xA;Format, >&#xA;---&#xA;Open User Guide&#xA;" measuredWidth="146" measuredHeight="175">
+    <items x="0" y="2" width="146" height="23" text="Navigate, >"/>
+    <items x="0" y="25" width="146" height="11" text="---"/>
+    <items x="0" y="36" width="146" height="23" text="Edit, >"/>
+    <items x="0" y="59" width="146" height="11" text="---"/>
+    <items x="0" y="70" width="146" height="23" text="Show/Hide, >"/>
+    <items x="0" y="93" width="146" height="23" text="%(bgcolor:lightblue)Layout%, >"/>
+    <items x="0" y="116" width="146" height="23" text="Format, >"/>
+    <items x="0" y="139" width="146" height="11" text="---"/>
+    <items x="0" y="150" width="146" height="23" text="Open User Guide"/>
+  </widgets>
+  <widgets xsi:type="model:Popup" id="3" x="148" y="104" text="~All~&#xA;~Selection~&#xA;Linked Border Nodes&#xA;---&#xA;Remove Bend-points, Ctrl+Shift+-&#xA;%(bgcolor:lightblue)Straighten%, >&#xA;---&#xA;~Pin selected elements~&#xA;~Unpin selected elements~" measuredWidth="246" measuredHeight="187">
+    <items x="0" y="2" width="246" height="23" text="~All~"/>
+    <items x="0" y="25" width="246" height="23" text="~Selection~"/>
+    <items x="0" y="48" width="246" height="23" text="Linked Border Nodes"/>
+    <items x="0" y="71" width="246" height="11" text="---"/>
+    <items x="0" y="82" width="246" height="23" text="Remove Bend-points, Ctrl+Shift+-"/>
+    <items x="0" y="105" width="246" height="23" text="%(bgcolor:lightblue)Straighten%, >"/>
+    <items x="0" y="128" width="246" height="11" text="---"/>
+    <items x="0" y="139" width="246" height="23" text="~Pin selected elements~"/>
+    <items x="0" y="162" width="246" height="23" text="~Unpin selected elements~"/>
+  </widgets>
+  <widgets xsi:type="model:Popup" id="6" x="388" y="212" text="To top&#xA;To bottom&#xA;---&#xA;To left&#xA;To right&#xA;" measuredWidth="86" measuredHeight="107">
+    <items x="0" y="2" width="86" height="23" text="To top"/>
+    <items x="0" y="25" width="86" height="23" text="To bottom"/>
+    <items x="0" y="48" width="86" height="11" text="---"/>
+    <items x="0" y="59" width="86" height="23" text="To left"/>
+    <items x="0" y="82" width="86" height="23" text="To right"/>
+  </widgets>
+  <hRuler/>
+  <vRuler>
+    <guides position="104"/>
+    <guides position="212"/>
+  </vRuler>
+  <font size="12px"/>
+</model:Screen>

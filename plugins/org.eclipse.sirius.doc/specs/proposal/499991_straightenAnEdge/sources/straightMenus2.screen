@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" theme="clean">
+  <widgets xsi:type="model:Popup" id="2" x="8" y="8" text="Navigate, >&#xA;---&#xA;Edit, >&#xA;---&#xA;Show/Hide, >&#xA;Layout, >&#xA;%(bgcolor:lightblue)Format%, >&#xA;Remove Bend-points, Ctrl+Shift+-&#xA;---&#xA;Open User Guide&#xA;" measuredWidth="246" measuredHeight="198">
+    <items x="0" y="2" width="246" height="23" text="Navigate, >"/>
+    <items x="0" y="25" width="246" height="11" text="---"/>
+    <items x="0" y="36" width="246" height="23" text="Edit, >"/>
+    <items x="0" y="59" width="246" height="11" text="---"/>
+    <items x="0" y="70" width="246" height="23" text="Show/Hide, >"/>
+    <items x="0" y="93" width="246" height="23" text="Layout, >"/>
+    <items x="0" y="116" width="246" height="23" text="%(bgcolor:lightblue)Format%, >"/>
+    <items x="0" y="139" width="246" height="23" text="Remove Bend-points, Ctrl+Shift+-"/>
+    <items x="0" y="162" width="246" height="11" text="---"/>
+    <items x="0" y="173" width="246" height="23" text="Open User Guide"/>
+  </widgets>
+  <widgets xsi:type="model:Popup" id="3" x="248" y="126" text="Font...&#xA;~Fill Color~, >&#xA;Font Color, >&#xA;Line Color, >&#xA;Line Width, >&#xA;Line Type, >&#xA;Arrow Type, >&#xA;Line Style, >&#xA;%(bgcolor:lightblue)Straight%, >&#xA;---&#xA;Snap Back Label(s)&#xA;---&#xA;~Both~&#xA;---&#xA;~Apply Appearance Properties~" measuredWidth="183" measuredHeight="313">
+    <items x="0" y="2" width="183" height="23" text="Font..."/>
+    <items x="0" y="25" width="183" height="23" text="~Fill Color~, >"/>
+    <items x="0" y="48" width="183" height="23" text="Font Color, >"/>
+    <items x="0" y="71" width="183" height="23" text="Line Color, >"/>
+    <items x="0" y="94" width="183" height="23" text="Line Width, >"/>
+    <items x="0" y="117" width="183" height="23" text="Line Type, >"/>
+    <items x="0" y="140" width="183" height="23" text="Arrow Type, >"/>
+    <items x="0" y="163" width="183" height="23" text="Line Style, >"/>
+    <items x="0" y="186" width="183" height="23" text="%(bgcolor:lightblue)Straight%, >"/>
+    <items x="0" y="209" width="183" height="11" text="---"/>
+    <items x="0" y="220" width="183" height="23" text="Snap Back Label(s)"/>
+    <items x="0" y="243" width="183" height="11" text="---"/>
+    <items x="0" y="254" width="183" height="23" text="~Both~"/>
+    <items x="0" y="277" width="183" height="11" text="---"/>
+    <items x="0" y="288" width="183" height="23" text="~Apply Appearance Properties~"/>
+  </widgets>
+  <widgets xsi:type="model:Popup" id="6" x="424" y="314" text="Move left side&#xA;Move right side&#xA;---&#xA;Move top side&#xA;Move bottom side&#xA;" measuredWidth="127" measuredHeight="107">
+    <items x="0" y="2" width="127" height="23" text="Move left side"/>
+    <items x="0" y="25" width="127" height="23" text="Move right side"/>
+    <items x="0" y="48" width="127" height="11" text="---"/>
+    <items x="0" y="59" width="127" height="23" text="Move top side"/>
+    <items x="0" y="82" width="127" height="23" text="Move bottom side"/>
+  </widgets>
+  <hRuler/>
+  <vRuler>
+    <guides position="174"/>
+    <guides position="362"/>
+  </vRuler>
+  <font size="12px"/>
+</model:Screen>

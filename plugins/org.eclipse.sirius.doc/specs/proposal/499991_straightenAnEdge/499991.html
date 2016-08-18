@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationStraightenanedge">Sirius Evolution Specification: Straighten an edge</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>: The goal of this evolution is to have commands to straighten an edge (horizontally or vertically).
+		</p>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2016-08-18</td>
+				<td>lredor</td>
+				<td>Initial version.</td>
+			</tr>
+			<tr>
+				<td>v0.2</td>
+				<td>PROPOSAL</td>
+				<td>2016-08-19</td>
+				<td>lredor</td>
+				<td>Reviewed version.</td>
+			</tr>
+			<tr>
+				<td>v0.2</td>
+				<td>PROPOSAL</td>
+				<td>2016-08-29</td>
+				<td>lredor</td>
+				<td>Remove change about 
+					<em>Remove Bend-points</em> action (added in tradeoffs section), complete/refactor 
+					<em>Detailed Specification</em> chapter.
+				</td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets</em>:
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=499991">Bug 499991 &#8211; Straighten an edge</a>
+			</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>The goal of this feature is to have new actions to transform an edge to an horizontal, or vertical, straight edge (with only one starting point and one ending point).
+			<br/>If the edge is connected to a border node, the border node is moved too.
+		</p>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<p>There are 4 cases to straighten an edge. The first step, common to all cases is to remove all bendpoints (intermediate points between starting and ending points). Then we can:</p>
+		<ul>
+			<li>
+				<strong>Straighten to top</strong>: Result is an horizontal edge where the lowest end point has been moved
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/straightenToTop.png"/>
+		</p>
+		<ul>
+			<li>
+				<strong>Straighten to bottom</strong>: Result is an horizontal edge where the highest end point has been moved
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/straightenToBottom.png"/>
+		</p>
+		<ul>
+			<li>
+				<strong>Straighten to left</strong>: Result is a vertical edge where the rightmost end point has been moved
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/straightenToLeft.png"/>
+		</p>
+		<ul>
+			<li>
+				<strong>Straighten to right</strong>: Result is a vertical edge where the leftmost end point has been moved
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/straightenToRight.png"/>
+		</p>
+		<p>These actions will be available in contextual menu of an edge (or several edges) in the layout sub-menu:
+			<br/>
+			<img border="0" src="images/straightenMenus.png"/>
+			<br/>Each individual action mentioned above will only be available if it can be applied to 
+			<strong>all</strong> the edges selected.
+		</p>
+		<p>To summarize, the straighten actions will be authorized for edges:</p>
+		<ul>
+			<li>between all kind of shapes
+				<ul>
+					<li>If the source or the target of an edge is a border node, this border node is also moved. The parent of the border node is not allowed to be moved or resized during this action. The border node is moved along its current side.</li>
+					<li>If the source or the target of an edge is not a border node, it is not allowed to be moved or resized during this action. The anchor of the edge, source anchor or target anchor, is moved along its current side.</li>
+				</ul>
+			</li>
+			<li>with a rectilinear routing style or an oblique routing style (not for tree routing style).</li>
+			<li>with first point and last point on compatible sides on source and target (left and right or top and bottom)</li>
+		</ul>
+		<p>These actions are not a constraint on the edge. They are &#171;one shot&#187; actions. The user can next create bendpoints on this edge, move it, ...</p>
+		<h3 id="forbidden_cases">Forbidden cases</h3>
+		<p>If the action is not authorized, the corresponding menu will be disabled.
+			<br/>Here is the list of forbidden cases, with illustration (see 
+			<sup class="footnote">
+				<a href="#___fn1">1</a>
+			</sup> for colors explanation). 
+		</p>
+		<p>Disclaimer: This list is here for information, to clarify main not supported cases. But is is not necessary comprehensive.</p>
+		<ul>
+			<li>the source or target of the edge is a border node with several edges connected to it.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/forbiddenCases-1.png"/>
+		</p>
+		<ul>
+			<li>action not possible because it does not respect the source (or target) boundaries</li>
+		</ul>
+		<p>
+			<img border="0" src="images/forbiddenCases-2.png"/>
+			<br/>
+			<img border="0" src="images/forbiddenCases-3.png"/>
+		</p>
+		<ul>
+			<li>the source and the target of the edge are not on the same &#171;axis&#187; (left and right sides, or, top and bottom sides)</li>
+		</ul>
+		<p>
+			<img border="0" src="images/forbiddenCases-4.png"/>
+		</p>
+		<ul>
+			<li>the border node (source or target) will overlapped another border node</li>
+		</ul>
+		<p>
+			<img border="0" src="images/forbiddenCases-5.png"/>
+		</p>
+		<p id="___fn1" class="footnote">
+			<sup>1</sup> In illustration, the blue color is for edge and border nodes expected to be moved with action. And red color is for forbidden result (after the action if it had been launched).
+		</p>
+		<h3 id="Externalconstraints">External constraints</h3>
+		<p>All the rules explained before are also limited by the existing constraints:</p>
+		<ul>
+			<li>
+				<a href="https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html#authorizedsides">Authorized Sides</a> of border nodes
+				<ul>
+					<li>A straighten action will be disabled, if it needs to move the border node to an unauthorized side</li>
+				</ul>
+			</li>
+			<li>
+				<a href="https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html#edgecentering">Edge centering</a>
+				<ul>
+					<li>A straighten action will be disabled if the edge centering is activated on an edge. </li>
+				</ul>
+			</li>
+		</ul>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<h3 id="MetamodelChanges">Metamodel Changes</h3>
+		<p>No metamodel change is necessary for these new actions.</p>
+		<h3 id="APIChanges">API Changes</h3>
+		<p>No API change is needed for these new actions.</p>
+		<h3 id="UserInterfaceChanges">User Interface Changes</h3>
+		<p>The only change is the new menus for the 4 actions.</p>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<p>A new chapter will be added in the user guide and a new entry in release notes.</p>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<ul>
+			<li>Check each invalid cases: menu must be disabled in this case</li>
+			<li>Check each action on edge connected to border nodes, with oblique edges and rectilinear edges</li>
+			<li>Check each action on edge connected to nodes or containers, with oblique edges and rectilinear edges</li>
+			<li>Check one of the actions with several edges selected</li>
+			<li>Check all actions are disabled when selection does not contain only valid edges.</li>
+		</ul>
+		<h2 id="Implementationchoicesandtradeoffs">Implementation choices and tradeoffs</h2>
+		<h3 id="Sourceandtargetnotonsameaxis">Source and target not on same axis</h3>
+		<p>If the source and the target of the edge are not on the same axis (left and right, or, top and bottom), the straight could be authorized. It is a particular case, but the same rules seem to apply.
+			<br/>Example:
+			<br/>
+			<img border="0" src="images/particularCase.png"/>
+		</p>
+		<p>In the scope of this specification, this particular cases will be forbidden.</p>
+		<h3 id="MoveRenameactionRemoveBendpoints">Move/Rename action 
+			<em>Remove Bend-points</em> 
+		</h3>
+		<p>To be coherent, the existing action &#171;Remove Bend-points&#187;, could also be moved in the same actions group and renamed 
+			<em>Straighten &gt; In Place</em>. This is out of scope of this feature for 2 reasons:
+		</p>
+		<ul>
+			<li>Discuss about right place is necessary
+				<ul>
+					<li>Move action 
+						<em>Remove Bend-points</em> at same level of 
+						<em>Straighten</em> sub menu
+					</li>
+					<li>or rename and move it in 
+						<em>Straighten &gt; In Place</em>
+					</li>
+					<li>or ...</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/straightenMenus-tradeoffs.png"/>
+		</p>
+		<ul>
+			<li>Technically it is not just a move of menu but needs to use another extension point for 
+				<em>Remove Bend-points</em> action.
+			</li>
+		</ul>
+	</body>
+</html>
