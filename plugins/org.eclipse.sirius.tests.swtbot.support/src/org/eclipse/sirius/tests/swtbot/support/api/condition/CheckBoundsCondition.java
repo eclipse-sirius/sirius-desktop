@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,14 +33,9 @@ public class CheckBoundsCondition extends DefaultCondition {
     private boolean checkHeight = true;
 
     /**
-     * the edit part to wait for its selection.
+     * the edit part to wait for its expected bounds.
      */
-    private final IGraphicalEditPart editPartToWaitForSelection;
-
-    /**
-     * the class of the edit part to wait for its selection.
-     */
-    private Class<? extends IGraphicalEditPart> editPartClass;
+    private final IGraphicalEditPart editPartToWaitFor;
 
     /**
      * The expected bounds in absolute coordinates.
@@ -50,13 +45,13 @@ public class CheckBoundsCondition extends DefaultCondition {
     /**
      * Constructor.
      * 
-     * @param editPartToWaitForSelection
+     * @param editPartToWaitFor
      *            the edit part to wait for its bounds.
      * @param expectedAbsoluteBounds
      *            expected bounds in absolute coordinate
      */
-    public CheckBoundsCondition(IGraphicalEditPart editPartToWaitForSelection, Rectangle expectedAbsoluteBounds) {
-        this.editPartToWaitForSelection = editPartToWaitForSelection;
+    public CheckBoundsCondition(IGraphicalEditPart editPartToWaitFor, Rectangle expectedAbsoluteBounds) {
+        this.editPartToWaitFor = editPartToWaitFor;
         this.expectedBounds = expectedAbsoluteBounds;
     }
 
@@ -73,7 +68,7 @@ public class CheckBoundsCondition extends DefaultCondition {
      *            True if the height of the bounds must be checked.
      */
     public CheckBoundsCondition(IGraphicalEditPart editPartToWaitForSelection, Rectangle expectedAbsoluteBounds, boolean checkWidth, boolean checkHeight) {
-        this.editPartToWaitForSelection = editPartToWaitForSelection;
+        this.editPartToWaitFor = editPartToWaitForSelection;
         this.expectedBounds = expectedAbsoluteBounds;
         this.checkWidth = checkWidth;
         this.checkHeight = checkHeight;
@@ -85,7 +80,7 @@ public class CheckBoundsCondition extends DefaultCondition {
     @Override
     public boolean test() throws Exception {
         boolean result = false;
-        if (editPartToWaitForSelection != null) {
+        if (editPartToWaitFor != null) {
             if (checkHeight && checkWidth) {
                 result = getCurrentAbsoluteBounds().equals(expectedBounds);
             } else {
@@ -114,7 +109,9 @@ public class CheckBoundsCondition extends DefaultCondition {
         } else if (checkWidth) {
             result = new ComparisonFailure("The expected width is not reached.", Integer.toString(expectedBounds.width), Integer.toString(getCurrentAbsoluteBounds().width)).getMessage();
         } else if (checkHeight) {
-            result = new ComparisonFailure("The expected width is not reached.", Integer.toString(expectedBounds.height), Integer.toString(getCurrentAbsoluteBounds().height)).getMessage();
+            result = new ComparisonFailure("The expected height is not reached.", Integer.toString(expectedBounds.height), Integer.toString(getCurrentAbsoluteBounds().height)).getMessage();
+        } else {
+            result = new ComparisonFailure("The expected location is not reached.", expectedBounds.getLocation().toString(), getCurrentAbsoluteBounds().getLocation().toString()).getMessage();
         }
         return result;
     }
@@ -125,8 +122,8 @@ public class CheckBoundsCondition extends DefaultCondition {
      * @return The absolute bounds.
      */
     protected Rectangle getCurrentAbsoluteBounds() {
-        Rectangle bounds = editPartToWaitForSelection.getFigure().getBounds().getCopy();
-        editPartToWaitForSelection.getFigure().translateToAbsolute(bounds);
+        Rectangle bounds = editPartToWaitFor.getFigure().getBounds().getCopy();
+        editPartToWaitFor.getFigure().translateToAbsolute(bounds);
         return bounds;
     }
 }
