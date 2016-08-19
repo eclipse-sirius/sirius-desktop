@@ -409,6 +409,11 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         boolean isAlreadylayouted = false;
 
         EObject element = createdView.getElement();
+        org.eclipse.sirius.diagram.business.api.query.DNodeQuery dNodeQuery = null;
+        if (element instanceof DNode) {
+            DNode dNode = (DNode) element;
+            dNodeQuery = new org.eclipse.sirius.diagram.business.api.query.DNodeQuery(dNode);
+        }
         if (element instanceof DDiagramElement) {
             if (element instanceof AbstractDNode) {
                 AbstractDNode abstractDNode = (AbstractDNode) element;
@@ -416,8 +421,16 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                 if (layoutData == null) {
                     layoutData = SiriusLayoutDataManager.INSTANCE.getData(abstractDNode, true);
                 }
-                if (layoutData != null) {
-                    size = layoutData.getSize();
+                if (layoutData != null && layoutData.getSize() != null) {
+                    if (dNodeQuery == null || (dNodeQuery != null && dNodeQuery.allowsHorizontalResize() && dNodeQuery.allowsVerticalResize())) {
+                        size = layoutData.getSize();
+                    } else if (dNodeQuery != null && dNodeQuery.allowsHorizontalResize()) {
+                        size = new Dimension(layoutData.getSize().width, getDefaultSize((AbstractDNode) element).height);
+                    } else if (dNodeQuery != null && dNodeQuery.allowsVerticalResize()) {
+                        size = new Dimension(getDefaultSize((AbstractDNode) element).width, layoutData.getSize().height);
+                    }
+                }
+                if (layoutData != null && layoutData.getLocation() != null) {
                     location = layoutData.getLocation();
                 }
             }

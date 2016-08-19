@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
@@ -179,7 +180,8 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
         }
 
         final int tmpWidth = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Width())).intValue();
-        if (tmpWidth > 0) {
+        DDiagramElementQuery query = new DDiagramElementQuery(node);
+        if (tmpWidth > 0 && (new DNodeQuery(node).allowsHorizontalResize() || query.isCollapsed())) {
             width = tmpWidth;
         }
 
@@ -203,12 +205,13 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
         if (node.getHeight() != null) {
             height = node.getHeight().intValue() * LayoutUtils.SCALE;
         }
-        if (height == 0) {
+        DDiagramElementQuery query = new DDiagramElementQuery(node);
+        if (height == 0 && (new DNodeQuery(node).allowsVerticalResize() || query.isCollapsed())) {
             height = width;
         }
 
         final int tmpHeight = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Height())).intValue();
-        if (tmpHeight > 0) {
+         if (tmpHeight > 0) {
             height = tmpHeight;
         }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +9,6 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.common;
-
-import junit.framework.TestCase;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -41,6 +39,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
@@ -57,6 +56,8 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCo
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.SynchronizeGMFModelCommand;
 import org.junit.Assert;
+
+import junit.framework.TestCase;
 
 /**
  * Test the DDiagramCanonicalSynchronizer.
@@ -630,6 +631,7 @@ public class DDiagramCanonicalSynchronizerTests extends TestCase {
      */
     public void test_DDiagramCanonicalSynchronizer_Synchronize_UpdateGMF_NodeBoundsCorrectlyForNodeCreation() {
         DNode dNode = DiagramFactory.eINSTANCE.createDNode();
+        dNode.setResizeKind(ResizeKind.NSEW_LITERAL);
         // dSemanticDiagram.getOwnedDiagramElements().add(dNode);
         Command addCmd = AddCommand.create(domain, dSemanticDiagram, DiagramPackage.Literals.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS, dNode);
         domain.getCommandStack().execute(addCmd);
