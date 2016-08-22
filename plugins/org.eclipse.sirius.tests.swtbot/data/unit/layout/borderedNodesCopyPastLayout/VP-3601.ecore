@@ -3,11 +3,11 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
   <eSubpackages name="LogicalSystem" nsPrefix="">
     <eSubpackages name="LC1">
-      <eAnnotations source="refinement.link" references="#//LogicalSystem/LC2"/>
+      <eAnnotations source="refinement.link.format" references="#//LogicalSystem/LC2"/>
       <eClassifiers xsi:type="ecore:EClass" name="LogicalFunction1">
-        <eAnnotations source="refinement.link" references="#//LogicalSystem/LC2/LogicalFunction2"/>
+        <eAnnotations source="refinement.link.format" references="#//LogicalSystem/LC2/LogicalFunction2"/>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="a1">
-          <eAnnotations source="refinement.link" references="#//LogicalSystem/LC2/LogicalFunction2/b1"/>
+          <eAnnotations source="refinement.link.format" references="#//LogicalSystem/LC2/LogicalFunction2/b1"/>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="a2"/>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="a3"/>
