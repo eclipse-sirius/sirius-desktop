@@ -29,6 +29,7 @@ import org.eclipse.sirius.tests.unit.api.vsm.interpreted.expression.variables.Si
 import org.eclipse.sirius.tests.unit.common.CartesianProductTestCase;
 import org.eclipse.sirius.tests.unit.common.EcoreIntrinsicExtenderTest;
 import org.eclipse.sirius.tests.unit.common.EditingDomainFactoryServiceTests;
+import org.eclipse.sirius.tests.unit.common.EditingDomainServicesTest;
 import org.eclipse.sirius.tests.unit.common.FileUtilTest;
 import org.eclipse.sirius.tests.unit.common.LabelProviderProviderServiceTests;
 import org.eclipse.sirius.tests.unit.common.SessionLabelTest;
@@ -57,6 +58,7 @@ public class AllCommonStandaloneTests extends TestCase {
         final TestSuite suite = new TestSuite("Common Standalone Tests");
         suite.addTest(new JUnit4TestAdapter(EditingDomainFactoryServiceTests.class));
         suite.addTest(new JUnit4TestAdapter(LabelProviderProviderServiceTests.class));
+        suite.addTest(new JUnit4TestAdapter(EditingDomainServicesTest.class));
         suite.addTestSuite(SetIntersectionTest.class);
         suite.addTestSuite(GSetIntersectionTest.class);
         suite.addTestSuite(SiriusVariablesTest.class);
