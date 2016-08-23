@@ -32,7 +32,7 @@ public class ContributorWrapper extends AbstractEEFTabbedPropertySheetPageContri
      * The pattern used to separate a piece of text into an array containing all
      * the lines of the text.
      */
-    private static final Pattern LINE_SEPARATOR_PATTERN = Pattern.compile("\r\n|\r|\n"); //$NON-NLS-1$
+    private static final Pattern LINE_SEPARATOR_PATTERN = Pattern.compile("\r\n|\r|\n|\u2028"); //$NON-NLS-1$
 
     /**
      * The constructor.
