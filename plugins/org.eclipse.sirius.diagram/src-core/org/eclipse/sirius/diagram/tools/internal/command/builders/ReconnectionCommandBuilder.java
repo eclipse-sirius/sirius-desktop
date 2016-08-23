@@ -148,7 +148,7 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
             if (newEdgeMapping != null && !newEdgeMapping.equals(actualMapping)) {
                 cc.append(new SetEdgeActualMappingCommand(editingDomain, edge, newEdgeMapping));
             }
-            if (reconnectionSource.equals(oldSource) && (newEdgeMapping != null && !newEdgeMapping.isUseDomainElement() || isEdgeActualMappingUsingDomainElement(actualMapping))) {
+            if (reconnectionSource.equals(oldSource) && (newEdgeMapping != null && !newEdgeMapping.isUseDomainElement() || !isEdgeActualMappingUsingDomainElement(actualMapping))) {
                 cc.append(new ReconnectSourceNodeCommand(editingDomain, edge, reconnectionTarget, semanticTarget));
             }
             cc.append(cmd);
