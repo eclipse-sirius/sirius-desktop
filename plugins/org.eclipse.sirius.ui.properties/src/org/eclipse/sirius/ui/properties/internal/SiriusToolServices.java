@@ -239,6 +239,28 @@ public class SiriusToolServices {
     }
 
     /**
+     * Returns the semantic element for the given input descriptor.
+     * 
+     * @param sid
+     *            The input descriptor
+     * @return The semantic element for the given input descriptor
+     */
+    public EObject getSemanticElement(SiriusInputDescriptor sid) {
+        return sid.getSemanticElement();
+    }
+
+    /**
+     * Returns the original selection for the given input descriptor.
+     * 
+     * @param sid
+     *            The input descriptor
+     * @return The original selection for the given input descriptor
+     */
+    public Object getOriginalSelection(SiriusInputDescriptor sid) {
+        return sid.getOriginalSelection();
+    }
+
+    /**
      * Returns the Sirius session associated to a given context.
      * 
      * @param ctx
