@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
@@ -29,6 +32,7 @@ import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.ui.business.internal.dialect.HierarchyLabelProvider;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.sirius.viewpoint.description.Customization;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
@@ -42,6 +46,7 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
@@ -152,8 +157,16 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         SWTBotButton appliedOnButton = propertiesBot.bot().button(0);
         appliedOnButton.click();
         SWTBotShell appliedOnSelectorShell = bot.activeShell();
-        assertEquals("The left list of available elements should be of 3, for the begin/center/end edge style description", 3, appliedOnSelectorShell.bot().table(0).rowCount());
-        assertEquals("The right list of selected elements should be of 3", 3, appliedOnSelectorShell.bot().table(1).rowCount());
+        SWTBot appliedOnSelectorShellBot = appliedOnSelectorShell.bot();
+        SWTBotTable table1 = appliedOnSelectorShellBot.table(0);
+        assertEquals("The left list of available elements should be of 3, for the begin/center/end edge style description", 3, table1.rowCount());
+        SWTBotTable table2 = appliedOnSelectorShellBot.table(1);
+        assertEquals("The right list of selected elements should be of 3", 3, table2.rowCount());
+        AdapterFactoryLabelProvider wrappedProvider = new AdapterFactoryLabelProvider(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
+        ILabelProvider labelProvider = new HierarchyLabelProvider(wrappedProvider);
+        assertEquals(labelProvider.getText(eAttributeCustomization.getAppliedOn().get(0)), table2.getTableItem(0).getText());
+        assertEquals(labelProvider.getText(eAttributeCustomization.getAppliedOn().get(1)), table2.getTableItem(1).getText());
+        assertEquals(labelProvider.getText(eAttributeCustomization.getAppliedOn().get(2)), table2.getTableItem(2).getText());
         appliedOnSelectorShell.close();
 
         // Test that without attributeName we have 5 style description elements
@@ -162,16 +175,21 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         appliedOnButton.setFocus();
         appliedOnButton.click();
         appliedOnSelectorShell = bot.activeShell();
+        appliedOnSelectorShellBot = appliedOnSelectorShell.bot();
         assertEquals("The left list of available elements should be of 5, i.e. all available style description elements", 5, appliedOnSelectorShell.bot().table(0).rowCount());
-        assertEquals("The right list of selected elements should be of 3", 3, appliedOnSelectorShell.bot().table(1).rowCount());
+        table2 = appliedOnSelectorShellBot.table(1);
+        assertEquals("The right list of selected elements should be of 3", 3, table2.rowCount());
+        assertEquals(labelProvider.getText(eAttributeCustomization.getAppliedOn().get(0)), table2.getTableItem(0).getText());
+        assertEquals(labelProvider.getText(eAttributeCustomization.getAppliedOn().get(1)), table2.getTableItem(1).getText());
+        assertEquals(labelProvider.getText(eAttributeCustomization.getAppliedOn().get(2)), table2.getTableItem(2).getText());
         appliedOnSelectorShell.close();
+        labelProvider.dispose();
     }
 
     /**
      * Test appliedOn and referenceName sections.
      */
     public void testEReferenceCustomization() {
-
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
         }
@@ -210,8 +228,15 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         SWTBotButton appliedOnButton = propertiesBot.bot().button(0);
         appliedOnButton.click();
         SWTBotShell appliedOnSelectorShell = bot.activeShell();
-        assertEquals("The left list of available elements should be empty because we have already selected elements selectionnable", 0, appliedOnSelectorShell.bot().table(0).rowCount());
-        assertEquals("The right list of selected elements should be of 3", 3, appliedOnSelectorShell.bot().table(1).rowCount());
+        SWTBot appliedOnSelectorShellBot = appliedOnSelectorShell.bot();
+        assertEquals("The left list of available elements should be empty because we have already selected elements selectionnable", 0, appliedOnSelectorShellBot.table(0).rowCount());
+        SWTBotTable table2 = appliedOnSelectorShellBot.table(1);
+        assertEquals("The right list of selected elements should be of 3", 3, table2.rowCount());
+        AdapterFactoryLabelProvider wrappedProvider = new AdapterFactoryLabelProvider(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
+        ILabelProvider labelProvider = new HierarchyLabelProvider(wrappedProvider);
+        assertEquals(labelProvider.getText(eReferenceCustomization.getAppliedOn().get(0)), table2.getTableItem(0).getText());
+        assertEquals(labelProvider.getText(eReferenceCustomization.getAppliedOn().get(1)), table2.getTableItem(1).getText());
+        assertEquals(labelProvider.getText(eReferenceCustomization.getAppliedOn().get(2)), table2.getTableItem(2).getText());
         appliedOnSelectorShell.close();
 
         // Test that without attributeName we have 5 style description elements
@@ -220,9 +245,15 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         appliedOnButton.setFocus();
         appliedOnButton.click();
         appliedOnSelectorShell = bot.activeShell();
-        assertEquals("The left list of available elements should be of 5, i.e. all available style description elements", 5, appliedOnSelectorShell.bot().table(0).rowCount());
-        assertEquals("The right list of selected elements should be of 3", 3, appliedOnSelectorShell.bot().table(1).rowCount());
+        appliedOnSelectorShellBot = appliedOnSelectorShell.bot();
+        assertEquals("The left list of available elements should be of 5, i.e. all available style description elements", 5, appliedOnSelectorShellBot.table(0).rowCount());
+        table2 = appliedOnSelectorShellBot.table(1);
+        assertEquals("The right list of selected elements should be of 3", 3, table2.rowCount());
+        assertEquals(labelProvider.getText(eReferenceCustomization.getAppliedOn().get(0)), table2.getTableItem(0).getText());
+        assertEquals(labelProvider.getText(eReferenceCustomization.getAppliedOn().get(1)), table2.getTableItem(1).getText());
+        assertEquals(labelProvider.getText(eReferenceCustomization.getAppliedOn().get(2)), table2.getTableItem(2).getText());
         appliedOnSelectorShell.close();
+        labelProvider.dispose();
     }
 
     /**
@@ -243,8 +274,8 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         reuseButton.click();
 
         SWTBotShell reuseSelectorShell = bot.activeShell();
-        assertEquals("The left list of available elements should have only one style customization available because we have already selected the other one", 1, reuseSelectorShell.bot().table(0)
-                .rowCount());
+        assertEquals("The left list of available elements should have only one style customization available because we have already selected the other one", 1,
+                reuseSelectorShell.bot().table(0).rowCount());
         assertEquals("The right list of selected elements should be of 1", 1, reuseSelectorShell.bot().table(1).rowCount());
         reuseSelectorShell.close();
 

@@ -464,6 +464,9 @@ public final class Messages {
     public static String GenericModelCreationPage_fileExtensionError;
 
     @TranslatableMessage
+    public static String HierarchyLabelProvider_elementWihtoutNameLabel;
+
+    @TranslatableMessage
     public static String LoadEMFResourceRunnableWithProgress_loadResourceTask;
 
     @TranslatableMessage

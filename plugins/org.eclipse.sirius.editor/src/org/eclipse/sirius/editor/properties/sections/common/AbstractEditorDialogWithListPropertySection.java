@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007 - 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.common.ui.tools.api.dialog.FeatureEditorDialog;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
+import org.eclipse.sirius.ui.business.internal.dialect.HierarchyLabelProvider;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -97,7 +98,9 @@ public abstract class AbstractEditorDialogWithListPropertySection extends Abstra
      */
     protected ILabelProvider getLabelProvider() {
         AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(getAdapterFactory());
-        return DialectUIManager.INSTANCE.getHierarchyLabelProvider(labelProvider);
+        // Start of user code getLabelProvider
+        return new HierarchyLabelProvider(labelProvider);
+        // End of user code getLabelProvider
     }
 
     /**

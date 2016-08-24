@@ -52,6 +52,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIServices;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.ui.business.internal.dialect.HierarchyLabelProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -74,6 +75,7 @@ import com.google.common.collect.Sets;
  * @author pcdavid
  */
 public class TreeDialectUIServices implements DialectUIServices {
+
     @Override
     public boolean canHandle(DRepresentation representation) {
         return representation instanceof DTree;
@@ -232,7 +234,7 @@ public class TreeDialectUIServices implements DialectUIServices {
 
     @Override
     public ILabelProvider getHierarchyLabelProvider(ILabelProvider currentLabelProvider) {
-        return new HierarchyLabelTreeProvider(currentLabelProvider);
+        return new HierarchyLabelProvider(currentLabelProvider);
     }
 
     @Override
@@ -271,6 +273,17 @@ public class TreeDialectUIServices implements DialectUIServices {
         return toolTipText;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
+     *      EObject)
+     * @deprecated this method has not access to the feature of eObject. This is
+     *             supported in
+     *             org.eclipse.sirius.tree.ui.business.internal.dialect
+     *             .TreeDialectUIServices.completeToolTipText(String, EObject,
+     *             EStructuralFeature)
+     */
     @Deprecated
     @Override
     public String completeToolTipText(String toolTipText, EObject eObject) {
