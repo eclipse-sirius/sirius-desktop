@@ -166,9 +166,9 @@ icons/copyFormat.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.g
 icons/copyFormatDisabled.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.gif
 icons/label_obj.gif - org.eclipse.sirius.diagram.ui - org.eclipse.sirius.diagram.ui/icons/obj16/label_obj.gif
 icons/layoutingMode_activate.png - icons/full/obj16/CompositeLayout.gif - org.eclipse.sirius.ui/icons/full/obj16/CompositeLayout.gif
-icons/pasteFormat.png - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
-icons/pasteFormatDisabled.png - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
+icons/pasteFormat.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
+icons/pasteFormatDisabled.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
 icons/pasteLayout.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
 icons/pasteLayoutDisabled.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
-icons/pasteStyle.png - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
-icons/pasteStyleDisabled.png - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
+icons/pasteStyle.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
+icons/pasteStyleDisabled.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif

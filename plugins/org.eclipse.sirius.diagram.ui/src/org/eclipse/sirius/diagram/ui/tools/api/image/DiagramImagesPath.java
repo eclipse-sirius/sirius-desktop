@@ -87,10 +87,10 @@ public interface DiagramImagesPath {
     String COPY_FORMAT_DISABLED_ICON = "icons/copyFormatDisabled.gif"; //$NON-NLS-1$
 
     /** paste format icon. */
-    String PASTE_FORMAT_ICON = "icons/pasteFormat.png"; //$NON-NLS-1$
+    String PASTE_FORMAT_ICON = "icons/pasteFormat.gif"; //$NON-NLS-1$
 
     /** paste format disabled icon. */
-    String PASTE_FORMAT_DISABLED_ICON = "icons/pasteFormatDisabled.png"; //$NON-NLS-1$
+    String PASTE_FORMAT_DISABLED_ICON = "icons/pasteFormatDisabled.gif"; //$NON-NLS-1$
 
     /** paste layout icon. */
     String PASTE_LAYOUT_ICON = "icons/pasteLayout.gif"; //$NON-NLS-1$
@@ -99,10 +99,10 @@ public interface DiagramImagesPath {
     String PASTE_LAYOUT_DISABLED_ICON = "icons/pasteLayoutDisabled.gif"; //$NON-NLS-1$
 
     /** paste style icon. */
-    String PASTE_STYLE_ICON = "icons/pasteStyle.png"; //$NON-NLS-1$
+    String PASTE_STYLE_ICON = "icons/pasteStyle.gif"; //$NON-NLS-1$
 
     /** paste style disabled icon. */
-    String PASTE_STYLE_DISABLED_ICON = "icons/pasteStyleDisabled.png"; //$NON-NLS-1$
+    String PASTE_STYLE_DISABLED_ICON = "icons/pasteStyleDisabled.gif"; //$NON-NLS-1$
 
     /** pin elements icon. */
     String PIN_ELEMENTS_ICON = "icons/pin.gif"; //$NON-NLS-1$
