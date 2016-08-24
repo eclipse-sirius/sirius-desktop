@@ -238,7 +238,7 @@ public class PropertiesDescriptionConverterSwitch extends PropertiesSwitch<IDesc
 
     @Override
     public IDescriptionConverter caseReferenceWidgetStyle(ReferenceWidgetStyle object) {
-        return new DefaultDescriptionConverter<>(ReferenceWidgetStyle.class, EefPackage.Literals.EEF_REFERENCE_STYLE);
+        return new DefaultStyleDescriptionConverter<>(ReferenceWidgetStyle.class, EefPackage.Literals.EEF_REFERENCE_STYLE);
     }
 
     @Override
