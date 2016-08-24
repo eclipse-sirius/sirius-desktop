@@ -174,7 +174,22 @@
             <popupAction path="/formatMenu/miscellaneousGroup" id="edgeSnapBackAction">
             </popupAction>
           </popupContribution>       
-          
+         <popupContribution
+               class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider"
+               id="StraightenToContribution">
+            <popupStructuredContributionCriteria
+                  objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart">
+            </popupStructuredContributionCriteria>
+            
+            <popupMenuGroup path="/formatMenu/arrangeMenu/" id="straightenToGroup" />
+            <popupMenu path="/formatMenu/arrangeMenu/straightenToGroup" id="straightenToMenu"/>
+            <popupMenuGroup path="/formatMenu/arrangeMenu/straightenToMenu/" id="straightenToHorizontalGroup"/>
+            <popupMenuGroup path="/formatMenu/arrangeMenu/straightenToMenu/" id="straightenToVerticalGroup"/>
+            <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToHorizontalGroup" id="straightenToTop" />
+            <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToHorizontalGroup" id="straightenToBottom"/>
+            <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToVerticalGroup" id="straightenToLeft"/>
+            <popupAction path="/formatMenu/arrangeMenu/straightenToMenu/straightenToVerticalGroup" id="straightenToRight"/>
+         </popupContribution>
          <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
             <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart" />
             <popupMenuGroup path="/editMenu/" id="copyFormatGroup" separator="true"/>
@@ -230,7 +245,6 @@
                   separator="true">
             </popupMenuGroup>
          </popupContribution>
-
       </contributionItemProvider>
 
 
@@ -1121,7 +1135,6 @@
               properties="canResetOrigin"
               type="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart">
         </propertyTester>
-       
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -1348,42 +1361,6 @@
          </visibleWhen>
       </command>
    </menuContribution>
-   <!--<menuContribution
-         allPopups="false"
-         locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.refresh">
-      <command
-            commandId="org.eclipse.sirius.diagram.ui.toolbarArrangeAllAction"
-            id="org.eclipse.sirius.diagram.ui.toolbar.arrangeAllMenu"
-            label="Arrange All"
-            style="pulldown">
-         <visibleWhen
-               checkEnabled="false">
-            <with
-                  variable="selection">
-               <iterate
-                     operator="or">
-                  <test
-                        property="org.eclipse.sirius.diagram.ui.isDDiagram">
-                  </test>
-               </iterate>
-            </with>
-         </visibleWhen>
-      </command>
-   </menuContribution>
-   <menuContribution
-         allPopups="false"
-         locationURI="menu:org.eclipse.sirius.diagram.ui.toolbar.arrangeAllMenu">
-      <command
-            commandId="org.eclipse.sirius.diagram.ui.toolbarArrangeAllAction"
-            label="Arrange All"
-            style="push">
-      </command>
-      <command
-            commandId="org.eclipse.sirius.diagram.ui.arrangeLinkedBorderNodes"
-            label="Arrange Linked Border Nodes"
-            style="push">
-      </command>
-   </menuContribution>-->   
 </extension>
 
 

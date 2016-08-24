@@ -139,6 +139,7 @@ Export-Package: org.eclipse.sirius.diagram.description.concern.provider;version=
  org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.actions.repair;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.actions.repair.commands;version="2.0.4";x-internal:=true,
+ org.eclipse.sirius.diagram.ui.tools.internal.actions.straighten;version="4.1.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.actions.style;version="2.0.5";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility;version="3.1.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.clipboard;version="2.0.4";x-internal:=true,

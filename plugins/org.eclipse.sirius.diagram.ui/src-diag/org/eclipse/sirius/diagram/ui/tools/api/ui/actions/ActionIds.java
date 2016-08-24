@@ -111,4 +111,20 @@ public interface ActionIds {
      * Action's id of the action snap backing all labels of an edge.
      */
     String EDGE_SNAP_BACK = "edgeSnapBackAction"; //$NON-NLS-1$
+
+    /** Id of menu that groups straighten actions. **/
+    String MENU_STRAIGHTEN_TO = "straightenToMenu"; //$NON-NLS-1$
+
+    /** Action's id to straighten to top. */
+    String STRAIGHTEN_TO_TOP = RequestConstants.REQ_STRAIGHTEN + "Top"; //$NON-NLS-1$
+
+    /** Action's id to straighten to bottom. */
+    String STRAIGHTEN_TO_BOTTOM = RequestConstants.REQ_STRAIGHTEN + "Bottom"; //$NON-NLS-1$
+
+    /** Action's id to straighten to left. */
+    String STRAIGHTEN_TO_LEFT = RequestConstants.REQ_STRAIGHTEN + "Left"; //$NON-NLS-1$
+
+    /** Action's id to straighten to right. */
+    String STRAIGHTEN_TO_RIGHT = RequestConstants.REQ_STRAIGHTEN + "Right"; //$NON-NLS-1$
+
 }

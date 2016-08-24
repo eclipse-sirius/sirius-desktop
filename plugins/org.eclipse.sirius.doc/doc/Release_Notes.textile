@@ -92,6 +92,13 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.getAncestor(int...)@ has been added to retrieve the first ancestor of the view, or itself, that has at least one of the visualID passed as parameter.
 * <span class="label label-success">Added</span> The new preference key @PREF_SHOW_LINK_EDGE_LABEL_ON_SELECTION@ has been added in @org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys@. It corresponds to the preference shown in _Sirius/Sirius Diagram/Connections_ Eclipse preferences.
 * <span class="label label-success">Added</span> The new figure @org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabelWithAttachment@ is a specific @SiriusWrapLabel@ that allows to show an attachment between the label and its edge.
+* <span class="label label-success">Added</span> A new kind of request, @org.eclipse.sirius.diagram.ui.tools.api.requests.StraightenToRequest@, has been added to handle the new _Straighten to_ actions. The corresponding id has also been added: @org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_STRAIGHTEN@.
+* <span class="label label-success">Added</span> 4 action ids have been added in @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds@:
+** @STRAIGHTEN_TO_TOP@: For _Straighten to top_ action,
+** @STRAIGHTEN_TO_BOTTOM@: For _Straighten to bottom_ action,
+** @STRAIGHTEN_TO_LEFT@: For _Straighten to left_ action,
+** @STRAIGHTEN_TO_RIGHT@: For _Straighten to right_ action.
+* Constants have been added in @org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath@ for the icon path of the four new straighten actions.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.AbstractSiriusLayoutDataManager@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager@ instead.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.ILayoutDataManagerProvider@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.IFormatDataManagerProvider@ instead.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataHelper@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataHelper@ instead.

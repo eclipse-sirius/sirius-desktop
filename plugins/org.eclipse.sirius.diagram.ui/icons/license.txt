@@ -155,6 +155,10 @@ icons/pin.gif - org.eclipse.ui.console - org.eclipse.ui.console/icons/full/dlcl1
 icons/pinWizard.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/pin_view.gif
 icons/screenshot.gif - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/icons/screenshot.gif
 icons/strikethrough.gif - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/icons/strikethrough.gif
+icons/straightenToBottom.png - org.eclipse.gef - org.eclipse.gef/src/org/eclipse/gef/internal/icons/alignleft.gif
+icons/straightenToLeft.png - org.eclipse.gef - org.eclipse.gef/src/org/eclipse/gef/internal/icons/alignleft.gif
+icons/straightenToRight.png - org.eclipse.gef - org.eclipse.gef/src/org/eclipse/gef/internal/icons/alignleft.gif
+icons/straightenToTop.png - org.eclipse.gef - org.eclipse.gef/src/org/eclipse/gef/internal/icons/alignleft.gif
 icons/underline.gif - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/icons/underline.gif
 icons/undo_edit.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/undo_edit.gif
 icons/unpin.gif - Custom-made from icons/pin.gif and the red cross from org.eclipse.jdt.junit/icons/full/obj16/testerr.gif

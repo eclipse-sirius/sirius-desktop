@@ -31,7 +31,9 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAc
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteStyleAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.PinElementsEclipseAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.UnpinElementsEclipseAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.straighten.StraightenToAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DistributeMenuManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.StraightenToMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.print.SiriusDiagramPrintPreviewAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.print.SiriusEnhancedPrintActionHelper;
 import org.eclipse.ui.IWorkbenchPage;
@@ -91,6 +93,14 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = new SizeBothAction(workbenchPage);
         } else if (actionId.equals(ActionIds.ACTION_SIRIUS_COPY_APPEARANCE_PROPERTIES)) {
             return new SiriusCopyAppearancePropertiesAction(workbenchPage);
+        } else if (ActionIds.STRAIGHTEN_TO_TOP.equals(actionId)) {
+            result = StraightenToAction.createStraightenToTopAction(workbenchPage);
+        } else if (ActionIds.STRAIGHTEN_TO_BOTTOM.equals(actionId)) {
+            result = StraightenToAction.createStraightenToBottomAction(workbenchPage);
+        } else if (ActionIds.STRAIGHTEN_TO_LEFT.equals(actionId)) {
+            result = StraightenToAction.createStraightenToLeftAction(workbenchPage);
+        } else if (ActionIds.STRAIGHTEN_TO_RIGHT.equals(actionId)) {
+            result = StraightenToAction.createStraightenToRightAction(workbenchPage);
         } else {
             result = super.createAction(actionId, partDescriptor);
         }
@@ -101,6 +111,8 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
     protected IMenuManager createMenuManager(String menuId, IWorkbenchPartDescriptor partDescriptor) {
         if (menuId.equals(ActionIds.MENU_DISTRIBUTE)) {
             return new DistributeMenuManager();
+        } else if (menuId.equals(ActionIds.MENU_STRAIGHTEN_TO)) {
+            return new StraightenToMenuManager();
         }
         return super.createMenuManager(menuId, partDescriptor);
     }

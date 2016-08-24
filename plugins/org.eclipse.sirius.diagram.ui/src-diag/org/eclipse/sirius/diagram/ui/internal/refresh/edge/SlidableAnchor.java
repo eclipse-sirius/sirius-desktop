@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,6 +51,27 @@ public class SlidableAnchor {
     private PrecisionPoint relativeReference;
 
     private View owner;
+
+    /**
+     * Creates a terminal string for any reference point passed in the format
+     * understandable by slidable anchors.
+     * 
+     * @param p
+     *            - a <Code>PrecisionPoint</Code> that must be represented as a
+     *            unique <Code>String</Code>, namely as "(preciseX,preciseY)"
+     * @return <code>String</code> terminal composed from specified
+     *         <code>PrecisionPoint</code>
+     */
+    public static String composeTerminalString(PrecisionPoint p) {
+        StringBuffer s = new StringBuffer(24);
+        s.append(TERMINAL_START_CHAR); // 1 char
+        s.append(p.preciseX()); // 10 chars
+        s.append(TERMINAL_DELIMITER_CHAR); // 1 char
+        s.append(p.preciseY()); // 10 chars
+        s.append(TERMINAL_END_CHAR); // 1 char
+        return s.toString(); // 24 chars max (+1 for safety, i.e. for string
+        // termination)
+    }
 
     /**
      * Default constructor. The anchor will have the center of the figure as the
@@ -121,27 +142,6 @@ public class SlidableAnchor {
      */
     public Point getReferencePoint() {
         return getAnchorPosition();
-    }
-
-    /**
-     * Creates a terminal string for any reference point passed in the format
-     * understandable by slidable anchors.
-     * 
-     * @param p
-     *            - a <Code>PrecisionPoint</Code> that must be represented as a
-     *            unique <Code>String</Code>, namely as "(preciseX,preciseY)"
-     * @return <code>String</code> terminal composed from specified
-     *         <code>PrecisionPoint</code>
-     */
-    private String composeTerminalString(PrecisionPoint p) {
-        StringBuffer s = new StringBuffer(24);
-        s.append(TERMINAL_START_CHAR); // 1 char
-        s.append(p.preciseX()); // 10 chars
-        s.append(TERMINAL_DELIMITER_CHAR); // 1 char
-        s.append(p.preciseY()); // 10 chars
-        s.append(TERMINAL_END_CHAR); // 1 char
-        return s.toString(); // 24 chars max (+1 for safety, i.e. for string
-        // termination)
     }
 
     /**
@@ -301,8 +301,8 @@ public class SlidableAnchor {
      */
     public static PrecisionPoint parseTerminalString(String terminal) {
         try {
-            return new PrecisionPoint(Double.parseDouble(terminal.substring(terminal.indexOf(TERMINAL_START_CHAR) + 1, terminal.indexOf(TERMINAL_DELIMITER_CHAR))), Double.parseDouble(terminal
-                    .substring(terminal.indexOf(TERMINAL_DELIMITER_CHAR) + 1, terminal.indexOf(TERMINAL_END_CHAR))));
+            return new PrecisionPoint(Double.parseDouble(terminal.substring(terminal.indexOf(TERMINAL_START_CHAR) + 1, terminal.indexOf(TERMINAL_DELIMITER_CHAR))),
+                    Double.parseDouble(terminal.substring(terminal.indexOf(TERMINAL_DELIMITER_CHAR) + 1, terminal.indexOf(TERMINAL_END_CHAR))));
         } catch (NumberFormatException e) {
             return null;
         }

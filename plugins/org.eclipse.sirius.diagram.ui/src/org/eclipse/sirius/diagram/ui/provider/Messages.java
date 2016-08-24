@@ -1269,6 +1269,42 @@ public final class Messages {
     public static String StatusDecorator_viewIdAccessFailureMsg;
 
     @TranslatableMessage
+    public static String StraightenToAction_commandLabel;
+
+    @TranslatableMessage
+    public static String StraightenToAction_toBottomLabel;
+
+    @TranslatableMessage
+    public static String StraightenToAction_toBottomTooltip;
+
+    @TranslatableMessage
+    public static String StraightenToAction_toLeftLabel;
+
+    @TranslatableMessage
+    public static String StraightenToAction_toLeftTooltip;
+
+    @TranslatableMessage
+    public static String StraightenToAction_toRightLabel;
+
+    @TranslatableMessage
+    public static String StraightenToAction_toRightTooltip;
+
+    @TranslatableMessage
+    public static String StraightenToAction_toTopLabel;
+
+    @TranslatableMessage
+    public static String StraightenToAction_toTopTooltip;
+
+    @TranslatableMessage
+    public static String StraightenToCommand_errorMsg;
+
+    @TranslatableMessage
+    public static String StraightenToMenuAction_text;
+
+    @TranslatableMessage
+    public static String StraightenToMenuAction_tooltip;
+
+    @TranslatableMessage
     public static String StyleConfigurationRegistry_disableStyleConfigurationProviderInError;
 
     @TranslatableMessage
