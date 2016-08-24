@@ -25,7 +25,16 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
-* <span class="label label-success">Added</span> As the first step to save the DRepresentation in its own resource, @org.eclipse.sirius.viewpoint.DView.getOwnedRepresentationDescriptors()@ has been added as a wrapper of the @DRepresentation@. In this step, the main impact is that the Sirius common navigator does not display the @DRepresentation@ anymore but the @DRepresentationDescriptor@ instead. All the actions and commands are then based on @DRepresentationDescriptor@.
+* <span class="label label-success">Added</span> As the first step to save the DRepresentation in its own resource, @org.eclipse.sirius.viewpoint.DView.getOwnedRepresentationDescriptors()@ has been added as a wrapper of the @DRepresentation@. The @DRepresentationDescriptor@ is contained by the @DView@ and the @DRepresentationDescriptor@ have a reference to the @DRepresentation@. In this step, the main impact is that the Sirius common navigator does not display the @DRepresentation@ anymore but the @DRepresentationDescriptor@ instead. All the actions and commands are then based on @DRepresentationDescriptor@.
+* <span class="label label-success">Added</span> As the second step to save the DRepresentation in its own resource, @org.eclipse.sirius.viewpoint.DView.getOwnedRepresentations()@ has been removed. The @DRepresentation@ is now created as root element of the representations resource. The main impact is on the core of Sirius but also potentially on client Sirius customization. Each peace of code that makes the supposition that the @DView@ is the container of the @DRepresentation@ must be reworked. The code using methods in the following list may be concerned by the rework:
+** @EObject.eContainer()@. If the object is a @DRepresentation@, its container is now null.
+** @EcoreUtil.getRootContainer(xxx)@. The root container of a DDiagramElement is the @DRepresentation@ and not the @DAnalysis@ any more.
+** @EcoreUtil.isAncestor(xxx)@. the @DView@ is not an ancestor of a @DRepresentation@ (or its content) anymore.
+* <span class="label label-success">Added</span> As a developer, the followings utility methods will help you to migrate your code following the second step described above:
+** @org.eclipse.sirius.business.api.query.DViewQuery.getLoadedRepresentations()@ replaces the removed @DView.getOwnedRepresentations()@ method. It provides all the loaded representations holds by a @DView@. In this step, all that representations are always loaded as they are into the .aird resource.
+** @org.eclipse.sirius.business.api.query.DViewQuery.getAllContentInRepresentations(final Predicate<? super EObject>)@ provides the content of a @DView@ according to a predicate.
+** @org.eclipse.sirius.business.api.query.DRepresentationQuery.getRepresentationDescriptor()@ provides the @DRepresentationDescriptor@ which references the @DRepresentation@.
+** @org.eclipse.sirius.business.api.query.EObjectQuery.getDAnalysis()@ allows to retrieve a DAnalysis from a @DRepresentationElement@
 
 h4. Changes in @org.eclipse.sirius.common@
 
@@ -46,13 +55,20 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.business.api.dialect.DialectUIManager.canExport(DRepresentationDescriptor, ExportFormat)@ has been added because actions, wizards or views that were related to @DRepresentation@ are now related to @DRepresentationDescriptor@.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.query.DRepresentationQuery.getRepresentationDescriptor()@ has been added to retrieve the @DRepresentationDescriptor@ that references the @DRepresentation@.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.session.CustomDataConstants.DREPRESENTATION_DESCRIPTOR_FROM_DESCRIPTION@ and @org.eclipse.sirius.business.api.session.CustomDataConstants.DREPRESENTATION_DESCRIPTOR@ have been added. They are used to get or put @DRepresentationDescriptor@ in the model managed by the @Session@ through the @org.eclipse.sirius.business.api.session.SessionService.putCustomData(String, EObject, EObject)@ and @SessionService.getCustomData(String, EObject)@ methods.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.query.EObjectQuery.getDAnalysis()@ has been added to retrieve a DAnalysis from a @DRepresentationElement@
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper.findContainerForAddedRepresentation(DAnalysis, DRepresentation)@ has been changed to @findDViewForRepresentationDescription(DAnalysis , final RepresentationDescription)@ because that API was previously badly defined.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.business.api.dialect.DialectServices.deleteRepresentation(DRepresentation, Session)@ has been changed to @deleteRepresentation(DRepresentationDescriptor, Session)@ because now the @DRepresentationDescriptor@ is the entry point to delete the @DRepresentation@ and itself.
+* <span class="label label-info">Modified</span> @DRepresentationDescriptor@ is now the entry point to move, control or uncontrol a @DRepresentation@ instead of the @DRepresentation@ itself. Accordingly, the return type or parameter of the followings have changed to switch from @DRepresentation@ to @DRepresentationDescriptor@
+** constructors of @org.eclipse.sirius.business.api.control.SiriusControlCommand@
+** the constructor @org.eclipse.sirius.business.api.dialect.command.MoveRepresentationCommand.MoveRepresentationCommand(Session, DAnalysis, Collection<DRepresentationDescriptor>)@
+** the method @org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession.moveRepresentation(DAnalysis, DRepresentationDescriptor)@
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper.updateModelsReferences(DView)@ has replaced @updateModelsReferences(DAnalysis, Iterator<DSemanticDecorator>)@ because it is more suited to the client needs.
 
 h4. Changes in @org.eclipse.sirius.ui@
 
 * <span class="label label-info">Added</span> The class @org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider@ has been added to provide a generic label provider for VSM model element giving hierarchical label. This label provider replaces the one returned by deprecated method @DialectUIServices.getHierarchyLabelProvider()@. 
 * <span class="label label-info">Modified</span> @AbstractSWTCallback@ provides a default implementation of @UICallBack.askSessionReopeningWithResourceVersionMismatch()@ method to give feedback about version mismatch and give the choice to reopen session despite a potential corruption.
+* <span class="label label-info">Modified</span> The method @org.eclipse.sirius.ui.tools.api.control.SiriusControlHandler.getRepresentationsToMove(Shell, Session, EObject)@ and @SiriusControlHandler.collectExistingRepresentations@ have been renamed to @getRepresentationDescriptorsToMove(Shell, Session, EObject)@ and @SiriusControlHandler.collectExistingRepresentationDescriptors@. The return type of both that methods and @SiriusControlHandler.askUserWhichRepresentationToSplit@ has been changed to @DRepresentationDescriptor@ as @DRepresentationDescriptor@ is the entry point to work with a @DRepresentation@ instead of DRepresentation itself.
 * <span class="label label-warning">Deprecated</span> The method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.getHierarchyLabelProvider()@ has been deprecated in favor of generic label provider @HierarchyLabelProvider@.
 
 h4. Changes in @org.eclipse.sirius.diagram@
