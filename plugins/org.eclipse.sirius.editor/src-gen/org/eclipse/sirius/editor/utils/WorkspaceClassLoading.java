@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2014 Obeo.
+ * Copyright (c) 2013, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -377,8 +377,8 @@ public class WorkspaceClassLoading extends BundleClassLoading {
                                     if (nsURI != null && className != null) {
                                         declarations.add(new EPackageDeclaration(nsURI, className, genModel));
                                     } else {
-                                        IStatus status = new Status(IStatus.WARNING, SiriusEditorPlugin.PLUGIN_ID, "An EPackage declaration in project " + symbolicNameForProject
-                                                + " has been ignored because of missing informations.");
+                                        IStatus status = new Status(IStatus.WARNING, SiriusEditorPlugin.PLUGIN_ID,
+                                                "An EPackage declaration in project " + symbolicNameForProject + " has been ignored because of missing informations.");
                                         SiriusEditorPlugin.INSTANCE.log(status);;
                                     }
                                 }
@@ -419,8 +419,12 @@ public class WorkspaceClassLoading extends BundleClassLoading {
          */
         Collection<Object> dependencies = Sets.newLinkedHashSet(findCallees(pdeModel));
         for (VersionConstraint requireBundleOrImportPackage : Iterables.filter(dependencies, VersionConstraint.class)) {
-            if (requireBundleOrImportPackage.getSupplier() instanceof BundleDescription && ((BundleDescription) requireBundleOrImportPackage.getSupplier()).getSymbolicName() != null) {
-                dependenciesRetrievedThroughPDE.add(((BundleDescription) requireBundleOrImportPackage.getSupplier()).getSymbolicName());
+            BaseDescription supplier = requireBundleOrImportPackage.getSupplier();
+            if (requireBundleOrImportPackage instanceof ImportPackageSpecification && supplier instanceof ExportPackageDescription) {
+                supplier = ((ExportPackageDescription) supplier).getSupplier();
+            }
+            if (supplier instanceof BundleDescription && ((BundleDescription) supplier).getSymbolicName() != null) {
+                dependenciesRetrievedThroughPDE.add(((BundleDescription) supplier).getSymbolicName());
             }
         }
         return dependenciesRetrievedThroughPDE;
