@@ -189,7 +189,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
                 availableVariables.put(EEFExpressionUtils.EEFSelect.CANDIDATE, candidatesExpressionType);
             } else if (feature == PropertiesPackage.Literals.REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION) {
                 VariableType valueExpressionType = getResultType(target, PropertiesPackage.Literals.REFERENCE_DESCRIPTION__VALUE_EXPRESSION);
-                availableVariables.put(EEFExpressionUtils.EEFSelect.CANDIDATE, valueExpressionType);
+                availableVariables.put(EEFExpressionUtils.EEFReference.VALUE, valueExpressionType);
             } else if (feature == PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION) {
                 if (target.eContainer() instanceof DynamicMappingFor) {
                     DynamicMappingFor forDefinition = (DynamicMappingFor) target.eContainer();
