@@ -80,14 +80,14 @@ public final class SessionFactoryImpl implements SessionFactory {
 
     @Override
     public Session createSession(final URI sessionResourceURI, IProgressMonitor monitor) throws CoreException {
-        final ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(sessionResourceURI);
+        ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(sessionResourceURI);
         final TransactionalEditingDomain transactionalEditingDomain = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory().createEditingDomain(set);
 
         // Configure the resource set, its is done here and not before the
         // editing domain creation which could provide its own resource set.
+        set = transactionalEditingDomain.getResourceSet();
         if (Movida.isEnabled()) {
-            transactionalEditingDomain.getResourceSet()
-                    .setURIConverter(new ViewpointURIConverter((ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance()));
+            set.setURIConverter(new ViewpointURIConverter((ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance()));
         }
         if (set instanceof ResourceSetImpl) {
             ResourceSetImpl resourceSetImpl = (ResourceSetImpl) set;
