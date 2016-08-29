@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -73,6 +73,9 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
     /** Keep track of the interpreter identifiers. */
     private final Map<IInterpreterProvider, String> interpreterIdentifiers;
 
+    /** The default interpreter to fall back to when no installed provider handles a given expression. */
+    private DefaultInterpreterProvider fallbackInterpreter;
+
     /** The variables manager. */
     private final VariableManager variableManager;
 
@@ -102,6 +105,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
 
     private Map<Object, Object> properties;
 
+
     /**
      * The default constructor.
      */
@@ -112,6 +116,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         this.listeners = new ArrayList<IVariableStatusListener>();
         this.interpreterIdentifiers = new HashMap<>();
         this.properties = new HashMap<>();
+        this.fallbackInterpreter = new DefaultInterpreterProvider();
     }
 
     /**
@@ -203,7 +208,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
                 return provider;
             }
         }
-        return DefaultInterpreterProvider.INSTANCE;
+        return fallbackInterpreter;
     }
 
     /**
@@ -269,7 +274,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
                 if (this.crossReferencer != null) {
                     result.setCrossReferencer(this.crossReferencer);
                 }
-                if (provider != DefaultInterpreterProvider.INSTANCE) {
+                if (provider != fallbackInterpreter) {
                     this.providers.put(provider, result);
                 }
 
@@ -495,9 +500,6 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
      */
     private static class DefaultInterpreterProvider implements IInterpreterProvider, IInterpreter, TypedValidation {
 
-        /** The shared instance. */
-        public static final DefaultInterpreterProvider INSTANCE = new DefaultInterpreterProvider();
-
         @Override
         public IInterpreter createInterpreter() {
             return this;
@@ -678,7 +680,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
                 proposals.addAll(provider.getProposals(interpreter, context));
             }
 
-            if (interpreter == DefaultInterpreterProvider.INSTANCE) {
+            if (interpreter == fallbackInterpreter) {
                 // The default interpreter is used when there is no other
                 // interpreter available for the context. Try to find if the
                 // context matches empty expression from one or several
@@ -807,7 +809,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
                 proposals.addAll(provider.getProposals(interpreterForExpression, context));
             }
 
-            if (interpreterForExpression == DefaultInterpreterProvider.INSTANCE) {
+            if (interpreterForExpression == fallbackInterpreter) {
                 // The default interpreter is used when there is no other
                 // interpreter available for the context. Try to find if the
                 // context matches empty expression from one or several
