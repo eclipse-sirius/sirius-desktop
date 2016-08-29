@@ -82,8 +82,8 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
     protected void addIdentifierPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PageDescription_identifier_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_identifier_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.PAGE_DESCRIPTION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_identifier_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.PAGE_DESCRIPTION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -95,8 +95,8 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
     protected void addLabelExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PageDescription_labelExpression_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_labelExpression_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.PAGE_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_labelExpression_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.PAGE_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -108,8 +108,8 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
     protected void addDomainClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PageDescription_domainClass_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_domainClass_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.PAGE_DESCRIPTION__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_domainClass_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.PAGE_DESCRIPTION__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -147,8 +147,8 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
     protected void addGroupsPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PageDescription_groups_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_groups_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.PAGE_DESCRIPTION__GROUPS, true, false, true, null, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_groups_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.PAGE_DESCRIPTION__GROUPS, true, false, true, null, null, null));
     }
 
     /**
@@ -205,7 +205,7 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
     public String getText(Object object) {
         String label = ((PageDescription) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_PageDescription_type") : //$NON-NLS-1$
-            getString("_UI_PageDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_PageDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

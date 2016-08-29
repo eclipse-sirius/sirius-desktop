@@ -158,8 +158,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="DynamicMappingFor" eSuperTypes="#//ControlDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="iterator" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClassExpression"
-        lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="iterableExpression" lowerBound="1"
+        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ifs" lowerBound="1" upperBound="-1"
         eType="#//DynamicMappingIf" containment="true"/>
   </eClassifiers>

@@ -23,6 +23,7 @@ h3. Specifier-Visible Changes
 
 * The rules concerning the layout of compartments have been changed/completed. You can have a look at the "dedicated chapter":specifier/diagrams/Diagrams.html#compartments_layout in the specifier documentation for more details.
 * The extension point @org.eclipse.sirius.diagram.ui.layoutDataManager@ is deprecated. It is replaced by the new extension point @org.eclipse.sirius.diagram.ui.formatDataManager@. The deprecated extension point will be removed in the next 5.0 Sirius major release. Several classes associated with this deprecated extension point are also deprecated (see Developer-Visible Changes for details).
+* <span class="label label-info">Modified</span> The property @Domain Class Expression@ in @DynamicMappingFor@ elements (in properties views definitions) has been renamed into @Iterable Expression@.
 
 h3. Developer-Visible Changes
 
@@ -118,7 +119,11 @@ h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
-* <span class="label label-success">Added</span> The utility method @mouseScrollWithKey(int, int, int, int)@, has been added in classes @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer@ and @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas@ to allow testing events occurring after a mouse scroll combined to a keyboard key pressed at a given absolute position.  
+* <span class="label label-success">Added</span> The utility method @mouseScrollWithKey(int, int, int, int)@, has been added in classes @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer@ and @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas@ to allow testing events occurring after a mouse scroll combined to a keyboard key pressed at a given absolute position.
+
+h4. Changes in @org.eclipse.sirius.properties@
+
+* <span class="label label-info">Modified</span> The property @domainClassExpression@ has been renamed into @iterableExpression@.
 
 h4. Changes in @org.eclipse.sirius.ecore.extender@
 

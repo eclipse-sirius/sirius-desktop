@@ -155,10 +155,10 @@ public class GroupValidationSetDescriptionItemProvider extends ItemProviderAdapt
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors
-        .add(createChildParameter(PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__SEMANTIC_VALIDATION_RULES, ValidationFactory.eINSTANCE.createSemanticValidationRule()));
+                .add(createChildParameter(PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__SEMANTIC_VALIDATION_RULES, ValidationFactory.eINSTANCE.createSemanticValidationRule()));
 
         newChildDescriptors
-        .add(createChildParameter(PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__PROPERTY_VALIDATION_RULES, PropertiesFactory.eINSTANCE.createPropertyValidationRule()));
+                .add(createChildParameter(PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__PROPERTY_VALIDATION_RULES, PropertiesFactory.eINSTANCE.createPropertyValidationRule()));
     }
 
     /**

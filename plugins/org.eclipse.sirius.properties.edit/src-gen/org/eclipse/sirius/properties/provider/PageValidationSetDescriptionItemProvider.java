@@ -152,7 +152,7 @@ public class PageValidationSetDescriptionItemProvider extends ItemProviderAdapte
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors
-        .add(createChildParameter(PropertiesPackage.Literals.PAGE_VALIDATION_SET_DESCRIPTION__SEMANTIC_VALIDATION_RULES, ValidationFactory.eINSTANCE.createSemanticValidationRule()));
+                .add(createChildParameter(PropertiesPackage.Literals.PAGE_VALIDATION_SET_DESCRIPTION__SEMANTIC_VALIDATION_RULES, ValidationFactory.eINSTANCE.createSemanticValidationRule()));
     }
 
     /**

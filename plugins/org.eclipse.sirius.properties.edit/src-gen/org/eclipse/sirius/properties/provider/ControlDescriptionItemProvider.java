@@ -75,8 +75,8 @@ public class ControlDescriptionItemProvider extends ItemProviderAdapter
     protected void addIdentifierPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ControlDescription_identifier_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_ControlDescription_identifier_feature", "_UI_ControlDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.CONTROL_DESCRIPTION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_ControlDescription_identifier_feature", "_UI_ControlDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.CONTROL_DESCRIPTION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -89,7 +89,7 @@ public class ControlDescriptionItemProvider extends ItemProviderAdapter
     public String getText(Object object) {
         String label = ((ControlDescription) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_ControlDescription_type") : //$NON-NLS-1$
-            getString("_UI_ControlDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_ControlDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

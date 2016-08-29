@@ -81,8 +81,8 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
     protected void addBackgroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_backgroundColor_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_backgroundColor_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.GROUP_STYLE__BACKGROUND_COLOR, true, false, true, null, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_backgroundColor_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__BACKGROUND_COLOR, true, false, true, null, null, null));
     }
 
     /**
@@ -94,8 +94,8 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
     protected void addForegroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_foregroundColor_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_foregroundColor_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.GROUP_STYLE__FOREGROUND_COLOR, true, false, true, null, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_foregroundColor_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__FOREGROUND_COLOR, true, false, true, null, null, null));
     }
 
     /**
@@ -107,8 +107,8 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
     protected void addFontNameExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_fontNameExpression_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_fontNameExpression_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.GROUP_STYLE__FONT_NAME_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_fontNameExpression_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__FONT_NAME_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -120,8 +120,8 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
     protected void addFontSizePropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_fontSize_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_fontSize_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.GROUP_STYLE__FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_fontSize_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -133,8 +133,8 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
     protected void addBarStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_barStyle_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_barStyle_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.GROUP_STYLE__BAR_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_barStyle_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__BAR_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -146,8 +146,8 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
     protected void addToggleStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_toggleStyle_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_toggleStyle_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.GROUP_STYLE__TOGGLE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_toggleStyle_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__TOGGLE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -159,8 +159,8 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
     protected void addExpandedByDefaultPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_expandedByDefault_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_expandedByDefault_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.GROUP_STYLE__EXPANDED_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_expandedByDefault_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__EXPANDED_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -184,7 +184,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
     public String getText(Object object) {
         String label = ((GroupStyle) object).getFontNameExpression();
         return label == null || label.length() == 0 ? getString("_UI_GroupStyle_type") : //$NON-NLS-1$
-            getString("_UI_GroupStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_GroupStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

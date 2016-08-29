@@ -1260,7 +1260,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getDynamicMappingFor_DomainClassExpression() {
+    public EAttribute getDynamicMappingFor_IterableExpression() {
         return (EAttribute) dynamicMappingForEClass.getEStructuralFeatures().get(1);
     }
 
@@ -2435,7 +2435,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         dynamicMappingForEClass = createEClass(PropertiesPackage.DYNAMIC_MAPPING_FOR);
         createEAttribute(dynamicMappingForEClass, PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR);
-        createEAttribute(dynamicMappingForEClass, PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION);
+        createEAttribute(dynamicMappingForEClass, PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERABLE_EXPRESSION);
         createEReference(dynamicMappingForEClass, PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS);
 
         dynamicMappingIfEClass = createEClass(PropertiesPackage.DYNAMIC_MAPPING_IF);
@@ -2839,7 +2839,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(dynamicMappingForEClass, DynamicMappingFor.class, "DynamicMappingFor", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getDynamicMappingFor_Iterator(), ecorePackage.getEString(), "iterator", null, 1, 1, DynamicMappingFor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getDynamicMappingFor_DomainClassExpression(), theDescriptionPackage.getInterpretedExpression(), "domainClassExpression", null, 1, 1, DynamicMappingFor.class, //$NON-NLS-1$
+        initEAttribute(getDynamicMappingFor_IterableExpression(), theDescriptionPackage.getInterpretedExpression(), "iterableExpression", null, 1, 1, DynamicMappingFor.class, //$NON-NLS-1$
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
         initEReference(getDynamicMappingFor_Ifs(), this.getDynamicMappingIf(), null, "ifs", null, 1, -1, DynamicMappingFor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$

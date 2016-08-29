@@ -149,6 +149,11 @@
 				<code>org.eclipse.sirius.diagram.ui.layoutDataManager</code> is deprecated. It is replaced by the new extension point 
 				<code>org.eclipse.sirius.diagram.ui.formatDataManager</code>. The deprecated extension point will be removed in the next 5.0 Sirius major release. Several classes associated with this deprecated extension point are also deprecated (see Developer-Visible Changes for details).
 			</li>
+			<li><span class="label label-info">Modified</span> The property 
+				<code>Domain Class Expression</code> in 
+				<code>DynamicMappingFor</code> elements (in properties views definitions) has been renamed into 
+				<code>Iterable Expression</code>.
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
@@ -516,7 +521,16 @@
 				<code>mouseScrollWithKey(int, int, int, int)</code>, has been added in classes 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor</code>, 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer</code> and 
-				<code>org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas</code> to allow testing events occurring after a mouse scroll combined to a keyboard key pressed at a given absolute position.  
+				<code>org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas</code> to allow testing events occurring after a mouse scroll combined to a keyboard key pressed at a given absolute position.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.properties">Changes in 
+			<code>org.eclipse.sirius.properties</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> The property 
+				<code>domainClassExpression</code> has been renamed into 
+				<code>iterableExpression</code>.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 

@@ -116,7 +116,7 @@
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//DynamicMappingFor">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DynamicMappingFor/iterator"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DynamicMappingFor/domainClassExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DynamicMappingFor/iterableExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//DynamicMappingFor/ifs"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//DynamicMappingIf">

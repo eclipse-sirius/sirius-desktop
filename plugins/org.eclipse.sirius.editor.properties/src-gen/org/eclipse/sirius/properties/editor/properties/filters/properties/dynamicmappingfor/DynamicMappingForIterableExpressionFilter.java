@@ -18,16 +18,16 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 // End of user code specific imports
 
 /**
- * A filter for the domainClassExpression property section.
+ * A filter for the iterableExpression property section.
  */
-public class DynamicMappingForDomainClassExpressionFilter extends ViewpointPropertyFilter {
+public class DynamicMappingForIterableExpressionFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getDynamicMappingFor_DomainClassExpression();
+        return PropertiesPackage.eINSTANCE.getDynamicMappingFor_IterableExpression();
     }
 
     /**

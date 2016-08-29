@@ -25,17 +25,16 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the domainClassExpression property of a DynamicMappingFor
- * object.
+ * A section for the iterableExpression property of a DynamicMappingFor object.
  */
-public class DynamicMappingForDomainClassExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
+public class DynamicMappingForIterableExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
-        return "DomainClassExpression"; //$NON-NLS-1$
+        return "IterableExpression"; //$NON-NLS-1$
     }
 
     /**
@@ -56,7 +55,7 @@ public class DynamicMappingForDomainClassExpressionPropertySection extends Abstr
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getDynamicMappingFor_DomainClassExpression();
+        return PropertiesPackage.eINSTANCE.getDynamicMappingFor_IterableExpression();
     }
 
     /**
@@ -101,7 +100,7 @@ public class DynamicMappingForDomainClassExpressionPropertySection extends Abstr
         return new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), DynamicMappingForDomainClassExpressionPropertySection.this, text.getText());
+                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), DynamicMappingForIterableExpressionPropertySection.this, text.getText());
                 dialog.open();
                 text.setText(dialog.getResult());
                 handleTextModified();

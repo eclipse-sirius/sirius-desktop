@@ -36,8 +36,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * {@link org.eclipse.sirius.properties.impl.DynamicMappingForImpl#getIterator
  * <em>Iterator</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.DynamicMappingForImpl#getDomainClassExpression
- * <em>Domain Class Expression</em>}</li>
+ * {@link org.eclipse.sirius.properties.impl.DynamicMappingForImpl#getIterableExpression
+ * <em>Iterable Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForImpl#getIfs
  * <em>Ifs</em>}</li>
  * </ul>
@@ -66,26 +66,26 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
     protected String iterator = DynamicMappingForImpl.ITERATOR_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getDomainClassExpression()
-     * <em>Domain Class Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getIterableExpression()
+     * <em>Iterable Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @see #getDomainClassExpression()
+     * @see #getIterableExpression()
      * @generated
      * @ordered
      */
-    protected static final String DOMAIN_CLASS_EXPRESSION_EDEFAULT = null;
+    protected static final String ITERABLE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getDomainClassExpression()
-     * <em>Domain Class Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getIterableExpression()
+     * <em>Iterable Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @see #getDomainClassExpression()
+     * @see #getIterableExpression()
      * @generated
      * @ordered
      */
-    protected String domainClassExpression = DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT;
+    protected String iterableExpression = DynamicMappingForImpl.ITERABLE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getIfs() <em>Ifs</em>}' containment
@@ -146,8 +146,8 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
      * @generated
      */
     @Override
-    public String getDomainClassExpression() {
-        return domainClassExpression;
+    public String getIterableExpression() {
+        return iterableExpression;
     }
 
     /**
@@ -156,11 +156,11 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
      * @generated
      */
     @Override
-    public void setDomainClassExpression(String newDomainClassExpression) {
-        String oldDomainClassExpression = domainClassExpression;
-        domainClassExpression = newDomainClassExpression;
+    public void setIterableExpression(String newIterableExpression) {
+        String oldIterableExpression = iterableExpression;
+        iterableExpression = newIterableExpression;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION, oldDomainClassExpression, domainClassExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERABLE_EXPRESSION, oldIterableExpression, iterableExpression));
         }
     }
 
@@ -201,8 +201,8 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
         switch (featureID) {
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR:
             return getIterator();
-        case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
-            return getDomainClassExpression();
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERABLE_EXPRESSION:
+            return getIterableExpression();
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS:
             return getIfs();
         }
@@ -221,8 +221,8 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR:
             setIterator((String) newValue);
             return;
-        case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
-            setDomainClassExpression((String) newValue);
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERABLE_EXPRESSION:
+            setIterableExpression((String) newValue);
             return;
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS:
             getIfs().clear();
@@ -243,8 +243,8 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR:
             setIterator(DynamicMappingForImpl.ITERATOR_EDEFAULT);
             return;
-        case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
-            setDomainClassExpression(DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT);
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERABLE_EXPRESSION:
+            setIterableExpression(DynamicMappingForImpl.ITERABLE_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS:
             getIfs().clear();
@@ -263,9 +263,8 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
         switch (featureID) {
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR:
             return DynamicMappingForImpl.ITERATOR_EDEFAULT == null ? iterator != null : !DynamicMappingForImpl.ITERATOR_EDEFAULT.equals(iterator);
-        case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
-            return DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT == null ? domainClassExpression != null
-                    : !DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT.equals(domainClassExpression);
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERABLE_EXPRESSION:
+            return DynamicMappingForImpl.ITERABLE_EXPRESSION_EDEFAULT == null ? iterableExpression != null : !DynamicMappingForImpl.ITERABLE_EXPRESSION_EDEFAULT.equals(iterableExpression);
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS:
             return ifs != null && !ifs.isEmpty();
         }
@@ -286,8 +285,8 @@ public class DynamicMappingForImpl extends ControlDescriptionImpl implements Dyn
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (iterator: "); //$NON-NLS-1$
         result.append(iterator);
-        result.append(", domainClassExpression: "); //$NON-NLS-1$
-        result.append(domainClassExpression);
+        result.append(", iterableExpression: "); //$NON-NLS-1$
+        result.append(iterableExpression);
         result.append(')');
         return result.toString();
     }

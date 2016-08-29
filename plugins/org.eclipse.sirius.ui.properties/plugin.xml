@@ -68,4 +68,11 @@
            class="org.eclipse.sirius.ui.properties.internal.expressions.PropertiesExpressionQueryProvider">
      </interpretedExpressionProvider>
   </extension>
+  <extension
+        point="org.eclipse.sirius.migrationParticipant">
+     <participant
+           class="org.eclipse.sirius.ui.properties.internal.migration.DomainClassExpressionMigrationParticipant"
+           kind="VSM">
+     </participant>
+  </extension>
 </plugin>

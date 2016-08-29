@@ -886,15 +886,15 @@
 		<p>A 
 			<em>Dynamic Mapping For</em> can appear directly inside a group description, or inside a 
 			<a href="#containers">container</a>, in which case you can specify a specific 
-			<a href="#layout">layout</a>. You must specify a 
-			<em>Domain Class Expression</em> which computes a list of metamodel elements. An 
+			<a href="#layout">layout</a>. You must specify an 
+			<em>Iterable Expression</em> which computes a list of elements. An 
 			<em>Iterator</em> must be define to be able to access the different element of the list thanks to a variable.
-			<br/>Sirius will loop on the metamodel element list to try to apply the 
+			<br/>Sirius will loop on the element list to try to apply the 
 			<em>Predicate Expression</em> which should return a boolean and defined in a 
 			<em>Dynamic Mapping If</em>.
 			<br/>The 
 			<em>Dynamic Mapping If</em> contains 
-			<strong>one widget</strong> which represents all the metamodel elements selected by the previous predicate.
+			<strong>one widget</strong> which represents all the elements selected by the previous predicate.
 		</p>
 		<p>The dynamic mapping mechanism is the one used by Sirius to provide by default properties view even if you do not specify any 
 			<em>Properties View Description</em> in your VSM.
@@ -903,7 +903,7 @@
 		<ul>
 			<li>a 
 				<em>Dynamic Mapping For</em> defining as 
-				<em>Domain Class Expression</em> : 
+				<em>Iterable Expression</em> : 
 				<code>aql:self.eClass().eAllStructuralFeatures</code> which means get all the structural features available for the current eClass.
 			</li>
 			<li>an 

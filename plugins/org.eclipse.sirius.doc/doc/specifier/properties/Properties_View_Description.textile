@@ -385,13 +385,13 @@ h3(#dynamic_mappings). Dynamic mappings
 
 A dynamic mapping is used to represent model elements of the same type with the same widget in the properties view. A dynamic mapping can contain widgets. 
 
-A _Dynamic Mapping For_ can appear directly inside a group description, or inside a "container":#containers, in which case you can specify a specific "layout":#layout. You must specify a _Domain Class Expression_ which computes a list of metamodel elements. An _Iterator_ must be define to be able to access the different element of the list thanks to a variable.
-Sirius will loop on the metamodel element list to try to apply the _Predicate Expression_ which should return a boolean and defined in a _Dynamic Mapping If_.
-The _Dynamic Mapping If_ contains *one widget* which represents all the metamodel elements selected by the previous predicate.
+A _Dynamic Mapping For_ can appear directly inside a group description, or inside a "container":#containers, in which case you can specify a specific "layout":#layout. You must specify an _Iterable Expression_ which computes a list of elements. An _Iterator_ must be define to be able to access the different element of the list thanks to a variable.
+Sirius will loop on the element list to try to apply the _Predicate Expression_ which should return a boolean and defined in a _Dynamic Mapping If_.
+The _Dynamic Mapping If_ contains *one widget* which represents all the elements selected by the previous predicate.
 
 The dynamic mapping mechanism is the one used by Sirius to provide by default properties view even if you do not specify any _Properties View Description_ in your VSM.
 If we take one of the default rules implemented by Sirius we have:
-* a _Dynamic Mapping For_ defining as _Domain Class Expression_ : @aql:self.eClass().eAllStructuralFeatures@ which means get all the structural features available for the current eClass.
+* a _Dynamic Mapping For_ defining as _Iterable Expression_ : @aql:self.eClass().eAllStructuralFeatures@ which means get all the structural features available for the current eClass.
 * an _Iterator_ set to @eStructuralFeature@.
 ** a _Dynamic Mapping If_ with the _Predicate Expression_ equals to @aql:eStructuralFeature.eType.instanceTypeName = 'java.lang.String'@ which means that we just keep the structural features serialized as a String. Notice that in the predicate expression we use the variable @eStructuralFeature@ which was defined as the _Iterator_.
 *** in this case we will represent the structural feature with a _Text widget_ for which we set:

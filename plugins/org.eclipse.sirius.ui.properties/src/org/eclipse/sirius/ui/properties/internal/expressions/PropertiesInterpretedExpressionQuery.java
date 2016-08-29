@@ -195,7 +195,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
                     DynamicMappingFor forDefinition = (DynamicMappingFor) target.eContainer();
                     String iteratorName = forDefinition.getIterator();
                     if (!Util.isBlank(iteratorName)) {
-                        VariableType iteratorType = getResultType(forDefinition, PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION);
+                        VariableType iteratorType = getResultType(forDefinition, PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__ITERABLE_EXPRESSION);
                         availableVariables.put(iteratorName, iteratorType);
                     }
                 }

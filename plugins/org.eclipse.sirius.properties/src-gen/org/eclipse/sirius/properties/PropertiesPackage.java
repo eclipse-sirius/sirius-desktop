@@ -1196,13 +1196,13 @@ public interface PropertiesPackage extends EPackage {
     int DYNAMIC_MAPPING_FOR__ITERATOR = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Domain Class Expression</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Iterable Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 1;
+    int DYNAMIC_MAPPING_FOR__ITERABLE_EXPRESSION = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Ifs</b></em>' containment reference list.
@@ -4210,17 +4210,16 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.DynamicMappingFor#getDomainClassExpression
-     * <em>Domain Class Expression</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * {@link org.eclipse.sirius.properties.DynamicMappingFor#getIterableExpression
+     * <em>Iterable Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
-     * @return the meta object for the attribute '
-     *         <em>Domain Class Expression</em>'.
-     * @see org.eclipse.sirius.properties.DynamicMappingFor#getDomainClassExpression()
+     * @return the meta object for the attribute '<em>Iterable Expression</em>'.
+     * @see org.eclipse.sirius.properties.DynamicMappingFor#getIterableExpression()
      * @see #getDynamicMappingFor()
      * @generated
      */
-    EAttribute getDynamicMappingFor_DomainClassExpression();
+    EAttribute getDynamicMappingFor_IterableExpression();
 
     /**
      * Returns the meta object for the containment reference list '
@@ -6257,13 +6256,12 @@ public interface PropertiesPackage extends EPackage {
         EAttribute DYNAMIC_MAPPING_FOR__ITERATOR = PropertiesPackage.eINSTANCE.getDynamicMappingFor_Iterator();
 
         /**
-         * The meta object literal for the '
-         * <em><b>Domain Class Expression</b></em>' attribute feature. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Iterable Expression</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EAttribute DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION = PropertiesPackage.eINSTANCE.getDynamicMappingFor_DomainClassExpression();
+        EAttribute DYNAMIC_MAPPING_FOR__ITERABLE_EXPRESSION = PropertiesPackage.eINSTANCE.getDynamicMappingFor_IterableExpression();
 
         /**
          * The meta object literal for the '<em><b>Ifs</b></em>' containment

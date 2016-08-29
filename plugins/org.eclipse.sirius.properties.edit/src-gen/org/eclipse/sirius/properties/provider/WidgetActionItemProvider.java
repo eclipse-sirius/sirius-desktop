@@ -77,8 +77,8 @@ public class WidgetActionItemProvider extends ItemProviderAdapter
     protected void addLabelExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetAction_labelExpression_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_WidgetAction_labelExpression_feature", "_UI_WidgetAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.WIDGET_ACTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetAction_labelExpression_feature", "_UI_WidgetAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.WIDGET_ACTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -135,7 +135,7 @@ public class WidgetActionItemProvider extends ItemProviderAdapter
     public String getText(Object object) {
         String label = ((WidgetAction) object).getLabelExpression();
         return label == null || label.length() == 0 ? getString("_UI_WidgetAction_type") : //$NON-NLS-1$
-            getString("_UI_WidgetAction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_WidgetAction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

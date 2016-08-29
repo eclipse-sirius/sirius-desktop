@@ -331,9 +331,9 @@
         <input type="org.eclipse.sirius.properties.DynamicMappingIf"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.dynamicmappingfor.DynamicMappingForDomainClassExpressionPropertySection"
-               id="properties.section.dynamicMappingFor.DomainClassExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dynamicmappingfor.DynamicMappingForDomainClassExpressionFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.dynamicmappingfor.DynamicMappingForIterableExpressionPropertySection"
+               id="properties.section.dynamicMappingFor.IterableExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dynamicmappingfor.DynamicMappingForIterableExpressionFilter"
                afterSection="properties.section.dynamicMappingFor.Iterator"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.DynamicMappingFor"/>

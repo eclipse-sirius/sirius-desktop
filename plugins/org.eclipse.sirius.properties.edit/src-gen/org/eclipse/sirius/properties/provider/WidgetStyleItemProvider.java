@@ -79,8 +79,8 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     protected void addLabelFontNameExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
                 createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetStyle_labelFontNameExpression_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelFontNameExpression_feature", "_UI_WidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelFontNameExpression_feature", "_UI_WidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -92,8 +92,8 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     protected void addLabelFontSizePropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetStyle_labelFontSize_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelFontSize_feature", "_UI_WidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelFontSize_feature", "_UI_WidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -105,8 +105,8 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     protected void addLabelBackgroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetStyle_labelBackgroundColor_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelBackgroundColor_feature", "_UI_WidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.WIDGET_STYLE__LABEL_BACKGROUND_COLOR, true, false, true, null, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelBackgroundColor_feature", "_UI_WidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.WIDGET_STYLE__LABEL_BACKGROUND_COLOR, true, false, true, null, null, null));
     }
 
     /**
@@ -118,8 +118,8 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     protected void addLabelForegroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetStyle_labelForegroundColor_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelForegroundColor_feature", "_UI_WidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FOREGROUND_COLOR, true, false, true, null, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelForegroundColor_feature", "_UI_WidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FOREGROUND_COLOR, true, false, true, null, null, null));
     }
 
     /**
@@ -131,8 +131,8 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     protected void addLabelFontFormatPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetStyle_labelFontFormat_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelFontFormat_feature", "_UI_WidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FONT_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelFontFormat_feature", "_UI_WidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FONT_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -156,7 +156,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     public String getText(Object object) {
         String label = ((WidgetStyle) object).getLabelFontNameExpression();
         return label == null || label.length() == 0 ? getString("_UI_WidgetStyle_type") : //$NON-NLS-1$
-            getString("_UI_WidgetStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_WidgetStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

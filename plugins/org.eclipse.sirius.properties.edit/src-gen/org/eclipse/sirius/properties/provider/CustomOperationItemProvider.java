@@ -77,8 +77,8 @@ public class CustomOperationItemProvider extends ItemProviderAdapter
     protected void addIdentifierPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CustomOperation_identifier_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_CustomOperation_identifier_feature", "_UI_CustomOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                PropertiesPackage.Literals.CUSTOM_OPERATION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                        getString("_UI_PropertyDescriptor_description", "_UI_CustomOperation_identifier_feature", "_UI_CustomOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.CUSTOM_OPERATION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -135,7 +135,7 @@ public class CustomOperationItemProvider extends ItemProviderAdapter
     public String getText(Object object) {
         String label = ((CustomOperation) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_CustomOperation_type") : //$NON-NLS-1$
-            getString("_UI_CustomOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_CustomOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

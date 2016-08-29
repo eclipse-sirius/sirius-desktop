@@ -123,6 +123,9 @@ public enum TitleBarStyle implements Enumerator {
      * Returns the '<em><b>Title Bar Style</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
+     * @param literal
+     *            the literal.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static TitleBarStyle get(String literal) {
@@ -138,6 +141,9 @@ public enum TitleBarStyle implements Enumerator {
      * Returns the '<em><b>Title Bar Style</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
+     * @param name
+     *            the name.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static TitleBarStyle getByName(String name) {
@@ -153,6 +159,9 @@ public enum TitleBarStyle implements Enumerator {
      * Returns the '<em><b>Title Bar Style</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
+     * @param value
+     *            the integer value.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static TitleBarStyle get(int value) {

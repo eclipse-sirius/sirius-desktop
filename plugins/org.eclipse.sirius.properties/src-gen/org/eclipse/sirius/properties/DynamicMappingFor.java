@@ -24,8 +24,8 @@ import org.eclipse.emf.common.util.EList;
  * <li>{@link org.eclipse.sirius.properties.DynamicMappingFor#getIterator
  * <em>Iterator</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.properties.DynamicMappingFor#getDomainClassExpression
- * <em>Domain Class Expression</em>}</li>
+ * {@link org.eclipse.sirius.properties.DynamicMappingFor#getIterableExpression
+ * <em>Iterable Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.DynamicMappingFor#getIfs
  * <em>Ifs</em>}</li>
  * </ul>
@@ -66,37 +66,36 @@ public interface DynamicMappingFor extends ControlDescription {
     void setIterator(String value);
 
     /**
-     * Returns the value of the '<em><b>Domain Class Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Iterable Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Domain Class Expression</em>' attribute isn't
+     * If the meaning of the '<em>Iterable Expression</em>' attribute isn't
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Domain Class Expression</em>' attribute.
-     * @see #setDomainClassExpression(String)
-     * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingFor_DomainClassExpression()
+     * @return the value of the '<em>Iterable Expression</em>' attribute.
+     * @see #setIterableExpression(String)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingFor_IterableExpression()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true"
      * @generated
      */
-    String getDomainClassExpression();
+    String getIterableExpression();
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.DynamicMappingFor#getDomainClassExpression
-     * <em>Domain Class Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.DynamicMappingFor#getIterableExpression
+     * <em>Iterable Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @param value
-     *            the new value of the '<em>Domain Class Expression</em>'
-     *            attribute.
-     * @see #getDomainClassExpression()
+     *            the new value of the '<em>Iterable Expression</em>' attribute.
+     * @see #getIterableExpression()
      * @generated
      */
-    void setDomainClassExpression(String value);
+    void setIterableExpression(String value);
 
     /**
      * Returns the value of the '<em><b>Ifs</b></em>' containment reference
