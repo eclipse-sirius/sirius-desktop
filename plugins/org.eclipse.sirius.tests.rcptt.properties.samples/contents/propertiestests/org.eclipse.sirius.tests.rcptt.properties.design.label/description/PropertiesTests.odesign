@@ -5,6 +5,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:description="http://www.eclipse.org/sirius/description/1.1.0"
     xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0"
+    xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0"
     name="PropertiesTests"
     version="11.0.0.201601261200">
   <ownedViewpoints

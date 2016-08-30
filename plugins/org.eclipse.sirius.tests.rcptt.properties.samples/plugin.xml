@@ -46,6 +46,10 @@
                name="org.eclipse.sirius.tests.rcptt.properties.design.reference">
          </projectDescriptor>
          <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.referenceext/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design.referenceext">
+         </projectDescriptor>
+         <projectDescriptor
                contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.select/"
                name="org.eclipse.sirius.tests.rcptt.properties.design.select">
          </projectDescriptor>
