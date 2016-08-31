@@ -641,6 +641,7 @@ public final class SWTBotUtils {
     public static Menu checkContextualMenus(final Display display, final Control control, List<String> labelsToCheck) {
         final List<String> labelToFind = Lists.newArrayList(labelsToCheck);
         return UIThreadRunnable.syncExec(display, new WidgetResult<Menu>() {
+            @Override
             public Menu run() {
                 checkMenu(control.getMenu());
                 Assert.assertTrue("Some label have not been found :" + labelToFind, labelToFind.isEmpty());
@@ -663,6 +664,56 @@ public final class SWTBotUtils {
                 }
             }
         });
+    }
+
+    /**
+     * Validate that the given label is enabled among contextual menus.
+     * 
+     * @param display
+     *            current {@link Display}
+     * @param control
+     *            the {@link Control} on which the contextual menus are checked
+     * @param label
+     *            the label that should be enabled among contextual menus
+     * @return the parent menu containing the contextual menus
+     * @throws WidgetNotFoundException
+     *             This exception is raised if the label has not been found.
+     */
+    public static boolean isMenuEnabled(final Display display, final Control control, final String label) throws WidgetNotFoundException {
+        // status[0]: if the menu item has been found
+        // status[1]: if the menu item is enabled
+        final boolean[] status = { false, false };
+        UIThreadRunnable.syncExec(display, new WidgetResult<Menu>() {
+            @Override
+            public Menu run() {
+                checkMenu(control.getMenu());
+                return control.getMenu();
+            }
+
+            private void checkMenu(Menu menu) {
+                try {
+                    menu.notifyListeners(SWT.Show, new Event());
+                    for (MenuItem menuItem : menu.getItems()) {
+                        if (label.equals(menuItem.getText())) {
+                            status[0] = true;
+                            status[1] = menuItem.isEnabled();
+                            break;
+                        } else if (menuItem.getMenu() != null) {
+                            checkMenu(menuItem.getMenu());
+                        }
+                    }
+                } finally {
+                    menu.notifyListeners(SWT.Hide, new Event());
+                }
+            }
+        });
+        // if the menu item has been found we return the enable status.
+        if (status[0]) {
+            return status[1];
+        }
+
+        // else we throw the exception.
+        throw new WidgetNotFoundException("The menu item \"" + label + "\" has not been found.");
     }
 
 }

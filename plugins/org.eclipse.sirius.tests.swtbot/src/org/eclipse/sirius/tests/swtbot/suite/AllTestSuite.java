@@ -46,6 +46,7 @@ import org.eclipse.sirius.tests.swtbot.layout.LayoutStabilityOnManualRefreshTest
 import org.eclipse.sirius.tests.swtbot.layout.ModifyEdgeLayoutAfterRefreshTest;
 import org.eclipse.sirius.tests.swtbot.layout.PackageLayoutStabilityOnManyViewsCreationToolTest;
 import org.eclipse.sirius.tests.swtbot.layout.ResetOriginTest;
+import org.eclipse.sirius.tests.swtbot.layout.StraightenToTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ContextualMenuTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.LinkWithEditorFeatureWithModelExplorerViewTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.LockedModelExplorerTest;
@@ -210,6 +211,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(MetamodelPropertyTabTests.class);
         suite.addTestSuite(DiagramPrintTest.class);
         suite.addTestSuite(PinnedElementsTest.class);
+        suite.addTestSuite(StraightenToTest.class);
     }
 
     /**
