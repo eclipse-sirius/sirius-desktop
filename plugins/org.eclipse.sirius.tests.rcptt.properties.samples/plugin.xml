@@ -61,6 +61,10 @@
                contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.instance/"
                name="org.eclipse.sirius.tests.rcptt.properties.instance">
          </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/hyperlink-sample.design/"
+               name="hyperlink-sample.design">
+         </projectDescriptor>
       </example>
    </extension>
    <extension
