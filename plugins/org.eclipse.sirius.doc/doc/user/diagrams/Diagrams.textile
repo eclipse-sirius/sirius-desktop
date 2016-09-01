@@ -141,10 +141,36 @@ The user defines some bend-points:
 The user executes the "Remove Bend-points" action:
 !images/afterRemoveBendpoints.png!
 
+h4(#straighten_an_edge). Straighten an edge
+
+There are four actions to straighten an edge, i.e. to transform an edge to an horizontal, or vertical, straight edge (with only one starting point and one ending point).
+If the edge is connected to a border node, the border node is moved too.
+
+These actions are available on edge contextual menu _Layout/Straighten_: !images/straightenToMenu.png!
+
+Example of initial state of horizontal cases: !images/straightenHorizontalInitialState.png!
+Result after _Straighten to top_ action: !images/straightenToTop.png!
+Result after _Straighten to bottom_ action: !images/straightenToBottom.png!
+Example of initial state of vertical cases: !images/straightenVerticalInitialState.png!
+Result after _Straighten to left_ action: !images/straightenToLeft.png!
+Result after _Straighten to right_ action: !images/straightenToRight.png!
+
+The action can be disabled (grayed menu) in some conditions:
+* The edge is connected to border node and the border node have several incoming and outgoing edges.
+* The action is not possible because it does not respect the source or target node boundaries.
+* The source and the target of the edge are not on the same "axis" (left and right sides, or, top and bottom sides).
+* After the action, the border node (source or target) would be overlapped by another border node.
+** Known limitation: In case of multi-selection, the overlap is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.
+* A straighten action will be disabled if the "edge centering":../../specifier/diagrams/Diagrams.html#edgecentering is activated on an edge.
+* The source or the target of the edge is another edge.
+* The source and the target is the same element.
+
+The action is available (menu is displayed) if the selection contains only edges (note and text attachments are not considered as edges).
+
 h4(#move_edge_group). Move edge group
 
 In specific cases, we can find edges connected to border nodes. For example in a diagram representing data flows, exchanges are connected to port in and port out. When the user wants to move an exchange on a layouted diagram, he has to move the source port, then the target port and possibly move some bendpoints of the edge.
-This feature aims to move the group {edge, labels, ports} in a single “drag like” operation when using the F3 shortcut and drag/move the edge. The F3 key has no effect if you attempt a reconnect by moving the first or last edge end.
+This feature aims to move the group {edge, labels, ports} in a single â€œdrag likeâ€� operation when using the F3 shortcut and drag/move the edge. The F3 key has no effect if you attempt a reconnect by moving the first or last edge end.
 
 Example when activating the tool and moving the second edge toward the top:
 !images/moveEdgeGroup1.png!
@@ -642,7 +668,7 @@ h3(#quick_outline). Quick Outline
 
 A quick outline is available with the shortcut @Ctrl@ + @O@. This allows you to rapidly search text in the displayed name or the contained String attributes of your diagram elements elements.
 
-The star, @*@, is a joker character, allowing you to search with more complicated patterns. Regarding this, an element is found if there is a word in its name or one of its attributes that match with the text in the filter, so if you want to search within words too, add @*@ at the start of your pattern. Also, you can navigate along the matching elements with @↑@ and @↓@, and go to the selected element in your editor with @Enter@.
+The star, @*@, is a joker character, allowing you to search with more complicated patterns. Regarding this, an element is found if there is a word in its name or one of its attributes that match with the text in the filter, so if you want to search within words too, add @*@ at the start of your pattern. Also, you can navigate along the matching elements with @â†‘@ and @â†“@, and go to the selected element in your editor with @Enter@.
 
 h3(#styleCustomizations). Style customizations 
 

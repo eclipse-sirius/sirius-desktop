@@ -307,9 +307,51 @@
 			<br/>
 			<img border="0" src="images/afterRemoveBendpoints.png"/>
 		</p>
+		<h4 id="straighten_an_edge">Straighten an edge</h4>
+		<p>There are four actions to straighten an edge, i.e. to transform an edge to an horizontal, or vertical, straight edge (with only one starting point and one ending point).
+			<br/>If the edge is connected to a border node, the border node is moved too.
+		</p>
+		<p>These actions are available on edge contextual menu 
+			<em>Layout/Straighten</em>: 
+			<img border="0" src="images/straightenToMenu.png"/>
+		</p>
+		<p>Example of initial state of horizontal cases: 
+			<img border="0" src="images/straightenHorizontalInitialState.png"/>
+			<br/>Result after 
+			<em>Straighten to top</em> action: 
+			<img border="0" src="images/straightenToTop.png"/>
+			<br/>Result after 
+			<em>Straighten to bottom</em> action: 
+			<img border="0" src="images/straightenToBottom.png"/>
+			<br/>Example of initial state of vertical cases: 
+			<img border="0" src="images/straightenVerticalInitialState.png"/>
+			<br/>Result after 
+			<em>Straighten to left</em> action: 
+			<img border="0" src="images/straightenToLeft.png"/>
+			<br/>Result after 
+			<em>Straighten to right</em> action: 
+			<img border="0" src="images/straightenToRight.png"/>
+		</p>
+		<p>The action can be disabled (grayed menu) in some conditions:</p>
+		<ul>
+			<li>The edge is connected to border node and the border node have several incoming and outgoing edges.</li>
+			<li>The action is not possible because it does not respect the source or target node boundaries.</li>
+			<li>The source and the target of the edge are not on the same &#8220;axis&#8221; (left and right sides, or, top and bottom sides).</li>
+			<li>After the action, the border node (source or target) would be overlapped by another border node.
+				<ul>
+					<li>Known limitation: In case of multi-selection, the overlap is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.</li>
+				</ul>
+			</li>
+			<li>A straighten action will be disabled if the 
+				<a href="../../specifier/diagrams/Diagrams.html#edgecentering">edge centering</a> is activated on an edge.
+			</li>
+			<li>The source or the target of the edge is another edge.</li>
+			<li>The source and the target is the same element.</li>
+		</ul>
+		<p>The action is available (menu is displayed) if the selection contains only edges (note and text attachments are not considered as edges).</p>
 		<h4 id="move_edge_group">Move edge group</h4>
 		<p>In specific cases, we can find edges connected to border nodes. For example in a diagram representing data flows, exchanges are connected to port in and port out. When the user wants to move an exchange on a layouted diagram, he has to move the source port, then the target port and possibly move some bendpoints of the edge.
-			<br/>This feature aims to move the group {edge, labels, ports} in a single “drag like” operation when using the F3 shortcut and drag/move the edge. The F3 key has no effect if you attempt a reconnect by moving the first or last edge end.
+			<br/>This feature aims to move the group {edge, labels, ports} in a single â€œdrag likeâ€� operation when using the F3 shortcut and drag/move the edge. The F3 key has no effect if you attempt a reconnect by moving the first or last edge end.
 		</p>
 		<p>Example when activating the tool and moving the second edge toward the top:
 			<br/>
@@ -951,8 +993,8 @@
 		<p>The star, 
 			<code>*</code>, is a joker character, allowing you to search with more complicated patterns. Regarding this, an element is found if there is a word in its name or one of its attributes that match with the text in the filter, so if you want to search within words too, add 
 			<code>*</code> at the start of your pattern. Also, you can navigate along the matching elements with 
-			<code>↑</code> and 
-			<code>↓</code>, and go to the selected element in your editor with 
+			<code>â†‘</code> and 
+			<code>â†“</code>, and go to the selected element in your editor with 
 			<code>Enter</code>.
 		</p>
 		<h3 id="styleCustomizations">Style customizations </h3>
