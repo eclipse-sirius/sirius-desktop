@@ -116,7 +116,7 @@ For groups you can define the following style attributes:
 * _Bar style_ : Is used to define the section style. It exists 3 different styles : @TITLE BAR@, @SHORT TITLE BAR@, @NO TITLE@ (see the first table below for illusrations of these styles).
 * _Expanded by default_: This flag is used to define if the section should be expanded or collapsed.
 * _Font name expression_: Is used to computes the name of the font to use.
-* _Font size_: Indicates the font size to use in points.
+* _Font size Expression_: Indicates the font size to use in points.
 * _Foreground color_: You can specify the foreground color using "color":#colors sub-elements.
 * _Toggle style_: Is used to define the style of the toggle. It exists 3 different toggles : @TWISTIE@, @TREE NODE@, @NONE@ (see the second table below for illusrations of these styles).
 
@@ -172,7 +172,7 @@ See the "styles":#styling section for a general presentation of how styles are d
 
 One of the responsibility of texts styles is to describe how text fields will be formated. The following properties are available :
 * _Font Name Expression_: Is used to compute the name of the font to use for the text field.
-* _Font Size_ : Indicates the font size to use in points.
+* _Font Size Expression_ : Indicates the font size to use in points.
 * _Background Color_: You can specify the background color of the text field using "color":#colors sub-elements.
 * _Foreground Color_: You can specify the foreground color of the text field using "color":#colors sub-elements.
 * _Font Format_: Is used to specify the font style attributes (Bold and/or Italic and/or Underline and/or Strike through).
@@ -217,7 +217,7 @@ See the "styles":#styling section for a general presentation of how styles are d
 
 One of the responsibility of labels styles is to describe how descriptions will be formated. The following properties are available :
 * _Font Name Expression_: Is used to compute the name of the font to use for the description.
-* _Font Size_ : Indicates the font size to use in points.
+* _Font Size Expression_ : Indicates the font size to use in points.
 * _Background Color_: You can specify the background color of the description using "color":#colors sub-elements.
 * _Foreground Color_: You can specify the foreground color of the description using "color":#colors sub-elements.
 * _Font Format_: Is used to specify the font style attributes (Bold and/or Italic and/or Underline and/or Strike through).
@@ -310,7 +310,7 @@ See the "styles":#styling section for a general presentation of how styles are d
 
 One of the responsibility of hyperlinks styles is to describe how hyperlinks will be formated. The following properties are available :
 * _Font Name Expression_: Is used to compute the name of the font to use for the text field.
-* _Font Size_ : Indicates the font size to use in points.
+* _Font Size Expression_ : Indicates the font size to use in points.
 * _Background Color_: You can specify the background color of the text field using "color":#colors sub-elements.
 * _Font Format_: Is used to specify the font style attributes (Bold and/or Italic and/or Strike through).
 
@@ -419,7 +419,7 @@ h3(#widgets_styles). Widgets styles
 
 One of the responsibility of widgets styles is to describe how labels will be formated. The following properties are available :
 * _Label Font Name Expression_: Is used to compute the name of the font to use for the label.
-* _Label Font Size_ : Indicates the font size to use in points.
+* _Label Font Size Expression_ : Indicates the font size to use in points.
 * _Label Background Color_: You can specify the background color of the label using "color":#colors sub-elements.
 * _Label Foreground Color_: You can specify the foreground color of the label using "color":#colors sub-elements.
 * _Label Font Format_: Is used to specify the font style attributes (Bold and/or Italic and/or Underline and/or Strike through).

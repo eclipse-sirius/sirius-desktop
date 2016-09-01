@@ -56,7 +56,7 @@ public class GroupStyleDescriptionConverter extends AbstractDescriptionConverter
                 }
             }
             eefGroupStyle.setFontNameExpression(groupStyle.getFontNameExpression());
-            eefGroupStyle.setFontSizeExpression(Integer.toString(groupStyle.getFontSize()));
+            eefGroupStyle.setFontSizeExpression(groupStyle.getFontSizeExpression());
             eefGroupStyle.setBarStyle(EEF_TITLE_BAR_STYLE.get(groupStyle.getBarStyle().getValue()));
             eefGroupStyle.setToggleStyle(EEF_TOGGLE_STYLE.get(groupStyle.getToggleStyle().getValue()));
             eefGroupStyle.setExpandedByDefault(groupStyle.isExpandedByDefault());

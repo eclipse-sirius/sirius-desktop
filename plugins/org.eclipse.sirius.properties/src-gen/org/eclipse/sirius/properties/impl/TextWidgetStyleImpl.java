@@ -34,8 +34,9 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <li>
  * {@link org.eclipse.sirius.properties.impl.TextWidgetStyleImpl#getFontNameExpression
  * <em>Font Name Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.TextWidgetStyleImpl#getFontSize
- * <em>Font Size</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.TextWidgetStyleImpl#getFontSizeExpression
+ * <em>Font Size Expression</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.TextWidgetStyleImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
@@ -73,24 +74,26 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
     protected String fontNameExpression = TextWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFontSize() <em>Font Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFontSizeExpression()
+     * <em>Font Size Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @see #getFontSize()
+     * @see #getFontSizeExpression()
      * @generated
      * @ordered
      */
-    protected static final int FONT_SIZE_EDEFAULT = 0;
+    protected static final String FONT_SIZE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFontSize() <em>Font Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFontSizeExpression()
+     * <em>Font Size Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @see #getFontSize()
+     * @see #getFontSizeExpression()
      * @generated
      * @ordered
      */
-    protected int fontSize = TextWidgetStyleImpl.FONT_SIZE_EDEFAULT;
+    protected String fontSizeExpression = TextWidgetStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
@@ -173,8 +176,8 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
      * @generated
      */
     @Override
-    public int getFontSize() {
-        return fontSize;
+    public String getFontSizeExpression() {
+        return fontSizeExpression;
     }
 
     /**
@@ -183,11 +186,11 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
      * @generated
      */
     @Override
-    public void setFontSize(int newFontSize) {
-        int oldFontSize = fontSize;
-        fontSize = newFontSize;
+    public void setFontSizeExpression(String newFontSizeExpression) {
+        String oldFontSizeExpression = fontSizeExpression;
+        fontSizeExpression = newFontSizeExpression;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE, oldFontSize, fontSize));
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE_EXPRESSION, oldFontSizeExpression, fontSizeExpression));
         }
     }
 
@@ -298,8 +301,8 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
         switch (featureID) {
         case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             return getFontNameExpression();
-        case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE:
-            return getFontSize();
+        case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE_EXPRESSION:
+            return getFontSizeExpression();
         case PropertiesPackage.TEXT_WIDGET_STYLE__BACKGROUND_COLOR:
             if (resolve) {
                 return getBackgroundColor();
@@ -328,8 +331,8 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
         case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             setFontNameExpression((String) newValue);
             return;
-        case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE:
-            setFontSize((Integer) newValue);
+        case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE_EXPRESSION:
+            setFontSizeExpression((String) newValue);
             return;
         case PropertiesPackage.TEXT_WIDGET_STYLE__BACKGROUND_COLOR:
             setBackgroundColor((ColorDescription) newValue);
@@ -356,8 +359,8 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
         case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             setFontNameExpression(TextWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT);
             return;
-        case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE:
-            setFontSize(TextWidgetStyleImpl.FONT_SIZE_EDEFAULT);
+        case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE_EXPRESSION:
+            setFontSizeExpression(TextWidgetStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.TEXT_WIDGET_STYLE__BACKGROUND_COLOR:
             setBackgroundColor((ColorDescription) null);
@@ -382,8 +385,8 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
         switch (featureID) {
         case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             return TextWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT == null ? fontNameExpression != null : !TextWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT.equals(fontNameExpression);
-        case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE:
-            return fontSize != TextWidgetStyleImpl.FONT_SIZE_EDEFAULT;
+        case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE_EXPRESSION:
+            return TextWidgetStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT == null ? fontSizeExpression != null : !TextWidgetStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT.equals(fontSizeExpression);
         case PropertiesPackage.TEXT_WIDGET_STYLE__BACKGROUND_COLOR:
             return backgroundColor != null;
         case PropertiesPackage.TEXT_WIDGET_STYLE__FOREGROUND_COLOR:
@@ -408,8 +411,8 @@ public class TextWidgetStyleImpl extends WidgetStyleImpl implements TextWidgetSt
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (fontNameExpression: "); //$NON-NLS-1$
         result.append(fontNameExpression);
-        result.append(", fontSize: "); //$NON-NLS-1$
-        result.append(fontSize);
+        result.append(", fontSizeExpression: "); //$NON-NLS-1$
+        result.append(fontSizeExpression);
         result.append(", fontFormat: "); //$NON-NLS-1$
         result.append(fontFormat);
         result.append(')');

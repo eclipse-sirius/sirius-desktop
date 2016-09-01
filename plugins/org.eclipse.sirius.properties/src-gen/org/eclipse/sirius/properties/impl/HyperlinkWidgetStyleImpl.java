@@ -35,8 +35,8 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontNameExpression
  * <em>Font Name Expression</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontSize
- * <em>Font Size</em>}</li>
+ * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontSizeExpression
+ * <em>Font Size Expression</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
@@ -71,24 +71,26 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
     protected String fontNameExpression = HyperlinkWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFontSize() <em>Font Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFontSizeExpression()
+     * <em>Font Size Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @see #getFontSize()
+     * @see #getFontSizeExpression()
      * @generated
      * @ordered
      */
-    protected static final int FONT_SIZE_EDEFAULT = 0;
+    protected static final String FONT_SIZE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFontSize() <em>Font Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFontSizeExpression()
+     * <em>Font Size Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @see #getFontSize()
+     * @see #getFontSizeExpression()
      * @generated
      * @ordered
      */
-    protected int fontSize = HyperlinkWidgetStyleImpl.FONT_SIZE_EDEFAULT;
+    protected String fontSizeExpression = HyperlinkWidgetStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
@@ -160,8 +162,8 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
      * @generated
      */
     @Override
-    public int getFontSize() {
-        return fontSize;
+    public String getFontSizeExpression() {
+        return fontSizeExpression;
     }
 
     /**
@@ -170,11 +172,11 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
      * @generated
      */
     @Override
-    public void setFontSize(int newFontSize) {
-        int oldFontSize = fontSize;
-        fontSize = newFontSize;
+    public void setFontSizeExpression(String newFontSizeExpression) {
+        String oldFontSizeExpression = fontSizeExpression;
+        fontSizeExpression = newFontSizeExpression;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_SIZE, oldFontSize, fontSize));
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_SIZE_EXPRESSION, oldFontSizeExpression, fontSizeExpression));
         }
     }
 
@@ -243,8 +245,8 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
         switch (featureID) {
         case PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             return getFontNameExpression();
-        case PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_SIZE:
-            return getFontSize();
+        case PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_SIZE_EXPRESSION:
+            return getFontSizeExpression();
         case PropertiesPackage.HYPERLINK_WIDGET_STYLE__BACKGROUND_COLOR:
             if (resolve) {
                 return getBackgroundColor();
@@ -268,8 +270,8 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
         case PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             setFontNameExpression((String) newValue);
             return;
-        case PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_SIZE:
-            setFontSize((Integer) newValue);
+        case PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_SIZE_EXPRESSION:
+            setFontSizeExpression((String) newValue);
             return;
         case PropertiesPackage.HYPERLINK_WIDGET_STYLE__BACKGROUND_COLOR:
             setBackgroundColor((ColorDescription) newValue);
@@ -293,8 +295,8 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
         case PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             setFontNameExpression(HyperlinkWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT);
             return;
-        case PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_SIZE:
-            setFontSize(HyperlinkWidgetStyleImpl.FONT_SIZE_EDEFAULT);
+        case PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_SIZE_EXPRESSION:
+            setFontSizeExpression(HyperlinkWidgetStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.HYPERLINK_WIDGET_STYLE__BACKGROUND_COLOR:
             setBackgroundColor((ColorDescription) null);
@@ -316,8 +318,8 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
         switch (featureID) {
         case PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             return HyperlinkWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT == null ? fontNameExpression != null : !HyperlinkWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT.equals(fontNameExpression);
-        case PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_SIZE:
-            return fontSize != HyperlinkWidgetStyleImpl.FONT_SIZE_EDEFAULT;
+        case PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_SIZE_EXPRESSION:
+            return HyperlinkWidgetStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT == null ? fontSizeExpression != null : !HyperlinkWidgetStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT.equals(fontSizeExpression);
         case PropertiesPackage.HYPERLINK_WIDGET_STYLE__BACKGROUND_COLOR:
             return backgroundColor != null;
         case PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_FORMAT:
@@ -340,8 +342,8 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (fontNameExpression: "); //$NON-NLS-1$
         result.append(fontNameExpression);
-        result.append(", fontSize: "); //$NON-NLS-1$
-        result.append(fontSize);
+        result.append(", fontSizeExpression: "); //$NON-NLS-1$
+        result.append(fontSizeExpression);
         result.append(", fontFormat: "); //$NON-NLS-1$
         result.append(fontFormat);
         result.append(')');

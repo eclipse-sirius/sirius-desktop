@@ -38,8 +38,9 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <li>
  * {@link org.eclipse.sirius.properties.impl.GroupStyleImpl#getFontNameExpression
  * <em>Font Name Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.GroupStyleImpl#getFontSize
- * <em>Font Size</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.GroupStyleImpl#getFontSizeExpression
+ * <em>Font Size Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.GroupStyleImpl#getBarStyle
  * <em>Bar Style</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.GroupStyleImpl#getToggleStyle
@@ -97,24 +98,26 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
     protected String fontNameExpression = GroupStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFontSize() <em>Font Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFontSizeExpression()
+     * <em>Font Size Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @see #getFontSize()
+     * @see #getFontSizeExpression()
      * @generated
      * @ordered
      */
-    protected static final int FONT_SIZE_EDEFAULT = 0;
+    protected static final String FONT_SIZE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFontSize() <em>Font Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFontSizeExpression()
+     * <em>Font Size Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @see #getFontSize()
+     * @see #getFontSizeExpression()
      * @generated
      * @ordered
      */
-    protected int fontSize = GroupStyleImpl.FONT_SIZE_EDEFAULT;
+    protected String fontSizeExpression = GroupStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getBarStyle() <em>Bar Style</em>}'
@@ -311,8 +314,8 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
      * @generated
      */
     @Override
-    public int getFontSize() {
-        return fontSize;
+    public String getFontSizeExpression() {
+        return fontSizeExpression;
     }
 
     /**
@@ -321,11 +324,11 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
      * @generated
      */
     @Override
-    public void setFontSize(int newFontSize) {
-        int oldFontSize = fontSize;
-        fontSize = newFontSize;
+    public void setFontSizeExpression(String newFontSizeExpression) {
+        String oldFontSizeExpression = fontSizeExpression;
+        fontSizeExpression = newFontSizeExpression;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.GROUP_STYLE__FONT_SIZE, oldFontSize, fontSize));
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.GROUP_STYLE__FONT_SIZE_EXPRESSION, oldFontSizeExpression, fontSizeExpression));
         }
     }
 
@@ -421,8 +424,8 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
             return basicGetForegroundColor();
         case PropertiesPackage.GROUP_STYLE__FONT_NAME_EXPRESSION:
             return getFontNameExpression();
-        case PropertiesPackage.GROUP_STYLE__FONT_SIZE:
-            return getFontSize();
+        case PropertiesPackage.GROUP_STYLE__FONT_SIZE_EXPRESSION:
+            return getFontSizeExpression();
         case PropertiesPackage.GROUP_STYLE__BAR_STYLE:
             return getBarStyle();
         case PropertiesPackage.GROUP_STYLE__TOGGLE_STYLE:
@@ -450,8 +453,8 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
         case PropertiesPackage.GROUP_STYLE__FONT_NAME_EXPRESSION:
             setFontNameExpression((String) newValue);
             return;
-        case PropertiesPackage.GROUP_STYLE__FONT_SIZE:
-            setFontSize((Integer) newValue);
+        case PropertiesPackage.GROUP_STYLE__FONT_SIZE_EXPRESSION:
+            setFontSizeExpression((String) newValue);
             return;
         case PropertiesPackage.GROUP_STYLE__BAR_STYLE:
             setBarStyle((TitleBarStyle) newValue);
@@ -483,8 +486,8 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
         case PropertiesPackage.GROUP_STYLE__FONT_NAME_EXPRESSION:
             setFontNameExpression(GroupStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT);
             return;
-        case PropertiesPackage.GROUP_STYLE__FONT_SIZE:
-            setFontSize(GroupStyleImpl.FONT_SIZE_EDEFAULT);
+        case PropertiesPackage.GROUP_STYLE__FONT_SIZE_EXPRESSION:
+            setFontSizeExpression(GroupStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.GROUP_STYLE__BAR_STYLE:
             setBarStyle(GroupStyleImpl.BAR_STYLE_EDEFAULT);
@@ -513,8 +516,8 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
             return foregroundColor != null;
         case PropertiesPackage.GROUP_STYLE__FONT_NAME_EXPRESSION:
             return GroupStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT == null ? fontNameExpression != null : !GroupStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT.equals(fontNameExpression);
-        case PropertiesPackage.GROUP_STYLE__FONT_SIZE:
-            return fontSize != GroupStyleImpl.FONT_SIZE_EDEFAULT;
+        case PropertiesPackage.GROUP_STYLE__FONT_SIZE_EXPRESSION:
+            return GroupStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT == null ? fontSizeExpression != null : !GroupStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT.equals(fontSizeExpression);
         case PropertiesPackage.GROUP_STYLE__BAR_STYLE:
             return barStyle != GroupStyleImpl.BAR_STYLE_EDEFAULT;
         case PropertiesPackage.GROUP_STYLE__TOGGLE_STYLE:
@@ -539,8 +542,8 @@ public class GroupStyleImpl extends MinimalEObjectImpl.Container implements Grou
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (fontNameExpression: "); //$NON-NLS-1$
         result.append(fontNameExpression);
-        result.append(", fontSize: "); //$NON-NLS-1$
-        result.append(fontSize);
+        result.append(", fontSizeExpression: "); //$NON-NLS-1$
+        result.append(fontSizeExpression);
         result.append(", barStyle: "); //$NON-NLS-1$
         result.append(barStyle);
         result.append(", toggleStyle: "); //$NON-NLS-1$

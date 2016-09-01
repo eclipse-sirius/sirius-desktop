@@ -36,8 +36,8 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.properties.impl.WidgetStyleImpl#getLabelFontNameExpression
  * <em>Label Font Name Expression</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.WidgetStyleImpl#getLabelFontSize
- * <em>Label Font Size</em>}</li>
+ * {@link org.eclipse.sirius.properties.impl.WidgetStyleImpl#getLabelFontSizeExpression
+ * <em>Label Font Size Expression</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.WidgetStyleImpl#getLabelBackgroundColor
  * <em>Label Background Color</em>}</li>
@@ -75,26 +75,26 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
     protected String labelFontNameExpression = WidgetStyleImpl.LABEL_FONT_NAME_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelFontSize()
-     * <em>Label Font Size</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getLabelFontSizeExpression()
+     * <em>Label Font Size Expression</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
-     * @see #getLabelFontSize()
+     * @see #getLabelFontSizeExpression()
      * @generated
      * @ordered
      */
-    protected static final int LABEL_FONT_SIZE_EDEFAULT = 0;
+    protected static final String LABEL_FONT_SIZE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getLabelFontSize()
-     * <em>Label Font Size</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getLabelFontSizeExpression()
+     * <em>Label Font Size Expression</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
-     * @see #getLabelFontSize()
+     * @see #getLabelFontSizeExpression()
      * @generated
      * @ordered
      */
-    protected int labelFontSize = WidgetStyleImpl.LABEL_FONT_SIZE_EDEFAULT;
+    protected String labelFontSizeExpression = WidgetStyleImpl.LABEL_FONT_SIZE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getLabelBackgroundColor()
@@ -178,8 +178,8 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
      * @generated
      */
     @Override
-    public int getLabelFontSize() {
-        return labelFontSize;
+    public String getLabelFontSizeExpression() {
+        return labelFontSizeExpression;
     }
 
     /**
@@ -188,11 +188,11 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
      * @generated
      */
     @Override
-    public void setLabelFontSize(int newLabelFontSize) {
-        int oldLabelFontSize = labelFontSize;
-        labelFontSize = newLabelFontSize;
+    public void setLabelFontSizeExpression(String newLabelFontSizeExpression) {
+        String oldLabelFontSizeExpression = labelFontSizeExpression;
+        labelFontSizeExpression = newLabelFontSizeExpression;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE, oldLabelFontSize, labelFontSize));
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION, oldLabelFontSizeExpression, labelFontSizeExpression));
         }
     }
 
@@ -303,8 +303,8 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
         switch (featureID) {
         case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION:
             return getLabelFontNameExpression();
-        case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE:
-            return getLabelFontSize();
+        case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION:
+            return getLabelFontSizeExpression();
         case PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR:
             if (resolve) {
                 return getLabelBackgroundColor();
@@ -333,8 +333,8 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
         case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION:
             setLabelFontNameExpression((String) newValue);
             return;
-        case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE:
-            setLabelFontSize((Integer) newValue);
+        case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION:
+            setLabelFontSizeExpression((String) newValue);
             return;
         case PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR:
             setLabelBackgroundColor((ColorDescription) newValue);
@@ -361,8 +361,8 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
         case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION:
             setLabelFontNameExpression(WidgetStyleImpl.LABEL_FONT_NAME_EXPRESSION_EDEFAULT);
             return;
-        case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE:
-            setLabelFontSize(WidgetStyleImpl.LABEL_FONT_SIZE_EDEFAULT);
+        case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION:
+            setLabelFontSizeExpression(WidgetStyleImpl.LABEL_FONT_SIZE_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR:
             setLabelBackgroundColor((ColorDescription) null);
@@ -387,8 +387,8 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
         switch (featureID) {
         case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION:
             return WidgetStyleImpl.LABEL_FONT_NAME_EXPRESSION_EDEFAULT == null ? labelFontNameExpression != null : !WidgetStyleImpl.LABEL_FONT_NAME_EXPRESSION_EDEFAULT.equals(labelFontNameExpression);
-        case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE:
-            return labelFontSize != WidgetStyleImpl.LABEL_FONT_SIZE_EDEFAULT;
+        case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION:
+            return WidgetStyleImpl.LABEL_FONT_SIZE_EXPRESSION_EDEFAULT == null ? labelFontSizeExpression != null : !WidgetStyleImpl.LABEL_FONT_SIZE_EXPRESSION_EDEFAULT.equals(labelFontSizeExpression);
         case PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR:
             return labelBackgroundColor != null;
         case PropertiesPackage.WIDGET_STYLE__LABEL_FOREGROUND_COLOR:
@@ -413,8 +413,8 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (labelFontNameExpression: "); //$NON-NLS-1$
         result.append(labelFontNameExpression);
-        result.append(", labelFontSize: "); //$NON-NLS-1$
-        result.append(labelFontSize);
+        result.append(", labelFontSizeExpression: "); //$NON-NLS-1$
+        result.append(labelFontSizeExpression);
         result.append(", labelFontFormat: "); //$NON-NLS-1$
         result.append(labelFontFormat);
         result.append(')');

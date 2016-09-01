@@ -64,7 +64,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
             addBackgroundColorPropertyDescriptor(object);
             addForegroundColorPropertyDescriptor(object);
             addFontNameExpressionPropertyDescriptor(object);
-            addFontSizePropertyDescriptor(object);
+            addFontSizeExpressionPropertyDescriptor(object);
             addBarStylePropertyDescriptor(object);
             addToggleStylePropertyDescriptor(object);
             addExpandedByDefaultPropertyDescriptor(object);
@@ -112,16 +112,16 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Font Size feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Font Size Expression feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addFontSizePropertyDescriptor(Object object) {
+    protected void addFontSizeExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_fontSize_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_fontSize_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        PropertiesPackage.Literals.GROUP_STYLE__FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_fontSizeExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_fontSizeExpression_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__FONT_SIZE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -201,7 +201,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
 
         switch (notification.getFeatureID(GroupStyle.class)) {
         case PropertiesPackage.GROUP_STYLE__FONT_NAME_EXPRESSION:
-        case PropertiesPackage.GROUP_STYLE__FONT_SIZE:
+        case PropertiesPackage.GROUP_STYLE__FONT_SIZE_EXPRESSION:
         case PropertiesPackage.GROUP_STYLE__BAR_STYLE:
         case PropertiesPackage.GROUP_STYLE__TOGGLE_STYLE:
         case PropertiesPackage.GROUP_STYLE__EXPANDED_BY_DEFAULT:

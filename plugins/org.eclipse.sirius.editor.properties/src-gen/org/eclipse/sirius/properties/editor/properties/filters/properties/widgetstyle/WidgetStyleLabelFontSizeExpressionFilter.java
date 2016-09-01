@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkwidgetstyle;
+package org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle;
 
 // Start of user code specific imports
 
@@ -18,16 +18,16 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 // End of user code specific imports
 
 /**
- * A filter for the fontSize property section.
+ * A filter for the labelFontSizeExpression property section.
  */
-public class HyperlinkWidgetStyleFontSizeFilter extends ViewpointPropertyFilter {
+public class WidgetStyleLabelFontSizeExpressionFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_FontSize();
+        return PropertiesPackage.eINSTANCE.getWidgetStyle_LabelFontSizeExpression();
     }
 
     /**
@@ -35,7 +35,7 @@ public class HyperlinkWidgetStyleFontSizeFilter extends ViewpointPropertyFilter 
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.properties.HyperlinkWidgetStyle;
+        return arg0 instanceof org.eclipse.sirius.properties.WidgetStyle;
     }
 
     // Start of user code user methods

@@ -173,21 +173,21 @@
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//WidgetStyle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetStyle/labelFontNameExpression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetStyle/labelFontSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetStyle/labelFontSizeExpression"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//WidgetStyle/labelBackgroundColor"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//WidgetStyle/labelForegroundColor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetStyle/labelFontFormat"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//TextWidgetStyle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextWidgetStyle/fontNameExpression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextWidgetStyle/fontSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextWidgetStyle/fontSizeExpression"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//TextWidgetStyle/backgroundColor"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//TextWidgetStyle/foregroundColor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextWidgetStyle/fontFormat"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//LabelWidgetStyle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelWidgetStyle/fontNameExpression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelWidgetStyle/fontSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelWidgetStyle/fontSizeExpression"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//LabelWidgetStyle/backgroundColor"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//LabelWidgetStyle/foregroundColor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelWidgetStyle/fontFormat"/>
@@ -200,7 +200,7 @@
     <genClasses ecoreClass="properties.ecore#//ReferenceWidgetStyle"/>
     <genClasses ecoreClass="properties.ecore#//HyperlinkWidgetStyle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//HyperlinkWidgetStyle/fontNameExpression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//HyperlinkWidgetStyle/fontSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//HyperlinkWidgetStyle/fontSizeExpression"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//HyperlinkWidgetStyle/backgroundColor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//HyperlinkWidgetStyle/fontFormat"/>
     </genClasses>
@@ -208,7 +208,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//GroupStyle/backgroundColor"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//GroupStyle/foregroundColor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupStyle/fontNameExpression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupStyle/fontSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupStyle/fontSizeExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupStyle/barStyle"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupStyle/toggleStyle"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupStyle/expandedByDefault"/>

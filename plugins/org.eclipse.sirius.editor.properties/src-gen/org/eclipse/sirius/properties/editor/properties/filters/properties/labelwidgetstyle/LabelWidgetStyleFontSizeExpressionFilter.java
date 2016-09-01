@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle;
+package org.eclipse.sirius.properties.editor.properties.filters.properties.labelwidgetstyle;
 
 // Start of user code specific imports
 
@@ -18,16 +18,16 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 // End of user code specific imports
 
 /**
- * A filter for the labelFontSize property section.
+ * A filter for the fontSizeExpression property section.
  */
-public class WidgetStyleLabelFontSizeFilter extends ViewpointPropertyFilter {
+public class LabelWidgetStyleFontSizeExpressionFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getWidgetStyle_LabelFontSize();
+        return PropertiesPackage.eINSTANCE.getLabelWidgetStyle_FontSizeExpression();
     }
 
     /**
@@ -35,7 +35,7 @@ public class WidgetStyleLabelFontSizeFilter extends ViewpointPropertyFilter {
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.properties.WidgetStyle;
+        return arg0 instanceof org.eclipse.sirius.properties.LabelWidgetStyle;
     }
 
     // Start of user code user methods

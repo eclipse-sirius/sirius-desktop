@@ -27,8 +27,9 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <li>
  * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontNameExpression
  * <em>Label Font Name Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontSize
- * <em>Label Font Size</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontSizeExpression
+ * <em>Label Font Size Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.WidgetStyle#getLabelBackgroundColor
  * <em>Label Background Color</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.WidgetStyle#getLabelForegroundColor
@@ -75,34 +76,36 @@ public interface WidgetStyle extends EObject {
     void setLabelFontNameExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Label Font Size</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Label Font Size Expression</b></em>'
+     * attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Label Font Size</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Label Font Size Expression</em>' attribute
+     * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Label Font Size</em>' attribute.
-     * @see #setLabelFontSize(int)
-     * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetStyle_LabelFontSize()
-     * @model
+     * @return the value of the '<em>Label Font Size Expression</em>' attribute.
+     * @see #setLabelFontSizeExpression(String)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetStyle_LabelFontSizeExpression()
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      * @generated
      */
-    int getLabelFontSize();
+    String getLabelFontSizeExpression();
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontSize
-     * <em>Label Font Size</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontSizeExpression
+     * <em>Label Font Size Expression</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @param value
-     *            the new value of the '<em>Label Font Size</em>' attribute.
-     * @see #getLabelFontSize()
+     *            the new value of the '<em>Label Font Size Expression</em>'
+     *            attribute.
+     * @see #getLabelFontSizeExpression()
      * @generated
      */
-    void setLabelFontSize(int value);
+    void setLabelFontSizeExpression(String value);
 
     /**
      * Returns the value of the '<em><b>Label Background Color</b></em>'

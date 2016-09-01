@@ -1955,13 +1955,13 @@ public interface PropertiesPackage extends EPackage {
     int WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = 0;
 
     /**
-     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Label Font Size Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int WIDGET_STYLE__LABEL_FONT_SIZE = 1;
+    int WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION = 1;
 
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
@@ -2021,13 +2021,13 @@ public interface PropertiesPackage extends EPackage {
     int TEXT_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Label Font Size Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int TEXT_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+    int TEXT_WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
@@ -2066,13 +2066,13 @@ public interface PropertiesPackage extends EPackage {
     int TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Font Size Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int TEXT_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 1;
+    int TEXT_WIDGET_STYLE__FONT_SIZE_EXPRESSION = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
@@ -2132,13 +2132,13 @@ public interface PropertiesPackage extends EPackage {
     int LABEL_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Label Font Size Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int LABEL_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+    int LABEL_WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
@@ -2177,13 +2177,13 @@ public interface PropertiesPackage extends EPackage {
     int LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Font Size Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int LABEL_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 1;
+    int LABEL_WIDGET_STYLE__FONT_SIZE_EXPRESSION = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
@@ -2243,13 +2243,13 @@ public interface PropertiesPackage extends EPackage {
     int CHECKBOX_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Label Font Size Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int CHECKBOX_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+    int CHECKBOX_WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
@@ -2309,13 +2309,13 @@ public interface PropertiesPackage extends EPackage {
     int RADIO_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Label Font Size Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int RADIO_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+    int RADIO_WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
@@ -2375,13 +2375,13 @@ public interface PropertiesPackage extends EPackage {
     int BUTTON_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Label Font Size Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int BUTTON_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+    int BUTTON_WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
@@ -2441,13 +2441,13 @@ public interface PropertiesPackage extends EPackage {
     int SELECT_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Label Font Size Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int SELECT_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+    int SELECT_WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
@@ -2507,13 +2507,13 @@ public interface PropertiesPackage extends EPackage {
     int CUSTOM_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Label Font Size Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int CUSTOM_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+    int CUSTOM_WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
@@ -2693,13 +2693,13 @@ public interface PropertiesPackage extends EPackage {
     int REFERENCE_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Label Font Size Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int REFERENCE_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+    int REFERENCE_WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
@@ -2759,13 +2759,13 @@ public interface PropertiesPackage extends EPackage {
     int HYPERLINK_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Label Font Size Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int HYPERLINK_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+    int HYPERLINK_WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
@@ -2804,13 +2804,13 @@ public interface PropertiesPackage extends EPackage {
     int HYPERLINK_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Font Size Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int HYPERLINK_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 1;
+    int HYPERLINK_WIDGET_STYLE__FONT_SIZE_EXPRESSION = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
@@ -2879,13 +2879,13 @@ public interface PropertiesPackage extends EPackage {
     int GROUP_STYLE__FONT_NAME_EXPRESSION = 2;
 
     /**
-     * The feature id for the '<em><b>Font Size</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Font Size Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int GROUP_STYLE__FONT_SIZE = 3;
+    int GROUP_STYLE__FONT_SIZE_EXPRESSION = 3;
 
     /**
      * The feature id for the '<em><b>Bar Style</b></em>' attribute. <!--
@@ -4852,15 +4852,17 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontSize
-     * <em>Label Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontSizeExpression
+     * <em>Label Font Size Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @return the meta object for the attribute '<em>Label Font Size</em>'.
-     * @see org.eclipse.sirius.properties.WidgetStyle#getLabelFontSize()
+     * @return the meta object for the attribute '
+     *         <em>Label Font Size Expression</em>'.
+     * @see org.eclipse.sirius.properties.WidgetStyle#getLabelFontSizeExpression()
      * @see #getWidgetStyle()
      * @generated
      */
-    EAttribute getWidgetStyle_LabelFontSize();
+    EAttribute getWidgetStyle_LabelFontSizeExpression();
 
     /**
      * Returns the meta object for the reference '
@@ -4932,15 +4934,17 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.TextWidgetStyle#getFontSize
-     * <em>Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.TextWidgetStyle#getFontSizeExpression
+     * <em>Font Size Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @return the meta object for the attribute '<em>Font Size</em>'.
-     * @see org.eclipse.sirius.properties.TextWidgetStyle#getFontSize()
+     * @return the meta object for the attribute '<em>Font Size Expression</em>
+     *         '.
+     * @see org.eclipse.sirius.properties.TextWidgetStyle#getFontSizeExpression()
      * @see #getTextWidgetStyle()
      * @generated
      */
-    EAttribute getTextWidgetStyle_FontSize();
+    EAttribute getTextWidgetStyle_FontSizeExpression();
 
     /**
      * Returns the meta object for the reference '
@@ -5008,15 +5012,17 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.LabelWidgetStyle#getFontSize
-     * <em>Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.LabelWidgetStyle#getFontSizeExpression
+     * <em>Font Size Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @return the meta object for the attribute '<em>Font Size</em>'.
-     * @see org.eclipse.sirius.properties.LabelWidgetStyle#getFontSize()
+     * @return the meta object for the attribute '<em>Font Size Expression</em>
+     *         '.
+     * @see org.eclipse.sirius.properties.LabelWidgetStyle#getFontSizeExpression()
      * @see #getLabelWidgetStyle()
      * @generated
      */
-    EAttribute getLabelWidgetStyle_FontSize();
+    EAttribute getLabelWidgetStyle_FontSizeExpression();
 
     /**
      * Returns the meta object for the reference '
@@ -5469,15 +5475,17 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontSize
-     * <em>Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontSizeExpression
+     * <em>Font Size Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @return the meta object for the attribute '<em>Font Size</em>'.
-     * @see org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontSize()
+     * @return the meta object for the attribute '<em>Font Size Expression</em>
+     *         '.
+     * @see org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontSizeExpression()
      * @see #getHyperlinkWidgetStyle()
      * @generated
      */
-    EAttribute getHyperlinkWidgetStyle_FontSize();
+    EAttribute getHyperlinkWidgetStyle_FontSizeExpression();
 
     /**
      * Returns the meta object for the reference '
@@ -5557,15 +5565,17 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.GroupStyle#getFontSize
-     * <em>Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.GroupStyle#getFontSizeExpression
+     * <em>Font Size Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @return the meta object for the attribute '<em>Font Size</em>'.
-     * @see org.eclipse.sirius.properties.GroupStyle#getFontSize()
+     * @return the meta object for the attribute '<em>Font Size Expression</em>
+     *         '.
+     * @see org.eclipse.sirius.properties.GroupStyle#getFontSizeExpression()
      * @see #getGroupStyle()
      * @generated
      */
-    EAttribute getGroupStyle_FontSize();
+    EAttribute getGroupStyle_FontSizeExpression();
 
     /**
      * Returns the meta object for the attribute '
@@ -6774,12 +6784,13 @@ public interface PropertiesPackage extends EPackage {
         EAttribute WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getWidgetStyle_LabelFontNameExpression();
 
         /**
-         * The meta object literal for the '<em><b>Label Font Size</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '
+         * <em><b>Label Font Size Expression</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EAttribute WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.eINSTANCE.getWidgetStyle_LabelFontSize();
+        EAttribute WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION = PropertiesPackage.eINSTANCE.getWidgetStyle_LabelFontSizeExpression();
 
         /**
          * The meta object literal for the '
@@ -6828,12 +6839,12 @@ public interface PropertiesPackage extends EPackage {
         EAttribute TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getTextWidgetStyle_FontNameExpression();
 
         /**
-         * The meta object literal for the '<em><b>Font Size</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Font Size Expression</b></em>
+         * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EAttribute TEXT_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.eINSTANCE.getTextWidgetStyle_FontSize();
+        EAttribute TEXT_WIDGET_STYLE__FONT_SIZE_EXPRESSION = PropertiesPackage.eINSTANCE.getTextWidgetStyle_FontSizeExpression();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -6880,12 +6891,12 @@ public interface PropertiesPackage extends EPackage {
         EAttribute LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getLabelWidgetStyle_FontNameExpression();
 
         /**
-         * The meta object literal for the '<em><b>Font Size</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Font Size Expression</b></em>
+         * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EAttribute LABEL_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.eINSTANCE.getLabelWidgetStyle_FontSize();
+        EAttribute LABEL_WIDGET_STYLE__FONT_SIZE_EXPRESSION = PropertiesPackage.eINSTANCE.getLabelWidgetStyle_FontSizeExpression();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -7254,12 +7265,12 @@ public interface PropertiesPackage extends EPackage {
         EAttribute HYPERLINK_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_FontNameExpression();
 
         /**
-         * The meta object literal for the '<em><b>Font Size</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Font Size Expression</b></em>
+         * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EAttribute HYPERLINK_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_FontSize();
+        EAttribute HYPERLINK_WIDGET_STYLE__FONT_SIZE_EXPRESSION = PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_FontSizeExpression();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -7314,12 +7325,12 @@ public interface PropertiesPackage extends EPackage {
         EAttribute GROUP_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getGroupStyle_FontNameExpression();
 
         /**
-         * The meta object literal for the '<em><b>Font Size</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Font Size Expression</b></em>
+         * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EAttribute GROUP_STYLE__FONT_SIZE = PropertiesPackage.eINSTANCE.getGroupStyle_FontSize();
+        EAttribute GROUP_STYLE__FONT_SIZE_EXPRESSION = PropertiesPackage.eINSTANCE.getGroupStyle_FontSizeExpression();
 
         /**
          * The meta object literal for the '<em><b>Bar Style</b></em>' attribute

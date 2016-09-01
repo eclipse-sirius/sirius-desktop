@@ -288,7 +288,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="WidgetStyle">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFontNameExpression"
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFontSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFontSizeExpression"
+        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="labelBackgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="labelForegroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFontFormat" upperBound="4"
@@ -296,7 +297,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TextWidgetStyle" eSuperTypes="#//WidgetStyle">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSizeExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontFormat" upperBound="4"
@@ -304,7 +305,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LabelWidgetStyle" eSuperTypes="#//WidgetStyle">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSizeExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontFormat" upperBound="4"
@@ -318,7 +319,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ReferenceWidgetStyle" eSuperTypes="#//WidgetStyle"/>
   <eClassifiers xsi:type="ecore:EClass" name="HyperlinkWidgetStyle" eSuperTypes="#//WidgetStyle">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSizeExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontFormat" upperBound="4"
         eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"/>
@@ -327,7 +328,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSizeExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="barStyle" eType="#//TitleBarStyle"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="toggleStyle" eType="#//ToggleStyle"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expandedByDefault" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

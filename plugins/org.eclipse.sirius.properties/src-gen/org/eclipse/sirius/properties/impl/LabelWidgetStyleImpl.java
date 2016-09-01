@@ -35,8 +35,8 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getFontNameExpression
  * <em>Font Name Expression</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getFontSize
- * <em>Font Size</em>}</li>
+ * {@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getFontSizeExpression
+ * <em>Font Size Expression</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
@@ -74,24 +74,26 @@ public class LabelWidgetStyleImpl extends WidgetStyleImpl implements LabelWidget
     protected String fontNameExpression = LabelWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFontSize() <em>Font Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFontSizeExpression()
+     * <em>Font Size Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @see #getFontSize()
+     * @see #getFontSizeExpression()
      * @generated
      * @ordered
      */
-    protected static final int FONT_SIZE_EDEFAULT = 0;
+    protected static final String FONT_SIZE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFontSize() <em>Font Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFontSizeExpression()
+     * <em>Font Size Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @see #getFontSize()
+     * @see #getFontSizeExpression()
      * @generated
      * @ordered
      */
-    protected int fontSize = LabelWidgetStyleImpl.FONT_SIZE_EDEFAULT;
+    protected String fontSizeExpression = LabelWidgetStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
@@ -174,8 +176,8 @@ public class LabelWidgetStyleImpl extends WidgetStyleImpl implements LabelWidget
      * @generated
      */
     @Override
-    public int getFontSize() {
-        return fontSize;
+    public String getFontSizeExpression() {
+        return fontSizeExpression;
     }
 
     /**
@@ -184,11 +186,11 @@ public class LabelWidgetStyleImpl extends WidgetStyleImpl implements LabelWidget
      * @generated
      */
     @Override
-    public void setFontSize(int newFontSize) {
-        int oldFontSize = fontSize;
-        fontSize = newFontSize;
+    public void setFontSizeExpression(String newFontSizeExpression) {
+        String oldFontSizeExpression = fontSizeExpression;
+        fontSizeExpression = newFontSizeExpression;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE, oldFontSize, fontSize));
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE_EXPRESSION, oldFontSizeExpression, fontSizeExpression));
         }
     }
 
@@ -299,8 +301,8 @@ public class LabelWidgetStyleImpl extends WidgetStyleImpl implements LabelWidget
         switch (featureID) {
         case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             return getFontNameExpression();
-        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE:
-            return getFontSize();
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE_EXPRESSION:
+            return getFontSizeExpression();
         case PropertiesPackage.LABEL_WIDGET_STYLE__BACKGROUND_COLOR:
             if (resolve) {
                 return getBackgroundColor();
@@ -329,8 +331,8 @@ public class LabelWidgetStyleImpl extends WidgetStyleImpl implements LabelWidget
         case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             setFontNameExpression((String) newValue);
             return;
-        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE:
-            setFontSize((Integer) newValue);
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE_EXPRESSION:
+            setFontSizeExpression((String) newValue);
             return;
         case PropertiesPackage.LABEL_WIDGET_STYLE__BACKGROUND_COLOR:
             setBackgroundColor((ColorDescription) newValue);
@@ -357,8 +359,8 @@ public class LabelWidgetStyleImpl extends WidgetStyleImpl implements LabelWidget
         case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             setFontNameExpression(LabelWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT);
             return;
-        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE:
-            setFontSize(LabelWidgetStyleImpl.FONT_SIZE_EDEFAULT);
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE_EXPRESSION:
+            setFontSizeExpression(LabelWidgetStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.LABEL_WIDGET_STYLE__BACKGROUND_COLOR:
             setBackgroundColor((ColorDescription) null);
@@ -383,8 +385,8 @@ public class LabelWidgetStyleImpl extends WidgetStyleImpl implements LabelWidget
         switch (featureID) {
         case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             return LabelWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT == null ? fontNameExpression != null : !LabelWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT.equals(fontNameExpression);
-        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE:
-            return fontSize != LabelWidgetStyleImpl.FONT_SIZE_EDEFAULT;
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE_EXPRESSION:
+            return LabelWidgetStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT == null ? fontSizeExpression != null : !LabelWidgetStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT.equals(fontSizeExpression);
         case PropertiesPackage.LABEL_WIDGET_STYLE__BACKGROUND_COLOR:
             return backgroundColor != null;
         case PropertiesPackage.LABEL_WIDGET_STYLE__FOREGROUND_COLOR:
@@ -409,8 +411,8 @@ public class LabelWidgetStyleImpl extends WidgetStyleImpl implements LabelWidget
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (fontNameExpression: "); //$NON-NLS-1$
         result.append(fontNameExpression);
-        result.append(", fontSize: "); //$NON-NLS-1$
-        result.append(fontSize);
+        result.append(", fontSizeExpression: "); //$NON-NLS-1$
+        result.append(fontSizeExpression);
         result.append(", fontFormat: "); //$NON-NLS-1$
         result.append(fontFormat);
         result.append(')');

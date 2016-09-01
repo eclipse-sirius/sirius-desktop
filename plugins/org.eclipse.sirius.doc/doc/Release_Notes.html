@@ -159,6 +159,12 @@
 				<code>org.eclipse.sirius.diagram.ui.layoutDataManager</code> is deprecated. It is replaced by the new extension point 
 				<code>org.eclipse.sirius.diagram.ui.formatDataManager</code>. The deprecated extension point will be removed in the next 5.0 Sirius major release. Several classes associated with this deprecated extension point are also deprecated (see Developer-Visible Changes for details).
 			</li>
+			<li><span class="label label-info">Modified</span> The properties 
+				<code>fontSize</code> and 
+				<code>labelFontSize</code> have been renamed into 
+				<code>fontSizeExpression</code> and 
+				<code>labelFontSizeExpression</code> since both of them were already treated as expression.
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
@@ -536,6 +542,12 @@
 			<li><span class="label label-info">Modified</span> The property 
 				<code>domainClassExpression</code> has been renamed into 
 				<code>iterableExpression</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> The properties 
+				<code>fontSize</code> and 
+				<code>labelFontSize</code> have been renamed into 
+				<code>fontSizeExpression</code> and 
+				<code>labelFontSizeExpression</code> since both of them were already treated as expression.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 

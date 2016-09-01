@@ -24,6 +24,7 @@ h3. Specifier-Visible Changes
 * <span class="label label-success">Added</span> In the definition of the Properties view, hyperlink and label widgets can now have widget actions
 * <span class="label label-success">Added</span> Hyperlink and label widgets now have a @displayExpression@, if blank the result of the value expression will be used after a call to the method @java.lang.Object#toString()@.
 * <span class="label label-info">Modified</span> The rules concerning the layout of compartments have been changed/completed. You can have a look at the "dedicated chapter":specifier/diagrams/Diagrams.html#compartments_layout in the specifier documentation for more details.
+* <span class="label label-info">Modified</span> The properties @fontSize@ and @labelFontSize@ have been renamed into @fontSizeExpression@ and @labelFontSizeExpression@ since both of them were already treated as expression.
 * <span class="label label-info">Modified</span> The property @Domain Class Expression@ in @DynamicMappingFor@ elements (in properties views definitions) has been renamed into @Iterable Expression@.
 * <span class="label label-warning">Deprecated</span> The extension point @org.eclipse.sirius.diagram.ui.layoutDataManager@ is deprecated. It is replaced by the new extension point @org.eclipse.sirius.diagram.ui.formatDataManager@. The deprecated extension point will be removed in the next 5.0 Sirius major release. Several classes associated with this deprecated extension point are also deprecated (see Developer-Visible Changes for details).
 
@@ -126,6 +127,7 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 h4. Changes in @org.eclipse.sirius.properties@
 
 * <span class="label label-info">Modified</span> The property @domainClassExpression@ has been renamed into @iterableExpression@.
+* <span class="label label-info">Modified</span> The properties @fontSize@ and @labelFontSize@ have been renamed into @fontSizeExpression@ and @labelFontSizeExpression@ since both of them were already treated as expression.
 
 h4. Changes in @org.eclipse.sirius.ecore.extender@
 

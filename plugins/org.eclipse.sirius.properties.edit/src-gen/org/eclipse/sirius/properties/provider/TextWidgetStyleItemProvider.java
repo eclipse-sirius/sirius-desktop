@@ -53,7 +53,7 @@ public class TextWidgetStyleItemProvider extends WidgetStyleItemProvider {
             super.getPropertyDescriptors(object);
 
             addFontNameExpressionPropertyDescriptor(object);
-            addFontSizePropertyDescriptor(object);
+            addFontSizeExpressionPropertyDescriptor(object);
             addBackgroundColorPropertyDescriptor(object);
             addForegroundColorPropertyDescriptor(object);
             addFontFormatPropertyDescriptor(object);
@@ -75,16 +75,16 @@ public class TextWidgetStyleItemProvider extends WidgetStyleItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Font Size feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Font Size Expression feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addFontSizePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TextWidgetStyle_fontSize_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_TextWidgetStyle_fontSize_feature", "_UI_TextWidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        PropertiesPackage.Literals.TEXT_WIDGET_STYLE__FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+    protected void addFontSizeExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TextWidgetStyle_fontSizeExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_TextWidgetStyle_fontSizeExpression_feature", "_UI_TextWidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.TEXT_WIDGET_STYLE__FONT_SIZE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -164,7 +164,7 @@ public class TextWidgetStyleItemProvider extends WidgetStyleItemProvider {
 
         switch (notification.getFeatureID(TextWidgetStyle.class)) {
         case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION:
-        case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE:
+        case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE_EXPRESSION:
         case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_FORMAT:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

@@ -50,14 +50,14 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupstyle.GroupStyleBarStylePropertySection"
                id="properties.section.groupStyle.BarStyle"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupstyle.GroupStyleBarStyleFilter"
-               afterSection="properties.section.groupStyle.FontSize"
+               afterSection="properties.section.groupStyle.FontSizeExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.GroupStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupstyle.GroupStyleFontSizePropertySection"
-               id="properties.section.groupStyle.FontSize"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupstyle.GroupStyleFontSizeFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupstyle.GroupStyleFontSizeExpressionPropertySection"
+               id="properties.section.groupStyle.FontSizeExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupstyle.GroupStyleFontSizeExpressionFilter"
                afterSection="properties.section.groupStyle.FontNameExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.GroupStyle"/>
@@ -97,14 +97,14 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleBackgroundColorPropertySection"
                id="properties.section.hyperlinkWidgetStyle.BackgroundColor"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleBackgroundColorFilter"
-               afterSection="properties.section.hyperlinkWidgetStyle.FontSize"
+               afterSection="properties.section.hyperlinkWidgetStyle.FontSizeExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.HyperlinkWidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontSizePropertySection"
-               id="properties.section.hyperlinkWidgetStyle.FontSize"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontSizeFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontSizeExpressionPropertySection"
+               id="properties.section.hyperlinkWidgetStyle.FontSizeExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontSizeExpressionFilter"
                afterSection="properties.section.hyperlinkWidgetStyle.FontNameExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.HyperlinkWidgetStyle"/>
@@ -136,14 +136,14 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleBackgroundColorPropertySection"
                id="properties.section.labelWidgetStyle.BackgroundColor"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labelwidgetstyle.LabelWidgetStyleBackgroundColorFilter"
-               afterSection="properties.section.labelWidgetStyle.FontSize"
+               afterSection="properties.section.labelWidgetStyle.FontSizeExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.LabelWidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleFontSizePropertySection"
-               id="properties.section.labelWidgetStyle.FontSize"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labelwidgetstyle.LabelWidgetStyleFontSizeFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleFontSizeExpressionPropertySection"
+               id="properties.section.labelWidgetStyle.FontSizeExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labelwidgetstyle.LabelWidgetStyleFontSizeExpressionFilter"
                afterSection="properties.section.labelWidgetStyle.FontNameExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.LabelWidgetStyle"/>
@@ -156,7 +156,7 @@
         <input type="org.eclipse.sirius.properties.LabelWidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleFontFormatPropertySectionSpec"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleFontFormatPropertySection"
                id="properties.section.textWidgetStyle.FontFormat"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textwidgetstyle.TextWidgetStyleFontFormatFilter"
                afterSection="properties.section.textWidgetStyle.ForegroundColor"
@@ -175,14 +175,14 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleBackgroundColorPropertySection"
                id="properties.section.textWidgetStyle.BackgroundColor"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textwidgetstyle.TextWidgetStyleBackgroundColorFilter"
-               afterSection="properties.section.textWidgetStyle.FontSize"
+               afterSection="properties.section.textWidgetStyle.FontSizeExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.TextWidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleFontSizePropertySection"
-               id="properties.section.textWidgetStyle.FontSize"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textwidgetstyle.TextWidgetStyleFontSizeFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleFontSizeExpressionPropertySection"
+               id="properties.section.textWidgetStyle.FontSizeExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textwidgetstyle.TextWidgetStyleFontSizeExpressionFilter"
                afterSection="properties.section.textWidgetStyle.FontNameExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.TextWidgetStyle"/>
@@ -214,14 +214,14 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle.WidgetStyleLabelBackgroundColorPropertySection"
                id="properties.section.widgetStyle.LabelBackgroundColor"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelBackgroundColorFilter"
-               afterSection="properties.section.widgetStyle.LabelFontSize"
+               afterSection="properties.section.widgetStyle.LabelFontSizeExpression"
                 tab="viewpoint.tab.label">
         <input type="org.eclipse.sirius.properties.WidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle.WidgetStyleLabelFontSizePropertySection"
-               id="properties.section.widgetStyle.LabelFontSize"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelFontSizeFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle.WidgetStyleLabelFontSizeExpressionPropertySection"
+               id="properties.section.widgetStyle.LabelFontSizeExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelFontSizeExpressionFilter"
                afterSection="properties.section.widgetStyle.LabelFontNameExpression"
                 tab="viewpoint.tab.label">
         <input type="org.eclipse.sirius.properties.WidgetStyle"/>

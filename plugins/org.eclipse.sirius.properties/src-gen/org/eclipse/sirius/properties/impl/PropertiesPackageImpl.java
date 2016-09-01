@@ -1730,7 +1730,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getWidgetStyle_LabelFontSize() {
+    public EAttribute getWidgetStyle_LabelFontSizeExpression() {
         return (EAttribute) widgetStyleEClass.getEStructuralFeatures().get(1);
     }
 
@@ -1790,7 +1790,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getTextWidgetStyle_FontSize() {
+    public EAttribute getTextWidgetStyle_FontSizeExpression() {
         return (EAttribute) textWidgetStyleEClass.getEStructuralFeatures().get(1);
     }
 
@@ -1850,7 +1850,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getLabelWidgetStyle_FontSize() {
+    public EAttribute getLabelWidgetStyle_FontSizeExpression() {
         return (EAttribute) labelWidgetStyleEClass.getEStructuralFeatures().get(1);
     }
 
@@ -2220,7 +2220,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getHyperlinkWidgetStyle_FontSize() {
+    public EAttribute getHyperlinkWidgetStyle_FontSizeExpression() {
         return (EAttribute) hyperlinkWidgetStyleEClass.getEStructuralFeatures().get(1);
     }
 
@@ -2290,7 +2290,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getGroupStyle_FontSize() {
+    public EAttribute getGroupStyle_FontSizeExpression() {
         return (EAttribute) groupStyleEClass.getEStructuralFeatures().get(3);
     }
 
@@ -2532,21 +2532,21 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         widgetStyleEClass = createEClass(PropertiesPackage.WIDGET_STYLE);
         createEAttribute(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION);
-        createEAttribute(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE);
+        createEAttribute(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION);
         createEReference(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR);
         createEReference(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_FOREGROUND_COLOR);
         createEAttribute(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_FONT_FORMAT);
 
         textWidgetStyleEClass = createEClass(PropertiesPackage.TEXT_WIDGET_STYLE);
         createEAttribute(textWidgetStyleEClass, PropertiesPackage.TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION);
-        createEAttribute(textWidgetStyleEClass, PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE);
+        createEAttribute(textWidgetStyleEClass, PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE_EXPRESSION);
         createEReference(textWidgetStyleEClass, PropertiesPackage.TEXT_WIDGET_STYLE__BACKGROUND_COLOR);
         createEReference(textWidgetStyleEClass, PropertiesPackage.TEXT_WIDGET_STYLE__FOREGROUND_COLOR);
         createEAttribute(textWidgetStyleEClass, PropertiesPackage.TEXT_WIDGET_STYLE__FONT_FORMAT);
 
         labelWidgetStyleEClass = createEClass(PropertiesPackage.LABEL_WIDGET_STYLE);
         createEAttribute(labelWidgetStyleEClass, PropertiesPackage.LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION);
-        createEAttribute(labelWidgetStyleEClass, PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE);
+        createEAttribute(labelWidgetStyleEClass, PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE_EXPRESSION);
         createEReference(labelWidgetStyleEClass, PropertiesPackage.LABEL_WIDGET_STYLE__BACKGROUND_COLOR);
         createEReference(labelWidgetStyleEClass, PropertiesPackage.LABEL_WIDGET_STYLE__FOREGROUND_COLOR);
         createEAttribute(labelWidgetStyleEClass, PropertiesPackage.LABEL_WIDGET_STYLE__FONT_FORMAT);
@@ -2565,7 +2565,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         hyperlinkWidgetStyleEClass = createEClass(PropertiesPackage.HYPERLINK_WIDGET_STYLE);
         createEAttribute(hyperlinkWidgetStyleEClass, PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_NAME_EXPRESSION);
-        createEAttribute(hyperlinkWidgetStyleEClass, PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_SIZE);
+        createEAttribute(hyperlinkWidgetStyleEClass, PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_SIZE_EXPRESSION);
         createEReference(hyperlinkWidgetStyleEClass, PropertiesPackage.HYPERLINK_WIDGET_STYLE__BACKGROUND_COLOR);
         createEAttribute(hyperlinkWidgetStyleEClass, PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_FORMAT);
 
@@ -2573,7 +2573,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEReference(groupStyleEClass, PropertiesPackage.GROUP_STYLE__BACKGROUND_COLOR);
         createEReference(groupStyleEClass, PropertiesPackage.GROUP_STYLE__FOREGROUND_COLOR);
         createEAttribute(groupStyleEClass, PropertiesPackage.GROUP_STYLE__FONT_NAME_EXPRESSION);
-        createEAttribute(groupStyleEClass, PropertiesPackage.GROUP_STYLE__FONT_SIZE);
+        createEAttribute(groupStyleEClass, PropertiesPackage.GROUP_STYLE__FONT_SIZE_EXPRESSION);
         createEAttribute(groupStyleEClass, PropertiesPackage.GROUP_STYLE__BAR_STYLE);
         createEAttribute(groupStyleEClass, PropertiesPackage.GROUP_STYLE__TOGGLE_STYLE);
         createEAttribute(groupStyleEClass, PropertiesPackage.GROUP_STYLE__EXPANDED_BY_DEFAULT);
@@ -3005,8 +3005,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(widgetStyleEClass, WidgetStyle.class, "WidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getWidgetStyle_LabelFontNameExpression(), theDescriptionPackage.getInterpretedExpression(), "labelFontNameExpression", null, 0, 1, WidgetStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getWidgetStyle_LabelFontSize(), ecorePackage.getEInt(), "labelFontSize", null, 0, 1, WidgetStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getWidgetStyle_LabelFontSizeExpression(), theDescriptionPackage.getInterpretedExpression(), "labelFontSizeExpression", null, 0, 1, WidgetStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getWidgetStyle_LabelBackgroundColor(), theDescriptionPackage.getColorDescription(), null, "labelBackgroundColor", null, 0, 1, WidgetStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -3019,8 +3019,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(textWidgetStyleEClass, TextWidgetStyle.class, "TextWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getTextWidgetStyle_FontNameExpression(), theDescriptionPackage.getInterpretedExpression(), "fontNameExpression", null, 0, 1, TextWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getTextWidgetStyle_FontSize(), ecorePackage.getEInt(), "fontSize", null, 0, 1, TextWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTextWidgetStyle_FontSizeExpression(), theDescriptionPackage.getInterpretedExpression(), "fontSizeExpression", null, 0, 1, TextWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getTextWidgetStyle_BackgroundColor(), theDescriptionPackage.getColorDescription(), null, "backgroundColor", null, 0, 1, TextWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -3033,8 +3033,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(labelWidgetStyleEClass, LabelWidgetStyle.class, "LabelWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getLabelWidgetStyle_FontNameExpression(), theDescriptionPackage.getInterpretedExpression(), "fontNameExpression", null, 0, 1, LabelWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getLabelWidgetStyle_FontSize(), ecorePackage.getEInt(), "fontSize", null, 0, 1, LabelWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getLabelWidgetStyle_FontSizeExpression(), theDescriptionPackage.getInterpretedExpression(), "fontSizeExpression", null, 0, 1, LabelWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getLabelWidgetStyle_BackgroundColor(), theDescriptionPackage.getColorDescription(), null, "backgroundColor", null, 0, 1, LabelWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -3060,8 +3060,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEAttribute(getHyperlinkWidgetStyle_FontNameExpression(), theDescriptionPackage.getInterpretedExpression(), "fontNameExpression", null, 0, 1, HyperlinkWidgetStyle.class, //$NON-NLS-1$
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
-        initEAttribute(getHyperlinkWidgetStyle_FontSize(), ecorePackage.getEInt(), "fontSize", null, 0, 1, HyperlinkWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getHyperlinkWidgetStyle_FontSizeExpression(), theDescriptionPackage.getInterpretedExpression(), "fontSizeExpression", null, 0, 1, HyperlinkWidgetStyle.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEReference(getHyperlinkWidgetStyle_BackgroundColor(), theDescriptionPackage.getColorDescription(), null, "backgroundColor", null, 0, 1, HyperlinkWidgetStyle.class, //$NON-NLS-1$
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -3077,8 +3078,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getGroupStyle_FontNameExpression(), theDescriptionPackage.getInterpretedExpression(), "fontNameExpression", null, 0, 1, GroupStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getGroupStyle_FontSize(), ecorePackage.getEInt(), "fontSize", null, 0, 1, GroupStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
-                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getGroupStyle_FontSizeExpression(), theDescriptionPackage.getInterpretedExpression(), "fontSizeExpression", null, 0, 1, GroupStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getGroupStyle_BarStyle(), this.getTitleBarStyle(), "barStyle", null, 0, 1, GroupStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
                 !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getGroupStyle_ToggleStyle(), this.getToggleStyle(), "toggleStyle", null, 0, 1, GroupStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$

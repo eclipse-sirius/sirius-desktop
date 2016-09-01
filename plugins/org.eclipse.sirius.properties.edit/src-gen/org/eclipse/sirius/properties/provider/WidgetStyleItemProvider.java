@@ -62,7 +62,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
             super.getPropertyDescriptors(object);
 
             addLabelFontNameExpressionPropertyDescriptor(object);
-            addLabelFontSizePropertyDescriptor(object);
+            addLabelFontSizeExpressionPropertyDescriptor(object);
             addLabelBackgroundColorPropertyDescriptor(object);
             addLabelForegroundColorPropertyDescriptor(object);
             addLabelFontFormatPropertyDescriptor(object);
@@ -84,16 +84,16 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Label Font Size feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Label Font Size Expression
+     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addLabelFontSizePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetStyle_labelFontSize_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelFontSize_feature", "_UI_WidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+    protected void addLabelFontSizeExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetStyle_labelFontSizeExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelFontSizeExpression_feature", "_UI_WidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -173,7 +173,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
 
         switch (notification.getFeatureID(WidgetStyle.class)) {
         case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION:
-        case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE:
+        case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE_EXPRESSION:
         case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_FORMAT:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

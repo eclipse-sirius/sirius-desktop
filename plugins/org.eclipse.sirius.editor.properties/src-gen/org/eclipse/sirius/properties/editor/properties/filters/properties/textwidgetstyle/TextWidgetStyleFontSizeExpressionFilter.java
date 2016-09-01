@@ -18,16 +18,16 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 // End of user code specific imports
 
 /**
- * A filter for the fontSize property section.
+ * A filter for the fontSizeExpression property section.
  */
-public class TextWidgetStyleFontSizeFilter extends ViewpointPropertyFilter {
+public class TextWidgetStyleFontSizeExpressionFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getTextWidgetStyle_FontSize();
+        return PropertiesPackage.eINSTANCE.getTextWidgetStyle_FontSizeExpression();
     }
 
     /**

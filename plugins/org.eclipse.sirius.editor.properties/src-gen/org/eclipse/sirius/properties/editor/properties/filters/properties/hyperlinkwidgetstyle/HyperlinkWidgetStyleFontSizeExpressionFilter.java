@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.filters.properties.groupstyle;
+package org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkwidgetstyle;
 
 // Start of user code specific imports
 
@@ -18,16 +18,16 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 // End of user code specific imports
 
 /**
- * A filter for the fontSize property section.
+ * A filter for the fontSizeExpression property section.
  */
-public class GroupStyleFontSizeFilter extends ViewpointPropertyFilter {
+public class HyperlinkWidgetStyleFontSizeExpressionFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getGroupStyle_FontSize();
+        return PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_FontSizeExpression();
     }
 
     /**
@@ -35,7 +35,7 @@ public class GroupStyleFontSizeFilter extends ViewpointPropertyFilter {
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.properties.GroupStyle;
+        return arg0 instanceof org.eclipse.sirius.properties.HyperlinkWidgetStyle;
     }
 
     // Start of user code user methods
