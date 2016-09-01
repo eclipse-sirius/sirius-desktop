@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,8 +50,6 @@ import org.eclipse.ui.IWorkbenchPart;
 public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider {
 
     private static final String DELETE_FROM_GROUP = "deleteFromGroup"; //$NON-NLS-1$
-
-    private static final String PIN_GROUP = "pinGroup"; //$NON-NLS-1$
 
     private static final String FILTER_FORMAT_GROUP = "filterFormatGroup"; //$NON-NLS-1$
 
@@ -140,7 +138,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     // Move arrange menu for diagram element
                     moveArrangeMenuForDiagramElements(menu);
 
-                    // move Show/Hide and Export digram as image after refresh
+                    // move Show/Hide and Export diagram as image after refresh
                     final IContributionItem item3 = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.SELECT_HIDDEN_ELEMENTS);
                     if (item3 != null) {
                         menu.remove(item3);
@@ -210,6 +208,13 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
     }
 
     // CHECKSTYLE:ON
+    /**
+     * Rename the Arrange menu (new name=Layout menu), move it and reorganize
+     * it.
+     * 
+     * @param menu
+     *            The parent menu containing "Format" menu
+     */
     private void moveArrangeMenuForDiagramElements(IMenuManager menu) {
         final IMenuManager formatMenu = menu.findMenuUsingPath(ActionIds.MENU_FORMAT);
         if (formatMenu != null) {
@@ -218,23 +223,11 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                 // We check the enablement of the arrange actions according to
                 // the current selected elements.
                 updateArrangeMenuEnableActions(arrangeMenu, this.getViewer().getSelection());
+                // Rename of the menu Arrange into Layout
                 updateArrangeMenuName(arrangeMenu);
-                IContributionItem pinSeparator = formatMenu.find(PIN_GROUP);
-                if (pinSeparator != null) {
-                    formatMenu.remove(pinSeparator);
-                    arrangeMenu.add(pinSeparator);
-                }
-                final IContributionItem pinItem = formatMenu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.PIN_ELEMENTS);
-                if (pinItem != null) {
-                    formatMenu.remove(pinItem);
-                    arrangeMenu.add(pinItem);
-                }
-                final IContributionItem unpinItem = formatMenu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.UNPIN_ELEMENTS);
-                if (unpinItem != null) {
-                    formatMenu.remove(unpinItem);
-                    arrangeMenu.add(unpinItem);
-                }
+                // Remove Layout menu from format menu
                 formatMenu.remove(arrangeMenu);
+                // and add it just after FILTER_FORMAT_GROUP
                 menu.insertAfter(FILTER_FORMAT_GROUP, arrangeMenu);
             }
         }
