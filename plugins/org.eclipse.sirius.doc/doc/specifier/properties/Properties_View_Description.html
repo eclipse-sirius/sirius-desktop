@@ -785,7 +785,7 @@
 				<em>Multiple</em> flags is checked,
 			</li>
 			<li>buttons when 
-				<a href="#actions">
+				<a href="#reference_actions">
 					<em>Action Widgets</em>
 				</a> are defined.
 			</li>
@@ -847,7 +847,7 @@
 			<em>Begin</em> can use the 
 			<code>selection</code> variable which represents the values selected by the user. It could be at least one element or a list of elements in case of multiple flags is checked.
 		</p>
-		<h5 id="actions">Actions</h5>
+		<h5 id="reference_actions">Actions</h5>
 		<p>A reference can contain 
 			<em>actions</em> which represent 
 			<strong>buttons</strong> associated to the reference field, as shown in the illustration above.
@@ -856,7 +856,7 @@
 			<em>Label Expression</em> which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is equal to 
 			<code>...</code>.
 		</p>
-		<h5 id="action_pushed_button">Action pushed button</h5>
+		<h5 id="reference_action_pushed_button">Action pushed button</h5>
 		<p>To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
 			<a href="/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html">model operations</a>.
@@ -866,6 +866,71 @@
 			<code>selection</code> variable which represents the values selected by the user in the reference field.
 		</p>
 		<h5 id="reference_styles">Reference styles</h5>
+		<p>See the 
+			<a href="#styling">styles</a> section for a general presentation of how styles are defined, including 
+			<a href="#conditional_styles">conditional styles</a> and 
+			<a href="#widgets_styles">widgets styles</a> section to find details on what is specific to widgets.
+		</p>
+		<h4 id="list">List</h4>
+		<p>A 
+			<em>List Description</em> is used to represent a 
+			<strong>table with buttons</strong> in a 
+			<a href="#groups">group</a> or in a 
+			<a href="#containers">container</a>.
+		</p>
+		<p>Depending on the parameters configuration the list widget will be represented thanks to a table and multiple buttons when 
+			<a href="#list_actions">
+				<em>Action Widgets</em>
+			</a> are defined.
+		</p>
+		<p>The definition of a list follows the general rules described 
+			<a href="#widgets">above</a> to determine the semantic elements for which a list should be created. It is evaluated in the context of the semantic target element.
+		</p>
+		<p>For lists, you must define:</p>
+		<ul>
+			<li>the 
+				<em>Value Expression</em> which is used to compute the element to display and should return an object.
+			</li>
+			<li>the 
+				<em>Display Expression</em> which is used to compute the text displayed in the text field and should return a string. It is evaluated in the context of the semantic target element and has access to the variable 
+				<code>value</code> which corresponds to the element to display.
+			</li>
+			<li>the "
+				<em>actions</em>"#actions are used to associate some buttons to the text field.
+			</li>
+		</ul>
+		<h5 id="list_click_on_value">Click on value</h5>
+		<p>If the 
+			<em>On Click Expression</em> is set then this expression defines the behavior executed when the user clicks or double-clicks on an element in the table. A variable named 
+			<code>onClickEventKind</code> will be available to determine if the expression has been triggered by a single click or double click. In case of a single click, the variable will have the value &#8220;SINGLE_CLICK&#8221; and &#8220;DOUBLE_CLICK&#8221; in case of a double click.
+		</p>
+		<p>To define the behavior, you simply specify the behavior associated to the edition inside the 
+			<em>Begin</em> element using all the standard 
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html">model operations</a>.
+		</p>
+		<p>The expressions defined under the 
+			<em>Begin</em> can use the 
+			<code>selection</code> variable which represents the values selected by the user. This variable will contain the list of the values selected.
+		</p>
+		<h5 id="list_actions">Actions</h5>
+		<p>A list can contain 
+			<em>actions</em> which represent 
+			<strong>buttons</strong> associated to the list field.
+		</p>
+		<p>For actions, you must define the 
+			<em>Label Expression</em> which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is equal to 
+			<code>...</code>.
+		</p>
+		<h5 id="list_action_pushed_button">Action pushed button</h5>
+		<p>To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the 
+			<em>Begin</em> element using all the standard 
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html">model operations</a>.
+		</p>
+		<p>The expressions defined under the 
+			<em>Begin</em> can use the 
+			<code>selection</code> variable which represents the values selected by the user in the list field.
+		</p>
+		<h5 id="list_styles">List styles</h5>
 		<p>See the 
 			<a href="#styling">styles</a> section for a general presentation of how styles are defined, including 
 			<a href="#conditional_styles">conditional styles</a> and 

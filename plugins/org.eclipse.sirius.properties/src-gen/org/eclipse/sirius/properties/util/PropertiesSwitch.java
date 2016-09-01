@@ -43,6 +43,9 @@ import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.LayoutDescription;
+import org.eclipse.sirius.properties.ListDescription;
+import org.eclipse.sirius.properties.ListWidgetConditionalStyle;
+import org.eclipse.sirius.properties.ListWidgetStyle;
 import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PageValidationSetDescription;
@@ -394,6 +397,20 @@ public class PropertiesSwitch<T> {
             }
             return result;
         }
+        case PropertiesPackage.LIST_DESCRIPTION: {
+            ListDescription listDescription = (ListDescription) theEObject;
+            T result = caseListDescription(listDescription);
+            if (result == null) {
+                result = caseWidgetDescription(listDescription);
+            }
+            if (result == null) {
+                result = caseControlDescription(listDescription);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         case PropertiesPackage.OPERATION_DESCRIPTION: {
             OperationDescription operationDescription = (OperationDescription) theEObject;
             T result = caseOperationDescription(operationDescription);
@@ -542,6 +559,17 @@ public class PropertiesSwitch<T> {
             }
             return result;
         }
+        case PropertiesPackage.LIST_WIDGET_STYLE: {
+            ListWidgetStyle listWidgetStyle = (ListWidgetStyle) theEObject;
+            T result = caseListWidgetStyle(listWidgetStyle);
+            if (result == null) {
+                result = caseWidgetStyle(listWidgetStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         case PropertiesPackage.HYPERLINK_WIDGET_STYLE: {
             HyperlinkWidgetStyle hyperlinkWidgetStyle = (HyperlinkWidgetStyle) theEObject;
             T result = caseHyperlinkWidgetStyle(hyperlinkWidgetStyle);
@@ -651,6 +679,17 @@ public class PropertiesSwitch<T> {
             T result = caseReferenceWidgetConditionalStyle(referenceWidgetConditionalStyle);
             if (result == null) {
                 result = caseWidgetConditionalStyle(referenceWidgetConditionalStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.LIST_WIDGET_CONDITIONAL_STYLE: {
+            ListWidgetConditionalStyle listWidgetConditionalStyle = (ListWidgetConditionalStyle) theEObject;
+            T result = caseListWidgetConditionalStyle(listWidgetConditionalStyle);
+            if (result == null) {
+                result = caseWidgetConditionalStyle(listWidgetConditionalStyle);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1068,6 +1107,23 @@ public class PropertiesSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
+     * <em>List Description</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>List Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseListDescription(ListDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
      * <em>Operation Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
@@ -1306,6 +1362,23 @@ public class PropertiesSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
+     * <em>List Widget Style</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>List Widget Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseListWidgetStyle(ListWidgetStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
      * <em>Hyperlink Widget Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
@@ -1488,6 +1561,23 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseReferenceWidgetConditionalStyle(ReferenceWidgetConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>List Widget Conditional Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>List Widget Conditional Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseListWidgetConditionalStyle(ListWidgetConditionalStyle object) {
         return null;
     }
 

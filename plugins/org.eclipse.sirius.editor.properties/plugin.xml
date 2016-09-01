@@ -271,6 +271,21 @@
         <input type="org.eclipse.sirius.properties.CustomExpression"/>
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.listdescription.ListDescriptionDisplayExpressionPropertySection"
+               id="properties.section.listDescription.DisplayExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.listdescription.ListDescriptionDisplayExpressionFilter"
+               afterSection="properties.section.listDescription.ValueExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.ListDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.listdescription.ListDescriptionValueExpressionPropertySection"
+               id="properties.section.listDescription.ValueExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.listdescription.ListDescriptionValueExpressionFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.ListDescription"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.referencedescription.ReferenceDescriptionDisplayExpressionPropertySection"
                id="properties.section.referenceDescription.DisplayExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.referencedescription.ReferenceDescriptionDisplayExpressionFilter"

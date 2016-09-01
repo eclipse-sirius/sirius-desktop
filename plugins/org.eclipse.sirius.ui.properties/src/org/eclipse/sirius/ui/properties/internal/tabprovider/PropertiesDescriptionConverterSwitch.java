@@ -36,6 +36,9 @@ import org.eclipse.sirius.properties.HyperlinkWidgetStyle;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
+import org.eclipse.sirius.properties.ListDescription;
+import org.eclipse.sirius.properties.ListWidgetConditionalStyle;
+import org.eclipse.sirius.properties.ListWidgetStyle;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
@@ -232,6 +235,11 @@ public class PropertiesDescriptionConverterSwitch extends PropertiesSwitch<IDesc
     }
 
     @Override
+    public IDescriptionConverter caseListDescription(ListDescription object) {
+        return new DefaultDescriptionWithInitialOperationConverter<>(ListDescription.class, EefPackage.Literals.EEF_LIST_DESCRIPTION, EefPackage.Literals.EEF_LIST_DESCRIPTION__ON_CLICK_EXPRESSION);
+    }
+
+    @Override
     public IDescriptionConverter caseWidgetAction(WidgetAction object) {
         return new DefaultDescriptionWithInitialOperationConverter<>(WidgetAction.class, EefPackage.Literals.EEF_WIDGET_ACTION, EefPackage.Literals.EEF_WIDGET_ACTION__ACTION_EXPRESSION);
     }
@@ -244,6 +252,16 @@ public class PropertiesDescriptionConverterSwitch extends PropertiesSwitch<IDesc
     @Override
     public IDescriptionConverter caseReferenceWidgetConditionalStyle(ReferenceWidgetConditionalStyle object) {
         return new DefaultDescriptionConverter<>(ReferenceWidgetConditionalStyle.class, EefPackage.Literals.EEF_REFERENCE_CONDITIONAL_STYLE);
+    }
+
+    @Override
+    public IDescriptionConverter caseListWidgetStyle(ListWidgetStyle object) {
+        return new DefaultStyleDescriptionConverter<>(ListWidgetStyle.class, EefPackage.Literals.EEF_LIST_STYLE);
+    }
+
+    @Override
+    public IDescriptionConverter caseListWidgetConditionalStyle(ListWidgetConditionalStyle object) {
+        return new DefaultDescriptionConverter<>(ListWidgetConditionalStyle.class, EefPackage.Literals.EEF_LIST_CONDITIONAL_STYLE);
     }
 
     @Override

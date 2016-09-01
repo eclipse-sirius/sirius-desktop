@@ -44,6 +44,9 @@ import org.eclipse.sirius.properties.HyperlinkWidgetStyle;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
+import org.eclipse.sirius.properties.ListDescription;
+import org.eclipse.sirius.properties.ListWidgetConditionalStyle;
+import org.eclipse.sirius.properties.ListWidgetStyle;
 import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PageValidationSetDescription;
@@ -150,6 +153,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createRadioDescription();
         case PropertiesPackage.REFERENCE_DESCRIPTION:
             return createReferenceDescription();
+        case PropertiesPackage.LIST_DESCRIPTION:
+            return createListDescription();
         case PropertiesPackage.OPERATION_DESCRIPTION:
             return createOperationDescription();
         case PropertiesPackage.CUSTOM_DESCRIPTION:
@@ -178,6 +183,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createCustomWidgetStyle();
         case PropertiesPackage.REFERENCE_WIDGET_STYLE:
             return createReferenceWidgetStyle();
+        case PropertiesPackage.LIST_WIDGET_STYLE:
+            return createListWidgetStyle();
         case PropertiesPackage.HYPERLINK_WIDGET_STYLE:
             return createHyperlinkWidgetStyle();
         case PropertiesPackage.GROUP_STYLE:
@@ -198,6 +205,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createCustomWidgetConditionalStyle();
         case PropertiesPackage.REFERENCE_WIDGET_CONDITIONAL_STYLE:
             return createReferenceWidgetConditionalStyle();
+        case PropertiesPackage.LIST_WIDGET_CONDITIONAL_STYLE:
+            return createListWidgetConditionalStyle();
         case PropertiesPackage.WIDGET_ACTION:
             return createWidgetAction();
         case PropertiesPackage.HYPERLINK_WIDGET_CONDITIONAL_STYLE:
@@ -462,6 +471,17 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * @generated
      */
     @Override
+    public ListDescription createListDescription() {
+        ListDescriptionImpl listDescription = new ListDescriptionImpl();
+        return listDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public OperationDescription createOperationDescription() {
         OperationDescriptionImpl operationDescription = new OperationDescriptionImpl();
         return operationDescription;
@@ -616,6 +636,17 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * @generated
      */
     @Override
+    public ListWidgetStyle createListWidgetStyle() {
+        ListWidgetStyleImpl listWidgetStyle = new ListWidgetStyleImpl();
+        return listWidgetStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public HyperlinkWidgetStyle createHyperlinkWidgetStyle() {
         HyperlinkWidgetStyleImpl hyperlinkWidgetStyle = new HyperlinkWidgetStyleImpl();
         return hyperlinkWidgetStyle;
@@ -718,6 +749,17 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public ReferenceWidgetConditionalStyle createReferenceWidgetConditionalStyle() {
         ReferenceWidgetConditionalStyleImpl referenceWidgetConditionalStyle = new ReferenceWidgetConditionalStyleImpl();
         return referenceWidgetConditionalStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ListWidgetConditionalStyle createListWidgetConditionalStyle() {
+        ListWidgetConditionalStyleImpl listWidgetConditionalStyle = new ListWidgetConditionalStyleImpl();
+        return listWidgetConditionalStyle;
     }
 
     /**

@@ -19,26 +19,25 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.properties.ContainerDescription;
-import org.eclipse.sirius.properties.DynamicMappingFor;
+import org.eclipse.sirius.properties.ListWidgetConditionalStyle;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.ContainerDescription} object. <!--
+ * {@link org.eclipse.sirius.properties.ListWidgetConditionalStyle} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class ContainerDescriptionItemProvider extends ControlDescriptionItemProvider {
+public class ListWidgetConditionalStyleItemProvider extends WidgetConditionalStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public ContainerDescriptionItemProvider(AdapterFactory adapterFactory) {
+    public ListWidgetConditionalStyleItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -71,8 +70,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS);
-            childrenFeatures.add(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__LAYOUT);
+            childrenFeatures.add(PropertiesPackage.Literals.LIST_WIDGET_CONDITIONAL_STYLE__STYLE);
         }
         return childrenFeatures;
     }
@@ -92,14 +90,14 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
     }
 
     /**
-     * This returns ContainerDescription.gif. <!-- begin-user-doc --> <!--
+     * This returns ListWidgetConditionalStyle.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerDescription")); //$NON-NLS-1$
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ListWidgetConditionalStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -110,9 +108,9 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
      */
     @Override
     public String getText(Object object) {
-        String label = ((ContainerDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_ContainerDescription_type") : //$NON-NLS-1$
-                getString("_UI_ContainerDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((ListWidgetConditionalStyle) object).getPreconditionExpression();
+        return label == null || label.length() == 0 ? getString("_UI_ListWidgetConditionalStyle_type") : //$NON-NLS-1$
+                getString("_UI_ListWidgetConditionalStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -127,9 +125,8 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(ContainerDescription.class)) {
-        case PropertiesPackage.CONTAINER_DESCRIPTION__CONTROLS:
-        case PropertiesPackage.CONTAINER_DESCRIPTION__LAYOUT:
+        switch (notification.getFeatureID(ListWidgetConditionalStyle.class)) {
+        case PropertiesPackage.LIST_WIDGET_CONDITIONAL_STYLE__STYLE:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -141,43 +138,13 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated NOT
+     * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createContainerDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createTextDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createButtonDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createLabelDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createCheckboxDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createSelectDescription()));
-
-        DynamicMappingFor dynamicFor = PropertiesFactory.eINSTANCE.createDynamicMappingFor();
-        dynamicFor.getIfs().add(PropertiesFactory.eINSTANCE.createDynamicMappingIf());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, dynamicFor));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createTextAreaDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createRadioDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createReferenceDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createListDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createCustomDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createHyperlinkDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__LAYOUT, PropertiesFactory.eINSTANCE.createFillLayoutDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__LAYOUT, PropertiesFactory.eINSTANCE.createGridLayoutDescription()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.LIST_WIDGET_CONDITIONAL_STYLE__STYLE, PropertiesFactory.eINSTANCE.createListWidgetStyle()));
     }
 
 }

@@ -43,6 +43,9 @@ import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.LayoutDescription;
+import org.eclipse.sirius.properties.ListDescription;
+import org.eclipse.sirius.properties.ListWidgetConditionalStyle;
+import org.eclipse.sirius.properties.ListWidgetStyle;
 import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PageValidationSetDescription;
@@ -236,6 +239,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
+        public Adapter caseListDescription(ListDescription object) {
+            return createListDescriptionAdapter();
+        }
+
+        @Override
         public Adapter caseOperationDescription(OperationDescription object) {
             return createOperationDescriptionAdapter();
         }
@@ -306,6 +314,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
+        public Adapter caseListWidgetStyle(ListWidgetStyle object) {
+            return createListWidgetStyleAdapter();
+        }
+
+        @Override
         public Adapter caseHyperlinkWidgetStyle(HyperlinkWidgetStyle object) {
             return createHyperlinkWidgetStyleAdapter();
         }
@@ -358,6 +371,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseReferenceWidgetConditionalStyle(ReferenceWidgetConditionalStyle object) {
             return createReferenceWidgetConditionalStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseListWidgetConditionalStyle(ListWidgetConditionalStyle object) {
+            return createListWidgetConditionalStyleAdapter();
         }
 
         @Override
@@ -764,6 +782,22 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ListDescription
+     * <em>List Description</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.ListDescription
+     * @generated
+     */
+    public Adapter createListDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.properties.OperationDescription
      * <em>Operation Description</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
@@ -987,6 +1021,22 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ListWidgetStyle
+     * <em>List Widget Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.ListWidgetStyle
+     * @generated
+     */
+    public Adapter createListWidgetStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle
      * <em>Hyperlink Widget Style</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
@@ -1157,6 +1207,22 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createReferenceWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ListWidgetConditionalStyle
+     * <em>List Widget Conditional Style</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.ListWidgetConditionalStyle
+     * @generated
+     */
+    public Adapter createListWidgetConditionalStyleAdapter() {
         return null;
     }
 

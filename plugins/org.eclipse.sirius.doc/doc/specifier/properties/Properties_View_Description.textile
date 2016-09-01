@@ -322,7 +322,7 @@ Depending on the parameters configuration the reference widget can be represente
 * a label,
 * an hyperlink when the "_On Click Expression_"#reference_click_on_value is set,
 * a table when the _Multiple_ flags is checked,
-* buttons when "_Action Widgets_":#actions are defined.
+* buttons when "_Action Widgets_":#reference_actions are defined.
 
 !images/widget-references.png(Examples of reference widgets)!
 
@@ -348,19 +348,56 @@ To define the behavior, you simply specify the behavior associated to the editio
 
 The expressions defined under the _Begin_ can use the @selection@ variable which represents the values selected by the user. It could be at least one element or a list of elements in case of multiple flags is checked.
 
-h5(#actions). Actions
+h5(#reference_actions). Actions
 
 A reference can contain _actions_ which represent *buttons* associated to the reference field, as shown in the illustration above.
 
 For actions, you must define the _Label Expression_ which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is equal to @...@.
 
-h5(#action_pushed_button). Action pushed button
+h5(#reference_action_pushed_button). Action pushed button
 
 To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
 
 The expressions defined under the _Begin_ can use the @selection@ variable which represents the values selected by the user in the reference field.
 
 h5(#reference_styles). Reference styles
+
+See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets.
+
+h4(#list). List
+
+A _List Description_ is used to represent a *table with buttons* in a "group":#groups or in a "container":#containers.
+
+Depending on the parameters configuration the list widget will be represented thanks to a table and multiple buttons when "_Action Widgets_":#list_actions are defined.
+
+The definition of a list follows the general rules described "above":#widgets to determine the semantic elements for which a list should be created. It is evaluated in the context of the semantic target element.
+
+For lists, you must define:
+* the _Value Expression_ which is used to compute the element to display and should return an object.
+* the _Display Expression_ which is used to compute the text displayed in the text field and should return a string. It is evaluated in the context of the semantic target element and has access to the variable @value@ which corresponds to the element to display.
+* the "_actions_"#actions are used to associate some buttons to the text field.
+
+h5(#list_click_on_value). Click on value
+
+If the _On Click Expression_ is set then this expression defines the behavior executed when the user clicks or double-clicks on an element in the table. A variable named @onClickEventKind@ will be available to determine if the expression has been triggered by a single click or double click. In case of a single click, the variable will have the value "SINGLE_CLICK" and "DOUBLE_CLICK" in case of a double click.
+
+To define the behavior, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
+
+The expressions defined under the _Begin_ can use the @selection@ variable which represents the values selected by the user. This variable will contain the list of the values selected.
+
+h5(#list_actions). Actions
+
+A list can contain _actions_ which represent *buttons* associated to the list field.
+
+For actions, you must define the _Label Expression_ which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is equal to @...@.
+
+h5(#list_action_pushed_button). Action pushed button
+
+To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
+
+The expressions defined under the _Begin_ can use the @selection@ variable which represents the values selected by the user in the list field.
+
+h5(#list_styles). List styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets.
 

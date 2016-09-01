@@ -146,6 +146,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ReferenceDescription/style"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ReferenceDescription/conditionalStyles"/>
     </genClasses>
+    <genClasses ecoreClass="properties.ecore#//ListDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//ListDescription/valueExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//ListDescription/displayExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ListDescription/onClickOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ListDescription/actions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ListDescription/style"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ListDescription/conditionalStyles"/>
+    </genClasses>
     <genClasses ecoreClass="properties.ecore#//OperationDescription">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//OperationDescription/initialOperation"/>
     </genClasses>
@@ -198,6 +206,7 @@
     <genClasses ecoreClass="properties.ecore#//SelectWidgetStyle"/>
     <genClasses ecoreClass="properties.ecore#//CustomWidgetStyle"/>
     <genClasses ecoreClass="properties.ecore#//ReferenceWidgetStyle"/>
+    <genClasses ecoreClass="properties.ecore#//ListWidgetStyle"/>
     <genClasses ecoreClass="properties.ecore#//HyperlinkWidgetStyle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//HyperlinkWidgetStyle/fontNameExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//HyperlinkWidgetStyle/fontSizeExpression"/>
@@ -239,6 +248,9 @@
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//ReferenceWidgetConditionalStyle">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ReferenceWidgetConditionalStyle/style"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//ListWidgetConditionalStyle">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ListWidgetConditionalStyle/style"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//WidgetAction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetAction/labelExpression"/>

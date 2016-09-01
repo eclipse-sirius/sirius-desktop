@@ -249,6 +249,18 @@
    
       </description>
    </context>
+   <context id="ListDescription">
+     <description>
+       Represents a list in the user interface.
+
+       
+         
+   <!-- Start of user code ListDescription description -->
+   
+   <!-- End of user code ListDescription description -->
+   
+      </description>
+   </context>
    <context id="OperationDescription">
      <description>
        
@@ -403,6 +415,17 @@
    
       </description>
    </context>
+   <context id="ListWidgetStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code ListWidgetStyle description -->
+   
+   <!-- End of user code ListWidgetStyle description -->
+   
+      </description>
+   </context>
    <context id="HyperlinkWidgetStyle">
      <description>
        
@@ -521,6 +544,17 @@
    <!-- Start of user code ReferenceWidgetConditionalStyle description -->
    
    <!-- End of user code ReferenceWidgetConditionalStyle description -->
+   
+      </description>
+   </context>
+   <context id="ListWidgetConditionalStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code ListWidgetConditionalStyle description -->
+   
+   <!-- End of user code ListWidgetConditionalStyle description -->
    
       </description>
    </context>

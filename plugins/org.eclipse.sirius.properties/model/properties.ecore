@@ -245,6 +245,33 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
         eType="#//ReferenceWidgetConditionalStyle" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ListDescription" eSuperTypes="#//WidgetDescription">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Represents a list in the user interface."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The initial value."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Represents how to display the value."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onClickOperation" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Defines the expected behavior  when the user clicks on the hyperlink."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//WidgetAction" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//ListWidgetStyle"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
+        eType="#//ListWidgetConditionalStyle" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperationDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
         eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
@@ -317,6 +344,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="SelectWidgetStyle" eSuperTypes="#//WidgetStyle"/>
   <eClassifiers xsi:type="ecore:EClass" name="CustomWidgetStyle" eSuperTypes="#//WidgetStyle"/>
   <eClassifiers xsi:type="ecore:EClass" name="ReferenceWidgetStyle" eSuperTypes="#//WidgetStyle"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ListWidgetStyle" eSuperTypes="#//WidgetStyle"/>
   <eClassifiers xsi:type="ecore:EClass" name="HyperlinkWidgetStyle" eSuperTypes="#//WidgetStyle">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSizeExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
@@ -377,6 +405,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReferenceWidgetConditionalStyle" eSuperTypes="#//WidgetConditionalStyle">
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//ReferenceWidgetStyle"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ListWidgetConditionalStyle" eSuperTypes="#//WidgetConditionalStyle">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//ListWidgetStyle"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WidgetAction">

@@ -202,6 +202,15 @@ public interface PropertiesFactory extends EFactory {
     ReferenceDescription createReferenceDescription();
 
     /**
+     * Returns a new object of class '<em>List Description</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>List Description</em>'.
+     * @generated
+     */
+    ListDescription createListDescription();
+
+    /**
      * Returns a new object of class '<em>Operation Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -328,6 +337,15 @@ public interface PropertiesFactory extends EFactory {
     ReferenceWidgetStyle createReferenceWidgetStyle();
 
     /**
+     * Returns a new object of class '<em>List Widget Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>List Widget Style</em>'.
+     * @generated
+     */
+    ListWidgetStyle createListWidgetStyle();
+
+    /**
      * Returns a new object of class '<em>Hyperlink Widget Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -419,6 +437,15 @@ public interface PropertiesFactory extends EFactory {
      * @generated
      */
     ReferenceWidgetConditionalStyle createReferenceWidgetConditionalStyle();
+
+    /**
+     * Returns a new object of class '<em>List Widget Conditional Style</em>'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>List Widget Conditional Style</em>'.
+     * @generated
+     */
+    ListWidgetConditionalStyle createListWidgetConditionalStyle();
 
     /**
      * Returns a new object of class '<em>Widget Action</em>'. <!--
