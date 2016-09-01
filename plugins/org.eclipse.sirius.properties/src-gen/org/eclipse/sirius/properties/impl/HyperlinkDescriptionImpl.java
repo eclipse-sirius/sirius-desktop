@@ -25,6 +25,7 @@ import org.eclipse.sirius.properties.HyperlinkDescription;
 import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
 import org.eclipse.sirius.properties.HyperlinkWidgetStyle;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
@@ -38,6 +39,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * {@link org.eclipse.sirius.properties.impl.HyperlinkDescriptionImpl#getValueExpression
  * <em>Value Expression</em>}</li>
  * <li>
+ * {@link org.eclipse.sirius.properties.impl.HyperlinkDescriptionImpl#getDisplayExpression
+ * <em>Display Expression</em>}</li>
+ * <li>
  * {@link org.eclipse.sirius.properties.impl.HyperlinkDescriptionImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * <li>
@@ -46,6 +50,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>
  * {@link org.eclipse.sirius.properties.impl.HyperlinkDescriptionImpl#getConditionalStyles
  * <em>Conditional Styles</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.HyperlinkDescriptionImpl#getActions
+ * <em>Actions</em>}</li>
  * </ul>
  *
  * @generated
@@ -72,6 +79,28 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
      * @ordered
      */
     protected String valueExpression = HyperlinkDescriptionImpl.VALUE_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getDisplayExpression()
+     * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getDisplayExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String DISPLAY_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getDisplayExpression()
+     * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getDisplayExpression()
+     * @generated
+     * @ordered
+     */
+    protected String displayExpression = HyperlinkDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getInitialOperation()
@@ -104,6 +133,16 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
      * @ordered
      */
     protected EList<HyperlinkWidgetConditionalStyle> conditionalStyles;
+
+    /**
+     * The cached value of the '{@link #getActions() <em>Actions</em>}'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getActions()
+     * @generated
+     * @ordered
+     */
+    protected EList<WidgetAction> actions;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -145,6 +184,30 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
         valueExpression = newValueExpression;
         if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION, oldValueExpression, valueExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getDisplayExpression() {
+        return displayExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setDisplayExpression(String newDisplayExpression) {
+        String oldDisplayExpression = displayExpression;
+        displayExpression = newDisplayExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION, oldDisplayExpression, displayExpression));
         }
     }
 
@@ -273,6 +336,19 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
      * @generated
      */
     @Override
+    public EList<WidgetAction> getActions() {
+        if (actions == null) {
+            actions = new EObjectContainmentEList<WidgetAction>(WidgetAction.class, this, PropertiesPackage.HYPERLINK_DESCRIPTION__ACTIONS);
+        }
+        return actions;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case PropertiesPackage.HYPERLINK_DESCRIPTION__INITIAL_OPERATION:
@@ -281,6 +357,8 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
             return basicSetStyle(null, msgs);
         case PropertiesPackage.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES:
             return ((InternalEList<?>) getConditionalStyles()).basicRemove(otherEnd, msgs);
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__ACTIONS:
+            return ((InternalEList<?>) getActions()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -295,12 +373,16 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
         switch (featureID) {
         case PropertiesPackage.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION:
             return getValueExpression();
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION:
+            return getDisplayExpression();
         case PropertiesPackage.HYPERLINK_DESCRIPTION__INITIAL_OPERATION:
             return getInitialOperation();
         case PropertiesPackage.HYPERLINK_DESCRIPTION__STYLE:
             return getStyle();
         case PropertiesPackage.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES:
             return getConditionalStyles();
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__ACTIONS:
+            return getActions();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -317,6 +399,9 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
         case PropertiesPackage.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION:
             setValueExpression((String) newValue);
             return;
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION:
+            setDisplayExpression((String) newValue);
+            return;
         case PropertiesPackage.HYPERLINK_DESCRIPTION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) newValue);
             return;
@@ -326,6 +411,10 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
         case PropertiesPackage.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES:
             getConditionalStyles().clear();
             getConditionalStyles().addAll((Collection<? extends HyperlinkWidgetConditionalStyle>) newValue);
+            return;
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__ACTIONS:
+            getActions().clear();
+            getActions().addAll((Collection<? extends WidgetAction>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -342,6 +431,9 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
         case PropertiesPackage.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION:
             setValueExpression(HyperlinkDescriptionImpl.VALUE_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION:
+            setDisplayExpression(HyperlinkDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT);
+            return;
         case PropertiesPackage.HYPERLINK_DESCRIPTION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) null);
             return;
@@ -350,6 +442,9 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
             return;
         case PropertiesPackage.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES:
             getConditionalStyles().clear();
+            return;
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__ACTIONS:
+            getActions().clear();
             return;
         }
         super.eUnset(featureID);
@@ -365,12 +460,16 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
         switch (featureID) {
         case PropertiesPackage.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION:
             return HyperlinkDescriptionImpl.VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !HyperlinkDescriptionImpl.VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION:
+            return HyperlinkDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT == null ? displayExpression != null : !HyperlinkDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT.equals(displayExpression);
         case PropertiesPackage.HYPERLINK_DESCRIPTION__INITIAL_OPERATION:
             return initialOperation != null;
         case PropertiesPackage.HYPERLINK_DESCRIPTION__STYLE:
             return style != null;
         case PropertiesPackage.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES:
             return conditionalStyles != null && !conditionalStyles.isEmpty();
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__ACTIONS:
+            return actions != null && !actions.isEmpty();
         }
         return super.eIsSet(featureID);
     }
@@ -389,6 +488,8 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (valueExpression: "); //$NON-NLS-1$
         result.append(valueExpression);
+        result.append(", displayExpression: "); //$NON-NLS-1$
+        result.append(displayExpression);
         result.append(')');
         return result.toString();
     }

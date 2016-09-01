@@ -23,11 +23,16 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.LabelDescription#getValueExpression
  * <em>Value Expression</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.LabelDescription#getDisplayExpression
+ * <em>Display Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.LabelDescription#getStyle
  * <em>Style</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.properties.LabelDescription#getConditionalStyles
  * <em>Conditional Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.LabelDescription#getActions
+ * <em>Actions</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelDescription()
@@ -65,6 +70,37 @@ public interface LabelDescription extends WidgetDescription {
      * @generated
      */
     void setValueExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Display Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Display Expression</em>' attribute isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Display Expression</em>' attribute.
+     * @see #setDisplayExpression(String)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelDescription_DisplayExpression()
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     * @generated
+     */
+    String getDisplayExpression();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.LabelDescription#getDisplayExpression
+     * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Display Expression</em>' attribute.
+     * @see #getDisplayExpression()
+     * @generated
+     */
+    void setDisplayExpression(String value);
 
     /**
      * Returns the value of the '<em><b>Style</b></em>' containment reference.
@@ -114,5 +150,23 @@ public interface LabelDescription extends WidgetDescription {
      * @generated
      */
     EList<LabelWidgetConditionalStyle> getConditionalStyles();
+
+    /**
+     * Returns the value of the '<em><b>Actions</b></em>' containment reference
+     * list. The list contents are of type
+     * {@link org.eclipse.sirius.properties.WidgetAction}. <!-- begin-user-doc
+     * -->
+     * <p>
+     * If the meaning of the '<em>Actions</em>' containment reference list isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Actions</em>' containment reference list.
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelDescription_Actions()
+     * @model containment="true"
+     * @generated
+     */
+    EList<WidgetAction> getActions();
 
 } // LabelDescription

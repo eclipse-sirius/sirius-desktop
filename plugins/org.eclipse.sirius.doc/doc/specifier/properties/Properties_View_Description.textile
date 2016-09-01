@@ -209,7 +209,7 @@ Here is an example which shows two label widgets:
 
 The definition of a label follows the general rules described "above":#widgets to determine the semantic elements for which a label should be created. It is evaluated in the context of the semantic target element.
 
-For labels, you must define the _Value Expression_ which is used to compute the text displayed in the description and should return a string. If the expression is not specified, the default value is the empty string.
+For labels, you must define the _Value Expression_ which is used to compute the text displayed in the description.  The _Value Expression_ can return any kind of object but the result displayed will be the result of a call to _java.lang.Object#toString()_. If you want to customize how the result will be displayed, you can return a String in the value expression or use the _Display Expression_. The _Display Expression_ will have access to the result of the _Value Expression_ using the variable _value_ and it should return a String. If the expression is not specified, the default value is the empty string.
 
 h5(#label_styles). Label styles
 
@@ -298,7 +298,7 @@ A _Hyperlink Description_ is used to represent an *hyperlink* in a "group":#grou
 
 The definition of an hyperlink follows the general rules described "above":#widgets to determine the semantic elements for which an hyperlink should be created. It is evaluated in the context of the semantic target element.
 
-For hyperlinks, you must define the _Value Expression_ which is used to compute the hyperlink displayed and should return a string.
+For hyperlinks, you must define the _Value Expression_ which is used to compute the hyperlink displayed. The _Value Expression_ can return any kind of object but the result displayed will be the result of a call to _java.lang.Object#toString()_. If you want to customize how the result will be displayed, you can return a String in the value expression or use the _Display Expression_. The _Display Expression_ will have access to the result of the _Value Expression_ using the variable named _value_ and it should return a String.
 
 h5(#hyperlink_click_on_value). Click on value
 

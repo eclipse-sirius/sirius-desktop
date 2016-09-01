@@ -56,6 +56,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
             super.getPropertyDescriptors(object);
 
             addValueExpressionPropertyDescriptor(object);
+            addDisplayExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -74,6 +75,19 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
     }
 
     /**
+     * This adds a property descriptor for the Display Expression feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addDisplayExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_LabelDescription_displayExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_LabelDescription_displayExpression_feature", "_UI_LabelDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.LABEL_DESCRIPTION__DISPLAY_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to
      * deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand},
@@ -89,6 +103,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.LABEL_DESCRIPTION__STYLE);
             childrenFeatures.add(PropertiesPackage.Literals.LABEL_DESCRIPTION__CONDITIONAL_STYLES);
+            childrenFeatures.add(PropertiesPackage.Literals.LABEL_DESCRIPTION__ACTIONS);
         }
         return childrenFeatures;
     }
@@ -145,10 +160,12 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
 
         switch (notification.getFeatureID(LabelDescription.class)) {
         case PropertiesPackage.LABEL_DESCRIPTION__VALUE_EXPRESSION:
+        case PropertiesPackage.LABEL_DESCRIPTION__DISPLAY_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.LABEL_DESCRIPTION__STYLE:
         case PropertiesPackage.LABEL_DESCRIPTION__CONDITIONAL_STYLES:
+        case PropertiesPackage.LABEL_DESCRIPTION__ACTIONS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -171,6 +188,8 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
         LabelWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createLabelWidgetConditionalStyle();
         conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createLabelWidgetStyle());
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.LABEL_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.LABEL_DESCRIPTION__ACTIONS, PropertiesFactory.eINSTANCE.createWidgetAction()));
     }
 
 }

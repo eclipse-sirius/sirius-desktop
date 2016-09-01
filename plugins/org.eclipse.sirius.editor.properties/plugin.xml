@@ -234,6 +234,14 @@
         <input type="org.eclipse.sirius.properties.WidgetStyle"/>
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkdescription.HyperlinkDescriptionDisplayExpressionPropertySection"
+               id="properties.section.hyperlinkDescription.DisplayExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkdescription.HyperlinkDescriptionDisplayExpressionFilter"
+               afterSection="properties.section.hyperlinkDescription.ValueExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.HyperlinkDescription"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkdescription.HyperlinkDescriptionValueExpressionPropertySection"
                id="properties.section.hyperlinkDescription.ValueExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkdescription.HyperlinkDescriptionValueExpressionFilter"
@@ -376,6 +384,14 @@
         <input type="org.eclipse.sirius.properties.CheckboxDescription"/>
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labeldescription.LabelDescriptionDisplayExpressionPropertySection"
+               id="properties.section.labelDescription.DisplayExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labeldescription.LabelDescriptionDisplayExpressionFilter"
+               afterSection="properties.section.labelDescription.ValueExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.LabelDescription"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.labeldescription.LabelDescriptionValueExpressionPropertySection"
                id="properties.section.labelDescription.ValueExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labeldescription.LabelDescriptionValueExpressionFilter"
@@ -448,8 +464,7 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.ControlDescription"/>
       </propertySection>
-      
-      <propertySection
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionIdentifierPropertySection"
                id="properties.section.groupDescription.Identifier"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupdescription.GroupDescriptionIdentifierFilter"
@@ -464,7 +479,7 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.GroupDescription"/>
       </propertySection>
-      <propertySection
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionSemanticCandidateExpressionPropertySection"
                id="properties.section.groupDescription.SemanticCandidateExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupdescription.GroupDescriptionSemanticCandidateExpressionFilter"
@@ -488,7 +503,6 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.GroupDescription"/>
       </propertySection>
-      
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.propertyvalidationrule.PropertyValidationRuleTargetsPropertySection"
                id="properties.section.propertyValidationRule.Targets"
@@ -496,15 +510,14 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.PropertyValidationRule"/>
       </propertySection>
-      
-      <propertySection
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionIdentifierPropertySection"
                id="properties.section.pageDescription.Identifier"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionIdentifierFilter"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.PageDescription"/>
       </propertySection>
-      <propertySection
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionDomainClassPropertySection"
                id="properties.section.pageDescription.DomainClass"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionDomainClassFilter"
@@ -512,7 +525,7 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.PageDescription"/>
       </propertySection>
-      <propertySection
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionSemanticCandidateExpressionPropertySection"
                id="properties.section.pageDescription.SemanticCandidateExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionSemanticCandidateExpressionFilter"
@@ -520,7 +533,7 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.PageDescription"/>
       </propertySection>
-      <propertySection
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionPreconditionExpressionPropertySection"
                id="properties.section.pageDescription.PreconditionExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionPreconditionExpressionFilter"
@@ -528,7 +541,7 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.PageDescription"/>
       </propertySection>
-      <propertySection
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionLabelExpressionPropertySection"
                id="properties.section.pageDescription.LabelExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionLabelExpressionFilter"
@@ -544,7 +557,6 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.PageDescription"/>
       </propertySection>
-      
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.viewextensiondescription.ViewExtensionDescriptionMetamodelsPropertySection"
                id="properties.section.viewExtensionDescription.Metamodels"

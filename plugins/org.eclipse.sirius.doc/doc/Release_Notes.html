@@ -142,17 +142,22 @@
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
-			<li>The rules concerning the layout of compartments have been changed/completed. You can have a look at the 
-				<a href="specifier/diagrams/Diagrams.html#compartments_layout">dedicated chapter</a> in the specifier documentation for more details.
+			<li><span class="label label-success">Added</span> In the definition of the Properties view, hyperlink and label widgets can now have widget actions</li>
+			<li><span class="label label-success">Added</span> Hyperlink and label widgets now have a 
+				<code>displayExpression</code>, if blank the result of the value expression will be used after a call to the method 
+				<code>java.lang.Object#toString()</code>.
 			</li>
-			<li>The extension point 
-				<code>org.eclipse.sirius.diagram.ui.layoutDataManager</code> is deprecated. It is replaced by the new extension point 
-				<code>org.eclipse.sirius.diagram.ui.formatDataManager</code>. The deprecated extension point will be removed in the next 5.0 Sirius major release. Several classes associated with this deprecated extension point are also deprecated (see Developer-Visible Changes for details).
+			<li><span class="label label-info">Modified</span> The rules concerning the layout of compartments have been changed/completed. You can have a look at the 
+				<a href="specifier/diagrams/Diagrams.html#compartments_layout">dedicated chapter</a> in the specifier documentation for more details.
 			</li>
 			<li><span class="label label-info">Modified</span> The property 
 				<code>Domain Class Expression</code> in 
 				<code>DynamicMappingFor</code> elements (in properties views definitions) has been renamed into 
 				<code>Iterable Expression</code>.
+			</li>
+			<li><span class="label label-warning">Deprecated</span> The extension point 
+				<code>org.eclipse.sirius.diagram.ui.layoutDataManager</code> is deprecated. It is replaced by the new extension point 
+				<code>org.eclipse.sirius.diagram.ui.formatDataManager</code>. The deprecated extension point will be removed in the next 5.0 Sirius major release. Several classes associated with this deprecated extension point are also deprecated (see Developer-Visible Changes for details).
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>

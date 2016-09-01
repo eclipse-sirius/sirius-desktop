@@ -1100,8 +1100,18 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EAttribute getLabelDescription_DisplayExpression() {
+        return (EAttribute) labelDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EReference getLabelDescription_Style() {
-        return (EReference) labelDescriptionEClass.getEStructuralFeatures().get(1);
+        return (EReference) labelDescriptionEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -1111,7 +1121,17 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      */
     @Override
     public EReference getLabelDescription_ConditionalStyles() {
-        return (EReference) labelDescriptionEClass.getEStructuralFeatures().get(2);
+        return (EReference) labelDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getLabelDescription_Actions() {
+        return (EReference) labelDescriptionEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -1640,8 +1660,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getHyperlinkDescription_InitialOperation() {
-        return (EReference) hyperlinkDescriptionEClass.getEStructuralFeatures().get(1);
+    public EAttribute getHyperlinkDescription_DisplayExpression() {
+        return (EAttribute) hyperlinkDescriptionEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -1650,7 +1670,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getHyperlinkDescription_Style() {
+    public EReference getHyperlinkDescription_InitialOperation() {
         return (EReference) hyperlinkDescriptionEClass.getEStructuralFeatures().get(2);
     }
 
@@ -1660,8 +1680,28 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getHyperlinkDescription_ConditionalStyles() {
+    public EReference getHyperlinkDescription_Style() {
         return (EReference) hyperlinkDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getHyperlinkDescription_ConditionalStyles() {
+        return (EReference) hyperlinkDescriptionEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getHyperlinkDescription_Actions() {
+        return (EReference) hyperlinkDescriptionEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -2416,8 +2456,10 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         labelDescriptionEClass = createEClass(PropertiesPackage.LABEL_DESCRIPTION);
         createEAttribute(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__VALUE_EXPRESSION);
+        createEAttribute(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__DISPLAY_EXPRESSION);
         createEReference(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__STYLE);
         createEReference(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__CONDITIONAL_STYLES);
+        createEReference(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__ACTIONS);
 
         checkboxDescriptionEClass = createEClass(PropertiesPackage.CHECKBOX_DESCRIPTION);
         createEAttribute(checkboxDescriptionEClass, PropertiesPackage.CHECKBOX_DESCRIPTION__VALUE_EXPRESSION);
@@ -2482,9 +2524,11 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         hyperlinkDescriptionEClass = createEClass(PropertiesPackage.HYPERLINK_DESCRIPTION);
         createEAttribute(hyperlinkDescriptionEClass, PropertiesPackage.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION);
+        createEAttribute(hyperlinkDescriptionEClass, PropertiesPackage.HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION);
         createEReference(hyperlinkDescriptionEClass, PropertiesPackage.HYPERLINK_DESCRIPTION__INITIAL_OPERATION);
         createEReference(hyperlinkDescriptionEClass, PropertiesPackage.HYPERLINK_DESCRIPTION__STYLE);
         createEReference(hyperlinkDescriptionEClass, PropertiesPackage.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES);
+        createEReference(hyperlinkDescriptionEClass, PropertiesPackage.HYPERLINK_DESCRIPTION__ACTIONS);
 
         widgetStyleEClass = createEClass(PropertiesPackage.WIDGET_STYLE);
         createEAttribute(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION);
@@ -2797,12 +2841,17 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(labelDescriptionEClass, LabelDescription.class, "LabelDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getLabelDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getLabelDescription_DisplayExpression(), theDescriptionPackage.getInterpretedExpression(), "displayExpression", null, 0, 1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getLabelDescription_Style(), this.getLabelWidgetStyle(), null, "style", null, 0, 1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
         initEReference(getLabelDescription_ConditionalStyles(), this.getLabelWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getLabelDescription_Actions(), this.getWidgetAction(), null, "actions", null, 0, -1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(checkboxDescriptionEClass, CheckboxDescription.class, "CheckboxDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getCheckboxDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, CheckboxDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
@@ -2937,6 +2986,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEAttribute(getHyperlinkDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, HyperlinkDescription.class, //$NON-NLS-1$
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
+        initEAttribute(getHyperlinkDescription_DisplayExpression(), theDescriptionPackage.getInterpretedExpression(), "displayExpression", null, 0, 1, HyperlinkDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEReference(getHyperlinkDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, HyperlinkDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -2946,6 +2998,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getHyperlinkDescription_ConditionalStyles(), this.getHyperlinkWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, HyperlinkDescription.class, //$NON-NLS-1$
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getHyperlinkDescription_Actions(), this.getWidgetAction(), null, "actions", null, 0, -1, HyperlinkDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(widgetStyleEClass, WidgetStyle.class, "WidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getWidgetStyle_LabelFontNameExpression(), theDescriptionPackage.getInterpretedExpression(), "labelFontNameExpression", null, 0, 1, WidgetStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$

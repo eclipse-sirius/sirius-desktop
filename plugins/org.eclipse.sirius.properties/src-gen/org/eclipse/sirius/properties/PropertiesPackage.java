@@ -935,13 +935,22 @@ public interface PropertiesPackage extends EPackage {
     int LABEL_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
+     * The feature id for the '<em><b>Display Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_DESCRIPTION__DISPLAY_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int LABEL_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+    int LABEL_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
@@ -950,7 +959,16 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LABEL_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int LABEL_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+
+    /**
+     * The feature id for the '<em><b>Actions</b></em>' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_DESCRIPTION__ACTIONS = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The number of structural features of the '<em>Label Description</em>'
@@ -959,7 +977,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LABEL_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+    int LABEL_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The meta object id for the '
@@ -1862,13 +1880,22 @@ public interface PropertiesPackage extends EPackage {
     int HYPERLINK_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
+     * The feature id for the '<em><b>Display Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int HYPERLINK_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+    int HYPERLINK_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -1877,7 +1904,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HYPERLINK_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int HYPERLINK_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
@@ -1886,7 +1913,16 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+    int HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+
+    /**
+     * The feature id for the '<em><b>Actions</b></em>' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_DESCRIPTION__ACTIONS = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '<em>Hyperlink Description</em>'
@@ -1895,7 +1931,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HYPERLINK_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+    int HYPERLINK_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The meta object id for the '
@@ -4001,6 +4037,19 @@ public interface PropertiesPackage extends EPackage {
     EAttribute getLabelDescription_ValueExpression();
 
     /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.LabelDescription#getDisplayExpression
+     * <em>Display Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>Display Expression</em>'.
+     * @see org.eclipse.sirius.properties.LabelDescription#getDisplayExpression()
+     * @see #getLabelDescription()
+     * @generated
+     */
+    EAttribute getLabelDescription_DisplayExpression();
+
+    /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.LabelDescription#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -4025,6 +4074,19 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EReference getLabelDescription_ConditionalStyles();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.LabelDescription#getActions
+     * <em>Actions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '
+     *         <em>Actions</em>'.
+     * @see org.eclipse.sirius.properties.LabelDescription#getActions()
+     * @see #getLabelDescription()
+     * @generated
+     */
+    EReference getLabelDescription_Actions();
 
     /**
      * Returns the meta object for class '
@@ -4698,6 +4760,19 @@ public interface PropertiesPackage extends EPackage {
     EAttribute getHyperlinkDescription_ValueExpression();
 
     /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.HyperlinkDescription#getDisplayExpression
+     * <em>Display Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>Display Expression</em>'.
+     * @see org.eclipse.sirius.properties.HyperlinkDescription#getDisplayExpression()
+     * @see #getHyperlinkDescription()
+     * @generated
+     */
+    EAttribute getHyperlinkDescription_DisplayExpression();
+
+    /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.HyperlinkDescription#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -4736,6 +4811,19 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EReference getHyperlinkDescription_ConditionalStyles();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.HyperlinkDescription#getActions
+     * <em>Actions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '
+     *         <em>Actions</em>'.
+     * @see org.eclipse.sirius.properties.HyperlinkDescription#getActions()
+     * @see #getHyperlinkDescription()
+     * @generated
+     */
+    EReference getHyperlinkDescription_Actions();
 
     /**
      * Returns the meta object for class '
@@ -6109,6 +6197,14 @@ public interface PropertiesPackage extends EPackage {
         EAttribute LABEL_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getLabelDescription_ValueExpression();
 
         /**
+         * The meta object literal for the '<em><b>Display Expression</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute LABEL_DESCRIPTION__DISPLAY_EXPRESSION = PropertiesPackage.eINSTANCE.getLabelDescription_DisplayExpression();
+
+        /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
@@ -6124,6 +6220,14 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference LABEL_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getLabelDescription_ConditionalStyles();
+
+        /**
+         * The meta object literal for the '<em><b>Actions</b></em>' containment
+         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference LABEL_DESCRIPTION__ACTIONS = PropertiesPackage.eINSTANCE.getLabelDescription_Actions();
 
         /**
          * The meta object literal for the '
@@ -6607,6 +6711,14 @@ public interface PropertiesPackage extends EPackage {
         EAttribute HYPERLINK_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getHyperlinkDescription_ValueExpression();
 
         /**
+         * The meta object literal for the '<em><b>Display Expression</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION = PropertiesPackage.eINSTANCE.getHyperlinkDescription_DisplayExpression();
+
+        /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
@@ -6631,6 +6743,14 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getHyperlinkDescription_ConditionalStyles();
+
+        /**
+         * The meta object literal for the '<em><b>Actions</b></em>' containment
+         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference HYPERLINK_DESCRIPTION__ACTIONS = PropertiesPackage.eINSTANCE.getHyperlinkDescription_Actions();
 
         /**
          * The meta object literal for the '

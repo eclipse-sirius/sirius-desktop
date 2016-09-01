@@ -97,8 +97,10 @@
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//LabelDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelDescription/valueExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelDescription/displayExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//LabelDescription/style"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//LabelDescription/conditionalStyles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//LabelDescription/actions"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//CheckboxDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//CheckboxDescription/valueExpression"/>
@@ -163,9 +165,11 @@
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//HyperlinkDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//HyperlinkDescription/valueExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//HyperlinkDescription/displayExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//HyperlinkDescription/initialOperation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//HyperlinkDescription/style"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//HyperlinkDescription/conditionalStyles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//HyperlinkDescription/actions"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//WidgetStyle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetStyle/labelFontNameExpression"/>

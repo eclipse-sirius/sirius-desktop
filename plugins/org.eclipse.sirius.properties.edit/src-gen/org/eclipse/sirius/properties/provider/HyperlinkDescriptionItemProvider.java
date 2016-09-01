@@ -57,6 +57,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
             super.getPropertyDescriptors(object);
 
             addValueExpressionPropertyDescriptor(object);
+            addDisplayExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -72,6 +73,19 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
                 createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_HyperlinkDescription_valueExpression_feature"), //$NON-NLS-1$
                         getString("_UI_PropertyDescriptor_description", "_UI_HyperlinkDescription_valueExpression_feature", "_UI_HyperlinkDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Display Expression feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addDisplayExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_HyperlinkDescription_displayExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_HyperlinkDescription_displayExpression_feature", "_UI_HyperlinkDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -91,6 +105,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
             childrenFeatures.add(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__INITIAL_OPERATION);
             childrenFeatures.add(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__STYLE);
             childrenFeatures.add(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES);
+            childrenFeatures.add(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__ACTIONS);
         }
         return childrenFeatures;
     }
@@ -147,11 +162,13 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
         switch (notification.getFeatureID(HyperlinkDescription.class)) {
         case PropertiesPackage.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION:
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.HYPERLINK_DESCRIPTION__INITIAL_OPERATION:
         case PropertiesPackage.HYPERLINK_DESCRIPTION__STYLE:
         case PropertiesPackage.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES:
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__ACTIONS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -176,6 +193,8 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
         HyperlinkWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createHyperlinkWidgetConditionalStyle();
         conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createHyperlinkWidgetStyle());
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__ACTIONS, PropertiesFactory.eINSTANCE.createWidgetAction()));
     }
 
 }

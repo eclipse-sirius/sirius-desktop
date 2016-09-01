@@ -26,6 +26,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * {@link org.eclipse.sirius.properties.HyperlinkDescription#getValueExpression
  * <em>Value Expression</em>}</li>
  * <li>
+ * {@link org.eclipse.sirius.properties.HyperlinkDescription#getDisplayExpression
+ * <em>Display Expression</em>}</li>
+ * <li>
  * {@link org.eclipse.sirius.properties.HyperlinkDescription#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.HyperlinkDescription#getStyle
@@ -33,6 +36,8 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>
  * {@link org.eclipse.sirius.properties.HyperlinkDescription#getConditionalStyles
  * <em>Conditional Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.HyperlinkDescription#getActions
+ * <em>Actions</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getHyperlinkDescription()
@@ -70,6 +75,37 @@ public interface HyperlinkDescription extends WidgetDescription {
      * @generated
      */
     void setValueExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Display Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Display Expression</em>' attribute isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Display Expression</em>' attribute.
+     * @see #setDisplayExpression(String)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getHyperlinkDescription_DisplayExpression()
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     * @generated
+     */
+    String getDisplayExpression();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.HyperlinkDescription#getDisplayExpression
+     * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Display Expression</em>' attribute.
+     * @see #getDisplayExpression()
+     * @generated
+     */
+    void setDisplayExpression(String value);
 
     /**
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment
@@ -151,5 +187,23 @@ public interface HyperlinkDescription extends WidgetDescription {
      * @generated
      */
     EList<HyperlinkWidgetConditionalStyle> getConditionalStyles();
+
+    /**
+     * Returns the value of the '<em><b>Actions</b></em>' containment reference
+     * list. The list contents are of type
+     * {@link org.eclipse.sirius.properties.WidgetAction}. <!-- begin-user-doc
+     * -->
+     * <p>
+     * If the meaning of the '<em>Actions</em>' containment reference list isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Actions</em>' containment reference list.
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getHyperlinkDescription_Actions()
+     * @model containment="true"
+     * @generated
+     */
+    EList<WidgetAction> getActions();
 
 } // HyperlinkDescription
