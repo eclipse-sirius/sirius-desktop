@@ -65,6 +65,10 @@
                contentURI="contents/propertiestests/hyperlink-sample.design/"
                name="hyperlink-sample.design">
          </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/multilinetitle-sample.design/"
+               name="multilinetitle-sample.design">
+         </projectDescriptor>
       </example>
    </extension>
    <extension
