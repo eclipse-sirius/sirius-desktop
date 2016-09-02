@@ -17,6 +17,8 @@ import org.eclipse.draw2d.LayeredPane;
 import org.eclipse.draw2d.ScalableFigure;
 import org.eclipse.draw2d.ScalableFreeformLayeredPane;
 import org.eclipse.draw2d.Viewport;
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.AutoexposeHelper;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.editparts.ZoomManager;
@@ -24,6 +26,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemsAwareFreeFormLayer;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.diagram.ui.render.editparts.RenderedDiagramRootEditPart;
+import org.eclipse.gmf.runtime.gef.ui.internal.editparts.AnimatableZoomManager;
 import org.eclipse.gmf.runtime.notation.MeasurementUnit;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.DConnectionLayerEx;
@@ -34,6 +37,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.handler.SiriusAnimatableZoom
  *
  * @author ymortier
  */
+@SuppressWarnings("restriction")
 public class DDiagramRootEditPart extends RenderedDiagramRootEditPart {
 
     private SiriusAnimatableZoomManager siriusZoomManager;
@@ -101,6 +105,42 @@ public class DDiagramRootEditPart extends RenderedDiagramRootEditPart {
         }
 
         return siriusZoomManager;
+    }
+
+    @Override
+    public void zoomIn() {
+        getZoomManager().zoomIn();
+    }
+
+    @Override
+    public void zoomIn(Point center) {
+        if (getZoomManager() instanceof AnimatableZoomManager) {
+            ((AnimatableZoomManager) getZoomManager()).zoomTo(getZoomManager().getNextZoomLevel(), center);
+        }
+    }
+
+    @Override
+    public void zoomOut() {
+        getZoomManager().zoomOut();
+    }
+
+    @Override
+    public void zoomOut(Point center) {
+        if (getZoomManager() instanceof AnimatableZoomManager) {
+            ((AnimatableZoomManager) getZoomManager()).zoomTo(getZoomManager().getPreviousZoomLevel(), center);
+        }
+    }
+
+    @Override
+    public void zoomTo(double zoom, Point center) {
+        if (getZoomManager() instanceof AnimatableZoomManager) {
+            ((AnimatableZoomManager) getZoomManager()).zoomTo(zoom, center);
+        }
+    }
+
+    @Override
+    public void zoomTo(Rectangle rect) {
+        getZoomManager().zoomTo(rect);
     }
 
     /**
