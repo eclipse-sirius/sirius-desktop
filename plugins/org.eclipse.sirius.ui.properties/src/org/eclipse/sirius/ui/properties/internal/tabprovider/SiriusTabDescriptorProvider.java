@@ -97,9 +97,6 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
             Object[] objects = structuredSelection.toArray();
             // FIXME We take the first one
             if (objects.length > 0) {
-                if (objects.length > 1) {
-                    SiriusUIPropertiesPlugin.getPlugin().warning(Messages.SiriusTabDescriptorProvider_UnsupportedMultipleSelection);
-                }
                 SiriusInputDescriptor sid = new SiriusInputDescriptor(objects[0]);
                 if (sid.getSemanticElement() != null) {
                     // Let's find out the description of the view
