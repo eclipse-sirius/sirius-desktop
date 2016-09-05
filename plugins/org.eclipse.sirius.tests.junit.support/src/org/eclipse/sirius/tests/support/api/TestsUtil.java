@@ -122,6 +122,16 @@ public final class TestsUtil {
     }
 
     /**
+     * Tests if the EEF-based properties view support is installed.
+     * 
+     * @return <code>true</code> if the EEF-based properties view support is
+     *         installed.
+     */
+    public static boolean isEEFBasedPropertiesViewsSupportInstalled() {
+        return Platform.getBundle("org.eclipse.sirius.ui.properties") != null;
+    }
+
+    /**
      * Tells if the current platform corresponds to juno3 (i.e. Eclipse 3.8).
      * 
      * @return true if the current platform corresponds to juno3 (i.e. Eclipse
