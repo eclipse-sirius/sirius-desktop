@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" name="PropertiesTests" version="11.0.0.201601261200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" name="PropertiesTests" version="11.0.0.201609021200">
   <ownedViewpoints name="PropertiesTestsReferenceExt" label="" icon=""/>
   <extensions xsi:type="properties:ViewExtensionDescription">
-    <pages identifier="" labelExpression="Reference" groups="//@extensions.0/@groups.0"/>
+    <pages identifier="" labelExpression="Mono ref" groups="//@extensions.0/@groups.0"/>
     <groups identifier="ReferenceExt" labelExpression="Reference" domainClass="">
       <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" labelExpression="Mono containment ref" referenceNameExpression="containmentReference" semanticCandidateExpression="var:self"/>
       <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" labelExpression="Multi containment ref" referenceNameExpression="containmentReferences" semanticCandidateExpression="var:self"/>
