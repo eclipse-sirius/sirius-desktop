@@ -237,18 +237,6 @@
    
       </description>
    </context>
-   <context id="ReferenceDescription">
-     <description>
-       Represents a reference in the user interface.
-
-       
-         
-   <!-- Start of user code ReferenceDescription description -->
-   
-   <!-- End of user code ReferenceDescription description -->
-   
-      </description>
-   </context>
    <context id="ListDescription">
      <description>
        Represents a list in the user interface.
@@ -404,17 +392,6 @@
    
       </description>
    </context>
-   <context id="ReferenceWidgetStyle">
-     <description>
-       
-       
-         
-   <!-- Start of user code ReferenceWidgetStyle description -->
-   
-   <!-- End of user code ReferenceWidgetStyle description -->
-   
-      </description>
-   </context>
    <context id="ListWidgetStyle">
      <description>
        
@@ -533,17 +510,6 @@
    <!-- Start of user code CustomWidgetConditionalStyle description -->
    
    <!-- End of user code CustomWidgetConditionalStyle description -->
-   
-      </description>
-   </context>
-   <context id="ReferenceWidgetConditionalStyle">
-     <description>
-       
-       
-         
-   <!-- Start of user code ReferenceWidgetConditionalStyle description -->
-   
-   <!-- End of user code ReferenceWidgetConditionalStyle description -->
    
       </description>
    </context>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:description="http://www.eclipse.org/sirius/description/1.1.0"
+    xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0"
+    xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0"
+    xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"
+    xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0"
+    xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0"
+    name="basicfamily"
+    version="11.0.0.201608291200">
+  <extensions
+      xsi:type="properties:ViewExtensionDescription"
+      identifier="NewPropertieView">
+    <metamodels
+        href="http://www.eclipse.org/sirius/sample/basicfamily#/"/>
+    <pages identifier="PropertiesTabGeneralForFamily"
+        labelExpression="General"
+        domainClass="basicfamily.Family"
+        groups="//@extensions.0/@groups.0"/>
+    <groups
+        identifier="Family Text"
+        labelExpression="Text"
+        domainClass="basicfamily.Family">
+      <controls
+          xsi:type="properties:ReferenceDescription"
+          identifier="Single Label Reference Identifier"
+          labelExpression="Single Label Reference Label Expression"
+          helpExpression="Single Label Reference Help Expression"
+          isEnabledExpression="aql:true"
+          valueExpression="Single Label Reference Value Expression"
+          displayExpression="Single Label Reference Display Expression">
+        <actions
+            labelExpression="OK">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool_1:ChangeContext"
+                browseExpression="OKExpression"/>
+          </initialOperation>
+        </actions>
+        <actions
+            labelExpression="Cancel">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool_1:ChangeContext"
+                browseExpression="CancelExpression"/>
+          </initialOperation>
+        </actions>
+        <actions
+            labelExpression="Default">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool_1:ChangeContext"
+                browseExpression="DefaultExpression"/>
+          </initialOperation>
+        </actions>
+        <style
+            labelFontNameExpression="Label Font Name Expression"
+            labelFontSize="12">
+          <labelBackgroundColor
+              xsi:type="description:SystemColor"
+              href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          <labelForegroundColor
+              xsi:type="description:SystemColor"
+              href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          <labelFontFormat>strike_through</labelFontFormat>
+          <labelFontFormat>bold</labelFontFormat>
+        </style>
+        <conditionalStyles
+            preconditionExpression="aql:true">
+          <style
+              labelFontNameExpression="Label Font Name Expression True"
+              labelFontSize="12">
+            <labelBackgroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelForegroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelFontFormat>strike_through</labelFontFormat>
+            <labelFontFormat>bold</labelFontFormat>
+          </style>
+        </conditionalStyles>
+        <conditionalStyles
+            preconditionExpression="aql:false">
+          <style
+              labelFontNameExpression="Label Font Name Expression False"
+              labelFontSize="12">
+            <labelBackgroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelForegroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelFontFormat>strike_through</labelFontFormat>
+            <labelFontFormat>bold</labelFontFormat>
+          </style>
+        </conditionalStyles>
+      </controls>
+      <controls
+          xsi:type="properties:ReferenceDescription"
+          identifier="Single Hyperlink Reference Identifier"
+          labelExpression="Single Hyperlink Reference Label Expression"
+          helpExpression="Single Hyperlink Reference Help Expression"
+          isEnabledExpression="aql:true"
+          valueExpression="Single Hyperlink Reference Value Expression"
+          displayExpression="Single Hyperlink Reference Display Expression">
+        <onClickOperation>
+          <firstModelOperations
+              xsi:type="tool_1:ChangeContext"
+              browseExpression="onClickExpression"/>
+        </onClickOperation>
+        <actions
+            labelExpression="OK">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool_1:ChangeContext"
+                browseExpression="OKExpression"/>
+          </initialOperation>
+        </actions>
+        <actions
+            labelExpression="Cancel">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool_1:ChangeContext"
+                browseExpression="CancelExpression"/>
+          </initialOperation>
+        </actions>
+        <actions
+            labelExpression="Default">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool_1:ChangeContext"
+                browseExpression="DefaultExpression"/>
+          </initialOperation>
+        </actions>
+        <style
+            labelFontNameExpression="Label Font Name Expression"
+            labelFontSize="12">
+          <labelBackgroundColor
+              xsi:type="description:SystemColor"
+              href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          <labelForegroundColor
+              xsi:type="description:SystemColor"
+              href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          <labelFontFormat>strike_through</labelFontFormat>
+          <labelFontFormat>bold</labelFontFormat>
+        </style>
+        <conditionalStyles
+            preconditionExpression="aql:true">
+          <style
+              labelFontNameExpression="Label Font Name Expression True"
+              labelFontSize="12">
+            <labelBackgroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelForegroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelFontFormat>strike_through</labelFontFormat>
+            <labelFontFormat>bold</labelFontFormat>
+          </style>
+        </conditionalStyles>
+        <conditionalStyles
+            preconditionExpression="aql:false">
+          <style
+              labelFontNameExpression="Label Font Name Expression False"
+              labelFontSize="12">
+            <labelBackgroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelForegroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelFontFormat>strike_through</labelFontFormat>
+            <labelFontFormat>bold</labelFontFormat>
+          </style>
+        </conditionalStyles>
+      </controls>
+      <controls
+          xsi:type="properties:ReferenceDescription"
+          identifier="Single List Reference Identifier"
+          labelExpression="Single List Reference Label Expression"
+          helpExpression="Single List Reference Help Expression"
+          isEnabledExpression="aql:true"
+          multiple="true"
+          valueExpression="Single List Reference Value Expression"
+          displayExpression="Single List Reference Display Expression">
+        <onClickOperation>
+          <firstModelOperations
+              xsi:type="tool_1:ChangeContext"
+              browseExpression="onClickExpression"/>
+        </onClickOperation>
+        <actions
+            labelExpression="OK">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool_1:ChangeContext"
+                browseExpression="OKExpression"/>
+          </initialOperation>
+        </actions>
+        <actions
+            labelExpression="Cancel">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool_1:ChangeContext"
+                browseExpression="CancelExpression"/>
+          </initialOperation>
+        </actions>
+        <actions
+            labelExpression="Default">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool_1:ChangeContext"
+                browseExpression="DefaultExpression"/>
+          </initialOperation>
+        </actions>
+        <style
+            labelFontNameExpression="Label Font Name Expression"
+            labelFontSize="12">
+          <labelBackgroundColor
+              xsi:type="description:SystemColor"
+              href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          <labelForegroundColor
+              xsi:type="description:SystemColor"
+              href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          <labelFontFormat>strike_through</labelFontFormat>
+          <labelFontFormat>bold</labelFontFormat>
+        </style>
+        <conditionalStyles
+            preconditionExpression="aql:true">
+          <style
+              labelFontNameExpression="Label Font Name Expression True"
+              labelFontSize="12">
+            <labelBackgroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelForegroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelFontFormat>strike_through</labelFontFormat>
+            <labelFontFormat>bold</labelFontFormat>
+          </style>
+        </conditionalStyles>
+        <conditionalStyles
+            preconditionExpression="aql:false">
+          <style
+              labelFontNameExpression="Label Font Name Expression False"
+              labelFontSize="12">
+            <labelBackgroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelForegroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelFontFormat>strike_through</labelFontFormat>
+            <labelFontFormat>bold</labelFontFormat>
+          </style>
+        </conditionalStyles>
+      </controls>
+    </groups>
+  </extensions>
+</description:Group>

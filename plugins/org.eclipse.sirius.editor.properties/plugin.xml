@@ -286,29 +286,6 @@
         <input type="org.eclipse.sirius.properties.ListDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.referencedescription.ReferenceDescriptionDisplayExpressionPropertySection"
-               id="properties.section.referenceDescription.DisplayExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.referencedescription.ReferenceDescriptionDisplayExpressionFilter"
-               afterSection="properties.section.referenceDescription.ValueExpression"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.ReferenceDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.referencedescription.ReferenceDescriptionValueExpressionPropertySection"
-               id="properties.section.referenceDescription.ValueExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.referencedescription.ReferenceDescriptionValueExpressionFilter"
-               afterSection="properties.section.referenceDescription.Multiple"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.ReferenceDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.referencedescription.ReferenceDescriptionMultiplePropertySection"
-               id="properties.section.referenceDescription.Multiple"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.referencedescription.ReferenceDescriptionMultipleFilter"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.ReferenceDescription"/>
-      </propertySection>
-  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.radiodescription.RadioDescriptionNumberOfColumnsPropertySection"
                id="properties.section.radioDescription.NumberOfColumns"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.radiodescription.RadioDescriptionNumberOfColumnsFilter"

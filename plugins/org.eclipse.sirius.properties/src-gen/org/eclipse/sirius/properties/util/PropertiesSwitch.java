@@ -54,9 +54,6 @@ import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
-import org.eclipse.sirius.properties.ReferenceDescription;
-import org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle;
-import org.eclipse.sirius.properties.ReferenceWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
@@ -383,20 +380,6 @@ public class PropertiesSwitch<T> {
             }
             return result;
         }
-        case PropertiesPackage.REFERENCE_DESCRIPTION: {
-            ReferenceDescription referenceDescription = (ReferenceDescription) theEObject;
-            T result = caseReferenceDescription(referenceDescription);
-            if (result == null) {
-                result = caseWidgetDescription(referenceDescription);
-            }
-            if (result == null) {
-                result = caseControlDescription(referenceDescription);
-            }
-            if (result == null) {
-                result = defaultCase(theEObject);
-            }
-            return result;
-        }
         case PropertiesPackage.LIST_DESCRIPTION: {
             ListDescription listDescription = (ListDescription) theEObject;
             T result = caseListDescription(listDescription);
@@ -548,17 +531,6 @@ public class PropertiesSwitch<T> {
             }
             return result;
         }
-        case PropertiesPackage.REFERENCE_WIDGET_STYLE: {
-            ReferenceWidgetStyle referenceWidgetStyle = (ReferenceWidgetStyle) theEObject;
-            T result = caseReferenceWidgetStyle(referenceWidgetStyle);
-            if (result == null) {
-                result = caseWidgetStyle(referenceWidgetStyle);
-            }
-            if (result == null) {
-                result = defaultCase(theEObject);
-            }
-            return result;
-        }
         case PropertiesPackage.LIST_WIDGET_STYLE: {
             ListWidgetStyle listWidgetStyle = (ListWidgetStyle) theEObject;
             T result = caseListWidgetStyle(listWidgetStyle);
@@ -668,17 +640,6 @@ public class PropertiesSwitch<T> {
             T result = caseCustomWidgetConditionalStyle(customWidgetConditionalStyle);
             if (result == null) {
                 result = caseWidgetConditionalStyle(customWidgetConditionalStyle);
-            }
-            if (result == null) {
-                result = defaultCase(theEObject);
-            }
-            return result;
-        }
-        case PropertiesPackage.REFERENCE_WIDGET_CONDITIONAL_STYLE: {
-            ReferenceWidgetConditionalStyle referenceWidgetConditionalStyle = (ReferenceWidgetConditionalStyle) theEObject;
-            T result = caseReferenceWidgetConditionalStyle(referenceWidgetConditionalStyle);
-            if (result == null) {
-                result = caseWidgetConditionalStyle(referenceWidgetConditionalStyle);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1090,23 +1051,6 @@ public class PropertiesSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Reference Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Reference Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseReferenceDescription(ReferenceDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>List Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
@@ -1345,23 +1289,6 @@ public class PropertiesSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Reference Widget Style</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Reference Widget Style</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseReferenceWidgetStyle(ReferenceWidgetStyle object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>List Widget Style</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
@@ -1544,23 +1471,6 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseCustomWidgetConditionalStyle(CustomWidgetConditionalStyle object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Reference Widget Conditional Style</em>'. <!-- begin-user-doc -->
-     * This implementation returns null; returning a non-null result will
-     * terminate the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Reference Widget Conditional Style</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseReferenceWidgetConditionalStyle(ReferenceWidgetConditionalStyle object) {
         return null;
     }
 

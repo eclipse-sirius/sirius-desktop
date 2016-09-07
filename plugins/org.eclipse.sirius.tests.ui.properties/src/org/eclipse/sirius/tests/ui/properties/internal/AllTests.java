@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.ui.properties.internal;
 
 import org.eclipse.sirius.tests.ui.properties.internal.converters.ConverterTests;
+import org.eclipse.sirius.tests.ui.properties.internal.migration.ReferenceMigrationTests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -21,7 +22,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author sbegaudeau
  */
 @RunWith(Suite.class)
-@SuiteClasses({ ConverterTests.class })
+@SuiteClasses({ ConverterTests.class, ReferenceMigrationTests.class })
 public final class AllTests {
     /**
      * The constructor.

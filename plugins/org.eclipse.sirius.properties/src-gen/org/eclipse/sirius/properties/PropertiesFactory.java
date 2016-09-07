@@ -193,15 +193,6 @@ public interface PropertiesFactory extends EFactory {
     RadioDescription createRadioDescription();
 
     /**
-     * Returns a new object of class '<em>Reference Description</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return a new object of class '<em>Reference Description</em>'.
-     * @generated
-     */
-    ReferenceDescription createReferenceDescription();
-
-    /**
      * Returns a new object of class '<em>List Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -328,15 +319,6 @@ public interface PropertiesFactory extends EFactory {
     CustomWidgetStyle createCustomWidgetStyle();
 
     /**
-     * Returns a new object of class '<em>Reference Widget Style</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return a new object of class '<em>Reference Widget Style</em>'.
-     * @generated
-     */
-    ReferenceWidgetStyle createReferenceWidgetStyle();
-
-    /**
      * Returns a new object of class '<em>List Widget Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -426,17 +408,6 @@ public interface PropertiesFactory extends EFactory {
      * @generated
      */
     CustomWidgetConditionalStyle createCustomWidgetConditionalStyle();
-
-    /**
-     * Returns a new object of class '
-     * <em>Reference Widget Conditional Style</em>'. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
-     * @return a new object of class '
-     *         <em>Reference Widget Conditional Style</em>'.
-     * @generated
-     */
-    ReferenceWidgetConditionalStyle createReferenceWidgetConditionalStyle();
 
     /**
      * Returns a new object of class '<em>List Widget Conditional Style</em>'.

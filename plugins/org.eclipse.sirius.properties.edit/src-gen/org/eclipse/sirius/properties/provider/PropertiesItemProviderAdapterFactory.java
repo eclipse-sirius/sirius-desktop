@@ -559,31 +559,6 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.properties.ReferenceDescription} instances.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected ReferenceDescriptionItemProvider referenceDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.ReferenceDescription}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public Adapter createReferenceDescriptionAdapter() {
-        if (referenceDescriptionItemProvider == null) {
-            referenceDescriptionItemProvider = new ReferenceDescriptionItemProvider(this);
-        }
-
-        return referenceDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.ListDescription} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -934,31 +909,6 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle} instances.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected ReferenceWidgetStyleItemProvider referenceWidgetStyleItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public Adapter createReferenceWidgetStyleAdapter() {
-        if (referenceWidgetStyleItemProvider == null) {
-            referenceWidgetStyleItemProvider = new ReferenceWidgetStyleItemProvider(this);
-        }
-
-        return referenceWidgetStyleItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.ListWidgetStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1205,31 +1155,6 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
 
         return customWidgetConditionalStyleItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected ReferenceWidgetConditionalStyleItemProvider referenceWidgetConditionalStyleItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public Adapter createReferenceWidgetConditionalStyleAdapter() {
-        if (referenceWidgetConditionalStyleItemProvider == null) {
-            referenceWidgetConditionalStyleItemProvider = new ReferenceWidgetConditionalStyleItemProvider(this);
-        }
-
-        return referenceWidgetConditionalStyleItemProvider;
     }
 
     /**
@@ -1519,9 +1444,6 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (radioDescriptionItemProvider != null) {
             radioDescriptionItemProvider.dispose();
         }
-        if (referenceDescriptionItemProvider != null) {
-            referenceDescriptionItemProvider.dispose();
-        }
         if (listDescriptionItemProvider != null) {
             listDescriptionItemProvider.dispose();
         }
@@ -1564,9 +1486,6 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (customWidgetStyleItemProvider != null) {
             customWidgetStyleItemProvider.dispose();
         }
-        if (referenceWidgetStyleItemProvider != null) {
-            referenceWidgetStyleItemProvider.dispose();
-        }
         if (listWidgetStyleItemProvider != null) {
             listWidgetStyleItemProvider.dispose();
         }
@@ -1596,9 +1515,6 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
         if (customWidgetConditionalStyleItemProvider != null) {
             customWidgetConditionalStyleItemProvider.dispose();
-        }
-        if (referenceWidgetConditionalStyleItemProvider != null) {
-            referenceWidgetConditionalStyleItemProvider.dispose();
         }
         if (listWidgetConditionalStyleItemProvider != null) {
             listWidgetConditionalStyleItemProvider.dispose();

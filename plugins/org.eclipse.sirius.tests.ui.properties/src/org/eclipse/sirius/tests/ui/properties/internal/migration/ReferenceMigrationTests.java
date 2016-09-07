@@ -8,13 +8,12 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tests.ui.properties.internal.converters;
+package org.eclipse.sirius.tests.ui.properties.internal.migration;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EefPackage;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.compare.Comparison;
@@ -32,39 +31,47 @@ import org.eclipse.emf.compare.scope.DefaultComparisonScope;
 import org.eclipse.emf.compare.scope.IComparisonScope;
 import org.eclipse.emf.compare.utils.UseIdentifiers;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.sirius.properties.PropertiesPackage;
-import org.eclipse.sirius.properties.ViewExtensionDescription;
-import org.eclipse.sirius.ui.properties.internal.SiriusInputDescriptor;
-import org.eclipse.sirius.ui.properties.internal.tabprovider.ViewDescriptionConverter;
+import org.eclipse.sirius.viewpoint.description.Group;
 import org.junit.Test;
 
 /**
- * Tests of the IDescriptionConverters.
+ * Tests of the migration of the reference widget in an odesign file.
  * 
  * @author sbegaudeau
  */
-@SuppressWarnings("restriction")
-public class ConverterTests {
+public class ReferenceMigrationTests {
     /**
-     * The path of the Sirius model in the bundle.
+     * The path of the Sirius model before the migration in the bundle.
      */
-    private static final String SIRIUS_MODEL_PATH = "/data/sirius.odesign";
+    private static final String OLD_MODEL_PATH = "/data/migration/before_reference.odesign";
 
     /**
-     * This test is used to ensure the proper transformation of a Sirius
-     * Properties model into an EEF one.
+     * The path of the Sirius model after the migration in the bundle.
+     */
+    private static final String NEW_MODEL_PATH = "/data/migration/after_reference.odesign";
+
+    /**
+     * This test will ensure that the reference widget is properly transformed
+     * into a label, hyperlink and a list.
      */
     @Test
-    public void testDescriptionConverter() {
-        EObject siriusEObject = this.convert(this.load(SIRIUS_MODEL_PATH).getContents().get(0));
-        EObject eefEObject = this.load("/data/eef.xmi").getContents().get(0);
+    public void testReferenceMigration() {
+        EObject beforeMigration = this.load(OLD_MODEL_PATH).getContents().get(0);
+        if (beforeMigration instanceof Group && ((Group) beforeMigration).getExtensions().size() == 1) {
+            beforeMigration = ((Group) beforeMigration).getExtensions().get(0);
+        }
 
-        IComparisonScope scope = new DefaultComparisonScope(siriusEObject, eefEObject, null);
+        EObject afterMigration = this.load(NEW_MODEL_PATH).getContents().get(0);
+        if (afterMigration instanceof Group && ((Group) afterMigration).getExtensions().size() == 1) {
+            afterMigration = ((Group) afterMigration).getExtensions().get(0);
+        }
+
+        IComparisonScope scope = new DefaultComparisonScope(beforeMigration, afterMigration, null);
         IEObjectMatcher matcher = DefaultMatchEngine.createDefaultEObjectMatcher(UseIdentifiers.NEVER);
         IComparisonFactory comparisonFactory = new DefaultComparisonFactory(new DefaultEqualityHelperFactory());
         IMatchEngine.Factory matchEngineFactory = new MatchEngineFactoryImpl(matcher, comparisonFactory);
@@ -77,32 +84,6 @@ public class ConverterTests {
         List<Diff> differences = comparison.getDifferences();
 
         assertEquals(0, differences.size());
-    }
-
-    /**
-     * Transforms the given Sirius EObject into an EEF EObject.
-     * 
-     * @param eObject
-     *            The Sirius EObject
-     * @return The EEF EObject created form the Sirius one
-     */
-    private EObject convert(EObject eObject) {
-        if (eObject instanceof ViewExtensionDescription) {
-            ViewExtensionDescription viewExtensionDescription = (ViewExtensionDescription) eObject;
-            ViewDescriptionConverter converter = new ViewDescriptionConverter(viewExtensionDescription.getPages());
-            SiriusInputDescriptor input = new SiriusInputDescriptor(EcoreFactory.eINSTANCE.createEObject());
-            EEFViewDescription eefViewDescription = converter.convert(input);
-
-            ResourceSet resourceSet = new ResourceSetImpl();
-            resourceSet.getPackageRegistry().put(EefPackage.eNS_URI, EefPackage.eINSTANCE);
-            resourceSet.getPackageRegistry().put(PropertiesPackage.eNS_URI, PropertiesPackage.eINSTANCE);
-            resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl()); //$NON-NLS-1$
-            Resource resource = resourceSet.createResource(URI.createURI(SIRIUS_MODEL_PATH));
-            resource.getContents().add(eefViewDescription);
-
-            return eefViewDescription;
-        }
-        return null;
     }
 
     /**
@@ -119,7 +100,7 @@ public class ConverterTests {
         resourceSet.getPackageRegistry().put(PropertiesPackage.eNS_URI, PropertiesPackage.eINSTANCE);
         resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl()); //$NON-NLS-1$
         Resource resource = resourceSet.getResource(URI.createFileURI(System.getProperty("user.dir") + uri), true);
-        resource.setURI(URI.createURI(SIRIUS_MODEL_PATH));
+        resource.setURI(URI.createURI(OLD_MODEL_PATH));
         return resource;
     }
 }

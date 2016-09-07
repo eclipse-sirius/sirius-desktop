@@ -78,5 +78,9 @@
            class="org.eclipse.sirius.ui.properties.internal.migration.FontSizeMigrationParticipant"
            kind="VSM">
      </participant>
+     <participant
+           class="org.eclipse.sirius.ui.properties.internal.migration.ReferenceWidgetMigrationParticipant"
+           kind="VSM">
+     </participant>
   </extension>
 </plugin>

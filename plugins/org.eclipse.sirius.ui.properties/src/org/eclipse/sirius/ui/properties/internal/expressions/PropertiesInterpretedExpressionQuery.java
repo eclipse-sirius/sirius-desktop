@@ -187,9 +187,6 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
             } else if (feature == PropertiesPackage.Literals.RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION) {
                 VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.RADIO_DESCRIPTION__CANDIDATES_EXPRESSION);
                 availableVariables.put(EEFExpressionUtils.EEFSelect.CANDIDATE, candidatesExpressionType);
-            } else if (feature == PropertiesPackage.Literals.REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION) {
-                VariableType valueExpressionType = getResultType(target, PropertiesPackage.Literals.REFERENCE_DESCRIPTION__VALUE_EXPRESSION);
-                availableVariables.put(EEFExpressionUtils.EEFReference.VALUE, valueExpressionType);
             } else if (feature == PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION) {
                 if (target.eContainer() instanceof DynamicMappingFor) {
                     DynamicMappingFor forDefinition = (DynamicMappingFor) target.eContainer();
@@ -241,18 +238,10 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
                 }
             } else if (callbackFeature == PropertiesPackage.Literals.RADIO_DESCRIPTION__INITIAL_OPERATION) {
                 availableVariables.put(EEFExpressionUtils.EEFText.NEW_VALUE, stringType);
-            } else if (callbackFeature == PropertiesPackage.Literals.REFERENCE_DESCRIPTION__ON_CLICK_OPERATION) {
-                Option<Collection<String>> domainClass = VSMNavigation.getDomainClassFromContainingGroup(toolContext);
-                if (domainClass.some()) {
-                    availableVariables.put(EEFExpressionUtils.EEFReference.SELECTION, VariableType.fromStrings(domainClass.get()));
-                } else {
-                    availableVariables.put(EEFExpressionUtils.EEFHyperlink.SELECTION, unkownType);
-                }
-                availableVariables.put(EEFExpressionUtils.EEFReference.ON_CLICK_EVENT_KIND, stringType);
             } else if (callbackFeature == PropertiesPackage.Literals.WIDGET_ACTION__INITIAL_OPERATION) {
                 Option<Collection<String>> domainClass = VSMNavigation.getDomainClassFromContainingGroup(toolContext);
-                if (domainClass.some()) {
-                    availableVariables.put(EEFExpressionUtils.EEFReference.SELECTION, VariableType.fromStrings(domainClass.get()));
+                if (!domainClass.some()) {
+                    availableVariables.put(EEFExpressionUtils.EEFHyperlink.SELECTION, VariableType.fromStrings(domainClass.get()));
                 } else {
                     availableVariables.put(EEFExpressionUtils.EEFHyperlink.SELECTION, unkownType);
                 }

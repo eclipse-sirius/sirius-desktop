@@ -44,9 +44,6 @@ import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
-import org.eclipse.sirius.properties.ReferenceDescription;
-import org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle;
-import org.eclipse.sirius.properties.ReferenceWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
@@ -229,12 +226,6 @@ public class PropertiesDescriptionConverterSwitch extends PropertiesSwitch<IDesc
     }
 
     @Override
-    public IDescriptionConverter caseReferenceDescription(ReferenceDescription object) {
-        return new DefaultDescriptionWithInitialOperationConverter<>(ReferenceDescription.class, EefPackage.Literals.EEF_REFERENCE_DESCRIPTION,
-                EefPackage.Literals.EEF_REFERENCE_DESCRIPTION__ON_CLICK_EXPRESSION);
-    }
-
-    @Override
     public IDescriptionConverter caseListDescription(ListDescription object) {
         return new DefaultDescriptionWithInitialOperationConverter<>(ListDescription.class, EefPackage.Literals.EEF_LIST_DESCRIPTION, EefPackage.Literals.EEF_LIST_DESCRIPTION__ON_CLICK_EXPRESSION);
     }
@@ -242,16 +233,6 @@ public class PropertiesDescriptionConverterSwitch extends PropertiesSwitch<IDesc
     @Override
     public IDescriptionConverter caseWidgetAction(WidgetAction object) {
         return new DefaultDescriptionWithInitialOperationConverter<>(WidgetAction.class, EefPackage.Literals.EEF_WIDGET_ACTION, EefPackage.Literals.EEF_WIDGET_ACTION__ACTION_EXPRESSION);
-    }
-
-    @Override
-    public IDescriptionConverter caseReferenceWidgetStyle(ReferenceWidgetStyle object) {
-        return new DefaultStyleDescriptionConverter<>(ReferenceWidgetStyle.class, EefPackage.Literals.EEF_REFERENCE_STYLE);
-    }
-
-    @Override
-    public IDescriptionConverter caseReferenceWidgetConditionalStyle(ReferenceWidgetConditionalStyle object) {
-        return new DefaultDescriptionConverter<>(ReferenceWidgetConditionalStyle.class, EefPackage.Literals.EEF_REFERENCE_CONDITIONAL_STYLE);
     }
 
     @Override

@@ -58,9 +58,6 @@ import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
-import org.eclipse.sirius.properties.ReferenceDescription;
-import org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle;
-import org.eclipse.sirius.properties.ReferenceWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
@@ -239,13 +236,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      *
      * @generated
      */
-    private EClass referenceDescriptionEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
     private EClass listDescriptionEClass = null;
 
     /**
@@ -400,13 +390,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      *
      * @generated
      */
-    private EClass referenceWidgetConditionalStyleEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
     private EClass listWidgetConditionalStyleEClass = null;
 
     /**
@@ -429,13 +412,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     private EClass groupConditionalStyleEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    private EClass referenceWidgetStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1454,86 +1430,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EClass getReferenceDescription() {
-        return referenceDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EAttribute getReferenceDescription_Multiple() {
-        return (EAttribute) referenceDescriptionEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EAttribute getReferenceDescription_ValueExpression() {
-        return (EAttribute) referenceDescriptionEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EAttribute getReferenceDescription_DisplayExpression() {
-        return (EAttribute) referenceDescriptionEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getReferenceDescription_OnClickOperation() {
-        return (EReference) referenceDescriptionEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getReferenceDescription_Actions() {
-        return (EReference) referenceDescriptionEClass.getEStructuralFeatures().get(4);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getReferenceDescription_Style() {
-        return (EReference) referenceDescriptionEClass.getEStructuralFeatures().get(5);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getReferenceDescription_ConditionalStyles() {
-        return (EReference) referenceDescriptionEClass.getEStructuralFeatures().get(6);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EClass getListDescription() {
         return listDescriptionEClass;
     }
@@ -2194,26 +2090,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EClass getReferenceWidgetConditionalStyle() {
-        return referenceWidgetConditionalStyleEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getReferenceWidgetConditionalStyle_Style() {
-        return (EReference) referenceWidgetConditionalStyleEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EClass getListWidgetConditionalStyle() {
         return listWidgetConditionalStyleEClass;
     }
@@ -2296,16 +2172,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     @Override
     public EReference getGroupConditionalStyle_Style() {
         return (EReference) groupConditionalStyleEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EClass getReferenceWidgetStyle() {
-        return referenceWidgetStyleEClass;
     }
 
     /**
@@ -2620,15 +2486,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEAttribute(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS);
         createEReference(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES);
 
-        referenceDescriptionEClass = createEClass(PropertiesPackage.REFERENCE_DESCRIPTION);
-        createEAttribute(referenceDescriptionEClass, PropertiesPackage.REFERENCE_DESCRIPTION__MULTIPLE);
-        createEAttribute(referenceDescriptionEClass, PropertiesPackage.REFERENCE_DESCRIPTION__VALUE_EXPRESSION);
-        createEAttribute(referenceDescriptionEClass, PropertiesPackage.REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION);
-        createEReference(referenceDescriptionEClass, PropertiesPackage.REFERENCE_DESCRIPTION__ON_CLICK_OPERATION);
-        createEReference(referenceDescriptionEClass, PropertiesPackage.REFERENCE_DESCRIPTION__ACTIONS);
-        createEReference(referenceDescriptionEClass, PropertiesPackage.REFERENCE_DESCRIPTION__STYLE);
-        createEReference(referenceDescriptionEClass, PropertiesPackage.REFERENCE_DESCRIPTION__CONDITIONAL_STYLES);
-
         listDescriptionEClass = createEClass(PropertiesPackage.LIST_DESCRIPTION);
         createEAttribute(listDescriptionEClass, PropertiesPackage.LIST_DESCRIPTION__VALUE_EXPRESSION);
         createEAttribute(listDescriptionEClass, PropertiesPackage.LIST_DESCRIPTION__DISPLAY_EXPRESSION);
@@ -2693,8 +2550,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         customWidgetStyleEClass = createEClass(PropertiesPackage.CUSTOM_WIDGET_STYLE);
 
-        referenceWidgetStyleEClass = createEClass(PropertiesPackage.REFERENCE_WIDGET_STYLE);
-
         listWidgetStyleEClass = createEClass(PropertiesPackage.LIST_WIDGET_STYLE);
 
         hyperlinkWidgetStyleEClass = createEClass(PropertiesPackage.HYPERLINK_WIDGET_STYLE);
@@ -2735,9 +2590,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         customWidgetConditionalStyleEClass = createEClass(PropertiesPackage.CUSTOM_WIDGET_CONDITIONAL_STYLE);
         createEReference(customWidgetConditionalStyleEClass, PropertiesPackage.CUSTOM_WIDGET_CONDITIONAL_STYLE__STYLE);
-
-        referenceWidgetConditionalStyleEClass = createEClass(PropertiesPackage.REFERENCE_WIDGET_CONDITIONAL_STYLE);
-        createEReference(referenceWidgetConditionalStyleEClass, PropertiesPackage.REFERENCE_WIDGET_CONDITIONAL_STYLE__STYLE);
 
         listWidgetConditionalStyleEClass = createEClass(PropertiesPackage.LIST_WIDGET_CONDITIONAL_STYLE);
         createEReference(listWidgetConditionalStyleEClass, PropertiesPackage.LIST_WIDGET_CONDITIONAL_STYLE__STYLE);
@@ -2809,7 +2661,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         dynamicMappingForEClass.getESuperTypes().add(this.getControlDescription());
         textAreaDescriptionEClass.getESuperTypes().add(this.getTextDescription());
         radioDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
-        referenceDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         listDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         customDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         hyperlinkDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
@@ -2820,7 +2671,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         buttonWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
         selectWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
         customWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
-        referenceWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
         listWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
         hyperlinkWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
         textWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
@@ -2830,7 +2680,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         buttonWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         selectWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         customWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
-        referenceWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         listWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         hyperlinkWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         groupConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
@@ -3068,28 +2917,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(referenceDescriptionEClass, ReferenceDescription.class, "ReferenceDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getReferenceDescription_Multiple(), ecorePackage.getEBoolean(), "multiple", null, 0, 1, ReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getReferenceDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, ReferenceDescription.class, //$NON-NLS-1$
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
-        initEAttribute(getReferenceDescription_DisplayExpression(), theDescriptionPackage.getInterpretedExpression(), "displayExpression", null, 0, 1, ReferenceDescription.class, //$NON-NLS-1$
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
-        initEReference(getReferenceDescription_OnClickOperation(), theToolPackage.getInitialOperation(), null, "onClickOperation", null, 0, 1, ReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
-                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
-                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getReferenceDescription_Actions(), this.getWidgetAction(), null, "actions", null, 0, -1, ReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
-        initEReference(getReferenceDescription_Style(), this.getReferenceWidgetStyle(), null, "style", null, 0, 1, ReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
-        initEReference(getReferenceDescription_ConditionalStyles(), this.getReferenceWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, ReferenceDescription.class, //$NON-NLS-1$
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
-                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-
         initEClass(listDescriptionEClass, ListDescription.class, "ListDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getListDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, ListDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -3212,8 +3039,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         initEClass(customWidgetStyleEClass, CustomWidgetStyle.class, "CustomWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(referenceWidgetStyleEClass, ReferenceWidgetStyle.class, "ReferenceWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
         initEClass(listWidgetStyleEClass, ListWidgetStyle.class, "ListWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         initEClass(hyperlinkWidgetStyleEClass, HyperlinkWidgetStyle.class, "HyperlinkWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -3292,12 +3117,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(customWidgetConditionalStyleEClass, CustomWidgetConditionalStyle.class, "CustomWidgetConditionalStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEReference(getCustomWidgetConditionalStyle_Style(), this.getCustomWidgetStyle(), null, "style", null, 0, 1, CustomWidgetConditionalStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
-                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
-                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-
-        initEClass(referenceWidgetConditionalStyleEClass, ReferenceWidgetConditionalStyle.class, "ReferenceWidgetConditionalStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
-                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getReferenceWidgetConditionalStyle_Style(), this.getReferenceWidgetStyle(), null, "style", null, 0, 1, ReferenceWidgetConditionalStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 

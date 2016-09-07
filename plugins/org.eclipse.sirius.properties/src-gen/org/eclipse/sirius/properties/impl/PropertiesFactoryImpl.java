@@ -56,9 +56,6 @@ import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
-import org.eclipse.sirius.properties.ReferenceDescription;
-import org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle;
-import org.eclipse.sirius.properties.ReferenceWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
@@ -151,8 +148,6 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createTextAreaDescription();
         case PropertiesPackage.RADIO_DESCRIPTION:
             return createRadioDescription();
-        case PropertiesPackage.REFERENCE_DESCRIPTION:
-            return createReferenceDescription();
         case PropertiesPackage.LIST_DESCRIPTION:
             return createListDescription();
         case PropertiesPackage.OPERATION_DESCRIPTION:
@@ -181,8 +176,6 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createSelectWidgetStyle();
         case PropertiesPackage.CUSTOM_WIDGET_STYLE:
             return createCustomWidgetStyle();
-        case PropertiesPackage.REFERENCE_WIDGET_STYLE:
-            return createReferenceWidgetStyle();
         case PropertiesPackage.LIST_WIDGET_STYLE:
             return createListWidgetStyle();
         case PropertiesPackage.HYPERLINK_WIDGET_STYLE:
@@ -203,8 +196,6 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createSelectWidgetConditionalStyle();
         case PropertiesPackage.CUSTOM_WIDGET_CONDITIONAL_STYLE:
             return createCustomWidgetConditionalStyle();
-        case PropertiesPackage.REFERENCE_WIDGET_CONDITIONAL_STYLE:
-            return createReferenceWidgetConditionalStyle();
         case PropertiesPackage.LIST_WIDGET_CONDITIONAL_STYLE:
             return createListWidgetConditionalStyle();
         case PropertiesPackage.WIDGET_ACTION:
@@ -460,17 +451,6 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * @generated
      */
     @Override
-    public ReferenceDescription createReferenceDescription() {
-        ReferenceDescriptionImpl referenceDescription = new ReferenceDescriptionImpl();
-        return referenceDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public ListDescription createListDescription() {
         ListDescriptionImpl listDescription = new ListDescriptionImpl();
         return listDescription;
@@ -625,17 +605,6 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * @generated
      */
     @Override
-    public ReferenceWidgetStyle createReferenceWidgetStyle() {
-        ReferenceWidgetStyleImpl referenceWidgetStyle = new ReferenceWidgetStyleImpl();
-        return referenceWidgetStyle;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public ListWidgetStyle createListWidgetStyle() {
         ListWidgetStyleImpl listWidgetStyle = new ListWidgetStyleImpl();
         return listWidgetStyle;
@@ -738,17 +707,6 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public CustomWidgetConditionalStyle createCustomWidgetConditionalStyle() {
         CustomWidgetConditionalStyleImpl customWidgetConditionalStyle = new CustomWidgetConditionalStyleImpl();
         return customWidgetConditionalStyle;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public ReferenceWidgetConditionalStyle createReferenceWidgetConditionalStyle() {
-        ReferenceWidgetConditionalStyleImpl referenceWidgetConditionalStyle = new ReferenceWidgetConditionalStyleImpl();
-        return referenceWidgetConditionalStyle;
     }
 
     /**
