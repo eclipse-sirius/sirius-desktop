@@ -36,6 +36,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String IDescriptionConverter_InvalidDescriptionType;
+    
+    @TranslatableMessage
+    public static String SiriusToolServices_DefaultCategoryName;
 
     // CHECKSTYLE:ON
 

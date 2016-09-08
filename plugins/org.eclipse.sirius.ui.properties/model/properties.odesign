@@ -1,129 +1,61 @@
 <?xml version="1.0" encoding="ASCII"?>
-<properties:ViewExtensionDescription
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0"
-    xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0"
-    xsi:schemaLocation="http://www.eclipse.org/sirius/properties/1.0.0 ../../org.eclipse.sirius.properties/model/properties.ecore http://www.eclipse.org/sirius/description/tool/1.1.0 ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool"
-    identifier="org.eclipse.sirius.ui.properties">
-  <pages identifier="org.eclipse.sirius.ui.properties.defaultpage"
-      labelExpression="General"
-      groups="//@groups.0"/>
-  <groups identifier="org.eclipse.sirius.ui.properties.defaultgroup"
-      labelExpression="Properties">
-    <controls
-        xsi:type="properties:DynamicMappingFor"
-        iterator="eStructuralFeature"
-        domainClassExpression="aql:self.eClass().eAllStructuralFeatures->select(f : ecore::EStructuralFeature | not f.derived and not f.transient and (f.oclIsKindOf(ecore::EAttribute)  or not f.oclAsType(ecore::EReference).containment)))">
-      <ifs predicateExpression="aql:(eStructuralFeature.eType.instanceTypeName = 'java.lang.String' or eStructuralFeature.eType.instanceTypeName = 'int' or eStructuralFeature.eType.instanceTypeName = 'double' or eStructuralFeature.eType.instanceTypeName = 'char' or eStructuralFeature.eType.instanceTypeName = 'short' or eStructuralFeature.eType.instanceTypeName = 'long' or eStructuralFeature.eType.instanceTypeName = 'float' or eStructuralFeature.eType.instanceTypeName = 'java.util.Date') and not(eStructuralFeature.many)">
-        <widget
-            xsi:type="properties:TextDescription"
-            identifier="sirius_default_rules_mono_string"
-            labelExpression="aql:self.eefViewText(eStructuralFeature)+':'"
-            isEnabledExpression="aql:eStructuralFeature.changeable"
-            valueExpression="aql:self.eGet(eStructuralFeature)">
+<properties:ViewExtensionDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/tool/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description/tool" identifier="org.eclipse.sirius.ui.properties">
+  <pages identifier="org.eclipse.sirius.ui.properties.defaultpage" labelExpression="General" groups="//@groups.0"/>
+  <groups identifier="org.eclipse.sirius.ui.properties.defaultgroup" labelExpression="aql:self.eefViewCategory()" semanticCandidateExpression="aql:self.eefViewCategories()" preconditionExpression="">
+    <controls xsi:type="properties:DynamicMappingFor" iterator="eStructuralFeature" iterableExpression="aql:self.eefViewEStructuralFeatures()">
+      <ifs predicateExpression="aql:(eStructuralFeature.eType.instanceTypeName = 'java.lang.String' or eStructuralFeature.eType.instanceTypeName = 'int' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Integer' or eStructuralFeature.eType.instanceTypeName = 'double' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Double' or eStructuralFeature.eType.instanceTypeName = 'char' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Character' or eStructuralFeature.eType.instanceTypeName = 'short' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Short' or eStructuralFeature.eType.instanceTypeName = 'long' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Long' or eStructuralFeature.eType.instanceTypeName = 'float' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Float' or eStructuralFeature.eType.instanceTypeName = 'java.util.Date') and not(eStructuralFeature.many) and not self.eefViewMultiline(eStructuralFeature)">
+        <widget xsi:type="properties:TextDescription" identifier="sirius_default_rules_mono_string" labelExpression="aql:self.eefViewText(eStructuralFeature)+':'" helpExpression="aql:self.eefViewDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature)">
           <initialOperation>
-            <firstModelOperations
-                xsi:type="tool:ChangeContext"
-                browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
           </initialOperation>
+          <conditionalStyles preconditionExpression="aql:eStructuralFeature.lowerBound==1">
+            <style>
+              <labelFontFormat>bold</labelFontFormat>
+            </style>
+          </conditionalStyles>
+        </widget>
+      </ifs>
+      <ifs predicateExpression="aql:(eStructuralFeature.eType.instanceTypeName = 'java.lang.String' or eStructuralFeature.eType.instanceTypeName = 'int' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Integer' or eStructuralFeature.eType.instanceTypeName = 'double' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Double' or eStructuralFeature.eType.instanceTypeName = 'char' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Character' or eStructuralFeature.eType.instanceTypeName = 'short' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Short' or eStructuralFeature.eType.instanceTypeName = 'long' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Long' or eStructuralFeature.eType.instanceTypeName = 'float' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Float' or eStructuralFeature.eType.instanceTypeName = 'java.util.Date') and not(eStructuralFeature.many) and self.eefViewMultiline(eStructuralFeature)">
+        <widget xsi:type="properties:TextAreaDescription" identifier="sirius_default_rules_multi_string" labelExpression="aql:self.eefViewText(eStructuralFeature)+':'" helpExpression="aql:self.eefViewDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature)">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
+          </initialOperation>
+          <conditionalStyles preconditionExpression="aql:eStructuralFeature.lowerBound==1">
+            <style>
+              <labelFontFormat>bold</labelFontFormat>
+            </style>
+          </conditionalStyles>
         </widget>
       </ifs>
       <ifs predicateExpression="aql:(eStructuralFeature.eType.instanceTypeName = 'java.lang.Boolean' or eStructuralFeature.eType.instanceTypeName = 'boolean') and not(eStructuralFeature.many)">
-        <widget
-            xsi:type="properties:CheckboxDescription"
-            identifier="sirius_default_rules_mono_boolean"
-            labelExpression="aql:self.eefViewText(eStructuralFeature)"
-            isEnabledExpression="aql:eStructuralFeature.changeable"
-            valueExpression="aql:self.eGet(eStructuralFeature)">
+        <widget xsi:type="properties:CheckboxDescription" identifier="sirius_default_rules_mono_boolean" labelExpression="aql:self.eefViewText(eStructuralFeature)" helpExpression="aql:self.eefViewDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature)">
           <initialOperation>
-            <firstModelOperations
-                xsi:type="tool:ChangeContext"
-                browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
           </initialOperation>
+          <conditionalStyles preconditionExpression="aql:eStructuralFeature.lowerBound==1">
+            <style>
+              <labelFontFormat>bold</labelFontFormat>
+            </style>
+          </conditionalStyles>
         </widget>
       </ifs>
       <ifs predicateExpression="aql:eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and not(eStructuralFeature.many)">
-        <widget
-            xsi:type="properties:RadioDescription"
-            identifier="sirius_default_rules_enum"
-            labelExpression="aql:self.eefViewText(eStructuralFeature)+':'"
-            helpExpression=""
-            isEnabledExpression="aql:eStructuralFeature.changeable"
-            valueExpression="aql:eStructuralFeature.eType.getEEnumLiteral(self.eGet(eStructuralFeature).toString())"
-            candidatesExpression="aql:eStructuralFeature.eType.eLiterals"
-            candidateDisplayExpression="aql:candidate.name"
-            numberOfColumns="5">
+        <widget xsi:type="properties:RadioDescription" identifier="sirius_default_rules_enum" labelExpression="aql:self.eefViewText(eStructuralFeature)+':'" helpExpression="aql:self.eefViewDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.eType.getEEnumLiteral(self.eGet(eStructuralFeature).toString())" candidatesExpression="aql:eStructuralFeature.eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
           <initialOperation>
-            <firstModelOperations
-                xsi:type="tool:ChangeContext"
-                browseExpression="aql:self.eSet(eStructuralFeature, newValue.instance)"/>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eSet(eStructuralFeature, newValue.instance)"/>
           </initialOperation>
-        </widget>
-      </ifs>
-      <ifs predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference) and eStructuralFeature.containment and not(eStructuralFeature.many)">
-        <widget
-            xsi:type="properties:ReferenceDescription"
-            identifier="sirius_default_rules_mono_containment_reference"
-            labelExpression="aql:self.eefViewText(eStructuralFeature)+':'"
-            isEnabledExpression="aql:eStructuralFeature.changeable"
-            valueExpression="aql:self.eGet(eStructuralFeature)"
-            displayExpression="aql:value.eefViewText()">
-          <onClickOperation>
-            <firstModelOperations
-                xsi:type="tool:ChangeContext"
-                browseExpression="var:self"/>
-          </onClickOperation>
+          <conditionalStyles preconditionExpression="aql:eStructuralFeature.lowerBound==1">
+            <style>
+              <labelFontFormat>bold</labelFontFormat>
+            </style>
+          </conditionalStyles>
         </widget>
       </ifs>
       <ifs predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference) and not(eStructuralFeature.containment) and not(eStructuralFeature.many)">
-        <widget
-            xsi:type="properties:SelectDescription"
-            identifier="sirius_default_rules_mono_noncontainment_reference"
-            labelExpression="aql:self.eefViewText(eStructuralFeature)+':'"
-            isEnabledExpression="aql:eStructuralFeature.changeable"
-            valueExpression="aql:self.eGet(eStructuralFeature)"
-            candidatesExpression="aql:self.eefViewChoiceOfValues(eStructuralFeature)"
-            candidateDisplayExpression="aql:candidate.eefViewText()">
-          <initialOperation>
-            <firstModelOperations
-                xsi:type="tool:ChangeContext"
-                browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
-          </initialOperation>
-        </widget>
-      </ifs>
-      <ifs predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference) and eStructuralFeature.containment and eStructuralFeature.many">
-        <widget
-            xsi:type="properties:ReferenceDescription"
-            identifier="sirius_default_rules_multi_containment_reference"
-            labelExpression="aql:self.eefViewText(eStructuralFeature)+':'"
-            isEnabledExpression="aql:eStructuralFeature.changeable"
-            multiple="true"
-            valueExpression="aql:self.eGet(eStructuralFeature)"
-            displayExpression="aql:value.eefViewText()">
-          <onClickOperation>
-            <firstModelOperations
-                xsi:type="tool:ChangeContext"
-                browseExpression="var:self"/>
-          </onClickOperation>
-        </widget>
+        <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" identifier="sirius_default_rules_mono_noncontainment_reference" labelExpression="aql:self.eefViewText(eStructuralFeature)+':'" helpExpression="aql:self.eefViewDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" referenceNameExpression="aql:eStructuralFeature.name"/>
       </ifs>
       <ifs predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference) and not(eStructuralFeature.containment) and eStructuralFeature.many">
-        <widget
-            xsi:type="properties:ReferenceDescription"
-            identifier="sirius_default_rules_multi_noncontainment_reference"
-            labelExpression="aql:self.eefViewText(eStructuralFeature)+':'"
-            isEnabledExpression="aql:eStructuralFeature.changeable"
-            multiple="true"
-            valueExpression="aql:self.eGet(eStructuralFeature)"
-            displayExpression="aql:value.eefViewText()">
-          <onClickOperation>
-            <firstModelOperations
-                xsi:type="tool:ChangeContext"
-                browseExpression="var:self"/>
-          </onClickOperation>
-        </widget>
+        <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" identifier="sirius_default_rules_multi_noncontainment_reference" labelExpression="aql:self.eefViewText(eStructuralFeature)+':'" helpExpression="aql:self.eefViewDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" referenceNameExpression="aql:eStructuralFeature.name"/>
       </ifs>
     </controls>
   </groups>

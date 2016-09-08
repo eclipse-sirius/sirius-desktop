@@ -470,13 +470,15 @@ public class EditingDomainServices {
         }
     }
 
-    public String getPropertyDescriptorCategory(EObject self, String featureName) {
+    public String getPropertyDescriptorCategory(EObject self, String featureName, String defaultCategoryName) {
         IItemPropertyDescriptor desc = getPropertyDescriptorForFeature(self, featureName);
         if (desc != null) {
-            return desc.getCategory(self);
-        } else {
-            return null;
+            String category = desc.getCategory(self);
+            if (category != null) {
+                return category;
+            }
         }
+        return defaultCategoryName;
     }
 
     public String getPropertyDescriptorDescription(EObject self, String featureName) {

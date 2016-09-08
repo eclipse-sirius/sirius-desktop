@@ -21,12 +21,6 @@
             id="org.eclipse.sirius.ui.properties.ext.widgets.reference.descriptionConditionalStyleConverter"
             label="%referenceDescriptionConditionalStyleConverter.Label">
       </descriptor>
-      <descriptor
-            class="org.eclipse.sirius.ui.properties.ext.widgets.reference.internal.DefaultRulesReferenceDescriptionConverter"
-            description="%defaultRulesReferenceDescriptionConverter.Description"
-            id="org.eclipse.sirius.ui.properties.ext.widgets.reference.defaultrules.descriptionConverter"
-            label="%defaultRulesReferenceDescriptionConverter.Label">
-      </descriptor>
    </extension>
    <extension
          point="org.eclipse.eef.ide.ui.ext.widgets.reference.eefExtReferenceViewerFilterProvider">
