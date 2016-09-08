@@ -58,7 +58,7 @@ public final class JavaExtensionsManager {
 
     private static final String WORKSPACE_SEPARATOR = "/"; //$NON-NLS-1$
 
-    private static final Set<String> JAVA_SERVICES_BUNDLES_WHITE_LIST = Sets.newHashSet(DslCommonPlugin.PLUGIN_ID);
+    private static final Set<String> JAVA_SERVICES_BUNDLES_WHITE_LIST = Sets.newHashSet(DslCommonPlugin.PLUGIN_ID, "org.eclipse.sirius.ui.properties"); //$NON-NLS-1$
 
     /**
      * This will be updated with the list of accessible viewpoint plugins, if
