@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tree.tools.internal.TreePlugin;
 
 public class SpecifierMonitor {
 
@@ -26,8 +29,8 @@ public class SpecifierMonitor {
      *            the specification attachment
      */
     public void warning(String string, Exception e, Option<? extends EObject> specificationAttachment) {
-        // TODO Auto-generated method stub
-
+        IStatus status = new Status(IStatus.WARNING, TreePlugin.getPlugin().getBundle().getSymbolicName(), string, e);
+        TreePlugin.INSTANCE.log(status);
     }
 
 }
