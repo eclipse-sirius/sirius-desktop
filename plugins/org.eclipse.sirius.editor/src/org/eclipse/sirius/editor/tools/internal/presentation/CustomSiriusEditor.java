@@ -265,6 +265,8 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                     }
                 }
             });
+            
+            selectionViewer.expandToLevel(4);
 
             final ToolBarManager tbm = getToolBarManager();
             tbm.add(new ValidateAction(selectionViewer, this));
