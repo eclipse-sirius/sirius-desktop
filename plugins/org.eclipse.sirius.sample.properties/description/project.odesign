@@ -9,7 +9,7 @@
     name="project"
     version="11.0.0.201601261200">
   <ownedViewpoints
-      name="Sirius Properties View Example">
+      name="Sirius Properties View Example" modelFileExtension="ecore">
     <ownedRepresentations
         xsi:type="description_1:DiagramDescription"
         name="Class Diagram"
