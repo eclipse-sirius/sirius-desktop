@@ -10,8 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.properties.internal;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
@@ -19,6 +23,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -46,6 +51,12 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * @author sbegaudeau
  */
 public class SiriusToolServices {
+
+    /**
+     * Keep in cache the features associated to an eObject which are visible in
+     * the default EEF view.
+     */
+    private static List<EStructuralFeature> visibleFeaturesCache = new ArrayList<EStructuralFeature>();
 
     private final EditingDomainServices editServices = new EditingDomainServices();
 
@@ -107,6 +118,143 @@ public class SiriusToolServices {
      */
     public Collection<?> eefViewChoiceOfValues(EObject eObject, EStructuralFeature eStructuralFeature) {
         return this.editServices.getPropertyDescriptorChoiceOfValues(eObject, eStructuralFeature.getName());
+    }
+
+    /**
+     * Returns if the given EObject is multiline.
+     * 
+     * @param eObject
+     *            The EObject
+     * @param eStructuralFeature
+     *            The EStructuralFeature
+     * @return True if the given EObject is multiline otherwise false
+     */
+    public boolean eefViewMultiline(EObject eObject, EStructuralFeature eStructuralFeature) {
+        return this.editServices.isPropertyDescriptorMultiLine(eObject, eStructuralFeature.getName());
+    }
+
+    /**
+     * Returns the description of the given EObject.
+     * 
+     * @param eObject
+     *            The EObject
+     * @param eStructuralFeature
+     *            The EStructuralFeature
+     * @return The description associated to the given EStructuralFeature or
+     *         <code>null</code> if none could be found
+     */
+    public String eefViewDescription(EObject eObject, EStructuralFeature eStructuralFeature) {
+        return this.editServices.getPropertyDescriptorDescription(eObject, eStructuralFeature.getName());
+    }
+
+    /**
+     * Get the category associated to a given EObject.
+     * 
+     * @param eObject
+     *            The EObject
+     * @return The category associated to a given EObject, if none is defined
+     *         the default one is returned
+     */
+    public String eefViewCategory(EObject eObject) {
+        String result = EditingDomainServices.DEFAULT_CATEGORY_NAME;
+        if (eObject instanceof EEFViewCategory) {
+            result = ((EEFViewCategory) eObject).getCategory();
+        }
+        return result;
+    }
+
+    /**
+     * Get the categories existing for all the features of a given EObject. If
+     * no category is defined a default one is created.
+     * 
+     * @param eObject
+     *            The EObject
+     * @return A list of EObjects representing the different categories ordered
+     *         by alphabetical order and with the default one at the end
+     */
+    public Collection<EEFViewCategory> eefViewCategories(EObject eObject) {
+        // Clear the visible features cache
+        visibleFeaturesCache.clear();
+
+        List<EEFViewCategory> categories = new ArrayList<EEFViewCategory>();
+
+        // Get all the visible features associated to an eObject
+        Collection<EStructuralFeature> features = getVisibleEStructuralFeatures(eObject);
+
+        // Get all the categories defined in the genmodel for all the features
+        // of the given EObject
+        Set<String> propertyDescriptorCategories = new HashSet<String>();
+        for (EStructuralFeature feature : features) {
+            String category = this.editServices.getPropertyDescriptorCategory(eObject, feature.getName());
+            if (category != null) {
+                propertyDescriptorCategories.add(category);
+            } else {
+                propertyDescriptorCategories.add(EditingDomainServices.DEFAULT_CATEGORY_NAME);
+            }
+        }
+
+        // Sort the categories by alphabetical order
+        List<String> sortedPropertyDescriptorCategories = new ArrayList<String>(propertyDescriptorCategories);
+        Collections.sort(sortedPropertyDescriptorCategories);
+
+        // Put the default category at the end of the list
+        if (sortedPropertyDescriptorCategories.contains(EditingDomainServices.DEFAULT_CATEGORY_NAME)) {
+            sortedPropertyDescriptorCategories.remove(EditingDomainServices.DEFAULT_CATEGORY_NAME);
+            sortedPropertyDescriptorCategories.add(EditingDomainServices.DEFAULT_CATEGORY_NAME);
+        }
+
+        // Create the EObjects associated to the visible categories
+        for (String category : sortedPropertyDescriptorCategories) {
+            EEFViewCategory eefViewCategory = new EEFViewCategory(eObject, category);
+            categories.add(eefViewCategory);
+        }
+
+        return categories;
+    }
+
+    /**
+     * Compute all the visible features (not derived, not transient, not a
+     * containment reference) associated to a given EObject.
+     * 
+     * @param eObject
+     *            The EObject
+     * @return List of visible features.
+     */
+    private Collection<EStructuralFeature> getVisibleEStructuralFeatures(EObject eObject) {
+        for (EStructuralFeature eStructuralFeature : eObject.eClass().getEAllStructuralFeatures()) {
+            if (!eStructuralFeature.isDerived() && !eStructuralFeature.isTransient() && !(eStructuralFeature instanceof EReference && ((EReference) eStructuralFeature).isContainment())) {
+                // Put the visible features in a cache in order that we go threw
+                // the features only once between the eefViewCategories service
+                // and the eefViewVisibleEStructuralFeaturesForCategory service
+                visibleFeaturesCache.add(eStructuralFeature);
+            }
+        }
+
+        return visibleFeaturesCache;
+    }
+
+    /**
+     * Get all the visible structural features associated to a category.
+     * 
+     * @param eObject
+     *            The category
+     * @return List of structural features which are visible in the given
+     *         category
+     */
+    public Collection<EStructuralFeature> eefViewEStructuralFeatures(EObject eObject) {
+        List<EStructuralFeature> result = new ArrayList<EStructuralFeature>();
+        // Get all the features associated to the eObject and filtered by
+        // category
+        if (eObject instanceof EEFViewCategory) {
+            String groupCategory = ((EEFViewCategory) eObject).getCategory();
+            for (EStructuralFeature eStructuralFeature : visibleFeaturesCache) {
+                String featureCategory = this.editServices.getPropertyDescriptorCategory(eObject, eStructuralFeature.getName());
+                if (groupCategory.equals(featureCategory)) {
+                    result.add(eStructuralFeature);
+                }
+            }
+        }
+        return result;
     }
 
     /**

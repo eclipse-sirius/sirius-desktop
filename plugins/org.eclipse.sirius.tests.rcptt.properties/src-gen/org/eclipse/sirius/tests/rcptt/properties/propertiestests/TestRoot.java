@@ -18,9 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tests.rcptt.properties.propertiestests.TestRoot#getElements
- * <em>Elements</em>}</li>
+ *   <li>{@link org.eclipse.sirius.tests.rcptt.properties.propertiestests.TestRoot#getElements <em>Elements</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.tests.rcptt.properties.propertiestests.PropertiestestsPackage#getTestRoot()
@@ -29,16 +27,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface TestRoot extends EObject {
     /**
-     * Returns the value of the '<em><b>Elements</b></em>' containment reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.tests.rcptt.properties.propertiestests.TestElement}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
+     * The list contents are of type {@link org.eclipse.sirius.tests.rcptt.properties.propertiestests.TestElement}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Elements</em>' containment reference list
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
      * @return the value of the '<em>Elements</em>' containment reference list.
      * @see org.eclipse.sirius.tests.rcptt.properties.propertiestests.PropertiestestsPackage#getTestRoot_Elements()
      * @model containment="true"
