@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.internal.dialect;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
@@ -181,8 +183,7 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
         if (exception instanceof LockedInstanceException) {
             EObject lockedElement = ((LockedInstanceException) exception).getLockedElement();
             if (lockedElement != null) {
-                errorMessage = LockedInstanceException.PERMISSION_ISSUE_MESSAGE;
-                errorMessage += getLabelProvider().getText(lockedElement);
+                errorMessage = MessageFormat.format(LockedInstanceException.PERMISSION_ISSUE_MESSAGE, getLabelProvider().getText(lockedElement));
             }
         }
         return errorMessage;

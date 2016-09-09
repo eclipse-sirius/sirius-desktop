@@ -519,6 +519,17 @@
 				<code>org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas</code> to allow testing events occurring after a mouse scroll combined to a keyboard key pressed at a given absolute position.  
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
+			<code>org.eclipse.sirius.ecore.extender</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> The message 
+				<code>org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException.PERMISSION_ISSUE_MESSAGE</code> has been modified. You should now use the 
+				<code>MessageFormat</code>. Example: 
+				<code>LockedInstanceException.PERMISSION_ISSUE_MESSAGE + getText(lockedElements)</code> must be replaced by 
+				<code>MessageFormat.format(LockedInstanceException.PERMISSION_ISSUE_MESSAGE, getText(lockedElements))</code>.
+			</li>
+		</ul>
 		<h2 id="sirius4.0.0">Changes in Sirius 4.0.0</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
@@ -2011,7 +2022,7 @@
 				<code>org.eclipse.sirius.ui.ext</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender2">Changes in 
 			<code>org.eclipse.sirius.ecore.extender</code>
 		</h4>
 		<ul>
@@ -2808,7 +2819,7 @@
 				<code>org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean)</code> has been added to specify if we want partial refresh or not.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ecore.extender2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender3">Changes in 
 			<code>org.eclipse.sirius.ecore.extender</code>
 		</h4>
 		<ul>

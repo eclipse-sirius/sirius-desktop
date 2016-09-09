@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.ecore.extender.business.api.permission.exception;
+
+import java.text.MessageFormat;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
@@ -26,6 +28,9 @@ public class LockedInstanceException extends RuntimeException {
     /** The default permission issue message. */
     public static final String PERMISSION_ISSUE_MESSAGE = Messages.LockedInstanceException_message;
 
+    /** The default permission issue message for multiple objects. */
+    public static final String PERMISSION_ISSUE_FOR_MULTIPLE_OBJECTS_MESSAGE = Messages.LockedInstanceExceptionForMultipleObjects_message;
+
     private static final long serialVersionUID = 1L;
 
     /** The locked element that the user tried to modify. */
@@ -38,7 +43,7 @@ public class LockedInstanceException extends RuntimeException {
      *            the elements that user tried to modify
      */
     public LockedInstanceException(final EObject... lockedElements) {
-        super(PERMISSION_ISSUE_MESSAGE + getText(lockedElements));
+        super(getMessage(lockedElements));
         this.lockedElements = lockedElements;
     }
 
@@ -51,6 +56,14 @@ public class LockedInstanceException extends RuntimeException {
     public LockedInstanceException(final String message) {
         super(message);
         lockedElements = null;
+    }
+
+    private static String getMessage(EObject[] lockedElements) {
+        if (lockedElements != null && lockedElements.length == 1) {
+            return MessageFormat.format(PERMISSION_ISSUE_MESSAGE, getText(lockedElements));
+        } else {
+            return MessageFormat.format(PERMISSION_ISSUE_FOR_MULTIPLE_OBJECTS_MESSAGE, getText(lockedElements));
+        }
     }
 
     private static String getText(EObject[] eObjects) {

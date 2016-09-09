@@ -120,6 +120,10 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> The utility method @mouseScrollWithKey(int, int, int, int)@, has been added in classes @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer@ and @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas@ to allow testing events occurring after a mouse scroll combined to a keyboard key pressed at a given absolute position.  
 
+h4. Changes in @org.eclipse.sirius.ecore.extender@
+
+* <span class="label label-info">Modified</span> The message @org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException.PERMISSION_ISSUE_MESSAGE@ has been modified. You should now use the @MessageFormat@. Example: @LockedInstanceException.PERMISSION_ISSUE_MESSAGE + getText(lockedElements)@ must be replaced by @MessageFormat.format(LockedInstanceException.PERMISSION_ISSUE_MESSAGE, getText(lockedElements))@.
+
 h2(#sirius4.0.0). Changes in Sirius 4.0.0
 
 h3. User-Visible Changes
