@@ -592,6 +592,7 @@ public abstract class AbstractDTreeEditor extends EditorPart
         if (dRepresentationLockStatusListener != null) {
             IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getRepresentation());
             permissionAuthority.removeAuthorityListener(dRepresentationLockStatusListener);
+            dRepresentationLockStatusListener = null;
         }
 
         isClosing = true;
@@ -601,10 +602,12 @@ public abstract class AbstractDTreeEditor extends EditorPart
         if (this.undoRedoActionHandler != null) {
             this.undoRedoActionHandler.dispose();
         }
+        undoRedoActionHandler = null;
         super.dispose();
         if (getTableViewer() != null) {
             getTableViewer().dispose();
         }
+        treeViewerManager = null;
         // We need to perform the detachEditor after having disposed the viewer
         // and the editor input to avoid a refresh. A refresh can occurs in the
         // case where the detach triggers the reload of the modified resources
@@ -615,8 +618,13 @@ public abstract class AbstractDTreeEditor extends EditorPart
             if (sess != null) {
                 sess.detachEditor(this, choice == ISaveablePart2.NO);
             }
+            session = null;
         }
-
+        adapterFactory = null;
+        accessor = null;
+        currentPropertySheetpage = null;
+        emfCommandFactory = null;
+        myDialogFactory = null;
     }
 
     @Override

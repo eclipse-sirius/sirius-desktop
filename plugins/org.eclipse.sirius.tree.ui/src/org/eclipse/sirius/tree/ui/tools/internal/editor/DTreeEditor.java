@@ -467,6 +467,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         if (getAdapterFactory() instanceof IDisposable) {
             ((IDisposable) getAdapterFactory()).dispose();
         }
+        treeModel = null;
     }
 
     /**

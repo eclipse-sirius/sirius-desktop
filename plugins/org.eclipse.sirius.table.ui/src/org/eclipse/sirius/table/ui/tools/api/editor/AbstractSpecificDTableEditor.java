@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,27 +33,21 @@ public abstract class AbstractSpecificDTableEditor extends AbstractDTableEditor 
 
     private SpecificEditorInputTranformer util = new SpecificEditorInputTranformer();
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void dispose() {
         super.dispose();
-        util.cleanEnvironment();
+        if (util != null) {
+            util.cleanEnvironment();
+            util = null;
+        }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void init(final IEditorSite site, final IEditorInput input) throws PartInitException {
         util.init(getViewpointURI(), getDiagramDescriptionName());
         super.init(site, util.transformInput(input, getSelection(site), isSessionStoredInWorkspace()));
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setInput(IEditorInput input) {
         super.setInput(util.transformInput(input, getSelection(getSite()), isSessionStoredInWorkspace()));
