@@ -489,10 +489,10 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
 
     @Override
     public void dispose() {
-        super.dispose();
         if (getAdapterFactory() instanceof IDisposable) {
             ((IDisposable) getAdapterFactory()).dispose();
         }
+        super.dispose();
         if (refreshAtOpeningActivator != null) {
             getSite().getPage().removePartListener(refreshAtOpeningActivator);
             refreshAtOpeningActivator = null;
