@@ -73,6 +73,10 @@
                contentURI="contents/propertiestests/multilinetitle-sample.design/"
                name="multilinetitle-sample.design">
          </projectDescriptor>
+		 <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.list/"
+		       name="org.eclipse.sirius.tests.rcptt.properties.design.list">
+         </projectDescriptor>
       </example>
    </extension>
    <extension
