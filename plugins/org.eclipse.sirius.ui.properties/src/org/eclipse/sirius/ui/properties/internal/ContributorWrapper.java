@@ -65,9 +65,14 @@ public class ContributorWrapper extends AbstractEEFTabbedPropertySheetPageContri
                     if (result.length >= 1) {
                         form.setText(result[0]);
                     }
+                } else {
+                    form.setText(""); //$NON-NLS-1$
                 }
 
                 form.setImage(ExtendedImageRegistry.INSTANCE.getImage(new SiriusToolServices().eefViewImage(semanticElement)));
+            } else {
+                form.setText(""); //$NON-NLS-1$
+                form.setImage(null);
             }
         }
     }
