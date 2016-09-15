@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -248,20 +249,17 @@ public final class DiagramElementMappingHelper {
         return result;
     }
 
+    @SuppressWarnings("unchecked")
     private static Iterator<EObject> extEAllContents(final EObject eObj) {
-        Iterator<EObject> it = null;
+        List<Iterator<EObject>> eAllContentsIterators = Lists.newArrayList();
         final ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(eObj);
         final Session session = SessionManager.INSTANCE.getSession(eObj);
         for (final Resource resource : session.getSemanticResources()) {
             for (final EObject root : resource.getContents()) {
-                if (it == null) {
-                    it = accessor.eAllContents(root);
-                } else {
-                    Iterators.concat(it, accessor.eAllContents(root));
-                }
+                eAllContentsIterators.add(accessor.eAllContents(root));
             }
         }
-        return it;
+        return Iterators.concat(Iterables.toArray(eAllContentsIterators, Iterator.class));
     }
 
     /**
