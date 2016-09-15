@@ -42,10 +42,6 @@ h3. Developer-Visible Changes
 ** @org.eclipse.sirius.business.api.query.DRepresentationQuery.getRepresentationDescriptor()@ provides the @DRepresentationDescriptor@ which references the @DRepresentation@.
 ** @org.eclipse.sirius.business.api.query.EObjectQuery.getDAnalysis()@ allows to retrieve a DAnalysis from a @DRepresentationElement@
 
-h4. Changes in @org.eclipse.sirius.common@
-
-* <span class="label label-danger">Removed</span> The deprecated method @org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext#getTargetTypes()@ has been removed. Use @getTargetType()@ instead: it returns a @VariableType@ which supports multiple possible types directly.
-
 h4. Changes in @org.eclipse.sirius@
 
 * <span class="label label-success">Added</span> A new extension point named @org.eclipse.sirius.interpretedExpressionQueryProvider@ (with the associated new interface @org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQueryProvider@) allows external contribution of @IInterpretedExpressionQuery@ specific to some particular expression occurrences in the VSM. This is used in particular for VSM extensions which do not fit well into the hard-coded assumptions about @IInterpretedExpressionQuery@. In Sirius 4.1, this is used to add completion and validation support for expressions used in properties views descriptions.

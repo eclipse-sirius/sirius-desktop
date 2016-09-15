@@ -17,11 +17,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
+import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
+
+import com.google.common.collect.Sets;
 
 /**
  * Default implementation for of {@link IInterpreterContext}.
- *
+ * 
  * @author alagarde
  */
 public class InterpretedContextImpl implements IInterpreterContext {
@@ -48,7 +51,7 @@ public class InterpretedContextImpl implements IInterpreterContext {
 
     /**
      * Default constructor.
-     *
+     * 
      * @param element
      *            the concerned element
      * @param requiresTargetType
@@ -76,38 +79,84 @@ public class InterpretedContextImpl implements IInterpreterContext {
         this.dependencies = dependencies;
     }
 
-    @Override
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext#getElement()
+     */
     public EObject getElement() {
         return element;
     }
 
-    @Override
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext#getTargetType()
+     */
     public VariableType getTargetType() {
         return targetTypes;
     }
 
-    @Override
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext#getAvailableEPackages()
+     */
     public Collection<EPackage> getAvailableEPackages() {
         return avalaiblePackages;
     }
 
-    @Override
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext#getVariables()
+     */
     public Map<String, VariableType> getVariables() {
         return variables;
     }
 
-    @Override
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext#getField()
+     */
     public EStructuralFeature getField() {
         return field;
     }
 
-    @Override
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext#getDependencies()
+     */
     public Collection<String> getDependencies() {
         return dependencies;
     }
 
-    @Override
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext#requiresTargetType()
+     */
     public boolean requiresTargetType() {
         return requiresTargetType;
     }
+
+    @Override
+    public Collection<String> getTargetTypes() {
+        Collection<String> typeNames = Sets.newLinkedHashSet();
+        for (TypeName type : getTargetType().getPossibleTypes()) {
+            typeNames.add(type.getCompleteName());
+        }
+        return typeNames;
+
+    }
+
 }
