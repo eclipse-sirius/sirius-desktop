@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQueryProvider;
 import org.eclipse.sirius.business.api.dialect.description.MultiLanguagesValidator;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.internal.dialect.description.InterpretedExpressionQueryProviderRegistry;
 import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRegistryListener;
 import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistryListener;
@@ -71,7 +70,7 @@ public final class SiriusPlugin extends EMFPlugin {
      * create at the initialization to avoid synchronization cost in
      * ExtendedPackageRegistry
      */
-    private static final ModelAccessorsRegistry REGISTRY = new ModelAccessorsRegistry(SiriusUtil.DESCRIPTION_MODEL_EXTENSION);
+    private static final ModelAccessorsRegistry REGISTRY = new ModelAccessorsRegistry();
 
     /**
      * Creates the instance.

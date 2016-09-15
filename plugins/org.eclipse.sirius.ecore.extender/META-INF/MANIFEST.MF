@@ -12,13 +12,14 @@ Export-Package: org.eclipse.sirius.ecore.extender.business.api.accessor;version=
  org.eclipse.sirius.ecore.extender.business.api.accessor.exception;version="3.0.0",
  org.eclipse.sirius.ecore.extender.business.api.permission;version="2.0.4",
  org.eclipse.sirius.ecore.extender.business.api.permission.exception;version="2.0.5",
- org.eclipse.sirius.ecore.extender.business.internal;x-internal:=true;version="3.0.0",
- org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore;x-internal:=true;version="3.0.0",
- org.eclipse.sirius.ecore.extender.business.internal.common;x-internal:=true;version="2.0.4",
- org.eclipse.sirius.ecore.extender.business.internal.permission;x-internal:=true;version="2.0.4",
- org.eclipse.sirius.ecore.extender.business.internal.permission.descriptors;x-internal:=true;version="2.0.4",
+ org.eclipse.sirius.ecore.extender.business.internal;version="3.0.0";x-internal:=true,
+ org.eclipse.sirius.ecore.extender.business.internal.accessor;version="4.1.0";x-friends:="org.eclipse.sirius",
+ org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore;version="3.0.0";x-internal:=true,
+ org.eclipse.sirius.ecore.extender.business.internal.common;version="2.0.4";x-internal:=true,
+ org.eclipse.sirius.ecore.extender.business.internal.permission;version="2.0.4";x-internal:=true,
+ org.eclipse.sirius.ecore.extender.business.internal.permission.descriptors;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.ecore.extender.tool.api;version="2.1.0",
- org.eclipse.sirius.ecore.extender.tool.internal;x-internal:=true;version="3.0.0"
+ org.eclipse.sirius.ecore.extender.tool.internal;version="3.0.0";x-internal:=true
 Bundle-Activator: org.eclipse.sirius.ecore.extender.business.internal.ExtenderPlugin$Implementation
 Eclipse-LazyStart: true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

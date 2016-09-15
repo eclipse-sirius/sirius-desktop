@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,15 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.ecore.extender.business.api.accessor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.ecore.extender.business.internal.Messages;
+import org.eclipse.sirius.ecore.extender.business.internal.accessor.ModelAccessorAdapter;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Registry keeping track of the model accessors.
@@ -28,10 +25,6 @@ import org.eclipse.sirius.ecore.extender.business.internal.Messages;
  */
 public class ModelAccessorsRegistry {
 
-    private String discriminant;
-
-    private Map<String, ModelAccessor> root2ExPackage = new HashMap<String, ModelAccessor>();
-
     /**
      * The model accessor to use when the resource of an {@link EObject} is
      * <code>null</code>.
@@ -39,13 +32,15 @@ public class ModelAccessorsRegistry {
     private ModelAccessor nullResourceModelAccessor;
 
     /**
-     * Create a new registry.
-     * 
-     * @param discriminantFileExtension
-     *            file extension used to discrimine a given resource set.
+     * The first created model accessor is used as fallback if no
+     * <code>nullResourceModelAccessor</code> is defined.
      */
-    public ModelAccessorsRegistry(final String discriminantFileExtension) {
-        discriminant = discriminantFileExtension;
+    private ModelAccessor firstCreatedModelAccessor;
+
+    /**
+     * Create a new registry.
+     */
+    public ModelAccessorsRegistry() {
     }
 
     /**
@@ -76,8 +71,8 @@ public class ModelAccessorsRegistry {
         if (modelElement == null || modelElementResource == null || modelElementResource.getResourceSet() == null) {
             if (nullResourceModelAccessor != null) {
                 result = nullResourceModelAccessor;
-            } else if (root2ExPackage.size() > 0) {
-                result = root2ExPackage.values().iterator().next();
+            } else if (firstCreatedModelAccessor != null) {
+                result = firstCreatedModelAccessor;
             } else {
                 // here we really can't manage something
                 throw new RuntimeException(Messages.ModelAccessorsRegistry_noResourceFound);
@@ -96,13 +91,18 @@ public class ModelAccessorsRegistry {
      * @return the model accessor corresponding the the given model.
      */
     public ModelAccessor getModelAccessor(final ResourceSet resourceSet) {
-        final String uri = getMapKeyFromResource(resourceSet);
-        if (!root2ExPackage.containsKey(uri)) {
+        Option<ModelAccessorAdapter> modelAccessorAdapter = ModelAccessorAdapter.getAdapter(resourceSet);
+        if (modelAccessorAdapter.some()) {
+            return modelAccessorAdapter.get().getModelAccessor();
+        } else {
             final ModelAccessor newPack = ExtenderService.createModelAccessor(resourceSet);
+            if (firstCreatedModelAccessor == null) {
+                firstCreatedModelAccessor = newPack;
+            }
             newPack.init(resourceSet);
-            root2ExPackage.put(uri, newPack);
+            ModelAccessorAdapter.addAdapter(resourceSet, newPack);
+            return newPack;
         }
-        return root2ExPackage.get(uri);
     }
 
     /**
@@ -116,10 +116,14 @@ public class ModelAccessorsRegistry {
     public void disposeModelAccessor(final EObject modelElement, final String airDescriptionExtension) {
         Resource modelElementResource = modelElement.eResource();
         if (modelElementResource != null && modelElementResource.getResourceSet() != null) {
-            final String root = getMapKeyFromResource(modelElementResource.getResourceSet());
-            if (root2ExPackage.containsKey(root)) {
-                root2ExPackage.remove(root);
+            Option<ModelAccessor> optionalModelAccesor = ModelAccessorAdapter.removeAdapter(modelElementResource.getResourceSet());
+            if (optionalModelAccesor.some()) {
+                if (optionalModelAccesor.get().equals(firstCreatedModelAccessor)) {
+                    firstCreatedModelAccessor = null;
+                }
+                optionalModelAccesor.get().dispose();
             }
+
         }
     }
 
@@ -127,37 +131,13 @@ public class ModelAccessorsRegistry {
      * Clear the whole registry.
      */
     public void dispose() {
-        final Iterator<ModelAccessor> it = root2ExPackage.values().iterator();
-        while (it.hasNext()) {
-            final ModelAccessor access = it.next();
-            access.dispose();
+        if (firstCreatedModelAccessor != null) {
+            firstCreatedModelAccessor.dispose();
+            firstCreatedModelAccessor = null;
         }
-        root2ExPackage.clear();
         if (nullResourceModelAccessor != null) {
             nullResourceModelAccessor.dispose();
             nullResourceModelAccessor = null;
         }
-
     }
-
-    private Resource getDiscriminantResource(final ResourceSet resourceSet) {
-        final Iterator<Resource> it = new ArrayList<Resource>(resourceSet.getResources()).iterator();
-        while (it.hasNext()) {
-            final Resource res = it.next();
-            if (res.getURI() != null && res.getURI().fileExtension() != null && res.getURI().fileExtension().equals(discriminant)) {
-                return res;
-            }
-        }
-        return null;
-    }
-
-    private String getMapKeyFromResource(final ResourceSet resourceSet) {
-        String uri = ""; //$NON-NLS-1$
-        final Resource airResource = getDiscriminantResource(resourceSet);
-        if (airResource != null && airResource.getURI() != null) {
-            uri = airResource.getURI().toString();
-        }
-        return uri;
-    }
-
 }

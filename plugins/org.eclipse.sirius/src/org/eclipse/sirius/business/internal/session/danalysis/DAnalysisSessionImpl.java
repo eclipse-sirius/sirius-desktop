@@ -86,6 +86,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
+import org.eclipse.sirius.ecore.extender.business.internal.accessor.ModelAccessorAdapter;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
@@ -1259,7 +1260,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain).unregisterClient(resourcesSynchronizer);
         // We do not reset resourcesSynchronizer to null as some of the session
-        // methods which are delegated to it must still be availble when the
+        // methods which are delegated to it must still be available when the
         // session is closed. It does not hold to any state or resource so
         // that's OK.
         ResourceSetSync.uninstallResourceSetSync(transactionalEditingDomain);
@@ -1302,6 +1303,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
         transactionalEditingDomain.dispose();
         doDisposePermissionAuthority(resourceSet);
+        ModelAccessorAdapter.disposeModelAccessor(resourceSet);
         transactionalEditingDomain = null;
         getActivatedViewpoints().clear();
         services = null;

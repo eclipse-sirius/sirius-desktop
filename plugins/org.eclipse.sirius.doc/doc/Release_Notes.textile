@@ -129,6 +129,7 @@ h4. Changes in @org.eclipse.sirius.properties@
 h4. Changes in @org.eclipse.sirius.ecore.extender@
 
 * <span class="label label-info">Modified</span> The message @org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException.PERMISSION_ISSUE_MESSAGE@ has been modified. You should now use the @MessageFormat@. Example: @LockedInstanceException.PERMISSION_ISSUE_MESSAGE + getText(lockedElements)@ must be replaced by @MessageFormat.format(LockedInstanceException.PERMISSION_ISSUE_MESSAGE, getText(lockedElements))@.
+* <span class="label label-info">Modified</span> The @org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessorsRegistry@ has been refactored to avoid problem with @ModelAccessor@ lifecycle. The constructor has no longer a parameter.
 
 h2(#sirius4.0.0). Changes in Sirius 4.0.0
 
