@@ -10,9 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.properties.internal;
 
+import java.util.Collection;
+
 import org.eclipse.eef.core.api.InputDescriptor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.ext.base.Option;
+
+import com.google.common.collect.Sets;
 
 /**
  * An EEF InputDescriptor for elements selected in a Sirius context.
@@ -48,6 +52,23 @@ public class SiriusInputDescriptor implements InputDescriptor {
         } else {
             return null;
         }
+    }
+
+    /**
+     * Returns all the semantic model element associated with the current
+     * selection, including secondary associated elements if any.
+     * 
+     * @return all the semantic model element associated with the current
+     *         selection.
+     */
+    public Collection<EObject> getAllSemanticElements() {
+        Collection<EObject> result = Sets.newLinkedHashSet();
+        result.add(getSemanticElement());
+        Option<Collection<EObject>> additional = context.getAdditionalSemanticElements();
+        if (additional.some()) {
+            result.addAll(additional.get());
+        }
+        return result;
     }
 
     /**
