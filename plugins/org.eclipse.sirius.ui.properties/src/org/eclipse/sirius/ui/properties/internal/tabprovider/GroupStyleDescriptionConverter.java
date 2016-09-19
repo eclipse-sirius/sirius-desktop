@@ -19,6 +19,7 @@ import org.eclipse.eef.EEF_TOGGLE_STYLE;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.GroupStyle;
+import org.eclipse.sirius.ui.properties.api.AbstractDescriptionConverter;
 import org.eclipse.sirius.ui.properties.api.DescriptionCache;
 import org.eclipse.sirius.ui.properties.internal.Messages;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;

@@ -39,6 +39,26 @@ public interface PropertiesExtWidgetsReferenceFactory extends EFactory {
     ExtReferenceDescription createExtReferenceDescription();
 
     /**
+     * Returns a new object of class '<em>Ext Reference Widget Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Ext Reference Widget Style</em>'.
+     * @generated
+     */
+    ExtReferenceWidgetStyle createExtReferenceWidgetStyle();
+
+    /**
+     * Returns a new object of class '
+     * <em>Ext Reference Widget Conditional Style</em>'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @return a new object of class '
+     *         <em>Ext Reference Widget Conditional Style</em>'.
+     * @generated
+     */
+    ExtReferenceWidgetConditionalStyle createExtReferenceWidgetConditionalStyle();
+
+    /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      *

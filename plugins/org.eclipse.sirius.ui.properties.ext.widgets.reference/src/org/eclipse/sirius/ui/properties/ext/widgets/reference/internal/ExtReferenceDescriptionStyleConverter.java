@@ -13,26 +13,26 @@ package org.eclipse.sirius.ui.properties.ext.widgets.reference.internal;
 import org.eclipse.eef.ext.widgets.reference.eefextwidgetsreference.EefExtWidgetsReferenceFactory;
 import org.eclipse.eef.ext.widgets.reference.eefextwidgetsreference.EefExtWidgetsReferencePackage;
 import org.eclipse.emf.ecore.EFactory;
-import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
-import org.eclipse.sirius.ui.properties.api.DefaultDescriptionConverter;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
+import org.eclipse.sirius.ui.properties.api.DefaultStyleDescriptionConverter;
 
 /**
- * This class is used to convert the Sirius Extension reference description into
- * the EEF one.
+ * Converter for the style of the reference widget.
  * 
  * @author sbegaudeau
  */
-public class ExtReferenceDescriptionConverter extends DefaultDescriptionConverter<ExtReferenceDescription> {
+public class ExtReferenceDescriptionStyleConverter extends DefaultStyleDescriptionConverter<ExtReferenceWidgetStyle> {
 
     /**
      * The constructor.
      */
-    public ExtReferenceDescriptionConverter() {
-        super(ExtReferenceDescription.class, EefExtWidgetsReferencePackage.Literals.EEF_EXT_REFERENCE_DESCRIPTION);
+    public ExtReferenceDescriptionStyleConverter() {
+        super(ExtReferenceWidgetStyle.class, EefExtWidgetsReferencePackage.Literals.EEF_EXT_REFERENCE_WIDGET_STYLE);
     }
 
     @Override
     protected EFactory getEFactory() {
         return EefExtWidgetsReferenceFactory.eINSTANCE;
     }
+
 }

@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
+import org.eclipse.sirius.ui.properties.api.AbstractDescriptionConverter;
 import org.eclipse.sirius.ui.properties.api.DescriptionCache;
 import org.eclipse.sirius.ui.properties.internal.Messages;
 

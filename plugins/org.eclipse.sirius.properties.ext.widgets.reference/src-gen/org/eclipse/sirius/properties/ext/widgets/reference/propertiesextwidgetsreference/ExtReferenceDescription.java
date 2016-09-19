@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.properties.WidgetDescription;
 
 /**
@@ -19,6 +20,7 @@ import org.eclipse.sirius.properties.WidgetDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription#getReferenceNameExpression
@@ -26,8 +28,13 @@ import org.eclipse.sirius.properties.WidgetDescription;
  * <li>
  * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription#getReferenceOwnerExpression
  * <em>Reference Owner Expression</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription#getStyle
+ * <em>Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage#getExtReferenceDescription()
  * @model
@@ -98,5 +105,54 @@ public interface ExtReferenceDescription extends WidgetDescription {
      * @generated
      */
     void setReferenceOwnerExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Style</em>' containment reference.
+     * @see #setStyle(ExtReferenceWidgetStyle)
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage#getExtReferenceDescription_Style()
+     * @model containment="true"
+     * @generated
+     */
+    ExtReferenceWidgetStyle getStyle();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription#getStyle
+     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Style</em>' containment reference.
+     * @see #getStyle()
+     * @generated
+     */
+    void setStyle(ExtReferenceWidgetStyle value);
+
+    /**
+     * Returns the value of the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle}
+     * . <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Conditional Styles</em>' containment reference
+     * list isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Conditional Styles</em>' containment
+     *         reference list.
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage#getExtReferenceDescription_ConditionalStyles()
+     * @model containment="true"
+     * @generated
+     */
+    EList<ExtReferenceWidgetConditionalStyle> getConditionalStyles();
 
 } // ExtReferenceDescription

@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferenceFactory;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
 
@@ -66,6 +68,10 @@ public class PropertiesExtWidgetsReferenceFactoryImpl extends EFactoryImpl imple
         switch (eClass.getClassifierID()) {
         case PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_DESCRIPTION:
             return createExtReferenceDescription();
+        case PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_WIDGET_STYLE:
+            return createExtReferenceWidgetStyle();
+        case PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_WIDGET_CONDITIONAL_STYLE:
+            return createExtReferenceWidgetConditionalStyle();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -80,6 +86,28 @@ public class PropertiesExtWidgetsReferenceFactoryImpl extends EFactoryImpl imple
     public ExtReferenceDescription createExtReferenceDescription() {
         ExtReferenceDescriptionImpl extReferenceDescription = new ExtReferenceDescriptionImpl();
         return extReferenceDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ExtReferenceWidgetStyle createExtReferenceWidgetStyle() {
+        ExtReferenceWidgetStyleImpl extReferenceWidgetStyle = new ExtReferenceWidgetStyleImpl();
+        return extReferenceWidgetStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ExtReferenceWidgetConditionalStyle createExtReferenceWidgetConditionalStyle() {
+        ExtReferenceWidgetConditionalStyleImpl extReferenceWidgetConditionalStyle = new ExtReferenceWidgetConditionalStyleImpl();
+        return extReferenceWidgetConditionalStyle;
     }
 
     /**

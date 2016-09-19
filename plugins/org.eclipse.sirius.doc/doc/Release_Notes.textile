@@ -126,6 +126,10 @@ h4. Changes in @org.eclipse.sirius.properties@
 * <span class="label label-info">Modified</span> The property @domainClassExpression@ has been renamed into @iterableExpression@.
 * <span class="label label-info">Modified</span> The properties @fontSize@ and @labelFontSize@ have been renamed into @fontSizeExpression@ and @labelFontSizeExpression@ since both of them were already treated as expression.
 
+h4. Changes in @org.eclipse.sirius.ui.properties@
+
+* <span class="label label-success">Added</span> Four utility classes have been added as API in the package @org.eclipse.sirius.ui.properties.api@ in order to help with the transformation of the description of custom widgets. The class @AbstractDescriptionConverter@ can now be used as superclass for all the converters. The classes @DefautDescriptionConverter@, @DefautStyleDescriptionConverter@ and @DefautDescriptionWithInitialOperationConverter@, now accessible, should handle most of the use cases. 
+
 h4. Changes in @org.eclipse.sirius.ecore.extender@
 
 * <span class="label label-info">Modified</span> The message @org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException.PERMISSION_ISSUE_MESSAGE@ has been modified. You should now use the @MessageFormat@. Example: @LockedInstanceException.PERMISSION_ISSUE_MESSAGE + getText(lockedElements)@ must be replaced by @MessageFormat.format(LockedInstanceException.PERMISSION_ISSUE_MESSAGE, getText(lockedElements))@.

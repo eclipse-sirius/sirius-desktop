@@ -52,15 +52,15 @@ import org.eclipse.sirius.properties.util.PropertiesSwitch;
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
-public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends PropertiesExtWidgetsReferenceAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable,
-IChildCreationExtender {
+public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends PropertiesExtWidgetsReferenceAdapterFactory
+        implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -77,7 +77,7 @@ IChildCreationExtender {
     /**
      * This helps manage the child creation extenders. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(PropertiesextwidgetsreferenceEditPlugin.INSTANCE,
@@ -87,7 +87,7 @@ IChildCreationExtender {
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -111,7 +111,7 @@ IChildCreationExtender {
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ExtReferenceDescriptionItemProvider extReferenceDescriptionItemProvider;
@@ -120,7 +120,7 @@ IChildCreationExtender {
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,6 +130,56 @@ IChildCreationExtender {
         }
 
         return extReferenceDescriptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected ExtReferenceWidgetStyleItemProvider extReferenceWidgetStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle}
+     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createExtReferenceWidgetStyleAdapter() {
+        if (extReferenceWidgetStyleItemProvider == null) {
+            extReferenceWidgetStyleItemProvider = new ExtReferenceWidgetStyleItemProvider(this);
+        }
+
+        return extReferenceWidgetStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected ExtReferenceWidgetConditionalStyleItemProvider extReferenceWidgetConditionalStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle}
+     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createExtReferenceWidgetConditionalStyleAdapter() {
+        if (extReferenceWidgetConditionalStyleItemProvider == null) {
+            extReferenceWidgetConditionalStyleItemProvider = new ExtReferenceWidgetConditionalStyleItemProvider(this);
+        }
+
+        return extReferenceWidgetConditionalStyleItemProvider;
     }
 
     /**
@@ -156,7 +206,7 @@ IChildCreationExtender {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +217,7 @@ IChildCreationExtender {
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +227,7 @@ IChildCreationExtender {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +244,7 @@ IChildCreationExtender {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public List<IChildCreationExtender> getChildCreationExtenders() {
@@ -203,7 +253,7 @@ IChildCreationExtender {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +263,7 @@ IChildCreationExtender {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +273,7 @@ IChildCreationExtender {
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -233,7 +283,7 @@ IChildCreationExtender {
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -268,6 +318,12 @@ IChildCreationExtender {
         if (extReferenceDescriptionItemProvider != null) {
             extReferenceDescriptionItemProvider.dispose();
         }
+        if (extReferenceWidgetStyleItemProvider != null) {
+            extReferenceWidgetStyleItemProvider.dispose();
+        }
+        if (extReferenceWidgetConditionalStyleItemProvider != null) {
+            extReferenceWidgetConditionalStyleItemProvider.dispose();
+        }
     }
 
     /**
@@ -280,14 +336,14 @@ IChildCreationExtender {
         /**
          * The switch for creating child descriptors specific to each extended
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected static class CreationSwitch extends PropertiesSwitch<Object> {
             /**
              * The child descriptors being populated. <!-- begin-user-doc -->
              * <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             protected List<Object> newChildDescriptors;
@@ -295,7 +351,7 @@ IChildCreationExtender {
             /**
              * The domain in which to create the children. <!-- begin-user-doc
              * --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             protected EditingDomain editingDomain;
@@ -303,7 +359,7 @@ IChildCreationExtender {
             /**
              * Creates the a switch for populating child descriptors in the
              * given domain. <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
@@ -313,7 +369,7 @@ IChildCreationExtender {
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             @Override
@@ -325,20 +381,20 @@ IChildCreationExtender {
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             @Override
             public Object caseContainerDescription(ContainerDescription object) {
                 newChildDescriptors
-                .add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceDescription()));
+                        .add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceDescription()));
 
                 return null;
             }
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             @Override
@@ -350,7 +406,7 @@ IChildCreationExtender {
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             protected CommandParameter createChildParameter(Object feature, Object child) {
@@ -361,7 +417,7 @@ IChildCreationExtender {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -373,7 +429,7 @@ IChildCreationExtender {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override

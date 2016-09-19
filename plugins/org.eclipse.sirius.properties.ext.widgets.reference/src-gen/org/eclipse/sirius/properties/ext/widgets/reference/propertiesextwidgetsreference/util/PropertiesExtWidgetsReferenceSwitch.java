@@ -15,8 +15,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.eclipse.sirius.properties.ControlDescription;
+import org.eclipse.sirius.properties.WidgetConditionalStyle;
 import org.eclipse.sirius.properties.WidgetDescription;
+import org.eclipse.sirius.properties.WidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
 
 /**
@@ -89,6 +93,28 @@ public class PropertiesExtWidgetsReferenceSwitch<T> extends Switch<T> {
             }
             return result;
         }
+        case PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_WIDGET_STYLE: {
+            ExtReferenceWidgetStyle extReferenceWidgetStyle = (ExtReferenceWidgetStyle) theEObject;
+            T result = caseExtReferenceWidgetStyle(extReferenceWidgetStyle);
+            if (result == null) {
+                result = caseWidgetStyle(extReferenceWidgetStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_WIDGET_CONDITIONAL_STYLE: {
+            ExtReferenceWidgetConditionalStyle extReferenceWidgetConditionalStyle = (ExtReferenceWidgetConditionalStyle) theEObject;
+            T result = caseExtReferenceWidgetConditionalStyle(extReferenceWidgetConditionalStyle);
+            if (result == null) {
+                result = caseWidgetConditionalStyle(extReferenceWidgetConditionalStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         default:
             return defaultCase(theEObject);
         }
@@ -108,6 +134,40 @@ public class PropertiesExtWidgetsReferenceSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseExtReferenceDescription(ExtReferenceDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Ext Reference Widget Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Ext Reference Widget Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseExtReferenceWidgetStyle(ExtReferenceWidgetStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Ext Reference Widget Conditional Style</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will
+     * terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Ext Reference Widget Conditional Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseExtReferenceWidgetConditionalStyle(ExtReferenceWidgetConditionalStyle object) {
         return null;
     }
 
@@ -142,6 +202,40 @@ public class PropertiesExtWidgetsReferenceSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseWidgetDescription(WidgetDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Widget Style</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Widget Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseWidgetStyle(WidgetStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Widget Conditional Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Widget Conditional Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseWidgetConditionalStyle(WidgetConditionalStyle object) {
         return null;
     }
 

@@ -14,9 +14,12 @@ package org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgets
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferenceFactory;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -34,6 +37,20 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
      * @generated
      */
     private EClass extReferenceDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass extReferenceWidgetStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass extReferenceWidgetConditionalStyleEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -142,6 +159,56 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
      * @generated
      */
     @Override
+    public EReference getExtReferenceDescription_Style() {
+        return (EReference) extReferenceDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getExtReferenceDescription_ConditionalStyles() {
+        return (EReference) extReferenceDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getExtReferenceWidgetStyle() {
+        return extReferenceWidgetStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getExtReferenceWidgetConditionalStyle() {
+        return extReferenceWidgetConditionalStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getExtReferenceWidgetConditionalStyle_Style() {
+        return (EReference) extReferenceWidgetConditionalStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public PropertiesExtWidgetsReferenceFactory getPropertiesExtWidgetsReferenceFactory() {
         return (PropertiesExtWidgetsReferenceFactory) getEFactoryInstance();
     }
@@ -170,6 +237,13 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
         extReferenceDescriptionEClass = createEClass(PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_DESCRIPTION);
         createEAttribute(extReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_DESCRIPTION__REFERENCE_NAME_EXPRESSION);
         createEAttribute(extReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION);
+        createEReference(extReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_DESCRIPTION__STYLE);
+        createEReference(extReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES);
+
+        extReferenceWidgetStyleEClass = createEClass(PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_WIDGET_STYLE);
+
+        extReferenceWidgetConditionalStyleEClass = createEClass(PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_WIDGET_CONDITIONAL_STYLE);
+        createEReference(extReferenceWidgetConditionalStyleEClass, PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_WIDGET_CONDITIONAL_STYLE__STYLE);
     }
 
     /**
@@ -207,18 +281,33 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
 
         // Add supertypes to classes
         extReferenceDescriptionEClass.getESuperTypes().add(thePropertiesPackage.getWidgetDescription());
+        extReferenceWidgetStyleEClass.getESuperTypes().add(thePropertiesPackage.getWidgetStyle());
+        extReferenceWidgetConditionalStyleEClass.getESuperTypes().add(thePropertiesPackage.getWidgetConditionalStyle());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(extReferenceDescriptionEClass, ExtReferenceDescription.class,
-                "ExtReferenceDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getExtReferenceDescription_ReferenceNameExpression(),
-                theDescriptionPackage.getInterpretedExpression(),
-                "referenceNameExpression", null, 1, 1, ExtReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getExtReferenceDescription_ReferenceOwnerExpression(),
-                theDescriptionPackage.getInterpretedExpression(),
-                "referenceOwnerExpression", null, 0, 1, ExtReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(extReferenceDescriptionEClass, ExtReferenceDescription.class, "ExtReferenceDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getExtReferenceDescription_ReferenceNameExpression(), theDescriptionPackage.getInterpretedExpression(), "referenceNameExpression", null, 1, 1, ExtReferenceDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getExtReferenceDescription_ReferenceOwnerExpression(), theDescriptionPackage.getInterpretedExpression(), "referenceOwnerExpression", null, 0, 1, ExtReferenceDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getExtReferenceDescription_Style(), this.getExtReferenceWidgetStyle(), null, "style", null, 0, 1, ExtReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getExtReferenceDescription_ConditionalStyles(), this.getExtReferenceWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, ExtReferenceDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(extReferenceWidgetStyleEClass, ExtReferenceWidgetStyle.class, "ExtReferenceWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(extReferenceWidgetConditionalStyleEClass, ExtReferenceWidgetConditionalStyle.class, "ExtReferenceWidgetConditionalStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getExtReferenceWidgetConditionalStyle_Style(), this.getExtReferenceWidgetStyle(), null, "style", null, 0, 1, ExtReferenceWidgetConditionalStyle.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Create resource
         createResource(PropertiesExtWidgetsReferencePackage.eNS_URI);

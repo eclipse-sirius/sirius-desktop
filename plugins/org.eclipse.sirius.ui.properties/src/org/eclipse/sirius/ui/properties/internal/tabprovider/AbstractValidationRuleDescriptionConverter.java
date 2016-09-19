@@ -16,6 +16,7 @@ import org.eclipse.eef.EEFRuleAuditDescription;
 import org.eclipse.eef.EEFValidationFixDescription;
 import org.eclipse.eef.EEFValidationRuleDescription;
 import org.eclipse.eef.EEF_VALIDATION_SEVERITY_DESCRIPTION;
+import org.eclipse.sirius.ui.properties.api.AbstractDescriptionConverter;
 import org.eclipse.sirius.ui.properties.api.DescriptionCache;
 import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;

@@ -9,9 +9,18 @@
             id="org.eclipse.sirius.ui.properties.ext.widgets.reference.descriptionConverter"
             label="%referenceDescriptionConverter.Label">
       </descriptor>
-   </extension>
-   <extension
-         point="org.eclipse.sirius.ui.properties.descriptionConverter">
+      <descriptor
+            class="org.eclipse.sirius.ui.properties.ext.widgets.reference.internal.ExtReferenceDescriptionStyleConverter"
+            description="%referenceDescriptionStyleConverter.Description"
+            id="org.eclipse.sirius.ui.properties.ext.widgets.reference.descriptionStyleConverter"
+            label="%referenceDescriptionStyleConverter.Label">
+      </descriptor>
+      <descriptor
+            class="org.eclipse.sirius.ui.properties.ext.widgets.reference.internal.ExtReferenceDescriptionConditionalStyleConverter"
+            description="%referenceDescriptionConditionalStyleConverter.Description"
+            id="org.eclipse.sirius.ui.properties.ext.widgets.reference.descriptionConditionalStyleConverter"
+            label="%referenceDescriptionConditionalStyleConverter.Label">
+      </descriptor>
       <descriptor
             class="org.eclipse.sirius.ui.properties.ext.widgets.reference.internal.DefaultRulesReferenceDescriptionConverter"
             description="%defaultRulesReferenceDescriptionConverter.Description"

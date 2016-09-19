@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.ui.properties.api.DefaultDescriptionConverter;
 import org.eclipse.sirius.ui.properties.api.DescriptionCache;
 
 /**

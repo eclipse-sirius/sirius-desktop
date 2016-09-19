@@ -14,7 +14,14 @@
       disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
       ecorePackage="properties-ext-widgets-reference.ecore#/">
     <genClasses ecoreClass="properties-ext-widgets-reference.ecore#//ExtReferenceDescription">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties-ext-widgets-reference.ecore#//ExtReferenceDescription/referenceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties-ext-widgets-reference.ecore#//ExtReferenceDescription/referenceNameExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties-ext-widgets-reference.ecore#//ExtReferenceDescription/referenceOwnerExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties-ext-widgets-reference.ecore#//ExtReferenceDescription/style"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties-ext-widgets-reference.ecore#//ExtReferenceDescription/conditionalStyles"/>
+    </genClasses>
+    <genClasses ecoreClass="properties-ext-widgets-reference.ecore#//ExtReferenceWidgetStyle"/>
+    <genClasses ecoreClass="properties-ext-widgets-reference.ecore#//ExtReferenceWidgetConditionalStyle">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties-ext-widgets-reference.ecore#//ExtReferenceWidgetConditionalStyle/style"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

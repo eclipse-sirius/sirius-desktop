@@ -16,8 +16,12 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.ControlDescription;
+import org.eclipse.sirius.properties.WidgetConditionalStyle;
 import org.eclipse.sirius.properties.WidgetDescription;
+import org.eclipse.sirius.properties.WidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
 
 /**
@@ -81,6 +85,16 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
         }
 
         @Override
+        public Adapter caseExtReferenceWidgetStyle(ExtReferenceWidgetStyle object) {
+            return createExtReferenceWidgetStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseExtReferenceWidgetConditionalStyle(ExtReferenceWidgetConditionalStyle object) {
+            return createExtReferenceWidgetConditionalStyleAdapter();
+        }
+
+        @Override
         public Adapter caseControlDescription(ControlDescription object) {
             return createControlDescriptionAdapter();
         }
@@ -88,6 +102,16 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
         @Override
         public Adapter caseWidgetDescription(WidgetDescription object) {
             return createWidgetDescriptionAdapter();
+        }
+
+        @Override
+        public Adapter caseWidgetStyle(WidgetStyle object) {
+            return createWidgetStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseWidgetConditionalStyle(WidgetConditionalStyle object) {
+            return createWidgetConditionalStyleAdapter();
         }
 
         @Override
@@ -128,6 +152,38 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
 
     /**
      * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle
+     * <em>Ext Reference Widget Style</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle
+     * @generated
+     */
+    public Adapter createExtReferenceWidgetStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle
+     * <em>Ext Reference Widget Conditional Style</em>}'. <!-- begin-user-doc
+     * --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the
+     * cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle
+     * @generated
+     */
+    public Adapter createExtReferenceWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.properties.ControlDescription
      * <em>Control Description</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
@@ -155,6 +211,37 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
      * @generated
      */
     public Adapter createWidgetDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.WidgetStyle <em>Widget Style</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.WidgetStyle
+     * @generated
+     */
+    public Adapter createWidgetStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.WidgetConditionalStyle
+     * <em>Widget Conditional Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.WidgetConditionalStyle
+     * @generated
+     */
+    public Adapter createWidgetConditionalStyleAdapter() {
         return null;
     }
 

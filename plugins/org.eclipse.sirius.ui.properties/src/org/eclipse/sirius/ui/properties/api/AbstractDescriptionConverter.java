@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal.tabprovider;
+package org.eclipse.sirius.ui.properties.api;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -19,8 +19,6 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
-import org.eclipse.sirius.ui.properties.api.DescriptionCache;
-import org.eclipse.sirius.ui.properties.api.IDescriptionConverter;
 import org.eclipse.sirius.ui.properties.internal.SiriusInputDescriptor;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
 import org.eclipse.sirius.viewpoint.RGBValues;

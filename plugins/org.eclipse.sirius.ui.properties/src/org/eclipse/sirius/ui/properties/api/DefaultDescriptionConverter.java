@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal.tabprovider;
+package org.eclipse.sirius.ui.properties.api;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -19,11 +19,11 @@ import java.util.Map;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.sirius.ui.properties.api.DescriptionCache;
 import org.eclipse.sirius.ui.properties.internal.Messages;
 
 /**
@@ -70,7 +70,7 @@ public class DefaultDescriptionConverter<SIRIUS extends EObject> extends Abstrac
         if (this.siriusClass.isAssignableFrom(description.getClass())) {
             SIRIUS siriusEObject = this.siriusClass.cast(description);
 
-            EObject eefEObject = EefFactory.eINSTANCE.create(this.eefEClass);
+            EObject eefEObject = this.getEFactory().create(this.eefEClass);
             for (EAttribute eAttribute : siriusEObject.eClass().getEAllAttributes()) {
                 this.convertEAttribute(siriusEObject, eefEObject, eAttribute, parameters);
             }
@@ -85,6 +85,15 @@ public class DefaultDescriptionConverter<SIRIUS extends EObject> extends Abstrac
         } else {
             throw new IllegalArgumentException(MessageFormat.format(Messages.IDescriptionConverter_InvalidDescriptionType, description.getClass().getName(), this.siriusClass.getName()));
         }
+    }
+
+    /**
+     * Returns the factory to use to create the new EEF Object.
+     * 
+     * @return The {@link EFactory}
+     */
+    protected EFactory getEFactory() {
+        return EefFactory.eINSTANCE;
     }
 
     /**
@@ -167,4 +176,5 @@ public class DefaultDescriptionConverter<SIRIUS extends EObject> extends Abstrac
         }
         return eObjects;
     }
+
 }

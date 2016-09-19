@@ -7,5 +7,15 @@
         lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceOwnerExpression"
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//ExtReferenceWidgetStyle"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
+        eType="#//ExtReferenceWidgetConditionalStyle" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExtReferenceWidgetStyle" eSuperTypes="../../org.eclipse.sirius.properties/model/properties.ecore#//WidgetStyle"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExtReferenceWidgetConditionalStyle"
+      eSuperTypes="../../org.eclipse.sirius.properties/model/properties.ecore#//WidgetConditionalStyle">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//ExtReferenceWidgetStyle"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

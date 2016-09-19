@@ -53,6 +53,9 @@ import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.util.PropertiesSwitch;
+import org.eclipse.sirius.ui.properties.api.DefaultDescriptionConverter;
+import org.eclipse.sirius.ui.properties.api.DefaultDescriptionWithInitialOperationConverter;
+import org.eclipse.sirius.ui.properties.api.DefaultStyleDescriptionConverter;
 import org.eclipse.sirius.ui.properties.api.IDescriptionConverter;
 
 /**

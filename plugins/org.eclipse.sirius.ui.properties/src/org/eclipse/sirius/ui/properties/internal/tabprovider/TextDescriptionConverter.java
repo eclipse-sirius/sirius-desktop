@@ -20,6 +20,7 @@ import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
+import org.eclipse.sirius.ui.properties.api.AbstractDescriptionConverter;
 import org.eclipse.sirius.ui.properties.api.DescriptionCache;
 import org.eclipse.sirius.ui.properties.internal.Messages;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
