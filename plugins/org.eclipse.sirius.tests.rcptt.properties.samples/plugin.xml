@@ -42,10 +42,6 @@
                name="org.eclipse.sirius.tests.rcptt.properties.design.radio">
          </projectDescriptor>
          <projectDescriptor
-               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.reference/"
-               name="org.eclipse.sirius.tests.rcptt.properties.design.reference">
-         </projectDescriptor>
-         <projectDescriptor
                contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.referenceext/"
                name="org.eclipse.sirius.tests.rcptt.properties.design.referenceext">
          </projectDescriptor>

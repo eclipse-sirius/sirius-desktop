@@ -5,8 +5,8 @@ Element-Name: SelectRadioViewpoint
 Element-Type: context
 Element-Version: 2.0
 Id: _iiAwYB5uEea-TdrfW8_m6g
-Runtime-Version: 2.0.2.201511100828
-Save-Time: 5/20/16 11:38 AM
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 9/19/16 10:22 AM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -19,26 +19,8 @@ with [get-window "Viewpoints Selection"] {
     with [get-table] {
         get-item PropertiesTests | check
         select PropertiesTests
-        get-item PropertiesTestsButton | uncheck
-        select PropertiesTestsButton
-        get-item PropertiesTestsCheckbox | uncheck
-        select PropertiesTestsCheckbox
-        get-item PropertiesTestsGroup | uncheck
-        select PropertiesTestsGroup
-        get-item PropertiesTestsHyperlink | uncheck
-        select PropertiesTestsHyperlink
-        get-item PropertiesTestsLabel | uncheck
-        select PropertiesTestsLabel
         get-item PropertiesTestsRadio | check
         select PropertiesTestsRadio
-        get-item PropertiesTestsReference | uncheck
-        select PropertiesTestsReference
-        get-item PropertiesTestsSelect | uncheck
-        select PropertiesTestsSelect
-        get-item PropertiesTestsText | uncheck
-        select PropertiesTestsText
-        get-item PropertiesTestsWidget | uncheck
-        select PropertiesTestsWidget
     }
     get-button OK | click
 }

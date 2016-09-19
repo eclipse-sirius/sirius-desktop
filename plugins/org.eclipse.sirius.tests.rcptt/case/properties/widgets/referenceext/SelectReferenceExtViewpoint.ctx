@@ -21,6 +21,8 @@ with [get-window "Viewpoints Selection"] {
         select PropertiesTests
         get-item PropertiesTestsReferenceExt | check
         select PropertiesTestsReferenceExt
+        get-item PropertiesTestsLabel | uncheck
+        select PropertiesTestsLabel
     }
     get-button OK | click
 }

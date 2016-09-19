@@ -4,15 +4,6 @@ Element-Name: Reference
 Element-Type: testsuite
 Element-Version: 2.0
 Id: _pseiQCD7Eeam67BeeiuDyg
-Runtime-Version: 2.0.2.201511100828
-Save-Time: 5/23/16 5:33 PM
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 9/19/16 10:19 AM
 
-------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
-Content-Type: text/testcase
-Entry-Name: testcase-items
-
-_B48FEB5xEea-TdrfW8_m6g	// kind: 'test' name: 'ReferenceWidgetDefault' path: '../case/properties/widgets/reference/ReferenceWidgetDefault.test'
-_B5A9kB5xEea-TdrfW8_m6g	// kind: 'test' name: 'ReferenceWidgetDisable' path: '../case/properties/widgets/reference/ReferenceWidgetDisable.test'
-_B5DZ0B5xEea-TdrfW8_m6g	// kind: 'test' name: 'ReferenceWidgetOnClick' path: '../case/properties/widgets/reference/ReferenceWidgetOnClick.test'
-
-------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

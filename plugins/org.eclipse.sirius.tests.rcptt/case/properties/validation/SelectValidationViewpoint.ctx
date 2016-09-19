@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _vnVkEENeEeagKLHJ7g9jQA
 Runtime-Version: 2.1.0.201606221726
-Save-Time: 7/6/16 11:48 AM
+Save-Time: 9/19/16 10:23 AM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -18,26 +18,7 @@ with [get-view "Model Explorer" | get-tree] {
 with [get-window "Viewpoints Selection"] {
     with [get-table] {
         get-item PropertiesTests | check
-        select PropertiesTests
-        get-item PropertiesTestsButton | uncheck
-        select PropertiesTestsButton
-        get-item PropertiesTestsCheckbox | uncheck
-        select PropertiesTestsCheckbox
-        get-item PropertiesTestsGroup | uncheck
-        select PropertiesTestsGroup
-        get-item PropertiesTestsHyperlink | uncheck
-        select PropertiesTestsHyperlink
-        get-item PropertiesTestsLabel | uncheck
-        select PropertiesTestsLabel
-        get-item PropertiesTestsRadio | uncheck
-        select PropertiesTestsRadio
-        get-item PropertiesTestsReference | uncheck
-        select PropertiesTestsReference
-        get-item PropertiesTestsSelect | uncheck
-        select PropertiesTestsSelect
-        get-item PropertiesTestsText | uncheck
-        select PropertiesTestsText
-        get-item PropertiesTestsWidget | uncheck
+        select PropertiesTestsheck
         select PropertiesTestsWidget
         get-item PropertiesTestsValidation | check
         select PropertiesTestsValidation
