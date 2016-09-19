@@ -44,6 +44,7 @@ import org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleEndUserOverride
 import org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleTests;
 import org.eclipse.sirius.tests.unit.api.semantic.XSDSemanticResourceTests;
 import org.eclipse.sirius.tests.unit.api.session.DAnalysisSessionTests;
+import org.eclipse.sirius.tests.unit.api.session.ModelAccessorLifecycleTest;
 import org.eclipse.sirius.tests.unit.api.session.OpenSessionTest;
 import org.eclipse.sirius.tests.unit.api.session.ReloadSessionTest;
 import org.eclipse.sirius.tests.unit.api.session.ResourceVersionMismatchTest;
@@ -317,6 +318,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(ResourceStrategyTests.class);
         suite.addTestSuite(ResourceStrategyForUmlTests.class);
         suite.addTestSuite(OpenSessionTest.class);
+        suite.addTestSuite(ModelAccessorLifecycleTest.class);
 
         suite.addTestSuite(SubMenusPrioritiesTest.class);
         suite.addTestSuite(ZombieViewpointsTest.class);
