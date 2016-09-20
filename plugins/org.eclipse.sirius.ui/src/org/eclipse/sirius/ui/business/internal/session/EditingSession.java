@@ -140,7 +140,9 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
 
             reorderEditorsIfNeeded(dialectEditor);
 
-            dialectEditorClosers.put(dialectEditor, new DialectEditorCloser(this, dialectEditor));
+            if (dialectEditor.getRepresentation() != null) {
+                dialectEditorClosers.put(dialectEditor, new DialectEditorCloser(this, dialectEditor));
+            }
 
         }
     }
