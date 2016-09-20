@@ -10,9 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.properties;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
@@ -75,31 +72,7 @@ public class DTablePropertySheetpage extends TabbedPropertySheetPage {
     @Override
     public void refresh() {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_PROPERTIES_VIEW_KEY);
-        boolean isCurrentTabNull = true;
-        try {
-            try {
-                Class.forName("org.eclipse.ui.internal.views.properties.tabbed.view.Tab"); //$NON-NLS-1$
-                // We are in eclipse 3.3
-                final Method searchMethod = this.getClass().getMethod("getCurrentTab", (Class<?>[]) null); //$NON-NLS-1$
-                isCurrentTabNull = searchMethod.invoke(this) == null;
-            } catch (final ClassNotFoundException cnfe) {
-                // We are in eclipse 3.4
-                final Method searchMethod = this.getClass().getMethod("getCurrentTab", (Class<?>[]) null); //$NON-NLS-1$
-                isCurrentTabNull = searchMethod.invoke(this) == null;
-            }
-        } catch (final SecurityException e) {
-            // Do nothing
-        } catch (final NoSuchMethodException e) {
-            // Do nothing
-        } catch (final IllegalArgumentException e) {
-            // Do nothing
-        } catch (final IllegalAccessException e) {
-            // Do nothing
-        } catch (final InvocationTargetException e) {
-            // Do nothing
-        }
-
-        if (!isCurrentTabNull) {
+        if (getCurrentTab() != null) {
             super.refresh();
         }
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_PROPERTIES_VIEW_KEY);
