@@ -213,13 +213,17 @@ public class ReferenceWidgetMigrationParticipant extends AbstractVSMMigrationPar
         hyperlink.setInitialOperation(listDescription.getOnClickOperation());
 
         ListWidgetStyle listWidgetStyle = listDescription.getStyle();
-        hyperlink.setStyle(this.handleHyperlinkStyle(listWidgetStyle));
+        if (listWidgetStyle != null) {
+            hyperlink.setStyle(this.handleHyperlinkStyle(listWidgetStyle));
+        }
 
         List<ListWidgetConditionalStyle> listConditionalStyles = listDescription.getConditionalStyles();
         for (ListWidgetConditionalStyle listWidgetConditionalStyle : listConditionalStyles) {
             HyperlinkWidgetConditionalStyle hyperlinkWidgetConditionalStyle = PropertiesFactory.eINSTANCE.createHyperlinkWidgetConditionalStyle();
             hyperlinkWidgetConditionalStyle.setPreconditionExpression(listWidgetConditionalStyle.getPreconditionExpression());
-            hyperlinkWidgetConditionalStyle.setStyle(this.handleHyperlinkStyle(listWidgetConditionalStyle.getStyle()));
+            if (listWidgetConditionalStyle.getStyle() != null) {
+                hyperlinkWidgetConditionalStyle.setStyle(this.handleHyperlinkStyle(listWidgetConditionalStyle.getStyle()));
+            }
             hyperlink.getConditionalStyles().add(hyperlinkWidgetConditionalStyle);
         }
         return hyperlink;
