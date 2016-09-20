@@ -4,6 +4,152 @@ h1. Release Notes for Older Version of Sirius
 
 This document contains the release notes for older versions of of Sirius.
 
+h2(#sirius2.0.0). Changes in Sirius 2.0.0
+
+h3. User-Visible Changes
+
+* It is now possible to select element that intersects the selection rectangle and not that is completely contained by the selection rectangle. This new behavior is enabled when user selects elements from right to left. The normal mode (previous mode) remains when the user selects elements from left to right.
+* The edges appearance is now kept, as much as possible, when one of its extremity is moved. A move of an extremity should move only the closest segment of the edge.
+* The edges appearance is kept as much as possible when a node (container or not) is moved. A move of a node now impacts only the closest segment of the linked edges.
+!images/moveNode-edgeImpact-changedBehavior.gif!
+* When a node, container or not, is resized to the left, upwards, or both, the location of its children (elements inside a container and border nodes) is not changed. It is possible to retrieve the previous behavior by pressing the F3 function key during the resize.
+!images/containerResize-changedBehavior.gif!
+* The "snap to shapes" is now enabled by default (see  _Sirius > Sirius Diagram > Rulers and Grid_ preference page). This is true only for new diagrams. The existing diagrams are not impacted.
+* The "Navigate" top-level contextual menu entry with mixed actions for creating new representations and opening existing ones has been changed by two top-level menus:
+** One named "New", which lists only the available actions to create new representations on the selected element.
+** One named "Open", which lists only the existing representations on the selected element. 
+* When a shape is resized (no matter the direction), the edge(s) connection location (toward or from this one) is kept. Before that, edges connections moved according to the ratio of the resizing.
+Example with this initial state before resizing:
+!images/shapeResize1.png!
+Result after resizing without this feature (the edges have moved):
+!images/shapeResize2.png!
+Result after resizing with this feature (the edges keep the same location):
+!images/shapeResize3.png!
+* There is now the possibility to distribute the selected shapes (see "Sirius User Manual/Diagrams/Features Overview/Distribute elements":user/diagrams/Diagrams.html#distribute for more details):
+** Distribute gaps horizontally
+** Distribute centers horizontally
+** Distribute gaps vertically
+** Distribute centers vertically
+* The end user can now remove all bend-points between the two edge ends. This action is available on edge context menu "Remove Bend-points" or by using the shortcut "Ctrl" + "Shift" + "-".
+* Reconnection of an edge will only now move the minimum necessary bendpoints instead of reseting it to default.
+* A new action has been added to reset the diagram (or container) origin: the diagram (or container) bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightmost children elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left. This action aims to move all diagram (or container) elements so that the it retrieves its origin while keeping elements layout.
+
+h3. Specifier-Visible Changes
+
+* The specifier can now choose to hold the edge ends toward the center of the source, target or both. New fields within the "advance" tab of EdgeStyle description have been added to choose for which source or target mappings an edge should be centered. See "Edges Styles > Edge Centering":specifier/diagrams/Diagrams.html#edges_styles in the specifier manual for more details.
+* When creating a new Viewpoint Specification Project using the supplied wizard: _New > Viewpoint Specification Project_, the VSM name is now given according to the project name. If the project name is suffixed with "design", the VSM name is provided by the last word before this suffix. Otherwise, the VSM name is given by the last word of the project name.
+* "Lozenge" is replaced by "Diamond" in diagram style.
+
+h3. API Changes
+
+h4. Changes in @org.eclipse.sirius@
+
+* The @org.eclipse.sirius.business.api.session.ViewpointSelector@ class has been added, with easy-to-use methods to select/deselect viewpoint in a given session.
+* The @VIEWPOINT_REGISTRY_INITIAL_SIZE@ preference and @VIEWPOINT_REGISTRY_INITIAL_SIZE_DEFAULT_VALUE@ default value has been removed from @org.eclipse.sirius.tools.api.preferences.DCorePreferences@.
+* The method @org.eclipse.sirius.business.api.query.DRepresentationQuery.isDanglingRepresentation()@ has been added to introduce the possibility to check if a representation is a dangling representation, ie. if its a DSemanticDecorator, its target is null or does not belong to a session.
+* @org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException@ now can take several EObjects in constructor and a method @LockedInstanceException.getLockedElements()@ has been added to get all EObjects put in constructor.
+@org.eclipse.sirius.tools.api.command.InvalidPermissionCommand@ now can take several EObjects in constructor to throw a @LockedInstanceException@ with several EObjects.
+* The @org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask@ class has been renamed into @DeleteEObjectTask@.
+* The interface @org.eclipse.sirius.tools.api.command.listener.IChangeListener@ and all classes related to this mechanism (@ChangeListenerFactory@, @TriggerOperation@) have been removed as this mechanism proves to be inefficient. It can be replaced by a pre/post commit listener or a @org.eclipse.sirius.business.api.session.ModelChangeTrigger@
+* The @org.eclipse.sirius.tools.api.ui.IExternalAction2@ interface has been removed. It was created to disable some @IChangeListener@ when the action indicates it will not delete elements.
+* @org.eclipse.sirius.business.api.dialect.DialectServices.refresh(DRepresentation, boolean, IProgressMonitor@ has been added to specify if we want partial refresh or not. By default partial refresh is done. full refresh is only implements for tree dialect.
+* @org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices.refresh(DRepresentation, IProgressMonitor)@ has been added to call by default @DialectServices.refresh(DRepresentation, false, IProgressMonitor)@ to do a partial refresh.
+* @org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand.RefreshRepresentationsCommand(TransactionalEditingDomain, boolean, IProgressMonitor, DRepresentation...)@ and @RefreshRepresentationsCommand(TransactionalEditingDomain, boolean, IProgressMonitor, Collection<DRepresentation>)@ constructors has been added to specify a partial refresh or a full refresh.
+* @org.eclipse.sirius.business.api.dialect.DRepresentationNotificationFilter@ has been added to have
+ a common precommit/postcommit notifications filter to tree/table dialect.
+* @org.eclipse.sirius.tools.api.profiler.SiriusTasksKey.CHANGE_SWT_LINE_COLAPSE_STATE_KEY@ constant has been deprecated in favor of @SiriusTasksKey.CHANGE_SWT_LINE_COLLAPSE_STATE_KEY@ to fix a typo.
+* @org.eclipse.sirius.business.api.color.AbstractColorUpdater.DEFAULT_RED_VALUE/DEFAULT_GREEN_VALUE/DEFAULT_BLUE_VALUE@ constants have been added to have access to default @RGBValues@'s values. This is used during refresh when there isn't any @ColorDescription@, for example in tree dialect where background color definition is optional.
+* The @org.eclipse.sirius.business.api.tool.ToolFilterDescriptionListener.ToolFilterDescriptionListener()@ constructor now takes an @IInterpreter@ as additional parameter to capture the current interpreter and avoid calls to the @IInterpreterRegistry@ for each evaluation of the tool filter expressions.
+* @org.eclipse.sirius.business.api.query.AirdResourceQuery.getAirDCrossReferenceAdapter()@ and @org.eclipse.sirius.business.internal.resource.AirdCrossReferencerAdapter@ have been removed. The adapter was here to customize GMF's own @org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter@. However considering the way Sirius uses GMF, this adapter is not needed.
+
+h4. Changes in @org.eclipse.sirius.ui@
+
+* In @org.eclipse.sirius.ui.business.api.session.UserSession@, the methods @selectSirius()@, @selectOnlySirius()@ and @findSiriusByName()@ have been renamed into @selectViewpoint()@, @selectOnlyViewpoint()@ and @findViewpointByName()@ to correct a wrong rebranding.
+
+h4. Changes in @org.eclipse.sirius.common@
+
+* The method @org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.getResourceSetSync(TransactionalEditingDomain)@ has been added to look for a @ResourceSetSync@ without creating a new one if no synchronizer currently exists.
+* The class @org.eclipse.sirius.common.tools.api.util.SmartAdapter@ has been removed as this mechanism proves to be inefficient. The only user of this mechanism was the @org.eclipse.sirius.tools.api.command.listener.IChangeListener@ which has also been removed.
+* The class @org.eclipse.sirius.common.tools.api.ecore.WorkspaceEPackageRegistry@ has been moved to the @org.eclipse.sirius.editor@ plugin. @org.eclipse.sirius.common.tools.DslCommonPlugin.getWorkspaceEPackageRegistry@ has been removed. The same method has been added in @org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin@.
+* A new class @org.eclipse.sirius.common.tools.api.resource.ResourceMigrationMarker@ has been introduced for adopters. This marker can be attached to a Resource in order to indicate that some automatic migration *might* have change the structure of the model during the loading (with no isModified flag). Sirius will then use this information to consider saving the file even if there is no logical change. 
+
+h4. Changes in @org.eclipse.sirius.common.ui@
+
+* The method @org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil.addSelectionListener(IWorkbenchPart, ISelectionListener)@ has been added to register a new selection listener to the site for the workbench part. This method looks for a @ISelectionService@ by calling @IServiceLocator.getService()@ on the site.
+* The method @org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil.removeSelectionListener(IWorkbenchPart, ISelectionListener)@ has been added to unregister an existing selection listener from site for the workbench part. This method looks for a @ISelectionService@ by calling @IServiceLocator.getService()@ on the site.
+
+h4. Changes in @org.eclipse.sirius.diagram@
+
+* The @org.eclipse.sirius.diagram.ui.business.api.view.refresh@ package and all its content has been move into the @org.eclipse.sirius.diagram@ plug-in, under the name @org.eclipse.sirius.diagram.business.api.view.refresh@.
+* A new extension point @org.eclipse.sirius.diagram.canonicalSynchronizerFactoryOverride@ has been defined. Its only intended implementer is the @org.eclipse.sirius.diagram.ui@ plug-in. It is used by the diagram dialect's core to delegate to the UI plug-in the canonical synchronizer logic, which depends on the UI.
+* In @org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer@, a new method @postCreation()@ has been added. It is called exactly once, right after a diagram has been created and synchronized the first time.
+* @org.eclipse.sirius.diagram.description.style.EdgeStyleDescription@ metamodel class has three more features: @centeredSourceMappings@, @centeredTargetMappings@ and @AlwaysCenter@. Those features let the specifier determine for which mappings the edge source/target should be centered or whether the source/target should be systematically centered. The @endsCentering@ values are restricted by the new @org.eclipse.sirius.diagram.description.CenteringStyle@ enumeration.
+* @org.eclipse.sirius.diagram.EdgeStyle@ metamodel class has now an attribute @centered@ of type @org.eclipse.sirius.diagram.description.CenteringStyle@, to determine whether the edge target or source ends should be centered.
+
+
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* The @org.eclipse.sirius.diagram.ui.business.api.view.refresh@ package and all its content has been move into the @org.eclipse.sirius.diagram@ plug-in, under the name @org.eclipse.sirius.diagram.business.api.view.refresh@.  
+* The method @org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery.getDefaultDimension()@ has been added to compute the default size of a DNodeContainer.
+* The parameter @additionalFiguresForConflictDetection@ has been added to several methods of @org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator@. This parameter is used in case of simultaneous border nodes moves. This list corresponds to the already known border nodes feedbacks. They are used to detect conflicts with other moved nodes.
+* @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery@ now provides two new methods @isEdgeWithRectilinearRoutingStyle()@ and @isEdgeWithObliqueRoutingStyle()@ that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
+* @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery@ now provides two new methods @getAbsoluteBendpointsConstraint()@ and @getRelativeBendpointsConstraint()@ that returns an option of list of @Bendpoint@ of a connection whether they are respectively @AbsoluteBendpoint@ or @RelatveBendpoint@.
+* @org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery@ also provides two new methods @isEdgeWithRectilinearRoutingStyle()@ and @isEdgeWithObliqueRoutingStyle()@ that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
+* @org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest@: A new @ChangeBoundsRequest@ to manage distribution of shapes.
+* A constant @REQ_DISTRIBUTE@ has been added in @org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants@ to identify the new type of request, @DistributeRequest@.
+* Constants have been added in @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds@ for the new drop down menu in tabbar and for the four new distribute actions.
+* Constants have been added in @org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath@ for the icon path of the four new distribute actions.
+* A new method has been added in @org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager@ to retrieve the opposite edge layout data of another edge layout data. An edge layout data stored in the incomingEdgeLayoutDatas ref of its parent data can have an opposite edge layout data in the outgoingEdgeLayoutDatas of the other ends.
+* A Constant @org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_RESET_ORIGIN@ has been added to identify requests to get the ResetOrigin command.
+* A new method @org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery.isContainer()@ has been added to test whether the GMF node visualID corresponds to a ContainerEditPart.
+
+h4. Changes in @org.eclipse.sirius.tree.ui@
+
+* @org.eclipse.sirius.tree.ui.business.api.helper.TreeUIHelper.toContentHTMl()@ has changed of behavior: refresh of @DTree@ is now partial, i.e. not done for children of collapsed @DTreeItemContainer@. Consequently code calling @TreeUIHelper.toContentHTMl()@ must do a full refresh if children of collapsed @DTreeItemContainer@ must be displayed in returned HTML.
+* @org.eclipse.sirius.tree.ui.business.api.helper.TreeUIHelper.toTreeDescriptor()@ same as for @TreeUIHelper.toContentHTMl()@
+
+h4. Changes in @org.eclipse.sirius.tree@
+
+* @org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.refreshContent(boolean, IProgressMonitor)@ has been added to specify if we want partial refresh or not.
+* @org.eclipse.sirius.tree.business.api.command.DTreeItemExpansionChangeCommand@ has been added to execute an expansion/collapse of @DTreeItem@. On expansion a refresh of children is done.
+
+h4. Changes in @org.eclipse.sirius.synchronizer@
+
+* @org.eclipse.sirius.synchronizer.CreatedOutput.synchronizeChildren()@ has been added to allow doing a partial refresh of tree, i.e. to not refresh children of collapsed tree item.
+* @org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean)@ has been added to specify if we want partial refresh or not.
+
+h4. Changes in @org.eclipse.sirius.ecore.extender@
+
+* @org.eclipse.sirius.ecore.extender.business.api.accessor.IMetamodelExtender.eRemoveInverseCrossReferences(EObject, ECrossReferenceAdapter, EReferencePredicate)@ has been added as a way to remove the inverse cross references without removing an @EObject@ from its container. For example it can be used to avoid the dangling references to an indirectly detached object without removing it from its already detached container and avoid additional REMOVE notifications. The method has been extracted from and is now used by @IMetamodelExtender.eDelete()@.
+* @org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor.eRemoveCrossReferences(EObject, ECrossReferenceAdapter, EReferencePredicate)@ has been added as a way to remove the inverse cross references without removing an @EObject@ from its container after a check by the permission authority that all changeable feature to modify can be edited.
+
+h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
+
+* Several utilities have been added in @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper@:
+** @applyZoomOnPoint(IGraphicalEditPart, Point)@: Apply the current zoom (of @IGraphicalEditPart@'s diagram) on the @Point@ and return the @Point@ for convenience.
+** @applyInverseZoomOnPoint(IGraphicalEditPart, Point)@: Apply the inverse of the current zoom (of @IGraphicalEditPart@'s diagram) on the @Point@ and return the @Point@ for convenience.
+** @appliedZoomOnRelativePoint(IGraphicalEditPart, Point)@ is now deprecated. Use @applyZoomOnPoint(IGraphicalEditPart, Point)@ instead.
+** @getAnchorPoint(IGraphicalEditPart parent, Anchor anchor)@: Get the @Point@ (absolute draw2d coordinates) corresponding to this @Anchor@.
+** @getAnchorPoint(IGraphicalEditPart parent, IdentityAnchor anchor)@: Get the @Point@ (absolute draw2d coordinates) corresponding to this @IdentityAnchor@.
+** @getIntersection(Point, Point, IGraphicalEditPart, boolean)@: Get intersection between a line between lineOrigin and lineTerminus, and the rectangle bounds of the @IGraphicalEditPart@. If there are several intersections, the shortest is returned.
+** @getAbsoluteBounds(IGraphicalEditPart)@: Get the absolute bounds of this @IGraphicalEditPart@.
+** @getAbsoluteBoundsIn100Percent(IGraphicalEditPart)@: Get the absolute bounds of this @IGraphicalEditPart@ but adapted according to the current zoom level.
+** @isSnapToGridEnabled(EditPart)@: Return true if the snapToGrid is enabled for the diagram containing this edit part, false otherwise.
+
+h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
+
+* The method @SWTBotSiriusDiagramEditor.setSnapToGrid(boolean)@ has been added. It allows to disable or enable the snapToGrid option for this editor.
+* The method @SWTBotSiriusDiagramEditor.setSnapToGrid(boolean, double, int)@ has been added. It allows to disable or enable the snapToGrid option for this editor. In case of activation, you can also set the grid spacing and the ruler units.
+* The method @SWTBotSiriusDiagramEditor.disableSnapToGrid()@ has been deprecated, use @SWTBotSiriusDiagramEditor.setSnapToGrid(false)@ instead.
+* The method @SWTBotSiriusDiagramEditor.adaptLocationToSnap(Point)@ has been added. It allows to adapt location according to SnapToHelper of the current editor.
+* The method @SWTBotSiriusDiagramEditor.getDiagramEditPart()@ has been added. It allows to retrieve the diagram edit part of the current editor.
+* In @ViewpointSelectionDialog@, the methods @selectViewpoints(String...)@ and @deselectViewpoints(String...)@ have been added to allow viewpoints selection and deselection from an array of @String@. These methods are shortcuts to the @selectViewpoints(Set<String>, Set<String>)@ method.
+* Add method @changeLayerActivation(String)@ on @SWTBotSiriusDiagramEditor@ to offer the same service as similar method on @UIDiagramRepresentation@.
+
+h4. Changes in @org.eclipse.sirius.tests.support@
+
+* In @org.eclipse.sirius.test.support.SiriusTestCase@, the methods deactivateSirius(), initSirius() and findSirius() have been renamed into deactivateViewpoint(), initViewpoint() and findViewppoint() to correct a wrong rebranding.
+
 h2(#sirius1.0.0). Changes in Sirius 1.0.0 (from Sirius 1.0.0M7)
 
 h3. User-Visible Changes
