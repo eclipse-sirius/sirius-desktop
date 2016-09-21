@@ -650,13 +650,14 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             }
             // Can occurs during session close : the previous lists were already
             // emptied.
-            if (!Iterables.contains(resources, session.getSessionResource())) {
-                resources = Iterables.concat(resources, Collections.singletonList(session.getSessionResource()));
+            Resource sessionRessource = session.getSessionResource()
+            if (sessionResource != null && !Iterables.contains(resources, sessionRessource)) {
+                resources = Iterables.concat(resources, Collections.singletonList(sessionRessource));
             }
 
             for (Resource res : resources) {
                 try {
-                    if (res.getURI() != null && res.getURI().isPlatformResource()) {
+                    if (res != null && res.getURI() != null && res.getURI().isPlatformResource()) {
                         IFile file = WorkspaceSynchronizer.getFile(res);
                         if (file != null && file.exists() && file.getProject() != null) {
                             projectsToRefresh.add(file.getProject());
