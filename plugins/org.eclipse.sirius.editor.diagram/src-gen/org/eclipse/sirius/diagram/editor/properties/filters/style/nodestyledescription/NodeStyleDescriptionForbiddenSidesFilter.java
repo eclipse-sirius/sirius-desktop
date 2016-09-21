@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
@@ -48,6 +49,9 @@ public class NodeStyleDescriptionForbiddenSidesFilter extends ViewpointPropertyF
     public boolean select(Object object) {
         if (super.select(object)) {
             EObject nodeMapping = ((NodeStyleDescription) object).eContainer();
+            if (nodeMapping instanceof ConditionalNodeStyleDescription) {
+                nodeMapping = nodeMapping.eContainer();
+            }
             // We display this property section only for nodeStyleDescription
             // contained in a borderNodeMapping (a NodeMapping referenced by the
             // parent borderNodeMapping feature)
