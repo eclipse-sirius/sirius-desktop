@@ -18,8 +18,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -504,27 +502,5 @@ public class SiriusToolServices {
         } else {
             return null;
         }
-    }
-
-    /**
-     * Returns the message of an {@link IStatus}.
-     * 
-     * @param status
-     *            The status
-     * @return The message of an {@link IStatus}
-     */
-    public String getMessage(IStatus status) {
-        return status.getMessage();
-    }
-
-    /**
-     * Returns the message of a {@link Diagnostic}.
-     * 
-     * @param diagnostic
-     *            The diagnostic
-     * @return The message of a {@link Diagnostic}
-     */
-    public String getMessage(Diagnostic diagnostic) {
-        return diagnostic.getMessage();
     }
 }
