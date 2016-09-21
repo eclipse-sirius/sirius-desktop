@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>extensions-properties_provide_custom_widget</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusProvideCustomWidgetForThePropertiesView">Sirius &#8211; Provide Custom Widget For The Properties View</h1>
+		<h2 id="Goal">Goal</h2>
+		<p>Using the Properties DSL in the odesign, a specifier can create the content of the Properties view for her/his Sirius-based designers. In some projects, a specifier may require the use of additional widgets not provided by the Sirius Properties runtime. In order to fulfill this need, the Sirius Properties runtime provide two ways for a developer to contribute additional widgets for specifiers.</p>
+		<h2 id="Strategies">Strategies</h2>
+		<p>Two strategies, 
+			<a href="extensions-properties_provide_custom_widget_basic.html">
+				<strong>Basic Custom Widget</strong>
+			</a> and 
+			<a href="extensions-properties_provide_custom_widget_advanced.html">
+				<strong>Advanced Custom Widget</strong>
+			</a>, exist to create a custom widget depending on the quality of the integration of the custom widget that you want to create.
+		</p>
+		<table class="table table-bordered" style="margin-left:0">
+			<tr>
+				<td></td>
+				<th>Basic Custom Widget</th>
+				<th>Advanced Custom Widget</th>
+			</tr>
+			<tr>
+				<td>Advantages</td>
+				<td>Easier to implement by the developer</td>
+				<td>Exactly the same integration in Sirius as any other concepts</td>
+			</tr>
+			<tr>
+				<td>Drawbacks</td>
+				<td>Poor user interface for the specifier to manipulate</td>
+				<td>Complex to implement by the developer</td>
+			</tr>
+		</table>
+		<p>Those two strategies have their own specific advantages and drawbacks but the &#8220;Advanced Custom Widget&#8221; strategy can developed as a follow-up of a &#8220;Basic Custom Widget&#8221; while keeping most of the code developed for the &#8220;Basic Custom Widget&#8221; approach.</p>
+	</body>
+</html>

@@ -1,0 +1,326 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>extensions-properties_provide_custom_widget_basic</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusPropertiesBasicCustomWidget">Sirius Properties &#8211; Basic Custom Widget</h1>
+		<h2 id="Goal">Goal</h2>
+		<p>Using the Basic Custom Widget approach, our goal aims at the quick creation of a custom widget with a minimal amount of code even if it creates only a basic user interface for the specifier to use our widget. In this example, we will try to create a simple table widget.</p>
+		<h2 id="Strategy">Strategy</h2>
+		<p>In order to create a custom widget, we will have to think about the two kind of users that will interact with our work, the Sirius specifier and the end-user. With this basic approach, we will create a nice table widget for the end-user but we will be a bit limited regarding what we can offer to the specifier.</p>
+		<h3 id="Specificationofthecustomwidget">Specification of the custom widget</h3>
+		<p>The implementation of the Properties view support in Eclipse Sirius is based on the Eclipse EEF project. While both projects are closely related, EEF can be used without Eclipse Sirius and in order to contribute a basic custom widget, we will only have to contribute to the EEF runtime. Both Eclipse EEF and Eclipse Sirius have the ability to let the specifier define a custom widget with a custom widget description.</p>
+		<p>This custom widget description in Eclipse Sirius is manipulated, like any other widget, in the odesign file. In this widget, you can specify the following properties of your widget:</p>
+		<ul>
+			<li>identifier</li>
+			<li>labelExpression</li>
+			<li>helpExpression</li>
+			<li>isEnabledExpression</li>
+			<li>customExpressions</li>
+			<li>customOperations</li>
+			<li>style</li>
+			<li>conditionalStyles</li>
+		</ul>
+		<p>Most of those properties are inherited from the description of the widget (identifier, labelExpression, helpExpression, isEnabledExpression) and the others are specific to the custom widget description (customExpressions, customOperations, style, conditionalStyles). In order to provide a basic custom widget to a Sirius specifier, you will have to indicate her/him the proper identifier to use for the widget, its expressions and its operations. For example, we will specify that in order to make our custom table widget work, the specifier will have to use a custom widget description with the identifier 
+			<code>com.example.awesomeproject.sirius.properties.ext.widgets.table</code>.
+		</p>
+		<p>In order to provide the implementation of our table, we will need to use Eclipse EEF&#8217;s lifecycle manager provider extension point. This extension point let you define the appearance and behavior of a custom widget using a lifecycle manager.</p>
+		<h3 id="Extensioncontribution">Extension contribution</h3>
+		<p>You will have to start by creating an Eclipse plugin named 
+			<code>com.example.awesomeproject.eef.ide.ui.ext.widgets.table</code> which will contain the provider of the lifecycle manager. In Eclipse EEF, a lifecycle manager is used to create the user interface of a widget and manage its lifecycle (add listeners, refresh, remove listeners, dispose etc) while a controller is used to define its behavior. The controller is not compulsary but it is highly recommended. In order to create the lifecycle manager provider, you will have to define the following extension.
+		</p>
+		<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?eclipse version="3.4"?&gt;
+&lt;plugin&gt;
+   &lt;extension
+         point="org.eclipse.eef.ide.ui.eefLifecycleManagerProvider"&gt;
+      &lt;descriptor
+            class="com.example.awesomeproject.eef.ide.ui.ext.widgets.table.internal.TableLifecycleManagerProvider"
+            description="%tableLifecycleManagerProvider.Description"
+            id="com.example.awesomeproject.eef.ide.ui.ext.widgets.table"
+            label="%tableLifecycleManagerProvider.Label"&gt;
+      &lt;/descriptor&gt;
+   &lt;/extension&gt;
+&lt;/plugin&gt;
+
+</pre>
+		<p>
+			<br/>To make your code compile, you will have to add at least some dependencies (Required Bundle) to the following plugins:
+		</p>
+		<ul>
+			<li>org.eclipse.eef</li>
+			<li>org.eclipse.eef.core</li>
+			<li>org.eclipse.eef.ide.ui</li>
+			<li>org.eclipse.sirius.common.interpreter</li>
+		</ul>
+		<h3 id="EEFlifecyclemanagerprovider">EEF lifecycle manager provider</h3>
+		<p>
+			<br/>The properties label and description should both be internationalized and the class should reference a Java class implementing IEEFLifecycleManagerProvider. Our lifecycle manager provider will have two methods, one to indicate if it can handle the description given by the EEF runtime and one to return a proper lifecycle manager for this description. In our case, the only description that we want to support is a custom widget with the identifier 
+			<code>com.example.awesomeproject.sirius.properties.ext.widgets.table</code>.
+		</p>
+		<pre>package com.example.awesomeproject.eef.ide.ui.ext.widgets.table.internal;
+
+import org.eclipse.eef.EEFControlDescription;
+import org.eclipse.eef.EEFCustomWidgetDescription;
+import org.eclipse.eef.core.api.EditingContextAdapter;
+import org.eclipse.eef.ide.ui.api.widgets.IEEFLifecycleManager;
+import org.eclipse.eef.ide.ui.api.widgets.IEEFLifecycleManagerProvider;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
+
+public class TableLifecycleManagerProvider implements IEEFLifecycleManagerProvider {
+	/**
+	 * The identifier of the control description supported.
+	 */
+	private static final String SUPPORTED_ID = "com.example.awesomeproject.sirius.properties.ext.widgets.table"; //$NON-NLS-1$
+
+	@Override
+	public boolean canHandle(EEFControlDescription controlDescription) {
+		// only support custom widgets with the proper identifier
+		return SUPPORTED_ID.equals(controlDescription.getIdentifier()) &amp;&amp; controlDescription instanceof EEFCustomWidgetDescription;
+	}
+
+	@Override
+	public IEEFLifecycleManager getLifecycleManager(EEFControlDescription controlDescription, IVariableManager variableManager,
+			IInterpreter interpreter, EditingContextAdapter contextAdapter) {
+		if (controlDescription instanceof EEFCustomWidgetDescription) {
+			return new TableLifecycleManager((EEFCustomWidgetDescription) controlDescription, variableManager, interpreter, contextAdapter);
+		}
+		throw new IllegalArgumentException();
+	}
+}
+
+
+</pre>
+		<p>
+			<br/>To create the lifecycle manager, the EEF runtime gives us access to several variables:
+		</p>
+		<ul>
+			<li>controlDescription: The description of the control that we support</li>
+			<li>variableManager: The variables available for this control, we can use it to add new variables and even create child contexts with new variables</li>
+			<li>interpreter: The interpreter used to run expression given by the Sirius specifier</li>
+			<li>contextAdapter: The wrapper used to run modifications of the model with optional support for transactions</li>
+		</ul>
+		<h3 id="EEFlifecyclemanager">EEF lifecycle manager</h3>
+		<p>The lifecycle manager must implements the interface 
+			<code>IEEFLifecycleManager</code> but for a custom widget it is easier to extends on of its default abstract implementation, in our case 
+			<code>org.eclipse.eef.ide.ui.api.widgets.AbstractEEFWidgetLifecycleManager</code>.
+		</p>
+		<pre>package com.example.awesomeproject.eef.ide.ui.ext.widgets.table.internal;
+
+import com.example.awesomeproject.eef.core.ext.widgets.table.TableController;
+import org.eclipse.eef.EEFCustomWidgetDescription;
+import org.eclipse.eef.EEFWidgetDescription;
+import org.eclipse.eef.common.ui.api.IEEFFormContainer;
+import org.eclipse.eef.core.api.EditingContextAdapter;
+import org.eclipse.eef.core.api.controllers.IConsumer;
+import org.eclipse.eef.core.api.controllers.IEEFWidgetController;
+import org.eclipse.eef.ide.ui.api.widgets.AbstractEEFWidgetLifecycleManager;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Table;
+
+public class TableLifecycleManager extends AbstractEEFWidgetLifecycleManager {
+
+	private EEFCustomWidgetDescription description;
+
+	private TableViewer tableViewer;
+
+	private ComposedAdapterFactory composedAdapterFactory;
+
+	private SelectionListener onClickListener;
+
+	private TableController controller;
+
+	private IConsumer&lt;Object&gt; newValueConsumer;
+
+	public TableLifecycleManager(EEFCustomWidgetDescription description, IVariableManager variableManager, IInterpreter interpreter,
+			EditingContextAdapter contextAdapter) {
+		super(variableManager, interpreter, contextAdapter);
+		this.description = description;
+	}
+
+	@Override
+	protected void createMainControl(Composite parent, IEEFFormContainer formContainer) {
+		Table table = formContainer.getWidgetFactory().createTable(parent,
+				SWT.READ_ONLY | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER | SWT.SINGLE);
+		this.tableViewer = new TableViewer(table);
+		this.composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+
+		this.tableViewer.setContentProvider(ArrayContentProvider.getInstance());
+		this.tableViewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new AdapterFactoryLabelProvider.StyledLabelProvider(
+				this.composedAdapterFactory, this.tableViewer)));
+
+		this.controller = new TableController(description, variableManager, interpreter, contextAdapter);
+	}
+
+	@Override
+	public void aboutToBeShown() {
+		super.aboutToBeShown();
+
+		this.newValueConsumer = (newValue) -&gt; this.tableViewer.setInput(newValue);
+		this.controller.onNewValue(this.newValueConsumer);
+
+		this.onClickListener = new SelectionListener() {
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				Object selection = ((IStructuredSelection) TableLifecycleManager.this.tableViewer.getSelection()).getFirstElement();
+				TableLifecycleManager.this.controller.handleClick(selection);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent event) {
+				Object selection = ((IStructuredSelection) TableLifecycleManager.this.tableViewer.getSelection()).getFirstElement();
+				TableLifecycleManager.this.controller.handleClick(selection);
+			}
+		};
+		this.tableViewer.getTable().addSelectionListener(this.onClickListener);
+	}
+
+	@Override
+	public void refresh() {
+		super.refresh();
+
+		this.controller.refresh();
+	}
+
+	@Override
+	public void aboutToBeHidden() {
+		super.aboutToBeHidden();
+		this.controller.removeValueConsumer();
+		this.newValueConsumer = null;
+
+		this.tableViewer.getTable().removeSelectionListener(this.onClickListener);
+		this.onClickListener = null;
+	}
+
+	@Override
+	protected IEEFWidgetController getController() {
+		return this.controller;
+	}
+
+	@Override
+	protected EEFWidgetDescription getWidgetDescription() {
+		return this.description;
+	}
+
+	@Override
+	protected Control getValidationControl() {
+		return this.tableViewer.getTable();
+	}
+
+	@Override
+	public void dispose() {
+		super.dispose();
+
+		this.composedAdapterFactory.dispose();
+	}
+}
+
+
+</pre>
+		<p>
+			<br/>The lifecycle manager will first create the controls of the table widget and it will initialized a controller for the table.
+		</p>
+		<h3 id="EEFcontroller">EEF controller</h3>
+		<p>The controller is not required but it will handle several keys problems for us, for example by extending the proper abstract class it can handle the validation rules of your widget. For a basic custom widget, it is highly recommended to extend 
+			<code>org.eclipse.eef.core.api.controllers.AbstractEEFCustomWidgetController</code>. The controller does not have any reason to depend on the user interface, thus it will be created in another Eclipse plugin which will be usable without any dependency to an user interface specific plugins. This plugin will be named 
+			<code>com.example.awesomeproject.eef.core.ext.widgets.table</code>. It will depend on at least the following plugins:
+		</p>
+		<ul>
+			<li>org.eclipse.eef</li>
+			<li>org.eclipse.eef.core</li>
+			<li>org.eclipse.sirius.common.interpreter</li>
+		</ul>
+		<pre>package com.example.awesomeproject.eef.core.ext.widgets.table.internal;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.eef.EEFCustomWidgetDescription;
+import org.eclipse.eef.core.api.EditingContextAdapter;
+import org.eclipse.eef.core.api.controllers.AbstractEEFCustomWidgetController;
+import org.eclipse.eef.core.api.controllers.IConsumer;
+import org.eclipse.eef.core.api.utils.EvalFactory;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
+
+public class TableController extends AbstractEEFCustomWidgetController {
+
+	private static final String VALUE_EXPRESSION_ID = "valueExpression"; //$NON-NLS-1$
+
+	private static final String ON_CLICK_EXPRESSION_ID = "onClickExpression"; //$NON-NLS-1$
+
+	private static final String SELECTION_VARIABLE_NAME = "selection"; //$NON-NLS-1$
+
+	private IConsumer&lt;Object&gt; newValueConsumer;
+
+	public TableController(EEFCustomWidgetDescription description, IVariableManager variableManager, IInterpreter interpreter,
+			EditingContextAdapter contextAdapter) {
+		super(description, variableManager, interpreter, contextAdapter);
+	}
+
+	@Override
+	protected EEFCustomWidgetDescription getDescription() {
+		return this.description;
+	}
+
+	@Override
+	public void refresh() {
+		super.refresh();
+		this.newEval().call(this.getCustomExpression(VALUE_EXPRESSION_ID), this.newValueConsumer);
+	}
+
+	public void handleClick(Object object) {
+		this.contextAdapter.performModelChange(() -&gt; {
+			String onClickExpression = this.getCustomExpression(ON_CLICK_EXPRESSION_ID);
+
+			Map&lt;String, Object&gt; variables = new HashMap&lt;String, Object&gt;();
+			variables.putAll(this.variableManager.getVariables());
+			variables.put(SELECTION_VARIABLE_NAME, object);
+
+			EvalFactory.of(this.interpreter, variables).call(onClickExpression);
+		});
+	}
+
+	public void onNewValue(IConsumer&lt;Object&gt; consumer) {
+		this.newValueConsumer = consumer;
+	}
+
+	public void removeValueConsumer() {
+		this.newValueConsumer = null;
+	}
+}
+
+</pre>
+		<p>
+			<br/>The controller here will handle two different situations. Firstly, it will react to the refresh in order to compute the new value of the table widget. For that, it will look for an expression with the identifier 
+			<code>valueExpression</code> and it will execute it. Once executed, it will give its result to the 
+			<code>newValueConsumer</code>. In the table lifecycle manager, we have set, in the method 
+			<code>aboutToBeShown</code>, this new value consumer to a lambda which will set a new input for the table. Each time that the lifecycle manager will be refreshed by the framework, its call to 
+			<code>super.refresh()</code> will trigger the refresh of the controller (among other things) which will compute the new value to display and given this value to the callback (consumer) registered by the lifecycle manager.
+		</p>
+		<p>Secondly, the controller will be used to handle the click in the table. For that it has a method named 
+			<code>handleClick</code> which will be called with the selected object in the table. The controller will then evaluate an expression with the identifier 
+			<code>onClickExpression</code> with the variables available along with an additional variable specifically for this use case. The additional variable named 
+			<code>selection</code> will here be used to give access to the current selection to the 
+			<code>onClickExpression</code>.
+		</p>
+		<p>Now your end users can use your two plugins to create tables in their Properties view using the custom widget description.</p>
+	</body>
+</html>

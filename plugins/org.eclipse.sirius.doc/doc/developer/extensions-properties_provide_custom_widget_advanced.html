@@ -1,0 +1,559 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>extensions-properties_provide_custom_widget_advanced</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusPropertiesAdvancedCustomWidget">Sirius Properties &#8211; Advanced Custom Widget</h1>
+		<h2 id="Goal">Goal</h2>
+		<p>Using the Advanced Custom Widget approach, our goal aims at the creation of a custom widget with a great user experience for the Sirius specifier. This custom widget will be created after the development of the basic custom widget. You should be familiar with this approach first.</p>
+		<h2 id="Strategy">Strategy</h2>
+		<p>In order to create a custom widget, we will have to think about the two kind of users that will interact with our work, the Sirius specifier and the end-user. With this advanced approach, we will create a table widget for the end-user with a great experience for the Sirius specifier who will manipulate it.</p>
+		<h3 id="SpecificationofthecustomwidgetinEclipseSirius">Specification of the custom widget in Eclipse Sirius</h3>
+		<p>The specification of the advanced custom widget will be the main difference with the basic custom widget. While with the basic approach, the Sirius specifier had to use a generic and bland custom widget description, with the advanced approach we will create a real definition for the Sirius specifier to manipulate.</p>
+		<p>As a first step, we want to contribute a piece of model to be displayed in the odesign file for our Sirius specifiers. For that, you will have to create a plugin named 
+			<code>com.example.awesomeproject.sirius.properties.ext.widgets.table</code> containing, in a folder named model, an Ecore model named 
+			<code>properties-ext-widgets-table.ecore</code>. In this Ecore model, you will have to load the resource 
+			<code>properties.ecore</code> used to define the Properties view description in the odesign. This meta-model can be found in the EPackage registry using its NsURI 
+			<code>http://www.eclipse.org/sirius/properties/1.0.0</code>.
+		</p>
+		<p>Once this resource has been loaded, give a name, NsPrefix and NsURI to your EPackage (the root element), for example:</p>
+		<ul>
+			<li>Name: 
+				<code>propertiesextwidgetstable</code>
+			</li>
+			<li>NsPrefix: 
+				<code>properties-ext-widgets-table</code>
+			</li>
+			<li>NsURI: 
+				<code>http://www.example.com/awesomeproject/properties/ext/widgets/table</code>
+			</li>
+		</ul>
+		<p>After that, you can create an EClass under the EPackage with the named 
+			<code>ExtTableDescription</code> and with the EClass 
+			<code>WidgetDescription</code> as a supertype. This EClass should contain for our example two EAttributes named 
+			<code>onClickExpression</code> and 
+			<code>valueExpression</code> and both should have the type 
+			<code>InterpretedExpresion</code>.
+		</p>
+		<p>You can then create a genmodel file for your Ecore model in the same repository and launch the generation of the model and its edit support. You will thus have two plugins:</p>
+		<ul>
+			<li>Sirius Properties model extension: 
+				<code>com.example.awesomeproject.sirius.properties.ext.widgets.table</code>
+			</li>
+			<li>Sirius Properties model extension Edit support: 
+				<code>com.example.awesomeproject.sirius.properties.ext.widgets.table.edit</code>
+			</li>
+		</ul>
+		<h3 id="SpecificationofthecustomwidgetinEclipseEEF">Specification of the custom widget in Eclipse EEF</h3>
+		<p>Eclipse EEF has a runtime independent of Eclipse Sirius and as such the definition of the widget that exist in the odesign file has to be transformed into a definition that can be maintained by Eclipse EEF. For most of the existing concepts this transformation is very basic since it only involves the transformation of the Sirius concepts directly into similar EEF concepts but both domain specific languages have very different roles.</p>
+		<p>The Eclipse Sirius Properties DSL is used as the user interface for the Eclipse Sirius specifier while the Eclipse EEF DSL is the model interpreted by the runtime. It is perfectly possible, and even recommended, to define, in the extension of the Sirius Properties DSL, high level concepts that should be user-friendly for the Sirius specifier and to keep in the extension of the EEF DSL raw concepts transformed from the extension of the Sirius Properties DSL.</p>
+		<p>You will now have to create a third plugin named 
+			<code>com.example.awesomeproject.eef.ext.widgets.table</code> with a model folder and an Ecore model inside named 
+			<code>eef-ext-widgets-table.ecore</code>. In this model you should load the resource 
+			<code>eef.ecore</code> containing the EEF DSL that you will have to extend. You can find it in the EPackage registry using its NsURI 
+			<code>http://www.eclipse.org/eef</code>. Once the EEF DSL is loaded, you can set the properties of your root EPackage:
+		</p>
+		<ul>
+			<li>Name: 
+				<code>eefextwidgetstable</code>
+			</li>
+			<li>NsPrefix: 
+				<code>eef-ext-widgets-table</code>
+			</li>
+			<li>NsURI: 
+				<code>http://www.example.com/awesomeproject/eef/ext/widgets/table</code>
+			</li>
+		</ul>
+		<p>Under this root EPackage, you can now create your EClass named 
+			<code>EEFExtTableDescription</code> which should have 
+			<code>EEFWidgetDescription</code> as a supertype. This EClass should contain for our example two EAttributes named 
+			<code>onClickExpression</code> and 
+			<code>valueExpression</code> and both should have the type 
+			<code>EString</code>. In our example, both the extension of the Sirius DSL and the EEF DSL have the same properties since we are using a very simple example.
+		</p>
+		<p>You can now create a genmodel for your extension of the EEF DSL and generate the code for the model (the Edit support is not necessary here). You will now have three plugins:</p>
+		<ul>
+			<li>Sirius Properties model extension: 
+				<code>com.example.awesomeproject.sirius.properties.ext.widgets.table</code>
+			</li>
+			<li>Sirius Properties model extension Edit support: 
+				<code>com.example.awesomeproject.sirius.properties.ext.widgets.table.edit</code>
+			</li>
+			<li>EEF model extension: 
+				<code>com.example.awesomeproject.eef.ext.widgets.table</code>
+			</li>
+		</ul>
+		<h3 id="ContributionoftheconverterfromSiriustoEEF">Contribution of the converter from Sirius to EEF</h3>
+		<p>Now that you have your extension to the Sirius Properties DSL and the EEF DSL, you need to inform the Sirius bridge how to transform the concepts from your extension to the Sirius DSL into EEF concepts. For that an extension point is available in order to contribute an IDescriptionConverter. This converter will have to depend on the Sirius bridge for Eclipse EEF and at least the extension to both the Sirius Properties DSL and the EEF DSL. As a result, this code will have to go into another plugin because having those dependencies on an existing plugins would be against the best practices. We will thus create a fourth plugin named 
+			<code>com.example.awesomeproject.sirius.ui.properties.ext.widgets.table</code>. In this plugin, we will declare our description converter using the following extension.
+		</p>
+		<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?eclipse version="3.4"?&gt;
+&lt;plugin&gt;
+   &lt;extension
+         point="org.eclipse.sirius.ui.properties.descriptionConverter"&gt;
+      &lt;descriptor
+            class="com.example.awesomeproject.sirius.ui.properties.ext.widgets.table.internal.ExtTableDescriptionConverter"
+            description="%tableDescriptionConverter.Description"
+            id="com.example.awesomeproject.sirius.ui.properties.ext.widgets.table.descriptionConverter"
+            label="%tableDescriptionConverter.Label"&gt;
+      &lt;/descriptor&gt;
+   &lt;/extension&gt;
+&lt;/plugin&gt;
+
+</pre>
+		<p>
+			<br/>The transformation from the Sirius DSL to the EEF DSL occur in two parts, first the description are converted using an IDescriptionConverter and after an IDescriptionLinkResolver may be used to resolve some links. In our case, the description converter will simply be used to transform a instance of 
+			<code>ExtTableDescription</code> into an 
+			<code>EEFExtTableDescription</code> and we won&#8217;t use a description link resolver since it is not useful here.
+		</p>
+		<pre>package com.example.awesomeproject.sirius.ui.properties.ext.widgets.table.internal;
+
+import java.util.Map;
+
+import com.example.awesomeproject.eef.ext.widgets.table.EEFExtTableDescription;
+import com.example.awesomeproject.eef.ext.widgets.table.EefExtWidgetsTableFactory;
+import org.eclipse.emf.ecore.EObject;
+import com.example.awesomeproject.sirius.properties.ext.widgets.table.ExtTableDescription;
+import org.eclipse.sirius.ui.properties.api.DescriptionCache;
+import org.eclipse.sirius.ui.properties.api.IDescriptionConverter;
+
+public class ExtTableDescriptionConverter implements IDescriptionConverter {
+
+    @Override
+    public boolean canHandle(EObject description) {
+        return description instanceof ExtTableDescription;
+    }
+
+    @Override
+    public EObject convert(EObject description, Map&lt;String, Object&gt; parameters, DescriptionCache cache) {
+        if (description instanceof ExtTableDescription) {
+            ExtTableDescription extTableDescription = (ExtTableDescription) description;
+
+            EEFExtTableDescription eefExtTableDescription = EefExtWidgetsTableFactory.eINSTANCE.createEEFExtTableDescription();
+            eefExtTableDescription.setIdentifier(extTableDescription.getIdentifier());
+            eefExtTableDescription.setHelpExpression(extTableDescription.getHelpExpression());
+            eefExtTableDescription.setIsEnabledExpression(extTableDescription.getIsEnabledExpression());
+            eefExtTableDescription.setLabelExpression(extTableDescription.getLabelExpression());
+
+            eefExtTableDescription.setValueExpression(extTableDescription.getValueExpression());
+            eefExtTableDescription.setOnClickExpression(extTableDescription.getOnClickExpression());
+
+            // Let's not forget to populate the cache for the other converters or link resolvers
+            cache.put(extTableDescription, eefExtTableDescription);
+
+            return eefExtTableDescription;
+        }
+        return null;
+    }
+}
+
+</pre>
+		<p>
+			<br/>An IDescriptionConverter can be used to convert any element from the Sirius Properties DSL into an EEF DSL element. In order to support custom widgets, you only have to handle your own objects but you could still modify other kind of objects from the Sirius Properties DSL. As a result, this mechanism can be used to dynamically modify anything in the description of the Properties view at runtime. This usage of the IDescriptionConverter should almost never be used, it&#8217;s a very powerful mechanism for extremely advanced users only.
+		</p>
+		<p>In order to help developer transform their Sirius entities into EEF entities, multiple possible super-classes are available:</p>
+		<ul>
+			<li>org.eclipse.sirius.ui.properties.api.AbstractDescriptionConverter &#8211; Common superclass with utility methods</li>
+			<li>org.eclipse.sirius.ui.properties.api.DefaultDescriptionConverter &#8211; Converter for basic transformations</li>
+			<li>org.eclipse.sirius.ui.properties.api.DefaultDescriptionWithInitialOperationConverter &#8211; Converter with support for the transformation of a basic operation into a regular expression</li>
+			<li>org.eclipse.sirius.ui.properties.api.DefaultStyleDescriptionConverter &#8211; Converter with support for styling</li>
+		</ul>
+		<h3 id="ContributionofthePropertiessectionfortheodesign">Contribution of the Properties section for the odesign</h3>
+		<p>If you try to edit your extension of the Sirius DSL in the odesign editor, you will find out that it does not work. In order to be able to view the properties of your widget, in our case the 
+			<code>onClickExpression</code> and the 
+			<code>valueExpression</code>, you will need to contribute to the Properties view of the odesign editor. Since this contribution will require a dependency with the framework used for the Properties view of the odesign editor, it will require another plugin named 
+			<code>com.example.awesomeproject.sirius.editor.properties.ext.widgets.table</code> with a dependency to at least:
+		</p>
+		<ul>
+			<li>com.example.awesomeproject.sirius.properties.ext.widgets.table</li>
+			<li>com.example.awesomeproject.sirius.properties.ext.widgets.table.edit</li>
+			<li>org.eclipse.ui.views.properties.tabbed</li>
+			<li>org.eclipse.sirius.editor</li>
+		</ul>
+		<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?eclipse version="3.4"?&gt;
+&lt;plugin&gt;
+   &lt;extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections"&gt;
+      &lt;propertySections
+            contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor"&gt;
+         &lt;propertySection
+               afterSection="properties.section.widgetDescription.IsEnabledExpression"
+               class="com.example.awesomeproject.sirius.editor.properties.ext.widgets.table.internal.ExtTableDescriptionValueExpressionPropertySection"
+               filter="com.example.awesomeproject.sirius.editor.properties.ext.widgets.table.internal.ExtTableDescriptionValueExpressionFilter"
+               id="properties.section.extTableDescription.valueExpression"
+               tab="viewpoint.tab.general"&gt;
+            &lt;input
+                  type="com.example.awesomeproject.sirius.editor.properties.ext.widgets.table.propertiesextwidgetstablee.ExtTableDescription"&gt;
+            &lt;/input&gt;
+         &lt;/propertySection&gt;
+         &lt;propertySection
+               afterSection="properties.section.extTableDescription.valueExpression"
+               class="com.example.awesomeproject.sirius.editor.properties.ext.widgets.table.internal.ExtTableDescriptionOnClickExpressionPropertySection"
+               filter="com.example.awesomeproject.sirius.editor.properties.ext.widgets.table.internal.ExtTableDescriptionOnClickExpressionFilter"
+               id="properties.section.extTableDescription.valueExpression"
+               tab="viewpoint.tab.general"&gt;
+            &lt;input
+                  type="com.example.awesomeproject.sirius.editor.properties.ext.widgets.table.propertiesextwidgetstablee.ExtTableDescription"&gt;
+            &lt;/input&gt;
+         &lt;/propertySection&gt;
+      &lt;/propertySections&gt;
+   &lt;/extension&gt;
+&lt;/plugin&gt;
+
+
+</pre>
+		<p>
+			<br/>Two property sections will be necessary in order to display a text field for the value expression and the on click expression.
+		</p>
+		<pre>package com.example.awesomeproject.sirius.editor.properties.ext.widgets.table.internal;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
+import com.example.awesomeproject.sirius.editor.properties.ext.widgets.table.propertiesextwidgetstablee.PropertiesExtTablePackage;
+
+public class ExtTableDescriptionOnClickExpressionFilter extends ViewpointPropertyFilter {
+
+    @Override
+    protected EStructuralFeature getFeature() {
+        return PropertiesExtTablePackage.eINSTANCE.getExtTableDescription_OnClickExpression();
+    }
+
+    @Override
+    protected boolean isRightInputType(Object arg0) {
+        return arg0 instanceof com.example.awesomeproject.sirius.editor.properties.ext.widgets.table.propertiesextwidgetstablee.ExtTableDescription;
+    }
+
+}
+
+</pre>
+		<p>
+			<br/>Both filter will look almost the same, the only difference will be the structural feature that they will return.
+		</p>
+		<pre>package com.example.awesomeproject.sirius.editor.properties.ext.widgets.table.internal;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
+import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
+import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
+import com.example.awesomeproject.sirius.editor.properties.ext.widgets.table.propertiesextwidgetstablee.PropertiesExtTablePackage;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+
+@SuppressWarnings("restriction")
+public class ExtTableDescriptionOnClickExpressionPropertySection extends AbstractTextWithButtonPropertySection {
+
+    @Override
+    protected String getDefaultLabelText() {
+        return "On Click Expression"; //$NON-NLS-1$
+    }
+
+    @Override
+    protected String getLabelText() {
+        String labelText;
+        labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
+        return labelText;
+    }
+
+    @Override
+    public EAttribute getFeature() {
+        return PropertiesExtTablePackage.eINSTANCE.getExtTableDescription_OnClickExpression();
+    }
+
+    @Override
+    protected Object getFeatureValue(String newText) {
+        return newText;
+    }
+
+    @Override
+    protected boolean isEqual(String newText) {
+        return this.getFeatureAsText().equals(newText);
+    }
+
+    @Override
+    public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
+        super.createControls(parent, tabbedPropertySheetPage);
+
+        text.setToolTipText(getToolTipText());
+        /*
+         * We set the color as it's a InterpretedExpression
+         */
+        text.setBackground(SiriusEditor.getColorRegistry().get("yellow")); //$NON-NLS-1$
+
+        TypeContentProposalProvider.bindPluginsCompletionProcessors(this, text);
+
+        FormData data = new FormData();
+        data.top = new FormAttachment(text, 0, SWT.TOP);
+        data.left = new FormAttachment(nameLabel);
+
+        nameLabel.setFont(SiriusEditor.getFontRegistry().get("required")); //$NON-NLS-1$
+    }
+
+    @Override
+    protected SelectionListener createButtonListener() {
+        return new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), ExtTableDescriptionOnClickExpressionPropertySection.this, text.getText());
+                dialog.open();
+                text.setText(dialog.getResult());
+                handleTextModified();
+            }
+        };
+    }
+
+    @Override
+    protected String getPropertyDescription() {
+        return ""; //$NON-NLS-1$
+    }
+
+}
+
+
+</pre>
+		<p>
+			<br/>This property section will create a text field and label in the Properties view of the odesign editor in order to let the Sirius specifier edit the 
+			<code>onClickExpression</code> of the table. Our text field will have the same appear and feature as the regular yellow text fields used by Sirius. 
+		</p>
+		<h3 id="Updatetothepluginsofourbasicwidgetapproach">Update to the plugins of our basic widget approach</h3>
+		<p>Now we can reuse our work in the basic approach but this time with our own specific DSL instead of reusing the CustomElements from the EEF DSL. First we will have to modify the lifecycle manager provider to support our EEFExtTableDescription.</p>
+		<pre>package com.example.awesomeproject.eef.ide.ui.ext.widgets.table.internal;
+
+import com.example.awesomeproject.eef.ext.widgets.table.EEFExtTableDescription;
+
+import org.eclipse.eef.EEFControlDescription;
+import org.eclipse.eef.core.api.EditingContextAdapter;
+import org.eclipse.eef.ide.ui.api.widgets.IEEFLifecycleManager;
+import org.eclipse.eef.ide.ui.api.widgets.IEEFLifecycleManagerProvider;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
+
+public class TableLifecycleManagerProvider implements IEEFLifecycleManagerProvider {
+
+	@Override
+	public boolean canHandle(EEFControlDescription controlDescription) {
+		return controlDescription instanceof EEFExtTableDescription;
+	}
+
+	@Override
+	public IEEFLifecycleManager getLifecycleManager(EEFControlDescription controlDescription, IVariableManager variableManager,
+			IInterpreter interpreter, EditingContextAdapter contextAdapter) {
+		if (controlDescription instanceof EEFExtTableDescription) {
+			return new TableLifecycleManager((EEFExtTableDescription) controlDescription, variableManager, interpreter, contextAdapter);
+		}
+		throw new IllegalArgumentException();
+	}
+}
+
+</pre>
+		<p>
+			<br/>Now we can just modify our lifecycle manager to support our EEFExtTableDescription.
+		</p>
+		<pre>package com.example.awesomeproject.eef.ide.ui.ext.widgets.table.internal;
+
+import com.example.awesomeproject.eef.ext.widgets.table.EEFExtTableDescription;
+
+import com.example.awesomeproject.eef.core.ext.widgets.table.TableController;
+import org.eclipse.eef.EEFWidgetDescription;
+import org.eclipse.eef.common.ui.api.IEEFFormContainer;
+import org.eclipse.eef.core.api.EditingContextAdapter;
+import org.eclipse.eef.core.api.controllers.IConsumer;
+import org.eclipse.eef.core.api.controllers.IEEFWidgetController;
+import org.eclipse.eef.ide.ui.api.widgets.AbstractEEFWidgetLifecycleManager;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Table;
+
+public class TableLifecycleManager extends AbstractEEFWidgetLifecycleManager {
+
+	private EEFExtTableDescription description;
+
+	private TableViewer tableViewer;
+
+	private ComposedAdapterFactory composedAdapterFactory;
+
+	private SelectionListener onClickListener;
+
+	private TableController controller;
+
+	private IConsumer&lt;Object&gt; newValueConsumer;
+
+	public TableLifecycleManager(EEFExtTableDescription description, IVariableManager variableManager, IInterpreter interpreter,
+			EditingContextAdapter contextAdapter) {
+		super(variableManager, interpreter, contextAdapter);
+		this.description = description;
+	}
+
+	@Override
+	protected void createMainControl(Composite parent, IEEFFormContainer formContainer) {
+		Table table = formContainer.getWidgetFactory().createTable(parent,
+				SWT.READ_ONLY | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER | SWT.SINGLE);
+		this.tableViewer = new TableViewer(table);
+		this.composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+
+		this.tableViewer.setContentProvider(ArrayContentProvider.getInstance());
+		this.tableViewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new AdapterFactoryLabelProvider.StyledLabelProvider(
+				this.composedAdapterFactory, this.tableViewer)));
+
+		this.controller = new TableController(description, variableManager, interpreter, contextAdapter);
+	}
+
+	@Override
+	public void aboutToBeShown() {
+		super.aboutToBeShown();
+
+		this.newValueConsumer = (newValue) -&gt; this.tableViewer.setInput(newValue);
+		this.controller.onNewValue(this.newValueConsumer);
+
+		this.onClickListener = new SelectionListener() {
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				Object selection = ((IStructuredSelection) TableLifecycleManager.this.tableViewer.getSelection()).getFirstElement();
+				TableLifecycleManager.this.controller.handleClick(selection);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent event) {
+				Object selection = ((IStructuredSelection) TableLifecycleManager.this.tableViewer.getSelection()).getFirstElement();
+				TableLifecycleManager.this.controller.handleClick(selection);
+			}
+		};
+		this.tableViewer.getTable().addSelectionListener(this.onClickListener);
+	}
+
+	@Override
+	public void refresh() {
+		super.refresh();
+
+		this.controller.refresh();
+	}
+
+	@Override
+	public void aboutToBeHidden() {
+		super.aboutToBeHidden();
+		this.controller.removeValueConsumer();
+		this.newValueConsumer = null;
+
+		this.tableViewer.getTable().removeSelectionListener(this.onClickListener);
+		this.onClickListener = null;
+	}
+
+	@Override
+	protected IEEFWidgetController getController() {
+		return this.controller;
+	}
+
+	@Override
+	protected EEFWidgetDescription getWidgetDescription() {
+		return this.description;
+	}
+
+	@Override
+	protected Control getValidationControl() {
+		return this.tableViewer.getTable();
+	}
+
+	@Override
+	public void dispose() {
+		super.dispose();
+
+		this.composedAdapterFactory.dispose();
+	}
+}
+
+
+</pre>
+		<p>
+			<br/>And finally we can easily adapter our controller.
+		</p>
+		<pre>package com.example.awesomeproject.eef.core.ext.widgets.table.internal;
+
+import com.example.awesomeproject.eef.ext.widgets.table.EEFExtTableDescription;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.eef.EEFCustomWidgetDescription;
+import org.eclipse.eef.core.api.EditingContextAdapter;
+import org.eclipse.eef.core.api.controllers.AbstractEEFCustomWidgetController;
+import org.eclipse.eef.core.api.controllers.IConsumer;
+import org.eclipse.eef.core.api.utils.EvalFactory;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
+
+public class TableController extends AbstractEEFWidgetController {
+
+	private static final String VALUE_EXPRESSION_ID = "valueExpression"; //$NON-NLS-1$
+
+	private static final String ON_CLICK_EXPRESSION_ID = "onClickExpression"; //$NON-NLS-1$
+
+	private static final String SELECTION_VARIABLE_NAME = "selection"; //$NON-NLS-1$
+
+	private IConsumer&lt;Object&gt; newValueConsumer;
+
+	public TableController(EEFExtTableDescription description, IVariableManager variableManager, IInterpreter interpreter,
+			EditingContextAdapter contextAdapter) {
+		super(description, variableManager, interpreter, contextAdapter);
+	}
+
+	@Override
+	protected EEFExtTableDescription getDescription() {
+		return this.description;
+	}
+
+	@Override
+	public void refresh() {
+		super.refresh();
+		this.newEval().call(this.description.getValueExpression(), this.newValueConsumer);
+	}
+
+	public void handleClick(Object object) {
+		this.contextAdapter.performModelChange(() -&gt; {
+			String onClickExpression = this.description.getOnClickExpression();
+
+			Map&lt;String, Object&gt; variables = new HashMap&lt;String, Object&gt;();
+			variables.putAll(this.variableManager.getVariables());
+			variables.put(SELECTION_VARIABLE_NAME, object);
+
+			EvalFactory.of(this.interpreter, variables).call(onClickExpression);
+		});
+	}
+
+	public void onNewValue(IConsumer&lt;Object&gt; consumer) {
+		this.newValueConsumer = consumer;
+	}
+
+	public void removeValueConsumer() {
+		this.newValueConsumer = null;
+	}
+}
+
+</pre>
+		<p>
+			<br/>With minimal changes, we can reuse the code of the basic approach in this advanced approach. But now we have the ability to provide the Sirius specifiers with a proper user interface for the manipulation of our widget and we can manipulate our own concepts in the EEF runtime.
+		</p>
+	</body>
+</html>

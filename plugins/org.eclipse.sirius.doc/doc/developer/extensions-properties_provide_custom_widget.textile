@@ -1,0 +1,16 @@
+h1. Sirius - Provide Custom Widget For The Properties View
+
+h2. Goal
+
+Using the Properties DSL in the odesign, a specifier can create the content of the Properties view for her/his Sirius-based designers. In some projects, a specifier may require the use of additional widgets not provided by the Sirius Properties runtime. In order to fulfill this need, the Sirius Properties runtime provide two ways for a developer to contribute additional widgets for specifiers.
+
+h2. Strategies
+
+Two strategies, "*Basic Custom Widget*":extensions-properties_provide_custom_widget_basic.html and "*Advanced Custom Widget*":extensions-properties_provide_custom_widget_advanced.html, exist to create a custom widget depending on the quality of the integration of the custom widget that you want to create.
+
+table(table table-bordered){margin-left:0}.
+| |_. Basic Custom Widget |_. Advanced Custom Widget |
+| Advantages | Easier to implement by the developer | Exactly the same integration in Sirius as any other concepts |
+| Drawbacks| Poor user interface for the specifier to manipulate | Complex to implement by the developer |
+
+Those two strategies have their own specific advantages and drawbacks but the "Advanced Custom Widget" strategy can developed as a follow-up of a "Basic Custom Widget" while keeping most of the code developed for the "Basic Custom Widget" approach.
