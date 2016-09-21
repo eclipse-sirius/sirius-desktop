@@ -98,7 +98,7 @@ public abstract class AbstractDescriptionConverter implements IDescriptionConver
      */
     protected String getExpressionForOperation(InitialOperation initialOperation) {
         if (initialOperation != null) {
-            return MessageFormat.format("aql:self.executeOperation(''{0}'')", EcoreUtil.getURI(initialOperation).toString()); //$NON-NLS-1$
+            return MessageFormat.format("aql:input.executeOperation(self, ''{0}'')", EcoreUtil.getURI(initialOperation).toString()); //$NON-NLS-1$
         }
         return null;
     }

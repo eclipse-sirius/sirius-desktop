@@ -257,13 +257,15 @@ public class SiriusToolServices {
     /**
      * Executes the operation with the given URI.
      * 
+     * @param self
+     *            the service invocation target.
      * @param eObject
-     *            The current EObject
+     *            The EObject to use as the operation's context
      * @param initialCommandUri
      *            the URI of the operation to execute
      * @return the model element on which the tool was executed.
      */
-    public EObject executeOperation(EObject eObject, String initialCommandUri) {
+    public EObject executeOperation(SiriusInputDescriptor self, EObject eObject, String initialCommandUri) {
         if (!eObject.eIsProxy()) {
             Session session = new EObjectQuery(eObject).getSession();
             if (session != null) {
