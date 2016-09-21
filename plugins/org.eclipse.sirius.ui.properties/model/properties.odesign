@@ -57,6 +57,9 @@
       <ifs predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference) and not(eStructuralFeature.containment) and eStructuralFeature.many">
         <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" identifier="sirius_default_rules_multi_noncontainment_reference" labelExpression="aql:self.eefViewText(eStructuralFeature)+':'" helpExpression="aql:self.eefViewDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" referenceNameExpression="aql:eStructuralFeature.name"/>
       </ifs>
+      <ifs predicateExpression="aql:eStructuralFeature.many">
+        <widget xsi:type="properties:ListDescription" identifier="sirius_default_rules_many" labelExpression="aql:self.eefViewText(eStructuralFeature)+':'" helpExpression="aql:self.eefViewDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature)" displayExpression="aql:value.eefViewText()"/>
+      </ifs>
     </controls>
   </groups>
 </properties:ViewExtensionDescription>
