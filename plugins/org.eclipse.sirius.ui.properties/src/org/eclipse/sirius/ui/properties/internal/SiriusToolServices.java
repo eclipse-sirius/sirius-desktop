@@ -75,13 +75,16 @@ public class SiriusToolServices {
     /**
      * Returns the text representing the given EObject.
      * 
-     * @param eObject
-     *            The EObject
+     * @param object
+     *            The object
      * @return The text representing the given EObject or <code>null</code> if
      *         none could be found
      */
-    public String eefViewText(EObject eObject) {
-        return this.editServices.getLabelProviderText(eObject);
+    public String eefViewText(Object object) {
+        if (object instanceof EObject) {
+            return this.editServices.getLabelProviderText((EObject) object);
+        }
+        return String.valueOf(object);
     }
 
     /**
