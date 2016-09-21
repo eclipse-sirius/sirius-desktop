@@ -364,18 +364,6 @@ public class SiriusToolServices {
     }
 
     /**
-     * Returns the {@link SiriusContext} associated with an arbitrary model
-     * element.
-     * 
-     * @param self
-     *            an arbitrary model element.
-     * @return the element's {@link SiriusContext}.
-     */
-    public SiriusContext context(EObject self) {
-        return SiriusContext.from(self);
-    }
-
-    /**
      * Returns the {@link SiriusContext} associated with a
      * {@link SiriusInputDescriptor} (typically the "input" variable of the
      * properties view).
