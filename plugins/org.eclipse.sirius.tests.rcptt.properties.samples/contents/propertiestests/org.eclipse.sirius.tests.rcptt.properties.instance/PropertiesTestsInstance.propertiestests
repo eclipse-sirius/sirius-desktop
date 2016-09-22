@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <propertiestests:TestRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:propertiestests="http://www.eclipse.org/sirius/tests/properties/1.0.0">
-  <elements stringAttribute="Element1" stringAttributeMandatory="Element1" stringAttributeMultiline="First line&#xA;Second line&#xA;Third line" stringAttributeMultilineMandatory="First line&#xA;Second line&#xA;Third line" intAttribute="1" reference="//@elements.1" references="//@elements.1 //@elements.2" referenceMandatory="//@elements.1" charAttribute="99" charAttributeMandatory="99" dateAttribute="2016-05-24T00:00:00.000+0200" dateAttributeMandatory="2016-05-24T00:00:00.000+0200" doubleAttribute="42.42" doubleAttributeMandatory="42.42" floatAttribute="42.42" floatAttributeMandatory="42.42" longAttribute="1" longAttributeMandatory="1" shortAttribute="42" shortAttributeMandatory="42" optionalFeature="Optional">
+  <elements stringAttribute="Element1" intAttribute="1" reference="//@elements.1" references="//@elements.1 //@elements.2" charAttribute="99" dateAttribute="2016-05-24T00:00:00.000+0200" doubleAttribute="42.42" floatAttribute="42.42" longAttribute="1" shortAttribute="42">
     <stringAttributes>Element1</stringAttributes>
     <stringAttributes>Element2</stringAttributes>
     <stringAttributes>Element3</stringAttributes>

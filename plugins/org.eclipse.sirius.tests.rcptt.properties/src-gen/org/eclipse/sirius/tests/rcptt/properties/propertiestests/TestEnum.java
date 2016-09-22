@@ -17,15 +17,16 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Test Enum</b></em>', and utility methods for working with them. <!--
  * end-user-doc -->
+ *
  * @see org.eclipse.sirius.tests.rcptt.properties.propertiestests.PropertiestestsPackage#getTestEnum()
  * @model
  * @generated
  */
 public enum TestEnum implements Enumerator {
     /**
-     * The '<em><b>Literal1</b></em>' literal object.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Literal1</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @see #LITERAL1_VALUE
      * @generated
      * @ordered
@@ -33,9 +34,9 @@ public enum TestEnum implements Enumerator {
     LITERAL1(0, "Literal1", "Literal1"),
 
     /**
-     * The '<em><b>Literal2</b></em>' literal object.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Literal2</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @see #LITERAL2_VALUE
      * @generated
      * @ordered
@@ -43,9 +44,9 @@ public enum TestEnum implements Enumerator {
     LITERAL2(1, "Literal2", "Literal2"),
 
     /**
-     * The '<em><b>Literal3</b></em>' literal object.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Literal3</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @see #LITERAL3_VALUE
      * @generated
      * @ordered
@@ -53,13 +54,13 @@ public enum TestEnum implements Enumerator {
     LITERAL3(2, "Literal3", "Literal3");
 
     /**
-     * The '<em><b>Literal1</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Literal1</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>Literal1</b></em>' literal object isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     *
      * @see #LITERAL1
      * @model name="Literal1"
      * @generated
@@ -68,13 +69,13 @@ public enum TestEnum implements Enumerator {
     public static final int LITERAL1_VALUE = 0;
 
     /**
-     * The '<em><b>Literal2</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Literal2</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>Literal2</b></em>' literal object isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     *
      * @see #LITERAL2
      * @model name="Literal2"
      * @generated
@@ -83,13 +84,13 @@ public enum TestEnum implements Enumerator {
     public static final int LITERAL2_VALUE = 1;
 
     /**
-     * The '<em><b>Literal3</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>Literal3</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>Literal3</b></em>' literal object isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     *
      * @see #LITERAL3
      * @model name="Literal3"
      * @generated
@@ -103,29 +104,27 @@ public enum TestEnum implements Enumerator {
      *
      * @generated
      */
-    private static final TestEnum[] VALUES_ARRAY = new TestEnum[] {
-            LITERAL1,
-            LITERAL2,
-            LITERAL3,
-        };
+    private static final TestEnum[] VALUES_ARRAY = new TestEnum[] { LITERAL1, LITERAL2, LITERAL3, };
 
     /**
-     * A public read-only list of all the '<em><b>Test Enum</b></em>' enumerators.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * A public read-only list of all the '<em><b>Test Enum</b></em>'
+     * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
-    public static final List<TestEnum> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<TestEnum> VALUES = Collections.unmodifiableList(Arrays.asList(TestEnum.VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>Test Enum</b></em>' literal with the specified literal value.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @param literal the literal.
+     * Returns the '<em><b>Test Enum</b></em>' literal with the specified
+     * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param literal
+     *            the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static TestEnum get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            TestEnum result = VALUES_ARRAY[i];
+        for (TestEnum result : TestEnum.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -136,13 +135,14 @@ public enum TestEnum implements Enumerator {
     /**
      * Returns the '<em><b>Test Enum</b></em>' literal with the specified name.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @param name the name.
+     *
+     * @param name
+     *            the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static TestEnum getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            TestEnum result = VALUES_ARRAY[i];
+        for (TestEnum result : TestEnum.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -151,43 +151,51 @@ public enum TestEnum implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Test Enum</b></em>' literal with the specified integer value.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @param value the integer value.
+     * Returns the '<em><b>Test Enum</b></em>' literal with the specified
+     * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static TestEnum get(int value) {
         switch (value) {
-            case LITERAL1_VALUE: return LITERAL1;
-            case LITERAL2_VALUE: return LITERAL2;
-            case LITERAL3_VALUE: return LITERAL3;
+        case LITERAL1_VALUE:
+            return LITERAL1;
+        case LITERAL2_VALUE:
+            return LITERAL2;
+        case LITERAL3_VALUE:
+            return LITERAL3;
         }
         return null;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private final String literal;
 
     /**
-     * Only this class can construct instances.
-     * <!-- begin-user-doc --> <!--
+     * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      */
     private TestEnum(int value, String name, String literal) {
@@ -198,34 +206,38 @@ public enum TestEnum implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public int getValue() {
-      return value;
+        return value;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public String getName() {
-      return name;
+        return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public String getLiteral() {
-      return literal;
+        return literal;
     }
 
     /**
-     * Returns the literal value of the enumerator, which is its string representation.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the literal value of the enumerator, which is its string
+     * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override

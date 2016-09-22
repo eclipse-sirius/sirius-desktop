@@ -22,32 +22,32 @@ import org.eclipse.sirius.tests.rcptt.properties.propertiestests.TestRoot;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
+ *
  * @generated
  */
 public class PropertiestestsFactoryImpl extends EFactoryImpl implements PropertiestestsFactory {
     /**
-     * Creates the default factory implementation.
-     * <!-- begin-user-doc --> <!--
+     * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      */
     public static PropertiestestsFactory init() {
         try {
-            PropertiestestsFactory thePropertiestestsFactory = (PropertiestestsFactory)EPackage.Registry.INSTANCE.getEFactory(PropertiestestsPackage.eNS_URI);
+            PropertiestestsFactory thePropertiestestsFactory = (PropertiestestsFactory) EPackage.Registry.INSTANCE.getEFactory(PropertiestestsPackage.eNS_URI);
             if (thePropertiestestsFactory != null) {
                 return thePropertiestestsFactory;
             }
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             EcorePlugin.INSTANCE.log(exception);
         }
         return new PropertiestestsFactoryImpl();
     }
 
     /**
-     * Creates an instance of the factory.
-     * <!-- begin-user-doc --> <!--
+     * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      */
     public PropertiestestsFactoryImpl() {
@@ -56,48 +56,54 @@ public class PropertiestestsFactoryImpl extends EFactoryImpl implements Properti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
-            case PropertiestestsPackage.TEST_ROOT: return createTestRoot();
-            case PropertiestestsPackage.TEST_ELEMENT: return createTestElement();
-            default:
-                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+        case PropertiestestsPackage.TEST_ROOT:
+            return createTestRoot();
+        case PropertiestestsPackage.TEST_ELEMENT:
+            return createTestElement();
+        default:
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public Object createFromString(EDataType eDataType, String initialValue) {
         switch (eDataType.getClassifierID()) {
-            case PropertiestestsPackage.TEST_ENUM:
-                return createTestEnumFromString(eDataType, initialValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+        case PropertiestestsPackage.TEST_ENUM:
+            return createTestEnumFromString(eDataType, initialValue);
+        default:
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public String convertToString(EDataType eDataType, Object instanceValue) {
         switch (eDataType.getClassifierID()) {
-            case PropertiestestsPackage.TEST_ENUM:
-                return convertTestEnumToString(eDataType, instanceValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+        case PropertiestestsPackage.TEST_ENUM:
+            return convertTestEnumToString(eDataType, instanceValue);
+        default:
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -108,6 +114,7 @@ public class PropertiestestsFactoryImpl extends EFactoryImpl implements Properti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -118,16 +125,20 @@ public class PropertiestestsFactoryImpl extends EFactoryImpl implements Properti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public TestEnum createTestEnumFromString(EDataType eDataType, String initialValue) {
         TestEnum result = TestEnum.get(initialValue);
-        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        if (result == null) {
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public String convertTestEnumToString(EDataType eDataType, Object instanceValue) {
@@ -136,15 +147,17 @@ public class PropertiestestsFactoryImpl extends EFactoryImpl implements Properti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public PropertiestestsPackage getPropertiestestsPackage() {
-        return (PropertiestestsPackage)getEPackage();
+        return (PropertiestestsPackage) getEPackage();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @deprecated
      * @generated
      */

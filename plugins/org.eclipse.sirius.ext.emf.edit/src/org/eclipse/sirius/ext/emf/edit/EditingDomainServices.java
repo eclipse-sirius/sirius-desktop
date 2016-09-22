@@ -159,12 +159,6 @@ import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory
  */
 // CHECKSTYLE:OFF
 public class EditingDomainServices {
-    /**
-     * The name used for the default category when nothing is specified in the
-     * genmodel.
-     */
-    public static final String DEFAULT_CATEGORY_NAME = "Default";
-
     private AdapterFactory defaultAdapterFactory;
 
     public EditingDomainServices() {
@@ -479,12 +473,10 @@ public class EditingDomainServices {
     public String getPropertyDescriptorCategory(EObject self, String featureName) {
         IItemPropertyDescriptor desc = getPropertyDescriptorForFeature(self, featureName);
         if (desc != null) {
-            String category = desc.getCategory(self);
-            if (category != null) {
-                return category;
-            }
+            return desc.getCategory(self);
+        } else {
+            return null;
         }
-        return DEFAULT_CATEGORY_NAME;
     }
 
     public String getPropertyDescriptorDescription(EObject self, String featureName) {

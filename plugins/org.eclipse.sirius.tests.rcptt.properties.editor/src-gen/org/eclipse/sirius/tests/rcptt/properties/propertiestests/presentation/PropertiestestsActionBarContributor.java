@@ -47,38 +47,37 @@ import org.eclipse.ui.PartInitException;
  */
 public class PropertiestestsActionBarContributor extends EditingDomainActionBarContributor implements ISelectionChangedListener {
     /**
-     * This keeps track of the active editor.
-     * <!-- begin-user-doc --> <!--
+     * This keeps track of the active editor. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      */
     protected IEditorPart activeEditorPart;
 
     /**
-     * This keeps track of the current selection provider.
-     * <!-- begin-user-doc
+     * This keeps track of the current selection provider. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected ISelectionProvider selectionProvider;
 
     /**
-     * This action opens the Properties view.
-     * <!-- begin-user-doc --> <!--
+     * This action opens the Properties view. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      */
     protected IAction showPropertiesViewAction = new Action(PropertiestestsEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
-            @Override
-            public void run() {
-                try {
-                    getPage().showView("org.eclipse.ui.views.PropertySheet");
-                }
-                catch (PartInitException exception) {
-                    PropertiestestsEditorPlugin.INSTANCE.log(exception);
-                }
+        @Override
+        public void run() {
+            try {
+                getPage().showView("org.eclipse.ui.views.PropertySheet");
+            } catch (PartInitException exception) {
+                PropertiestestsEditorPlugin.INSTANCE.log(exception);
             }
-        };
+        }
+    };
 
     /**
      * This action refreshes the viewer of the current editor if the editor
@@ -88,26 +87,28 @@ public class PropertiestestsActionBarContributor extends EditingDomainActionBarC
      * @generated
      */
     protected IAction refreshViewerAction = new Action(PropertiestestsEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
-            @Override
-            public boolean isEnabled() {
-                return activeEditorPart instanceof IViewerProvider;
-            }
+        @Override
+        public boolean isEnabled() {
+            return activeEditorPart instanceof IViewerProvider;
+        }
 
-            @Override
-            public void run() {
-                if (activeEditorPart instanceof IViewerProvider) {
-                    Viewer viewer = ((IViewerProvider)activeEditorPart).getViewer();
-                    if (viewer != null) {
-                        viewer.refresh();
-                    }
+        @Override
+        public void run() {
+            if (activeEditorPart instanceof IViewerProvider) {
+                Viewer viewer = ((IViewerProvider) activeEditorPart).getViewer();
+                if (viewer != null) {
+                    viewer.refresh();
                 }
             }
-        };
+        }
+    };
 
     /**
-     * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
-     * generated for the current selection by the item provider.
+     * This will contain one
+     * {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to
+     * each descriptor generated for the current selection by the item provider.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected Collection<IAction> createChildActions;
@@ -122,29 +123,32 @@ public class PropertiestestsActionBarContributor extends EditingDomainActionBarC
     protected IMenuManager createChildMenuManager;
 
     /**
-     * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding to each descriptor
-     * generated for the current selection by the item provider.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This will contain one
+     * {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding
+     * to each descriptor generated for the current selection by the item
+     * provider. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected Collection<IAction> createSiblingActions;
 
     /**
-     * This is the menu manager into which menu contribution items should be added for CreateSibling actions.
-     * <!-- begin-user-doc --> <!--
+     * This is the menu manager into which menu contribution items should be
+     * added for CreateSibling actions. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      */
     protected IMenuManager createSiblingMenuManager;
 
     /**
-     * This creates an instance of the contributor.
-     * <!-- begin-user-doc --> <!--
+     * This creates an instance of the contributor. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      */
     public PropertiestestsActionBarContributor() {
-        super(ADDITIONS_LAST_STYLE);
+        super(EditingDomainActionBarContributor.ADDITIONS_LAST_STYLE);
         loadResourceAction = new LoadResourceAction();
         validateAction = new ValidateAction();
         controlAction = new ControlAction();
@@ -173,7 +177,8 @@ public class PropertiestestsActionBarContributor extends EditingDomainActionBarC
     public void contributeToMenu(IMenuManager menuManager) {
         super.contributeToMenu(menuManager);
 
-        IMenuManager submenuManager = new MenuManager(PropertiestestsEditorPlugin.INSTANCE.getString("_UI_PropertiestestsEditor_menu"), "org.eclipse.sirius.tests.rcptt.properties.propertiestestsMenuID");
+        IMenuManager submenuManager = new MenuManager(PropertiestestsEditorPlugin.INSTANCE.getString("_UI_PropertiestestsEditor_menu"),
+                "org.eclipse.sirius.tests.rcptt.properties.propertiestestsMenuID");
         menuManager.insertAfter("additions", submenuManager);
         submenuManager.add(new Separator("settings"));
         submenuManager.add(new Separator("actions"));
@@ -192,20 +197,21 @@ public class PropertiestestsActionBarContributor extends EditingDomainActionBarC
 
         // Force an update because Eclipse hides empty menus now.
         //
-        submenuManager.addMenuListener
-            (new IMenuListener() {
-                 public void menuAboutToShow(IMenuManager menuManager) {
-                     menuManager.updateAll(true);
-                 }
-             });
+        submenuManager.addMenuListener(new IMenuListener() {
+            @Override
+            public void menuAboutToShow(IMenuManager menuManager) {
+                menuManager.updateAll(true);
+            }
+        });
 
         addGlobalActions(submenuManager);
     }
 
     /**
-     * When the active editor changes, this remembers the change and registers with it as a selection provider.
-     * <!-- begin-user-doc --> <!--
+     * When the active editor changes, this remembers the change and registers
+     * with it as a selection provider. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -220,8 +226,7 @@ public class PropertiestestsActionBarContributor extends EditingDomainActionBarC
         }
         if (part == null) {
             selectionProvider = null;
-        }
-        else {
+        } else {
             selectionProvider = part.getSite().getSelectionProvider();
             selectionProvider.addSelectionChangedListener(this);
 
@@ -260,10 +265,10 @@ public class PropertiestestsActionBarContributor extends EditingDomainActionBarC
         Collection<?> newSiblingDescriptors = null;
 
         ISelection selection = event.getSelection();
-        if (selection instanceof IStructuredSelection && ((IStructuredSelection)selection).size() == 1) {
-            Object object = ((IStructuredSelection)selection).getFirstElement();
+        if (selection instanceof IStructuredSelection && ((IStructuredSelection) selection).size() == 1) {
+            Object object = ((IStructuredSelection) selection).getFirstElement();
 
-            EditingDomain domain = ((IEditingDomainProvider)activeEditorPart).getEditingDomain();
+            EditingDomain domain = ((IEditingDomainProvider) activeEditorPart).getEditingDomain();
 
             newChildDescriptors = domain.getNewChildDescriptors(object, null);
             newSiblingDescriptors = domain.getNewChildDescriptors(null, object);
@@ -285,9 +290,10 @@ public class PropertiestestsActionBarContributor extends EditingDomainActionBarC
     }
 
     /**
-     * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction} for each object in <code>descriptors</code>,
-     * and returns the collection of these actions.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction}
+     * for each object in <code>descriptors</code>, and returns the collection
+     * of these actions. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection) {
@@ -301,9 +307,11 @@ public class PropertiestestsActionBarContributor extends EditingDomainActionBarC
     }
 
     /**
-     * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in <code>descriptors</code>,
-     * and returns the collection of these actions.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This generates a
+     * {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each
+     * object in <code>descriptors</code>, and returns the collection of these
+     * actions. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors, ISelection selection) {
@@ -317,11 +325,14 @@ public class PropertiestestsActionBarContributor extends EditingDomainActionBarC
     }
 
     /**
-     * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.ActionContributionItem}s
-     * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection,
-     * by inserting them before the specified contribution item <code>contributionID</code>.
-     * If <code>contributionID</code> is <code>null</code>, they are simply added.
+     * This populates the specified <code>manager</code> with
+     * {@link org.eclipse.jface.action.ActionContributionItem}s based on the
+     * {@link org.eclipse.jface.action.IAction}s contained in the
+     * <code>actions</code> collection, by inserting them before the specified
+     * contribution item <code>contributionID</code>. If
+     * <code>contributionID</code> is <code>null</code>, they are simply added.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected void populateManager(IContributionManager manager, Collection<? extends IAction> actions, String contributionID) {
@@ -329,8 +340,7 @@ public class PropertiestestsActionBarContributor extends EditingDomainActionBarC
             for (IAction action : actions) {
                 if (contributionID != null) {
                     manager.insertBefore(contributionID, action);
-                }
-                else {
+                } else {
                     manager.add(action);
                 }
             }
@@ -338,27 +348,29 @@ public class PropertiestestsActionBarContributor extends EditingDomainActionBarC
     }
 
     /**
-     * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.ActionContributionItem}s
-     * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection.
-     * <!-- begin-user-doc --> <!--
+     * This removes from the specified <code>manager</code> all
+     * {@link org.eclipse.jface.action.ActionContributionItem}s based on the
+     * {@link org.eclipse.jface.action.IAction}s contained in the
+     * <code>actions</code> collection. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      */
     protected void depopulateManager(IContributionManager manager, Collection<? extends IAction> actions) {
         if (actions != null) {
             IContributionItem[] items = manager.getItems();
-            for (int i = 0; i < items.length; i++) {
+            for (IContributionItem item : items) {
                 // Look into SubContributionItems
                 //
-                IContributionItem contributionItem = items[i];
+                IContributionItem contributionItem = item;
                 while (contributionItem instanceof SubContributionItem) {
-                    contributionItem = ((SubContributionItem)contributionItem).getInnerItem();
+                    contributionItem = ((SubContributionItem) contributionItem).getInnerItem();
                 }
 
                 // Delete the ActionContributionItems with matching action.
                 //
                 if (contributionItem instanceof ActionContributionItem) {
-                    IAction action = ((ActionContributionItem)contributionItem).getAction();
+                    IAction action = ((ActionContributionItem) contributionItem).getAction();
                     if (actions.contains(action)) {
                         manager.remove(contributionItem);
                     }
@@ -368,9 +380,9 @@ public class PropertiestestsActionBarContributor extends EditingDomainActionBarC
     }
 
     /**
-     * This populates the pop-up menu before it appears.
-     * <!-- begin-user-doc -->
+     * This populates the pop-up menu before it appears. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -398,15 +410,16 @@ public class PropertiestestsActionBarContributor extends EditingDomainActionBarC
         menuManager.insertAfter("additions-end", new Separator("ui-actions"));
         menuManager.insertAfter("ui-actions", showPropertiesViewAction);
 
-        refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());		
+        refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());
         menuManager.insertAfter("ui-actions", refreshViewerAction);
 
         super.addGlobalActions(menuManager);
     }
 
     /**
-     * This ensures that a delete action will clean up all references to deleted objects.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This ensures that a delete action will clean up all references to deleted
+     * objects. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override

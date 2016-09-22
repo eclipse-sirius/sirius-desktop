@@ -35,37 +35,35 @@ public final class PropertiestestsEditorPlugin extends EMFPlugin {
     private static Implementation plugin;
 
     /**
-     * Create the instance.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public PropertiestestsEditorPlugin() {
-        super
-            (new ResourceLocator [] {
-            });
+        super(new ResourceLocator[] {});
     }
 
     /**
-     * Returns the singleton instance of the Eclipse plugin.
-     * <!-- begin-user-doc
+     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @return the singleton instance.
      * @generated
      */
     @Override
     public ResourceLocator getPluginResourceLocator() {
-        return plugin;
+        return PropertiestestsEditorPlugin.plugin;
     }
 
     /**
-     * Returns the singleton instance of the Eclipse plugin.
-     * <!-- begin-user-doc
+     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @return the singleton instance.
      * @generated
      */
     public static Implementation getPlugin() {
-        return plugin;
+        return PropertiestestsEditorPlugin.plugin;
     }
 
     /**
@@ -76,16 +74,16 @@ public final class PropertiestestsEditorPlugin extends EMFPlugin {
      */
     public static class Implementation extends EclipseUIPlugin {
         /**
-         * Creates an instance.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         public Implementation() {
             super();
-    
+
             // Remember the static instance.
             //
-            plugin = this;
+            PropertiestestsEditorPlugin.plugin = this;
         }
     }
 

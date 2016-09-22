@@ -27,8 +27,10 @@ import org.eclipse.sirius.tests.rcptt.properties.propertiestests.Propertiestests
 import org.eclipse.sirius.tests.rcptt.properties.propertiestests.TestRoot;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.sirius.tests.rcptt.properties.propertiestests.TestRoot} object.
- * <!-- begin-user-doc --> <!-- end-user-doc -->
+ * This is the item provider adapter for a
+ * {@link org.eclipse.sirius.tests.rcptt.properties.propertiestests.TestRoot}
+ * object. <!-- begin-user-doc --> <!-- end-user-doc -->
+ *
  * @generated
  */
 public class TestRootItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
@@ -58,10 +60,13 @@ public class TestRootItemProvider extends ItemProviderAdapter implements IEditin
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This specifies how to implement {@link #getChildren} and is used to
+     * deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand},
+     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in
+     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -75,19 +80,21 @@ public class TestRootItemProvider extends ItemProviderAdapter implements IEditin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper feature to use for
+        // Check the type of the specified child object and return the proper
+        // feature to use for
         // adding (see {@link AddCommand}) it as a child.
 
         return super.getChildFeature(object, child);
     }
 
     /**
-     * This returns TestRoot.gif.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This returns TestRoot.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -96,9 +103,9 @@ public class TestRootItemProvider extends ItemProviderAdapter implements IEditin
     }
 
     /**
-     * This returns the label text for the adapted class.
-     * <!-- begin-user-doc
+     * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -107,10 +114,11 @@ public class TestRootItemProvider extends ItemProviderAdapter implements IEditin
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to update any cached
-     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-     * <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to
+     * update any cached children and by creating a viewer notification, which
+     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -118,9 +126,9 @@ public class TestRootItemProvider extends ItemProviderAdapter implements IEditin
         updateChildren(notification);
 
         switch (notification.getFeatureID(TestRoot.class)) {
-            case PropertiestestsPackage.TEST_ROOT__ELEMENTS:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case PropertiestestsPackage.TEST_ROOT__ELEMENTS:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -136,10 +144,7 @@ public class TestRootItemProvider extends ItemProviderAdapter implements IEditin
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (PropertiestestsPackage.Literals.TEST_ROOT__ELEMENTS,
-                 PropertiestestsFactory.eINSTANCE.createTestElement()));
+        newChildDescriptors.add(createChildParameter(PropertiestestsPackage.Literals.TEST_ROOT__ELEMENTS, PropertiestestsFactory.eINSTANCE.createTestElement()));
     }
 
     /**

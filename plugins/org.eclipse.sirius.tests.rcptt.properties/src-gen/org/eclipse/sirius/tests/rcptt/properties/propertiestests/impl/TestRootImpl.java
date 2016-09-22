@@ -27,15 +27,18 @@ import org.eclipse.sirius.tests.rcptt.properties.propertiestests.TestRoot;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.sirius.tests.rcptt.properties.propertiestests.impl.TestRootImpl#getElements <em>Elements</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.tests.rcptt.properties.propertiestests.impl.TestRootImpl#getElements
+ * <em>Elements</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class TestRootImpl extends MinimalEObjectImpl.Container implements TestRoot {
     /**
-     * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getElements() <em>Elements</em>}'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getElements()
      * @generated
      * @ordered
@@ -44,6 +47,7 @@ public class TestRootImpl extends MinimalEObjectImpl.Container implements TestRo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected TestRootImpl() {
@@ -52,6 +56,7 @@ public class TestRootImpl extends MinimalEObjectImpl.Container implements TestRo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -61,6 +66,7 @@ public class TestRootImpl extends MinimalEObjectImpl.Container implements TestRo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -73,69 +79,74 @@ public class TestRootImpl extends MinimalEObjectImpl.Container implements TestRo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case PropertiestestsPackage.TEST_ROOT__ELEMENTS:
-                return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+        case PropertiestestsPackage.TEST_ROOT__ELEMENTS:
+            return ((InternalEList<?>) getElements()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case PropertiestestsPackage.TEST_ROOT__ELEMENTS:
-                return getElements();
+        case PropertiestestsPackage.TEST_ROOT__ELEMENTS:
+            return getElements();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case PropertiestestsPackage.TEST_ROOT__ELEMENTS:
-                getElements().clear();
-                getElements().addAll((Collection<? extends TestElement>)newValue);
-                return;
+        case PropertiestestsPackage.TEST_ROOT__ELEMENTS:
+            getElements().clear();
+            getElements().addAll((Collection<? extends TestElement>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case PropertiestestsPackage.TEST_ROOT__ELEMENTS:
-                getElements().clear();
-                return;
+        case PropertiestestsPackage.TEST_ROOT__ELEMENTS:
+            getElements().clear();
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case PropertiestestsPackage.TEST_ROOT__ELEMENTS:
-                return elements != null && !elements.isEmpty();
+        case PropertiestestsPackage.TEST_ROOT__ELEMENTS:
+            return elements != null && !elements.isEmpty();
         }
         return super.eIsSet(featureID);
     }
