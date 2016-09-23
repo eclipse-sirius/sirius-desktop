@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.movida.ViewpointSelection;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -448,7 +449,7 @@ public final class DAnalysisSessionHelper {
     private static DView getDView(DAnalysis analysis, Viewpoint viewpoint) {
         DView result = null;
         for (final DView view : analysis.getOwnedViews()) {
-            if (view != null && viewpoint == view.getViewpoint()) {
+            if (viewpoint != null && EqualityHelper.areEquals(viewpoint, view.getViewpoint())) {
                 result = view;
                 break;
             }
