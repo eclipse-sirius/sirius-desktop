@@ -42,6 +42,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
+import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -92,6 +93,10 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -572,20 +577,63 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         Session session = new EObjectQuery(diagram.getTarget()).getSession();
         if (session != null) {
             ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
-            // Deal with each notifier only one time.
-            Set<EObject> alreadyDoneNotifiers = Sets.newHashSet();
+            // Group the notifications by notifiers
+            Map<EObject, List<Notification>> notificationsByNotifer = Maps.newHashMap();
             for (Notification notification : notifications) {
                 Object notifier = notification.getNotifier();
                 if (notifier instanceof EObject) {
                     EObject eObjectNotifier = (EObject) notifier;
-                    boolean expecetedEventType = notification.getEventType() == Notification.SET || notification.getEventType() == Notification.UNSET;
-                    expecetedEventType = expecetedEventType || notification.getEventType() == Notification.ADD || notification.getEventType() == Notification.ADD_MANY
-                            || notification.getEventType() == Notification.MOVE;
-                    if (expecetedEventType) {
-                        if (alreadyDoneNotifiers.add(eObjectNotifier)) {
-                            diagramElementsToRefresh.addAll(getDiagramElementsToRefresh(eObjectNotifier, diagram, xref));
+                    List<Notification> currentNotifications = notificationsByNotifer.get(eObjectNotifier);
+                    if (currentNotifications == null) {
+                        currentNotifications = Lists.newArrayList();
+                        notificationsByNotifer.put(eObjectNotifier, currentNotifications);
+                    }
+                    currentNotifications.add(notification);
+                }
+            }
+            // Get the notifications concerning a deletion of an element.
+            final Iterable<Notification> removeNotificationsIterable = Iterables.filter(notifications, new Predicate<Notification>() {
+                @Override
+                public boolean apply(Notification notification) {
+                    boolean isRemoveNotif = notification.getEventType() == Notification.REMOVE || notification.getEventType() == Notification.REMOVE_MANY;
+                    // Ignore transient feature
+                    return isRemoveNotif && new NotificationQuery(notification).isTransientNotification();
+                }
+            });
+            // Get the list of notifiers that have been changed
+            List<EObject> changedNotifiers = Lists.newArrayList();
+            for (final Map.Entry<EObject, List<Notification>> entry : notificationsByNotifer.entrySet()) {
+                if (Iterables.any(entry.getValue(), new Predicate<Notification>() {
+                    @Override
+                    public boolean apply(Notification notification) {
+                        boolean expecetedEventType = notification.getEventType() == Notification.SET || notification.getEventType() == Notification.UNSET;
+                        expecetedEventType = expecetedEventType || notification.getEventType() == Notification.ADD || notification.getEventType() == Notification.ADD_MANY
+                                || notification.getEventType() == Notification.MOVE;
+                        return expecetedEventType;
+                    }
+                })) {
+                    changedNotifiers.add(entry.getKey());
+                }
+            }
+            // Get all diagram elements corresponding to the changed notifiers
+            // after checking that each notifier is not indicated as removed
+            // from another notification
+            for (final EObject changedNotifier : changedNotifiers) {
+                if (!(Iterables.any(removeNotificationsIterable, new Predicate<Notification>() {
+                    @Override
+                    public boolean apply(Notification notification) {
+                        boolean isRemoveOfCurrentElement = notification.getEventType() == Notification.REMOVE && changedNotifier.equals(notification.getOldValue());
+                        if (isRemoveOfCurrentElement) {
+                            return true;
+                        } else {
+                            // Check remove of several elements with one of them
+                            // that is the current notifier
+                            return notification.getEventType() == Notification.REMOVE_MANY && notification.getOldValue() instanceof List<?>
+                                    && ((List<?>) notification.getOldValue()).contains(changedNotifier);
                         }
                     }
+                }))) {
+                    diagramElementsToRefresh.addAll(getDiagramElementsToRefresh(changedNotifier, diagram, xref));
                 }
             }
         }
