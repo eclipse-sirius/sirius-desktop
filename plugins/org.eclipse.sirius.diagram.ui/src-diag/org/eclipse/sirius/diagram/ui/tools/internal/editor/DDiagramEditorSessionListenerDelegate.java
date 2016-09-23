@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,7 +73,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
     private ToolFilter toolFilterWhenRepresentationIsLocked;
 
     private int changeKind;
-    
+
     private Image noWritePermissionImage;
 
     /**
@@ -99,6 +99,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
      * {@inheritDoc}
      */
     // CHECKSTYLE:OFF
+    @Override
     public void run() {
         PaletteManager paletteManager = dDiagramEditorImpl.getPaletteManager();
         Diagram gmfDiagram = dDiagramEditorImpl.getDiagram();
@@ -224,7 +225,9 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
         if (initialTitleImage == null || initialTitleImage.isDisposed()) {
             IEditorRegistry editorRegistry = PlatformUI.getWorkbench().getEditorRegistry();
             IEditorDescriptor editorDesc = editorRegistry.findEditor(dDiagramEditorImpl.getSite().getId());
-            initialTitleImage = DiagramUIPlugin.getPlugin().getImage(editorDesc.getImageDescriptor());
+            if (editorDesc != null) {
+                initialTitleImage = DiagramUIPlugin.getPlugin().getImage(editorDesc.getImageDescriptor());
+            }
         }
         return initialTitleImage;
     }
@@ -263,8 +266,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             Image refreshImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.REFRESH_IMG));
             List<Object> images = new ArrayList<Object>(2);
             images.add(refreshImage);
-            Image lockByOtherOverlayImage = SiriusEditPlugin.getPlugin()
-                    .getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif")); //$NON-NLS-1$
+            Image lockByOtherOverlayImage = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif")); //$NON-NLS-1$
             images.add(lockByOtherOverlayImage);
             ImageDescriptor composedImageDescriptor = new ComposedImageDescriptor(new ComposedImage(images));
             frozenRepresentationImage = DiagramUIPlugin.getPlugin().getImage(composedImageDescriptor);
