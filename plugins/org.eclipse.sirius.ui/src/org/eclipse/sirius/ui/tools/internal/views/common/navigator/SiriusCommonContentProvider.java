@@ -650,9 +650,9 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             }
             // Can occurs during session close : the previous lists were already
             // emptied.
-            Resource sessionRessource = session.getSessionResource()
-            if (sessionResource != null && !Iterables.contains(resources, sessionRessource)) {
-                resources = Iterables.concat(resources, Collections.singletonList(sessionRessource));
+            Resource sessionResource = session.getSessionResource();
+            if (sessionResource != null && !Iterables.contains(resources, sessionResource)) {
+                resources = Iterables.concat(resources, Collections.singletonList(sessionResource));
             }
 
             for (Resource res : resources) {
