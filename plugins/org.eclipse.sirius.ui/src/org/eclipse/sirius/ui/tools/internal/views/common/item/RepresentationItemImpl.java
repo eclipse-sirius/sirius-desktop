@@ -22,7 +22,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.base.Function;
 
@@ -118,8 +117,8 @@ public class RepresentationItemImpl implements ItemWrapper, IAdaptable {
     public Option<Session> getSession() {
         Session session = null;
 
-        if (rep.get() instanceof DSemanticDecorator) {
-            session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) rep.get()).getTarget());
+        if (rep.get() != null) {
+            session = SessionManager.INSTANCE.getSession(rep.get().getTarget());
         }
 
         return Options.newSome(session);
