@@ -92,4 +92,19 @@
            label="%siriusTabDescriptorFilter.Label">
      </descriptor>
   </extension>
+  <extension
+        point="org.eclipse.ui.preferencePages">
+     <page
+           category="org.eclipse.sirius.ui.page"
+           class="org.eclipse.sirius.ui.properties.internal.preferences.SiriusPropertiesViewGeneralPreferencePage"
+           id="org.eclipse.sirius.ui.properties.general"
+           name="%preference.page.title.org.eclipse.sirius.ui.properties.general">
+     </page>
+  </extension>
+  <extension
+        point="org.eclipse.core.runtime.preferences">
+     <initializer
+           class="org.eclipse.sirius.ui.properties.internal.preferences.SiriusPropertiesViewPreferenceInitializer">
+     </initializer>
+  </extension>
 </plugin>

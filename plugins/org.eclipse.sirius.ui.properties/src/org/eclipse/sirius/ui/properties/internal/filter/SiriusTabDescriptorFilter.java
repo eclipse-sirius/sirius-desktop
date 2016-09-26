@@ -12,6 +12,8 @@ package org.eclipse.sirius.ui.properties.internal.filter;
 
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptorFilter;
+import org.eclipse.sirius.ui.properties.api.preferences.SiriusPropertiesViewPreferencesKeys;
+import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
 
 /**
  * The {@link IEEFTabDescriptorFilter} for Eclipse Sirius.
@@ -32,11 +34,17 @@ public class SiriusTabDescriptorFilter implements IEEFTabDescriptorFilter {
 
     @Override
     public boolean filter(IEEFTabDescriptor tabDescriptor) {
+        boolean result = true;
         // Filter the default tab existing in the properties view when an
-        // element is selected from the
-        // model explorer and the semantic tab when an element is selected from
-        // a Sirius editor
-        return !DEFAULT_TAB_ID.equals(tabDescriptor.getId()) && !SEMANTIC_TAB_ID.equals(tabDescriptor.getId());
+        // element is selected from the model explorer and the semantic tab when
+        // an element is selected from a Sirius editor
+        if (SEMANTIC_TAB_ID.equals(tabDescriptor.getId())) {
+            result = SiriusUIPropertiesPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusPropertiesViewPreferencesKeys.PREF_FILTER_PROPERTIES_VIEW_SEMANTIC_TAB.name());
+        } else if (DEFAULT_TAB_ID.equals(tabDescriptor.getId())) {
+            result = SiriusUIPropertiesPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusPropertiesViewPreferencesKeys.PREF_FILTER_PROPERTIES_VIEW_DEFAULT_TAB.name());
+        }
+
+        return result;
     }
 
 }

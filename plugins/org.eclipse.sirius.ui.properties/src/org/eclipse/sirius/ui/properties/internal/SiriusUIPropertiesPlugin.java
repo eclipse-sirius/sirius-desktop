@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.eef.EefPackage;
 import org.eclipse.eef.common.api.AbstractEEFEclipsePlugin;
 import org.eclipse.eef.ide.api.extensions.AbstractRegistryEventListener;
@@ -25,6 +26,9 @@ import org.eclipse.eef.ide.api.extensions.impl.ItemRegistry;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.sirius.ui.properties.api.DefaultDescriptionConverter;
 import org.eclipse.sirius.ui.properties.api.DefaultDescriptionWithInitialOperationConverter;
 import org.eclipse.sirius.ui.properties.api.IDescriptionConverter;
@@ -35,6 +39,7 @@ import org.eclipse.sirius.ui.properties.internal.tabprovider.SemanticValidationR
 import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
+import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -123,11 +128,22 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
         private AbstractRegistryEventListener descriptionLinkResolverListener;
 
         /**
+         * Storage for preferences.
+         */
+        private ScopedPreferenceStore preferenceStore;
+
+        /**
+         * The property change listener.
+         */
+        private IPropertyChangeListener propertyChangeListener;
+
+        /**
          * The constructor.
          */
         public Implementation() {
             super(PLUGIN_ID);
             SiriusUIPropertiesPlugin.plugin = this;
+            startPropertiesPreferencesManagement();
         }
 
         @Override
@@ -156,6 +172,8 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
             this.descriptionConverterRegistry = null;
             this.descriptionLinkResolverListener = null;
             this.descriptionLinkResolverRegistry = null;
+
+            stopPropertiesPreferencesManagement();
 
             super.stop(context);
         }
@@ -215,6 +233,48 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
             return linkResolvers;
         }
 
-    }
+        /**
+         * Starts the management of the Preferences of the core of Designer.
+         *
+         */
+        private void startPropertiesPreferencesManagement() {
+            propertyChangeListener = new IPropertyChangeListener() {
+                @Override
+                public void propertyChange(PropertyChangeEvent event) {
+                    Object newValue = event.getNewValue();
+                    preferenceStore.putValue(event.getProperty(), String.valueOf(newValue));
+                }
+            };
+            getPreferenceStore().addPropertyChangeListener(propertyChangeListener);
+        }
 
+        /**
+         * Stops the management of the Preferences of the core of Designer.
+         *
+         */
+        private void stopPropertiesPreferencesManagement() {
+            getPreferenceStore().removePropertyChangeListener(propertyChangeListener);
+        }
+
+        /**
+         * Returns the preference store for this UI plug-in. This preference
+         * store is used to hold persistent settings for this plug-in in the
+         * context of a workbench. Some of these settings will be user
+         * controlled.
+         * <p>
+         * If an error occurs reading the preference store, an empty preference
+         * store is quietly created, initialized with defaults, and returned.
+         * </p>
+         *
+         * @return the preference store
+         */
+        public IPreferenceStore getPreferenceStore() {
+            // Create the preference store lazily.
+            if (preferenceStore == null) {
+                preferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, INSTANCE.getSymbolicName());
+
+            }
+            return preferenceStore;
+        }
+    }
 }
