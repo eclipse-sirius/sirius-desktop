@@ -25,17 +25,17 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Implementation of the Runtime Logger Manager.
- * 
+ *
  * @author smonnier
- * 
+ *
  */
 public class RuntimeLoggerManagerImpl implements RuntimeLoggerManager {
 
-    private Collection<RuntimeLogger> loggers = new LinkedHashSet<RuntimeLogger>();
+    private final Collection<RuntimeLogger> loggers = new LinkedHashSet<RuntimeLogger>();
 
     /**
      * Initialization of the manager.
-     * 
+     *
      * @return the instance of the manager
      */
     public static RuntimeLoggerManager init() {
@@ -49,126 +49,86 @@ public class RuntimeLoggerManagerImpl implements RuntimeLoggerManager {
         return manager;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.logger.RuntimeLoggerManager#decorate(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter)
-     */
+    @Override
     public RuntimeLoggerInterpreter decorate(final IInterpreter interpreter) {
         return new RuntimeLoggerInterpreterImpl(interpreter);
     }
 
-    private void add(final RuntimeLogger logger) {
+    /**
+     * Registers the specified logger.
+     *
+     * @param logger
+     *            a logger.
+     * 
+     */
+    public void add(final RuntimeLogger logger) {
         loggers.add(logger);
     }
 
     /**
-     * Add error entries to the loggers.
+     * Unregisters the specified logger.
+     *
+     * @param logger
+     *            a logger.
      * 
-     * @param odesignObject
-     *            targeted EObject that contains errors
-     * @param feature
-     *            element of the targeted EObject that contains errors
-     * @param message
-     *            error message to display
      */
+    public void remove(final RuntimeLogger logger) {
+        loggers.remove(logger);
+    }
+
+    @Override
     public void error(final EObject odesignObject, final EStructuralFeature feature, final String message) {
         for (RuntimeLogger logger : loggers) {
             logger.error(odesignObject, feature, message);
         }
     }
 
-    /**
-     * Add info entries to the loggers.
-     * 
-     * @param odesignObject
-     *            targeted EObject that contains errors
-     * @param feature
-     *            element of the targeted EObject that contains errors
-     * @param message
-     *            error message to display
-     */
+    @Override
     public void info(final EObject odesignObject, final EStructuralFeature feature, final String message) {
         for (RuntimeLogger logger : loggers) {
             logger.info(odesignObject, feature, message);
         }
     }
 
-    /**
-     * Add warning entries to the loggers.
-     * 
-     * @param odesignObject
-     *            targeted EObject that contains errors
-     * @param feature
-     *            element of the targeted EObject that contains errors
-     * @param message
-     *            error message to display
-     */
+    @Override
     public void warning(final EObject odesignObject, final EStructuralFeature feature, final String message) {
         for (RuntimeLogger logger : loggers) {
             logger.warning(odesignObject, feature, message);
         }
     }
 
-    /**
-     * Clears all errors in the loggers.
-     */
+    @Override
     public void clearAll() {
         for (RuntimeLogger logger : loggers) {
             logger.clearAll();
         }
     }
 
-    /**
-     * Clears all logged entries for the EObject.
-     * 
-     * @param eObject
-     *            EObject we want to clearAll logged entries
-     */
+    @Override
     public void clear(final EObject eObject) {
         for (RuntimeLogger logger : loggers) {
             logger.clear(eObject);
         }
     }
 
-    /**
-     * Add error entries to the loggers.
-     * 
-     * @param odesignObject
-     *            targeted EObject that contains errors
-     * @param feature
-     *            element of the targeted EObject that contains errors
-     * @param exception
-     *            a low-level exception, or <code>null</code> if not applicable
-     */
+    @Override
     public void error(final EObject odesignObject, final EStructuralFeature feature, final Throwable exception) {
         for (RuntimeLogger logger : loggers) {
             logger.error(odesignObject, feature, exception);
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.logger.RuntimeLogger#info(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EStructuralFeature, java.lang.Throwable)
-     */
+    @Override
     public void info(final EObject odesignObject, final EStructuralFeature feature, final Throwable exception) {
         for (RuntimeLogger logger : loggers) {
             logger.info(odesignObject, feature, exception);
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.logger.RuntimeLogger#warning(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EStructuralFeature, java.lang.Throwable)
-     */
+    @Override
     public void warning(final EObject odesignObject, final EStructuralFeature feature, final Throwable exception) {
         for (RuntimeLogger logger : loggers) {
             logger.warning(odesignObject, feature, exception);
         }
     }
-
 }
