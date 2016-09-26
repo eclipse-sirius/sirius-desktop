@@ -597,7 +597,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
                 public boolean apply(Notification notification) {
                     boolean isRemoveNotif = notification.getEventType() == Notification.REMOVE || notification.getEventType() == Notification.REMOVE_MANY;
                     // Ignore transient feature
-                    return isRemoveNotif && new NotificationQuery(notification).isTransientNotification();
+                    return isRemoveNotif && !(new NotificationQuery(notification).isTransientNotification());
                 }
             });
             // Get the list of notifiers that have been changed
