@@ -264,14 +264,18 @@ public class SiriusToolServices {
      * @return the model element on which the tool was executed.
      */
     public EObject executeOperation(EObject eObject, String initialCommandUri) {
-        Session session = new EObjectQuery(eObject).getSession();
-        ModelOperation modelOperation = findModelOperation(initialCommandUri, session);
-        if (modelOperation != null) {
-            ModelAccessor modelAccessor = session.getModelAccessor();
-            ICommandTask task = new TaskHelper(modelAccessor, SiriusEditPlugin.getPlugin().getUiCallback()).buildTaskFromModelOperation(eObject, modelOperation);
-            SiriusCommand command = new SiriusCommand(session.getTransactionalEditingDomain(), "SiriusToolServices#executeOperation"); //$NON-NLS-1$
-            command.getTasks().add(task);
-            session.getTransactionalEditingDomain().getCommandStack().execute(command);
+        if (!eObject.eIsProxy()) {
+            Session session = new EObjectQuery(eObject).getSession();
+            if (session != null) {
+                ModelOperation modelOperation = findModelOperation(initialCommandUri, session);
+                if (modelOperation != null) {
+                    ModelAccessor modelAccessor = session.getModelAccessor();
+                    ICommandTask task = new TaskHelper(modelAccessor, SiriusEditPlugin.getPlugin().getUiCallback()).buildTaskFromModelOperation(eObject, modelOperation);
+                    SiriusCommand command = new SiriusCommand(session.getTransactionalEditingDomain(), "SiriusToolServices#executeOperation"); //$NON-NLS-1$
+                    command.getTasks().add(task);
+                    session.getTransactionalEditingDomain().getCommandStack().execute(command);
+                }
+            }
         }
         return eObject;
     }
