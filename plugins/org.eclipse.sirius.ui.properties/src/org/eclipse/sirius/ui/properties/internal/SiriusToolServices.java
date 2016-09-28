@@ -396,6 +396,17 @@ public class SiriusToolServices {
     }
 
     /**
+     * Returns all the semantic elements for the given input descriptor.
+     * 
+     * @param sid
+     *            The input descriptor
+     * @return The semantic element for the given input descriptor
+     */
+    public Collection<EObject> getAllSemanticElements(SiriusInputDescriptor sid) {
+        return sid.getAllSemanticElements();
+    }
+
+    /**
      * Returns the original selection for the given input descriptor.
      * 
      * @param sid
