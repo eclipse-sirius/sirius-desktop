@@ -187,8 +187,9 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
     public Object evaluate(EObject target, String fullExpression) throws EvaluationException {
         IEvaluationResult evaluationResult = this.evaluateExpression(target, fullExpression);
         // We fire the exception to keep the old behavior
-        if (evaluationResult.getDiagnostic().getSeverity() == Diagnostic.ERROR) {
-            throw new EvaluationException(evaluationResult.getDiagnostic().getMessage(), evaluationResult.getDiagnostic().getException());
+        Diagnostic diagnostic = evaluationResult.getDiagnostic();
+        if (diagnostic.getSeverity() == Diagnostic.ERROR) {
+            throw new EvaluationException(diagnostic.getMessage(), diagnostic.getException());
         }
         return evaluationResult.getValue();
     }
@@ -222,7 +223,12 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
                 @Override
                 public Diagnostic getDiagnostic() {
-                    return diagnostic;
+                    List<Diagnostic> children = diagnostic.getChildren();
+                    if (children.size() == 1) {
+                        return children.get(0);
+                    } else {
+                        return diagnostic;
+                    }
                 }
             };
         } catch (ExecutionException e) {
