@@ -23,10 +23,8 @@ import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.ui.tools.internal.editor.ChangeExpandeStateRunnable;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IWorkbench;
@@ -104,14 +102,14 @@ public class TreeItemExpansionManager implements Listener {
                 if (isEventForDTreeItemExpandable(event)) {
                     treeExpandingCollapsingAction(treeItem, dTreeItem, false, Messages.TreeItemExpansionManager_treeCollapsing);
                 } else {
-                    Display.getDefault().asyncExec(new ChangeExpandeStateRunnable(treeItem, true));
+                    new ChangeExpandeStateRunnable(treeItem, true).run();
                 }
             }
         }
         if (!isEventForDTreeItemExpandable(event)) {
             event.type = SWT.None;
             final TreeItem treeItem = (TreeItem) event.item;
-            Display.getDefault().asyncExec(new ChangeExpandeStateRunnable(treeItem, true));
+            new ChangeExpandeStateRunnable(treeItem, true).run();
         }
     }
 
@@ -128,7 +126,7 @@ public class TreeItemExpansionManager implements Listener {
                 if (isEventForDTreeItemExpandable(event)) {
                     treeExpandingCollapsingAction(treeItem, dTreeItem, true, Messages.TreeItemExpansionManager_treeExpanding);
                 } else {
-                    Display.getDefault().asyncExec(new ChangeExpandeStateRunnable(treeItem, false));
+                    new ChangeExpandeStateRunnable(treeItem, false).run();
                 }
             }
         }
@@ -172,22 +170,15 @@ public class TreeItemExpansionManager implements Listener {
      */
     private void treeExpandingCollapsingAction(final TreeItem treeItem, final DTreeItem dTreeItem, final boolean expand, final String errorMessage) {
         if ((expand && !dTreeItem.isExpanded()) || (!expand && dTreeItem.isExpanded())) {
-            final Shell activeShell = tree.getShell();
-            activeShell.getDisplay().asyncExec(new Runnable() {
-
-                @Override
-                public void run() {
-                    IWorkbench wb = PlatformUI.getWorkbench();
-                    IProgressService ps = wb.getProgressService();
-                    try {
-                        ps.busyCursorWhile(new ExpandDTreeItemRunnableWithProgress(session, dTreeItem, expand));
-                    } catch (InvocationTargetException e) {
-                        TreeUIPlugin.INSTANCE.log(new Status(IStatus.ERROR, TreeUIPlugin.ID, MessageFormat.format(Messages.TreeItemExpansionManager_expandOrCollaseError, errorMessage), e));
-                    } catch (InterruptedException e) {
-                        Display.getDefault().asyncExec(new ChangeExpandeStateRunnable(treeItem, !expand));
-                    }
-                }
-            });
+            IWorkbench wb = PlatformUI.getWorkbench();
+            IProgressService ps = wb.getProgressService();
+            try {
+                ps.busyCursorWhile(new ExpandDTreeItemRunnableWithProgress(session, dTreeItem, expand));
+            } catch (InvocationTargetException e) {
+                TreeUIPlugin.INSTANCE.log(new Status(IStatus.ERROR, TreeUIPlugin.ID, MessageFormat.format(Messages.TreeItemExpansionManager_expandOrCollaseError, errorMessage), e));
+            } catch (InterruptedException e) {
+                new ChangeExpandeStateRunnable(treeItem, !expand).run();
+            }
         }
     }
 
