@@ -242,9 +242,10 @@ public class SiriusToolServices {
         // Get all the features associated to the eObject and filtered by
         // category
         if (eObject instanceof EEFViewCategory) {
-            String groupCategory = ((EEFViewCategory) eObject).getCategory();
-            for (EStructuralFeature eStructuralFeature : getVisibleEStructuralFeatures(eObject)) {
-                String featureCategory = this.editServices.getPropertyDescriptorCategory(eObject, eStructuralFeature.getName(), Messages.SiriusToolServices_DefaultCategoryName);
+            EEFViewCategory category = (EEFViewCategory) eObject;
+            String groupCategory = category.getCategory();
+            for (EStructuralFeature eStructuralFeature : getVisibleEStructuralFeatures(category.getWrappedEObject())) {
+                String featureCategory = this.editServices.getPropertyDescriptorCategory(category.getWrappedEObject(), eStructuralFeature.getName(), Messages.SiriusToolServices_DefaultCategoryName);
                 if (groupCategory.equals(featureCategory)) {
                     result.add(eStructuralFeature);
                 }

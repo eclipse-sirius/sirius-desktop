@@ -54,6 +54,10 @@ public class EEFViewCategory implements InternalEObject {
         this.eObject = eObject;
         this.category = category;
     }
+    
+    public EObject getWrappedEObject() {
+        return eObject;
+    }
 
     @Override
     public EList<Adapter> eAdapters() {
