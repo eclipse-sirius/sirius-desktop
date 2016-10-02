@@ -291,7 +291,7 @@ public abstract class AbstractDTablePropertySection extends AbstractPropertySect
      *            the event notification
      */
     protected void update(final TransactionalEditingDomain domain, final Notification notification) {
-        if (parentPropertySheetPage.isUpdateEnabled()) {
+        if (parentPropertySheetPage == null || parentPropertySheetPage.isUpdateEnabled()) {
             final Object notifier = notification.getNotifier();
 
             if (notifier instanceof EObject && contentPage != null && contentPage.getControl() != null) {

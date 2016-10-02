@@ -315,7 +315,7 @@ public abstract class AbstractDTreePropertySection extends AbstractPropertySecti
      *            the event object
      */
     protected void update(final ResourceSetChangeEvent event) {
-        if (parentPropertySheetPage.isUpdateEnabled()) {
+        if (parentPropertySheetPage == null || parentPropertySheetPage.isUpdateEnabled()) {
             Iterator<Notification> it = event.getNotifications().iterator();
             boolean shouldUpdate = false;
             while (it.hasNext() && !shouldUpdate) {
