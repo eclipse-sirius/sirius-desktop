@@ -107,4 +107,10 @@
            class="org.eclipse.sirius.ui.properties.internal.preferences.SiriusPropertiesViewPreferenceInitializer">
      </initializer>
   </extension>
+  <extension
+        point="org.eclipse.sirius.mmdescriptor">
+     <descriptorprovider
+           class="org.eclipse.sirius.ui.properties.internal.PropertiesMetamodelDescriptor">
+     </descriptorprovider>
+  </extension>
 </plugin>
