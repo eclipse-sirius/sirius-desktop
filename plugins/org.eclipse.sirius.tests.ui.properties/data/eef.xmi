@@ -5,8 +5,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:eef="http://www.eclipse.org/eef"
     xsi:schemaLocation="http://www.eclipse.org/eef ../../org.eclipse.eef/model/eef.ecore"
-    labelExpression="service:eefViewText"
-    imageExpression="service:eefViewImage">
+    labelExpression="aql:input.emfEditServices(self).getText()"
+    imageExpression="aql:input.emfEditServices(self).getImage()">
   <groups identifier="description"
       labelExpression="Description">
     <controls

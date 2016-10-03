@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.ext.emf.edit.EditingDomainServices;
 import org.eclipse.ui.forms.widgets.Form;
 
 /**
@@ -58,7 +59,7 @@ public class ContributorWrapper extends AbstractEEFTabbedPropertySheetPageContri
             SiriusInputDescriptor inputDescriptor = new SiriusInputDescriptor(element);
             EObject semanticElement = inputDescriptor.getSemanticElement();
             if (semanticElement != null) {
-                String text = new SiriusToolServices().eefViewText(semanticElement);
+                String text = new EditingDomainServices().getLabelProviderText(semanticElement);
                 if (!Util.isBlank(text)) {
                     // Keep only the first line in case of multiline labels
                     String[] result = LINE_SEPARATOR_PATTERN.split(text, 2);
@@ -69,7 +70,7 @@ public class ContributorWrapper extends AbstractEEFTabbedPropertySheetPageContri
                     form.setText(""); //$NON-NLS-1$
                 }
 
-                form.setImage(ExtendedImageRegistry.INSTANCE.getImage(new SiriusToolServices().eefViewImage(semanticElement)));
+                form.setImage(ExtendedImageRegistry.INSTANCE.getImage(new EditingDomainServices().getLabelProviderImage(semanticElement)));
             } else {
                 form.setText(""); //$NON-NLS-1$
                 form.setImage(null);

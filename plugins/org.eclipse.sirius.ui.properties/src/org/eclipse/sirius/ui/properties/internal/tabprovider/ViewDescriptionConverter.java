@@ -108,8 +108,8 @@ public class ViewDescriptionConverter {
     private EEFViewDescription createView() {
         EEFViewDescription view = EefFactory.eINSTANCE.createEEFViewDescription();
 
-        view.setLabelExpression("service:eefViewText"); //$NON-NLS-1$
-        view.setImageExpression("service:eefViewImage"); //$NON-NLS-1$
+        view.setLabelExpression("aql:input.emfEditServices(self).getText()"); //$NON-NLS-1$
+        view.setImageExpression("aql:input.emfEditServices(self).getImage()"); //$NON-NLS-1$
 
         Set<EPackage> ePackages = new LinkedHashSet<>();
         for (PageDescription pageDescription : pageDescriptions) {
