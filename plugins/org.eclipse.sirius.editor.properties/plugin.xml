@@ -582,6 +582,9 @@
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.WidgetsMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.StyleMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.LayoutMenuBuilder" />
+     <builder
+           class="org.eclipse.sirius.editor.properties.tools.internal.menu.ImportingMenu">
+     </builder>
   </extension>
 </plugin>    
 <!-- End of user code plugin.xml end specifics  -->
