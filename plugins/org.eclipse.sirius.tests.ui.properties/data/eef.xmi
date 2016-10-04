@@ -14,7 +14,7 @@
         labelExpression="Name:"
         helpExpression="The name of the current object"
         valueExpression="aql:self.name"
-        editExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.0/@controls.0/@initialOperation')">
+        editExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.0/@controls.0/@initialOperation')">
       <style
           backgroundColorExpression="rgb(0,0,0)"
           foregroundColorExpression="rgb(255,255,255)"
@@ -45,12 +45,12 @@
         labelExpression="Description:"
         helpExpression="The description of the current object"
         valueExpression="aql:self.description"
-        editExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.0/@controls.2/@initialOperation')"
+        editExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.0/@controls.2/@initialOperation')"
         lineCount="5"/>
     <controls
         xsi:type="eef:EEFButtonDescription"
         buttonLabelExpression="OK"
-        pushExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.0/@controls.3/@initialOperation')">
+        pushExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.0/@controls.3/@initialOperation')">
       <style
           labelFontNameExpression="arial"/>
       <conditionalStyles
@@ -63,7 +63,7 @@
         xsi:type="eef:EEFRadioDescription"
         labelExpression="Status:"
         valueExpression="aql:self.status"
-        editExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.0/@controls.4/@initialOperation')"
+        editExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.0/@controls.4/@initialOperation')"
         candidatesExpression="Sequence{'Active', 'Inactive'}"
         candidateDisplayExpression="aql:candidate.toString()"
         numberOfColumns="2"/>
@@ -71,7 +71,7 @@
         xsi:type="eef:EEFHyperlinkDescription"
         labelExpression=""
         valueExpression="Click Me!"
-        onClickExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.0/@controls.5/@initialOperation')"/>
+        onClickExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.0/@controls.5/@initialOperation')"/>
     <controls
         xsi:type="eef:EEFListDescription"
         labelExpression="Reference:"
@@ -79,19 +79,19 @@
         isEnabledExpression="aql:true"
         valueExpression="aql:self.reference"
         displayExpression="aql:value.toString()"
-        onClickExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.0/@controls.6/@onClickOperation')">
+        onClickExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.0/@controls.6/@onClickOperation')">
       <actions
           labelExpression="Add"
-          actionExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.0/@controls.6/@actions.0/@initialOperation')"/>
+          actionExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.0/@controls.6/@actions.0/@initialOperation')"/>
       <actions
           labelExpression="Remove"
-          actionExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.0/@controls.6/@actions.1/@initialOperation')"/>
+          actionExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.0/@controls.6/@actions.1/@initialOperation')"/>
     </controls>
     <controls
         xsi:type="eef:EEFSelectDescription"
         labelExpression="Values:"
         valueExpression="aql:self.values"
-        editExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.0/@controls.7/@initialOperation')"
+        editExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.0/@controls.7/@initialOperation')"
         candidatesExpression="aql:package::Value.eAllInstances()"
         candidateDisplayExpression="aql:candidate.toString()"/>
     <style backgroundColorExpression="rgb(255,255,255)"/>
@@ -108,7 +108,7 @@
         labelExpression="Reference Identifier:"
         helpExpression="The identifier of the reference"
         valueExpression="aql:self.referenceIdentifier"
-        editExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.1/@controls.0/@initialOperation')"/>
+        editExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.1/@controls.0/@initialOperation')"/>
     <controls
         xsi:type="eef:EEFContainerDescription">
       <controls
@@ -121,7 +121,7 @@
               xsi:type="eef:EEFCheckboxDescription"
               labelExpression="aql:visibility.toUpperFirst() + ':'"
               valueExpression="aql:self.visibility"
-              editExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.1/@controls.1/@controls.0/@ifs.0/@widget/@initialOperation')">
+              editExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.1/@controls.1/@controls.0/@ifs.0/@widget/@initialOperation')">
             <style
                 labelBackgroundColorExpression="rgb(0,0,0)"
                 labelForegroundColorExpression="rgb(255,255,255)"/>
@@ -139,7 +139,7 @@
       <customExpressions
           customExpression="aql:self.doSomething()"/>
       <customExpressions
-          customExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.1/@controls.2/@customOperations.0/@initialOperation')"/>
+          customExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.1/@controls.2/@customOperations.0/@initialOperation')"/>
     </controls>
   </groups>
   <groups identifier="/data/sirius.odesign#/0/@groups.2"
@@ -153,7 +153,7 @@
             labelExpression="Advantages:"
             helpExpression="The advantages of the current object"
             valueExpression="aql:self.advantages"
-            editExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.2/@controls.0/@controls.0/@controls.0/@initialOperation')"
+            editExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.2/@controls.0/@controls.0/@controls.0/@initialOperation')"
             lineCount="5"/>
         <layout
             xsi:type="eef:EEFFillLayoutDescription"/>
@@ -165,7 +165,7 @@
             labelExpression="Drawbacks:"
             helpExpression="The drawbacks of the current object"
             valueExpression="aql:self.drawbacks"
-            editExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@groups.2/@controls.0/@controls.1/@controls.0/@initialOperation')"
+            editExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@groups.2/@controls.0/@controls.1/@controls.0/@initialOperation')"
             lineCount="5"/>
         <layout
             xsi:type="eef:EEFFillLayoutDescription"/>
@@ -185,7 +185,7 @@
           auditExpression="aql:false"/>
       <fixes
           name="Fix length"
-          fixExpression="aql:self.executeOperation('/data/sirius.odesign#/0/@pages.0/@validationSet/@semanticValidationRules.0/@fixes.0/@initialOperation')"/>
+          fixExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@pages.0/@validationSet/@semanticValidationRules.0/@fixes.0/@initialOperation')"/>
     </semanticValidationRules>
   </pages>
   <pages identifier="properties"
