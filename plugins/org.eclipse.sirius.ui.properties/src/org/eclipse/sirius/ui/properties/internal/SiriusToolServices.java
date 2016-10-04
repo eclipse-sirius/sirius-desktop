@@ -81,6 +81,29 @@ public class SiriusToolServices {
     }
 
     /**
+     * Returns the text representing the given EObject.
+     * 
+     * @param sid
+     *            a {@link SiriusInputDescriptor} (typically the "input"
+     *            variable of the properties view).
+     * @param object
+     *            The object
+     * @return The text representing the given EObject or <code>null</code> if
+     *         none could be found
+     */
+    public String eefViewText(Object object, SiriusInputDescriptor sid) {
+        String result = String.valueOf(object);
+        if (object instanceof EObject) {
+            if (mainSemanticElement(sid.getFullContext()).equals(object)) {
+                result = Messages.SiriusToolServices_MainTabLabel;
+            } else {
+                result = this.editServices.getLabelProviderText((EObject) object);
+            }
+        }
+        return result;
+    }
+
+    /**
      * Returns the text representing the given EStructuralFeature.
      * 
      * @param eObject

@@ -39,6 +39,9 @@ public final class Messages {
     
     @TranslatableMessage
     public static String SiriusToolServices_DefaultCategoryName;
+    
+    @TranslatableMessage
+    public static String SiriusToolServices_MainTabLabel;
 
     @TranslatableMessage
     public static String TransactionalEditingDomainContextAdapter_errorDuringCommand;
