@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,10 +15,13 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
+import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
 /**
@@ -45,11 +48,11 @@ public class SessionLazyCrossReferencer extends LazyCrossReferencer {
     @Override
     protected void initialize() {
         super.initialize();
-        
+
         Collection<Resource> semanticResources = session.getSemanticResources();
         EList<Resource> controlledResources = session.getControlledResources();
         Set<Resource> allSessionResources = session.getAllSessionResources();
-        
+
         Iterable<Resource> resources = Iterables.concat(semanticResources, controlledResources, allSessionResources);
         for (Resource resource : resources) {
             List<Adapter> adapters = resource.eAdapters();
@@ -59,5 +62,37 @@ public class SessionLazyCrossReferencer extends LazyCrossReferencer {
                 adapters.add(this);
             }
         }
+    }
+
+    @Override
+    protected void selfAdapt(Notification notification) {
+        if (isTopLevelRepresentationRemoval(notification)) {
+            if (!unloadedResources.contains(notification.getNotifier())) {
+                handleContainment(notification);
+            }
+        }
+        super.selfAdapt(notification);
+    }
+
+    /**
+     * Say if a {@link DRepresentation} is being removed from the resource.
+     * 
+     * @param notification
+     *            the notification
+     * @return true is the DRepresentation is being removed.
+     */
+    public static boolean isTopLevelRepresentationRemoval(Notification notification) {
+        Object notifier = notification.getNotifier();
+        boolean isResourceContentChange = notifier instanceof Resource && notification.getFeatureID(Resource.class) == Resource.RESOURCE__CONTENTS;
+        final boolean isRepresentationRemoval;
+        if (notification.getEventType() == Notification.REMOVE && notification.getOldValue() instanceof DRepresentation) {
+            isRepresentationRemoval = true;
+        } else if (notification.getEventType() == Notification.REMOVE_MANY) {
+            Collection<?> removed = (Collection<?>) notification.getOldValue();
+            isRepresentationRemoval = Iterables.all(removed, Predicates.instanceOf(DRepresentation.class));
+        } else {
+            isRepresentationRemoval = false;
+        }
+        return isResourceContentChange && isRepresentationRemoval;
     }
 }
