@@ -14,9 +14,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.handles.HandleBounds;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
@@ -98,6 +102,32 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
         // {top,bottom,left,right}
         boolean[] availableDirections = { false, false, true, true };
         checkEdgeActions(availableDirections, "edge12");
+    }
+
+    /**
+     * <ul>
+     * <LI>Straighten oblique edge8 to Right: Expected: menu disabled (centered
+     * edge on source side)</LI>
+     * <LI>Straighten oblique edge8 to Left: Expected: menu disabled (centered
+     * edge on source side)</LI>
+     * </ul>
+     */
+    public void testObliqueEdgeLeftAndRightForbiddenBecauseofCentering() {
+        // {top,bottom,left,right}
+        boolean[] availableDirections = { false, false, false, false };
+        checkEdgeActions(availableDirections, "edge8");
+    }
+
+    /**
+     * <ul>
+     * <LI>Straighten oblique edge9 to Right: Expected: OK</LI>
+     * <LI>Straighten oblique edge9 to Left: Expected: OK</LI>
+     * </ul>
+     */
+    public void testObliqueEdgeLeftAndRightCenteringOnBothSourceAndTargetBorderNodes() {
+        // {top,bottom,left,right}
+        boolean[] availableDirections = { false, false, true, true };
+        checkEdgeActions(availableDirections, "edge9");
     }
 
     /**
@@ -355,51 +385,91 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      *            {top,bottom,left,right} order
      */
     private void computeExpectedPoints(SWTBotGefEditPart edgeEditPart, List<Point> pointList, int i) {
-
         AbstractDiagramEdgeEditPart part = (AbstractDiagramEdgeEditPart) edgeEditPart.part();
         PolylineConnectionEx polylineConnection = part.getPolylineConnectionFigure();
         Point startPointBefore = polylineConnection.getStart();
         Point endPointBefore = polylineConnection.getEnd();
-        Point expectedStartPoint = startPointBefore.getCopy();
-        Point expectedEndPoint = endPointBefore.getCopy();
+        // Specific case is when both first and last points move (edge centering
+        // on both source and target border nodes)
+        boolean specificCase = ((ViewEdgeFigure) part.getFigure()).isSourceCentered() && ((ViewEdgeFigure) part.getFigure()).isTargetCentered()
+                && part.getSource() instanceof AbstractDiagramBorderNodeEditPart && part.getTarget() instanceof AbstractDiagramBorderNodeEditPart;
+
+        Point expectedStartPoint;
+        Point expectedEndPoint;
+        if (specificCase) {
+            Rectangle sourceBounds = getHandleBounds(((AbstractDiagramBorderNodeEditPart) part.getSource()).getFigure());
+            Rectangle targetBounds = getHandleBounds(((AbstractDiagramBorderNodeEditPart) part.getTarget()).getFigure());
+            expectedStartPoint = sourceBounds.getCenter();
+            expectedEndPoint = targetBounds.getCenter();
+        } else {
+            expectedStartPoint = polylineConnection.getStart().getCopy();
+            expectedEndPoint = polylineConnection.getEnd().getCopy();
+        }
         pointList.add(expectedStartPoint);
         pointList.add(expectedEndPoint);
         switch (i) {
         // top
         case 0:
             if (startPointBefore.y <= endPointBefore.y) {
-                expectedEndPoint.setY(startPointBefore.y);
+                expectedEndPoint.setY(expectedStartPoint.y);
             } else {
-                expectedStartPoint.setY(endPointBefore.y);
+                expectedStartPoint.setY(expectedEndPoint.y);
+            }
+            if (specificCase) {
+                expectedStartPoint.setX(startPointBefore.x());
+                expectedEndPoint.setX(endPointBefore.x());
             }
             break;
         // bottom
         case 1:
             if (startPointBefore.y <= endPointBefore.y) {
-                expectedStartPoint.setY(endPointBefore.y);
+                expectedStartPoint.setY(expectedEndPoint.y);
             } else {
-                expectedEndPoint.setY(startPointBefore.y);
+                expectedEndPoint.setY(expectedStartPoint.y);
+            }
+            if (specificCase) {
+                expectedStartPoint.setX(startPointBefore.x());
+                expectedEndPoint.setX(endPointBefore.x());
             }
             break;
         // left
         case 2:
             if (startPointBefore.x <= endPointBefore.x) {
-                expectedEndPoint.setX(startPointBefore.x);
+                expectedEndPoint.setX(expectedStartPoint.x);
             } else {
-                expectedStartPoint.setX(endPointBefore.x);
+                expectedStartPoint.setX(expectedEndPoint.x);
+            }
+            if (specificCase) {
+                expectedStartPoint.setY(startPointBefore.y());
+                expectedEndPoint.setY(endPointBefore.y());
             }
             break;
         // right
         case 3:
             if (startPointBefore.x <= endPointBefore.x) {
-                expectedStartPoint.setX(endPointBefore.x);
+                expectedStartPoint.setX(expectedEndPoint.x);
             } else {
-                expectedEndPoint.setX(startPointBefore.x);
+                expectedEndPoint.setX(expectedStartPoint.x);
             }
+            if (specificCase) {
+                expectedStartPoint.setY(startPointBefore.y());
+                expectedEndPoint.setY(endPointBefore.y());
+            }
+
             break;
 
         default:
             break;
         }
+    }
+
+    private Rectangle getHandleBounds(IFigure figure) {
+        Rectangle bounds;
+        if (figure instanceof HandleBounds) {
+            bounds = ((HandleBounds) figure).getHandleBounds();
+        } else {
+            bounds = figure.getBounds();
+        }
+        return bounds;
     }
 }

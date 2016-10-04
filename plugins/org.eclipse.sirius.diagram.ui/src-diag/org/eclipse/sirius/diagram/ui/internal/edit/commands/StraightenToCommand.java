@@ -39,6 +39,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.ShiftDirectBorderedNodesOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
@@ -99,6 +100,13 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
      * {@link #isSourceWillBeMoved()} .
      */
     private boolean moveSource;
+
+    /**
+     * Boolean to indicate that we are in the specific case where both source
+     * and target point will be moved. This case is when the source and the
+     * target of the edge are border nodes and edge is centered on each side.
+     */
+    private boolean isSpecificCase;
 
     /**
      * The x delta by which the source (or target) will be moved.<br>
@@ -219,13 +227,23 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
                     // Change the source bounds considering the delta
                     sourceBounds = sourceBounds.getTranslated(deltaX, deltaY);
                 }
-                completeCommand(cc, sourceEditPart, isSourceABorderNode, sourceBounds, targetBounds, firstPoint.getTranslated(deltaX, deltaY), lastPoint);
+                if (isSpecificCase) {
+                    computePointsInSpecificCase(firstPoint, lastPoint, sourceBounds, targetBounds);
+                } else {
+                    firstPoint = firstPoint.getTranslated(deltaX, deltaY);
+                }
+                completeCommand(cc, sourceEditPart, isSourceABorderNode, sourceBounds, targetBounds, firstPoint, lastPoint);
             } else {
                 if (isTargetABorderNode) {
                     // Change the target bounds considering the delta
                     targetBounds = targetBounds.getTranslated(deltaX, deltaY);
                 }
-                completeCommand(cc, targetEditPart, isTargetABorderNode, sourceBounds, targetBounds, firstPoint, lastPoint.getTranslated(deltaX, deltaY));
+                if (isSpecificCase) {
+                    computePointsInSpecificCase(firstPoint, lastPoint, sourceBounds, targetBounds);
+                } else {
+                    lastPoint = lastPoint.getTranslated(deltaX, deltaY);
+                }
+                completeCommand(cc, targetEditPart, isTargetABorderNode, sourceBounds, targetBounds, firstPoint, lastPoint);
             }
             // Execute the command
             IStatus status = cc.execute(monitor, info);
@@ -238,6 +256,16 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
             }
         }
         return commandResult;
+    }
+
+    private void computePointsInSpecificCase(Point firstPoint, Point lastPoint, Rectangle sourceBounds, Rectangle targetBounds) {
+        if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
+            firstPoint = new Point(firstPoint.x, sourceBounds.getCenter().y);
+            lastPoint = new Point(lastPoint.x, targetBounds.getCenter().y);
+        } else {
+            firstPoint = new Point(sourceBounds.getCenter().x, firstPoint.y);
+            lastPoint = new Point(targetBounds.getCenter().x, lastPoint.y);
+        }
     }
 
     /**
@@ -384,14 +412,33 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
         return result;
     }
 
+    /**
+     * The centered constraint must be respect. There is several cases:
+     * <UL>
+     * <LI>Oblique edges: Move forbidden if at least one side is centered.</LI>
+     * <LI>Rectilinear edges: Move forbidden if the moved side is centered.LI>
+     * </UL>
+     * There is an exception when the source and the target of the edge are
+     * border nodes and edge is centered on each side.
+     * 
+     * @return true if the centering constraint forbids the move, false
+     *         otherwise.
+     */
     private boolean isCentered() {
         boolean isCentered = false;
         if (edgeEditPart.getFigure() instanceof ViewEdgeFigure) {
             ViewEdgeFigure figure = (ViewEdgeFigure) edgeEditPart.getFigure();
-            if (moveSource) {
-                isCentered = figure.isSourceCentered();
+            boolean isExceptionCase = isSourceABorderNode && isTargetABorderNode && figure.isSourceCentered() && figure.isTargetCentered();
+            if (isExceptionCase) {
+                isSpecificCase = true;
+            } else if (new ConnectionEditPartQuery(edgeEditPart).isEdgeWithObliqueRoutingStyle()) {
+                isCentered = figure.isSourceCentered() || figure.isTargetCentered();
             } else {
-                isCentered = figure.isTargetCentered();
+                if (moveSource) {
+                    isCentered = figure.isSourceCentered();
+                } else {
+                    isCentered = figure.isTargetCentered();
+                }
             }
         }
         return isCentered;
@@ -410,6 +457,10 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
             Connection figure = (Connection) edgeEditPart.getFigure();
             Point firstPoint = figure.getPoints().getFirstPoint().getCopy();
             Point lastPoint = figure.getPoints().getLastPoint().getCopy();
+            if (isSpecificCase) {
+                firstPoint = getHandleBounds(sourceEditPart.getFigure()).getCenter();
+                lastPoint = getHandleBounds(targetEditPart.getFigure()).getCenter();
+            }
             if (moveSource) {
                 if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
                     deltaY = lastPoint.y - firstPoint.y;

@@ -14,9 +14,13 @@
     </containers>
     <containers id="container5">
       <elements xsi:type="migrationmodeler:Bordered" id="bn5"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn8"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn10"/>
     </containers>
     <containers id="container6">
       <elements xsi:type="migrationmodeler:Bordered" id="bn6"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn7"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn9"/>
     </containers>
     <containers id="container7"/>
     <nodes id="node1"/>
@@ -34,5 +38,7 @@
     <edges id="edge2" source="//@representations.0/@nodes.2" target="//@representations.0/@nodes.1"/>
     <edges id="edge5" source="//@representations.0/@nodes.4" target="//@representations.0/@nodes.3"/>
     <edges id="edge7" source="//@representations.0/@containers.6" target="//@representations.0/@nodes.3"/>
+    <edges id="edge8" source="//@representations.0/@containers.5/@elements.1" target="//@representations.0/@containers.4/@elements.1"/>
+    <edges id="edge9" source="//@representations.0/@containers.5/@elements.2" target="//@representations.0/@containers.4/@elements.2"/>
   </representations>
 </migrationmodeler:TestCase>

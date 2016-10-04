@@ -343,7 +343,7 @@
 				</ul>
 			</li>
 			<li>A straighten action will be disabled if the 
-				<a href="../../specifier/diagrams/Diagrams.html#edgecentering">edge centering</a> is activated on an edge.
+				<a href="../../specifier/diagrams/Diagrams.html#edgecentering">edge centering</a> constraint will be violated. For oblique edges, the action is disabled if at least one side is centered. For rectilinear edges, the action is disabled if the moved side is centered. There is an exception to this rule when the edge centering is activated on both source and target, and both source and target are border nodes.
 			</li>
 			<li>The source or the target of the edge is another edge.</li>
 			<li>The source and the target is the same element.</li>
