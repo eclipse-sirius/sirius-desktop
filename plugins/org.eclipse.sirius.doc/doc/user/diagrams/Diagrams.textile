@@ -170,7 +170,7 @@ The action is available (menu is displayed) if the selection contains only edges
 h4(#move_edge_group). Move edge group
 
 In specific cases, we can find edges connected to border nodes. For example in a diagram representing data flows, exchanges are connected to port in and port out. When the user wants to move an exchange on a layouted diagram, he has to move the source port, then the target port and possibly move some bendpoints of the edge.
-This feature aims to move the group {edge, labels, ports} in a single â€œdrag likeâ€� operation when using the F3 shortcut and drag/move the edge. The F3 key has no effect if you attempt a reconnect by moving the first or last edge end.
+This feature aims to move the group {edge, labels, ports} in a single __drag like__ operation when using the F3 shortcut and drag/move the edge. The F3 key has no effect if you attempt a reconnect by moving the first or last edge end.
 
 Example when activating the tool and moving the second edge toward the top:
 !images/moveEdgeGroup1.png!
