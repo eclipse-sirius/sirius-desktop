@@ -504,15 +504,19 @@ public class EdgeLabelQuery {
         if (segment.length() != 0) {
             Vector referenceVector = new Vector(referenceSegment.getTerminus().x - referenceSegment.getOrigin().x, referenceSegment.getTerminus().y - referenceSegment.getOrigin().y);
             Vector vector = new Vector(segment.getTerminus().x - segment.getOrigin().x, segment.getTerminus().y - segment.getOrigin().y);
-            double angle = referenceVector.getAngle(vector);
-            if (angle == 0 || angle == 180) {
-                Straight straight = new Straight(new PrecisionPoint(segment.getOrigin()), new PrecisionPoint(segment.getTerminus()));
-                double distToInfiniteLine = straight.getDistance(new Vector(referenceSegment.getOrigin().x, referenceSegment.getOrigin().y));
-                if (distToInfiniteLine < DISTANCE_TOLERANCE) {
-                    if (angle == 180) {
-                        result = ON_SAME_LINE_OPPOSITE_DIRECTION;
-                    } else {
-                        result = ON_SAME_LINE_SAME_DIRECTION;
+            if (referenceVector.getLength() == 0 || vector.getLength() == 0) {
+                result = ON_SAME_LINE_SAME_DIRECTION;
+            } else {
+                double angle = referenceVector.getAngle(vector);
+                if (angle == 0 || angle == 180) {
+                    Straight straight = new Straight(new PrecisionPoint(segment.getOrigin()), new PrecisionPoint(segment.getTerminus()));
+                    double distToInfiniteLine = straight.getDistance(new Vector(referenceSegment.getOrigin().x, referenceSegment.getOrigin().y));
+                    if (distToInfiniteLine < DISTANCE_TOLERANCE) {
+                        if (angle == 180) {
+                            result = ON_SAME_LINE_OPPOSITE_DIRECTION;
+                        } else {
+                            result = ON_SAME_LINE_SAME_DIRECTION;
+                        }
                     }
                 }
             }
