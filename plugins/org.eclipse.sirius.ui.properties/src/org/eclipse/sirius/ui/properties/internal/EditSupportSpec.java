@@ -56,10 +56,28 @@ public class EditSupportSpec extends EditSupportImpl {
         this.self = target;
     }
 
+    /**
+     * Returns the actual target model element, unwrapping the
+     * {@link EEFViewCategory} if needed.
+     * 
+     * @return the actual target model element, or <code>null</code> if self is
+     *         not an {@link EObject}.
+     */
+    private EObject getTargetEObject() {
+        EObject result = null;
+        if (self instanceof EEFViewCategory) {
+            result = ((EEFViewCategory) self).getWrappedEObject();
+        } else if (self instanceof EObject) {
+            result = (EObject) self;
+        }
+        return result;
+    }
+
     @Override
     public Object getImage() {
-        if (self instanceof EObject) {
-            return this.editServices.getLabelProviderImage((EObject) self);
+        EObject target = getTargetEObject();
+        if (target != null) {
+            return this.editServices.getLabelProviderImage(target);
         } else {
             return null;
         }
@@ -67,17 +85,19 @@ public class EditSupportSpec extends EditSupportImpl {
 
     @Override
     public String getText() {
-        if (self instanceof EObject) {
-            return this.editServices.getLabelProviderText((EObject) self);
+        EObject target = getTargetEObject();
+        if (target != null) {
+            return this.editServices.getLabelProviderText(target);
+        } else {
+            return String.valueOf(self);
         }
-        return String.valueOf(self);
     }
 
     @Override
     public Object getText(EStructuralFeature feature) {
-        if (self instanceof EObject) {
-            EObject eObject = (EObject) self;
-            String result = this.editServices.getPropertyDescriptorDisplayName(eObject, feature.getName());
+        EObject target = getTargetEObject();
+        if (target != null) {
+            String result = this.editServices.getPropertyDescriptorDisplayName(target, feature.getName());
             if (Util.isBlank(result)) {
                 result = this.editServices.getLabelProviderText(feature);
             }
@@ -92,14 +112,17 @@ public class EditSupportSpec extends EditSupportImpl {
 
     @Override
     public String getTabName() {
-        String result = String.valueOf(self);
-        if (self instanceof EObject) {
+        EObject target = getTargetEObject();
+        final String result;
+        if (target != null) {
             Option<EObject> mainSemanticElement = context.getMainSemanticElement();
-            if (mainSemanticElement.some() && mainSemanticElement.get().equals(self)) {
+            if (mainSemanticElement.some() && mainSemanticElement.get().equals(target)) {
                 result = Messages.SiriusToolServices_MainTabLabel;
             } else {
-                result = this.editServices.getLabelProviderText((EObject) self);
+                result = this.editServices.getLabelProviderText(target);
             }
+        } else {
+            result = String.valueOf(target);
         }
         return result;
     }
@@ -107,8 +130,9 @@ public class EditSupportSpec extends EditSupportImpl {
     @Override
     public EList<Object> getChoiceOfValues(EStructuralFeature feature) {
         BasicEList<Object> result = new BasicEList<Object>();
-        if (self instanceof EObject) {
-            result.addAll(this.editServices.getPropertyDescriptorChoiceOfValues((EObject) self, feature.getName()));
+        EObject target = getTargetEObject();
+        if (target != null) {
+            result.addAll(this.editServices.getPropertyDescriptorChoiceOfValues(target, feature.getName()));
         }
         return result;
 
@@ -116,9 +140,9 @@ public class EditSupportSpec extends EditSupportImpl {
 
     @Override
     public boolean isMultiline(EStructuralFeature eStructuralFeature) {
-        if (self instanceof EObject) {
-            return this.editServices.isPropertyDescriptorMultiLine((EObject) self, eStructuralFeature.getName());
-
+        EObject target = getTargetEObject();
+        if (target != null) {
+            return this.editServices.isPropertyDescriptorMultiLine(target, eStructuralFeature.getName());
         } else {
             return false;
         }
@@ -126,8 +150,9 @@ public class EditSupportSpec extends EditSupportImpl {
 
     @Override
     public String getDescription(EStructuralFeature eStructuralFeature) {
-        if (self instanceof EObject) {
-            return this.editServices.getPropertyDescriptorDescription((EObject) self, eStructuralFeature.getName());
+        EObject target = getTargetEObject();
+        if (target != null) {
+            return this.editServices.getPropertyDescriptorDescription(target, eStructuralFeature.getName());
         } else {
             return ""; //$NON-NLS-1$
         }
@@ -135,11 +160,11 @@ public class EditSupportSpec extends EditSupportImpl {
 
     @Override
     public String getCategory() {
-        String result = Messages.SiriusToolServices_DefaultCategoryName;
         if (self instanceof EEFViewCategory) {
-            result = ((EEFViewCategory) self).getCategory();
+            return ((EEFViewCategory) self).getCategory();
+        } else {
+            return Messages.SiriusToolServices_DefaultCategoryName;
         }
-        return result;
     }
 
     @Override
@@ -228,12 +253,13 @@ public class EditSupportSpec extends EditSupportImpl {
     
     @Override
     public Object setValue(EStructuralFeature feature, Object newValue) {
-        if (self instanceof EObject) {
+        EObject target = getTargetEObject();
+        if (target != null) {
             Object finalValue = newValue;
             if (feature instanceof EAttribute && newValue instanceof String) {
                 finalValue = EcoreUtil.createFromString(((EAttribute) feature).getEAttributeType(), (String) newValue);
             }
-            ((EObject) self).eSet(feature, finalValue);
+            target.eSet(feature, finalValue);
         }
         return self;
     }
