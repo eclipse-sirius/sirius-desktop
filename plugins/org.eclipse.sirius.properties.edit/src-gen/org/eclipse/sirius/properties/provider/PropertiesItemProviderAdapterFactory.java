@@ -1258,6 +1258,31 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.EditSupport} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected EditSupportItemProvider editSupportItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.EditSupport}. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createEditSupportAdapter() {
+        if (editSupportItemProvider == null) {
+            editSupportItemProvider = new EditSupportItemProvider(this);
+        }
+
+        return editSupportItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1527,6 +1552,9 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
         if (groupConditionalStyleItemProvider != null) {
             groupConditionalStyleItemProvider.dispose();
+        }
+        if (editSupportItemProvider != null) {
+            editSupportItemProvider.dispose();
         }
     }
 

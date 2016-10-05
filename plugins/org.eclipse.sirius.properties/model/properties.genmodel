@@ -249,5 +249,29 @@
     <genClasses ecoreClass="properties.ecore#//GroupConditionalStyle">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupConditionalStyle/style"/>
     </genClasses>
+    <genClasses ecoreClass="properties.ecore#//EditSupport">
+      <genOperations ecoreOperation="properties.ecore#//EditSupport/getImage"/>
+      <genOperations ecoreOperation="properties.ecore#//EditSupport/getText"/>
+      <genOperations ecoreOperation="properties.ecore#//EditSupport/getText.1">
+        <genParameters ecoreParameter="properties.ecore#//EditSupport/getText.1/feature"/>
+      </genOperations>
+      <genOperations ecoreOperation="properties.ecore#//EditSupport/getTabName"/>
+      <genOperations ecoreOperation="properties.ecore#//EditSupport/getChoiceOfValues">
+        <genParameters ecoreParameter="properties.ecore#//EditSupport/getChoiceOfValues/feature"/>
+      </genOperations>
+      <genOperations ecoreOperation="properties.ecore#//EditSupport/isMultiline">
+        <genParameters ecoreParameter="properties.ecore#//EditSupport/isMultiline/eStructuralFeature"/>
+      </genOperations>
+      <genOperations ecoreOperation="properties.ecore#//EditSupport/getDescription">
+        <genParameters ecoreParameter="properties.ecore#//EditSupport/getDescription/eStructuralFeature"/>
+      </genOperations>
+      <genOperations ecoreOperation="properties.ecore#//EditSupport/getCategory"/>
+      <genOperations ecoreOperation="properties.ecore#//EditSupport/getCategories"/>
+      <genOperations ecoreOperation="properties.ecore#//EditSupport/getEStructuralFeatures"/>
+      <genOperations ecoreOperation="properties.ecore#//EditSupport/setValue">
+        <genParameters ecoreParameter="properties.ecore#//EditSupport/setValue/feature"/>
+        <genParameters ecoreParameter="properties.ecore#//EditSupport/setValue/newValue"/>
+      </genOperations>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

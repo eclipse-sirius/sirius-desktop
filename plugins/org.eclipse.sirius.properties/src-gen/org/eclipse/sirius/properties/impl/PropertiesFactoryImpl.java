@@ -31,6 +31,7 @@ import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CustomWidgetStyle;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
+import org.eclipse.sirius.properties.EditSupport;
 import org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION;
 import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
@@ -204,6 +205,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createHyperlinkWidgetConditionalStyle();
         case PropertiesPackage.GROUP_CONDITIONAL_STYLE:
             return createGroupConditionalStyle();
+        case PropertiesPackage.EDIT_SUPPORT:
+            return createEditSupport();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -751,6 +754,17 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public GroupConditionalStyle createGroupConditionalStyle() {
         GroupConditionalStyleImpl groupConditionalStyle = new GroupConditionalStyleImpl();
         return groupConditionalStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EditSupport createEditSupport() {
+        EditSupportImpl editSupport = new EditSupportImpl();
+        return editSupport;
     }
 
     /**

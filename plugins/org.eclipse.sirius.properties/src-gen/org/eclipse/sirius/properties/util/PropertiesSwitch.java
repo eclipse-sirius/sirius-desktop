@@ -30,6 +30,7 @@ import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CustomWidgetStyle;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
+import org.eclipse.sirius.properties.EditSupport;
 import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.GroupConditionalStyle;
@@ -682,6 +683,14 @@ public class PropertiesSwitch<T> {
             if (result == null) {
                 result = caseWidgetConditionalStyle(groupConditionalStyle);
             }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.EDIT_SUPPORT: {
+            EditSupport editSupport = (EditSupport) theEObject;
+            T result = caseEditSupport(editSupport);
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -1539,6 +1548,23 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseGroupConditionalStyle(GroupConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Edit Support</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Edit Support</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseEditSupport(EditSupport object) {
         return null;
     }
 

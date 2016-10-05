@@ -30,6 +30,7 @@ import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CustomWidgetStyle;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
+import org.eclipse.sirius.properties.EditSupport;
 import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.GroupConditionalStyle;
@@ -373,6 +374,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseGroupConditionalStyle(GroupConditionalStyle object) {
             return createGroupConditionalStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseEditSupport(EditSupport object) {
+            return createEditSupportAdapter();
         }
 
         @Override
@@ -1204,6 +1210,21 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createGroupConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.EditSupport <em>Edit Support</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.EditSupport
+     * @generated
+     */
+    public Adapter createEditSupportAdapter() {
         return null;
     }
 

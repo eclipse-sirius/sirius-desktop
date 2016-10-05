@@ -448,6 +448,15 @@ public interface PropertiesFactory extends EFactory {
     GroupConditionalStyle createGroupConditionalStyle();
 
     /**
+     * Returns a new object of class '<em>Edit Support</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Edit Support</em>'.
+     * @generated
+     */
+    EditSupport createEditSupport();
+
+    /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      *

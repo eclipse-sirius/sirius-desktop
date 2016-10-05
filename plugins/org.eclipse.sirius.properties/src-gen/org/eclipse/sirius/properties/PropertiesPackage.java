@@ -3266,6 +3266,27 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.EditSupportImpl
+     * <em>Edit Support</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @see org.eclipse.sirius.properties.impl.EditSupportImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getEditSupport()
+     * @generated
+     */
+    int EDIT_SUPPORT = 50;
+
+    /**
+     * The number of structural features of the '<em>Edit Support</em>' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int EDIT_SUPPORT_FEATURE_COUNT = 0;
+
+    /**
+     * The meta object id for the '
      * {@link org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
      * <em>FILL LAYOUT ORIENTATION</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -3274,7 +3295,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getFILL_LAYOUT_ORIENTATION()
      * @generated
      */
-    int FILL_LAYOUT_ORIENTATION = 50;
+    int FILL_LAYOUT_ORIENTATION = 51;
 
     /**
      * The meta object id for the '
@@ -3285,7 +3306,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getToggleStyle()
      * @generated
      */
-    int TOGGLE_STYLE = 51;
+    int TOGGLE_STYLE = 52;
 
     /**
      * The meta object id for the '
@@ -3297,7 +3318,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTitleBarStyle()
      * @generated
      */
-    int TITLE_BAR_STYLE = 52;
+    int TITLE_BAR_STYLE = 53;
 
     /**
      * Returns the meta object for class '
@@ -5416,6 +5437,17 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.EditSupport <em>Edit Support</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Edit Support</em>'.
+     * @see org.eclipse.sirius.properties.EditSupport
+     * @generated
+     */
+    EClass getEditSupport();
+
+    /**
+     * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.ListWidgetStyle
      * <em>List Widget Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
@@ -7202,6 +7234,18 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference GROUP_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getGroupConditionalStyle_Style();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.EditSupportImpl
+         * <em>Edit Support</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.EditSupportImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getEditSupport()
+         * @generated
+         */
+        EClass EDIT_SUPPORT = PropertiesPackage.eINSTANCE.getEditSupport();
 
         /**
          * The meta object literal for the '
