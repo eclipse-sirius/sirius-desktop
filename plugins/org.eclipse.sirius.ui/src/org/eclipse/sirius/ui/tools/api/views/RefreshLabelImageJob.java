@@ -12,15 +12,23 @@ package org.eclipse.sirius.ui.tools.api.views;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.IBasicPropertyConstants;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.progress.UIJob;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * A {@link UIJob} to refresh the image of the label in a {@link CommonViewer}.
@@ -71,6 +79,22 @@ public class RefreshLabelImageJob extends UIJob {
             if (elementsToRefresh == null || elementsToRefresh.isEmpty()) {
                 commonViewer.refresh();
             } else {
+                List<Object> repDescs = elementsToRefresh.stream().filter(DRepresentationDescriptor.class::isInstance).collect(Collectors.toList());
+                Object[] expandedElements = commonViewer.getExpandedElements();
+                // RepresentationItemImpl encapsulate the DRepresentationDescriptor. It's label and image are based on
+                // its descriptor status. So any change to the descriptor triggers the refresh of any
+                // RepresentationItemImpl encapsulating it.
+                if (!repDescs.isEmpty() && expandedElements != null) {
+                    List<Object> expandedElementsList = Lists.newArrayList(expandedElements);
+                    for (RepresentationDescriptionItem item : expandedElementsList.stream().filter(RepresentationDescriptionItem.class::isInstance).map(RepresentationDescriptionItem.class::cast)
+                            .collect(Collectors.toList())) {
+                        for (RepresentationItemImpl repItem : Iterables.filter(item.getChildren(), RepresentationItemImpl.class)) {
+                            if (repDescs.contains(repItem.getWrappedObject())) {
+                                elementsToRefresh.add(repItem);
+                            }
+                        }
+                    }
+                }
                 commonViewer.update(elementsToRefresh.toArray(), refreshProperties);
             }
         }

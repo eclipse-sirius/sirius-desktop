@@ -174,7 +174,7 @@ public class SiriusDebugView extends AbstractDebugView {
         } else if (obj instanceof ConnectionEditPart) {
             return getTextForConnection((ConnectionEditPart) obj);
         } else if (getRepresentationDescriptor(obj) != null) {
-            return getTextForRepDescriptor(getRepresentationDescriptor(obj));
+            return obj + "\n\n" + getTextForRepDescriptor(getRepresentationDescriptor(obj));
         } else {
             return "Selection type not supported: " + obj;
         }
