@@ -45,6 +45,11 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
 public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
+     * The default expression to use as semanticCandidatesExpression for newly created elements.
+     */
+    public static final String DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION = "var:self"; //$NON-NLS-1$
+
+    /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -192,10 +197,12 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
 
         PageDescription page = PropertiesFactory.eINSTANCE.createPageDescription();
         page.setLabelExpression("Page"); //$NON-NLS-1$
+        page.setSemanticCandidateExpression(DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__PAGES, page));
 
         GroupDescription group = PropertiesFactory.eINSTANCE.createGroupDescription();
         group.setLabelExpression("Group"); //$NON-NLS-1$
+        group.setSemanticCandidateExpression(DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__GROUPS, group));
     }
 
