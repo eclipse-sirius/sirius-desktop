@@ -6,7 +6,7 @@ include "modules/shared-license.tpd"
 include "modules/aql-nightly.tpd"
 include "modules/acceleo-nightly.tpd"
 include "modules/eef-1.5.tpd"
-include "modules/eef-17-nightly.tpd"
+include "modules/eef-1.7.0.tpd"
 
 with source, requirements
 
