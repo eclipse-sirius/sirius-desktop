@@ -152,11 +152,11 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
-        String label = ((SelectDescription) object).getIdentifier();
+        String label = ((SelectDescription) object).getLabelExpression();
         return label == null || label.length() == 0 ? getString("_UI_SelectDescription_type") : //$NON-NLS-1$
                 getString("_UI_SelectDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }

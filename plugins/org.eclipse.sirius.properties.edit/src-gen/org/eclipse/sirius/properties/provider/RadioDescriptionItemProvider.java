@@ -166,11 +166,11 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
-        String label = ((RadioDescription) object).getIdentifier();
+        String label = ((RadioDescription) object).getLabelExpression();
         return label == null || label.length() == 0 ? getString("_UI_RadioDescription_type") : //$NON-NLS-1$
                 getString("_UI_RadioDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }

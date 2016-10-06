@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.properties.provider;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 
@@ -134,11 +135,12 @@ public class DynamicMappingForItemProvider extends ControlDescriptionItemProvide
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
-        String label = ((DynamicMappingFor) object).getIdentifier();
+        DynamicMappingFor element = (DynamicMappingFor) object;
+        String label = MessageFormat.format("for {0} in {1}", element.getIterator(), element.getIterableExpression()); //$NON-NLS-1$
         return label == null || label.length() == 0 ? getString("_UI_DynamicMappingFor_type") : //$NON-NLS-1$
                 getString("_UI_DynamicMappingFor_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
