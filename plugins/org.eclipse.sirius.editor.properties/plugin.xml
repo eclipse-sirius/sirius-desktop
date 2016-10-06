@@ -453,14 +453,14 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.controldescription.ControlDescriptionIdentifierPropertySection"
                id="properties.section.controlDescription.Identifier"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.controldescription.ControlDescriptionIdentifierFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.properties.ControlDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionIdentifierPropertySection"
                id="properties.section.groupDescription.Identifier"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupdescription.GroupDescriptionIdentifierFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.properties.GroupDescription"/>
       </propertySection>
       <propertySection
@@ -506,7 +506,7 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionIdentifierPropertySection"
                id="properties.section.pageDescription.Identifier"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionIdentifierFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.properties.PageDescription"/>
       </propertySection>
   	  <propertySection
@@ -561,7 +561,7 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.viewextensiondescription.ViewExtensionDescriptionIdentifierPropertySection"
                id="properties.section.viewExtensionDescription.Identifier"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.viewextensiondescription.ViewExtensionDescriptionIdentifierFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.properties.ViewExtensionDescription"/>
       </propertySection>
   	<!-- Start of user code propertySections of org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor  -->

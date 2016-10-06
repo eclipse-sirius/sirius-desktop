@@ -27,7 +27,7 @@ public class GroupDescriptionIdentifierPropertySection extends AbstractTextPrope
      */
     @Override
     protected String getDefaultLabelText() {
-        return "Identifier"; //$NON-NLS-1$
+        return "Extension Id"; //$NON-NLS-1$
     }
 
     /**
