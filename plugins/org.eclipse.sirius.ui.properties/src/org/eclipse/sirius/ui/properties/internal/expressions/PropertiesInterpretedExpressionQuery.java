@@ -187,6 +187,12 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
             } else if (feature == PropertiesPackage.Literals.RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION) {
                 VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.RADIO_DESCRIPTION__CANDIDATES_EXPRESSION);
                 availableVariables.put(EEFExpressionUtils.EEFSelect.CANDIDATE, candidatesExpressionType);
+            } else if (feature == PropertiesPackage.Literals.LABEL_DESCRIPTION__DISPLAY_EXPRESSION) {
+                VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.LABEL_DESCRIPTION__VALUE_EXPRESSION);
+                availableVariables.put(EEFExpressionUtils.EEFReference.VALUE, candidatesExpressionType);
+            } else if (feature == PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION) {
+                VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION);
+                availableVariables.put(EEFExpressionUtils.EEFReference.VALUE, candidatesExpressionType);
             } else if (feature == PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION) {
                 if (target.eContainer() instanceof DynamicMappingFor) {
                     DynamicMappingFor forDefinition = (DynamicMappingFor) target.eContainer();
