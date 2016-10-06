@@ -33,6 +33,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.emf.edit.EditingDomainServices;
+import org.eclipse.sirius.properties.EditSupport;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.ui.properties.internal.tabprovider.SiriusTabDescriptorProvider;
@@ -513,5 +514,22 @@ public class SiriusToolServices {
         } else {
             return null;
         }
+    }
+
+    /**
+     * Returns a helper with EMF Edit-related operations on a given element.
+     * 
+     * @param input
+     *            a {@link SiriusInputDescriptor} (typically the "input"
+     *            variable of the properties view).
+     * @param self
+     *            the target semantic element on which the helper should
+     *            operator.
+     * @return an instance of EditSupport bounnd to the specified semantic
+     *         element.
+     */
+    public EditSupport emfEditServices(SiriusInputDescriptor input, EObject self) {
+        EditSupportSpec ess = new EditSupportSpec(input.getFullContext(), self);
+        return ess;
     }
 }
