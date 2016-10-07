@@ -190,6 +190,9 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
             } else if (feature == PropertiesPackage.Literals.LABEL_DESCRIPTION__DISPLAY_EXPRESSION) {
                 VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.LABEL_DESCRIPTION__VALUE_EXPRESSION);
                 availableVariables.put(EEFExpressionUtils.EEFReference.VALUE, candidatesExpressionType);
+            } else if (feature == PropertiesPackage.Literals.LIST_DESCRIPTION__DISPLAY_EXPRESSION) {
+                VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.LIST_DESCRIPTION__VALUE_EXPRESSION);
+                availableVariables.put(EEFExpressionUtils.EEFList.VALUE, candidatesExpressionType);
             } else if (feature == PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION) {
                 VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION);
                 availableVariables.put(EEFExpressionUtils.EEFReference.VALUE, candidatesExpressionType);
