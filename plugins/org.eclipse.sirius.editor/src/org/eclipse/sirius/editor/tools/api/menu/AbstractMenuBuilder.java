@@ -20,9 +20,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.MissingResourceException;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.jface.action.ActionContributionItem;
@@ -37,6 +39,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.business.internal.metamodel.helper.EClassHelper;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.tools.internal.editor.EditorCustomizationManager;
+import org.eclipse.sirius.editor.tools.internal.menu.CustomChildTextAdapter;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -544,11 +547,18 @@ public abstract class AbstractMenuBuilder {
      */
     private final class CustomCreateChildAction extends CreateChildAction {
         private final String key;
+        private String customText;
 
         private CustomCreateChildAction(IEditorPart editorPart, ISelection selection, CommandParameter descriptor) {
             super(editorPart, selection, descriptor);
             if (descriptor.getValue() instanceof EObject) {
                 key = EClassHelper.getPath(((EObject) descriptor.getValue()).eClass());
+                EObject eObj = (EObject) descriptor.getValue();
+                Adapter ccta = EcoreUtil.getAdapter(eObj.eAdapters(), CustomChildTextAdapter.class);
+                if (ccta instanceof CustomChildTextAdapter) {
+                    customText = ((CustomChildTextAdapter) ccta).getText();
+                    eObj.eAdapters().remove(ccta);
+                }
             } else {
                 key = null;
             }
@@ -556,6 +566,15 @@ public abstract class AbstractMenuBuilder {
 
         public String getCreatedElementType() {
             return this.key;
+        }
+        
+        @Override
+        public String getText() {
+            if (customText != null) {
+                return customText;
+            } else {
+                return super.getText();
+            }
         }
 
         @Override

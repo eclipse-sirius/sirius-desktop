@@ -28,9 +28,6 @@ public final class Messages {
     @TranslatableMessage
     public static String ImportingDefaultPropertiesViewDescriptionCommand_text;
 
-    @TranslatableMessage
-    public static String ImportingMenu_label;
-
     // CHECKSTYLE:ON
 
     private Messages() {
