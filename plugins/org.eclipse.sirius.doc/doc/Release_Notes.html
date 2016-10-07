@@ -16,6 +16,9 @@
 						<a href="#sirius4.1.0">Changes in Sirius 4.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
+								<a href="#Requirements">Requirements</a>
+							</li>
+							<li>
 								<a href="#UserVisibleChanges">User-Visible Changes</a>
 							</li>
 							<li>
@@ -75,6 +78,16 @@
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
 		<h2 id="sirius4.1.0">Changes in Sirius 4.1.0</h2>
+		<h3 id="Requirements">Requirements</h3>
+		<p>Sirius 4.1.0 only supports Eclipse Mars (4.5) and later. In addition, to be fully functional it requires:</p>
+		<ul>
+			<li>AQL version 5.0.2 (or later), available at 
+				<a href="http://download.eclipse.org/acceleo/updates/releases/3.6/R201610060831/">http://download.eclipse.org/acceleo/updates/releases/3.6/R201610060831/</a>
+			</li>
+			<li>EEF 1.7.0  (or later), available at 
+				<a href="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.7/R20161005043727">http://download.eclipse.org/modeling/emft/eef/updates/releases/1.7/R20161005043727</a>.
+			</li>
+		</ul>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Copy/Paste Layout has been completed with Copy/Paste Style and Copy/Paste Format. 
@@ -103,6 +116,19 @@
 				</a> in 
 				<em>User Manual</em> for more details.
 			</li>
+			<li><span class="label label-success">Added</span> It is now possible to disable the 
+				<em>Default</em> and 
+				<em>Semantic</em> properties tabs (visible when selecting and element from the 
+				<em>Model Explorer</em> or from a Sirius editor, respectively) when using modelers which provide fully-functional replacements defined directly with Sirius. This is controled in the new 
+				<em>Sirius &gt; Sirius Properties View</em> preference page.
+			</li>
+			<li><span class="label label-success">Added</span> Sirius-defined properties view are now enabled for semantic elements selected directly from inside the 
+				<em>Model Explorer</em> (as long as the selected element is from inside an open Sirius session/project). Previously only elements selected from inside a Sirius editor were supported.
+			</li>
+			<li><span class="label label-info">Modified</span> In the Sirius-provided 
+				<em>Properties View</em>, the edition of a text field is only taken into account when pressing 
+				<em>Enter</em> or leaving the field. Previously it was triggered asynchronously after a small delay without activity, which could be confusing.
+			</li>
 			<li><span class="label label-info">Modified</span> When trying to open a session which holds a representation resource or a VSP which was saved using a more recent version of Sirius than the one you are using, the session will be automatically closed displaying an error message. You can overload this behavior by providing you own implementation of 
 				<code>UICallBack</code> in which you can have an UI feedback letting you choose if you want to open the session anyway. Warning: if you choose to proceed, there is no guarantee that the resulting session will be usable. It may even lead to data loss or corruption; use at your own risk.
 			</li>
@@ -128,26 +154,55 @@
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-success">Added</span> In the definition of the Properties view, hyperlink and label widgets can now have widget actions</li>
+			<li><span class="label label-success">Added</span> It is now possible to inline a copy of the default Properties Views model inside the VSM. This is a copy of the model Sirius would use if no 
+				<em>Properties View Description</em> was specified. It can be used as a starting point for manual customization, or as a complement for elements for which you do not provide any custom rules. 
+			</li>
+			<li><span class="label label-success">Added</span> In the definition of the Properties view, hyperlink and label widgets can now have widget actions.</li>
 			<li><span class="label label-success">Added</span> Hyperlink and label widgets now have a 
 				<code>displayExpression</code>, if blank the result of the value expression will be used after a call to the method 
 				<code>java.lang.Object#toString()</code>.
 			</li>
+			<li><span class="label label-success">Added</span> Hyperlink and label widgets now support optional associated actions (visible as buttons on the right of the widget).</li>
 			<li><span class="label label-success">Added</span> A new widget named List with the same behavior as the multiple reference widget.</li>
+			<li><span class="label label-success">Added</span> 
+				<em>Page</em> and 
+				<em>Group</em> descriptions in 
+				<em>Properties View</em> models now support a 
+				<code>preconditionExpression</code>, which behaves in the same way as preconditions for mappings on representation descriptions.
+			</li>
 			<li><span class="label label-info">Modified</span> The rules concerning the layout of compartments have been changed/completed. You can have a look at the 
 				<a href="specifier/diagrams/Diagrams.html#compartments_layout">dedicated chapter</a> in the specifier documentation for more details.
 			</li>
+		</ul>
+		<p><span class="label label-info">Modified</span> In the VSM editor, all dialogs which ask for selecting elements from the VSM will now show the fully qualified path of each element, instead of just their name, to allow distinguishing elements with the same name appearing in different places.</p>
+		<ul>
 			<li><span class="label label-info">Modified</span> The properties 
 				<code>fontSize</code> and 
 				<code>labelFontSize</code> have been renamed into 
 				<code>fontSizeExpression</code> and 
 				<code>labelFontSizeExpression</code> since both of them were already treated as expression.
 			</li>
+		</ul>
+		<p><span class="label label-info">Modified</span> In the VSM editor, the 
+			<em>Identifier</em> attribute of many 
+			<em>Prroperties View</em> related elements has been moved into the 
+			<em>Advanced</em> tab and renamed 
+			<em>Extension Id</em>, as it is not actually required on common use cases but only for extensibility purposes.  
+		</p>
+		<ul>
 			<li><span class="label label-info">Modified</span> The property 
 				<code>Domain Class Expression</code> in 
 				<code>DynamicMappingFor</code> elements (in properties views definitions) has been renamed into 
 				<code>Iterable Expression</code>.
 			</li>
+			<li><span class="label label-info">Modified</span> The 
+				<em>Properties View</em> widget which was named 
+				<em>Reference</em> in Sirius 4.0 has been renamed as 
+				<em>List</em>, as it corresponds to an arbitrary list of elements with customizable buttons for acting on them. A new 
+				<em>Reference</em> widget was added for handling plain 
+				<em>EReference</em> edition with minimal configuration needed.
+			</li>
+			<li><span class="label label-info">Modified</span> When opening a VSM, the editor now automatically expands the first few levels to immediatly reveal the interesting elements (representation descriptions).</li>
 			<li><span class="label label-warning">Deprecated</span> The extension point 
 				<code>org.eclipse.sirius.diagram.ui.layoutDataManager</code> is deprecated. It is replaced by the new extension point 
 				<code>org.eclipse.sirius.diagram.ui.formatDataManager</code>. The deprecated extension point will be removed in the next 5.0 Sirius major release. Several classes associated with this deprecated extension point are also deprecated (see Developer-Visible Changes for details).
