@@ -260,11 +260,11 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
 
     private void computePointsInSpecificCase(Point firstPoint, Point lastPoint, Rectangle sourceBounds, Rectangle targetBounds) {
         if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
-            firstPoint = new Point(firstPoint.x, sourceBounds.getCenter().y);
-            lastPoint = new Point(lastPoint.x, targetBounds.getCenter().y);
+            firstPoint.setX(firstPoint.x).setY(sourceBounds.getCenter().y);
+            lastPoint.setX(lastPoint.x).setY(targetBounds.getCenter().y);
         } else {
-            firstPoint = new Point(sourceBounds.getCenter().x, firstPoint.y);
-            lastPoint = new Point(targetBounds.getCenter().x, lastPoint.y);
+            firstPoint.setX(sourceBounds.getCenter().x).setY(firstPoint.y);
+            lastPoint.setX(targetBounds.getCenter().x).setY(lastPoint.y);
         }
     }
 
