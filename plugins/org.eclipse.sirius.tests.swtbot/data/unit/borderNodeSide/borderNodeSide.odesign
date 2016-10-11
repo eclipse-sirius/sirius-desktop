@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="11.0.0.201601261200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="borderNodeSide" version="11.0.0.201609021200">
   <ownedViewpoints name="borderNodeSide">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="borderNodeSide" initialisation="true" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
+        <nodeMappings name="ePackageNode" semanticCandidatesExpression="feature:eSubpackages" domainClass="EPackage">
+          <style xsi:type="style:BundledImageDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+          <conditionnalStyles predicateExpression="false">
+            <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/org.eclipse.sirius.tests.swtbot/images/es.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
         <containerMappings name="container" semanticCandidatesExpression="feature:eSubpackages" domainClass="EPackage">
           <borderedNodeMappings name="eClassWest" preconditionExpression="aql:self.name.contains('West')" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
             <style xsi:type="style:SquareDescription" resizeKind="NSEW">
@@ -13,6 +26,16 @@
               <forbiddenSides>NORTH</forbiddenSides>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             </style>
+            <conditionnalStyles predicateExpression="aql:self.abstract">
+              <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <forbiddenSides>SOUTH</forbiddenSides>
+                <forbiddenSides>EAST</forbiddenSides>
+                <forbiddenSides>NORTH</forbiddenSides>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
+              </style>
+            </conditionnalStyles>
           </borderedNodeMappings>
           <borderedNodeMappings name="eClassEast" preconditionExpression="aql:self.name.contains('East')" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
             <style xsi:type="style:SquareDescription" resizeKind="NSEW">
@@ -23,6 +46,16 @@
               <forbiddenSides>NORTH</forbiddenSides>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             </style>
+            <conditionnalStyles predicateExpression="aql:self.abstract">
+              <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <forbiddenSides>WEST</forbiddenSides>
+                <forbiddenSides>SOUTH</forbiddenSides>
+                <forbiddenSides>NORTH</forbiddenSides>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              </style>
+            </conditionnalStyles>
           </borderedNodeMappings>
           <borderedNodeMappings name="eClassNorth" preconditionExpression="aql:self.name.contains('North')" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
             <style xsi:type="style:SquareDescription" resizeKind="NSEW">
@@ -33,6 +66,16 @@
               <forbiddenSides>EAST</forbiddenSides>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             </style>
+            <conditionnalStyles predicateExpression="aql:self.abstract">
+              <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <forbiddenSides>WEST</forbiddenSides>
+                <forbiddenSides>SOUTH</forbiddenSides>
+                <forbiddenSides>EAST</forbiddenSides>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+              </style>
+            </conditionnalStyles>
           </borderedNodeMappings>
           <borderedNodeMappings name="eClassSouth" preconditionExpression="aql:self.name.contains('South')" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
             <style xsi:type="style:SquareDescription" resizeKind="NSEW">
@@ -43,6 +86,16 @@
               <forbiddenSides>NORTH</forbiddenSides>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
             </style>
+            <conditionnalStyles predicateExpression="aql:self.abstract">
+              <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <forbiddenSides>WEST</forbiddenSides>
+                <forbiddenSides>EAST</forbiddenSides>
+                <forbiddenSides>NORTH</forbiddenSides>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_chocolate']"/>
+              </style>
+            </conditionnalStyles>
           </borderedNodeMappings>
           <borderedNodeMappings name="eClassSN" preconditionExpression="aql:self.name.contains('SN')" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
             <style xsi:type="style:SquareDescription" resizeKind="NSEW">
@@ -52,6 +105,15 @@
               <forbiddenSides>EAST</forbiddenSides>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
             </style>
+            <conditionnalStyles predicateExpression="aql:self.abstract">
+              <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <forbiddenSides>WEST</forbiddenSides>
+                <forbiddenSides>EAST</forbiddenSides>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              </style>
+            </conditionnalStyles>
           </borderedNodeMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -59,6 +121,12 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           </style>
+          <conditionnalStyles predicateExpression="false">
+            <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/org.eclipse.sirius.tests.swtbot/images/es.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
         </containerMappings>
         <toolSections name="nodeCreation">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="createWestBorderNode" nodeMappings="//@ownedViewpoints[name='borderNodeSide']/@ownedRepresentations[name='borderNodeSide']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='eClassWest']">
@@ -103,6 +171,56 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'SNClass'+container.eClassifiers->select(myEClassifier | myEClassifier.name.contains('SN'))->size()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createWestBorderNodeWithConditionalStyle" nodeMappings="//@ownedViewpoints[name='borderNodeSide']/@ownedRepresentations[name='borderNodeSide']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='eClassWest']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'WestClass'+container.eClassifiers->select(myEClassifier | myEClassifier.name.contains('West'))->size()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="abstract" valueExpression="aql:true"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createEastBorderNodeWithConditionalStyle" nodeMappings="//@ownedViewpoints[name='borderNodeSide']/@ownedRepresentations[name='borderNodeSide']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='eClassEast']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'EastClass'+container.eClassifiers->select(myEClassifier | myEClassifier.name.contains('East'))->size()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="abstract" valueExpression="aql:true"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createNorthBorderNodeWithConditionalStyle" nodeMappings="//@ownedViewpoints[name='borderNodeSide']/@ownedRepresentations[name='borderNodeSide']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='eClassNorth']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'NorthClass'+container.eClassifiers->select(myEClassifier | myEClassifier.name.contains('North'))->size()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="abstract" valueExpression="aql:true"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createSouthBorderNodeWithConditionalStyle" nodeMappings="//@ownedViewpoints[name='borderNodeSide']/@ownedRepresentations[name='borderNodeSide']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='eClassSouth']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'SouthClass'+container.eClassifiers->select(myEClassifier | myEClassifier.name.contains('South'))->size()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="abstract" valueExpression="aql:true"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createSouthNorthBorderNodeWithConditionalStyle" nodeMappings="//@ownedViewpoints[name='borderNodeSide']/@ownedRepresentations[name='borderNodeSide']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='eClassSN']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'SNClass'+container.eClassifiers->select(myEClassifier | myEClassifier.name.contains('SN'))->size()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="abstract" valueExpression="aql:true"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

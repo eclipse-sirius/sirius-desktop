@@ -16,12 +16,19 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -33,6 +40,7 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
+import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 
@@ -66,6 +74,8 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
 
     private DDiagram dDiagram;
 
+    private Resource semanticResource;
+
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, ODESIGN_FILE);
@@ -80,6 +90,7 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
         session = localSession.getOpenedSession();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(session, REPRESENTATION_NAME, REPRESENTATION_NAME, DDiagram.class, true);
         dDiagram = (DDiagram) editor.getDRepresentation();
+        semanticResource = ((DAnalysisSession) localSession.getOpenedSession()).getSemanticResources().iterator().next();
     }
 
     /**
@@ -88,7 +99,7 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testBorderNodeSideOnRefresh() {
         synchronizeDiagram();
-        checkBorderNodesSides();
+        checkBorderNodesSides(false);
 
     }
 
@@ -98,7 +109,7 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testBorderNodeSideOnCreation() {
         createBorderNodesUsingTools(1);
-        checkBorderNodesSides();
+        checkBorderNodesSides(false);
     }
 
     /**
@@ -107,7 +118,7 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testBorderNodeSideOnCreationWithFullSide() {
         createBorderNodesUsingTools(10);
-        checkBorderNodesSides();
+        checkBorderNodesSides(false);
     }
 
     /**
@@ -116,9 +127,9 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testBorderNodeSideAfterArrangeAll() {
         createBorderNodesUsingTools(3);
-        checkBorderNodesSides();
+        checkBorderNodesSides(false);
         arrangeAll();
-        checkBorderNodesSides();
+        checkBorderNodesSides(false);
     }
 
     /**
@@ -126,12 +137,12 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMoveBorderNodeSide() {
         createBorderNodesUsingTools(3);
-        checkBorderNodesSides();
+        checkBorderNodesSides(false);
         moveBorderNode("WestClass1", BOTTOM_RIGHT);
         moveBorderNode("EastClass1", TOP_LEFT);
         moveBorderNode("NorthClass1", BOTTOM_LEFT);
         moveBorderNode("SouthClass1", TOP_RIGHT);
-        checkBorderNodesSides();
+        checkBorderNodesSides(false);
 
     }
 
@@ -140,7 +151,7 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testResizeContainer() {
         createBorderNodesUsingTools(3);
-        checkBorderNodesSides();
+        checkBorderNodesSides(false);
         SWTBotGefEditPart containerGefEditPart = editor.getEditPart("subPackage1", AbstractDiagramContainerEditPart.class);
         containerGefEditPart.select();
         final Rectangle currentBounds = getContainerBounds().getCopy();
@@ -162,7 +173,113 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
                 return "The container resizing failed";
             }
         });
-        checkBorderNodesSides();
+        checkBorderNodesSides(false);
+    }
+
+    /**
+     * Tests that border nodes with an active conditional style are properly
+     * placed after having perform a refresh.
+     */
+    public void testBorderNodeSideOnRefreshWithConditionalStyle() {
+        setEClassToAbstract();
+        synchronizeDiagram();
+        checkBorderNodesSides(true);
+
+    }
+
+    /**
+     * Set the abstract attribute of all model EClass to true to match all
+     * conditional style of the design.
+     */
+    private void setEClassToAbstract() {
+        EPackage ePackage = (EPackage) semanticResource.getContents().get(0);
+        EList<EClassifier> eClassifiers = ePackage.getESubpackages().get(0).getEClassifiers();
+        for (EClassifier eClassifier : eClassifiers) {
+            final EClass eClass = (EClass) eClassifier;
+            session.getTransactionalEditingDomain().getCommandStack().execute(new ChangeCommand(session.getTransactionalEditingDomain(), new Runnable() {
+
+                @Override
+                public void run() {
+                    eClass.setAbstract(true);
+                }
+            }));
+
+        }
+    }
+
+    /**
+     * Tests that border nodes with an active conditional style are properly
+     * placed after having created them using a tool.
+     */
+    public void testBorderNodeSideOnCreationWithConditionalStyle() {
+        createBorderNodesUsingToolsReferencingConditionalStyle(1);
+        checkBorderNodesSides(true);
+    }
+
+    /**
+     * Tests that border nodes with an active conditional style are properly
+     * placed after having created them using a tool until the side is full.
+     */
+    public void testBorderNodeSideOnCreationWithFullSideWithConditionalStyle() {
+        createBorderNodesUsingToolsReferencingConditionalStyle(10);
+        checkBorderNodesSides(true);
+    }
+
+    /**
+     * Tests that border nodes with an active conditional style are properly
+     * placed after having performed an arrangeAll.
+     */
+    public void testBorderNodeSideAfterArrangeAllWithConditionalStyle() {
+        createBorderNodesUsingToolsReferencingConditionalStyle(3);
+        checkBorderNodesSides(true);
+        arrangeAll();
+        checkBorderNodesSides(true);
+    }
+
+    /**
+     * Tests that we can't move a border node with an active conditional style
+     * on an unauthorized side.
+     */
+    public void testMoveBorderNodeSideWithConditionalStyle() {
+        createBorderNodesUsingToolsReferencingConditionalStyle(3);
+        checkBorderNodesSides(true);
+        moveBorderNode("WestClass1", BOTTOM_RIGHT);
+        moveBorderNode("EastClass1", TOP_LEFT);
+        moveBorderNode("NorthClass1", BOTTOM_LEFT);
+        moveBorderNode("SouthClass1", TOP_RIGHT);
+        checkBorderNodesSides(true);
+
+    }
+
+    /**
+     * Tests that border nodes with an active conditional style keep their side
+     * after a container resizing.
+     */
+    public void testResizeContainerWithConditionalStyle() {
+        createBorderNodesUsingToolsReferencingConditionalStyle(3);
+        checkBorderNodesSides(true);
+        SWTBotGefEditPart containerGefEditPart = editor.getEditPart("subPackage1", AbstractDiagramContainerEditPart.class);
+        containerGefEditPart.select();
+        final Rectangle currentBounds = getContainerBounds().getCopy();
+        editor.drag(currentBounds.getBottomRight(), currentBounds.getBottomRight().translate(-currentBounds.width / 2, -currentBounds.height / 2));
+        bot.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return !currentBounds.equals(getContainerBounds());
+            }
+
+            @Override
+            public void init(SWTBot bot) {
+
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The container resizing failed";
+            }
+        });
+        checkBorderNodesSides(true);
     }
 
     private void moveBorderNode(String borderNodeName, int position) {
@@ -213,6 +330,25 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
 
         // test south and north
         activateAndUseTool("createSouthNorthBorderNode", "subPackage1", copies);
+
+    }
+
+    private void createBorderNodesUsingToolsReferencingConditionalStyle(int copies) {
+        // test west
+        activateAndUseTool("createWestBorderNodeWithConditionalStyle", "subPackage1", copies);
+
+        // test east
+        activateAndUseTool("createEastBorderNodeWithConditionalStyle", "subPackage1", copies);
+
+        // test south
+        activateAndUseTool("createSouthBorderNodeWithConditionalStyle", "subPackage1", copies);
+
+        // test north
+        activateAndUseTool("createNorthBorderNodeWithConditionalStyle", "subPackage1", copies);
+
+        // test south and north
+        activateAndUseTool("createSouthNorthBorderNodeWithConditionalStyle", "subPackage1", copies);
+
     }
 
     private void activateAndUseTool(String toolName, String targetEditPartName, int iterations) {
@@ -222,7 +358,7 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
         }
     }
 
-    private void checkBorderNodesSides() {
+    private void checkBorderNodesSides(boolean expectConditionalStyle) {
 
         // We retrieve the border nodes edit parts...
         List<SWTBotGefEditPart> botGefEditParts = editor.editParts(new BaseMatcher<EditPart>() {
@@ -242,6 +378,14 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
         for (SWTBotGefEditPart botGefEditPart : botGefEditParts) {
             AbstractDiagramBorderNodeEditPart editPart = (AbstractDiagramBorderNodeEditPart) botGefEditPart.part();
             DNode node = (DNode) editPart.resolveSemanticElement();
+
+            if (expectConditionalStyle) {
+                assertTrue("The tested node should be under a conditional style node. But it is not.", node.getOwnedStyle().getDescription().eContainer() instanceof ConditionalNodeStyleDescription);
+            } else {
+                assertFalse("The tested node should be not under a conditional style node. But it is.", node.getOwnedStyle().getDescription().eContainer() instanceof ConditionalNodeStyleDescription);
+            }
+            assertEquals("The tested node should be under a conditional style node. But is is not.", expectConditionalStyle,
+                    node.getOwnedStyle().getDescription().eContainer() instanceof ConditionalNodeStyleDescription);
             String name = node.getName();
             int side = computeSide(editPart);
             String message = "The border node " + name + " is not at the expected side";
@@ -317,4 +461,5 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotUtils.waitAllUiEvents();
         super.tearDown();
     }
+
 }

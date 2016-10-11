@@ -24,6 +24,7 @@ import org.eclipse.sirius.tests.swtbot.compartment.CompartmentsCreationTest;
 import org.eclipse.sirius.tests.swtbot.compartment.CompartmentsDragAndDropTest;
 import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionExpressionTest;
 import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionTest;
+import org.eclipse.sirius.tests.swtbot.editor.vsm.BorderNodeSidePropertySectionTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.BorderSizeComputationExpressionTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.CompletionProposalInVSMTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ContainerDropPropertySectionsTests;
@@ -286,6 +287,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(InvalidMetamodelRessourceTest.class);
         suite.addTestSuite(ExtensionActivationOrderTest.class);
         suite.addTestSuite(ContainerDropPropertySectionsTests.class);
+        suite.addTestSuite(BorderNodeSidePropertySectionTest.class);
     }
 
     /**
