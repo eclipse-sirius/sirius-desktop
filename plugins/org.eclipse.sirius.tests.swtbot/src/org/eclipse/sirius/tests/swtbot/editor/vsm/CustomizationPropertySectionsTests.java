@@ -21,9 +21,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
@@ -32,7 +29,6 @@ import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.sirius.viewpoint.description.Customization;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
@@ -162,11 +158,9 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         assertEquals("The left list of available elements should be of 3, for the begin/center/end edge style description", 3, table1.rowCount());
         SWTBotTable table2 = appliedOnSelectorShellBot.table(1);
         assertEquals("The right list of selected elements should be of 3", 3, table2.rowCount());
-        AdapterFactoryLabelProvider wrappedProvider = new AdapterFactoryLabelProvider(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
-        ILabelProvider labelProvider = new HierarchyLabelProvider(wrappedProvider);
-        assertEquals(labelProvider.getText(eAttributeCustomization.getAppliedOn().get(0)), table2.getTableItem(0).getText());
-        assertEquals(labelProvider.getText(eAttributeCustomization.getAppliedOn().get(1)), table2.getTableItem(1).getText());
-        assertEquals(labelProvider.getText(eAttributeCustomization.getAppliedOn().get(2)), table2.getTableItem(2).getText());
+        assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EPackageMapping > Gradient white to light_gray", table2.getTableItem(0).getText());
+        assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EClassMapping > EAttributeMapping > Gauge", table2.getTableItem(1).getText());
+        assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EClassMapping > Gradient white to light_gray", table2.getTableItem(2).getText());
         appliedOnSelectorShell.close();
 
         // Test that without attributeName we have 5 style description elements
@@ -179,11 +173,10 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         assertEquals("The left list of available elements should be of 5, i.e. all available style description elements", 5, appliedOnSelectorShell.bot().table(0).rowCount());
         table2 = appliedOnSelectorShellBot.table(1);
         assertEquals("The right list of selected elements should be of 3", 3, table2.rowCount());
-        assertEquals(labelProvider.getText(eAttributeCustomization.getAppliedOn().get(0)), table2.getTableItem(0).getText());
-        assertEquals(labelProvider.getText(eAttributeCustomization.getAppliedOn().get(1)), table2.getTableItem(1).getText());
-        assertEquals(labelProvider.getText(eAttributeCustomization.getAppliedOn().get(2)), table2.getTableItem(2).getText());
+        assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EPackageMapping > Gradient white to light_gray", table2.getTableItem(0).getText());
+        assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EClassMapping > EAttributeMapping > Gauge", table2.getTableItem(1).getText());
+        assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EClassMapping > Gradient white to light_gray", table2.getTableItem(2).getText());
         appliedOnSelectorShell.close();
-        labelProvider.dispose();
     }
 
     /**
@@ -232,11 +225,10 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         assertEquals("The left list of available elements should be empty because we have already selected elements selectionnable", 0, appliedOnSelectorShellBot.table(0).rowCount());
         SWTBotTable table2 = appliedOnSelectorShellBot.table(1);
         assertEquals("The right list of selected elements should be of 3", 3, table2.rowCount());
-        AdapterFactoryLabelProvider wrappedProvider = new AdapterFactoryLabelProvider(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
-        ILabelProvider labelProvider = new HierarchyLabelProvider(wrappedProvider);
-        assertEquals(labelProvider.getText(eReferenceCustomization.getAppliedOn().get(0)), table2.getTableItem(0).getText());
-        assertEquals(labelProvider.getText(eReferenceCustomization.getAppliedOn().get(1)), table2.getTableItem(1).getText());
-        assertEquals(labelProvider.getText(eReferenceCustomization.getAppliedOn().get(2)), table2.getTableItem(2).getText());
+        assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EClassMapping > Gradient white to light_gray", table2.getTableItem(0).getText());
+        assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EPackageMapping > Gradient white to light_gray", table2.getTableItem(1).getText());
+        assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EClassMapping > EAttributeMapping > Gauge > Gauge Section black to green",
+                table2.getTableItem(2).getText());
         appliedOnSelectorShell.close();
 
         // Test that without attributeName we have 5 style description elements
@@ -249,11 +241,11 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         assertEquals("The left list of available elements should be of 5, i.e. all available style description elements", 5, appliedOnSelectorShellBot.table(0).rowCount());
         table2 = appliedOnSelectorShellBot.table(1);
         assertEquals("The right list of selected elements should be of 3", 3, table2.rowCount());
-        assertEquals(labelProvider.getText(eReferenceCustomization.getAppliedOn().get(0)), table2.getTableItem(0).getText());
-        assertEquals(labelProvider.getText(eReferenceCustomization.getAppliedOn().get(1)), table2.getTableItem(1).getText());
-        assertEquals(labelProvider.getText(eReferenceCustomization.getAppliedOn().get(2)), table2.getTableItem(2).getText());
+        assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EClassMapping > Gradient white to light_gray", table2.getTableItem(0).getText());
+        assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EPackageMapping > Gradient white to light_gray", table2.getTableItem(1).getText());
+        assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EClassMapping > EAttributeMapping > Gauge > Gauge Section black to green",
+                table2.getTableItem(2).getText());
         appliedOnSelectorShell.close();
-        labelProvider.dispose();
     }
 
     /**
