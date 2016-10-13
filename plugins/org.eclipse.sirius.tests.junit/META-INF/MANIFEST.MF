@@ -75,7 +75,8 @@ Require-Bundle: org.eclipse.sirius.tests.sample.benchmark,
  org.eclipse.sirius.common.acceleo.aql.ide;bundle-version="3.1.0",
  org.eclipse.ui.navigator;bundle-version="3.5.200",
  org.eclipse.sirius.diagram.formatdata;bundle-version="4.1.0",
- org.eclipse.sirius.ext.emf.edit;bundle-version="4.1.0"
+ org.eclipse.sirius.ext.emf.edit;bundle-version="4.1.0",
+ org.eclipse.ui.editors
 Bundle-Activator: org.eclipse.sirius.tests.SiriusTestsPlugin
 Eclipse-LazyStart: true
 Bundle-Localization: plugin

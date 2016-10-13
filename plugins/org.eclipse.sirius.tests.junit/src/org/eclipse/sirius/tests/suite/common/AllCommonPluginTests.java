@@ -142,6 +142,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.RepairWithActivatedFilter
 import org.eclipse.sirius.tests.unit.diagram.migration.RgbValuesEDataTypeMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RunRepairTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SetVersionTest;
+import org.eclipse.sirius.tests.unit.multipageeditor.SiriusMultiPageEditorTest;
 import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesTest;
 import org.eclipse.sirius.tests.unit.perf.common.Session1MillionTests;
 
@@ -339,6 +340,9 @@ public class AllCommonPluginTests extends TestCase {
         // one false-negative Gerrit Verification job
         suite.addTestSuite(SessionManagerListener2Tests.class);
         suite.addTestSuite(RepairWithActivatedFiltersTest.class);
+        // We don't officially handle Sirius editors inside MultiPageEditorPart
+        // so it is not necessary to run it in Gerrit.
+        suite.addTestSuite(SiriusMultiPageEditorTest.class);
     }
 
     /**

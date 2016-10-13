@@ -11,6 +11,16 @@
        Obeo - Initial API and implementation
 -->
 <plugin>
+    <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="Sirius Sample Multi-page Editor"
+            extensions="mpe"
+            icon="icons/sample.gif"
+            class="org.eclipse.sirius.tests.unit.multipageeditor.SiriusMultiPageEditor"
+            id="org.eclipse.sirius.tests.unit.SiriusMultiPageEditor">
+      </editor>
+   </extension>
    <extension
          point="org.eclipse.sirius.componentization">
       <component
