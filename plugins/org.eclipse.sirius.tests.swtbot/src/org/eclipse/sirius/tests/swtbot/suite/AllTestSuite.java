@@ -33,6 +33,7 @@ import org.eclipse.sirius.tests.swtbot.editor.vsm.CreateMandatoryElementsTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.CustomizationPropertySectionsTests;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.MetamodelPropertyTabTests;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.MigrationOnVsmEditorReloadTest;
+import org.eclipse.sirius.tests.swtbot.editor.vsm.OpeningContextTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ResizeKindEditorTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.VSMFieldTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ValidationEmptyNameTest;
@@ -158,6 +159,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeSelectionTest.class);
         suite.addTestSuite(DiagramMouseZoomTest.class);
         suite.addTestSuite(EdgeLabelsMoveFromEdgeMoveTest.class);
+        suite.addTestSuite(OpeningContextTest.class);
     }
 
     /**
