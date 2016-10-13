@@ -16,7 +16,6 @@ import java.util.List;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
@@ -25,6 +24,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtenderConstants;
@@ -81,11 +81,39 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
         ctx = new GlobalContext(accessor, interpreter, null);
 
+        initLoggers();
+        setWarningCatchActive(true);
+
+    }
+
+    /**
+     * Tests that warnings occurring during semantic candidate expression
+     * evaluation on a TreeRefresh are logged in error log.
+     * 
+     */
+    public void testWarningLoggingWithIncorrectSemanticCandidateExpression() {
+        EPackage semanticModel = EcoreFactory.eINSTANCE.createEPackage();
+        semanticModel.setName("testModel");
+
+        DTree newTree = TreeFactory.eINSTANCE.createDTree();
+        newTree.setTarget(semanticModel);
+        newTree.setDescription(odesign.group().design().epackagecontent().object());
+        List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().epackagecontent().object().eAllContents(), TreeItemMapping.class));
+
+        Assert.assertFalse(doesAWarningOccurs());
+        mappings.get(0).setSemanticCandidatesExpression("aql:incorrectExpression");
+
+        DTreeRefresh refresher = new DTreeRefresh(newTree, mappings, invalidator, ctx);
+        refresher.refresh(true, new NullProgressMonitor());
+        Assert.assertEquals(1, warnings.size());
+        Assert.assertTrue(warnings.get("org.eclipse.core.runtime").iterator().next().getException() instanceof EvaluationException);
+        clearWarnings();
+
     }
 
     public void testOrderMatchesTheModelOrder() throws Exception {
 
-        EPackage semanticModel = (EPackage) EcoreUtil.copy(EcorePackage.eINSTANCE);
+        EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
         TreeDescriptionGenericEMFTree representation = odesign.group().design().genericemftree();
         DTree firstTree = TreeFactory.eINSTANCE.createDTree();
         firstTree.setTarget(semanticModel);
@@ -140,7 +168,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
     public void testOrderKeptOnSubsequentRefreshes() throws Exception {
 
-        EPackage semanticModel = (EPackage) EcoreUtil.copy(EcorePackage.eINSTANCE);
+        EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
@@ -158,7 +186,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
     public void testDeleteElement() throws Exception {
 
-        EPackage semanticModel = (EPackage) EcoreUtil.copy(EcorePackage.eINSTANCE);
+        EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
@@ -178,7 +206,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
     public void testCreateElement() throws Exception {
 
-        EPackage semanticModel = (EPackage) EcoreUtil.copy(EcorePackage.eINSTANCE);
+        EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
@@ -197,7 +225,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         }
         assertEquals("We should have only one Abstract EModelElement instance.", 1, numberOfEModelElement);
 
-        semanticModel.getEClassifiers().add((EClassifier) EcoreUtil.copy(semanticModel.getEClassifier("EModelElement")));
+        semanticModel.getEClassifiers().add(EcoreUtil.copy(semanticModel.getEClassifier("EModelElement")));
 
         refresher.refresh(new NullProgressMonitor());
 
@@ -214,7 +242,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
     }
 
     public void testRenameElement() throws Exception {
-        EPackage semanticModel = (EPackage) EcoreUtil.copy(EcorePackage.eINSTANCE);
+        EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
@@ -233,7 +261,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
     }
 
     public void testRefreshBoundedToExpansionState() throws Exception {
-        EPackage semanticModel = (EPackage) EcoreUtil.copy(EcorePackage.eINSTANCE);
+        EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
         newTree.setTarget(semanticModel);
         TreeDescription specification = odesign.group().design().genericemftree().object();
@@ -308,7 +336,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
     public void testReorder() throws Exception {
 
-        EPackage semanticModel = (EPackage) EcoreUtil.copy(EcorePackage.eINSTANCE);
+        EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
@@ -329,7 +357,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
      */
     public void _testGnericEMFTreeCollapseAll() throws Exception {
 
-        EPackage semanticModel = (EPackage) EcoreUtil.copy(EcorePackage.eINSTANCE);
+        EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
         newTree.setTarget(semanticModel);
         TreeDescriptionGenericEMFTree representation = odesign.group().design().genericemftree();
@@ -343,7 +371,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
     public void testOrderIsDeterministicAmongRepresentationInstances() throws Exception {
 
-        EPackage semanticModel = (EPackage) EcoreUtil.copy(EcorePackage.eINSTANCE);
+        EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
         TreeDescriptionGenericEMFTree representation = odesign.group().design().genericemftree();
         DTree firstTree = TreeFactory.eINSTANCE.createDTree();
         firstTree.setTarget(semanticModel);
