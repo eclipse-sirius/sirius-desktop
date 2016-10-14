@@ -83,6 +83,12 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
         addDiagramContributionItems();
         addDiagramElementContributionItems();
 
+        // The visibility of static contributions are done before calling
+        // addTabbarContributions() to have a correct index when
+        // org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.AbstractMenuContributionItem.TabbarContributionItem.fill(ToolBar,
+        // int) is called
+        refreshItemsVisibility(null);
+
         // Add dynamic contributions
         ArrayList<IContributionItem> currentContributions = new ArrayList<IContributionItem>(Arrays.asList(manager.getItems()));
         addTabbarContributions();
@@ -100,6 +106,18 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
      */
     @Override
     public void update(ISelection iSelection) {
+        refreshItemsVisibility(iSelection);
+
+        manager.update(true);
+    }
+
+    /**
+     * Refresh the visibility of items according to the given selection.
+     * 
+     * @param selection
+     *            the current selection.
+     */
+    protected void refreshItemsVisibility(ISelection selection) {
         List<IContributionItem> existingItems = Arrays.asList(manager.getItems());
         for (IContributionItem current : existingItems) {
             if (!dynamicContributions.contains(current) && !current.isSeparator()) {
@@ -107,14 +125,12 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
             }
         }
 
-        List<IContributionItem> contributionItems = getContributionItems(iSelection);
+        List<IContributionItem> contributionItems = getContributionItems(selection);
         for (IContributionItem item : contributionItems) {
             if (existingItems.contains(item)) {
                 item.setVisible(true);
             }
         }
-
-        manager.update(true);
     }
 
     private List<IContributionItem> getContributionItems(ISelection selection) {
