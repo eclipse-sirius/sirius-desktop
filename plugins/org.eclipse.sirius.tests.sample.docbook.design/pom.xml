@@ -17,12 +17,12 @@
   <parent>
     <groupId>org.eclipse.sirius</groupId>
     <artifactId>sirius-tests-parent</artifactId>
-    <version>3.1.6-SNAPSHOT</version>
+    <version>3.1.7-SNAPSHOT</version>
     <relativePath>../../packaging/org.eclipse.sirius.tests.parent</relativePath>
   </parent>
 
   <artifactId>org.eclipse.sirius.tests.sample.docbook.design</artifactId>
   <packaging>eclipse-plugin</packaging>
-  <version>3.1.6-SNAPSHOT</version>
+  <version>3.1.7-SNAPSHOT</version>
 
 </project>
