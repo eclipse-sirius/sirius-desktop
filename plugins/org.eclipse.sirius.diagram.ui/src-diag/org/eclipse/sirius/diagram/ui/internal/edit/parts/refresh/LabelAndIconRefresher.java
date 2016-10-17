@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.internal.edit.parts.refresh;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
@@ -126,8 +127,11 @@ public class LabelAndIconRefresher implements NotificationListener {
             DDiagramElement dDiagramElement = getDDiagramElement(graphicalEditPart);
             if (dDiagramElement != null) {
                 broker.removeNotificationListener(dDiagramElement, ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS, this);
-                for (EObject semanticElement : dDiagramElement.getSemanticElements()) {
-                    broker.removeNotificationListener(semanticElement, this);
+                EList<EObject> semanticElements = dDiagramElement.getSemanticElements();
+                if (semanticElements != null) {
+                    for (EObject semanticElement : semanticElements) {
+                        broker.removeNotificationListener(semanticElement, this);
+                    }
                 }
             }
 
