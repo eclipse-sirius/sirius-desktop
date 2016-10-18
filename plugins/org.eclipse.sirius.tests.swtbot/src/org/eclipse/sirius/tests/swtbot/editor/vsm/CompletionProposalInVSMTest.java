@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.ParameterizedCommand;
@@ -22,13 +23,13 @@ import org.eclipse.core.resources.IWorkspaceDescription;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
@@ -41,6 +42,7 @@ import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
@@ -61,6 +63,8 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     private static final String ACCELEO_MTL_INTERPRETER_TEST_MODULE_MTL = "AcceleoMtlInterpreterTestModule.mtl";
 
     private static final String BASIC_SERVICE_JAVA = "BasicService.java";
+
+    private static final String SERVICE_WITH_DEPENDENCIES_JAVA = "ServicesWithDependencies.java";
 
     private static final String PATH = "data/unit/editor/vsm/completion/";
 
@@ -87,6 +91,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
      */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
+        setErrorCatchActive(false);
     }
 
     /**
@@ -102,7 +107,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
      *                disable auto build.
      * @throws CommandException
      */
-    private void initContext() throws InterruptedException, OperationCanceledException, CoreException, CommandException {
+    private void initContext(List<String> nodes) throws InterruptedException, OperationCanceledException, CoreException, CommandException {
         designerPerspectives.openSiriusPerspective();
         // Wait the end of the current build and/or refresh.
         waitJobsBuildOrRefresh();
@@ -135,6 +140,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         package_name = package_name.replace('.', pathSeparator);
         String dest = VSM_PROJECT_NAME + "/src/" + package_name + pathSeparator;
         EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, PATH + BASIC_SERVICE_JAVA, dest + BASIC_SERVICE_JAVA);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, PATH + SERVICE_WITH_DEPENDENCIES_JAVA, dest + SERVICE_WITH_DEPENDENCIES_JAVA);
 
         // Copy the mtl files
         EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, PATH + ACCELEO_MTL_INTERPRETER_TEST_MODULE_MTL, dest + ACCELEO_MTL_INTERPRETER_TEST_MODULE_MTL);
@@ -149,7 +155,11 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         waitJobsBuildOrRefresh();
 
         bot.activeEditor().setFocus();
-        bot.activeEditor().bot().tree().expandNode("platform:/resource/" + VSM_PROJECT_NAME + "/description/" + VSM, "test", "VP", "Diag").select();
+        SWTBotTreeItem lastExpandNode = bot.activeEditor().bot().tree().expandNode("platform:/resource/" + VSM_PROJECT_NAME + "/description/" + VSM);
+        for (String node : nodes) {
+            lastExpandNode = lastExpandNode.expandNode(node);
+        }
+        lastExpandNode.select();
 
         propertiesBot = bot.viewByTitle("Properties");
         propertiesBot.setFocus();
@@ -157,8 +167,8 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     }
 
     private void addAcceleoNature(IProject projet) throws CommandException {
-        ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
-        IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
+        ICommandService commandService = PlatformUI.getWorkbench().getService(ICommandService.class);
+        IHandlerService handlerService = PlatformUI.getWorkbench().getService(IHandlerService.class);
         Command addAcceleoNatureCommand = commandService.getCommand("org.eclipse.sirius.common.acceleo.mtl.ide.internal.convert"); //$NON-NLS-1$
 
         // If the acceleo interpreter is not present, do not configure.
@@ -200,12 +210,11 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
             return;
         }
 
-        initContext();
+        initContext(Lists.newArrayList("test", "VP", "Diag"));
 
         // Set the domain class
         SWTBotText domainClass = propertiesBot.bot().text(2);
         domainClass.setFocus();
-        domainClass.setText("EClass");
 
         // Init the Precondition Expression
         SWTBotText precondition = propertiesBot.bot().text(3);
@@ -217,6 +226,114 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleService() : String"));
         assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleServiceOnEClass() : String"));
         assertFalse("Proposals on EClass should not contain services for EPackage.", contentAssistProposal.contains("sampleServiceOnEPackage() : String"));
+
+    }
+
+    /**
+     * Check that the right Java service appears in the completion proposals
+     * with Acceleo interpreter.
+     * 
+     * Warning: To ensure the non regression of the associtated bug 500253, the
+     * manifest must not have a direct reference to org.eclipse.emf.ecore.
+     * 
+     * @exception Exception
+     *                In case of problem during context initialization.
+     */
+    public void test_Java_Service_Completion_By_Acceleo() throws Exception {
+
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
+
+        initContext(Lists.newArrayList("test", "VP", "Diag", "Default", "C1"));
+
+        // Set the domain class
+        SWTBotText domainClass = propertiesBot.bot().text(2);
+        domainClass.setFocus();
+
+        // Init the Precondition Expression
+        SWTBotText precondition = propertiesBot.bot().text(3);
+        precondition.setFocus();
+        precondition.setText("[self./]");
+
+        // Get proposals
+        Collection<String> contentAssistProposal = getContentAssistProposal(precondition, 6);
+        assertTrue("Proposals should be present.", contentAssistProposal.contains("testInteractionsService() : CallMessage"));
+        assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleService() : String"));
+        assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleServiceOnEClass() : String"));
+
+    }
+
+    /**
+     * Check that the right Java service appears in the completion proposals
+     * with service keyword used.
+     * 
+     * Warning: To ensure the non regression of the associtated bug 500253, the
+     * manifest must not have a direct reference to org.eclipse.emf.ecore.
+     * 
+     * @exception Exception
+     *                In case of problem during context initialization.
+     */
+    public void test_Java_Service_Completion_By_Service_Keyword() throws Exception {
+
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
+
+        initContext(Lists.newArrayList("test", "VP", "Diag", "Default", "C1"));
+
+        // Set the domain class
+        SWTBotText domainClass = propertiesBot.bot().text(2);
+        domainClass.setFocus();
+
+        // Init the Precondition Expression
+        SWTBotText precondition = propertiesBot.bot().text(3);
+        precondition.setFocus();
+        precondition.setText("service:");
+
+        // Get proposals
+        Collection<String> contentAssistProposal = getContentAssistProposal(precondition, 8);
+        assertTrue("Proposals should be present.", contentAssistProposal.contains("testInteractionsService()"));
+        assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleService()"));
+        assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleServiceOnEClass()"));
+
+    }
+
+    /**
+     * Check that the right Java service appears in the completion proposals
+     * with AQL interpreter.
+     * 
+     * Warning: To ensure the non regression of the associtated bug 500253, the
+     * manifest must not have a direct reference to org.eclipse.emf.ecore.
+     * 
+     * @exception Exception
+     *                In case of problem during context initialization.
+     */
+    public void test_Java_Service_Completion_By_AQL() throws Exception {
+
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
+
+        // initContext(Lists.newArrayList("test", "VP", "Diag", "Default",
+        // "C1"));
+        initContext(Lists.newArrayList("test", "VP", "Diag", "Default", "C1"));
+
+        // Set the domain class
+        SWTBotText domainClass = propertiesBot.bot().text(2);
+        domainClass.setFocus();
+
+        // Init the Precondition Expression
+        SWTBotText precondition = propertiesBot.bot().text(3);
+        precondition.setFocus();
+        precondition.setText("aql:self.");
+
+        // Get proposals
+        Collection<String> contentAssistProposal = getContentAssistProposal(precondition, 9);
+        assertTrue("Proposals should be present.", contentAssistProposal.contains("testInteractionsService()"));
+        assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleService()"));
+        assertTrue("Proposals on EClass should contain service for EClass.", contentAssistProposal.contains("sampleServiceOnEClass()"));
+
     }
 
     /**
@@ -231,12 +348,11 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
             return;
         }
 
-        initContext();
+        initContext(Lists.newArrayList("test", "VP", "Diag"));
 
         // Set the domain class
         SWTBotText domainClass = propertiesBot.bot().text(2);
         domainClass.setFocus();
-        domainClass.setText("EClass");
 
         // Init the Precondition Expression
         SWTBotText precondition = propertiesBot.bot().text(3);
@@ -272,7 +388,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
             return;
         }
 
-        initContext();
+        initContext(Lists.newArrayList("test", "VP", "Diag"));
 
         // Get proposals for domain class.
         SWTBotText domainClass = propertiesBot.bot().text(2);
@@ -297,10 +413,10 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
      *                In case of problem during context initialization.
      */
     public void test_Domain_Class_Completion_With_Selected_MetaModels() throws Exception {
-        initContext();
+        initContext(Lists.newArrayList("test", "VP", "Diag"));
 
         // select Sirius metamodels
-        Collection<String> expectedMetamodels = Lists.newArrayList(DescriptionPackage.eNS_URI, DiagramPackage.eNS_URI, ViewpointPackage.eNS_URI);
+        Collection<String> expectedMetamodels = Lists.newArrayList(DescriptionPackage.eNS_URI, DiagramPackage.eNS_URI, ViewpointPackage.eNS_URI, InteractionsPackage.eNS_URI);
         selectSiriusMetaModels(expectedMetamodels);
 
         propertiesBot = bot.viewByTitle("Properties");
@@ -395,6 +511,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean test() throws Exception {
             return expectedSelectionCound == swtBotTable.selectionCount();
         }
@@ -402,6 +519,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         /**
          * {@inheritDoc}
          */
+        @Override
         public String getFailureMessage() {
             return "The selection count is not the expected one, expected (" + expectedSelectionCound + "), " + swtBotTable.selectionCount();
         }

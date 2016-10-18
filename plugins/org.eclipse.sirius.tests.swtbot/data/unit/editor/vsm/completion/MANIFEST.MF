@@ -1,12 +1,13 @@
 Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.sirius.test.design
-Bundle-SymbolicName: org.eclipse.sirius.test.design;singleton=true
+Bundle-SymbolicName: org.eclipse.sirius.test.design;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: org.eclipse.sirius.test.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.sirius,
- org.eclipse.sirius.common.acceleo.mtl,
- org.eclipse.emf.ecore
+ org.eclipse.sirius.common.acceleo.mtl
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.eclipse.sirius.sample.interactions
