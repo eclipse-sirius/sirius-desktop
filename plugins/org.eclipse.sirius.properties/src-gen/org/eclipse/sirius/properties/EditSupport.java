@@ -84,22 +84,6 @@ public interface EditSupport extends EObject {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @model kind="operation" required="true"
-     * @generated
-     */
-    String getCategory();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @model kind="operation"
-     * @generated
-     */
-    EList<EObject> getCategories();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
      * @model kind="operation"
      * @generated
      */
@@ -112,5 +96,21 @@ public interface EditSupport extends EObject {
      * @generated
      */
     Object setValue(EStructuralFeature feature, Object newValue);
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @model eStructuralFeatureRequired="true"
+     * @generated
+     */
+    boolean needsTextWidget(EStructuralFeature eStructuralFeature);
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @model eStructuralFeatureRequired="true"
+     * @generated
+     */
+    boolean needsCheckboxWidget(EStructuralFeature eStructuralFeature);
 
 } // EditSupport

@@ -412,12 +412,16 @@
     <eOperations name="getDescription" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eParameters name="eStructuralFeature" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
     </eOperations>
-    <eOperations name="getCategory" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eOperations name="getCategories" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
     <eOperations name="getEStructuralFeatures" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
     <eOperations name="setValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
       <eParameters name="feature" lowerBound="1" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature"/>
       <eParameters name="newValue" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="needsTextWidget" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eParameters name="eStructuralFeature" lowerBound="1" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature"/>
+    </eOperations>
+    <eOperations name="needsCheckboxWidget" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eParameters name="eStructuralFeature" lowerBound="1" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature"/>
     </eOperations>
   </eClassifiers>
 </ecore:EPackage>

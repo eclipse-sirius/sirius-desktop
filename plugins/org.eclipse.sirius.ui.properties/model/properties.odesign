@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <properties:ViewExtensionDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/tool/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description/tool" identifier="org.eclipse.sirius.ui.properties">
   <pages identifier="org.eclipse.sirius.ui.properties.defaultpage" labelExpression="aql:input.emfEditServices(self).getTabName()" semanticCandidateExpression="aql:input.getAllSemanticElements()" groups="//@groups.0"/>
-  <groups identifier="org.eclipse.sirius.ui.properties.defaultgroup" labelExpression="aql:input.emfEditServices(self).getCategory()" semanticCandidateExpression="aql:input.emfEditServices(self).getCategories()" preconditionExpression="">
+  <groups identifier="org.eclipse.sirius.ui.properties.defaultgroup" labelExpression="Properties" semanticCandidateExpression="var:self" preconditionExpression="">
     <controls xsi:type="properties:DynamicMappingFor" iterator="eStructuralFeature" iterableExpression="aql:input.emfEditServices(self).getEStructuralFeatures()">
-      <ifs predicateExpression="aql:(eStructuralFeature.eType.instanceTypeName = 'java.lang.String' or eStructuralFeature.eType.instanceTypeName = 'int' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Integer' or eStructuralFeature.eType.instanceTypeName = 'double' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Double' or eStructuralFeature.eType.instanceTypeName = 'char' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Character' or eStructuralFeature.eType.instanceTypeName = 'short' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Short' or eStructuralFeature.eType.instanceTypeName = 'long' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Long' or eStructuralFeature.eType.instanceTypeName = 'float' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Float' or eStructuralFeature.eType.instanceTypeName = 'java.util.Date') and not(eStructuralFeature.many) and not input.emfEditServices(self).isMultiline(eStructuralFeature)">
+      <ifs predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and not input.emfEditServices(self).isMultiline(eStructuralFeature)">
         <widget xsi:type="properties:TextDescription" identifier="sirius_default_rules_mono_string" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)">
           <initialOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, newValue)"/>
@@ -15,7 +15,7 @@
           </conditionalStyles>
         </widget>
       </ifs>
-      <ifs predicateExpression="aql:(eStructuralFeature.eType.instanceTypeName = 'java.lang.String' or eStructuralFeature.eType.instanceTypeName = 'int' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Integer' or eStructuralFeature.eType.instanceTypeName = 'double' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Double' or eStructuralFeature.eType.instanceTypeName = 'char' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Character' or eStructuralFeature.eType.instanceTypeName = 'short' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Short' or eStructuralFeature.eType.instanceTypeName = 'long' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Long' or eStructuralFeature.eType.instanceTypeName = 'float' or eStructuralFeature.eType.instanceTypeName = 'java.lang.Float' or eStructuralFeature.eType.instanceTypeName = 'java.util.Date') and not(eStructuralFeature.many) and input.emfEditServices(self).isMultiline(eStructuralFeature)">
+      <ifs predicateExpression="aql:input.emfEditServices(self).needsTextWidget(eStructuralFeature) and input.emfEditServices(self).isMultiline(eStructuralFeature)">
         <widget xsi:type="properties:TextAreaDescription" identifier="sirius_default_rules_multi_string" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)">
           <initialOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, newValue)"/>
@@ -27,7 +27,7 @@
           </conditionalStyles>
         </widget>
       </ifs>
-      <ifs predicateExpression="aql:(eStructuralFeature.eType.instanceTypeName = 'java.lang.Boolean' or eStructuralFeature.eType.instanceTypeName = 'boolean') and not(eStructuralFeature.many)">
+      <ifs predicateExpression="aql:input.emfEditServices(self).needsCheckboxWidget(eStructuralFeature)">
         <widget xsi:type="properties:CheckboxDescription" identifier="sirius_default_rules_mono_boolean" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)">
           <initialOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, newValue)"/>
@@ -51,14 +51,11 @@
           </conditionalStyles>
         </widget>
       </ifs>
-      <ifs predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference) and not(eStructuralFeature.containment) and not(eStructuralFeature.many)">
-        <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" identifier="sirius_default_rules_mono_noncontainment_reference" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" referenceNameExpression="aql:eStructuralFeature.name"/>
+      <ifs predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many">
+        <widget xsi:type="properties:ListDescription" identifier="sirius_default_rules_eattribute_many" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)" displayExpression="aql:input.emfEditServices(value).getText()"/>
       </ifs>
-      <ifs predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference) and not(eStructuralFeature.containment) and eStructuralFeature.many">
-        <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" identifier="sirius_default_rules_multi_noncontainment_reference" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" referenceNameExpression="aql:eStructuralFeature.name"/>
-      </ifs>
-      <ifs predicateExpression="aql:eStructuralFeature.many">
-        <widget xsi:type="properties:ListDescription" identifier="sirius_default_rules_many" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)" displayExpression="aql:input.emfEditServices(value).getText()"/>
+      <ifs predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference)">
+        <widget xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" identifier="sirius_default_rules_ereference" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" referenceNameExpression="aql:eStructuralFeature.name"/>
       </ifs>
     </controls>
   </groups>

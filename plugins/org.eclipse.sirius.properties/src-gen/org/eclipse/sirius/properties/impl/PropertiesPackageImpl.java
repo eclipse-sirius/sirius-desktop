@@ -3185,15 +3185,17 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         op = addEOperation(editSupportEClass, ecorePackage.getEString(), "getDescription", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         addEParameter(op, ecorePackage.getEStructuralFeature(), "eStructuralFeature", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        addEOperation(editSupportEClass, ecorePackage.getEString(), "getCategory", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        addEOperation(editSupportEClass, ecorePackage.getEObject(), "getCategories", 0, -1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
         addEOperation(editSupportEClass, ecorePackage.getEStructuralFeature(), "getEStructuralFeatures", 0, -1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         op = addEOperation(editSupportEClass, ecorePackage.getEJavaObject(), "setValue", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         addEParameter(op, theEcorePackage.getEStructuralFeature(), "feature", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         addEParameter(op, ecorePackage.getEJavaObject(), "newValue", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+
+        op = addEOperation(editSupportEClass, theEcorePackage.getEBoolean(), "needsTextWidget", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        addEParameter(op, theEcorePackage.getEStructuralFeature(), "eStructuralFeature", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+
+        op = addEOperation(editSupportEClass, theEcorePackage.getEBoolean(), "needsCheckboxWidget", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        addEParameter(op, theEcorePackage.getEStructuralFeature(), "eStructuralFeature", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         // Initialize enums and add enum literals
         initEEnum(filL_LAYOUT_ORIENTATIONEEnum, org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION.class, "FILL_LAYOUT_ORIENTATION"); //$NON-NLS-1$

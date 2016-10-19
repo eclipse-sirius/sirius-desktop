@@ -10,13 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.properties.internal;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.eclipse.eef.common.api.utils.Util;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -24,7 +17,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.emf.edit.EditingDomainServices;
@@ -36,6 +28,38 @@ import org.eclipse.sirius.properties.impl.EditSupportImpl;
  * @author pcdavid
  */
 public class EditSupportSpec extends EditSupportImpl {
+    private static final String JAVA_LANG_STRING = "java.lang.String"; //$NON-NLS-1$
+
+    private static final String INT = "int"; //$NON-NLS-1$
+
+    private static final String JAVA_LANG_INTEGER = "java.lang.Integer"; //$NON-NLS-1$
+
+    private static final String DOUBLE = "double"; //$NON-NLS-1$
+
+    private static final String JAVA_LANG_DOUBLE = "java.lang.Double"; //$NON-NLS-1$
+
+    private static final String CHAR = "char"; //$NON-NLS-1$
+
+    private static final String JAVA_LANG_CHARACTER = "java.lang.Character"; //$NON-NLS-1$
+
+    private static final String SHORT = "short"; //$NON-NLS-1$
+
+    private static final String JAVA_LANG_SHORT = "java.lang.Short"; //$NON-NLS-1$
+
+    private static final String LONG = "long"; //$NON-NLS-1$
+
+    private static final String JAVA_LANG_LONG = "java.lang.Long"; //$NON-NLS-1$
+
+    private static final String FLOAT = "float"; //$NON-NLS-1$
+
+    private static final String JAVA_LANG_FLOAT = "java.lang.Float"; //$NON-NLS-1$
+
+    private static final String JAVA_UTIL_DATE = "java.util.Date"; //$NON-NLS-1$
+
+    private static final String BOOLEAN = "boolean"; //$NON-NLS-1$
+
+    private static final String JAVA_LANG_BOOLEAN = "java.lang.Boolean"; //$NON-NLS-1$
+
     private final EditingDomainServices editServices = new EditingDomainServices();
 
     private final SiriusContext context;
@@ -65,9 +89,7 @@ public class EditSupportSpec extends EditSupportImpl {
      */
     private EObject getTargetEObject() {
         EObject result = null;
-        if (self instanceof EEFViewCategory) {
-            result = ((EEFViewCategory) self).getWrappedEObject();
-        } else if (self instanceof EObject) {
+        if (self instanceof EObject) {
             result = (EObject) self;
         }
         return result;
@@ -159,98 +181,48 @@ public class EditSupportSpec extends EditSupportImpl {
     }
 
     @Override
-    public String getCategory() {
-        if (self instanceof EEFViewCategory) {
-            return ((EEFViewCategory) self).getCategory();
-        } else {
-            return Messages.SiriusToolServices_DefaultCategoryName;
-        }
+    public boolean needsTextWidget(EStructuralFeature eStructuralFeature) {
+        boolean needsTextWidget = false;
+
+        needsTextWidget = needsTextWidget || JAVA_LANG_STRING.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsTextWidget = needsTextWidget || INT.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsTextWidget = needsTextWidget || JAVA_LANG_INTEGER.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsTextWidget = needsTextWidget || DOUBLE.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsTextWidget = needsTextWidget || JAVA_LANG_DOUBLE.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsTextWidget = needsTextWidget || CHAR.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsTextWidget = needsTextWidget || JAVA_LANG_CHARACTER.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsTextWidget = needsTextWidget || SHORT.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsTextWidget = needsTextWidget || JAVA_LANG_SHORT.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsTextWidget = needsTextWidget || LONG.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsTextWidget = needsTextWidget || JAVA_LANG_LONG.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsTextWidget = needsTextWidget || FLOAT.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsTextWidget = needsTextWidget || JAVA_LANG_FLOAT.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsTextWidget = needsTextWidget || JAVA_UTIL_DATE.equals(eStructuralFeature.getEType().getInstanceTypeName());
+
+        return needsTextWidget && !eStructuralFeature.isMany();
     }
 
     @Override
-    public EList<EObject> getCategories() {
-        if (self instanceof EObject) {
-            EObject eObject = (EObject) self;
-            EList<EObject> categories = new BasicEList<>();
+    public boolean needsCheckboxWidget(EStructuralFeature eStructuralFeature) {
+        boolean needsCheckboxWidget = false;
 
-            // Get all the visible features associated to an eObject
-            Collection<EStructuralFeature> features = getVisibleEStructuralFeatures(eObject);
+        needsCheckboxWidget = needsCheckboxWidget || BOOLEAN.equals(eStructuralFeature.getEType().getInstanceTypeName());
+        needsCheckboxWidget = needsCheckboxWidget || JAVA_LANG_BOOLEAN.equals(eStructuralFeature.getEType().getInstanceTypeName());
 
-            // Get all the categories defined in the genmodel for all the
-            // features
-            // of the given EObject
-            Set<String> propertyDescriptorCategories = new HashSet<String>();
-            String defaultCategoryName = Messages.SiriusToolServices_DefaultCategoryName;
-            for (EStructuralFeature feature : features) {
-                String category = this.editServices.getPropertyDescriptorCategory(eObject, feature.getName(), defaultCategoryName);
-                if (category != null) {
-                    propertyDescriptorCategories.add(category);
-                } else {
-                    propertyDescriptorCategories.add(defaultCategoryName);
-                }
-            }
-
-            // Sort the categories by alphabetical order
-            List<String> sortedPropertyDescriptorCategories = new ArrayList<String>(propertyDescriptorCategories);
-            Collections.sort(sortedPropertyDescriptorCategories);
-
-            // Put the default category at the end of the list
-            if (sortedPropertyDescriptorCategories.contains(defaultCategoryName)) {
-                sortedPropertyDescriptorCategories.remove(defaultCategoryName);
-                sortedPropertyDescriptorCategories.add(defaultCategoryName);
-            }
-
-            // Create the EObjects associated to the visible categories
-            for (String category : sortedPropertyDescriptorCategories) {
-                if (eObject instanceof InternalEObject) {
-                    EEFViewCategory eefViewCategory = new EEFViewCategory((InternalEObject) eObject, category);
-                    categories.add(eefViewCategory);
-                }
-            }
-
-            return categories;
-        } else {
-            return new BasicEList<EObject>();
-        }
-    }
-
-    /**
-     * Compute all the visible features (not derived, not transient, not a
-     * containment reference) associated to a given EObject.
-     *
-     * @param eObject
-     *            The EObject
-     * @return List of visible features.
-     */
-    private Collection<EStructuralFeature> getVisibleEStructuralFeatures(EObject eObject) {
-        List<EStructuralFeature> visibleFeaturesCache = new ArrayList<EStructuralFeature>();
-        for (EStructuralFeature eStructuralFeature : eObject.eClass().getEAllStructuralFeatures()) {
-            if (!eStructuralFeature.isDerived() && !eStructuralFeature.isTransient() && !(eStructuralFeature instanceof EReference && ((EReference) eStructuralFeature).isContainment())) {
-                visibleFeaturesCache.add(eStructuralFeature);
-            }
-        }
-
-        return visibleFeaturesCache;
+        return needsCheckboxWidget && !eStructuralFeature.isMany();
     }
 
     @Override
     public EList<EStructuralFeature> getEStructuralFeatures() {
-        EList<EStructuralFeature> result = new BasicEList<EStructuralFeature>();
-        // Get all the features associated to the eObject and filtered by
-        // category
-        if (self instanceof EEFViewCategory) {
-            EEFViewCategory category = (EEFViewCategory) self;
-            String groupCategory = category.getCategory();
-            for (EStructuralFeature eStructuralFeature : getVisibleEStructuralFeatures(category.getWrappedEObject())) {
-                String featureCategory = this.editServices.getPropertyDescriptorCategory(category.getWrappedEObject(), eStructuralFeature.getName(), Messages.SiriusToolServices_DefaultCategoryName);
-                if (groupCategory.equals(featureCategory)) {
-                    result.add(eStructuralFeature);
-                }
+        EList<EStructuralFeature> visibleFeatures = new BasicEList<>();
+        for (EStructuralFeature eStructuralFeature : this.getTargetEObject().eClass().getEAllStructuralFeatures()) {
+            if (!eStructuralFeature.isDerived() && !eStructuralFeature.isTransient() && !(eStructuralFeature instanceof EReference && ((EReference) eStructuralFeature).isContainment())) {
+                visibleFeatures.add(eStructuralFeature);
             }
         }
-        return result;
+        return visibleFeatures;
     }
-    
+
     @Override
     public Object setValue(EStructuralFeature feature, Object newValue) {
         EObject target = getTargetEObject();

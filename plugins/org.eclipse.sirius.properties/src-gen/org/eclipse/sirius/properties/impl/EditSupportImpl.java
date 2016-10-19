@@ -13,7 +13,6 @@ package org.eclipse.sirius.properties.impl;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.properties.EditSupport;
@@ -136,30 +135,6 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
      * @generated
      */
     @Override
-    public String getCategory() {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EList<EObject> getCategories() {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EList<EStructuralFeature> getEStructuralFeatures() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -173,6 +148,30 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
      */
     @Override
     public Object setValue(EStructuralFeature feature, Object newValue) {
+        // TODO: implement this method
+        // Ensure that you remove @generated or mark it @generated NOT
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public boolean needsTextWidget(EStructuralFeature eStructuralFeature) {
+        // TODO: implement this method
+        // Ensure that you remove @generated or mark it @generated NOT
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public boolean needsCheckboxWidget(EStructuralFeature eStructuralFeature) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
         throw new UnsupportedOperationException();

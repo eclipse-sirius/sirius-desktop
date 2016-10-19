@@ -265,12 +265,16 @@
       <genOperations ecoreOperation="properties.ecore#//EditSupport/getDescription">
         <genParameters ecoreParameter="properties.ecore#//EditSupport/getDescription/eStructuralFeature"/>
       </genOperations>
-      <genOperations ecoreOperation="properties.ecore#//EditSupport/getCategory"/>
-      <genOperations ecoreOperation="properties.ecore#//EditSupport/getCategories"/>
       <genOperations ecoreOperation="properties.ecore#//EditSupport/getEStructuralFeatures"/>
       <genOperations ecoreOperation="properties.ecore#//EditSupport/setValue">
         <genParameters ecoreParameter="properties.ecore#//EditSupport/setValue/feature"/>
         <genParameters ecoreParameter="properties.ecore#//EditSupport/setValue/newValue"/>
+      </genOperations>
+      <genOperations ecoreOperation="properties.ecore#//EditSupport/needsTextWidget">
+        <genParameters ecoreParameter="properties.ecore#//EditSupport/needsTextWidget/eStructuralFeature"/>
+      </genOperations>
+      <genOperations ecoreOperation="properties.ecore#//EditSupport/needsCheckboxWidget">
+        <genParameters ecoreParameter="properties.ecore#//EditSupport/needsCheckboxWidget/eStructuralFeature"/>
       </genOperations>
     </genClasses>
   </genPackages>
