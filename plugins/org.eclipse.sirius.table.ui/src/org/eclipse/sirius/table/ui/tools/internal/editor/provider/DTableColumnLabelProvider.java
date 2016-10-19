@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
@@ -173,8 +174,11 @@ public class DTableColumnLabelProvider extends ColumnLabelProvider implements IS
             } else if (element instanceof DLine) {
                 line = (DLine) element;
             }
+            EStructuralFeature feature = TableHelper.getEStructuralFeature(line, column);
             final EClassifier eClassifier = TableHelper.getEClassifier(line, column);
-            if (eClassifier instanceof EDataType && ("Boolean".equals(((EDataType) eClassifier).getName()) || "EBoolean".equals(((EDataType) eClassifier).getName()))) { //$NON-NLS-1$ //$NON-NLS-2$
+            // We do not display the check box for multi-valued feature.
+            boolean isNotMany = feature != null && !feature.isMany();
+            if (isNotMany && eClassifier instanceof EDataType && ("Boolean".equals(((EDataType) eClassifier).getName()) || "EBoolean".equals(((EDataType) eClassifier).getName()))) { //$NON-NLS-1$ //$NON-NLS-2$
                 Option<DCell> optionalCell = TableHelper.getCell(line, column);
                 if (optionalCell.some()) {
                     return getImage(Boolean.parseBoolean(optionalCell.get().getLabel()));

@@ -506,12 +506,18 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                 // objects
                 if (featureObject instanceof EList<?>) {
                     List<String> texts = Lists.newArrayList();
-                    for (EObject obj : (EList<EObject>) featureObject) {
-                        texts.add(getText(obj));
+                    for (Object obj : (EList<?>) featureObject) {
+                        String text;
+                        if (obj instanceof EObject) {
+                            text = getText((EObject) obj);
+                        } else {
+                            text = obj.toString();
+                        }
+                        texts.add(text);
                     }
                     label = texts.toString();
                 } else if (featureObject instanceof EObject) {
-                    label = getText(featureObject);
+                    label = getText((EObject) featureObject);
                 } else {
                     label = featureObject.toString();
                 }
@@ -752,7 +758,8 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * TODO : TBD <BR>
      * The first conditional background style of the cell (with predicate
      * expression that returns true). In this case the backgroundStyleOrigin
-     * references the intersection mapping and the defaultStyle is equal false. <BR>
+     * references the intersection mapping and the defaultStyle is equal false.
+     * <BR>
      * Otherwise the first conditional background style of the column (with
      * predicate expression that returns true). In this case the
      * backgroundStyleOrigin references the column mapping and the defaultStyle
@@ -1140,7 +1147,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
         }
     }
 
-    private String getText(final Object element) {
+    private String getText(final EObject element) {
         String text = null;
         ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
         IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory.adapt(element, IItemLabelProvider.class);

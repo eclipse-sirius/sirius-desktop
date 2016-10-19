@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
+import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.CellEditor;
@@ -200,7 +201,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                     result = getAccessor().eGet(featureParent, getFeatureName());
                 }
 
-                if (!isEReference(featureParent) || directEdit) {
+                if ((!isEReference(featureParent) && !isMany(featureParent)) || directEdit) {
                     // If the type of the value is a EEnum and the cellEditor is
                     // not an ExtendedComboBoxCellEditor, we must return the
                     // index of the ComboBox
@@ -248,21 +249,23 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
             final EObject featureParent = editedCell.getTarget();
             final EClassifier eClassifier = getEClassifier(featureParent);
             Object tempValue = value;
-            if (eClassifier instanceof EEnum) {
-                if (value instanceof Enumerator) {
-                    tempValue = ((Enumerator) value).getValue();
-                } else if (value != null) {
-                    tempValue = ((EEnum) eClassifier).getELiterals().get(((Integer) value).intValue()).getValue();
-                }
-            } else if (value instanceof String && eClassifier != null) {
-                try {
-                    if (eClassifier instanceof EDataType) {
-                        tempValue = eClassifier.getEPackage().getEFactoryInstance().createFromString((EDataType) eClassifier, (String) value);
-                    } else if ("UnlimitedNatural".equals(eClassifier.getName())) { //$NON-NLS-1$
-                        tempValue = Integer.valueOf((String) value);
+            if (!isMany(featureParent)) {
+                if (eClassifier instanceof EEnum) {
+                    if (value instanceof Enumerator) {
+                        tempValue = ((Enumerator) value).getValue();
+                    } else if (value != null) {
+                        tempValue = ((EEnum) eClassifier).getELiterals().get(((Integer) value).intValue()).getValue();
                     }
-                } catch (final NumberFormatException e) {
-                    tempValue = null;
+                } else if (value instanceof String && eClassifier != null) {
+                    try {
+                        if (eClassifier instanceof EDataType) {
+                            tempValue = eClassifier.getEPackage().getEFactoryInstance().createFromString((EDataType) eClassifier, (String) value);
+                        } else if ("UnlimitedNatural".equals(eClassifier.getName())) { //$NON-NLS-1$
+                            tempValue = Integer.valueOf((String) value);
+                        }
+                    } catch (final NumberFormatException e) {
+                        tempValue = null;
+                    }
                 }
             }
             try {
@@ -369,7 +372,12 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                 }
             } else {
                 if (eClassifier != null) {
-                    if (eClassifier instanceof EDataType && ("Boolean".equals(((EDataType) eClassifier).getName()) || "EBoolean".equals(((EDataType) eClassifier).getName()))) { //$NON-NLS-1$ //$NON-NLS-2$
+                    // In case of multi-valued attribute, we delegate to the
+                    // PropertyDescriptor.
+                    if (iItemPropertyDescriptor != null && iItemPropertyDescriptor.isMany(element)) {
+                        PropertyDescriptor descriptor = new PropertyDescriptor(element, iItemPropertyDescriptor);
+                        result = descriptor.createPropertyEditor(tree);
+                    } else if (eClassifier instanceof EDataType && ("Boolean".equals(((EDataType) eClassifier).getName()) || "EBoolean".equals(((EDataType) eClassifier).getName()))) { //$NON-NLS-1$ //$NON-NLS-2$
                         result = new CheckboxCellEditor(tree);
                     } else if (eClassifier instanceof EEnum) {
                         final Object genericFeature = iItemPropertyDescriptor.getFeature(element);
@@ -382,7 +390,9 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                         if (result == null) {
                             result = new ComboBoxCellEditor(tree, getValues((EEnum) eClassifier).toArray(new String[0]), SWT.READ_ONLY);
                         }
-                    } else {
+                    }
+
+                    else {
                         int style = SWT.SINGLE;
                         if (iItemPropertyDescriptor != null && iItemPropertyDescriptor.isMultiLine(element)) {
                             style = SWT.WRAP | SWT.MULTI;

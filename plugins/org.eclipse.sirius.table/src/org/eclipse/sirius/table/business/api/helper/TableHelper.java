@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -217,13 +217,29 @@ public final class TableHelper {
      *         column type
      */
     public static EClassifier getEClassifier(final DLine line, final DColumn column) {
+        EStructuralFeature feature = getEStructuralFeature(line, column);
+        if (feature != null) {
+            return feature.getEType();
+        }
+        return null;
+    }
+
+    /**
+     * Get the {@link EStructuralFeature} of the column. The column must be a
+     * DFeatureColumn
+     * 
+     * @param line
+     *            The line for getting the column of the table
+     * @param column
+     *            The column
+     * @return The {@link EStructuralFeature} or null if not found or wrong
+     *         column type
+     */
+    public static EStructuralFeature getEStructuralFeature(final DLine line, final DColumn column) {
         if (column instanceof DFeatureColumn) {
             final Option<DCell> cellOption = TableHelper.getCell(line, column);
             if (cellOption.some() && cellOption.get().getTarget() != null) {
-                final EStructuralFeature structuralFeature = cellOption.get().getTarget().eClass().getEStructuralFeature(((DFeatureColumn) column).getFeatureName());
-                if (structuralFeature != null) {
-                    return structuralFeature.getEType();
-                }
+                return cellOption.get().getTarget().eClass().getEStructuralFeature(((DFeatureColumn) column).getFeatureName());
             }
         }
         return null;
