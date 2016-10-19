@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import junit.framework.AssertionFailedError;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
@@ -42,12 +45,15 @@ import org.eclipse.sirius.tests.support.api.GraphicTestsSupportHelp;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
@@ -57,15 +63,57 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
-import junit.framework.AssertionFailedError;
-
 /**
  * Check the position of edge labels when modifying the edge.
  *
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  *
  */
-public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
+public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestCase {
+    /**
+     * This class customizes the test behavior of {@link CheckEditPartMoved}. It
+     * allows to fail instantly if an exception has been logged and the part has
+     * still not been moved. This should be used only if you know the test will
+     * fail if any exception occurs during its execution. This check must be
+     * combined with setErrorCatchActive(true) to fail with the exception
+     * information. If not the test will always be successful in case of
+     * exception.
+     * 
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
+     */
+    class SpecificCheckEditPartMoved extends CheckEditPartMoved {
+
+        /**
+         * Default Constructor.
+         * 
+         * @param editPartBot
+         *            bot to check if moved
+         */
+        public SpecificCheckEditPartMoved(SWTBotGefEditPart editPartBot) {
+            super(editPartBot);
+        }
+
+        /*
+         * (non-Javadoc)
+         * @see org.eclipse.sirius.tests.swtbot.support.api.condition.
+         * CheckEditPartMoved#test()
+         */
+        @Override
+        public boolean test() throws Exception {
+            boolean result = super.test();
+            if (!result) {
+                result = doesAnErrorOccurs();
+            }
+            return result;
+        }
+
+    }
+
+    /**
+     * The name of the diagram representation using imbricated edges.
+     */
+    private static final String DIAGRAM_WITH_NESTED_EDGES_REPRESENTATION_NAME = "DiagramWithNestedEdges";
 
     /**
      * Constant use to indicate that the delta is not predictable and must be
@@ -220,7 +268,7 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             for (AssertionFailedError assertion : failures) {
                 message = message + "\n" + assertion.getMessage();
             }
-            System.out.println(message);
+
             throw new AssertionFailedError(failures.size() + " failures found : " + message);
         }
     }
@@ -330,7 +378,7 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             for (AssertionFailedError assertion : failures) {
                 message = message + "\n" + assertion.getMessage();
             }
-            System.out.println(message);
+
             throw new AssertionFailedError(failures.size() + " failures found : " + message);
         }
     }
@@ -382,7 +430,7 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             for (AssertionFailedError assertion : failures) {
                 message = message + "\n" + assertion.getMessage();
             }
-            System.out.println(message);
+
             throw new AssertionFailedError(failures.size() + " failures found : " + message);
         }
     }
@@ -408,9 +456,31 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             for (AssertionFailedError assertion : failures) {
                 message = message + "\n" + assertion.getMessage();
             }
-            System.out.println(message);
+
             throw new AssertionFailedError(failures.size() + " failures found : " + message);
         }
+    }
+
+    /**
+     * Tests that when a node that is attached to an edge with a length of 0 is
+     * moved, then no {@link ArithmeticException} occurs preventing it to move.
+     * 
+     * See 485010.
+     */
+    public void testEdgeWithZeroLengthMoveByTargetMove() {
+        String diagramName = DIAGRAM_WITH_NESTED_EDGES_REPRESENTATION_NAME;
+
+        diagramEditor = setUpEditorAccordingToDimensions(DIAGRAM_WITH_NESTED_EDGES_REPRESENTATION_NAME, diagramName, ZoomLevel.ZOOM_100);
+        SWTBotGefEditPart targetEditPart = diagramEditor.getEditPart("F", IAbstractDiagramNodeEditPart.class);
+        diagramEditor.scrollTo(0, 0);
+        diagramEditor.reveal(targetEditPart.part());
+        diagramEditor.select(targetEditPart);
+
+        diagramEditor.getBounds(targetEditPart).getCenter();
+
+        SpecificCheckEditPartMoved checkEditPartMoved = new SpecificCheckEditPartMoved(targetEditPart);
+        diagramEditor.drag(targetEditPart, 0, 0);
+        bot.waitUntil(checkEditPartMoved);
     }
 
     /**
@@ -460,7 +530,7 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             for (AssertionFailedError assertion : failures) {
                 message = message + "\n" + assertion.getMessage();
             }
-            System.out.println(message);
+
             throw new AssertionFailedError(failures.size() + " failures found : " + message);
         }
     }
@@ -513,7 +583,7 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             for (AssertionFailedError assertion : failures) {
                 message = message + "\n" + assertion.getMessage();
             }
-            System.out.println(message);
+
             throw new AssertionFailedError(failures.size() + " failures found : " + message);
         }
     }
@@ -555,7 +625,29 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             for (int i = 0; i < 10; i++) {
                 Point targetLocation = new Point(initialLocation.x + moveDelta.x, initialLocation.y + moveDelta.y);
                 // Perform drag
+                final AtomicBoolean dragFinished = new AtomicBoolean(false);
                 diagramEditor.dragWithKey(initialLocation.x, initialLocation.y, targetLocation.x, targetLocation.y, SWT.None);
+                // Wait that the drag is done (the async Runnable simulating the
+                // drag)
+                bot.waitUntil(new ICondition() {
+
+                    @Override
+                    public boolean test() throws Exception {
+                        return dragFinished.get();
+                    }
+
+                    @Override
+                    public void init(SWTBot bot) {
+                    }
+
+                    @Override
+                    public String getFailureMessage() {
+                        return "The drag'n'drop operation has not finished.";
+                    }
+                });
+                // Wait that the figures are redrawn. In a fast environment,
+                // figures are not really redrawn and the rest of the test is
+                // not reliable.
                 SWTBotUtils.waitAllUiEvents();
                 initialLocation = targetLocation;
             }
@@ -574,7 +666,7 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             for (AssertionFailedError assertion : failures) {
                 message = message + "\n" + assertion.getMessage();
             }
-            System.out.println(message);
+
             throw new AssertionFailedError(failures.size() + " failures found : " + message);
         }
     }
@@ -623,7 +715,7 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             for (AssertionFailedError assertion : failures) {
                 message = message + "\n" + assertion.getMessage();
             }
-            System.out.println(message);
+
             throw new AssertionFailedError(failures.size() + " failures found : " + message);
         }
     }
@@ -773,7 +865,7 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             try {
                 // Step 4: Drag nodes and check edge label position
                 doPerformMoveAndCheckEdgeLabels(diagramEditor, initialLocation, moveDelta, expectedlLabelPositions,
-                        "Move segment n°:" + segmentIndex + "-ZoomLevel: " + zoomLevel + ", MoveDelta: " + moveDelta + "-", isToleranceAccepted);
+                        "Move segment n�:" + segmentIndex + "-ZoomLevel: " + zoomLevel + ", MoveDelta: " + moveDelta + "-", isToleranceAccepted);
             } catch (AssertionError e) {
                 failures.add(new AssertionFailedError(e.getMessage()));
             }
@@ -843,7 +935,7 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             try {
                 // Step 4: Drag nodes and check edge label position
                 doPerformMoveAndCheckEdgeLabels(diagramEditor, initialLocation, moveDelta, expectedlLabelPositions,
-                        "Move point n°:" + index + "-ZoomLevel: " + zoomLevel + ", MoveDelta: " + moveDelta + "-", isToleranceAccepted);
+                        "Move point n�:" + index + "-ZoomLevel: " + zoomLevel + ", MoveDelta: " + moveDelta + "-", isToleranceAccepted);
             } catch (AssertionError e) {
                 failures.add(new AssertionFailedError(e.getMessage()));
             }
@@ -866,8 +958,8 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             Dimension expectedDelta = labelNameToDelta.getValue();
             if (DELTA_TO_COMPUTE_FROM_STANDARD.equals(expectedDelta)) {
                 expectedLabelPositions.put(labelNameToDelta.getKey(), new LabelPositionData(true));
-            } else
-                if (!DELTA_TO_COMPUTE_FROM_RATIO.equals(expectedDelta) && !DELTA_TO_COMPUTE_FROM_INVERTED_RATIO.equals(expectedDelta) && !DELTA_TO_COMPUTE_FROM_ROTATED_RATIO.equals(expectedDelta)) {
+            } else if (!DELTA_TO_COMPUTE_FROM_RATIO.equals(expectedDelta) && !DELTA_TO_COMPUTE_FROM_INVERTED_RATIO.equals(expectedDelta)
+                    && !DELTA_TO_COMPUTE_FROM_ROTATED_RATIO.equals(expectedDelta)) {
                 // Normal case, translated by delta
                 Point expectedLabelPosition = initialLabelLocation.getTranslated(labelNameToDelta.getValue());
                 expectedLabelPositions.put(labelNameToDelta.getKey(), new LabelPositionData(expectedLabelPosition));
@@ -1023,7 +1115,28 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
         Point targetLocation = new Point(initialLocation.x + moveDelta.x, initialLocation.y + moveDelta.y);
 
         // Perform drag
+        final AtomicBoolean dragFinished = new AtomicBoolean(false);
         diagramEditor.dragWithKey(initialLocation.x, initialLocation.y, targetLocation.x, targetLocation.y, SWT.None);
+        // Wait that the drag is done (the async Runnable simulating the
+        // drag)
+        bot.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return dragFinished.get();
+            }
+
+            @Override
+            public void init(SWTBot bot) {
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The drag'n'drop operation has not finished.";
+            }
+        });
+        // Wait that the figures are redrawn. In a fast environment, figures
+        // are not really redrawn and the rest of the test is not reliable.
         SWTBotUtils.waitAllUiEvents();
         try {
             assertEquals("Drag as failed: selection should be the same before and after drag.", selectedEditParts, diagramEditor.selectedEditParts());
