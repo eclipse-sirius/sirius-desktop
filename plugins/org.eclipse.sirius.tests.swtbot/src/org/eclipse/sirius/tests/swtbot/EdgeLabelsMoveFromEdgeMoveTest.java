@@ -75,6 +75,50 @@ import junit.framework.AssertionFailedError;
  *
  */
 public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestCase {
+    /**
+     * This class customizes the test behavior of {@link CheckEditPartMoved}. It
+     * allows to fail instantly if an exception has been logged and the part has
+     * still not been moved. This should be used only if you know the test will
+     * fail if any exception occurs during its execution. This check must be
+     * combined with setErrorCatchActive(true) to fail with the exception
+     * information. If not the test will always be successful in case of
+     * exception.
+     * 
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
+     */
+    class SpecificCheckEditPartMoved extends CheckEditPartMoved {
+
+        /**
+         * Default Constructor.
+         * 
+         * @param editPartBot
+         *            bot to check if moved
+         */
+        public SpecificCheckEditPartMoved(SWTBotGefEditPart editPartBot) {
+            super(editPartBot);
+        }
+
+        /*
+         * (non-Javadoc)
+         * @see org.eclipse.sirius.tests.swtbot.support.api.condition.
+         * CheckEditPartMoved#test()
+         */
+        @Override
+        public boolean test() throws Exception {
+            boolean result = super.test();
+            if (!result) {
+                result = doesAnErrorOccurs();
+            }
+            return result;
+        }
+
+    }
+
+    /**
+     * The name of the diagram representation using imbricated edges.
+     */
+    private static final String DIAGRAM_WITH_NESTED_EDGES_REPRESENTATION_NAME = "DiagramWithNestedEdges";
 
     /**
      * Constant use to indicate that the delta is not predictable and must be
@@ -420,6 +464,28 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
 
             throw new AssertionFailedError(failures.size() + " failures found : " + message);
         }
+    }
+
+    /**
+     * Tests that when a node that is attached to an edge with a length of 0 is
+     * moved, then no {@link ArithmeticException} occurs preventing it to move.
+     * 
+     * See 485010.
+     */
+    public void testEdgeWithZeroLengthMoveByTargetMove() {
+        String diagramName = DIAGRAM_WITH_NESTED_EDGES_REPRESENTATION_NAME;
+
+        diagramEditor = setUpEditorAccordingToDimensions(DIAGRAM_WITH_NESTED_EDGES_REPRESENTATION_NAME, diagramName, ZoomLevel.ZOOM_100);
+        SWTBotGefEditPart targetEditPart = diagramEditor.getEditPart("F", IAbstractDiagramNodeEditPart.class);
+        diagramEditor.scrollTo(0, 0);
+        diagramEditor.reveal(targetEditPart.part());
+        diagramEditor.select(targetEditPart);
+
+        diagramEditor.getBounds(targetEditPart).getCenter();
+
+        SpecificCheckEditPartMoved checkEditPartMoved = new SpecificCheckEditPartMoved(targetEditPart);
+        diagramEditor.drag(targetEditPart, 0, 0);
+        bot.waitUntil(checkEditPartMoved);
     }
 
     /**

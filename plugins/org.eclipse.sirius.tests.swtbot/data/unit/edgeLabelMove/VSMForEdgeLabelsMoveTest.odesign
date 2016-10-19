@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VSMForEdgeLabelsMoveTest" version="11.0.0.201601261200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VSMForEdgeLabelsMoveTest" version="11.0.0.201609021200">
   <ownedViewpoints name="VSMForEdgeLabelsMoveTest" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20EClass']" name="Diagram" domainClass="ecore.EPackage">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
@@ -590,6 +590,56 @@
         </containerMappings>
       </defaultLayer>
       <additionalLayers name="Package" activeByDefault="true"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramWithNestedEdges" domainClass="ecore.EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="EClassNode" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="ecore.EClass">
+          <style xsi:type="style:SquareDescription" sizeComputationExpression="8" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="EReference" preconditionExpression="[not name.equalsIgnoreCase('inOut')/]" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithNestedEdges']/@defaultLayer/@nodeMappings[name='EClassNode']" targetMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithNestedEdges']/@defaultLayer/@nodeMappings[name='EClassNode']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="ecore.EReference" useDomainElement="true">
+          <style sourceArrow="Diamond" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <beginLabelStyleDescription labelExpression="aql:''">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:'Test'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+            <endLabelStyleDescription showIcon="false" labelExpression="aql:'Test'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ImbricatedEdge" sourceMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithNestedEdges']/@defaultLayer/@edgeMappings[name='EReference']" targetMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithNestedEdges']/@defaultLayer/@nodeMappings[name='EClassNode']" targetFinderExpression="aql:self.eType" sourceFinderExpression="aql:self" domainClass="ecore.EReference" useDomainElement="true">
+          <style sizeComputationExpression="4">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ImbricatedEdge2" sourceMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithNestedEdges']/@defaultLayer/@edgeMappings[name='ImbricatedEdge']" targetMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithNestedEdges']/@defaultLayer/@nodeMappings[name='EClassNode']" targetFinderExpression="aql:self.eType" sourceFinderExpression="aql:self" domainClass="ecore.EReference" useDomainElement="true">
+          <style sizeComputationExpression="4">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ImbricatedEdge3" sourceMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithNestedEdges']/@defaultLayer/@edgeMappings[name='ImbricatedEdge2']" targetMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithNestedEdges']/@defaultLayer/@nodeMappings[name='EClassNode']" targetFinderExpression="aql:self.eType" sourceFinderExpression="aql:self" domainClass="ecore.EReference" useDomainElement="true">
+          <style sizeComputationExpression="4">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
     </ownedRepresentations>
   </ownedViewpoints>
   <userColorsPalettes name="Ecore Palette">
