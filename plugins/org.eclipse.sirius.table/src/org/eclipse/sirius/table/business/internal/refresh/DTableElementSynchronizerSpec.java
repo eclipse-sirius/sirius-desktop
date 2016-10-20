@@ -532,11 +532,17 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                 if (featureObject instanceof EList<?>) {
                     List<String> texts = Lists.newArrayList();
                     for (Object obj : (EList<?>) featureObject) {
-                        texts.add(getText(obj));
+                        String text;
+                        if (obj instanceof EObject) {
+                            text = getText((EObject) obj);
+                        } else {
+                            text = obj.toString();
+                        }
+                        texts.add(text);
                     }
                     label = texts.toString();
                 } else if (featureObject instanceof EObject) {
-                    label = getText(featureObject);
+                    label = getText((EObject) featureObject);
                 } else {
                     label = featureObject.toString();
                 }
@@ -1145,10 +1151,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
         }
     }
 
-    private String getText(final Object element) {
-        if (!(element instanceof EObject)) {
-            return element.toString();
-        }
+    private String getText(final EObject element) {
         String text = null;
         ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
         IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory.adapt(element, IItemLabelProvider.class);
