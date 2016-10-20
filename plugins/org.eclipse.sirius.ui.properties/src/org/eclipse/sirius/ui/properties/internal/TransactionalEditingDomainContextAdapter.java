@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.properties.internal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
@@ -44,6 +45,12 @@ import com.google.common.collect.Lists;
  *
  */
 public class TransactionalEditingDomainContextAdapter implements EditingContextAdapter {
+    private static final Pattern GMF_NOTATION_NS_PATTERN = Pattern.compile("http://www.eclipse.org/gmf/runtime/.*/notation"); //$NON-NLS-1$
+
+    private static final Pattern SIRIUS_NS_PATTERN = Pattern.compile("http://www.eclipse.org/sirius/.*"); //$NON-NLS-1$
+
+    private static final String FORCE_REFRESH_SYSTEM_FLAG = "org.eclipse.sirius.properties.forceRefreshOnRepresentationsChange"; //$NON-NLS-1$
+
     /**
      * Describes the model changes we want to react to.
      */
@@ -199,6 +206,32 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
         }
     }
 
+    private static boolean forceRefreshOnRepresentationChanges() {
+        return Boolean.TRUE.toString().equals(System.getProperty(FORCE_REFRESH_SYSTEM_FLAG, Boolean.FALSE.toString()));
+    }
+
+    /**
+     * Checks whether the changes we are notified changes semantic models (i.e.
+     * not just Sirius representations state).
+     *
+     * @param changes
+     *            the model changes.
+     * @return <code>true</code> if the changes impact semantic models.
+     */
+    private static boolean containsSemanticModelChanges(List<Notification> changes) {
+        for (Notification n : changes) {
+            Object src = n.getNotifier();
+            if (src instanceof EObject) {
+                String nsURI = ((EObject) src).eClass().getEPackage().getNsURI();
+                if (!SIRIUS_NS_PATTERN.matcher(nsURI).matches() && !GMF_NOTATION_NS_PATTERN.matcher(nsURI).matches()) {
+                    // This is a semantic change.
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     /**
      * The actual implementation of the pre-commit listener.
      * 
@@ -218,7 +251,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
         @Override
         public void resourceSetChanged(final ResourceSetChangeEvent event) {
             IConsumer<List<Notification>> t = callback;
-            if (t != null) {
+            if (t != null && (forceRefreshOnRepresentationChanges() || containsSemanticModelChanges(event.getNotifications()))) {
                 t.apply(Lists.newArrayList(event.getNotifications()));
             }
         }
