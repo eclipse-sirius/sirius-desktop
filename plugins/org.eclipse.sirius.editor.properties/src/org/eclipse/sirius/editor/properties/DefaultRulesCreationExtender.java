@@ -22,6 +22,7 @@ import org.eclipse.sirius.editor.tools.internal.menu.CustomChildTextAdapter;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.ui.properties.internal.tabprovider.SiriusTabDescriptorProvider;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.Group;
 
 /**
  * Contributes the default rules model to the creation context menu in the VSM editor.
@@ -33,9 +34,11 @@ public class DefaultRulesCreationExtender implements IChildCreationExtender {
     @Override
     public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
         ArrayList<Object> result = new ArrayList<Object>();
-        ViewExtensionDescription rules = EcoreUtil.copy(SiriusTabDescriptorProvider.getDefaultRules());
-        rules.eAdapters().add(new CustomChildTextAdapter(Messages.ImportingDefaultPropertiesViewDescriptionCommand_text));
-        result.add(new CommandParameter(null, DescriptionPackage.Literals.GROUP__EXTENSIONS, rules));
+        if (object instanceof Group) {
+            ViewExtensionDescription rules = EcoreUtil.copy(SiriusTabDescriptorProvider.getDefaultRules());
+            rules.eAdapters().add(new CustomChildTextAdapter(Messages.ImportingDefaultPropertiesViewDescriptionCommand_text));
+            result.add(new CommandParameter(null, DescriptionPackage.Literals.GROUP__EXTENSIONS, rules));
+        }
         return result;
     }
 
