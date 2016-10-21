@@ -14,10 +14,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.gef.handles.HandleBounds;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
@@ -27,6 +25,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.V
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
@@ -79,6 +78,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
 
     @Override
     protected void tearDown() throws Exception {
+        // Reset editor scroll
+        editor.scrollTo(0, 0);
         editor.close();
         SWTBotUtils.waitAllUiEvents();
         editor = null;
@@ -293,6 +294,50 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * <ul>
+     * <LI>Straighten oblique edge11 to Top: Expected: menu disabled (out of
+     * bounds)</LI>
+     * <LI>Straighten oblique edge11 to Bottom: Expected OK</LI>
+     * </ul>
+     */
+    public void testObliqueEdgeTopAndBottomBetweenElementAtSameLevelButNotInSameContainer() {
+        SWTBotGefEditPart editPart = editor.getEditPart("container9", AbstractDiagramContainerEditPart.class);
+        editor.reveal(editPart.part());
+        // {top,bottom,left,right}
+        boolean[] availableDirections = { false, true, false, false };
+        checkEdgeActions(availableDirections, "edge11");
+    }
+
+    /**
+     * <ul>
+     * <LI>Straighten oblique edge10 to Top: Expected OK</LI>
+     * <LI>Straighten oblique edge10 to Bottom: Expected: menu disabled (out of
+     * bounds)</LI>
+     * </ul>
+     */
+    public void testObliqueEdgeTopAndBottomBetweenElementNotAtSameLevel() {
+        SWTBotGefEditPart editPart = editor.getEditPart("container9", AbstractDiagramContainerEditPart.class);
+        editor.reveal(editPart.part());
+        // {top,bottom,left,right}
+        boolean[] availableDirections = { true, false, false, false };
+        checkEdgeActions(availableDirections, "edge10");
+    }
+
+    /**
+     * <ul>
+     * <LI>Straighten oblique edge13 to Top: Expected OK</LI>
+     * <LI>Straighten oblique edge13 to Bottom: Expected OK</LI>
+     * </ul>
+     */
+    public void testObliqueEdgeTopAndBottomBetweenBorderNodeAtSameLevelButNotInSameContainer() {
+        SWTBotGefEditPart editPart = editor.getEditPart("container9", AbstractDiagramContainerEditPart.class);
+        editor.reveal(editPart.part());
+        // {top,bottom,left,right}
+        boolean[] availableDirections = { true, true, false, false };
+        checkEdgeActions(availableDirections, "edge13");
+    }
+
+    /**
      * Checks the edge "to straight" actions. Makes sure that:
      * <ul>
      * <li>All actions (To Top, To Bottom etc.) exist in the menu</li>
@@ -397,8 +442,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
         Point expectedStartPoint;
         Point expectedEndPoint;
         if (specificCase) {
-            Rectangle sourceBounds = getHandleBounds(((AbstractDiagramBorderNodeEditPart) part.getSource()).getFigure());
-            Rectangle targetBounds = getHandleBounds(((AbstractDiagramBorderNodeEditPart) part.getTarget()).getFigure());
+            Rectangle sourceBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((AbstractDiagramBorderNodeEditPart) part.getSource());
+            Rectangle targetBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((AbstractDiagramBorderNodeEditPart) part.getTarget());
             expectedStartPoint = sourceBounds.getCenter();
             expectedEndPoint = targetBounds.getCenter();
         } else {
@@ -461,15 +506,5 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
         default:
             break;
         }
-    }
-
-    private Rectangle getHandleBounds(IFigure figure) {
-        Rectangle bounds;
-        if (figure instanceof HandleBounds) {
-            bounds = ((HandleBounds) figure).getHandleBounds();
-        } else {
-            bounds = figure.getBounds();
-        }
-        return bounds;
     }
 }

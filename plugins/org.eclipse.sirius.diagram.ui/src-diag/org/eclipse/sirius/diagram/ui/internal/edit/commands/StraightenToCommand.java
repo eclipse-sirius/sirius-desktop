@@ -15,7 +15,6 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.draw2d.Connection;
-import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -24,7 +23,6 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.GraphicalEditPart;
-import org.eclipse.gef.handles.HandleBounds;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
 import org.eclipse.gmf.runtime.common.core.util.StringStatics;
@@ -52,6 +50,7 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.edge.SlidableAnchor;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.straighten.StraightenToAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 import com.google.common.collect.Lists;
 
@@ -217,8 +216,8 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
         CommandResult commandResult = CommandResult.newOKCommandResult();
         if (edgeEditPart.getFigure() instanceof Connection && edgeEditPart.getModel() instanceof Edge) {
             CompositeCommand cc = new CompositeCommand(getLabel());
-            Rectangle sourceBounds = getHandleBounds(sourceEditPart.getFigure());
-            Rectangle targetBounds = getHandleBounds(targetEditPart.getFigure());
+            Rectangle sourceBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourceEditPart);
+            Rectangle targetBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(targetEditPart);
             Connection figure = (Connection) edgeEditPart.getFigure();
             Point firstPoint = figure.getPoints().getFirstPoint().getCopy();
             Point lastPoint = figure.getPoints().getLastPoint().getCopy();
@@ -337,14 +336,14 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
             sideOfSource = ((IBorderItemEditPart) edgeEditPart.getSource()).getBorderItemLocator().getCurrentSideOfParent();
         } else if (edgeEditPart.getSource() instanceof GraphicalEditPart && edgeEditPart.getFigure() instanceof Connection) {
             Point firstPoint = ((Connection) edgeEditPart.getFigure()).getPoints().getFirstPoint();
-            sideOfSource = getLocation(firstPoint, getHandleBounds(((GraphicalEditPart) edgeEditPart.getSource()).getFigure()));
+            sideOfSource = getLocation(firstPoint, GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) edgeEditPart.getSource()));
         }
         int sideOfTarget = PositionConstants.NONE;
         if (isTargetABorderNode) {
             sideOfTarget = ((IBorderItemEditPart) edgeEditPart.getTarget()).getBorderItemLocator().getCurrentSideOfParent();
         } else if (edgeEditPart.getTarget() instanceof GraphicalEditPart && edgeEditPart.getFigure() instanceof Connection) {
             Point lastPoint = ((Connection) edgeEditPart.getFigure()).getPoints().getLastPoint();
-            sideOfTarget = getLocation(lastPoint, getHandleBounds(((GraphicalEditPart) edgeEditPart.getTarget()).getFigure()));
+            sideOfTarget = getLocation(lastPoint, GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) edgeEditPart.getTarget()));
         }
         if (isOnHorizontalAxis(sideOfSource) && isOnHorizontalAxis(sideOfTarget)) {
             axis = PositionConstants.HORIZONTAL;
@@ -458,8 +457,8 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
             Point firstPoint = figure.getPoints().getFirstPoint().getCopy();
             Point lastPoint = figure.getPoints().getLastPoint().getCopy();
             if (isSpecificCase) {
-                firstPoint = getHandleBounds(sourceEditPart.getFigure()).getCenter();
-                lastPoint = getHandleBounds(targetEditPart.getFigure()).getCenter();
+                firstPoint = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourceEditPart).getCenter();
+                lastPoint = GraphicalHelper.getAbsoluteBoundsIn100Percent(targetEditPart).getCenter();
             }
             if (moveSource) {
                 if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
@@ -468,8 +467,8 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
                     deltaX = lastPoint.x - firstPoint.x;
                 }
                 if (isSourceABorderNode) {
-                    Rectangle parentBorderNodeBounds = getHandleBounds(((GraphicalEditPart) sourceEditPart.getParent()).getFigure());
-                    Rectangle borderNodeBounds = getHandleBounds(sourceEditPart.getFigure());
+                    Rectangle parentBorderNodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) sourceEditPart.getParent());
+                    Rectangle borderNodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourceEditPart);
                     // Get the computed bounds after the move
                     borderNodeBounds = borderNodeBounds.getTranslated(deltaX, deltaY);
                     if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
@@ -482,7 +481,7 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
                         }
                     }
                 } else {
-                    Rectangle bounds = getHandleBounds(sourceEditPart.getFigure());
+                    Rectangle bounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourceEditPart);
                     if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
                         if (bounds.y <= lastPoint.y && lastPoint.y <= (bounds.y + bounds.height)) {
                             isNewLocationInParentBounds = true;
@@ -500,8 +499,8 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
                     deltaX = firstPoint.x - lastPoint.x;
                 }
                 if (isTargetABorderNode) {
-                    Rectangle parentBorderNodeBounds = getHandleBounds(((GraphicalEditPart) targetEditPart.getParent()).getFigure());
-                    Rectangle borderNodeBounds = getHandleBounds(targetEditPart.getFigure());
+                    Rectangle parentBorderNodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) targetEditPart.getParent());
+                    Rectangle borderNodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(targetEditPart);
                     // Get the computed bounds after the move
                     borderNodeBounds = borderNodeBounds.getTranslated(deltaX, deltaY);
                     if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
@@ -514,7 +513,7 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
                         }
                     }
                 } else {
-                    Rectangle bounds = getHandleBounds(targetEditPart.getFigure());
+                    Rectangle bounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(targetEditPart);
                     if (straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) {
                         if (bounds.y <= firstPoint.y && firstPoint.y <= (bounds.y + bounds.height)) {
                             isNewLocationInParentBounds = true;
@@ -594,16 +593,6 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
             }
         }
         return isOverlapped;
-    }
-
-    private Rectangle getHandleBounds(IFigure figure) {
-        Rectangle bounds;
-        if (figure instanceof HandleBounds) {
-            bounds = ((HandleBounds) figure).getHandleBounds();
-        } else {
-            bounds = figure.getBounds();
-        }
-        return bounds;
     }
 
     private boolean isOnHorizontalAxis(int side) {
