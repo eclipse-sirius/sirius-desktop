@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,6 +62,8 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
 
     boolean ignorePrimarySelection;
 
+    boolean ignoreSelectionChecks;
+
     /**
      * Default constructor.
      *
@@ -93,6 +95,27 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
         this.ignorePrimarySelection = ignorePrimarySelection;
     }
 
+    /**
+     * Returns whether the selection checks are ignored or not.
+     * 
+     * @return the ignoreSelectionChecks
+     */
+    public boolean isSelectionChecksIgnored() {
+        return ignoreSelectionChecks;
+    }
+
+    /**
+     * Set if the selection checks are ignored or not. If ignored, the
+     * <code>movedPart<code> parameter of constructor is automatically
+     * considered, even if it is not selected in the diagram.
+     * 
+     * @param ignoreSelectionChecks
+     *            the ignoreSelectionChecks to set
+     */
+    public void setIgnoreSelectionChecks(boolean ignoreSelectionChecks) {
+        this.ignoreSelectionChecks = ignoreSelectionChecks;
+    }
+
     @Override
     protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) {
         CommandResult result = CommandResult.newOKCommandResult();
@@ -111,7 +134,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
             List<?> selectedEditParts = movedPart.getViewer().getSelectedEditParts();
             if (movedPart instanceof AbstractGraphicalEditPart) {
                 List<AbstractGraphicalEditPart> allMovedEditParts = getMovedChildren(Iterables.filter(selectedEditParts, AbstractGraphicalEditPart.class), true);
-                if (selectedEditParts.contains(movedPart) || allMovedEditParts.contains(movedPart)) {
+                if (selectedEditParts.contains(movedPart) || allMovedEditParts.contains(movedPart) || isSelectionChecksIgnored()) {
                     AbstractGraphicalEditPart currentMovedEditPart = (AbstractGraphicalEditPart) movedPart;
                     List<AbstractGraphicalEditPart> currentMovedEditPartAndItsChildren = getMovedChildren(currentMovedEditPart, true);
                     final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(movedPart.getModel());

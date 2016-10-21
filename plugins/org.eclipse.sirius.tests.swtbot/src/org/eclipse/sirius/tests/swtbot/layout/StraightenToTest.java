@@ -159,14 +159,47 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     /**
      * <ul>
      * <LI>Straighten oblique edge4 to Top: Expected OK</LI>
-     * <LI>Straighten oblique edge4 to Bottom: Expected: menu disabled (border
-     * node with several edge)</LI>
+     * <LI>Straighten oblique edge4 to Bottom: Expected OK (even if it concerns
+     * a border node with several edge)</LI>
      * </ul>
      */
-    public void testObliqueEdgeTopAndBottomForbidden() {
+    public void testObliqueEdgeLinkedToBorderNodeWithSeveralEdges() {
         // {top,bottom,left,right}
-        boolean[] availableDirections = { true, false, false, false };
+        boolean[] availableDirections = { true, true, false, false };
         checkEdgeActions(availableDirections, "edge4");
+        // TODO: Add specific check on other edges for bendpoints stability
+        // (edge1)
+    }
+
+    /**
+     * <ul>
+     * <LI>Straighten oblique edge17 to Left: Expected OK (even if it concerns a
+     * border node with several edge)</LI>
+     * <LI>Straighten oblique edge17 to Right: Expected OK</LI>
+     * </ul>
+     */
+    public void testRectilinearEdgeLinkedToBorderNodeWithSeveralEdges() {
+        // {top,bottom,left,right}
+        boolean[] availableDirections = { false, false, true, true };
+        checkEdgeActions(availableDirections, "edge17");
+        // TODO: Add specific check on other edges for bendpoints stability
+        // (edge16, edge18, edge19,edge20)
+    }
+
+    /**
+     * <ul>
+     * <LI>Straighten oblique edge17 to Left: Expected OK (even if it concerns a
+     * border node with several edge)</LI>
+     * <LI>Straighten oblique edge17 to Right: Expected OK</LI>
+     * </ul>
+     */
+    public void testRectilinearEdgeLinkedToBorderNodeWithSeveralEdgesWithZoom200() {
+        editor.zoom(ZoomLevel.ZOOM_200);
+        try {
+            testRectilinearEdgeLinkedToBorderNodeWithSeveralEdges();
+        } finally {
+            editor.zoom(ZoomLevel.ZOOM_100);
+        }
     }
 
     /**
@@ -186,7 +219,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * Straighten rectilinear edge2 to *: Expected: menu disabled (not same
      * axis)
      */
-    public void testRectilineaAllForbiddenForDifferentAxes() {
+    public void testRectilinearAllForbiddenForDifferentAxes() {
         // {top,bottom,left,right}
         boolean[] availableDirections = { false, false, false, false };
         checkEdgeActions(availableDirections, "edge2");
@@ -199,7 +232,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * (centered edge on target side)</LI>
      * </ul>
      */
-    public void testRectilineaToRightWithLeftForbiddenBecauseofCentering() {
+    public void testRectilinearToRightWithLeftForbiddenBecauseofCentering() {
         // {top,bottom,left,right}
         boolean[] availableDirections = { false, false, false, true };
         checkEdgeActions(availableDirections, "edge5");
@@ -213,7 +246,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      * disabled (centered edge on target side)</LI>
      * </ul>
      */
-    public void testRectilineaToRightWithLeftForbiddenBecauseofCenteringWithZoom200() {
+    public void testRectilinearToRightWithLeftForbiddenBecauseofCenteringWithZoom200() {
         editor.zoom(ZoomLevel.ZOOM_200);
         try {
             // {top,bottom,left,right}

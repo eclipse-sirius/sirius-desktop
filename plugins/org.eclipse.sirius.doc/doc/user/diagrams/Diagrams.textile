@@ -156,7 +156,6 @@ Result after _Straighten to left_ action: !images/straightenToLeft.png!
 Result after _Straighten to right_ action: !images/straightenToRight.png!
 
 The action can be disabled (grayed menu) in some conditions:
-* The edge is connected to border node and the border node have several incoming and outgoing edges.
 * The action is not possible because it does not respect the source or target node boundaries.
 * The source and the target of the edge are not on the same "axis" (left and right sides, or, top and bottom sides).
 * After the action, the border node (source or target) would be overlapped by another border node.

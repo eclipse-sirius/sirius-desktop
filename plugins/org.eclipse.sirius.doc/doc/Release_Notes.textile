@@ -6,6 +6,11 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius4.1.1). Changes in Sirius 4.1.1
 
+h3. User-Visible Changes
+
+* <span class="label label-success">Modified</span>The "straighten to" actions were previously disabled when an edge is
+connected to border nodes that have several edges. It is now allowed.
+
 h3. Developer-Visible Changes
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.table.business.api.helper.TableHelper.getEStructuralFeature(DLine, DColumn)@ method has been added to retrieve the EStructuralFeature associated to a table column.

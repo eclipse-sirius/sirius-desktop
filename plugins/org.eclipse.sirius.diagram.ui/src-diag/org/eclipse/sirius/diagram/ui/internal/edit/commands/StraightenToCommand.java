@@ -172,11 +172,6 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
                 }
             }
             if (canExecute) {
-                // Check if the source or target of the edge is a border node
-                // with several edges connected to it.
-                canExecute = !isMovedNodeABorderNodeWithSeveralConnections();
-            }
-            if (canExecute) {
                 // A straighten action can be disabled if the edge centering is
                 // activated on an edge.
                 canExecute = !isCentered();
@@ -298,6 +293,16 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
             // Add command to move the border node
             command.add(
                     CommandFactory.createICommand(getEditingDomain(), new ShiftDirectBorderedNodesOperation(Lists.newArrayList((Node) editPartOnMovedSide.getModel()), new Dimension(deltaX, deltaY))));
+            if ((editPartOnMovedSide.getSourceConnections().size() + editPartOnMovedSide.getTargetConnections().size()) > 1) {
+                // Add a command to correctly moved all linked edges
+                PrecisionPoint moveDelta = new PrecisionPoint(deltaX, deltaY);
+                // Applied zoom on moveDelta, because it is what is expected in
+                // ChangeBendpointsOfEdgesCommand
+                GraphicalHelper.applyZoomOnPoint(editPartOnMovedSide, moveDelta);
+                ChangeBendpointsOfEdgesCommand cboec = new ChangeBendpointsOfEdgesCommand(editPartOnMovedSide, moveDelta);
+                cboec.setIgnoreSelectionChecks(true);
+                command.add(cboec);
+            }
         }
         // Add a command to change the anchors
         SetConnectionAnchorsCommand scaCommand = new SetConnectionAnchorsCommand(getEditingDomain(), StringStatics.BLANK);
@@ -392,23 +397,6 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
             isSourceWillBeMoved = true;
         }
         return isSourceWillBeMoved;
-    }
-
-    /**
-     * Check if the moved node (source or target of the edge) is a border node
-     * with several edges connected to it.
-     * 
-     * @return true if the source or target of the edge is a border node with
-     *         several edges connected to it, false otherwise.
-     */
-    private boolean isMovedNodeABorderNodeWithSeveralConnections() {
-        boolean result = false;
-        if (moveSource) {
-            result = isSourceABorderNode && (sourceEditPart.getSourceConnections().size() + sourceEditPart.getTargetConnections().size()) > 1;
-        } else {
-            result = isTargetABorderNode && (targetEditPart.getSourceConnections().size() + targetEditPart.getTargetConnections().size()) > 1;
-        }
-        return result;
     }
 
     /**
