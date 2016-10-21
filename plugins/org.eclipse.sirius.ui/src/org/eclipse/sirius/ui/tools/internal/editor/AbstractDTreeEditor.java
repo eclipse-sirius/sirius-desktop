@@ -94,6 +94,40 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributo
 public abstract class AbstractDTreeEditor extends EditorPart
         implements DialectEditor, IViewerProvider, ITabbedPropertySheetPageContributor, IEditingDomainProvider, IReusableEditor, SessionListener, ISaveablesSource, IPageListener {
 
+    /**
+     * This class has the responsibility to open the editing session
+     * corresponding to a session added to the session manager and attaching to
+     * it the current editor so it can be handled correctly.
+     * 
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
+     */
+    private static final class SessionHandlingForEditor extends SessionManagerListener.Stub {
+        private AbstractDTreeEditor editor;
+
+        public SessionHandlingForEditor(AbstractDTreeEditor editor) {
+            this.editor = editor;
+        }
+
+        @Override
+        public void notifyAddSession(final Session newSession) {
+
+            /* we want to be notified only once */
+            final IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(newSession);
+            if (!editingSession.isOpen()) {
+                editingSession.open();
+                editingSession.attachEditor(editor);
+                // important to remove the reference to the editor because this
+                // listener is still referenced by Eclipse ContextService when
+                // the editor is closed causing a leak.
+                editor = null;
+                /* remove this listener */
+                SessionManager.INSTANCE.removeSessionsListener(this);
+            }
+
+        }
+    }
+
     /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
     private static final ImageDescriptor LOCK_BY_ME_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation
             .getBundledImageDescriptor("icons/full/decorator/permission_granted_to_current_user_exclusively.gif"); //$NON-NLS-1$
@@ -148,21 +182,7 @@ public abstract class AbstractDTreeEditor extends EditorPart
     /**
      * SessionManagerListener.
      */
-    protected final SessionManagerListener sessionManagerListener = new SessionManagerListener.Stub() {
-        @Override
-        public void notifyAddSession(final Session newSession) {
-
-            /* we want to be notified only once */
-            final IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(newSession);
-            if (!editingSession.isOpen()) {
-                editingSession.open();
-                editingSession.attachEditor(AbstractDTreeEditor.this);
-                /* remove this listener */
-                SessionManager.INSTANCE.removeSessionsListener(this);
-            }
-
-        }
-    };
+    protected final SessionManagerListener sessionManagerListener = new SessionHandlingForEditor(this);
 
     /**
      * The DialectEditorDialogFactory.

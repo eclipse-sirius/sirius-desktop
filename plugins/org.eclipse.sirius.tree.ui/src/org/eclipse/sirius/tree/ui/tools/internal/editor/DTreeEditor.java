@@ -463,10 +463,10 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
             getSite().getPage().removePartListener(refreshAtOpeningActivator);
         }
         refreshAtOpeningActivator = null;
-        super.dispose();
         if (getAdapterFactory() instanceof IDisposable) {
             ((IDisposable) getAdapterFactory()).dispose();
         }
+        super.dispose();
         treeModel = null;
     }
 
