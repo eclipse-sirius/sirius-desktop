@@ -267,7 +267,6 @@ public final class ViewpointSpecificationProject {
                             ((Group) rootObject).setName(modelName.replaceAll("." + VIEWPOINT_MODEL_EXTENSION, "")); //$NON-NLS-1$ //$NON-NLS-2$
                             Viewpoint viewpoint = DescriptionFactory.eINSTANCE.createViewpoint();
                             viewpoint.setName("MyViewpoint"); //$NON-NLS-1$
-                            viewpoint.setLabel("%viewpointName"); //$NON-NLS-1$
                             JavaExtension javaExtension = DescriptionFactory.eINSTANCE.createJavaExtension();
                             javaExtension.setQualifiedClassName(javaExtensionQualifiedName);
                             viewpoint.getOwnedJavaExtensions().add(javaExtension);
