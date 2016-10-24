@@ -1,26 +1,30 @@
-h1. Specifying Properties View
+h1. Specifying Properties Views
 
 {toc:style=disc|minLevel=2|maxLevel=3}
 
 h2(#introduction). Introduction
 
-Starting from version 4.0, Sirius supports the definition of properties views with support for many features like complex styling, validation, context etc.
+Starting from version 4.0, Sirius supports the definition of properties views with many features like complex styling, validation, context etc.
 
-Properties views are defined inside the VSM and identify a sub-set of the elements in the semantic model and associates an element to them in the properties view: it _maps_ semantic elements onto some properties view elements. At runtime, each active properties element (pages, groups, widgets) will produce zero or more elements in the properties view, depending on how many semantic elements currently match the properties element's definition. Whenever the current selection changes Sirius will automatically re-compute which elements should appear in the properties view according to the active widgets, and create or remove the necessary elements in the properties view.
+Properties views are defined inside the VSM in a way that is similar to other Sirius representations. The configuration elements in the VSM identify a sub-set of the elements in the semantic model to which they apply, and associate to them widgets, which will be visible in the Eclipse _Properties View_ to view and edit the elements's properties.
 
-Note that if you have the (optional) support for Sirius-defined properties views correctly installed but do not specify anything inside your VSMs, Sirius will apply default generic rules to provide a canonical properties view for your model elements. As soon as you specify your own configuration, as described in this document, the default rules will be ignored in favor of yours.
+The configuration _maps_ semantic elements onto some properties view elements. At runtime, each active properties element (pages, groups, widgets) will produce zero or more elements in the properties view, depending on how many semantic elements currently match the properties element's definition. Whenever the current selection changes Sirius will automatically re-compute which elements should appear in the properties view according to the active widgets, and create or remove the necessary elements in the properties view.
+
+Sirius properties view are enabled whenever the selected element is part of an opened session, i.e. any element selected inside a Sirius editor or from the _Model Explorer_ view on an opened session.
+
+Note that if you have the (optional) support for Sirius-defined properties views correctly installed but do not specify anything inside your VSMs, Sirius will apply default generic rules to provide a canonical properties view for your model elements. As soon as you specify your own configuration, as described in this document, the default rules will be ignored in favor of yours. See "below":#default_rules for how both approaches can be combined.
 
 h2(#properties_view_description). Properties View Description
 
-Properties view are configured by creating a _Properties View Description_ element (directly under the "_Group_":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Specifying_Viewpoints.html#vsm_organization ) and its sub-elements (which describe the widgets, the actions, the layout...).
+Properties view are configured by creating a _Properties View Description_ element (directly under the top-level "_Group_":../general/Specifying_Viewpoints.html#vsm_organization element of the VSM) and its sub-elements (which describe the widgets, the actions, the layout, etc.).
 
-Like many elements inside a "_VSM_":/help/topic/org.eclipse.sirius.doc/doc/Glossary.html#VSM, _View Extension Description_ have an optional _Identifier_, which should be unique.
+Like many elements inside a "_VSM_":../../Glossary.html#VSM, _View Extension Description_ have an optional _Identifier_, which should be unique.
 
 Inside a _Properties View Description_ element, you can create:
-* "_Page Descriptions_":#pages, which correspond to "tabs";
-* "_Group Descriptions_":#groups, which represent named sections inside a page/tab which contain the actual widgets;
+* "_Pages_":#pages, which correspond to "tabs";
+* "_Groups_":#groups, which represent named sections inside a page/tab which contain the actual widgets;
 
-It is recommended that the _Properties View Description_ be explicitly associated with the meta-model(s) of the semantic elements it will represent. You can add referenced meta-models from different sources in the _Metamodels_ property section of the _Properties View Description_. Sirius will work even without this association, but setting it explicitly will give you better feedback when validating your "_VSM_":/help/topic/org.eclipse.sirius.doc/doc/Glossary.html#VSM.
+It is recommended that the _Properties View Description_ be explicitly associated with the meta-model(s) of the semantic elements it will represent. You can add referenced meta-models from different sources in the _Metamodels_ property section of the _Properties View Description_. Sirius will work even without this association, but setting it explicitly will give you better feedback when validating your "_VSM_":../../Glossary.html#VSM.
 
 The descriptions for all the different types of properties view elements share the same common principles:
 * Some of the elements of the semantic model are selected, using a combination of configuration attributes (see below). These elements are called _targets_, and each one has a single widget of this type representing it.
@@ -30,7 +34,7 @@ The descriptions for all the different types of properties view elements share t
 p(#context). *Context.* Each properties view element is defined in a _context_ in the VSM. At runtime, the corresponding _context element_ would be the semantic element associated to the properties view element description. This context element is used as a starting point to determine which instances of a properties view element description should be created on the properties view:
 # First, the _Semantic Candidates Expression_ of the description is evaluated, starting from the context element. It should return a set (possibly empty) of elements in the semantic model.
 # This list of candidates is then filtered using the _Domain Class_ specified in the description: only the candidates which are instance of the specified class are retained.
-# Finally, the optional _Precondition Expression_ of the mapping (in the _Advanced_ category) is evaluated, once for each of the remaining candidate. It should return a boolean value. Only the candidates for which the predicate returns a true value are kept and will actually produce an element on the properties view.
+# Finally, the optional _Precondition Expression_ of the element is evaluated, once for each of the remaining candidates. It should return a boolean value. Only the candidates for which the predicate returns a true value are kept and will actually produce an element on the properties view.
 
 This order of evaluation should be kept in mind when specifying properties view. In particular, to avoid performance issues you should:
 * Limit the number of model elements with _Semantic Candidate Expression_.
@@ -38,27 +42,35 @@ This order of evaluation should be kept in mind when specifying properties view.
 * Use the most specific type in _Domain Class_.
 * Avoid navigation and long computations in _Precondition Expression_.
 
-*Properties View Elements Definition.* Properties views support several different types of properties view elements, which are described in the following sections. These are:
-* "pages":#pages represent properties view *Tab* which can contain sections.
-* "groups":#groups represent properties view *Section* which can contain controls.
-* "controls":#controls: represent properties view grouped elements like containers, texts, buttons, labels, checkboxes, radio groups... 
+*Properties View Elements Definition.* Properties views support several different types of elements, which are described in the following sections. They are:
+* "pages":#pages, which represent properties view *Tab* that can contain sections.
+* "groups":#groups, which represent properties view *Section* that can contain widgets.
+* "widgets":#widgets describe the different kind of widgets supported, like texts, buttons, labels, checkboxes, radio groups...
+* "dynamic mappings":#dynamic_mappings are used for advanced scenarios where the set of widgets to display can not be known statically, but instead must be computed at runtime.
+* "containers and layout":#containers are used to organize and layout multiple related widgets.
 
-h3(#common_attributes). Common attributes
+p(#default_rules). *Default Properties View Rules.* When no properties view definition is found for an element selected by the user, Sirius will apply default rules which attempt to give a usable (if generic) result for most user models. As soon as you define _some_ custom rules for your modelers, _only_ these custom rules will apply, and the default ones will be ignored. If you want to mix the default rules for some of your elements and custom ones only for some specific types, you can:
+* Import a copy of the default rules model inside your VSM: from the top-level element of the VSM model, select _New > Default Properties View Description_.
+* Add your custom rules (pages and groups) and optionally update the default ones to not apply for the elements for which you provide more specific views (typically by modifying the _Precondition Expression_ of the default _Page_).
+
+*Legacy Sirius Tabs.* By default, the legacy _Semantic_ and _Default_ tabs which show the raw properties of the selected element in a plain property grid are still visible even when you have defined custom properties views (the _Semantic_ tab is visible when the selection is from a Sirius representation; the _Default_ tab is shown when selecting from the _Model Explorer_). If you want to hide these legacy tabs and only show your custom tabs, you can do so by changing the preferences in the _Sirius > Sirius Properties View_ category.
+
+h3(#common_attributes). Common Attributes
 
 The following attributes are mostly shared by all the properties view element description (page, group, container, widget).
 
-p(#identifier). *Identifier.* Each properties view element description defines an optional attribute _Identifier_.
+p(#identifier). *Identifier.* Each properties view element description defines an optional attribute _Identifier_. It can be used to distinguish elements of the same type in the VSM editor, and in advanced customization scenarios where the VSM model is programmatically accessed/modified.
 
-p(#domain_class). *Domain Class.* The optional _Domain Class_ attribute is the type of semantic elements which are represented by the properties view element definition. In the _Model Explorer_, end-users will be able to create new instances of this diagram on semantic elements of this type (assuming the corresponding viewpoint is enabled in the _Modeling Project_). The syntax for the domain class name can be the basic name, like @Package@, a qualified name using name of the EMF EPackage which defines the type, like @uml.Package@, or a fully qualified URI like @http://www.eclipse.org/uml2/3.0.0/UML#//Package@.
-By default, new properties view elements can be created on _any_ instance of the _Domain Class_. 
+p(#domain_class). *Domain Class.* The optional _Domain Class_ attribute is the type of semantic elements which are represented by the properties view element definition. The syntax for the domain class name can be the basic name, like @Package@, a qualified name using name of the EMF EPackage which defines the type, like @uml.Package@, or a fully qualified URI like @http://www.eclipse.org/uml2/3.0.0/UML#//Package@.
+An empty _Domain Class_ means that the element being defined will be applicable to any model element of any type. By default, new properties view elements can be created on _any_ instance of the _Domain Class_.
 
-p(#precondition_expression). *Precondition Expression.* You can use the _Precondition Expression_ to change this. If such an expression is specified, it will be evaluated in the "context":#context of the semantic element the user has selected, and only if the expression returns @true@ will the user be able to create a new diagram on this element.
+p(#precondition_expression). *Precondition Expression.* You can use the _Precondition Expression_ to change this. If such an expression is specified, it will be evaluated in the "context":#context of the semantic element the user has selected, and only if the expression returns @true@ will the properties view element be applied to that semantic element.
 
-p(#label_expression). *Label Expression.* Is used to compute the text of the label describing the element. The label is specified using the _Label expression_, which is evaluated in the context of the semantic element and should return a string. If the expression is not specified, the default label is empty.
+p(#label_expression). *Label Expression.* This expression is used to compute the text of the label describing the element (which will typically appear on the left of a widget). The _Label expression_ is evaluated in the context of the semantic element and should return a string. If the expression is not specified, the default label is empty.
 
-p(#help_expression). *Help Expression.* The help text of a properties view element is specified using the _Help expression_, which is evaluated in the context of the semantic element and should return a string.
+p(#help_expression). *Help Expression.* The help text of a properties view element is specified using the _Help expression_, which is evaluated in the context of the semantic element and should return a string. It will appear as a tooltip on the question-mark icon associated to a widget.
 
-p(#is_enabled_expression). *Is Enabled Expression.* Each widget can be enabled or disabled (making it visible but read-only) . The _Is Enabled Expression_ is evaluated in the context of the semantic element and should return a boolean. It the expression is not specified it defaults to _true_ (meaing the widget is enabled).
+p(#is_enabled_expression). *Is Enabled Expression.* Each widget can be enabled or disabled (making it visible but read-only) . The _Is Enabled Expression_ is evaluated in the context of the semantic element and should return a boolean. It the expression is not specified it defaults to _true_ (meaning the widget is enabled).
 
 p(#semantic_candidate_expression). *Semantic Candidate Expression.* The _Semantic Candidate Expression_ defines the model element represented by the properties view element.
 
@@ -78,47 +90,76 @@ Here is the resulting properties view rendered for a diagram element:
 
 We see both label expressions on the left of each widget, help icons which show the computed _Help Expression_ when the user leaves the mouse pointer on them, and the actual widgets. The second text widget is disabled (visible thanks to the light blue background) because of its  _Is Enabled Expression_.
 
-h3(#pages). Pages
+h3(#additional_services). Additional Services
+
+Beside @self@, which represents the current context element on which an expression is evaluated, every expression defined inside a _Property View Description_ has access to an additional special variable named @input@, which offers some additional services. For a given user selection, the value of @input@ is the same everywhere inside a _Property View Description_; it corresponds to a descriptor of what the user select and can be used to obtain contextual information.
+
+*Services on @input@.*
+* @input.getOriginalSelection()@: returns the original, raw element selected by the user before any unwrapping or interpretation. This may not be a model element; for Sirius diagrams for example this will be an @EditPart@.
+* @input.getSemanticElement()@: returns the main semantic element associated with the selection. This will correspond to the @self@ variable inside a _Page_, but inside a group @self@ may have a different value is _Semantic Candidate Expressions_ were used, so this service can be used to obtain the "original self" from anywhere.
+* @input.getAllSemanticElements()@: returns _all_ the semantic model elements associated with the selection, not just the main one. This will include additional @DRepresentationElement#semanticElements@ if there are any.
+* @input.emfEditServices(EObject)@: provides a handle to invoke "EMF Edit"-related services on the model element specified in argument. See below for the list of services that can be called on the result.
+* @input.context()@: provides a handle to invoke additional services to obtain more information about the overall context of the selection. See below fot the list of services that can be called on the result.
+
+*Services on @input.emfEditServices(EObject)@.* In the descriptions below, @obj@ designates the @EObject@ instance which was passed to @emfEditServices()@.
+* @getChoiceOfValues(EStructuralFeature)@: returns all the possible values for the specified feature of @obj@, as defined by its @IItemPropertyDescriptor@. 
+* @getDescription(EStructuralFeature)@: returns the (textual) description of the specified feature of @obj@, as defined by its @IItemPropertyDescriptor@.
+* @getEStructuralFeatures()@: returns all the features of @obj@ that would be shown in the properties view by default. This ignores transient, derived and containment features.
+* @getImage()@: returns the image (icon) to use for @obj@, as defined by its @IItemLabelProvider@.
+* @getText()@: returns the textual representation to use for @obj@, as defined by its @IItemLabelProvider@.
+* @getText(EStructuralFeature)@: returns the "display name" of the specified feature of @obj@, as defined by its @IItemPropertyDescriptor@, or the textual representation of the feature itself (as defined by its own @IItemLabelProvider@) if no display name is defined.
+* @isMultiline(EStructuralFeature)@: checks whether the specified feature of @obj@ (which is assumed to be textual) should be represented on muliple lines, as defined by its @IItemPropertyDescriptor.isMultiLine()@ method.
+* @needsCheckboxWidget(EStructuralFeature)@: checks whether the specified feature of @obj@ can be represented by a checkbox widget (i.e. it is a single-valued @boolean@ or @java.lang.Boolean@).
+* @needsTextWidget(EStructuralFeature)@: checks whether the specified feature of @obj@ can be represented by a text (or text area) widget (i.e. it is a single-valued string, number or date). 
+* @setValue(EStructuralFeature, Object)@: sets the value of the specified feature of @obj@ to the given value. This is a thin wrapper around @EObject.eSet()@ and should only be used inside widget actions as it modifies the model. It only handles basic cases; explicit model operations or custom services should be prefered if possible.
+
+*Services on @input.context()@.*
+* @mainSemanticElement()@: returns the main semantic element associated with the selection. This is equivalent to @input.getSemanticElement()@.
+* @allSemanticElements()@: returns _all_ the semantic model elements associated with the selection, not just the main one. This is equivalent to  @input.getAllSemanticElements()@.
+* @representation()@: returns the @DRepresentation@ instance in which the current input was selected, or _null_ if the element was selected from the _Model Explorer_.
+* @semanticDecorator()@: returns the @DSemanticDecorator@ instance which was selected.
+* @session()@: return the @Session@ in the context of which the selection was done. This is a Java object which can only be used by additional (custom) Java services.
+
+h2(#pages). Pages
 
 A _Page_ is used to represent a *Tab* in the properties view.
 
 !images/pages.png(Properties can be organized in separate tabs, defined by Page Description elements)! 
 
-Pages are configured by creating a _Page Description_ element inside a _Properties View Description_. In the illustration above, the two pages _General_ and _Hierarchy_ have been defined from the VSM. They appear above the standard tabs provided by Sirius (_Semantic_, _Advanced_, etc.).
+Pages are configured by creating a _Page_ element inside a _Properties View Description_. In the illustration above, the two pages _General_ and _Hierarchy_ have been defined from the VSM. They appear above the standard tabs provided by Sirius (_Semantic_, _Advanced_, etc.).
 
-Much like the other properties view elements, you must specify the "_Identifier_":#identifier, "_Domain Class_":#domain_class, "_Precondition Expression_":precondition_expression, "_Label Expression_":#label_expression, "_Semantic Candidate Expression_":#semantic_candidate_expression.
+Much like the other properties view elements, you must specify the "_Identifier_":#identifier, "_Domain Class_":#domain_class, "_Precondition Expression_":#precondition_expression, "_Label Expression_":#label_expression, "_Semantic Candidate Expression_":#semantic_candidate_expression.
 
 The definition of a page follows the general rules described "above":#properties_view_description to determine the semantic elements for which a page should be created.
 
-A page can reference "_Groups_":#groups which are defined directly under the _Properties View Description_.
-The groups are ordered in the page accordingly to their order in the groups reference list in the VSM.
+A page's content is defined by the "_Groups_":#groups it references, which are defined directly under the _Properties View Description_. The groups are ordered in the page accordingly to their order in the groups reference list in the VSM.
 
-h3(#groups). Groups
+h2(#groups). Groups
 
 A _Group_ is used to represent a *Section* in a properties view tab.
 
 !images/groups.png(Inside a tab, properties can be grouped in foldable sections)!
 
-Groups are configured by creating a _Group Description_ element inside a _Properties View Description_. 
+Groups are configured by creating a _Group_ element inside a _Properties View Description_. Groups will only be visible inside a tab if they are referenced by the corresponding _Page_. By default, a newly created _Group_ element is not part of any page, so you _must_ add it explicitly to the _Pages_ where it should appear. A single _Group_ definition can be referenced in as many _Page_ definition as needed; this allows sharing common sections between different pages.
 
-Much like the other properties view elements, you must specify the "_Identifier_":#identifier, "_Domain Class_":#domain_class, "_Precondition Expression_":precondition_expression, "_Label Expression_":#label_expression, "_Semantic Candidate Expression_":#semantic_candidate_expression, "_Styles_":#styles, "_Conditional Styles_":#conditional_styles.
+Much like the other properties view elements, you must specify the "_Identifier_":#identifier, "_Domain Class_":#domain_class, "_Precondition Expression_":#precondition_expression, "_Label Expression_":#label_expression, "_Semantic Candidate Expression_":#semantic_candidate_expression, "_Styles_":#styles, "_Conditional Styles_":#conditional_styles.
 
 The definition of a group follows the general rules described "above":#properties_view_description to determine the semantic elements for which a group should be created.
 
-A group can contain "_controls_":#controls and "_validation rules_":#validation_rules, all of which are defined inside the group description (_New Group Description > Container|Text..._ and _Group Validation Set Description_, respectively).
+A group can contain "_widgets_":#widgets, "_containers_":#containers to organize them, and "_validation rules_":#validation_rules, all of which are defined inside the group description (_New Widget > Container|Text..._ and _New > Group Validations_, respectively).
 
-h4(#group_styles). Group styles
+h3(#group_styles). Group Styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles. This section only presents the aspects which are specific to groups.
 
 For groups you can define the following style attributes:
-* _Background color_: You can specify the background color using "color":#colors sub-elements.
-* _Bar style_ : Is used to define the section style. It exists 3 different styles : @TITLE BAR@, @SHORT TITLE BAR@, @NO TITLE@ (see the first table below for illusrations of these styles).
-* _Expanded by default_: This flag is used to define if the section should be expanded or collapsed.
-* _Font name expression_: Is used to computes the name of the font to use.
+* _Background Color_: You can specify the background color using "colors":#colors from the standard or user-defined palette.
+* _Bar Style_: Is used to define the section style. There are 3 different styles: @TITLE BAR@, @SHORT TITLE BAR@, @NO TITLE@ (see the first table below for illusrations of these styles).
+* _Expanded by Default_: This flag is used to define if the section should be initialy expanded or collapsed.
+* _Font Name Expression_: Is used to computes the name of the font to use.
 * _Font size Expression_: Indicates the font size to use in points.
-* _Foreground color_: You can specify the foreground color using "color":#colors sub-elements.
-* _Toggle style_: Is used to define the style of the toggle. It exists 3 different toggles : @TWISTIE@, @TREE NODE@, @NONE@ (see the second table below for illusrations of these styles).
+* _Foreground Color_: You can specify the foreground color using "color":#colors from the standard or user-defined palette.
+* _Toggle style_: Is used to define the style of the toggle. There are 3 different toggles: @TWISTIE@, @TREE NODE@, @NONE@ (see the second table below for illusrations of these styles).
 
 The following tables illustrate the different _Bar Style_ and _Toggle Style_ available on groups:
 
@@ -130,43 +171,40 @@ table(table table-striped table-condensed).
 |!images/group-style-toggle-twistie.png!|!images/group-style-toggle-treenode.png!|!images/group-style-toggle-none.png!|
 |_. @TWISTIE@|_. @TREE NODE@|_. @NONE@|
 
-h3(#controls). Controls
 
-Controls represent several different types of "containers":#containers and "widgets":#widgets, which are described in the following sections.
+h2(#widgets). Widgets
 
-h3(#widgets). Widgets
-
-A widget is used to represent model elements in the properties view. A widget can not contain other properties view elements. _Widget_ can appear directly inside a group description, a "dynamic mapping":#dynamic_mappings or inside a "container":#containers, in which case you can specify a specific "layout":#layout.
+A widget is used to represent model elements in the properties view and, for most of them, to allow users to edit said elements. Widgets can appear directly inside a group, a "dynamic mapping":#dynamic_mappings or inside a "container":#containers, in which case you can specify a specific "layout":#containers which will be used to graphically organize all the widgets inside the container.
 
 The definition of a widget follows the general rules described "above":#properties_view_description to determine the semantic elements for which a widget should be created.
 
-Much like the other properties view elements, you must specify for widgets the "_Identifier_":#identifier, "_Label Expression_":#label_expression, "_Help Expression_":#help_expression,  "_Is Enabled Expression_":#is_enabled_expression, "_Styles_":#styles, "_Conditional Styles_":#conditional_styles.
+Much like the other properties view elements, you can specify the widget's _Label Expression_":#label_expression, "_Help Expression_":#help_expression,  "_Is Enabled Expression_":#is_enabled_expression, "_Styles_":#styles, "_Conditional Styles_":#conditional_styles.
 
-h4(#text). Text / Text area
+h3(#text). Text / Text area
 
-A _Text Description_ is used to represent a *one line text* in a "group":#groups or in a "container":#containers.
+A _Text_ widget is used to represent a *single line text* in a "group":#groups or in a "container":#containers.
 
 !images/widget-text.png!
 
-A _Text Area Description_ is used to represent a *multiple lines text* in a "group":#groups or in a "container":#containers.
+A _Text Area_ is used to represent a *multiple lines text* in a "group":#groups or in a "container":#containers.
 
 !images/widget-textarea.png!
 
 The definition of a text/text area follows the general rules described "above":#widgets to determine the semantic elements for which a text should be created. It is evaluated in the context of the semantic target element.
 
-For texts and text areas, you must define the _Value Expression_ which is used to compute the text displayed in the text field and should return a string. If the expression is not specified, the default value is an empty string.
+For texts and text areas, you must define the _Value Expression_ which is used to compute the text displayed in the text field and should return a string. If the expression is not specified, the default value is an empty string. The expression is evaluated in the context of the semantic target element.
 
-For text areas, you must define the _Line Count_ which is represents the height of the text area in number of lines.
+For text areas, you must define the _Line Count_ which represents the height of the text area in number of lines.
 
-h5(#edit_text). Edit text
+h4(#edit_text). Text Edition
 
-To define the behavior of the text when a change occurs, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
+To define the behavior of the text when a change occurs, you simply specify the behavior associated to the edition inside the _Begin_ element directly contained inside the widget, using all the standard "model operations":../general/Model_Operations.html.
 
-The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value entered by the user.
+The operations defined under the _Begin_ can use the @newValue@ variable which represents the value entered by the user (as a string). The root operation is executed in the context of the semantic target element.
 
-Sirius automatically invokes the edit operation a short time after the user performs a change in the text or when the focus leaves the widget.
+Sirius automatically invokes the edit operation when the focus leaves the widget. For single-line _Text_ widgets, the edit operation is also triggered when the user hits _Enter_. Note that if an error occurs while executing the edit operation, the whole effect of the operation on the underlying model is cancelled, and an error is logged.
 
-h5(#text_styles). Text/Text area styles
+h4(#text_styles). Text/Text Area Styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets. This section only presents the aspects which are specific to texts.
 
@@ -181,27 +219,27 @@ Here are examples of text and text area widgets with some of their style attribu
 
 !images/widget-text-styling.png(Text and TextArea widgets with customized style)!
 
-h4(#button). Button
+h3(#button). Button
 
-A _Button Description_ is used to represent a *button* in a "group":#groups or in a "container":#containers.
+A _Button_ is used to represent a *button* in a "group":#groups or in a "container":#containers, that can be used to trigger an arbitrary (configurable) operation on the model.
 
 !images/widget-button.png(Example of a button widget)!
 
 The definition of a button follows the general rules described "above":#widgets to determine the semantic elements for which a button should be created. It is evaluated in the context of the semantic target element.
 
-For buttons, you must define the _Button Label Expression_ which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is equal to @DO IT@.
+For buttons, you must define the _Button Label Expression_ which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is the empty string.
 
-h5(#pushed_button). Pushed button
+h4(#pushed_button). Button Push
 
-To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
+To define the behavior of the button when it is pushed, simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html. The root operation is executed in the context of the semantic target element.
 
-h5(#button_styles). Button styles
+h4(#button_styles). Button Styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets.
 
-h4(#label). Label
+h3(#label). Label
 
-A _Label Description_ is used to represent a *non editable text* in a "group":#groups or in a "container":#containers.
+A _Label_ is used to represent a *non editable text* in a "group":#groups or in a "container":#containers.
 
 Here is an example which shows two label widgets:
 
@@ -209,9 +247,13 @@ Here is an example which shows two label widgets:
 
 The definition of a label follows the general rules described "above":#widgets to determine the semantic elements for which a label should be created. It is evaluated in the context of the semantic target element.
 
-For labels, you must define the _Value Expression_ which is used to compute the text displayed in the description.  The _Value Expression_ can return any kind of object but the result displayed will be the result of a call to _java.lang.Object#toString()_. If you want to customize how the result will be displayed, you can return a String in the value expression or use the _Display Expression_. The _Display Expression_ will have access to the result of the _Value Expression_ using the variable _value_ and it should return a String. If the expression is not specified, the default value is the empty string.
+For labels, you must define the _Value Expression_ which is used to compute the text displayed in the description. The _Value Expression_ can return any kind of object but the result displayed will be the result of a call to @Object.toString()@. If you want to customize how the result will be displayed, you can return a string in the value expression or use the _Display Expression_. The _Display Expression_ will have access to the result of the _Value Expression_ using the variable @value@ and it should return a string. If the expression is not specified, the default value is the empty string.
 
-h5(#label_styles). Label styles
+h4(#label_actions). Label Actions
+
+A _Label_ can optionally define one or more _Actions_, which are created as children element of the _Label_ element (_New > Widget Action_). Each action has a _Label Expression_ and a behavior defined by "model operations":../general/Model_Operations.html contained inside. If present, actions will be rendered as buttons on the right of the label itself. The button's text is defined by the _Label Expression_, and its behavior when pushed by the model operations.
+
+h4(#label_styles). Label Styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets. This section only presents the aspects which are specific to texts.
 
@@ -224,87 +266,91 @@ One of the responsibility of labels styles is to describe how descriptions will 
 
 !images/widget-label-styling.png(Example of labels with customized style)!
 
-h4(#checkbox). Checkbox
+h3(#checkbox). Checkbox
 
-A _Checkbox Description_ is used to represent a *checkbox* in a "group":#groups or in a "container":#containers.
+A _Checkbox_ is used to represent a *checkbox* in a "group":#groups or in a "container":#containers.
 
 !images/widget-checkbox.png(Examples of checkbox widgets)!
 
 The definition of a checkbox follows the general rules described "above":#widgets to determine the semantic elements for which a checkbox should be created. It is evaluated in the context of the semantic target element.
 
-For checkboxes, you must define the _Value Expression_ which is used to compute the checked/unchecked state of the checkbox and so should return a boolean.
+For checkboxes, you must define the _Value Expression_ which is used to compute the checked/unchecked state of the checkbox and so should return a boolean (return _true_ to display the checkbox checked).
 
-h5(#checkbox_change_value). Change value
+h4(#checkbox_change_value). Value Change
 
-To define the behavior of the checkbox when the status changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
+To define the behavior of the checkbox when the user clicks on it, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
-The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value set by the user.
+The operations defined under the _Begin_ can use the @newValue@ variable which represents the value set by the user as a boolean; it will be _true_ if the checkbox was unchecked before, and the user clicked on it to check it, _false_ otherwise. Note that if an error occurs while executing the edit operation, the whole effect of the operation on the underlying model is canelled, and an error is logged.
 
-h5(#checkbox_styles). Checkbox styles
+h4(#checkbox_styles). Checkbox Styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets.
 
-h4(#select). Select
+h3(#select). Select
 
-A _Select Description_ is used to represent a *combo* in a "group":#groups or in a "container":#containers.
+A _Select_ is used to represent a *combo box* in a "group":#groups or in a "container":#containers.
 
 !images/widget-select.png(Example of a select widget)!
 
 The definition of a select follows the general rules described "above":#widgets to determine the semantic elements for which a select should be created. It is evaluated in the context of the semantic target element.
 
 For selects, you must define :
+* the _Candidates Expression_ which is used to compute the candidates available in the combo and should return a list of elements from which the user can select the select's value.
 * the _Candidate Display Expression_ which is used to compute the label displayed for each possible candidate in the combo and so should return a string. The _Candidate Display Expression_ can use the @candidate@ variable which represents the element currently evaluated.
-* the _Candidates Expression_ which is used to compute the candidates available in the combo and should return a list of elements from which the user can select the select’s value.
-* the _Value Expression_ which is used to compute the element selected in the combo and should return an object.
+* the _Value Expression_ which is used to compute the element selected in the combo and should return an object, which should be an element of the collection returned by _Candidates Expression_.
 
-h5(#select_change_value). Change value
+h4(#select_change_value). Value Change
 
-To define the behavior of the select when the selection changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
+To define the behavior of the _Select_ when the user selects a different element, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
-The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value selected by the user.
+The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value selected by the user. Note that if an error occurs while executing the edit operation, the whole effect of the operation on the underlying model is cancelled, and an error is logged.
 
-h5(#select_styles). Select styles
+h4(#select_styles). Select Styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets.
 
-h4(#radio_group). Radio group
+h3(#radio_group). Radio Group
 
-A _Radio Description_ is used to represent a *radio group* in a "group":#groups or in a "container":#containers.
+A _Radio_ is used to represent a *radio group* in a "group":#groups or in a "container":#containers.
 
 !images/widget-radio.png(Example of a radio group widget)!
 
 The definition of a radio group follows the general rules described "above":#widgets to determine the semantic elements for which a radio group should be created. It is evaluated in the context of the semantic target element.
 
 For radio groups, you must define :
-* the _Candidate Display Expression_ which is used to compute the label displayed for each possible candidate in the radio group and so should return a string. The _Candidate Display Expression_ can use the @candidate@ variable which represents the element currently evaluated.
 * the _Candidates Expression_ which is used to compute the candidates available in the radio group and should return a list of elements from which the user can select the radio group’s value.
-* the _Value Expression_ which is used to compute the element selected in the radio group and should return an object.
+* the _Candidate Display Expression_ which is used to compute the label displayed for each possible candidate in the radio group and so should return a string. The _Candidate Display Expression_ can use the @candidate@ variable which represents the element currently evaluated.
+* the _Value Expression_ which is used to compute the element selected in the radio group and should return an object, which should be an element of the collection returned by _Candidates Expression_.
 
-h5(#radio_change_value). Change value
+h4(#radio_change_value). Value Change
 
-To define the behavior of the radio group when the selection changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
+To define the behavior of the radio group when the selection changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
-The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value selected by the user.
+The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value selected by the user. Note that if an error occurs while executing the edit operation, the whole effect of the operation on the underlying model is cancelled, and an error is logged.
 
-h5(#radio_styles). Radio styles
+h4(#radio_styles). Radio Styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets.
 
-h4(#hyperlink). Hyperlink
+h3(#hyperlink). Hyperlink
 
-A _Hyperlink Description_ is used to represent an *hyperlink* in a "group":#groups or in a "container":#containers.
+A _Hyperlink_ is used to represent an *hyperlink* in a "group":#groups or in a "container":#containers.
 
 !images/widget-hyperlink.png(Example of an hyperlink widget)!
 
 The definition of an hyperlink follows the general rules described "above":#widgets to determine the semantic elements for which an hyperlink should be created. It is evaluated in the context of the semantic target element.
 
-For hyperlinks, you must define the _Value Expression_ which is used to compute the hyperlink displayed. The _Value Expression_ can return any kind of object but the result displayed will be the result of a call to _java.lang.Object#toString()_. If you want to customize how the result will be displayed, you can return a String in the value expression or use the _Display Expression_. The _Display Expression_ will have access to the result of the _Value Expression_ using the variable named _value_ and it should return a String.
+For hyperlinks, you must define the _Value Expression_ which is used to compute the hyperlink displayed. The _Value Expression_ can return any kind of object but the result displayed will be the result of a call to _java.lang.Object#toString()_. If you want to customize how the result will be displayed, you can return a String in the value expression or use the _Display Expression_. The _Display Expression_ will have access to the result of the _Value Expression_ using the variable named @value@ and it should return a String.
 
-h5(#hyperlink_click_on_value). Click on value
+h4(#hyperlink_click_on_value). Click on Value
 
-To define the behavior of the hyperlinked when is clicked, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
+To define the behavior of the hyperlink when it is clicked, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
-h5(#hyperlink_styles). Hyperlink styles
+h4(#hyperlink_actions). Additional Hyperlink Actions
+
+A _Hyperlink_ can optionally define one or more _Actions_, which are created as children element of the _Hyperlink_ element (_New > Widget Action_). Each action has a _Label Expression_ and a behavior defined by "model operations":../general/Model_Operations.html contained inside. If present, actions will be rendered as buttons on the right of the label itself. The button's text is defined by the _Label Expression_, and its behavior when pushed by the model operations.
+
+h4(#hyperlink_styles). Hyperlink Styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets. This section only presents the aspects which are specific to hyperlinks.
 
@@ -314,61 +360,36 @@ One of the responsibility of hyperlinks styles is to describe how hyperlinks wil
 * _Background Color_: You can specify the background color of the text field using "color":#colors sub-elements.
 * _Font Format_: Is used to specify the font style attributes (Bold and/or Italic and/or Strike through).
 
-h4(#reference). Reference
+h3(#reference). Reference
 
-A _Reference Description_ is used to represent a *field with buttons* in a "group":#groups or in a "container":#containers.
+A _Reference_ is used to represent the value of a reference in the model.
 
-Depending on the parameters configuration the reference widget can be represented thanks to:
-* a label,
-* an hyperlink when the "_On Click Expression_"#reference_click_on_value is set,
-* a table when the _Multiple_ flags is checked,
-* buttons when "_Action Widgets_":#reference_actions are defined.
+The configuration of the _Reference_ widget is minimal. Beside the standard properties available on all widgets like _Label Expression_, _Help Expression_ and _Is Enabled Expression_, you only need to specify:
+* _Reference Owner Expression_: optional, defaults to @var:self@. If specified, the reference to display will be looked on the element returned by the expression instead of the current one.
+* _Reference Name Expression_: this should return a string which designates the name of the _EReference_ to display. It can be a fixed string or a computed expression.
 
-!images/widget-references.png(Examples of reference widgets)!
+The _Reference_ widget's appearance will depend whether the reference to display is single-valued or multi-valued:
 
-The illustration above shows two reference widgets:
-* the first one (_Superclass_) has a single value, which looks and behaves links an _hyperlink_ widget (with configurable "on click" behavior), and a single _Action Widget_ named _Show hierarchy_ which appears as a button (again, with configurable behavior).
-* the second one (_Attributes_) has multiple values which are displayed inside a list, and four different actions on the right to offer various operations on the elements displayed.
+!images/reference-single-value.png(A Reference widget displaying a single-valued reference)!
 
-The definition of a reference follows the general rules described "above":#widgets to determine the semantic elements for which a reference should be created. It is evaluated in the context of the semantic target element.
+!images/reference-multiple-value.png(A Reference widget displaying a multi--valued reference)!
 
-For references, you must define:
-* the _Value Expression_ which is used to compute the element to display and should return an object.
-* the _Display Expression_ which is used to compute the text displayed in the text field and should return a string. It is evaluated in the context of the semantic target element and has access to the variable @value@ which corresponds to the element to display.
-* the _Multiple_ flag is used to represent multiple valued element. If the flag is checked then the widget is represented thanks to a table, else with an hyperlink or a label (it depends on the "_On Click Expression_":#reference_click_on_value is defined or not).
-* the "_actions_"#actions are used to associate some buttons to the text field.
+As mentioned above, the configurability of the _Reference_ widget is minimal, it determines all of its behavior using the standard EMF features:
+* the value of the reference is obtained reflectively using @eGet@.
+* the textual representation and icon of the value(s) of the reference are determined automatically using the corresponding @IItemLabelProvider@.
+* the behavior of the action buttons is hard-coded to perform the standard operation when selecting a diffrente value (from an existing element in the model), creating a new instance to set as the value, removing an element, or moving up/down the elements in a multi-valued reference.
 
-h5(#reference_click_on_value). Click on value
+If you need more specific behavior, you need to use either an _Hyperlink_ (for single values) or a _List_ widget (for multiple values) with custom actions implementing the required behavior.
 
-If the _On Click Expression_ is set then:
-* if multiple *is not checked* : an hyperlink is used to represent the value. This expression then defines the behavior executed when the user clicks on the hyperlink.
-* if multiple *is checked* : a table is used to represent the values. This expression then defines the behavior executed when the user double-clicks on an element in the table.
-
-To define the behavior, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
-
-The expressions defined under the _Begin_ can use the @selection@ variable which represents the values selected by the user. It could be at least one element or a list of elements in case of multiple flags is checked.
-
-h5(#reference_actions). Actions
-
-A reference can contain _actions_ which represent *buttons* associated to the reference field, as shown in the illustration above.
-
-For actions, you must define the _Label Expression_ which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is equal to @...@.
-
-h5(#reference_action_pushed_button). Action pushed button
-
-To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
-
-The expressions defined under the _Begin_ can use the @selection@ variable which represents the values selected by the user in the reference field.
-
-h5(#reference_styles). Reference styles
+h4(#reference_styles). Reference Styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets.
 
-h4(#list). List
+h3(#list). List
 
-A _List Description_ is used to represent a *table with buttons* in a "group":#groups or in a "container":#containers.
+A _List_ is used to represent a *list with buttons* in a "group":#groups or in a "container":#containers.
 
-Depending on the parameters configuration the list widget will be represented thanks to a table and multiple buttons when "_Action Widgets_":#list_actions are defined.
+Depending on the parameters configuration the list widget will be represented thanks to a list and multiple buttons when "_Action Widgets_":#list_actions are defined.
 
 The definition of a list follows the general rules described "above":#widgets to determine the semantic elements for which a list should be created. It is evaluated in the context of the semantic target element.
 
@@ -377,54 +398,64 @@ For lists, you must define:
 * the _Display Expression_ which is used to compute the text displayed in the text field and should return a string. It is evaluated in the context of the semantic target element and has access to the variable @value@ which corresponds to the element to display.
 * the "_actions_"#actions are used to associate some buttons to the text field.
 
-h5(#list_click_on_value). Click on value
+h4(#list_click_on_value). Click on Value
 
 If the _On Click Expression_ is set then this expression defines the behavior executed when the user clicks or double-clicks on an element in the table. A variable named @onClickEventKind@ will be available to determine if the expression has been triggered by a single click or double click. In case of a single click, the variable will have the value "SINGLE_CLICK" and "DOUBLE_CLICK" in case of a double click.
 
-To define the behavior, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
+To define the behavior, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
 The expressions defined under the _Begin_ can use the @selection@ variable which represents the values selected by the user. This variable will contain the list of the values selected.
 
-h5(#list_actions). Actions
+h4(#list_actions). Actions
 
 A list can contain _actions_ which represent *buttons* associated to the list field.
 
 For actions, you must define the _Label Expression_ which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is equal to @...@.
 
-h5(#list_action_pushed_button). Action pushed button
+h4(#list_action_pushed_button). Action Pushed Button
 
-To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
+To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
 The expressions defined under the _Begin_ can use the @selection@ variable which represents the values selected by the user in the list field.
 
-h5(#list_styles). List styles
+h4(#list_styles). List Styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets.
 
-h4(#custom). Custom
+h3(#custom). Basic Custom Widgets
 
-A _Custom Description_ is used when none of the predefined styles correspond to your need. Custom style are implemented in Java and use the @org.eclipse.eef.ide.ui.eefLifecycleManagerProvider@ extension point.
+A _Custom Description_ is used when none of the predefined styles correspond to your need. Custom widgets are implemented in Java and use the @org.eclipse.eef.ide.ui.eefLifecycleManagerProvider@ extension point.
 
 The definition of a custom widget follows the general rules described "above":#widgets to determine the semantic elements for which a custom widget should be created. It is evaluated in the context of the semantic target element.
 
 For custom widgets, the _Identifier_ is mandatory. It is used to find the widget contributed with the extension point.
+
+See "the reference documentation":../../developer/extensions-properties_provide_custom_widget_basic.html for how to actually implement your own basic custom widgets.
 
 h5(#custom_expression). Custom Expression/Operation
 
 When you define a custom widget, it is possible to define some custom expression or operation which will be used by the custom widget implementation. 
 In this case, the _Identifier_ is mandatory. It would be used in the Java code to find the expression/operation contributed with the VSM.
 
-h5(#custom_styles). Custom styles
+h5(#custom_styles). Custom Styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets. This section only presents the aspects which are specific to texts.
 
-h3(#dynamic_mappings). Dynamic mappings
+h3(#advanced_custom_widgets). Advanced Custom Widgets
 
-A dynamic mapping is used to represent model elements of the same type with the same widget in the properties view. A dynamic mapping can contain widgets. 
+Basic custom widgets need to be configured using very generic _Custom Expression/Operation_, which makes them different and harder to use than the standard ones. Any configuration property which would be directly accessible in the VSM editor's property sheet on a standard widget will need a specific _Custom Expression_ with the exact expected identifier.
 
-A _Dynamic Mapping For_ can appear directly inside a group description, or inside a "container":#containers, in which case you can specify a specific "layout":#layout. You must specify an _Iterable Expression_ which computes a list of elements. An _Iterator_ must be define to be able to access the different element of the list thanks to a variable.
-Sirius will loop on the element list to try to apply the _Predicate Expression_ which should return a boolean and defined in a _Dynamic Mapping If_.
-The _Dynamic Mapping If_ contains *one widget* which represents all the elements selected by the previous predicate.
+It is possible to improve custom widgets to be better integrated with the VSM editor, to the point that their configuration looks and feels like for any of the standard ones. For the specifier point of view, the configuration of these widgets follows the same principles as for the default ones.
+
+See "the reference documentation":../../developer/extensions-properties_provide_custom_widget_advanced.html for how to actually implement your own advanced custom widgets.
+
+h2(#dynamic_mappings). Dynamic Mappings
+
+Dynamic mappings are used for advanced scenarios where the set of widgets to display can not be known statically, but instead must be computed at runtime. A dynamic mapping contains conditional widgets definition, each of which may be instanciated zero or multiple times at runtime.
+
+A _Dynamic Mapping For_ can appear directly inside a group description, or inside a "container":#containers, in which case you can specify a specific "layout":#containers. You must specify an _Iterable Expression_ which computes a list of elements to iterate over. The _Iterator_ property must also be defined and corresponds to the name of the iteration variable that will be accessible inside the _For_. Inside the _Dynamic Mapping For_ you can create any number of _Dynamic Mapping If_, which defines a _Predicate Expression_ and can contain *one widget*.
+
+At runtime, for a given input element selected by the user, Sirius will evaluate the _iterable expression_, and then for each of the elements returned will instanciate the widgets defined inside _Dynamic Mapping If_ whose predicate holds true.
 
 The dynamic mapping mechanism is the one used by Sirius to provide by default properties view even if you do not specify any _Properties View Description_ in your VSM.
 If we take one of the default rules implemented by Sirius we have:
@@ -433,15 +464,13 @@ If we take one of the default rules implemented by Sirius we have:
 ** a _Dynamic Mapping If_ with the _Predicate Expression_ equals to @aql:eStructuralFeature.eType.instanceTypeName = 'java.lang.String'@ which means that we just keep the structural features serialized as a String. Notice that in the predicate expression we use the variable @eStructuralFeature@ which was defined as the _Iterator_.
 *** in this case we will represent the structural feature with a _Text widget_ for which we set:
 **** _Label expression_: @aql:eStructuralFeature.name.toUpperFirst() + ':'@ which means get the name of the structural feature, capitalize the first letter and add @:@ at the end.
-**** _Value Expression_: @aql:self.eGet(eStructuralFeature)@ which means get the value associated to the given structural feature.
+**** _Value Expression_: @aql:self.eGet(eStructuralFeature.name)@ which means get the value associated to the given structural feature.
 
 Thanks to this mechanism we defined that all the @String@ elements in our metamodel will be represented with a text field.
 
-h3(#containers). Containers
+h2(#containers). Containers and Layout
 
-h4(#layout). Layout
-
-Sirius provides a default algorithm to perform an automatic layout of all the controls in a properties view. If the default algorithm does not fit your needs, you can specify some parameters for alternate layouts directly inside the VSM.
+Sirius provides a default algorithm to perform an automatic layout of all the controls in a properties view. If the default algorithm does not fit your needs, you can specify some parameters for alternate layouts directly inside the VSM. To do this you must first create a _Container_ which will contains all the widgets to which the layout will apply, and then create and configure the layout to be used by the container to organize its children widgets:
 
 p(#fill_layout). _Fill layout_ can organize elements inside the container either horizontally or vertically (configurable on the _Fill layout_ element).
 
@@ -465,13 +494,13 @@ One of the responsibility of widgets styles is to describe how labels will be fo
 
 h3(#colors). Colors
 
-Whenever you have to specify colors for a style, you can use either one of the pre-defined system colors or one which you have defined yourself in a _Users Color Palette_. See "the general section on colors":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Colors.html for more details.
+Whenever you have to specify colors for a style, you can use either one of the pre-defined system colors or one which you have defined yourself in a _Users Color Palette_. See "the general section on colors":../general/Colors.html for more details.
 
-h3(#conditional_styles). Conditional styles
+h3(#conditional_styles). Conditional Styles
 
 Conditional styles make it possible to support different graphical aspects for a single properties view element. The actual style used to render an element is determined dynamically depending on the current state of the models elements.
 
-To use conditional style, you must add one or several conditional styles. Each conditional style is associated to a condition specified as a predicate. If there are conditional styles on a properties view element, their conditions are tested in their order of appearance in the description. The first one for which the condition is true is selected. If none of the conditional styles condition is true, the default style is used instead.
+To use conditional styling, you must add one or several conditional styles. Each conditional style is associated to a condition specified as a predicate. If there are conditional styles on a properties view element, their conditions are tested in their order of appearance in the description. The first one for which the condition is true is selected. If none of the conditional styles condition is true, the default style is used instead.
 
 h2(#validation_rules). Validation rules
 
@@ -488,3 +517,24 @@ The group semantic validation rule is used to define a validation rule linked to
 h3(#group_property_validation_rule). Group property validation rule
 
 The group property validation rule is used to define a validation rule linked to a specific widget.
+
+h2(#extension_points). Extension Points
+
+h3(#advanced_custom_widgets_extension_points). Extension Points for Advanced Custom Widgets
+
+Integrating and advanced custom widget implementation requires extending several extension points:
+* @org.eclipse.emf.edit.childCreationExtenders@: When generating the metamodel for the custom configuration DSL of your widget, make sure EMF's @childCreationExtenders@ mechanism is properly configured so that the Sirus VSM editor will see your custom widget type and allow them to be created in the _New_ context menu.
+* @org.eclipse.sirius.ui.properties.descriptionConverter@: This extension point allows you to particpate in the conversion of the Sirius-side VSM model into the EEF DSL. With this mechanism, you can translate for the EEF runtime new elements that you have contributed in the Sirius Properties DSL.
+* @org.eclipse.sirius.ui.properties.descriptionLinkResolver@: This extension point may be needed in complement to the @descriptionConverter@ if some post-transformation step is needed on your transformed model to perform global link resolution.
+
+Please refer to the documentation for each of these for more details. And "the reference documentation":../../developer/extensions-properties_provide_custom_widget_advanced.html for the full details on how to actually implement your own advanced custom widgets.
+
+h3(#tab_filtering). Tab Filtering
+
+The EEF runtime used internally by Sirius to render the properties views has programmatic support for filtering property tabs that you may want to hide in your context. For example you may want to filter out some legacy tabs defined statically if you provide alternative versions defined dynamically in Sirius.
+
+This feature is not currently exposed via the Sirius VSMs, but you can still use it by implementing the @org.eclipse.eef.properties.ui.api.IEEFTabDescriptorFilter@ interface, and registering your implementation in the @org.eclipse.eef.properties.ui.eefTabDescriptorFilter@ extension point defined in EEF.
+
+The interface defines a single method @boolean filter(IEEFTabDescriptor tabDescriptor)@ which will be called for each candidate tab to display. If at least one of the @IEEFTabDescriptorFilter@ registered indicates that the tab should be filtered, it will not be displayed.
+
+Please refer to the EEF extension point documentation for more details.

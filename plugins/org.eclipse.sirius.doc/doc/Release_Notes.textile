@@ -17,12 +17,6 @@ h3. Developer-Visible Changes
 
 h2(#sirius4.1.0). Changes in Sirius 4.1.0
 
-h3. Requirements
-
-Sirius 4.1.0 only supports Eclipse Mars (4.5) and later. In addition, to be fully functional it requires:
-* AQL version 5.0.2 (or later), available at "http://download.eclipse.org/acceleo/updates/releases/3.6/R201610060831/":http://download.eclipse.org/acceleo/updates/releases/3.6/R201610060831/
-* EEF 1.7.0  (or later), available at "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.7/R20161005043727":http://download.eclipse.org/modeling/emft/eef/updates/releases/1.7/R20161005043727.
-
 h3. User-Visible Changes
 
 * <span class="label label-success">Added</span> Copy/Paste Layout has been completed with Copy/Paste Style and Copy/Paste Format. _Paste Format_ is equivalent to paste _Layout_ and _Style_ action. See chapter "_Copy/paste of format_":./user/diagrams/Diagrams.html#copy_paste_format in _User Manual_ for more details.
