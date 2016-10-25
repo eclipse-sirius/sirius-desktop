@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.multipageeditor;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
@@ -25,6 +27,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.MultiPageEditorPart;
@@ -54,10 +57,21 @@ public class SiriusMultiPageEditorTest extends SiriusTestCase {
 
     private IDiagramCommandFactory commandFactory;
 
+    private IEditorPart openEditor;
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
         genericSetUp(SEMANTIC_MODEL_FILENAME, MODELER_MODEL_FILENAME, SESSION_PATH);
+
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        if (openEditor != null) {
+            openEditor.dispose();
+        }
+        super.tearDown();
 
     }
 
@@ -79,17 +93,36 @@ public class SiriusMultiPageEditorTest extends SiriusTestCase {
         final IEditorInput editorInput = new SessionEditorInput(uri, editorName, session);
         final IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
         assertFalse(doesAnErrorOccurs());
-        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+
+        RunnableWithResult<IEditorPart> result = new RunnableWithResult<IEditorPart>() {
+            private IEditorPart resultEditor;
 
             @Override
             public void run() {
                 try {
-                    activePage.openEditor(editorInput, SIRIUS_MULTI_PAGE_EDITOR_ID);
+                    resultEditor = activePage.openEditor(editorInput, SIRIUS_MULTI_PAGE_EDITOR_ID);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
             }
-        });
+
+            @Override
+            public IEditorPart getResult() {
+                return resultEditor;
+            }
+
+            @Override
+            public void setStatus(IStatus status) {
+
+            }
+
+            @Override
+            public IStatus getStatus() {
+                return null;
+            }
+        };
+        PlatformUI.getWorkbench().getDisplay().syncExec(result);
+        openEditor = result.getResult();
         assertFalse("No error should have occurs during opening of the Sirius Diagram editor inside a multi page editor.", doesAnErrorOccurs());
     }
 
