@@ -8,7 +8,7 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-      Specifier support for Sirius property views definition. Not yet ready for production: APIs may break and behavior may change at any point without notice. Use at your own risk.
+      Specifier support for Sirius property views definition.
    </description>
 
    <copyright>
