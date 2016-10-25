@@ -8,8 +8,7 @@ h2(#sirius4.1.1). Changes in Sirius 4.1.1
 
 h3. User-Visible Changes
 
-* <span class="label label-success">Modified</span>The "straighten to" actions were previously disabled when an edge is
-connected to border nodes that have several edges. It is now allowed.
+* <span class="label label-info">Modified</span>The "straighten to" actions were previously disabled when an edge is connected to border nodes that have several edges. It is now allowed.
 
 h3. Developer-Visible Changes
 
@@ -42,9 +41,9 @@ h3. Specifier-Visible Changes
 * <span class="label label-success">Added</span> A new widget named List with the same behavior as the multiple reference widget.
 * <span class="label label-success">Added</span> _Page_ and _Group_ descriptions in _Properties View_ models now support a @preconditionExpression@, which behaves in the same way as preconditions for mappings on representation descriptions.
 * <span class="label label-info">Modified</span> The rules concerning the layout of compartments have been changed/completed. You can have a look at the "dedicated chapter":specifier/diagrams/Diagrams.html#compartments_layout in the specifier documentation for more details.
-<span class="label label-info">Modified</span> In the VSM editor, all dialogs which ask for selecting elements from the VSM will now show the fully qualified path of each element, instead of just their name, to allow distinguishing elements with the same name appearing in different places.
+* <span class="label label-info">Modified</span> In the VSM editor, all dialogs which ask for selecting elements from the VSM will now show the fully qualified path of each element, instead of just their name, to allow distinguishing elements with the same name appearing in different places.
 * <span class="label label-info">Modified</span> The properties @fontSize@ and @labelFontSize@ have been renamed into @fontSizeExpression@ and @labelFontSizeExpression@ since both of them were already treated as expression.
-<span class="label label-info">Modified</span> In the VSM editor, the _Identifier_ attribute of many _Prroperties View_ related elements has been moved into the _Advanced_ tab and renamed _Extension Id_, as it is not actually required on common use cases but only for extensibility purposes.  
+* <span class="label label-info">Modified</span> In the VSM editor, the _Identifier_ attribute of many _Prroperties View_ related elements has been moved into the _Advanced_ tab and renamed _Extension Id_, as it is not actually required on common use cases but only for extensibility purposes.  
 * <span class="label label-info">Modified</span> The property @Domain Class Expression@ in @DynamicMappingFor@ elements (in properties views definitions) has been renamed into @Iterable Expression@.
 * <span class="label label-info">Modified</span> The _Properties View_ widget which was named _Reference_ in Sirius 4.0 has been renamed as _List_, as it corresponds to an arbitrary list of elements with customizable buttons for acting on them. A new _Reference_ widget was added for handling plain _EReference_ edition with minimal configuration needed.
 * <span class="label label-info">Modified</span> When opening a VSM, the editor now automatically expands the first few levels to immediatly reveal the interesting elements (representation descriptions).
@@ -89,7 +88,7 @@ h4. Changes in @org.eclipse.sirius@
 
 h4. Changes in @org.eclipse.sirius.ui@
 
-* <span class="label label-info">Added</span> The class @org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider@ has been added to provide a generic label provider for VSM model element giving hierarchical label. This label provider replaces the one returned by deprecated method @DialectUIServices.getHierarchyLabelProvider()@. 
+* <span class="label label-success">Added</span> The class @org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider@ has been added to provide a generic label provider for VSM model element giving hierarchical label. This label provider replaces the one returned by deprecated method @DialectUIServices.getHierarchyLabelProvider()@. 
 * <span class="label label-info">Modified</span> @AbstractSWTCallback@ provides a default implementation of @UICallBack.askSessionReopeningWithResourceVersionMismatch()@ method to give feedback about version mismatch and give the choice to reopen session despite a potential corruption.
 * <span class="label label-info">Modified</span> The method @org.eclipse.sirius.ui.tools.api.control.SiriusControlHandler.getRepresentationsToMove(Shell, Session, EObject)@ and @SiriusControlHandler.collectExistingRepresentations@ have been renamed to @getRepresentationDescriptorsToMove(Shell, Session, EObject)@ and @SiriusControlHandler.collectExistingRepresentationDescriptors@. The return type of both that methods and @SiriusControlHandler.askUserWhichRepresentationToSplit@ has been changed to @DRepresentationDescriptor@ as @DRepresentationDescriptor@ is the entry point to work with a @DRepresentation@ instead of DRepresentation itself.
 * <span class="label label-warning">Deprecated</span> The method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.getHierarchyLabelProvider()@ has been deprecated in favor of generic label provider @HierarchyLabelProvider@.
@@ -121,7 +120,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 ** @STRAIGHTEN_TO_BOTTOM@: For _Straighten to bottom_ action,
 ** @STRAIGHTEN_TO_LEFT@: For _Straighten to left_ action,
 ** @STRAIGHTEN_TO_RIGHT@: For _Straighten to right_ action.
-* Constants have been added in @org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath@ for the icon path of the four new straighten actions.
+* <span class="label label-success">Added</span> Constants have been added in @org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath@ for the icon path of the four new straighten actions.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.AbstractSiriusLayoutDataManager@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager@ instead.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.ILayoutDataManagerProvider@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.IFormatDataManagerProvider@ instead.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataHelper@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataHelper@ instead.
@@ -285,8 +284,8 @@ h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
 * <span class="label label-success">Added</span> The class @org.eclipse.sirius.tests.support.api.DefaultTestMemento@ has been created. It help to simulate a real @IMemento@ for editor restoration.
 * <span class="label label-success">Added</span> The method @SiriusTestCase.initViewpoint(String, Session, boolean)@ has been added to allow viewpoint activation without creating representations.
-* <span class="label label-warning">Deprecated</span> The method @SiriusTestCase.initViewpoint(String, Session, EObject)@ has been deprecated because the last parameter is useless to activate a viewpoint.
 * <span class="label label-success">Added</span> The methods @initLoggers()@ and @disposeLoggers()@ of class @org.eclipse.sirius.tests.support.api.SiriusTestCase@ have now a protected visibility (instead of private) to allow subclasses to use this logger without all the @genericSetUp@ behavior.
+* <span class="label label-warning">Deprecated</span> The method @SiriusTestCase.initViewpoint(String, Session, EObject)@ has been deprecated because the last parameter is useless to activate a viewpoint.
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 

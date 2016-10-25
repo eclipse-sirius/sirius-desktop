@@ -88,9 +88,8 @@
 		<h2 id="sirius4.1.1">Changes in Sirius 4.1.1</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-success">Modified</span>The &#8220;straighten to&#8221; actions were previously disabled when an edge is</li>
+			<li><span class="label label-info">Modified</span>The &#8220;straighten to&#8221; actions were previously disabled when an edge is connected to border nodes that have several edges. It is now allowed.</li>
 		</ul>
-		<p>connected to border nodes that have several edges. It is now allowed.</p>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> 
@@ -183,23 +182,19 @@
 			<li><span class="label label-info">Modified</span> The rules concerning the layout of compartments have been changed/completed. You can have a look at the 
 				<a href="specifier/diagrams/Diagrams.html#compartments_layout">dedicated chapter</a> in the specifier documentation for more details.
 			</li>
-		</ul>
-		<p><span class="label label-info">Modified</span> In the VSM editor, all dialogs which ask for selecting elements from the VSM will now show the fully qualified path of each element, instead of just their name, to allow distinguishing elements with the same name appearing in different places.</p>
-		<ul>
+			<li><span class="label label-info">Modified</span> In the VSM editor, all dialogs which ask for selecting elements from the VSM will now show the fully qualified path of each element, instead of just their name, to allow distinguishing elements with the same name appearing in different places.</li>
 			<li><span class="label label-info">Modified</span> The properties 
 				<code>fontSize</code> and 
 				<code>labelFontSize</code> have been renamed into 
 				<code>fontSizeExpression</code> and 
 				<code>labelFontSizeExpression</code> since both of them were already treated as expression.
 			</li>
-		</ul>
-		<p><span class="label label-info">Modified</span> In the VSM editor, the 
-			<em>Identifier</em> attribute of many 
-			<em>Prroperties View</em> related elements has been moved into the 
-			<em>Advanced</em> tab and renamed 
-			<em>Extension Id</em>, as it is not actually required on common use cases but only for extensibility purposes.  
-		</p>
-		<ul>
+			<li><span class="label label-info">Modified</span> In the VSM editor, the 
+				<em>Identifier</em> attribute of many 
+				<em>Prroperties View</em> related elements has been moved into the 
+				<em>Advanced</em> tab and renamed 
+				<em>Extension Id</em>, as it is not actually required on common use cases but only for extensibility purposes.  
+			</li>
 			<li><span class="label label-info">Modified</span> The property 
 				<code>Domain Class Expression</code> in 
 				<code>DynamicMappingFor</code> elements (in properties views definitions) has been renamed into 
@@ -385,7 +380,7 @@
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
-			<li><span class="label label-info">Added</span> The class 
+			<li><span class="label label-success">Added</span> The class 
 				<code>org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider</code> has been added to provide a generic label provider for VSM model element giving hierarchical label. This label provider replaces the one returned by deprecated method 
 				<code>DialectUIServices.getHierarchyLabelProvider()</code>. 
 			</li>
@@ -508,7 +503,7 @@
 					</li>
 				</ul>
 			</li>
-			<li>Constants have been added in 
+			<li><span class="label label-success">Added</span> Constants have been added in 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath</code> for the icon path of the four new straighten actions.
 			</li>
 			<li><span class="label label-info">Modified</span> 
@@ -1056,14 +1051,14 @@
 			<li><span class="label label-success">Added</span> The method 
 				<code>SiriusTestCase.initViewpoint(String, Session, boolean)</code> has been added to allow viewpoint activation without creating representations.
 			</li>
-			<li><span class="label label-warning">Deprecated</span> The method 
-				<code>SiriusTestCase.initViewpoint(String, Session, EObject)</code> has been deprecated because the last parameter is useless to activate a viewpoint.
-			</li>
 			<li><span class="label label-success">Added</span> The methods 
 				<code>initLoggers()</code> and 
 				<code>disposeLoggers()</code> of class 
 				<code>org.eclipse.sirius.tests.support.api.SiriusTestCase</code> have now a protected visibility (instead of private) to allow subclasses to use this logger without all the 
 				<code>genericSetUp</code> behavior.
+			</li>
+			<li><span class="label label-warning">Deprecated</span> The method 
+				<code>SiriusTestCase.initViewpoint(String, Session, EObject)</code> has been deprecated because the last parameter is useless to activate a viewpoint.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in 
