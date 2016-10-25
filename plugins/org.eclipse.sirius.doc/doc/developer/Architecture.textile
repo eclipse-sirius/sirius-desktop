@@ -56,7 +56,7 @@ h3(#vp_selection). Changing the Viewpoint Selection
 
 Each session has its own set of Viewpoints enabled, which determine which representations and extension are available. Users can change that selection using the _Viewpoint Selection_ action (for example on a _Modeling Project_). You can also change this selection programmatically.
 
-The simplest way to to this is to use the @UserSession@ API; for example:
+The simplest way to do this is to use the @UserSession@ API; for example:
 
 bc. 
 Session userSession = UserSession.from(createdSession);
