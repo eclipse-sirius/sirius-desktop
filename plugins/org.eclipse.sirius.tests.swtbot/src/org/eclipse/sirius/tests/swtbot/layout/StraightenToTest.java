@@ -13,11 +13,15 @@ package org.eclipse.sirius.tests.swtbot.layout;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
@@ -36,6 +40,7 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
@@ -56,6 +61,8 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String DATA_UNIT_DIR = "data/unit/straightenTo/";
 
     private static final String VSM_DATA_UNIT_DIR = "data/unit/shapeResizing/";
+
+    private static final Point IGNORED_POINT = new Point(-1, -1);
 
     private String[] labels = { Messages.StraightenToAction_toTopLabel, Messages.StraightenToAction_toBottomLabel, Messages.StraightenToAction_toLeftLabel, Messages.StraightenToAction_toRightLabel };
 
@@ -166,9 +173,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     public void testObliqueEdgeLinkedToBorderNodeWithSeveralEdges() {
         // {top,bottom,left,right}
         boolean[] availableDirections = { true, true, false, false };
-        checkEdgeActions(availableDirections, "edge4");
-        // TODO: Add specific check on other edges for bendpoints stability
-        // (edge1)
+        checkEdgeActions(availableDirections, true, "edge4");
     }
 
     /**
@@ -181,9 +186,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     public void testRectilinearEdgeLinkedToBorderNodeWithSeveralEdges() {
         // {top,bottom,left,right}
         boolean[] availableDirections = { false, false, true, true };
-        checkEdgeActions(availableDirections, "edge17");
-        // TODO: Add specific check on other edges for bendpoints stability
-        // (edge16, edge18, edge19,edge20)
+        checkEdgeActions(availableDirections, true, "edge17");
     }
 
     /**
@@ -384,8 +387,31 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
      *            list of names corresponding to the edges to select.
      */
     private void checkEdgeActions(boolean[] availableDirections, String... edgeNames) {
+        checkEdgeActions(availableDirections, false, edgeNames);
+    }
+
+    /**
+     * Checks the edge "to straight" actions. Makes sure that:
+     * <ul>
+     * <li>All actions (To Top, To Bottom etc.) exist in the menu</li>
+     * <li>Actions are enable according to the availableDirections argument</li>
+     * <li>All enabled actions result is correct</li>
+     * </ul>
+     * 
+     * @param availableDirections
+     *            the actions that should be available: {top,bottom,left,right}
+     * @param edgeNames
+     *            list of names corresponding to the edges to select.
+     * @param checkOtherEdges
+     *            true if the bendpoints stability of edges linked to moved
+     *            border node must also be checked (only segment linked to
+     *            border node must be moved), false otherwise
+     */
+    private void checkEdgeActions(boolean[] availableDirections, boolean checkOtherEdges, String... edgeNames) {
         for (int i = 0; i < 4; i++) {
             Map<SWTBotGefEditPart, List<Point>> gefEditParts2ExpectedPointList = Maps.newHashMap();
+            // Map only used if checkOtherEdges is true
+            Map<AbstractDiagramEdgeEditPart, PointList> otherEdgeEditParts2ExpectedPointList = Maps.newHashMap();
             for (String edgeName : edgeNames) {
                 gefEditParts2ExpectedPointList.put(editor.getEditPart(edgeName, AbstractDiagramEdgeEditPart.class), Lists.<Point> newArrayList());
             }
@@ -403,11 +429,17 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
                     for (SWTBotGefEditPart edgeEditPart : gefEditParts2ExpectedPointList.keySet()) {
                         List<Point> pointList = gefEditParts2ExpectedPointList.get(edgeEditPart);
                         computeExpectedPoints(edgeEditPart, pointList, i);
+                        if (checkOtherEdges) {
+                            computeOtherEdgesExpectedPoints(edgeEditPart, otherEdgeEditParts2ExpectedPointList, i);
+                        }
                     }
                     editor.clickContextMenu(labels[i]);
                     for (SWTBotGefEditPart edgeEditPart : gefEditParts2ExpectedPointList.keySet()) {
                         List<Point> pointList = gefEditParts2ExpectedPointList.get(edgeEditPart);
                         checkResult(edgeEditPart, pointList, i);
+                        if (checkOtherEdges) {
+                            checkResultOfOtherEdges(edgeEditPart, otherEdgeEditParts2ExpectedPointList);
+                        }
                     }
                     undo();
                 }
@@ -442,9 +474,34 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
         assertEquals("Wrong edge expected end point when applying \"" + labels[i] + "\" action on edge " + edgeLabel, expectedEndPoint, newEndPoint);
     }
 
+    /**
+     * Check that edges linked to the moved border node are at the expected
+     * location.
+     * 
+     * @param edgeEditPart
+     *            The current straighten edge
+     * @param otherEdgeEditParts2ExpectedPointList
+     *            the list where register the expected points, a point set to
+     *            {-1, -1} is to ignore in the comparison
+     */
+    private void checkResultOfOtherEdges(SWTBotGefEditPart edgeEditPart, Map<AbstractDiagramEdgeEditPart, PointList> otherEdgeEditParts2ExpectedPointList) {
+        for (Entry<AbstractDiagramEdgeEditPart, PointList> entry : otherEdgeEditParts2ExpectedPointList.entrySet()) {
+            PolylineConnectionEx polylineConnection = entry.getKey().getPolylineConnectionFigure();
+            for (int i = 0; i < entry.getValue().size(); i++) {
+                if (!IGNORED_POINT.equals(entry.getValue().getPoint(i))) {
+                    assertEquals("The point \"" + i + "\" of edge \"" + getLabelFromEdgeEditPart(entry.getKey()) + "\" is not valid.", entry.getValue().getPoint(i),
+                            polylineConnection.getPoints().getPoint(i));
+                }
+            }
+        }
+    }
+
     private String getLabelFromEdgeEditPart(SWTBotGefEditPart edgeEditPart) {
-        DEdgeEditPart dEdgeEditPart = (DEdgeEditPart) edgeEditPart.part();
-        ViewEdgeFigure figure = (ViewEdgeFigure) dEdgeEditPart.getFigure();
+        return getLabelFromEdgeEditPart((DEdgeEditPart) edgeEditPart.part());
+    }
+
+    private String getLabelFromEdgeEditPart(AbstractDiagramEdgeEditPart edgeEditPart) {
+        ViewEdgeFigure figure = (ViewEdgeFigure) edgeEditPart.getFigure();
         SiriusWrapLabel label = figure.getFigureViewEdgeNameFigure();
         String edgeLabel = label.getText();
         return edgeLabel;
@@ -538,6 +595,124 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
 
         default:
             break;
+        }
+    }
+
+    /**
+     * Compute the expected points for edges linked to the moved border node.
+     * The current straighten edge is not in the returned list
+     * 
+     * @param edgeEditPart
+     *            The current straighten edge
+     * @param otherEdgeEditParts2ExpectedPointList
+     *            the list where register the expected points, a point set to
+     *            {-1, -1} is to ignore in the comparison
+     * @param i
+     *            the current action index in labels order
+     *            {top,bottom,left,right} order
+     */
+    private void computeOtherEdgesExpectedPoints(SWTBotGefEditPart edgeEditPart, Map<AbstractDiagramEdgeEditPart, PointList> otherEdgeEditParts2ExpectedPointList, int i) {
+        AbstractDiagramEdgeEditPart part = (AbstractDiagramEdgeEditPart) edgeEditPart.part();
+        PolylineConnectionEx polylineConnection = part.getPolylineConnectionFigure();
+        Point startPointBefore = polylineConnection.getStart();
+        Point endPointBefore = polylineConnection.getEnd();
+        EditPart sourceEditPart = part.getSource();
+        EditPart targetEditPart = part.getTarget();
+
+        switch (i) {
+        // top
+        case 0:
+            if (startPointBefore.y <= endPointBefore.y) {
+                if (targetEditPart instanceof AbstractDiagramBorderNodeEditPart) {
+                    computeOtherEdgesExpectedPoints((AbstractDiagramBorderNodeEditPart) targetEditPart, part, otherEdgeEditParts2ExpectedPointList);
+                }
+            } else if (sourceEditPart instanceof AbstractDiagramBorderNodeEditPart) {
+                computeOtherEdgesExpectedPoints((AbstractDiagramBorderNodeEditPart) sourceEditPart, part, otherEdgeEditParts2ExpectedPointList);
+            }
+            break;
+        // bottom
+        case 1:
+            if (startPointBefore.y <= endPointBefore.y) {
+                if (sourceEditPart instanceof AbstractDiagramBorderNodeEditPart) {
+                    computeOtherEdgesExpectedPoints((AbstractDiagramBorderNodeEditPart) sourceEditPart, part, otherEdgeEditParts2ExpectedPointList);
+                }
+            } else if (targetEditPart instanceof AbstractDiagramBorderNodeEditPart) {
+                computeOtherEdgesExpectedPoints((AbstractDiagramBorderNodeEditPart) targetEditPart, part, otherEdgeEditParts2ExpectedPointList);
+            }
+
+            break;
+        // left
+        case 2:
+            if (startPointBefore.x <= endPointBefore.x) {
+                if (targetEditPart instanceof AbstractDiagramBorderNodeEditPart) {
+                    computeOtherEdgesExpectedPoints((AbstractDiagramBorderNodeEditPart) targetEditPart, part, otherEdgeEditParts2ExpectedPointList);
+                }
+            } else if (sourceEditPart instanceof AbstractDiagramBorderNodeEditPart) {
+                computeOtherEdgesExpectedPoints((AbstractDiagramBorderNodeEditPart) sourceEditPart, part, otherEdgeEditParts2ExpectedPointList);
+            }
+            break;
+        // right
+        case 3:
+            if (startPointBefore.x <= endPointBefore.x) {
+                if (sourceEditPart instanceof AbstractDiagramBorderNodeEditPart) {
+                    computeOtherEdgesExpectedPoints((AbstractDiagramBorderNodeEditPart) sourceEditPart, part, otherEdgeEditParts2ExpectedPointList);
+                }
+            } else if (targetEditPart instanceof AbstractDiagramBorderNodeEditPart) {
+                computeOtherEdgesExpectedPoints((AbstractDiagramBorderNodeEditPart) targetEditPart, part, otherEdgeEditParts2ExpectedPointList);
+            }
+
+            break;
+
+        default:
+            break;
+        }
+    }
+
+    /**
+     * Compute the expected points for edges linked to the moved border node.
+     * The current straighten edge is not in the returned list
+     * 
+     * @param borderNodeEditPart
+     *            The moved border node edit part
+     * @param edgeEditPart
+     *            The current straighten edge
+     * @param otherEdgeEditParts2ExpectedPointList
+     *            the list where register the expected points, a point set to
+     *            {-1, -1} is to ignore in the comparison
+     */
+    private void computeOtherEdgesExpectedPoints(AbstractDiagramBorderNodeEditPart borderNodeEditPart, AbstractDiagramEdgeEditPart selectedEdgeEditPart,
+            Map<AbstractDiagramEdgeEditPart, PointList> otherEdgeEditParts2ExpectedPointList) {
+        for (AbstractDiagramEdgeEditPart edgeEditPart : Iterables.filter(borderNodeEditPart.getSourceConnections(), AbstractDiagramEdgeEditPart.class)) {
+            if (!edgeEditPart.equals(selectedEdgeEditPart)) {
+                PolylineConnectionEx polylineConnection = edgeEditPart.getPolylineConnectionFigure();
+                PointList pointList = new PointList();
+                pointList.addAll(polylineConnection.getPoints());
+                if (new ConnectionEditPartQuery(edgeEditPart).isEdgeWithObliqueRoutingStyle()) {
+                    // Ignore the first point
+                    pointList.setPoint(IGNORED_POINT, 0);
+                } else {
+                    // Ignore the first 2 points
+                    pointList.setPoint(IGNORED_POINT, 0);
+                    pointList.setPoint(IGNORED_POINT, 1);
+                }
+                otherEdgeEditParts2ExpectedPointList.put(edgeEditPart, pointList);
+            }
+        }
+        for (AbstractDiagramEdgeEditPart edgeEditPart : Iterables.filter(borderNodeEditPart.getTargetConnections(), AbstractDiagramEdgeEditPart.class)) {
+            if (!edgeEditPart.equals(selectedEdgeEditPart)) {
+                PolylineConnectionEx polylineConnection = edgeEditPart.getPolylineConnectionFigure();
+                PointList pointList = new PointList();
+                pointList.addAll(polylineConnection.getPoints());
+                if (new ConnectionEditPartQuery(edgeEditPart).isEdgeWithObliqueRoutingStyle()) {
+                    // Ignore the last point
+                    pointList.setPoint(IGNORED_POINT, pointList.size() - 1);
+                } else {
+                    // Ignore the last 2 points
+                    pointList.setPoint(IGNORED_POINT, pointList.size() - 1);
+                    pointList.setPoint(IGNORED_POINT, pointList.size() - 2);
+                }
+                otherEdgeEditParts2ExpectedPointList.put(edgeEditPart, pointList);
+            }
         }
     }
 }
