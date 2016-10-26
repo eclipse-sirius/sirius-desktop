@@ -208,7 +208,7 @@ public class ResizeKindRefreshTests extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void assertResizeKindEquality(SWTBotGefEditPart dNodeEditPartBot, ResizeKind resizeKind) {
-        assertEquals("DNode.resizeKind should be equals to  : " + resizeKind, getDNodeResizeKind(dNodeEditPartBot), getDNodeResizeKind(dNodeEditPartBot));
+        assertEquals("DNode.resizeKind should be equals to " + resizeKind, resizeKind, getDNodeResizeKind(dNodeEditPartBot));
     }
 
     private ResizeKind getDNodeResizeKind(SWTBotGefEditPart dNodeEditPartBot) {
