@@ -813,7 +813,6 @@ public class ResizeKindRefreshTests extends AbstractSiriusSwtBotGefTestCase {
             fail(e.getLocalizedMessage());
         } finally {
             SWTBotUtils.waitAllUiEvents();
-            SWTBotUtils.waitAllUiEvents();
         }
     }
 
@@ -829,9 +828,6 @@ public class ResizeKindRefreshTests extends AbstractSiriusSwtBotGefTestCase {
         } catch (IOException e) {
             fail(e.getLocalizedMessage());
         } finally {
-            bot.sleep(2000);
-            SWTBotUtils.waitAllUiEvents();
-            SWTBotUtils.waitAllUiEvents();
             SWTBotUtils.waitAllUiEvents();
         }
     }
