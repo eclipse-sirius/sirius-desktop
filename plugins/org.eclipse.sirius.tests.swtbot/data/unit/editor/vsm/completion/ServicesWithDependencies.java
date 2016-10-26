@@ -11,8 +11,6 @@
 package org.eclipse.sirius.test.design;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.sample.basicfamily.BasicfamilyFactory;
-import org.eclipse.sirius.sample.basicfamily.Family;
 import org.eclipse.sirius.sample.interactions.CallMessage;
 import org.eclipse.sirius.sample.interactions.Interaction;
 import org.eclipse.sirius.sample.interactions.InteractionsFactory;
