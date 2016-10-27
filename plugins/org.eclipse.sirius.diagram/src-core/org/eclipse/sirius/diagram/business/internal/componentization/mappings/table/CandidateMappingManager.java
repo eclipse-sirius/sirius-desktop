@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,18 +67,21 @@ public class CandidateMappingManager {
     public CandidateMappingManager(final DiagramDescriptionMappingsManager mappingsManager) {
 
         nodeMappingPredicate = new Predicate<CandidateMapping>() {
+            @Override
             public boolean apply(final CandidateMapping input) {
                 return input.getMapping() instanceof NodeMapping;
             }
         };
 
         containerMappingPredicate = new Predicate<CandidateMapping>() {
+            @Override
             public boolean apply(final CandidateMapping input) {
                 return input.getMapping() instanceof ContainerMapping;
             }
         };
 
         edgeMappingPredicate = new Predicate<CandidateMapping>() {
+            @Override
             public boolean apply(final CandidateMapping input) {
                 return input.getMapping() instanceof EdgeMapping;
             }
@@ -97,9 +100,10 @@ public class CandidateMappingManager {
     public void build(final Collection<Layer> activatedLayers) {
         computeAllMappings();
         sortMappings();
-        convertMappingsToCandidate();
+        Set<CandidateMapping> candidates = convertMappingsToCandidate();
 
         final Predicate<CandidateMapping> availablePredicate = new Predicate<CandidateMapping>() {
+            @Override
             public boolean apply(final CandidateMapping input) {
                 final Collection<Layer> layers = input.getParentLayers();
                 for (final Layer layer : layers) {
@@ -110,7 +114,7 @@ public class CandidateMappingManager {
                 return false;
             }
         };
-        availableCandidates = Sets.filter(availableCandidates, availablePredicate);
+        availableCandidates = Sets.filter(candidates, availablePredicate);
     }
 
     private void computeAllMappings() {
@@ -130,6 +134,7 @@ public class CandidateMappingManager {
              * @see java.util.Comparator#compare(java.lang.Object,
              *      java.lang.Object)
              */
+            @Override
             public int compare(final DiagramElementMapping mapping1, final DiagramElementMapping mapping2) {
                 if (mapping1 instanceof AbstractNodeMapping && mapping2 instanceof AbstractNodeMapping) {
                     return compareAM((AbstractNodeMapping) mapping1, (AbstractNodeMapping) mapping2);
@@ -195,13 +200,14 @@ public class CandidateMappingManager {
         return importedMapping;
     }
 
-    private void convertMappingsToCandidate() {
-        availableCandidates = new LinkedHashSet<CandidateMapping>();
+    private Set<CandidateMapping> convertMappingsToCandidate() {
+        Set<CandidateMapping> candidates = new LinkedHashSet<CandidateMapping>();
         /* convert mappings to candidate */
         for (final DiagramElementMapping mapping : allMappings) {
             final CandidateMapping candidate = new CandidateMapping(mapping);
-            availableCandidates.add(candidate);
+            candidates.add(candidate);
         }
+        return candidates;
     }
 
     /**
