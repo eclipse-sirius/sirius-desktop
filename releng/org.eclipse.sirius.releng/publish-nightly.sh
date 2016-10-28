@@ -71,15 +71,15 @@ export WKS="."
 # Ensure the target folder exists
 mkdir -p "$TARGET_DIR"
 # The actual publication of the p2 repo produced by the build
-cp -a "$WKS"/packaging/org.eclipse.sirius.update/target/repository/* "$TARGET_DIR"
+cp -dR "$WKS"/packaging/org.eclipse.sirius.update/target/repository/* "$TARGET_DIR"
 # Also publish the tests repo right under the main one
 mkdir -p "$TARGET_DIR/tests"
-cp -a "$WKS"/packaging/org.eclipse.sirius.tests.update/target/repository/* "$TARGET_DIR/tests"
+cp -dR "$WKS"/packaging/org.eclipse.sirius.tests.update/target/repository/* "$TARGET_DIR/tests"
 # Publish the target platform definitions used, so that dowstream projects can reference them
 mkdir -p "$TARGET_DIR/targets"
-cp -a "$WKS"/releng/org.eclipse.sirius.targets/* "$TARGET_DIR/targets"
+cp -dR "$WKS"/releng/org.eclipse.sirius.targets/* "$TARGET_DIR/targets"
 mkdir -p "$TARGET_ROOT/targets"
-cp -a "$WKS"/releng/org.eclipse.sirius.targets/* "$TARGET_ROOT/targets"
+cp -dR "$WKS"/releng/org.eclipse.sirius.targets/* "$TARGET_ROOT/targets"
 # Publish a dump of the build environment, may be useful to debug
 env | sort > "$TARGET_DIR/build_env.txt"
 
@@ -127,13 +127,13 @@ create_redirect "$TARGET_ROOT/$VERSION/$PLATFORM/tests" "$BUILD_TYPE/$FULL_VERSI
 # Also create a link for the $STREAM (e.g. "1.2.x/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
 # and publish the zipped versions there, at stable URLs
 create_redirect "$TARGET_ROOT/$STREAM/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
-cp -a "$WKS"/packaging/org.eclipse.sirius.update/target/org.eclipse.sirius.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius-$VERSION-$PLATFORM.zip"
+cp -dR "$WKS"/packaging/org.eclipse.sirius.update/target/org.eclipse.sirius.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius-$VERSION-$PLATFORM.zip"
 create_redirect "$TARGET_ROOT/$STREAM/$PLATFORM/tests" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM/tests"
-cp -a "$WKS"/packaging/org.eclipse.sirius.tests.update/target/org.eclipse.sirius.tests.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius.tests-$VERSION-$PLATFORM.zip"
+cp -dR "$WKS"/packaging/org.eclipse.sirius.tests.update/target/org.eclipse.sirius.tests.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius.tests-$VERSION-$PLATFORM.zip"
 # Also update the global "latest" links if we are building master
 if [ "master" = "$GIT_BRANCH" ]; then
     create_redirect "$TARGET_ROOT/latest/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
-    cp -a "$WKS"/packaging/org.eclipse.sirius.update/target/org.eclipse.sirius.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius-$VERSION-$PLATFORM.zip"
+    cp -dR "$WKS"/packaging/org.eclipse.sirius.update/target/org.eclipse.sirius.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius-$VERSION-$PLATFORM.zip"
     create_redirect "$TARGET_ROOT/latest/$PLATFORM/tests" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM/tests"
-    cp -a "$WKS"/packaging/org.eclipse.sirius.tests.update/target/org.eclipse.sirius.tests.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius.tests-$VERSION-$PLATFORM.zip"
+    cp -dR "$WKS"/packaging/org.eclipse.sirius.tests.update/target/org.eclipse.sirius.tests.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius.tests-$VERSION-$PLATFORM.zip"
 fi
