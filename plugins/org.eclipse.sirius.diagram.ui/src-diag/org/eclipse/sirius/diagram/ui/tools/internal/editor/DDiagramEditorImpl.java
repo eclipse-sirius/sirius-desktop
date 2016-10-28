@@ -230,6 +230,43 @@ import com.google.common.collect.Sets;
  * @since 0.9.0
  */
 public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramEditor, ISelectionListener, SessionListener {
+    /**
+     * This class has the responsibility to open the editing session
+     * corresponding to a session added to the session manager and attaching to
+     * it the current editor so it can be handled correctly.
+     * 
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
+     */
+    private static final class SessionHandlingForEditor extends SessionManagerListener.Stub {
+        private DDiagramEditorImpl editor;
+
+        public SessionHandlingForEditor(DDiagramEditorImpl editor) {
+            this.editor = editor;
+        }
+
+        @Override
+        public void notifyAddSession(final Session newSession) {
+
+            /* we want to be notified only once */
+            final IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(newSession);
+            if (!editingSession.isOpen()) {
+                editingSession.open();
+                editingSession.attachEditor(editor);
+                /*
+                 * need to reinit command factory provider to take the right
+                 * model accesor
+                 */
+                editor.initCommandFactoryProviders();
+                // important to remove the reference to the editor because this
+                // listener is still referenced by Eclipse ContextService when
+                // the editor is closed causing a leak.
+                editor = null;
+                /* remove this listener */
+                SessionManager.INSTANCE.removeSessionsListener(this);
+            }
+        }
+    }
 
     protected class DDiagramEditorTransferDropTargetListener extends AbstractTransferDropTargetListener {
 
@@ -329,26 +366,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     private IAuthorityListener dRepresentationLockStatusListener;
 
-    private final SessionManagerListener sessionManagerListener = new SessionManagerListener.Stub() {
-
-        @Override
-        public void notifyAddSession(final Session newSession) {
-
-            /* we want to be notified only once */
-            final IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(newSession);
-            if (!editingSession.isOpen()) {
-                editingSession.open();
-                editingSession.attachEditor(DDiagramEditorImpl.this);
-                /*
-                 * need to reinit command factory provider to take the right
-                 * model accesor
-                 */
-                initCommandFactoryProviders();
-                /* remove this listener */
-                SessionManager.INSTANCE.removeSessionsListener(this);
-            }
-        }
-    };
+    private final SessionManagerListener sessionManagerListener = new SessionHandlingForEditor(this);
 
     private TabbarRefresher tabbarPostCommitListener;
 
