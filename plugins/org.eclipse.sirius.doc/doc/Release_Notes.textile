@@ -26,6 +26,7 @@ h4. Changes in @org.eclipse.sirius@
 *** @org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy@: Interface implemented by all resource strategies
 *** @org.eclipse.sirius.business.api.resource.strategy.AbstractResourceStrategyImpl@: Default implementation of above interface. All resource strategies contributed with the extension need to extend it.
 *** @org.eclipse.sirius.business.api.resource.strategy.LegacyReleaseResourceStrategyImpl@ (previously named @DefaultResourceStrategyImpl@): A resource strategy with the code used before the optimization concerning the @org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy.ResourceStrategyType.RELEASE_RESOURCE_AT_RESOURCESET_DISPOSE@. It is not used but can be quickly contributed by someone that want the previous behavior (before Sirius 4.0.0 M6).
+* <span class="label label-danger">Removed</span> The already deprecated constructor of @org.eclipse.sirius.business.api.control.SiriusUncontrolCommand@ with signature @SiriusUncontrolCommand(EObject, boolean, IProgressMonitor)@ has been removed; instead, use the alternate constructor with an additional explicit @boolean shouldEndBySaving@ parameter (set it to @true@ to obtain the same behavior as the removed constructor).
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,27 +64,6 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
     private final boolean shouldEndBySaving;
 
     private IProgressMonitor monitor;
-
-    /**
-     * Create a new {@link SiriusUncontrolCommand}.
-     * 
-     * @param semanticRoot
-     *            the semantic model element to uncontrol.
-     * @param uncontrolRepresentations
-     *            indicate if we should uncontrol the representations in
-     *            addition to the semantic elements.
-     * @param monitor
-     *            a {@link IProgressMonitor} to show progression of uncontrol
-     *            operation
-     * @deprecated use the other constructor instead, which requires mentioning
-     *             explicitly whether or not to save the session as part of the
-     *             command (most code should do the saving themselves outside of
-     *             the command).
-     */
-    @Deprecated
-    public SiriusUncontrolCommand(final EObject semanticRoot, final boolean uncontrolRepresentations, IProgressMonitor monitor) {
-        this(semanticRoot, uncontrolRepresentations, true, monitor);
-    }
 
     /**
      * Create a new {@link SiriusUncontrolCommand}.
