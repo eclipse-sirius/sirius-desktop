@@ -173,7 +173,7 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         session.save(new NullProgressMonitor());
         assertResourcesAreEquals(mainSessionResourceURI, session.getTransactionalEditingDomain(), controlledSessionResourceURI, outdiagramControlResource, outdiagramResource);
 
-        SiriusUncontrolCommand vuc = new SiriusUncontrolCommand(package2, true, new NullProgressMonitor());
+        SiriusUncontrolCommand vuc = new SiriusUncontrolCommand(package2, true, true, new NullProgressMonitor());
         session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
         session.save(new NullProgressMonitor());
     }

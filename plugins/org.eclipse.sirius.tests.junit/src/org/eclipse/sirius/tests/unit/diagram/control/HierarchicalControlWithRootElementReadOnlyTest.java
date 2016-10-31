@@ -199,7 +199,7 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
         // Step 3 : uncontrol p1p1p1
         boolean isControlledP1p1p1 = AdapterFactoryEditingDomain.isControlled(rootP1P1P1);
         assertTrue(isControlledP1p1p1);
-        Command vuc = new SiriusUncontrolCommand(rootP1P1P1, true, new NullProgressMonitor());
+        Command vuc = new SiriusUncontrolCommand(rootP1P1P1, true, true, new NullProgressMonitor());
         assertTrue(executeCommand(vuc));
         Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
 

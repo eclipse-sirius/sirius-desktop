@@ -410,7 +410,7 @@ public class SiriusControlTest extends AbstractControlTest {
             assertEquals("The resourceSet should be contains only 4 resources typed Aird and Ecore", 4, getResourceTypeAirdOrEcore(rs).size());
 
             final EObject root = findPackageNamed("acceleo", semanticElt);
-            Command vuc = new SiriusUncontrolCommand(root, true, new NullProgressMonitor());
+            Command vuc = new SiriusUncontrolCommand(root, true, true, new NullProgressMonitor());
             session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
 
             assertFilesExist("/controlled/chain.ecore", "/controlled/chain.aird");
@@ -705,7 +705,7 @@ public class SiriusControlTest extends AbstractControlTest {
             assertEquals("The resourceSet should be contains only 6 resources typed Aird and Ecore", 6, getResourceTypeAirdOrEcore(rs).size());
 
             final EObject root = findPackageNamed("p2", semanticElt);
-            Command vuc = new SiriusUncontrolCommand(root, true, new NullProgressMonitor());
+            Command vuc = new SiriusUncontrolCommand(root, true, true, new NullProgressMonitor());
             session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
 
             assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_6, File.separator + SEMANTIC_MODEL_FILENAME_6_1, File.separator + SESSION_MODEL_FILENAME_6,
@@ -792,7 +792,7 @@ public class SiriusControlTest extends AbstractControlTest {
 
             // UnControl P1
             root = findPackageNamed("P1", semanticElt);
-            SiriusUncontrolCommand vuc = new SiriusUncontrolCommand(root, true, new NullProgressMonitor());
+            SiriusUncontrolCommand vuc = new SiriusUncontrolCommand(root, true, true, new NullProgressMonitor());
             session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
             Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
 
@@ -803,7 +803,7 @@ public class SiriusControlTest extends AbstractControlTest {
 
             // UnControl P1.1
             root = findPackageNamed("P1.1", semanticElt);
-            vuc = new SiriusUncontrolCommand(root, true, new NullProgressMonitor());
+            vuc = new SiriusUncontrolCommand(root, true, true, new NullProgressMonitor());
             session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
             Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
 
@@ -814,7 +814,7 @@ public class SiriusControlTest extends AbstractControlTest {
 
             // UnControl P1.2
             root = findPackageNamed("P1.2", semanticElt);
-            vuc = new SiriusUncontrolCommand(root, true, new NullProgressMonitor());
+            vuc = new SiriusUncontrolCommand(root, true, true, new NullProgressMonitor());
             session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
             Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
 
@@ -857,7 +857,7 @@ public class SiriusControlTest extends AbstractControlTest {
 
             // UnControl P1
             root = findPackageNamed("P1", semanticElt);
-            vuc = new SiriusUncontrolCommand(root, true, new NullProgressMonitor());
+            vuc = new SiriusUncontrolCommand(root, true, true, new NullProgressMonitor());
             session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
             Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
 
@@ -868,7 +868,7 @@ public class SiriusControlTest extends AbstractControlTest {
 
             // UnControl P1.1
             root = findPackageNamed("P1.1", semanticElt);
-            vuc = new SiriusUncontrolCommand(root, true, new NullProgressMonitor());
+            vuc = new SiriusUncontrolCommand(root, true, true, new NullProgressMonitor());
             session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
             Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
 
@@ -879,7 +879,7 @@ public class SiriusControlTest extends AbstractControlTest {
 
             // UnControl P1.2
             root = findPackageNamed("P1.2", semanticElt);
-            vuc = new SiriusUncontrolCommand(root, true, new NullProgressMonitor());
+            vuc = new SiriusUncontrolCommand(root, true, true, new NullProgressMonitor());
             session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
             Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
 
