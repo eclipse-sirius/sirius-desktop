@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -102,22 +102,12 @@ public class ExecuteToolOperationTask extends AbstractCommandTask {
         this.getChildrenTasks().add(rootOperationTask);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
-     */
     @Override
     public void execute() {
-        final CommandContext context = this.rootOperationTask.getContext();
+        CommandContext context = this.rootOperationTask.getContext();
         executeTask(this.rootOperationTask, context);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
-     */
     @Override
     public String getLabel() {
         return Messages.ExecuteToolOperationTask_label;
@@ -127,21 +117,16 @@ public class ExecuteToolOperationTask extends AbstractCommandTask {
         CommandContext.pushContext(context);
         try {
             task.execute();
-        } catch (MetaClassNotFoundException e) {
-            SiriusPlugin.getDefault().error(Messages.TaskExecutor_errorModifyingModelMsg, e);
-        } catch (FeatureNotFoundException e) {
-            SiriusPlugin.getDefault().error(Messages.TaskExecutor_errorModifyingModelMsg, e);
-        }
-        if (!(task instanceof ForTask)) {
-            final Iterator<ICommandTask> itTasks = task.getChildrenTasks().iterator();
-            CommandContext.pushContext(context);
-            while (itTasks.hasNext()) {
-                final AbstractOperationTask childTask = (AbstractOperationTask) itTasks.next();
-                executeTask(childTask, context);
+            if (!(task instanceof ForTask)) {
+                for (ICommandTask childTask : task.getChildrenTasks()) {
+                    executeTask(childTask, context);
+                }
             }
+        } catch (MetaClassNotFoundException | FeatureNotFoundException e) {
+            SiriusPlugin.getDefault().error(Messages.TaskExecutor_errorModifyingModelMsg, e);
+        } finally {
             CommandContext.popContext(context);
         }
-        CommandContext.popContext(context);
     }
 
     private void createChildrenTasks(final ICommandTask parent, final ContainerModelOperation op, final CommandContext context) {
@@ -170,11 +155,6 @@ public class ExecuteToolOperationTask extends AbstractCommandTask {
         return new ModelOperationToTask(extPackage, uiCallback, session, context).createTask(op);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.AbstractCommandTask#executeMyselfChildrenTasks()
-     */
     @Override
     public boolean executeMyselfChildrenTasks() {
         return true;
