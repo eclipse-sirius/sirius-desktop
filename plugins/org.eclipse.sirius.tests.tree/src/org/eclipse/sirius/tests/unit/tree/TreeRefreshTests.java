@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -334,19 +335,39 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         return new ToStringueur(newTree, 0).toString();
     }
 
-    public void testReorder() throws Exception {
+    /**
+     * Tests that reordering semantic elements also reorders elements in the
+     * Sirius {@link DTree}. See 481433.
+     * 
+     */
+    public void testSynchronizationSemanticElementsMappgings() {
 
-        EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
+        EPackage semanticModel = (EPackage) EcoreUtil.create(EcorePackage.eINSTANCE.getEPackage());
+        EClass subClass1 = (EClass) EcoreUtil.create(EcorePackage.eINSTANCE.getEClass());
+        subClass1.setName("EClass1");
+
+        EClass subClass2 = (EClass) EcoreUtil.create(EcorePackage.eINSTANCE.getEClass());
+        subClass2.setName("EClass2");
+        semanticModel.getEClassifiers().add(subClass1);
+        semanticModel.getEClassifiers().add(subClass2);
+
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
         newTree.setTarget(semanticModel);
-        newTree.setDescription(odesign.group().design().epackagecontent().object());
-        List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().epackagecontent().object().eAllContents(), TreeItemMapping.class));
+        newTree.setDescription(odesign.group().design().genericemftree().object());
+        List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().genericemftree().object().eAllContents(), TreeItemMapping.class));
 
         DTreeRefresh refresher = new DTreeRefresh(newTree, mappings, invalidator, ctx);
         refresher.refresh(new NullProgressMonitor());
 
-        String beforeReorder = toString(newTree);
+        EList<DTreeItem> ownedTreeItems = newTree.getOwnedTreeItems();
+        assertEquals("EClass1", ownedTreeItems.get(0).getName());
+        assertEquals("EClass2", ownedTreeItems.get(1).getName());
 
+        semanticModel.getEClassifiers().move(0, 1);
+        refresher.refresh(new NullProgressMonitor());
+
+        assertEquals("EClass2", ownedTreeItems.get(0).getName());
+        assertEquals("EClass1", ownedTreeItems.get(1).getName());
     }
 
     /**
