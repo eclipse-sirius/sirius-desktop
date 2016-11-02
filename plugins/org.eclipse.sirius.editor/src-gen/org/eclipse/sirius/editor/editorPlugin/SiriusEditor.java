@@ -1004,7 +1004,7 @@ public class SiriusEditor extends MultiPageEditorPart
      * This accesses a cached version of the property sheet.
      */
     public TabbedPropertySheetPage getPropertySheetPage() {
-        if (propertySheetPage == null || propertySheetPage.getControl() == null) {
+        if (propertySheetPage == null || propertySheetPage.getControl() == null || propertySheetPage.getControl().isDisposed()) {
             propertySheetPage = new ViewpointPropertySheetPage(this);
         }
 
