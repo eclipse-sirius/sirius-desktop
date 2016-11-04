@@ -54,6 +54,8 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
 
     private static final String SEPARATOR = "."; //$NON-NLS-1$
 
+    private static final String AQL_SEPARATOR = "::"; //$NON-NLS-1$
+
     private static PackageRegistryIndex platformIndex = new PackageRegistryIndex(EPackage.Registry.INSTANCE, Predicates.<EPackage> alwaysTrue());
 
     private Multimap<String, EClass> viewpointIndex = HashMultimap.create();
@@ -161,7 +163,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         }
         return objectToRemove;
     }
-    
+
     @Override
     public Collection<EObject> eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
         Collection<EObject> impactedEObjects = new LinkedHashSet<EObject>();
@@ -376,6 +378,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         for (EClass cur : Iterables.filter(value.getEClassifiers(), EClass.class)) {
             viewpointIndex.put(cur.getName(), cur);
             viewpointIndex.put(value.getName() + EcoreIntrinsicExtender.SEPARATOR + cur.getName(), cur);
+            viewpointIndex.put(value.getName() + EcoreIntrinsicExtender.AQL_SEPARATOR + cur.getName(), cur);
         }
     }
 
@@ -434,7 +437,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
 
     @Override
     public void updateMetamodels(final Collection<? extends MetamodelDescriptor> metamodelDescriptors) {
-        final Collection<? extends MetamodelDescriptor> metamodelDescriptorsCopy = Sets.newLinkedHashSet(metamodelDescriptors);        
+        final Collection<? extends MetamodelDescriptor> metamodelDescriptorsCopy = Sets.newLinkedHashSet(metamodelDescriptors);
         if (lastDescriptors != null) {
             metamodelDescriptorsCopy.removeAll(lastDescriptors);
         }

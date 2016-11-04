@@ -77,8 +77,10 @@ import org.eclipse.sirius.tests.unit.api.tools.UndoRedoTest;
 import org.eclipse.sirius.tests.unit.api.tools.tasks.RemoveDanglingReferencesTestCase;
 import org.eclipse.sirius.tests.unit.api.validation.DiagramValidationTest;
 import org.eclipse.sirius.tests.unit.api.vsm.editor.PopupMenuTest;
+import org.eclipse.sirius.tests.unit.api.vsm.editor.TypeContentProposalTests;
 import org.eclipse.sirius.tests.unit.common.DDiagramCanonicalSynchronizerTests;
 import org.eclipse.sirius.tests.unit.common.SiriusUriTests;
+import org.eclipse.sirius.tests.unit.common.TypeNameTest;
 import org.eclipse.sirius.tests.unit.diagram.CanonicalDBorderItemLocatorTest;
 import org.eclipse.sirius.tests.unit.diagram.action.DeleteEdgeOnEdgeTest;
 import org.eclipse.sirius.tests.unit.diagram.action.DeleteFromDiagramActionTests;
@@ -99,6 +101,7 @@ import org.eclipse.sirius.tests.unit.diagram.control.HierarchicalControlTest;
 import org.eclipse.sirius.tests.unit.diagram.control.HierarchicalControlWithRootElementReadOnlyTest;
 import org.eclipse.sirius.tests.unit.diagram.copier.RepresentationCopierTest;
 import org.eclipse.sirius.tests.unit.diagram.decorators.DecoratorsTest;
+import org.eclipse.sirius.tests.unit.diagram.dialect.DiagramDialectServicesTests;
 import org.eclipse.sirius.tests.unit.diagram.dragndrop.DraggedObjectTesterTests;
 import org.eclipse.sirius.tests.unit.diagram.dragndrop.LabelVisibilityOnCreationTest;
 import org.eclipse.sirius.tests.unit.diagram.dragndrop.LabelVisibilityOnDragAndDropTests;
@@ -279,6 +282,9 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(RetrieveEditPartFromSemanticElementTests.class);
         suite.addTestSuite(DynamicInstanceTests.class);
         suite.addTestSuite(CanonicalDBorderItemLocatorTest.class);
+        suite.addTestSuite(DiagramDialectServicesTests.class);
+        suite.addTestSuite(TypeContentProposalTests.class);
+        suite.addTestSuite(TypeNameTest.class);
 
         // ecore modeler
         suite.addTestSuite(EntitiesDiagramDocumentationFiltersTests.class);

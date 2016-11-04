@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore.EMFUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -148,12 +149,13 @@ public final class TypeName {
     public static TypeName fromString(String typeName) {
         TypeName result = ANY_TYPENAME;
         if (!StringUtil.isEmpty(typeName)) {
-            if ("ecore.EJavaObject".equals(typeName) || "EJavaObject".equals(typeName)) { //$NON-NLS-1$ //$NON-NLS-2$
+            String normalized = typeName.replace(EMFUtil.QUALIFIED_NAME_SEPARATOR, ".").trim(); //$NON-NLS-1$
+            if ("ecore.EJavaObject".equals(normalized) || "EJavaObject".equals(normalized)) { //$NON-NLS-1$ //$NON-NLS-2$
                 result = ANY_TYPENAME;
-            } else if ("ecore.EObject".equals(typeName) || "EObject".equals(typeName)) { //$NON-NLS-1$ //$NON-NLS-2$
+            } else if ("ecore.EObject".equals(normalized) || "EObject".equals(normalized)) { //$NON-NLS-1$ //$NON-NLS-2$
                 result = EOBJECT_TYPENAME;
             } else {
-                result = new TypeName(typeName.trim());
+                result = new TypeName(normalized);
             }
         }
         return result;

@@ -84,8 +84,14 @@ public class TypeContentProposal implements IContentProposal {
      */
     public String getLabel() {
         String label = proposal.getName();
-        if (proposal.getEPackage().getName() != null) {
-            String fullyQualifiedProposal = proposal.getEPackage().getName() + "." + proposal.getName();
+        String pkgName = proposal.getEPackage().getName();
+        if (pkgName != null) {
+            // Propose "." by default, unless the user already started using "::"
+            String separator = ".";
+            if (incomplete.startsWith(pkgName + ":")) {
+                separator = "::";
+            }
+            String fullyQualifiedProposal = pkgName + separator + proposal.getName();
             if (fullyQualifiedProposal.startsWith(incomplete)) {
                 label = fullyQualifiedProposal;
             }

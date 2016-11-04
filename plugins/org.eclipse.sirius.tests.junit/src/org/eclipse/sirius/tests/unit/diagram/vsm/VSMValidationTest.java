@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES, and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES, and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,6 +69,8 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
 
     private Group modelerWithAllKindOfError;
 
+    private Group aqlDomainClassDef;
+
     private TransactionalEditingDomain editingDomain;
 
     @Override
@@ -86,6 +88,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         modelerForImagePathValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateImagePathVSM.odesign", true), set);
         modelerForDefaultLayerValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateDefaultLayerVSM.odesign", true), set);
         modelerWithAllKindOfError = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateVSMProblemSeverity.odesign", true), set);
+        aqlDomainClassDef = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/aqlDomainClassDef.odesign", true), set);
     }
 
     /**
@@ -242,6 +245,22 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         Diagnostician diagnostician = new Diagnostician();
         Diagnostic diagnostic = diagnostician.validate(modelerForDomainClassValidation);
         assertEquals("The VSM is not valid, it should have popup error message", Diagnostic.ERROR, diagnostic.getSeverity());
+    }
+
+    /**
+     * Ensure that VSM validation valid with success the Domain class name when
+     * it uses the AQL syntax "::" and when the class referenced belongs to the
+     * metamodel declared from registry in the diagram description.
+     */
+    public void testValidationDomainClassWitAQLSyntaxANdhMetamodelReferencedFromRegistry() {
+        Diagnostician diagnostician = new Diagnostician();
+        Diagnostic diagnostic = diagnostician.validate(aqlDomainClassDef);
+        String errorMessage = "";
+        List<Diagnostic> children = diagnostic.getChildren();
+        for (Diagnostic subDiagnostic : children) {
+            errorMessage += subDiagnostic.getMessage() + "\n";
+        }
+        assertEquals("The VSM should be valid : " + errorMessage, Diagnostic.OK, diagnostic.getSeverity());
     }
 
     /**

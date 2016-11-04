@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,6 @@ package org.eclipse.sirius.tests.unit.api.vsm.editor;
 
 import java.util.List;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
@@ -21,6 +19,8 @@ import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.editor.tools.internal.assist.TypeAssistant;
+
+import junit.framework.TestCase;
 
 /**
  * Standalone test for {@link TypeAssistant}. See VP-2811.
@@ -70,6 +70,26 @@ public class TypeAssistantTests extends TestCase {
         assertEquals("with ECla as beginning we should have 2 proposals", 2, proposals.size());
         assertEquals("with ECla as beginning we should have EClass proposal", EcorePackage.Literals.ECLASS, proposals.get(0));
         assertEquals("with ECla as beginning we should have EClassifier proposal", EcorePackage.Literals.ECLASSIFIER, proposals.get(1));
+    }
+
+    /**
+     * Test that {@link TypeAssistant} return 53 proposals for a "ecore:" prefix
+     * having the EcorePackage in the {@link Registry}.
+     */
+    public void testAddProposalsWithAQLSyntaxSeparator() {
+        registryStub.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
+        List<EClassifier> proposals = typeAssistant.proposal("ecore:");
+        assertEquals("with ':' as beginning we should have 53 proposals", 53, proposals.size());
+    }
+
+    /**
+     * Test that {@link TypeAssistant} return 53 proposals for a "ecore::"
+     * prefix having the EcorePackage in the {@link Registry}.
+     */
+    public void testAddProposalsWithAQLSyntaxSeparator2() {
+        registryStub.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
+        List<EClassifier> proposals = typeAssistant.proposal("ecore::");
+        assertEquals("with ':' as beginning we should have 53 proposals", 53, proposals.size());
     }
 
     /**

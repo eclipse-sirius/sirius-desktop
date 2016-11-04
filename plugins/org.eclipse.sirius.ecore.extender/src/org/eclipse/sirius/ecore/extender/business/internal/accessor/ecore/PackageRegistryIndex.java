@@ -29,6 +29,8 @@ import com.google.common.collect.Multimap;
 public class PackageRegistryIndex {
     private static final String SEPARATOR = "."; //$NON-NLS-1$
 
+    private static final String AQL_SEPARATOR = "::"; //$NON-NLS-1$
+
     private final EPackage.Registry runtimeTypeRegistry;
 
     private final Predicate<EPackage> packageFilter;
@@ -109,6 +111,7 @@ public class PackageRegistryIndex {
             for (EClass cur : Iterables.filter(value.getEClassifiers(), EClass.class)) {
                 index.put(cur.getName(), cur);
                 index.put(value.getName() + SEPARATOR + cur.getName(), cur);
+                index.put(value.getName() + AQL_SEPARATOR + cur.getName(), cur);
             }
         }
     }

@@ -13,8 +13,6 @@ package org.eclipse.sirius.tests.unit.diagram.modelaccessor;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -32,7 +30,11 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtenderService;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+
+import junit.framework.TestCase;
 
 /**
  * Test case for {@link ModelAccessor}.
@@ -98,6 +100,22 @@ public class ModelAccessorTest extends TestCase {
         assertTrue("Model Accessor should know this EClass ", accessor.eIsKnownType(this.instanciableEClass));
         assertTrue("Model Accessor should know this EClass ", accessor.eIsKnownType(this.abstractEClass));
         assertTrue("Model Accessor should know this EClass ", accessor.eIsKnownType(this.interfaceEClass));
+    }
+
+    /**
+     * Tests that the method {@link ModelAccessor#eIsKnownType(String)} can
+     * match an existing qualified type with AQL syntax existing.
+     */
+    public void testModelAccessorEIsKnownWithQualifiedTypeAndAQLSyntax() {
+        assertTrue("Model Accessor should know this EClass ", accessor.eIsKnownType("viewpoint::DAnalysis"));
+    }
+
+    /**
+     * Tests that the method {@link ModelAccessor#eIsKnownType(String)} can
+     * match an existing qualified type with standard syntax.
+     */
+    public void testModelAccessorEIsKnownWithQualifiedTypeAndStandardSyntax() {
+        assertTrue("Model Accessor should know this EClass ", accessor.eIsKnownType("viewpoint.DAnalysis"));
     }
 
     /**
@@ -246,6 +264,26 @@ public class ModelAccessorTest extends TestCase {
         EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
         /* should return true (#480) */
         boolean isIntance = accessor.eInstanceOf(ePackage, ePackage.eClass().getName().concat(" "));
+        assertTrue(isIntance);
+    }
+
+    /**
+     * Tests that the method {@link ModelAccessor#eInstanceOf(EObject, String)}
+     * can match an existing qualified type with AQL syntax.
+     */
+    public void testModelAccesorInstanceOfWithQualifiedNameAndAQLSyntax() {
+        DAnalysis newDAnalysis = ViewpointFactory.eINSTANCE.createDAnalysis();
+        boolean isIntance = accessor.eInstanceOf(newDAnalysis, ViewpointPackage.eNAME + "::" + newDAnalysis.eClass().getName());
+        assertTrue(isIntance);
+    }
+
+    /**
+     * Tests that the method {@link ModelAccessor#eInstanceOf(EObject, String)}
+     * can match an existing qualified type with Standard syntax.
+     */
+    public void testModelAccesorInstanceOfWithQualifiedNameAndStandardSyntax() {
+        DAnalysis newDAnalysis = ViewpointFactory.eINSTANCE.createDAnalysis();
+        boolean isIntance = accessor.eInstanceOf(newDAnalysis, ViewpointPackage.eNAME + "." + newDAnalysis.eClass().getName());
         assertTrue(isIntance);
     }
 }

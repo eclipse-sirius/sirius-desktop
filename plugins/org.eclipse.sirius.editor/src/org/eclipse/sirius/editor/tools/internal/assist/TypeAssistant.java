@@ -126,7 +126,8 @@ public class TypeAssistant {
 
     private void addProposals(final Collection<EClassifier> proposals, final EPackage ePackage, final String incompleteName) {
         for (final EClassifier clazz : ePackage.getEClassifiers()) {
-            if ((clazz.getName() != null && clazz.getName().startsWith(incompleteName)) || ((ePackage.getName() != null && (ePackage.getName() + "." + clazz.getName()).startsWith(incompleteName)))) {
+            // CHECKSTYLE:OFF
+            if ((clazz.getName() != null && clazz.getName().startsWith(incompleteName)) || ((ePackage.getName() != null && (ePackage.getName() + "." + clazz.getName()).startsWith(incompleteName))) || ((ePackage.getName() != null && (ePackage.getName() + "::" + clazz.getName()).startsWith(incompleteName)))) {
                 proposals.add(clazz);
             }
         }
