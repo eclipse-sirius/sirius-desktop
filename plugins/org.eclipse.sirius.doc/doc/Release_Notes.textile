@@ -8,6 +8,10 @@ h2(#sirius6.2.0). Changes in Sirius 6.2.0
 
 h3. Developer-Visible Changes
 
+h4. Changes in @org.eclipse.sirius@
+
+* <span class="label label-danger">Removed</span> The @org.eclipse.sirius.business.api.helper.task.NotificationTask@ class has been removed. It was not used anywhere.
+
 h4. Changes in  @org.eclipse.sirius.diagram@
 
 * <span class="label label-info">Modified</span> Method _getAllEdgeMappings_ defined in @org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper@ has been moved in a new class called @org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentLayerHelper@ to ensure method to be independent from pure Sirius code. 
