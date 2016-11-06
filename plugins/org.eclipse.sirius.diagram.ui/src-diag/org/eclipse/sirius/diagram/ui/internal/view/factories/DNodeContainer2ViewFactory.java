@@ -50,7 +50,7 @@ public class DNodeContainer2ViewFactory extends AbstractContainerViewFactory {
         }
         super.decorateView(containerView, view, semanticAdapter, semanticHint, index, persisted);
         IAdaptable eObjectAdapter = null;
-        EObject eObject = (EObject) semanticAdapter.getAdapter(EObject.class);
+        EObject eObject = semanticAdapter.getAdapter(EObject.class);
         if (eObject != null) {
             eObjectAdapter = new EObjectAdapter(eObject);
         }

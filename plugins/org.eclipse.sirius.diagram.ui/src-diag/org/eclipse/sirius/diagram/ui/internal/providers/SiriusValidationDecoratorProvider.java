@@ -90,7 +90,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
      */
     @Override
     public void createDecorators(IDecoratorTarget decoratorTarget) {
-        EditPart editPart = (EditPart) decoratorTarget.getAdapter(EditPart.class);
+        EditPart editPart = decoratorTarget.getAdapter(EditPart.class);
         if (editPart instanceof GraphicalEditPart || editPart instanceof AbstractConnectionEditPart) {
             Object model = editPart.getModel();
             if ((model instanceof View)) {
@@ -118,7 +118,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
             return false;
         }
         IDecoratorTarget decoratorTarget = ((CreateDecoratorsOperation) operation).getDecoratorTarget();
-        View view = (View) decoratorTarget.getAdapter(View.class);
+        View view = decoratorTarget.getAdapter(View.class);
         return view != null && DDiagramEditPart.MODEL_ID.equals(SiriusVisualIDRegistry.getModelID(view));
     }
 

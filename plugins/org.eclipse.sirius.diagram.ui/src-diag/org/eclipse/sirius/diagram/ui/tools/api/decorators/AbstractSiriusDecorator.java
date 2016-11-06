@@ -111,7 +111,7 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
 
     private String getToolTipText(Object element) {
         String tooltip = null;
-        IToolTipProvider tooltipProvider = (IToolTipProvider) Platform.getAdapterManager().getAdapter(element, IToolTipProvider.class);
+        IToolTipProvider tooltipProvider = Platform.getAdapterManager().getAdapter(element, IToolTipProvider.class);
         if (tooltipProvider != null) {
             tooltip = tooltipProvider.getToolTipText(element);
         }

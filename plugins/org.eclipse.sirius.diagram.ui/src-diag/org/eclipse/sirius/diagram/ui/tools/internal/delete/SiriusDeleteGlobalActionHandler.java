@@ -74,7 +74,7 @@ public class SiriusDeleteGlobalActionHandler extends DiagramGlobalActionHandler 
         IWorkbenchPart part = cntxt.getActivePart();
         TransactionalEditingDomain result = null;
 
-        IEditingDomainProvider provider = (IEditingDomainProvider) part.getAdapter(IEditingDomainProvider.class);
+        IEditingDomainProvider provider = part.getAdapter(IEditingDomainProvider.class);
 
         if (provider != null) {
             EditingDomain domain = provider.getEditingDomain();

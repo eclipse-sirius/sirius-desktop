@@ -34,7 +34,7 @@ public abstract class AbstractDesignerEdgeFactory extends ConnectionViewFactory 
     @Override
     protected void decorateView(final View containerView, final View view, final IAdaptable element, final String semanticHint, final int index, final boolean persisted) {
         super.decorateView(containerView, view, element, semanticHint, index, persisted);
-        final EObject semantic = (EObject) element.getAdapter(EObject.class);
+        final EObject semantic = element.getAdapter(EObject.class);
         if (semantic instanceof DStylizable) {
             new ViewPropertiesSynchronizer().synchronizeViewProperties(view);
         }

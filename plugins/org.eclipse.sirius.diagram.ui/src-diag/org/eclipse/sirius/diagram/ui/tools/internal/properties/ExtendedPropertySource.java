@@ -157,7 +157,7 @@ public class ExtendedPropertySource implements IPropertySource {
                 object = ips.getPropertyDescriptor(target.getTarget(), id).getPropertyValue(target.getTarget());
             }
             if (target.getTarget() instanceof IAdaptable) {
-                final IPropertySource propertySource = (IPropertySource) ((IAdaptable) target.getTarget()).getAdapter(IPropertySource.class);
+                final IPropertySource propertySource = ((IAdaptable) target.getTarget()).getAdapter(IPropertySource.class);
                 object = propertySource.getPropertyValue(id);
             }
 

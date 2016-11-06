@@ -140,7 +140,7 @@ public class SnapCommand extends AbstractTransactionalCommand {
 
                     figure.translateToAbsolute(figureBounds);
 
-                    SnapToHelper snapToHelper = (SnapToHelper) newEditPart.getAdapter(SnapToHelper.class);
+                    SnapToHelper snapToHelper = newEditPart.getAdapter(SnapToHelper.class);
                     PrecisionRectangle baseRect = new PrecisionRectangle(figureBounds);
                     baseRect.translate(moveDelta);
 

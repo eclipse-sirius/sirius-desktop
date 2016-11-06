@@ -46,7 +46,7 @@ public class SubDiagramDecoratorProvider extends AbstractProvider implements IDe
 
         boolean provide = false;
         IDecoratorTarget decoratorTarget = ((CreateDecoratorsOperation) operation).getDecoratorTarget();
-        View view = (View) decoratorTarget.getAdapter(View.class);
+        View view = decoratorTarget.getAdapter(View.class);
         if (view != null) {
             EObject model = view.getElement();
             provide = model instanceof DNode || model instanceof DDiagramElementContainer;
@@ -56,7 +56,7 @@ public class SubDiagramDecoratorProvider extends AbstractProvider implements IDe
 
     @Override
     public void createDecorators(IDecoratorTarget decoratorTarget) {
-        EditPart editPart = (EditPart) decoratorTarget.getAdapter(EditPart.class);
+        EditPart editPart = decoratorTarget.getAdapter(EditPart.class);
         if (editPart instanceof GraphicalEditPart || editPart instanceof AbstractConnectionEditPart) {
             Object model = editPart.getModel();
             if (model instanceof View) {

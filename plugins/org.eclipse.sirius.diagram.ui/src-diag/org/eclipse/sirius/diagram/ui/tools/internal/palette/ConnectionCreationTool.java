@@ -99,7 +99,7 @@ public class ConnectionCreationTool extends org.eclipse.gef.tools.ConnectionCrea
         super.updateTargetRequest();
         if (!getCurrentInput().isAltKeyDown()) {
             if (getTargetEditPart() != null) {
-                SnapToHelper helper = (SnapToHelper) getTargetEditPart().getAdapter(SnapToHelper.class);
+                SnapToHelper helper = getTargetEditPart().getAdapter(SnapToHelper.class);
                 if (helper != null) {
                     CreateConnectionRequest req = (CreateConnectionRequest) getTargetRequest();
                     PrecisionPoint preciseLocation = new PrecisionPoint(getLocation());

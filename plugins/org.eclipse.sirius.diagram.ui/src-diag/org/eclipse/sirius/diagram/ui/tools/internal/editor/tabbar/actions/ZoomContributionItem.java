@@ -45,7 +45,7 @@ public class ZoomContributionItem extends ActionContributionItem {
             @Override
             public void partActivated(IWorkbenchPart part) {
                 if (part instanceof DDiagramEditor) {
-                    final ZoomManager zoomManager = (ZoomManager) part.getAdapter(ZoomManager.class);
+                    final ZoomManager zoomManager = part.getAdapter(ZoomManager.class);
                     if (action instanceof TabbarZoomAction) {
                         ((TabbarZoomAction) action).setZoomManager(zoomManager);
                     }

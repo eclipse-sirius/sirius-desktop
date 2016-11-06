@@ -64,7 +64,7 @@ public class AbstractContainerViewFactory extends AbstractDesignerNodeFactory {
     protected void updateLayoutConstraint(View view, IAdaptable semanticAdapter) {
         if (view instanceof Node && ((Node) view).getLayoutConstraint() instanceof Size) {
             Size size = (Size) ((Node) view).getLayoutConstraint();
-            DDiagramElementContainer viewNodecontainer = (DDiagramElementContainer) semanticAdapter.getAdapter(DDiagramElementContainer.class);
+            DDiagramElementContainer viewNodecontainer = semanticAdapter.getAdapter(DDiagramElementContainer.class);
             if (viewNodecontainer != null) {
                 Integer width = viewNodecontainer.getWidth();
                 Integer height = viewNodecontainer.getHeight();

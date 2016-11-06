@@ -45,7 +45,7 @@ public class DescribedDecoratorProvider extends AbstractProvider implements IDec
         }
         boolean provide = false;
         final IDecoratorTarget decoratorTarget = ((CreateDecoratorsOperation) operation).getDecoratorTarget();
-        final EditPart editPart = (EditPart) decoratorTarget.getAdapter(EditPart.class);
+        final EditPart editPart = decoratorTarget.getAdapter(EditPart.class);
         if (editPart instanceof IDiagramElementEditPart && !(editPart instanceof IDiagramNameEditPart)) {
             provide = true;
         }
@@ -59,7 +59,7 @@ public class DescribedDecoratorProvider extends AbstractProvider implements IDec
      * @see org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorProvider#createDecorators(org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget)
      */
     public void createDecorators(final IDecoratorTarget decoratorTarget) {
-        final EditPart editPart = (EditPart) decoratorTarget.getAdapter(EditPart.class);
+        final EditPart editPart = decoratorTarget.getAdapter(EditPart.class);
         if (editPart instanceof IDiagramElementEditPart) {
             decoratorTarget.installDecorator(KEY, new DescribedDecorator(decoratorTarget));
         }

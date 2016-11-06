@@ -55,7 +55,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
     public void setLabelsToUpdate(ConnectionEditPart connectionEditPart) {
         // Before setting the labels to update (and compute the new offset, we
         // must set the newPointList.
-        ConnectionEditPart gmfConnectionEditPart = (ConnectionEditPart) connectionEditPart;
+        ConnectionEditPart gmfConnectionEditPart = connectionEditPart;
         // Applied zoom on moveDelta, because moveDelta is only element in
         // relative value
         GraphicalHelper.appliedZoomOnRelativePoint(gmfConnectionEditPart, moveDelta);

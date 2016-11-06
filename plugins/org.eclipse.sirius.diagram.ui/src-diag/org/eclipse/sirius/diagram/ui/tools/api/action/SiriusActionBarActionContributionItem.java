@@ -80,7 +80,7 @@ public class SiriusActionBarActionContributionItem extends ActionContributionIte
         service = partService;
         partListener = new IPartListener() {
             public void partActivated(final IWorkbenchPart part) {
-                final EditPart editPArt = (EditPart) part.getAdapter(EditPart.class);
+                final EditPart editPArt = part.getAdapter(EditPart.class);
                 if (editPArt instanceof DDiagramRootEditPart) {
                     part.getSite().getPage().addSelectionListener(editPartSelectionListener);
                 }

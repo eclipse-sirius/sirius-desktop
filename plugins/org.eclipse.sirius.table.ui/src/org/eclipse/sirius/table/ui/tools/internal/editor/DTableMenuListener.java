@@ -446,7 +446,7 @@ public class DTableMenuListener implements IMenuListener {
              */
             @Override
             public void run() {
-                final IHandlerService handlerService = (IHandlerService) treeViewManager.getEditor().getSite().getService(IHandlerService.class);
+                final IHandlerService handlerService = treeViewManager.getEditor().getSite().getService(IHandlerService.class);
                 try {
                     handlerService.executeCommand("org.eclipse.sirius.table.ui.exportToCsv", null); //$NON-NLS-1$
                 } catch (final CommandException ex) {

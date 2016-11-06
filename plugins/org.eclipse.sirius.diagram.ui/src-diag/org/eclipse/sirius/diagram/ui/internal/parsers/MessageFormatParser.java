@@ -183,7 +183,7 @@ public class MessageFormatParser extends AbstractParser {
      * @was-generated
      */
     public String getPrintString(IAdaptable adapter, int flags) {
-        EObject element = (EObject) adapter.getAdapter(EObject.class);
+        EObject element = adapter.getAdapter(EObject.class);
         return getViewProcessor().format(getValues(element), new StringBuffer(), new FieldPosition(0)).toString();
     }
 
@@ -194,7 +194,7 @@ public class MessageFormatParser extends AbstractParser {
      * @not-generated
      */
     public String getEditString(IAdaptable adapter, int flags) {
-        EObject element = (EObject) adapter.getAdapter(EObject.class);
+        EObject element = adapter.getAdapter(EObject.class);
         if (element instanceof DDiagramElement) {
             // Override the default behavior if a direct edit tool is available
             // with a non empty directEditLabelExpression.

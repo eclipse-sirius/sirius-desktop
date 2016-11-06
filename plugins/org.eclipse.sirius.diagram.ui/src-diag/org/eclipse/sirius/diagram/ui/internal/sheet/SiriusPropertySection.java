@@ -49,7 +49,7 @@ public class SiriusPropertySection extends AdvancedPropertySection implements IP
             }
         }
         if (object instanceof IAdaptable) {
-            return (IPropertySource) ((IAdaptable) object).getAdapter(IPropertySource.class);
+            return ((IAdaptable) object).getAdapter(IPropertySource.class);
         }
         return null;
     }
@@ -76,7 +76,7 @@ public class SiriusPropertySection extends AdvancedPropertySection implements IP
             return ((View) selected).getElement();
         }
         if (selected instanceof IAdaptable) {
-            View view = (View) ((IAdaptable) selected).getAdapter(View.class);
+            View view = ((IAdaptable) selected).getAdapter(View.class);
             if (view != null) {
                 return view.getElement();
             }

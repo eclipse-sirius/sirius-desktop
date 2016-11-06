@@ -45,7 +45,7 @@ public class EditModeDecoratorProvider extends AbstractProvider implements IDeco
         }
         boolean provide = false;
         final IDecoratorTarget decoratorTarget = ((CreateDecoratorsOperation) operation).getDecoratorTarget();
-        final EditPart editPart = (EditPart) decoratorTarget.getAdapter(EditPart.class);
+        final EditPart editPart = decoratorTarget.getAdapter(EditPart.class);
         if (editPart instanceof IDiagramElementEditPart) {
             provide = true;
         }
@@ -59,7 +59,7 @@ public class EditModeDecoratorProvider extends AbstractProvider implements IDeco
      * @see org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorProvider#createDecorators(org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget)
      */
     public void createDecorators(final IDecoratorTarget decoratorTarget) {
-        final EditPart editPart = (EditPart) decoratorTarget.getAdapter(EditPart.class);
+        final EditPart editPart = decoratorTarget.getAdapter(EditPart.class);
         if (editPart instanceof IDiagramElementEditPart) {
             decoratorTarget.installDecorator(KEY, new EditModeDecorator(decoratorTarget));
         }

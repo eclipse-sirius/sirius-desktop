@@ -65,7 +65,7 @@ public class ExtensionSemanticPropertiesSection extends AdvancedPropertySection 
                 }
             }
             if (propertySrc == null && object instanceof IAdaptable) {
-                propertySrc = (IPropertySource) ((IAdaptable) object).getAdapter(IPropertySource.class);
+                propertySrc = ((IAdaptable) object).getAdapter(IPropertySource.class);
             }
 
         }
@@ -146,7 +146,7 @@ public class ExtensionSemanticPropertiesSection extends AdvancedPropertySection 
                 dElement = ((View) selected).getElement();
             }
         } else if (selected instanceof IAdaptable) {
-            final View view = (View) ((IAdaptable) selected).getAdapter(View.class);
+            final View view = ((IAdaptable) selected).getAdapter(View.class);
             if (view != null) {
                 if (view.getElement() instanceof DSemanticDecorator) {
                     dElement = view.getElement();

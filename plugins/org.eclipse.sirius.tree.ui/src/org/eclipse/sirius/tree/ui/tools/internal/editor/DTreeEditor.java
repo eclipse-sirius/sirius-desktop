@@ -243,7 +243,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         getSite().getPage().addPartListener(refreshAtOpeningActivator);
 
         // Activate context
-        IContextService contextService = (IContextService) getSite().getService(IContextService.class);
+        IContextService contextService = getSite().getService(IContextService.class);
         contextService.activateContext(CONTEXT_ID);
     }
 

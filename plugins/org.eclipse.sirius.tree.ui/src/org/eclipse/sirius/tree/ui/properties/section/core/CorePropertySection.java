@@ -50,7 +50,7 @@ public class CorePropertySection extends AbstractDTreePropertySection {
                 }
             }
             if (object instanceof IAdaptable) {
-                propSrc = (IPropertySource) ((IAdaptable) object).getAdapter(IPropertySource.class);
+                propSrc = ((IAdaptable) object).getAdapter(IPropertySource.class);
             }
         }
         return propSrc;

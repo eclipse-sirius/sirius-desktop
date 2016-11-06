@@ -201,7 +201,7 @@ public class LaunchToolEditPolicy extends AbstractEditPolicy {
         final DDiagramEditor diagramEditor = (DDiagramEditor) editPart.getViewer().getProperty(DDiagramEditor.EDITOR_ID);
         final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(diagramEditor.getEditingDomain().getResourceSet());
         if (diagramEditor != null) {
-            final IDiagramCommandFactoryProvider adapter = (IDiagramCommandFactoryProvider) diagramEditor.getAdapter(IDiagramCommandFactoryProvider.class);
+            final IDiagramCommandFactoryProvider adapter = diagramEditor.getAdapter(IDiagramCommandFactoryProvider.class);
             diagramCommandFactory = adapter.getCommandFactory(transactionalEditingDomain);
         }
 

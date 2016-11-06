@@ -153,7 +153,7 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
         // the LayoutHint as a Collection
         if (layoutHint.getAdapter(Collection.class) instanceof ArrayList<?>
                 && Iterables.all((ArrayList<?>) layoutHint.getAdapter(Collection.class), validateAllElementInArrayListAreIDiagramElementEditPart)) {
-            elementsToKeepFixed = new ArrayList<IDiagramElementEditPart>((ArrayList<IDiagramElementEditPart>) layoutHint.getAdapter(Collection.class));
+            elementsToKeepFixed = new ArrayList<IDiagramElementEditPart>(layoutHint.getAdapter(Collection.class));
         }
         // return super.layoutEditParts(selectedObjects, layoutHint);
         Command result = super.layoutEditParts(selectedObjects, layoutHint);

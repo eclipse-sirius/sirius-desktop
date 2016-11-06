@@ -196,7 +196,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         super.createPages();
 
         // Activate context
-        IContextService contextService = (IContextService) getSite().getService(IContextService.class);
+        IContextService contextService = getSite().getService(IContextService.class);
         contextService.activateContext(CONTEXT_ID);
 
         if (selectionViewer != null) {
@@ -379,7 +379,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         } else if (input instanceof IURIEditorInput) {
             result = URI.createURI(((IURIEditorInput) input).getURI().toString());
         } else {
-            result = (URI) input.getAdapter(URI.class);
+            result = input.getAdapter(URI.class);
         }
         return result;
     }

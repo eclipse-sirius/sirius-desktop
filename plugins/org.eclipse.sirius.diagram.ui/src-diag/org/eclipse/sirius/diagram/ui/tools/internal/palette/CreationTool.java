@@ -76,7 +76,7 @@ public class CreationTool extends org.eclipse.gef.tools.CreationTool {
         if (!isInState(STATE_DRAG_IN_PROGRESS)) {
             if (!getCurrentInput().isAltKeyDown()) {
                 if (getTargetEditPart() != null) {
-                    SnapToHelper helper = (SnapToHelper) getTargetEditPart().getAdapter(SnapToHelper.class);
+                    SnapToHelper helper = getTargetEditPart().getAdapter(SnapToHelper.class);
                     if (helper != null) {
                         PrecisionPoint preciseLocation = new PrecisionPoint(getLocation());
                         PrecisionPoint result = new PrecisionPoint(getLocation());

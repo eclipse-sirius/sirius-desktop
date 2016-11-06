@@ -67,7 +67,7 @@ public class DraggedObjectTester {
             if (obj instanceof EObject)
                 eObj = (EObject) obj;
             else if (obj instanceof IAdaptable)
-                eObj = (EObject) ((IAdaptable) obj).getAdapter(EObject.class);
+                eObj = ((IAdaptable) obj).getAdapter(EObject.class);
         }
         return eObj;
     }

@@ -194,7 +194,7 @@ public class WorkspaceResourceDialog extends Dialog {
                 if (next instanceof IResource) {
                     result.add((IResource) next);
                 } else if (next instanceof IAdaptable) {
-                    final IResource resource = (IResource) ((IAdaptable) next).getAdapter(IResource.class);
+                    final IResource resource = ((IAdaptable) next).getAdapter(IResource.class);
                     if (resource != null) {
                         result.add(resource);
                     }
@@ -242,7 +242,7 @@ public class WorkspaceResourceDialog extends Dialog {
             if (element instanceof IResource) {
                 resource = (IResource) element;
             } else if (element instanceof IAdaptable) {
-                resource = (IResource) ((IAdaptable) element).getAdapter(IResource.class);
+                resource = ((IAdaptable) element).getAdapter(IResource.class);
             }
 
             boolean isValid = false;

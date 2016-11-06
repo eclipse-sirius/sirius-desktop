@@ -134,7 +134,7 @@ public class EAttributeCustomizationAttributeNameContentProposalProvider impleme
      */
     public static void bindCompletionProcessor(final EAttributeCustomizationAttributeNamePropertySection section, final Text text) {
 
-        final IBindingService bindingService = (IBindingService) PlatformUI.getWorkbench().getService(IBindingService.class);
+        final IBindingService bindingService = PlatformUI.getWorkbench().getService(IBindingService.class);
 
         TriggerSequence[] contentAssistBindings = bindingService.getActiveBindingsFor(ITextEditorActionDefinitionIds.CONTENT_ASSIST_PROPOSALS);
         if (contentAssistBindings != null && contentAssistBindings.length > 0) {

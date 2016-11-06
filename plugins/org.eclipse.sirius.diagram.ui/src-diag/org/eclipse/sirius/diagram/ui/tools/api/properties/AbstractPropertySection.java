@@ -217,7 +217,7 @@ public abstract class AbstractPropertySection extends AbstractModelerPropertySec
      */
     @Override
     public void setInput(final IWorkbenchPart part, final ISelection selection) {
-        final IEditingDomainProvider provider = (IEditingDomainProvider) part.getAdapter(IEditingDomainProvider.class);
+        final IEditingDomainProvider provider = part.getAdapter(IEditingDomainProvider.class);
         if (provider != null) {
             final EditingDomain theEditingDomain = provider.getEditingDomain();
             if (theEditingDomain instanceof TransactionalEditingDomain) {

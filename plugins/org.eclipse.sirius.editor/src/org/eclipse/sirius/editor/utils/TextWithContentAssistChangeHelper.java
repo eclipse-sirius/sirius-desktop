@@ -32,7 +32,7 @@ public abstract class TextWithContentAssistChangeHelper extends TextChangeHelper
      */
     @Override
     public void handleEvent(Event event) {
-        IBindingService bindingService = (IBindingService) PlatformUI.getWorkbench().getService(IBindingService.class);
+        IBindingService bindingService = PlatformUI.getWorkbench().getService(IBindingService.class);
         TriggerSequence[] contentAssistBindings = bindingService.getActiveBindingsFor(ITextEditorActionDefinitionIds.CONTENT_ASSIST_PROPOSALS);
 
         if (contentAssistBindings != null && contentAssistBindings.length > 0) {

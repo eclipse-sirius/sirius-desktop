@@ -106,7 +106,7 @@ public class NodeDeletionEditPolicy extends SiriusComponentEditPolicy {
             EditPart parent = host.getParent();
             if (parent != null) {
                 View viewObject = (View) parent.getModel();
-                EObject eObject = (EObject) host.getAdapter(EObject.class);
+                EObject eObject = host.getAdapter(EObject.class);
                 for (SiriusNodeDescriptor descriptor : SiriusDiagramUpdater.getSemanticChildren(viewObject)) {
                     if (eObject == descriptor.getModelElement()) {
                         shouldDeleteSemantic = true;

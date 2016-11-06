@@ -204,11 +204,11 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         if (clazz.isInstance(object)) {
             result = (T) object;
         } else if (object instanceof IAdaptable) {
-            result = (T) ((IAdaptable) object).getAdapter(clazz);
+            result = ((IAdaptable) object).getAdapter(clazz);
         }
 
         if (result == null) {
-            result = (T) Platform.getAdapterManager().getAdapter(object, clazz);
+            result = Platform.getAdapterManager().getAdapter(object, clazz);
         }
 
         return result;

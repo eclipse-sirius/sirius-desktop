@@ -154,7 +154,7 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
         createSWTImageDescriptorForParts(editparts, sourceRect);
         if (getRenderedImage() != null) {
             try {
-                BufferedImage bufImg = (BufferedImage) getRenderedImage().getAdapter(BufferedImage.class);
+                BufferedImage bufImg = getRenderedImage().getAdapter(BufferedImage.class);
                 if (bufImg == null) {
                     bufImg = ImageConverter.convert(getRenderedImage().getSWTImage());
                 }

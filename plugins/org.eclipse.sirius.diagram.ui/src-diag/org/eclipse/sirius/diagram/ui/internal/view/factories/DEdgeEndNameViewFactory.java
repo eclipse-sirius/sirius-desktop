@@ -55,7 +55,7 @@ public class DEdgeEndNameViewFactory extends AbstractLabelViewFactory {
         final Node view = (Node) super.createView(semanticAdapter, containerView, semanticHint, index, persisted, preferencesHint);
         final Location location = (Location) view.getLayoutConstraint();
         final IMapMode mapMode = MeasurementUnitHelper.getMapMode(containerView.getDiagram().getMeasurementUnit());
-        DEdge dEdge = (DEdge) semanticAdapter.getAdapter(DEdge.class);
+        DEdge dEdge = semanticAdapter.getAdapter(DEdge.class);
         view.setVisible(!new DDiagramElementQuery(dEdge).isLabelHidden());
         final EdgeLabelLayoutData data = SiriusLayoutDataManager.INSTANCE.getLabelData(dEdge);
 

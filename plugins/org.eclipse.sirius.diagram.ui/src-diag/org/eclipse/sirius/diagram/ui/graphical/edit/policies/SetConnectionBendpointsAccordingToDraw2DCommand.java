@@ -42,7 +42,7 @@ public class SetConnectionBendpointsAccordingToDraw2DCommand extends SetConnecti
 
     @Override
     public void setLabelsToUpdate(ConnectionEditPart connectionEditPart) {
-        ConnectionEditPart gmfConnectionEditPart = (ConnectionEditPart) connectionEditPart;
+        ConnectionEditPart gmfConnectionEditPart = connectionEditPart;
         // Apply inverse zoom on moveDelta, because moveDelta is only
         // element in relative value
         GraphicalHelper.applyInverseZoomOnPoint(gmfConnectionEditPart, moveDelta);

@@ -46,7 +46,7 @@ public class DNodeListElementViewFactory extends AbstractLabelViewFactory {
      */
     @Override
     protected void decorateView(View containerView, View view, IAdaptable semanticAdapter, String semanticHint, int index, boolean persisted) {
-        final EObject semantic = (EObject) semanticAdapter.getAdapter(EObject.class);
+        final EObject semantic = semanticAdapter.getAdapter(EObject.class);
         if (semantic instanceof DDiagramElement) {
             view.setVisible(((DDiagramElement) semantic).isVisible());
         }

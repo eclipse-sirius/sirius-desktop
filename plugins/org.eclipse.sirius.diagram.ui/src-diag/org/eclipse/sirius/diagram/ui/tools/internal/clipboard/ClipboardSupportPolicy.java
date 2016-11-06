@@ -26,7 +26,7 @@ public class ClipboardSupportPolicy implements IClipboardSupportPolicy {
     @Override
     public boolean provides(IAdaptable adaptable) {
         if (adaptable != null) {
-            View view = (View) adaptable.getAdapter(View.class);
+            View view = adaptable.getAdapter(View.class);
             if (view != null) {
                 Diagram diagram = view.getDiagram();
                 return diagram != null && DiagramPackage.Literals.DDIAGRAM.isInstance(diagram.getElement());

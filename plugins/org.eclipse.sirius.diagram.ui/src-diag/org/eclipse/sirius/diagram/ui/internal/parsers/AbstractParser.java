@@ -175,7 +175,7 @@ public abstract class AbstractParser implements IParser {
         if (values == null || validateNewValues(values).getCode() != IParserEditStatus.EDITABLE) {
             return UnexecutableCommand.INSTANCE;
         }
-        EObject element = (EObject) adapter.getAdapter(EObject.class);
+        EObject element = adapter.getAdapter(EObject.class);
         TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(element);
         if (editingDomain == null) {
             return UnexecutableCommand.INSTANCE;

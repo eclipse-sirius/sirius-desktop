@@ -1359,7 +1359,7 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
 
         RenderedImage img = srcImage.getNewRenderedImage(info);
 
-        BufferedImage bufImg = (BufferedImage) img.getAdapter(BufferedImage.class);
+        BufferedImage bufImg = img.getAdapter(BufferedImage.class);
         if (bufImg == null) {
             bufImg = ImageConverter.convert(img.getSWTImage());
         }

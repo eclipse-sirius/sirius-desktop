@@ -241,7 +241,7 @@ public final class EclipseUIUtil {
             if (part instanceof IExpandSelectionTarget) {
                 target = (IExpandSelectionTarget) part;
             } else {
-                target = (IExpandSelectionTarget) part.getAdapter(IExpandSelectionTarget.class);
+                target = part.getAdapter(IExpandSelectionTarget.class);
             }
 
             if (target != null) {
@@ -269,7 +269,7 @@ public final class EclipseUIUtil {
     public static void addSelectionListener(IWorkbenchPart part, ISelectionListener listener) {
         IWorkbenchPartSite site = part.getSite();
         if (site != null) {
-            ISelectionService selectionService = (ISelectionService) site.getService(ISelectionService.class);
+            ISelectionService selectionService = site.getService(ISelectionService.class);
             if (selectionService != null) {
                 selectionService.addSelectionListener(listener);
             }
@@ -290,7 +290,7 @@ public final class EclipseUIUtil {
     public static void removeSelectionListener(IWorkbenchPart part, ISelectionListener listener) {
         IWorkbenchPartSite site = part.getSite();
         if (site != null) {
-            ISelectionService selectionService = (ISelectionService) site.getService(ISelectionService.class);
+            ISelectionService selectionService = site.getService(ISelectionService.class);
             if (selectionService != null) {
                 selectionService.removeSelectionListener(listener);
             }

@@ -791,7 +791,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
                     boolean canCreate = new EdgeCreationDescriptionQuery(edgeCreationDescription).canBeAppliedOn((DMappingBased) source, (DMappingBased) target);
                     if (canCreate) {
                         DDiagramEditor diagramEditor = (DDiagramEditor) this.getHost().getViewer().getProperty(DDiagramEditor.EDITOR_ID);
-                        IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) diagramEditor.getAdapter(IDiagramCommandFactoryProvider.class);
+                        IDiagramCommandFactoryProvider cmdFactoryProvider = diagramEditor.getAdapter(IDiagramCommandFactoryProvider.class);
                         viewpointConnectionCreationCmd = buildCreateEdgeCommand(request, source, target, edgeCreationDescription, cmdFactoryProvider, edgeLayoutData);
                     }
                 }

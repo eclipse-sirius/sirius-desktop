@@ -111,7 +111,7 @@ public class PaperClipsUtil {
 	 */
 	public static int[] copy(int[] array) {
 		Util.notNull(array);
-		return (int[]) array.clone();
+		return array.clone();
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class PaperClipsUtil {
 	 */
 	public static int[][] copy(int[][] array) {
 		Util.notNull(array);
-		int[][] result = (int[][]) array.clone();
+		int[][] result = array.clone();
 		for (int i = 0; i < result.length; i++)
 			result[i] = copy(result[i]);
 		return result;

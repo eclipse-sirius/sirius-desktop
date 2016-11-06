@@ -30,7 +30,7 @@ public class LayerIterator implements PrintIterator {
 	}
 
 	public LayerIterator(LayerIterator that) {
-		this.entries = (LayerEntryIterator[]) that.entries.clone();
+		this.entries = that.entries.clone();
 		for (int i = 0; i < entries.length; i++)
 			if (entries[i].getTarget().hasNext())
 				entries[i] = entries[i].copy();

@@ -29,7 +29,7 @@ public class DNodeContainerNameViewFactory extends BasicNodeViewFactory {
     @Override
     public View createView(IAdaptable semanticAdapter, View containerView, String semanticHint, int index, boolean persisted, PreferencesHint preferencesHint) {
         View view = super.createView(semanticAdapter, containerView, semanticHint, index, persisted, preferencesHint);
-        DDiagramElement dDiagramElement = (DDiagramElement) semanticAdapter.getAdapter(DDiagramElement.class);
+        DDiagramElement dDiagramElement = semanticAdapter.getAdapter(DDiagramElement.class);
         view.setVisible(!new DDiagramElementQuery(dDiagramElement).isLabelHidden());
         return view;
     }

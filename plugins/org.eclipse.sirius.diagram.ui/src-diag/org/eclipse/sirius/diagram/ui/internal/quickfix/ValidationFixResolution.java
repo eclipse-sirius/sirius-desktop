@@ -117,7 +117,7 @@ public class ValidationFixResolution implements IMarkerResolution {
             }
 
             if (!offscreenValidation) {
-                TransactionalEditingDomain editorDomain = (TransactionalEditingDomain) editor.getAdapter(TransactionalEditingDomain.class);
+                TransactionalEditingDomain editorDomain = editor.getAdapter(TransactionalEditingDomain.class);
                 if (editorDomain != currentSession.getTransactionalEditingDomain()) {
                     // The current editor is on the current session.
                     offscreenValidation = true;

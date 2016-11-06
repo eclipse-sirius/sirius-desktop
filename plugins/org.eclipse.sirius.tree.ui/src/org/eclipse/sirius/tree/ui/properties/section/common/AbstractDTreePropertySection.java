@@ -163,7 +163,7 @@ public abstract class AbstractDTreePropertySection extends AbstractPropertySecti
             eObjectList = ((IStructuredSelection) selection).toList();
         }
         // get the editing domain of the IWorkbenchPart
-        final IEditingDomainProvider provider = (IEditingDomainProvider) part.getAdapter(IEditingDomainProvider.class);
+        final IEditingDomainProvider provider = part.getAdapter(IEditingDomainProvider.class);
         if (provider != null) {
             final EditingDomain theEditingDomain = provider.getEditingDomain();
             if (theEditingDomain instanceof TransactionalEditingDomain) {

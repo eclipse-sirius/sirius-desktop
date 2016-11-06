@@ -78,7 +78,7 @@ public class TreeLayoutSetConnectionAnchorsCommand extends SetConnectionAnchorsC
     protected void setComplementaryData(boolean sourceAnchorChanged, boolean targetAnchorChanged) {
         if (getEdgeAdaptor() instanceof ConnectionEditPart) {
             Connection connection = ((ConnectionEditPart) getEdgeAdaptor()).getConnectionFigure();
-            Edge edge = (Edge) getEdgeAdaptor().getAdapter(Edge.class);
+            Edge edge = getEdgeAdaptor().getAdapter(Edge.class);
 
             if (sourceAnchorChanged || connection.getSourceAnchor() == null) {
                 // Recompute the new source ref point
@@ -137,7 +137,7 @@ public class TreeLayoutSetConnectionAnchorsCommand extends SetConnectionAnchorsC
     protected CommandResult doExecuteWithResult(IProgressMonitor progressMonitor, IAdaptable info) throws ExecutionException {
         assert null != getEdgeAdaptor() : Messages.TreeLayoutSetConnectionAnchorsCommand_nullChildInSetConnectionAnchorsCommand;              
 
-        Edge edge = (Edge) getEdgeAdaptor().getAdapter(Edge.class);
+        Edge edge = getEdgeAdaptor().getAdapter(Edge.class);
         assert null != edge : Messages.TreeLayoutSetConnectionAnchorsCommand_nullEdgeInSetConnectionAnchorsCommand;     
 
         // Retrieve old source anchor corresponding before move source point

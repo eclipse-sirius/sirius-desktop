@@ -125,7 +125,7 @@ public abstract class SiriusTabbarExtensionContributionFactory extends Extension
 
             this.representationPart = part;
             if (representationPart != null) {
-                ISelectionService selectionService = (ISelectionService) representationPart.getSite().getService(ISelectionService.class);
+                ISelectionService selectionService = representationPart.getSite().getService(ISelectionService.class);
                 if (selectionService != null) {
                     selectionService.addSelectionListener(this);
                 }
@@ -170,7 +170,7 @@ public abstract class SiriusTabbarExtensionContributionFactory extends Extension
             super.dispose();
 
             if (representationPart != null) {
-                ISelectionService selectionService = (ISelectionService) representationPart.getSite().getService(ISelectionService.class);
+                ISelectionService selectionService = representationPart.getSite().getService(ISelectionService.class);
                 if (selectionService != null) {
                     selectionService.removeSelectionListener(this);
                 }

@@ -80,7 +80,7 @@ public class TypeContentProposalProvider implements IContentProposalProvider {
      */
     public static void bindCompletionProcessor(final AbstractPropertySection section, final Text text) {
 
-        final IBindingService bindingService = (IBindingService) PlatformUI.getWorkbench().getService(IBindingService.class);
+        final IBindingService bindingService = PlatformUI.getWorkbench().getService(IBindingService.class);
 
         TriggerSequence[] contentAssistBindings = bindingService.getActiveBindingsFor(ITextEditorActionDefinitionIds.CONTENT_ASSIST_PROPOSALS);
         if (contentAssistBindings != null && contentAssistBindings.length > 0) {
@@ -121,7 +121,7 @@ public class TypeContentProposalProvider implements IContentProposalProvider {
         if (!(extension.size() == 0)) {
             IAssistContentProvider contentProposalAdapter = extension.get(0);
             contentProposalAdapter.setView(section);
-            IBindingService bindingService = (IBindingService) PlatformUI.getWorkbench().getService(IBindingService.class); // gives
+            IBindingService bindingService = PlatformUI.getWorkbench().getService(IBindingService.class); // gives
                                                                                                                             // the
                                                                                                                             // user
                                                                                                                             // content

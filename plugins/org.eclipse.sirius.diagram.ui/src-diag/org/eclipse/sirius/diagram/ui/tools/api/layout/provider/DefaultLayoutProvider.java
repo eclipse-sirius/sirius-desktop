@@ -50,7 +50,7 @@ public class DefaultLayoutProvider extends AbstractLayoutProvider {
         if (operation instanceof ILayoutNodeOperation) {
             ILayoutNodeOperation layoutNodeOperation = (ILayoutNodeOperation) operation;
             IAdaptable layoutHint = layoutNodeOperation.getLayoutHint();
-            String layoutType = (String) layoutHint.getAdapter(String.class);
+            String layoutType = layoutHint.getAdapter(String.class);
             return LayoutType.DEFAULT.equals(layoutType) && isLayoutForSiriusDiagram(layoutNodeOperation);
         }
         return false;

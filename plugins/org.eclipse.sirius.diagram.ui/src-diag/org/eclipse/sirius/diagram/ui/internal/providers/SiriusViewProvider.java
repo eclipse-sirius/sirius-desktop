@@ -351,6 +351,6 @@ public class SiriusViewProvider extends AbstractViewProvider {
         if (semanticAdapter == null) {
             return null;
         }
-        return (IElementType) semanticAdapter.getAdapter(IElementType.class);
+        return semanticAdapter.getAdapter(IElementType.class);
     }
 }

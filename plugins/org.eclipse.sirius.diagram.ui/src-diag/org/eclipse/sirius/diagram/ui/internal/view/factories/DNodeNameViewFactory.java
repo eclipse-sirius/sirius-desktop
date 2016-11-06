@@ -35,7 +35,7 @@ public class DNodeNameViewFactory extends AbstractLabelViewFactory {
      */
     public View createView(IAdaptable semanticAdapter, View containerView, String semanticHint, int index, boolean persisted, PreferencesHint preferencesHint) {
         Node view = (Node) super.createView(semanticAdapter, containerView, semanticHint, index, persisted, preferencesHint);
-        DDiagramElement dDiagramElement = (DDiagramElement) semanticAdapter.getAdapter(DDiagramElement.class);
+        DDiagramElement dDiagramElement = semanticAdapter.getAdapter(DDiagramElement.class);
         view.setVisible(!new DDiagramElementQuery(dDiagramElement).isLabelHidden());
         Location location = (Location) view.getLayoutConstraint();
         IMapMode mapMode = MeasurementUnitHelper.getMapMode(containerView.getDiagram().getMeasurementUnit());

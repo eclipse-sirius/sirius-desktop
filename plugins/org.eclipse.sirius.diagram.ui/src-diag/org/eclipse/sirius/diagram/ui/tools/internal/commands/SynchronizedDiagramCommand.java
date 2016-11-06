@@ -45,7 +45,7 @@ public class SynchronizedDiagramCommand extends AbstractActionWrapperHandler imp
      */
     @Override
     public void updateElement(final UIElement element, @SuppressWarnings("rawtypes") final Map parameters) {
-        final IWorkbenchWindow window = (IWorkbenchWindow) element.getServiceLocator().getService(IWorkbenchWindow.class);
+        final IWorkbenchWindow window = element.getServiceLocator().getService(IWorkbenchWindow.class);
         if (window == null) {
             return;
         }

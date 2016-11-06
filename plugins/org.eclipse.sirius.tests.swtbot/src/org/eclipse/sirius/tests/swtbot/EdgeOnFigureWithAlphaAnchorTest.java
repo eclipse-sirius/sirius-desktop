@@ -240,7 +240,7 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
             if (zoomAndScroll) {
                 // The mouse position click is relative to the screen
                 Point scrollSize = GraphicalHelper.getScrollSize((IGraphicalEditPart) referenceEditPartBot.part());
-                double zoom = GraphicalHelper.getZoom((IGraphicalEditPart) referenceEditPartBot.part());
+                double zoom = GraphicalHelper.getZoom(referenceEditPartBot.part());
                 originalPoint = originalPoint.getScaled(zoom).getTranslated(-scrollSize.x, -scrollSize.y);
             }
             Point targetPoint = newBounds.getCenter();

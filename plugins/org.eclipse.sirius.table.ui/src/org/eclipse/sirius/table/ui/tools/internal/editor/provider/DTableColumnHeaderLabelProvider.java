@@ -62,7 +62,7 @@ public class DTableColumnHeaderLabelProvider extends DSemanticTargetBasedLabelPr
     @Override
     public String getToolTipText(Object element) {
         String tooltip = null;
-        IToolTipProvider tooltipProvider = (IToolTipProvider) Platform.getAdapterManager().getAdapter(element, IToolTipProvider.class);
+        IToolTipProvider tooltipProvider = Platform.getAdapterManager().getAdapter(element, IToolTipProvider.class);
         if (tooltipProvider != null) {
             tooltip = tooltipProvider.getToolTipText(element);
         }

@@ -58,7 +58,7 @@ public class SiriusModelingAssistantProvider extends ModelingAssistantProvider {
      * @return the types.
      */
     public List<?> getTypesForPopupBarGen(IAdaptable host) {
-        IGraphicalEditPart editPart = (IGraphicalEditPart) host.getAdapter(IGraphicalEditPart.class);
+        IGraphicalEditPart editPart = host.getAdapter(IGraphicalEditPart.class);
         if (editPart instanceof DNodeEditPart) {
             List<IElementType> types = new ArrayList<IElementType>();
             types.add(SiriusElementTypes.DNode_3001);
@@ -210,7 +210,7 @@ public class SiriusModelingAssistantProvider extends ModelingAssistantProvider {
         if (types.isEmpty()) {
             return null;
         }
-        IGraphicalEditPart editPart = (IGraphicalEditPart) host.getAdapter(IGraphicalEditPart.class);
+        IGraphicalEditPart editPart = host.getAdapter(IGraphicalEditPart.class);
         if (editPart == null) {
             return null;
         }

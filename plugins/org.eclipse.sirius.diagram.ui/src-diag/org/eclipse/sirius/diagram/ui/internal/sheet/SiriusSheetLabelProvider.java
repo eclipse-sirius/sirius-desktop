@@ -94,7 +94,7 @@ public class SiriusSheetLabelProvider extends DecoratingLabelProvider {
             return unwrapEditPart((EditPart) element);
         }
         if (element instanceof IAdaptable) {
-            View view = (View) ((IAdaptable) element).getAdapter(View.class);
+            View view = ((IAdaptable) element).getAdapter(View.class);
             if (view != null) {
                 return unwrapView(view);
             }

@@ -72,7 +72,7 @@ public class LaunchBehaviorContributionItem extends ContributionItem {
         partListener = new IPartListener() {
             @Override
             public void partActivated(final IWorkbenchPart part) {
-                final EditPart editPArt = (EditPart) part.getAdapter(EditPart.class);
+                final EditPart editPArt = part.getAdapter(EditPart.class);
                 if (editPArt instanceof RenderedDiagramRootEditPart) {
                     final RenderedDiagramRootEditPart root = (RenderedDiagramRootEditPart) editPArt;
                     final Iterator<?> iterChildren = root.getChildren().iterator();

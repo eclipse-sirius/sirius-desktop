@@ -162,7 +162,7 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
                         foundEObject = (EObject) obj;
                     }
                     if (foundEObject == null && obj instanceof IAdaptable) {
-                        foundEObject = (EObject) ((IAdaptable) obj).getAdapter(EObject.class);
+                        foundEObject = ((IAdaptable) obj).getAdapter(EObject.class);
                     }
                     if (foundEObject != null) {
                         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(foundEObject);
@@ -584,7 +584,7 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
         contentInstanceProposalProvider = new ContentInstanceProposalProvider(interpreter);
         contentInstanceProposalProvider.setEditingDomain(transactionalEditingDomain);
 
-        final IBindingService bindingService = (IBindingService) PlatformUI.getWorkbench().getService(IBindingService.class);
+        final IBindingService bindingService = PlatformUI.getWorkbench().getService(IBindingService.class);
         if (bindingService.getActiveBindingsFor(contentAssistBinding) != null && bindingService.getActiveBindingsFor(contentAssistBinding).length > 0) {
             final TriggerSequence sequence = bindingService.getActiveBindingsFor(contentAssistBinding)[0];
             KeyStroke keyStroke = getKeyStroke(sequence);

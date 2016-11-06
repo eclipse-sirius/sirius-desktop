@@ -56,7 +56,7 @@ public class MoveViewOperation extends AbstractModelChangeOperation<Void> {
     @Override
     public Void execute() {
         if (adapter != null) {
-            View view = (View) adapter.getAdapter(View.class);
+            View view = adapter.getAdapter(View.class);
             if (moveDelta != null) {
                 if (view instanceof Node) {
                     Node node = (Node) view;

@@ -43,7 +43,7 @@ public class SiriusReorientConnectionViewCommand extends AbstractTransactionalCo
      */
     @Override
     public List getAffectedFiles() {
-        View view = (View) edgeAdaptor.getAdapter(View.class);
+        View view = edgeAdaptor.getAdapter(View.class);
         if (view != null) {
             return getWorkspaceFiles(view);
         }
@@ -70,7 +70,7 @@ public class SiriusReorientConnectionViewCommand extends AbstractTransactionalCo
     @Override
     protected CommandResult doExecuteWithResult(IProgressMonitor progressMonitor, IAdaptable info) {
         assert null != edgeAdaptor : Messages.SiriusReorientConnectionViewCommand_nullChild;
-        Edge edge = (Edge) getEdgeAdaptor().getAdapter(Edge.class);
+        Edge edge = getEdgeAdaptor().getAdapter(Edge.class);
         assert null != edge : Messages.SiriusReorientConnectionViewCommand_nullEdge;
         View tempView = edge.getSource();
         edge.setSource(edge.getTarget());

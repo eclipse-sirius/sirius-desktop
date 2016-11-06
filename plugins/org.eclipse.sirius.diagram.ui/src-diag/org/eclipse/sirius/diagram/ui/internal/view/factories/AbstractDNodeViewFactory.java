@@ -79,7 +79,7 @@ public abstract class AbstractDNodeViewFactory extends AbstractDesignerNodeFacto
         addShortcutEannotation(containerView, view);
 
         IAdaptable eObjectAdapter = null;
-        EObject eObject = (EObject) semanticAdapter.getAdapter(EObject.class);
+        EObject eObject = semanticAdapter.getAdapter(EObject.class);
         if (eObject != null) {
             eObjectAdapter = new EObjectAdapter(eObject);
         }
@@ -122,7 +122,7 @@ public abstract class AbstractDNodeViewFactory extends AbstractDesignerNodeFacto
     private void updateLayoutConstraint(View view, IAdaptable semanticAdapter) {
         if (view instanceof Node && ((Node) view).getLayoutConstraint() instanceof Size) {
             Size size = (Size) ((Node) view).getLayoutConstraint();
-            DNode viewNode = (DNode) semanticAdapter.getAdapter(DNode.class);
+            DNode viewNode = semanticAdapter.getAdapter(DNode.class);
             if (viewNode != null) {
                 Dimension defaultDimension = new DNodeQuery(viewNode).getDefaultDimension();
                 size.setHeight(defaultDimension.height);

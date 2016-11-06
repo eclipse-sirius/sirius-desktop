@@ -450,7 +450,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         return new AbstractTransactionalCommand(domain, Messages.SiriusLayoutDataManagerImpl_addLayoutMarkerCommandLabel, null) {
             @Override
             protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
-                final View view = (View) viewAdapter.getAdapter(View.class);
+                final View view = viewAdapter.getAdapter(View.class);
                 if (view != null && !view.eAdapters().contains(LAYOUT_MARKER_ADAPTER)) {
                     view.eAdapters().add(LAYOUT_MARKER_ADAPTER);
                 }
@@ -470,7 +470,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         return new AbstractTransactionalCommand(domain, Messages.SiriusLayoutDataManagerImpl_addCenterLayoutMarkerCommandLabel, null) {
             @Override
             protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
-                final View view = (View) viewAdapter.getAdapter(View.class);
+                final View view = viewAdapter.getAdapter(View.class);
                 if (view != null && !view.eAdapters().contains(CENTER_LAYOUT_MARKER_ADAPTER)) {
                     view.eAdapters().add(CENTER_LAYOUT_MARKER_ADAPTER);
                 }
@@ -719,7 +719,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      */
     private boolean isAlreadyArrange(IAdaptable viewAdapter) {
         boolean alreadyArranged = false;
-        final View view = (View) viewAdapter.getAdapter(View.class);
+        final View view = viewAdapter.getAdapter(View.class);
         if (view != null) {
             for (Adapter adapter : view.eAdapters()) {
                 if (adapter.isAdapterForType(SiriusLayoutDataManager.INSTANCE)) {
@@ -741,7 +741,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      */
     private boolean hasCenterLayout(IAdaptable viewAdapter) {
         boolean centerLayout = false;
-        final View view = (View) viewAdapter.getAdapter(View.class);
+        final View view = viewAdapter.getAdapter(View.class);
         if (view != null) {
             for (Adapter adapter : view.eAdapters()) {
                 if (adapter.isAdapterForType(SiriusLayoutDataManager.INSTANCE)) {
@@ -781,7 +781,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      *            The view to check
      */
     private void removeAlreadyArrangeMarker(IAdaptable viewAdapter) {
-        final View view = (View) viewAdapter.getAdapter(View.class);
+        final View view = viewAdapter.getAdapter(View.class);
         if (view != null) {
             for (Iterator<Adapter> iterator = view.eAdapters().iterator(); iterator.hasNext(); /**/) {
                 Adapter adapter = iterator.next();

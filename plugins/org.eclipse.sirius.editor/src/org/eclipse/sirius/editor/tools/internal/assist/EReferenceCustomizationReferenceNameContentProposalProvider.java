@@ -146,7 +146,7 @@ public class EReferenceCustomizationReferenceNameContentProposalProvider impleme
      */
     public static void bindCompletionProcessor(final EReferenceCustomizationReferenceNamePropertySection section, final Text text) {
 
-        final IBindingService bindingService = (IBindingService) PlatformUI.getWorkbench().getService(IBindingService.class);
+        final IBindingService bindingService = PlatformUI.getWorkbench().getService(IBindingService.class);
 
         TriggerSequence[] contentAssistBindings = bindingService.getActiveBindingsFor(ITextEditorActionDefinitionIds.CONTENT_ASSIST_PROPOSALS);
         if (contentAssistBindings != null && contentAssistBindings.length > 0) {

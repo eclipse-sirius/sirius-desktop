@@ -60,7 +60,7 @@ public class DEdgeViewFactory extends AbstractDesignerEdgeFactory {
         }
         super.decorateView(containerView, view, semanticAdapter, semanticHint, index, persisted);
         IAdaptable eObjectAdapter = null;
-        final EObject eObject = (EObject) semanticAdapter.getAdapter(EObject.class);
+        final EObject eObject = semanticAdapter.getAdapter(EObject.class);
         if (eObject != null) {
             eObjectAdapter = new EObjectAdapter(eObject);
         }

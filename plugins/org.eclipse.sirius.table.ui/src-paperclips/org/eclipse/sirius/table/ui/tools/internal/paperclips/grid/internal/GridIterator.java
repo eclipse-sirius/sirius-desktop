@@ -136,7 +136,7 @@ public class GridIterator implements PrintIterator {
 
 	private static GridCellIterator[][] cloneRows(GridCellIterator[][] rows,
 			int firstRow) {
-		GridCellIterator[][] result = (GridCellIterator[][]) rows.clone();
+		GridCellIterator[][] result = rows.clone();
 		// Cloning the outer array is all that's necessary. The inner arrays
 		// (rows) are cloned every time a row
 		// is laid out, so all we have to do is make sure different
@@ -985,7 +985,7 @@ public class GridIterator implements PrintIterator {
 	}
 
 	private static GridCellIterator[] cloneRow(GridCellIterator[] row) {
-		GridCellIterator[] result = (GridCellIterator[]) row.clone();
+		GridCellIterator[] result = row.clone();
 		for (int i = 0; i < result.length; i++)
 			result[i] = result[i].copy();
 		return result;

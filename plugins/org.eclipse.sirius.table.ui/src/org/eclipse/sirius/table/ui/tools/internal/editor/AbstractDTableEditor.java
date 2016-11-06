@@ -281,7 +281,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
         getSite().getPage().addPartListener(refreshAtOpeningActivator);
 
         // Activate the context for this site.
-        IContextService contextService = (IContextService) getSite().getService(IContextService.class);
+        IContextService contextService = getSite().getService(IContextService.class);
         contextService.activateContext(CONTEXT_ID);
     }
 

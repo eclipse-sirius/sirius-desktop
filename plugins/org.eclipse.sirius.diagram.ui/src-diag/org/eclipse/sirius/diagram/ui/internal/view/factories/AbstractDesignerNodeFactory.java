@@ -34,7 +34,7 @@ public abstract class AbstractDesignerNodeFactory extends AbstractShapeViewFacto
     @Override
     protected void decorateView(final View containerView, final View view, final IAdaptable semanticAdapter, final String semanticHint, final int index, final boolean persisted) {
         super.decorateView(containerView, view, semanticAdapter, semanticHint, index, persisted);
-        final EObject semantic = (EObject) semanticAdapter.getAdapter(EObject.class);
+        final EObject semantic = semanticAdapter.getAdapter(EObject.class);
         if (semantic instanceof DStylizable) {
             new ViewPropertiesSynchronizer().synchronizeViewProperties(view);
         }

@@ -59,7 +59,7 @@ public class DNodeListViewFactory extends AbstractContainerViewFactory {
             view.getEAnnotations().add(shortcutAnnotation);
         }
         IAdaptable eObjectAdapter = null;
-        EObject eObject = (EObject) semanticAdapter.getAdapter(EObject.class);
+        EObject eObject = semanticAdapter.getAdapter(EObject.class);
         if (eObject != null) {
             eObjectAdapter = new EObjectAdapter(eObject);
         }

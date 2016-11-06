@@ -270,7 +270,7 @@ public class LineLayoutProvider extends AbstractLayoutProvider {
             return false;
         }
         final IAdaptable layoutHint = ((ILayoutNodeOperation) operation).getLayoutHint();
-        final String layoutType = (String) layoutHint.getAdapter(String.class);
+        final String layoutType = layoutHint.getAdapter(String.class);
         return LayoutType.DEFAULT.equals(layoutType);
     }
 

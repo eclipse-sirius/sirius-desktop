@@ -114,7 +114,7 @@ class SeriesIterator implements PrintIterator {
 	}
 
 	SeriesIterator(SeriesIterator that) {
-		this.iters = (PrintIterator[]) that.iters.clone();
+		this.iters = that.iters.clone();
 		for (int i = index; i < iters.length; i++)
 			this.iters[i] = that.iters[i].copy();
 

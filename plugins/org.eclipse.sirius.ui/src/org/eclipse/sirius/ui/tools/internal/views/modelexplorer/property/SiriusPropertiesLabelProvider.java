@@ -74,7 +74,7 @@ public class SiriusPropertiesLabelProvider extends DecoratingLabelProvider {
     private EObject adapt(Object object) {
         EObject eObject = null;
         if (object instanceof IAdaptable) {
-            eObject = (EObject) ((IAdaptable) object).getAdapter(EObject.class);
+            eObject = ((IAdaptable) object).getAdapter(EObject.class);
         } else if (object instanceof EObject) {
             eObject = (EObject) object;
         } else if (object instanceof IStructuredSelection) {
