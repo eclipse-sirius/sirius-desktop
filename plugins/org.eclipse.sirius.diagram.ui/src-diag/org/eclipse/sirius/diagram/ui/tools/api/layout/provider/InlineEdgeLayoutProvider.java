@@ -386,11 +386,6 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.provider.DefaultLayoutProvider#provides(org.eclipse.gmf.runtime.common.core.service.IOperation)
-     */
     @Override
     public boolean provides(final IOperation operation) {
         return false;

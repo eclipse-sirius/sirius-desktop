@@ -79,33 +79,18 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#registerModel()
-     */
     @Override
     protected void registerModel() {
         super.registerModel();
         DiagramElementEditPartOperation.registerModel(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#unregisterModel()
-     */
     @Override
     protected void unregisterModel() {
         super.unregisterModel();
         DiagramElementEditPartOperation.unregisterModel(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#refreshFont()
-     */
     @Override
     protected void refreshFont() {
         DiagramNameEditPartOperation.refreshFont(this);

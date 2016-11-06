@@ -97,6 +97,7 @@ public abstract class AbstractInteractionFrameValidator {
 
     private Function<ISequenceEvent, Range> futureRangeFunction = new Function<ISequenceEvent, Range>() {
 
+        @Override
         public Range apply(ISequenceEvent from) {
             Range range = from.getVerticalRange();
             if (frame.equals(from)) {

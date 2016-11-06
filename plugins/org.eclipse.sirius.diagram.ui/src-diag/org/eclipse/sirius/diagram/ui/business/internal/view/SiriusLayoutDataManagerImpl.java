@@ -409,42 +409,21 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getData(org.eclipse.sirius.viewpoint.AbstractDNode)
-     */
     @Override
     public LayoutData getData(final AbstractDNode node) {
         return getData(node, false);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getAdapterMarker()
-     */
     @Override
     public Adapter getAdapterMarker() {
         return LAYOUT_MARKER_ADAPTER;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getCenterAdapterMarker()
-     */
     @Override
     public Adapter getCenterAdapterMarker() {
         return CENTER_LAYOUT_MARKER_ADAPTER;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getAddAdapterMakerCommand(org.eclipse.emf.transaction.TransactionalEditingDomain,
-     *      org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor)
-     */
     @Override
     public AbstractTransactionalCommand getAddAdapterMakerCommand(final TransactionalEditingDomain domain, final IAdaptable viewAdapter) {
         return new AbstractTransactionalCommand(domain, Messages.SiriusLayoutDataManagerImpl_addLayoutMarkerCommandLabel, null) {
@@ -459,12 +438,6 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         };
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getAddAdapterMakerCommand(org.eclipse.emf.transaction.TransactionalEditingDomain,
-     *      org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor)
-     */
     @Override
     public AbstractTransactionalCommand getAddCenterAdapterMakerCommand(final TransactionalEditingDomain domain, final IAdaptable viewAdapter) {
         return new AbstractTransactionalCommand(domain, Messages.SiriusLayoutDataManagerImpl_addCenterLayoutMarkerCommandLabel, null) {
@@ -519,12 +492,6 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#arrangeCreatedViews(java.util.List,
-     *      org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)
-     */
     @Override
     public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> createdViewsWithCenterLayout, IGraphicalEditPart host) {
         // Layout only the views that are not
@@ -636,11 +603,6 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         return UnexecutableCommand.INSTANCE;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#arrangeCreatedViewsOnOpening(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)
-     */
     @Override
     public Command getArrangeCreatedViewsOnOpeningCommand(final IGraphicalEditPart host) {
         CompoundCommand cc = new CompoundCommand(Messages.SiriusLayoutDataManagerImpl_createdViewsArrangCommandLabel);
@@ -923,37 +885,21 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         return layoutRun;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void addCreatedViewsToLayout(Diagram gmfDiagram, LinkedHashSet<View> createdViewsToLayout) {
         createdViewToLayout.put(gmfDiagram, createdViewsToLayout);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Map<Diagram, Set<View>> getCreatedViewsToLayout() {
         return createdViewToLayout;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#setIgnoreConsumeState(boolean)
-     */
     @Override
     public void setIgnoreConsumeState(boolean ignoreConsumeState) {
         this.ignoreConsumeState = ignoreConsumeState;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getData()
-     */
     @Override
     public Option<AbstractLayoutData> getData() {
         if (!rootsLayoutData.isEmpty()) {
@@ -962,21 +908,11 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         return Options.newNone();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getCreatedViewWithSpecialLayout()
-     */
     @Override
     public Map<Diagram, Set<View>> getCreatedViewWithCenterLayout() {
         return createdViewWithCenterLayout;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#addCreatedViewWithCenterLayout(org.eclipse.gmf.runtime.notation.View)
-     */
     @Override
     public void addCreatedViewWithCenterLayout(Diagram gmfDiagram, LinkedHashSet<View> createdViewsToLayout) {
         this.createdViewWithCenterLayout.put(gmfDiagram, createdViewsToLayout);

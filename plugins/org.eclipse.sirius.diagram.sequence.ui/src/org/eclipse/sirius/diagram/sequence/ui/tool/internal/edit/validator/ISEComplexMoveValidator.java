@@ -79,6 +79,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
 
     private Function<ISequenceEvent, Range> rangeFunction = new Function<ISequenceEvent, Range>() {
 
+        @Override
         public Range apply(ISequenceEvent from) {
             Range range = from.getVerticalRange();
             if (movedElements.contains(from)) {
@@ -119,10 +120,12 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         this.vMove = request.getLogicalDelta().y;
     }
 
+    @Override
     public Function<ISequenceEvent, Range> getRangeFunction() {
         return rangeFunction;
     }
 
+    @Override
     public SequenceDiagram getDiagram() {
         return primarySelected.getDiagram();
     }
@@ -162,11 +165,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         }
     }
 
-    /**
-     * Overridden to do validation.
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     protected void doValidation() {
         populateMoves();
         populateMessageToResize();
@@ -516,13 +515,10 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
      * 
      */
     public class MoveSwitch extends ISequenceElementSwitch<Range> {
-
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public Range caseMessage(Message movedEvent) {
             Predicate<Message> toMove = new Predicate<Message>() {
+                @Override
                 public boolean apply(Message input) {
                     boolean movedBySrc = movedElements.contains(input.getSourceElement());
                     boolean movedByTgt = movedElements.contains(input.getTargetElement());
@@ -543,9 +539,6 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
             return movedEvent.getVerticalRange();
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public Range caseExecution(Execution movedEvent) {
             ISequenceEvent hierarchicalParentEvent = movedEvent.getHierarchicalParentEvent();
@@ -567,9 +560,6 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
             return extendedVerticalRange;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public Range caseState(State movedEvent) {
             ISequenceEvent hierarchicalParentEvent = movedEvent.getHierarchicalParentEvent();
@@ -579,18 +569,12 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
             return movedEvent.getVerticalRange();
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public Range caseFrame(AbstractFrame movedEvent) {
             sequenceNodesToMove.add(movedEvent);
             return movedEvent.getVerticalRange();
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public Range caseOperand(Operand movedEvent) {
             // Do nothing, operand is silently moved by its parent combined

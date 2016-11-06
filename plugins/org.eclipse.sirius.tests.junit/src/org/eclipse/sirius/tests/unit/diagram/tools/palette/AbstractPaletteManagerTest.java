@@ -84,6 +84,7 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
         /**
          * {@inheritDoc}
          */
+        @Override
         public int compareTo(Entry o) {
             return label.compareTo(o.label);
         }
@@ -110,6 +111,7 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(PaletteEntry input) {
             return input.isVisible();
         }
@@ -156,12 +158,14 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
 
             private ToolEntry entry;
 
+            @Override
             public void setActiveTool(ToolEntry newMode) {
                 if (newMode == null)
                     entry = getPaletteRoot().getDefaultEntry();
                 entry = newMode;
             }
 
+            @Override
             public ToolEntry getActiveTool() {
                 return entry;
             }

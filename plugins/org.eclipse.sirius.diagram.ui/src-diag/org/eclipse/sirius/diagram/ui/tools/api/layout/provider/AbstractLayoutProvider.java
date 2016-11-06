@@ -98,12 +98,6 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
         return viewsToChangeBoundsRequest;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider#layoutEditParts(org.eclipse.gef.GraphicalEditPart,
-     *      org.eclipse.core.runtime.IAdaptable)
-     */
     @Override
     public final Command layoutEditParts(final GraphicalEditPart containerEditPart, final IAdaptable layoutHint) {
         DslCommonPlugin.PROFILER.startWork(ARRANGE_ALL);
@@ -329,51 +323,26 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
             this.editPart = editPart;
         }
 
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.eclipse.gef.commands.Command#execute()
-         */
         @Override
         public void execute() {
             this.getWrappedCommand().execute();
         }
 
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.eclipse.gef.commands.Command#canExecute()
-         */
         @Override
         public boolean canExecute() {
             return this.getWrappedCommand().canExecute();
         }
 
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.eclipse.gef.commands.Command#canUndo()
-         */
         @Override
         public boolean canUndo() {
             return this.getWrappedCommand().canUndo();
         }
 
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.eclipse.gef.commands.Command#undo()
-         */
         @Override
         public void undo() {
             this.getWrappedCommand().undo();
         }
 
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.eclipse.gef.commands.Command#redo()
-         */
         @Override
         public void redo() {
             this.getWrappedCommand().redo();

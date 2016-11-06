@@ -124,6 +124,7 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
     /**
      * Validate the creation of a InteractionUse or CombinedFragment creation.
      */
+    @Override
     protected void doValidation() {
         int firstClickY = creationBounds.y;
         int secondClickY = creationBounds.bottom();
@@ -375,12 +376,6 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
         }
     }
 
-    /**
-     * 
-     * @param event
-     * @param creationRange
-     * @return
-     */
     private ISequenceEvent getHigherAncestorWithLowerBoundInCreationRange(ISequenceEvent event, Range creationRange) {
         ISequenceEvent parentEvent = event == null ? null : event.getParentEvent();
         if (parentEvent != null && creationRange.includes(parentEvent.getVerticalRange().getLowerBound())) {

@@ -355,9 +355,6 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public EditPart getTargetEditPart(Request request) {
         if (RequestConstants.REQ_SET_ALL_BENDPOINT.equals(request.getType())) {

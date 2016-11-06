@@ -515,31 +515,16 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
         return location;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.layout.provider.ExtendableLayoutProvider#getExtender()
-     */
     @Override
     public LayoutExtender getExtender() {
         return extender;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.layout.provider.ExtendableLayoutProvider#handleConnectableListItems()
-     */
     @Override
     public boolean handleConnectableListItems() {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.layout.provider.ExtendableLayoutProvider#provideNodeMetrics(org.eclipse.draw2d.graph.Node)
-     */
     @Override
     public Rectangle provideNodeMetrics(Node node) {
         return null;

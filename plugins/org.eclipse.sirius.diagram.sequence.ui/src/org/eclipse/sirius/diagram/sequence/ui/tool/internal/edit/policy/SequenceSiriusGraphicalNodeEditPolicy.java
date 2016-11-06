@@ -71,9 +71,6 @@ public class SequenceSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEd
      */
     protected static final String DRAW2D_EDGE_LOCATION_SOURCE = "edge.absolute.location.source"; //$NON-NLS-1$
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected FeedbackHelper getFeedbackHelper(CreateConnectionRequest request) {
         if (feedbackHelper == null) {
@@ -199,16 +196,6 @@ public class SequenceSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEd
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy#buildCreateEdgeCommand(org.eclipse.gef.requests.CreateConnectionRequest,
-     *      org.eclipse.sirius.diagram.EdgeTarget,
-     *      org.eclipse.sirius.diagram.EdgeTarget,
-     *      org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription,
-     *      org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider,
-     *      org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData)
-     */
     @Override
     protected Command buildCreateEdgeCommand(CreateConnectionRequest request, EdgeTarget source, EdgeTarget target, EdgeCreationDescription edgeCreationDescription,
             IDiagramCommandFactoryProvider cmdFactoryProvider, EdgeLayoutData edgeLayoutData) {

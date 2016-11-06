@@ -47,74 +47,49 @@ public class StateMappingSpec extends StateMappingImpl implements INodeMappingEx
 
     private final Map<EObjectCouple, EList<EObject>> candidatesCache = new WeakHashMap<EObjectCouple, EList<EObject>>();
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Map<EObject, EList<DSemanticDecorator>> getViewNodesDone() {
         return viewNodesDone;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Map<EObjectCouple, EList<EObject>> getCandidatesCache() {
         return candidatesCache;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public EList<EObject> getNodesCandidates(final EObject semanticOrigin, final EObject container) {
         return NodeMappingHelper.getNodesCandidates(this, semanticOrigin, container);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public EList<EObject> getNodesCandidates(final EObject semanticOrigin, final EObject container, final EObject containerView) {
         return NodeMappingHelper.getNodesCandidates(this, semanticOrigin, container, containerView);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public DNode createNode(final EObject modelElement, final EObject container, final DDiagram diagram) {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
         return new NodeMappingHelper(interpreter).createNode(this, modelElement, container, diagram);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void updateNode(final DNode node) {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(node);
         new NodeMappingHelper(interpreter).updateNode(this, node);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void updateListElement(final DNodeListElement listElement) {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(listElement);
         new NodeMappingHelper(interpreter).updateListElement(this, listElement);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void clearDNodesDone() {
         NodeMappingHelper.clearDNodesDone(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public EList<DDiagramElement> findDNodeFromEObject(final EObject object) {
         return NodeMappingHelper.findDNodeFromEObject(this, object);
@@ -136,17 +111,11 @@ public class StateMappingSpec extends StateMappingImpl implements INodeMappingEx
      * Behavior inherited from DiagramElementMapping
      */
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean checkPrecondition(final EObject modelElement, final EObject container, final EObject containerView) {
         return SiriusElementMappingSpecOperations.checkPrecondition(this, modelElement, container, containerView);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public EList<DiagramElementMapping> getAllMappings() {
         final BasicEList<DiagramElementMapping> allMappings = new BasicEList<DiagramElementMapping>();
@@ -154,33 +123,21 @@ public class StateMappingSpec extends StateMappingImpl implements INodeMappingEx
         return new UnmodifiableEList<DiagramElementMapping>(allMappings.size(), allMappings.toArray());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isFrom(final DMappingBased element) {
         return SiriusElementMappingSpecOperations.isFrom(this, element);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void addDoneNode(final DSemanticDecorator node) {
         NodeMappingHelper.addDoneNode(this, node);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String toString() {
         return new StringBuffer(getClass().getName()).append(" ").append(getName()).toString(); //$NON-NLS-1$
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public EList<NodeMapping> getAllBorderedNodeMappings() {
         return AbstractNodeMappingSpecOperations.getAllBorderedNodeMappings(this);

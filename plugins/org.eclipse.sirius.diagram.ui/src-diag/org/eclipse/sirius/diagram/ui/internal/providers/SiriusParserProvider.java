@@ -368,6 +368,7 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
     /**
      * @was-generated
      */
+    @Override
     public boolean provides(IOperation operation) {
         if (operation instanceof GetParserOperation) {
             IAdaptable hint = ((GetParserOperation) operation).getHint();

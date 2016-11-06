@@ -49,65 +49,43 @@ public class CombinedFragmentMappingSpec extends CombinedFragmentMappingImpl imp
 
     private final Map<EObjectCouple, EList<EObject>> candidatesCache = new WeakHashMap<EObjectCouple, EList<EObject>>();
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Map<EObject, EList<DSemanticDecorator>> getViewContainerDone() {
         return viewContainerDone;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Map<EObjectCouple, EList<EObject>> getCandidatesCache() {
         return candidatesCache;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public EList<NodeMapping> getAllNodeMappings() {
         final Collection<NodeMapping> result = ContainerMappingHelper.getAllNodeMappings(this);
         return new EcoreEList.UnmodifiableEList<NodeMapping>(eInternalContainer(), DescriptionPackage.eINSTANCE.getContainerMapping_AllNodeMappings(), result.size(), result.toArray());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public EList<ContainerMapping> getAllContainerMappings() {
         final Collection<ContainerMapping> result = ContainerMappingHelper.getAllContainerMappings(this);
         return new EcoreEList.UnmodifiableEList<ContainerMapping>(eInternalContainer(), DescriptionPackage.eINSTANCE.getContainerMapping_AllContainerMappings(), result.size(), result.toArray());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void clearDNodesDone() {
         ContainerMappingHelper.clearDNodesDone(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public EList<DDiagramElement> findDNodeFromEObject(final EObject object) {
         return ContainerMappingHelper.findDNodeFromEObject(this, object);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void addDoneNode(final DSemanticDecorator node) {
         ContainerMappingHelper.addDoneNode(this, node);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public ContainerStyle getBestStyle(final EObject modelElement, final EObject viewVariable, final EObject containerVariable) {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
@@ -130,41 +108,26 @@ public class CombinedFragmentMappingSpec extends CombinedFragmentMappingImpl imp
      * Behavior inherited from DiagramElementMapping
      */
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean checkPrecondition(final EObject modelElement, final EObject container, final EObject containerView) {
         return SiriusElementMappingSpecOperations.checkPrecondition(this, modelElement, container, containerView);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public EList<DiagramElementMapping> getAllMappings() {
         return ContainerMappingHelper.getAllMappings(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isFrom(final DMappingBased element) {
         return SiriusElementMappingSpecOperations.isFrom(this, element);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String toString() {
         return new StringBuffer(getClass().getName()).append(" ").append(getName()).toString(); //$NON-NLS-1$
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public EList<NodeMapping> getAllBorderedNodeMappings() {
         return AbstractNodeMappingSpecOperations.getAllBorderedNodeMappings(this);

@@ -90,17 +90,11 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
 
     private SWTBotGefEditPart dDiagramEditPartBot;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, PATH, SEMANTIC_RESOURCE_NAME, SESSION_RESOURCE_NAME, MODELER_RESOURCE_NAME);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, SESSION_RESOURCE_NAME);

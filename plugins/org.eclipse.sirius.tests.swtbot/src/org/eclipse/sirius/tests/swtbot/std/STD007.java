@@ -126,6 +126,7 @@ public class STD007 extends AbstractSiriusSwtBotGefTestCase {
         final EditPart part = getNoteEditPart(editor);
         ((DirectEditRequest) request).setLocation(((GraphicalEditPart) part).getFigure().getBounds().getLocation());
         UIThreadRunnable.syncExec(new VoidResult() {
+            @Override
             public void run() {
                 part.performRequest(request);
             }

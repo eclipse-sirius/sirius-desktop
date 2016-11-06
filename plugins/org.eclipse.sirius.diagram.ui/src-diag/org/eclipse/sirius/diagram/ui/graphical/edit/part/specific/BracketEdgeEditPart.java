@@ -80,6 +80,7 @@ public class BracketEdgeEditPart extends AbstractDiagramEdgeEditPart {
     /**
      * Install the {@link BracketBendpointEditPolicy}. {@inheritDoc}
      */
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         // Copied from DEdgeEditPart
@@ -95,9 +96,7 @@ public class BracketEdgeEditPart extends AbstractDiagramEdgeEditPart {
         installBendpointEditPolicy();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     protected void addChildVisual(EditPart childEditPart, int index) {
         if (addFixedChild(childEditPart)) {
             return;

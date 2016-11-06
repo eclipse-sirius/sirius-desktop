@@ -51,9 +51,6 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
         super(owner);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Request createSourceRequest() {
         Request rq = super.createSourceRequest();
@@ -80,9 +77,6 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected boolean handleButtonDown(int button) {
         boolean res = super.handleButtonDown(button);
