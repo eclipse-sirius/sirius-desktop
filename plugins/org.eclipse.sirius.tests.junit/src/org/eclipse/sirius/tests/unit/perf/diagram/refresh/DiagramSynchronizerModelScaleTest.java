@@ -63,7 +63,7 @@ public class DiagramSynchronizerModelScaleTest extends AbstractSynchronizerTest 
             if (previousClass == null) {
                 Property prop = UMLFactory.eINSTANCE.createProperty();
                 prop.setType(previousClass);
-                ((AbstractEList) newClass.getOwnedAttributes()).addUnique(prop);
+                ((AbstractEList<Property>) newClass.getOwnedAttributes()).addUnique(prop);
             }
             domain.getCommandStack().execute(new RecordingCommand(domain) {
 

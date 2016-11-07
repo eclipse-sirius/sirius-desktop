@@ -61,7 +61,7 @@ public class CompoundLayoutProvider extends AbstractLayoutProvider {
             if (provider instanceof AbstractLayoutProvider) {
                 ((AbstractLayoutProvider) provider).setViewsToChangeBoundsRequest(this.getViewsToChangeBoundsRequest());
             }
-            final Command command = provider.layoutEditParts(new ArrayList(selectedObjects), layoutHint);
+            final Command command = provider.layoutEditParts(new ArrayList<>(selectedObjects), layoutHint);
             if (command != null && command.canExecute()) {
                 cc.add(command);
             }
