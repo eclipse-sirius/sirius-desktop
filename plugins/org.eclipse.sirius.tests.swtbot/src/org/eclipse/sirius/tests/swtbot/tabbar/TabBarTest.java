@@ -456,9 +456,6 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
      * 
      * See VP-3731 : those buttons were disabled and hidden just after element
      * creation. The diagram selection made them visible but not enabled.
-     * 
-     * @throws Exception
-     *             Test error.
      */
     public void testTabbarDiagramActionsEnablement() {
         if (TestsUtil.shouldSkipUnreliableTests()) {

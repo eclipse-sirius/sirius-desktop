@@ -149,7 +149,7 @@ public class MigrationOnVsmEditorReloadTest extends AbstractContentAssistTest {
      *            the uri of the VSM file to check.
      * @param needsMigration
      *            indicates the expected migration need.
-     * @return the loaded @link {@link Version} for convenience
+     * @return the loaded {@link Version} for convenience
      */
     protected void checkVsmFileMigrationStatus(URI vsmFileURI, boolean needsMigration) {
         VSMVersionSAXParser versionSaxPArser = new VSMVersionSAXParser(vsmFileURI);

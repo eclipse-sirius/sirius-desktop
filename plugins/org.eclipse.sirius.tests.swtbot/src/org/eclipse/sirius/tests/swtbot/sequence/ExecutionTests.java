@@ -473,9 +473,6 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
 
     /**
      * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
      */
     public void test_Move_Resize_Ordering() {
         test_Creation2();

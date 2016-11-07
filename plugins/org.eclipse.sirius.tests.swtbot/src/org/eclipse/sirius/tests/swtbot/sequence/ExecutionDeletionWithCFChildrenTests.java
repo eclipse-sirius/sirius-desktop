@@ -98,10 +98,12 @@ public class ExecutionDeletionWithCFChildrenTests extends AbstractSequenceDiagra
         return PATH;
     }
 
+    @Override
     protected String getSemanticModel() {
         return MODEL;
     }
 
+    @Override
     protected String getSessionModel() {
         return SESSION_FILE;
     }
@@ -226,10 +228,12 @@ public class ExecutionDeletionWithCFChildrenTests extends AbstractSequenceDiagra
 
     private SWTBotGefEditPart getLifelineBot(final String label) {
         Matcher<EditPart> matcher = new BaseMatcher<EditPart>() {
+            @Override
             public boolean matches(Object item) {
                 return item instanceof LifelineEditPart;
             }
 
+            @Override
             public void describeTo(Description description) {
                 description.appendText("the lifeline edit part targeting the lifeline named " + label);
             }
@@ -241,6 +245,7 @@ public class ExecutionDeletionWithCFChildrenTests extends AbstractSequenceDiagra
 
     private SWTBotGefEditPart getExecutionBot(final String label, SWTBotGefEditPart lifeline) {
         Matcher<EditPart> matcher = new BaseMatcher<EditPart>() {
+            @Override
             public boolean matches(Object item) {
                 if (item instanceof ExecutionEditPart) {
                     EObject execution = ((ExecutionEditPart) item).resolveTargetSemanticElement();
@@ -249,6 +254,7 @@ public class ExecutionDeletionWithCFChildrenTests extends AbstractSequenceDiagra
                 return false;
             }
 
+            @Override
             public void describeTo(Description description) {
                 description.appendText("the execution edit part targeting the execution named " + label);
             }
@@ -280,9 +286,6 @@ public class ExecutionDeletionWithCFChildrenTests extends AbstractSequenceDiagra
 
     /**
      * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
      */
     public void testParentExecutionDeletionReparentToExecution() {
 
@@ -300,9 +303,6 @@ public class ExecutionDeletionWithCFChildrenTests extends AbstractSequenceDiagra
 
     /**
      * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
      */
     public void testGrandParentExecutionDeletionReparentToLifeline() {
         checkConnection(m4, getExecutionBot(EXEC_B1, lifelineB), getExecutionBot(EXEC_A2, lifelineA));
@@ -321,9 +321,6 @@ public class ExecutionDeletionWithCFChildrenTests extends AbstractSequenceDiagra
 
     /**
      * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
      */
     public void testGrandParentExecutionDeletionReparentToExecutionInFrame() {
         // execA3 deletion
@@ -339,9 +336,6 @@ public class ExecutionDeletionWithCFChildrenTests extends AbstractSequenceDiagra
 
     /**
      * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
      */
     public void testGrandParentExecutionDeletionReparentToLifelineInFrame() {
         checkConnection(m1, getExecutionBot(EXEC_C2, lifelineC), getExecutionBot(EXEC_D2, lifelineD));
@@ -361,9 +355,6 @@ public class ExecutionDeletionWithCFChildrenTests extends AbstractSequenceDiagra
 
     /**
      * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
      */
     public void testExecutionDeletionParentReconnection() {
         // execA2 deletion
@@ -378,9 +369,6 @@ public class ExecutionDeletionWithCFChildrenTests extends AbstractSequenceDiagra
 
     /**
      * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
      */
     public void testExecutionDeletionLifelineReconnection() {
         checkConnection(m1, getExecutionBot(EXEC_C2, lifelineC), getExecutionBot(EXEC_D2, lifelineD));

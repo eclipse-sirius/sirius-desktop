@@ -31,7 +31,7 @@ import com.google.common.collect.Sets;
  * Test that once a VSM has been removed from the workspace, the Viewpoints it
  * defines are correctly removed and forgotten, and can not reappear later.
  * 
- * @see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475594
+ * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=475594"
  * @author pcdavid
  */
 public class ZombieViewpointsTest extends SiriusTestCase {
