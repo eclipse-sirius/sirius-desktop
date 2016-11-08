@@ -12,12 +12,19 @@ package org.eclipse.sirius.common.xtext.internal;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.session.AbstractSavingPolicy;
 import org.eclipse.sirius.business.api.session.SavingPolicy;
+import org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy;
+import org.eclipse.xtext.common.types.access.TypeResource;
 import org.eclipse.xtext.resource.SaveOptions;
 
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 
 /**
@@ -46,6 +53,7 @@ public class XtextSavingPolicy implements SavingPolicy {
         this.delegate = delegate;
     }
 
+    @SuppressWarnings("restriction")
     @Override
     public Collection<Resource> save(Iterable<Resource> resourcesToSave, Map<?, ?> options, IProgressMonitor monitor) {
         Map<Object, Object> newOptions = Maps.newHashMap();
@@ -53,7 +61,8 @@ public class XtextSavingPolicy implements SavingPolicy {
             newOptions.putAll(options);
         }
         newOptions.putAll(SaveOptions.newBuilder().noValidation().getOptions().toOptionsMap());
-        return delegate.save(resourcesToSave, newOptions, monitor);
+        Iterable<Resource> writeableResourcesToSave = Iterables.filter(resourcesToSave, Predicates.not(Predicates.instanceOf(TypeResource.class)));
+        return delegate.save(writeableResourcesToSave, newOptions, monitor);
     }
 
 }
