@@ -26,6 +26,9 @@ public final class Messages {
 
     // CHECKSTYLE:OFF
     @TranslatableMessage
+    public static String AbstractDescriptionConverter_noConverterFound;
+    
+    @TranslatableMessage
     public static String SiriusTabDescriptorProvider_UnsupportedMultipleSelection;
 
     @TranslatableMessage

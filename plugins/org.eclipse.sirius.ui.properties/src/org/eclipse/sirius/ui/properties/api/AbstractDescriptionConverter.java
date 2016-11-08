@@ -19,6 +19,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
+import org.eclipse.sirius.ui.properties.internal.Messages;
 import org.eclipse.sirius.ui.properties.internal.SiriusInputDescriptor;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -50,9 +51,13 @@ public abstract class AbstractDescriptionConverter implements IDescriptionConver
     protected <T> T convertEObject(EObject eObject, Map<String, Object> parameters, DescriptionCache cache, Class<T> expectedClass) {
         if (eObject != null) {
             IDescriptionConverter converter = SiriusUIPropertiesPlugin.getPlugin().getDescriptionConverter(eObject);
-            EObject eefEObject = converter.convert(eObject, parameters, cache);
-            if (expectedClass.isAssignableFrom(eefEObject.getClass())) {
-                return expectedClass.cast(eefEObject);
+            if (converter != null) {
+                EObject eefEObject = converter.convert(eObject, parameters, cache);
+                if (expectedClass.isAssignableFrom(eefEObject.getClass())) {
+                    return expectedClass.cast(eefEObject);
+                }
+            } else {
+                SiriusUIPropertiesPlugin.getPlugin().error(MessageFormat.format(Messages.AbstractDescriptionConverter_noConverterFound, eObject));
             }
         }
         return null;
