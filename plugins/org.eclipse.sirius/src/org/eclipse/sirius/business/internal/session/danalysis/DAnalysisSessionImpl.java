@@ -34,9 +34,10 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.Transaction;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -80,8 +81,8 @@ import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
-import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
@@ -1158,7 +1159,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     // *******************
 
     @Override
-    public void open(IProgressMonitor monitor) {
+    public void open(final IProgressMonitor monitor) {
         try {
             monitor.beginTask(Messages.DAnalysisSessionImpl_openMsg, 33);
             SessionManager.INSTANCE.add(this);
@@ -1172,7 +1173,15 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             this.representationNameListener = new RepresentationNameListener(this);
             monitor.worked(1);
 
-            tracker.initialize(monitor);
+            // Some modelers, as Xbase, modify the models during resolution. So we need to initialize the tracker in a
+            // write transaction
+            RecordingCommand initializeTrackerCommand = new RecordingCommand(transactionalEditingDomain) {
+                @Override
+                protected void doExecute() {
+                    tracker.initialize(monitor);
+                }
+            };
+            transactionalEditingDomain.getCommandStack().execute(initializeTrackerCommand);
             monitor.worked(1);
 
             setSynchronizeStatusofEveryResource();

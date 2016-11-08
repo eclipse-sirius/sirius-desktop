@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, Obeo.
+ * Copyright (c) 2014, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,7 +61,10 @@ public class ResourceModifiedFieldUpdater extends DelegatingValidateEditSupport 
     @Override
     public void handleResourceChange(Resource resource, Notification notification) {
         super.handleResourceChange(resource, notification);
-        if (!resource.isModified() && !isInLoad(resource) && !changedResources.contains(resource) && isResourceModelChange(notification)) {
+        if (isInLoad(resource)) {
+            // if the resource is loading, it is seen as unchanged whatever previous changes were.
+            changedResources.remove(resource);
+        } else if (!resource.isModified() && !isInLoad(resource) && !changedResources.contains(resource) && isResourceModelChange(notification)) {
             changedResources.add(resource);
         }
     }
