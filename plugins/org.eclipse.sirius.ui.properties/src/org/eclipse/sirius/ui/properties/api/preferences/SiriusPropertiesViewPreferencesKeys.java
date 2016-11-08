@@ -25,7 +25,12 @@ public enum SiriusPropertiesViewPreferencesKeys {
     /**
      * Says if the default tab should be automatically filtered or not.
      */
-    PREF_FILTER_PROPERTIES_VIEW_DEFAULT_TAB(boolean.class);
+    PREF_FILTER_PROPERTIES_VIEW_DEFAULT_TAB(boolean.class),
+
+    /**
+     * Says which is the max length of a tab name.
+     */
+    PREF_MAX_LENGTH_TAB_NAME(int.class);
 
     /** The type of the preference. */
     private final Class<?> type;

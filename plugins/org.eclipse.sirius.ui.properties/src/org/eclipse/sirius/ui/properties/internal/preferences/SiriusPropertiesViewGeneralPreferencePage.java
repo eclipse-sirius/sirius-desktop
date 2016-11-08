@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.properties.internal.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
+import org.eclipse.jface.preference.IntegerFieldEditor;
 import org.eclipse.sirius.ui.properties.api.preferences.SiriusPropertiesViewPreferencesKeys;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
 import org.eclipse.swt.SWT;
@@ -33,6 +34,8 @@ public class SiriusPropertiesViewGeneralPreferencePage extends FieldEditorPrefer
 
     private BooleanFieldEditor filterDefaultTab;
 
+    private IntegerFieldEditor maxTabNameLength;
+
     @Override
     protected void createFieldEditors() {
         setPreferenceStore(SiriusUIPropertiesPlugin.getPlugin().getPreferenceStore());
@@ -44,6 +47,8 @@ public class SiriusPropertiesViewGeneralPreferencePage extends FieldEditorPrefer
         }
 
         addFilterFields(parent);
+
+        addTabFields(parent);
 
     }
 
@@ -57,6 +62,14 @@ public class SiriusPropertiesViewGeneralPreferencePage extends FieldEditorPrefer
         filterDefaultTab = new BooleanFieldEditor(SiriusPropertiesViewPreferencesKeys.PREF_FILTER_PROPERTIES_VIEW_DEFAULT_TAB.name(), Messages.SiriusPropertiesPreferencePage_defaultTab,
                 new Composite(refreshComposite, SWT.NONE));
         addField(filterDefaultTab);
+    }
+
+    private void addTabFields(Composite parent) {
+        Composite refreshComposite = createGroup(parent, Messages.SiriusPropertiesPreferencePage_tabGroup);
+
+        maxTabNameLength = new IntegerFieldEditor(SiriusPropertiesViewPreferencesKeys.PREF_MAX_LENGTH_TAB_NAME.name(), Messages.SiriusPropertiesPreferencePage_maxLengthTabName,
+                new Composite(refreshComposite, SWT.NONE));
+        addField(maxTabNameLength);
     }
 
     private Group createGroup(Composite parent, String text) {

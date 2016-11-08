@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.emf.edit.EditingDomainServices;
 import org.eclipse.sirius.properties.impl.EditSupportImpl;
+import org.eclipse.sirius.ui.properties.api.preferences.SiriusPropertiesViewPreferencesKeys;
 
 /**
  * Contains the actual implementation of the EditSupport EOperations.
@@ -28,6 +29,7 @@ import org.eclipse.sirius.properties.impl.EditSupportImpl;
  * @author pcdavid
  */
 public class EditSupportSpec extends EditSupportImpl {
+
     private static final String JAVA_LANG_STRING = "java.lang.String"; //$NON-NLS-1$
 
     private static final String INT = "int"; //$NON-NLS-1$
@@ -146,7 +148,16 @@ public class EditSupportSpec extends EditSupportImpl {
         } else {
             result = String.valueOf(target);
         }
-        return result;
+        return elide(result, SiriusUIPropertiesPlugin.getPlugin().getPreferenceStore().getInt(SiriusPropertiesViewPreferencesKeys.PREF_MAX_LENGTH_TAB_NAME.name()));
+    }
+
+    private String elide(String s, int maxLength) {
+        final String dots = "..."; //$NON-NLS-1$
+        if (dots.length() <= maxLength && maxLength < s.length()) {
+            return s.substring(0, maxLength - dots.length()) + dots;
+        } else {
+            return s;
+        }
     }
 
     @Override

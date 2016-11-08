@@ -33,5 +33,7 @@ public class SiriusPropertiesViewPreferenceInitializer extends AbstractPreferenc
         // By default the Semantic and Default tabs are visible
         preferenceStore.setDefault(SiriusPropertiesViewPreferencesKeys.PREF_FILTER_PROPERTIES_VIEW_DEFAULT_TAB.name(), true);
         preferenceStore.setDefault(SiriusPropertiesViewPreferencesKeys.PREF_FILTER_PROPERTIES_VIEW_SEMANTIC_TAB.name(), true);
+        // By default the max tab name length is 20
+        preferenceStore.setDefault(SiriusPropertiesViewPreferencesKeys.PREF_MAX_LENGTH_TAB_NAME.name(), 20);
     }
 }

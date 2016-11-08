@@ -34,6 +34,12 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SiriusPropertiesPreferencePage_defaultTab;
+    
+    @TranslatableMessage
+    public static String SiriusPropertiesPreferencePage_tabGroup;
+
+    @TranslatableMessage
+    public static String SiriusPropertiesPreferencePage_maxLengthTabName;
 
     // CHECKSTYLE:ON
 
