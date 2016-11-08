@@ -416,7 +416,7 @@ h4(#list_action_pushed_button). Action Pushed Button
 
 To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
-The expressions defined under the _Begin_ can use the @selection@ variable which represents the values selected by the user in the list field.
+The expressions defined under the _Begin_ can use the @selection@ variable which represents the values selected by the user in the list field. Note that @selection@ is always a collection, even if only a single element is currently selected.
 
 h4(#list_styles). List Styles
 
