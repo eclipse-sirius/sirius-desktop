@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2005, 2016 IBM Corporation and others.
+ * Copyright (c) 2005, 2017 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -196,17 +196,60 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
                 throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, -1, MessageFormat.format(Messages.DiagramEditPartService_imageExportException, "OutofMemoryError"), e)); //$NON-NLS-1$
             }
         }
-        // Retrieve swt image for knows size.
-        DiagramGenerator gen = getDiagramGenerator(diagramEP, format);
-        List<?> editParts = diagramEP.getPrimaryEditParts();
-        org.eclipse.swt.graphics.Rectangle imageRect = gen.calculateImageRectangle(editParts);
-        // Define max size in properties file.
-        int maxSize = Integer.parseInt(DiagramUIPlugin.INSTANCE.getString("_Pref_DiagramExportSizeMax")); //$NON-NLS-1$
-        if (imageRect.height * imageRect.width > maxSize && format != ImageFileFormat.SVG) {
+        // we check whether the target resolution is in reasonable limits.
+        if (isTooBig(getDiagramGenerator(diagramEP, format), diagramEP, format, 1.0)) {
             String representationName = ((DSemanticDiagram) ((Diagram) diagramEP.getModel()).getElement()).getName();
             throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representationName));
         }
         return super.copyToImage(diagramEP, destination, format, monitor);
+    }
+
+    private boolean isTooBig(DiagramGenerator gen, DiagramEditPart diagramEP, ImageFileFormat format, double factor) {
+        List<?> editParts = diagramEP.getPrimaryEditParts();
+        org.eclipse.swt.graphics.Rectangle imageRect = gen.calculateImageRectangle(editParts);
+        int maxSize = getMaximumTotalSize();
+        return (imageRect.height * factor) * (imageRect.width * factor) > maxSize && format != ImageFileFormat.SVG;
+    }
+
+    /**
+     * Return the maximum total size the image can have, total size being
+     * defined by width*height. This is used as a safeguard to prevent out of
+     * memory errors.
+     * 
+     * This method is protected so that extenders can override the way this
+     * value is retrieved.
+     * 
+     * @return an integer representing the maximum total size (width*size) up to
+     *         which the runtime will not even try to export the image.
+     */
+    protected int getMaximumTotalSize() {
+        // Define max size in properties file.
+        return Integer.parseInt(DiagramUIPlugin.INSTANCE.getString("_Pref_DiagramExportSizeMax")); //$NON-NLS-1$ ;
+    }
+
+    /**
+     * Return a factor to apply on the width and height of the image when
+     * exporting. This is useful to adapt the image resolution based on the
+     * current context.
+     * 
+     * @param diagramEP
+     *            the diagram edit part.
+     * @param gen
+     *            the image generator.
+     * @return a factor to apply on the width and height of the image when
+     *         exporting.
+     */
+    protected double getExportResolutionFactor(DiagramEditPart diagramEP, SiriusDiagramImageGenerator gen) {
+        List<?> editParts = diagramEP.getPrimaryEditParts();
+        org.eclipse.swt.graphics.Rectangle imageRect = gen.calculateImageRectangle(editParts);
+        // w = the image width / h = the image height
+        // c= zoom factor we are looking for
+        // max=the target size
+        //
+        // (w*c) * (h*c) == max
+        // (c*c) == max/(w*h)
+        // c == sqrt(max/(w*h))
+        return Math.floor(Math.sqrt(Double.valueOf(getMaximumTotalSize()) / ((imageRect.width) * (imageRect.height))) * 100) / 100;
     }
 
     /**
@@ -221,7 +264,12 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         if (format.equals(ImageFileFormat.SVG) || format.equals(ImageFileFormat.PDF)) {
             return new SiriusDiagramSVGGenerator(diagramEP);
         } else {
-            return new SiriusDiagramImageGenerator(diagramEP);
+            SiriusDiagramImageGenerator generator = new SiriusDiagramImageGenerator(diagramEP);
+            double factor = getExportResolutionFactor(diagramEP, generator);
+            if (!isTooBig(generator, diagramEP, format, factor)) {
+                generator.setResolutionScale(factor);
+            }
+            return generator;
         }
     }
 

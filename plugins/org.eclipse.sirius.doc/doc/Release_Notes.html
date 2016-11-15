@@ -16,6 +16,9 @@
 						<a href="#sirius5.0.0">Changes in Sirius 5.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
+								<a href="#UserVisibleChanges">User-Visible Changes</a>
+							</li>
+							<li>
 								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
 							</li>
 							<li>
@@ -27,7 +30,7 @@
 						<a href="#sirius4.1.2">Changes in Sirius 4.1.2</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges">User-Visible Changes</a>
+								<a href="#UserVisibleChanges2">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
@@ -38,7 +41,7 @@
 						<a href="#sirius4.1.1">Changes in Sirius 4.1.1</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges2">User-Visible Changes</a>
+								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
@@ -49,7 +52,7 @@
 						<a href="#sirius4.1.0">Changes in Sirius 4.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges3">User-Visible Changes</a>
+								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
@@ -63,7 +66,7 @@
 						<a href="#sirius4.0.0">Changes in Sirius 4.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges4">User-Visible Changes</a>
+								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
@@ -77,7 +80,7 @@
 						<a href="#sirius3.1.0">Changes in Sirius 3.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges5">User-Visible Changes</a>
+								<a href="#UserVisibleChanges6">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
@@ -91,7 +94,7 @@
 						<a href="#sirius3.0.0">Changes in Sirius 3.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges6">User-Visible Changes</a>
+								<a href="#UserVisibleChanges7">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges5">Specifier-Visible Changes</a>
@@ -108,6 +111,10 @@
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
 		<h2 id="sirius5.0.0">Changes in Sirius 5.0.0</h2>
+		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> The export diagram as images actions are now adapting the output resolution based on the diagram size, this leads to better resolution for small to medium diagrams (and also bigger file) and to an operation which is no longer failing with out of memory errors in case of very big diagrams.</li>
+		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The tab used to configure the metamodels used by the Properties view description is now using the same interface as the metamodels tab used to configure the representations.</li>
@@ -208,6 +215,19 @@ bot.waitUntil(new ICondition() {
 SWTBotUtils.waitAllUiEvents();
 
 </pre>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+			<code>org.eclipse.sirius.diagram.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> The  
+				<code>org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.DiagramEditPartService</code> class which can be used to export diagrams as images is now automatically adapting the output resolution for raster image based on maximum buffer size specified through the 
+				<code>plugin.propeties</code> file of the 
+				<code>org.eclipse.sirius.diagram.ui</code> plugin. This leads to a noticeable increase of the export image size (you can expect a 10 factor on small diagrams) and the method will no longer fail with OutOfMemory errors as bigger diagrams will lead to a lower output resolution. Implementers using this class can override the 
+				<code>DiagramEditPartService.getMaximumTotalSize()</code> method to return their own limit or 
+				<code>DiagramEditPartService.getExportResolutionFactor(DiagramEditPart, SiriusDiagramImageGenerator)</code>  and return 
+				<code>1.0</code> to get back to the previous behavior.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.editor.properties">Changes in 
 			<code>org.eclipse.sirius.editor.properties</code>
 		</h4>
@@ -228,7 +248,7 @@ SWTBotUtils.waitAllUiEvents();
 			<li><span class="label label-info">Modified</span> All the content related to the IDescriptionConverter and ILinkResolver has been moved from the plugin org.eclipse.sirius.ui.properties to the newly created plugin org.eclipse.sirius.properties.core. It includes all the APIs and both extension points.</li>
 		</ul>
 		<h2 id="sirius4.1.2">Changes in Sirius 4.1.2</h2>
-		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> </li>
 		</ul>
@@ -268,7 +288,7 @@ SWTBotUtils.waitAllUiEvents();
 			<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping.addFormatData(FormatDataKey, RepresentationElementMapping, AbstractFormatData)</code> to better handle copy/paste format cases.
 		</p>
 		<h2 id="sirius4.1.1">Changes in Sirius 4.1.1</h2>
-		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span>The &#8220;straighten to&#8221; actions were previously disabled when an edge is connected to border nodes that have several edges. It is now allowed.</li>
 		</ul>
@@ -279,7 +299,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 		</ul>
 		<h2 id="sirius4.1.0">Changes in Sirius 4.1.0</h2>
-		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Copy/Paste Layout has been completed with Copy/Paste Style and Copy/Paste Format. 
 				<em>Paste Format</em> is equivalent to paste 
@@ -595,7 +615,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>allowsCopyPasteLayout(DSemanticDecorator)</code> will be removed in the new major version.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -797,7 +817,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 		</ul>
 		<h2 id="sirius4.0.0">Changes in Sirius 4.0.0</h2>
-		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> The user can now filter elements according to a Typed variable (String, Integer, EEnum or any EDataType). If a user applies a filter containing Typed Variables, a dialog is displayed to allow user entering the Typed Variable values. That values can be used as variables in the Condition Expression of the Variable Filter.</li>
 			<li><span class="label label-success">Added</span> When the diagram is larger than the editor, you can move it in all directions pressing the middle-button and dragging the mouse (keeping the button pressed).</li>
@@ -1081,7 +1101,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.ui.business.api.editor.SpecificSessionManager</code> has been removed. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1279,7 +1299,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 		</ul>
 		<h2 id="sirius3.1.0">Changes in Sirius 3.1.0</h2>
-		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges6">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new feature allows to snap to all shapes (instead of just to snap to sibling shapes). The <kdb>F4</kdb> shortcut key activates this mode when you resize a node, move a node or move a bendpoint of an edge, see 
 				<a href="./user/diagrams/Diagrams.html#snap_to_shapes">the documentation</a> for details.
@@ -1667,7 +1687,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>IEditorPart</code> through the navigation history view.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1823,7 +1843,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 		</ul>
 		<h2 id="sirius3.0.0">Changes in Sirius 3.0.0</h2>
-		<h3 id="UserVisibleChanges6">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges7">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> The ability to print table representations has been re-introduced.</li>
 			<li><span class="label label-success">Added</span> The quick outline feature has been added for tree and table editors, see documentation for details.</li>
@@ -2355,7 +2375,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>ComputedStyleDescriptionRegistry.computedStyleDescriptions</code> list.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>

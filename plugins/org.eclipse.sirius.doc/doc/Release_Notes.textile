@@ -6,6 +6,10 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius5.0.0). Changes in Sirius 5.0.0
 
+h3. User-Visible Changes
+
+* <span class="label label-info">Modified</span> The export diagram as images actions are now adapting the output resolution based on the diagram size, this leads to better resolution for small to medium diagrams (and also bigger file) and to an operation which is no longer failing with out of memory errors in case of very big diagrams.
+
 h3. Specifier-Visible Changes
 
 * <span class="label label-info">Modified</span> The tab used to configure the metamodels used by the Properties view description is now using the same interface as the metamodels tab used to configure the representations.
@@ -53,6 +57,11 @@ bot.waitUntil(new ICondition() {
 // Wait that the figures are redrawn. In a fast environment, figures
 // are not really redrawn and the rest of the test is not reliable.
 SWTBotUtils.waitAllUiEvents();
+
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-info">Modified</span> The  @org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.DiagramEditPartService@ class which can be used to export diagrams as images is now automatically adapting the output resolution for raster image based on maximum buffer size specified through the @plugin.propeties@ file of the @org.eclipse.sirius.diagram.ui@ plugin. This leads to a noticeable increase of the export image size (you can expect a 10 factor on small diagrams) and the method will no longer fail with OutOfMemory errors as bigger diagrams will lead to a lower output resolution. Implementers using this class can override the @DiagramEditPartService.getMaximumTotalSize()@ method to return their own limit or @DiagramEditPartService.getExportResolutionFactor(DiagramEditPart, SiriusDiagramImageGenerator)@  and return @1.0@ to get back to the previous behavior.
+
 
 h4. Changes in @org.eclipse.sirius.editor.properties@
 

@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2016 IBM Corporation and others.
+ * Copyright (c) 2002, 2017 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,15 +17,18 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.SWTGraphics;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.image.PartPositionInfo;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramImageGenerator;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.draw2d.ui.render.internal.graphics.RenderedMapModeGraphics;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.swt.SWT;
 
 /**
  * Class override to use a specific GraphicsToGraphics2DAdaptor that handles the
@@ -34,6 +37,8 @@ import org.eclipse.jface.preference.IPreferenceStore;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class SiriusDiagramImageGenerator extends DiagramImageGenerator {
+
+    private double factor = 1;
 
     /**
      * Default constructor.
@@ -94,5 +99,42 @@ public class SiriusDiagramImageGenerator extends DiagramImageGenerator {
         graphics.dispose();
         g2d.dispose();
         return awtImage;
+    }
+
+    @Override
+    protected Graphics setUpGraphics(int width, int height) {
+        SWTGraphics swtG = (SWTGraphics) super.setUpGraphics(width, height);
+        swtG.scale(factor);
+        swtG.setTextAntialias(SWT.ON);
+        return swtG;
+    }
+
+    @Override
+    public org.eclipse.swt.graphics.Rectangle calculateImageRectangle(List editparts) {
+        org.eclipse.swt.graphics.Rectangle sourceRect = super.calculateImageRectangle(editparts);
+        return new org.eclipse.swt.graphics.Rectangle(sourceRect.x, sourceRect.y, scaleAsInt(sourceRect.width), scaleAsInt(sourceRect.height));
+    }
+
+    @Override
+    public List getDiagramPartInfo(DiagramEditPart diagramEditPart) {
+        List superResult = super.getDiagramPartInfo(diagramEditPart);
+        for (Object obj : superResult) {
+            if (obj instanceof PartPositionInfo) {
+                PartPositionInfo nonScaledInfo = (PartPositionInfo) obj;
+                nonScaledInfo.setPartX(nonScaledInfo.getPartX());
+                nonScaledInfo.setPartY(nonScaledInfo.getPartY());
+                nonScaledInfo.setPartWidth(scaleAsInt(nonScaledInfo.getPartWidth()));
+                nonScaledInfo.setPartHeight(scaleAsInt(nonScaledInfo.getPartHeight()));
+            }
+        }
+        return superResult;
+    }
+
+    private int scaleAsInt(int value) {
+        return Double.valueOf(value * factor).intValue();
+    }
+
+    public void setResolutionScale(double scale) {
+        this.factor = scale;
     }
 }
