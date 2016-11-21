@@ -12,6 +12,9 @@ package org.eclipse.sirius.diagram.ui.tools.internal.format.semantic;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -21,11 +24,15 @@ import org.eclipse.sirius.diagram.formatdata.AbstractFormatData;
 import org.eclipse.sirius.diagram.formatdata.EdgeFormatData;
 import org.eclipse.sirius.diagram.formatdata.NodeFormatData;
 import org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager;
-import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.AdvancedSiriusFormatDataManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.format.NodeFormatDataKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Maps;
 
 /**
  * SiriusFormatDataManager drives by the semantic elements (EObject). Use for
@@ -36,11 +43,47 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  */
 public class SiriusFormatDataManagerForSemanticElements extends AbstractSiriusFormatDataManager implements AdvancedSiriusFormatDataManager {
 
+    /**
+     * Error message used when this manager is added an
+     * {@link AbstractFormatData} which specific type is not supported.
+     */
+    private static final String ERROR_MESSAGE_UNSUPPORTED_FORMAT_DATA_TYPE = "The default format data manager SiriusFormatDataManagerForSemanticElements does not support AbstractDataFormat of the type :"; //$NON-NLS-1$
+
+    /**
+     * Error message used when this format data manager is called by the
+     * obsolete method
+     * org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.
+     * SiriusFormatDataManagerForSemanticElements.addFormatData(FormatDataKey,
+     * AbstractFormatData) or
+     * org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.
+     * SiriusFormatDataManagerForSemanticElements.getFormatData(FormatDataKey).
+     */
+    private static final String ERROR_MESSAGE_UNSUPPORTED_METHOD_CALL = "The default SiriusFormatDataManager does not use this method anymore"; //$NON-NLS-1$
+
     private static final SiriusFormatDataManagerForSemanticElements INSTANCE = new SiriusFormatDataManagerForSemanticElements();
 
-    private final Map<SemanticNodeFormatDataKey, NodeFormatData> nodeFormatDataMap = new HashMap<SemanticNodeFormatDataKey, NodeFormatData>();
+    private static final Predicate<EObject> ROOT_PREDICATE = new Predicate<EObject>() {
 
-    private final Map<SemanticEdgeFormatDataKey, EdgeFormatData> edgeFormatDataMap = new HashMap<SemanticEdgeFormatDataKey, EdgeFormatData>();
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public boolean apply(final EObject input) {
+            return input.eContainer() == null;
+        }
+    };
+
+    /**
+     * The map containing node formats associated to its mapping id and indexed
+     * by the key as {@link SemanticNodeFormatDataKey}.
+     */
+    private final Map<SemanticNodeFormatDataKey, Map<String, NodeFormatData>> nodeFormatDataMap = new HashMap<SemanticNodeFormatDataKey, Map<String, NodeFormatData>>();
+
+    /**
+     * The map containing edge formats associated to its mapping id and indexed
+     * by the key as {@link SemanticEdgeFormatDataKey}.
+     */
+    private final Map<SemanticEdgeFormatDataKey, Map<String, EdgeFormatData>> edgeFormatDataMap = new HashMap<SemanticEdgeFormatDataKey, Map<String, EdgeFormatData>>();
 
     /**
      * Default constructor.
@@ -57,6 +100,12 @@ public class SiriusFormatDataManagerForSemanticElements extends AbstractSiriusFo
      */
     @Override
     public void addFormatData(final FormatDataKey key, final AbstractFormatData formatData) {
+        clearFormatData();
+        throw new UnsupportedOperationException(ERROR_MESSAGE_UNSUPPORTED_METHOD_CALL);
+    }
+
+    @Override
+    public void addFormatData(FormatDataKey key, RepresentationElementMapping mapping, AbstractFormatData formatData) {
         if (!checkKeyType(key)) {
             // Kind of key not manage
             formatData.setId(null);
@@ -65,17 +114,32 @@ public class SiriusFormatDataManagerForSemanticElements extends AbstractSiriusFo
 
         if (key instanceof SemanticNodeFormatDataKey) {
             if (formatData instanceof NodeFormatData) {
-                nodeFormatDataMap.put((SemanticNodeFormatDataKey) key, (NodeFormatData) formatData);
+                Map<String, NodeFormatData> formatsMap = nodeFormatDataMap.get(key);
+                if (formatsMap == null) {
+                    formatsMap = new TreeMap<String, NodeFormatData>();
+                    nodeFormatDataMap.put((SemanticNodeFormatDataKey) key, formatsMap);
+                }
+
+                formatsMap.put(mapping.getName(), (NodeFormatData) formatData);
             } else {
-                // Bad type of formatData for this key
+                clearFormatData();
+                throw new IllegalStateException(ERROR_MESSAGE_UNSUPPORTED_FORMAT_DATA_TYPE + formatData.getClass().getSimpleName());
             }
         } else if (key instanceof SemanticEdgeFormatDataKey) {
             if (formatData instanceof EdgeFormatData) {
-                edgeFormatDataMap.put((SemanticEdgeFormatDataKey) key, (EdgeFormatData) formatData);
+                Map<String, EdgeFormatData> formatsMap = edgeFormatDataMap.get(key);
+                if (formatsMap == null) {
+                    formatsMap = new TreeMap<String, EdgeFormatData>();
+                    edgeFormatDataMap.put((SemanticEdgeFormatDataKey) key, formatsMap);
+                }
+
+                formatsMap.put(mapping.getName(), (EdgeFormatData) formatData);
             } else {
-                // Bad type of formatData for this key
+                clearFormatData();
+                throw new IllegalStateException(ERROR_MESSAGE_UNSUPPORTED_FORMAT_DATA_TYPE + formatData.getClass().getSimpleName());
             }
         }
+
     }
 
     /**
@@ -85,12 +149,36 @@ public class SiriusFormatDataManagerForSemanticElements extends AbstractSiriusFo
      */
     @Override
     public AbstractFormatData getFormatData(final FormatDataKey key) {
+        clearFormatData();
+        throw new UnsupportedOperationException(ERROR_MESSAGE_UNSUPPORTED_METHOD_CALL);
+    }
+
+    @Override
+    public AbstractFormatData getFormatData(FormatDataKey key, RepresentationElementMapping mapping) {
         AbstractFormatData result = null;
         if (checkKeyType(key)) {
+            String mappingName = mapping == null ? null : mapping.getName();
             if (key instanceof SemanticNodeFormatDataKey) {
-                result = nodeFormatDataMap.get(key);
+                Map<String, NodeFormatData> formatsMap = nodeFormatDataMap.get(key);
+                if (formatsMap != null) {
+                    NodeFormatData nodeFormatData = formatsMap.get(mappingName);
+                    if (nodeFormatData == null && formatsMap.size() > 0) {
+                        result = formatsMap.values().iterator().next();
+                    } else {
+                        result = nodeFormatData;
+                    }
+                }
+
             } else if (key instanceof SemanticEdgeFormatDataKey) {
-                result = edgeFormatDataMap.get(key);
+                Map<String, EdgeFormatData> formatsMap = edgeFormatDataMap.get(key);
+                if (formatsMap != null) {
+                    EdgeFormatData edgeFormatData = formatsMap.get(mappingName);
+                    if (edgeFormatData == null && formatsMap.size() > 0) {
+                        result = formatsMap.values().iterator().next();
+                    } else {
+                        result = edgeFormatData;
+                    }
+                }
             }
         }
         return result;
@@ -158,7 +246,7 @@ public class SiriusFormatDataManagerForSemanticElements extends AbstractSiriusFo
      * {@inheritDoc}
      */
     @Override
-    public Map<SemanticEdgeFormatDataKey, EdgeFormatData> getEdgeFormatData() {
+    public Map<SemanticEdgeFormatDataKey, Map<String, EdgeFormatData>> getEdgeFormatData() {
         return edgeFormatDataMap;
     }
 
@@ -166,15 +254,32 @@ public class SiriusFormatDataManagerForSemanticElements extends AbstractSiriusFo
      * {@inheritDoc}
      */
     @Override
-    public Map<? extends FormatDataKey, ? extends NodeFormatData> getRootNodeFormatData() {
-        return (Map<? extends FormatDataKey, ? extends NodeFormatData>) FormatDataHelper.INSTANCE.getRootFormatData(nodeFormatDataMap);
+    public Map<? extends NodeFormatDataKey, Map<String, NodeFormatData>> getRootNodeFormatData() {
+        return getRootFormatData(nodeFormatDataMap);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public Map<? extends NodeFormatDataKey, Map<String, NodeFormatData>> getRootFormatData(final Map<SemanticNodeFormatDataKey, Map<String, NodeFormatData>> theNodeFormatDataMap) {
+        Map<NodeFormatDataKey, Map<String, NodeFormatData>> resultValues = new HashMap<NodeFormatDataKey, Map<String, NodeFormatData>>();
+        Set<Entry<SemanticNodeFormatDataKey, Map<String, NodeFormatData>>> allEntries = theNodeFormatDataMap.entrySet();
+        for (Entry<SemanticNodeFormatDataKey, Map<String, NodeFormatData>> entry : allEntries) {
+            Map<String, NodeFormatData> value = entry.getValue();
+            Map<String, NodeFormatData> filterValues = Maps.filterValues(value, ROOT_PREDICATE);
+            if (filterValues.size() > 0) {
+                resultValues.put(entry.getKey(), filterValues);
+            }
+        }
+        return resultValues;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public Map<SemanticNodeFormatDataKey, NodeFormatData> getNodeFormatData() {
+    public Map<? extends NodeFormatDataKey, Map<String, NodeFormatData>> getNodeFormatData() {
         return nodeFormatDataMap;
     }
+
 }

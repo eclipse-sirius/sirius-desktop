@@ -10,14 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.format.data;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.formatdata.NodeFormatData;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.ConfigurationFactory;
-
-import com.google.common.collect.Iterables;
 
 /**
  * Test class.
@@ -48,7 +49,7 @@ public abstract class AbstractFormatHelperImplNodeFormatDataTest extends Abstrac
      */
     @Override
     protected AbstractFormatHelperImplTest<NodeFormatData>.FormatDataWrapper createWrappedInstance(final NodeFormatData from) throws Exception {
-        final NodeFormatData nodeFormatData = (NodeFormatData) EcoreUtil.copy(from);
+        final NodeFormatData nodeFormatData = EcoreUtil.copy(from);
         return new NodeFormatDataWrapper(nodeFormatData);
     }
 
@@ -57,9 +58,12 @@ public abstract class AbstractFormatHelperImplNodeFormatDataTest extends Abstrac
      */
     @Override
     protected AbstractFormatHelperImplTest<NodeFormatData>.FormatDataWrapper createWrappedNotEqualInstance() throws Exception {
-        final Iterator<? extends NodeFormatData> iterator = getManager().getRootNodeFormatData().values().iterator();
-        iterator.next();
-        return new NodeFormatDataWrapper(iterator.next());
+        List<NodeFormatData> formatDataList = new ArrayList<NodeFormatData>();
+        Collection<Map<String, NodeFormatData>> rootFormatDataMap = getManager().getRootNodeFormatData().values();
+        for (Map<String, NodeFormatData> valueMap : rootFormatDataMap) {
+            formatDataList.addAll(valueMap.values());
+        }
+        return new NodeFormatDataWrapper(formatDataList.get(1));
     }
 
     /**
@@ -67,7 +71,12 @@ public abstract class AbstractFormatHelperImplNodeFormatDataTest extends Abstrac
      */
     @Override
     protected NodeFormatData getReferenceFormatData() {
-        return Iterables.get(getManager().getRootNodeFormatData().values(), getIndexOfReferenceFormatData());
+        Collection<Map<String, NodeFormatData>> rootFormatDataMap = getManager().getRootNodeFormatData().values();
+        List<NodeFormatData> formatDataList = new ArrayList<NodeFormatData>();
+        for (Map<String, NodeFormatData> valueMap : rootFormatDataMap) {
+            formatDataList.addAll(valueMap.values());
+        }
+        return formatDataList.get(getIndexOfReferenceFormatData());
     }
 
     /**

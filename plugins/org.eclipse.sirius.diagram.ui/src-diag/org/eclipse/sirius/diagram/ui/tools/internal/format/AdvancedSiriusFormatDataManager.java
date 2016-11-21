@@ -14,8 +14,8 @@ import java.util.Map;
 
 import org.eclipse.sirius.diagram.formatdata.EdgeFormatData;
 import org.eclipse.sirius.diagram.formatdata.NodeFormatData;
-import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey;
-import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
+import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping;
+import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SemanticEdgeFormatDataKey;
 
 /**
  * Interface to manage
@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
  * 
  * @author dlecan
  */
-public interface AdvancedSiriusFormatDataManager extends SiriusFormatDataManager {
+public interface AdvancedSiriusFormatDataManager extends SiriusFormatDataManagerWithMapping {
 
     /**
      * Get only root node format data, that is to say only the format data
@@ -32,20 +32,20 @@ public interface AdvancedSiriusFormatDataManager extends SiriusFormatDataManager
      * 
      * @return Map.
      */
-    Map<? extends FormatDataKey, ? extends NodeFormatData> getRootNodeFormatData();
+    Map<? extends NodeFormatDataKey, Map<String, NodeFormatData>> getRootNodeFormatData();
 
     /**
      * Get node format data.
      * 
      * @return Map.
      */
-    Map<? extends NodeFormatDataKey, NodeFormatData> getNodeFormatData();
+    Map<? extends NodeFormatDataKey, Map<String, NodeFormatData>> getNodeFormatData();
 
     /**
      * Get edge format data.
      * 
      * @return Map.
      */
-    Map<? extends EdgeFormatDataKey, EdgeFormatData> getEdgeFormatData();
+    Map<SemanticEdgeFormatDataKey, Map<String, EdgeFormatData>> getEdgeFormatData();
 
 }

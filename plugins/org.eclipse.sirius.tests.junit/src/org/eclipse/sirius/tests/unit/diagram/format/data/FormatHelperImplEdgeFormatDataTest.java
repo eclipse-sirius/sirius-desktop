@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.format.data;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.formatdata.EdgeFormatData;
@@ -55,9 +58,12 @@ public class FormatHelperImplEdgeFormatDataTest extends AbstractFormatHelperImpl
      */
     @Override
     protected AbstractFormatHelperImplTest<EdgeFormatData>.FormatDataWrapper createWrappedNotEqualInstance() throws Exception {
-        final Iterator<EdgeFormatData> iterator = getManager().getEdgeFormatData().values().iterator();
-        iterator.next();
-        return new EdgeFormatDataWrapper(iterator.next());
+        List<EdgeFormatData> formatDataList = new ArrayList<EdgeFormatData>();
+        Collection<Map<String, EdgeFormatData>> formatDataMap = getManager().getEdgeFormatData().values();
+        for (Map<String, EdgeFormatData> valueMap : formatDataMap) {
+            formatDataList.addAll(valueMap.values());
+        }
+        return new EdgeFormatDataWrapper(formatDataList.get(1));
     }
 
     /**
@@ -65,7 +71,12 @@ public class FormatHelperImplEdgeFormatDataTest extends AbstractFormatHelperImpl
      */
     @Override
     protected EdgeFormatData getReferenceFormatData() {
-        return getManager().getEdgeFormatData().values().iterator().next();
+        List<EdgeFormatData> formatDataList = new ArrayList<EdgeFormatData>();
+        Collection<Map<String, EdgeFormatData>> formatDataMap = getManager().getEdgeFormatData().values();
+        for (Map<String, EdgeFormatData> valueMap : formatDataMap) {
+            formatDataList.addAll(valueMap.values());
+        }
+        return formatDataList.get(0);
     }
 
 }

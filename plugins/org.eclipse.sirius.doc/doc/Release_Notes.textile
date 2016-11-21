@@ -4,6 +4,22 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius4.1.2). Changes in Sirius 4.1.2
+
+h3. Developer-Visible Changes
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping@ class has  been added to handle copy/paste format with mapping information when an element target of a format pasting has many source diagram format corresponding to its key. In this case, we use the mapping information to get the more precise data format. And if no result matched, then we return the first found by using the key.
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping.getFormatData(FormatDataKey, RepresentationElementMapping)@ method has  been added to retrieve during format pasting the data format corresponding to the given key and mapping when more than one result correspond to the key. If no result matches the mapping, then the first result found by using the key is returned.
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping.addFormatData(FormatDataKey, RepresentationElementMapping, AbstractFormatData)@ method has been added to allow data format manager to register data format with mapping information when copying format.
+
+* <span class="label label-success">Deprecated</span>
+@org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager.getFormatData(FormatDataKey)@ It is replaced by @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping.getFormatData(FormatDataKey, RepresentationElementMapping)@ to better handle copy/paste format cases.
+
+* <span class="label label-success">Deprecated</span>
+@org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager.addFormatData(FormatDataKey, AbstractFormatData)@ It is replaced by @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping.addFormatData(FormatDataKey, RepresentationElementMapping, AbstractFormatData)@ to better handle copy/paste format cases.
+
 h2(#sirius4.1.1). Changes in Sirius 4.1.1
 
 h3. User-Visible Changes

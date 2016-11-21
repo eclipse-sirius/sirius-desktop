@@ -11,10 +11,12 @@
 package org.eclipse.sirius.tests.unit.diagram.format.data;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -32,12 +34,15 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.formatdata.AbstractFormatData;
+import org.eclipse.sirius.diagram.formatdata.EdgeFormatData;
+import org.eclipse.sirius.diagram.formatdata.NodeFormatData;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper.FormatDifference;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Configuration;
 import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.AdvancedSiriusFormatDataManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.format.NodeFormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SiriusFormatDataManagerForSemanticElements;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -170,7 +175,7 @@ public class AbstractSiriusFormatDataManagerForSemanticElementsTest extends Siri
 
     protected static final Representation REPRES_TYPE5 = new Representation("DiagType5", DIAG_TYPE5_MYPACKAGE);
 
-    protected static final Diagram DIAG_TYPE6_MYPACKAGE = new Diagram("DiagType6 of MyPackage", 7, 2);
+    protected static final Diagram DIAG_TYPE6_MYPACKAGE = new Diagram("DiagType6 of MyPackage", 9, 2);
 
     private static final Representation REPRES_TYPE6 = new Representation("DiagType6", DIAG_TYPE6_MYPACKAGE);
 
@@ -298,6 +303,44 @@ public class AbstractSiriusFormatDataManagerForSemanticElementsTest extends Siri
         return getAndOpenAllDiagrams(false);
     }
 
+    /**
+     * Returns a list of all {@link NodeFormatData} contained by the given map
+     * 
+     * @param nodeFormatMap
+     *            the map from which we want to extract all
+     *            {@link NodeFormatData}.
+     * @return a list of all {@link NodeFormatData} contained by the given map.
+     *         An empty list if no such element exists.
+     */
+    protected List<NodeFormatData> getNodeFormatDataList(Map<? extends FormatDataKey, Map<String, NodeFormatData>> nodeFormatMap) {
+        List<NodeFormatData> formatDataList = new ArrayList<NodeFormatData>();
+        Collection<Map<String, NodeFormatData>> formatDataMap = nodeFormatMap.values();
+        for (Map<String, NodeFormatData> valueMap : formatDataMap) {
+            formatDataList.addAll(valueMap.values());
+        }
+        return formatDataList;
+
+    }
+
+    /**
+     * Returns a list of all {@link EdgeFormatData} contained by the given map
+     * 
+     * @param edgeFormatMap
+     *            the map from which we want to extract all
+     *            {@link EdgeFormatData}.
+     * @return a list of all {@link EdgeFormatData} contained by the given map.
+     *         An empty list if no such element exists.
+     */
+    protected List<EdgeFormatData> getEdgeFormatDataList(Map<? extends FormatDataKey, Map<String, EdgeFormatData>> edgeFormatMap) {
+        List<EdgeFormatData> formatDataList = new ArrayList<EdgeFormatData>();
+        Collection<Map<String, EdgeFormatData>> formatDataMap = edgeFormatMap.values();
+        for (Map<String, EdgeFormatData> valueMap : formatDataMap) {
+            formatDataList.addAll(valueMap.values());
+        }
+        return formatDataList;
+
+    }
+
     protected List<Diagram> getAndOpenAllDiagrams(boolean rawFiltered) {
         final List<Diagram> result = Lists.newArrayList();
         for (final Representation representation : ALL_REPRESENTATIONS) {
@@ -347,26 +390,34 @@ public class AbstractSiriusFormatDataManagerForSemanticElementsTest extends Siri
         }
 
         // Sort elements, SemanticNodeFormatDataKey are comparable
-        final Map<FormatDataKey, AbstractFormatData> rootNodeFormatData = new TreeMap<FormatDataKey, AbstractFormatData>(newManager.getRootNodeFormatData());
+        TreeMap<NodeFormatDataKey, Map<String, NodeFormatData>> rootNodeFormatDataMap = new TreeMap<NodeFormatDataKey, Map<String, NodeFormatData>>(newManager.getRootNodeFormatData());
+
+        List<NodeFormatData> nodeFormatDataList = getNodeFormatDataList(rootNodeFormatDataMap);
 
         // Compare results
-        final FormatDifference<?> difference = FormatHelper.INSTANCE.computeFirstFormatDifference(expected.values(), rootNodeFormatData.values(), configuration);
+        final FormatDifference<?> difference = FormatHelper.INSTANCE.computeFirstFormatDifference(expected.values(), nodeFormatDataList, configuration);
         return difference;
     }
 
     // Let this "unused" method, as it can be enabled to save diagram format
     // data
     // Data will be saved in org.eclipse.sirius.tests project folder
-    protected void saveDiagram(final Diagram diagram, final Collection<? extends AbstractFormatData> formatData) throws IOException {
+    protected void saveDiagram(final Diagram diagram, final Collection<Map<String, NodeFormatData>> formatData) throws IOException {
         final String pathName = getPlatformRelatedXmiDataPath() + encodeDiagramName(diagram) + XMI_EXTENSION;
         saveDiagram(formatData, pathName);
     }
 
-    protected void saveDiagram(final Collection<? extends AbstractFormatData> formatData, final String path) throws IOException {
+    protected void saveDiagram(final Collection<Map<String, NodeFormatData>> formatData, final String path) throws IOException {
         final ResourceSet resourceSet = new ResourceSetImpl();
         final URI uri = URI.createFileURI(path);
         final Resource resource = ModelUtils.createResource(uri, resourceSet);
-        resource.getContents().addAll(formatData);
+        Iterator<Map<String, NodeFormatData>> formatDataIterator = formatData.iterator();
+        while (formatDataIterator.hasNext()) {
+            Map<String, NodeFormatData> formatDataMap = formatDataIterator.next();
+            resource.getContents().addAll(formatDataMap.values());
+
+        }
+
         resource.save(Collections.EMPTY_MAP);
     }
 

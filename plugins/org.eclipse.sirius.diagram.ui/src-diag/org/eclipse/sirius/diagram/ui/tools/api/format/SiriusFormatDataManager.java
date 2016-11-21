@@ -29,7 +29,11 @@ public interface SiriusFormatDataManager {
      * @param key
      *            The key
      * @return the format data corresponding to the key or null if not found.
+     * @deprecated Replaced by
+     *             {@link SiriusFormatDataManagerWithMapping#getFormatData(FormatDataKey, org.eclipse.sirius.viewpoint.description.RepresentationElementMapping)}
+     *             handling more copy/paste cases by using mapping information.
      */
+    @Deprecated
     AbstractFormatData getFormatData(final FormatDataKey key);
 
     /**
@@ -39,7 +43,11 @@ public interface SiriusFormatDataManager {
      *            The key
      * @param formatData
      *            The format data
+     * @deprecated Replaced by
+     *             {@link SiriusFormatDataManagerWithMapping#addFormatData(FormatDataKey, org.eclipse.sirius.viewpoint.description.RepresentationElementMapping, AbstractFormatData)}
+     *             handling more copy/paste cases by using mapping information.
      */
+    @Deprecated
     void addFormatData(final FormatDataKey key, final AbstractFormatData formatData);
 
     /**

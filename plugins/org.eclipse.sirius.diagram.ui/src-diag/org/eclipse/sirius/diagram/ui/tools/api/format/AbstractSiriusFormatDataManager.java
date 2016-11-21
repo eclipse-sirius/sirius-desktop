@@ -81,6 +81,7 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBor
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -93,7 +94,11 @@ import com.google.common.collect.Sets;
 /**
  * An abstract implementation for {@link SiriusFormatDataManager}. <BR>
  * Provide a method to store a format from a graphicalEditPart and iterates on
- * it's children.
+ * it's children and apply a format.
+ * 
+ * Regarding the store/apply format functionality, the subclass of this should
+ * implements {@link SiriusFormatDataManagerWithMapping} that handles more cases
+ * thanks to mapping information.
  *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  *
@@ -118,7 +123,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
             addChildFormat((DDiagram) semanticElement, rootEditPart, discoveredKeys);
         } else if (toStoreView instanceof Node) {
             if (semanticElement instanceof DDiagramElement && semanticElement instanceof DSemanticDecorator) {
-                addChildFormat(null, (DSemanticDecorator) semanticElement, (Node) toStoreView, rootEditPart, discoveredKeys);
+                addChildFormat(null, (DDiagramElement) semanticElement, (Node) toStoreView, rootEditPart, discoveredKeys);
             }
         }
         discoveredKeys.clear();
@@ -178,7 +183,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
             centerEdgesEnds(toStoreView);
         } else if (toStoreView instanceof Node) {
             if (semanticElement instanceof DDiagramElement && semanticElement instanceof DSemanticDecorator) {
-                applyFormat((DSemanticDecorator) semanticElement, (Node) toStoreView, rootEditPart.getRoot().getViewer(), null, applyFormat, applyStyle);
+                applyFormat((DDiagramElement) semanticElement, (Node) toStoreView, rootEditPart.getRoot().getViewer(), null, applyFormat, applyStyle);
             }
             centerEdgesEnds(toStoreView);
         }
@@ -235,7 +240,13 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * @param editPartViewer
      */
     private void applyFormat(final DEdge edge, final Edge gmfEdge, final EditPartViewer editPartViewer, boolean applyFormat, boolean applyStyle) {
-        final EdgeFormatData formatData = (EdgeFormatData) getFormatData(createKey(edge));
+        final EdgeFormatData formatData;
+        if (this instanceof SiriusFormatDataManagerWithMapping) {
+            formatData = (EdgeFormatData) ((SiriusFormatDataManagerWithMapping) this).getFormatData(createKey(edge), edge.getMapping());
+        } else {
+            formatData = (EdgeFormatData) getFormatData(createKey(edge));
+        }
+
         if (formatData != null) {
             if (applyFormat) {
                 final Bendpoints bendpoints = convertPointsToGMFBendpoint(formatData);
@@ -352,11 +363,15 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      *            The viewer responsible for the current editparts lifecycle.
      * @parentFormatData the format of the parent of <code>toRestoreView<code>
      */
-    private void applyFormat(final DSemanticDecorator semanticDecorator, final Node toRestoreView, final EditPartViewer editPartViewer, final NodeFormatData parentFormatData, boolean applyFormat,
+    private void applyFormat(final DRepresentationElement semanticDecorator, final Node toRestoreView, final EditPartViewer editPartViewer, final NodeFormatData parentFormatData, boolean applyFormat,
             boolean applyStyle) {
         FormatDataKey key = createKey(semanticDecorator);
-        NodeFormatData formatData = (NodeFormatData) getFormatData(key);
-
+        NodeFormatData formatData;
+        if (this instanceof SiriusFormatDataManagerWithMapping) {
+            formatData = (NodeFormatData) ((SiriusFormatDataManagerWithMapping) this).getFormatData(key, semanticDecorator.getMapping());
+        } else {
+            formatData = (NodeFormatData) getFormatData(key);
+        }
         // If a direct child have the same format data and key than its parents,
         // look in the parent format data 's children for a child format data
         // with the expected id.
@@ -582,7 +597,12 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
             final Node gmfNode = SiriusGMFHelper.getGmfNode(child);
             if (gmfNode != null) {
                 FormatDataKey key = createKey(child);
-                NodeFormatData formatData = (NodeFormatData) getFormatData(key);
+                NodeFormatData formatData;
+                if (this instanceof SiriusFormatDataManagerWithMapping) {
+                    formatData = (NodeFormatData) ((SiriusFormatDataManagerWithMapping) this).getFormatData(key, child.getMapping());
+                } else {
+                    formatData = (NodeFormatData) getFormatData(key);
+                }
 
                 // If a direct child have the same format data and key than its
                 // parents, look in the parent format data 's children for a
@@ -881,7 +901,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * @param editPart
      *            The editPart corresponding to the new format
      */
-    private void addChildFormat(final NodeFormatData parentFormatData, final DSemanticDecorator child, final Node gmfNode, final IGraphicalEditPart editPart,
+    private void addChildFormat(final NodeFormatData parentFormatData, final DRepresentationElement child, final Node gmfNode, final IGraphicalEditPart editPart,
             final Collection<FormatDataKey> discoveredKeys) {
         final NodeFormatData childFormatData = FormatDataHelper.INSTANCE.createNodeFormatData(gmfNode, editPart, parentFormatData);
         if (parentFormatData != null) {
@@ -895,13 +915,21 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         // inspected node, the previously computed data might be replaced. It
         // could so replaced one of the initially selected parts.
         if (!discoveredKeys.contains(childKey)) {
-            addFormatData(childKey, childFormatData);
+            if (this instanceof SiriusFormatDataManagerWithMapping) {
+                ((SiriusFormatDataManagerWithMapping) this).addFormatData(childKey, child.getMapping(), childFormatData);
+            } else {
+                addFormatData(childKey, childFormatData);
+            }
             discoveredKeys.add(childKey);
         } else if (parentFormatData == null) {
             // In this case, the same key is used for a root format data and for
             // an other view (child or border of an other view), the root data
             // should be stored.
-            addFormatData(childKey, childFormatData);
+            if (this instanceof SiriusFormatDataManagerWithMapping) {
+                ((SiriusFormatDataManagerWithMapping) this).addFormatData(childKey, child.getMapping(), childFormatData);
+            } else {
+                addFormatData(childKey, childFormatData);
+            }
         }
 
         if (child instanceof DNode) {
@@ -957,7 +985,11 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
             edgeFormatData.setId(edgeKey.getId());
 
             // Add the edge format data.
-            addFormatData(edgeKey, edgeFormatData);
+            if (this instanceof SiriusFormatDataManagerWithMapping) {
+                ((SiriusFormatDataManagerWithMapping) this).addFormatData(edgeKey, edge.getMapping(), edgeFormatData);
+            } else {
+                addFormatData(edgeKey, edgeFormatData);
+            }
             // Add the label format data (if exists).
             addLabelFormatData(edgeFormatData, gmfEdge);
         }

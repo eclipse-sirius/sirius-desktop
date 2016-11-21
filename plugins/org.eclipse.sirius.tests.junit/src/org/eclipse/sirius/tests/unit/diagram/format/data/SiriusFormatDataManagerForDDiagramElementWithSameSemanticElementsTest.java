@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.format.data;
 
+import java.util.Collection;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -25,7 +25,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
-import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SemanticNodeFormatDataKey;
+import org.eclipse.sirius.diagram.ui.tools.internal.format.NodeFormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SiriusFormatDataManagerForSemanticElements;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
@@ -123,18 +123,21 @@ public class SiriusFormatDataManagerForDDiagramElementWithSameSemanticElementsTe
         // Store the format data (copy format) and get the stored values.
         SiriusFormatDataManagerForSemanticElements mgr = new SiriusFormatDataManagerForSemanticElements();
         mgr.storeFormatData(idep);
-        Map<SemanticNodeFormatDataKey, NodeFormatData> data = mgr.getNodeFormatData();
+        Map<? extends NodeFormatDataKey, Map<String, NodeFormatData>> data = mgr.getNodeFormatData();
 
         // Check the stored data
         assertEquals("There should be only one top level format data", 1, data.size());
+        Collection<Map<String, NodeFormatData>> formatDataValues = data.values();
+        assertEquals("There should be only one top level format data", 1, formatDataValues.size());
 
-        Entry<SemanticNodeFormatDataKey, NodeFormatData> entry = data.entrySet().iterator().next();
-        assertEquals("There format data do not corresponds to the common semantic target", EcoreUtil.getURI(idep.resolveTargetSemanticElement()).fragment(), entry.getKey().getId());
+        NodeFormatDataKey formatDataKey = data.entrySet().iterator().next().getKey();
+        assertEquals("There format data do not corresponds to the common semantic target", EcoreUtil.getURI(idep.resolveTargetSemanticElement()).fragment(), formatDataKey.getId());
 
         // With wrong behavior, the hierarchy was not respected, there was no
         // second level data and the recorded data was the small size.
 
-        NodeFormatData l1Data = entry.getValue();
+        Map<String, NodeFormatData> formatDataMap = formatDataValues.iterator().next();
+        NodeFormatData l1Data = formatDataMap.entrySet().iterator().next().getValue();
         assertEquals(WRONG_TESTS_DATA, l1Bounds.height, l1Data.getHeight());
         assertEquals(WRONG_TESTS_DATA, l1Bounds.width, l1Data.getWidth());
 

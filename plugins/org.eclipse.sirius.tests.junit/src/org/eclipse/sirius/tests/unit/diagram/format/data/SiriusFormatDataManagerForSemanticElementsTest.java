@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.format.data;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
@@ -21,8 +21,6 @@ import org.eclipse.sirius.diagram.formatdata.NodeFormatData;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.ConfigurationFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.AdvancedSiriusFormatDataManager;
-import org.eclipse.sirius.diagram.ui.tools.internal.format.EdgeFormatDataKey;
-import org.eclipse.sirius.diagram.ui.tools.internal.format.NodeFormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SemanticEdgeFormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SemanticNodeFormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SiriusFormatDataManagerForSemanticElements;
@@ -70,8 +68,8 @@ public class SiriusFormatDataManagerForSemanticElementsTest extends AbstractSiri
             final AdvancedSiriusFormatDataManager manager = new SiriusFormatDataManagerForSemanticElements();
             manager.storeFormatData(diagram);
 
-            final Map<? extends NodeFormatDataKey, NodeFormatData> nodeFormatData = manager.getNodeFormatData();
-            final Map<? extends EdgeFormatDataKey, EdgeFormatData> edgeFormatData = manager.getEdgeFormatData();
+            final List<NodeFormatData> nodeFormatData = getNodeFormatDataList(manager.getNodeFormatData());
+            final List<EdgeFormatData> edgeFormatData = getEdgeFormatDataList(manager.getEdgeFormatData());
 
             assertEquals("Number of expected node format data is wrong for diagram " + diag.name, diag.numberOfNodeFormatData, nodeFormatData.size());
             assertEquals("Number of expected edge format data is wrong for diagram " + diag.name, diag.numberOfEdgeFormatData, edgeFormatData.size());
@@ -90,20 +88,18 @@ public class SiriusFormatDataManagerForSemanticElementsTest extends AbstractSiri
 
             final AdvancedSiriusFormatDataManager manager = new SiriusFormatDataManagerForSemanticElements();
             manager.storeFormatData(diagramEditPart);
-            final Collection<? extends NodeFormatData> firstNodeValues = manager.getRootNodeFormatData().values();
-            final Collection<EdgeFormatData> firstEdgeValues = manager.getEdgeFormatData().values();
-
+            List<NodeFormatData> firstNodeFormat = getNodeFormatDataList(manager.getRootNodeFormatData());
+            List<EdgeFormatData> firstEdgeFormat = getEdgeFormatDataList(manager.getEdgeFormatData());
             for (int i = 0; i < ITERATIONS; i++) {
                 final AdvancedSiriusFormatDataManager otherManager = new SiriusFormatDataManagerForSemanticElements();
                 otherManager.storeFormatData(diagramEditPart);
-                final Collection<? extends NodeFormatData> secondNodeValues = otherManager.getRootNodeFormatData().values();
-                final Collection<EdgeFormatData> secondEdgeValues = otherManager.getEdgeFormatData().values();
 
-                final boolean haveSameFormat = FormatHelper.INSTANCE.haveSameLayout(firstNodeValues, secondNodeValues, ConfigurationFactory.buildConfiguration());
+                final boolean haveSameFormat = FormatHelper.INSTANCE.haveSameLayout(firstNodeFormat, getNodeFormatDataList(otherManager.getRootNodeFormatData()),
+                        ConfigurationFactory.buildConfiguration());
                 assertTrue("All node formats should be the same for diagram " + diag.name, haveSameFormat);
 
                 assertTrue("All edge formats should be the same for diagram " + diag.name,
-                        FormatHelper.INSTANCE.haveSameLayout(firstEdgeValues, secondEdgeValues, ConfigurationFactory.buildConfiguration()));
+                        FormatHelper.INSTANCE.haveSameLayout(firstEdgeFormat, getEdgeFormatDataList(otherManager.getEdgeFormatData()), ConfigurationFactory.buildConfiguration()));
             }
         }
     }
@@ -128,8 +124,9 @@ public class SiriusFormatDataManagerForSemanticElementsTest extends AbstractSiri
         assertTrue("Manager should contain data for diagram " + DIAG_TYPE2_MYPACKAGE.name, manager.containsData());
 
         final SemanticNodeFormatDataKey dataKey = new SemanticNodeFormatDataKey(element.getTarget());
-        final NodeFormatData nodeFormatData = manager.getNodeFormatData().get(dataKey);
+        final Map<String, NodeFormatData> nodeFormatDataMap = manager.getNodeFormatData().get(dataKey);
 
+        NodeFormatData nodeFormatData = nodeFormatDataMap.values().iterator().next();
         assertEquals("Wrong width", 653, nodeFormatData.getWidth());
         assertEquals("Wrong height", 173, nodeFormatData.getHeight());
 
@@ -158,8 +155,10 @@ public class SiriusFormatDataManagerForSemanticElementsTest extends AbstractSiri
         assertTrue("Manager should contain data for diagram " + DIAG_TYPE2_MYPACKAGE.name, manager.containsData());
 
         final SemanticEdgeFormatDataKey dataKey = new SemanticEdgeFormatDataKey(element.getTarget());
-        final EdgeFormatData edgeFormatData = manager.getEdgeFormatData().get(dataKey);
 
-        assertEquals("Wrong point list", 4, edgeFormatData.getPointList().size());
+        getEdgeFormatDataList(manager.getEdgeFormatData());
+        final Map<String, EdgeFormatData> edgeFormatData = manager.getEdgeFormatData().get(dataKey);
+
+        assertEquals("Wrong point list", 4, edgeFormatData.values().iterator().next().getPointList().size());
     }
 }
