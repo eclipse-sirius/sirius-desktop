@@ -106,14 +106,6 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
         refreshVisuals();
     }
 
-    /**
-     * @was-generated
-     */
-    @Override
-    protected boolean isEditable() {
-        return getParser() != null;
-    }
-
     @Override
     protected IElementType getParserElementType() {
         return SiriusElementTypes.DNodeListElement_3010;
