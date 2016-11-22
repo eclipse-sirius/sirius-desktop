@@ -84,7 +84,7 @@ public class ContainerDropDescriptionDragSourcePropertySection extends AbstractR
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 
-        nameLabel.setToolTipText("Tell whether the source of this Drag and Drop is an item of a Diagram, of the Model Explorer View or both.");
+        nameLabel.setToolTipText("Tell whether the source of this Drag and Drop is an item of a representation, of the Model Explorer View or both.");
 
         CLabel help = getWidgetFactory().createCLabel(composite, "");
         FormData data = new FormData();
@@ -92,7 +92,7 @@ public class ContainerDropDescriptionDragSourcePropertySection extends AbstractR
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
         help.setImage(getHelpIcon());
-        help.setToolTipText("Tell whether the source of this Drag and Drop is an item of a Diagram, of the Model Explorer View or both.");
+        help.setToolTipText("Tell whether the source of this Drag and Drop is an item of a representation, of the Model Explorer View or both.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
 
     }
