@@ -390,11 +390,13 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
                 }
             }
         }
-
-        if (formatData != null && applyFormat) {
-
+        Object editPartAsObject = editPartViewer.getEditPartRegistry().get(toRestoreView);
+        // we can have a null edit part when pasting format on root diagram
+        // element of a diagram with hidden part that are not hidden in source
+        // diagram.
+        if (formatData != null && applyFormat && editPartAsObject != null) {
             final Bounds bounds = NotationFactory.eINSTANCE.createBounds();
-            final IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) editPartViewer.getEditPartRegistry().get(toRestoreView);
+            final IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) editPartAsObject;
             Point locationToApply;
             boolean isCollapsed = false;
             if (graphicalEditPart instanceof AbstractDiagramBorderNodeEditPart) {
@@ -448,7 +450,6 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
             // Apply GMF style properties
             applyGMFStyle(toRestoreView, formatData);
         }
-
         if (semanticDecorator instanceof DNode) {
             applyFormatToNodeChildren((DNode) semanticDecorator, editPartViewer, formatData, applyFormat, applyStyle);
         } else if (semanticDecorator instanceof DNodeContainer) {
