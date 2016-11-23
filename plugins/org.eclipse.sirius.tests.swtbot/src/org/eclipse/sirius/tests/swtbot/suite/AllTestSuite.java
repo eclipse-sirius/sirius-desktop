@@ -161,6 +161,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DiagramMouseZoomTest.class);
         suite.addTestSuite(EdgeLabelsMoveFromEdgeMoveTest.class);
         suite.addTestSuite(OpeningContextTest.class);
+        suite.addTestSuite(NodeWithDecoratorSelectionTest.class);
     }
 
     /**
@@ -262,7 +263,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(RepresentationVisibilityAfterSessionReloadTest.class);
         suite.addTestSuite(HideRevealDiagramElementsLabelsTestWithOldUI.class);
         suite.addTestSuite(HideLabelIconsWithPreferencesTest.class);
-        //suite.addTestSuite(LabelFontModificationsTest.class);
+        // suite.addTestSuite(LabelFontModificationsTest.class);
         suite.addTestSuite(MultiLineLabelDiagramTest.class);
         suite.addTestSuite(NodeCreationPositionTest.class);
         suite.addTestSuite(OpenMultipleRepresentationsTest.class);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,12 +18,14 @@ import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.EditStatusUpdater;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusDecoratorEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -56,6 +58,13 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
      */
     public AbstractBorderedDiagramElementEditPart(final View view) {
         super(view);
+    }
+
+    @Override
+    protected void createDefaultEditPolicies() {
+        super.createDefaultEditPolicies();
+        removeEditPolicy(EditPolicyRoles.DECORATION_ROLE);
+        installEditPolicy(EditPolicyRoles.DECORATION_ROLE, new SiriusDecoratorEditPolicy());
     }
 
     /**

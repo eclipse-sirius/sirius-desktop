@@ -25,6 +25,7 @@ h3. User-Visible Changes
 * <span class="label label-success">Added</span> An new _session editor_ is available on _.aird_ files. It provides an alternative, form-based GUI to visualize and manipulate sirius sessions which is not tied to the Modeling perspective or Model Explorer view. Sirius 5.0M6 includes a work-in-progress version of this new feature to encourage early community "feedback":https://wiki.eclipse.org/Sirius/SessionEditor. That version should be considered in alpha state in terms of stability an UI polish. By default, the new editor will automatically open when a session is opened, but this behavior can be disabled via a new preference in the _Sirius_ category.
 * <span class="label label-info">Modified</span> The export diagram as images actions are now adapting the output resolution based on the diagram size, this leads to better resolution for small to medium diagrams (and also bigger file) and to an operation which is no longer failing with out of memory errors in case of very big diagrams.
 * <span class="label label-info">Modified</span>The "straighten to" actions previously had a limitation concerning overlap detection. This is no longer the case. The previous known limitation was removed from the documentation (__In case of multi-selection, the overlap check is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.__).
+* <span class="label label-info">Modified</span>Decorators on diagram elements are drawn over all figures. If there is an overlap between a decorator of a figure A and another figure B that is over figure A, when user clicks on the decorator, the figure B is now selected (before it was the parent figure A).
 
 h3. Specifier-Visible Changes
 
@@ -65,6 +66,7 @@ h4. Changes in @org.eclipse.sirius.diagram@
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
+* <span class="label label-success">Added</span> The class @org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusDecoratorEditPolicy@ has been added to improve the behavior of decorator selection.
 * <span class="label label-info">Modified</span> The  @org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.DiagramEditPartService@ class which can be used to export diagrams as images is now automatically adapting the output resolution for raster image based on maximum buffer size specified through the @plugin.propeties@ file of the @org.eclipse.sirius.diagram.ui@ plugin. This leads to a noticeable increase of the export image size (you can expect a 10 factor on small diagrams) and the method will no longer fail with OutOfMemory errors as bigger diagrams will lead to a lower output resolution. Implementers using this class can override the @DiagramEditPartService.getMaximumTotalSize()@ method to return their own limit or @DiagramEditPartService.getExportResolutionFactor(DiagramEditPart, SiriusDiagramImageGenerator)@  and return @1.0@ to get back to the previous behavior.
 * <span class="label label-info">Moved</span> The methods of interface @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping@ that are @getFormatData(FormatDataKey, RepresentationElementMapping)@ and @addFormatData(FormatDataKey, RepresentationElementMapping, AbstractFormatData)@ have been moved into the interface @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager@ to reduce interface numbers for less complexity.
 * <span class="label label-danger">Removed</span> The methods @getFormatData(FormatDataKey key)@ and @addFormatData(FormatDataKey key, AbstractFormatData formatData)@ have been removed from interface @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager@ because they were deprecated.
@@ -93,10 +95,11 @@ h4. Changes in @org.eclipse.sirius.editor.properties@
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
-* <span class="label label-success">Added</span> The utility method @org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()@ has been added to allow to load a PDE target platform according to all known OSGi bundles. It is useful to compile a plug-in in the execution runtime of the tests.
+* <span class="label label-success">Added</span> The utility method @org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()@ has been added to allow to load a PDE target platform according to all known OSGi bundles. It is usefull to compile a plug-in in the execution runtime of the tests.
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
+* <span class="label label-success">Added</span> A new utility method @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragCentered(String, Class<? extends EditPart>, int, int)@ improving the dragCentered method by adding the aimed Class in parameter.
 * <span class="label label-info">Modified</span> A new AtomicBoolean parameter has been added to the utility method @mouseDragWithKey(int, int, int, int, int)@ in classes @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer@ and @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas@. This allows to correctly wait the end of the drag'n'drop.
 ** Sample of code to use:
 pre.. final AtomicBoolean dragFinished = new AtomicBoolean(false);

@@ -147,6 +147,7 @@
 			<li><span class="label label-info">Modified</span>The &#8220;straighten to&#8221; actions previously had a limitation concerning overlap detection. This is no longer the case. The previous known limitation was removed from the documentation (
 				<i>In case of multi-selection, the overlap check is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.</i>).
 			</li>
+			<li><span class="label label-info">Modified</span>Decorators on diagram elements are drawn over all figures. If there is an overlap between a decorator of a figure A and another figure B that is over figure A, when user clicks on the decorator, the figure B is now selected (before it was the parent figure A).</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
@@ -276,6 +277,9 @@
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> The class 
+				<code>org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusDecoratorEditPolicy</code> has been added to improve the behavior of decorator selection.
+			</li>
 			<li><span class="label label-info">Modified</span> The  
 				<code>org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.DiagramEditPartService</code> class which can be used to export diagrams as images is now automatically adapting the output resolution for raster image based on maximum buffer size specified through the 
 				<code>plugin.propeties</code> file of the 
@@ -355,13 +359,16 @@
 		</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> The utility method 
-				<code>org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()</code> has been added to allow to load a PDE target platform according to all known OSGi bundles. It is useful to compile a plug-in in the execution runtime of the tests.
+				<code>org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()</code> has been added to allow to load a PDE target platform according to all known OSGi bundles. It is usefull to compile a plug-in in the execution runtime of the tests.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> A new utility method 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragCentered(String, Class&lt;? extends EditPart&gt;, int, int)</code> improving the dragCentered method by adding the aimed Class in parameter.
+			</li>
 			<li><span class="label label-info">Modified</span> A new AtomicBoolean parameter has been added to the utility method 
 				<code>mouseDragWithKey(int, int, int, int, int)</code> in classes 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor</code>, 

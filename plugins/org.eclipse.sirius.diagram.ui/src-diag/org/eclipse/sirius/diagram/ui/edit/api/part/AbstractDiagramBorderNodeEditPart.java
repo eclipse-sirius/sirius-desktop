@@ -63,6 +63,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOpera
 import org.eclipse.sirius.diagram.ui.edit.internal.part.EditStatusUpdater;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusDecoratorEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -142,6 +143,8 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         // Add the Sirius feedback policy to have a the same lighter color for
         // guides of snap features for border nodes on BorderNode
         installEditPolicy(EditPolicyRoles.SNAP_FEEDBACK_ROLE, new SiriusSnapFeedbackPolicy());
+        removeEditPolicy(EditPolicyRoles.DECORATION_ROLE);
+        installEditPolicy(EditPolicyRoles.DECORATION_ROLE, new SiriusDecoratorEditPolicy());
     }
 
     @Override

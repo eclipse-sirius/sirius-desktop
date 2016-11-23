@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2015 IBM Corporation and others and others.
+ * Copyright (c) 2002, 2017 IBM Corporation and others and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import java.util.List;
 import org.eclipse.draw2d.DeferredUpdateManager;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LightweightSystem;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.parts.PaletteToolTransferDropTargetListener;
@@ -351,5 +352,24 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
 
             super.setSelection(newSelection);
         }
+    }
+
+    /**
+     * Returns the EditPart located at the given location which will accept mouse events.
+     * 
+     * @param location
+     *            The mouse location
+     * @return The EditPart located at the given location which will accept mouse events
+     */
+    public EditPart findMouseEventTargetAt(Point location) {
+        IFigure figure = getLightweightSystem().getRootFigure().findMouseEventTargetAt(location.x, location.y);
+        EditPart part = null;
+        while (part == null && figure != null) {
+            part = (EditPart) getVisualPartMap().get(figure);
+            figure = figure.getParent();
+        }
+        if (part == null)
+            return getContents();
+        return part;
     }
 }

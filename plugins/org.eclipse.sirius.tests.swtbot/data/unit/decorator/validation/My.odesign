@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="My" version="11.1.1.201610211630">
+  <ownedViewpoints name="validation" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="diag" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <validationSet name="AlwaysOnError">
+        <ownedRules xsi:type="validation:ViewValidationRule" name="AlwaysOnError" level="ERROR" message="aql:'The element '.concat(self.name).concat(' is always on error.')" targets="//@ownedViewpoints[name='validation']/@ownedRepresentations[name='diag']/@defaultLayer/@containerMappings[name='SelfContainer'] //@ownedViewpoints[name='validation']/@ownedRepresentations[name='diag']/@defaultLayer/@containerMappings[name='SelfContainer']/@borderedNodeMappings[name='classBorderNodes'] //@ownedViewpoints[name='validation']/@ownedRepresentations[name='diag']/@defaultLayer/@containerMappings[name='SelfContainer']/@subNodeMappings[name='classNodes']">
+          <audits auditExpression="aql:false"/>
+        </ownedRules>
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="AlwaysOnWarning" level="WARNING" message="aql:'The element '.concat(self.name).concat(' is always on error.')" targetClass="ecore::EPackage">
+          <audits auditExpression="aql:false"/>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default">
+        <containerMappings name="SelfContainer" semanticCandidatesExpression="var:self" domainClass="ecore::EPackage">
+          <borderedNodeMappings name="classBorderNodes" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.name.concat('Border')" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="classNodes" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass">
+            <borderedNodeMappings name="Attributes" semanticCandidatesExpression="feature:eAttributes" domainClass="ecore::EAttribute">
+              <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:BundledImageDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="SelfContainerList" semanticCandidatesExpression="var:self" domainClass="ecore::EPackage" childrenPresentation="List">
+          <subNodeMappings name="classNodes" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass">
+            <borderedNodeMappings name="Attributes" semanticCandidatesExpression="feature:eAttributes" domainClass="ecore::EAttribute">
+              <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="aql:'item' + self.name" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.name + '2'">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="AnotherSelfContainerList" semanticCandidatesExpression="var:self" domainClass="ecore::EPackage" childrenPresentation="List">
+          <subNodeMappings name="classNodes" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass">
+            <borderedNodeMappings name="Attributes" semanticCandidatesExpression="feature:eAttributes" domainClass="ecore::EAttribute">
+              <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="aql:'item' + self.name" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.name + '3'">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -117,7 +117,15 @@ public class CheckSelectedCondition extends DefaultCondition {
      * {@inheritDoc}
      */
     public String getFailureMessage() {
-        return "The edit part has not been selected";
+        String simpleClassName = "";
+        if (editPartToWaitForSelection != null) {
+            simpleClassName = editPartToWaitForSelection.getClass().getSimpleName();
+        } else if (editPartClass != null) {
+            simpleClassName = editPartClass.getSimpleName();
+        }
+        String partTypeMessage = simpleClassName == null ? "" : " of type \"" + simpleClassName + "\"";
+        String partLabelMessage = labelOfEditPart == null ? "" : " with name \"" + labelOfEditPart + "\"";
+        return "The edit part" + partTypeMessage + partLabelMessage + " has not been selected.";
     }
 
     /**

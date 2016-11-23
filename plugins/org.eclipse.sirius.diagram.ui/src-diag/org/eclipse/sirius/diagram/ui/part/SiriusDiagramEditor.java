@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.palette.PaletteRoot;
+import org.eclipse.gef.palette.PanningSelectionToolEntry;
 import org.eclipse.gmf.runtime.common.ui.services.marker.MarkerNavigationService;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument;
@@ -74,8 +75,14 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
      */
     @Override
     protected PaletteRoot createPaletteRoot(final PaletteRoot existingPaletteRoot) {
-        if (previousPalette == null)
+        if (previousPalette == null) {
             previousPalette = super.createPaletteRoot(existingPaletteRoot);
+            if (previousPalette.getDefaultEntry() instanceof PanningSelectionToolEntry) {
+                // Replace the GMF SelectionToolEx by the specific Sirius one to correctly handle tooltip on decoration
+                // and the travesability of this last.
+                previousPalette.getDefaultEntry().setToolClass(org.eclipse.sirius.diagram.ui.tools.internal.palette.SiriusSelectionToolEx.class);
+            }
+        }
         return previousPalette;
     }
 
