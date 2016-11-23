@@ -39,7 +39,6 @@ import org.eclipse.sirius.diagram.formatdata.NodeFormatData;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper.FormatDifference;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Configuration;
-import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.AdvancedSiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.NodeFormatDataKey;
@@ -65,7 +64,7 @@ import com.google.common.collect.Lists;
  * 
  * @author dlecan
  */
-public class AbstractSiriusFormatDataManagerForSemanticElementsTest extends SiriusDiagramTestCase {
+public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest extends SiriusDiagramTestCase {
 
     protected static final boolean REGENERATE_TEST_DATA = false;
 
@@ -197,9 +196,16 @@ public class AbstractSiriusFormatDataManagerForSemanticElementsTest extends Siri
 
     protected static final Diagram DIAG_TYPE9_RAW = new Diagram("Type9 Raw Diagram", 11, 0, true);
 
+    protected static final Diagram DIAG_TYPE10_MYPACKAGE = new Diagram("DiagType10 of MyPackage", 4, 2);
+
+    protected static final Diagram DIAG_TYPE10_RAW = new Diagram("Type10 Raw Diagram", 4, 2, true);
+
     protected static final Representation REPRES_TYPE9 = new Representation("DiagType9", DIAG_TYPE9_MYPACKAGE, DIAG_TYPE9_RAW);
 
-    protected static final Representation[] ALL_REPRESENTATIONS = { REPRES_TYPE1, REPRES_TYPE2, REPRES_TYPE3, REPRES_TYPE4, REPRES_TYPE5, REPRES_TYPE6, REPRES_TYPE7, REPRES_TYPE8, REPRES_TYPE9 };
+    protected static final Representation REPRES_TYPE10 = new Representation("DiagType10", DIAG_TYPE10_MYPACKAGE, DIAG_TYPE10_RAW);
+
+    protected static final Representation[] ALL_REPRESENTATIONS = { REPRES_TYPE1, REPRES_TYPE2, REPRES_TYPE3, REPRES_TYPE4, REPRES_TYPE5, REPRES_TYPE6, REPRES_TYPE7, REPRES_TYPE8, REPRES_TYPE9,
+            REPRES_TYPE10 };
 
     protected static final String[][] ENCODED_CHARS = { { " ", "__" } };
 
@@ -207,8 +213,8 @@ public class AbstractSiriusFormatDataManagerForSemanticElementsTest extends Siri
 
     protected static final double LOW_ZOOM_LEVEL = 0.50;
 
-    // Really, shouldn't be higher than 15px
-    protected static final double LOW_ZOOM_DISTANCE = 15;
+    // Really, shouldn't be higher than 20px
+    protected static final double LOW_ZOOM_DISTANCE = 20;
 
     protected static final double IDENTITY_ZOOM_LEVEL = 1.0;
 
@@ -382,12 +388,19 @@ public class AbstractSiriusFormatDataManagerForSemanticElementsTest extends Siri
         // Load referenced data
         final List<EObject> contents = loadReferenceData(path);
 
-        // Data will be sorted by keys, which are comparable
-        final Map<FormatDataKey, EObject> expected = new TreeMap<FormatDataKey, EObject>();
+        // Data will be sorted by id
+        final List<EObject> expected = new ArrayList<EObject>();
         for (final EObject eObject : contents) {
-            final FormatDataKey key = FormatDataHelper.INSTANCE.createKey((AbstractFormatData) eObject);
-            expected.put(key, eObject);
+            expected.add(eObject);
         }
+        Collections.sort(expected, new Comparator<EObject>() {
+            @Override
+            public int compare(EObject o1, EObject o2) {
+                AbstractFormatData formatData1 = (AbstractFormatData) o1;
+                AbstractFormatData formatData2 = (AbstractFormatData) o2;
+                return formatData1.getId().compareTo(formatData2.getId());
+            }
+        });
 
         // Sort elements, SemanticNodeFormatDataKey are comparable
         TreeMap<NodeFormatDataKey, Map<String, NodeFormatData>> rootNodeFormatDataMap = new TreeMap<NodeFormatDataKey, Map<String, NodeFormatData>>(newManager.getRootNodeFormatData());
@@ -395,7 +408,7 @@ public class AbstractSiriusFormatDataManagerForSemanticElementsTest extends Siri
         List<NodeFormatData> nodeFormatDataList = getNodeFormatDataList(rootNodeFormatDataMap);
 
         // Compare results
-        final FormatDifference<?> difference = FormatHelper.INSTANCE.computeFirstFormatDifference(expected.values(), nodeFormatDataList, configuration);
+        final FormatDifference<?> difference = FormatHelper.INSTANCE.computeFirstFormatDifference(expected, nodeFormatDataList, configuration);
         return difference;
     }
 

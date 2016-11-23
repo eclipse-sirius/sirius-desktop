@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0">
+  <formatdata:NodeFormatData id="//p1/C1-2" width="30" height="30">
+    <label id="//p1/C1-2">
+      <location x="31"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Lozenge" color="114,73,110">
+      <customFeatures>color</customFeatures>
+      <description xsi:type="style:LozengeNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_2_Class']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2001">
+      <children type="5002">
+        <layoutConstraint xsi:type="notation:Location" x="31"/>
+      </children>
+      <children type="3017">
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="90" y="60" width="30" height="30"/>
+    </gmfView>
+    <location x="90" y="60"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1/C1-2" width="30" height="30">
+    <label id="//p1/C1-2">
+      <location x="31"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Ellipse" borderSize="1" borderSizeComputationExpression="1">
+      <customFeatures>color</customFeatures>
+      <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_Class']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2001">
+      <children type="5002">
+        <layoutConstraint xsi:type="notation:Location" x="31"/>
+      </children>
+      <children type="3016">
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="-158" y="50" width="30" height="30"/>
+    </gmfView>
+    <location x="-158" y="50"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1/p1-1/C1-1-1" width="30" height="30">
+    <label id="//p1/p1-1/C1-1-1">
+      <location x="31"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Ellipse" borderSize="1" borderSizeComputationExpression="1">
+      <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_Class']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2001">
+      <children type="5002">
+        <layoutConstraint xsi:type="notation:Location" x="31"/>
+      </children>
+      <children type="3016">
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="-38" y="50" width="30" height="30"/>
+    </gmfView>
+    <location x="-38" y="50"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1/C1-1" width="30" height="30">
+    <label id="//p1/C1-1">
+      <location x="31"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Ellipse" borderSize="1" borderSizeComputationExpression="1">
+      <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_Class']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2001">
+      <children type="5002">
+        <layoutConstraint xsi:type="notation:Location" x="31"/>
+      </children>
+      <children type="3016">
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="-38" y="270" width="30" height="30"/>
+    </gmfView>
+    <outgoingEdges id="//p1/C1-1/aC1-2" sourceTerminal="(0.5,0.0)" targetTerminal="(0.5,1.0)">
+      <label id="//p1/C1-1/aC1-2" width="-1" height="-1">
+        <location y="-10"/>
+      </label>
+      <siriusStyle xsi:type="diagram:EdgeStyle">
+        <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@edgeMappings[name='DT10_EReference']/@style"/>
+        <centerLabelStyle showIcon="false"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Edge" type="4001">
+        <children type="6001">
+          <layoutConstraint xsi:type="notation:Bounds" y="-10"/>
+        </children>
+        <children type="6002">
+          <layoutConstraint xsi:type="notation:Bounds" x="4" y="-9"/>
+        </children>
+        <children type="6003">
+          <layoutConstraint xsi:type="notation:Bounds" x="-9" y="2"/>
+        </children>
+        <styles xsi:type="notation:ConnectorStyle"/>
+        <styles xsi:type="notation:FontStyle" fontName="Segoe UI" fontHeight="8"/>
+        <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 0, 120, 190]$[-120, -190, 0, 0]"/>
+        <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.0)"/>
+        <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,1.0)"/>
+      </gmfView>
+      <pointList x="-38" y="276"/>
+      <pointList x="-92" y="301"/>
+      <pointList x="-205" y="252"/>
+      <pointList x="-143" y="80"/>
+      <sourceRefPoint x="-23" y="270"/>
+      <targetRefPoint x="-143" y="80"/>
+    </outgoingEdges>
+    <outgoingEdges id="//p1/C1-1/aC1-1-1" sourceTerminal="(0.5,0.0)" targetTerminal="(0.5,1.0)">
+      <label id="//p1/C1-1/aC1-1-1" width="-1" height="-1">
+        <location y="-10"/>
+      </label>
+      <siriusStyle xsi:type="diagram:EdgeStyle">
+        <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@edgeMappings[name='DT10_EReference']/@style"/>
+        <centerLabelStyle showIcon="false"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Edge" type="4001">
+        <children type="6001">
+          <layoutConstraint xsi:type="notation:Bounds" y="-10"/>
+        </children>
+        <children type="6002">
+          <layoutConstraint xsi:type="notation:Bounds" x="-10" y="-3"/>
+        </children>
+        <children type="6003">
+          <layoutConstraint xsi:type="notation:Bounds" x="7" y="-10"/>
+        </children>
+        <styles xsi:type="notation:ConnectorStyle"/>
+        <styles xsi:type="notation:FontStyle" fontName="Segoe UI" fontHeight="8"/>
+        <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 0, 0, 190]$[0, -190, 0, 0]"/>
+        <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.0)"/>
+        <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,1.0)"/>
+      </gmfView>
+      <pointList x="-23" y="270"/>
+      <pointList x="-13" y="181"/>
+      <pointList x="147" y="73"/>
+      <pointList x="-8" y="73"/>
+      <sourceRefPoint x="-23" y="270"/>
+      <targetRefPoint x="-23" y="80"/>
+    </outgoingEdges>
+    <location x="-38" y="270"/>
+  </formatdata:NodeFormatData>
+</xmi:XMI>

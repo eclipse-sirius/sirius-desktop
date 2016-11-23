@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0">
+  <formatdata:NodeFormatData id="//p3" width="87" height="58">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" borderSize="1" borderSizeComputationExpression="1">
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType9']/@containerMappings[name='DT9_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="5006"/>
+      <children type="7001">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="22" y="11" width="87" height="58"/>
+    </gmfView>
+    <location x="22" y="11"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p4" width="113" height="69">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" borderSize="1" borderSizeComputationExpression="1">
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType9']/@containerMappings[name='DT9_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="5006"/>
+      <children type="7001">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="22" y="7" width="113" height="69"/>
+    </gmfView>
+    <location x="22" y="7"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p1" width="168" height="80">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" borderSize="1" borderSizeComputationExpression="1">
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType9']/@containerMappings[name='DT9_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="5006"/>
+      <children type="7001">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <children type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" x="31"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="66" y="70" width="30" height="30"/>
+      </children>
+      <children type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" x="31"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="68" y="70" width="30" height="30"/>
+      </children>
+      <children type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" y="5"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="35" y="70" width="30" height="30"/>
+      </children>
+      <children type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" x="31"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="-22" y="39" width="30" height="30"/>
+      </children>
+      <children type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" y="5"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="87" y="-22" width="30" height="30"/>
+      </children>
+      <children type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" y="5"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="4" y="70" width="30" height="30"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="22" y="11" width="168" height="80"/>
+    </gmfView>
+    <children id="//p1/C1-1" width="30" height="30">
+      <label id="//p1/C1-1">
+        <location x="31"/>
+      </label>
+      <siriusStyle xsi:type="diagram:Ellipse" borderSize="1" borderSizeComputationExpression="1">
+        <customFeatures>borderSize</customFeatures>
+        <customFeatures>borderSizeComputationExpression</customFeatures>
+        <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_Class']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" x="31"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="66" y="70" width="30" height="30"/>
+      </gmfView>
+      <location x="97" y="70"/>
+    </children>
+    <children id="//p1/C1-2" width="30" height="30">
+      <label id="//p1/C1-2">
+        <location x="31"/>
+      </label>
+      <siriusStyle xsi:type="diagram:Lozenge" color="114,73,110">
+        <customFeatures>backgroundColor</customFeatures>
+        <description xsi:type="style:LozengeNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_2_Class']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" x="31"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="68" y="70" width="30" height="30"/>
+      </gmfView>
+      <location x="66" y="70"/>
+    </children>
+    <children id="//p1/C1-3" width="30" height="30">
+      <label id="//p1/C1-3">
+        <location y="5"/>
+      </label>
+      <siriusStyle xsi:type="diagram:Dot">
+        <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType9']/@containerMappings[name='DT9_Package']/@borderedNodeMappings[name='DT9_Class']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" y="5"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="35" y="70" width="30" height="30"/>
+      </gmfView>
+      <location x="35" y="70"/>
+    </children>
+    <children id="//p1/p1-1/C1-1-1" width="30" height="30">
+      <label id="//p1/p1-1/C1-1-1">
+        <location x="31"/>
+      </label>
+      <siriusStyle xsi:type="diagram:Ellipse" borderSize="1" borderSizeComputationExpression="1">
+        <customFeatures>borderSize</customFeatures>
+        <customFeatures>borderSizeComputationExpression</customFeatures>
+        <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_Class']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" x="31"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="-22" y="39" width="30" height="30"/>
+      </gmfView>
+      <location x="158" y="14"/>
+    </children>
+    <children id="//p1/p1-1/C1-1-2" width="30" height="30">
+      <label id="//p1/p1-1/C1-1-2">
+        <location y="5"/>
+      </label>
+      <siriusStyle xsi:type="diagram:Dot">
+        <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType9']/@containerMappings[name='DT9_Package']/@borderedNodeMappings[name='DT9_Class']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" y="5"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="87" y="-22" width="30" height="30"/>
+      </gmfView>
+      <location x="87" y="-22"/>
+    </children>
+    <children id="//p1/p1-2/C1-2-1" width="30" height="30">
+      <label id="//p1/p1-2/C1-2-1">
+        <location y="5"/>
+      </label>
+      <siriusStyle xsi:type="diagram:Dot">
+        <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType9']/@containerMappings[name='DT9_Package']/@borderedNodeMappings[name='DT9_Class']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" y="5"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="4" y="70" width="30" height="30"/>
+      </gmfView>
+      <location x="4" y="70"/>
+    </children>
+    <location x="22" y="11"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//p2" width="344" height="91">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" borderSize="1" borderSizeComputationExpression="1">
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType9']/@containerMappings[name='DT9_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="5006"/>
+      <children type="7001">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <children type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" x="-79" y="7"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="-22" y="22" width="30" height="30"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="297" width="344" height="91"/>
+    </gmfView>
+    <children id="//p2/p2-1/new%20EClass%201" width="30" height="30">
+      <label id="//p2/p2-1/new%20EClass%201">
+        <location x="-79" y="7"/>
+      </label>
+      <siriusStyle xsi:type="diagram:Dot">
+        <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/data/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType9']/@containerMappings[name='DT9_Package']/@borderedNodeMappings[name='DT9_Class']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" x="-79" y="7"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="-22" y="22" width="30" height="30"/>
+      </gmfView>
+      <location x="-22" y="22"/>
+    </children>
+    <location x="297"/>
+  </formatdata:NodeFormatData>
+</xmi:XMI>
