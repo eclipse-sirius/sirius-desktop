@@ -400,7 +400,7 @@ For lists, you must define:
 
 h4(#list_click_on_value). Click on Value
 
-If the _On Click Expression_ is set then this expression defines the behavior executed when the user clicks or double-clicks on an element in the table. A variable named @onClickEventKind@ will be available to determine if the expression has been triggered by a single click or double click. In case of a single click, the variable will have the value "SINGLE_CLICK" and "DOUBLE_CLICK" in case of a double click.
+If the _On Click Operation_ is set then this operation defines the behavior executed when the user clicks or double-clicks on an element in the table. A variable named @onClickEventKind@ is available to determine if the operation has been triggered by a single click or double click. In case of a single click, the variable has the value "SINGLE_CLICK" and "DOUBLE_CLICK" in case of a double click.
 
 To define the behavior, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
