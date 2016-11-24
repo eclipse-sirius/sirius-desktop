@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -305,8 +305,7 @@ public class DDiagramElementSynchronizer {
             final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration, final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration) {
 
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CREATE_MISSING_EDGES_KEY);
-        DEdge newEdge = createEdge(candidate);
-        diagram.getOwnedDiagramElements().add(newEdge);
+        DEdge newEdge = createAndAttachEdge(candidate);
 
         Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(candidate.getMapping()).getEdgeMapping();
         if (edgeMapping.some()) {
@@ -331,8 +330,9 @@ public class DDiagramElementSynchronizer {
      *            semantic target (among other things).
      * @return the newly created edge.
      */
-    private DEdge createEdge(final DEdgeCandidate candidate) {
+    private DEdge createAndAttachEdge(final DEdgeCandidate candidate) {
         final DEdge newEdge = DiagramFactory.eINSTANCE.createDEdge();
+        diagram.getOwnedDiagramElements().add(newEdge);
         newEdge.setTarget(candidate.getSemantic());
         newEdge.setActualMapping(candidate.getMapping());
         newEdge.setSourceNode(candidate.getSourceView());
