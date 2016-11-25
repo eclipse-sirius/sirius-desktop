@@ -223,6 +223,7 @@ import org.eclipse.sirius.tests.unit.diagram.tools.NoteBehaviorOnHideRevealDelet
 import org.eclipse.sirius.tests.unit.diagram.tools.PartAndLabelPartSelectionDeletionTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.SelectionAfterToolExecutionTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.ToolsApplicabilityTest;
+import org.eclipse.sirius.tests.unit.diagram.tools.UndoAfterInconsistentEdgeCreationViewTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.palette.ModifySessionOutsideEclipseTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.palette.PaletteManagerWithFiltersTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.palette.PaletteManagerWithLayersTest;
@@ -396,6 +397,7 @@ public class AllDiagramPluginsTests {
         // tools
         suite.addTestSuite(ToolsApplicabilityTest.class);
         suite.addTestSuite(EdgeCreationToolWithExtraMappingTest.class);
+        suite.addTestSuite(UndoAfterInconsistentEdgeCreationViewTest.class);
         suite.addTestSuite(CreationTest.class);
         suite.addTestSuite(CreateViewWithMappingImportTests.class);
         suite.addTestSuite(NoteBehaviorOnHideRevealDeleteElementTest.class);
