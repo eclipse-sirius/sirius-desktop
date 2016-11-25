@@ -44,6 +44,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -97,8 +98,17 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                 // If the current element is a dangling representation, its icon
                 // is grayed. The grayed image is computed only once for each
                 // type of representation.
-                if (img != null && isDanglingRepresentationDescriptor(element)) {
-                    String key = DRepresentationDescriptor.class.getName() + DISABLED_REPRESENTATION_SUFFIX;
+                DRepresentationDescriptor descRep = getRepresentationDescriptor(element);
+                if (img != null && descRep != null && isDanglingRepresentationDescriptor(descRep)) {
+                    StringBuilder sB = new StringBuilder();
+                    sB.append(descRep.getClass().getName());
+                    RepresentationDescription description = descRep.getDescription();
+                    if (description != null) {
+                        sB.append('_');
+                        sB.append(description.getClass().getName());
+                        sB.append(DISABLED_REPRESENTATION_SUFFIX);
+                    }
+                    String key = sB.toString();
                     Image disabledImage = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
                     if (disabledImage == null) {
                         ImageDescriptor desc = ImageDescriptor.createFromImage(img);
