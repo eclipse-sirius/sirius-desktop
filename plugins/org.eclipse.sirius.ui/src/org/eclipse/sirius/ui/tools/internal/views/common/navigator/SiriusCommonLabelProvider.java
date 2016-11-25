@@ -105,8 +105,8 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                     if (description != null) {
                         sB.append('_');
                         sB.append(description.getClass().getName());
-                        sB.append(DISABLED_REPRESENTATION_SUFFIX);
                     }
+                    sB.append(DISABLED_REPRESENTATION_SUFFIX);
                     String key = sB.toString();
                     Image disabledImage = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
                     if (disabledImage == null) {
