@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,11 +9,6 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.diagram;
-
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.tests.suite.diagram.sequence.AllSequenceDiagramsPluginTests;
@@ -222,6 +217,7 @@ import org.eclipse.sirius.tests.unit.diagram.tools.NoteBehaviorOnHideRevealDelet
 import org.eclipse.sirius.tests.unit.diagram.tools.PartAndLabelPartSelectionDeletionTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.SelectionAfterToolExecutionTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.ToolsApplicabilityTest;
+import org.eclipse.sirius.tests.unit.diagram.tools.UndoAfterInconsistentEdgeCreationViewTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.palette.ModifySessionOutsideEclipseTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.palette.PaletteManagerWithFiltersTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.palette.PaletteManagerWithLayersTest;
@@ -237,6 +233,11 @@ import org.eclipse.sirius.tests.unit.diagram.vsm.VSMWithCustomizationValidationT
 import org.eclipse.sirius.tests.unit.perf.diagram.refresh.connections.DCompartmentConnectionRefreshMgrTest;
 import org.eclipse.sirius.tests.unit.table.unit.migration.InitializeElementsToSelectExpressionForTableMigrationTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.SelectionInTableAfterToolExecutionTest;
+
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 public class AllDiagramPluginsTests {
 
@@ -388,6 +389,7 @@ public class AllDiagramPluginsTests {
         // tools
         suite.addTestSuite(ToolsApplicabilityTest.class);
         suite.addTestSuite(EdgeCreationToolWithExtraMappingTest.class);
+        suite.addTestSuite(UndoAfterInconsistentEdgeCreationViewTest.class);
         suite.addTestSuite(CreationTest.class);
         suite.addTestSuite(CreateViewWithMappingImportTests.class);
         suite.addTestSuite(NoteBehaviorOnHideRevealDeleteElementTest.class);
