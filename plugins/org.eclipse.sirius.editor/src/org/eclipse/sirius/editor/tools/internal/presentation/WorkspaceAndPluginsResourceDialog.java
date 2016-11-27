@@ -33,6 +33,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.pde.core.target.ITargetDefinition;
+import org.eclipse.pde.core.target.ITargetHandle;
 import org.eclipse.pde.core.target.ITargetPlatformService;
 import org.eclipse.pde.core.target.TargetBundle;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
@@ -250,7 +251,10 @@ public class WorkspaceAndPluginsResourceDialog extends ElementTreeSelectionDialo
                 ITargetDefinition td = null;
                 if (service != null) {
                     try {
-                        td = service.getWorkspaceTargetHandle().getTargetDefinition();
+                        ITargetHandle handle = service.getWorkspaceTargetHandle();
+                        if (handle != null) {
+                            td = handle.getTargetDefinition();
+                        }
                     } catch (CoreException e) {
                     }
                 }
