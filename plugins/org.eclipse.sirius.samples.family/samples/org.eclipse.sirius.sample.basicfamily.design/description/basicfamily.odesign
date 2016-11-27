@@ -31,7 +31,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <toolSections>
+        <toolSections name="Tools">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="createMan" nodeMappings="//@ownedViewpoints[name='persons']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='ManNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
