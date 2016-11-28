@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_JwAXgLMoEeaRrZVBLKADjA" selectedViews="_KCWEsLMoEeaRrZVBLKADjA" version="8.1.1">
+  <models xmi:type="ecore:EPackage" href="dEdgeUndoDangling.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_KCWEsLMoEeaRrZVBLKADjA" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_KzSZcLMoEeaRrZVBLKADjA" name="diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_KzTAgLMoEeaRrZVBLKADjA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_KzTAgbMoEeaRrZVBLKADjA" type="Sirius" element="_KzSZcLMoEeaRrZVBLKADjA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_KzTAg7MoEeaRrZVBLKADjA" type="2001" element="_KzSZcbMoEeaRrZVBLKADjA">
+            <children xmi:type="notation:Node" xmi:id="_KzTnkLMoEeaRrZVBLKADjA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_KzTnkbMoEeaRrZVBLKADjA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_KzU1srMoEeaRrZVBLKADjA" type="3003" element="_KzSZcrMoEeaRrZVBLKADjA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_KzU1s7MoEeaRrZVBLKADjA" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KzU1tLMoEeaRrZVBLKADjA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_KzTAhLMoEeaRrZVBLKADjA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KzTAhbMoEeaRrZVBLKADjA" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_KzUOoLMoEeaRrZVBLKADjA" type="2001" element="_KzSZdrMoEeaRrZVBLKADjA">
+            <children xmi:type="notation:Node" xmi:id="_KzU1sLMoEeaRrZVBLKADjA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_KzU1sbMoEeaRrZVBLKADjA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_KzVcwLMoEeaRrZVBLKADjA" type="3003" element="_KzSZd7MoEeaRrZVBLKADjA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_KzVcwbMoEeaRrZVBLKADjA" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KzVcwrMoEeaRrZVBLKADjA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_KzUOobMoEeaRrZVBLKADjA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KzUOorMoEeaRrZVBLKADjA" x="96" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_KzTAgrMoEeaRrZVBLKADjA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_KzSZcbMoEeaRrZVBLKADjA" name="ClassA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="dEdgeUndoDangling.ecore#//ClassA"/>
+        <semanticElements xmi:type="ecore:EClass" href="dEdgeUndoDangling.ecore#//ClassA"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_KzSZcrMoEeaRrZVBLKADjA" labelPosition="node">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_KzSZc7MoEeaRrZVBLKADjA"/>
+          <description xmi:type="style:SquareDescription" href="dEdgeUndoDangling.odesign#//@ownedViewpoints[name='dEdgeUndoDangling']/@ownedRepresentations[name='Package']/@defaultLayer/@nodeMappings[name='EClazz']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_KzSZdLMoEeaRrZVBLKADjA"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_KzSZdbMoEeaRrZVBLKADjA" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="dEdgeUndoDangling.odesign#//@ownedViewpoints[name='dEdgeUndoDangling']/@ownedRepresentations[name='Package']/@defaultLayer/@nodeMappings[name='EClazz']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_KzSZdrMoEeaRrZVBLKADjA" name="ClassB" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="dEdgeUndoDangling.ecore#//ClassB"/>
+        <semanticElements xmi:type="ecore:EClass" href="dEdgeUndoDangling.ecore#//ClassB"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_KzSZd7MoEeaRrZVBLKADjA" labelPosition="node">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_KzSZeLMoEeaRrZVBLKADjA"/>
+          <description xmi:type="style:SquareDescription" href="dEdgeUndoDangling.odesign#//@ownedViewpoints[name='dEdgeUndoDangling']/@ownedRepresentations[name='Package']/@defaultLayer/@nodeMappings[name='EClazz']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_KzSZebMoEeaRrZVBLKADjA"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_KzSZerMoEeaRrZVBLKADjA" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="dEdgeUndoDangling.odesign#//@ownedViewpoints[name='dEdgeUndoDangling']/@ownedRepresentations[name='Package']/@defaultLayer/@nodeMappings[name='EClazz']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="dEdgeUndoDangling.odesign#//@ownedViewpoints[name='dEdgeUndoDangling']/@ownedRepresentations[name='Package']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_KzSZe7MoEeaRrZVBLKADjA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="dEdgeUndoDangling.odesign#//@ownedViewpoints[name='dEdgeUndoDangling']/@ownedRepresentations[name='Package']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="dEdgeUndoDangling.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="dEdgeUndoDangling.odesign#//@ownedViewpoints[name='dEdgeUndoDangling']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

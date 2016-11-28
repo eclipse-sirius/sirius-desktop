@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -215,6 +215,7 @@ import org.eclipse.sirius.tests.unit.diagram.tools.NoteBehaviorOnHideRevealDelet
 import org.eclipse.sirius.tests.unit.diagram.tools.NoteBehaviorOnHideRevealDeleteManyElementsTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.PartAndLabelPartSelectionDeletionTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.ToolsApplicabilityTest;
+import org.eclipse.sirius.tests.unit.diagram.tools.UndoAfterInconsistentEdgeCreationViewTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.palette.ModifySessionOutsideEclipseTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.palette.PaletteManagerWithFiltersTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.palette.PaletteManagerWithLayersTest;
@@ -378,6 +379,7 @@ public class AllDiagramPluginsTests {
         // tools
         suite.addTestSuite(ToolsApplicabilityTest.class);
         suite.addTestSuite(EdgeCreationToolWithExtraMappingTest.class);
+        suite.addTestSuite(UndoAfterInconsistentEdgeCreationViewTest.class);
         suite.addTestSuite(CreationTest.class);
         suite.addTestSuite(CreateViewWithMappingImportTests.class);
         suite.addTestSuite(NoteBehaviorOnHideRevealDeleteElementTest.class);
