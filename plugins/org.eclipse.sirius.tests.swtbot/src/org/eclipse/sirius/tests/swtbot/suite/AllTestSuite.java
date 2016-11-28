@@ -35,6 +35,7 @@ import org.eclipse.sirius.tests.swtbot.editor.vsm.MetamodelPropertyTabTests;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.MigrationOnVsmEditorReloadTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.OpeningContextTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ResizeKindEditorTest;
+import org.eclipse.sirius.tests.swtbot.editor.vsm.VSMEditorPropertiesTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.VSMFieldTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ValidationEmptyNameTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ViewpointSpecificationProjectCreationTest;
@@ -405,6 +406,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(LocalSessionViewTest.class);
         suite.addTestSuite(ShowTypeActionButtonTest.class);
         suite.addTestSuite(ChildrenPositionStabilityAfterParentResizeTest.class);
+        suite.addTestSuite(VSMEditorPropertiesTest.class);
 
         // Scenario test cases
         suite.addTestSuite(ESEDemoTest.class);
