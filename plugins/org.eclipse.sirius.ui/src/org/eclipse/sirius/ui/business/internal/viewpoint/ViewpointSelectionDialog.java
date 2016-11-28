@@ -347,7 +347,6 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
         setMessage(VIEWPOINT_SELECTION_MESSAGE);
         Shell shell = parent.getShell();
         shell.setText(VIEWPOINT_SELECTION_SHELL_TITLE);
-        shell.pack();
         return contents;
     }
 
