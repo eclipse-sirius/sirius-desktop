@@ -13,7 +13,6 @@ package org.eclipse.sirius.tools.api.ui;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
@@ -21,13 +20,11 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.internal.dialect.command.RefreshImpactedElementsCommand;
@@ -35,12 +32,12 @@ import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemoval
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
+import org.eclipse.sirius.tools.internal.ui.RefreshHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * A listener to refresh all Sirius opened editors. It is used as :
@@ -126,7 +123,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
         Command result = null;
         if (!disabled) {
             if (needsRefresh()) {
-                boolean impactingNotification = isImpactingNotification(notifications);
+                boolean impactingNotification = RefreshHelper.isImpactingNotification(notifications);
                 // Do nothing if the notification concern only elements of aird
                 // resource and that the representationsToForceRefresh is empty.
                 if (impactingNotification || !representationsToForceRefresh.isEmpty()) {
@@ -137,7 +134,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
                 }
                 setForceRefresh(false);
                 representationsToForceRefresh.clear();
-            } else if (isImpactingNotification(notifications)) {
+            } else if (RefreshHelper.isImpactingNotification(notifications)) {
                 Option<? extends Command> optionCommand = getRefreshImpactedElementsCommandForOpenedRepresentations(notifications);
                 if (optionCommand.some()) {
                     result = optionCommand.get();
@@ -146,26 +143,6 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
         }
         disabled = false;
         return Options.newSome(result);
-    }
-
-    private boolean isImpactingNotification(final Collection<Notification> notifications) {
-        boolean isImpactingNotification = false;
-        Set<EObject> alreadyDoneNotifiers = Sets.newHashSet();
-        for (Notification notification : notifications) {
-            Object notifier = notification.getNotifier();
-            if (notifier instanceof EObject) {
-                EObject eObjectNotifier = (EObject) notifier;
-                if (!alreadyDoneNotifiers.contains(eObjectNotifier)) {
-                    alreadyDoneNotifiers.add(eObjectNotifier);
-                    Resource notifierResource = eObjectNotifier.eResource();
-                    if (notifierResource != null && !new ResourceQuery(notifierResource).isRepresentationsResource()) {
-                        isImpactingNotification = true;
-                        break;
-                    }
-                }
-            }
-        }
-        return isImpactingNotification;
     }
 
     /**

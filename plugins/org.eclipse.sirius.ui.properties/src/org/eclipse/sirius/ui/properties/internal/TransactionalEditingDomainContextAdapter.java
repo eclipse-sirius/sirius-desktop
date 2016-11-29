@@ -12,7 +12,6 @@ package org.eclipse.sirius.ui.properties.internal;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
@@ -32,6 +31,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.logger.RuntimeLogger;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.internal.logger.RuntimeLoggerManagerImpl;
+import org.eclipse.sirius.tools.internal.ui.RefreshHelper;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
@@ -45,10 +45,6 @@ import com.google.common.collect.Lists;
  *
  */
 public class TransactionalEditingDomainContextAdapter implements EditingContextAdapter {
-    private static final Pattern GMF_NOTATION_NS_PATTERN = Pattern.compile("http://www.eclipse.org/gmf/runtime/.*/notation"); //$NON-NLS-1$
-
-    private static final Pattern SIRIUS_NS_PATTERN = Pattern.compile("http://www.eclipse.org/sirius/.*"); //$NON-NLS-1$
-
     private static final String FORCE_REFRESH_SYSTEM_FLAG = "org.eclipse.sirius.properties.forceRefreshOnRepresentationsChange"; //$NON-NLS-1$
 
     /**
@@ -219,17 +215,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
      * @return <code>true</code> if the changes impact semantic models.
      */
     private static boolean containsSemanticModelChanges(List<Notification> changes) {
-        for (Notification n : changes) {
-            Object src = n.getNotifier();
-            if (src instanceof EObject) {
-                String nsURI = ((EObject) src).eClass().getEPackage().getNsURI();
-                if (!SIRIUS_NS_PATTERN.matcher(nsURI).matches() && !GMF_NOTATION_NS_PATTERN.matcher(nsURI).matches()) {
-                    // This is a semantic change.
-                    return true;
-                }
-            }
-        }
-        return false;
+        return RefreshHelper.isImpactingNotification(changes);
     }
 
     /**
