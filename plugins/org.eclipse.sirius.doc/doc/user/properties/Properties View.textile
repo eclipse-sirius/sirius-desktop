@@ -1,0 +1,29 @@
+h1. Properties Views
+
+This document describes behaviors specific to Sirius-defined properties views.
+
+{toc:style=disc|minLevel=2|maxLevel=3}
+
+h2(#preferences). Preferences
+
+Some preferences and configuration parameters are available for you to customize your experience. They can affect the look of the properties view.
+
+!./images/PropertiesViewPreferencePage.png!
+
+h3. Legacy Semantic Properties Tabs
+
+This group contains preferences to show or hide tabs provided by Sirius which display the raw properties of all semantic elements currently selected in a representation or in the _Model Explorer_. Starting from version 4.0, Sirius provides better alternatives for showing these semantic properties, but the legacy tabs are still available if needed.
+
+* _Show Default Tab:_ This checkbox allows to hide the @Default@ tab which is visible by default when you select an element from the _Model Explorer_.
+!./images/DefaultTabPreference.png!
+
+* _Show Semantic Tab:_ This checkbox allows to hide the @Semantic@ tab which is visible by default when you select an element from a Sirius representation.
+
+
+h3. Sirius Default Tabs
+
+This group contains preferences to modify the behavior of the tabs rendered by the Sirius properties view default rules. Note that this will only apply to the generic properties views which are used when a modeler does not provide custom ones. 
+
+* _Maximum size of tabs name:_ This field defines the maximal length of tabs names. This is used to shorten the tabs names when the default rules are used to render the properties view. The default is 20 characters.
+
+!./images/MaxTabNamePreference.png!

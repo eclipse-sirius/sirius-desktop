@@ -10,3 +10,4 @@ You will find the following sections:
 * "*Sequence Diagrams*":sequences/Sequence%20Diagrams.html are a special case of diagram with some specific behaviors which are described here.
 * "*Tables*":tables/Tables.html covers how to use the two kinds of tabular representations supported by Sirius: edition tables and cross-tables.
 * "*Trees*":trees/Trees.html describes the behavior of tree (hierarchical) editors built with Sirius.
+* "*Properties Views*":properties/Properties%20View.html describes behaviors specific to Sirius-defined properties views.

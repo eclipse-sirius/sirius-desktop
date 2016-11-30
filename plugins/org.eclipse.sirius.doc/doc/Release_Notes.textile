@@ -6,6 +6,12 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius4.1.2). Changes in Sirius 4.1.2
 
+h3. User-Visible Changes
+
+* <span class="label label-success">Added</span> 
+A new preference named _Maximum size of tabs name_ is available in the Sirius Properties View preference page. This preference is used to shorten the tabs names when the default rules are used to render the properties view.
+!./images/PreferencePageMaxTabName.png! 
+
 h3. Developer-Visible Changes
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping@ class has  been added to handle copy/paste format with mapping information when an element target of a format pasting has many source diagram format corresponding to its key. In this case, we use the mapping information to get the more precise data format. And if no result matched, then we return the first found by using the key.
