@@ -43,7 +43,6 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 public class SiriusToolServices {
 
     /**
-    /**
      * Executes the operation with the given URI.
      * 
      * @param self
@@ -64,7 +63,13 @@ public class SiriusToolServices {
                     ICommandTask task = new TaskHelper(modelAccessor, SiriusEditPlugin.getPlugin().getUiCallback()).buildTaskFromModelOperation(eObject, modelOperation);
                     SiriusCommand command = new SiriusCommand(session.getTransactionalEditingDomain(), "SiriusToolServices#executeOperation"); //$NON-NLS-1$
                     command.getTasks().add(task);
-                    session.getTransactionalEditingDomain().getCommandStack().execute(command);
+                    try {
+                        if (command.canExecute()) {
+                            command.execute();
+                        }
+                    } finally {
+                        command.dispose();
+                    }
                 }
             }
         }
