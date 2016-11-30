@@ -49,7 +49,7 @@ Several behaviors concerning the diagram elements editing is conditioned by prop
 
 h5. Show Ruler
 
-_Display/Show Ruler_: Display an horizonal and vertical ruler according to _Measurement/Ruler Units_ property.
+_Display/Show Ruler_: Display an horizontal and vertical ruler according to _Measurement/Ruler Units_ property.
 
 h5. Show Grid 
 
@@ -529,7 +529,7 @@ It is also possible to pin/unpin diagram elements thanks to the palette. Multipl
 Notes:
 
 * Pin/unpin information are persistent and saved in __.aird__ session file.
-* it is not possible to pin/unpin edges or compartiments.
+* it is not possible to pin/unpin edges or compartments.
 
 h4. Configuration
 
@@ -785,7 +785,7 @@ h4(#ref_tabbar_diagram). Tab-bar Actions Available on Diagram
 
 When the diagram itself (and not a specific element) is selected, the tab-bar contains the following buttons:
 
-!images/tabbar_automatic_layout_tools.png! _Automatic Layout Tools_. The first group of tools are used to trigger an automatic layout of the elements on the diagram. Automatic layout uses a generic algorithm which tries to arrange the position and sizes of the elements on the diagram in a nice, readable way. In particular it makes sure, unless specific constraints pervent it, that no elements overlap each other, and that elements which contain others (i.e. containers) are large enough to show all their contents. It also tries to minimize the crossing of edges. The two ways to invoke the automatic layout algorithms are available as a drop-down menu on the left-most icon in the tab-bar.
+!images/tabbar_automatic_layout_tools.png! _Automatic Layout Tools_. The first group of tools are used to trigger an automatic layout of the elements on the diagram. Automatic layout uses a generic algorithm which tries to arrange the position and sizes of the elements on the diagram in a nice, readable way. In particular it makes sure, unless specific constraints prevent it, that no elements overlap each other, and that elements which contain others (i.e. containers) are large enough to show all their contents. It also tries to minimize the crossing of edges. The two ways to invoke the automatic layout algorithms are available as a drop-down menu on the left-most icon in the tab-bar.
 * _Arrange All_. This is the action available by default. It launches the layout algorithm on all the elements in the diagram. Note that elements which have been _pinned_ to their position will *not* be moved by the algorithm.
 * _Arrange Linked Border Nodes_ This special action will only concerns nodes which are on the border of another element and which are either the source or the target of at least one edge. When invoked, the action will try to move these bordered nodes on the border of their parent on the most "natural" side of their parent element depending on the direction of the edge. For example if a border node is on the top side of an element but has an edge which goes down to a target element below its parent, this action will move the border node to the bottom side so that the edge does not cross the parent element.
 
@@ -796,7 +796,7 @@ When the diagram itself (and not a specific element) is selected, the tab-bar co
 
 !images/tabbar_refresh.png! _Refresh_. This operation, which can also be invoked with the _F5_ keyboard shortcut, will force an update of the diagram's content according to the latest version of the underlying semantic model. The default operational mode for Sirius is to automatically refresh the diagram's content whenever any relevant change is detected in the semantic model. This can be disabled using the _Automatic Refresh_ preference (see _Window > Preferences > Sirius_). When in manual refresh mode (i.e. _Automatic Refresh_ is unchecked), you must manually use the _Refresh_ operation whenever you want the diagram to take into account changes in the model. Even in automatic refresh mode, it may be sometimes necessary to invoke an explicit, manual refresh using this operation if Sirius got confused.
 
-!images/tabbar_layers_selection.png! _Layers Selection_. The various kinds of elements which can appear on a diagram, and the tools which are available to manipulate them, are organized in _Layers_. Each diagram has a default layer which is always enabled, but may also have additional layers. Addtional layers can be optional or not. You can enable or disable the optional layers at will, to hide or reveal new kinds of elements. Note that the list of layers available to you on a diagram may depend on which _Viewpoints_ are currently enabled in the _Modeling Project_, as some viewpoints can contribute additional layers to diagrams. The set of layers currently enabled can be controlled using the drop-down menu in the tab-bar. Note that mandatory layers can not be disabled and are not displayed in this menu. Simply click on the button to reveal the menu, and check or un-check the optional layers you want to have enabled or disabled. A tick-mark is visible on the tab-bar button if at least one optional layer is currently enabled.
+!images/tabbar_layers_selection.png! _Layers Selection_. The various kinds of elements which can appear on a diagram, and the tools which are available to manipulate them, are organized in _Layers_. Each diagram has a default layer which is always enabled, but may also have additional layers. Additional layers can be optional or not. You can enable or disable the optional layers at will, to hide or reveal new kinds of elements. Note that the list of layers available to you on a diagram may depend on which _Viewpoints_ are currently enabled in the _Modeling Project_, as some viewpoints can contribute additional layers to diagrams. The set of layers currently enabled can be controlled using the drop-down menu in the tab-bar. Note that mandatory layers can not be disabled and are not displayed in this menu. Simply click on the button to reveal the menu, and check or un-check the optional layers you want to have enabled or disabled. A tick-mark is visible on the tab-bar button if at least one optional layer is currently enabled.
 
 !images/diagram_editor7.png!
 
@@ -804,7 +804,7 @@ When the diagram itself (and not a specific element) is selected, the tab-bar co
 
 !images/diagram_editor8.png!
 
-!images/tabbar_show_hide.png! _Show/Hide_. You can chose to hide (or reveal) specific diagram elements (or just their labels) independently of the conditions in pre-defined filters. This can be useful if you want to concentrate on specific parts of your model, or if you want hide parts which are not relevant to simplify communication with other people. You can hide elements from their context menu (using the _Show/Hide_ sub-menu) or more globally by using the _Show/Hide_ button in the tab-bar. This button opens a dialog box which presents all the elements visible on the diagram, organised in a hierarchical way which corresponds to their graphical organization. Note that because a single semantic element may have multiple representations on the diagram, they may appear multiple times in the dialog box. Making one representation hidden will not hide the other graphical representations of the same element. You can chose which elements should be visible (resp. hidden) on the diagram by checking (resp. unchecking) them in the dialog. For some elements (e.g. compartments), the hide is not supported and is disabled, these elements will be grayed in the dialog box and checking them will have no effect. The top area of the dialog box contains various buttons to help you find the elements you want, by show only the checked (i.e. visible) or unchecked (i.e. hidden) elements, by expanding or collapsing the tree viewer, or by checking or un-checking all elements at once. You can also search for elements by their name using the search box. For some elements (e.g. edges), you can hide the label (or labels) while keeping the element itself visible. When this is possible, the label is presented as a sub-item of the element in the dialog box, with its own check-box.
+!images/tabbar_show_hide.png! _Show/Hide_. You can chose to hide (or reveal) specific diagram elements (or just their labels) independently of the conditions in pre-defined filters. This can be useful if you want to concentrate on specific parts of your model, or if you want hide parts which are not relevant to simplify communication with other people. You can hide elements from their context menu (using the _Show/Hide_ sub-menu) or more globally by using the _Show/Hide_ button in the tab-bar. This button opens a dialog box which presents all the elements visible on the diagram, organized in a hierarchical way which corresponds to their graphical organization. Note that because a single semantic element may have multiple representations on the diagram, they may appear multiple times in the dialog box. Making one representation hidden will not hide the other graphical representations of the same element. You can chose which elements should be visible (resp. hidden) on the diagram by checking (resp. unchecking) them in the dialog. For some elements (e.g. compartments), the hide is not supported and is disabled, these elements will be grayed in the dialog box and checking them will have no effect. The top area of the dialog box contains various buttons to help you find the elements you want, by show only the checked (i.e. visible) or unchecked (i.e. hidden) elements, by expanding or collapsing the tree viewer, or by checking or un-checking all elements at once. You can also search for elements by their name using the search box. For some elements (e.g. edges), you can hide the label (or labels) while keeping the element itself visible. When this is possible, the label is presented as a sub-item of the element in the dialog box, with its own check-box.
 
 !images/diagram_editor_show_hide_dialog2.png!
 
@@ -839,13 +839,13 @@ The tab-bar contains a different set of actions when at least one element is sel
 
 !images/tabbar_arrange_selection.png! _Arrange Selection_. This action launches the layout algorithm only for the diagram elements which are selected (and not pinned). All the other elements on the diagram, whether pinned or not, will not be moved. Note that edges may be re-arranged if one of their ends is part of the selection.
 
-!images/tabbar_alignment_control.png! _Alignment Control_. This menu contains several operations which can be used to align several graphical elements in variouse ways. The actions in this menu are only enabled when several elements are selected.
+!images/tabbar_alignment_control.png! _Alignment Control_. This menu contains several operations which can be used to align several graphical elements in various ways. The actions in this menu are only enabled when several elements are selected.
 
 !images/tabbar_distribute_actions.png! _Distribute Elements_. This menu contains several actions which can be used to distribute the selected diagram elements horizontally/vertically with a same space between their centers or their bounds. The actions in this menu are enabled only for selected nodes with same direct parent. At least 3 shapes should be selected to enable distribute actions.
 
 !images/tabbar_pin_unpin_02.png! _Pin/Unpin_. These two buttons can be used to mark all the selected elements as pinned or not.
 
-!images/tabbar_copy_layout.png! _Copy Layout_. This tool can be used to duplicate the layout of some diagram elements from this diagram into another. This replication only applies to the same semantic elements between diagrams. First, select the set of elements of interset, and use this _Copy layout_ action. Then go to the target diagram, and choose the _Paste layout_ action from the tab-bar there.
+!images/tabbar_copy_layout.png! _Copy Layout_. This tool can be used to duplicate the layout of some diagram elements from this diagram into another. This replication only applies to the same semantic elements between diagrams. First, select the set of elements of interest, and use this _Copy layout_ action. Then go to the target diagram, and choose the _Paste layout_ action from the tab-bar there.
 
 !images/tabbar_hide.png! _Hide_. This button hides all the selected elements from view. It can also be invoked with the _Ctrl+H_ keyboard shortcut. To reveal elements which have been hidden, you can for example deselect all element, and in the diagram's tab-bar, choose the _Show/Hide_ button, which opens a dialog box to control the elements' visibility.
 
@@ -907,7 +907,7 @@ The outline view has two display modes that you can select in its upper toolbar:
 
 	!images/diagram_editor5.png!
 	
-To hide/reveal an element or its label in the editor, simply right click an elment in the tree and choose one of the __Hide element__, __Hide label__, __Show element__, __Show label__ menus. The availability of the menus depends on the state of each element and its support of the "Show/Hide" feature.
+To hide/reveal an element or its label in the editor, simply right click an element in the tree and choose one of the __Hide element__, __Hide label__, __Show element__, __Show label__ menus. The availability of the menus depends on the state of each element and its support of the "Show/Hide" feature.
 
 The hidden elements have their label displayed in italic style and their icon is decorated with a yellow dot in the top left corner.
 The elements whose label is hidden have their label displayed in italic style and their icon is decorated with a __L__ in the bottom right corner.
@@ -918,7 +918,7 @@ The elements whose label is hidden have their label displayed in italic style an
 
 h2(#preferences). Preferences
 
-Some preferences and configuration parameters are avilable for you to customize your experience. They can affect either the look or the behavior of diagrams. 
+Some preferences and configuration parameters are available for you to customize your experience. They can affect either the look or the behavior of diagrams. 
 
 h3. Global Preferences
 
@@ -926,7 +926,7 @@ Global preferences are global to a Sirius installation, or more precisely to an 
 
   !images/preferences_sirius_diagram.png!
 
-The illusration above shows the default value of all these preferences.
+The illustration above shows the default value of all these preferences.
 
 * _Show connector handles:_ This has no effect for Sirius diagram (it is inherited from the standard GMF settings).
 * _Show popup bars:_ If checked, and if the diagram's configuration supports this feature, then when you keep the mouse cursor still for a small delay on a diagram element, a _popup bar_ will appear with buttons corresponding to all the tools which can be applied in this context. The tools which appear are the same as the ones available on the palette, but it can be more convenient sometimes to use the popup bar instead of going back to the palette to select the tool:
@@ -946,7 +946,7 @@ The illusration above shows the default value of all these preferences.
 
 h3. Appearance
 
-Tha _Appearance_ preferences page (see below) gives you two preferences to control whether or not to show the labels on shapes (nodes, containers, bordered nodes) and connectors (edges). It also allows you to customize the default font and colors used for some basic diagram elements. Diagram configurations already specify default values for these style attributes, so in practice these preferences are mostly useful for notes.
+The _Appearance_ preferences page (see below) gives you two preferences to control whether or not to show the labels on shapes (nodes, containers, bordered nodes) and connectors (edges). It also allows you to customize the default font and colors used for some basic diagram elements. Diagram configurations already specify default values for these style attributes, so in practice these preferences are mostly useful for notes.
 
   !images/preferences_sirius_diagram_appearance.png!
 
@@ -958,6 +958,6 @@ The _Printing_ page (see below) gives you various preferences related to page la
 
 h3. Rulers And Grid
 
-Finally, the _Rulers And Grid_ page (see below) contains preferences to control whether or not new diagrams should initialy show the rulers and/or grids, and whether to enable the _Snap to grid_ and _Snap to shapes_ behavior by default. The preferences on this page are only taken into account as starting values for new diagrams. Each diagram has its own configuration of rulers and grid which can be modified  in the _Rulers & Grid_ section of the _Properties_ view of the diagram itself.
+Finally, the _Rulers And Grid_ page (see below) contains preferences to control whether or not new diagrams should initially show the rulers and/or grids, and whether to enable the _Snap to grid_ and _Snap to shapes_ behavior by default. The preferences on this page are only taken into account as starting values for new diagrams. Each diagram has its own configuration of rulers and grid which can be modified  in the _Rulers & Grid_ section of the _Properties_ view of the diagram itself.
 
   !images/preferences_sirius_diagram_rulers_grid.png!
