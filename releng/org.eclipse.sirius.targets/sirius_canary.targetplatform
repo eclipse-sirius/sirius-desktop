@@ -1,7 +1,7 @@
 target "sirius_canary"
 
 include "modules/shared-license.tpd"
-include "modules/eef-17-nightly.tpd"
+include "modules/eef-nightly.tpd"
 
 with source, requirements
 

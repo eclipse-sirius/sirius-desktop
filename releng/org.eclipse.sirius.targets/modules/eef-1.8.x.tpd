@@ -1,6 +1,6 @@
-target "EEF 1.7.x"
+target "EEF 1.8.x"
 
-location EEF-1.7.x "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.7" {
+location EEF-1.8.x "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.8" {
 	org.eclipse.eef.sdk.feature.feature.group lazy
 	org.eclipse.eef.ext.widgets.reference.feature.feature.group lazy
 }

@@ -1,0 +1,6 @@
+target "EEF Nightly"
+
+location EEF-Latest "http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon" {
+	org.eclipse.eef.sdk.feature.feature.group lazy
+	org.eclipse.eef.ext.widgets.reference.feature.feature.group lazy
+}
