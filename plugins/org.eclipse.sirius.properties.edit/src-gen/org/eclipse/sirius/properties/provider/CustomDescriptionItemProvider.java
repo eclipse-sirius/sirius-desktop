@@ -17,7 +17,10 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.CustomDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
@@ -26,7 +29,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.CustomDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider {
@@ -49,8 +52,76 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            addLabelExpressionPropertyDescriptor(object);
+            addHelpExpressionPropertyDescriptor(object);
+            addIsEnabledExpressionPropertyDescriptor(object);
+            addExtendsPropertyDescriptor(object);
+            addFilterConditionalStylesFromExtendedCustomExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
+    }
+
+    /**
+     * This adds a property descriptor for the Label Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addLabelExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractWidgetDescription_labelExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractWidgetDescription_labelExpression_feature", "_UI_AbstractWidgetDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesPackage.Literals.ABSTRACT_WIDGET_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Help Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addHelpExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractWidgetDescription_helpExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractWidgetDescription_helpExpression_feature", "_UI_AbstractWidgetDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesPackage.Literals.ABSTRACT_WIDGET_DESCRIPTION__HELP_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Is Enabled Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     */
+    protected void addIsEnabledExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractWidgetDescription_isEnabledExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractWidgetDescription_isEnabledExpression_feature", "_UI_AbstractWidgetDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesPackage.Literals.ABSTRACT_WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Extends feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addExtendsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractCustomDescription_extends_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_AbstractCustomDescription_extends_feature", "_UI_AbstractCustomDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.ABSTRACT_CUSTOM_DESCRIPTION__EXTENDS, true, false, true, null, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Filter Conditional Styles From Extended Custom Expression feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addFilterConditionalStylesFromExtendedCustomExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractCustomDescription_filterConditionalStylesFromExtendedCustomExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractCustomDescription_filterConditionalStylesFromExtendedCustomExpression_feature", "_UI_AbstractCustomDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesPackage.Literals.ABSTRACT_CUSTOM_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_CUSTOM_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+                null));
     }
 
     /**
@@ -65,10 +136,10 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CUSTOM_EXPRESSIONS);
-            childrenFeatures.add(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS);
-            childrenFeatures.add(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__STYLE);
-            childrenFeatures.add(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CONDITIONAL_STYLES);
+            childrenFeatures.add(PropertiesPackage.Literals.ABSTRACT_CUSTOM_DESCRIPTION__CUSTOM_EXPRESSIONS);
+            childrenFeatures.add(PropertiesPackage.Literals.ABSTRACT_CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS);
+            childrenFeatures.add(PropertiesPackage.Literals.ABSTRACT_CUSTOM_DESCRIPTION__STYLE);
+            childrenFeatures.add(PropertiesPackage.Literals.ABSTRACT_CUSTOM_DESCRIPTION__CONDITIONAL_STYLES);
         }
         return childrenFeatures;
     }
@@ -103,16 +174,31 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((CustomDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_CustomDescription_type") : //$NON-NLS-1$
-                getString("_UI_CustomDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        return ((StyledString) getStyledText(object)).getString();
+    }
+
+    /**
+     * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Object getStyledText(Object object) {
+        String label = ((CustomDescription) object).getName();
+        StyledString styledLabel = new StyledString();
+        if (label == null || label.length() == 0) {
+            styledLabel.append(getString("_UI_CustomDescription_type"), StyledString.Style.QUALIFIER_STYLER); //$NON-NLS-1$
+        } else {
+            styledLabel.append(getString("_UI_CustomDescription_type"), StyledString.Style.QUALIFIER_STYLER).append(" " + label); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        return styledLabel;
     }
 
     /**
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -120,6 +206,12 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
         updateChildren(notification);
 
         switch (notification.getFeatureID(CustomDescription.class)) {
+        case PropertiesPackage.CUSTOM_DESCRIPTION__LABEL_EXPRESSION:
+        case PropertiesPackage.CUSTOM_DESCRIPTION__HELP_EXPRESSION:
+        case PropertiesPackage.CUSTOM_DESCRIPTION__IS_ENABLED_EXPRESSION:
+        case PropertiesPackage.CUSTOM_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_CUSTOM_EXPRESSION:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
         case PropertiesPackage.CUSTOM_DESCRIPTION__CUSTOM_EXPRESSIONS:
         case PropertiesPackage.CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS:
         case PropertiesPackage.CUSTOM_DESCRIPTION__STYLE:
@@ -140,13 +232,13 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CUSTOM_EXPRESSIONS, PropertiesFactory.eINSTANCE.createCustomExpression()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_CUSTOM_DESCRIPTION__CUSTOM_EXPRESSIONS, PropertiesFactory.eINSTANCE.createCustomExpression()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS, PropertiesFactory.eINSTANCE.createCustomOperation()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS, PropertiesFactory.eINSTANCE.createCustomOperation()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createCustomWidgetStyle()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_CUSTOM_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createCustomWidgetStyle()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createCustomWidgetConditionalStyle()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_CUSTOM_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createCustomWidgetConditionalStyle()));
     }
 
 }

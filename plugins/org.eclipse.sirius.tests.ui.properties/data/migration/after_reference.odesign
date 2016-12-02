@@ -7,23 +7,23 @@
     xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0"
     xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0"
     name="basicfamily"
-    version="11.0.0.201609021200">
+    version="11.0.0.201608291200">
   <extensions
       xsi:type="properties:ViewExtensionDescription"
-      identifier="NewPropertieView">
+      name="NewPropertieView">
     <metamodels
         href="http://www.eclipse.org/sirius/sample/basicfamily#/"/>
-    <pages identifier="PropertiesTabGeneralForFamily"
+    <pages name="PropertiesTabGeneralForFamily"
         labelExpression="General"
         domainClass="basicfamily.Family"
         groups="//@extensions.0/@groups.0"/>
     <groups
-        identifier="Family Text"
+        name="Family Text"
         labelExpression="Text"
         domainClass="basicfamily.Family">
       <controls
           xsi:type="properties:LabelDescription"
-          identifier="Single Label Reference Identifier"
+          name="Single Label Reference Identifier"
           labelExpression="Single Label Reference Label Expression"
           helpExpression="Single Label Reference Help Expression"
           isEnabledExpression="aql:true"
@@ -98,7 +98,7 @@
       </controls>
       <controls
           xsi:type="properties:HyperlinkDescription"
-          identifier="Single Hyperlink Reference Identifier"
+          name="Single Hyperlink Reference Identifier"
           labelExpression="Single Hyperlink Reference Label Expression"
           helpExpression="Single Hyperlink Reference Help Expression"
           isEnabledExpression="aql:true"
@@ -178,7 +178,7 @@
       </controls>
       <controls
           xsi:type="properties:ListDescription"
-          identifier="Single List Reference Identifier"
+          name="Single List Reference Identifier"
           labelExpression="Single List Reference Label Expression"
           helpExpression="Single List Reference Help Expression"
           isEnabledExpression="aql:true"

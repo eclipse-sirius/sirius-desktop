@@ -29,6 +29,10 @@
            class="org.eclipse.sirius.properties.core.internal.migration.ReferenceWidgetMigrationParticipant"
            kind="VSM">
      </participant>
+     <participant
+           class="org.eclipse.sirius.properties.core.internal.migration.CategoryMigrationParticipant"
+           kind="VSM">
+     </participant>
   </extension>
   <extension
         point="org.eclipse.sirius.interpretedExpressionQueryProvider">

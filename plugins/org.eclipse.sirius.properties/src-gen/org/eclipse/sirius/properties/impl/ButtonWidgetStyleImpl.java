@@ -16,7 +16,7 @@ import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Button Widget Style</b></em>'. <!--
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Button Widget Style</b></em>'. <!--
  * end-user-doc -->
  *
  * @generated
@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 public class ButtonWidgetStyleImpl extends WidgetStyleImpl implements ButtonWidgetStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ButtonWidgetStyleImpl() {
@@ -33,7 +33,7 @@ public class ButtonWidgetStyleImpl extends WidgetStyleImpl implements ButtonWidg
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

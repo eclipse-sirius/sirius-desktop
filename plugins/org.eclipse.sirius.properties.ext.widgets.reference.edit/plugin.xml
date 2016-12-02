@@ -16,10 +16,10 @@
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated properties-ext-widgets-reference -->
+      <!-- @generated NOT properties-ext-widgets-reference -->
       <factory
             uri="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference"
-            class="org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.provider.PropertiesExtWidgetsReferenceItemProviderAdapterFactory"
+            class="org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.provider.PropertiesExtWidgetsReferenceItemProviderAdapterFactorySpec"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -30,7 +30,7 @@
    </extension>
 
    <extension point="org.eclipse.emf.edit.childCreationExtenders">
-      <!-- @generated properties-ext-widgets-reference -->
+      <!-- @generated NOT properties-ext-widgets-reference -->
       <extender
             uri="http://www.eclipse.org/sirius/properties/1.0.0"
             class="org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.provider.PropertiesExtWidgetsReferenceItemProviderAdapterFactory$PropertiesChildCreationExtender"/>

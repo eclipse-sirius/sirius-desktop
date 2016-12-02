@@ -35,8 +35,8 @@ public class DomainClassExpressionMigrationParticipant extends AbstractVSMMigrat
 
     @Override
     public EStructuralFeature getAttribute(EClass eClass, String name, String loadedVersion) {
-        if (Version.parseVersion(loadedVersion).compareTo(MIGRATION_VERSION) < 0 && PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR.equals(eClass) && DOMAIN_CLASS_EXPRESSION_NAME.equals(name)) {
-            return PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__ITERABLE_EXPRESSION;
+        if (Version.parseVersion(loadedVersion).compareTo(MIGRATION_VERSION) < 0 && PropertiesPackage.Literals.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION.equals(eClass) && DOMAIN_CLASS_EXPRESSION_NAME.equals(name)) {
+            return PropertiesPackage.Literals.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION;
         }
         return super.getAttribute(eClass, name, loadedVersion);
     }

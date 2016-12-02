@@ -19,15 +19,14 @@ import org.eclipse.sirius.properties.EditSupport;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Edit Support</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Edit Support</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public class EditSupportImpl extends MinimalEObjectImpl.Container implements EditSupport {
-
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EditSupportImpl() {
@@ -36,7 +35,7 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -46,7 +45,7 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +57,7 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -70,7 +69,7 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +81,7 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +93,7 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +105,7 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,7 +117,7 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +129,7 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +141,7 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +153,7 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +165,7 @@ public class EditSupportImpl extends MinimalEObjectImpl.Container implements Edi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

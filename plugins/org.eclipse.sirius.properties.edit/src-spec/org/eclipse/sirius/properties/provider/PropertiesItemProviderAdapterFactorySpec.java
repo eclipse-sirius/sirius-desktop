@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,12 +30,30 @@ public class PropertiesItemProviderAdapterFactorySpec extends PropertiesItemProv
     }
 
     @Override
+    public Adapter createCategoryAdapter() {
+        if (categoryItemProvider == null) {
+            categoryItemProvider = new CategoryItemProviderSpec(this);
+        }
+
+        return categoryItemProvider;
+    }
+
+    @Override
     public Adapter createPageDescriptionAdapter() {
         if (pageDescriptionItemProvider == null) {
             pageDescriptionItemProvider = new PageDescriptionItemProviderSpec(this);
         }
 
         return pageDescriptionItemProvider;
+    }
+
+    @Override
+    public Adapter createPageOverrideDescriptionAdapter() {
+        if (pageOverrideDescriptionItemProvider == null) {
+            pageOverrideDescriptionItemProvider = new PageOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return pageOverrideDescriptionItemProvider;
     }
 
     @Override
@@ -66,6 +84,15 @@ public class PropertiesItemProviderAdapterFactorySpec extends PropertiesItemProv
     }
 
     @Override
+    public Adapter createGroupOverrideDescriptionAdapter() {
+        if (groupOverrideDescriptionItemProvider == null) {
+            groupOverrideDescriptionItemProvider = new GroupOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return groupOverrideDescriptionItemProvider;
+    }
+
+    @Override
     public Adapter createGroupValidationSetDescriptionAdapter() {
         if (groupValidationSetDescriptionItemProvider == null) {
             groupValidationSetDescriptionItemProvider = new GroupValidationSetDescriptionItemProviderSpec(this);
@@ -81,6 +108,15 @@ public class PropertiesItemProviderAdapterFactorySpec extends PropertiesItemProv
         }
 
         return containerDescriptionItemProvider;
+    }
+
+    @Override
+    public Adapter createContainerOverrideDescriptionAdapter() {
+        if (containerOverrideDescriptionItemProvider == null) {
+            containerOverrideDescriptionItemProvider = new ContainerOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return containerOverrideDescriptionItemProvider;
     }
 
     @Override
@@ -111,12 +147,30 @@ public class PropertiesItemProviderAdapterFactorySpec extends PropertiesItemProv
     }
 
     @Override
+    public Adapter createTextOverrideDescriptionAdapter() {
+        if (textOverrideDescriptionItemProvider == null) {
+            textOverrideDescriptionItemProvider = new TextOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return textOverrideDescriptionItemProvider;
+    }
+
+    @Override
     public Adapter createButtonDescriptionAdapter() {
         if (buttonDescriptionItemProvider == null) {
             buttonDescriptionItemProvider = new ButtonDescriptionItemProviderSpec(this);
         }
 
         return buttonDescriptionItemProvider;
+    }
+
+    @Override
+    public Adapter createButtonOverrideDescriptionAdapter() {
+        if (buttonOverrideDescriptionItemProvider == null) {
+            buttonOverrideDescriptionItemProvider = new ButtonOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return buttonOverrideDescriptionItemProvider;
     }
 
     @Override
@@ -129,12 +183,30 @@ public class PropertiesItemProviderAdapterFactorySpec extends PropertiesItemProv
     }
 
     @Override
+    public Adapter createLabelOverrideDescriptionAdapter() {
+        if (labelOverrideDescriptionItemProvider == null) {
+            labelOverrideDescriptionItemProvider = new LabelOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return labelOverrideDescriptionItemProvider;
+    }
+
+    @Override
     public Adapter createCheckboxDescriptionAdapter() {
         if (checkboxDescriptionItemProvider == null) {
             checkboxDescriptionItemProvider = new CheckboxDescriptionItemProviderSpec(this);
         }
 
         return checkboxDescriptionItemProvider;
+    }
+
+    @Override
+    public Adapter createCheckboxOverrideDescriptionAdapter() {
+        if (checkboxOverrideDescriptionItemProvider == null) {
+            checkboxOverrideDescriptionItemProvider = new CheckboxOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return checkboxOverrideDescriptionItemProvider;
     }
 
     @Override
@@ -147,21 +219,48 @@ public class PropertiesItemProviderAdapterFactorySpec extends PropertiesItemProv
     }
 
     @Override
-    public Adapter createDynamicMappingForAdapter() {
-        if (dynamicMappingForItemProvider == null) {
-            dynamicMappingForItemProvider = new DynamicMappingForItemProviderSpec(this);
+    public Adapter createSelectOverrideDescriptionAdapter() {
+        if (selectOverrideDescriptionItemProvider == null) {
+            selectOverrideDescriptionItemProvider = new SelectOverrideDescriptionItemProviderSpec(this);
         }
 
-        return dynamicMappingForItemProvider;
+        return selectOverrideDescriptionItemProvider;
     }
 
     @Override
-    public Adapter createDynamicMappingIfAdapter() {
-        if (dynamicMappingIfItemProvider == null) {
-            dynamicMappingIfItemProvider = new DynamicMappingIfItemProviderSpec(this);
+    public Adapter createDynamicMappingForDescriptionAdapter() {
+        if (dynamicMappingForDescriptionItemProvider == null) {
+            dynamicMappingForDescriptionItemProvider = new DynamicMappingForDescriptionItemProviderSpec(this);
         }
 
-        return dynamicMappingIfItemProvider;
+        return dynamicMappingForDescriptionItemProvider;
+    }
+
+    @Override
+    public Adapter createDynamicMappingForOverrideDescriptionAdapter() {
+        if (dynamicMappingForOverrideDescriptionItemProvider == null) {
+            dynamicMappingForOverrideDescriptionItemProvider = new DynamicMappingForOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return dynamicMappingForOverrideDescriptionItemProvider;
+    }
+
+    @Override
+    public Adapter createDynamicMappingIfDescriptionAdapter() {
+        if (dynamicMappingIfDescriptionItemProvider == null) {
+            dynamicMappingIfDescriptionItemProvider = new DynamicMappingIfDescriptionItemProviderSpec(this);
+        }
+
+        return dynamicMappingIfDescriptionItemProvider;
+    }
+
+    @Override
+    public Adapter createDynamicMappingIfOverrideDescriptionAdapter() {
+        if (dynamicMappingIfOverrideDescriptionItemProvider == null) {
+            dynamicMappingIfOverrideDescriptionItemProvider = new DynamicMappingIfOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return dynamicMappingIfOverrideDescriptionItemProvider;
     }
 
     @Override
@@ -174,6 +273,15 @@ public class PropertiesItemProviderAdapterFactorySpec extends PropertiesItemProv
     }
 
     @Override
+    public Adapter createTextAreaOverrideDescriptionAdapter() {
+        if (textAreaOverrideDescriptionItemProvider == null) {
+            textAreaOverrideDescriptionItemProvider = new TextAreaOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return textAreaOverrideDescriptionItemProvider;
+    }
+
+    @Override
     public Adapter createRadioDescriptionAdapter() {
         if (radioDescriptionItemProvider == null) {
             radioDescriptionItemProvider = new RadioDescriptionItemProviderSpec(this);
@@ -183,12 +291,30 @@ public class PropertiesItemProviderAdapterFactorySpec extends PropertiesItemProv
     }
 
     @Override
+    public Adapter createRadioOverrideDescriptionAdapter() {
+        if (radioOverrideDescriptionItemProvider == null) {
+            radioOverrideDescriptionItemProvider = new RadioOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return radioOverrideDescriptionItemProvider;
+    }
+
+    @Override
     public Adapter createListDescriptionAdapter() {
         if (listDescriptionItemProvider == null) {
             listDescriptionItemProvider = new ListDescriptionItemProviderSpec(this);
         }
 
         return listDescriptionItemProvider;
+    }
+
+    @Override
+    public Adapter createListOverrideDescriptionAdapter() {
+        if (listOverrideDescriptionItemProvider == null) {
+            listOverrideDescriptionItemProvider = new ListOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return listOverrideDescriptionItemProvider;
     }
 
     @Override
@@ -207,6 +333,15 @@ public class PropertiesItemProviderAdapterFactorySpec extends PropertiesItemProv
         }
 
         return customDescriptionItemProvider;
+    }
+
+    @Override
+    public Adapter createCustomOverrideDescriptionAdapter() {
+        if (customOverrideDescriptionItemProvider == null) {
+            customOverrideDescriptionItemProvider = new CustomOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return customOverrideDescriptionItemProvider;
     }
 
     @Override
@@ -234,6 +369,15 @@ public class PropertiesItemProviderAdapterFactorySpec extends PropertiesItemProv
         }
 
         return hyperlinkDescriptionItemProvider;
+    }
+
+    @Override
+    public Adapter createHyperlinkOverrideDescriptionAdapter() {
+        if (hyperlinkOverrideDescriptionItemProvider == null) {
+            hyperlinkOverrideDescriptionItemProvider = new HyperlinkOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return hyperlinkOverrideDescriptionItemProvider;
     }
 
     @Override

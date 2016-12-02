@@ -15,9 +15,9 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
-import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
@@ -40,9 +40,16 @@ public class SelectDescriptionItemProviderSpec extends SelectDescriptionItemProv
 
     @Override
     public String getText(Object object) {
-        String label = ((SelectDescription) object).getLabelExpression();
-        return label == null || label.length() == 0 ? getString("_UI_SelectDescription_type") : //$NON-NLS-1$
-                label;
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
+        return Utils.computeLabel(this, object, "_UI_SelectDescription_type"); //$NON-NLS-1$
     }
 
     @Override
@@ -53,13 +60,13 @@ public class SelectDescriptionItemProviderSpec extends SelectDescriptionItemProv
 
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SELECT_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_SELECT_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SELECT_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createSelectWidgetStyle()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_SELECT_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createSelectWidgetStyle()));
 
         SelectWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createSelectWidgetConditionalStyle();
         conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createSelectWidgetStyle());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SELECT_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_SELECT_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
     }
 
 }

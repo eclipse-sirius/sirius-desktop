@@ -15,7 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.command.CommandParameter;
-import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
@@ -40,9 +40,16 @@ public class CheckboxDescriptionItemProviderSpec extends CheckboxDescriptionItem
 
     @Override
     public String getText(Object object) {
-        String label = ((CheckboxDescription) object).getLabelExpression();
-        return label == null || label.length() == 0 ? getString("_UI_CheckboxDescription_type") : //$NON-NLS-1$
-                label;
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
+        return Utils.computeLabel(this, object, "_UI_CheckboxDescription_type"); //$NON-NLS-1$
     }
 
     @Override
@@ -53,12 +60,12 @@ public class CheckboxDescriptionItemProviderSpec extends CheckboxDescriptionItem
 
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_CHECKBOX_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createCheckboxWidgetStyle()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_CHECKBOX_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createCheckboxWidgetStyle()));
 
         CheckboxWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createCheckboxWidgetConditionalStyle();
         conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createCheckboxWidgetStyle());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
     }
 }

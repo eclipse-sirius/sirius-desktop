@@ -1,0 +1,980 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationCustomizepartofthedefaultbehavior">Sirius Evolution Specification: Customize part of the default behavior</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>: Customize part of the default behavior.
+		</p>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2016-11-29</td>
+				<td>mbats</td>
+				<td>Initial version.</td>
+			</tr>
+			<tr>
+				<td>v0.2</td>
+				<td>DRAFT</td>
+				<td>2016-12-14</td>
+				<td>mbats</td>
+				<td>Review the extends mechanism, add the override feature and define the editor evolution.</td>
+			</tr>
+			<tr>
+				<td>v0.3</td>
+				<td>DRAFT</td>
+				<td>2016-12-21</td>
+				<td>mbats</td>
+				<td>Details the override mechanism after CBR review.</td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets</em>:
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=496065">Bug 496065 -  As a specifier, I want to customize part of the default behavior</a>
+			</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>Since Sirius 4.0, modelers come with a beautiful properties view by default. This properties view is configured by the default rules. If no Properties View Description is provided then these default rules apply. Else if a Properties View Description exists these rules are not anymore used and only the description defined by the specifiers is used to render the properties view.
+			<br/>The purpose of this evolution is to give the possibility to the specifier to override part of the default behavior and to be able in general to 
+			<strong>override</strong> and 
+			<strong>reuse</strong> some parts of a Properties View Description. 
+		</p>
+		<p>We want to keep the same spirit: we render only what is specified. If nothing is specified, the properties view default rules are used else we use what is defined in the Properties View Descriptions.</p>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<p>The specifier must be able to reuse and override different parts of a properties view.</p>
+		<h3 id="CategoryDescription">Category Description</h3>
+		<p>A 
+			<code>Category Description</code> can be created under a 
+			<code>View Extension Description</code>, it contains all the 
+			<code>Pages</code> , 
+			<code>Groups</code> and 
+			<code>Overrides</code> descriptions. It is used just to order the pages, the groups and the overrides of a VSM.
+			<br/>A category named 
+			<code>Default</code> is created by default by the VSM editor, it contains a default page and a default group.
+			<br/>
+			<img border="0" src="./images/Category.png"/>
+		</p>
+		<h3 id="Visualizegroups">Visualize groups</h3>
+		<p>The VSM editor now shows the groups referenced by a page under the page. The referenced group is represented with another color in the tree.
+			<br/>
+			<img border="0" src="images/GroupsUnderPage.png"/>
+		</p>
+		<p>It is possible also to visualize and navigate directly from the referenced group to its controls and styles.</p>
+		<h3 id="Reuse">Reuse</h3>
+		<p>
+			<img border="0" src="./images/PageExtend.png"/>
+		</p>
+		<h4 id="Extends">Extends</h4>
+		<p>A 
+			<code>Page Description</code> can be used to customize an existing page defined in the same 
+			<em>Properties View Description</em> or elsewhere in another one.
+			<br/>A new 
+			<code>Extend</code> tab is available on a 
+			<code>Page Description</code>.
+			<br/>It defines an 
+			<code>Extended Page</code> field which allows to reference an existing 
+			<code>Page Description</code>.
+		</p>
+		<p>By default the 
+			<code>General</code> tab fields are set with the values coming from the extended page. The default values are set in grey in the UI. When the user edits one of these fields, it is set by default with the extended value.
+			<br/>In the tree editor, the groups inherited are shown under the page with a decorator referencing the extended page: 
+			<em>Group X [from Page Y]</em>.
+		</p>
+		<p>
+			<img border="0" src="./images/PageGeneralExtended.png"/>
+		</p>
+		<p>If the specifier defines in the 
+			<code>Page Description</code>:
+		</p>
+		<ul>
+			<li>
+				<code>Label Expression</code>, 
+				<code>Domain Class</code>, 
+				<code>Semantic Candidate Expression</code> or 
+				<code>Precondition Expression</code>, these values will 
+				<strong>override</strong> the values defined in the referenced imported description. 
+			</li>
+			<li>
+				<code>Groups</code> will 
+				<strong>be added</strong> to the groups defined by the referenced 
+				<code>Page Description</code>. 
+			</li>
+			<li>
+				<code>Page Validations</code>  will 
+				<strong>be added</strong> to the validations defined by the referenced 
+				<code>Page Description</code>.
+			</li>
+		</ul>
+		<h4 id="Filter">Filter</h4>
+		<ul>
+			<li>The 
+				<code>Filter Groups Expression</code> is used to 
+				<strong>filter</strong> which inherited groups are visible under the page. The 
+				<code>group</code> variable can be used to check if a group must be filtered or not, the expression returns a 
+				<code>Boolean</code>: true, the group is visible in the page, false it is filtered. It is possible to filter all the groups from the extended page by just returning 
+				<code>false</code> all the time. In this case, the groups defined under the current page definition 
+				<strong>overrides</strong> the groups defined in the extended page description.
+			</li>
+			<li>The 
+				<code>Filter Validation Rules Expression</code> is used to filter which inherited validation rules are used under the page. The 
+				<code>validationRule</code> variable can be used to check if a rule must be filtered or not, the expression returns a 
+				<code>Boolean</code>: true, the group is visible in the page, false it is filtered. It is possible to filter all the groups from the extended page by just returning 
+				<code>false</code> all the time. In this case, the validation rules defined under the current page definition 
+				<strong>overrides</strong> the rules defined in the extended page description.
+			</li>
+		</ul>
+		<p>If the 
+			<code>Extended Page</code> field is not set then the filter fields are disabled:
+		</p>
+		<p>
+			<img border="0" src="./images/PageExtendUnactive.png"/>
+		</p>
+		<h4 id="Defaultrules">Default rules</h4>
+		<p>When a new VSM is created by default, the default rules will be visible as a 
+			<code>Page</code> extending the default rules page. And the default values are visible in grey.
+		</p>
+		<p>
+			<img border="0" src="./images/DefaultRulesExtend.png"/>
+			<br/>
+			<img border="0" src="./images/DefaultRulesGeneral.png"/>
+		</p>
+		<h4 id="Otherdescriptions">Other descriptions</h4>
+		<p>As what we detailed for the 
+			<code>Page Description</code> we provide the same extension mechanism for 
+			<code>Group Description</code>, 
+			<code>Container Description</code>, 
+			<code>Widget Description</code>, 
+			<code>Dynamic Mapping For</code>, 
+			<code>Dynamic Mapping If</code> with filter adapted to each case. See 
+			<a href="#MetamodelChanges">Metamodel Changes</a> section for details.
+		</p>
+		<p>
+			<img border="0" src="./images/TextExtendExtended.png"/>
+		</p>
+		<p>Then a 
+			<code>Text Description</code> can be used to customize an existing text widget as it was explain in previous sections for the page.
+			<br/>A new 
+			<code>Extend</code> tab is available on a 
+			<code>Text Description</code>.
+			<br/>It defines an 
+			<code>Extended Text</code> field which allows to reference an existing 
+			<code>Text Description</code>.
+			<br/>In the tree editor:
+		</p>
+		<ul>
+			<li>the text widget is shown under the group with a decorator referencing the extended text widget: 
+				<em>Text X [extends Text Y]</em>.
+			</li>
+			<li>the styles inherited are shown under the widget in another color.</li>
+		</ul>
+		<p>By default the 
+			<code>General</code> tab fields are set with the values coming from the extended text. The default values are set in grey in the UI. When the user edits one of these fields, it is set by default with the extended value.
+		</p>
+		<p>
+			<img border="0" src="./images/TextGeneralExtended.png"/>
+		</p>
+		<p>If the specifier defines in the 
+			<code>Text Description</code>:
+		</p>
+		<ul>
+			<li>
+				<code>Label Expression</code>, 
+				<code>Domain Class</code>, 
+				<code>Semantic Candidate Expression</code> or 
+				<code>Precondition Expression</code>, these values will 
+				<strong>override</strong> the values defined in the referenced description. 
+			</li>
+			<li>
+				<code>Groups</code> will 
+				<strong>be added</strong> to the groups defined by the referenced 
+				<code>Page Description</code>. 
+			</li>
+			<li>
+				<code>Page Validations</code>  will 
+				<strong>be added</strong> to the validations defined by the referenced 
+				<code>Page Description</code>.
+			</li>
+			<li>
+				<code>Style</code> or 
+				<code>Conditional Styles</code>, these values will 
+				<strong>override</strong> the values defined in the referenced description.
+			</li>
+			<li>The 
+				<code>Filter Conditional Styles Expression</code> is used to 
+				<strong>filter</strong> which inherited conditional styles are visible under the page. The 
+				<code>style</code> variable can be used to check if a style must be filtered or not, the expression returns a 
+				<code>Boolean</code>: true, the style is defined, false it is filtered. It is possible to filter all the conditional styles from the extended text by just returning 
+				<code>false</code> all the time. In this case, the conditional styles defined under the current text definition 
+				<strong>overrides</strong> the conditional styles defined in the extended text description.
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="./images/TextGeneralExtended1.png"/>
+			<br/>
+			<img border="0" src="./images/TextGeneralExtended2.png"/>
+		</p>
+		<p>In this example, we define a new 
+			<code>ClassName</code> text widget which extends the 
+			<code>NamedElement</code> text widget and we override:
+		</p>
+		<ul>
+			<li>the 
+				<code>Label Expression</code> to replace 
+				<em>Name:</em> by 
+				<em>Class name:</em> 
+			</li>
+			<li>the default style to get a bold label</li>
+		</ul>
+		<p>
+			<strong>Warning</strong>
+			<br/>Consequently the 
+			<code>XXX Description</code> cannot define anymore attributes defining a default value or with enum as type, else we will not be able to detect if the specifier updates the extended value or if it is just the default value setted at the creation of the description. Only the description extending the 
+			<code>OverrideDescription</code> are concerned.
+			<br/>Then we need to update the existing metamodel to validate this new requirement, only one element needs to be modified the TextAreaDescription should not define anymore a default value. See the 
+			<a href="#MetamodelChanges">Metamodel Changes</a> section for details.
+		</p>
+		<h3 id="Replace">Replace</h3>
+		<p>
+			<img border="0" src="./images/PageOverrideGeneral.png"/>
+		</p>
+		<h4 id="Overrides">Overrides</h4>
+		<p>It is possible to create an 
+			<code>Override Description</code> directly under a 
+			<code>Category Description</code> thanks to the reference 
+			<code>overrides</code>. This is used to replace an existing element in a VSM.
+		</p>
+		<p>The following override elements can be defined directly under a 
+			<code>Category</code>:
+		</p>
+		<ul>
+			<li>
+				<code>Page Override Description</code>
+			</li>
+			<li>
+				<code>Group Override Description</code>
+			</li>
+			<li>
+				<code>Container Override Description</code>
+			</li>
+			<li>
+				<code>Text Override Description</code>
+			</li>
+			<li>
+				<code>Label Override Description</code>
+			</li>
+			<li>
+				<code>Text Area Override Description</code>
+			</li>
+			<li>
+				<code>Button Override Description</code>
+			</li>
+			<li>
+				<code>Custom Override Description</code>
+			</li>
+			<li>
+				<code>Checkbox Override Description</code> 
+			</li>
+			<li>
+				<code>Select Override Description</code>
+			</li>
+			<li>
+				<code>Dynamic Mapping For Override Description</code>
+			</li>
+			<li>
+				<code>DynamicMapping If Override Description</code> 
+			</li>
+			<li>
+				<code>List Override Description</code>
+			</li>
+			<li>
+				<code>Radio Override Description</code> 
+			</li>
+			<li>
+				<code>Hyperlink Override Description</code>
+			</li>
+		</ul>
+		<p>A 
+			<code>Page Override Description</code> defines an 
+			<code>Override Page</code> field which allows to reference the existing 
+			<code>Page Description</code> that will be replaced.
+		</p>
+		<p>By default the 
+			<code>General</code> tab fields are set with the values coming from the overridden page. The default values are set in grey in the UI. When the user edits one of these fields, it is set by default with the extended value.
+			<br/>In the tree editor, the groups inherited are shown under the page with a decorator referencing the overridden page: 
+			<em>Group X [from Page Y]</em>.
+		</p>
+		<p>If the specifier defines in the 
+			<code>Page Override Description</code>:
+		</p>
+		<ul>
+			<li>
+				<code>Label Expression</code>, 
+				<code>Domain Class</code>, 
+				<code>Semantic Candidate Expression</code> or 
+				<code>Precondition Expression</code>, these values will 
+				<strong>override</strong> the values defined in the referenced overridden description. 
+			</li>
+			<li>
+				<code>Groups</code> will 
+				<strong>be added</strong> to the groups defined by the referenced 
+				<code>Page Description</code>. 
+			</li>
+			<li>
+				<code>Page Validations</code>  will 
+				<strong>be added</strong> to the validations defined by the referenced 
+				<code>Page Description</code>.
+			</li>
+		</ul>
+		<h4 id="Filter2">Filter</h4>
+		<p>
+			<img border="0" src="./images/PageOverrideOverride.png"/>
+		</p>
+		<p>A new 
+			<code>Override</code> tab is available on a 
+			<code>Page Override Description</code>. It defines some filters:
+		</p>
+		<ul>
+			<li>The 
+				<code>Filter Groups Expression</code> is used to 
+				<strong>filter</strong> which inherited groups are visible under the page. The 
+				<code>group</code> variable can be used to check if a group must be filtered or not, the expression returns a 
+				<code>Boolean</code>: true, the group is visible in the page, false it is filtered. It is possible to filter all the groups from the extended page by just returning 
+				<code>false</code> all the time. In this case, the groups defined under the current page definition 
+				<strong>overrides</strong> the groups defined in the extended page description.
+			</li>
+			<li>The 
+				<code>Filter Validation Rules Expression</code> is used to filter which inherited validation rules are used under the page. The 
+				<code>validationRule</code> variable can be used to check if a rule must be filtered or not, the expression returns a 
+				<code>Boolean</code>: true, the group is visible in the page, false it is filtered. It is possible to filter all the groups from the extended page by just returning 
+				<code>false</code> all the time. In this case, the validation rules defined under the current page definition 
+				<strong>overrides</strong> the rules defined in the extended page description.
+			</li>
+		</ul>
+		<p>If the 
+			<code>Overriden Page</code> field is not set then the filter fields are disabled.
+		</p>
+		<p>
+			<img border="0" src="./images/PageOverrideOverrideUnactive.png"/>
+		</p>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<p>As the 
+			<code>Category</code> is mandatory, we should migrate all the previous VSM to create a default category and move all the existing pages and groups under this default category.
+		</p>
+		<p>The extension/override mechanism requires no migration as we only provide new classes in the metamodel which are not mandatory.</p>
+		<h3 id="MetamodelChanges">Metamodel Changes</h3>
+		<p>Metamodel properties.ecore updates:</p>
+		<ul>
+			<li>Add 
+				<code>AbstractOverrideDescription</code>
+			</li>
+			<li>Add 
+				<code>CategoryDescription</code>
+				<ul>
+					<li>Add 
+						<code>identifier</code>: to identify uniquely a category
+					</li>
+					<li>Move 
+						<code>pages</code> from 
+						<code>ViewExtensionDescription</code>: contains 
+						<code>PageDescription</code>.
+					</li>
+					<li>Move 
+						<code>groups</code> from 
+						<code>ViewExtensionDescription</code>: contains 
+						<code>GroupDescription</code>.
+					</li>
+					<li>Add 
+						<code>overrides</code>: contains 
+						<code>AbstractOverrideDescription</code>.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>The same pattern is applied to all the descriptions to add the override mechanism in the metamodel, see the diagram below:
+			<br/>
+			<img border="0" src="./images/OverridePatternPage.png"/>
+		</p>
+		<ul>
+			<li>Add 
+				<code>AbstractPageDescription</code>, it contains all the features defined previously directly under the 
+				<code>PageDescription</code>
+				<ul>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>PageDescription</code>.
+					</li>
+					<li>Add 
+						<code>filterGroupsFromExtendedPageExpression</code>: to filter the groups coming from the extends page description.
+					</li>
+					<li>Add 
+						<code>filterValidationRulesFromExtendedPageExpression</code>: to filter the validations defined in the extended page description.
+					</li>
+				</ul>
+			</li>
+			<li>Update 
+				<code>PageDescription</code> to extends 
+				<code>AbstractPageDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>PageOverrideDescription</code> -&gt; 
+				<code>AbstractPageDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>PageDescription</code>
+					</li>
+					<li>Add 
+						<code>filterGroupsFromOverriddenPageExpression</code>: to filter the groups coming from the extended page description.
+					</li>
+					<li>Add 
+						<code>filterValidationRulesFromOverriddenPageExpression</code>: to filter the validations defined in the extended page description.
+					</li>
+				</ul>
+			</li>
+			<li>Add 
+				<code>AbstractGroupDescription</code>, it contains all the features defined previously directly under the 
+				<code>GroupDescription</code>
+				<ul>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>GroupDescription</code>.
+					</li>
+					<li>Add 
+						<code>filterControlsFromExtendedPageExpression</code>: to filter the groups coming from the extended group description.
+					</li>
+					<li>Add 
+						<code>filterValidationRulesFromExtendedPageExpression</code>: to filter the validations defined in the extended group description.
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromExtendedPageExpression</code>: to filter the conditional styles defined in the extended group description.
+					</li>
+				</ul>
+			</li>
+			<li>Update 
+				<code>GroupDescription</code> to extends 
+				<code>AbstractGroupDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>GroupOverrideDescription</code> -&gt; 
+				<code>AbstractGroupDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>GroupDescription</code>
+					</li>
+					<li>Add 
+						<code>filterControlsFromOverriddenPageExpression</code>: to filter the groups coming from the overridden group description.
+					</li>
+					<li>
+						<code>filterValidationRulesFromOverriddenPageExpression</code>: to filter the validations defined in the overridden group description.
+					</li>
+					<li>
+						<code>filterConditionalStylesFromExtendedPageExpression</code>: to filter the conditional styles defined in the overridden group description.
+					</li>
+				</ul>
+			</li>
+			<li>Add 
+				<code>AbstractControlDescription</code>, it contains all the features defined previously directly under the 
+				<code>ControlDescription</code>
+			</li>
+			<li>Add 
+				<code>AbstractContainerDescription</code>, it contains all the features defined previously directly under the 
+				<code>ContainerDescription</code>
+				<ul>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>ContainerDescription</code>.
+					</li>
+					<li>Add 
+						<code>filterControlsFromExtendedContainerExpression</code>: to filter the controls coming from the extended container description.
+					</li>
+				</ul>
+			</li>
+			<li>Update 
+				<code>ContainerDescription</code> to extends 
+				<code>AbstractContainerDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>ContainerOverrideDescription</code> -&gt; 
+				<code>AbstractContainerDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>ContainerDescription</code>
+					</li>
+					<li>Add 
+						<code>filterControlsFromOverriddenContainerExpression</code>: to filter the controls coming from the overridden container description.
+					</li>
+				</ul>
+			</li>
+			<li>Add 
+				<code>AbstractWidgetDescription</code>, it contains all the features defined previously directly under the 
+				<code>WidgetDescription</code>
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="./images/OverridePatternCheckbox.png"/>
+		</p>
+		<ul>
+			<li>Add 
+				<code>AbstractCheckboxDescription</code> -&gt; 
+				<code>AbstractWidgetDescription</code>, it contains all the features defined previously directly under the 
+				<code>CheckboxDescription</code>
+				<ul>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>CheckboxDescription</code>.
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromExtendedCheckboxExpression</code>: to filter the styles coming from the extended checkbox description.
+					</li>
+				</ul>
+			</li>
+			<li>Update 
+				<code>CheckboxDescription</code> to extends 
+				<code>AbstractCheckboxDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>CheckboxOverrideDescription</code> -&gt; 
+				<code>AbstractCheckboxDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>CheckboxDescription</code>
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromOverriddenCheckboxExpression</code>: to filter the styles coming from the overridden checkbox description.
+					</li>
+				</ul>
+			</li>
+			<li>Add 
+				<code>AbstractTextDescription</code> -&gt; 
+				<code>AbstractWidgetDescription</code>, it contains all the features defined previously directly under the 
+				<code>TextDescription</code>
+				<ul>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>TextDescription</code>.
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromExtendedTextExpression</code>: to filter the styles coming from the extended text description.
+					</li>
+				</ul>
+			</li>
+			<li>Update 
+				<code>TextDescription</code> to extends 
+				<code>AbstractTextDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>TextOverrideDescription</code> -&gt; 
+				<code>AbstractTextDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>TextDescription</code>
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromOverriddenTextExpression</code>: to filter the styles coming from the overridden text description.
+					</li>
+				</ul>
+			</li>
+			<li>Add 
+				<code>AbstractButtonDescription</code> -&gt; 
+				<code>AbstractWidgetDescription</code>, it contains all the features defined previously directly under the 
+				<code>ButtonDescription</code>
+				<ul>
+					<li>
+						<code>extends</code>: to reference an existing 
+						<code>ButtonDescription</code>.
+					</li>
+					<li>
+						<code>filterConditionalStylesFromExtendedButtonExpression</code>: to filter the styles coming from the extended button description.
+					</li>
+				</ul>
+			</li>
+			<li>Update 
+				<code>ButtonDescription</code> to extends 
+				<code>AbstractButtonDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>ButtonOverrideDescription</code> -&gt; 
+				<code>AbstractButtonDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>ButtonDescription</code>
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromOverriddenButtonExpression</code>: to filter the styles coming from the overridden button description.
+					</li>
+				</ul>
+			</li>
+			<li>Add 
+				<code>AbstractLabelDescription</code> -&gt; 
+				<code>AbstractWidgetDescription</code>, it contains all the features defined previously directly under the 
+				<code>LabelDescription</code>
+				<ul>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>LabelDescription</code>.
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromExtendedLabelExpression</code>: to filter the styles coming from the extended label description.
+					</li>
+				</ul>
+			</li>
+			<li>Update 
+				<code>LabelDescription</code> to extends 
+				<code>AbstractLabelDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>LabelOverrideDescription</code> -&gt; 
+				<code>AbstractLabelDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>LabelDescription</code>
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromOverriddenLabelExpression</code>: to filter the styles coming from the overridden label description.
+					</li>
+					<li>Add 
+						<code>filterActionsFromOverriddenLabelExpression</code>: to filter the actions coming from the overridden label description.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<ul>
+			<li>Add 
+				<code>AbstractSelectDescription</code> -&gt; 
+				<code>AbstractWidgetDescription</code>, it contains all the features defined previously directly under the 
+				<code>SelectDescription</code>
+				<ul>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>SelectDescription</code>.
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromExtendedSelectExpression</code>: to filter the styles coming from the extended select description.
+					</li>
+				</ul>
+			</li>
+			<li>Update 
+				<code>SelectDescription</code> to extends 
+				<code>AbstractSelectDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>SelectOverrideDescription</code> -&gt; 
+				<code>AbstractSelectDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>SelectDescription</code>
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromOverriddenSelectExpression</code>: to filter the styles coming from the overridden select description.
+					</li>
+				</ul>
+			</li>
+			<li>Add 
+				<code>AbstractTextAreaDescription</code> -&gt; 
+				<code>AbstractWidgetDescription</code>, it contains all the features defined previously directly under the 
+				<code>TextAreaDescription</code> and the one inherited from 
+				<code>TextDescription</code>: 
+				<code>valueExpression</code>, 
+				<code>initialOperation</code>, 
+				<code>style</code>, 
+				<code>conditionalStyles</code> 
+				<ul>
+					<li>Remove the default value for the 
+						<code>lineCount</code> attribute as we should not define any default value or enum attributes.
+					</li>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>TextAreaDescription</code>.
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromExtendedTextAreaExpression</code>: to filter the styles coming from the extended text description.
+					</li>
+				</ul>
+			</li>
+			<li>Update 
+				<code>TextAreaDescription</code> to extends 
+				<code>AbstractTextAreaDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>TextAreaOverrideDescription</code> -&gt; 
+				<code>AbstractTextAreaDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>TextAreaDescription</code>
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromOverriddenTextAreaExpression</code>: to filter the styles coming from the overridden text description.
+					</li>
+				</ul>
+			</li>
+			<li>Add 
+				<code>AbstractRadioDescription</code> -&gt; 
+				<code>AbstractWidgetDescription</code>, it contains all the features defined previously directly under the 
+				<code>RadioDescription</code>
+				<ul>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>RadioDescription</code>.
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromExtendedRadioExpression</code>: to filter the styles coming from the extended radio description.
+					</li>
+				</ul>
+			</li>
+			<li>Update 
+				<code>RadioDescription</code> to extends 
+				<code>AbstractRadioDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>RadioOverrideDescription</code> -&gt; 
+				<code>AbstractRadioDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>RadioDescription</code>
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromOverriddenRadioExpression</code>: to filter the styles coming from the overridden radio description.
+					</li>
+				</ul>
+			</li>
+			<li>Add 
+				<code>AbstractListDescription</code> -&gt; 
+				<code>AbstractWidgetDescription</code>, it contains all the features defined previously directly under the 
+				<code>ListDescription</code>
+				<ul>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>ListDescription</code>.
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromExtendedListExpression</code>: to filter the styles coming from the extended list description.
+					</li>
+					<li>Add 
+						<code>filterActionsFromExtendedListExpression</code>: to filter the actions coming from the extended list description.
+					</li>
+				</ul>
+			</li>
+			<li>Update 
+				<code>ListDescription</code> to extends 
+				<code>AbstractListDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>ListOverrideDescription</code> -&gt; 
+				<code>AbstractListDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>ListDescription</code>
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromOverriddenListExpression</code>: to filter the styles coming from the overridden list description.
+					</li>
+					<li>Add 
+						<code>filterActionsFromOverriddenListExpression</code>: to filter the actions coming from the overridden list description.
+					</li>
+				</ul>
+			</li>
+			<li>Add 
+				<code>AbstractHyperlinkDescription</code> -&gt; 
+				<code>AbstractWidgetDescription</code>, it contains all the features defined previously directly under the 
+				<code>HyperlinkDescription</code>
+				<ul>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>HyperlinkDescription</code>.
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromExtendedHyperlinkExpression</code>: to filter the styles coming from the extended hyperlink description.
+					</li>
+				</ul>
+			</li>
+			<li>Update 
+				<code>HyperlinkDescription</code> to extends 
+				<code>AbstractHyperlinkDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>HyperlinkOverrideDescription</code> -&gt; 
+				<code>AbstractHyperlinkDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>HyperlinkDescription</code>
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromOverriddenHyperlinkExpression</code>: to filter the styles coming from the overridden hyperlink description.
+					</li>
+				</ul>
+			</li>
+			<li>Add 
+				<code>AbstractCustomDescription</code> -&gt; 
+				<code>AbstractWidgetDescription</code>, it contains all the features defined previously directly under the 
+				<code>CustomDescription</code>
+				<ul>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>CustomDescription</code>.
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromExtendedCustomExpression</code>: to filter the styles coming from the extended custom description.
+					</li>
+				</ul>
+			</li>
+			<li>Update 
+				<code>CustomDescription</code> to extends 
+				<code>AbstractCustomDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>CustomOverrideDescription</code> -&gt; 
+				<code>AbstractCustomDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>CustomDescription</code>
+					</li>
+					<li>Add 
+						<code>filterConditionalStylesFromOverriddenCustomExpression</code>: to filter the styles coming from the overridden custom description.
+					</li>
+				</ul>
+			</li>
+			<li>Add 
+				<code>AbstractDynamicMappingForDescription</code> -&gt; 
+				<code>AbstractControlDescription</code>, it contains all the features defined previously directly under the 
+				<code>DynamicMappingFor</code>
+				<ul>
+					<li>Add 
+						<code>identifier</code>: to identify uniquely a dynamic mapping for description
+					</li>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>DynamicMappingForDescription</code>.
+					</li>
+					<li>Add 
+						<code>filterIfsFromExtendedDynamicMappingForExpression</code>: to filter the ifs coming from the extended dynamic mapping for description.
+					</li>
+				</ul>
+			</li>
+			<li>Renamed 
+				<code>DynamicMappingFor</code> to 
+				<code>DynamicMappingForDescription</code> and update it to extends 
+				<code>AbstractDynamicMappingForDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>DynamicMappingForOverrideDescription</code> -&gt; 
+				<code>AbstractDynamicMappingForDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>Add 
+						<code>overrides</code>: to reference an existing 
+						<code>DynamicMappingForDescription</code>
+					</li>
+					<li>Add 
+						<code>filterIfsFromOverriddenDynamicMappingForExpression</code>: to filter the ifs coming from the overridden dynamic mapping for description.
+					</li>
+				</ul>
+			</li>
+			<li>Add 
+				<code>AbstractDynamicMappingIfDescription</code>, it contains all the features defined previously directly under the 
+				<code>DynamicMappingIf</code>
+				<ul>
+					<li>Add 
+						<code>identifier</code>: to identify uniquely a dynamic mapping if description
+					</li>
+					<li>Add 
+						<code>extends</code>: to reference an existing 
+						<code>DynamicMappingIfDescription</code>.
+					</li>
+				</ul>
+			</li>
+			<li>Renamed 
+				<code>DynamicMappingIf</code> to 
+				<code>DynamicMappingIfDescription</code> and update it to extends 
+				<code>AbstractDynamicMappingIfDescription</code> and remove all existing features
+			</li>
+			<li>Add 
+				<code>DynamicMappingIfOverrideDescription</code> -&gt; 
+				<code>AbstractDynamicMappingIfDescription</code>, 
+				<code>AbstractOverrideDescription</code>
+				<ul>
+					<li>
+						<code>overrides</code>: to reference an existing 
+						<code>DynamicMappingIfDescription</code>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<h3 id="APIChanges">API Changes</h3>
+		<p>The properties metamodel is updated so API changes will occur in 
+			<code>org.eclipse.sirius.properties</code>.
+		</p>
+		<p>A new VSM pre-processing mechanism will be develop to transform the original VSM using 
+			<em>reuse and override</em> mechanism to a flat VSM. Then, this falt VSM will be used by the DescriptionConverter which converts Sirius model to EEF model and so this converter must not change.
+		</p>
+		<p>The EEF metamodel must not change neither, as the pre-processor will manage the conversion. For example a 
+			<code>PageOverrideDescription</code> will be converted to a 
+			<code>PageDescription</code> and then to an 
+			<code>EEFPageDescription</code> which will be the results of the concatenation of the 
+			<code>PageOverrideDescription</code> and the referenced overridden page  description.
+		</p>To be able to add decorator in the VSM Editor tree on groups from an extended page, we have to regenerate the code with EMF 2.8.
+		<p>The advanced widget custom API must be updated to support extension and override mechanism.</p>
+		<h3 id="UserInterfaceChanges">User Interface Changes</h3>
+		<p>In the VSM editor, the specifier UI will change:</p>
+		<ul>
+			<li>The categories allows the specifier to order his pages, groups and widgets.</li>
+			<li>A default category will be visible when a new VSM is created which reference the default rules.</li>
+			<li>The referenced Groups will be visible under the Pages.</li>
+			<li>The Groups coming from an extended Page will be annotated</li>
+			<li>In the VSM new elements are available, see Detailed Specification section for details.</li>
+		</ul>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<p>In the specifier properties view section, we should add a new section about the 
+			<em>Extends/Overrides mechanism</em> to details all the new elements.
+		</p>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<p>We should add tests to check the following use cases:</p>
+		<ul>
+			<li>Modify : Reuse an existing page, group, widget in your VSM and update the different attributes, add new group, widgets which do not exist in the extended one</li>
+			<li>Delete : Define filters to keep only some part of the inherited sub elements</li>
+			<li>Reuse : Reuse a widget in different groups in your VSM</li>
+			<li>Insert : Insert a page, a group in an existing modeler for which you do not have the VSM</li>
+			<li>Replace : Replace a page, a group, a widget in an existing modeler for which you do not have the VSM</li>
+		</ul>
+		<h2 id="Implementationchoicesandtradeoffs">Implementation choices and tradeoffs</h2>
+		<p>The implementation will be done mostly in the Sirius new pre-processor. EEF does not provide any reuse/override mechanism.</p>
+	</body>
+</html>

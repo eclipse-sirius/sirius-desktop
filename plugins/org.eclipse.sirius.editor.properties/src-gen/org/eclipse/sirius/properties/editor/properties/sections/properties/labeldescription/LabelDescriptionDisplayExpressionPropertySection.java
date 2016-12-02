@@ -55,7 +55,7 @@ public class LabelDescriptionDisplayExpressionPropertySection extends AbstractTe
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getLabelDescription_DisplayExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractLabelDescription_DisplayExpression();
     }
 
     /**

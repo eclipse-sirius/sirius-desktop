@@ -55,7 +55,7 @@ public class TextDescriptionValueExpressionPropertySection extends AbstractTextW
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getTextDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractTextDescription_ValueExpression();
     }
 
     /**

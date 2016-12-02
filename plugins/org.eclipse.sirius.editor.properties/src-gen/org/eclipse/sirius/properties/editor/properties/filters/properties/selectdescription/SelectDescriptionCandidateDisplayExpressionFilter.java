@@ -27,7 +27,7 @@ public class SelectDescriptionCandidateDisplayExpressionFilter extends Viewpoint
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getSelectDescription_CandidateDisplayExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractSelectDescription_CandidateDisplayExpression();
     }
 
     /**

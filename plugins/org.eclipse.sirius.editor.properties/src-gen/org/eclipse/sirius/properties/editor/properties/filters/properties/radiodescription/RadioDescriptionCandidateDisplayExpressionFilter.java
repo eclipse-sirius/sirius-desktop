@@ -27,7 +27,7 @@ public class RadioDescriptionCandidateDisplayExpressionFilter extends ViewpointP
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getRadioDescription_CandidateDisplayExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractRadioDescription_CandidateDisplayExpression();
     }
 
     /**

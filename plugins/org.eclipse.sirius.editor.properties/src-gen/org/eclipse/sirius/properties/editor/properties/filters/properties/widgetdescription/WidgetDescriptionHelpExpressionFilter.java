@@ -27,7 +27,7 @@ public class WidgetDescriptionHelpExpressionFilter extends ViewpointPropertyFilt
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getWidgetDescription_HelpExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractWidgetDescription_HelpExpression();
     }
 
     /**

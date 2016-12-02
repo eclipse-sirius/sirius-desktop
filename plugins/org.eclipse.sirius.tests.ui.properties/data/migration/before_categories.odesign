@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="properties" version="11.0.0.201609021200">
+  <extensions xsi:type="properties:ViewExtensionDescription" identifier="Properties">
+    <metamodels href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    <pages identifier="Page 1" labelExpression="Page" domainClass="ecore.EObject" semanticCandidateExpression="var:self" groups="//@extensions.0/@groups.0 //@extensions.1/@groups.0"/>
+    <groups identifier="Group 1" labelExpression="Group" domainClass="ecore.EClass" semanticCandidateExpression="var:self">
+      <controls xsi:type="properties:TextDescription" identifier="Text 1"/>
+      <style/>
+    </groups>
+  </extensions>
+  <extensions xsi:type="properties:ViewExtensionDescription" identifier="Properties">
+    <pages identifier="Page 2" labelExpression="Page" domainClass="ecore.EObject" semanticCandidateExpression="var:self" groups="//@extensions.1/@groups.0 //@extensions.0/@groups.0">
+      <validationSet>
+        <semanticValidationRules name="id" label="label" targetClass="target">
+          <audits auditExpression="aql:true"/>
+          <fixes name="Fix">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self"/>
+            </initialOperation>
+          </fixes>
+        </semanticValidationRules>
+      </validationSet>
+    </pages>
+    <groups identifier="Group 2" labelExpression="Group" domainClass="ecore.EClass" semanticCandidateExpression="var:self">
+      <controls xsi:type="properties:TextDescription" identifier="Text 2"/>
+      <controls
+          xsi:type="properties:DynamicMappingFor">
+        <ifs>
+          <widget
+              xsi:type="properties:CheckboxDescription"/>
+        </ifs>
+      </controls>
+      <validationSet>
+        <propertyValidationRules targets="//@extensions.0/@groups.0/@controls.0"/>
+      </validationSet>
+      <conditionalStyles preconditionExpression="true">
+        <style/>
+      </conditionalStyles>
+      <conditionalStyles preconditionExpression="false">
+        <style/>
+      </conditionalStyles>
+      <style/>
+    </groups>
+  </extensions>
+</description:Group>

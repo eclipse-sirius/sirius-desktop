@@ -32,7 +32,7 @@ import org.eclipse.sirius.properties.provider.WidgetDescriptionItemProvider;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class ExtReferenceDescriptionItemProvider extends WidgetDescriptionItemProvider implements IItemStyledLabelProvider {
@@ -66,7 +66,7 @@ public class ExtReferenceDescriptionItemProvider extends WidgetDescriptionItemPr
     /**
      * This adds a property descriptor for the Reference Name Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addReferenceNameExpressionPropertyDescriptor(Object object) {
@@ -79,7 +79,7 @@ public class ExtReferenceDescriptionItemProvider extends WidgetDescriptionItemPr
     /**
      * This adds a property descriptor for the Reference Owner Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addReferenceOwnerExpressionPropertyDescriptor(Object object) {
@@ -96,7 +96,7 @@ public class ExtReferenceDescriptionItemProvider extends WidgetDescriptionItemPr
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class ExtReferenceDescriptionItemProvider extends WidgetDescriptionItemPr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class ExtReferenceDescriptionItemProvider extends WidgetDescriptionItemPr
     /**
      * This returns ExtReferenceDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -137,7 +137,7 @@ public class ExtReferenceDescriptionItemProvider extends WidgetDescriptionItemPr
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -168,7 +168,7 @@ public class ExtReferenceDescriptionItemProvider extends WidgetDescriptionItemPr
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

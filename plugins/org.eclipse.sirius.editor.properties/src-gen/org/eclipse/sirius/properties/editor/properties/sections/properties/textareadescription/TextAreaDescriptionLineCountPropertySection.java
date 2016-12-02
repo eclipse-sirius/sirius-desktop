@@ -45,7 +45,7 @@ public class TextAreaDescriptionLineCountPropertySection extends AbstractSpinner
      */
     @Override
     protected EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getTextAreaDescription_LineCount();
+        return PropertiesPackage.eINSTANCE.getAbstractTextAreaDescription_LineCount();
     }
 
     /**

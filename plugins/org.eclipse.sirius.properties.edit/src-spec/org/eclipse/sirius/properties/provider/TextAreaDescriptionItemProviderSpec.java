@@ -11,9 +11,15 @@
  */
 package org.eclipse.sirius.properties.provider;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.command.CommandParameter;
-import org.eclipse.sirius.properties.TextAreaDescription;
+import org.eclipse.emf.edit.provider.StyledString;
+import org.eclipse.sirius.properties.PropertiesFactory;
+import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
  * Subclass used to not have to modify the generated code.
@@ -34,14 +40,32 @@ public class TextAreaDescriptionItemProviderSpec extends TextAreaDescriptionItem
 
     @Override
     public String getText(Object object) {
-        String label = ((TextAreaDescription) object).getLabelExpression();
-        return label == null || label.length() == 0 ? getString("_UI_TextAreaDescription_type") : //$NON-NLS-1$
-                label;
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
+        return Utils.computeLabel(this, object, "_UI_TextAreaDescription_type"); //$NON-NLS-1$
     }
 
     @Override
     protected CommandParameter createChildParameter(Object feature, Object child) {
         Utils.addNoopNavigationOperations(child);
         return super.createChildParameter(feature, child);
+    }
+
+    @Override
+    protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_TEXT_AREA_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_TEXT_AREA_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createTextWidgetStyle()));
+
+        TextWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createTextWidgetConditionalStyle();
+        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createTextWidgetStyle());
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_TEXT_AREA_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
     }
 }

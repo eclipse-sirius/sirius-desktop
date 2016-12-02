@@ -56,7 +56,7 @@ public class SelectDescriptionCandidateDisplayExpressionPropertySection extends 
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getSelectDescription_CandidateDisplayExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractSelectDescription_CandidateDisplayExpression();
     }
 
     /**

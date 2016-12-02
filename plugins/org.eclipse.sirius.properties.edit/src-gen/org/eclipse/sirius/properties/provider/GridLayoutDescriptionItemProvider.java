@@ -19,6 +19,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
@@ -26,7 +27,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.GridLayoutDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class GridLayoutDescriptionItemProvider extends LayoutDescriptionItemProvider {
@@ -97,15 +98,25 @@ public class GridLayoutDescriptionItemProvider extends LayoutDescriptionItemProv
      */
     @Override
     public String getText(Object object) {
+        return ((StyledString) getStyledText(object)).getString();
+    }
+
+    /**
+     * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Object getStyledText(Object object) {
         GridLayoutDescription gridLayoutDescription = (GridLayoutDescription) object;
-        return getString("_UI_GridLayoutDescription_type") + " " + gridLayoutDescription.getNumberOfColumns(); //$NON-NLS-1$ //$NON-NLS-2$
+        return new StyledString(getString("_UI_GridLayoutDescription_type"), StyledString.Style.QUALIFIER_STYLER).append(" ").append(Integer.toString(gridLayoutDescription.getNumberOfColumns())); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

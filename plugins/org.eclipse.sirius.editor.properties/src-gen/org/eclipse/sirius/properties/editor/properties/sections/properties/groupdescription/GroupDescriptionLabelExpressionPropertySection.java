@@ -55,7 +55,7 @@ public class GroupDescriptionLabelExpressionPropertySection extends AbstractText
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getGroupDescription_LabelExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractGroupDescription_LabelExpression();
     }
 
     /**

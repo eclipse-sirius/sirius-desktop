@@ -15,9 +15,9 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
-import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
@@ -40,9 +40,16 @@ public class RadioDescriptionItemProviderSpec extends RadioDescriptionItemProvid
 
     @Override
     public String getText(Object object) {
-        String label = ((RadioDescription) object).getLabelExpression();
-        return label == null || label.length() == 0 ? getString("_UI_RadioDescription_type") : //$NON-NLS-1$
-                label;
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
+        return Utils.computeLabel(this, object, "_UI_RadioDescription_type"); //$NON-NLS-1$
     }
 
     @Override
@@ -53,12 +60,12 @@ public class RadioDescriptionItemProviderSpec extends RadioDescriptionItemProvid
 
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.RADIO_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_RADIO_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.RADIO_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createRadioWidgetStyle()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_RADIO_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createRadioWidgetStyle()));
 
         RadioWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createRadioWidgetConditionalStyle();
         conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createRadioWidgetStyle());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.RADIO_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_RADIO_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
     }
 }

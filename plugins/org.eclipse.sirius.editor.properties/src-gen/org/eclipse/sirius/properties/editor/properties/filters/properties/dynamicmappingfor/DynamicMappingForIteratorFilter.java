@@ -27,7 +27,7 @@ public class DynamicMappingForIteratorFilter extends ViewpointPropertyFilter {
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getDynamicMappingFor_Iterator();
+        return PropertiesPackage.eINSTANCE.getAbstractDynamicMappingForDescription_Iterator();
     }
 
     /**
@@ -35,7 +35,7 @@ public class DynamicMappingForIteratorFilter extends ViewpointPropertyFilter {
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.properties.DynamicMappingFor;
+        return arg0 instanceof org.eclipse.sirius.properties.AbstractDynamicMappingForDescription;
     }
 
     // Start of user code user methods

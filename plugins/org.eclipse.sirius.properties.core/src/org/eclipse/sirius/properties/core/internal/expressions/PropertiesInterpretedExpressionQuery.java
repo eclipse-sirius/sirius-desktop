@@ -37,7 +37,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.properties.DynamicMappingFor;
+import org.eclipse.sirius.properties.DynamicMappingForDescription;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
@@ -187,10 +187,10 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
         EObject cur = target;
         while (!(cur instanceof Group) && cur != null) {
             EObject parent = cur.eContainer();
-            if (parent instanceof DynamicMappingFor) {
-                String iteratorName = ((DynamicMappingFor) parent).getIterator();
+            if (parent instanceof DynamicMappingForDescription) {
+                String iteratorName = ((DynamicMappingForDescription) parent).getIterator();
                 if (!Util.isBlank(iteratorName)) {
-                    VariableType iteratorType = getResultType(parent, PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__ITERABLE_EXPRESSION);
+                    VariableType iteratorType = getResultType(parent, PropertiesPackage.Literals.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION);
                     availableVariables.put(iteratorName, iteratorType);
                 }
             }
@@ -201,27 +201,27 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
             // "input" is always available.
             availableVariables.put(EEFExpressionUtils.INPUT, VariableType.fromJavaClass(SiriusInputDescriptor.class));
 
-            if (feature == PropertiesPackage.Literals.SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION) {
-                VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION);
+            if (feature == PropertiesPackage.Literals.ABSTRACT_SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION) {
+                VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.ABSTRACT_SELECT_DESCRIPTION__CANDIDATES_EXPRESSION);
                 availableVariables.put(EEFExpressionUtils.EEFSelect.CANDIDATE, candidatesExpressionType);
-            } else if (feature == PropertiesPackage.Literals.RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION) {
-                VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.RADIO_DESCRIPTION__CANDIDATES_EXPRESSION);
+            } else if (feature == PropertiesPackage.Literals.ABSTRACT_RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION) {
+                VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.ABSTRACT_RADIO_DESCRIPTION__CANDIDATES_EXPRESSION);
                 availableVariables.put(EEFExpressionUtils.EEFSelect.CANDIDATE, candidatesExpressionType);
-            } else if (feature == PropertiesPackage.Literals.LABEL_DESCRIPTION__DISPLAY_EXPRESSION) {
-                VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.LABEL_DESCRIPTION__VALUE_EXPRESSION);
+            } else if (feature == PropertiesPackage.Literals.ABSTRACT_LABEL_DESCRIPTION__DISPLAY_EXPRESSION) {
+                VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.ABSTRACT_LABEL_DESCRIPTION__VALUE_EXPRESSION);
                 availableVariables.put(EEFExpressionUtils.EEFReference.VALUE, candidatesExpressionType);
-            } else if (feature == PropertiesPackage.Literals.LIST_DESCRIPTION__DISPLAY_EXPRESSION) {
-                VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.LIST_DESCRIPTION__VALUE_EXPRESSION);
+            } else if (feature == PropertiesPackage.Literals.ABSTRACT_LIST_DESCRIPTION__DISPLAY_EXPRESSION) {
+                VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.ABSTRACT_LIST_DESCRIPTION__VALUE_EXPRESSION);
                 availableVariables.put(EEFExpressionUtils.EEFList.VALUE, candidatesExpressionType);
-            } else if (feature == PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION) {
-                VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION);
+            } else if (feature == PropertiesPackage.Literals.ABSTRACT_HYPERLINK_DESCRIPTION__DISPLAY_EXPRESSION) {
+                VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.ABSTRACT_HYPERLINK_DESCRIPTION__VALUE_EXPRESSION);
                 availableVariables.put(EEFExpressionUtils.EEFReference.VALUE, candidatesExpressionType);
-            } else if (feature == PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION) {
-                if (target.eContainer() instanceof DynamicMappingFor) {
-                    DynamicMappingFor forDefinition = (DynamicMappingFor) target.eContainer();
+            } else if (feature == PropertiesPackage.Literals.ABSTRACT_DYNAMIC_MAPPING_IF_DESCRIPTION__PREDICATE_EXPRESSION) {
+                if (target.eContainer() instanceof DynamicMappingForDescription) {
+                    DynamicMappingForDescription forDefinition = (DynamicMappingForDescription) target.eContainer();
                     String iteratorName = forDefinition.getIterator();
                     if (!Util.isBlank(iteratorName)) {
-                        VariableType iteratorType = getResultType(forDefinition, PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__ITERABLE_EXPRESSION);
+                        VariableType iteratorType = getResultType(forDefinition, PropertiesPackage.Literals.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION);
                         availableVariables.put(iteratorName, iteratorType);
                     }
                 }
@@ -272,23 +272,23 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
             VariableType stringType = VariableType.fromString("java.lang.String"); //$NON-NLS-1$
             VariableType booleanType = VariableType.fromString("java.lang.Boolean"); //$NON-NLS-1$
             VariableType unkownType = VariableType.fromString(TypeName.EOBJECT_TYPENAME.getCompleteName());
-            if (callbackFeature == PropertiesPackage.Literals.TEXT_DESCRIPTION__INITIAL_OPERATION) {
+            if (callbackFeature == PropertiesPackage.Literals.ABSTRACT_TEXT_DESCRIPTION__INITIAL_OPERATION) {
                 availableVariables.put(EEFExpressionUtils.EEFText.NEW_VALUE, stringType);
-            } else if (callbackFeature == PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__INITIAL_OPERATION) {
+            } else if (callbackFeature == PropertiesPackage.Literals.ABSTRACT_CHECKBOX_DESCRIPTION__INITIAL_OPERATION) {
                 availableVariables.put(EEFExpressionUtils.EEFCheckbox.NEW_VALUE, booleanType);
-            } else if (callbackFeature == PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__INITIAL_OPERATION) {
+            } else if (callbackFeature == PropertiesPackage.Literals.ABSTRACT_HYPERLINK_DESCRIPTION__INITIAL_OPERATION) {
                 Option<Collection<String>> domainClass = VSMNavigation.getDomainClassFromContainingGroup(toolContext);
                 if (domainClass.some()) {
                     availableVariables.put(EEFExpressionUtils.EEFHyperlink.SELECTION, VariableType.fromStrings(domainClass.get()));
                 } else {
                     availableVariables.put(EEFExpressionUtils.EEFHyperlink.SELECTION, unkownType);
                 }
-            } else if (callbackFeature == PropertiesPackage.Literals.RADIO_DESCRIPTION__INITIAL_OPERATION) {
+            } else if (callbackFeature == PropertiesPackage.Literals.ABSTRACT_RADIO_DESCRIPTION__INITIAL_OPERATION) {
                 /*
                  * in the case of the radio button the type of newValue is the
                  * return type of the candidate expression.
                  */
-                availableVariables.put(EEFExpressionUtils.EEFText.NEW_VALUE, getResultType(toolContext.eContainer(), PropertiesPackage.Literals.RADIO_DESCRIPTION__CANDIDATES_EXPRESSION));
+                availableVariables.put(EEFExpressionUtils.EEFText.NEW_VALUE, getResultType(toolContext.eContainer(), PropertiesPackage.Literals.ABSTRACT_RADIO_DESCRIPTION__CANDIDATES_EXPRESSION));
             } else if (callbackFeature == PropertiesPackage.Literals.WIDGET_ACTION__INITIAL_OPERATION) {
                 Option<Collection<String>> domainClass = VSMNavigation.getDomainClassFromContainingGroup(toolContext);
                 if (!domainClass.some()) {
@@ -296,8 +296,8 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
                 } else {
                     availableVariables.put(EEFExpressionUtils.EEFHyperlink.SELECTION, unkownType);
                 }
-            } else if (callbackFeature == PropertiesPackage.Literals.SELECT_DESCRIPTION__INITIAL_OPERATION) {
-                availableVariables.put(EEFExpressionUtils.EEFText.NEW_VALUE, getResultType(toolContext.eContainer(), PropertiesPackage.Literals.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION));
+            } else if (callbackFeature == PropertiesPackage.Literals.ABSTRACT_SELECT_DESCRIPTION__INITIAL_OPERATION) {
+                availableVariables.put(EEFExpressionUtils.EEFText.NEW_VALUE, getResultType(toolContext.eContainer(), PropertiesPackage.Literals.ABSTRACT_SELECT_DESCRIPTION__CANDIDATES_EXPRESSION));
             }
         }
     }

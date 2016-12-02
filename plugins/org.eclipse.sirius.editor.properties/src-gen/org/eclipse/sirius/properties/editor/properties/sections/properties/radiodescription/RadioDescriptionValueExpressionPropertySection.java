@@ -55,7 +55,7 @@ public class RadioDescriptionValueExpressionPropertySection extends AbstractText
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getRadioDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractRadioDescription_ValueExpression();
     }
 
     /**

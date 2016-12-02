@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
@@ -26,7 +27,7 @@ import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.TextWidgetConditionalStyle} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class TextWidgetConditionalStyleItemProvider extends WidgetConditionalStyleItemProvider {
@@ -100,16 +101,31 @@ public class TextWidgetConditionalStyleItemProvider extends WidgetConditionalSty
      */
     @Override
     public String getText(Object object) {
+        return ((StyledString) getStyledText(object)).getString();
+    }
+
+    /**
+     * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Object getStyledText(Object object) {
         String label = ((TextWidgetConditionalStyle) object).getPreconditionExpression();
-        return label == null || label.length() == 0 ? getString("_UI_TextWidgetConditionalStyle_type") : //$NON-NLS-1$
-                getString("_UI_TextWidgetConditionalStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        StyledString styledLabel = new StyledString();
+        if (label == null || label.length() == 0) {
+            styledLabel.append(getString("_UI_TextWidgetConditionalStyle_type"), StyledString.Style.QUALIFIER_STYLER); //$NON-NLS-1$
+        } else {
+            styledLabel.append(getString("_UI_TextWidgetConditionalStyle_type"), StyledString.Style.QUALIFIER_STYLER).append(" " + label); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        return styledLabel;
     }
 
     /**
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

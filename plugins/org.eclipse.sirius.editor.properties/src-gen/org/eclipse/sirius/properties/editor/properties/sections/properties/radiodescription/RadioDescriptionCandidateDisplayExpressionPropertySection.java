@@ -56,7 +56,7 @@ public class RadioDescriptionCandidateDisplayExpressionPropertySection extends A
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getRadioDescription_CandidateDisplayExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractRadioDescription_CandidateDisplayExpression();
     }
 
     /**

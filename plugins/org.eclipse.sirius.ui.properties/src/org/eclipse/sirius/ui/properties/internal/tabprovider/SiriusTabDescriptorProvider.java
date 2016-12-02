@@ -35,6 +35,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.sirius.common.interpreter.api.VariableManagerFactory;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.properties.Category;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.core.api.DefaultRulesProvider;
@@ -143,13 +144,17 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
 
         List<PageDescription> effectivePages = Lists.newArrayList();
         for (ViewExtensionDescription ved : viewDescriptions) {
-            effectivePages.addAll(ved.getPages());
+            for (Category category : ved.getCategories()) {
+                effectivePages.addAll(category.getPages());
+            }
         }
 
         if (effectivePages.size() == 0) {
             ViewExtensionDescription viewExtensionDescription = DefaultRulesProvider.INSTANCE.getDefaultRules();
             if (viewExtensionDescription != null) {
-                effectivePages.addAll(viewExtensionDescription.getPages());
+                for (Category category : viewExtensionDescription.getCategories()) {
+                    effectivePages.addAll(category.getPages());
+                }
             }
         }
 

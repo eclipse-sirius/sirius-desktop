@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.ui.properties.internal.converters;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.eef.EEFViewDescription;
@@ -36,11 +37,17 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.sirius.properties.Category;
+import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
 import org.eclipse.sirius.properties.core.internal.converter.ViewDescriptionConverter;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 import org.junit.Test;
 
 /**
@@ -61,8 +68,12 @@ public class ConverterTests {
      */
     @Test
     public void testDescriptionConverter() {
-        EObject siriusEObject = this.convert(this.load(SIRIUS_MODEL_PATH).getContents().get(0));
+        Group group = (Group) this.load(SIRIUS_MODEL_PATH).getContents().get(0);
+        EObject siriusEObject = this.convert(group.getExtensions().get(0));
         EObject eefEObject = this.load("/data/eef.xmi").getContents().get(0);
+
+        EcoreUtil.resolveAll(siriusEObject.eResource().getResourceSet());
+        EcoreUtil.resolveAll(eefEObject.eResource().getResourceSet());
 
         IComparisonScope scope = new DefaultComparisonScope(siriusEObject, eefEObject, null);
         IEObjectMatcher matcher = DefaultMatchEngine.createDefaultEObjectMatcher(UseIdentifiers.NEVER);
@@ -88,8 +99,12 @@ public class ConverterTests {
      */
     private EObject convert(EObject eObject) {
         if (eObject instanceof ViewExtensionDescription) {
+            List<PageDescription> pages = new ArrayList<>();
             ViewExtensionDescription viewExtensionDescription = (ViewExtensionDescription) eObject;
-            ViewDescriptionConverter converter = new ViewDescriptionConverter(viewExtensionDescription.getPages());
+            for (Category category : viewExtensionDescription.getCategories()) {
+                pages.addAll(category.getPages());
+            }
+            ViewDescriptionConverter converter = new ViewDescriptionConverter(pages);
             SiriusInputDescriptor input = new SiriusInputDescriptor(EcoreFactory.eINSTANCE.createEObject());
             EEFViewDescription eefViewDescription = converter.convert(input);
 
@@ -117,6 +132,8 @@ public class ConverterTests {
         ResourceSet resourceSet = new ResourceSetImpl();
         resourceSet.getPackageRegistry().put(EefPackage.eNS_URI, EefPackage.eINSTANCE);
         resourceSet.getPackageRegistry().put(PropertiesPackage.eNS_URI, PropertiesPackage.eINSTANCE);
+        resourceSet.getPackageRegistry().put(ToolPackage.eNS_URI, ToolPackage.eINSTANCE);
+        resourceSet.getPackageRegistry().put(ValidationPackage.eNS_URI, ValidationPackage.eINSTANCE);
         resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl()); //$NON-NLS-1$
         Resource resource = resourceSet.getResource(URI.createFileURI(System.getProperty("user.dir") + uri), true);
         resource.setURI(URI.createURI(SIRIUS_MODEL_PATH));

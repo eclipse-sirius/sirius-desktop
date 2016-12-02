@@ -27,7 +27,7 @@ public class PageDescriptionSemanticCandidateExpressionFilter extends ViewpointP
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getPageDescription_SemanticCandidateExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractPageDescription_SemanticCandidateExpression();
     }
 
     /**

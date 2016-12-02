@@ -56,7 +56,7 @@ public class PageDescriptionPreconditionExpressionPropertySection extends Abstra
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getPageDescription_PreconditionExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractPageDescription_PreconditionExpression();
     }
 
     /**

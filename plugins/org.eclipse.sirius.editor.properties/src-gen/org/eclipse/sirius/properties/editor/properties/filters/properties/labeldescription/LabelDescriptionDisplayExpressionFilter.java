@@ -27,7 +27,7 @@ public class LabelDescriptionDisplayExpressionFilter extends ViewpointPropertyFi
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getLabelDescription_DisplayExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractLabelDescription_DisplayExpression();
     }
 
     /**

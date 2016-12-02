@@ -45,7 +45,7 @@ public class RadioDescriptionNumberOfColumnsPropertySection extends AbstractSpin
      */
     @Override
     protected EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getRadioDescription_NumberOfColumns();
+        return PropertiesPackage.eINSTANCE.getAbstractRadioDescription_NumberOfColumns();
     }
 
     /**

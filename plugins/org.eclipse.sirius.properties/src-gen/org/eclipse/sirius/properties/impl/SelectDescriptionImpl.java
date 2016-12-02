@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.properties.AbstractSelectDescription;
+import org.eclipse.sirius.properties.AbstractWidgetDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
@@ -28,12 +30,17 @@ import org.eclipse.sirius.properties.SelectWidgetStyle;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Select Description</b></em>'. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Select Description</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
+ * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getLabelExpression <em>Label Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getHelpExpression <em>Help Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getIsEnabledExpression
+ * <em>Is Enabled Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getValueExpression <em>Value Expression</em>}
  * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getInitialOperation <em>Initial Operation</em>}
@@ -45,15 +52,79 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getStyle <em>Style</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getConditionalStyles <em>Conditional Styles</em>}
  * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getExtends <em>Extends</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getFilterConditionalStylesFromExtendedSelectExpression
+ * <em>Filter Conditional Styles From Extended Select Expression</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SelectDescriptionImpl extends WidgetDescriptionImpl implements SelectDescription {
     /**
+     * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getLabelExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String LABEL_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getLabelExpression()
+     * @generated
+     * @ordered
+     */
+    protected String labelExpression = SelectDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getHelpExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String HELP_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getHelpExpression()
+     * @generated
+     * @ordered
+     */
+    protected String helpExpression = SelectDescriptionImpl.HELP_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getIsEnabledExpression() <em>Is Enabled Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getIsEnabledExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String IS_ENABLED_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getIsEnabledExpression() <em>Is Enabled Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getIsEnabledExpression()
+     * @generated
+     * @ordered
+     */
+    protected String isEnabledExpression = SelectDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT;
+
+    /**
      * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -63,7 +134,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     /**
      * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -103,7 +174,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     /**
      * The default value of the '{@link #getCandidateDisplayExpression() <em>Candidate Display Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCandidateDisplayExpression()
      * @generated
      * @ordered
@@ -113,7 +184,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     /**
      * The cached value of the '{@link #getCandidateDisplayExpression() <em>Candidate Display Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCandidateDisplayExpression()
      * @generated
      * @ordered
@@ -123,7 +194,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -133,7 +204,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -141,8 +212,40 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     protected EList<SelectWidgetConditionalStyle> conditionalStyles;
 
     /**
+     * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getExtends()
+     * @generated
+     * @ordered
+     */
+    protected SelectDescription extends_;
+
+    /**
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedSelectExpression()
+     * <em>Filter Conditional Styles From Extended Select Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getFilterConditionalStylesFromExtendedSelectExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedSelectExpression()
+     * <em>Filter Conditional Styles From Extended Select Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getFilterConditionalStylesFromExtendedSelectExpression()
+     * @generated
+     * @ordered
+     */
+    protected String filterConditionalStylesFromExtendedSelectExpression = SelectDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SelectDescriptionImpl() {
@@ -151,7 +254,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +264,79 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public String getLabelExpression() {
+        return labelExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setLabelExpression(String newLabelExpression) {
+        String oldLabelExpression = labelExpression;
+        labelExpression = newLabelExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.SELECT_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getHelpExpression() {
+        return helpExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setHelpExpression(String newHelpExpression) {
+        String oldHelpExpression = helpExpression;
+        helpExpression = newHelpExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.SELECT_DESCRIPTION__HELP_EXPRESSION, oldHelpExpression, helpExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getIsEnabledExpression() {
+        return isEnabledExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setIsEnabledExpression(String newIsEnabledExpression) {
+        String oldIsEnabledExpression = isEnabledExpression;
+        isEnabledExpression = newIsEnabledExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.SELECT_DESCRIPTION__IS_ENABLED_EXPRESSION, oldIsEnabledExpression, isEnabledExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -171,7 +346,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +360,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +370,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -214,7 +389,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -238,7 +413,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -248,7 +423,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -262,7 +437,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -272,7 +447,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -286,7 +461,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -296,7 +471,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(SelectWidgetStyle newStyle, NotificationChain msgs) {
@@ -315,7 +490,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -339,7 +514,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -352,7 +527,74 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public SelectDescription getExtends() {
+        if (extends_ != null && extends_.eIsProxy()) {
+            InternalEObject oldExtends = (InternalEObject) extends_;
+            extends_ = (SelectDescription) eResolveProxy(oldExtends);
+            if (extends_ != oldExtends) {
+                if (eNotificationRequired()) {
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, PropertiesPackage.SELECT_DESCRIPTION__EXTENDS, oldExtends, extends_));
+                }
+            }
+        }
+        return extends_;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public SelectDescription basicGetExtends() {
+        return extends_;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setExtends(SelectDescription newExtends) {
+        SelectDescription oldExtends = extends_;
+        extends_ = newExtends;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.SELECT_DESCRIPTION__EXTENDS, oldExtends, extends_));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getFilterConditionalStylesFromExtendedSelectExpression() {
+        return filterConditionalStylesFromExtendedSelectExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setFilterConditionalStylesFromExtendedSelectExpression(String newFilterConditionalStylesFromExtendedSelectExpression) {
+        String oldFilterConditionalStylesFromExtendedSelectExpression = filterConditionalStylesFromExtendedSelectExpression;
+        filterConditionalStylesFromExtendedSelectExpression = newFilterConditionalStylesFromExtendedSelectExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.SELECT_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION,
+                    oldFilterConditionalStylesFromExtendedSelectExpression, filterConditionalStylesFromExtendedSelectExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -370,12 +612,18 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
+        case PropertiesPackage.SELECT_DESCRIPTION__LABEL_EXPRESSION:
+            return getLabelExpression();
+        case PropertiesPackage.SELECT_DESCRIPTION__HELP_EXPRESSION:
+            return getHelpExpression();
+        case PropertiesPackage.SELECT_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            return getIsEnabledExpression();
         case PropertiesPackage.SELECT_DESCRIPTION__VALUE_EXPRESSION:
             return getValueExpression();
         case PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION:
@@ -388,19 +636,35 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
             return getStyle();
         case PropertiesPackage.SELECT_DESCRIPTION__CONDITIONAL_STYLES:
             return getConditionalStyles();
+        case PropertiesPackage.SELECT_DESCRIPTION__EXTENDS:
+            if (resolve) {
+                return getExtends();
+            }
+            return basicGetExtends();
+        case PropertiesPackage.SELECT_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION:
+            return getFilterConditionalStylesFromExtendedSelectExpression();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
+        case PropertiesPackage.SELECT_DESCRIPTION__LABEL_EXPRESSION:
+            setLabelExpression((String) newValue);
+            return;
+        case PropertiesPackage.SELECT_DESCRIPTION__HELP_EXPRESSION:
+            setHelpExpression((String) newValue);
+            return;
+        case PropertiesPackage.SELECT_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            setIsEnabledExpression((String) newValue);
+            return;
         case PropertiesPackage.SELECT_DESCRIPTION__VALUE_EXPRESSION:
             setValueExpression((String) newValue);
             return;
@@ -420,18 +684,33 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
             getConditionalStyles().clear();
             getConditionalStyles().addAll((Collection<? extends SelectWidgetConditionalStyle>) newValue);
             return;
+        case PropertiesPackage.SELECT_DESCRIPTION__EXTENDS:
+            setExtends((SelectDescription) newValue);
+            return;
+        case PropertiesPackage.SELECT_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION:
+            setFilterConditionalStylesFromExtendedSelectExpression((String) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
+        case PropertiesPackage.SELECT_DESCRIPTION__LABEL_EXPRESSION:
+            setLabelExpression(SelectDescriptionImpl.LABEL_EXPRESSION_EDEFAULT);
+            return;
+        case PropertiesPackage.SELECT_DESCRIPTION__HELP_EXPRESSION:
+            setHelpExpression(SelectDescriptionImpl.HELP_EXPRESSION_EDEFAULT);
+            return;
+        case PropertiesPackage.SELECT_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            setIsEnabledExpression(SelectDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT);
+            return;
         case PropertiesPackage.SELECT_DESCRIPTION__VALUE_EXPRESSION:
             setValueExpression(SelectDescriptionImpl.VALUE_EXPRESSION_EDEFAULT);
             return;
@@ -450,18 +729,30 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
         case PropertiesPackage.SELECT_DESCRIPTION__CONDITIONAL_STYLES:
             getConditionalStyles().clear();
             return;
+        case PropertiesPackage.SELECT_DESCRIPTION__EXTENDS:
+            setExtends((SelectDescription) null);
+            return;
+        case PropertiesPackage.SELECT_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION:
+            setFilterConditionalStylesFromExtendedSelectExpression(SelectDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
+        case PropertiesPackage.SELECT_DESCRIPTION__LABEL_EXPRESSION:
+            return SelectDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !SelectDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+        case PropertiesPackage.SELECT_DESCRIPTION__HELP_EXPRESSION:
+            return SelectDescriptionImpl.HELP_EXPRESSION_EDEFAULT == null ? helpExpression != null : !SelectDescriptionImpl.HELP_EXPRESSION_EDEFAULT.equals(helpExpression);
+        case PropertiesPackage.SELECT_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            return SelectDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT == null ? isEnabledExpression != null : !SelectDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT.equals(isEnabledExpression);
         case PropertiesPackage.SELECT_DESCRIPTION__VALUE_EXPRESSION:
             return SelectDescriptionImpl.VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !SelectDescriptionImpl.VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
         case PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION:
@@ -475,13 +766,106 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
             return style != null;
         case PropertiesPackage.SELECT_DESCRIPTION__CONDITIONAL_STYLES:
             return conditionalStyles != null && !conditionalStyles.isEmpty();
+        case PropertiesPackage.SELECT_DESCRIPTION__EXTENDS:
+            return extends_ != null;
+        case PropertiesPackage.SELECT_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION:
+            return SelectDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION_EDEFAULT == null ? filterConditionalStylesFromExtendedSelectExpression != null
+                    : !SelectDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION_EDEFAULT.equals(filterConditionalStylesFromExtendedSelectExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == AbstractWidgetDescription.class) {
+            switch (derivedFeatureID) {
+            case PropertiesPackage.SELECT_DESCRIPTION__LABEL_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+            case PropertiesPackage.SELECT_DESCRIPTION__HELP_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__HELP_EXPRESSION;
+            case PropertiesPackage.SELECT_DESCRIPTION__IS_ENABLED_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == AbstractSelectDescription.class) {
+            switch (derivedFeatureID) {
+            case PropertiesPackage.SELECT_DESCRIPTION__VALUE_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__VALUE_EXPRESSION;
+            case PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION:
+                return PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__INITIAL_OPERATION;
+            case PropertiesPackage.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__CANDIDATES_EXPRESSION;
+            case PropertiesPackage.SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION;
+            case PropertiesPackage.SELECT_DESCRIPTION__STYLE:
+                return PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__STYLE;
+            case PropertiesPackage.SELECT_DESCRIPTION__CONDITIONAL_STYLES:
+                return PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__CONDITIONAL_STYLES;
+            case PropertiesPackage.SELECT_DESCRIPTION__EXTENDS:
+                return PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__EXTENDS;
+            case PropertiesPackage.SELECT_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+        if (baseClass == AbstractWidgetDescription.class) {
+            switch (baseFeatureID) {
+            case PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__LABEL_EXPRESSION:
+                return PropertiesPackage.SELECT_DESCRIPTION__LABEL_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__HELP_EXPRESSION:
+                return PropertiesPackage.SELECT_DESCRIPTION__HELP_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION:
+                return PropertiesPackage.SELECT_DESCRIPTION__IS_ENABLED_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == AbstractSelectDescription.class) {
+            switch (baseFeatureID) {
+            case PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__VALUE_EXPRESSION:
+                return PropertiesPackage.SELECT_DESCRIPTION__VALUE_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__INITIAL_OPERATION:
+                return PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION;
+            case PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__CANDIDATES_EXPRESSION:
+                return PropertiesPackage.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION:
+                return PropertiesPackage.SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__STYLE:
+                return PropertiesPackage.SELECT_DESCRIPTION__STYLE;
+            case PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__CONDITIONAL_STYLES:
+                return PropertiesPackage.SELECT_DESCRIPTION__CONDITIONAL_STYLES;
+            case PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__EXTENDS:
+                return PropertiesPackage.SELECT_DESCRIPTION__EXTENDS;
+            case PropertiesPackage.ABSTRACT_SELECT_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION:
+                return PropertiesPackage.SELECT_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_SELECT_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -491,12 +875,20 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (valueExpression: "); //$NON-NLS-1$
+        result.append(" (labelExpression: "); //$NON-NLS-1$
+        result.append(labelExpression);
+        result.append(", helpExpression: "); //$NON-NLS-1$
+        result.append(helpExpression);
+        result.append(", isEnabledExpression: "); //$NON-NLS-1$
+        result.append(isEnabledExpression);
+        result.append(", valueExpression: "); //$NON-NLS-1$
         result.append(valueExpression);
         result.append(", candidatesExpression: "); //$NON-NLS-1$
         result.append(candidatesExpression);
         result.append(", candidateDisplayExpression: "); //$NON-NLS-1$
         result.append(candidateDisplayExpression);
+        result.append(", filterConditionalStylesFromExtendedSelectExpression: "); //$NON-NLS-1$
+        result.append(filterConditionalStylesFromExtendedSelectExpression);
         result.append(')');
         return result.toString();
     }

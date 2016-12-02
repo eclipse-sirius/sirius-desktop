@@ -27,7 +27,7 @@ public class TextDescriptionValueExpressionFilter extends ViewpointPropertyFilte
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getTextDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractTextDescription_ValueExpression();
     }
 
     /**

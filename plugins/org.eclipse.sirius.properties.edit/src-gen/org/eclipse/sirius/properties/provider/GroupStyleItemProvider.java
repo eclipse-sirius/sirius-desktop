@@ -23,10 +23,12 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IItemStyledLabelProvider;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.GroupStyle;
 import org.eclipse.sirius.properties.PropertiesPackage;
@@ -38,7 +40,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * @generated
  */
 public class GroupStyleItemProvider extends ItemProviderAdapter
-        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, IItemStyledLabelProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -96,7 +98,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Font Name Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     protected void addFontNameExpressionPropertyDescriptor(Object object) {
@@ -109,7 +111,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Font Size Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     protected void addFontSizeExpressionPropertyDescriptor(Object object) {
@@ -146,7 +148,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Expanded By Default feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     protected void addExpandedByDefaultPropertyDescriptor(Object object) {
@@ -173,16 +175,31 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
      */
     @Override
     public String getText(Object object) {
+        return ((StyledString) getStyledText(object)).getString();
+    }
+
+    /**
+     * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Object getStyledText(Object object) {
         String label = ((GroupStyle) object).getFontNameExpression();
-        return label == null || label.length() == 0 ? getString("_UI_GroupStyle_type") : //$NON-NLS-1$
-                getString("_UI_GroupStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        StyledString styledLabel = new StyledString();
+        if (label == null || label.length() == 0) {
+            styledLabel.append(getString("_UI_GroupStyle_type"), StyledString.Style.QUALIFIER_STYLER); //$NON-NLS-1$
+        } else {
+            styledLabel.append(getString("_UI_GroupStyle_type"), StyledString.Style.QUALIFIER_STYLER).append(" " + label); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        return styledLabel;
     }
 
     /**
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

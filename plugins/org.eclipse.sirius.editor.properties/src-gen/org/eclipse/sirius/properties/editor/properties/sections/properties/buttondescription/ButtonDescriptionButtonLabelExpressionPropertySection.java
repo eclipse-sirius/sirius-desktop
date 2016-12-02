@@ -56,7 +56,7 @@ public class ButtonDescriptionButtonLabelExpressionPropertySection extends Abstr
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getButtonDescription_ButtonLabelExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractButtonDescription_ButtonLabelExpression();
     }
 
     /**

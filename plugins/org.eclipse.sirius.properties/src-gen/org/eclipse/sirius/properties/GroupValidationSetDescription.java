@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>Group Validation Set Description</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Group Validation Set Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -59,7 +59,7 @@ public interface GroupValidationSetDescription extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Property Validation Rules</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupValidationSetDescription_PropertyValidationRules()
      * @model containment="true" keys="name"

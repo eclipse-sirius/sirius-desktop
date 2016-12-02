@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.properties.AbstractButtonDescription;
+import org.eclipse.sirius.properties.AbstractWidgetDescription;
 import org.eclipse.sirius.properties.ButtonDescription;
 import org.eclipse.sirius.properties.ButtonWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ButtonWidgetStyle;
@@ -28,12 +30,17 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Button Description</b></em>'. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Button Description</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
+ * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getLabelExpression <em>Label Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getHelpExpression <em>Help Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getIsEnabledExpression
+ * <em>Is Enabled Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getButtonLabelExpression
  * <em>Button Label Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getInitialOperation <em>Initial Operation</em>}
@@ -41,11 +48,75 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getStyle <em>Style</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getConditionalStyles <em>Conditional Styles</em>}
  * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getExtends <em>Extends</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getFilterConditionalStylesFromExtendedButtonExpression
+ * <em>Filter Conditional Styles From Extended Button Expression</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements ButtonDescription {
+    /**
+     * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getLabelExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String LABEL_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getLabelExpression()
+     * @generated
+     * @ordered
+     */
+    protected String labelExpression = ButtonDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getHelpExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String HELP_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getHelpExpression()
+     * @generated
+     * @ordered
+     */
+    protected String helpExpression = ButtonDescriptionImpl.HELP_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getIsEnabledExpression() <em>Is Enabled Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getIsEnabledExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String IS_ENABLED_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getIsEnabledExpression() <em>Is Enabled Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getIsEnabledExpression()
+     * @generated
+     * @ordered
+     */
+    protected String isEnabledExpression = ButtonDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT;
+
     /**
      * The default value of the '{@link #getButtonLabelExpression() <em>Button Label Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -79,7 +150,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -89,7 +160,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -97,8 +168,40 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
     protected EList<ButtonWidgetConditionalStyle> conditionalStyles;
 
     /**
+     * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getExtends()
+     * @generated
+     * @ordered
+     */
+    protected ButtonDescription extends_;
+
+    /**
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedButtonExpression()
+     * <em>Filter Conditional Styles From Extended Button Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getFilterConditionalStylesFromExtendedButtonExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedButtonExpression()
+     * <em>Filter Conditional Styles From Extended Button Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getFilterConditionalStylesFromExtendedButtonExpression()
+     * @generated
+     * @ordered
+     */
+    protected String filterConditionalStylesFromExtendedButtonExpression = ButtonDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ButtonDescriptionImpl() {
@@ -107,7 +210,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +220,79 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public String getLabelExpression() {
+        return labelExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setLabelExpression(String newLabelExpression) {
+        String oldLabelExpression = labelExpression;
+        labelExpression = newLabelExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.BUTTON_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getHelpExpression() {
+        return helpExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setHelpExpression(String newHelpExpression) {
+        String oldHelpExpression = helpExpression;
+        helpExpression = newHelpExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.BUTTON_DESCRIPTION__HELP_EXPRESSION, oldHelpExpression, helpExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getIsEnabledExpression() {
+        return isEnabledExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setIsEnabledExpression(String newIsEnabledExpression) {
+        String oldIsEnabledExpression = isEnabledExpression;
+        isEnabledExpression = newIsEnabledExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.BUTTON_DESCRIPTION__IS_ENABLED_EXPRESSION, oldIsEnabledExpression, isEnabledExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -127,7 +302,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +316,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +326,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -170,7 +345,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +369,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,7 +379,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(ButtonWidgetStyle newStyle, NotificationChain msgs) {
@@ -223,7 +398,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +422,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -260,7 +435,74 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public ButtonDescription getExtends() {
+        if (extends_ != null && extends_.eIsProxy()) {
+            InternalEObject oldExtends = (InternalEObject) extends_;
+            extends_ = (ButtonDescription) eResolveProxy(oldExtends);
+            if (extends_ != oldExtends) {
+                if (eNotificationRequired()) {
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, PropertiesPackage.BUTTON_DESCRIPTION__EXTENDS, oldExtends, extends_));
+                }
+            }
+        }
+        return extends_;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public ButtonDescription basicGetExtends() {
+        return extends_;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setExtends(ButtonDescription newExtends) {
+        ButtonDescription oldExtends = extends_;
+        extends_ = newExtends;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.BUTTON_DESCRIPTION__EXTENDS, oldExtends, extends_));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getFilterConditionalStylesFromExtendedButtonExpression() {
+        return filterConditionalStylesFromExtendedButtonExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setFilterConditionalStylesFromExtendedButtonExpression(String newFilterConditionalStylesFromExtendedButtonExpression) {
+        String oldFilterConditionalStylesFromExtendedButtonExpression = filterConditionalStylesFromExtendedButtonExpression;
+        filterConditionalStylesFromExtendedButtonExpression = newFilterConditionalStylesFromExtendedButtonExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION,
+                    oldFilterConditionalStylesFromExtendedButtonExpression, filterConditionalStylesFromExtendedButtonExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -278,12 +520,18 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
+        case PropertiesPackage.BUTTON_DESCRIPTION__LABEL_EXPRESSION:
+            return getLabelExpression();
+        case PropertiesPackage.BUTTON_DESCRIPTION__HELP_EXPRESSION:
+            return getHelpExpression();
+        case PropertiesPackage.BUTTON_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            return getIsEnabledExpression();
         case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
             return getButtonLabelExpression();
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
@@ -292,19 +540,35 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
             return getStyle();
         case PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES:
             return getConditionalStyles();
+        case PropertiesPackage.BUTTON_DESCRIPTION__EXTENDS:
+            if (resolve) {
+                return getExtends();
+            }
+            return basicGetExtends();
+        case PropertiesPackage.BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION:
+            return getFilterConditionalStylesFromExtendedButtonExpression();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
+        case PropertiesPackage.BUTTON_DESCRIPTION__LABEL_EXPRESSION:
+            setLabelExpression((String) newValue);
+            return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__HELP_EXPRESSION:
+            setHelpExpression((String) newValue);
+            return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            setIsEnabledExpression((String) newValue);
+            return;
         case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
             setButtonLabelExpression((String) newValue);
             return;
@@ -318,18 +582,33 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
             getConditionalStyles().clear();
             getConditionalStyles().addAll((Collection<? extends ButtonWidgetConditionalStyle>) newValue);
             return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__EXTENDS:
+            setExtends((ButtonDescription) newValue);
+            return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION:
+            setFilterConditionalStylesFromExtendedButtonExpression((String) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
+        case PropertiesPackage.BUTTON_DESCRIPTION__LABEL_EXPRESSION:
+            setLabelExpression(ButtonDescriptionImpl.LABEL_EXPRESSION_EDEFAULT);
+            return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__HELP_EXPRESSION:
+            setHelpExpression(ButtonDescriptionImpl.HELP_EXPRESSION_EDEFAULT);
+            return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            setIsEnabledExpression(ButtonDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT);
+            return;
         case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
             setButtonLabelExpression(ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT);
             return;
@@ -342,18 +621,30 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
         case PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES:
             getConditionalStyles().clear();
             return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__EXTENDS:
+            setExtends((ButtonDescription) null);
+            return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION:
+            setFilterConditionalStylesFromExtendedButtonExpression(ButtonDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
+        case PropertiesPackage.BUTTON_DESCRIPTION__LABEL_EXPRESSION:
+            return ButtonDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !ButtonDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+        case PropertiesPackage.BUTTON_DESCRIPTION__HELP_EXPRESSION:
+            return ButtonDescriptionImpl.HELP_EXPRESSION_EDEFAULT == null ? helpExpression != null : !ButtonDescriptionImpl.HELP_EXPRESSION_EDEFAULT.equals(helpExpression);
+        case PropertiesPackage.BUTTON_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            return ButtonDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT == null ? isEnabledExpression != null : !ButtonDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT.equals(isEnabledExpression);
         case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
             return ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT == null ? buttonLabelExpression != null
                     : !ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT.equals(buttonLabelExpression);
@@ -363,13 +654,98 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
             return style != null;
         case PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES:
             return conditionalStyles != null && !conditionalStyles.isEmpty();
+        case PropertiesPackage.BUTTON_DESCRIPTION__EXTENDS:
+            return extends_ != null;
+        case PropertiesPackage.BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION:
+            return ButtonDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION_EDEFAULT == null ? filterConditionalStylesFromExtendedButtonExpression != null
+                    : !ButtonDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION_EDEFAULT.equals(filterConditionalStylesFromExtendedButtonExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == AbstractWidgetDescription.class) {
+            switch (derivedFeatureID) {
+            case PropertiesPackage.BUTTON_DESCRIPTION__LABEL_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+            case PropertiesPackage.BUTTON_DESCRIPTION__HELP_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__HELP_EXPRESSION;
+            case PropertiesPackage.BUTTON_DESCRIPTION__IS_ENABLED_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == AbstractButtonDescription.class) {
+            switch (derivedFeatureID) {
+            case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION;
+            case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
+                return PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__INITIAL_OPERATION;
+            case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
+                return PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__STYLE;
+            case PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES:
+                return PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__CONDITIONAL_STYLES;
+            case PropertiesPackage.BUTTON_DESCRIPTION__EXTENDS:
+                return PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__EXTENDS;
+            case PropertiesPackage.BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+        if (baseClass == AbstractWidgetDescription.class) {
+            switch (baseFeatureID) {
+            case PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__LABEL_EXPRESSION:
+                return PropertiesPackage.BUTTON_DESCRIPTION__LABEL_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__HELP_EXPRESSION:
+                return PropertiesPackage.BUTTON_DESCRIPTION__HELP_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION:
+                return PropertiesPackage.BUTTON_DESCRIPTION__IS_ENABLED_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == AbstractButtonDescription.class) {
+            switch (baseFeatureID) {
+            case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
+                return PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__INITIAL_OPERATION:
+                return PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION;
+            case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__STYLE:
+                return PropertiesPackage.BUTTON_DESCRIPTION__STYLE;
+            case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__CONDITIONAL_STYLES:
+                return PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES;
+            case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__EXTENDS:
+                return PropertiesPackage.BUTTON_DESCRIPTION__EXTENDS;
+            case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION:
+                return PropertiesPackage.BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -379,8 +755,16 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (buttonLabelExpression: "); //$NON-NLS-1$
+        result.append(" (labelExpression: "); //$NON-NLS-1$
+        result.append(labelExpression);
+        result.append(", helpExpression: "); //$NON-NLS-1$
+        result.append(helpExpression);
+        result.append(", isEnabledExpression: "); //$NON-NLS-1$
+        result.append(isEnabledExpression);
+        result.append(", buttonLabelExpression: "); //$NON-NLS-1$
         result.append(buttonLabelExpression);
+        result.append(", filterConditionalStylesFromExtendedButtonExpression: "); //$NON-NLS-1$
+        result.append(filterConditionalStylesFromExtendedButtonExpression);
         result.append(')');
         return result.toString();
     }

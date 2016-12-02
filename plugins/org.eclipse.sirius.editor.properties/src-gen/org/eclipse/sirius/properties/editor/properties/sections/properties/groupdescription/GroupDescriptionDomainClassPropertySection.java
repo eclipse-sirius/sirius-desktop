@@ -50,7 +50,7 @@ public class GroupDescriptionDomainClassPropertySection extends AbstractTextProp
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getGroupDescription_DomainClass();
+        return PropertiesPackage.eINSTANCE.getAbstractGroupDescription_DomainClass();
     }
 
     /**

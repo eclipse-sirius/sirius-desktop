@@ -55,7 +55,7 @@ public class ListDescriptionDisplayExpressionPropertySection extends AbstractTex
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getListDescription_DisplayExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractListDescription_DisplayExpression();
     }
 
     /**

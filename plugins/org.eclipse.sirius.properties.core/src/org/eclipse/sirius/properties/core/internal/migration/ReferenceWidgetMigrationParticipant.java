@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.migration.AbstractVSMMigrationParticipant;
+import org.eclipse.sirius.properties.Category;
 import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.ControlDescription;
 import org.eclipse.sirius.properties.GroupDescription;
@@ -50,12 +50,12 @@ import org.osgi.framework.Version;
  * 
  * @author sbegaudeau
  */
-public class ReferenceWidgetMigrationParticipant extends AbstractVSMMigrationParticipant {
+public class ReferenceWidgetMigrationParticipant extends AbstractCategoryMigrationParticipant {
 
     /**
      * The version of the migration.
      */
-    private static final Version MIGRATION_VERSION = new Version("11.0.0.201609021200"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("11.0.0.201609021200"); //$NON-NLS-1$
 
     /**
      * The name of the type to migrate.
@@ -116,25 +116,30 @@ public class ReferenceWidgetMigrationParticipant extends AbstractVSMMigrationPar
     protected void postLoad(Group group, Version loadedVersion) {
         super.postLoad(group, loadedVersion);
 
-        List<Extension> extensions = group.getExtensions();
-        for (Extension extension : extensions) {
-            if (extension instanceof ViewExtensionDescription) {
-                ViewExtensionDescription viewExtensionDescription = (ViewExtensionDescription) extension;
+        if (this.getMigrationVersion().compareTo(Version.parseVersion(group.getVersion())) > 0) {
+            List<Extension> extensions = group.getExtensions();
+            for (Extension extension : extensions) {
+                if (extension instanceof ViewExtensionDescription) {
+                    ViewExtensionDescription viewExtensionDescription = (ViewExtensionDescription) extension;
 
-                Set<GroupDescription> groups = new LinkedHashSet<>();
-                for (PageDescription pageDescription : viewExtensionDescription.getPages()) {
-                    groups.addAll(pageDescription.getGroups());
-                }
-                groups.addAll(viewExtensionDescription.getGroups());
+                    Set<GroupDescription> groups = new LinkedHashSet<>();
+                    for (Category category : viewExtensionDescription.getCategories()) {
+                        for (PageDescription pageDescription : category.getPages()) {
+                            groups.addAll(pageDescription.getGroups());
+                        }
+                        groups.addAll(category.getGroups());
+                    }
 
-                for (GroupDescription groupDescription : groups) {
-                    List<ControlDescription> controls = groupDescription.getControls();
-                    for (ControlDescription controlDescription : controls) {
-                        this.handleControl(controlDescription);
+                    for (GroupDescription groupDescription : groups) {
+                        List<ControlDescription> controls = groupDescription.getControls();
+                        for (ControlDescription controlDescription : controls) {
+                            this.handleControl(controlDescription);
+                        }
                     }
                 }
             }
         }
+
     }
 
     /**
@@ -180,7 +185,7 @@ public class ReferenceWidgetMigrationParticipant extends AbstractVSMMigrationPar
      */
     private ListDescription handleList(ListDescription listDescription) {
         ListDescription list = PropertiesFactory.eINSTANCE.createListDescription();
-        list.setIdentifier(listDescription.getIdentifier());
+        list.setName(listDescription.getName());
         list.setHelpExpression(listDescription.getHelpExpression());
         list.setDisplayExpression(listDescription.getDisplayExpression());
         list.setIsEnabledExpression(listDescription.getIsEnabledExpression());
@@ -203,7 +208,7 @@ public class ReferenceWidgetMigrationParticipant extends AbstractVSMMigrationPar
      */
     private HyperlinkDescription handleHyperlink(ListDescription listDescription) {
         HyperlinkDescription hyperlink = PropertiesFactory.eINSTANCE.createHyperlinkDescription();
-        hyperlink.setIdentifier(listDescription.getIdentifier());
+        hyperlink.setName(listDescription.getName());
         hyperlink.setHelpExpression(listDescription.getHelpExpression());
         hyperlink.setDisplayExpression(listDescription.getDisplayExpression());
         hyperlink.setIsEnabledExpression(listDescription.getIsEnabledExpression());
@@ -213,17 +218,13 @@ public class ReferenceWidgetMigrationParticipant extends AbstractVSMMigrationPar
         hyperlink.setInitialOperation(listDescription.getOnClickOperation());
 
         ListWidgetStyle listWidgetStyle = listDescription.getStyle();
-        if (listWidgetStyle != null) {
-            hyperlink.setStyle(this.handleHyperlinkStyle(listWidgetStyle));
-        }
+        hyperlink.setStyle(this.handleHyperlinkStyle(listWidgetStyle));
 
         List<ListWidgetConditionalStyle> listConditionalStyles = listDescription.getConditionalStyles();
         for (ListWidgetConditionalStyle listWidgetConditionalStyle : listConditionalStyles) {
             HyperlinkWidgetConditionalStyle hyperlinkWidgetConditionalStyle = PropertiesFactory.eINSTANCE.createHyperlinkWidgetConditionalStyle();
             hyperlinkWidgetConditionalStyle.setPreconditionExpression(listWidgetConditionalStyle.getPreconditionExpression());
-            if (listWidgetConditionalStyle.getStyle() != null) {
-                hyperlinkWidgetConditionalStyle.setStyle(this.handleHyperlinkStyle(listWidgetConditionalStyle.getStyle()));
-            }
+            hyperlinkWidgetConditionalStyle.setStyle(this.handleHyperlinkStyle(listWidgetConditionalStyle.getStyle()));
             hyperlink.getConditionalStyles().add(hyperlinkWidgetConditionalStyle);
         }
         return hyperlink;
@@ -255,7 +256,7 @@ public class ReferenceWidgetMigrationParticipant extends AbstractVSMMigrationPar
      */
     private LabelDescription handleLabel(ListDescription listDescription) {
         LabelDescription label = PropertiesFactory.eINSTANCE.createLabelDescription();
-        label.setIdentifier(listDescription.getIdentifier());
+        label.setName(listDescription.getName());
         label.setHelpExpression(listDescription.getHelpExpression());
         label.setDisplayExpression(listDescription.getDisplayExpression());
         label.setIsEnabledExpression(listDescription.getIsEnabledExpression());

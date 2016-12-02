@@ -13,7 +13,7 @@ package org.eclipse.sirius.properties.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.command.CommandParameter;
-import org.eclipse.sirius.properties.CustomOperation;
+import org.eclipse.emf.edit.provider.StyledString;
 
 /**
  * Subclass used to not have to modify the generated code.
@@ -34,9 +34,16 @@ public class CustomOperationItemProviderSpec extends CustomOperationItemProvider
 
     @Override
     public String getText(Object object) {
-        String label = ((CustomOperation) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_CustomOperation_type") : //$NON-NLS-1$
-                label;
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
+        return Utils.computeLabel(this, object, "_UI_CustomOperation_type"); //$NON-NLS-1$
     }
 
     @Override

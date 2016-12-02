@@ -27,7 +27,7 @@ public class RadioDescriptionValueExpressionFilter extends ViewpointPropertyFilt
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getRadioDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractRadioDescription_ValueExpression();
     }
 
     /**

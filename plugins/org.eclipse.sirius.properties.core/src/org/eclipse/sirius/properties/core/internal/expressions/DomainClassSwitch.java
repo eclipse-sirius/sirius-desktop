@@ -20,8 +20,8 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.properties.CustomExpression;
 import org.eclipse.sirius.properties.CustomOperation;
-import org.eclipse.sirius.properties.DynamicMappingFor;
-import org.eclipse.sirius.properties.DynamicMappingIf;
+import org.eclipse.sirius.properties.DynamicMappingForDescription;
+import org.eclipse.sirius.properties.DynamicMappingIfDescription;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupStyle;
 import org.eclipse.sirius.properties.OperationDescription;
@@ -188,12 +188,12 @@ public class DomainClassSwitch extends PropertiesSwitch<Option<Collection<String
     }
 
     @Override
-    public Option<Collection<String>> caseDynamicMappingFor(DynamicMappingFor object) {
+    public Option<Collection<String>> caseDynamicMappingForDescription(DynamicMappingForDescription object) {
         return VSMNavigation.getDomainClassFromContainingGroup(object);
     }
 
     @Override
-    public Option<Collection<String>> caseDynamicMappingIf(DynamicMappingIf object) {
+    public Option<Collection<String>> caseDynamicMappingIfDescription(DynamicMappingIfDescription object) {
         return VSMNavigation.getDomainClassFromContainingGroup(object);
     }
     

@@ -18,6 +18,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemStyledLabelProvider;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationRuleItemProvider;
@@ -25,10 +27,10 @@ import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationRu
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.PropertyValidationRule} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
-public class PropertyValidationRuleItemProvider extends ValidationRuleItemProvider {
+public class PropertyValidationRuleItemProvider extends ValidationRuleItemProvider implements IItemStyledLabelProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -82,16 +84,31 @@ public class PropertyValidationRuleItemProvider extends ValidationRuleItemProvid
      */
     @Override
     public String getText(Object object) {
+        return ((StyledString) getStyledText(object)).getString();
+    }
+
+    /**
+     * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Object getStyledText(Object object) {
         String label = ((PropertyValidationRule) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_PropertyValidationRule_type") : //$NON-NLS-1$
-                getString("_UI_PropertyValidationRule_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        StyledString styledLabel = new StyledString();
+        if (label == null || label.length() == 0) {
+            styledLabel.append(getString("_UI_PropertyValidationRule_type"), StyledString.Style.QUALIFIER_STYLER); //$NON-NLS-1$
+        } else {
+            styledLabel.append(getString("_UI_PropertyValidationRule_type"), StyledString.Style.QUALIFIER_STYLER).append(" " + label); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        return styledLabel;
     }
 
     /**
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

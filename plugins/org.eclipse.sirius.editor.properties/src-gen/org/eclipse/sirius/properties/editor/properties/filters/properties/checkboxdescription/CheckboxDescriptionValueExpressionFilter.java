@@ -27,7 +27,7 @@ public class CheckboxDescriptionValueExpressionFilter extends ViewpointPropertyF
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getCheckboxDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractCheckboxDescription_ValueExpression();
     }
 
     /**
@@ -35,7 +35,7 @@ public class CheckboxDescriptionValueExpressionFilter extends ViewpointPropertyF
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.properties.CheckboxDescription;
+        return arg0 instanceof org.eclipse.sirius.properties.AbstractCheckboxDescription;
     }
 
     // Start of user code user methods

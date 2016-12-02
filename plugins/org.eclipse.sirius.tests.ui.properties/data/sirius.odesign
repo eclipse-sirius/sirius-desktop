@@ -1,15 +1,22 @@
-<?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0"
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group
+    xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:description="http://www.eclipse.org/sirius/description/1.1.0"
+    xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0"
     xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0"
-    xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0"
-    xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 ../../org.eclipse.sirius/model/viewpoint.ecore#//description http://www.eclipse.org/sirius/properties/1.0.0 ../../org.eclipse.sirius.properties/model/properties.ecore http://www.eclipse.org/sirius/description/tool/1.1.0 ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool">
-  <properties:ViewExtensionDescription>
+    xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"
+    xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0"
+    xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0"
+    name="basicfamily"
+    version="11.0.0.201608291200">
+  <extensions
+      xsi:type="properties:ViewExtensionDescription"
+      identifier="NewPropertieView">
     <pages identifier="general"
         labelExpression="General"
-        groups="/0/@groups.0 /0/@groups.1">
+        groups="/0/@extensions.0/@groups.0 /0/@extensions.0/@groups.1">
       <validationSet>
         <semanticValidationRules
             name="Name length validation rule"
@@ -30,7 +37,7 @@
     </pages>
     <pages identifier="properties"
         labelExpression="Properties"
-        groups="/0/@groups.1 /0/@groups.2"/>
+        groups="/0/@extensions.0/@groups.1 /0/@extensions.0/@groups.2"/>
     <groups
         identifier="description"
         labelExpression="Description">
@@ -46,15 +53,15 @@
               valueExpression="aql:newValue"/>
         </initialOperation>
         <style
-            backgroundColor="/1"
-            foregroundColor="/2">
+            backgroundColor="//@userColorsPalettes[name='palette']/@entries[name='black']"
+            foregroundColor="//@userColorsPalettes[name='palette']/@entries[name='white']">
           <fontFormat>bold</fontFormat>
         </style>
         <conditionalStyles
             preconditionExpression="aql:true">
           <style
-              backgroundColor="/2"
-              foregroundColor="/1">
+              backgroundColor="//@userColorsPalettes[name='palette']/@entries[name='white']"
+              foregroundColor="//@userColorsPalettes[name='palette']/@entries[name='black']">
             <fontFormat>italic</fontFormat>
           </style>
         </conditionalStyles>
@@ -167,11 +174,11 @@
         </initialOperation>
       </controls>
       <style
-          backgroundColor="/2"/>
+          backgroundColor="//@userColorsPalettes[name='palette']/@entries[name='white']"/>
       <conditionalStyles
           preconditionExpression="aql:true">
         <style
-            backgroundColor="/1"/>
+            backgroundColor="//@userColorsPalettes[name='palette']/@entries[name='black']"/>
       </conditionalStyles>
     </groups>
     <groups
@@ -208,8 +215,8 @@
                     valueExpression="aql:newValue"/>
               </initialOperation>
               <style
-                  labelBackgroundColor="/1"
-                  labelForegroundColor="/2"/>
+                  labelBackgroundColor="//@userColorsPalettes[name='palette']/@entries[name='black']"
+                  labelForegroundColor="//@userColorsPalettes[name='palette']/@entries[name='white']"/>
             </widget>
           </ifs>
         </controls>
@@ -275,15 +282,17 @@
             orientation="HORIZONTAL"/>
       </controls>
     </groups>
-  </properties:ViewExtensionDescription>
-  <description:UserFixedColor
-      red="0"
-      green="0"
-      blue="0"
-      name="black"/>
-  <description:UserFixedColor
+  </extensions>
+  <userColorsPalettes name="palette">
+    <entries xsi:type="description:UserFixedColor"
       red="255"
       green="255"
       blue="255"
       name="white"/>
-</xmi:XMI>
+    <entries xsi:type="description:UserFixedColor"
+      red="0"
+      green="0"
+      blue="0"
+      name="black"/>
+  </userColorsPalettes>
+</description:Group>

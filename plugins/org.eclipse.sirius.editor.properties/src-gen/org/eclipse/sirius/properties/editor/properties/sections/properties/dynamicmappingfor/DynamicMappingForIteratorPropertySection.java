@@ -49,7 +49,7 @@ public class DynamicMappingForIteratorPropertySection extends AbstractTextProper
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getDynamicMappingFor_Iterator();
+        return PropertiesPackage.eINSTANCE.getAbstractDynamicMappingForDescription_Iterator();
     }
 
     /**

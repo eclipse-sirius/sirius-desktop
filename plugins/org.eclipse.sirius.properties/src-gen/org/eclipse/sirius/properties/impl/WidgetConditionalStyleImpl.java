@@ -19,7 +19,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Widget Conditional Style</b></em>'. <!--
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Widget Conditional Style</b></em>'. <!--
  * end-user-doc -->
  * <p>
  * The following features are implemented:
@@ -54,7 +54,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected WidgetConditionalStyleImpl() {
@@ -63,7 +63,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

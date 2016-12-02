@@ -15,7 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.command.CommandParameter;
-import org.eclipse.sirius.properties.ButtonDescription;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.sirius.properties.ButtonWidgetConditionalStyle;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
@@ -40,9 +40,16 @@ public class ButtonDescriptionItemProviderSpec extends ButtonDescriptionItemProv
 
     @Override
     public String getText(Object object) {
-        String label = ((ButtonDescription) object).getLabelExpression();
-        return label == null || label.length() == 0 ? getString("_UI_ButtonDescription_type") : //$NON-NLS-1$
-                label;
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
+        return Utils.computeLabel(this, object, "_UI_ButtonDescription_type"); //$NON-NLS-1$
     }
 
     @Override
@@ -53,13 +60,13 @@ public class ButtonDescriptionItemProviderSpec extends ButtonDescriptionItemProv
 
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.BUTTON_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_BUTTON_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.BUTTON_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createButtonWidgetStyle()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_BUTTON_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createButtonWidgetStyle()));
 
         ButtonWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createButtonWidgetConditionalStyle();
         conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createButtonWidgetStyle());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.BUTTON_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_BUTTON_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
     }
 
 }

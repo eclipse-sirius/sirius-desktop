@@ -11,9 +11,14 @@
  */
 package org.eclipse.sirius.properties.provider;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.command.CommandParameter;
-import org.eclipse.sirius.properties.ListDescription;
+import org.eclipse.emf.edit.provider.StyledString;
+import org.eclipse.sirius.properties.ListWidgetConditionalStyle;
+import org.eclipse.sirius.properties.PropertiesFactory;
+import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
  * Subclass used to not have to modify the generated code.
@@ -34,14 +39,30 @@ public class ListDescriptionItemProviderSpec extends ListDescriptionItemProvider
 
     @Override
     public String getText(Object object) {
-        String label = ((ListDescription) object).getLabelExpression();
-        return label == null || label.length() == 0 ? getString("_UI_ListDescription_type") : //$NON-NLS-1$
-                label;
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
+        return Utils.computeLabel(this, object, "_UI_ListDescription_type"); //$NON-NLS-1$
     }
 
     @Override
     protected CommandParameter createChildParameter(Object feature, Object child) {
         Utils.addNoopNavigationOperations(child);
         return super.createChildParameter(feature, child);
+    }
+
+    @Override
+    protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_LIST_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createListWidgetStyle()));
+
+        ListWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createListWidgetConditionalStyle();
+        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createListWidgetStyle());
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_LIST_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
     }
 }

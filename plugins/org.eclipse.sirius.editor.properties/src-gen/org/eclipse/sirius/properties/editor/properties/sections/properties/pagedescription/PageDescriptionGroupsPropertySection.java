@@ -53,7 +53,7 @@ public class PageDescriptionGroupsPropertySection extends AbstractEditorDialogPr
      */
     @Override
     protected EReference getFeature() {
-        return PropertiesPackage.eINSTANCE.getPageDescription_Groups();
+        return PropertiesPackage.eINSTANCE.getAbstractPageDescription_Groups();
     }
 
     /**

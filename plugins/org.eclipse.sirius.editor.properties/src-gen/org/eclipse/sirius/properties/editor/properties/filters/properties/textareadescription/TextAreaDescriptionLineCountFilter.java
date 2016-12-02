@@ -27,7 +27,7 @@ public class TextAreaDescriptionLineCountFilter extends ViewpointPropertyFilter 
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getTextAreaDescription_LineCount();
+        return PropertiesPackage.eINSTANCE.getAbstractTextAreaDescription_LineCount();
     }
 
     /**

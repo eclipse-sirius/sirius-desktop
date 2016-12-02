@@ -26,7 +26,7 @@ import org.eclipse.sirius.properties.provider.WidgetStyleItemProvider;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class ExtReferenceWidgetStyleItemProvider extends WidgetStyleItemProvider implements IItemStyledLabelProvider {
@@ -58,7 +58,7 @@ public class ExtReferenceWidgetStyleItemProvider extends WidgetStyleItemProvider
     /**
      * This returns ExtReferenceWidgetStyle.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -69,7 +69,7 @@ public class ExtReferenceWidgetStyleItemProvider extends WidgetStyleItemProvider
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class ExtReferenceWidgetStyleItemProvider extends WidgetStyleItemProvider
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -19,6 +19,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.PropertiesPackage;
@@ -26,7 +27,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.LabelWidgetStyle} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class LabelWidgetStyleItemProvider extends WidgetStyleItemProvider {
@@ -61,7 +62,7 @@ public class LabelWidgetStyleItemProvider extends WidgetStyleItemProvider {
     /**
      * This adds a property descriptor for the Font Name Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     protected void addFontNameExpressionPropertyDescriptor(Object object) {
@@ -74,7 +75,7 @@ public class LabelWidgetStyleItemProvider extends WidgetStyleItemProvider {
     /**
      * This adds a property descriptor for the Font Size Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     protected void addFontSizeExpressionPropertyDescriptor(Object object) {
@@ -137,16 +138,31 @@ public class LabelWidgetStyleItemProvider extends WidgetStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
+        return ((StyledString) getStyledText(object)).getString();
+    }
+
+    /**
+     * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Object getStyledText(Object object) {
         String label = ((LabelWidgetStyle) object).getLabelFontNameExpression();
-        return label == null || label.length() == 0 ? getString("_UI_LabelWidgetStyle_type") : //$NON-NLS-1$
-                getString("_UI_LabelWidgetStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        StyledString styledLabel = new StyledString();
+        if (label == null || label.length() == 0) {
+            styledLabel.append(getString("_UI_LabelWidgetStyle_type"), StyledString.Style.QUALIFIER_STYLER); //$NON-NLS-1$
+        } else {
+            styledLabel.append(getString("_UI_LabelWidgetStyle_type"), StyledString.Style.QUALIFIER_STYLER).append(" " + label); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        return styledLabel;
     }
 
     /**
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

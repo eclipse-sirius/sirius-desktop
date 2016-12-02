@@ -27,7 +27,7 @@ public class PageDescriptionGroupsFilter extends ViewpointPropertyFilter {
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getPageDescription_Groups();
+        return PropertiesPackage.eINSTANCE.getAbstractPageDescription_Groups();
     }
 
     /**

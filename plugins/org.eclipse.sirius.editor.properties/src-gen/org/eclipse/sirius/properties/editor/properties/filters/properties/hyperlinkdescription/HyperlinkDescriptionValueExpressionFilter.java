@@ -27,7 +27,7 @@ public class HyperlinkDescriptionValueExpressionFilter extends ViewpointProperty
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getHyperlinkDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractHyperlinkDescription_ValueExpression();
     }
 
     /**

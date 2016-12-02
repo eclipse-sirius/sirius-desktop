@@ -16,7 +16,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Select Widget Style</b></em>'. <!--
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Select Widget Style</b></em>'. <!--
  * end-user-doc -->
  *
  * @generated
@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.SelectWidgetStyle;
 public class SelectWidgetStyleImpl extends WidgetStyleImpl implements SelectWidgetStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SelectWidgetStyleImpl() {
@@ -33,7 +33,7 @@ public class SelectWidgetStyleImpl extends WidgetStyleImpl implements SelectWidg
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

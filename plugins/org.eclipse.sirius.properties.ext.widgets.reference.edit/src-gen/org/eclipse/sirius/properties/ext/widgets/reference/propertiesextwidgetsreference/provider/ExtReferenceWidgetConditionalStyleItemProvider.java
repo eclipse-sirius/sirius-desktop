@@ -30,7 +30,7 @@ import org.eclipse.sirius.properties.provider.WidgetConditionalStyleItemProvider
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetConditionalStyleItemProvider implements IItemStyledLabelProvider {
@@ -66,7 +66,7 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -80,7 +80,7 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
     /**
      * This returns ExtReferenceWidgetConditionalStyle.gif. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -137,7 +137,7 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -55,7 +55,7 @@ public class LabelDescriptionValueExpressionPropertySection extends AbstractText
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getLabelDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractLabelDescription_ValueExpression();
     }
 
     /**

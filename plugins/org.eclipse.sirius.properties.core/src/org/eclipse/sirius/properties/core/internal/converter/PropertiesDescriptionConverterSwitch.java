@@ -23,8 +23,8 @@ import org.eclipse.sirius.properties.CustomExpression;
 import org.eclipse.sirius.properties.CustomOperation;
 import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CustomWidgetStyle;
-import org.eclipse.sirius.properties.DynamicMappingFor;
-import org.eclipse.sirius.properties.DynamicMappingIf;
+import org.eclipse.sirius.properties.DynamicMappingForDescription;
+import org.eclipse.sirius.properties.DynamicMappingIfDescription;
 import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.GroupConditionalStyle;
@@ -107,13 +107,13 @@ public class PropertiesDescriptionConverterSwitch extends PropertiesSwitch<IDesc
     }
 
     @Override
-    public IDescriptionConverter caseDynamicMappingFor(DynamicMappingFor object) {
-        return new DefaultDescriptionConverter<>(DynamicMappingFor.class, EefPackage.Literals.EEF_DYNAMIC_MAPPING_FOR);
+    public IDescriptionConverter caseDynamicMappingForDescription(DynamicMappingForDescription object) {
+        return new DefaultDescriptionConverter<>(DynamicMappingForDescription.class, EefPackage.Literals.EEF_DYNAMIC_MAPPING_FOR);
     }
 
     @Override
-    public IDescriptionConverter caseDynamicMappingIf(DynamicMappingIf object) {
-        return new DefaultDescriptionConverter<>(DynamicMappingIf.class, EefPackage.Literals.EEF_DYNAMIC_MAPPING_IF);
+    public IDescriptionConverter caseDynamicMappingIfDescription(DynamicMappingIfDescription object) {
+        return new DefaultDescriptionConverter<>(DynamicMappingIfDescription.class, EefPackage.Literals.EEF_DYNAMIC_MAPPING_IF);
     }
 
     @Override

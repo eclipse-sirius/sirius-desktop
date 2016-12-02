@@ -48,7 +48,7 @@ public class GroupDescriptionConverter extends AbstractDescriptionConverter {
             GroupDescription groupDescription = (GroupDescription) description;
 
             EEFGroupDescription eefGroup = EefFactory.eINSTANCE.createEEFGroupDescription();
-            eefGroup.setIdentifier(groupDescription.getIdentifier());
+            eefGroup.setIdentifier(groupDescription.getName());
             if (Util.isBlank(eefGroup.getIdentifier())) {
                 eefGroup.setIdentifier(EcoreUtil.getURI(groupDescription).toString());
             }

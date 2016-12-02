@@ -55,7 +55,7 @@ public class DynamicMappingForIterableExpressionPropertySection extends Abstract
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getDynamicMappingFor_IterableExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractDynamicMappingForDescription_IterableExpression();
     }
 
     /**

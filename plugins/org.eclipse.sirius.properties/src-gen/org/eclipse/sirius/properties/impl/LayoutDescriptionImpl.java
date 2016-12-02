@@ -17,15 +17,15 @@ import org.eclipse.sirius.properties.LayoutDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Layout Description</b></em>'. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Layout Description</b></em>'. <!-- end-user-doc
+ * -->
  *
  * @generated
  */
 public abstract class LayoutDescriptionImpl extends MinimalEObjectImpl.Container implements LayoutDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LayoutDescriptionImpl() {
@@ -34,7 +34,7 @@ public abstract class LayoutDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

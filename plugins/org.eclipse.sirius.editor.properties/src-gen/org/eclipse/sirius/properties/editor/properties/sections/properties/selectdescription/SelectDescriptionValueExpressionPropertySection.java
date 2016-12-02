@@ -55,7 +55,7 @@ public class SelectDescriptionValueExpressionPropertySection extends AbstractTex
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getSelectDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractSelectDescription_ValueExpression();
     }
 
     /**

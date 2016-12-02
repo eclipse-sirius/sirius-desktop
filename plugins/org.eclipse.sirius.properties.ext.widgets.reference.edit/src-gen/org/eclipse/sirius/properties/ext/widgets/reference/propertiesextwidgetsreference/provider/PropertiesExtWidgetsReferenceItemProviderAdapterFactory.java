@@ -36,9 +36,9 @@ import org.eclipse.emf.edit.provider.IItemStyledLabelProvider;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.sirius.properties.ContainerDescription;
-import org.eclipse.sirius.properties.DynamicMappingIf;
-import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.AbstractContainerDescription;
+import org.eclipse.sirius.properties.AbstractDynamicMappingIfDescription;
+import org.eclipse.sirius.properties.AbstractGroupDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferenceFactory;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
@@ -52,7 +52,7 @@ import org.eclipse.sirius.properties.util.PropertiesSwitch;
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
 public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends PropertiesExtWidgetsReferenceAdapterFactory
@@ -60,7 +60,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -77,7 +77,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
     /**
      * This helps manage the child creation extenders. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(PropertiesextwidgetsreferenceEditPlugin.INSTANCE,
@@ -87,7 +87,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -111,16 +111,16 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ExtReferenceDescriptionItemProvider extReferenceDescriptionItemProvider;
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -136,16 +136,16 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ExtReferenceWidgetStyleItemProvider extReferenceWidgetStyleItemProvider;
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -161,16 +161,16 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ExtReferenceWidgetConditionalStyleItemProvider extReferenceWidgetConditionalStyleItemProvider;
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -217,7 +217,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -227,7 +227,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -244,7 +244,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public List<IChildCreationExtender> getChildCreationExtenders() {
@@ -253,7 +253,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -263,7 +263,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -273,7 +273,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -283,7 +283,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -336,14 +336,14 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
         /**
          * The switch for creating child descriptors specific to each extended
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         protected static class CreationSwitch extends PropertiesSwitch<Object> {
             /**
              * The child descriptors being populated. <!-- begin-user-doc -->
              * <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             protected List<Object> newChildDescriptors;
@@ -351,7 +351,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
             /**
              * The domain in which to create the children. <!-- begin-user-doc
              * --> <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             protected EditingDomain editingDomain;
@@ -359,7 +359,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
             /**
              * Creates the a switch for populating child descriptors in the
              * given domain. <!-- begin-user-doc --> <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
@@ -369,44 +369,46 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             @Override
-            public Object caseGroupDescription(GroupDescription object) {
-                newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceDescription()));
-
-                return null;
-            }
-
-            /**
-             * <!-- begin-user-doc --> <!-- end-user-doc -->
-             *
-             * @generated
-             */
-            @Override
-            public Object caseContainerDescription(ContainerDescription object) {
+            public Object caseAbstractGroupDescription(AbstractGroupDescription object) {
                 newChildDescriptors
-                        .add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceDescription()));
+                        .add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_GROUP_DESCRIPTION__CONTROLS, PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceDescription()));
 
                 return null;
             }
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             @Override
-            public Object caseDynamicMappingIf(DynamicMappingIf object) {
-                newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceDescription()));
+            public Object caseAbstractContainerDescription(AbstractContainerDescription object) {
+                newChildDescriptors
+                        .add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_CONTAINER_DESCRIPTION__CONTROLS, PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceDescription()));
 
                 return null;
             }
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             *
+             * 
+             * @generated
+             */
+            @Override
+            public Object caseAbstractDynamicMappingIfDescription(AbstractDynamicMappingIfDescription object) {
+                newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_DYNAMIC_MAPPING_IF_DESCRIPTION__WIDGET,
+                        PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceDescription()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
              * @generated
              */
             protected CommandParameter createChildParameter(Object feature, Object child) {
@@ -417,7 +419,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         @Override
@@ -429,7 +431,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         @Override

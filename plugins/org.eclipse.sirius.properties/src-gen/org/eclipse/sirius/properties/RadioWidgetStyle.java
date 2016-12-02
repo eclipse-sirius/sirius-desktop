@@ -12,8 +12,8 @@
 package org.eclipse.sirius.properties;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Radio Widget Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Radio Widget Style</b></em>'. <!-- end-user-doc
+ * -->
  *
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getRadioWidgetStyle()

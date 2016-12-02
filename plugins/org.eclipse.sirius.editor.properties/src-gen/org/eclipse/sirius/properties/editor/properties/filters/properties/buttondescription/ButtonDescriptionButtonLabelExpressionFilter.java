@@ -27,7 +27,7 @@ public class ButtonDescriptionButtonLabelExpressionFilter extends ViewpointPrope
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getButtonDescription_ButtonLabelExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractButtonDescription_ButtonLabelExpression();
     }
 
     /**
@@ -35,7 +35,7 @@ public class ButtonDescriptionButtonLabelExpressionFilter extends ViewpointPrope
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.properties.ButtonDescription;
+        return arg0 instanceof org.eclipse.sirius.properties.AbstractButtonDescription;
     }
 
     // Start of user code user methods

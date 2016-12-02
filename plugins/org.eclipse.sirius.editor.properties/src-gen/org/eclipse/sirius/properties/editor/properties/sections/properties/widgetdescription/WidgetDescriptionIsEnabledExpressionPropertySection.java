@@ -34,7 +34,9 @@ public class WidgetDescriptionIsEnabledExpressionPropertySection extends Abstrac
      */
     @Override
     protected String getDefaultLabelText() {
-        return "IsEnabledExpression"; //$NON-NLS-1$
+        // Start of user code get default label text
+        return "Is Enabled Expression"; //$NON-NLS-1$
+        // End of user code get default label text
     }
 
     /**
@@ -55,7 +57,7 @@ public class WidgetDescriptionIsEnabledExpressionPropertySection extends Abstrac
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getWidgetDescription_IsEnabledExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractWidgetDescription_IsEnabledExpression();
     }
 
     /**

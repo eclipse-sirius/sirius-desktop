@@ -50,7 +50,7 @@ public class PageDescriptionDomainClassPropertySection extends AbstractTextPrope
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getPageDescription_DomainClass();
+        return PropertiesPackage.eINSTANCE.getAbstractPageDescription_DomainClass();
     }
 
     /**

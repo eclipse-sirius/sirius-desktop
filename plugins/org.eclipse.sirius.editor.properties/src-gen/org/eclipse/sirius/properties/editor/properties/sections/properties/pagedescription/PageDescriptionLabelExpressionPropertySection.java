@@ -55,7 +55,7 @@ public class PageDescriptionLabelExpressionPropertySection extends AbstractTextW
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getPageDescription_LabelExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractPageDescription_LabelExpression();
     }
 
     /**

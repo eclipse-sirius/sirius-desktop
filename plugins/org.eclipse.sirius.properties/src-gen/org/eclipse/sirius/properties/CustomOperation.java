@@ -11,18 +11,17 @@
  */
 package org.eclipse.sirius.properties;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>Custom Operation</b></em>'. <!-- end-user-doc
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Custom Operation</b></em>'. <!-- end-user-doc
  * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.CustomOperation#getIdentifier <em>Identifier</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.CustomOperation#getInitialOperation <em>Initial Operation</em>}</li>
  * </ul>
  *
@@ -30,34 +29,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * @model
  * @generated
  */
-public interface CustomOperation extends EObject {
-    /**
-     * Returns the value of the '<em><b>Identifier</b></em>' attribute. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Identifier</em>' attribute isn't clear, there really should be more of a description
-     * here...
-     * </p>
-     * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>Identifier</em>' attribute.
-     * @see #setIdentifier(String)
-     * @see org.eclipse.sirius.properties.PropertiesPackage#getCustomOperation_Identifier()
-     * @model required="true"
-     * @generated
-     */
-    String getIdentifier();
-
-    /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.CustomOperation#getIdentifier <em>Identifier</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Identifier</em>' attribute.
-     * @see #getIdentifier()
-     * @generated
-     */
-    void setIdentifier(String value);
-
+public interface CustomOperation extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
@@ -65,7 +37,7 @@ public interface CustomOperation extends EObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCustomOperation_InitialOperation()
@@ -77,7 +49,7 @@ public interface CustomOperation extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.CustomOperation#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()

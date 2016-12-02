@@ -56,7 +56,7 @@ public class GroupDescriptionPreconditionExpressionPropertySection extends Abstr
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getGroupDescription_PreconditionExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractGroupDescription_PreconditionExpression();
     }
 
     /**

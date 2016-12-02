@@ -55,7 +55,7 @@ public class CheckboxDescriptionValueExpressionPropertySection extends AbstractT
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getCheckboxDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractCheckboxDescription_ValueExpression();
     }
 
     /**

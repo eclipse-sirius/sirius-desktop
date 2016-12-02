@@ -11,8 +11,17 @@
  */
 package org.eclipse.sirius.properties.provider;
 
+import java.util.Optional;
+
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.IItemFontProvider;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.StyledString;
+import org.eclipse.emf.edit.provider.StyledString.Style;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
@@ -26,10 +35,69 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 public final class Utils {
 
     /**
+     * The style used by keywords.
+     */
+    public static final Style KEYWORD_STYLE = Style.newBuilder().setForegroundColor(URI.createURI("color://rgb/125/9/82")).setFont(IItemFontProvider.BOLD_FONT).toStyle(); //$NON-NLS-1$
+
+    /**
      * The constructor.
      */
     private Utils() {
         // prevent instantiation
+    }
+
+    /**
+     * Computes the label of the given object.
+     * 
+     * @param itemProviderAdapter
+     *            The item provider adapter of the object
+     * @param object
+     *            The object
+     * @param defaultLabelKey
+     *            The key of the default label
+     * @return The label or <code>null</code> if it is undefined
+     */
+    public static StyledString computeLabel(ItemProviderAdapter itemProviderAdapter, Object object, String defaultLabelKey) {
+        if (object instanceof IdentifiedElement) {
+            IdentifiedElement identifiedElement = (IdentifiedElement) object;
+
+            String label = Optional.ofNullable(identifiedElement.getLabel()).orElse(""); //$NON-NLS-1$
+            if (label.isEmpty()) {
+                label = Optional.ofNullable(identifiedElement.getName()).filter(id -> !id.isEmpty()).orElse(itemProviderAdapter.getString(defaultLabelKey));
+            }
+            StyledString styledString = new StyledString(label);
+
+            EStructuralFeature eStructuralFeature = identifiedElement.eClass().getEStructuralFeature("extends"); //$NON-NLS-1$
+            if (eStructuralFeature instanceof EReference && identifiedElement.eIsSet(eStructuralFeature)) {
+                Object extendsValue = identifiedElement.eGet(eStructuralFeature);
+                styledString.append(" extends ", KEYWORD_STYLE); //$NON-NLS-1$
+                styledString.append(Utils.computeSimpleLabel(itemProviderAdapter, extendsValue));
+            }
+
+            return styledString;
+        }
+        return new StyledString();
+    }
+
+    /**
+     * Returns the label of the given object.
+     * 
+     * @param itemProviderAdapter
+     *            The Item Provider Adapter
+     * @param object
+     *            The object
+     * @return Its Label
+     */
+    private static String computeSimpleLabel(ItemProviderAdapter itemProviderAdapter, Object object) {
+        if (object instanceof IdentifiedElement) {
+            IdentifiedElement identifiedElement = (IdentifiedElement) object;
+            String label = Optional.ofNullable(identifiedElement.getLabel()).orElse(""); //$NON-NLS-1$
+            if (label.isEmpty()) {
+                label = Optional.ofNullable(identifiedElement.getName()).filter(id -> !id.isEmpty()).orElse(itemProviderAdapter.getString("_UI_" + identifiedElement.eClass().getName() + "_type")); //$NON-NLS-1$ //$NON-NLS-2$
+            }
+            return label;
+        }
+        return ""; //$NON-NLS-1$
     }
 
     /**

@@ -34,7 +34,9 @@ public class WidgetDescriptionLabelExpressionPropertySection extends AbstractTex
      */
     @Override
     protected String getDefaultLabelText() {
-        return "LabelExpression"; //$NON-NLS-1$
+        // Start of user code get default label text
+        return "Label Expression"; //$NON-NLS-1$
+        // End of user code get default label text
     }
 
     /**
@@ -55,7 +57,7 @@ public class WidgetDescriptionLabelExpressionPropertySection extends AbstractTex
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getWidgetDescription_LabelExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractWidgetDescription_LabelExpression();
     }
 
     /**

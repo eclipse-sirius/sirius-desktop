@@ -27,7 +27,7 @@ public class GroupDescriptionPreconditionExpressionFilter extends ViewpointPrope
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getGroupDescription_PreconditionExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractGroupDescription_PreconditionExpression();
     }
 
     /**

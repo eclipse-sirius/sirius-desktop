@@ -27,7 +27,7 @@ public class PageDescriptionLabelExpressionFilter extends ViewpointPropertyFilte
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getPageDescription_LabelExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractPageDescription_LabelExpression();
     }
 
     /**

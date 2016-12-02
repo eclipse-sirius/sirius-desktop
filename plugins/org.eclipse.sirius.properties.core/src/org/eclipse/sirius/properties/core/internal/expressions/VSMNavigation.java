@@ -21,6 +21,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.properties.Category;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
@@ -177,9 +178,11 @@ public final class VSMNavigation {
         if (container instanceof ViewExtensionDescription) {
             ViewExtensionDescription ved = (ViewExtensionDescription) container;
             Set<PageDescription> result = Sets.newLinkedHashSet();
-            for (PageDescription page : ved.getPages()) {
-                if (page.getGroups().contains(group)) {
-                    result.add(page);
+            for (Category category : ved.getCategories()) {
+                for (PageDescription page : category.getPages()) {
+                    if (page.getGroups().contains(group)) {
+                        result.add(page);
+                    }
                 }
             }
             return result;

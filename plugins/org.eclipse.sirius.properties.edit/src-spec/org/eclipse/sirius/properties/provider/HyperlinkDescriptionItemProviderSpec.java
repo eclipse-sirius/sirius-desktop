@@ -15,7 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.command.CommandParameter;
-import org.eclipse.sirius.properties.HyperlinkDescription;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
@@ -40,9 +40,16 @@ public class HyperlinkDescriptionItemProviderSpec extends HyperlinkDescriptionIt
 
     @Override
     public String getText(Object object) {
-        String label = ((HyperlinkDescription) object).getLabelExpression();
-        return label == null || label.length() == 0 ? getString("_UI_HyperlinkDescription_type") : //$NON-NLS-1$
-                label;
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
+        return Utils.computeLabel(this, object, "_UI_HyperlinkDescription_type"); //$NON-NLS-1$
     }
 
     @Override
@@ -53,14 +60,14 @@ public class HyperlinkDescriptionItemProviderSpec extends HyperlinkDescriptionIt
 
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_HYPERLINK_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createHyperlinkWidgetStyle()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_HYPERLINK_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createHyperlinkWidgetStyle()));
 
         HyperlinkWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createHyperlinkWidgetConditionalStyle();
         conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createHyperlinkWidgetStyle());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__ACTIONS, PropertiesFactory.eINSTANCE.createWidgetAction()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_HYPERLINK_DESCRIPTION__ACTIONS, PropertiesFactory.eINSTANCE.createWidgetAction()));
     }
 }

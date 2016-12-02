@@ -47,7 +47,7 @@ public class CustomWidgetDescriptionConverter<SIRIUS extends EObject> extends De
 
     @Override
     protected void convertEReference(SIRIUS siriusEObject, EObject eefEObject, EReference eReference, Map<String, Object> parameters, DescriptionCache cache) {
-        if (eReference.equals(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS)) {
+        if (eReference.equals(PropertiesPackage.Literals.ABSTRACT_CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS)) {
             EReference eefEReference = EefPackage.Literals.EEF_CUSTOM_WIDGET_DESCRIPTION__CUSTOM_EXPRESSIONS;
             Object siriusValue = siriusEObject.eGet(eReference);
             Object eefValue = eefEObject.eGet(eefEReference);

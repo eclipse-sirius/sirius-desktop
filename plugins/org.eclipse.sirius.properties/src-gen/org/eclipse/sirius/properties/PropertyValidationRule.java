@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>Property Validation Rule</b></em>'. <!--
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Property Validation Rule</b></em>'. <!--
  * end-user-doc -->
  *
  * <p>
@@ -38,7 +38,7 @@ public interface PropertyValidationRule extends ValidationRule {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Targets</em>' reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getPropertyValidationRule_Targets()
      * @model

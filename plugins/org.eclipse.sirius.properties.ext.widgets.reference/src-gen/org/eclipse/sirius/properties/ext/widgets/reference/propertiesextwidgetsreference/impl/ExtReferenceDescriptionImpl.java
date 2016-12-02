@@ -28,23 +28,19 @@ import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsr
 import org.eclipse.sirius.properties.impl.WidgetDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Ext Reference Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Ext
+ * Reference Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl#getReferenceNameExpression
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl#getReferenceNameExpression
  * <em>Reference Name Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl#getReferenceOwnerExpression
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl#getReferenceOwnerExpression
  * <em>Reference Owner Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl#getStyle
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl#getStyle
  * <em>Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl#getConditionalStyles
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl#getConditionalStyles
  * <em>Conditional Styles</em>}</li>
  * </ul>
  *
@@ -106,9 +102,9 @@ public class ExtReferenceDescriptionImpl extends WidgetDescriptionImpl implement
     protected ExtReferenceWidgetStyle style;
 
     /**
-     * The cached value of the '{@link #getConditionalStyles()
-     * <em>Conditional Styles</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getConditionalStyles() <em>Conditional
+     * Styles</em>}' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getConditionalStyles()
      * @generated

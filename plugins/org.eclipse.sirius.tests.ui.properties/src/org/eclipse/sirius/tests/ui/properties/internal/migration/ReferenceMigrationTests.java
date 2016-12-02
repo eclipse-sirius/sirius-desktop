@@ -34,9 +34,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 import org.junit.Test;
 
 /**
@@ -71,6 +74,9 @@ public class ReferenceMigrationTests {
             afterMigration = ((Group) afterMigration).getExtensions().get(0);
         }
 
+        EcoreUtil.resolveAll(beforeMigration.eResource().getResourceSet());
+        EcoreUtil.resolveAll(afterMigration.eResource().getResourceSet());
+
         IComparisonScope scope = new DefaultComparisonScope(beforeMigration, afterMigration, null);
         IEObjectMatcher matcher = DefaultMatchEngine.createDefaultEObjectMatcher(UseIdentifiers.NEVER);
         IComparisonFactory comparisonFactory = new DefaultComparisonFactory(new DefaultEqualityHelperFactory());
@@ -98,9 +104,11 @@ public class ReferenceMigrationTests {
         ResourceSet resourceSet = new ResourceSetImpl();
         resourceSet.getPackageRegistry().put(EefPackage.eNS_URI, EefPackage.eINSTANCE);
         resourceSet.getPackageRegistry().put(PropertiesPackage.eNS_URI, PropertiesPackage.eINSTANCE);
+        resourceSet.getPackageRegistry().put(ToolPackage.eNS_URI, ToolPackage.eINSTANCE);
+        resourceSet.getPackageRegistry().put(ValidationPackage.eNS_URI, ValidationPackage.eINSTANCE);
         resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl()); //$NON-NLS-1$
         Resource resource = resourceSet.getResource(URI.createFileURI(System.getProperty("user.dir") + uri), true);
-        resource.setURI(URI.createURI(OLD_MODEL_PATH));
+        resource.setURI(URI.createFileURI(System.getProperty("user.dir") + OLD_MODEL_PATH));
         return resource;
     }
 }

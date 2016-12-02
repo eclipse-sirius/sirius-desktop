@@ -27,7 +27,7 @@ public class GroupDescriptionSemanticCandidateExpressionFilter extends Viewpoint
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getGroupDescription_SemanticCandidateExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractGroupDescription_SemanticCandidateExpression();
     }
 
     /**

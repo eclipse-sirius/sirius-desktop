@@ -27,7 +27,7 @@ public class GroupDescriptionLabelExpressionFilter extends ViewpointPropertyFilt
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getGroupDescription_LabelExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractGroupDescription_LabelExpression();
     }
 
     /**

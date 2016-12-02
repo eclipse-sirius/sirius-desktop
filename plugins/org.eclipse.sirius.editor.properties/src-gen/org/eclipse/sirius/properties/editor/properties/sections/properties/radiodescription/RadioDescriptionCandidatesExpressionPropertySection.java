@@ -55,7 +55,7 @@ public class RadioDescriptionCandidatesExpressionPropertySection extends Abstrac
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getRadioDescription_CandidatesExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractRadioDescription_CandidatesExpression();
     }
 
     /**

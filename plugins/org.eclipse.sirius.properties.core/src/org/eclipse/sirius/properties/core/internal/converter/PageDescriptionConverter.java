@@ -43,7 +43,7 @@ public class PageDescriptionConverter extends AbstractDescriptionConverter {
             PageDescription pageDescription = (PageDescription) description;
 
             EEFPageDescription page = EefFactory.eINSTANCE.createEEFPageDescription();
-            page.setIdentifier(pageDescription.getIdentifier());
+            page.setIdentifier(pageDescription.getName());
             page.setLabelExpression(pageDescription.getLabelExpression());
             page.setDomainClass(pageDescription.getDomainClass());
             page.setSemanticCandidateExpression(pageDescription.getSemanticCandidateExpression());

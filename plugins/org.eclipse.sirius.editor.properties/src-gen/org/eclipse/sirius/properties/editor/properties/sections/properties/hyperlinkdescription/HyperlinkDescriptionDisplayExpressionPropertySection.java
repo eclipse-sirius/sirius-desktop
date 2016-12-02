@@ -56,7 +56,7 @@ public class HyperlinkDescriptionDisplayExpressionPropertySection extends Abstra
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getHyperlinkDescription_DisplayExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractHyperlinkDescription_DisplayExpression();
     }
 
     /**

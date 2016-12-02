@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.sirius.properties.Category;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
@@ -38,6 +39,8 @@ public class DescriptionChildCreationExtenderSpec extends DescriptionChildCreati
      * @author sbegaudeau
      */
     protected static class CreationSwitchSpec extends CreationSwitch {
+        private static final String DEFAULT_IDENTIFIER = "Default"; //$NON-NLS-1$
+
         /**
          * The constructor.
          * 
@@ -53,17 +56,20 @@ public class DescriptionChildCreationExtenderSpec extends DescriptionChildCreati
         @Override
         public Object caseGroup(Group object) {
             ViewExtensionDescription ved = PropertiesFactory.eINSTANCE.createViewExtensionDescription();
-            ved.setIdentifier("Properties"); //$NON-NLS-1$
+            ved.setName("Properties"); //$NON-NLS-1$
+            Category category = PropertiesFactory.eINSTANCE.createCategory();
+            category.setName(DEFAULT_IDENTIFIER);
+            ved.getCategories().add(category);
             PageDescription page = PropertiesFactory.eINSTANCE.createPageDescription();
-            page.setIdentifier("Default"); //$NON-NLS-1$
+            page.setName(DEFAULT_IDENTIFIER);
             page.setLabelExpression("Page"); //$NON-NLS-1$
             page.setSemanticCandidateExpression(ViewExtensionDescriptionItemProvider.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
-            ved.getPages().add(page);
+            category.getPages().add(page);
             GroupDescription group = PropertiesFactory.eINSTANCE.createGroupDescription();
-            group.setIdentifier("Default"); //$NON-NLS-1$
+            group.setName(DEFAULT_IDENTIFIER);
             group.setLabelExpression("Group"); //$NON-NLS-1$
             group.setSemanticCandidateExpression(ViewExtensionDescriptionItemProvider.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
-            ved.getGroups().add(group);
+            category.getGroups().add(group);
             page.getGroups().add(group);
             newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.GROUP__EXTENSIONS, ved));
             return null;

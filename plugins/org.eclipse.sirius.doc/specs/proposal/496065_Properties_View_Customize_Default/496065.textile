@@ -1,0 +1,337 @@
+h1. Sirius Evolution Specification: Customize part of the default behavior
+
+h2. Preamble
+
+_Summary_: Customize part of the default behavior.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2016-11-29 | mbats    | Initial version. |
+| v0.2        | DRAFT    | 2016-12-14 | mbats    | Review the extends mechanism, add the override feature and define the editor evolution. |
+| v0.3        | DRAFT    | 2016-12-21 | mbats    | Details the override mechanism after CBR review. |
+
+
+_Relevant tickets_:
+* "Bug 496065 -  As a specifier, I want to customize part of the default behavior":https://bugs.eclipse.org/bugs/show_bug.cgi?id=496065
+
+h2. Introduction
+
+Since Sirius 4.0, modelers come with a beautiful properties view by default. This properties view is configured by the default rules. If no Properties View Description is provided then these default rules apply. Else if a Properties View Description exists these rules are not anymore used and only the description defined by the specifiers is used to render the properties view.
+The purpose of this evolution is to give the possibility to the specifier to override part of the default behavior and to be able in general to *override* and *reuse* some parts of a Properties View Description. 
+
+We want to keep the same spirit: we render only what is specified. If nothing is specified, the properties view default rules are used else we use what is defined in the Properties View Descriptions.
+
+h2. Detailed Specification
+
+The specifier must be able to reuse and override different parts of a properties view.
+
+h3. Category Description
+
+A @Category Description@ can be created under a @View Extension Description@, it contains all the @Pages@ , @Groups@ and @Overrides@ descriptions. It is used just to order the pages, the groups and the overrides of a VSM.
+A category named @Default@ is created by default by the VSM editor, it contains a default page and a default group.
+!./images/Category.png!
+
+h3. Visualize groups
+
+The VSM editor now shows the groups referenced by a page under the page. The referenced group is represented with another color in the tree.
+!images/GroupsUnderPage.png!
+
+It is possible also to visualize and navigate directly from the referenced group to its controls and styles.
+
+h3. Reuse
+
+!./images/PageExtend.png!
+
+h4. Extends
+
+A @Page Description@ can be used to customize an existing page defined in the same _Properties View Description_ or elsewhere in another one.
+A new @Extend@ tab is available on a @Page Description@.
+It defines an @Extended Page@ field which allows to reference an existing @Page Description@.
+
+By default the @General@ tab fields are set with the values coming from the extended page. The default values are set in grey in the UI. When the user edits one of these fields, it is set by default with the extended value.
+In the tree editor, the groups inherited are shown under the page with a decorator referencing the extended page: _Group X [from Page Y]_.
+
+!./images/PageGeneralExtended.png!
+
+If the specifier defines in the @Page Description@:
+* @Label Expression@, @Domain Class@, @Semantic Candidate Expression@ or @Precondition Expression@, these values will *override* the values defined in the referenced imported description. 
+* @Groups@ will *be added* to the groups defined by the referenced @Page Description@. 
+* @Page Validations@  will *be added* to the validations defined by the referenced @Page Description@.
+
+h4. Filter
+
+* The @Filter Groups Expression@ is used to *filter* which inherited groups are visible under the page. The @group@ variable can be used to check if a group must be filtered or not, the expression returns a @Boolean@: true, the group is visible in the page, false it is filtered. It is possible to filter all the groups from the extended page by just returning @false@ all the time. In this case, the groups defined under the current page definition *overrides* the groups defined in the extended page description.
+* The @Filter Validation Rules Expression@ is used to filter which inherited validation rules are used under the page. The @validationRule@ variable can be used to check if a rule must be filtered or not, the expression returns a @Boolean@: true, the group is visible in the page, false it is filtered. It is possible to filter all the groups from the extended page by just returning @false@ all the time. In this case, the validation rules defined under the current page definition *overrides* the rules defined in the extended page description.
+
+If the @Extended Page@ field is not set then the filter fields are disabled:
+
+!./images/PageExtendUnactive.png!
+
+h4. Default rules
+
+When a new VSM is created by default, the default rules will be visible as a @Page@ extending the default rules page. And the default values are visible in grey.
+
+!./images/DefaultRulesExtend.png!
+!./images/DefaultRulesGeneral.png!
+
+h4. Other descriptions
+
+As what we detailed for the @Page Description@ we provide the same extension mechanism for @Group Description@, @Container Description@, @Widget Description@, @Dynamic Mapping For@, @Dynamic Mapping If@ with filter adapted to each case. See "Metamodel Changes":#MetamodelChanges section for details.
+
+!./images/TextExtendExtended.png!
+
+Then a @Text Description@ can be used to customize an existing text widget as it was explain in previous sections for the page.
+A new @Extend@ tab is available on a @Text Description@.
+It defines an @Extended Text@ field which allows to reference an existing @Text Description@.
+In the tree editor:
+* the text widget is shown under the group with a decorator referencing the extended text widget: _Text X [extends Text Y]_.
+* the styles inherited are shown under the widget in another color.
+
+By default the @General@ tab fields are set with the values coming from the extended text. The default values are set in grey in the UI. When the user edits one of these fields, it is set by default with the extended value.
+
+!./images/TextGeneralExtended.png!
+
+If the specifier defines in the @Text Description@:
+* @Label Expression@, @Domain Class@, @Semantic Candidate Expression@ or @Precondition Expression@, these values will *override* the values defined in the referenced description. 
+* @Groups@ will *be added* to the groups defined by the referenced @Page Description@. 
+* @Page Validations@  will *be added* to the validations defined by the referenced @Page Description@.
+* @Style@ or @Conditional Styles@, these values will *override* the values defined in the referenced description.
+* The @Filter Conditional Styles Expression@ is used to *filter* which inherited conditional styles are visible under the page. The @style@ variable can be used to check if a style must be filtered or not, the expression returns a @Boolean@: true, the style is defined, false it is filtered. It is possible to filter all the conditional styles from the extended text by just returning @false@ all the time. In this case, the conditional styles defined under the current text definition *overrides* the conditional styles defined in the extended text description.
+
+!./images/TextGeneralExtended1.png!
+!./images/TextGeneralExtended2.png!
+
+In this example, we define a new @ClassName@ text widget which extends the @NamedElement@ text widget and we override:
+* the @Label Expression@ to replace _Name:_ by _Class name:_ 
+* the default style to get a bold label
+
+*Warning*
+Consequently the @XXX Description@ cannot define anymore attributes defining a default value or with enum as type, else we will not be able to detect if the specifier updates the extended value or if it is just the default value setted at the creation of the description. Only the description extending the @OverrideDescription@ are concerned.
+Then we need to update the existing metamodel to validate this new requirement, only one element needs to be modified the TextAreaDescription should not define anymore a default value. See the "Metamodel Changes":#MetamodelChanges section for details.
+
+h3. Replace
+
+!./images/PageOverrideGeneral.png!
+
+h4. Overrides
+
+It is possible to create an @Override Description@ directly under a @Category Description@ thanks to the reference @overrides@. This is used to replace an existing element in a VSM.
+
+The following override elements can be defined directly under a @Category@:
+
+* @Page Override Description@
+* @Group Override Description@
+* @Container Override Description@
+* @Text Override Description@
+* @Label Override Description@
+* @Text Area Override Description@
+* @Button Override Description@
+* @Custom Override Description@
+* @Checkbox Override Description@ 
+* @Select Override Description@
+* @Dynamic Mapping For Override Description@
+* @DynamicMapping If Override Description@ 
+* @List Override Description@
+* @Radio Override Description@ 
+* @Hyperlink Override Description@
+
+A @Page Override Description@ defines an @Override Page@ field which allows to reference the existing @Page Description@ that will be replaced.
+
+By default the @General@ tab fields are set with the values coming from the overridden page. The default values are set in grey in the UI. When the user edits one of these fields, it is set by default with the extended value.
+In the tree editor, the groups inherited are shown under the page with a decorator referencing the overridden page: _Group X [from Page Y]_.
+
+If the specifier defines in the @Page Override Description@:
+* @Label Expression@, @Domain Class@, @Semantic Candidate Expression@ or @Precondition Expression@, these values will *override* the values defined in the referenced overridden description. 
+* @Groups@ will *be added* to the groups defined by the referenced @Page Description@. 
+* @Page Validations@  will *be added* to the validations defined by the referenced @Page Description@.
+
+h4. Filter
+
+!./images/PageOverrideOverride.png!
+
+A new @Override@ tab is available on a @Page Override Description@. It defines some filters:
+
+* The @Filter Groups Expression@ is used to *filter* which inherited groups are visible under the page. The @group@ variable can be used to check if a group must be filtered or not, the expression returns a @Boolean@: true, the group is visible in the page, false it is filtered. It is possible to filter all the groups from the extended page by just returning @false@ all the time. In this case, the groups defined under the current page definition *overrides* the groups defined in the extended page description.
+* The @Filter Validation Rules Expression@ is used to filter which inherited validation rules are used under the page. The @validationRule@ variable can be used to check if a rule must be filtered or not, the expression returns a @Boolean@: true, the group is visible in the page, false it is filtered. It is possible to filter all the groups from the extended page by just returning @false@ all the time. In this case, the validation rules defined under the current page definition *overrides* the rules defined in the extended page description.
+
+If the @Overriden Page@ field is not set then the filter fields are disabled.
+
+!./images/PageOverrideOverrideUnactive.png!
+
+h2. Backward Compatibility and Migration Paths
+
+As the @Category@ is mandatory, we should migrate all the previous VSM to create a default category and move all the existing pages and groups under this default category.
+
+The extension/override mechanism requires no migration as we only provide new classes in the metamodel which are not mandatory.
+
+h3(#MetamodelChanges). Metamodel Changes
+
+Metamodel properties.ecore updates:
+
+* Add @AbstractOverrideDescription@
+* Add @CategoryDescription@
+** Add @identifier@: to identify uniquely a category
+** Move @pages@ from @ViewExtensionDescription@: contains @PageDescription@.
+** Move @groups@ from @ViewExtensionDescription@: contains @GroupDescription@.
+** Add @overrides@: contains @AbstractOverrideDescription@.
+
+The same pattern is applied to all the descriptions to add the override mechanism in the metamodel, see the diagram below:
+!./images/OverridePatternPage.png!
+* Add @AbstractPageDescription@, it contains all the features defined previously directly under the @PageDescription@
+** Add @extends@: to reference an existing @PageDescription@.
+** Add @filterGroupsFromExtendedPageExpression@: to filter the groups coming from the extends page description.
+** Add @filterValidationRulesFromExtendedPageExpression@: to filter the validations defined in the extended page description.
+* Update @PageDescription@ to extends @AbstractPageDescription@ and remove all existing features
+* Add @PageOverrideDescription@ -> @AbstractPageDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @PageDescription@
+** Add @filterGroupsFromOverriddenPageExpression@: to filter the groups coming from the extended page description.
+** Add @filterValidationRulesFromOverriddenPageExpression@: to filter the validations defined in the extended page description.
+* Add @AbstractGroupDescription@, it contains all the features defined previously directly under the @GroupDescription@
+** Add @extends@: to reference an existing @GroupDescription@.
+** Add @filterControlsFromExtendedPageExpression@: to filter the groups coming from the extended group description.
+** Add @filterValidationRulesFromExtendedPageExpression@: to filter the validations defined in the extended group description.
+** Add @filterConditionalStylesFromExtendedPageExpression@: to filter the conditional styles defined in the extended group description.
+* Update @GroupDescription@ to extends @AbstractGroupDescription@ and remove all existing features
+* Add @GroupOverrideDescription@ -> @AbstractGroupDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @GroupDescription@
+** Add @filterControlsFromOverriddenPageExpression@: to filter the groups coming from the overridden group description.
+** @filterValidationRulesFromOverriddenPageExpression@: to filter the validations defined in the overridden group description.
+** @filterConditionalStylesFromExtendedPageExpression@: to filter the conditional styles defined in the overridden group description.
+* Add @AbstractControlDescription@, it contains all the features defined previously directly under the @ControlDescription@
+* Add @AbstractContainerDescription@, it contains all the features defined previously directly under the @ContainerDescription@
+** Add @extends@: to reference an existing @ContainerDescription@.
+** Add @filterControlsFromExtendedContainerExpression@: to filter the controls coming from the extended container description.
+* Update @ContainerDescription@ to extends @AbstractContainerDescription@ and remove all existing features
+* Add @ContainerOverrideDescription@ -> @AbstractContainerDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @ContainerDescription@
+** Add @filterControlsFromOverriddenContainerExpression@: to filter the controls coming from the overridden container description.
+* Add @AbstractWidgetDescription@, it contains all the features defined previously directly under the @WidgetDescription@
+!./images/OverridePatternCheckbox.png!
+* Add @AbstractCheckboxDescription@ -> @AbstractWidgetDescription@, it contains all the features defined previously directly under the @CheckboxDescription@
+** Add @extends@: to reference an existing @CheckboxDescription@.
+** Add @filterConditionalStylesFromExtendedCheckboxExpression@: to filter the styles coming from the extended checkbox description.
+* Update @CheckboxDescription@ to extends @AbstractCheckboxDescription@ and remove all existing features
+* Add @CheckboxOverrideDescription@ -> @AbstractCheckboxDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @CheckboxDescription@
+** Add @filterConditionalStylesFromOverriddenCheckboxExpression@: to filter the styles coming from the overridden checkbox description.
+* Add @AbstractTextDescription@ -> @AbstractWidgetDescription@, it contains all the features defined previously directly under the @TextDescription@
+** Add @extends@: to reference an existing @TextDescription@.
+** Add @filterConditionalStylesFromExtendedTextExpression@: to filter the styles coming from the extended text description.
+* Update @TextDescription@ to extends @AbstractTextDescription@ and remove all existing features
+* Add @TextOverrideDescription@ -> @AbstractTextDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @TextDescription@
+** Add @filterConditionalStylesFromOverriddenTextExpression@: to filter the styles coming from the overridden text description.
+* Add @AbstractButtonDescription@ -> @AbstractWidgetDescription@, it contains all the features defined previously directly under the @ButtonDescription@
+** @extends@: to reference an existing @ButtonDescription@.
+** @filterConditionalStylesFromExtendedButtonExpression@: to filter the styles coming from the extended button description.
+* Update @ButtonDescription@ to extends @AbstractButtonDescription@ and remove all existing features
+* Add @ButtonOverrideDescription@ -> @AbstractButtonDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @ButtonDescription@
+** Add @filterConditionalStylesFromOverriddenButtonExpression@: to filter the styles coming from the overridden button description.
+* Add @AbstractLabelDescription@ -> @AbstractWidgetDescription@, it contains all the features defined previously directly under the @LabelDescription@
+** Add @extends@: to reference an existing @LabelDescription@.
+** Add @filterConditionalStylesFromExtendedLabelExpression@: to filter the styles coming from the extended label description.
+* Update @LabelDescription@ to extends @AbstractLabelDescription@ and remove all existing features
+* Add @LabelOverrideDescription@ -> @AbstractLabelDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @LabelDescription@
+** Add @filterConditionalStylesFromOverriddenLabelExpression@: to filter the styles coming from the overridden label description.
+** Add @filterActionsFromOverriddenLabelExpression@: to filter the actions coming from the overridden label description.
+
+* Add @AbstractSelectDescription@ -> @AbstractWidgetDescription@, it contains all the features defined previously directly under the @SelectDescription@
+** Add @extends@: to reference an existing @SelectDescription@.
+** Add @filterConditionalStylesFromExtendedSelectExpression@: to filter the styles coming from the extended select description.
+* Update @SelectDescription@ to extends @AbstractSelectDescription@ and remove all existing features
+* Add @SelectOverrideDescription@ -> @AbstractSelectDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @SelectDescription@
+** Add @filterConditionalStylesFromOverriddenSelectExpression@: to filter the styles coming from the overridden select description.
+* Add @AbstractTextAreaDescription@ -> @AbstractWidgetDescription@, it contains all the features defined previously directly under the @TextAreaDescription@ and the one inherited from @TextDescription@: @valueExpression@, @initialOperation@, @style@, @conditionalStyles@ 
+** Remove the default value for the @lineCount@ attribute as we should not define any default value or enum attributes.
+** Add @extends@: to reference an existing @TextAreaDescription@.
+** Add @filterConditionalStylesFromExtendedTextAreaExpression@: to filter the styles coming from the extended text description.
+* Update @TextAreaDescription@ to extends @AbstractTextAreaDescription@ and remove all existing features
+* Add @TextAreaOverrideDescription@ -> @AbstractTextAreaDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @TextAreaDescription@
+** Add @filterConditionalStylesFromOverriddenTextAreaExpression@: to filter the styles coming from the overridden text description.
+* Add @AbstractRadioDescription@ -> @AbstractWidgetDescription@, it contains all the features defined previously directly under the @RadioDescription@
+** Add @extends@: to reference an existing @RadioDescription@.
+** Add @filterConditionalStylesFromExtendedRadioExpression@: to filter the styles coming from the extended radio description.
+* Update @RadioDescription@ to extends @AbstractRadioDescription@ and remove all existing features
+* Add @RadioOverrideDescription@ -> @AbstractRadioDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @RadioDescription@
+** Add @filterConditionalStylesFromOverriddenRadioExpression@: to filter the styles coming from the overridden radio description.
+* Add @AbstractListDescription@ -> @AbstractWidgetDescription@, it contains all the features defined previously directly under the @ListDescription@
+** Add @extends@: to reference an existing @ListDescription@.
+** Add @filterConditionalStylesFromExtendedListExpression@: to filter the styles coming from the extended list description.
+** Add @filterActionsFromExtendedListExpression@: to filter the actions coming from the extended list description.
+* Update @ListDescription@ to extends @AbstractListDescription@ and remove all existing features
+* Add @ListOverrideDescription@ -> @AbstractListDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @ListDescription@
+** Add @filterConditionalStylesFromOverriddenListExpression@: to filter the styles coming from the overridden list description.
+** Add @filterActionsFromOverriddenListExpression@: to filter the actions coming from the overridden list description.
+* Add @AbstractHyperlinkDescription@ -> @AbstractWidgetDescription@, it contains all the features defined previously directly under the @HyperlinkDescription@
+** Add @extends@: to reference an existing @HyperlinkDescription@.
+** Add @filterConditionalStylesFromExtendedHyperlinkExpression@: to filter the styles coming from the extended hyperlink description.
+* Update @HyperlinkDescription@ to extends @AbstractHyperlinkDescription@ and remove all existing features
+* Add @HyperlinkOverrideDescription@ -> @AbstractHyperlinkDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @HyperlinkDescription@
+** Add @filterConditionalStylesFromOverriddenHyperlinkExpression@: to filter the styles coming from the overridden hyperlink description.
+* Add @AbstractCustomDescription@ -> @AbstractWidgetDescription@, it contains all the features defined previously directly under the @CustomDescription@
+** Add @extends@: to reference an existing @CustomDescription@.
+** Add @filterConditionalStylesFromExtendedCustomExpression@: to filter the styles coming from the extended custom description.
+* Update @CustomDescription@ to extends @AbstractCustomDescription@ and remove all existing features
+* Add @CustomOverrideDescription@ -> @AbstractCustomDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @CustomDescription@
+** Add @filterConditionalStylesFromOverriddenCustomExpression@: to filter the styles coming from the overridden custom description.
+* Add @AbstractDynamicMappingForDescription@ -> @AbstractControlDescription@, it contains all the features defined previously directly under the @DynamicMappingFor@
+** Add @identifier@: to identify uniquely a dynamic mapping for description
+** Add @extends@: to reference an existing @DynamicMappingForDescription@.
+** Add @filterIfsFromExtendedDynamicMappingForExpression@: to filter the ifs coming from the extended dynamic mapping for description.
+* Renamed @DynamicMappingFor@ to @DynamicMappingForDescription@ and update it to extends @AbstractDynamicMappingForDescription@ and remove all existing features
+* Add @DynamicMappingForOverrideDescription@ -> @AbstractDynamicMappingForDescription@, @AbstractOverrideDescription@
+** Add @overrides@: to reference an existing @DynamicMappingForDescription@
+** Add @filterIfsFromOverriddenDynamicMappingForExpression@: to filter the ifs coming from the overridden dynamic mapping for description.
+* Add @AbstractDynamicMappingIfDescription@, it contains all the features defined previously directly under the @DynamicMappingIf@
+** Add @identifier@: to identify uniquely a dynamic mapping if description
+** Add @extends@: to reference an existing @DynamicMappingIfDescription@.
+* Renamed @DynamicMappingIf@ to @DynamicMappingIfDescription@ and update it to extends @AbstractDynamicMappingIfDescription@ and remove all existing features
+* Add @DynamicMappingIfOverrideDescription@ -> @AbstractDynamicMappingIfDescription@, @AbstractOverrideDescription@
+** @overrides@: to reference an existing @DynamicMappingIfDescription@
+
+h3. API Changes
+
+The properties metamodel is updated so API changes will occur in @org.eclipse.sirius.properties@.
+
+A new VSM pre-processing mechanism will be develop to transform the original VSM using _reuse and override_ mechanism to a flat VSM. Then, this falt VSM will be used by the DescriptionConverter which converts Sirius model to EEF model and so this converter must not change.
+
+The EEF metamodel must not change neither, as the pre-processor will manage the conversion. For example a @PageOverrideDescription@ will be converted to a @PageDescription@ and then to an @EEFPageDescription@ which will be the results of the concatenation of the @PageOverrideDescription@ and the referenced overridden page  description.
+
+ To be able to add decorator in the VSM Editor tree on groups from an extended page, we have to regenerate the code with EMF 2.8.
+ 
+The advanced widget custom API must be updated to support extension and override mechanism.
+ 
+h3. User Interface Changes
+
+In the VSM editor, the specifier UI will change:
+* The categories allows the specifier to order his pages, groups and widgets.
+* A default category will be visible when a new VSM is created which reference the default rules.
+* The referenced Groups will be visible under the Pages.
+* The Groups coming from an extended Page will be annotated
+* In the VSM new elements are available, see Detailed Specification section for details.
+
+h3. Documentation Changes
+
+In the specifier properties view section, we should add a new section about the _Extends/Overrides mechanism_ to details all the new elements.
+
+h2. Tests and Non-regression strategy
+
+We should add tests to check the following use cases:
+
+* Modify : Reuse an existing page, group, widget in your VSM and update the different attributes, add new group, widgets which do not exist in the extended one
+* Delete : Define filters to keep only some part of the inherited sub elements
+* Reuse : Reuse a widget in different groups in your VSM
+* Insert : Insert a page, a group in an existing modeler for which you do not have the VSM
+* Replace : Replace a page, a group, a widget in an existing modeler for which you do not have the VSM
+
+
+h2. Implementation choices and tradeoffs
+
+The implementation will be done mostly in the Sirius new pre-processor. EEF does not provide any reuse/override mechanism.

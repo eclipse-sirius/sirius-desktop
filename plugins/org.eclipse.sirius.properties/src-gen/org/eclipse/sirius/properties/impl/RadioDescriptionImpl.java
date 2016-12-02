@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.properties.AbstractRadioDescription;
+import org.eclipse.sirius.properties.AbstractWidgetDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
@@ -28,12 +30,16 @@ import org.eclipse.sirius.properties.RadioWidgetStyle;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Radio Description</b></em>'. <!-- end-user-doc
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Radio Description</b></em>'. <!-- end-user-doc
  * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
+ * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getLabelExpression <em>Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getHelpExpression <em>Help Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getIsEnabledExpression
+ * <em>Is Enabled Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getValueExpression <em>Value Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getInitialOperation <em>Initial Operation</em>}
  * </li>
@@ -46,15 +52,79 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getConditionalStyles <em>Conditional Styles</em>}
  * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getExtends <em>Extends</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getFilterConditionalStylesFromExtendedRadioExpression
+ * <em>Filter Conditional Styles From Extended Radio Expression</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class RadioDescriptionImpl extends WidgetDescriptionImpl implements RadioDescription {
     /**
+     * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getLabelExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String LABEL_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getLabelExpression()
+     * @generated
+     * @ordered
+     */
+    protected String labelExpression = RadioDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getHelpExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String HELP_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getHelpExpression()
+     * @generated
+     * @ordered
+     */
+    protected String helpExpression = RadioDescriptionImpl.HELP_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getIsEnabledExpression() <em>Is Enabled Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getIsEnabledExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String IS_ENABLED_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getIsEnabledExpression() <em>Is Enabled Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getIsEnabledExpression()
+     * @generated
+     * @ordered
+     */
+    protected String isEnabledExpression = RadioDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT;
+
+    /**
      * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -64,7 +134,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -104,7 +174,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The default value of the '{@link #getCandidateDisplayExpression() <em>Candidate Display Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCandidateDisplayExpression()
      * @generated
      * @ordered
@@ -114,7 +184,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getCandidateDisplayExpression() <em>Candidate Display Expression</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCandidateDisplayExpression()
      * @generated
      * @ordered
@@ -124,7 +194,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -144,7 +214,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getNumberOfColumns() <em>Number Of Columns</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getNumberOfColumns()
      * @generated
      * @ordered
@@ -154,7 +224,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -162,8 +232,40 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     protected EList<RadioWidgetConditionalStyle> conditionalStyles;
 
     /**
+     * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getExtends()
+     * @generated
+     * @ordered
+     */
+    protected RadioDescription extends_;
+
+    /**
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression()
+     * <em>Filter Conditional Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getFilterConditionalStylesFromExtendedRadioExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression()
+     * <em>Filter Conditional Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getFilterConditionalStylesFromExtendedRadioExpression()
+     * @generated
+     * @ordered
+     */
+    protected String filterConditionalStylesFromExtendedRadioExpression = RadioDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RadioDescriptionImpl() {
@@ -172,7 +274,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +284,79 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public String getLabelExpression() {
+        return labelExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setLabelExpression(String newLabelExpression) {
+        String oldLabelExpression = labelExpression;
+        labelExpression = newLabelExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.RADIO_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getHelpExpression() {
+        return helpExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setHelpExpression(String newHelpExpression) {
+        String oldHelpExpression = helpExpression;
+        helpExpression = newHelpExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.RADIO_DESCRIPTION__HELP_EXPRESSION, oldHelpExpression, helpExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getIsEnabledExpression() {
+        return isEnabledExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setIsEnabledExpression(String newIsEnabledExpression) {
+        String oldIsEnabledExpression = isEnabledExpression;
+        isEnabledExpression = newIsEnabledExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.RADIO_DESCRIPTION__IS_ENABLED_EXPRESSION, oldIsEnabledExpression, isEnabledExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -192,7 +366,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +380,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +390,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -235,7 +409,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +433,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -269,7 +443,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -283,7 +457,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -293,7 +467,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -307,7 +481,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -317,7 +491,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(RadioWidgetStyle newStyle, NotificationChain msgs) {
@@ -336,7 +510,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -360,7 +534,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -370,7 +544,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -384,7 +558,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -397,7 +571,74 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public RadioDescription getExtends() {
+        if (extends_ != null && extends_.eIsProxy()) {
+            InternalEObject oldExtends = (InternalEObject) extends_;
+            extends_ = (RadioDescription) eResolveProxy(oldExtends);
+            if (extends_ != oldExtends) {
+                if (eNotificationRequired()) {
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, PropertiesPackage.RADIO_DESCRIPTION__EXTENDS, oldExtends, extends_));
+                }
+            }
+        }
+        return extends_;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public RadioDescription basicGetExtends() {
+        return extends_;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setExtends(RadioDescription newExtends) {
+        RadioDescription oldExtends = extends_;
+        extends_ = newExtends;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.RADIO_DESCRIPTION__EXTENDS, oldExtends, extends_));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getFilterConditionalStylesFromExtendedRadioExpression() {
+        return filterConditionalStylesFromExtendedRadioExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setFilterConditionalStylesFromExtendedRadioExpression(String newFilterConditionalStylesFromExtendedRadioExpression) {
+        String oldFilterConditionalStylesFromExtendedRadioExpression = filterConditionalStylesFromExtendedRadioExpression;
+        filterConditionalStylesFromExtendedRadioExpression = newFilterConditionalStylesFromExtendedRadioExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.RADIO_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION,
+                    oldFilterConditionalStylesFromExtendedRadioExpression, filterConditionalStylesFromExtendedRadioExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -415,12 +656,18 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
+        case PropertiesPackage.RADIO_DESCRIPTION__LABEL_EXPRESSION:
+            return getLabelExpression();
+        case PropertiesPackage.RADIO_DESCRIPTION__HELP_EXPRESSION:
+            return getHelpExpression();
+        case PropertiesPackage.RADIO_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            return getIsEnabledExpression();
         case PropertiesPackage.RADIO_DESCRIPTION__VALUE_EXPRESSION:
             return getValueExpression();
         case PropertiesPackage.RADIO_DESCRIPTION__INITIAL_OPERATION:
@@ -435,19 +682,35 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
             return getNumberOfColumns();
         case PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES:
             return getConditionalStyles();
+        case PropertiesPackage.RADIO_DESCRIPTION__EXTENDS:
+            if (resolve) {
+                return getExtends();
+            }
+            return basicGetExtends();
+        case PropertiesPackage.RADIO_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION:
+            return getFilterConditionalStylesFromExtendedRadioExpression();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
+        case PropertiesPackage.RADIO_DESCRIPTION__LABEL_EXPRESSION:
+            setLabelExpression((String) newValue);
+            return;
+        case PropertiesPackage.RADIO_DESCRIPTION__HELP_EXPRESSION:
+            setHelpExpression((String) newValue);
+            return;
+        case PropertiesPackage.RADIO_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            setIsEnabledExpression((String) newValue);
+            return;
         case PropertiesPackage.RADIO_DESCRIPTION__VALUE_EXPRESSION:
             setValueExpression((String) newValue);
             return;
@@ -470,18 +733,33 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
             getConditionalStyles().clear();
             getConditionalStyles().addAll((Collection<? extends RadioWidgetConditionalStyle>) newValue);
             return;
+        case PropertiesPackage.RADIO_DESCRIPTION__EXTENDS:
+            setExtends((RadioDescription) newValue);
+            return;
+        case PropertiesPackage.RADIO_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION:
+            setFilterConditionalStylesFromExtendedRadioExpression((String) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
+        case PropertiesPackage.RADIO_DESCRIPTION__LABEL_EXPRESSION:
+            setLabelExpression(RadioDescriptionImpl.LABEL_EXPRESSION_EDEFAULT);
+            return;
+        case PropertiesPackage.RADIO_DESCRIPTION__HELP_EXPRESSION:
+            setHelpExpression(RadioDescriptionImpl.HELP_EXPRESSION_EDEFAULT);
+            return;
+        case PropertiesPackage.RADIO_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            setIsEnabledExpression(RadioDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT);
+            return;
         case PropertiesPackage.RADIO_DESCRIPTION__VALUE_EXPRESSION:
             setValueExpression(RadioDescriptionImpl.VALUE_EXPRESSION_EDEFAULT);
             return;
@@ -503,18 +781,30 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
         case PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES:
             getConditionalStyles().clear();
             return;
+        case PropertiesPackage.RADIO_DESCRIPTION__EXTENDS:
+            setExtends((RadioDescription) null);
+            return;
+        case PropertiesPackage.RADIO_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION:
+            setFilterConditionalStylesFromExtendedRadioExpression(RadioDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
+        case PropertiesPackage.RADIO_DESCRIPTION__LABEL_EXPRESSION:
+            return RadioDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !RadioDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+        case PropertiesPackage.RADIO_DESCRIPTION__HELP_EXPRESSION:
+            return RadioDescriptionImpl.HELP_EXPRESSION_EDEFAULT == null ? helpExpression != null : !RadioDescriptionImpl.HELP_EXPRESSION_EDEFAULT.equals(helpExpression);
+        case PropertiesPackage.RADIO_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            return RadioDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT == null ? isEnabledExpression != null : !RadioDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT.equals(isEnabledExpression);
         case PropertiesPackage.RADIO_DESCRIPTION__VALUE_EXPRESSION:
             return RadioDescriptionImpl.VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !RadioDescriptionImpl.VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
         case PropertiesPackage.RADIO_DESCRIPTION__INITIAL_OPERATION:
@@ -530,13 +820,110 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
             return numberOfColumns != RadioDescriptionImpl.NUMBER_OF_COLUMNS_EDEFAULT;
         case PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES:
             return conditionalStyles != null && !conditionalStyles.isEmpty();
+        case PropertiesPackage.RADIO_DESCRIPTION__EXTENDS:
+            return extends_ != null;
+        case PropertiesPackage.RADIO_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION:
+            return RadioDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION_EDEFAULT == null ? filterConditionalStylesFromExtendedRadioExpression != null
+                    : !RadioDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION_EDEFAULT.equals(filterConditionalStylesFromExtendedRadioExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == AbstractWidgetDescription.class) {
+            switch (derivedFeatureID) {
+            case PropertiesPackage.RADIO_DESCRIPTION__LABEL_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+            case PropertiesPackage.RADIO_DESCRIPTION__HELP_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__HELP_EXPRESSION;
+            case PropertiesPackage.RADIO_DESCRIPTION__IS_ENABLED_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == AbstractRadioDescription.class) {
+            switch (derivedFeatureID) {
+            case PropertiesPackage.RADIO_DESCRIPTION__VALUE_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__VALUE_EXPRESSION;
+            case PropertiesPackage.RADIO_DESCRIPTION__INITIAL_OPERATION:
+                return PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__INITIAL_OPERATION;
+            case PropertiesPackage.RADIO_DESCRIPTION__CANDIDATES_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__CANDIDATES_EXPRESSION;
+            case PropertiesPackage.RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION;
+            case PropertiesPackage.RADIO_DESCRIPTION__STYLE:
+                return PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__STYLE;
+            case PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS:
+                return PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__NUMBER_OF_COLUMNS;
+            case PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES:
+                return PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__CONDITIONAL_STYLES;
+            case PropertiesPackage.RADIO_DESCRIPTION__EXTENDS:
+                return PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__EXTENDS;
+            case PropertiesPackage.RADIO_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+        if (baseClass == AbstractWidgetDescription.class) {
+            switch (baseFeatureID) {
+            case PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__LABEL_EXPRESSION:
+                return PropertiesPackage.RADIO_DESCRIPTION__LABEL_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__HELP_EXPRESSION:
+                return PropertiesPackage.RADIO_DESCRIPTION__HELP_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION:
+                return PropertiesPackage.RADIO_DESCRIPTION__IS_ENABLED_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == AbstractRadioDescription.class) {
+            switch (baseFeatureID) {
+            case PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__VALUE_EXPRESSION:
+                return PropertiesPackage.RADIO_DESCRIPTION__VALUE_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__INITIAL_OPERATION:
+                return PropertiesPackage.RADIO_DESCRIPTION__INITIAL_OPERATION;
+            case PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__CANDIDATES_EXPRESSION:
+                return PropertiesPackage.RADIO_DESCRIPTION__CANDIDATES_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION:
+                return PropertiesPackage.RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__STYLE:
+                return PropertiesPackage.RADIO_DESCRIPTION__STYLE;
+            case PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__NUMBER_OF_COLUMNS:
+                return PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS;
+            case PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__CONDITIONAL_STYLES:
+                return PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES;
+            case PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__EXTENDS:
+                return PropertiesPackage.RADIO_DESCRIPTION__EXTENDS;
+            case PropertiesPackage.ABSTRACT_RADIO_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION:
+                return PropertiesPackage.RADIO_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION;
+            default:
+                return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -546,7 +933,13 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (valueExpression: "); //$NON-NLS-1$
+        result.append(" (labelExpression: "); //$NON-NLS-1$
+        result.append(labelExpression);
+        result.append(", helpExpression: "); //$NON-NLS-1$
+        result.append(helpExpression);
+        result.append(", isEnabledExpression: "); //$NON-NLS-1$
+        result.append(isEnabledExpression);
+        result.append(", valueExpression: "); //$NON-NLS-1$
         result.append(valueExpression);
         result.append(", candidatesExpression: "); //$NON-NLS-1$
         result.append(candidatesExpression);
@@ -554,6 +947,8 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
         result.append(candidateDisplayExpression);
         result.append(", numberOfColumns: "); //$NON-NLS-1$
         result.append(numberOfColumns);
+        result.append(", filterConditionalStylesFromExtendedRadioExpression: "); //$NON-NLS-1$
+        result.append(filterConditionalStylesFromExtendedRadioExpression);
         result.append(')');
         return result.toString();
     }

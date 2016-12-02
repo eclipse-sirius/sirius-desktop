@@ -27,7 +27,7 @@ public class PageDescriptionDomainClassFilter extends ViewpointPropertyFilter {
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getPageDescription_DomainClass();
+        return PropertiesPackage.eINSTANCE.getAbstractPageDescription_DomainClass();
     }
 
     /**

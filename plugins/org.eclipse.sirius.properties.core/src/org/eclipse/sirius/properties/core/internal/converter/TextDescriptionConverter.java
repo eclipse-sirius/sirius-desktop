@@ -34,7 +34,7 @@ public class TextDescriptionConverter extends AbstractDescriptionConverter {
 
     @Override
     public boolean canHandle(EObject description) {
-        return description instanceof TextDescription;
+        return description instanceof TextDescription || description instanceof TextAreaDescription;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class TextDescriptionConverter extends AbstractDescriptionConverter {
             TextDescription textDescription = (TextDescription) description;
 
             EEFTextDescription eefTextDescription = EefFactory.eINSTANCE.createEEFTextDescription();
-            eefTextDescription.setIdentifier(textDescription.getIdentifier());
+            eefTextDescription.setIdentifier(textDescription.getName());
             eefTextDescription.setHelpExpression(textDescription.getHelpExpression());
             eefTextDescription.setLabelExpression(textDescription.getLabelExpression());
             eefTextDescription.setIsEnabledExpression(textDescription.getIsEnabledExpression());
@@ -53,17 +53,32 @@ public class TextDescriptionConverter extends AbstractDescriptionConverter {
             InitialOperation initialOperation = textDescription.getInitialOperation();
             eefTextDescription.setEditExpression(this.getExpressionForOperation(initialOperation));
 
-            if (description instanceof TextAreaDescription) {
-                TextAreaDescription textAreaDescription = (TextAreaDescription) description;
-                eefTextDescription.setLineCount(textAreaDescription.getLineCount());
-            }
-
             cache.put(description, eefTextDescription);
 
             eefTextDescription.setStyle(this.convertEObject(textDescription.getStyle(), parameters, cache, EEFTextStyle.class));
             eefTextDescription.getConditionalStyles().addAll(this.convertCollection(textDescription.getConditionalStyles(), parameters, cache, EEFTextConditionalStyle.class));
 
             return eefTextDescription;
+        } else if (description instanceof TextAreaDescription) {
+            TextAreaDescription textAreaDescription = (TextAreaDescription) description;
+
+            EEFTextDescription eefTextAreaDescription = EefFactory.eINSTANCE.createEEFTextDescription();
+            eefTextAreaDescription.setIdentifier(textAreaDescription.getName());
+            eefTextAreaDescription.setHelpExpression(textAreaDescription.getHelpExpression());
+            eefTextAreaDescription.setLabelExpression(textAreaDescription.getLabelExpression());
+            eefTextAreaDescription.setIsEnabledExpression(textAreaDescription.getIsEnabledExpression());
+            eefTextAreaDescription.setValueExpression(textAreaDescription.getValueExpression());
+
+            InitialOperation initialOperation = textAreaDescription.getInitialOperation();
+            eefTextAreaDescription.setEditExpression(this.getExpressionForOperation(initialOperation));
+            eefTextAreaDescription.setLineCount(textAreaDescription.getLineCount());
+
+            cache.put(description, eefTextAreaDescription);
+
+            eefTextAreaDescription.setStyle(this.convertEObject(textAreaDescription.getStyle(), parameters, cache, EEFTextStyle.class));
+            eefTextAreaDescription.getConditionalStyles().addAll(this.convertCollection(textAreaDescription.getConditionalStyles(), parameters, cache, EEFTextConditionalStyle.class));
+
+            return eefTextAreaDescription;
         } else {
             throw new IllegalArgumentException(MessageFormat.format(Messages.IDescriptionConverter_InvalidDescriptionType, description.getClass().getName(), TextDescription.class.getName()));
         }

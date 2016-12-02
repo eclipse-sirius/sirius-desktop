@@ -55,7 +55,7 @@ public class DynamicMappingIfPredicateExpressionPropertySection extends Abstract
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getDynamicMappingIf_PredicateExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractDynamicMappingIfDescription_PredicateExpression();
     }
 
     /**

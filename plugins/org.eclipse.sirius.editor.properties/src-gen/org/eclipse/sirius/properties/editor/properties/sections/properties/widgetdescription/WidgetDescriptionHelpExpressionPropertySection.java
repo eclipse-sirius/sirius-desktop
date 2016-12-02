@@ -34,7 +34,9 @@ public class WidgetDescriptionHelpExpressionPropertySection extends AbstractText
      */
     @Override
     protected String getDefaultLabelText() {
-        return "HelpExpression"; //$NON-NLS-1$
+        // Start of user code get default label text
+        return "Help Expression"; //$NON-NLS-1$
+        // End of user code get default label text
     }
 
     /**
@@ -55,7 +57,7 @@ public class WidgetDescriptionHelpExpressionPropertySection extends AbstractText
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getWidgetDescription_HelpExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractWidgetDescription_HelpExpression();
     }
 
     /**

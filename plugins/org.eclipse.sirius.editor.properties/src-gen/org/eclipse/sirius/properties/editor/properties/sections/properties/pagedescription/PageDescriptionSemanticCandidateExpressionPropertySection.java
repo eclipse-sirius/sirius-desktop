@@ -56,7 +56,7 @@ public class PageDescriptionSemanticCandidateExpressionPropertySection extends A
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getPageDescription_SemanticCandidateExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractPageDescription_SemanticCandidateExpression();
     }
 
     /**

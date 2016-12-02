@@ -48,12 +48,11 @@ public interface PropertiesExtWidgetsReferenceFactory extends EFactory {
     ExtReferenceWidgetStyle createExtReferenceWidgetStyle();
 
     /**
-     * Returns a new object of class '
-     * <em>Ext Reference Widget Conditional Style</em>'. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns a new object of class '<em>Ext Reference Widget Conditional
+     * Style</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return a new object of class '
-     *         <em>Ext Reference Widget Conditional Style</em>'.
+     * @return a new object of class '<em>Ext Reference Widget Conditional
+     *         Style</em>'.
      * @generated
      */
     ExtReferenceWidgetConditionalStyle createExtReferenceWidgetConditionalStyle();

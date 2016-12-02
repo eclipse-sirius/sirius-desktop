@@ -56,7 +56,7 @@ public class GroupDescriptionSemanticCandidateExpressionPropertySection extends 
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getGroupDescription_SemanticCandidateExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractGroupDescription_SemanticCandidateExpression();
     }
 
     /**

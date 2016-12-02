@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,11 +14,10 @@ package org.eclipse.sirius.properties.provider;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.sirius.properties.GroupDescription;
-import org.eclipse.sirius.properties.PageDescription;
+import org.eclipse.emf.edit.provider.StyledString;
+import org.eclipse.sirius.properties.Category;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
-import org.eclipse.sirius.properties.ViewExtensionDescription;
 
 /**
  * Subclass used to not have to modify the generated code.
@@ -39,21 +38,22 @@ public class ViewExtensionDescriptionItemProviderSpec extends ViewExtensionDescr
 
     @Override
     public String getText(Object object) {
-        String label = ((ViewExtensionDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_ViewExtensionDescription_type") : //$NON-NLS-1$
-                label;
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
+        return Utils.computeLabel(this, object, "_UI_ViewExtensionDescription_type"); //$NON-NLS-1$
     }
 
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-        PageDescription page = PropertiesFactory.eINSTANCE.createPageDescription();
-        page.setLabelExpression("Page"); //$NON-NLS-1$
-        page.setSemanticCandidateExpression(ViewExtensionDescriptionItemProvider.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__PAGES, page));
-
-        GroupDescription group = PropertiesFactory.eINSTANCE.createGroupDescription();
-        group.setLabelExpression("Group"); //$NON-NLS-1$
-        group.setSemanticCandidateExpression(ViewExtensionDescriptionItemProvider.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__GROUPS, group));
+        Category category = PropertiesFactory.eINSTANCE.createCategory();
+        category.setName("Category"); //$NON-NLS-1$
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__CATEGORIES, category));
     }
 }

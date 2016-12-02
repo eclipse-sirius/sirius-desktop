@@ -14,8 +14,8 @@ package org.eclipse.sirius.properties;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Layout Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Layout Description</b></em>'. <!-- end-user-doc
+ * -->
  *
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getLayoutDescription()

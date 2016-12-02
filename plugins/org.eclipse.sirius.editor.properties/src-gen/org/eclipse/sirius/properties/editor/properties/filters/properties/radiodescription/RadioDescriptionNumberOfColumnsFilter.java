@@ -27,7 +27,7 @@ public class RadioDescriptionNumberOfColumnsFilter extends ViewpointPropertyFilt
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getRadioDescription_NumberOfColumns();
+        return PropertiesPackage.eINSTANCE.getAbstractRadioDescription_NumberOfColumns();
     }
 
     /**

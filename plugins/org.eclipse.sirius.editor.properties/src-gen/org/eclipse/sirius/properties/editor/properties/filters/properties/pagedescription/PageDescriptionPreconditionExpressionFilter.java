@@ -27,7 +27,7 @@ public class PageDescriptionPreconditionExpressionFilter extends ViewpointProper
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getPageDescription_PreconditionExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractPageDescription_PreconditionExpression();
     }
 
     /**

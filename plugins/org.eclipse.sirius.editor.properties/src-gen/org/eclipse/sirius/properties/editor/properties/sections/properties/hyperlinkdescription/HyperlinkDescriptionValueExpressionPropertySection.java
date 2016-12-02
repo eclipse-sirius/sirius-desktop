@@ -55,7 +55,7 @@ public class HyperlinkDescriptionValueExpressionPropertySection extends Abstract
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getHyperlinkDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getAbstractHyperlinkDescription_ValueExpression();
     }
 
     /**

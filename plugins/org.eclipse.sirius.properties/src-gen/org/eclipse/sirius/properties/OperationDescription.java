@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>Operation Description</b></em>'. <!--
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Operation Description</b></em>'. <!--
  * end-user-doc -->
  *
  * <p>
@@ -37,7 +37,7 @@ public interface OperationDescription extends EObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getOperationDescription_InitialOperation()
@@ -49,7 +49,7 @@ public interface OperationDescription extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.OperationDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()

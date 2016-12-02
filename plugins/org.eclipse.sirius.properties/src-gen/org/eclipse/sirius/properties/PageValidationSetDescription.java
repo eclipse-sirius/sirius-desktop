@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>Page Validation Set Description</b></em>'. <!--
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Page Validation Set Description</b></em>'. <!--
  * end-user-doc -->
  *
  * <p>

@@ -16,7 +16,7 @@ import org.eclipse.sirius.properties.CustomWidgetStyle;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Custom Widget Style</b></em>'. <!--
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Custom Widget Style</b></em>'. <!--
  * end-user-doc -->
  *
  * @generated
@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 public class CustomWidgetStyleImpl extends WidgetStyleImpl implements CustomWidgetStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CustomWidgetStyleImpl() {
@@ -33,7 +33,7 @@ public class CustomWidgetStyleImpl extends WidgetStyleImpl implements CustomWidg
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
