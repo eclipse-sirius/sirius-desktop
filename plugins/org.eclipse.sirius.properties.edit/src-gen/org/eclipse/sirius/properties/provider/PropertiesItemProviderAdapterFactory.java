@@ -20,6 +20,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ChangeNotifier;
@@ -43,6 +44,10 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.util.PropertiesAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
@@ -1555,6 +1560,28 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
         if (editSupportItemProvider != null) {
             editSupportItemProvider.dispose();
+        }
+    }
+
+    /**
+     * Add default "Begin" operations with a no-op navigation to the specific
+     * element.
+     * 
+     * @param child
+     *            a newly created child.
+     */
+    static void addNoopNavigationOperations(Object child) {
+        if (child instanceof EObject) {
+            EObject obj = (EObject) child;
+            for (EReference ref : obj.eClass().getEAllReferences()) {
+                if (ref.isContainment() && ref.getEReferenceType() == ToolPackage.Literals.INITIAL_OPERATION) {
+                    InitialOperation begin = ToolFactory.eINSTANCE.createInitialOperation();
+                    ChangeContext noop = ToolFactory.eINSTANCE.createChangeContext();
+                    noop.setBrowseExpression("var:self"); //$NON-NLS-1$
+                    begin.setFirstModelOperations(noop);
+                    obj.eSet(ref, begin);
+                }
+            }
         }
     }
 

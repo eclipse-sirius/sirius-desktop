@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -227,6 +228,12 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
             return;
         }
         super.notifyChanged(notification);
+    }
+    
+    @Override
+    protected CommandParameter createChildParameter(Object feature, Object child) {
+        PropertiesItemProviderAdapterFactory.addNoopNavigationOperations(child);
+        return super.createChildParameter(feature, child);
     }
 
     /**

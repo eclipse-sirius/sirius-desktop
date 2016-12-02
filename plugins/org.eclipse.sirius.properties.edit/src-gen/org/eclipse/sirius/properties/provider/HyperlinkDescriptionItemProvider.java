@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -173,6 +174,12 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
             return;
         }
         super.notifyChanged(notification);
+    }
+    
+    @Override
+    protected CommandParameter createChildParameter(Object feature, Object child) {
+        PropertiesItemProviderAdapterFactory.addNoopNavigationOperations(child);
+        return super.createChildParameter(feature, child);
     }
 
     /**
