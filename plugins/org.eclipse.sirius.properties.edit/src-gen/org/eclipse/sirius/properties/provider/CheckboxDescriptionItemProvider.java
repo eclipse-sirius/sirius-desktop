@@ -130,7 +130,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
     public String getText(Object object) {
         String label = ((CheckboxDescription) object).getLabelExpression();
         return label == null || label.length() == 0 ? getString("_UI_CheckboxDescription_type") : //$NON-NLS-1$
-                getString("_UI_CheckboxDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                label;
     }
 
     /**

@@ -178,13 +178,13 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
         String label = ((GroupStyle) object).getFontNameExpression();
         return label == null || label.length() == 0 ? getString("_UI_GroupStyle_type") : //$NON-NLS-1$
-                getString("_UI_GroupStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                label;
     }
 
     /**

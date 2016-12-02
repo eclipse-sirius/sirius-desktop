@@ -142,7 +142,7 @@ public class DynamicMappingForItemProvider extends ControlDescriptionItemProvide
         DynamicMappingFor element = (DynamicMappingFor) object;
         String label = MessageFormat.format("for {0} in {1}", element.getIterator(), element.getIterableExpression()); //$NON-NLS-1$
         return label == null || label.length() == 0 ? getString("_UI_DynamicMappingFor_type") : //$NON-NLS-1$
-                getString("_UI_DynamicMappingFor_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                label;
     }
 
     /**

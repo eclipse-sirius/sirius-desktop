@@ -149,7 +149,7 @@ public class ExtReferenceDescriptionItemProvider extends WidgetDescriptionItemPr
      * This returns the label styled text for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     public Object getStyledText(Object object) {
@@ -158,7 +158,7 @@ public class ExtReferenceDescriptionItemProvider extends WidgetDescriptionItemPr
         if (label == null || label.length() == 0) {
             styledLabel.append(getString("_UI_ExtReferenceDescription_type"), StyledString.Style.QUALIFIER_STYLER); //$NON-NLS-1$
         } else {
-            styledLabel.append(getString("_UI_ExtReferenceDescription_type"), StyledString.Style.QUALIFIER_STYLER).append(" " + label); //$NON-NLS-1$ //$NON-NLS-2$
+            styledLabel.append(label);
         }
         return styledLabel;
     }

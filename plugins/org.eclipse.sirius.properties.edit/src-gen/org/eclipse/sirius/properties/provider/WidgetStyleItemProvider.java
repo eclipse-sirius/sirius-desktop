@@ -150,13 +150,13 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
         String label = ((WidgetStyle) object).getLabelFontNameExpression();
         return label == null || label.length() == 0 ? getString("_UI_WidgetStyle_type") : //$NON-NLS-1$
-                getString("_UI_WidgetStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                label;
     }
 
     /**

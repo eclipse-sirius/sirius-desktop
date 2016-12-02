@@ -172,7 +172,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
     public String getText(Object object) {
         String label = ((RadioDescription) object).getLabelExpression();
         return label == null || label.length() == 0 ? getString("_UI_RadioDescription_type") : //$NON-NLS-1$
-                getString("_UI_RadioDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                label;
     }
 
     /**

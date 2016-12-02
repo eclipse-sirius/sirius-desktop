@@ -67,13 +67,13 @@ public class ListWidgetStyleItemProvider extends WidgetStyleItemProvider {
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
         String label = ((ListWidgetStyle) object).getLabelFontNameExpression();
         return label == null || label.length() == 0 ? getString("_UI_ListWidgetStyle_type") : //$NON-NLS-1$
-                getString("_UI_ListWidgetStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                label;
     }
 
     /**

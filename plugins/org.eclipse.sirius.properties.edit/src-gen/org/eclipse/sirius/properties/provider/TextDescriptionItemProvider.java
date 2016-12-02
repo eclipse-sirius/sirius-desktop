@@ -130,7 +130,7 @@ public class TextDescriptionItemProvider extends WidgetDescriptionItemProvider {
     public String getText(Object object) {
         String label = ((TextDescription) object).getLabelExpression();
         return label == null || label.length() == 0 ? getString("_UI_TextDescription_type") : //$NON-NLS-1$
-                getString("_UI_TextDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                label;
     }
 
     /**
