@@ -114,6 +114,9 @@
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The export diagram as images actions are now adapting the output resolution based on the diagram size, this leads to better resolution for small to medium diagrams (and also bigger file) and to an operation which is no longer failing with out of memory errors in case of very big diagrams.</li>
+			<li><span class="label label-info">Modified</span>The &#8220;straighten to&#8221; actions previously had a limitation concerning overlap detection. This is no longer the case. The previous known limitation was removed from the documentation (
+				<i>In case of multi-selection, the overlap check is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.</i>).
+			</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
@@ -175,6 +178,38 @@
 				<code>true</code> to obtain the same behavior as the removed constructor).
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+			<code>org.eclipse.sirius.diagram.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> The  
+				<code>org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.DiagramEditPartService</code> class which can be used to export diagrams as images is now automatically adapting the output resolution for raster image based on maximum buffer size specified through the 
+				<code>plugin.propeties</code> file of the 
+				<code>org.eclipse.sirius.diagram.ui</code> plugin. This leads to a noticeable increase of the export image size (you can expect a 10 factor on small diagrams) and the method will no longer fail with OutOfMemory errors as bigger diagrams will lead to a lower output resolution. Implementers using this class can override the 
+				<code>DiagramEditPartService.getMaximumTotalSize()</code> method to return their own limit or 
+				<code>DiagramEditPartService.getExportResolutionFactor(DiagramEditPart, SiriusDiagramImageGenerator)</code>  and return 
+				<code>1.0</code> to get back to the previous behavior.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.editor.properties">Changes in 
+			<code>org.eclipse.sirius.editor.properties</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> In the package 
+				<code>org.eclipse.sirius.editor.properties.sections.description.representationdescription</code> the class 
+				<code>RepresentationDescriptionMetamodelsUpdater</code> has been replaced by 
+				<code>DescriptionMetamodelsUpdater</code> which can now be used with any EObject with a many-valued EReference to EPackages. The behavior of the class 
+				<code>RepresentationDescriptionMetamodelPropertySectionSpec</code> has been transfered to an abstract class independent of 
+				<code>RepresentationDescription</code> named 
+				<code>AbstractMetamodelPropertySectionSpec</code>. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ui.properties">Changes in 
+			<code>org.eclipse.sirius.ui.properties</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> All the content related to the IDescriptionConverter and ILinkResolver has been moved from the plugin org.eclipse.sirius.ui.properties to the newly created plugin org.eclipse.sirius.properties.core. It includes all the APIs and both extension points.</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
@@ -221,38 +256,6 @@ bot.waitUntil(new ICondition() {
 SWTBotUtils.waitAllUiEvents();
 
 </pre>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
-			<code>org.eclipse.sirius.diagram.ui</code>
-		</h4>
-		<ul>
-			<li><span class="label label-info">Modified</span> The  
-				<code>org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.DiagramEditPartService</code> class which can be used to export diagrams as images is now automatically adapting the output resolution for raster image based on maximum buffer size specified through the 
-				<code>plugin.propeties</code> file of the 
-				<code>org.eclipse.sirius.diagram.ui</code> plugin. This leads to a noticeable increase of the export image size (you can expect a 10 factor on small diagrams) and the method will no longer fail with OutOfMemory errors as bigger diagrams will lead to a lower output resolution. Implementers using this class can override the 
-				<code>DiagramEditPartService.getMaximumTotalSize()</code> method to return their own limit or 
-				<code>DiagramEditPartService.getExportResolutionFactor(DiagramEditPart, SiriusDiagramImageGenerator)</code>  and return 
-				<code>1.0</code> to get back to the previous behavior.
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.editor.properties">Changes in 
-			<code>org.eclipse.sirius.editor.properties</code>
-		</h4>
-		<ul>
-			<li><span class="label label-info">Modified</span> In the package 
-				<code>org.eclipse.sirius.editor.properties.sections.description.representationdescription</code> the class 
-				<code>RepresentationDescriptionMetamodelsUpdater</code> has been replaced by 
-				<code>DescriptionMetamodelsUpdater</code> which can now be used with any EObject with a many-valued EReference to EPackages. The behavior of the class 
-				<code>RepresentationDescriptionMetamodelPropertySectionSpec</code> has been transfered to an abstract class independent of 
-				<code>RepresentationDescription</code> named 
-				<code>AbstractMetamodelPropertySectionSpec</code>. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui.properties">Changes in 
-			<code>org.eclipse.sirius.ui.properties</code>
-		</h4>
-		<ul>
-			<li><span class="label label-info">Modified</span> All the content related to the IDescriptionConverter and ILinkResolver has been moved from the plugin org.eclipse.sirius.ui.properties to the newly created plugin org.eclipse.sirius.properties.core. It includes all the APIs and both extension points.</li>
-		</ul>
 		<h2 id="sirius4.1.2">Changes in Sirius 4.1.2</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>

@@ -13,10 +13,9 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions.straighten;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.CompoundCommand;
+import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gmf.runtime.common.core.util.StringStatics;
 import org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -30,12 +29,14 @@ import org.eclipse.ui.IWorkbenchPage;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * A {@link DiagramAction} to straighten edges.<BR>
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
+@SuppressWarnings("restriction")
 public class StraightenToAction extends DiagramAction {
 
     /** Constant indicating a straighten to top action. */
@@ -220,20 +221,19 @@ public class StraightenToAction extends DiagramAction {
     protected void updateTargetRequest() {
         StraightenToRequest straightenRequest = (StraightenToRequest) getTargetRequest();
         straightenRequest.setStraightenType(straightenType);
+        straightenRequest.setSelectedEdgeEditParts(getSelectedEdgeEditParts());
     }
 
     @Override
     protected Command getCommand() {
-        CompoundCommand straightenEdgesCmd = new CompoundCommand(Messages.StraightenToAction_commandLabel);
         List<?> operationSet = getOperationSet();
         if (!operationSet.isEmpty()) {
-            for (Object object : operationSet) {
-                if (object instanceof ConnectionEditPart) {
-                    straightenEdgesCmd.add(((ConnectionEditPart) object).getCommand(getTargetRequest()));
-                }
+            Object firstSelectedObject = operationSet.get(0);
+            if (firstSelectedObject instanceof AbstractDiagramEdgeEditPart) {
+                return ((AbstractDiagramEdgeEditPart) firstSelectedObject).getCommand(getTargetRequest());
             }
         }
-        return straightenEdgesCmd;
+        return UnexecutableCommand.INSTANCE;
     }
 
     /**
@@ -260,5 +260,9 @@ public class StraightenToAction extends DiagramAction {
     @Override
     protected boolean isOperationHistoryListener() {
         return true;
+    }
+
+    private List<AbstractDiagramEdgeEditPart> getSelectedEdgeEditParts() {
+        return Lists.newArrayList(Iterables.filter(getOperationSet(), AbstractDiagramEdgeEditPart.class));
     }
 }

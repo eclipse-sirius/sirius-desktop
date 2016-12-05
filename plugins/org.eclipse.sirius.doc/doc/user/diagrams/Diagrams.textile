@@ -159,7 +159,6 @@ The action can be disabled (grayed menu) in some conditions:
 * The action is not possible because it does not respect the source or target node boundaries.
 * The source and the target of the edge are not on the same "axis" (left and right sides, or, top and bottom sides).
 * After the action, the border node (source or target) would be overlapped by another border node.
-** Known limitation: In case of multi-selection, the overlap is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.
 * A straighten action will be disabled if the "edge centering":../../specifier/diagrams/Diagrams.html#edgecentering constraint will be violated. For oblique edges, the action is disabled if at least one side is centered. For rectilinear edges, the action is disabled if the moved side is centered. There is an exception to this rule when the edge centering is activated on both source and target, and both source and target are border nodes.
 * The source or the target of the edge is another edge.
 * The source and the target is the same element.
