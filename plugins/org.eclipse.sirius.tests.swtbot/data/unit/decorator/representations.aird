@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_BfPQMLr0Eeaxv-iboWdafg" selectedViews="_MQTmELr0Eeaxv-iboWdafg" version="11.1.0.201608251200">
+    <semanticResources>sprint.uml</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_MQTmELr0Eeaxv-iboWdafg">
+      <viewpoint xmi:type="description:Viewpoint" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_-woYELr3Eeaxv-iboWdafg" name="new MappingBasedDecoration" representation="_-woYEbr3Eeaxv-iboWdafg">
+        <description xmi:type="description_1:DiagramDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']"/>
+        <target xmi:type="uml:Model" href="sprint.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_hKQToLr4Eeaxv-iboWdafg" name="new MappingBasedDecorationLayer" representation="_hKQTobr4Eeaxv-iboWdafg">
+        <description xmi:type="description_1:DiagramDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']"/>
+        <target xmi:type="uml:Model" href="sprint.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_UiYXsLr5Eeaxv-iboWdafg" name="new SemanticBasedDecoration" representation="_UiYXsbr5Eeaxv-iboWdafg">
+        <description xmi:type="description_1:DiagramDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']"/>
+        <target xmi:type="uml:Model" href="sprint.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram xmi:id="_-woYEbr3Eeaxv-iboWdafg" name="new MappingBasedDecoration">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_-woYErr3Eeaxv-iboWdafg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_-woYE7r3Eeaxv-iboWdafg"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_-woYK7r3Eeaxv-iboWdafg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_-woYLLr3Eeaxv-iboWdafg" type="Sirius" element="_-woYEbr3Eeaxv-iboWdafg" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_-woYLrr3Eeaxv-iboWdafg" type="2001" element="_-woYFLr3Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_-woYMbr3Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_-woYMrr3Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_-wuey7r3Eeaxv-iboWdafg" type="3004" element="_-woYFrr3Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_-wuezLr3Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-wuezbr3Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_-woYL7r3Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-woYMLr3Eeaxv-iboWdafg" x="4" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_-wuesLr3Eeaxv-iboWdafg" type="2001" element="_-woYF7r3Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_-wues7r3Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_-wuetLr3Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_-wuezrr3Eeaxv-iboWdafg" type="3004" element="_-woYGbr3Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_-wuez7r3Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-wue0Lr3Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_-wuesbr3Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-wuesrr3Eeaxv-iboWdafg" x="92" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_-wuetbr3Eeaxv-iboWdafg" type="2001" element="_-woYGrr3Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_-wueuLr3Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_-wueubr3Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_-wue0br3Eeaxv-iboWdafg" type="3004" element="_-woYHLr3Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_-wue0rr3Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-wue07r3Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_-wuetrr3Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-wuet7r3Eeaxv-iboWdafg" x="182" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_-wueurr3Eeaxv-iboWdafg" type="2001" element="_-woYHbr3Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_-wuevbr3Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_-wuevrr3Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_-w0lULr3Eeaxv-iboWdafg" type="3004" element="_-woYHrr3Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_-w0lUbr3Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-w0lUrr3Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_-wueu7r3Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-wuevLr3Eeaxv-iboWdafg" x="272" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_-wuev7r3Eeaxv-iboWdafg" type="2001" element="_-woYH7r3Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_-wuewrr3Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_-wuew7r3Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_-w0lU7r3Eeaxv-iboWdafg" type="3004" element="_-woYILr3Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_-w0lVLr3Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-w0lVbr3Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_-wuewLr3Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-wuewbr3Eeaxv-iboWdafg" x="362" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_-wuexLr3Eeaxv-iboWdafg" type="2003" element="_-woYIbr3Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_-wuex7r3Eeaxv-iboWdafg" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_-wueyLr3Eeaxv-iboWdafg" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_-w0lVrr3Eeaxv-iboWdafg" type="3010" element="_-woYJLr3Eeaxv-iboWdafg">
+              <styles xmi:type="notation:FontStyle" xmi:id="_-w0lV7r3Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_-w0lWLr3Eeaxv-iboWdafg"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_-w0lWbr3Eeaxv-iboWdafg" type="3010" element="_-woYJ7r3Eeaxv-iboWdafg">
+              <styles xmi:type="notation:FontStyle" xmi:id="_-w0lWrr3Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_-w0lW7r3Eeaxv-iboWdafg"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_-wueybr3Eeaxv-iboWdafg"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_-wueyrr3Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_-wuexbr3Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-wuexrr3Eeaxv-iboWdafg" x="450"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_-woYLbr3Eeaxv-iboWdafg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_-woYFLr3Eeaxv-iboWdafg" name="100m" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_SdFfILr5Eeaxv-iboWdafg">
+        <description xmi:type="description_1:MappingBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='mappingBasedDecoration']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_-woYFrr3Eeaxv-iboWdafg" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbd']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbd']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_-woYF7r3Eeaxv-iboWdafg" name="200m" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_SdFfIbr5Eeaxv-iboWdafg">
+        <description xmi:type="description_1:MappingBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='mappingBasedDecoration']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_-woYGbr3Eeaxv-iboWdafg" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbd']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbd']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_-woYGrr3Eeaxv-iboWdafg" name="400m" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_bHC-kLr5Eeaxv-iboWdafg">
+        <description xmi:type="description_1:MappingBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='mappingBasedDecoration']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_-woYHLr3Eeaxv-iboWdafg" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbd']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbd']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_-woYHbr3Eeaxv-iboWdafg" name="110m H" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_vUwcEbGYEd2FK9pHgg2YuA"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_vUwcEbGYEd2FK9pHgg2YuA"/>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_-woYHrr3Eeaxv-iboWdafg" color="252,233,79">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdh']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdh']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_-woYH7r3Eeaxv-iboWdafg" name="400m H" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_vZnG4LGYEd2FK9pHgg2YuA"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_vZnG4LGYEd2FK9pHgg2YuA"/>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_-woYILr3Eeaxv-iboWdafg" color="252,233,79">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdh']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdh']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_-woYIbr3Eeaxv-iboWdafg" name="sprint">
+      <target xmi:type="uml:Model" href="sprint.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+      <semanticElements xmi:type="uml:Model" href="sprint.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_-woYIrr3Eeaxv-iboWdafg">
+        <description xmi:type="description_1:MappingBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='mappingBasedDecorationContainer']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_-woYI7r3Eeaxv-iboWdafg" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@containerMappings[name='mbdp']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@containerMappings[name='mbdp']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_-woYJLr3Eeaxv-iboWdafg" name="Homme">
+        <target xmi:type="uml:Interface" href="sprint.uml#_CLYKgLGeEd2tQaKZ0qu29w"/>
+        <semanticElements xmi:type="uml:Interface" href="sprint.uml#_CLYKgLGeEd2tQaKZ0qu29w"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_-woYJbr3Eeaxv-iboWdafg">
+          <description xmi:type="description_1:MappingBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='mappingBasedDecorationListElement']"/>
+        </decorations>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_-woYJrr3Eeaxv-iboWdafg">
+          <description xmi:type="style:SquareDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@containerMappings[name='mbdp']/@subNodeMappings[name='mbdi']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@containerMappings[name='mbdp']/@subNodeMappings[name='mbdi']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_-woYJ7r3Eeaxv-iboWdafg" name="Femme">
+        <target xmi:type="uml:Interface" href="sprint.uml#_I4BosLGeEd2tQaKZ0qu29w"/>
+        <semanticElements xmi:type="uml:Interface" href="sprint.uml#_I4BosLGeEd2tQaKZ0qu29w"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_-woYKLr3Eeaxv-iboWdafg">
+          <description xmi:type="description_1:MappingBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='mappingBasedDecorationListElement']"/>
+        </decorations>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_-woYKbr3Eeaxv-iboWdafg">
+          <description xmi:type="style:SquareDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@containerMappings[name='mbdp']/@subNodeMappings[name='mbdi']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@containerMappings[name='mbdp']/@subNodeMappings[name='mbdi']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_-woYKrr3Eeaxv-iboWdafg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer"/>
+    <target xmi:type="uml:Model" href="sprint.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram xmi:id="_hKQTobr4Eeaxv-iboWdafg" name="new MappingBasedDecorationLayer">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_hKQTorr4Eeaxv-iboWdafg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_hKQTo7r4Eeaxv-iboWdafg"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_hKQTr7r4Eeaxv-iboWdafg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_hKQTsLr4Eeaxv-iboWdafg" type="Sirius" element="_hKQTobr4Eeaxv-iboWdafg" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_hKQTsrr4Eeaxv-iboWdafg" type="2001" element="_hKQTpLr4Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_hKWaQLr4Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_hKWaQbr4Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hKcg57r4Eeaxv-iboWdafg" type="3004" element="_hKQTpbr4Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hKcg6Lr4Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKcg6br4Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_hKQTs7r4Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKQTtLr4Eeaxv-iboWdafg" x="4" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_hKWaQrr4Eeaxv-iboWdafg" type="2001" element="_hKQTprr4Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_hKWaRbr4Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_hKWaRrr4Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hKcg6rr4Eeaxv-iboWdafg" type="3004" element="_hKQTp7r4Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hKcg67r4Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKcg7Lr4Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_hKWaQ7r4Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKWaRLr4Eeaxv-iboWdafg" x="92" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_hKWaR7r4Eeaxv-iboWdafg" type="2001" element="_hKQTqLr4Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_hKWaSrr4Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_hKWaS7r4Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hKcg7br4Eeaxv-iboWdafg" type="3004" element="_hKQTqbr4Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hKcg7rr4Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKcg77r4Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_hKWaSLr4Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKWaSbr4Eeaxv-iboWdafg" x="182" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_hKWaTLr4Eeaxv-iboWdafg" type="2001" element="_hKQTqrr4Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_hKcg4Lr4Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_hKcg4br4Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hKcg8Lr4Eeaxv-iboWdafg" type="3004" element="_hKQTq7r4Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hKcg8br4Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKcg8rr4Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_hKWaTbr4Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKWaTrr4Eeaxv-iboWdafg" x="272" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_hKcg4rr4Eeaxv-iboWdafg" type="2001" element="_hKQTrLr4Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_hKcg5br4Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_hKcg5rr4Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hKcg87r4Eeaxv-iboWdafg" type="3004" element="_hKQTrbr4Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hKcg9Lr4Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKcg9br4Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_hKcg47r4Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKcg5Lr4Eeaxv-iboWdafg" x="362" width="30" height="30"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_hKQTsbr4Eeaxv-iboWdafg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_hKQTpLr4Eeaxv-iboWdafg" name="100m" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_h9tJ0Lr4Eeaxv-iboWdafg">
+        <description xmi:type="description_1:MappingBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@additionalLayers[name='Hurdles']/@decorationDescriptionsSet/@decorationDescriptions[name='MappingBasedDecorationLayer']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_hKQTpbr4Eeaxv-iboWdafg" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdl']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdl']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_hKQTprr4Eeaxv-iboWdafg" name="200m" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_h9tJ0br4Eeaxv-iboWdafg">
+        <description xmi:type="description_1:MappingBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@additionalLayers[name='Hurdles']/@decorationDescriptionsSet/@decorationDescriptions[name='MappingBasedDecorationLayer']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_hKQTp7r4Eeaxv-iboWdafg" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdl']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdl']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_hKQTqLr4Eeaxv-iboWdafg" name="400m" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_h9tJ0rr4Eeaxv-iboWdafg">
+        <description xmi:type="description_1:MappingBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@additionalLayers[name='Hurdles']/@decorationDescriptionsSet/@decorationDescriptions[name='MappingBasedDecorationLayer']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_hKQTqbr4Eeaxv-iboWdafg" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdl']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdl']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_hKQTqrr4Eeaxv-iboWdafg" name="110m H" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_vUwcEbGYEd2FK9pHgg2YuA"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_vUwcEbGYEd2FK9pHgg2YuA"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_h9tJ07r4Eeaxv-iboWdafg">
+        <description xmi:type="description_1:MappingBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@additionalLayers[name='Hurdles']/@decorationDescriptionsSet/@decorationDescriptions[name='MappingBasedDecorationLayer']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_hKQTq7r4Eeaxv-iboWdafg" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdl']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdl']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_hKQTrLr4Eeaxv-iboWdafg" name="400m H" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_vZnG4LGYEd2FK9pHgg2YuA"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_vZnG4LGYEd2FK9pHgg2YuA"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_h9tJ1Lr4Eeaxv-iboWdafg">
+        <description xmi:type="description_1:MappingBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@additionalLayers[name='Hurdles']/@decorationDescriptionsSet/@decorationDescriptions[name='MappingBasedDecorationLayer']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_hKQTrbr4Eeaxv-iboWdafg" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdl']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdl']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_hKQTrrr4Eeaxv-iboWdafg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@defaultLayer"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@additionalLayers[name='Hurdles']"/>
+    <target xmi:type="uml:Model" href="sprint.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram xmi:id="_UiYXsbr5Eeaxv-iboWdafg" name="new SemanticBasedDecoration">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_UiYXsrr5Eeaxv-iboWdafg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_UiYXs7r5Eeaxv-iboWdafg"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_UiYX2br5Eeaxv-iboWdafg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_UiYX2rr5Eeaxv-iboWdafg" type="Sirius" element="_UiYXsbr5Eeaxv-iboWdafg" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_UiYX3Lr5Eeaxv-iboWdafg" type="2001" element="_UiYXtLr5Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_UiYX37r5Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_UiYX4Lr5Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Uieecrr5Eeaxv-iboWdafg" type="3004" element="_UiYXtrr5Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Uieec7r5Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UieedLr5Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_UiYX3br5Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UiYX3rr5Eeaxv-iboWdafg" x="4" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_UiYX4br5Eeaxv-iboWdafg" type="2001" element="_UiYXt7r5Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_UieeULr5Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_UieeUbr5Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Uieedbr5Eeaxv-iboWdafg" type="3004" element="_UiYXubr5Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Uieedrr5Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Uieed7r5Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_UiYX4rr5Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UiYX47r5Eeaxv-iboWdafg" x="92" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_UieeUrr5Eeaxv-iboWdafg" type="2001" element="_UiYXurr5Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_UieeVbr5Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_UieeVrr5Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_UieeeLr5Eeaxv-iboWdafg" type="3004" element="_UiYXvLr5Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Uieeebr5Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Uieeerr5Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_UieeU7r5Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UieeVLr5Eeaxv-iboWdafg" x="182" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_UieeV7r5Eeaxv-iboWdafg" type="2001" element="_UiYXvbr5Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_UieeWrr5Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_UieeW7r5Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Uieee7r5Eeaxv-iboWdafg" type="3004" element="_UiYXv7r5Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_UieefLr5Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Uieefbr5Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_UieeWLr5Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UieeWbr5Eeaxv-iboWdafg" x="272" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_UieeXLr5Eeaxv-iboWdafg" type="2001" element="_UiYXwLr5Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_UieeX7r5Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_UieeYLr5Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Uieefrr5Eeaxv-iboWdafg" type="3004" element="_UiYXwrr5Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Uieef7r5Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UieegLr5Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_UieeXbr5Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UieeXrr5Eeaxv-iboWdafg" x="362" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_UieeYbr5Eeaxv-iboWdafg" type="2001" element="_UiYXw7r5Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_UieeZLr5Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_UieeZbr5Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Uieegbr5Eeaxv-iboWdafg" type="3004" element="_UiYXxLr5Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Uieegrr5Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Uieeg7r5Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_UieeYrr5Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UieeY7r5Eeaxv-iboWdafg" x="452" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_UieeZrr5Eeaxv-iboWdafg" type="2001" element="_UiYXxbr5Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_Uieeabr5Eeaxv-iboWdafg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Uieearr5Eeaxv-iboWdafg" x="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_UieehLr5Eeaxv-iboWdafg" type="3004" element="_UiYXxrr5Eeaxv-iboWdafg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Uieehbr5Eeaxv-iboWdafg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Uieehrr5Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_UieeZ7r5Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UieeaLr5Eeaxv-iboWdafg" x="542" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_Uieea7r5Eeaxv-iboWdafg" type="2003" element="_UiYXx7r5Eeaxv-iboWdafg">
+          <children xmi:type="notation:Node" xmi:id="_Uieebrr5Eeaxv-iboWdafg" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_Uieeb7r5Eeaxv-iboWdafg" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_Uieeh7r5Eeaxv-iboWdafg" type="3010" element="_UiYXybr5Eeaxv-iboWdafg">
+              <styles xmi:type="notation:FontStyle" xmi:id="_UieeiLr5Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Uieeibr5Eeaxv-iboWdafg"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Uikk8Lr5Eeaxv-iboWdafg" type="3010" element="_UiYXzLr5Eeaxv-iboWdafg">
+              <styles xmi:type="notation:FontStyle" xmi:id="_Uikk8br5Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Uikk8rr5Eeaxv-iboWdafg"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Uikk87r5Eeaxv-iboWdafg" type="3010" element="_UiYXz7r5Eeaxv-iboWdafg">
+              <styles xmi:type="notation:FontStyle" xmi:id="_Uikk9Lr5Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Uikk9br5Eeaxv-iboWdafg"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Uikk9rr5Eeaxv-iboWdafg" type="3010" element="_UiYX0rr5Eeaxv-iboWdafg">
+              <styles xmi:type="notation:FontStyle" xmi:id="_Uikk97r5Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Uikk-Lr5Eeaxv-iboWdafg"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Uikk-br5Eeaxv-iboWdafg" type="3010" element="_UiYX1br5Eeaxv-iboWdafg">
+              <styles xmi:type="notation:FontStyle" xmi:id="_Uikk-rr5Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Uikk-7r5Eeaxv-iboWdafg"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_UieecLr5Eeaxv-iboWdafg"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_Uieecbr5Eeaxv-iboWdafg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_UieebLr5Eeaxv-iboWdafg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Uieebbr5Eeaxv-iboWdafg" x="630"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_UiYX27r5Eeaxv-iboWdafg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_UiYXtLr5Eeaxv-iboWdafg" name="100m" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_UiYXtbr5Eeaxv-iboWdafg">
+        <description xmi:type="description:SemanticBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='SemanticBasedDecoration']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_UiYXtrr5Eeaxv-iboWdafg" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20sbd']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20sbd']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_UiYXt7r5Eeaxv-iboWdafg" name="200m" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_UiYXuLr5Eeaxv-iboWdafg">
+        <description xmi:type="description:SemanticBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='SemanticBasedDecoration']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_UiYXubr5Eeaxv-iboWdafg" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20sbd']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20sbd']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_UiYXurr5Eeaxv-iboWdafg" name="400m" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_bHC-kbr5Eeaxv-iboWdafg">
+        <description xmi:type="description:SemanticBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='SemanticBasedDecoration']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_UiYXvLr5Eeaxv-iboWdafg" color="114,159,207">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20sbd']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20sbd']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_UiYXvbr5Eeaxv-iboWdafg" name="110m H" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_vUwcEbGYEd2FK9pHgg2YuA"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_vUwcEbGYEd2FK9pHgg2YuA"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_UiYXvrr5Eeaxv-iboWdafg">
+        <description xmi:type="description:SemanticBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='SemanticBasedDecoration']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_UiYXv7r5Eeaxv-iboWdafg" color="252,233,79">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20sbdh']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20sbdh']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_UiYXwLr5Eeaxv-iboWdafg" name="400m H" width="3" height="3">
+      <target xmi:type="uml:Class" href="sprint.uml#_vZnG4LGYEd2FK9pHgg2YuA"/>
+      <semanticElements xmi:type="uml:Class" href="sprint.uml#_vZnG4LGYEd2FK9pHgg2YuA"/>
+      <decorations xmi:type="viewpoint:Decoration" xmi:id="_UiYXwbr5Eeaxv-iboWdafg">
+        <description xmi:type="description:SemanticBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='SemanticBasedDecoration']"/>
+      </decorations>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_UiYXwrr5Eeaxv-iboWdafg" color="252,233,79">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20sbdh']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20sbdh']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_UiYXw7r5Eeaxv-iboWdafg" name="Homme" width="3" height="3">
+      <target xmi:type="uml:Interface" href="sprint.uml#_CLYKgLGeEd2tQaKZ0qu29w"/>
+      <semanticElements xmi:type="uml:Interface" href="sprint.uml#_CLYKgLGeEd2tQaKZ0qu29w"/>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_UiYXxLr5Eeaxv-iboWdafg" shape="triangle" color="246,139,139">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='interf']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='interf']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_UiYXxbr5Eeaxv-iboWdafg" name="Femme" width="3" height="3">
+      <target xmi:type="uml:Interface" href="sprint.uml#_I4BosLGeEd2tQaKZ0qu29w"/>
+      <semanticElements xmi:type="uml:Interface" href="sprint.uml#_I4BosLGeEd2tQaKZ0qu29w"/>
+      <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_UiYXxrr5Eeaxv-iboWdafg" shape="triangle" color="246,139,139">
+        <description xmi:type="style:BundledImageDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='interf']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@nodeMappings[name='interf']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_UiYXx7r5Eeaxv-iboWdafg" name="sprint">
+      <target xmi:type="uml:Model" href="sprint.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+      <semanticElements xmi:type="uml:Model" href="sprint.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_UiYXyLr5Eeaxv-iboWdafg" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@containerMappings[name='sbdp']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@containerMappings[name='sbdp']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_UiYXybr5Eeaxv-iboWdafg" name="100m">
+        <target xmi:type="uml:Class" href="sprint.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <semanticElements xmi:type="uml:Class" href="sprint.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_UiYXyrr5Eeaxv-iboWdafg">
+          <description xmi:type="description:SemanticBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='SemanticBasedDecoration']"/>
+        </decorations>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_UiYXy7r5Eeaxv-iboWdafg">
+          <description xmi:type="style:SquareDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@containerMappings[name='sbdp']/@subNodeMappings[name='sbdc']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@containerMappings[name='sbdp']/@subNodeMappings[name='sbdc']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_UiYXzLr5Eeaxv-iboWdafg" name="200m">
+        <target xmi:type="uml:Class" href="sprint.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="sprint.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_UiYXzbr5Eeaxv-iboWdafg">
+          <description xmi:type="description:SemanticBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='SemanticBasedDecoration']"/>
+        </decorations>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_UiYXzrr5Eeaxv-iboWdafg">
+          <description xmi:type="style:SquareDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@containerMappings[name='sbdp']/@subNodeMappings[name='sbdc']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@containerMappings[name='sbdp']/@subNodeMappings[name='sbdc']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_UiYXz7r5Eeaxv-iboWdafg" name="400m">
+        <target xmi:type="uml:Class" href="sprint.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="sprint.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_UiYX0Lr5Eeaxv-iboWdafg">
+          <description xmi:type="description:SemanticBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='SemanticBasedDecoration']"/>
+        </decorations>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_UiYX0br5Eeaxv-iboWdafg">
+          <description xmi:type="style:SquareDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@containerMappings[name='sbdp']/@subNodeMappings[name='sbdc']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@containerMappings[name='sbdp']/@subNodeMappings[name='sbdc']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_UiYX0rr5Eeaxv-iboWdafg" name="110m H">
+        <target xmi:type="uml:Class" href="sprint.uml#_vUwcEbGYEd2FK9pHgg2YuA"/>
+        <semanticElements xmi:type="uml:Class" href="sprint.uml#_vUwcEbGYEd2FK9pHgg2YuA"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_UiYX07r5Eeaxv-iboWdafg">
+          <description xmi:type="description:SemanticBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='SemanticBasedDecoration']"/>
+        </decorations>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_UiYX1Lr5Eeaxv-iboWdafg">
+          <description xmi:type="style:SquareDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@containerMappings[name='sbdp']/@subNodeMappings[name='sbdc']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@containerMappings[name='sbdp']/@subNodeMappings[name='sbdc']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_UiYX1br5Eeaxv-iboWdafg" name="400m H">
+        <target xmi:type="uml:Class" href="sprint.uml#_vZnG4LGYEd2FK9pHgg2YuA"/>
+        <semanticElements xmi:type="uml:Class" href="sprint.uml#_vZnG4LGYEd2FK9pHgg2YuA"/>
+        <decorations xmi:type="viewpoint:Decoration" xmi:id="_UiYX1rr5Eeaxv-iboWdafg">
+          <description xmi:type="description:SemanticBasedDecoration" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='SemanticBasedDecoration']"/>
+        </decorations>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_UiYX17r5Eeaxv-iboWdafg">
+          <description xmi:type="style:SquareDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@containerMappings[name='sbdp']/@subNodeMappings[name='sbdc']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer/@containerMappings[name='sbdp']/@subNodeMappings[name='sbdc']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_UiYX2Lr5Eeaxv-iboWdafg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="sprint.odesign#//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='SemanticBasedDecoration']/@defaultLayer"/>
+    <target xmi:type="uml:Model" href="sprint.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

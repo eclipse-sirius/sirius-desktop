@@ -68,6 +68,7 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
@@ -427,8 +428,8 @@ public class DDiagramElementSynchronizer {
             refreshSemanticElements(edge, actualMapping.get());
         }
 
-        // clean decorations
-        cleanDecoration(edge);
+        // update decorations
+        updateDecoration(edge);
     }
 
     /**
@@ -547,11 +548,11 @@ public class DDiagramElementSynchronizer {
             }
         }
         // clean decorations
-        cleanDecoration(container);
+        updateDecoration(container);
         refreshSemanticElements(container, containerMapping);
     }
 
-    private void cleanDecoration(final DDiagramElement element) {
+    private void updateDecoration(final DDiagramElement element) {
         Iterator<Decoration> it = element.getDecorations().iterator();
         while (it.hasNext()) {
             Decoration decoration = it.next();
@@ -559,6 +560,18 @@ public class DDiagramElementSynchronizer {
             if (!diagram.getActivatedLayers().contains(LayerHelper.getParentLayer(description))
                     || !checkDecoratorPrecondition(element.getTarget(), (DSemanticDecorator) element.eContainer(), description)) {
                 it.remove();
+            }
+        }
+        for (Layer layer : diagram.getActivatedLayers()) {
+            if (layer.getDecorationDescriptionsSet() != null) {
+                EList<DecorationDescription> decorationDescriptions = layer.getDecorationDescriptionsSet().getDecorationDescriptions();
+                for (DecorationDescription decorationDescription : decorationDescriptions) {
+                    if (decorationDescription instanceof MappingBasedDecoration && ((MappingBasedDecoration) decorationDescription).getMappings().contains(element.getDiagramElementMapping())
+                            || decorationDescription instanceof SemanticBasedDecoration
+                                    && accessor.eInstanceOf(element.getTarget(), ((SemanticBasedDecoration) decorationDescription).getDomainClass())) {
+                        addDecoration(element, decorationDescription);
+                    }
+                }
             }
         }
     }
@@ -597,8 +610,8 @@ public class DDiagramElementSynchronizer {
             }
         }
 
-        // clean decorations
-        cleanDecoration(newNode);
+        // update decorations
+        updateDecoration(newNode);
         refreshSemanticElements(newNode, newNode.getDiagramElementMapping());
     }
 
