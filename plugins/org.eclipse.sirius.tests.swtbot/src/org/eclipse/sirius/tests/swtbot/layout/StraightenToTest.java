@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -383,6 +383,15 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
         // {top,bottom,left,right}
         boolean[] availableDirections = { true, true, false, false };
         checkEdgeActions(availableDirections, "edge13");
+    }
+
+    /**
+     * Straighten edge22 AND edge23 to top and bottom: Expected: OK (for both)
+     */
+    public void testTwoEdgesLinkedToBorderNodeWithOverlapBeforeStraighten() {
+        // {top,bottom,left,right}
+        boolean[] availableDirections = { true, true, false, false };
+        checkEdgeActions(availableDirections, "edge22", "edge23");
     }
 
     /**

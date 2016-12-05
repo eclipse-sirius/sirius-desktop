@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.requests;
 
+import java.util.List;
+
 import org.eclipse.gef.Request;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 
 /**
  * A {@link Request} to manage straighten of edges.
@@ -39,6 +42,12 @@ public class StraightenToRequest extends Request {
     private int straightenType;
 
     /**
+     * The request is only send to the first selected edit parts. The returned
+     * command corresponds to the move of all selected edge edit parts.
+     */
+    private List<AbstractDiagramEdgeEditPart> selectedEdgeEditParts;
+
+    /**
      * Default constructor.
      */
     public StraightenToRequest() {
@@ -62,5 +71,24 @@ public class StraightenToRequest extends Request {
      */
     public int getStraightenType() {
         return straightenType;
+    }
+
+    /**
+     * Set the {@link #selectedEdgeEditParts}.
+     * 
+     * @param selectedEdgeEditParts
+     *            The list of selected edit parts.
+     */
+    public void setSelectedEdgeEditParts(List<AbstractDiagramEdgeEditPart> selectedEdgeEditParts) {
+        this.selectedEdgeEditParts = selectedEdgeEditParts;
+    }
+
+    /**
+     * Get the list of selected edge edit parts.
+     * 
+     * @return the selectedEdgeEditParts
+     */
+    public List<AbstractDiagramEdgeEditPart> getSelectedEdgeEditParts() {
+        return selectedEdgeEditParts;
     }
 }
