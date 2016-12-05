@@ -152,6 +152,18 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * <UL>
+     * <LI>Straighten oblique edge21 to Top: Expected KO</LI>
+     * <LI>Straighten oblique edge21 to Bottom: Expected OK</LI>
+     * </UL>
+     */
+    public void testObliqueEdgeTopAndBottomBetweenBorderNodeNotAsSameLevel() {
+        // {top,bottom,left,right}
+        boolean[] availableDirections = { false, true, false, false };
+        checkEdgeActions(availableDirections, "edge21");
+    }
+
+    /**
+     * <UL>
      * <LI>Straighten rectilinear edge14 to Top: Expected OK</LI>
      * <LI>Straighten rectilinear edge14 to Bottom: Expected: menu disabled (out
      * of bounds)</LI>
