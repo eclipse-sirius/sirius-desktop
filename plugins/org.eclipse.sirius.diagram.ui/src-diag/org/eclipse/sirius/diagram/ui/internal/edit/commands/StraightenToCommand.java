@@ -366,7 +366,7 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
         Point sourcePoint;
         Point targetPoint;
         if (isSourceABorderNode) {
-            sourcePoint = ((IBorderItemEditPart) edgeEditPart.getSource()).getFigure().getBounds().getCenter();
+            sourcePoint = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourceEditPart).getCenter();
         } else if (edgeEditPart.getFigure() instanceof ViewEdgeFigure) {
             PointList pointList = ((ViewEdgeFigure) edgeEditPart.getFigure()).getPoints().getCopy();
             sourcePoint = pointList.getFirstPoint();
@@ -374,7 +374,7 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
             sourcePoint = new Point();
         }
         if (isTargetABorderNode) {
-            targetPoint = ((IBorderItemEditPart) edgeEditPart.getTarget()).getFigure().getBounds().getCenter();
+            targetPoint = GraphicalHelper.getAbsoluteBoundsIn100Percent(targetEditPart).getCenter();
         } else if (edgeEditPart.getFigure() instanceof ViewEdgeFigure) {
             PointList pointList = ((ViewEdgeFigure) edgeEditPart.getFigure()).getPoints().getCopy();
             targetPoint = pointList.getLastPoint();
