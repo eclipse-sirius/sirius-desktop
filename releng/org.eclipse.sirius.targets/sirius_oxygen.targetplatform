@@ -9,7 +9,7 @@ include "modules/eef-nightly.tpd"
 
 with source, requirements
 
-location Sirius-Interpreter-Nightly-Oxygen "http://download.eclipse.org/sirius/updates/nightly/latest/neon/" {
+location Sirius-Interpreter-Nightly-Oxygen "http://download.eclipse.org/sirius/updates/nightly/latest/oxygen/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
