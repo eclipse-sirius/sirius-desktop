@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -70,12 +72,12 @@ public class LabelColorAndFontPropertySection extends ColorsAndFontsPropertySect
     protected Button resetStylePropertiesToDefaultValuesButton;
 
     /**
-     * button to set back the view to default color.
+     * button to set the font underlined.
      */
     private Button fontUnderlineButton;
 
     /**
-     * button to set back the view to default color.
+     * button to set the font strike trough.
      */
     private Button fontStrikeThroughButton;
 
@@ -239,7 +241,14 @@ public class LabelColorAndFontPropertySection extends ColorsAndFontsPropertySect
         while (it.hasNext()) {
             Object selectionItem = it.next();
             if (transformSelection(selectionItem) != null) {
-                newSelection.add(selectionItem);
+                if (selectionItem instanceof AbstractDEdgeNameEditPart) {
+                    // If the selection is an AbstractDEdgeNameEditPart, we
+                    // consider its parent as the PropertySection is not
+                    // really coded for NameEditPart.
+                    newSelection.add(((AbstractDEdgeNameEditPart) selectionItem).getParent());
+                } else {
+                    newSelection.add(selectionItem);
+                }
             }
         }
         composite.setVisible(!newSelection.isEmpty());
@@ -302,6 +311,13 @@ public class LabelColorAndFontPropertySection extends ColorsAndFontsPropertySect
                             boolean striked = (Boolean) ep.getStructuralFeatureValue(NotationPackage.eINSTANCE.getFontStyle_StrikeThrough());
                             fontStrikeThroughButton.setSelection(striked);
                             fontStrikeThroughButton.setEnabled(!isReadOnly);
+                        }
+                        if (ep instanceof AbstractDiagramEdgeEditPart) {
+                            // Even if the selection considered is
+                            // AbstractDiagramEdgeEditPart instead of original
+                            // AbstractDEdgeNameEditPart, the line color must
+                            // not be enabled.
+                            lineColorButton.setEnabled(false);
                         }
                     }
                 }
