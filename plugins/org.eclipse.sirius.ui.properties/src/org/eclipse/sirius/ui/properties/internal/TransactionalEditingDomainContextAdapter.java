@@ -11,12 +11,19 @@
 package org.eclipse.sirius.ui.properties.internal;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.eef.core.api.EditingContextAdapter;
+import org.eclipse.eef.core.api.LockStatusChangeEvent;
+import org.eclipse.eef.core.api.LockStatusChangeEvent.LockStatus;
 import org.eclipse.eef.core.api.controllers.IConsumer;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -31,9 +38,15 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.logger.RuntimeLogger;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.internal.logger.RuntimeLoggerManagerImpl;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 import org.eclipse.sirius.tools.internal.ui.RefreshHelper;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Throwables;
 import com.google.common.collect.Lists;
 
 /**
@@ -53,24 +66,41 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     private static final NotificationFilter FILTER = NotificationFilter.NOT_TOUCH.and(NotificationFilter.createNotifierTypeFilter(EObject.class));
 
     /**
+     * The callback to invoke to notify the EEF side when the model has changed.
+     */
+    protected IConsumer<List<Notification>> onModelChanged;
+
+    /**
      * The editing domain to integrate with.
      */
     private final TransactionalEditingDomain ted;
 
     /**
-     * The pre-commit listener used to detect model changes and call back EEF.
+     * The post-commit listener used to detect model changes and call back EEF.
      */
-    private final ResourceSetListener preCommitListener = new Listener();
-
-    /**
-     * The callback to invoke to notify the EEF side when the model has changed.
-     */
-    private IConsumer<List<Notification>> callback;
+    private final ResourceSetListener postCommitListener = new PostCommitListener();
 
     /**
      * A spying logger used to detect errors occuring during command execution.
      */
     private RuntimeLoggerSpy spy = new RuntimeLoggerSpy(RuntimeLoggerManager.INSTANCE);
+
+    /**
+     * The {@link IPermissionAuthority} to use to obtain lock status
+     * information.
+     */
+    private IPermissionAuthority auth;
+
+    /**
+     * The listener that will be notified when the lock status of an element
+     * changes in Sirius.
+     */
+    private IAuthorityListener authListener;
+
+    /**
+     * The EEF-side listeners to notify when lock status change.
+     */
+    private List<IConsumer<Collection<LockStatusChangeEvent>>> lockStatusListeners = new CopyOnWriteArrayList<>();
 
     /**
      * Create a new detector.
@@ -80,6 +110,9 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
      */
     public TransactionalEditingDomainContextAdapter(TransactionalEditingDomain ted) {
         this.ted = Preconditions.checkNotNull(ted);
+        ModelAccessor ma = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(ted.getResourceSet());
+        this.auth = ma.getPermissionAuthority();
+        this.authListener = new PermissionsListener();
     }
 
     @Override
@@ -114,17 +147,17 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     }
 
     @Override
-    public synchronized void onModelChange(IConsumer<List<Notification>> trigger) {
-        if (this.callback == null) {
-            ted.addResourceSetListener(preCommitListener);
+    public void registerModelChangeListener(IConsumer<List<Notification>> listener) {
+        if (this.onModelChanged == null) {
+            ted.addResourceSetListener(postCommitListener);
         }
-        this.callback = trigger;
+        this.onModelChanged = listener;
     }
 
     @Override
-    public void removeModelChangeConsumer() {
-        this.callback = null;
-        ted.removeResourceSetListener(preCommitListener);
+    public void unregisterModelChangeListener() {
+        this.onModelChanged = null;
+        ted.removeResourceSetListener(postCommitListener);
     }
 
     @Override
@@ -132,8 +165,143 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
         return this.ted;
     }
 
+    @Override
+    public void addLockStatusChangedListener(IConsumer<Collection<LockStatusChangeEvent>> listener) {
+        if (this.lockStatusListeners.isEmpty()) {
+            auth.addAuthorityListener(authListener);
+        }
+        this.lockStatusListeners.add(listener);
+    }
+
+    @Override
+    public void removeLockStatusChangedListener(IConsumer<Collection<LockStatusChangeEvent>> listener) {
+        this.lockStatusListeners.remove(listener);
+        if (this.lockStatusListeners.isEmpty()) {
+            auth.removeAuthorityListener(authListener);
+        }
+    }
+
+    @Override
+    public void lock(Collection<EObject> elements) {
+        // Nothing
+    }
+
+    @Override
+    public void unlock(Collection<EObject> elements) {
+        // Nothing
+    }
+
+    @Override
+    public LockStatus geLockStatus(EObject obj) {
+        return convertLockStatus(this.auth.getLockStatus(obj));
+    }
+
     /**
-     * A logger which only remembers the errors it was notified of.
+     * Tests the FORCE_REFRESH_SYSTEM_FLAG.
+     * 
+     * @return <code>true</code> if the FORCE_REFRESH_SYSTEM_FLAG was set.
+     */
+    protected static boolean forceRefreshOnRepresentationChanges() {
+        return Boolean.TRUE.toString().equals(System.getProperty(FORCE_REFRESH_SYSTEM_FLAG, Boolean.FALSE.toString()));
+    }
+
+    private LockStatus convertLockStatus(org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus siriusStatus) {
+        LockStatus result = null;
+        switch (siriusStatus) {
+        case LOCKED_BY_ME:
+            result = LockStatus.LOCKED_BY_ME;
+            break;
+        case LOCKED_BY_OTHER:
+            result = LockStatus.LOCKED_BY_OTHER;
+            break;
+        case NOT_LOCKED:
+            result = LockStatus.UNLOCKED;
+            break;
+        default:
+            throw new IllegalArgumentException();
+        }
+        return result;
+    }
+
+    /**
+     * The post-commit listener which triggers a refresh of the EEF page when
+     * possibly impacting changes occur in the Sirius session models.
+     * 
+     * @author pcdavid
+     */
+    private class PostCommitListener extends ResourceSetListenerImpl {
+        public PostCommitListener() {
+            super(FILTER);
+        }
+
+        @Override
+        public boolean isPostcommitOnly() {
+            return true;
+        }
+
+        @Override
+        public void resourceSetChanged(final ResourceSetChangeEvent event) {
+            if (onModelChanged != null && (forceRefreshOnRepresentationChanges() || RefreshHelper.isImpactingNotification(event.getNotifications()))) {
+                onModelChanged.apply(Lists.newArrayList(event.getNotifications()));
+            }
+        }
+    }
+
+    /**
+     * Forwards permission changes notifications received from Sirius (via
+     * IAuthorityListener) to all currently registered listeners on the EEF
+     * side.
+     * 
+     * @author pcdavid
+     */
+    private final class PermissionsListener implements IAuthorityListener {
+        @Override
+        public void notifyIsReleased(Collection<EObject> instances) {
+            Collection<LockStatusChangeEvent> events = Lists.newArrayList();
+            for (EObject o : instances) {
+                events.add(new LockStatusChangeEvent(o, LockStatus.UNLOCKED));
+            }
+            notifyListeners(events);
+        }
+
+        @Override
+        public void notifyIsReleased(EObject instance) {
+            notifyIsReleased(Collections.singleton(instance));
+        }
+
+        @Override
+        public void notifyIsLocked(Collection<EObject> instances) {
+            Collection<LockStatusChangeEvent> events = Lists.newArrayList();
+            for (EObject o : instances) {
+                getLockStatus(o);
+                events.add(new LockStatusChangeEvent(o, getLockStatus(o)));
+            }
+            notifyListeners(events);
+        }
+
+        @Override
+        public void notifyIsLocked(EObject instance) {
+            notifyIsLocked(Collections.singleton(instance));
+        }
+
+        private void notifyListeners(Collection<LockStatusChangeEvent> events) {
+            for (IConsumer<Collection<LockStatusChangeEvent>> l : lockStatusListeners) {
+                l.apply(events);
+            }
+        }
+
+        private LockStatus getLockStatus(EObject o) {
+            org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus siriusStatus = TransactionalEditingDomainContextAdapter.this.auth.getLockStatus(o);
+            return convertLockStatus(siriusStatus);
+        }
+
+    }
+
+    /**
+     * A logger which only remembers the errors it was notified of. Listens to
+     * both a Sirius RuntimeLoggerManager, which receives errors in expressions
+     * evaluations, and to the plaform's ILogListener where
+     * LockedInstanceException and SecurityException are sent.
      * 
      * @author pcdavid
      */
@@ -141,6 +309,27 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
         private final List<IStatus> errors = new ArrayList<>();
 
         private RuntimeLoggerManager manager;
+
+        private ILogListener platformSpy = new ILogListener() {
+            @Override
+            public void logging(IStatus status, String plugin) {
+                Throwable cause = Throwables.getRootCause(status.getException());
+                if (cause instanceof LockedInstanceException || cause instanceof SecurityException) {
+                    if (status.getSeverity() < IStatus.ERROR) {
+                        /*
+                         * LockedInstanceException may be reported as plain
+                         * warnings here, but we want them to be considered as
+                         * errors for the purpose of performModelChange, so that
+                         * UIs can be correctly rolled back to a consistent state
+                         * when they occur.
+                         */
+                        errors.add(new Status(IStatus.ERROR, status.getPlugin(), status.getCode(), status.getMessage(), status.getException()));
+                    } else {
+                        errors.add(status);
+                    }
+                }
+            }
+        };
 
         public RuntimeLoggerSpy(RuntimeLoggerManager instance) {
             this.manager = instance;
@@ -150,9 +339,11 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
             if (manager instanceof RuntimeLoggerManagerImpl) {
                 ((RuntimeLoggerManagerImpl) manager).add(this);
             }
+            Platform.addLogListener(platformSpy);
         }
 
         public void disable() {
+            Platform.removeLogListener(platformSpy);
             if (manager instanceof RuntimeLoggerManagerImpl) {
                 ((RuntimeLoggerManagerImpl) manager).remove(this);
             }
@@ -199,47 +390,6 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
 
         @Override
         public void clear(EObject eObject) {
-        }
-    }
-
-    private static boolean forceRefreshOnRepresentationChanges() {
-        return Boolean.TRUE.toString().equals(System.getProperty(FORCE_REFRESH_SYSTEM_FLAG, Boolean.FALSE.toString()));
-    }
-
-    /**
-     * Checks whether the changes we are notified changes semantic models (i.e.
-     * not just Sirius representations state).
-     *
-     * @param changes
-     *            the model changes.
-     * @return <code>true</code> if the changes impact semantic models.
-     */
-    private static boolean containsSemanticModelChanges(List<Notification> changes) {
-        return RefreshHelper.isImpactingNotification(changes);
-    }
-
-    /**
-     * The actual implementation of the pre-commit listener.
-     * 
-     * @author pcdavid
-     *
-     */
-    private class Listener extends ResourceSetListenerImpl {
-        public Listener() {
-            super(FILTER);
-        }
-
-        @Override
-        public boolean isPostcommitOnly() {
-            return true;
-        }
-
-        @Override
-        public void resourceSetChanged(final ResourceSetChangeEvent event) {
-            IConsumer<List<Notification>> t = callback;
-            if (t != null && (forceRefreshOnRepresentationChanges() || containsSemanticModelChanges(event.getNotifications()))) {
-                t.apply(Lists.newArrayList(event.getNotifications()));
-            }
         }
     }
 }
