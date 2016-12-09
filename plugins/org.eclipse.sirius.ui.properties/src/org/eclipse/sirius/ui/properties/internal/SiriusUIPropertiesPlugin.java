@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.eef.EefPackage;
 import org.eclipse.eef.common.api.AbstractEEFEclipsePlugin;
+import org.eclipse.eef.core.api.EditingContextAdapter;
 import org.eclipse.eef.ide.api.extensions.AbstractRegistryEventListener;
 import org.eclipse.eef.ide.api.extensions.IItemDescriptor;
 import org.eclipse.eef.ide.api.extensions.IItemRegistry;
@@ -29,10 +30,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.properties.api.DefaultDescriptionConverter;
 import org.eclipse.sirius.ui.properties.api.DefaultDescriptionWithInitialOperationConverter;
 import org.eclipse.sirius.ui.properties.api.IDescriptionConverter;
 import org.eclipse.sirius.ui.properties.api.IDescriptionLinkResolver;
+import org.eclipse.sirius.ui.properties.api.IEditingContextAdapterProvider;
 import org.eclipse.sirius.ui.properties.internal.tabprovider.PropertiesDescriptionConverterSwitch;
 import org.eclipse.sirius.ui.properties.internal.tabprovider.PropertyValidationRuleLinkResolver;
 import org.eclipse.sirius.ui.properties.internal.tabprovider.SemanticValidationRuleDescriptionConverter;
@@ -104,6 +107,12 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
         private static final String DESCRIPTION_LINK_RESOLVER_EXTENSION_POINT = "descriptionLinkResolver"; //$NON-NLS-1$
 
         /**
+         * The name of the extension point for the
+         * {@link IEditingContextAdapterProvider}.
+         */
+        private static final String CONTEXT_ADAPTER_PROVIDER_EXTENSION_POINT = "contextAdapterProvider"; //$NON-NLS-1$
+
+        /**
          * The {@link IItemRegistry} used to retrieve the
          * {@link IDescriptionConverter}.
          */
@@ -116,6 +125,12 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
         private IItemRegistry<IDescriptionLinkResolver> descriptionLinkResolverRegistry;
 
         /**
+         * The {@link IItemRegistry} used to retrieve the
+         * {@link IEditingContextAdapterProvider}.
+         */
+        private IItemRegistry<IEditingContextAdapterProvider> contextAdapterProviderRegistry;
+
+        /**
          * The extension registry listener for the {@link IDescriptionConverter}
          * .
          */
@@ -126,6 +141,12 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
          * {@link IDescriptionLinkResolver}.
          */
         private AbstractRegistryEventListener descriptionLinkResolverListener;
+
+        /**
+         * The extension registry listener for the
+         * {@link IEditingContextAdapterProvider}.
+         */
+        private AbstractRegistryEventListener contextAdapterProviderListener;
 
         /**
          * Storage for preferences.
@@ -160,6 +181,11 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
             this.descriptionLinkResolverListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, DESCRIPTION_LINK_RESOLVER_EXTENSION_POINT, this.descriptionLinkResolverRegistry);
             registry.addListener(this.descriptionLinkResolverListener, PLUGIN_ID + '.' + DESCRIPTION_LINK_RESOLVER_EXTENSION_POINT);
             this.descriptionLinkResolverListener.readRegistry(registry);
+
+            this.contextAdapterProviderRegistry = new ItemRegistry<>();
+            this.contextAdapterProviderListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, CONTEXT_ADAPTER_PROVIDER_EXTENSION_POINT, this.contextAdapterProviderRegistry);
+            registry.addListener(this.contextAdapterProviderListener, PLUGIN_ID + '.' + CONTEXT_ADAPTER_PROVIDER_EXTENSION_POINT);
+            this.contextAdapterProviderListener.readRegistry(registry);
         }
 
         @Override
@@ -167,15 +193,39 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
             IExtensionRegistry registry = Platform.getExtensionRegistry();
             registry.removeListener(this.descriptionConverterListener);
             registry.removeListener(this.descriptionLinkResolverListener);
+            registry.removeListener(this.contextAdapterProviderListener);
 
             this.descriptionConverterListener = null;
             this.descriptionConverterRegistry = null;
             this.descriptionLinkResolverListener = null;
             this.descriptionLinkResolverRegistry = null;
+            this.contextAdapterProviderListener = null;
+            this.contextAdapterProviderRegistry = null;
 
             stopPropertiesPreferencesManagement();
 
             super.stop(context);
+        }
+
+        /**
+         * Returns the appropriate {@link EditingContextAdapter} to use for the
+         * specified session, taking registered providers into account.
+         * 
+         * @param session
+         *            the Sirius session.
+         * @return the {@link EditingContextAdapter} to use for this session.
+         */
+        public EditingContextAdapter getEditingContextAdapter(Session session) {
+            for (IItemDescriptor<IEditingContextAdapterProvider> itemDescriptor : this.contextAdapterProviderRegistry.getItemDescriptors()) {
+                IEditingContextAdapterProvider provider = itemDescriptor.getItem();
+                if (provider != null) {
+                    EditingContextAdapter provided = provider.createEditingContextAdapter(session);
+                    if (provided != null) {
+                        return provided;
+                    }
+                }
+            }
+            return new TransactionalEditingDomainContextAdapter(session.getTransactionalEditingDomain());
         }
 
         /**

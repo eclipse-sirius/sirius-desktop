@@ -21,6 +21,7 @@ import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.eef.core.api.EEFPage;
 import org.eclipse.eef.core.api.EEFView;
 import org.eclipse.eef.core.api.EEFViewFactory;
+import org.eclipse.eef.core.api.EditingContextAdapter;
 import org.eclipse.eef.core.api.IEEFDomainClassTester;
 import org.eclipse.eef.ide.ui.properties.api.EEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
@@ -44,7 +45,6 @@ import org.eclipse.sirius.ui.properties.internal.Messages;
 import org.eclipse.sirius.ui.properties.internal.SiriusInputDescriptor;
 import org.eclipse.sirius.ui.properties.internal.SiriusInterpreter;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
-import org.eclipse.sirius.ui.properties.internal.TransactionalEditingDomainContextAdapter;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -136,7 +136,7 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
         IVariableManager variableManager = new VariableManagerFactory().createVariableManager();
         variableManager.put(EEFExpressionUtils.SELF, input.getSemanticElement());
         variableManager.put(EEFExpressionUtils.INPUT, input);
-        TransactionalEditingDomainContextAdapter eca = new TransactionalEditingDomainContextAdapter(session.getTransactionalEditingDomain());
+        EditingContextAdapter eca = SiriusUIPropertiesPlugin.getPlugin().getEditingContextAdapter(session);
         EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, new SiriusInterpreter(session), eca, new IEEFDomainClassTester() {
             @Override
             public boolean eInstanceOf(EObject eObject, String domainClass) {
