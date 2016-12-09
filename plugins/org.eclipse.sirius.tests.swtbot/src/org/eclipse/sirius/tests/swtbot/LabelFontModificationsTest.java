@@ -166,6 +166,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         doTestChangeLabelColorFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
         doTestChangeLabelColorFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
         doTestChangeLabelColorFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+        doTestChangeLabelColorFromAppearanceSection("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestChangeLabelColorFromAppearanceSection("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**
@@ -371,6 +373,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         doTestBoldFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
         doTestBoldFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
         doTestBoldFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+        doTestBoldFromAppearanceSection("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestBoldFromAppearanceSection("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**
@@ -397,6 +401,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         doTestItalicFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
         doTestItalicFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
         doTestItalicFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+        doTestItalicFromAppearanceSection("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestItalicFromAppearanceSection("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**
@@ -475,6 +481,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         doTestItalicAndBoldFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
         doTestItalicAndBoldFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
         doTestItalicAndBoldFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+        doTestItalicAndBoldFromAppearanceSection("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestItalicAndBoldFromAppearanceSection("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**
