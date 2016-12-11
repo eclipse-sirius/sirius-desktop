@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +35,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
+import org.eclipse.swtbot.swt.finder.results.VoidResult;
+import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToggleButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
@@ -455,6 +462,77 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         doTestUnderlineFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
         doTestUnderlineFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
         doTestUnderlineFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+    }
+
+    /**
+     * Check if the menu "Font Color" is available on edge.
+     */
+    public void testFontColorMenuAvailabilityOnEdge() {
+        selectAndCheckEditPart("[0..1] newEReference1", DEdgeEditPart.class);
+        try {
+            editor.clickContextMenu("Font Color");
+        } catch (WidgetNotFoundException e) {
+            fail("The contextual menu \"Font Color\" should exist for edge.");
+        }
+    }
+
+    /**
+     * Check if the menu "Font Color" is available on edge label.
+     */
+    public void testFontColorMenuAvailabilityOnEdgeLabel() {
+        selectAndCheckEditPart("[0..1] newEReference1", DEdgeNameEditPart.class);
+        try {
+            editor.clickContextMenu("Font Color");
+        } catch (WidgetNotFoundException e) {
+            fail("The contextual menu \"Font Color\" should exist for edge label.");
+        }
+    }
+
+    /**
+     * Check if the menu "Font..." is available on edge.
+     */
+    public void testFontMenuAvailabilityOnEdge() {
+        testFontMenuAvailability("[0..1] newEReference1", DEdgeEditPart.class);
+    }
+
+    /**
+     * Check if the menu "Font..." is available on edge label.
+     */
+    public void testFontMenuAvailabilityOnEdgeLabel() {
+        testFontMenuAvailability("[0..1] newEReference1", DEdgeNameEditPart.class);
+    }
+
+    /**
+     * Check if the menu "Font..." is available on the edit part with the given
+     * name and of the given type.
+     * 
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
+     */
+    protected void testFontMenuAvailability(String name, Class<? extends EditPart> type) {
+        selectAndCheckEditPart(name, type);
+        try {
+            editor.clickContextMenu("Font...");
+            // Wait that system Font dialog opens
+            SWTUtils.sleep(100);
+            // Close the system Font dialog by pressing Esc key
+            try {
+                final Robot awtRobot = new Robot();
+                UIThreadRunnable.syncExec(bot.getDisplay(), new VoidResult() {
+                    @Override
+                    public void run() {
+                        awtRobot.keyPress(KeyEvent.VK_ESCAPE);
+                        awtRobot.keyRelease(KeyEvent.VK_ESCAPE);
+                    }
+                });
+            } catch (final AWTException e) {
+                throw new RuntimeException(e);
+            }
+        } catch (WidgetNotFoundException e) {
+            fail("The contextual menu \"Font...\" should exist for " + type.getSimpleName() + ".");
+        }
     }
 
     /**

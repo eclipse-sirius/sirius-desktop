@@ -203,6 +203,11 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                 ColorPropertyContributionItem fontColorContributionItem = ColorPropertyContributionItem.createFontColorContributionItem(part.getSite().getPage());
                 manager2.insertAfter(ActionIds.CUSTOM_FILL_COLOR, fontColorContributionItem);
                 manager2.insertAfter(ActionIds.CUSTOM_FONT_COLOR, ColorPropertyContributionItem.createLineColorContributionItem(part.getSite().getPage()));
+            } else {
+                item = manager2.findUsingPath(ActionIds.ACTION_FONT_DIALOG);
+                if (item != null) {
+                    manager2.insertAfter(ActionIds.ACTION_FONT_DIALOG, ColorPropertyContributionItem.createFontColorContributionItem(part.getSite().getPage()));
+                }
             }
         }
     }

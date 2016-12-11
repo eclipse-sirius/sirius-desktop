@@ -13,12 +13,16 @@ package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.Request;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.tools.DirectEditManager;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
+import org.eclipse.gmf.runtime.diagram.ui.requests.ChangePropertyValueRequest;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
@@ -38,6 +42,7 @@ import org.eclipse.sirius.ext.base.Option;
 /**
  * @was-generated
  */
+@SuppressWarnings("restriction")
 public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditPart implements ITextAwareEditPart {
 
     /**
@@ -159,4 +164,12 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
         }
     }
 
+    @Override
+    public EditPart getTargetEditPart(Request request) {
+        if (request instanceof ChangePropertyValueRequest && ((ChangePropertyValueRequest) request).getPropertyID().equals(Properties.ID_FONTCOLOR)) {
+            return getParent();
+        } else {
+            return super.getTargetEditPart(request);
+        }
+    }
 }

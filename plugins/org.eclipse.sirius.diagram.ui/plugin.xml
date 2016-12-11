@@ -421,6 +421,18 @@
                   remove="true">
             </popupPredefinedItem>
          </popupContribution>
+         <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart">
+            </popupStructuredContributionCriteria>          
+            <popupMenuGroup id="filterFormatGroup">
+            </popupMenuGroup>
+            <popupMenu path="/filterFormatGroup" id="formatMenu">
+            </popupMenu>
+            <popupMenuGroup path="/formatMenu/" id="fontFillLineGroup">
+            </popupMenuGroup>
+            <popupAction path="/formatMenu/fontFillLineGroup" id="fontDialogAction">
+            </popupAction>
+        </popupContribution>
       </contributionItemProvider>
 
       <contributionItemProvider
