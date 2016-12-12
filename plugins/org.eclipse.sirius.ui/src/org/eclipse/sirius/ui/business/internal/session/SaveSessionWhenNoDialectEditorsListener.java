@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,11 @@ import com.google.common.collect.Sets;
  */
 public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClient {
 
-    private final Session session;
+    /**
+     * The session from which Sirius resources modifications are listened to
+     * know if a save must be execute when no editors are opened.
+     */
+    protected final Session session;
 
     private Job saveSessionJob;
 
@@ -108,6 +112,7 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
      *      org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus,
      *      org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus)
      */
+    @Override
     public void statusChanged(Resource resource, ResourceStatus oldStatus, ResourceStatus newStatus) {
         // Do nothing while processing,
         // see statusesChanged(Collection<ReResourceStatusChange>)
@@ -116,6 +121,7 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
     /**
      * {@inheritDoc}
      */
+    @Override
     public void statusesChanged(Collection<ResourceStatusChange> changes) {
         if (activation && newMode()) {
             statusChangedInternal(changes);
@@ -138,11 +144,23 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
 
             if (SessionStatus.DIRTY.equals(session.getStatus())) {
                 if (saveSessionJob == null || saveSessionJob.getState() == Job.NONE) {
+                    preSave();
                     saveSessionJob = new SaveSessionJob(session);
                     saveSessionJob.schedule();
                 }
             }
         }
+    }
+
+    /**
+     * This method allows to do some treatments before saving.
+     * 
+     * WARNING : Be careful not to break default Sirius saving behavior when
+     * overriding this method.
+     * 
+     */
+    protected void preSave() {
+        // Do nothing
     }
 
     private boolean wasProjectDeletedOrRenamed(Collection<ResourceStatusChange> changes) {
