@@ -105,8 +105,22 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
 
     private void initListeners() {
         this.restoreToSavePointListener = new RestoreToLastSavePointListener(session);
-        this.saveSessionListener = new SaveSessionWhenNoDialectEditorsListener(session);
+        this.saveSessionListener = createSaveSessionWhenNoDialectEditorsListener(session);
         this.saveSessionListener.register();
+    }
+
+    /**
+     * Returns a new {@link SaveSessionWhenNoDialectEditorsListener} instance to
+     * use.
+     * 
+     * @param theSession
+     *            session listened by the new save session listener.
+     * 
+     * @return a new {@link SaveSessionWhenNoDialectEditorsListener} instance to
+     *         use.
+     */
+    protected SaveSessionWhenNoDialectEditorsListener createSaveSessionWhenNoDialectEditorsListener(Session theSession) {
+        return new SaveSessionWhenNoDialectEditorsListener(session);
     }
 
     private void removeListeners() {
