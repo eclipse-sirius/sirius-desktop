@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.CustomDescription;
-import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
@@ -64,7 +63,7 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -81,7 +80,7 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +95,7 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This returns CustomDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -107,14 +106,14 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((CustomDescription) object).getLabelExpression();
+        String label = ((CustomDescription) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_CustomDescription_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_CustomDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -122,7 +121,7 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +144,7 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated NOT
+     * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -157,9 +156,7 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createCustomWidgetStyle()));
 
-        CustomWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createCustomWidgetConditionalStyle();
-        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createCustomWidgetStyle());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createCustomWidgetConditionalStyle()));
     }
 
 }

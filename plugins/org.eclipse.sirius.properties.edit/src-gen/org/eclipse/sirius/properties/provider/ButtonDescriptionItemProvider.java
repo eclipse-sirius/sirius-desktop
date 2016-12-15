@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.ButtonDescription;
-import org.eclipse.sirius.properties.ButtonWidgetConditionalStyle;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
@@ -64,7 +63,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This adds a property descriptor for the Button Label Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addButtonLabelExpressionPropertyDescriptor(Object object) {
@@ -81,7 +80,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +96,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +111,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This returns ButtonDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -123,14 +122,14 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((ButtonDescription) object).getLabelExpression();
+        String label = ((ButtonDescription) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_ButtonDescription_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_ButtonDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -138,7 +137,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -163,7 +162,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated NOT
+     * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -173,9 +172,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.BUTTON_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createButtonWidgetStyle()));
 
-        ButtonWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createButtonWidgetConditionalStyle();
-        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createButtonWidgetStyle());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.BUTTON_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.BUTTON_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createButtonWidgetConditionalStyle()));
     }
 
 }

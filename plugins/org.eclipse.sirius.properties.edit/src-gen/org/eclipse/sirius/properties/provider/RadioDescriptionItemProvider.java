@@ -24,7 +24,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.RadioDescription;
-import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
@@ -80,7 +79,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Candidates Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addCandidatesExpressionPropertyDescriptor(Object object) {
@@ -93,7 +92,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Candidate Display Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addCandidateDisplayExpressionPropertyDescriptor(Object object) {
@@ -123,7 +122,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -139,7 +138,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -154,7 +153,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This returns RadioDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,14 +164,14 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((RadioDescription) object).getLabelExpression();
+        String label = ((RadioDescription) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_RadioDescription_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_RadioDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -180,7 +179,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -208,7 +207,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated NOT
+     * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -218,9 +217,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.RADIO_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createRadioWidgetStyle()));
 
-        RadioWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createRadioWidgetConditionalStyle();
-        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createRadioWidgetStyle());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.RADIO_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.RADIO_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createRadioWidgetConditionalStyle()));
     }
 
 }

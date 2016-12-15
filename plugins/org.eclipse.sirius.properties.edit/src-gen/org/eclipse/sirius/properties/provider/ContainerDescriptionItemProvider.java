@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.ContainerDescription;
-import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
@@ -64,7 +63,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -79,7 +78,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -94,7 +93,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
     /**
      * This returns ContainerDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -105,14 +104,14 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((ContainerDescription) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_ContainerDescription_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_ContainerDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -120,7 +119,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +140,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated NOT
+     * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -159,9 +158,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createSelectDescription()));
 
-        DynamicMappingFor dynamicFor = PropertiesFactory.eINSTANCE.createDynamicMappingFor();
-        dynamicFor.getIfs().add(PropertiesFactory.eINSTANCE.createDynamicMappingIf());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, dynamicFor));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createDynamicMappingFor()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createTextAreaDescription()));
 

@@ -30,8 +30,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.properties.DynamicMappingFor;
-import org.eclipse.sirius.properties.GroupConditionalStyle;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
@@ -117,7 +115,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Semantic Candidate Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addSemanticCandidateExpressionPropertyDescriptor(Object object) {
@@ -130,7 +128,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Precondition Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
@@ -147,7 +145,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -164,7 +162,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -179,7 +177,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This returns GroupDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -190,14 +188,14 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((GroupDescription) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_GroupDescription_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_GroupDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -205,7 +203,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -229,7 +227,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
         }
         super.notifyChanged(notification);
     }
-    
+
     @Override
     protected CommandParameter createChildParameter(Object feature, Object child) {
         PropertiesItemProviderAdapterFactory.addNoopNavigationOperations(child);
@@ -241,7 +239,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated NOT
+     * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -259,15 +257,13 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createSelectDescription()));
 
-        DynamicMappingFor dynamicFor = PropertiesFactory.eINSTANCE.createDynamicMappingFor();
-        dynamicFor.getIfs().add(PropertiesFactory.eINSTANCE.createDynamicMappingIf());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, dynamicFor));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createDynamicMappingFor()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createTextAreaDescription()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createListDescription()));
-
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createRadioDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createListDescription()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createCustomDescription()));
 
@@ -277,9 +273,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createGroupStyle()));
 
-        GroupConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createGroupConditionalStyle();
-        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createGroupStyle());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createGroupConditionalStyle()));
     }
 
     /**

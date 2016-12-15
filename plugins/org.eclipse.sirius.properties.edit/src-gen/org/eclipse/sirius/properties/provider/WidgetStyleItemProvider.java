@@ -35,7 +35,7 @@ import org.eclipse.sirius.properties.WidgetStyle;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.properties.WidgetStyle} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class WidgetStyleItemProvider extends ItemProviderAdapter
@@ -73,7 +73,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Label Font Name Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addLabelFontNameExpressionPropertyDescriptor(Object object) {
@@ -86,7 +86,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Label Font Size Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addLabelFontSizeExpressionPropertyDescriptor(Object object) {
@@ -99,7 +99,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Label Background Color feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addLabelBackgroundColorPropertyDescriptor(Object object) {
@@ -112,7 +112,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Label Foreground Color feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addLabelForegroundColorPropertyDescriptor(Object object) {
@@ -149,14 +149,14 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((WidgetStyle) object).getLabelFontNameExpression();
         return label == null || label.length() == 0 ? getString("_UI_WidgetStyle_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_WidgetStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -164,7 +164,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

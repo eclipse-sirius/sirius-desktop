@@ -27,7 +27,7 @@ import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.properties.RadioWidgetConditionalStyle} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class RadioWidgetConditionalStyleItemProvider extends WidgetConditionalStyleItemProvider {
@@ -63,7 +63,7 @@ public class RadioWidgetConditionalStyleItemProvider extends WidgetConditionalSt
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public class RadioWidgetConditionalStyleItemProvider extends WidgetConditionalSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public class RadioWidgetConditionalStyleItemProvider extends WidgetConditionalSt
     /**
      * This returns RadioWidgetConditionalStyle.gif. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -103,14 +103,14 @@ public class RadioWidgetConditionalStyleItemProvider extends WidgetConditionalSt
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((RadioWidgetConditionalStyle) object).getPreconditionExpression();
         return label == null || label.length() == 0 ? getString("_UI_RadioWidgetConditionalStyle_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_RadioWidgetConditionalStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -118,7 +118,7 @@ public class RadioWidgetConditionalStyleItemProvider extends WidgetConditionalSt
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

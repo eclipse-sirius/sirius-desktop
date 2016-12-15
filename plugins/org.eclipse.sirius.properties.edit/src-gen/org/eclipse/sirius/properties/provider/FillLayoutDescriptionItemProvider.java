@@ -74,31 +74,26 @@ public class FillLayoutDescriptionItemProvider extends LayoutDescriptionItemProv
     /**
      * This returns FillLayoutDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public Object getImage(Object object) {
-        FILL_LAYOUT_ORIENTATION labelValue = ((FillLayoutDescription) object).getOrientation();
-        if (labelValue == FILL_LAYOUT_ORIENTATION.HORIZONTAL) {
-            return overlayImage(object, getResourceLocator().getImage("full/obj16/FillLayoutDescriptionHorizontal")); //$NON-NLS-1$
-        } else {
-            return overlayImage(object, getResourceLocator().getImage("full/obj16/FillLayoutDescriptionVertical")); //$NON-NLS-1$
-        }
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/FillLayoutDescription")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
         FILL_LAYOUT_ORIENTATION labelValue = ((FillLayoutDescription) object).getOrientation();
         String label = labelValue == null ? null : labelValue.toString();
         return label == null || label.length() == 0 ? getString("_UI_FillLayoutDescription_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_FillLayoutDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -106,7 +101,7 @@ public class FillLayoutDescriptionItemProvider extends LayoutDescriptionItemProv
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

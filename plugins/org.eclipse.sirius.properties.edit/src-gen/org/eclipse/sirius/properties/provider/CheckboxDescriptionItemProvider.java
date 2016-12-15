@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.CheckboxDescription;
-import org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
@@ -81,7 +80,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +96,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +111,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
     /**
      * This returns CheckboxDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -123,14 +122,14 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((CheckboxDescription) object).getLabelExpression();
+        String label = ((CheckboxDescription) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_CheckboxDescription_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_CheckboxDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -138,7 +137,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -163,7 +162,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated NOT
+     * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -173,9 +172,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createCheckboxWidgetStyle()));
 
-        CheckboxWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createCheckboxWidgetConditionalStyle();
-        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createCheckboxWidgetStyle());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createCheckboxWidgetConditionalStyle()));
     }
 
 }

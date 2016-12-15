@@ -55,7 +55,7 @@ public class CustomWidgetStyleItemProvider extends WidgetStyleItemProvider {
     /**
      * This returns CustomWidgetStyle.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -66,14 +66,14 @@ public class CustomWidgetStyleItemProvider extends WidgetStyleItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((CustomWidgetStyle) object).getLabelFontNameExpression();
         return label == null || label.length() == 0 ? getString("_UI_CustomWidgetStyle_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_CustomWidgetStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -81,7 +81,7 @@ public class CustomWidgetStyleItemProvider extends WidgetStyleItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
