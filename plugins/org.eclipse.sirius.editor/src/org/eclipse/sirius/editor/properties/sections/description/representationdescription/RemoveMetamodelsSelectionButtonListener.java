@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.eclipse.sirius.editor.properties.sections.description.representation
 import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Button;
@@ -27,35 +26,35 @@ import org.eclipse.swt.widgets.TableItem;
  */
 public class RemoveMetamodelsSelectionButtonListener extends SelectionAdapter {
 
-    private RepresentationDescriptionMetamodelPropertySectionSpec representationDescriptionMetamodelsPropertySection;
+    private AbstractMetamodelPropertySectionSpec abstractMetamodelsPropertySection;
 
     private Button removeButton;
 
     private Table metamodelsTable;
 
-    private RepresentationDescriptionMetamodelsUpdater representationDescriptionMetamodelsUpdater;
+    private DescriptionMetamodelsUpdater descriptionMetamodelsUpdater;
 
     /**
      * Default constructor.
      * 
-     * @param representationDescriptionMetamodelsPropertySection
-     *            {@link RepresentationDescriptionMetamodelPropertySectionSpec}
-     *            which use this listener
+     * @param abstractMetamodelsPropertySection
+     *            {@link AbstractMetamodelPropertySectionSpec} which use this
+     *            listener
      * @param removeButton
      *            the {@link Button} to remove referenced {@link EPackage}
      * @param metamodelsTable
      *            the {@link Table} representing the metamodels associated to
-     *            the {@link RepresentationDescription}
-     * @param representationDescriptionMetamodelsUpdater
-     *            the {@link RepresentationDescriptionMetamodelsUpdater} used to
-     *            update the model
+     *            the description
+     * @param descriptionMetamodelsUpdater
+     *            the {@link DescriptionMetamodelsUpdater} used to update the
+     *            model
      */
-    public RemoveMetamodelsSelectionButtonListener(RepresentationDescriptionMetamodelPropertySectionSpec representationDescriptionMetamodelsPropertySection, Button removeButton,
-            Table metamodelsTable, RepresentationDescriptionMetamodelsUpdater representationDescriptionMetamodelsUpdater) {
-        this.representationDescriptionMetamodelsPropertySection = representationDescriptionMetamodelsPropertySection;
+    public RemoveMetamodelsSelectionButtonListener(AbstractMetamodelPropertySectionSpec abstractMetamodelsPropertySection, Button removeButton, Table metamodelsTable,
+            DescriptionMetamodelsUpdater descriptionMetamodelsUpdater) {
+        this.abstractMetamodelsPropertySection = abstractMetamodelsPropertySection;
         this.removeButton = removeButton;
         this.metamodelsTable = metamodelsTable;
-        this.representationDescriptionMetamodelsUpdater = representationDescriptionMetamodelsUpdater;
+        this.descriptionMetamodelsUpdater = descriptionMetamodelsUpdater;
         metamodelsTable.addSelectionListener(this);
     }
 
@@ -64,15 +63,16 @@ public class RemoveMetamodelsSelectionButtonListener extends SelectionAdapter {
      * 
      * {@inheritDoc}
      */
+    @Override
     public void widgetSelected(SelectionEvent e) {
         Object source = e.getSource();
         TableItem[] selection = metamodelsTable.getSelection();
 
         if (source == removeButton) {
             if (selection != null && selection.length > 0) {
-                representationDescriptionMetamodelsUpdater.setEditingDomain(representationDescriptionMetamodelsPropertySection.getEditingDomain());
-                List<EPackage> ePackages = representationDescriptionMetamodelsPropertySection.getEPackages(selection);
-                representationDescriptionMetamodelsUpdater.removeEPackages(ePackages);
+                descriptionMetamodelsUpdater.setEditingDomain(abstractMetamodelsPropertySection.getEditingDomain());
+                List<EPackage> ePackages = abstractMetamodelsPropertySection.getEPackages(selection);
+                descriptionMetamodelsUpdater.removeEPackages(ePackages);
             }
         } else if (source == metamodelsTable) {
             boolean enable = selection != null && selection.length > 0;

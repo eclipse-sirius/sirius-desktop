@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,25 +35,23 @@ import org.eclipse.ui.PlatformUI;
  */
 public class AddFromRegistryButtonListener extends SelectionAdapter {
 
-    private RepresentationDescriptionMetamodelPropertySectionSpec representationDescriptionMetamodelsPropertySection;
+    private AbstractMetamodelPropertySectionSpec abstractMetamodelsPropertySection;
 
-    private RepresentationDescriptionMetamodelsUpdater representationDescriptionMetamodelsUpdater;
+    private DescriptionMetamodelsUpdater descriptionMetamodelsUpdater;
 
     /**
      * Default constructor.
      * 
-     * @param representationDescriptionMetamodelsPropertySection
-     *            {@link RepresentationDescriptionMetamodelPropertySectionSpec}
-     *            which use this listener
+     * @param abstractMetamodelsPropertySection
+     *            {@link AbstractMetamodelPropertySectionSpec} which use this
+     *            listener
      * 
-     * @param representationDescriptionMetamodelsUpdater
-     *            the {@link RepresentationDescriptionMetamodelsUpdater} to
-     *            update the model
+     * @param descriptionMetamodelsUpdater
+     *            the {@link DescriptionMetamodelsUpdater} to update the model
      */
-    public AddFromRegistryButtonListener(RepresentationDescriptionMetamodelPropertySectionSpec representationDescriptionMetamodelsPropertySection,
-            RepresentationDescriptionMetamodelsUpdater representationDescriptionMetamodelsUpdater) {
-        this.representationDescriptionMetamodelsPropertySection = representationDescriptionMetamodelsPropertySection;
-        this.representationDescriptionMetamodelsUpdater = representationDescriptionMetamodelsUpdater;
+    public AddFromRegistryButtonListener(AbstractMetamodelPropertySectionSpec abstractMetamodelsPropertySection, DescriptionMetamodelsUpdater descriptionMetamodelsUpdater) {
+        this.abstractMetamodelsPropertySection = abstractMetamodelsPropertySection;
+        this.descriptionMetamodelsUpdater = descriptionMetamodelsUpdater;
     }
 
     /**
@@ -62,8 +60,9 @@ public class AddFromRegistryButtonListener extends SelectionAdapter {
      * 
      * {@inheritDoc}
      */
+    @Override
     public void widgetSelected(SelectionEvent e) {
-        Shell shell = representationDescriptionMetamodelsPropertySection.getPart().getSite().getShell();
+        Shell shell = abstractMetamodelsPropertySection.getPart().getSite().getShell();
 
         RegisteredPackageDialog registeredPackageDialog = new RegisteredPackageDialog(shell);
         registeredPackageDialog.setTitle("Metamodel selection");
@@ -75,12 +74,13 @@ public class AddFromRegistryButtonListener extends SelectionAdapter {
                 IRunnableContext context = new ProgressMonitorDialog(shell);
                 PlatformUI.getWorkbench().getProgressService().runInUI(context, new IRunnableWithProgress() {
 
+                    @Override
                     public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                         monitor.beginTask("Import metamodels from registry", IProgressMonitor.UNKNOWN);
-                        representationDescriptionMetamodelsUpdater.setEditingDomain(representationDescriptionMetamodelsPropertySection.getEditingDomain());
-                        List<EPackage> ePackagesFromNsURI = representationDescriptionMetamodelsUpdater.getEPackagesFromNsURI(result);
+                        descriptionMetamodelsUpdater.setEditingDomain(abstractMetamodelsPropertySection.getEditingDomain());
+                        List<EPackage> ePackagesFromNsURI = descriptionMetamodelsUpdater.getEPackagesFromNsURI(result);
                         monitor.worked(1);
-                        representationDescriptionMetamodelsUpdater.addEPackages(ePackagesFromNsURI);
+                        descriptionMetamodelsUpdater.addEPackages(ePackagesFromNsURI);
                         monitor.done();
                     }
                 }, null);

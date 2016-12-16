@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.sirius.editor.properties.sections.description.representationdescription.RepresentationDescriptionMetamodelsUpdater;
+import org.eclipse.sirius.editor.properties.sections.description.representationdescription.DescriptionMetamodelsUpdater;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescripti
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class RepresentationExtensionDescriptionMetamodelsUpdater extends RepresentationDescriptionMetamodelsUpdater {
+public class RepresentationExtensionDescriptionMetamodelsUpdater extends DescriptionMetamodelsUpdater {
 
     private RepresentationExtensionDescription representationExtensionDescription;
 
@@ -45,7 +45,7 @@ public class RepresentationExtensionDescriptionMetamodelsUpdater extends Represe
      *            the {@link RepresentationDescription} to update
      */
     public RepresentationExtensionDescriptionMetamodelsUpdater(RepresentationExtensionDescription representationDescription) {
-        super(null);
+        super(null, DescriptionPackage.eINSTANCE.getRepresentationDescription_Metamodel());
         this.representationExtensionDescription = representationDescription;
     }
 
@@ -57,6 +57,7 @@ public class RepresentationExtensionDescriptionMetamodelsUpdater extends Represe
      * @param ePackageURIs
      *            the specified {@link EPackage}s {@link URI}
      */
+    @Override
     public void addEPackages(List<EPackage> ePackages) {
         if (!ePackages.isEmpty()) {
             Command addEPackagesCmd = AddCommand.create(editingDomain, representationExtensionDescription, DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__METAMODEL, ePackages);
@@ -72,10 +73,11 @@ public class RepresentationExtensionDescriptionMetamodelsUpdater extends Represe
      * @param ePackages
      *            the list of {@link EPackage} to remove
      */
+    @Override
     public void removeEPackages(List<EPackage> ePackages) {
         if (!ePackages.isEmpty()) {
-            Command removeEPackagesCmd = RemoveCommand
-                    .create(editingDomain, representationExtensionDescription, DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__METAMODEL, ePackages);
+            Command removeEPackagesCmd = RemoveCommand.create(editingDomain, representationExtensionDescription, DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__METAMODEL,
+                    ePackages);
             editingDomain.getCommandStack().execute(removeEPackagesCmd);
             Set<Resource> relatedResourcesToRemove = getRelatedResourcesToRemove(ePackages);
             for (Resource relatedResourceToRemove : relatedResourcesToRemove) {
@@ -94,6 +96,7 @@ public class RepresentationExtensionDescriptionMetamodelsUpdater extends Represe
      * @return the related {@link Resource} to remove from the
      *         {@link ResourceSet}
      */
+    @Override
     protected Set<Resource> getRelatedResourcesToRemove(List<EPackage> ePackagesToRemove) {
         Set<Resource> relatedResourcesToRemove = new LinkedHashSet<Resource>();
         for (Resource ePackageToRemoveResource : getRelatedResources(ePackagesToRemove)) {

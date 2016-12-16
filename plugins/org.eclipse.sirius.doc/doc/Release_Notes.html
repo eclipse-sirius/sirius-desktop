@@ -16,6 +16,9 @@
 						<a href="#sirius5.0.0">Changes in Sirius 5.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
+								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
+							</li>
+							<li>
 								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
 							</li>
 						</ol>
@@ -49,7 +52,7 @@
 								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
@@ -63,7 +66,7 @@
 								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
@@ -77,7 +80,7 @@
 								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
@@ -91,7 +94,7 @@
 								<a href="#UserVisibleChanges6">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges5">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
@@ -105,6 +108,10 @@
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
 		<h2 id="sirius5.0.0">Changes in Sirius 5.0.0</h2>
+		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> The tab used to configure the metamodels used by the Properties view description is now using the same interface as the metamodels tab used to configure the representations.</li>
+		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
@@ -152,6 +159,19 @@ bot.waitUntil(new ICondition() {
 SWTBotUtils.waitAllUiEvents();
 
 </pre>
+		<h4 id="Changesinorg.eclipse.sirius.editor.properties">Changes in 
+			<code>org.eclipse.sirius.editor.properties</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> In the package 
+				<code>org.eclipse.sirius.editor.properties.sections.description.representationdescription</code> the class 
+				<code>RepresentationDescriptionMetamodelsUpdater</code> has been replaced by 
+				<code>DescriptionMetamodelsUpdater</code> which can now be used with any EObject with a many-valued EReference to EPackages. The behavior of the class 
+				<code>RepresentationDescriptionMetamodelPropertySectionSpec</code> has been transfered to an abstract class independent of 
+				<code>RepresentationDescription</code> named 
+				<code>AbstractMetamodelPropertySectionSpec</code>. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
+			</li>
+		</ul>
 		<h2 id="sirius4.1.2">Changes in Sirius 4.1.2</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
@@ -268,7 +288,7 @@ SWTBotUtils.waitAllUiEvents();
 				<em>Ctrl+HOME</em>.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to inline a copy of the default Properties Views model inside the VSM. This is a copy of the model Sirius would use if no 
 				<em>Properties View Description</em> was specified. It can be used as a starting point for manual customization, or as a complement for elements for which you do not provide any custom rules. 
@@ -742,7 +762,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>Apply Appearance Properties</code> action has been modified to use the last selected element as base style instead of the first one.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Sirius 4.0 introduces 
 				<strong>experimental</strong>  support for specifying the properties views of your modelers directly from inside the VSM. This feature uses the same dynamic approach as for specifying  diagrams, tables and trees, with a very flexible configuration language and no code generation involved (including live preview of any change). As of Sirius 4.0, this feature should be considered in an experimental  state with details subject to changes until Sirius 4.1, and is not installed by default. To install it, make sure either 
@@ -1243,7 +1263,7 @@ SWTBotUtils.waitAllUiEvents();
 				<em>Arrange Linked Border Nodes</em> as it is border nodes which are layouted and not bordered nodes.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The 
 				<em>Acceleo Query Language</em> (AQL) interpreter  has been improved. AQL, and its support in Sirius, is no longer considered experimental, and instead is now the recommended query language to use for new VSMs. Improvements mostly concern better completion and validation, and more precise error reporting. In particular AQL expressions will now be able to display warnings and errors in the Interpreter view. The message displayed in the Interpreter view after an evaluation has also been improved to display the qualified name of the type of the value computed (
@@ -1773,7 +1793,7 @@ SWTBotUtils.waitAllUiEvents();
 				<em>Viewpoint Selection</em> dialog and wizard page, the &#8220;plug-in&#8221; decorator for viewpoints loaded from plug-ins is removed, and a &#8220;Folder&#8221; decorator for viewpoints loaded from the current workspace has been added. This makes the icons more visible in the most common where viewpoints come from installed plug-ins.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges5">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> <span class="label label-info">Experimental</span> Optional support for the experimental 
 				<em>Acceleo Query Language</em> (AQL) has been added to write interpreted expressions.  It is provided by the 

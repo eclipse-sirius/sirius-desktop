@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,25 +27,24 @@ import org.eclipse.swt.widgets.Shell;
  */
 public class AddFromFilesystemButtonListener extends SelectionAdapter {
 
-    private RepresentationDescriptionMetamodelPropertySectionSpec representationDescriptionMetamodelsPropertySection;
+    private AbstractMetamodelPropertySectionSpec abstractMetamodelsPropertySection;
 
-    private RepresentationDescriptionMetamodelsUpdater representationDescriptionMetamodelsUpdater;
+    private DescriptionMetamodelsUpdater descriptionMetamodelsUpdater;
 
     /**
      * Default constructor.
      * 
-     * @param representationDescriptionMetamodelsPropertySection
-     *            {@link RepresentationDescriptionMetamodelPropertySectionSpec}
-     *            which use this listener
+     * @param abstractMetamodelsPropertySection
+     *            {@link AbstractMetamodelPropertySectionSpec} which use this
+     *            listener
      * 
-     * @param representationDescriptionMetamodelsUpdater
-     *            the {@link RepresentationDescriptionMetamodelsUpdater} used to
-     *            update the model
+     * @param descriptionMetamodelsUpdater
+     *            the {@link DescriptionMetamodelsUpdater} used to update the
+     *            model
      */
-    public AddFromFilesystemButtonListener(RepresentationDescriptionMetamodelPropertySectionSpec representationDescriptionMetamodelsPropertySection,
-            RepresentationDescriptionMetamodelsUpdater representationDescriptionMetamodelsUpdater) {
-        this.representationDescriptionMetamodelsPropertySection = representationDescriptionMetamodelsPropertySection;
-        this.representationDescriptionMetamodelsUpdater = representationDescriptionMetamodelsUpdater;
+    public AddFromFilesystemButtonListener(AbstractMetamodelPropertySectionSpec abstractMetamodelsPropertySection, DescriptionMetamodelsUpdater descriptionMetamodelsUpdater) {
+        this.abstractMetamodelsPropertySection = abstractMetamodelsPropertySection;
+        this.descriptionMetamodelsUpdater = descriptionMetamodelsUpdater;
     }
 
     /**
@@ -54,8 +53,9 @@ public class AddFromFilesystemButtonListener extends SelectionAdapter {
      * 
      * {@inheritDoc}
      */
+    @Override
     public void widgetSelected(SelectionEvent e) {
-        Shell shell = representationDescriptionMetamodelsPropertySection.getPart().getSite().getShell();
+        Shell shell = abstractMetamodelsPropertySection.getPart().getSite().getShell();
 
         FileDialog fileDialog = new FileDialog(shell, SWT.OPEN | SWT.MULTI);
         fileDialog.setText("Metamodel resource selection");
@@ -65,9 +65,9 @@ public class AddFromFilesystemButtonListener extends SelectionAdapter {
         String filterPath = fileDialog.getFilterPath();
         String[] fileNames = fileDialog.getFileNames();
 
-        representationDescriptionMetamodelsUpdater.setEditingDomain(representationDescriptionMetamodelsPropertySection.getEditingDomain());
-        List<URI> filesystemEcoreResourceURIs = representationDescriptionMetamodelsUpdater.getURIs(filterPath, fileNames);
-        representationDescriptionMetamodelsUpdater.addEPackagesFromEcoreResource(filesystemEcoreResourceURIs);
+        descriptionMetamodelsUpdater.setEditingDomain(abstractMetamodelsPropertySection.getEditingDomain());
+        List<URI> filesystemEcoreResourceURIs = descriptionMetamodelsUpdater.getURIs(filterPath, fileNames);
+        descriptionMetamodelsUpdater.addEPackagesFromEcoreResource(filesystemEcoreResourceURIs);
     }
 
 }

@@ -1,10 +1,9 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -12,6 +11,7 @@ package org.eclipse.sirius.editor.properties.sections.description.representation
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Descriptor;
 import org.eclipse.emf.ecore.EPackage.Registry;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -38,31 +39,26 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
-/**
- * A class to update the {@link RepresentationDescription#getMetamodel()}
- * feature of a contextual {@link RepresentationDescription}.
- * 
- * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
- */
-public class RepresentationDescriptionMetamodelsUpdater {
-
+public class DescriptionMetamodelsUpdater {
     private static ResourceSet resourceSetCache;
 
-    private RepresentationDescription representationDescription;
+    private EObject description;
+
+    private EReference metamodelEReference;
 
     protected EditingDomain editingDomain;
 
     /**
      * Default constructor.
      * 
-     * @param representationDescription
-     *            the {@link RepresentationDescription} to update
+     * @param description
+     *            the description to update
      */
-    public RepresentationDescriptionMetamodelsUpdater(RepresentationDescription representationDescription) {
-        this.representationDescription = representationDescription;
+    public DescriptionMetamodelsUpdater(EObject description, EReference metamodelEReference) {
+        this.description = description;
+        this.metamodelEReference = metamodelEReference;
     }
 
     public void setEditingDomain(EditingDomain editingDomain) {
@@ -71,9 +67,8 @@ public class RepresentationDescriptionMetamodelsUpdater {
 
     /**
      * Add all {@link EPackage}s contained in the specified ecore
-     * {@link Resource}'s {@link URI}s to the contextual
-     * {@link RepresentationDescription} on the
-     * {@link RepresentationDescription#getMetamodel()} feature.
+     * {@link Resource}'s {@link URI}s to the contextual description on the
+     * metamodel feature.
      * 
      * @param ecoreResourceURIs
      *            the specified ecore {@link Resource}'s {@link URI}s containing
@@ -86,8 +81,7 @@ public class RepresentationDescriptionMetamodelsUpdater {
 
     /**
      * Add the {@link EPackage}s specified by <code>ePackageURIs</code> to the
-     * contextual {@link RepresentationDescription} on the
-     * {@link RepresentationDescription#getMetamodel()} feature.
+     * contextual description on the metamodel feature.
      * 
      * @param ePackageURIs
      *            the specified {@link EPackage}s {@link URI}
@@ -99,15 +93,14 @@ public class RepresentationDescriptionMetamodelsUpdater {
 
     /**
      * Add the {@link EPackage}s specified by <code>ePackageURIs</code> to the
-     * contextual {@link RepresentationDescription} on the
-     * {@link RepresentationDescription#getMetamodel()} feature.
+     * contextual description on the metamodel feature.
      * 
      * @param ePackageURIs
      *            the specified {@link EPackage}s {@link URI}
      */
     public void addEPackages(List<EPackage> ePackages) {
         if (!ePackages.isEmpty()) {
-            Command addEPackagesCmd = AddCommand.create(editingDomain, representationDescription, DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__METAMODEL, ePackages);
+            Command addEPackagesCmd = AddCommand.create(editingDomain, description, metamodelEReference, ePackages);
             editingDomain.getCommandStack().execute(addEPackagesCmd);
         }
     }
@@ -129,8 +122,8 @@ public class RepresentationDescriptionMetamodelsUpdater {
         return ecoreResourceEPackages;
     }
 
-    public void setRepresentationDescription(RepresentationDescription representationDescription) {
-        this.representationDescription = representationDescription;
+    public void setDescription(EObject description) {
+        this.description = description;
     }
 
     protected List<EPackage> getEPackages(Resource ecoreResource) {
@@ -169,8 +162,11 @@ public class RepresentationDescriptionMetamodelsUpdater {
         for (Resource ePackageToRemoveResource : getRelatedResources(ePackagesToRemove)) {
             if (ePackageToRemoveResource != null) {
                 List<EPackage> ePackagesOfResourceToRemove = getEPackages(ePackageToRemoveResource);
-                if (Collections.disjoint(ePackagesOfResourceToRemove, representationDescription.getMetamodel())) {
-                    relatedResourcesToRemove.add(ePackageToRemoveResource);
+                Object metamodels = this.description.eGet(this.metamodelEReference);
+                if (metamodels instanceof Collection<?>) {
+                    if (Collections.disjoint(ePackagesOfResourceToRemove, (Collection<?>) metamodels)) {
+                        relatedResourcesToRemove.add(ePackageToRemoveResource);
+                    }
                 }
             }
         }
@@ -219,7 +215,7 @@ public class RepresentationDescriptionMetamodelsUpdater {
      */
     public void removeEPackages(List<EPackage> ePackages) {
         if (!ePackages.isEmpty()) {
-            Command removeEPackagesCmd = RemoveCommand.create(editingDomain, representationDescription, DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__METAMODEL, ePackages);
+            Command removeEPackagesCmd = RemoveCommand.create(editingDomain, description, metamodelEReference, ePackages);
             editingDomain.getCommandStack().execute(removeEPackagesCmd);
             Set<Resource> relatedResourcesToRemove = getRelatedResourcesToRemove(ePackages);
             for (Resource relatedResourceToRemove : relatedResourcesToRemove) {
@@ -371,8 +367,8 @@ public class RepresentationDescriptionMetamodelsUpdater {
     }
 
     public void dispose() {
-        representationDescription = null;
+        description = null;
+        metamodelEReference = null;
         editingDomain = null;
     }
-
 }

@@ -550,11 +550,11 @@
         <input type="org.eclipse.sirius.properties.PageDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.viewextensiondescription.ViewExtensionDescriptionMetamodelsPropertySection"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.viewextensiondescription.ViewExtensionDescriptionMetamodelsPropertySectionSpec"
                id="properties.section.viewExtensionDescription.Metamodels"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.viewextensiondescription.ViewExtensionDescriptionMetamodelsFilter"
                afterSection="properties.section.viewExtensionDescription.Identifier"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.metamodels">
         <input type="org.eclipse.sirius.properties.ViewExtensionDescription"/>
       </propertySection>
   	  <propertySection
