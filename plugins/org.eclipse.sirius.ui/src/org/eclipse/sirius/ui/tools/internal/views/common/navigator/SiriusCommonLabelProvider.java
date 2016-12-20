@@ -43,7 +43,6 @@ import org.eclipse.sirius.ui.tools.internal.views.common.FileSessionFinder;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
@@ -180,19 +179,6 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
             repDesc = (DRepresentationDescriptor) candidateElement;
         }
         return repDesc;
-    }
-
-    private DSemanticDecorator getDSemanticDecorator(Object element) {
-        DSemanticDecorator semDec = null;
-        if (element instanceof ItemWrapper) {
-            Object wrappedObject = ((ItemWrapper) element).getWrappedObject();
-            if (wrappedObject instanceof DSemanticDecorator) {
-                semDec = (DSemanticDecorator) wrappedObject;
-            }
-        } else if (element instanceof DSemanticDecorator) {
-            semDec = (DSemanticDecorator) element;
-        }
-        return semDec;
     }
 
     @Override
