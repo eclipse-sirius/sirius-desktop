@@ -862,9 +862,6 @@ public final class Messages {
     public static String SiriusCommonContentProvider_asyncUpdateJob;
 
     @TranslatableMessage
-    public static String SiriusCommonLabelProvider_eClassDisabled;
-
-    @TranslatableMessage
     public static String SiriusControlHandler_controlTask;
 
     @TranslatableMessage

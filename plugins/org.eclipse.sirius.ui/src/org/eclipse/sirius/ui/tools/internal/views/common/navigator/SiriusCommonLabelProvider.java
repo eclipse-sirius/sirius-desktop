@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.navigator;
 
-import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.List;
 
@@ -45,7 +44,6 @@ import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -73,6 +71,8 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
      */
     public static final ImageDescriptor SIRIUS_MODELING_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/ovr16/SessionDecorator.gif"); //$NON-NLS-1$ ;
 
+    private static final String DISABLED_REPRESENTATION_SUFFIX = "_disabled"; //$NON-NLS-1$
+
     private static final String DIRTY = "*"; //$NON-NLS-1$
 
     private ILabelProvider sessionLabelProvider;
@@ -98,7 +98,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                 // is grayed. The grayed image is computed only once for each
                 // type of representation.
                 if (img != null && isDanglingRepresentationDescriptor(element)) {
-                    String key = MessageFormat.format(Messages.SiriusCommonLabelProvider_eClassDisabled, DRepresentationDescriptor.class.getName());
+                    String key = DRepresentationDescriptor.class.getName() + DISABLED_REPRESENTATION_SUFFIX;
                     Image disabledImage = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
                     if (disabledImage == null) {
                         ImageDescriptor desc = ImageDescriptor.createFromImage(img);
