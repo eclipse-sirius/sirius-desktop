@@ -1437,33 +1437,8 @@
         <Priority name="Medium"/>
      </layoutProvider>
   </extension>
-  <extension id="validationDecoratorProvider" name="ValidationDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
-      <?gmfgen generated="true"?>
-      <decoratorProvider class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusValidationDecoratorProvider">
-         <Priority name="Lowest"/>
-         <object class="org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart(org.eclipse.sirius.diagram.ui)" id="SIRIUS_ABSTRACT_NODE_PRIMARY_VIEW"/>
-         <object class="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart(org.eclipse.sirius.diagram.ui)" id="SIRIUS_EDGE_PRIMARY_VIEW"/>                         
-         <context decoratorTargets="SIRIUS_ABSTRACT_NODE_PRIMARY_VIEW,SIRIUS_EDGE_PRIMARY_VIEW"/>
-      </decoratorProvider>
-   </extension>
-   <extension id="describedDecoratorProvider" name="DescribedDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
-      <decoratorProvider class="org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.DescribedDecoratorProvider">
-         <Priority name="High"/>
-         <object class="org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart(org.eclipse.sirius.diagram.ui)" id="SIRIUS_ABSTRACT_NODE_PRIMARY_VIEW"/>
-         <object class="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart(org.eclipse.sirius.diagram.ui)" id="SIRIUS_EDGE_PRIMARY_VIEW"/>                         
-         <context decoratorTargets="SIRIUS_ABSTRACT_NODE_PRIMARY_VIEW,SIRIUS_EDGE_PRIMARY_VIEW"/>
-      </decoratorProvider>
-   </extension>
-   <extension id="editModeDecoratorProvider" name="EditModeDecorator" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
-      <decoratorProvider class="org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.EditModeDecoratorProvider">
-         <Priority name="High"/>
-         <object class="org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart(org.eclipse.sirius.diagram.ui)" id="SIRIUS_ABSTRACT_NODE_PRIMARY_VIEW"/>
-         <object class="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart(org.eclipse.sirius.diagram.ui)" id="SIRIUS_EDGE_PRIMARY_VIEW"/>                         
-         <context decoratorTargets="SIRIUS_ABSTRACT_NODE_PRIMARY_VIEW,SIRIUS_EDGE_PRIMARY_VIEW"/>
-      </decoratorProvider>
-   </extension>
-  <extension id="subDiagramDecoratorProvider" name="SubDiagramDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
-      <decoratorProvider class="org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.SubDiagramDecoratorProvider">
+  <extension id="siriusDecoratorProvider" name="SiriusDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <decoratorProvider class="org.eclipse.sirius.diagram.ui.tools.internal.decoration.SiriusDecoratorProvider">
        <Priority name="High"/>
          <object class="org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart(org.eclipse.sirius.diagram.ui)" id="SIRIUS_ABSTRACT_NODE_PRIMARY_VIEW"/>
          <object class="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart(org.eclipse.sirius.diagram.ui)" id="SIRIUS_EDGE_PRIMARY_VIEW"/>                         
@@ -1471,7 +1446,7 @@
       </decoratorProvider>
    </extension>
    <extension id="removeGMFPresentationDecoratorProvider" name="RemoveGMFPresentationDecoratorProvider" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
-      <decoratorProvider class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusBookmarkAndUnresolvedViewDecoratorProvider">
+      <decoratorProvider class="org.eclipse.sirius.diagram.ui.tools.internal.decoration.SiriusBookmarkAndUnresolvedViewDecoratorProvider">
          <Priority name="High"/>
          <object class="org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart(org.eclipse.sirius.diagram.ui)" id="SIRIUS_ABSTRACT_NODE_PRIMARY_VIEW"/>
          <object class="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart(org.eclipse.sirius.diagram.ui)" id="SIRIUS_EDGE_PRIMARY_VIEW"/>

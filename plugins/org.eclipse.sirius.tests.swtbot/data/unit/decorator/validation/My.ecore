@@ -6,6 +6,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="att2-1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EClass3">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="att3-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="a3-1"/>
   </eClassifiers>
 </ecore:EPackage>

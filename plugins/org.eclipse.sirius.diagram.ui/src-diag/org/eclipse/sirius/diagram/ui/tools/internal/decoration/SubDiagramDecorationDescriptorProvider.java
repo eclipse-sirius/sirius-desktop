@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,42 +8,43 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators;
+package org.eclipse.sirius.diagram.ui.tools.internal.decoration;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
 
-import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.diagram.ui.services.decorator.AbstractDecorator;
+import org.eclipse.gef.editparts.AbstractConnectionEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
-import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor;
+import org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.DisplayPriority;
+import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationDescriptorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
-import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection;
+import org.eclipse.sirius.viewpoint.description.Position;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
@@ -53,93 +54,57 @@ import org.eclipse.swt.graphics.Image;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
- * Decorator showing a diagram icon.
+ * This {@link SiriusDecorationDescriptorProvider} provides a decoration on the bottom right corner when the element
+ * provides a detail diagram.
  * 
- * @author cbrun
+ * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  */
-public class SubDiagramDecorator extends AbstractDecorator {
+public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationDescriptorProvider {
 
-    private static final ProfilerTask DECORATOR_REFRESH = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, Messages.SubDiagramDecorator_taskName, SiriusTasks.IMAGES_VIEWPOINT);
+    private static final String NAME = "subDiagramStatus"; //$NON-NLS-1$
 
-    private Session session;
-
-    /**
-     * Create a decorator.
-     * 
-     * @param decoratorTarget
-     *            target to decorate.
-     */
-    public SubDiagramDecorator(IDecoratorTarget decoratorTarget) {
-        super(decoratorTarget);
-        View view = (View) getDecoratorTarget().getAdapter(View.class);
-        DRepresentationElement model = (DRepresentationElement) view.getElement();
-        this.session = SessionManager.INSTANCE.getSession(model.getTarget());
+    @Override
+    public boolean provides(IDiagramElementEditPart editPart) {
+        if (editPart instanceof GraphicalEditPart || editPart instanceof AbstractConnectionEditPart) {
+            Optional<View> view = Optional.ofNullable((View) editPart.getModel());
+            return view.filter(View::isSetElement).map(View::getElement).filter(model -> model instanceof DNode || model instanceof DDiagramElementContainer).isPresent();
+        }
+        return false;
     }
 
     @Override
-    public void activate() {
-        // Nothing to do.
-    }
+    public Optional<List<DecorationDescriptor>> getDecorationDescriptors(IDiagramElementEditPart editPart, Session session) {
+        EObject model = ((View) editPart.getModel()).getElement();
+        if (model instanceof DRepresentationElement) {
+            DRepresentationElement node = (DRepresentationElement) model;
+            if (shouldHaveSubDiagDecoration(node, session)) {
 
-    @Override
-    public void deactivate() {
-        super.deactivate();
-        session = null;
-    }
+                DecorationDescriptor decoDesc = new DecorationDescriptor();
+                decoDesc.setName(NAME);
+                decoDesc.setPosition(Position.SOUTH_EAST_LITERAL);
+                decoDesc.setDistributionDirection(DecorationDistributionDirection.HORIZONTAL);
+                decoDesc.setDisplayPriority(DisplayPriority.HIGH_PRIORITY.getValue());
+                decoDesc.setDecorationAsImage(getSubDiagramImage());
 
-    @Override
-    public void refresh() {
-        DslCommonPlugin.PROFILER.startWork(DECORATOR_REFRESH);
-        removeDecoration();
-        View view = (View) getDecoratorTarget().getAdapter(View.class);
-        if (view != null && view.eResource() != null) {
-            EditPart editPart = (EditPart) getDecoratorTarget().getAdapter(EditPart.class);
-            EObject model = view.getElement();
-            if (isEditPartDecorable(editPart) && model instanceof DRepresentationElement) {
-                DRepresentationElement node = (DRepresentationElement) model;
-                if (shouldHaveSubDiagDecoration(node)) {
-
-                    /* leave a chance to display port */
-                    int margin = -((IBorderItemOffsets.DEFAULT_OFFSET.width / 2) + 1);
-                    if (editPart instanceof org.eclipse.gef.GraphicalEditPart) {
-                        margin = MapModeUtil.getMapMode(((org.eclipse.gef.GraphicalEditPart) editPart).getFigure()).DPtoLP(margin);
-                    }
-
-                    setDecoration(getDecoratorTarget().addShapeDecoration(getSubDiagramImage(), IDecoratorTarget.Direction.SOUTH_EAST, margin, false));
-
-                }
+                List<DecorationDescriptor> decorationDescriptors = Lists.newArrayList(decoDesc);
+                return Optional.of(decorationDescriptors);
             }
         }
-        DslCommonPlugin.PROFILER.stopWork(DECORATOR_REFRESH);
-    }
-    
-    private boolean isEditPartDecorable(EditPart editPart) {
-        boolean result = true;
-        if (editPart == null || editPart.getParent() == null || editPart.getViewer() == null) {
-            // Invalid/obsolete part
-            result = false;
-        } else if (editPart instanceof org.eclipse.gef.GraphicalEditPart) {
-            IFigure figure = ((org.eclipse.gef.GraphicalEditPart) editPart).getFigure();
-            Dimension size = figure.getSize();
-            if (size.width <= 30 && size.width > 0 && size.height <= 30 && size.height > 0) {
-                // To small to contain a decorator
-                result = false;
-            }
-        }
-        return result;
+
+        return Optional.empty();
     }
 
     private Image getSubDiagramImage() {
         return WorkspaceImageFigure.flyWeightImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.HAS_DIAG_IMG));
     }
 
-    private boolean shouldHaveSubDiagDecoration(DRepresentationElement node) {
+    private boolean shouldHaveSubDiagDecoration(DRepresentationElement node, Session session) {
         EObject target = node.getTarget();
         boolean shouldHaveSubDiagramDecorator = false;
         if (target != null && target.eResource() != null) {
-
             if (session != null && !parentHasSameSemanticElement(node)) {
                 // Does the target element has any representation on it? Exclude
                 // the current representation itself to avoid redundant markers.
@@ -147,7 +112,7 @@ public class SubDiagramDecorator extends AbstractDecorator {
                 Predicate<DRepresentation> otherReperesentation = Predicates.not(Predicates.equalTo(representation));
                 shouldHaveSubDiagramDecorator = Iterables.any(DialectManager.INSTANCE.getRepresentations(target, session), otherReperesentation);
                 if (node.getMapping() != null && !shouldHaveSubDiagramDecorator) {
-                    shouldHaveSubDiagramDecorator = checkRepresentationNavigationDescriptions(node);
+                    shouldHaveSubDiagramDecorator = checkRepresentationNavigationDescriptions(node, session);
                 }
             }
         }
@@ -155,14 +120,13 @@ public class SubDiagramDecorator extends AbstractDecorator {
     }
 
     /**
-     * Tests whether the specified node has the same semantic element as its
-     * parent.
+     * Tests whether the specified node has the same semantic element as its parent.
      */
     private boolean parentHasSameSemanticElement(DRepresentationElement element) {
         return (element.eContainer() instanceof DDiagramElement) && ((DDiagramElement) element.eContainer()).getTarget() == element.getTarget();
     }
 
-    private boolean checkRepresentationNavigationDescriptions(DRepresentationElement element) {
+    private boolean checkRepresentationNavigationDescriptions(DRepresentationElement element, Session session) {
 
         EObject target = element.getTarget();
         if (session.isOpen()) {
@@ -170,7 +134,7 @@ public class SubDiagramDecorator extends AbstractDecorator {
             IInterpreter interpreter = session.getInterpreter();
 
             for (RepresentationNavigationDescription navDesc : element.getMapping().getNavigationDescriptions()) {
-                if (isFromActiveViewpoint(navDesc.getRepresentationDescription())) {
+                if (isFromActiveViewpoint(navDesc.getRepresentationDescription(), session)) {
                     interpreter.setVariable(navDesc.getContainerVariable().getName(), target);
                     interpreter.setVariable(navDesc.getContainerViewVariable().getName(), element);
 
@@ -184,7 +148,7 @@ public class SubDiagramDecorator extends AbstractDecorator {
                     }
 
                     if (precondition) {
-                        if (checkRepresentationNavigationDescription(interpreter, navDesc, element)) {
+                        if (checkRepresentationNavigationDescription(interpreter, navDesc, element, session)) {
                             return true;
                         }
                     }
@@ -197,12 +161,12 @@ public class SubDiagramDecorator extends AbstractDecorator {
         return false;
     }
 
-    private boolean isFromActiveViewpoint(final RepresentationDescription description) {
+    private boolean isFromActiveViewpoint(final RepresentationDescription description, Session session) {
         final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(description);
         return vp != null && session.getSelectedViewpoints(false).contains(vp);
     }
 
-    private boolean checkRepresentationNavigationDescription(IInterpreter interpreter, RepresentationNavigationDescription navDesc, DRepresentationElement element) {
+    private boolean checkRepresentationNavigationDescription(IInterpreter interpreter, RepresentationNavigationDescription navDesc, DRepresentationElement element, Session session) {
         Collection<EObject> candidates = null;
         if (!StringUtil.isEmpty(navDesc.getBrowseExpression())) {
             candidates = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(element.getTarget(), navDesc,
@@ -226,4 +190,15 @@ public class SubDiagramDecorator extends AbstractDecorator {
 
         return false;
     }
+
+    @Override
+    public void activate(IDecoratorTarget decoratorTarget, IDecorator decorator, org.eclipse.gef.GraphicalEditPart editPart) {
+        // do nothing
+    }
+
+    @Override
+    public void deactivate(IDecorator decorator, org.eclipse.gef.GraphicalEditPart editPart) {
+        // do nothing
+    }
+
 }

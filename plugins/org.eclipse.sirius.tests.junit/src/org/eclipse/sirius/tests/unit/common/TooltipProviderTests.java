@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -113,12 +113,27 @@ public class TooltipProviderTests extends SiriusTestCase {
         Iterable<Decoration> decorationsIterable = Iterables.filter(layer.getChildren(), Decoration.class);
         assertEquals(1, Iterables.size(decorationsIterable));
         Decoration decoration = Iterables.getOnlyElement(decorationsIterable);
-        IFigure toolTip = decoration.getToolTip();
+        IFigure toolTip = getToolTip(decoration);
         assertTrue(toolTip instanceof Label);
         Label label = (Label) toolTip;
-        assertEquals(TooltipProvider.TOOLTIP, label.getText());
+        assertEquals("The tooltip is not the one defined in VSM", "MyToolTip", label.getText());
         DialectUIManager.INSTANCE.closeEditor(editor, false);
         TestsUtil.synchronizationWithUIThread();
+    }
+
+    private IFigure getToolTip(IFigure figure) {
+        IFigure tooltip = null;
+        IFigure currentFigure = figure;
+        while (tooltip == null) {
+            tooltip = currentFigure.getToolTip();
+            List<IFigure> children = currentFigure.getChildren();
+            if (children.size() > 0) {
+                currentFigure = children.get(0);
+            } else {
+                break;
+            }
+        }
+        return tooltip;
     }
 
     public void testTooltipOnTableEditionDialect() {

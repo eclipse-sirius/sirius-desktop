@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.internal.providers;
+package org.eclipse.sirius.diagram.ui.tools.internal.decoration;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gef.EditPart;
@@ -20,6 +20,7 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorKeys;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorProvider;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusUnresolvedViewDecorator;
 
 /**
  * The goal of this class is to "disable" (replace by something that do

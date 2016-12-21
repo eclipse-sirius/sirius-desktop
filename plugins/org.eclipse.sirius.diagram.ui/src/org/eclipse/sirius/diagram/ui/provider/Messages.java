@@ -297,6 +297,12 @@ public final class Messages {
     public static String DeselectAllAction_tooltip;
 
     @TranslatableMessage
+    public static String DiagramAppearancePreferencePage_authorizeOverlapGroupText;
+
+    @TranslatableMessage
+    public static String DiagramAppearancePreferencePage_decorationGroupText;
+
+    @TranslatableMessage
     public static String DiagramAppearancePreferencePage_displayHeaderGroupText;
 
     @TranslatableMessage

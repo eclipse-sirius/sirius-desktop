@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,16 +36,24 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.sirius.common.ui.tools.internal.preference.DynamicConfigurationHelper;
 import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.ui.business.internal.image.ImageSelectorDescriptorRegistryListener;
 import org.eclipse.sirius.diagram.ui.business.internal.image.refresh.WorkspaceImageFigureRefresher;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.WorkspaceFileResourceChangeListener;
+import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationProviderRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.tools.internal.decoration.DescribedDecorationDescriptorProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.decoration.EditModeDecorationDescriptorProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.decoration.SubDiagramDecorationDescriptorProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.decoration.ValidationDecorationDescriptorProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.FormatDataManagerRegistryListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistryListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.CustomSiriusDocumentProvider;
@@ -141,6 +149,8 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
         private WorkspaceImageFigureRefresher workspaceImageFigureRefresher;
 
+        private DynamicDiagramUIPreferences dynamicPreferences;
+
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
@@ -161,6 +171,8 @@ public final class DiagramUIPlugin extends EMFPlugin {
         public void start(BundleContext context) throws Exception {
             super.start(context);
             PreferencesHint.registerPreferenceStore(DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT, getPreferenceStore());
+            dynamicPreferences = new DynamicDiagramUIPreferences(getPreferenceStore());
+
             adapterFactory = createAdapterFactory();
             descriptorsToImages = new HashMap<ImageWithDimensionDescriptor, Image>();
             ressourceMissingDocumentProvider = new ResourceMissingDocumentProvider();
@@ -176,6 +188,19 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
             layoutDataManagerRegistryListener = new LayoutDataManagerRegistryListener();
             layoutDataManagerRegistryListener.init();
+
+            registerCoreDecorationProviders();
+        }
+
+        private void registerCoreDecorationProviders() {
+            SiriusDecorationProviderRegistry.INSTANCE.addSiriusDecorationDescriptorProvider(new DescribedDecorationDescriptorProvider());
+            SiriusDecorationProviderRegistry.INSTANCE.addSiriusDecorationDescriptorProvider(new EditModeDecorationDescriptorProvider());
+            SiriusDecorationProviderRegistry.INSTANCE.addSiriusDecorationDescriptorProvider(new SubDiagramDecorationDescriptorProvider());
+            SiriusDecorationProviderRegistry.INSTANCE.addSiriusDecorationDescriptorProvider(new ValidationDecorationDescriptorProvider());
+        }
+
+        private void unregisterDecorationProviders() {
+            SiriusDecorationProviderRegistry.INSTANCE.clear();
         }
 
         /**
@@ -221,6 +246,9 @@ public final class DiagramUIPlugin extends EMFPlugin {
             this.ressourceMissingDocumentProvider.dispose();
 
             WorkspaceFileResourceChangeListener.getInstance().dispose();
+
+            unregisterDecorationProviders();
+
             super.stop(context);
         }
 
@@ -550,6 +578,30 @@ public final class DiagramUIPlugin extends EMFPlugin {
          */
         public CustomSiriusDocumentProvider getDocumentProvider(TransactionalEditingDomain transactionalEditingDomain) {
             return new CustomSiriusDocumentProvider(transactionalEditingDomain);
+        }
+
+        public DynamicDiagramUIPreferences getDynamicPreferences() {
+            return dynamicPreferences;
+        }
+
+        /**
+         * This class is a mean to keep sync with possible changes of the {@link SiriusDiagramUiPreferencesKeys}
+         * preferences.
+         */
+        public class DynamicDiagramUIPreferences extends DynamicConfigurationHelper {
+            /**
+             * @see SiriusDiagramUiPreferencesKeys.PREF_AUTHORIZE_DECORATION_OVERLAP
+             */
+            private boolean authorizeDecorationOverlap;
+
+            DynamicDiagramUIPreferences(IPreferenceStore store) {
+                super(store);
+                bindBoolean(SiriusDiagramUiPreferencesKeys.PREF_AUTHORIZE_DECORATION_OVERLAP.name(), "authorizeDecorationOverlap"); //$NON-NLS-1$
+            }
+
+            public boolean authorizeDecorationOverlap() {
+                return authorizeDecorationOverlap;
+            }
         }
     }
 

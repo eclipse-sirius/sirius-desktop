@@ -241,9 +241,9 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_1Yk70AjQEeeKCJSRL5OfIw" name="EClass3" tooltipText="" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//EClass3"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//EClass3"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1YmJ8AjQEeeKCJSRL5OfIw" name="att3-1" tooltipText="" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//EClass3/att3-1"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//EClass3/att3-1"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1YmJ8AjQEeeKCJSRL5OfIw" name="a3-1" tooltipText="" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//EClass3/a3-1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//EClass3/a3-1"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,9 +60,8 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
- * This registry is used to determine which type of visual object should be
- * created for the corresponding Diagram, Node, ChildNode or Link represented by
- * a domain model object.
+ * This registry is used to determine which type of visual object should be created for the corresponding Diagram, Node,
+ * ChildNode or Link represented by a domain model object.
  * 
  * @was-generated
  */
@@ -92,12 +91,13 @@ public class SiriusVisualIDRegistry {
      */
     public static String getModelID(View view) {
         View diagram = view.getDiagram();
-        while (view != diagram) {
+        while (view != diagram && view != null) {
             EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
             if (annotation != null) {
                 return annotation.getDetails().get("modelID"); //$NON-NLS-1$
             }
-            view = (View) view.eContainer();
+            EObject viewContainer = view.eContainer();
+            view = viewContainer instanceof View ? (View) viewContainer : null;
         }
         return diagram != null ? diagram.getType() : null;
     }
@@ -589,9 +589,8 @@ public class SiriusVisualIDRegistry {
     }
 
     /**
-     * Now that we have dimension specific edge, we must return the
-     * {@link BracketEdgeEditPart#VISUAL_ID} for a {@link DEdge} with a
-     * {@link DimensionStyle}.
+     * Now that we have dimension specific edge, we must return the {@link BracketEdgeEditPart#VISUAL_ID} for a
+     * {@link DEdge} with a {@link DimensionStyle}.
      * 
      * @not-generated
      */
@@ -612,8 +611,7 @@ public class SiriusVisualIDRegistry {
     }
 
     /**
-     * User can change implementation of this method to handle some specific
-     * situations not covered by default logic.
+     * User can change implementation of this method to handle some specific situations not covered by default logic.
      * 
      * @was-generated
      */

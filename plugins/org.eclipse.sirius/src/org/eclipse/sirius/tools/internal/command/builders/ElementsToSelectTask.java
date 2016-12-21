@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,12 +23,11 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.UIState;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
- * A command task which has the ability to define the
- * {@link DRepresentationElement} to be selected after the tool execution.
+ * A command task which has the ability to define the {@link DRepresentationElement} to be selected after the tool
+ * execution.
  * 
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  */
@@ -72,10 +71,6 @@ public final class ElementsToSelectTask extends AbstractCommandTask {
         String elementsToSelectExpression = toolDescription.getElementsToSelect();
         try {
             UIState uiState = dRepresentation.getUiState();
-            if (uiState == null) {
-                uiState = ViewpointFactory.eINSTANCE.createUIState();
-                dRepresentation.setUiState(uiState);
-            }
             uiState.unsetElementsToSelect();
             uiState.setInverseSelectionOrder(toolDescription.isInverseSelectionOrder());
 

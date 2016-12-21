@@ -63,7 +63,12 @@ public enum SiriusDiagramUiPreferencesKeys {
      * Says whether a link between edge and its labels must be show on edge or
      * label selection.
      */
-    PREF_SHOW_LINK_EDGE_LABEL_ON_SELECTION(boolean.class);
+    PREF_SHOW_LINK_EDGE_LABEL_ON_SELECTION(boolean.class),
+    /**
+     * 
+     * Says if the overlap is authorized between decoration group.
+     */
+    PREF_AUTHORIZE_DECORATION_OVERLAP(boolean.class);
 
     /** The type of the preference. */
     private Class<?> type;

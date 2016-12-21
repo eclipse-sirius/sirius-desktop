@@ -280,6 +280,34 @@
 			<li><span class="label label-success">Added</span> The class 
 				<code>org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusDecoratorEditPolicy</code> has been added to improve the behavior of decorator selection.
 			</li>
+			<li><span class="label label-success">Added</span> A new decoration mechanism has been implemented. Now, Sirius uses a single 
+				<code>IDecorator</code> to decorate EditPart in diagram. That allows Sirius to manage the relative positioning between decorations.
+				<ul>
+					<li><span class="label label-success">Added</span> 
+						<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationDescriptorProvider</code> represents a provider able to give the decoration descriptors.
+					</li>
+					<li><span class="label label-success">Added</span> 
+						<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor</code> is a simple POJO that contains information needed to display decoration.
+					</li>
+					<li><span class="label label-success">Added</span> 
+						<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationProviderRegistry</code> allows to register and get 
+						<code>SiriusDecorationDescriptorProvider</code>.
+					</li>
+					<li><span class="label label-danger">Removed</span> 
+						<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.AbstractSiriusDecorator</code> is removed because now useless.
+					</li>
+				</ul>
+			</li>
+			<li><span class="label label-success">Added</span> The preference 
+				<code>SiriusDiagramUiPreferencesKeys.PREF_AUTHORIZE_DECORATION_OVERLAP</code> has been added in 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys</code>. If true, the overlap is authorized between decoration group on diagram element.
+				<ul>
+					<li><span class="label label-success">Added</span> The class 
+						<code>org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.Implementation.DynamicDiagramUIPreferences</code> and the method 
+						<code>org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.Implementation.getDynamicPreferences()</code> have been added to have good performances in getting the preference value.
+					</li>
+				</ul>
+			</li>
 			<li><span class="label label-info">Modified</span> The  
 				<code>org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.DiagramEditPartService</code> class which can be used to export diagrams as images is now automatically adapting the output resolution for raster image based on maximum buffer size specified through the 
 				<code>plugin.propeties</code> file of the 
@@ -354,7 +382,7 @@
 				<code>AbstractMetamodelPropertySectionSpec</code>. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -776,7 +804,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>HierarchyLabelProvider</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1202,7 +1230,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus</code> to reflect all kind of language validation severity (of AQL for example).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>

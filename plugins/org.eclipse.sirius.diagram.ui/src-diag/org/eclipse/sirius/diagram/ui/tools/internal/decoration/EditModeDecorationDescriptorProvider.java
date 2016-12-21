@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,38 +8,62 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators;
+package org.eclipse.sirius.diagram.ui.tools.internal.decoration;
+
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gef.editparts.AbstractConnectionEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
-import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget.Direction;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.diagram.ui.tools.api.decorators.AbstractSiriusDecorator;
+import org.eclipse.sirius.diagram.ui.tools.api.decoration.AbstractSiriusDecorationDescriptorProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor;
+import org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.DisplayPriority;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection;
+import org.eclipse.sirius.viewpoint.description.Position;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 
-/**
- * Decorator.
- * 
- * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- */
-public class EditModeDecorator extends AbstractSiriusDecorator {
+import com.google.common.collect.Lists;
 
-    /**
-     * Create a decorator.
-     * 
-     * @param decoratorTarget
-     *            target to decorate.
-     */
-    public EditModeDecorator(final IDecoratorTarget decoratorTarget) {
-        super(decoratorTarget);
+/**
+ * This {@link SiriusDecorationDescriptorProvider} provides a decoration on the bottom left corner when the element is
+ * in disableEditMode (and another where it is also invalid).
+ * 
+ * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
+ */
+public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorationDescriptorProvider {
+
+    private static final String NAME = "editModeDecorator"; //$NON-NLS-1$
+
+    @Override
+    public boolean provides(IDiagramElementEditPart editPart) {
+        return true;
+    }
+
+    @Override
+    public List<DecorationDescriptor> createDecorationDescriptors(IDiagramElementEditPart editPart, Session session) {
+        List<DecorationDescriptor> decorationDescriptors = null;
+        Image decorationImage = getDecorationImage(editPart);
+        if (decorationImage != null) {
+            decorationDescriptors = Lists.newArrayList();
+
+            DecorationDescriptor decoDesc = new DecorationDescriptor();
+            decoDesc.setName(NAME);
+            decoDesc.setPosition(Position.SOUTH_WEST_LITERAL);
+            decoDesc.setDistributionDirection(DecorationDistributionDirection.HORIZONTAL);
+            decoDesc.setDisplayPriority(DisplayPriority.HIGH_PRIORITY.getValue());
+            decoDesc.setDecorationAsImage(decorationImage);
+
+            decorationDescriptors.add(decoDesc);
+        }
+
+        return decorationDescriptors;
     }
 
     /**
@@ -57,22 +81,6 @@ public class EditModeDecorator extends AbstractSiriusDecorator {
             }
         }
         return false;
-    }
-
-    /**
-     * Get the position of the decorator according to editPart.
-     * 
-     * @param editPart
-     *            the editpart
-     * @return a Direction
-     */
-    @Override
-    protected Direction getDirection(final EditPart editPart) {
-        if (editPart instanceof AbstractConnectionEditPart) {
-            return Direction.SOUTH;
-
-        }
-        return Direction.SOUTH_WEST;
     }
 
     /**
@@ -94,21 +102,14 @@ public class EditModeDecorator extends AbstractSiriusDecorator {
      *            the edit part to get the decoration image from
      * @return <code>null</code> if no image found.
      */
-    @Override
     protected Image getDecorationImage(EditPart editPart) {
         Image decorationImage = null;
         if (editPart instanceof IDiagramElementEditPart) {
             IDiagramElementEditPart part = (IDiagramElementEditPart) editPart;
 
-            // Case 1 : edit part is broken
-            if (isBroken(editPart)) {
-                // If the edit part is broken, we return a "deleted" image (red cross)
-                decorationImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
-            }
-
-            // Case 2 : permission authority forbids the edition of the semantic
+            // Case 1 : permission authority forbids the edition of the semantic
             // element associated to this edit part
-            if (decorationImage == null && isDecorableEditPart(part)) {
+            if (isDecorableEditPart(part)) {
                 IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(part.getEditingDomain().getResourceSet());
                 if (auth != null) {
                     EObject representedObject = part.resolveTargetSemanticElement();
@@ -118,6 +119,11 @@ public class EditModeDecorator extends AbstractSiriusDecorator {
                 }
             }
 
+            // Case 2 : edit part is broken
+            if (decorationImage == null && isBroken(editPart)) {
+                // If the edit part is broken, we return a "deleted" image (red cross)
+                decorationImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
+            }
         }
         return decorationImage;
     }
@@ -136,11 +142,5 @@ public class EditModeDecorator extends AbstractSiriusDecorator {
             return DiagramUIPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif")); //$NON-NLS-1$
         }
         return null;
-    }
-
-    @Override
-    protected boolean shouldBeVisibleAtPrint() {
-        EditPart editPart = (EditPart) getDecoratorTarget().getAdapter(EditPart.class);
-        return isBroken(editPart);
     }
 }

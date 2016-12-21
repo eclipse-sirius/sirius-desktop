@@ -47,8 +47,8 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractBorderedDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
-import org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.DescribedDecorator;
-import org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.DescribedDecoratorProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.decoration.SiriusDecoratorProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.decoration.SiriusGenericDecorator;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.DiagramComponentizationTestSupport;
 import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
@@ -472,10 +472,10 @@ public class DecoratorsTest extends GenericTestCase {
                 final Map<Object, IDecorator> decorators = getDecorators(policy);
                 if (decorationDescription.getMappings().contains(diagramElement.getMapping())) {
                     assertEquals("We should have 1 decoration", 1, diagramElement.getDecorations().size());
-                    assertEquals("We should have 1 decorator", 1, ((DescribedDecorator) decorators.get(DescribedDecoratorProvider.KEY)).getDecorations().size());
+                    assertEquals("We should have 1 decorator", 1, ((SiriusGenericDecorator) decorators.get(SiriusDecoratorProvider.KEY)).getDecorations().size());
                 } else {
                     assertEquals("We should have 0 decoration", 0, diagramElement.getDecorations().size());
-                    assertEquals("We should have 0 decorator", 0, ((DescribedDecorator) decorators.get(DescribedDecoratorProvider.KEY)).getDecorations().size());
+                    assertEquals("We should have 0 decorator", 0, ((SiriusGenericDecorator) decorators.get(SiriusDecoratorProvider.KEY)).getDecorations().size());
                 }
 
             }
@@ -524,10 +524,10 @@ public class DecoratorsTest extends GenericTestCase {
                 final Map<Object, IDecorator> decorators = getDecorators(policy);
                 if (accessor.eInstanceOf(diagramElement.getTarget(), decorationDescription.getDomainClass())) {
                     assertEquals("We should have 1 decoration", 1, diagramElement.getDecorations().size());
-                    assertEquals("We should have 1 decorator", 1, ((DescribedDecorator) decorators.get(DescribedDecoratorProvider.KEY)).getDecorations().size());
+                    assertEquals("We should have 1 decorator", 1, ((SiriusGenericDecorator) decorators.get(SiriusDecoratorProvider.KEY)).getDecorations().size());
                 } else {
                     assertEquals("We should have 0 decoration", 0, diagramElement.getDecorations().size());
-                    assertEquals("We should have 0 decorator", 0, ((DescribedDecorator) decorators.get(DescribedDecoratorProvider.KEY)).getDecorations().size());
+                    assertEquals("We should have 0 decorator", 0, ((SiriusGenericDecorator) decorators.get(SiriusDecoratorProvider.KEY)).getDecorations().size());
                 }
             }
         }
@@ -571,10 +571,10 @@ public class DecoratorsTest extends GenericTestCase {
                 final Map<Object, IDecorator> decorators = getDecorators(policy);
                 if (diagramElement.getTarget() instanceof NamedElement && !((NamedElement) diagramElement.getTarget()).getName().startsWith("false")) {
                     assertEquals("We should have 1 decoration", 1, diagramElement.getDecorations().size());
-                    assertEquals("We should have 1 decorator", 1, ((DescribedDecorator) decorators.get(DescribedDecoratorProvider.KEY)).getDecorations().size());
+                    assertEquals("We should have 1 decorator", 1, ((SiriusGenericDecorator) decorators.get(SiriusDecoratorProvider.KEY)).getDecorations().size());
                 } else {
                     assertEquals("We should have 0 decoration", 0, diagramElement.getDecorations().size());
-                    assertEquals("We should have 0 decorator", 0, ((DescribedDecorator) decorators.get(DescribedDecoratorProvider.KEY)).getDecorations().size());
+                    assertEquals("We should have 0 decorator", 0, ((SiriusGenericDecorator) decorators.get(SiriusDecoratorProvider.KEY)).getDecorations().size());
                 }
             }
         }
