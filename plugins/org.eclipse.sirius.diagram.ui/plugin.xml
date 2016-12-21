@@ -1823,6 +1823,10 @@
             class="org.eclipse.sirius.diagram.ui.business.internal.migration.BorderSizeRepresentationFileMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.description.DecorationImageDescriptionVSMMigrationParticipant"
+            kind="VSM">
+      </participant>
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">

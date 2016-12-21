@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" name="DecorationDescription" version="11.1.1.201610211630">
+  <ownedViewpoints name="VP">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="My_MappingBasedDecoration" decoratorPath="/path/to/image.png"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="My_MappingBasedDecoration" decoratorPath="/path/to/image.png" domainClass="ecore.EClass"/>
+        </decorationDescriptionsSet>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
