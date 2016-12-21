@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,10 +54,12 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.GenericDecorationDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.uml2.uml.NamedElement;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -221,6 +223,29 @@ public class DecoratorsTest extends GenericTestCase {
         checkDecoration(list.getElements(), decorationDescription);
     }
 
+    public void testGenericDecoration() {
+        final DiagramDescription classDiag = findDiagramDescription("GenericDecoration");
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, classDiag);
+
+        final Layer defaultLayer = classDiag.getDefaultLayer();
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, defaultLayer);
+
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, defaultLayer.getDecorationDescriptionsSet());
+        final GenericDecorationDescription decorationDescription = (GenericDecorationDescription) defaultLayer.getDecorationDescriptionsSet().getDecorationDescriptions().get(0);
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, decorationDescription);
+
+        initSynchronizer(classDiag, TEST_CLASS_DIAGRAM);
+        final DDiagram diagram = getRefreshedDiagram();
+
+        final List<DDiagramElement> elements = new ArrayList<DDiagramElement>(diagram.getOwnedDiagramElements());
+        assertEquals("We should have 8 elements here .", 8, elements.size());
+        checkDecoration(elements);
+
+        DNodeList list = (DNodeList) diagram.getContainers().get(0);
+        assertEquals("We should have 5 list elements here .", 5, list.getElements().size());
+        checkDecoration(list.getElements());
+    }
+
     public void testMappingBasedDecorationLayerDeactivation() {
         final DiagramDescription classDiag = findDiagramDescription("MappingBasedDecorationLayer");
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, classDiag);
@@ -299,6 +324,43 @@ public class DecoratorsTest extends GenericTestCase {
         checkNoDecoration(elements);
     }
 
+    public void testGenericDecorationLayerDeactivation() {
+        final DiagramDescription classDiag = findDiagramDescription("GenericDecorationLayer");
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, classDiag);
+
+        final Layer defaultLayer = classDiag.getDefaultLayer();
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, defaultLayer);
+        assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 2, DiagramComponentizationTestSupport.getAllLayers(session, classDiag).size());
+        final Layer firstLayer = DiagramComponentizationTestSupport.getAllLayers(session, classDiag).get(1);
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, firstLayer);
+
+        assertNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, defaultLayer.getDecorationDescriptionsSet());
+
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, firstLayer.getDecorationDescriptionsSet());
+        final GenericDecorationDescription decorationDescription = (GenericDecorationDescription) firstLayer.getDecorationDescriptionsSet().getDecorationDescriptions().get(0);
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, decorationDescription);
+
+        initSynchronizer(classDiag, TEST_CLASS_DIAGRAM);
+        DDiagram diagram = getRefreshedDiagram();
+
+        List<DDiagramElement> elements = new ArrayList<DDiagramElement>(diagram.getOwnedDiagramElements());
+        assertEquals("We should have 7 nodes here .", 7, elements.size());
+
+        checkNoDecoration(elements);
+
+        setLayerVisibility(diagram, firstLayer, true);
+        diagram = getRefreshedDiagram();
+        elements = diagram.getOwnedDiagramElements();
+        assertEquals("We should have 7 nodes here .", 7, elements.size());
+        checkDecoration(elements);
+
+        setLayerVisibility(diagram, firstLayer, false);
+        diagram = getRefreshedDiagram();
+        elements = diagram.getOwnedDiagramElements();
+        assertEquals("We should have 7 nodes here .", 7, elements.size());
+        checkNoDecoration(elements);
+    }
+
     private void checkDecoration(final List<? extends DDiagramElement> elements, final MappingBasedDecoration decorationDescription) {
         for (final DDiagramElement diagramElement : elements) {
             checkDecoration(diagramElement, decorationDescription);
@@ -330,6 +392,20 @@ public class DecoratorsTest extends GenericTestCase {
         }
     }
 
+    private void checkDecoration(final List<DDiagramElement> elements) {
+        for (final DDiagramElement diagramElement : elements) {
+            checkDecoration(diagramElement);
+        }
+    }
+
+    private void checkDecoration(final DDiagramElement diagramElement) {
+        if (diagramElement.getTarget() instanceof NamedElement && !((NamedElement) diagramElement.getTarget()).getName().startsWith("false")) {
+            assertEquals("We should have 1 decoration here", 1, diagramElement.getDecorations().size());
+        } else {
+            assertEquals("We should have no decoration here", 0, diagramElement.getDecorations().size());
+        }
+    }
+
     private void checkNoDecoration(final List<DDiagramElement> elements) {
         for (final DDiagramElement diagramElement : elements) {
             checkNoDecoration(diagramElement);
@@ -346,7 +422,7 @@ public class DecoratorsTest extends GenericTestCase {
      * IDiagramElementEditPart whch does not inherits from IDiagramNameEditPart.
      */
     public void testMappingBasedDecorationEditPart() throws Exception {
-        assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 6, viewpoints.iterator().next().getOwnedRepresentations().size());
+        assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 8, viewpoints.iterator().next().getOwnedRepresentations().size());
         final DSemanticDiagram diagram = getDiagramFromDescriptionName("MappingBasedDecoration");
 
         doInitSemanticDiagram(diagram);
@@ -400,7 +476,7 @@ public class DecoratorsTest extends GenericTestCase {
 
     public void testSemanticBasedDecorationEditPart() throws Exception {
         // doInitSession();
-        assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 6, viewpoints.iterator().next().getOwnedRepresentations().size());
+        assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 8, viewpoints.iterator().next().getOwnedRepresentations().size());
         final DSemanticDiagram diagram = getDiagramFromDescriptionName("SemanticBasedDecoration");
 
         doInitSemanticDiagram(diagram);
@@ -433,6 +509,53 @@ public class DecoratorsTest extends GenericTestCase {
                 final DecorationEditPolicy policy = (DecorationEditPolicy) nodeEditPart.getEditPolicy(EditPolicyRoles.DECORATION_ROLE);
                 final Map<Object, IDecorator> decorators = getDecorators(policy);
                 if (accessor.eInstanceOf(diagramElement.getTarget(), decorationDescription.getDomainClass())) {
+                    assertEquals("We should have 1 decoration", 1, diagramElement.getDecorations().size());
+                    assertEquals("We should have 1 decorator", 1, ((DescribedDecorator) decorators.get(DescribedDecoratorProvider.KEY)).getDecorations().size());
+                } else {
+                    assertEquals("We should have 0 decoration", 0, diagramElement.getDecorations().size());
+                    assertEquals("We should have 0 decorator", 0, ((DescribedDecorator) decorators.get(DescribedDecoratorProvider.KEY)).getDecorations().size());
+                }
+            }
+        }
+
+        doCleanupGmfDiagram(shell, diagramEditPart);
+        doCleanupSession();
+    }
+
+    public void testGenericDecorationEditPart() throws Exception {
+        // doInitSession();
+        assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 8, viewpoints.iterator().next().getOwnedRepresentations().size());
+        final DSemanticDiagram diagram = getDiagramFromDescriptionName("GenericDecoration");
+
+        doInitSemanticDiagram(diagram);
+
+        final Layer defaultLayer = diagram.getDescription().getDefaultLayer();
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, defaultLayer);
+
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, defaultLayer.getDecorationDescriptionsSet());
+        final GenericDecorationDescription decorationDescription = (GenericDecorationDescription) defaultLayer.getDecorationDescriptionsSet().getDecorationDescriptions().get(0);
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, decorationDescription);
+
+        NodeMapping nodeMapping = defaultLayer.getNodeMappings().get(0);
+        List<DNode> elements = diagram.getNodesFromMapping(nodeMapping);
+        nodeMapping = defaultLayer.getNodeMappings().get(1);
+        elements.addAll(diagram.getNodesFromMapping(nodeMapping));
+        assertEquals("We should have 5 nodes here", 5, elements.size());
+
+        nodeMapping = defaultLayer.getNodeMappings().get(2);
+        elements = diagram.getNodesFromMapping(nodeMapping);
+        assertEquals("We should have 2 nodes here", 2, elements.size());
+
+        final Shell shell = new Shell();
+        final DiagramEditPart diagramEditPart = doInitGmfDiagram(shell, diagram);
+
+        for (final Object editPart : diagramEditPart.getChildren()) {
+            if (editPart instanceof AbstractDiagramNodeEditPart) {
+                final AbstractDiagramNodeEditPart nodeEditPart = (AbstractDiagramNodeEditPart) editPart;
+                final DDiagramElement diagramElement = nodeEditPart.resolveDiagramElement();
+                final DecorationEditPolicy policy = (DecorationEditPolicy) nodeEditPart.getEditPolicy(EditPolicyRoles.DECORATION_ROLE);
+                final Map<Object, IDecorator> decorators = getDecorators(policy);
+                if (diagramElement.getTarget() instanceof NamedElement && !((NamedElement) diagramElement.getTarget()).getName().startsWith("false")) {
                     assertEquals("We should have 1 decoration", 1, diagramElement.getDecorations().size());
                     assertEquals("We should have 1 decorator", 1, ((DescribedDecorator) decorators.get(DescribedDecoratorProvider.KEY)).getDecorations().size());
                 } else {

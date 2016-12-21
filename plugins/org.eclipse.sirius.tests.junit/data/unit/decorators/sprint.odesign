@@ -14,6 +14,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="WithoutDecorationdescription" initialisation="true" domainClass="Package" rootExpression="">
       <defaultLayer name="Sprint">
+        <decorationDescriptionsSet/>
         <nodeMappings name="Class Diagram" semanticCandidatesExpression="feature:eAllContents" semanticElements="" domainClass="Class">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -21,11 +22,15 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
-        <decorationDescriptionsSet/>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="MappingBasedDecoration" initialisation="true" domainClass="Package" rootExpression="">
       <defaultLayer name="Sprint">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="mappingBasedDecoration" position="CENTER" preconditionExpression="[not(name.startsWith('false'))/]" mappings="//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbd']" decoratorPath="/org.eclipse.sirius.diagram.ui/icons/layer_active.gif"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="mappingBasedDecorationContainer" position="NORTH_EAST" mappings="//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@containerMappings[name='mbdp']" decoratorPath="/forg.eclipse.sirius.diagram.ui/icons/layer_active.gif"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="mappingBasedDecorationListElement" mappings="//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@containerMappings[name='mbdp']/@subNodeMappings[name='mbdi']" decoratorPath="/org.eclipse.sirius.diagram.ui/icons/layer_active.gif"/>
+        </decorationDescriptionsSet>
         <nodeMappings name="Class Diagram mbd" preconditionExpression="aql: not self.name.endsWith('H')" semanticCandidatesExpression="feature:eAllContents" semanticElements="" domainClass="Class">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -55,15 +60,13 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="mappingBasedDecoration" position="CENTER" decoratorPath="/org.eclipse.sirius.diagram.ui/icons/layer_active.gif" preconditionExpression="[not(name.startsWith('false'))/]" mappings="//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbd']"/>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="mappingBasedDecorationContainer" position="NORTH_EAST" decoratorPath="/forg.eclipse.sirius.diagram.ui/icons/layer_active.gif" mappings="//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@containerMappings[name='mbdp']"/>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="mappingBasedDecorationListElement" decoratorPath="/org.eclipse.sirius.diagram.ui/icons/layer_active.gif" mappings="//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecoration']/@defaultLayer/@containerMappings[name='mbdp']/@subNodeMappings[name='mbdi']"/>
-        </decorationDescriptionsSet>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="SemanticBasedDecoration" initialisation="true" domainClass="Package" rootExpression="">
       <defaultLayer name="Sprint">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="SemanticBasedDecoration" position="NORTH" preconditionExpression="[not(name.startsWith('false'))/]" domainClass="Class" decoratorPath="/org.eclipse.sirius.diagram.ui/icons/layer_active.gif"/>
+        </decorationDescriptionsSet>
         <nodeMappings name="Class Diagram sbd" preconditionExpression="aql: not self.name.endsWith('H')" semanticCandidatesExpression="feature:eAllContents" semanticElements="" domainClass="Class">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -100,9 +103,49 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="GenericDecoration" initialisation="true" domainClass="Package" rootExpression="">
+      <defaultLayer name="Sprint">
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="SemanticBasedDecoration" position="NORTH" decoratorPath="/org.eclipse.sirius.diagram.ui/icons/layer_active.gif" preconditionExpression="[not(name.startsWith('false'))/]" domainClass="Class"/>
+          <decorationDescriptions xsi:type="description:GenericDecorationDescription" name="GenericDecoration" position="NORTH" preconditionExpression="[not(name.startsWith('false'))/]"/>
         </decorationDescriptionsSet>
+        <nodeMappings name="Class Diagram sbd" preconditionExpression="aql: not self.name.endsWith('H')" semanticCandidatesExpression="feature:eAllContents" semanticElements="" domainClass="Class">
+          <style xsi:type="style:BundledImageDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Class Diagram sbdh" preconditionExpression="aql:self.name.endsWith('H')" semanticCandidatesExpression="feature:eAllContents" semanticElements="" domainClass="Class">
+          <style xsi:type="style:BundledImageDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="interf" semanticCandidatesExpression="feature:eAllContents" domainClass="Interface">
+          <style xsi:type="style:BundledImageDescription" shape="triangle">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="sbdp" semanticCandidatesExpression="var:self" domainClass="Package" childrenPresentation="List">
+          <subNodeMappings name="sbdc" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="MappingBasedDecorationLayer" initialisation="true" domainClass="Package" rootExpression="">
@@ -117,7 +160,7 @@
       </defaultLayer>
       <additionalLayers name="Hurdles">
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="MappingBasedDecorationLayer" decoratorPath="/org.eclipse.sirius.diagram.ui/icons/layer_active.gif" mappings="//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdl']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="MappingBasedDecorationLayer" mappings="//@ownedViewpoints[name='Sprint%20with%20UML2%20(Modeler%20test%20for%20decorators)']/@ownedRepresentations[name='MappingBasedDecorationLayer']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20mbdl']" decoratorPath="/org.eclipse.sirius.diagram.ui/icons/layer_active.gif"/>
         </decorationDescriptionsSet>
       </additionalLayers>
     </ownedRepresentations>
@@ -147,7 +190,37 @@
       </defaultLayer>
       <additionalLayers name="Hurdles">
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="SemanticBasedDecorationLayer" decoratorPath="/org.eclipse.sirius.diagram.ui/icons/layer_active.gif" domainClass="Interface"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="SemanticBasedDecorationLayer" domainClass="Interface"/>
+        </decorationDescriptionsSet>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="GenericDecorationLayer" initialisation="true" domainClass="Package" rootExpression="">
+      <defaultLayer name="Sprint">
+        <nodeMappings name="Class Diagram sbd" preconditionExpression="aql: not self.name.endsWith('H')" semanticCandidatesExpression="feature:eAllContents" semanticElements="" domainClass="Class">
+          <style xsi:type="style:BundledImageDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Class Diagram sbdh" preconditionExpression="aql:self.name.endsWith('H')" semanticCandidatesExpression="feature:eAllContents" semanticElements="" domainClass="Class">
+          <style xsi:type="style:BundledImageDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="interf2" semanticCandidatesExpression="feature:eAllContents" domainClass="Interface">
+          <style xsi:type="style:BundledImageDescription" shape="triangle">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+      <additionalLayers name="Hurdles">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description:GenericDecorationDescription" name="GenericDecoration" position="NORTH" preconditionExpression="[not(name.startsWith('false'))/]"/>
         </decorationDescriptionsSet>
       </additionalLayers>
     </ownedRepresentations>

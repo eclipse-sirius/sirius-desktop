@@ -101,6 +101,7 @@ import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
+import org.eclipse.sirius.viewpoint.description.GenericDecorationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
@@ -651,6 +652,8 @@ public class DDiagramSynchronizer {
                         computeDecoration((MappingBasedDecoration) decorationDescription, mappingsToEdgeTargets, edgeToMappingBasedDecoration);
                     } else if (decorationDescription instanceof SemanticBasedDecoration) {
                         computeDecoration((SemanticBasedDecoration) decorationDescription, mappingsToEdgeTargets, edgeToSemanticBasedDecoration);
+                    } else if (decorationDescription instanceof GenericDecorationDescription) {
+                        computeDecoration((GenericDecorationDescription) decorationDescription, mappingsToEdgeTargets);
                     }
                 }
             }
@@ -691,6 +694,14 @@ public class DDiagramSynchronizer {
             }
         }
 
+    }
+
+    private void computeDecoration(final GenericDecorationDescription decorationDescription, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets) {
+        for (final Collection<EdgeTarget> collection : mappingsToEdgeTargets.values()) {
+            for (final DDiagramElement element : Iterables.filter(collection, DDiagramElement.class)) {
+                this.sync.addDecoration(element, decorationDescription);
+            }
+        }
     }
 
     private void convertType(final EObject eObject) {

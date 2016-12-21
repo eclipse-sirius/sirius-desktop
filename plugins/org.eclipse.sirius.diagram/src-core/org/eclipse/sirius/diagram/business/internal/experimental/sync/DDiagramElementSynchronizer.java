@@ -88,6 +88,7 @@ import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
+import org.eclipse.sirius.viewpoint.description.GenericDecorationDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
@@ -580,8 +581,8 @@ public class DDiagramElementSynchronizer {
     }
 
     /**
-     * Investigate {@link DecorationDescription} from the given
-     * {@link Layer} and call addDecoration with it.
+     * Investigate {@link DecorationDescription} from the given {@link Layer}
+     * and call addDecoration with it.
      * 
      * @param element
      *            current {@link DDiagramElement} to decorate
@@ -592,12 +593,37 @@ public class DDiagramElementSynchronizer {
         if (layer.getDecorationDescriptionsSet() != null) {
             EList<DecorationDescription> decorationDescriptions = layer.getDecorationDescriptionsSet().getDecorationDescriptions();
             for (DecorationDescription decorationDescription : decorationDescriptions) {
-                if (decorationDescription instanceof MappingBasedDecoration && ((MappingBasedDecoration) decorationDescription).getMappings().contains(element.getDiagramElementMapping())
-                        || decorationDescription instanceof SemanticBasedDecoration && accessor.eInstanceOf(element.getTarget(), ((SemanticBasedDecoration) decorationDescription).getDomainClass())) {
+                if (checkDecoratorCondition(element, decorationDescription)) {
                     addDecoration(element, decorationDescription);
                 }
             }
         }
+    }
+
+    /**
+     * Check that the {@link DecorationDescription} conditions (and not
+     * preconditions) are valid for the {@link DDiagramElement}.
+     * 
+     * @param element
+     *            the {@link DDiagramElement} that is investigated for
+     *            decoration update.
+     * @param decorationDescription
+     *            the {@link DecorationDescription} to be applied or not on the
+     *            {@link DDiagramElement}.
+     * @return if this {@link DecorationDescription} should be applied on the
+     *         given {@link DDiagramElement}.
+     */
+    private boolean checkDecoratorCondition(final DDiagramElement element, DecorationDescription decorationDescription) {
+        // True if it is a GenericDecorationDescription
+        Boolean result = decorationDescription instanceof GenericDecorationDescription;
+        // True if it is a MappingBasedDecoration define on the same mapping as
+        // the DDiagramElement
+        result = result || decorationDescription instanceof MappingBasedDecoration && ((MappingBasedDecoration) decorationDescription).getMappings().contains(element.getDiagramElementMapping());
+        // True if it is a SemanticBasedDecoration define on the same domain
+        // class
+        // as the DDiagramElement
+        result = result || decorationDescription instanceof SemanticBasedDecoration && accessor.eInstanceOf(element.getTarget(), ((SemanticBasedDecoration) decorationDescription).getDomainClass());
+        return result;
     }
 
     /**
