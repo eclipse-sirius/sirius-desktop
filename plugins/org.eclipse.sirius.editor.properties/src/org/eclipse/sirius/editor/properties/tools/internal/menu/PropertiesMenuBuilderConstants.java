@@ -13,7 +13,7 @@ package org.eclipse.sirius.editor.properties.tools.internal.menu;
 import java.util.MissingResourceException;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.sirius.editor.properties.SiriusEditorPropertiesPlugin;
+import org.eclipse.sirius.editor.properties.internal.SiriusEditorPropertiesPlugin;
 
 /**
  * Utility class for the menu builders of the Properties.
@@ -25,6 +25,11 @@ public final class PropertiesMenuBuilderConstants {
      * The priority of the widgets menu.
      */
     public static final int WIDGETS;
+
+    /**
+     * The priority of the create widget from domain class menu.
+     */
+    public static final int WIDGETS_FROM_DOMAIN_CLASS;
 
     /**
      * The priority of the overrides menu.
@@ -56,6 +61,7 @@ public final class PropertiesMenuBuilderConstants {
     static {
         ResourceLocator rl = SiriusEditorPropertiesPlugin.INSTANCE;
         WIDGETS = getPriority(rl, "WidgetsMenuPriority");
+        WIDGETS_FROM_DOMAIN_CLASS = getPriority(rl, "WidgetsFromDomainClassMenuPriority");
         OVERRIDES = getPriority(rl, "OverridesMenuPriority");
         LAYOUT = getPriority(rl, "LayoutMenuPriority");
         STYLE = getPriority(rl, "StyleMenuPriority");

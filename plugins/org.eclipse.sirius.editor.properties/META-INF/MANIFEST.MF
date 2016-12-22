@@ -20,7 +20,10 @@ Require-Bundle: com.google.guava;bundle-version="[11.0.2,16.0)",
  org.eclipse.sirius.ext.swt;bundle-version="4.0.0",
  org.eclipse.sirius.ext.base;bundle-version="4.1.0",
  org.eclipse.sirius.properties.core;bundle-version="5.0.0"
-Export-Package: org.eclipse.sirius.editor.properties.tools.internal.menu;version="4.1.0";x-internal:=true,
+Export-Package: org.eclipse.sirius.editor.properties.api;version="5.0.0",
+ org.eclipse.sirius.editor.properties.internal;version="5.0.0";x-internal:=true,
+ org.eclipse.sirius.editor.properties.tools.internal.menu;version="4.1.0";x-internal:=true,
+ org.eclipse.sirius.editor.properties.tools.internal.menu.widgets;version="5.0.0";x-internal:=true,
  org.eclipse.sirius.properties.editor.properties.filters.properties.buttondescription;version="4.1.0";x-internal:=true,
  org.eclipse.sirius.properties.editor.properties.filters.properties.checkboxdescription;version="4.1.0";x-internal:=true,
  org.eclipse.sirius.properties.editor.properties.filters.properties.customexpression;version="4.1.0";x-internal:=true,
@@ -72,6 +75,6 @@ Export-Package: org.eclipse.sirius.editor.properties.tools.internal.menu;version
  org.eclipse.sirius.properties.editor.properties.sections.properties.widgetaction;version="4.1.0";x-internal:=true,
  org.eclipse.sirius.properties.editor.properties.sections.properties.widgetconditionalstyle;version="4.1.0";x-internal:=true,
  org.eclipse.sirius.properties.editor.properties.sections.properties.widgetdescription;version="4.1.0";x-internal:=true,
- org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle;version="4.1.0";x-internal:=true,
- org.eclipse.sirius.editor.properties;version="4.1.0";x-internal:=true
-Bundle-Activator: org.eclipse.sirius.editor.properties.SiriusEditorPropertiesPlugin$Implementation
+ org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle;version="4.1.0";x-internal:=true
+Bundle-Activator: org.eclipse.sirius.editor.properties.internal.SiriusEditorPropertiesPlugin$Implementation
+Bundle-ActivationPolicy: lazy

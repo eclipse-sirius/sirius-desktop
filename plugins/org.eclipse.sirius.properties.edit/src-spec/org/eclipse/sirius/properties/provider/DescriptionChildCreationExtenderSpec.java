@@ -39,7 +39,6 @@ public class DescriptionChildCreationExtenderSpec extends DescriptionChildCreati
      * @author sbegaudeau
      */
     protected static class CreationSwitchSpec extends CreationSwitch {
-        private static final String DEFAULT_IDENTIFIER = "Default"; //$NON-NLS-1$
 
         /**
          * The constructor.
@@ -56,21 +55,26 @@ public class DescriptionChildCreationExtenderSpec extends DescriptionChildCreati
         @Override
         public Object caseGroup(Group object) {
             ViewExtensionDescription ved = PropertiesFactory.eINSTANCE.createViewExtensionDescription();
-            ved.setName("Properties"); //$NON-NLS-1$
+            ved.setName(Messages.ViewExtensionDescription__name);
+
             Category category = PropertiesFactory.eINSTANCE.createCategory();
-            category.setName(DEFAULT_IDENTIFIER);
+            category.setName(Messages.Category__name);
             ved.getCategories().add(category);
+
             PageDescription page = PropertiesFactory.eINSTANCE.createPageDescription();
-            page.setName(DEFAULT_IDENTIFIER);
+            page.setName(Messages.PageDescription__name);
             page.setLabelExpression("Page"); //$NON-NLS-1$
             page.setSemanticCandidateExpression(ViewExtensionDescriptionItemProvider.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
             category.getPages().add(page);
+
             GroupDescription group = PropertiesFactory.eINSTANCE.createGroupDescription();
-            group.setName(DEFAULT_IDENTIFIER);
+            group.setName(Messages.GroupDescription__name);
             group.setLabelExpression("Group"); //$NON-NLS-1$
             group.setSemanticCandidateExpression(ViewExtensionDescriptionItemProvider.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
             category.getGroups().add(group);
+
             page.getGroups().add(group);
+
             newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.GROUP__EXTENSIONS, ved));
             return null;
         }

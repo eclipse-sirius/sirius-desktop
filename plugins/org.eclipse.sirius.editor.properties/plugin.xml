@@ -558,6 +558,7 @@
   <extension point="org.eclipse.sirius.editor.menuBuilder">
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.WidgetsMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.StyleMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.CreateWidgetFromDomainClassMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.LayoutMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.PropertiesMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.OverridesMenuBuilder" />

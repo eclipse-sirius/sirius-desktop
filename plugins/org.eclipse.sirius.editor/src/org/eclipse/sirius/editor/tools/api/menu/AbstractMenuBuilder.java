@@ -186,6 +186,11 @@ public abstract class AbstractMenuBuilder {
      */
     protected static final int REFACTOR;
 
+    /**
+     * The priority of the Domain Class Widgets menu.
+     */
+    protected static final int DOMAIN_CLASS_WIDGETS;
+    
     private static final String EDIT = "edit";
 
     private static final int DEFAULT_PRIORITY = 1000000000;
@@ -218,6 +223,7 @@ public abstract class AbstractMenuBuilder {
         OTHERS = getPriority(rl, "OthersPriority");
         INITIALIZE = getPriority(rl, "InitializePriority");
         REFACTOR = getPriority(rl, "RefactorPriority");
+        DOMAIN_CLASS_WIDGETS = getPriority(rl, "DomainClassWidgetsPriority");
     }
 
     /**

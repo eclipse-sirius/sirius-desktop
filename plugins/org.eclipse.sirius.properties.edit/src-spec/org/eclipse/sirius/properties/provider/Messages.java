@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,29 +8,37 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties;
+package org.eclipse.sirius.properties.provider;
 
-import org.eclipse.sirius.ext.base.I18N;
-import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;
+import org.eclipse.sirius.properties.provider.I18N.TranslatableMessage;
 
 /**
- * Helper class to obtains translated strings.
+ * Helper class to obtain translated strings.
  * 
- * @author mbats
+ * @author sbegaudeau
  */
 public final class Messages {
 
     static {
-        I18N.initializeMessages(Messages.class, SiriusEditorPropertiesPlugin.INSTANCE);
+        I18N.initializeMessages(Messages.class, PropertiesEditPlugin.INSTANCE);
     }
 
     // CHECKSTYLE:OFF
     @TranslatableMessage
-    public static String ImportingDefaultPropertiesViewDescriptionCommand_text;
+    public static String ViewExtensionDescription__name;
+
+    @TranslatableMessage
+    public static String Category__name;
+
+    @TranslatableMessage
+    public static String PageDescription__name;
+
+    @TranslatableMessage
+    public static String GroupDescription__name;
 
     // CHECKSTYLE:ON
 
     private Messages() {
-        // Prevents instanciation.
+        // Prevents instantiation.
     }
 }
