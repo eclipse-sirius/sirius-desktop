@@ -6,7 +6,8 @@ _Summary_: Improve decoration management on diagram elements including tooltip.
 
 |_. Version |_. Status |_. Date        |_. Authors |_. Changes |
 | v0.1        | DRAFT    | 2016-10-20 | lfasani    | Initial version. |
-| v0.2        | PROPOSED    | 2016-10-20 | lfasani    | updated version. |
+| v0.2        | PROPOSED    | 2016-12-02 | lfasani    | updated version. |
+| v1.0        | ACCEPTED    | 2016-12-22 | lfasani    | updated version. |
 
 _Relevant tickets_:
 * "Bugzilla #506259, Improve decoration management on diagram elements":https://bugs.eclipse.org/bugs/show_bug.cgi?id=506259
@@ -165,8 +166,11 @@ A user will be able to activate/deactivate some decorations but **without making
 The activation/deactivation of decorations will keep being managed by layers.
 Currently, if a custom decoration is defined in a layer, the application of the layer will dirty the diagram.
 To avoid the dirty status, the concept of a **transient layer** is created. The transient layer contains only decorations.
-
 At save, the transient layer application is not persisted in the diagram and decorations are not persisted either.
+
+A transient layer has the following features:
+ * activeByDefault : if true, the layer is activated at each diagram opening.
+ * optional : if true the layer can be deactivated and if false, the layer is always activated. In the latter case, activeByDefault is ignored.
 
 A transient layer is a layer that can be used like a non transient layer. 
 From layers drop down menu in diagram editor tabbar, the transient layers are displayed at end the end of the menu. A separator isolates non transient and transient layers.
@@ -181,6 +185,8 @@ In auto refresh, the decoration is updated at any change in the session. The ref
 
 In manual refresh, the decoration refresh does not work very well. It is refreshed when modifying the semantic element but only in the case the decoration should be removed.
 This specification includes the fix of this bug. As expected behavior, in manual refresh, the decorations of a DDiagramElement should be correctly updated after a change on the semantic element and/or elements returned by associated elements expression.
+
+When applying a layer, transient or not, in manual refresh, the diagram elements won't be refreshed if the layer contains only decorations (contrary to the current behavior). Only the decorations will be refreshed.
 
 h3. Print/Export visibility
 
@@ -246,6 +252,8 @@ For now, it will only be possible to add decorations in that kind of layer.
 @DDiagram.activatedTransientLayers@ is added as a transient feature. When applying a transient additional layer, it is added in @DDiagram.activatedTransientLayers@ so that the resource will not be set as modified (according to ResourceModifiedFieldUpdater) and the layer appliance will not be serialized.
 
 For "DecorationDescription specific case":#decorationDescription, @DDiagramElement.transientDecoration@ is added as transient feature so that this information will not be serialized.
+
+An API, will be provided to call the decorations refresh on a diagram.
 
 h3(generic_decoration). Custom decoration : generic decoration
 
@@ -328,4 +336,11 @@ h2. Implementation choices and tradeoffs
 * Decoration display is based on bounding box but not the visible DDiagramElement. It means that decoration may go over the DDiagramElement figure. For example a north-east decoration will be displayed out of the diamond figure or will go over a square node if the corner are rounded.
 * Nothing special will be done about decoration on hidden @DDiagramElement@. This performance issue shall be handled separately.
 
+h3. Transient layer application by user
+
+This enhancement has been discussed but is out of scope for this specification.
+As it is defined in this specification, the concept of transient layer is defined par the specifier in the VSM.
+It would be up to the user to choose if the layer is applied transient or not.
+There would be a dedicated UI to choose between "not applied", "applied" or "applied transiently".
+The concept of transient layer in the VSM would not be needed any more.
 

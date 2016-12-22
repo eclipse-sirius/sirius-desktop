@@ -224,8 +224,12 @@
 			<br/>Currently, if a custom decoration is defined in a layer, the application of the layer will dirty the diagram.
 			<br/>To avoid the dirty status, the concept of a 
 			<b>transient layer</b> is created. The transient layer contains only decorations.
+			<br/>At save, the transient layer application is not persisted in the diagram and decorations are not persisted either.
 		</p>
-		<p>At save, the transient layer application is not persisted in the diagram and decorations are not persisted either.</p>
+		<p>A transient layer has the following features:
+			<br/> * activeByDefault : if true, the layer is activated at each diagram opening.
+			<br/> * optional : if true the layer can be deactivated and if false, the layer is always activated. In the latter case, activeByDefault is ignored.
+		</p>
 		<p>A transient layer is a layer that can be used like a non transient layer. 
 			<br/>From layers drop down menu in diagram editor tabbar, the transient layers are displayed at end the end of the menu. A separator isolates non transient and transient layers.
 		</p>
@@ -238,6 +242,7 @@
 		<p>In manual refresh, the decoration refresh does not work very well. It is refreshed when modifying the semantic element but only in the case the decoration should be removed.
 			<br/>This specification includes the fix of this bug. As expected behavior, in manual refresh, the decorations of a DDiagramElement should be correctly updated after a change on the semantic element and/or elements returned by associated elements expression.
 		</p>
+		<p>When applying a layer, transient or not, in manual refresh, the diagram elements won&#8217;t be refreshed if the layer contains only decorations (contrary to the current behavior). Only the decorations will be refreshed.</p>
 		<h3 id="PrintExportvisibility">Print/Export visibility</h3>
 		<p>The preference 
 			<a href="#size_adaptation">authorize overlapping</a> is also used for export and print.
@@ -316,6 +321,7 @@
 			<a href="#decorationDescription">DecorationDescription specific case</a>, 
 			<code>DDiagramElement.transientDecoration</code> is added as transient feature so that this information will not be serialized.
 		</p>
+		<p>An API, will be provided to call the decorations refresh on a diagram.</p>
 		<h3 id="Customdecorationgenericdecoration" class="generic_decoration">Custom decoration : generic decoration</h3>
 		<p>A new 
 			<code>GenericDecorationDescription</code> inheriting from 
@@ -462,5 +468,12 @@
 				<code>DDiagramElement</code>. This performance issue shall be handled separately.
 			</li>
 		</ul>
+		<h3 id="Transientlayerapplicationbyuser">Transient layer application by user</h3>
+		<p>This enhancement has been discussed but is out of scope for this specification.
+			<br/>As it is defined in this specification, the concept of transient layer is defined par the specifier in the VSM.
+			<br/>It would be up to the user to choose if the layer is applied transient or not.
+			<br/>There would be a dedicated UI to choose between &#171;not applied&#187;, &#171;applied&#187; or &#171;applied transiently&#187;.
+			<br/>The concept of transient layer in the VSM would not be needed any more.
+		</p>
 	</body>
 </html>
