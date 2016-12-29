@@ -36,7 +36,6 @@
       When you are satisfied with your viewpoints and representations definitions, you can test them in a non-dynamic setting, closer to how your users will experience it.
     </description>
     <subitem label="Create a new 'Eclipse Application' launch configuration using the 'Run > Run Configurations...' menu." />
-    <subitem label="In the 'Arguments / VM Arguments' configuration section, add '-XX:MaxPermSize=256m' to ensure enough memory for the Eclipse runtime." />
     <subitem label="Run the launch configuration, and test your viewpoints." />
   </item>
   <item title="Deploy your viewpoints" dialog="true" skip="false">
