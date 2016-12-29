@@ -31,11 +31,9 @@ import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
- * Encapsulates the decision of *when* to actually save the session's state when
- * Session.save() is called. If Session.save() is called while a transaction is
- * in progress and deferSaveToPostCommit is true, the actual saving will be
- * performed after the current transaction has been successfully commited.
- * Otherwise it is performed immediatly.
+ * Encapsulates the decision of *when* to actually save the session's state when Session.save() is called. If
+ * Session.save() is called while a transaction is in progress and deferSaveToPostCommit is true, the actual saving will
+ * be performed after the current transaction has been successfully commited. Otherwise it is performed immediatly.
  * 
  * @author pcdavid
  */
@@ -75,8 +73,8 @@ final class Saver extends TransactionalEditingDomainListenerImpl {
     }
 
     /**
-     * Do saving after transaction closing in case the SavingPolicy trigger
-     * another transaction by executing a EMF Command.
+     * Do saving after transaction closing in case the SavingPolicy trigger another transaction by executing a EMF
+     * Command.
      */
     @Override
     public void transactionClosed(TransactionalEditingDomainEvent event) {
@@ -97,8 +95,7 @@ final class Saver extends TransactionalEditingDomainListenerImpl {
     }
 
     /**
-     * Arm the trigger so that the saving is performed after transaction
-     * closing.
+     * Arm the trigger so that the saving is performed after transaction closing.
      */
     private void saveAfterTransactionClosing(Map<?, ?> options, IProgressMonitor monitor) {
         this.savedOptions = options;
@@ -177,6 +174,7 @@ final class Saver extends TransactionalEditingDomainListenerImpl {
             lifecycle.removeTransactionalEditingDomainListener(this);
         }
         disarm();
+        this.domain = null;
     }
 
 }

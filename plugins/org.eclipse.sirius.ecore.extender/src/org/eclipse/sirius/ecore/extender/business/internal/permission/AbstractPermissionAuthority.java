@@ -84,12 +84,8 @@ public abstract class AbstractPermissionAuthority implements IPermissionAuthorit
 
     @Override
     public void dispose(final ResourceSet set) {
-        if (set == null) {
-            listeners.clear();
-            lockedObjects.clear();
-        } else {
-            // we may clear the map
-        }
+        listeners.clear();
+        lockedObjects.clear();
     }
 
     @Override
