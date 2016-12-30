@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
@@ -62,6 +61,8 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+
+import com.google.common.collect.Lists;
 
 /**
  * Common operations for DnD tasks.
@@ -294,8 +295,7 @@ public final class DnDTasksOperations {
      */
     static void moveSubNodes(final DNodeContainer oldDiagramElementContainer, final EObject containerDroppedElement, final ContainerDropDescription tool,
             final DNodeContainer newDiagramElementContainer) {
-        final EList<DDiagramElement> ownedDiagramElementsToDrop = oldDiagramElementContainer.getOwnedDiagramElements();
-        for (DDiagramElement diagramElementToDrop : ownedDiagramElementsToDrop) {
+        for (DDiagramElement diagramElementToDrop : Lists.newArrayList(oldDiagramElementContainer.getOwnedDiagramElements())) {
             final DragAndDropTargetDescription dragDragAndDropDescription = newDiagramElementContainer.getDragAndDropDescription();
             final ContainerDropDescription dropTool = DDiagramElementContainerSpecOperations.getBestDropDescription(dragDragAndDropDescription, diagramElementToDrop.getTarget(),
                     containerDroppedElement, containerDroppedElement, newDiagramElementContainer, DragSource.DIAGRAM_LITERAL, diagramElementToDrop);
