@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -132,22 +133,31 @@ class CreatedTreeItem extends AbstractCreatedDTreeItemContainer {
      * work only from Eclipse Mars. See Bug 460206.
      */
     private boolean willBeExpandedOnSelection(RefreshPlan refreshPlan) {
-        boolean willBeExpandedOnSelection = false;
-        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(tItem);
-        if (domain instanceof InternalTransactionalEditingDomain) {
-            InternalTransaction transaction = ((InternalTransactionalEditingDomain) domain).getActiveTransaction().getRoot();
-            TransactionChangeDescription changeDescription = transaction.getChangeDescription();
-            if (changeDescription != null) {
-                Collection<EObject> createdObjects = changeDescription.getObjectsToDetach();
-                for (OutputDescriptor descriptorToCreate : refreshPlan.getDescriptorsToCreate()) {
-                    if (EcoreUtil.isAncestor(createdObjects, descriptorToCreate.getSourceElement())) {
-                        willBeExpandedOnSelection = true;
-                        break;
-                    }
-                }
+        Collection<EObject> createdObjects = getCreatedObjects(this);
+        for (OutputDescriptor descriptorToCreate : refreshPlan.getDescriptorsToCreate()) {
+            if (EcoreUtil.isAncestor(createdObjects, descriptorToCreate.getSourceElement())) {
+                return true;
             }
         }
-        return willBeExpandedOnSelection;
+        return false;
+    }
+    
+    private static Collection<EObject> getCreatedObjects(CreatedTreeItem item) {
+        GlobalContext ctx = item.getGlobalContext();
+        if (ctx instanceof TreeRefreshContext) {
+            return ((TreeRefreshContext) ctx).getCreatedObjects();
+        } else {
+            Collection<EObject> result = Collections.emptySet();
+            TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(item.tItem);
+            if (domain instanceof InternalTransactionalEditingDomain) {
+                InternalTransaction transaction = ((InternalTransactionalEditingDomain) domain).getActiveTransaction().getRoot();
+                TransactionChangeDescription changeDescription = transaction.getChangeDescription();
+                if (changeDescription != null) {
+                    result = changeDescription.getObjectsToDetach();
+                }
+            }
+            return result;
+        }
     }
 
     @Override

@@ -25,6 +25,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.command.DTreeItemExpansionChangeCommand;
+import org.eclipse.sirius.tree.business.internal.dialect.common.tree.TreeRefreshContext;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
 import org.eclipse.sirius.tree.business.internal.helper.RefreshTreeElementTask;
 import org.eclipse.sirius.tree.ui.provider.Messages;
@@ -74,7 +75,7 @@ public class ExpandDTreeItemRunnableWithProgress implements IRunnableWithProgres
         try {
             TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
             CommandStack commandStack = domain.getCommandStack();
-            GlobalContext globalContext = new GlobalContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources());
+            GlobalContext globalContext = new TreeRefreshContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources(), session.getTransactionalEditingDomain());
             if (expand) {
                 monitor.beginTask(Messages.ExpandDTreeItemRunnableWithProgress_treeItemExpanding, 1);
                 CompoundCommand expandDTreeItemCmd = new CompoundCommand(MessageFormat.format(Messages.ExpandDTreeItemRunnableWithProgress_expandTreeItem, dTreeItem.getName()));

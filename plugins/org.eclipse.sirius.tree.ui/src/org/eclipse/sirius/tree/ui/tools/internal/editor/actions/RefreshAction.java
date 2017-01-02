@@ -30,6 +30,7 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.command.DTreeItemLocalRefreshCommand;
+import org.eclipse.sirius.tree.business.internal.dialect.common.tree.TreeRefreshContext;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
 import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
@@ -111,7 +112,7 @@ public class RefreshAction extends Action implements IObjectActionDelegate {
                     public void run(final IProgressMonitor monitor) {
                         Session session = new EObjectQuery(treeEditor.getRepresentation()).getSession();
                         if (session != null) {
-                            GlobalContext globalContext = new GlobalContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources());
+                            GlobalContext globalContext = new TreeRefreshContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources(), session.getTransactionalEditingDomain());
                             TransactionalEditingDomain domain = treeEditor.getEditingDomain();
                             Command localRefreshCmd = new DTreeItemLocalRefreshCommand(domain, globalContext, dTreeItems, false);
                             domain.getCommandStack().execute(localRefreshCmd);
