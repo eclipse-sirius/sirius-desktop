@@ -5,7 +5,7 @@ include "modules/eef-nightly.tpd"
 
 with source, requirements
 
-location Sirius-Interpreter-Nightly-Neo "http://download.eclipse.org/sirius/updates/nightly/latest/neon/" {
+location Sirius-Interpreter-4.1.x-Neon "http://download.eclipse.org/sirius/updates/nightly/4.1.x/neon/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
