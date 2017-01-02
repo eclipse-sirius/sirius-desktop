@@ -45,7 +45,7 @@ import org.eclipse.sirius.tree.DTreeElementSynchronizer;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.TreeFactory;
 import org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction;
-import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
+import org.eclipse.sirius.tree.business.internal.dialect.common.tree.TreeRefreshContext;
 import org.eclipse.sirius.tree.business.internal.dialect.description.TreeInterpretedExpressionQuery;
 import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
 import org.eclipse.sirius.tree.description.TreeDescription;
@@ -213,7 +213,7 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
         InterpreterRegistry.prepareImportsFromSession(interpreter, session);
         ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(tree.getTarget());
 
-        DTreeUserInteraction interaction = new DTreeUserInteraction(tree, new GlobalContext(accessor, session.getInterpreter(), session.getSemanticResources()));
+        DTreeUserInteraction interaction = new DTreeUserInteraction(tree, new TreeRefreshContext(accessor, session.getInterpreter(), session.getSemanticResources(), session.getTransactionalEditingDomain()));
         interaction.refreshContent(fullRefresh, new SubProgressMonitor(monitor, 1));
 
     }

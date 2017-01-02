@@ -20,7 +20,7 @@ import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.Global
  */
 abstract class AbstractCreatedDTreeItemContainer implements CreatedOutput {
 
-    private GlobalContext ctx;
+    protected GlobalContext ctx;
 
     /**
      * A default constructor.
