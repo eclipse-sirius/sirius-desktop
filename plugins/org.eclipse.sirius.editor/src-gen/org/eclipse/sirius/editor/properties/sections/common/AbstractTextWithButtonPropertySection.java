@@ -32,7 +32,6 @@ import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbenchPart;
@@ -51,9 +50,6 @@ public abstract class AbstractTextWithButtonPropertySection extends AbstractView
 
     /** Text control of the section. */
     protected Text text;
-
-    /** The button control for the section. */
-    protected Button button;
 
     /** Label control of the section. */
     protected CLabel nameLabel;
@@ -82,16 +78,9 @@ public abstract class AbstractTextWithButtonPropertySection extends AbstractView
         text = getWidgetFactory().createText(composite, ""); //$NON-NLS-1$
         data = new FormData();
         data.left = new FormAttachment(0, LABEL_WIDTH);
-        data.right = new FormAttachment(95, 0);
+        data.right = new FormAttachment(100, 0);
         data.top = new FormAttachment(0, ITabbedPropertyConstants.VSPACE);
         text.setLayoutData(data);
-
-        button = getWidgetFactory().createButton(composite, "...", SWT.PUSH);
-        data = new FormData();
-        data.left = new FormAttachment(95, 0);
-        data.right = new FormAttachment(100, 0);
-        data.top = new FormAttachment(text, 0, SWT.CENTER);
-        button.setLayoutData(data);
 
         nameLabel = getWidgetFactory().createCLabel(composite, getLabelText());
         data = new FormData();
@@ -99,8 +88,6 @@ public abstract class AbstractTextWithButtonPropertySection extends AbstractView
         data.right = new FormAttachment(text, -ITabbedPropertyConstants.HSPACE - 20);
         data.top = new FormAttachment(text, 0, SWT.CENTER);
         nameLabel.setLayoutData(data);
-
-        button.addSelectionListener(createButtonListener());
 
         listener = new TextWithContentAssistChangeHelper() {
             public void textChanged(Text control) {
