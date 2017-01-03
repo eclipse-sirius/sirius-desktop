@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;
 
+import java.util.Collections;
 import java.util.Iterator;
 
 import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
 
 /**
  * A tree iterator to iterate on hierarchies of GMF edit parts.
@@ -62,7 +62,7 @@ class EditPartsTreeIterator extends AbstractTreeIterator<IGraphicalEditPart> {
             Iterable<IGraphicalEditPart> children = Iterables.filter(((IGraphicalEditPart) object).getChildren(), IGraphicalEditPart.class);
             return children.iterator();
         } else {
-            return Iterators.emptyIterator();
+            return Collections.emptyIterator();
         }
     }
 

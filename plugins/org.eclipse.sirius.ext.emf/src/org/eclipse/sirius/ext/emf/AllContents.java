@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.emf;
 
+import java.util.Collections;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;
@@ -117,7 +118,7 @@ public final class AllContents implements Iterable<EObject> {
     public Iterator<EObject> iterator() {
         final Iterator<EObject> contentsIterator;
         if (root == null) {
-            contentsIterator = Iterators.<EObject> emptyIterator();
+            contentsIterator = Collections.emptyIterator();
         } else if (klass == null) {
             contentsIterator = root.eAllContents();
         } else {

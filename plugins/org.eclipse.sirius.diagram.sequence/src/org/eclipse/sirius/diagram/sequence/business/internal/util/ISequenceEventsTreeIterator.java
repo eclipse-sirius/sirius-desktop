@@ -10,12 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.util;
 
+import java.util.Collections;
 import java.util.Iterator;
 
 import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
-
-import com.google.common.collect.Iterators;
 
 /**
  * A tree iterator to iterate on hierarchies of ISequenceEvent.
@@ -60,7 +59,7 @@ public class ISequenceEventsTreeIterator extends AbstractTreeIterator<ISequenceE
             Iterable<ISequenceEvent> children = ((ISequenceEvent) object).getSubEvents();
             return children.iterator();
         } else {
-            return Iterators.emptyIterator();
+            return Collections.emptyIterator();
         }
     }
 

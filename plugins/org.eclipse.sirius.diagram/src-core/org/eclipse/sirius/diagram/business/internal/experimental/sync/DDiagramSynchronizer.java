@@ -108,7 +108,6 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -1502,8 +1501,8 @@ public class DDiagramSynchronizer {
             sourceMappings = actualMapping.get().getSourceMapping().iterator();
             targetMappings = actualMapping.get().getTargetMapping().iterator();
         } else {
-            sourceMappings = Iterators.emptyIterator();
-            targetMappings = Iterators.emptyIterator();
+            sourceMappings = Collections.emptyIterator();
+            targetMappings = Collections.emptyIterator();
         }
 
         final boolean sourceIsNotDisplayed = nodeIsNotDisplayed(sourceMappings, source, mappingsToEdgeTargets);

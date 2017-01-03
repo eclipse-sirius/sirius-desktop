@@ -10,11 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.emf;
 
+import java.util.Collections;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.collect.Iterators;
 
 /**
  * Adapter class to treat an <code>EObject</code> as an <code>Iterable</code> on
@@ -58,6 +57,6 @@ public final class Contents implements Iterable<EObject> {
      * {@inheritDoc}
      */
     public Iterator<EObject> iterator() {
-        return (root != null) ? root.eContents().iterator() : Iterators.<EObject> emptyIterator();
+        return (root != null) ? root.eContents().iterator() : Collections.<EObject> emptyIterator();
     }
 }
