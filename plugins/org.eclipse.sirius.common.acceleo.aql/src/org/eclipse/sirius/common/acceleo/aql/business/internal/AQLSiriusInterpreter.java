@@ -37,6 +37,7 @@ import org.eclipse.acceleo.query.runtime.QueryValidation;
 import org.eclipse.acceleo.query.runtime.ServiceUtils;
 import org.eclipse.acceleo.query.runtime.ValidationMessageLevel;
 import org.eclipse.acceleo.query.validation.type.EClassifierType;
+import org.eclipse.acceleo.query.validation.type.ICollectionType;
 import org.eclipse.acceleo.query.validation.type.IType;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -306,6 +307,16 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
             }
             List<String> classifierNames = Lists.newArrayList();
             for (IType type : aqlValidationResult.getPossibleTypes(aqlValidationResult.getAstResult().getAst())) {
+                /*
+                 * Sirius has no notion of "multiple" or "collection" type in
+                 * its typesystem and will unwrap the collection when using its
+                 * result as the root of a new expression. It seems better to
+                 * return the type information than hide which leads to a
+                 * fall-back to EObject.
+                 */
+                if (type instanceof ICollectionType) {
+                    type = ((ICollectionType) type).getCollectionType();
+                }
                 if (type instanceof EClassifierType) {
                     EClassifierType eClassifierType = (EClassifierType) type;
                     if (eClassifierType.getType() != null && eClassifierType.getType().getName() != null) {
