@@ -11,12 +11,14 @@
 package org.eclipse.sirius.ui.properties.internal.expressions;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.eef.common.api.utils.Util;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
@@ -52,6 +54,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
+import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
@@ -192,10 +195,8 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
             }
             cur = parent;
         }
-        
-        
-        boolean isPropertiesElement = target.eClass().getEPackage() == PropertiesPackage.eINSTANCE;
-        if (isPropertiesElement) {
+
+        if (isFromOrInheritsPropertiesEPackage(this.target)) {
             // "input" is always available.
             availableVariables.put(EEFExpressionUtils.INPUT, VariableType.fromJavaClass(SiriusInputDescriptor.class));
 
@@ -228,6 +229,24 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
         } else {
             return super.getAvailableVariables();
         }
+    }
+
+    /**
+     * return true if the given EObject is from PropertiesPackage or inherits
+     * from one of the EClasses of PropertiesPackage.
+     * 
+     * @param object
+     *            any EObject
+     * @return true if the given EObject is from PropertiesPackage or inherits
+     *         from one of the EClasses of PropertiesPackage
+     */
+    private boolean isFromOrInheritsPropertiesEPackage(EObject object) {
+        boolean isPropertiesElement = false;
+        Iterator<EClass> it = Iterators.concat(Iterators.singletonIterator(object.eClass()), object.eClass().getEAllSuperTypes().iterator());
+        while (!isPropertiesElement && it.hasNext()) {
+            isPropertiesElement = it.next().getEPackage() == PropertiesPackage.eINSTANCE;
+        }
+        return isPropertiesElement;
     }
 
     @Override
