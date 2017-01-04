@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,9 @@ import java.util.EventObject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
@@ -25,6 +27,7 @@ import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -84,8 +87,8 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
- * The advanced Viewpoint Specification Model (*.odesign) Editor, base on the
- * standard EMF-generated editor, but with Sirius-specific customizations.
+ * The advanced Viewpoint Specification Model (*.odesign) Editor, base on the standard EMF-generated editor, but with
+ * Sirius-specific customizations.
  */
 public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigable {
 
@@ -218,8 +221,8 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             validationDecorator = new ValidationDecoration();
             if (Movida.isEnabled()) {
                 /*
-                 * Customize the label provider to add the URI of the
-                 * corresponding resource for Viewpoints loaded by dependency.
+                 * Customize the label provider to add the URI of the corresponding resource for Viewpoints loaded by
+                 * dependency.
                  */
                 decoratingLabelProvider = new GeneratedElementsLabelProvider((ILabelProvider) selectionViewer.getLabelProvider(), validationDecorator) {
                     @Override
@@ -265,8 +268,8 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                     }
                 }
             });
-            
-            selectionViewer.expandToLevel(4);
+
+            revealRepresentationDescriptions();
 
             final ToolBarManager tbm = getToolBarManager();
             tbm.add(new ValidateAction(selectionViewer, this));
@@ -276,9 +279,42 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
     }
 
     /**
-     * Customize the content provider not to show the whole resources loaded by
-     * dependency, but only the Viewpoints (inside these resources) which the
-     * main VSM depend on.
+     * Auto-expand just enough to make the representation descriptions initially visible, but nothing else. They are the
+     * main point of focus of the specifier.
+     */
+    private void revealRepresentationDescriptions() {
+        Optional<Group> group = getTopLevelGroup();
+        if (group.isPresent()) {
+            group.get().getOwnedViewpoints().stream().flatMap(v -> {
+                // All elements inside the Viewpoint that we want to be revealed
+                return Stream.concat(v.getOwnedRepresentations().stream(), v.getOwnedRepresentationExtensions().stream());
+            }).forEach(selectionViewer::reveal);
+        }
+    }
+
+    /**
+     * Locate the main logical element (the top-level Group) of the VSM.
+     * 
+     * @return the main logical element of the VSM.
+     */
+    private Optional<Group> getTopLevelGroup() {
+        EList<Resource> resources = editingDomain.getResourceSet().getResources();
+        if (resources != null && !resources.isEmpty()) {
+            Resource mainResource = resources.get(0);
+            EList<EObject> roots = mainResource.getContents();
+            if (!roots.isEmpty()) {
+                EObject root = roots.get(0);
+                if (root instanceof Group) {
+                    return Optional.of((Group) root);
+                }
+            }
+        }
+        return Optional.empty();
+    }
+
+    /**
+     * Customize the content provider not to show the whole resources loaded by dependency, but only the Viewpoints
+     * (inside these resources) which the main VSM depend on.
      */
     private void customizeContentProvider() {
         final ViewpointRegistry registry = (ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance();
@@ -404,8 +440,8 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
     /**
      * {@inheritDoc}.
      * 
-     * Overridden to add our own vsmURIHandler in save options. it's about
-     * cascading odesign references and to save using logical URIs.
+     * Overridden to add our own vsmURIHandler in save options. it's about cascading odesign references and to save
+     * using logical URIs.
      */
     @Override
     public void doSave(IProgressMonitor progressMonitor) {
