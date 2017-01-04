@@ -46,6 +46,7 @@ import org.eclipse.sirius.ui.properties.internal.SiriusToolServices;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Extension;
+import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -176,6 +177,23 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
         if (availableVariables == null) {
             availableVariables = Maps.newLinkedHashMap();
         }
+        
+        // going through eContainer() to declare any For variable (dynamic
+        // mappings)
+        EObject cur = target;
+        while (!(cur instanceof Group) && cur != null) {
+            EObject parent = cur.eContainer();
+            if (parent instanceof DynamicMappingFor) {
+                String iteratorName = ((DynamicMappingFor) parent).getIterator();
+                if (!Util.isBlank(iteratorName)) {
+                    VariableType iteratorType = getResultType(parent, PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__ITERABLE_EXPRESSION);
+                    availableVariables.put(iteratorName, iteratorType);
+                }
+            }
+            cur = parent;
+        }
+        
+        
         boolean isPropertiesElement = target.eClass().getEPackage() == PropertiesPackage.eINSTANCE;
         if (isPropertiesElement) {
             // "input" is always available.
