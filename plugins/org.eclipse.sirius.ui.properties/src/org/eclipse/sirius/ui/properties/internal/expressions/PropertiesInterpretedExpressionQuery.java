@@ -264,7 +264,11 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
                     availableVariables.put(EEFExpressionUtils.EEFHyperlink.SELECTION, unkownType);
                 }
             } else if (callbackFeature == PropertiesPackage.Literals.RADIO_DESCRIPTION__INITIAL_OPERATION) {
-                availableVariables.put(EEFExpressionUtils.EEFText.NEW_VALUE, stringType);
+                /*
+                 * in the case of the radio button the type of newValue is the
+                 * return type of the candidate expression.
+                 */
+                availableVariables.put(EEFExpressionUtils.EEFText.NEW_VALUE, getResultType(toolContext.eContainer(), PropertiesPackage.Literals.RADIO_DESCRIPTION__CANDIDATES_EXPRESSION));
             } else if (callbackFeature == PropertiesPackage.Literals.WIDGET_ACTION__INITIAL_OPERATION) {
                 Option<Collection<String>> domainClass = VSMNavigation.getDomainClassFromContainingGroup(toolContext);
                 if (!domainClass.some()) {
@@ -273,7 +277,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
                     availableVariables.put(EEFExpressionUtils.EEFHyperlink.SELECTION, unkownType);
                 }
             } else if (callbackFeature == PropertiesPackage.Literals.SELECT_DESCRIPTION__INITIAL_OPERATION) {
-                availableVariables.put(EEFExpressionUtils.EEFText.NEW_VALUE, stringType);
+                availableVariables.put(EEFExpressionUtils.EEFText.NEW_VALUE, getResultType(toolContext.eContainer(), PropertiesPackage.Literals.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION));
             }
         }
     }
