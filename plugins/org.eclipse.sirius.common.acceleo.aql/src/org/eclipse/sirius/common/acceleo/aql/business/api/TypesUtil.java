@@ -18,6 +18,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.acceleo.query.runtime.IQueryEnvironment;
+import org.eclipse.acceleo.query.validation.type.ClassType;
 import org.eclipse.acceleo.query.validation.type.EClassifierType;
 import org.eclipse.acceleo.query.validation.type.IType;
 import org.eclipse.emf.ecore.EClassifier;
@@ -67,7 +68,11 @@ public final class TypesUtil {
             VariableType typeName = varDef.getValue();
             final Set<IType> potentialTypes = new LinkedHashSet<IType>(2);
             for (TypeName possibleVariableTypes : typeName.getPossibleTypes()) {
-                potentialTypes.addAll(searchEClassifierType(queryEnvironment, possibleVariableTypes));
+                if (possibleVariableTypes.getJavaClass().some()) {
+                    potentialTypes.add(new ClassType(queryEnvironment, possibleVariableTypes.getJavaClass().get()));
+                } else {
+                    potentialTypes.addAll(searchEClassifierType(queryEnvironment, possibleVariableTypes));
+                }
             }
             if (potentialTypes.size() == 0) {
                 potentialTypes.add(new EClassifierType(queryEnvironment, EcorePackage.eINSTANCE.getEObject()));

@@ -179,7 +179,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
         boolean isPropertiesElement = target.eClass().getEPackage() == PropertiesPackage.eINSTANCE;
         if (isPropertiesElement) {
             // "input" is always available.
-            availableVariables.put(EEFExpressionUtils.INPUT, VariableType.fromString(SiriusInputDescriptor.class.getName()));
+            availableVariables.put(EEFExpressionUtils.INPUT, VariableType.fromJavaClass(SiriusInputDescriptor.class));
 
             if (feature == PropertiesPackage.Literals.SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION) {
                 VariableType candidatesExpressionType = getResultType(target, PropertiesPackage.Literals.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION);
@@ -228,7 +228,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
     @Override
     protected void addVariablesFromToolContext(EObject toolContext) {
         super.addVariablesFromToolContext(toolContext);
-        availableVariables.put(EEFExpressionUtils.INPUT, VariableType.fromString(SiriusInputDescriptor.class.getName()));
+        availableVariables.put(EEFExpressionUtils.INPUT, VariableType.fromJavaClass(SiriusInputDescriptor.class));
         if (toolContext instanceof InitialOperation) {
             EReference callbackFeature = toolContext.eContainmentFeature();
             VariableType stringType = VariableType.fromString("java.lang.String"); //$NON-NLS-1$

@@ -90,6 +90,19 @@ public final class VariableType {
     }
 
     /**
+     * Create a new {@link VariableType} from a collection of EClassifiers.
+     * 
+     * @param type
+     *            a Java class.
+     * @return the newly created instance.
+     */
+    public static VariableType fromJavaClass(Class<?> type) {
+        VariableType result = new VariableType();
+        result.types.add(TypeName.fromJavaClass(type));
+        return result;
+    }
+
+    /**
      * Return a {@link TypeName} representation of a common type matching all
      * the definitions. This should only be used by interpreters or code which
      * can't take into account the fact that a Variable can have multiple types

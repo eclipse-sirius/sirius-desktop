@@ -46,6 +46,8 @@ public final class TypeName {
 
     private final String typeName;
 
+    private Class<?> javaType;
+
     /**
      * Create a new TypeName from a String representation. This constructor is
      * not visible in order to provide the guarantee EObject or EJavaObject will
@@ -57,6 +59,17 @@ public final class TypeName {
      */
     private TypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    /**
+     * Create a new TypeName from a Java Class.
+     * 
+     * @param type
+     *            any Java class.
+     */
+    public TypeName(Class<?> type) {
+        this.javaType = type;
+        this.typeName = type.getName();
     }
 
     /**
@@ -168,6 +181,25 @@ public final class TypeName {
             }
         }
         return result;
+    }
+
+    /**
+     * Create a new TypeName from a Java class.
+     * 
+     * @param type
+     *            a Java class
+     * @return a TypeName instance.
+     */
+    public static TypeName fromJavaClass(Class<?> type) {
+        TypeName result = new TypeName(type);
+        return result;
+    }
+
+    /**
+     * Return the Java class associated to this type if there is one.
+     */
+    public Option<Class<?>> getJavaClass() {
+        return Options.<Class<?>> fromNullable(this.javaType);
     }
 
     /**
