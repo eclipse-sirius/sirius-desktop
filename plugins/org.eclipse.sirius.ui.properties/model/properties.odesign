@@ -40,7 +40,7 @@
         </widget>
       </ifs>
       <ifs predicateExpression="aql:eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and not(eStructuralFeature.many)">
-        <widget xsi:type="properties:RadioDescription" identifier="sirius_default_rules_enum" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.eType.getEEnumLiteralByLiteral(self.eGet(eStructuralFeature.name).toString())" candidatesExpression="aql:eStructuralFeature.eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
+        <widget xsi:type="properties:RadioDescription" identifier="sirius_default_rules_enum" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).getEEnumLiteralByLiteral(self.eGet(eStructuralFeature.name).toString())" candidatesExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
           <initialOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, newValue.instance)"/>
           </initialOperation>
