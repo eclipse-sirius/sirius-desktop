@@ -27,10 +27,13 @@ import org.eclipse.eef.ide.api.extensions.impl.ItemRegistry;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.tools.internal.validation.EValidatorAdapter;
 import org.eclipse.sirius.ui.properties.api.DefaultDescriptionConverter;
 import org.eclipse.sirius.ui.properties.api.DefaultDescriptionWithInitialOperationConverter;
 import org.eclipse.sirius.ui.properties.api.IDescriptionConverter;
@@ -186,6 +189,9 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
             this.contextAdapterProviderListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, CONTEXT_ADAPTER_PROVIDER_EXTENSION_POINT, this.contextAdapterProviderRegistry);
             registry.addListener(this.contextAdapterProviderListener, PLUGIN_ID + '.' + CONTEXT_ADAPTER_PROVIDER_EXTENSION_POINT);
             this.contextAdapterProviderListener.readRegistry(registry);
+            
+            // Sets the validator for these model.
+            EValidator.Registry.INSTANCE.put(PropertiesPackage.eINSTANCE, new EValidatorAdapter());
         }
 
         @Override
