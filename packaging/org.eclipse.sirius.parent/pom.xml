@@ -363,6 +363,7 @@
         <module>../../plugins/org.eclipse.sirius.samples.family</module>
 
         <module>../../plugins/org.eclipse.sirius.common.interpreter</module>
+        <module>../../plugins/org.eclipse.sirius.common.interpreter.aql</module>
         <module>../../plugins/org.eclipse.sirius.properties</module>
         <module>../../plugins/org.eclipse.sirius.properties.edit</module>
         <module>../../plugins/org.eclipse.sirius.properties.ext.widgets.reference</module>
