@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -208,6 +208,10 @@ public class ExecutionLinkedMessageReconnectionTests extends AbstractDefaultMode
         // Expected bounds after the drag
         boundsM6.translate(-expectedResizeOfMessageToExecutionAfterDelete, 0);
         boundsM6.resize(expectedResizeOfMessageToExecutionAfterDelete, 0);
+
+        // Scroll to (0, 0) to avoid side effect of the scroll bars in case of
+        // small screen or higher toolbar in some environment.
+        editor.scrollTo(0, 0);
 
         // Validate bounds
         assertExecutionHasValidScreenBounds(LIFELINE_A, 0, boundsE2);

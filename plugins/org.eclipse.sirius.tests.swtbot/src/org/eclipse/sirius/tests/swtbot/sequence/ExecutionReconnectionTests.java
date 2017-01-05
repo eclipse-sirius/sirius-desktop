@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,8 +75,7 @@ public class ExecutionReconnectionTests extends AbstractDefaultModelSequenceTest
     }
 
     /**
-     * Deleting an execution have to reconnect its sub
-     * executions on its parent.
+     * Deleting an execution have to reconnect its sub executions on its parent.
      * 
      */
     public void test_Delete_Execution_And_Reconnect_Sub_Executions() {
@@ -133,6 +132,10 @@ public class ExecutionReconnectionTests extends AbstractDefaultModelSequenceTest
 
         // Expected bounds after the drag
         boundsE6.translate(expectedTranslationAfterDelete, 0);
+
+        // Scroll to (0, 0) to avoid side effect of the scroll bars in case of
+        // small screen or higher toolbar in some environment.
+        editor.scrollTo(0, 0);
 
         // Validate bounds
         assertExecutionHasValidScreenBounds(LIFELINE_A, 0, boundsE1);
