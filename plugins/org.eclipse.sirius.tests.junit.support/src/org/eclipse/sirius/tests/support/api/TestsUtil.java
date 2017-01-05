@@ -1,6 +1,6 @@
-/**
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES
- * All rights reserved.   This program and the accompanying materials
+/*******************************************************************************
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES
+ * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
@@ -9,10 +9,26 @@
  *      Obeo - Initial API and implementation
  *      Ketan Padegaonkar and others - the various waitUntil() methods come
  *        from org.eclipse.swtbot.swt.finder.SWTBotFactory
- */
+ *******************************************************************************/
 package org.eclipse.sirius.tests.support.api;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.osgi.internal.framework.EquinoxBundle;
+import org.eclipse.osgi.storage.BundleInfo.Generation;
+import org.eclipse.pde.core.target.ITargetDefinition;
+import org.eclipse.pde.core.target.ITargetHandle;
+import org.eclipse.pde.core.target.ITargetLocation;
+import org.eclipse.pde.core.target.ITargetPlatformService;
+import org.eclipse.pde.core.target.LoadTargetDefinitionJob;
+import org.eclipse.pde.internal.core.target.TargetPlatformService;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Assert;
 import org.osgi.framework.Bundle;
@@ -283,5 +299,52 @@ public final class TestsUtil {
      */
     public static void waitUntil(ICondition condition) {
         TestsUtil.waitUntil(condition, 5000, 500);
+    }
+
+    /**
+     * Sets a target platform in the test platform to get workspace builds OK
+     * with PDE.<BR>
+     * Copied and adpated from
+     * http://git.eclipse.org/c/gmf-tooling/org.eclipse.gmf-tooling.git/tree/
+     * tests/org.eclipse.gmf.tests/src/org/eclipse/gmf/tests/Utils.java
+     * 
+     * @throws CoreException
+     *             In case of problem to retrieve current target platform or to
+     *             save the new one.
+     * @throws InterruptedException
+     *             if the loading platform job is interrupted while waiting
+     */
+    @SuppressWarnings("restriction")
+    public static void setTargetPlatform() throws CoreException, InterruptedException {
+        String targetName = "PDE Platgorm from OSGi bundles";
+        ITargetPlatformService tpService = TargetPlatformService.getDefault();
+        ITargetHandle targetHandle = tpService.getWorkspaceTargetHandle();
+        if (targetHandle == null || !targetName.equals(targetHandle.getTargetDefinition().getName())) {
+            ITargetDefinition targetDef = tpService.newTarget();
+            targetDef.setName(targetName);
+            Bundle[] bundles = Platform.getBundle("org.eclipse.core.runtime").getBundleContext().getBundles();
+            List<ITargetLocation> bundleContainers = new ArrayList<ITargetLocation>();
+            Set<File> dirs = new HashSet<File>();
+            for (Bundle bundle : bundles) {
+                EquinoxBundle bundleImpl = (EquinoxBundle) bundle;
+                Generation generation = (Generation) bundleImpl.getModule().getCurrentRevision().getRevisionInfo();
+                File file = generation.getBundleFile().getBaseFile();
+                File folder = file.getParentFile();
+                if (!dirs.contains(folder)) {
+                    dirs.add(folder);
+                    bundleContainers.add(tpService.newDirectoryLocation(folder.getAbsolutePath()));
+                }
+            }
+            targetDef.setTargetLocations(bundleContainers.toArray(new ITargetLocation[bundleContainers.size()]));
+            targetDef.setArch(Platform.getOSArch());
+            targetDef.setOS(Platform.getOS());
+            targetDef.setWS(Platform.getWS());
+            targetDef.setNL(Platform.getNL());
+            tpService.saveTargetDefinition(targetDef);
+
+            Job job = new LoadTargetDefinitionJob(targetDef);
+            job.schedule();
+            job.join();
+        }
     }
 }

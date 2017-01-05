@@ -4,6 +4,14 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius5.0.0). Changes in Sirius 5.0.0
+
+h3. Developer-Visible Changes
+
+h4. Changes in @org.eclipse.sirius.tests.junit.support@
+
+* <span class="label label-success">Added</span> The utility method @org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()@ has been added to allow to load a PDE target platform according to all known OSGi bundles. It is usefull to compile a plug-in in the execution runtime of the tests.
+
 h2(#sirius4.1.2). Changes in Sirius 4.1.2
 
 h3. User-Visible Changes
