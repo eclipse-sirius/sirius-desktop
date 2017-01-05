@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,6 +92,10 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         setErrorCatchActive(false);
+
+        // Load the target platform, if not already done, to allow compilation
+        // of the java services
+        TestsUtil.setTargetPlatform();
     }
 
     /**
@@ -178,7 +182,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         // avoid dependencies from viewpoint.ui to Acceleo.
         if (addAcceleoNatureCommand != null && addAcceleoNatureCommand.isDefined()) {
             // Force org.eclipse.sirius.common.acceleo.mtl.ide plugin
-            // inialization.
+            // initialization.
             ProposalProviderRegistry.getAllProviders();
             ParameterizedCommand parmCommand = new ParameterizedCommand(addAcceleoNatureCommand, null);
             EvaluationContext evaluationContext = new EvaluationContext(null, Collections.singletonList(projet));
@@ -233,7 +237,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
      * Check that the right Java service appears in the completion proposals
      * with Acceleo interpreter.
      * 
-     * Warning: To ensure the non regression of the associtated bug 500253, the
+     * Warning: To ensure the non regression of the associated bug 500253, the
      * manifest must not have a direct reference to org.eclipse.emf.ecore.
      * 
      * @exception Exception
@@ -268,7 +272,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
      * Check that the right Java service appears in the completion proposals
      * with service keyword used.
      * 
-     * Warning: To ensure the non regression of the associtated bug 500253, the
+     * Warning: To ensure the non regression of the associated bug 500253, the
      * manifest must not have a direct reference to org.eclipse.emf.ecore.
      * 
      * @exception Exception
@@ -303,7 +307,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
      * Check that the right Java service appears in the completion proposals
      * with AQL interpreter.
      * 
-     * Warning: To ensure the non regression of the associtated bug 500253, the
+     * Warning: To ensure the non regression of the associated bug 500253, the
      * manifest must not have a direct reference to org.eclipse.emf.ecore.
      * 
      * @exception Exception
