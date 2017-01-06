@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 Obeo.
+ * Copyright (c) 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal;
+package org.eclipse.sirius.properties.core.internal;
 
 import org.eclipse.sirius.ext.base.I18N;
 import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;
@@ -21,30 +21,13 @@ import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;
 public final class Messages {
 
     static {
-        I18N.initializeMessages(Messages.class, SiriusUIPropertiesPlugin.INSTANCE);
+        I18N.initializeMessages(Messages.class, SiriusPropertiesCorePlugin.INSTANCE);
     }
 
     // CHECKSTYLE:OFF
-    @TranslatableMessage
-    public static String AbstractDescriptionConverter_noConverterFound;
 
     @TranslatableMessage
-    public static String SiriusTabDescriptorProvider_UnsupportedMultipleSelection;
-
-    @TranslatableMessage
-    public static String SiriusTabDescriptorProvider_UndefinedSemanticElement;
-
-    @TranslatableMessage
-    public static String IDescriptionConverter_InvalidDescriptionType;
-
-    @TranslatableMessage
-    public static String SiriusToolServices_DefaultCategoryName;
-
-    @TranslatableMessage
-    public static String SiriusToolServices_MainTabLabel;
-
-    @TranslatableMessage
-    public static String TransactionalEditingDomainContextAdapter_errorDuringCommand;
+    public static String DefaultRulesProvider_DefaultPropertiesNotFound;
 
     // CHECKSTYLE:ON
 

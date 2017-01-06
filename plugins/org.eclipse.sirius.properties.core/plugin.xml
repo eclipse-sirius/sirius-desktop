@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension
+        point="org.eclipse.sirius.mmdescriptor">
+     <descriptorprovider
+           class="org.eclipse.sirius.properties.core.internal.PropertiesMetamodelDescriptorProvider">
+     </descriptorprovider>
+  </extension>
+    <extension
+        point="org.eclipse.core.runtime.preferences">
+     <initializer
+           class="org.eclipse.sirius.properties.core.internal.preferences.SiriusPropertiesViewPreferenceInitializer">
+     </initializer>
+  </extension>
+</plugin>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,8 +20,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.emf.edit.EditingDomainServices;
+import org.eclipse.sirius.properties.core.api.preferences.SiriusPropertiesCorePreferences;
 import org.eclipse.sirius.properties.impl.EditSupportImpl;
-import org.eclipse.sirius.ui.properties.api.preferences.SiriusPropertiesViewPreferencesKeys;
 
 /**
  * Contains the actual implementation of the EditSupport EOperations.
@@ -148,7 +148,7 @@ public class EditSupportSpec extends EditSupportImpl {
         } else {
             result = String.valueOf(target);
         }
-        return elide(result, SiriusUIPropertiesPlugin.getPlugin().getPreferenceStore().getInt(SiriusPropertiesViewPreferencesKeys.PREF_MAX_LENGTH_TAB_NAME.name()));
+        return elide(result, SiriusPropertiesCorePreferences.INSTANCE.getMaxLengthTabName());
     }
 
     private String elide(String s, int maxLength) {

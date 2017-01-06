@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,12 +34,18 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SiriusPropertiesPreferencePage_defaultTab;
-    
+
     @TranslatableMessage
     public static String SiriusPropertiesPreferencePage_tabGroup;
 
     @TranslatableMessage
     public static String SiriusPropertiesPreferencePage_maxLengthTabName;
+
+    @TranslatableMessage
+    public static String SiriusPropertiesPreferencePage_maxLengthTabName_invalidValue;
+
+    @TranslatableMessage
+    public static String SiriusPropertiesPreferencePage_maxLengthTabName_invalidInteger;
 
     // CHECKSTYLE:ON
 

@@ -102,16 +102,4 @@
            name="%preference.page.title.org.eclipse.sirius.ui.properties.general">
      </page>
   </extension>
-  <extension
-        point="org.eclipse.core.runtime.preferences">
-     <initializer
-           class="org.eclipse.sirius.ui.properties.internal.preferences.SiriusPropertiesViewPreferenceInitializer">
-     </initializer>
-  </extension>
-  <extension
-        point="org.eclipse.sirius.mmdescriptor">
-     <descriptorprovider
-           class="org.eclipse.sirius.ui.properties.internal.PropertiesMetamodelDescriptor">
-     </descriptorprovider>
-  </extension>
 </plugin>

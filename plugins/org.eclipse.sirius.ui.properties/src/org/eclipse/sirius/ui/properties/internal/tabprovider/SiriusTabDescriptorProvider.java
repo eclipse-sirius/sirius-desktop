@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,11 +27,7 @@ import org.eclipse.eef.ide.ui.properties.api.EEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptorProvider;
 import org.eclipse.eef.properties.ui.api.IEEFTabbedPropertySheetPageContributor;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -41,7 +37,7 @@ import org.eclipse.sirius.common.interpreter.api.VariableManagerFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
-import org.eclipse.sirius.ui.properties.internal.Messages;
+import org.eclipse.sirius.properties.core.api.DefaultRulesProvider;
 import org.eclipse.sirius.ui.properties.internal.SiriusInputDescriptor;
 import org.eclipse.sirius.ui.properties.internal.SiriusInterpreter;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
@@ -62,33 +58,6 @@ import com.google.common.collect.Sets;
  * @author pcdavid
  */
 public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
-
-    /**
-     * The URI of the model containing the default value of the properties page
-     * to create.
-     */
-    private static final URI DEFAULT_PROPERTIES_URI = URI.createURI("platform:/plugin/org.eclipse.sirius.ui.properties/model/properties.odesign", true); //$NON-NLS-1$
-
-    private static final ResourceSet DEFAULT_RULES = new ResourceSetImpl();
-
-    /**
-     * Returns the global default rules which apply when nothing more specific
-     * was specified.
-     * 
-     * @return the global default rules.
-     */
-    public static ViewExtensionDescription getDefaultRules() {
-        Resource resource = DEFAULT_RULES.getResource(DEFAULT_PROPERTIES_URI, true);
-        if (resource == null) {
-            SiriusUIPropertiesPlugin.getPlugin().error(Messages.SiriusTabDescriptorProvider_DefaultPropertiesNotFound);
-        } else {
-            List<EObject> contents = resource.getContents();
-            if (contents.size() > 0 && contents.get(0) instanceof ViewExtensionDescription) {
-                return (ViewExtensionDescription) contents.get(0);
-            }
-        }
-        return null;
-    }
 
     @Override
     public Collection<IEEFTabDescriptor> get(IWorkbenchPart part, ISelection selection, IEEFTabbedPropertySheetPageContributor contributor) {
@@ -177,11 +146,9 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
         }
 
         if (effectivePages.size() == 0) {
-            ViewExtensionDescription viewExtensionDescription = getDefaultRules();
+            ViewExtensionDescription viewExtensionDescription = DefaultRulesProvider.INSTANCE.getDefaultRules();
             if (viewExtensionDescription != null) {
                 effectivePages.addAll(viewExtensionDescription.getPages());
-            } else {
-                SiriusUIPropertiesPlugin.getPlugin().error(Messages.SiriusTabDescriptorProvider_DefaultPropertiesNotFound);
             }
         }
 

@@ -25,8 +25,8 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.properties.EditSupport;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.core.api.DefaultRulesProvider;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
-import org.eclipse.sirius.ui.properties.internal.tabprovider.SiriusTabDescriptorProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -119,7 +119,7 @@ public class SiriusToolServices {
                 result.add(eResource);
             }
         }
-        ViewExtensionDescription defaults = SiriusTabDescriptorProvider.getDefaultRules();
+        ViewExtensionDescription defaults = DefaultRulesProvider.INSTANCE.getDefaultRules();
         if (defaults != null && defaults.eResource() != null) {
             result.add(defaults.eResource());
         }

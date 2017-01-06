@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,7 @@ package org.eclipse.sirius.ui.properties.internal.filter;
 
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptorFilter;
-import org.eclipse.sirius.ui.properties.api.preferences.SiriusPropertiesViewPreferencesKeys;
-import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
+import org.eclipse.sirius.properties.core.api.preferences.SiriusPropertiesCorePreferences;
 
 /**
  * The {@link IEEFTabDescriptorFilter} for Eclipse Sirius.
@@ -39,9 +38,9 @@ public class SiriusTabDescriptorFilter implements IEEFTabDescriptorFilter {
         // element is selected from the model explorer and the semantic tab when
         // an element is selected from a Sirius editor
         if (SEMANTIC_TAB_ID.equals(tabDescriptor.getId())) {
-            result = SiriusUIPropertiesPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusPropertiesViewPreferencesKeys.PREF_FILTER_PROPERTIES_VIEW_SEMANTIC_TAB.name());
+            result = SiriusPropertiesCorePreferences.INSTANCE.isSemanticTabFiltered();
         } else if (DEFAULT_TAB_ID.equals(tabDescriptor.getId())) {
-            result = SiriusUIPropertiesPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusPropertiesViewPreferencesKeys.PREF_FILTER_PROPERTIES_VIEW_DEFAULT_TAB.name());
+            result = SiriusPropertiesCorePreferences.INSTANCE.isDefaultTabFiltered();
         }
 
         return result;

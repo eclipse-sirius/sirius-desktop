@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal;
+package org.eclipse.sirius.properties.core.internal;
 
 import java.util.Collection;
 import java.util.Set;
@@ -21,13 +21,16 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Sets;
 
-public class PropertiesMetamodelDescriptor implements MetamodelDescriptorProvider {
-
+/**
+ * The descriptor of the Properties metamodel.
+ * 
+ * @author sbegaudeau
+ */
+public class PropertiesMetamodelDescriptorProvider implements MetamodelDescriptorProvider {
     @Override
     public Collection<MetamodelDescriptor> provides(Collection<Viewpoint> vps) {
         Set<MetamodelDescriptor> result = Sets.newLinkedHashSet();
         result.add(new EcoreMetamodelDescriptor(PropertiesPackage.eINSTANCE));
         return result;
     }
-
 }

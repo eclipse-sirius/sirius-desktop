@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,50 +8,52 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.api.preferences;
+package org.eclipse.sirius.properties.core.internal.preferences;
 
 /**
  * The properties view preference keys.
  * 
  * @author mbats
  */
-public enum SiriusPropertiesViewPreferencesKeys {
+public enum SiriusPropertiesCorePreferencesKeys {
 
     /**
      * Says if the semantic tab should be automatically filtered or not.
      */
-    PREF_FILTER_PROPERTIES_VIEW_SEMANTIC_TAB(boolean.class),
+    PREF_FILTER_PROPERTIES_VIEW_SEMANTIC_TAB(Boolean.TRUE.toString()),
 
     /**
      * Says if the default tab should be automatically filtered or not.
      */
-    PREF_FILTER_PROPERTIES_VIEW_DEFAULT_TAB(boolean.class),
+    PREF_FILTER_PROPERTIES_VIEW_DEFAULT_TAB(Boolean.TRUE.toString()),
 
     /**
      * Says which is the max length of a tab name.
      */
-    PREF_MAX_LENGTH_TAB_NAME(int.class);
-
-    /** The type of the preference. */
-    private final Class<?> type;
+    PREF_MAX_LENGTH_TAB_NAME(Integer.valueOf(20).toString());
 
     /**
-     * Creates a new DesignerPreferencesKeys with the given type.
-     * 
-     * @param type
-     *            the type of the value of the preference.
+     * The default value.
      */
-    private SiriusPropertiesViewPreferencesKeys(final Class<?> type) {
-        this.type = type;
+    private String defaultValue;
+
+    /**
+     * The constructor.
+     * 
+     * @param defaultValue
+     *            The default value
+     */
+    private SiriusPropertiesCorePreferencesKeys(String defaultValue) {
+        this.defaultValue = defaultValue;
     }
 
     /**
-     * Returns the type of the value of the preference of this key.
+     * Returns the default value.
      * 
-     * @return the type of the value of the preference of this key.
+     * @return The default value
      */
-    public Class<?> getType() {
-        return type;
+    public String getDefaultValue() {
+        return this.defaultValue;
     }
 
 }
