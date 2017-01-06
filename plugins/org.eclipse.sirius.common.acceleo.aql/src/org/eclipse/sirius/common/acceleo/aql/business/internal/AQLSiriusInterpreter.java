@@ -307,6 +307,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
             }
             List<String> classifierNames = Lists.newArrayList();
             for (IType type : aqlValidationResult.getPossibleTypes(aqlValidationResult.getAstResult().getAst())) {
+                IType actualType = type;
                 /*
                  * Sirius has no notion of "multiple" or "collection" type in
                  * its typesystem and will unwrap the collection when using its
@@ -315,10 +316,10 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
                  * fall-back to EObject.
                  */
                 if (type instanceof ICollectionType) {
-                    type = ((ICollectionType) type).getCollectionType();
+                    actualType = ((ICollectionType) type).getCollectionType();
                 }
-                if (type instanceof EClassifierType) {
-                    EClassifierType eClassifierType = (EClassifierType) type;
+                if (actualType instanceof EClassifierType) {
+                    EClassifierType eClassifierType = (EClassifierType) actualType;
                     if (eClassifierType.getType() != null && eClassifierType.getType().getName() != null) {
                         String typeName = eClassifierType.getType().getName();
                         if (eClassifierType.getType().getEPackage() != null && eClassifierType.getType().getEPackage().getName() != null) {
@@ -353,9 +354,6 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         return AQLConstants.AQL_PREFIX;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean provides(String expression) {
         return expression != null && expression.startsWith(AQLConstants.AQL_PREFIX);

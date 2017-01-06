@@ -197,6 +197,8 @@ public final class TypeName {
 
     /**
      * Return the Java class associated to this type if there is one.
+     * 
+     * @return the Java class associated to this type if there is one.
      */
     public Option<Class<?>> getJavaClass() {
         return Options.<Class<?>> fromNullable(this.javaType);
