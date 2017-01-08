@@ -36,6 +36,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Throwables;
 import com.google.common.collect.Iterables;
 
 /**
@@ -63,7 +64,7 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
     public void logging(IStatus status, String plugin) {
         boolean hasBeenLoggedThroughDialect = false;
         // Always consider final cause of exception
-        final Throwable exception = getFinalCause(status);
+        final Throwable exception = Throwables.getRootCause(status.getException());
         // Step 1: check preferences (should indicate that errors should be
         // logged through a pop-up)
         if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REACT_TO_PERMISSION_ISSUES_BY_GRAPHICAL_DISPLAY.name())) {
@@ -92,14 +93,6 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
                 });
             }
         }
-    }
-
-    private Throwable getFinalCause(IStatus status) {
-        Throwable exception = status.getException();
-        while (exception != null && exception.getCause() != null) {
-            exception = exception.getCause();
-        }
-        return exception;
     }
 
     /**
