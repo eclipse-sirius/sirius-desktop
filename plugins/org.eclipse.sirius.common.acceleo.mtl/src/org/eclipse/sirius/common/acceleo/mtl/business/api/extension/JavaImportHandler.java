@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,7 +78,7 @@ public class JavaImportHandler extends AbstractImportHandler {
         return signatures;
     }
 
-    private static String getTypeName(Class type) {
+    private static String getTypeName(Class<?> type) {
         String typeName = null;
         // If type is array:
         // - getTypeName from first non-array enclosing type
