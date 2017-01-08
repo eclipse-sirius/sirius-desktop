@@ -859,7 +859,6 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
             diagramEditor.select(edgeEditPart);
             Connection figure = (Connection) edgeEditPart.part().getFigure();
             PointList pointList = figure.getPoints();
-            @SuppressWarnings("unchecked")
             List<LineSeg> edgeSegments = PointListUtilities.getLineSegments(pointList);
             LineSeg lineSegToMove = edgeSegments.get(segmentIndex);
             Point initialLocation = new Point();
