@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.sirius.business.api.dialect.description.MultiLanguagesValidator;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
@@ -90,9 +91,7 @@ public class VSMVariableTypesValidationTest {
                         if (attr.getEType() == DescriptionPackage.eINSTANCE.getInterpretedExpression()) {
                             Object expr = underTest.eGet(attr);
                             if (expr instanceof String && ((String) expr).length() > 0) {
-                                if (((String) expr).startsWith("feature:")) {
-                                    parameters.add(new Object[] { new InterpretedExpression((String) expr, underTest, attr) });
-                                }
+                                parameters.add(new Object[] { new InterpretedExpression((String) expr, underTest, attr) });
                             }
 
                         }
@@ -139,7 +138,7 @@ public class VSMVariableTypesValidationTest {
         Collection<IInterpreterStatus> errors = Sets.newLinkedHashSet();
         if (interpreterForExpression.supportsValidation()) {
             IInterpreterContext context = SiriusInterpreterContextFactory.createInterpreterContext(this.underTest.getDeclaration(), this.underTest.getFeature());
-            errors = interpreterForExpression.validateExpression(context, expression);
+            errors = MultiLanguagesValidator.getInstance().validateExpression(context, expression).getStatuses();
             boolean useNonExistantFeature = expression.contains("nonExistent");
             if (!isInToolSection(underTest.getDeclaration(), "Ignored")) {
                 if (useNonExistantFeature && errors.size() == 0) {

@@ -32,6 +32,9 @@ import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptor
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
+import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -43,6 +46,9 @@ import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
+import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
+import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.CreateEdgeView;
@@ -56,6 +62,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
@@ -87,7 +94,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
 
     private static final String DIAGRAM_D_EDGE_TYPE = "diagram.DEdge"; //$NON-NLS-1$
 
-    private static final VariableType EDGE_TARGET_POSSIBILITIES = VariableType.fromStrings(Sets.newHashSet(DIAGRAM_D_EDGE_TYPE, DIAGRAM_D_NODE, DIAGRAM_D_DIAGRAM_ELEMENT_CONTAINER)); 
+    private static final VariableType EDGE_TARGET_POSSIBILITIES = VariableType.fromStrings(Sets.newHashSet(DIAGRAM_D_EDGE_TYPE, DIAGRAM_D_NODE, DIAGRAM_D_DIAGRAM_ELEMENT_CONTAINER));
 
     /**
      * Default constructor.
@@ -184,6 +191,12 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             availableVariables.put("preSourceView", EDGE_TARGET_POSSIBILITIES); //$NON-NLS-1$
             availableVariables.put("preTarget", VariableType.fromString("ecore.EObject")); //$NON-NLS-1$ //$NON-NLS-2$
             availableVariables.put("preTargetView", EDGE_TARGET_POSSIBILITIES); //$NON-NLS-1$
+        } else if (target instanceof ConditionalNodeStyleDescription || target instanceof NodeStyleDescription) {
+            availableVariables.put(IInterpreterSiriusVariables.VIEW, VariableType.fromString(DIAGRAM_D_NODE));
+        } else if (target instanceof ConditionalContainerStyleDescription || target instanceof ContainerStyleDescription) {
+            availableVariables.put(IInterpreterSiriusVariables.VIEW, VariableType.fromString(DIAGRAM_D_NODE_CONTAINER));
+        } else if (target instanceof ConditionalEdgeStyleDescription || target instanceof EdgeStyleDescription || target instanceof BasicLabelStyleDescription) {
+            availableVariables.put(IInterpreterSiriusVariables.VIEW, VariableType.fromString(DIAGRAM_D_EDGE_TYPE));
         }
 
         return availableVariables;
@@ -337,8 +350,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                         possibleSemanticTypes.add(domainClass);
                     }
 
-                } else if ((eStructuralFeature == DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS || eStructuralFeature == DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS)
-                        && referencingObject instanceof ContainerMapping) {
+                } else if ((eStructuralFeature == DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS
+                        || eStructuralFeature == DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS) && referencingObject instanceof ContainerMapping) {
                     String domainClass = ((ContainerMapping) referencingObject).getDomainClass();
                     if (!StringUtil.isEmpty(domainClass)) {
                         possibleSemanticTypes.add(domainClass);
