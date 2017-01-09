@@ -1,0 +1,4 @@
+# Tracing options for the org.eclipse.sirius.ui.editor plug-in
+
+# Common issues
+org.eclipse.sirius.ui.editor/debug=false

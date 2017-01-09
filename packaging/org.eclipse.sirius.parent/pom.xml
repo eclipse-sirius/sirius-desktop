@@ -351,6 +351,7 @@
         <module>../../plugins/org.eclipse.sirius.tree.ui.ext</module>
         <module>../../plugins/org.eclipse.sirius.ui</module>
         <module>../../plugins/org.eclipse.sirius.ui.ext</module>
+        <module>../../plugins/org.eclipse.sirius.ui.editor</module>
         <module>../../plugins/org.eclipse.sirius.tests.junit.support</module>
         <module>../../plugins/org.eclipse.sirius.tests.swtbot.support</module>
 
