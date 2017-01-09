@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="vsmtypes" version="11.1.1.201610211630">
+  <extensions xsi:type="properties:ViewExtensionDescription" identifier="ShouldBeValid">
+    <metamodels href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    <metamodels href="http://www.eclipse.org/sirius/sample/interactions#/"/>
+    <pages identifier="Default" labelExpression="aql:self.nsURI" domainClass="ecore.EPackage" semanticCandidateExpression="aql:self" preconditionExpression="aql:self.nsURI &lt;> ''" groups="//@extensions.0/@groups.0"/>
+    <groups identifier="Default" labelExpression="Group" semanticCandidateExpression="aql:OrderedSet{self}->select( e | e.nsURI &lt;> '')" preconditionExpression="aql:self.nsURI &lt;> ''">
+      <controls xsi:type="properties:TextDescription" labelExpression="aql:self.nsURI" helpExpression="aql:self.nsURI" isEnabledExpression="aql:self.nsURI &lt;> ''" valueExpression="aql:self.eClassifiers.name->sep(',')">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:input.getOriginalSelection()"/>
+            <subModelOperations xsi:type="tool:For" expression="aql:self.eClassifiers" iteratorName="c">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:c.ePackage"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.nsURI &lt;> newValue">
+              <subModelOperations xsi:type="tool:SetValue" featureName="nsURI" valueExpression="aql:newValue"/>
+            </subModelOperations>
+          </firstModelOperations>
+        </initialOperation>
+        <style fontNameExpression="aql:self.nsURI" fontSizeExpression="aql:self.eClassifiers->size()"/>
+        <conditionalStyles preconditionExpression="aql:self.nsURI &lt;> input.emfEditServices(self).getText()">
+          <style fontNameExpression="aql:input.emfEditServices(self).getText()" fontSizeExpression="aql:input.emfEditServices(self).getText().size()"/>
+        </conditionalStyles>
+      </controls>
+      <controls xsi:type="properties:CheckboxDescription" labelExpression="aql:self.nsURI" helpExpression="aql:self.nsURI" isEnabledExpression="aql:self.eClassifiers->size() > 0" valueExpression="aql:self.eClassifiers->size() > 0">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+            <subModelOperations xsi:type="tool:If" conditionExpression="aql:newValue  = true"/>
+          </firstModelOperations>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties:RadioDescription" labelExpression="aql:self.nsURI" helpExpression="aql:self.nsURI" isEnabledExpression="aql:self.nsURI &lt;> 0" valueExpression="aql:self.eClassifiers->first()" candidatesExpression="aql:self.eClassifiers" candidateDisplayExpression="aql:candidate.instanceClassName">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties:SelectDescription" labelExpression="aql:self.nsURI" helpExpression="aql:self.nsURI" isEnabledExpression="aql:self.nsURI.size() > 0" valueExpression="aql: self.eClassifiers->first()" candidatesExpression="aql:self.eClassifiers" candidateDisplayExpression="aql:candidate.instanceClassName">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties:TextAreaDescription" labelExpression="aql:self.nsURI" helpExpression="aql:self.nsURI" isEnabledExpression="aql:self.eClassifiers->size() > 0" valueExpression="aql:self.eClassifiers->first()">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties:LabelDescription" labelExpression="aql:self.nsURI" helpExpression="aql:self.nsURI" isEnabledExpression="aql:self.eClassifiers->size() > 0" valueExpression="aql:self.eClassifiers->first()" displayExpression="aql:self.eClassifiers->first().instanceClassName"/>
+      <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" labelExpression="aql:self.nsURI" helpExpression="aql:self.nsURI" isEnabledExpression="aql:self.nsURI &lt;> null" referenceNameExpression="aql:'eClassifiers'" referenceOwnerExpression="aql:self"/>
+      <controls xsi:type="properties:ListDescription" labelExpression="aql:self.nsURI" helpExpression="aql:self.nsURI" isEnabledExpression="aql:self.nsURI.size() > 0" valueExpression="aql:self.eClassifiers->first()" displayExpression="aql:self.nsURI">
+        <onClickOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </onClickOperation>
+      </controls>
+      <controls xsi:type="properties:HyperlinkDescription" labelExpression="aql:self.nsURI" helpExpression="aql:self.nsURI" isEnabledExpression="aql:self.eClassifiers->size() > 0" valueExpression="aql:self.eClassifiers->first()" displayExpression="aql:self.nsURI">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties:ButtonDescription" labelExpression="aql:self.nsURI" helpExpression="aql:self.nsURI" isEnabledExpression="aql:self.nsURI.size() > 0" buttonLabelExpression="aql:self.nsURI">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties:CustomDescription" labelExpression="aql:self.nsURI" helpExpression="aql:self.nsURI" isEnabledExpression="aql:self.nsURI.size() > 0"/>
+      <style fontNameExpression="aql:self.nsURI" fontSizeExpression="aql:self.nsURI.size()"/>
+      <conditionalStyles preconditionExpression="aql:self.nsURI&lt;> ''">
+        <style fontNameExpression="aql:self.nsURI" fontSizeExpression="aql:self.nsURI.size()"/>
+      </conditionalStyles>
+    </groups>
+  </extensions>
+  <extensions xsi:type="properties:ViewExtensionDescription" identifier="ShouldBeInvalid">
+    <metamodels href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    <metamodels href="http://www.eclipse.org/sirius/sample/interactions#/"/>
+    <pages identifier="Default" labelExpression="aql:self.nonExistent" domainClass="ecore.EPackage" semanticCandidateExpression="aql:self" preconditionExpression="aql:self.nonExistent &lt;> ''" groups="//@extensions.1/@groups.0"/>
+    <groups identifier="Default" labelExpression="Group" semanticCandidateExpression="aql:OrderedSet{self}->select( e | e.nonExistent &lt;> '')" preconditionExpression="aql:self.nonExistent &lt;> ''">
+      <controls xsi:type="properties:TextDescription" labelExpression="aql:self.nonExistent" helpExpression="aql:self.nonExistent" isEnabledExpression="aql:self.nonExistent &lt;> ''" valueExpression="aql:self.eClassifiers.name->sep(',')">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:input.getOriginalSelection()"/>
+            <subModelOperations xsi:type="tool:For" expression="aql:self.eClassifiers" iteratorName="c">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:c.ePackage"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.nonExistent &lt;> newValue">
+              <subModelOperations xsi:type="tool:SetValue" featureName="nonExistent" valueExpression="aql:newValue"/>
+            </subModelOperations>
+          </firstModelOperations>
+        </initialOperation>
+        <style fontNameExpression="aql:self.nonExistent" fontSizeExpression="aql:self.nonExistent.size()"/>
+        <conditionalStyles preconditionExpression="aql:self.nonExistent &lt;> input.emfEditServices(self).getText()">
+          <style fontNameExpression="aql:input.emfEditServices(self).getText()" fontSizeExpression="aql:input.emfEditServices(self).getText().size()"/>
+        </conditionalStyles>
+      </controls>
+      <controls xsi:type="properties:CheckboxDescription" labelExpression="aql:self.nonExistent" helpExpression="aql:self.nonExistent" isEnabledExpression="aql:self.nonExistent.size() > 0" valueExpression="aql:self.nonExistent.size() > 0">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+            <subModelOperations xsi:type="tool:If" conditionExpression="aql:newValue  = true"/>
+          </firstModelOperations>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties:RadioDescription" labelExpression="aql:self.nonExistent" helpExpression="aql:self.nonExistent" isEnabledExpression="aql:self.nonExistent &lt;> 0" valueExpression="aql:self.nonExistent->first()" candidatesExpression="aql:self.eClassifiers" candidateDisplayExpression="aql:candidate.instanceClassName">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties:SelectDescription" labelExpression="aql:self.nonExistent" helpExpression="aql:self.nonExistent" isEnabledExpression="aql:self.nonExistent.size() > 0" valueExpression="aql: self.nonExistent->first()" candidatesExpression="aql:self.eClassifiers" candidateDisplayExpression="aql:candidate.instanceClassName">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties:TextAreaDescription" labelExpression="aql:self.nonExistent" helpExpression="aql:self.nonExistent" isEnabledExpression="aql:self.nonExistent.size() > 0" valueExpression="aql:self.nonExistent->first()">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties:LabelDescription" labelExpression="aql:self.nonExistent" helpExpression="aql:self.nonExistent" isEnabledExpression="aql:self.nonExistent.size() > 0" valueExpression="aql:self.nonExistent->first()" displayExpression="aql:self.nonExistent->first().instanceClassName"/>
+      <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" labelExpression="aql:self.nonExistent" helpExpression="aql:self.nonExistent" isEnabledExpression="aql:self.nonExistent &lt;> null" referenceNameExpression="aql:'eClassifiers'" referenceOwnerExpression="aql:self"/>
+      <controls xsi:type="properties:ListDescription" labelExpression="aql:self.nonExistent" helpExpression="aql:self.nonExistent" isEnabledExpression="aql:self.nonExistent.size() > 0" valueExpression="aql:self.nonExistent->first()" displayExpression="aql:self.nonExistent">
+        <onClickOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </onClickOperation>
+      </controls>
+      <controls xsi:type="properties:HyperlinkDescription" labelExpression="aql:self.nonExistent" helpExpression="aql:self.nonExistent" isEnabledExpression="aql:self.nonExistent.size() > 0" valueExpression="aql:self.nonExistent->first()" displayExpression="aql:self.nonExistent">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties:ButtonDescription" labelExpression="aql:self.nonExistent" helpExpression="aql:self.nonExistent" isEnabledExpression="aql:self.nonExistent.size() > 0" buttonLabelExpression="aql:self.nonExistent">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties:CustomDescription" labelExpression="aql:self.nonExistent" helpExpression="aql:self.nonExistent" isEnabledExpression="aql:self.nonExistent.size() > 0"/>
+      <style fontNameExpression="aql:self.nonExistent" fontSizeExpression="aql:self.nonExistent.size()"/>
+      <conditionalStyles preconditionExpression="aql:self.nonExistent&lt;> ''">
+        <style fontNameExpression="aql:self.nonExistent" fontSizeExpression="aql:self.nonExistent.size()"/>
+      </conditionalStyles>
+    </groups>
+  </extensions>
+</description:Group>
