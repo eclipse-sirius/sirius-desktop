@@ -64,7 +64,7 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
     public void logging(IStatus status, String plugin) {
         boolean hasBeenLoggedThroughDialect = false;
         // Always consider final cause of exception
-        final Throwable exception = Throwables.getRootCause(status.getException());
+        final Throwable exception = status != null ? Throwables.getRootCause(status.getException()) : null;
         // Step 1: check preferences (should indicate that errors should be
         // logged through a pop-up)
         if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REACT_TO_PERMISSION_ISSUES_BY_GRAPHICAL_DISPLAY.name())) {
