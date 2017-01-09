@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -427,7 +428,7 @@ public final class GMFHelper {
      * @return the bounds of the node.
      */
     public static Rectangle getBounds(Node node, boolean useFigureForAutoSizeConstraint, boolean forceFigureAutoSize) {
-        Rectangle bounds = new Rectangle(0, 0, 0, 0);
+        PrecisionRectangle bounds = new PrecisionRectangle(0, 0, 0, 0);
         LayoutConstraint layoutConstraint = node.getLayoutConstraint();
         EObject element = node.getElement();
         if (element instanceof AbstractDNode) {
