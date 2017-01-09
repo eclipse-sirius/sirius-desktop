@@ -273,8 +273,8 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
         public void notifyIsLocked(Collection<EObject> instances) {
             Collection<LockStatusChangeEvent> events = Lists.newArrayList();
             for (EObject o : instances) {
-                getLockStatus(o);
-                events.add(new LockStatusChangeEvent(o, getLockStatus(o)));
+                boolean lockedByMe = TransactionalEditingDomainContextAdapter.this.isLockedByMe(o);
+                events.add(new LockStatusChangeEvent(o, lockedByMe ? LockStatus.LOCKED_BY_ME : LockStatus.LOCKED_BY_OTHER));
             }
             notifyListeners(events);
         }
@@ -290,11 +290,20 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
             }
         }
 
-        private LockStatus getLockStatus(EObject o) {
-            org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus siriusStatus = TransactionalEditingDomainContextAdapter.this.auth.getLockStatus(o);
-            return convertLockStatus(siriusStatus);
-        }
+    }
 
+    /**
+     * Tests if an element we already know to be locked is locked by me (and not
+     * by other).
+     * 
+     * @param lockedElement
+     *            an element we know is locked.
+     * @return <code>true</code> if the element is locked by me,
+     *         <code>false</code> otherwise.
+     */
+    protected boolean isLockedByMe(EObject lockedElement) {
+        LockStatus status = getLockStatus(lockedElement);
+        return status == LockStatus.LOCKED_BY_ME;
     }
 
     /**
@@ -320,8 +329,8 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
                          * LockedInstanceException may be reported as plain
                          * warnings here, but we want them to be considered as
                          * errors for the purpose of performModelChange, so that
-                         * UIs can be correctly rolled back to a consistent state
-                         * when they occur.
+                         * UIs can be correctly rolled back to a consistent
+                         * state when they occur.
                          */
                         errors.add(new Status(IStatus.ERROR, status.getPlugin(), status.getCode(), status.getMessage(), status.getException()));
                     } else {
