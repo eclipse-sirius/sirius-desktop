@@ -264,7 +264,9 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                         possibleTypes.add(domainClass);
                     }
                 }
-                collectPotentialContainerTypes(possibleTypes, Sets.<String> newLinkedHashSet(), tool.getContainerMappings());
+                Collection<String> possibleViewTypes = Sets.newLinkedHashSet();
+                collectPotentialContainerTypes(possibleTypes, possibleViewTypes, tool.getContainerMappings());
+                refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER_VIEW, possibleViewTypes);
 
                 refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER, possibleTypes);
             }

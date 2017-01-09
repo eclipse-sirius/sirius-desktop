@@ -135,6 +135,12 @@
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="InteractionContainer" domainClass="interactions.Interaction">
+          <subContainerMappings name="InteractionContainerInContainer" semanticCandidatesExpression="var:self" domainClass="interactions.Interaction">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.emf.ecore.edit/icons/full/obj16/EClass.gif">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subContainerMappings>
           <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.emf.ecore.edit/icons/full/obj16/EClass.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -178,6 +184,9 @@
                   <subModelOperations xsi:type="tool:For" expression="aql:self.ownedInteractions">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.executions"/>
                   </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:containerView">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:edges"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -413,6 +422,17 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eContents"/>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:elementView">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Check container view when its a container" containerMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@containerMappings[name='InteractionContainer']/@subContainerMappings[name='InteractionContainerInContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:containerView">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.childrenPresentation = diagram::ContainerLayout::List"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
