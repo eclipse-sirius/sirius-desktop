@@ -8,7 +8,7 @@
  * Contributors:
  *  Obeo - initial API and implementation
  */
-package org.eclipse.sirius.sample.basicfamily.design;
+package org.eclipse.sirius.sample.basicfamily.compartments.design;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,7 +23,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
     // The plug-in ID
-    public static final String PLUGIN_ID = "org.eclipse.sirius.sample.basicfamily.design";
+    public static final String PLUGIN_ID = "org.eclipse.sirius.sample.basicfamily.compartments.design";
 
     // The shared instance
     private static Activator plugin;

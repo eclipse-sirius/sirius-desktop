@@ -46,6 +46,34 @@
             project="true">
       <description>A sample graphical modeler to view an edit family models (requires the Basic Family Metamodel Definition to be installed).</description>
     </wizard>
+    
+    <wizard category="org.eclipse.ui.Examples/org.eclipse.sirius.samples.category"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            icon="icons/Family.gif"
+            id="org.eclipse.sirius.samples.family.NewBasicFamilyStarterTutorialSolution"
+            name="Basic Family Modeler Definition - Starter Tutorial Solution"
+            project="true">
+      <description>A sample graphical modeler to view an edit family models. Corresponds to the solution of the Sirius Starter Tutorial.</description>
+    </wizard>
+
+    <wizard category="org.eclipse.ui.Examples/org.eclipse.sirius.samples.category"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            icon="icons/Family.gif"
+            id="org.eclipse.sirius.samples.family.NewBasicFamilyAdvancedTutorialSolution"
+            name="Basic Family Modeler Definition - Advanced Tutorial Solution"
+            project="true">
+      <description>A sample graphical modeler to view an edit family models. Corresponds to the solution of the Sirius Advanced Tutorial.</description>
+    </wizard>
+
+    <wizard category="org.eclipse.ui.Examples/org.eclipse.sirius.samples.category"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            icon="icons/Family.gif"
+            id="org.eclipse.sirius.samples.family.NewBasicFamilyCompartmentsTutorialSolution"
+            name="Basic Family Modeler Definition - Compartments Tutorial Solution"
+            project="true">
+      <description>A sample graphical modeler to view an edit family models. Corresponds to the solution of the Sirius Compartments Tutorial.</description>
+    </wizard>
+
   </extension>
 
   <extension point="org.eclipse.emf.common.ui.examples">
@@ -78,6 +106,28 @@
                          contentURI="samples/org.eclipse.sirius.sample.basicfamily.design/"
                          description="A sample graphical modeler to view and edit family models."/>
   	</example>
+
+    <!-- Brings down VSP with the starter tutorial solution -->
+    <example wizardID="org.eclipse.sirius.samples.family.NewBasicFamilyStarterTutorialSolution">
+      <projectDescriptor name="org.eclipse.sirius.sample.basicfamily.starter.design"
+                         contentURI="solutions/org.eclipse.sirius.sample.basicfamily.starter.design/"
+                         description="Solution of the Basic Family Starter Tutorial"/>
+    </example>
+
+    <!-- Brings down VSP with the advanced tutorial solution -->
+    <example wizardID="org.eclipse.sirius.samples.family.NewBasicFamilyAdvancedTutorialSolution">
+      <projectDescriptor name="org.eclipse.sirius.sample.basicfamily.advanced.design"
+                         contentURI="solutions/org.eclipse.sirius.sample.basicfamily.advanced.design/"
+                         description="Solution of the Basic Family Advanced Tutorial"/>
+    </example>
+
+    <!-- Brings down VSP with the compartments tutorial solution -->
+    <example wizardID="org.eclipse.sirius.samples.family.NewBasicFamilyCompartmentsTutorialSolution">
+      <projectDescriptor name="org.eclipse.sirius.sample.basicfamily.compartments.design"
+                         contentURI="solutions/org.eclipse.sirius.sample.basicfamily.compartments.design/"
+                         description="Solution of the Basic Family Compartments Tutorial"/>
+    </example>
+
   </extension>
 
 </plugin>

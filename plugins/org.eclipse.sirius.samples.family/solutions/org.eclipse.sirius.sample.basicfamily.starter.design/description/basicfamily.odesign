@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="basicfamily" version="11.1.1.201610211630">
-  <ownedViewpoints name="persons" modelFileExtension="basicfamily">
+  <ownedViewpoints name="persons (Basic Family Starter Tutorial Solution)" modelFileExtension="basicfamily">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Persons diagram" domainClass="basicfamily.Family">
       <defaultLayer name="Default">
         <nodeMappings name="ManNode" semanticCandidatesExpression="feature:members" domainClass="basicfamily.Man">
@@ -15,7 +15,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="fatherEdge" sourceMapping="//@ownedViewpoints[name='persons']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='ManNode'] //@ownedViewpoints[name='persons']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='WomanNode']" targetMapping="//@ownedViewpoints[name='persons']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='ManNode']" targetFinderExpression="feature:father">
+        <edgeMappings name="fatherEdge" sourceMapping="//@ownedViewpoints[name='persons%20(Basic%20Family%20Starter%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='ManNode'] //@ownedViewpoints[name='persons%20(Basic%20Family%20Starter%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='WomanNode']" targetMapping="//@ownedViewpoints[name='persons%20(Basic%20Family%20Starter%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='ManNode']" targetFinderExpression="feature:father">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription>
@@ -23,7 +23,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="motherEdge" sourceMapping="//@ownedViewpoints[name='persons']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='ManNode'] //@ownedViewpoints[name='persons']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='WomanNode']" targetMapping="//@ownedViewpoints[name='persons']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='WomanNode']" targetFinderExpression="feature:mother">
+        <edgeMappings name="motherEdge" sourceMapping="//@ownedViewpoints[name='persons%20(Basic%20Family%20Starter%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='ManNode'] //@ownedViewpoints[name='persons%20(Basic%20Family%20Starter%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='WomanNode']" targetMapping="//@ownedViewpoints[name='persons%20(Basic%20Family%20Starter%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='WomanNode']" targetFinderExpression="feature:mother">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
             <centerLabelStyleDescription>
@@ -32,7 +32,7 @@
           </style>
         </edgeMappings>
         <toolSections>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="createMan" nodeMappings="//@ownedViewpoints[name='persons']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='ManNode']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createMan" nodeMappings="//@ownedViewpoints[name='persons%20(Basic%20Family%20Starter%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='ManNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -43,7 +43,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="createWoman" nodeMappings="//@ownedViewpoints[name='persons']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='WomanNode']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createWoman" nodeMappings="//@ownedViewpoints[name='persons%20(Basic%20Family%20Starter%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@nodeMappings[name='WomanNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

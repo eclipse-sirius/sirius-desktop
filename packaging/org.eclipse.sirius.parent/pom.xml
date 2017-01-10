@@ -360,6 +360,9 @@
         <module>../../plugins/org.eclipse.sirius.samples.family/samples/org.eclipse.sirius.sample.basicfamily.edit</module>
         <module>../../plugins/org.eclipse.sirius.samples.family/samples/org.eclipse.sirius.sample.basicfamily.editor</module>
         <module>../../plugins/org.eclipse.sirius.samples.family/samples/org.eclipse.sirius.sample.basicfamily.design</module>
+        <module>../../plugins/org.eclipse.sirius.samples.family/solutions/org.eclipse.sirius.sample.basicfamily.starter.design</module>
+        <module>../../plugins/org.eclipse.sirius.samples.family/solutions/org.eclipse.sirius.sample.basicfamily.advanced.design</module>
+        <module>../../plugins/org.eclipse.sirius.samples.family/solutions/org.eclipse.sirius.sample.basicfamily.compartments.design</module>
         <module>../../plugins/org.eclipse.sirius.samples.family</module>
 
         <module>../../plugins/org.eclipse.sirius.common.interpreter</module>
