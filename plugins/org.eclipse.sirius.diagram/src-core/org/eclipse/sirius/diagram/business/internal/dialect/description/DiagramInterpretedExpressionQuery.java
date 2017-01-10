@@ -68,6 +68,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -197,6 +198,14 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             availableVariables.put(IInterpreterSiriusVariables.VIEW, VariableType.fromString(DIAGRAM_D_NODE_CONTAINER));
         } else if (target instanceof ConditionalEdgeStyleDescription || target instanceof EdgeStyleDescription || target instanceof BasicLabelStyleDescription) {
             availableVariables.put(IInterpreterSiriusVariables.VIEW, VariableType.fromString(DIAGRAM_D_EDGE_TYPE));
+        } else if (target instanceof DiagramElementMapping) {
+            if (this.feature == DescriptionPackage.Literals.DIAGRAM_ELEMENT_MAPPING__PRECONDITION_EXPRESSION) {
+                Collection<String> possibleContainerViewTypes = Sets.newLinkedHashSet();
+                Collection<String> possibleContainerTypes = Sets.newLinkedHashSet();
+                collectPotentialContainerTypes(possibleContainerTypes, possibleContainerViewTypes, ImmutableList.of((DiagramElementMapping) this.target));
+                availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
+                availableVariables.put(IInterpreterSiriusVariables.CONTAINER_VIEW, VariableType.fromStrings(possibleContainerViewTypes));
+            }
         }
 
         return availableVariables;
@@ -301,9 +310,9 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
 
     }
 
-    private void collectPotentialContainerTypes(Collection<String> possibleSemanticTypes, Collection<String> possibleViewTypes, Collection<? extends AbstractNodeMapping> toolMappings) {
-        for (AbstractNodeMapping nodeMapping : toolMappings) {
-            collectPotentialContainerTypes(possibleSemanticTypes, possibleViewTypes, nodeMapping);
+    private void collectPotentialContainerTypes(Collection<String> possibleSemanticTypes, Collection<String> possibleViewTypes, Collection<? extends DiagramElementMapping> toolMappings) {
+        for (DiagramElementMapping anyMapping : toolMappings) {
+            collectPotentialContainerTypes(possibleSemanticTypes, possibleViewTypes, anyMapping);
 
         }
     }

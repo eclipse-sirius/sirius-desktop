@@ -112,7 +112,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="ParticipantContainer" deletionDescription="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20ParticipantContainer']" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@subSections[name='Ignored']/@ownedTools[name='ElementType']" domainClass="interactions.Participant">
+        <containerMappings name="ParticipantContainer" preconditionExpression="aql:container.ownedInteractions->size() > 0" deletionDescription="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20ParticipantContainer']" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@subSections[name='Ignored']/@ownedTools[name='ElementType']" domainClass="interactions.Participant">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -134,7 +134,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="InteractionContainer" domainClass="interactions.Interaction">
+        <containerMappings name="InteractionContainer" preconditionExpression="aql:containerView.edges->size()  > 0" domainClass="interactions.Interaction">
           <subContainerMappings name="InteractionContainerInContainer" semanticCandidatesExpression="var:self" domainClass="interactions.Interaction">
             <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.emf.ecore.edit/icons/full/obj16/EClass.gif">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
