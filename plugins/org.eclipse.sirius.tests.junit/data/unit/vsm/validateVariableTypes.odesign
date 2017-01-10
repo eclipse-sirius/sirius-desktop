@@ -422,9 +422,9 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eContents"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:executions"/>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:elementView">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:target"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:width"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

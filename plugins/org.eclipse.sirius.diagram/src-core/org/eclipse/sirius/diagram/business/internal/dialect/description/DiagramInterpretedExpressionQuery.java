@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.business.internal.dialect.description;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -23,7 +24,10 @@ import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedEx
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.business.api.dialect.description.MultiLanguagesValidator;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.ContainerLayout;
@@ -60,12 +64,14 @@ import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
+import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 import com.google.common.collect.ImmutableList;
@@ -300,6 +306,21 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                     availableVariables.put("diagram", VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM)); //$NON-NLS-1$
                 }
                 availableVariables.put("views", VariableType.fromString("viewpoint.DSemanticDecorator")); //$NON-NLS-1$ //$NON-NLS-2$
+            }
+            if (toolContext instanceof ToolDescription) {
+                ToolDescription tool = (ToolDescription) toolContext;
+                if (!StringUtil.isEmpty(tool.getPrecondition())) {
+                    IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(tool, ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION);
+                    ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, tool.getPrecondition());
+                    Map<String, VariableType> inferedTypes = res.getInferredVariableTypes(Boolean.TRUE);
+                    for (Entry<String, VariableType> infered : inferedTypes.entrySet()) {
+                        if (SELF.equals(infered.getKey())) {
+                            changeSelfType(infered.getValue());
+                        } else if (infered.getValue().getPossibleTypes().size() > 0) {
+                            availableVariables.put(infered.getKey(), infered.getValue());
+                        }
+                    }
+                }
             }
         }
     }
