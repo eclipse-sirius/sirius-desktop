@@ -299,6 +299,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 if (new EObjectQuery(tool).getFirstAncestorOfType(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION).some()) {
                     availableVariables.put("diagram", VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM)); //$NON-NLS-1$
                 }
+                availableVariables.put("views", VariableType.fromString("viewpoint.DSemanticDecorator")); //$NON-NLS-1$ //$NON-NLS-2$
             }
         }
     }

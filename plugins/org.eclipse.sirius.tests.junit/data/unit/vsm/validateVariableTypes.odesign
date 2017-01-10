@@ -437,6 +437,16 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:PopupMenu" name="A Menu">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Some Operation" precondition="aql:views.target->size() > 0" elementsToSelect="aql:views.target->first()">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:views">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:target"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
           <subSections name="Ignored">
             <ownedTools xsi:type="tool_1:DirectEditLabel" name="ElementType">
               <mask mask="{0}"/>

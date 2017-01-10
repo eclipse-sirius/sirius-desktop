@@ -48,6 +48,7 @@ import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
+import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
@@ -385,16 +386,27 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
          */
         found = new EObjectQuery(target).getFirstAncestorOfType(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eINSTANCE.getValidationRule());
         if (!found.some()) {
-            found = new EObjectQuery(target).getFirstAncestorOfType(ToolPackage.eINSTANCE.getAbstractToolDescription());
-            if (found.some() && found.get() instanceof ExternalJavaAction) {
+            if (this.target instanceof OperationAction) {
                 /*
-                 * an ExternalJavaAction is a special case as it can also be
-                 * embedded as an Operation. We need to make sure it is not the
-                 * case.
+                 * OperationAction represents its own context for its
+                 * interpreted expression attributes, the variables which are
+                 * child of the OperationAction instance (like 'views') are
+                 * available in the precondition and elements to select
+                 * expressions.
                  */
-                EObject container = found.get().eContainer();
-                if (container instanceof ModelOperation || container instanceof InitialOperation) {
-                    found = new EObjectQuery(container).getFirstAncestorOfType(ToolPackage.eINSTANCE.getAbstractToolDescription());
+                found = Options.fromNullable(this.target);
+            } else {
+                found = new EObjectQuery(target).getFirstAncestorOfType(ToolPackage.eINSTANCE.getAbstractToolDescription());
+                if (found.some() && found.get() instanceof ExternalJavaAction) {
+                    /*
+                     * an ExternalJavaAction is a special case as it can also be
+                     * embedded as an Operation. We need to make sure it is not
+                     * the case.
+                     */
+                    EObject container = found.get().eContainer();
+                    if (container instanceof ModelOperation || container instanceof InitialOperation) {
+                        found = new EObjectQuery(container).getFirstAncestorOfType(ToolPackage.eINSTANCE.getAbstractToolDescription());
+                    }
                 }
             }
         }
