@@ -15,7 +15,12 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.diagram.ContainerLayout;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.filter.MappingFilter;
 import org.eclipse.sirius.diagram.description.filter.VariableFilter;
 import org.eclipse.sirius.diagram.description.filter.util.FilterSwitch;
@@ -26,8 +31,9 @@ import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element
- * (part of the {@link org.eclipse.sirius.viewpoint.description.filter.FilterPackage})
- * and feature corresponding to an Interpreted Expression. For example, for a
+ * (part of the
+ * {@link org.eclipse.sirius.viewpoint.description.filter.FilterPackage}) and
+ * feature corresponding to an Interpreted Expression. For example, for a
  * NodeMapping :
  * <p>
  * <li>if the feature is semantic candidate expression, we return the domain
@@ -44,13 +50,13 @@ import com.google.common.collect.Sets;
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
 public class FilterInterpretedExpressionTargetSwitch extends FilterSwitch<Option<Collection<String>>> {
-    
+
     /**
      * Constant used in switches on feature id to consider the case when the
      * feature must not be considered.
      */
     private static final int DO_NOT_CONSIDER_FEATURE = -1;
-    
+
     /**
      * The ID of the feature containing the Interpreted expression.
      */
@@ -59,6 +65,8 @@ public class FilterInterpretedExpressionTargetSwitch extends FilterSwitch<Option
     private IInterpretedExpressionTargetSwitch globalSwitch;
 
     private int lastFeatureID;
+
+    private EStructuralFeature feature;
 
     /**
      * Default constructor.
@@ -73,6 +81,7 @@ public class FilterInterpretedExpressionTargetSwitch extends FilterSwitch<Option
         this.featureID = feature != null ? feature.getFeatureID() : DO_NOT_CONSIDER_FEATURE;
         this.lastFeatureID = featureID;
         this.globalSwitch = defaultInterpretedExpressionTargetSwitch;
+        this.feature = feature;
     }
 
     /**
@@ -101,9 +110,23 @@ public class FilterInterpretedExpressionTargetSwitch extends FilterSwitch<Option
     public Option<Collection<String>> caseMappingFilter(MappingFilter object) {
         Collection<String> targetTypes = Sets.newLinkedHashSet();
         for (DiagramElementMapping mapping : object.getMappings()) {
-            Option<Collection<String>> targetTypesForMapping = globalSwitch.doSwitch(mapping, false);
-            if (targetTypesForMapping.some()) {
-                targetTypes.addAll(targetTypesForMapping.get());
+            if (feature == FilterPackage.Literals.MAPPING_FILTER__VIEW_CONDITION_EXPRESSION) {
+                if (mapping instanceof EdgeMapping) {
+                    targetTypes.add("diagram.DEdge"); //$NON-NLS-1$
+                } else if (mapping instanceof NodeMapping) {
+                    targetTypes.add("diagram.DNode"); //$NON-NLS-1$
+                } else if (mapping instanceof ContainerMapping) {
+                    if (((ContainerMapping) mapping).getChildrenPresentation() == ContainerLayout.LIST) {
+                        targetTypes.add("diagram.DNodeContainer"); //$NON-NLS-1$
+                    } else {
+                        targetTypes.add("diagram.DNodeList"); //$NON-NLS-1$
+                    }
+                }
+            } else {
+                Option<Collection<String>> targetTypesForMapping = globalSwitch.doSwitch(mapping, false);
+                if (targetTypesForMapping.some()) {
+                    targetTypes.addAll(targetTypesForMapping.get());
+                }
             }
 
         }
@@ -135,7 +158,7 @@ public class FilterInterpretedExpressionTargetSwitch extends FilterSwitch<Option
             this.featureID = lastFeatureID;
         } else {
             lastFeatureID = this.featureID;
-            this.featureID =  DO_NOT_CONSIDER_FEATURE;
+            this.featureID = DO_NOT_CONSIDER_FEATURE;
         }
     }
 }

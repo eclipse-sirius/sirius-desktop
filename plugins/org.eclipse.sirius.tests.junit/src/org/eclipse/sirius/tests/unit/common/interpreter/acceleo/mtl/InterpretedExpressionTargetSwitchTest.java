@@ -35,6 +35,8 @@ import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.filter.FilterPackage;
+import org.eclipse.sirius.diagram.description.filter.MappingFilter;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
@@ -238,8 +240,11 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
             if (targetDomainClassesOption.some()) {
                 if (targetDomainClassesOption.get().contains(DOMAIN_CLASS_FOR_TEST)) {
                     test_expression_ok.add(attribute);
-                } else if (element instanceof ViewValidationRule || (element instanceof ValidationFix && element.eContainer() instanceof ViewValidationRule)
-                        && targetDomainClassesOption.get().contains("diagram.DDiagramElement")) {
+                } else if (element instanceof ViewValidationRule
+                        || (element instanceof ValidationFix && element.eContainer() instanceof ViewValidationRule) && targetDomainClassesOption.get().contains("diagram.DDiagramElement")) {
+                    test_expression_ok.add(attribute);
+                } else if (element instanceof MappingFilter && attribute == FilterPackage.Literals.MAPPING_FILTER__VIEW_CONDITION_EXPRESSION
+                        && targetDomainClassesOption.get().contains("diagram.DNode")) {
                     test_expression_ok.add(attribute);
                 } else {
                     // The entered domain class was not found.
@@ -440,6 +445,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
          * 
          * {@inheritDoc}
          */
+        @Override
         protected EObject multiCandidateSingleRef(EObject root, EReference ref, Collection<EObject> instances) {
             // Resolve the ambiguity by adding the first found element
             // Sub classes can do something else
@@ -499,6 +505,7 @@ public class InterpretedExpressionTargetSwitchTest extends SiriusTestCase {
                 // Some table/tree tools could be created by the MM initializer
                 // in diagrams tools sections (type compatibility).
                 Predicate<EClass> toRemove = new Predicate<EClass>() {
+                    @Override
                     public boolean apply(EClass input) {
                         boolean abstratToolDesc = ToolPackage.eINSTANCE.getAbstractToolDescription().isSuperTypeOf(input);
                         boolean popup = org.eclipse.sirius.tree.description.DescriptionPackage.eINSTANCE.getTreePopupMenu() == input;
