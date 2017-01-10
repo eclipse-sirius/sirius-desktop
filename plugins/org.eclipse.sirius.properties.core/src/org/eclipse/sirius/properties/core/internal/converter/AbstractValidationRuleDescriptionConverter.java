@@ -17,7 +17,7 @@ import org.eclipse.eef.EEFValidationFixDescription;
 import org.eclipse.eef.EEFValidationRuleDescription;
 import org.eclipse.eef.EEF_VALIDATION_SEVERITY_DESCRIPTION;
 import org.eclipse.sirius.properties.core.api.AbstractDescriptionConverter;
-import org.eclipse.sirius.properties.core.api.DescriptionCache;
+import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
@@ -69,7 +69,7 @@ public abstract class AbstractValidationRuleDescriptionConverter extends Abstrac
      * @param cache
      *            The cache
      */
-    protected void convertValidationRuleContent(EEFValidationRuleDescription eefValidationRuleDescription, ValidationRule validationRule, Map<String, Object> parameters, DescriptionCache cache) {
+    protected void convertValidationRuleContent(EEFValidationRuleDescription eefValidationRuleDescription, ValidationRule validationRule, Map<String, Object> parameters, TransformationCache cache) {
         eefValidationRuleDescription.setMessageExpression(validationRule.getMessage());
         eefValidationRuleDescription.getAudits().addAll(this.convertCollection(validationRule.getAudits(), parameters, cache, EEFRuleAuditDescription.class));
         eefValidationRuleDescription.getFixes().addAll(this.convertCollection(validationRule.getFixes(), parameters, cache, EEFValidationFixDescription.class));

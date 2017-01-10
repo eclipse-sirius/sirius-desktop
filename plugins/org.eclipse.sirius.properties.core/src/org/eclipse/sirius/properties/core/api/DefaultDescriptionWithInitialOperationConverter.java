@@ -52,7 +52,7 @@ public class DefaultDescriptionWithInitialOperationConverter<SIRIUS extends EObj
     }
 
     @Override
-    protected void convertEReference(SIRIUS siriusEObject, EObject eefEObject, EReference eReference, Map<String, Object> parameters, DescriptionCache cache) {
+    protected void convertEReference(SIRIUS siriusEObject, EObject eefEObject, EReference eReference, Map<String, Object> parameters, TransformationCache cache) {
         if (eReference.getEReferenceType().equals(ToolPackage.Literals.INITIAL_OPERATION)) {
             Object initialOperation = siriusEObject.eGet(eReference);
             if (initialOperation instanceof InitialOperation) {

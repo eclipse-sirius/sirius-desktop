@@ -19,7 +19,7 @@ import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION;
 import org.eclipse.sirius.properties.FillLayoutDescription;
-import org.eclipse.sirius.properties.core.api.DescriptionCache;
+import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.api.IDescriptionConverter;
 import org.eclipse.sirius.properties.core.internal.Messages;
 
@@ -36,7 +36,7 @@ public class FillLayoutDescriptionConverter implements IDescriptionConverter {
     }
 
     @Override
-    public EObject convert(EObject description, Map<String, Object> parameters, DescriptionCache cache) {
+    public EObject convert(EObject description, Map<String, Object> parameters, TransformationCache cache) {
         if (description instanceof FillLayoutDescription) {
             FillLayoutDescription fillLayoutDescription = (FillLayoutDescription) description;
 

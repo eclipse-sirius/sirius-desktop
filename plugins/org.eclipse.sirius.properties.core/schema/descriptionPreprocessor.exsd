@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.sirius.properties.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.eclipse.sirius.properties.core" id="descriptionPreprocessor" name="%descriptionPreprocessor.Name"/>
+      </appinfo>
+      <documentation>
+         This extension point allows the contribution of an &lt;code&gt;org.eclipse.sirius.properties.core.api.IDescriptionPreprocessor&lt;/code&gt; which can be used to preprocess the description of an element from the Sirius Properties DSL with extends and overrides features to the a flat Sirius Properties DSL in which all these relations are resolved.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="descriptor" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="descriptor">
+      <complexType>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  The identifier of the contribution.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="label" type="string">
+            <annotation>
+               <documentation>
+                  The label of the provider, this information may be used in the user interface and as such it may be visible by the end user. It should be internationalized if possible.
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  The description of the provider, this information may be used in the user interface and as such it may be visible by the end user. It should be internationalized if possible.
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  The implementation of the IDescriptionPreprocessor.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.properties.core.api.IDescriptionPreprocessor"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         This extension point has been available since Eclipse Sirius 5.0.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;pre&gt;
+&lt;extension
+      point=&quot;org.eclipse.sirius.properties.core.descriptionPreprocessor&quot;&gt;
+   &lt;descriptor
+         class=&quot;org.eclipse.sirius.properties.core.ext.widgets.reference.internal.ExtReferenceDescriptionPreprocessor&quot;
+         description=&quot;%referenceDescriptionPreprocessor.Description&quot;
+         id=&quot;org.eclipse.sirius.properties.core.ext.widgets.reference.descriptionPreprocessor&quot;
+         label=&quot;%referenceDescriptionPreprocessor.Label&quot;&gt;
+   &lt;/descriptor&gt;
+&lt;/extension&gt;
+&lt;/pre&gt;
+Example of an IDescriptionPreprocessor contribution. In this example, we are providing a contribution to support the definition of extends and overrides features on a custom widget. Using this extension point, a developer can:
+&lt;ul&gt;
+  &lt;li&gt;Convert her/his definition of a custom widget with extends/and overrides from definition of the custom widget in the Sirius DSL with all these relations resolved&lt;/li&gt;
+  &lt;li&gt;Replace the preprocessing of any existing element from properties part&lt;/li&gt;
+&lt;/ul&gt;
+
+Here is a simple example of the preprocessing of a custom widget whic reuse the PreconfiguredPreprocessor which is a generic preprocessor which will work for most of the case:
+&lt;pre&gt;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.properties.core.api.PreconfiguredPreprocessor;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
+
+public class ExtReferenceDescriptionPreprocessor extends PreconfiguredPreprocessor&lt;ExtReferenceDescription&gt; {
+
+    public ExtReferenceDescriptionPreprocessor() {
+        super(ExtReferenceDescription.class, PropertiesExtWidgetsReferencePackage.Literals.EXT_REFERENCE_DESCRIPTION);
+    }
+
+    @Override
+    public boolean canHandle(EObject description) {
+        return description instanceof ExtReferenceDescription;
+    }
+
+}
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         The IDescriptionPReprocessor lets you convert concepts from the Sirius Properties DSL with extends and overrides to a flat Sirius Properties DSL with all these features resolved.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         This plugin does not supply any implementation of the IDescriptionPreprocessor interface.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         Copyright (c) 2017 Obeo&lt;br/&gt;
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+&lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
+      </documentation>
+   </annotation>
+
+</schema>

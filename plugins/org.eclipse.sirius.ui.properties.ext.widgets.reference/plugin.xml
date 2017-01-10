@@ -31,5 +31,26 @@
             label="%viewerFilterProvider.Label">
       </descriptor>
    </extension>
+   <extension
+         point="org.eclipse.sirius.properties.core.descriptionPreprocessor">
+      <descriptor
+            class="org.eclipse.sirius.ui.properties.ext.widgets.reference.internal.ExtReferenceDescriptionPreprocessor"
+            description="%referenceDescriptionPreprocessor.Description"
+            id="org.eclipse.sirius.ui.properties.ext.widgets.reference.descriptionPreprocessor"
+            label="%referenceDescriptionPreprocessor.Label">
+      </descriptor>
+      <descriptor
+            class="org.eclipse.sirius.ui.properties.ext.widgets.reference.internal.ExtReferenceDescriptionStylePreprocessor"
+            description="%referenceDescriptionStylePreprocessor.Description"
+            id="org.eclipse.sirius.ui.properties.ext.widgets.reference.descriptionStylePreprocessor"
+            label="%referenceDescriptionStylePreprocessor.Label">
+      </descriptor>
+      <descriptor
+            class="org.eclipse.sirius.ui.properties.ext.widgets.reference.internal.ExtReferenceDescriptionConditionalStylePreprocessor"
+            description="%referenceDescriptionConditionalStylePreprocessor.Description"
+            id="org.eclipse.sirius.ui.properties.ext.widgets.reference.descriptionConditionalStylePreprocessor"
+            label="%referenceDescriptionConditionalStylePreprocessor.Label">
+      </descriptor>
+   </extension>
 
 </plugin>

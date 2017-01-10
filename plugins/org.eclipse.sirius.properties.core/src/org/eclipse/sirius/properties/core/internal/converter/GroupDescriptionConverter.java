@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.core.api.AbstractDescriptionConverter;
-import org.eclipse.sirius.properties.core.api.DescriptionCache;
+import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.internal.Messages;
 
 /**
@@ -43,7 +43,7 @@ public class GroupDescriptionConverter extends AbstractDescriptionConverter {
     }
 
     @Override
-    public EObject convert(EObject description, Map<String, Object> parameters, DescriptionCache cache) {
+    public EObject convert(EObject description, Map<String, Object> parameters, TransformationCache cache) {
         if (description instanceof GroupDescription) {
             GroupDescription groupDescription = (GroupDescription) description;
 

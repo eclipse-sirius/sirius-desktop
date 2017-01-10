@@ -56,5 +56,5 @@ public interface IDescriptionConverter {
      *            The cache of the object created for the given description.
      * @return An EObject to be used in the EEF description
      */
-    EObject convert(EObject description, Map<String, Object> parameters, DescriptionCache cache);
+    EObject convert(EObject description, Map<String, Object> parameters, TransformationCache cache);
 }

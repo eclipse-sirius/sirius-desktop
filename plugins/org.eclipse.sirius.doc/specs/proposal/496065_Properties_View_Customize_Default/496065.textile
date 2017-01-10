@@ -8,6 +8,7 @@ _Summary_: Customize part of the default behavior.
 | v0.1        | DRAFT    | 2016-11-29 | mbats    | Initial version. |
 | v0.2        | DRAFT    | 2016-12-14 | mbats    | Review the extends mechanism, add the override feature and define the editor evolution. |
 | v0.3        | DRAFT    | 2016-12-21 | mbats    | Details the override mechanism after CBR review. |
+| v0.4        | DRAFT    | 2017-01-24 | flatombe | Minor nitpicking. |
 
 
 _Relevant tickets_:
@@ -56,6 +57,8 @@ If the specifier defines in the @Page Description@:
 * @Label Expression@, @Domain Class@, @Semantic Candidate Expression@ or @Precondition Expression@, these values will *override* the values defined in the referenced imported description. 
 * @Groups@ will *be added* to the groups defined by the referenced @Page Description@. 
 * @Page Validations@  will *be added* to the validations defined by the referenced @Page Description@.
+
+In the case of a containment, such as a @Text Description@ contained by a @Group Description@, the contained elements are inherited by the extending description. There is however no possibility to differentiate a @Text Description@ meant to re-define an ancestor's @Text Description@ from the definition of a new @Text Description@ based on an ancestor's @Text Description@ definition. Specifiers should filter out the ancestor's @Text Description@ they wish to re-define. 
 
 h4. Filter
 

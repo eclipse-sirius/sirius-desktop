@@ -66,7 +66,7 @@ public class DefaultDescriptionConverter<SIRIUS extends EObject> extends Abstrac
     }
 
     @Override
-    public EObject convert(EObject description, Map<String, Object> parameters, DescriptionCache cache) {
+    public EObject convert(EObject description, Map<String, Object> parameters, TransformationCache cache) {
         if (this.siriusClass.isAssignableFrom(description.getClass())) {
             SIRIUS siriusEObject = this.siriusClass.cast(description);
 
@@ -136,7 +136,7 @@ public class DefaultDescriptionConverter<SIRIUS extends EObject> extends Abstrac
      * @param cache
      *            The cache
      */
-    protected void convertEReference(SIRIUS siriusEObject, EObject eefEObject, EReference eReference, Map<String, Object> parameters, DescriptionCache cache) {
+    protected void convertEReference(SIRIUS siriusEObject, EObject eefEObject, EReference eReference, Map<String, Object> parameters, TransformationCache cache) {
         EStructuralFeature eefEStructuralFeature = eefEObject.eClass().getEStructuralFeature(eReference.getName());
         if (eefEStructuralFeature instanceof EReference) {
             if (eefEStructuralFeature.isMany() && eReference.isMany()) {

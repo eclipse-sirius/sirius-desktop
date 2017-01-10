@@ -11,16 +11,17 @@
 package org.eclipse.sirius.properties.core.internal.converter;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.eclipse.eef.EEFGroupDescription;
 import org.eclipse.eef.EEFPageDescription;
 import org.eclipse.eef.EEFPropertyValidationRuleDescription;
 import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EEFWidgetDescription;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.WidgetDescription;
-import org.eclipse.sirius.properties.core.api.DescriptionCache;
 import org.eclipse.sirius.properties.core.api.IDescriptionLinkResolver;
+import org.eclipse.sirius.properties.core.api.TransformationCache;
 
 /**
  * This class is used to resolve the links between the property validation rules
@@ -31,17 +32,12 @@ import org.eclipse.sirius.properties.core.api.IDescriptionLinkResolver;
 public class PropertyValidationRuleLinkResolver implements IDescriptionLinkResolver {
 
     @Override
-    public void resolve(EEFViewDescription view, DescriptionCache cache) {
-        List<EEFPageDescription> pages = view.getPages();
-        for (EEFPageDescription page : pages) {
-            List<EEFGroupDescription> groups = page.getGroups();
-            for (EEFGroupDescription group : groups) {
-                // Resolve the links for all the property validation rules
-                List<EEFPropertyValidationRuleDescription> propertyValidationRules = group.getPropertyValidationRules();
-                for (EEFPropertyValidationRuleDescription eefPropertyValidationRule : propertyValidationRules) {
-                    this.resolve(eefPropertyValidationRule, cache);
-                }
-            }
+    public void resolve(EObject view, TransformationCache cache) {
+        if (view instanceof EEFViewDescription) {
+            List<EEFPageDescription> pages = ((EEFViewDescription) view).getPages();
+
+            // Resolve the links for all the property validation rules
+            pages.forEach(page -> page.getGroups().forEach(group -> group.getPropertyValidationRules().forEach(propertyValidationRule -> this.resolve(propertyValidationRule, cache))));
         }
     }
 
@@ -53,13 +49,14 @@ public class PropertyValidationRuleLinkResolver implements IDescriptionLinkResol
      * @param cache
      *            The cache
      */
-    private void resolve(EEFPropertyValidationRuleDescription eefPropertyValidationRule, DescriptionCache cache) {
-        Object siriusDescription = cache.getSiriusDescription(eefPropertyValidationRule);
+    private void resolve(EEFPropertyValidationRuleDescription eefPropertyValidationRule, TransformationCache cache) {
+        Object siriusDescription = cache.getInput(eefPropertyValidationRule);
         if (siriusDescription instanceof PropertyValidationRule) {
             PropertyValidationRule siriusPropertyValidationRule = (PropertyValidationRule) siriusDescription;
             List<WidgetDescription> widgets = siriusPropertyValidationRule.getTargets();
             for (WidgetDescription siriusWidget : widgets) {
-                Object eefDescription = cache.getEEFDescription(siriusWidget);
+                Optional<Object> eefDescriptionOptional = cache.getOutput(siriusWidget);
+                Object eefDescription = eefDescriptionOptional.get();
                 if (eefDescription instanceof EEFWidgetDescription) {
                     eefPropertyValidationRule.getTargets().add((EEFWidgetDescription) eefDescription);
                 }

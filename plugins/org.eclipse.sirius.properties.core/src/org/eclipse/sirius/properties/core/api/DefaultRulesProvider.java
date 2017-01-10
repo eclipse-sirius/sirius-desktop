@@ -10,16 +10,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.properties.core.api;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.core.internal.Messages;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
+import org.eclipse.sirius.viewpoint.description.Group;
 
 /**
  * Utility class used to load and hold the default rules.
@@ -70,16 +70,13 @@ public final class DefaultRulesProvider {
      * @return The root element of the default rules
      */
     public ViewExtensionDescription getDefaultRules(ResourceSet resourceSet) {
-        Resource resource = resourceSet.getResource(DEFAULT_RULES_RESOURCE_URI, true);
-        if (resource == null) {
-            SiriusPropertiesCorePlugin.getPlugin().error(Messages.DefaultRulesProvider_DefaultPropertiesNotFound);
-        } else {
-            List<EObject> contents = resource.getContents();
-            if (contents.size() > 0 && contents.get(0) instanceof ViewExtensionDescription) {
-                return (ViewExtensionDescription) contents.get(0);
-            }
-        }
-        return null;
-    }
+        Optional<Resource> resource = Optional.ofNullable(resourceSet.getResource(DEFAULT_RULES_RESOURCE_URI, true));
 
+        if (!resource.isPresent()) {
+            SiriusPropertiesCorePlugin.getPlugin().error(Messages.DefaultRulesProvider_DefaultPropertiesNotFound);
+        }
+
+        return resource.map(r -> r.getContents()).filter(Group.class::isInstance).map(Group.class::cast).map(group -> group.getExtensions()).filter(ViewExtensionDescription.class::isInstance)
+                .map(ViewExtensionDescription.class::cast).orElse(null);
+    }
 }

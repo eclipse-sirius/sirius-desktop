@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.properties.core.api;
 
-import org.eclipse.eef.EEFViewDescription;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * Implementations of this interface will be used to resolve links in the
@@ -22,10 +22,10 @@ public interface IDescriptionLinkResolver {
     /**
      * Resolves the link in the view.
      * 
-     * @param view
-     *            The view
+     * @param eObject
+     *            The eObject
      * @param cache
-     *            The cache of the EEF objects created for the Sirius objects
+     *            The cache of the input objects created for the output objects
      */
-    void resolve(EEFViewDescription view, DescriptionCache cache);
+    void resolve(EObject eObject, TransformationCache cache);
 }

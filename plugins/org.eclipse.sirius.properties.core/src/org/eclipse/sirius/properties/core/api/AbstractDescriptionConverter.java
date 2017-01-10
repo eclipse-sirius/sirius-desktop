@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -47,11 +48,11 @@ public abstract class AbstractDescriptionConverter implements IDescriptionConver
      *            The type of the EEF EObject
      * 
      */
-    protected <T> T convertEObject(EObject eObject, Map<String, Object> parameters, DescriptionCache cache, Class<T> expectedClass) {
+    protected <T> T convertEObject(EObject eObject, Map<String, Object> parameters, TransformationCache cache, Class<T> expectedClass) {
         if (eObject != null) {
-            IDescriptionConverter converter = SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverter(eObject);
-            if (converter != null) {
-                EObject eefEObject = converter.convert(eObject, parameters, cache);
+            Optional<IDescriptionConverter> converterOptional = SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverter(eObject);
+            if (converterOptional.isPresent()) {
+                EObject eefEObject = converterOptional.get().convert(eObject, parameters, cache);
                 if (expectedClass.isAssignableFrom(eefEObject.getClass())) {
                     return expectedClass.cast(eefEObject);
                 }
@@ -78,7 +79,7 @@ public abstract class AbstractDescriptionConverter implements IDescriptionConver
      *            The type of the EEF EObjects
      * 
      */
-    protected <T> List<T> convertCollection(Collection<?> eObjects, Map<String, Object> parameters, DescriptionCache cache, Class<T> expectedClass) {
+    protected <T> List<T> convertCollection(Collection<?> eObjects, Map<String, Object> parameters, TransformationCache cache, Class<T> expectedClass) {
         List<T> convertedEObjects = new ArrayList<>();
         for (Object eObject : eObjects) {
             if (eObject instanceof EObject) {

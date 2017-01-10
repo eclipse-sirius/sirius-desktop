@@ -17,7 +17,7 @@ import org.eclipse.eef.EEFPropertyValidationRuleDescription;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.PropertyValidationRule;
-import org.eclipse.sirius.properties.core.api.DescriptionCache;
+import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.internal.Messages;
 
 /**
@@ -34,7 +34,7 @@ public class PropertyValidationRuleDescriptionConverter extends AbstractValidati
     }
 
     @Override
-    public EObject convert(EObject description, Map<String, Object> parameters, DescriptionCache cache) {
+    public EObject convert(EObject description, Map<String, Object> parameters, TransformationCache cache) {
         if (description instanceof PropertyValidationRule) {
             PropertyValidationRule propertyValidationRule = (PropertyValidationRule) description;
             EEFPropertyValidationRuleDescription eefPropertyValidationRuleDescription = EefFactory.eINSTANCE.createEEFPropertyValidationRuleDescription();

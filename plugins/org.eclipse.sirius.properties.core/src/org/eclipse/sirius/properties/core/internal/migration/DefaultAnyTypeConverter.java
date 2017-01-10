@@ -15,7 +15,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -90,6 +92,11 @@ public class DefaultAnyTypeConverter implements IAnyTypeConverter {
                     internalEObject.eSetProxyURI(resource.getURI().appendFragment((String) entry.getValue()));
                 }
                 eObject.eSet(eStructuralFeature, colorDescription);
+            } else if (eStructuralFeature instanceof EAttribute && entry.getValue() instanceof String) {
+                EAttribute eAttribute = (EAttribute) eStructuralFeature;
+                EDataType eDataType = eAttribute.getEAttributeType();
+                String stringValue = (String) entry.getValue();
+                eObject.eSet(eStructuralFeature, EcoreUtil.createFromString(eDataType, stringValue));
             } else {
                 eObject.eSet(eStructuralFeature, entry.getValue());
             }

@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.core.api.DefaultDescriptionConverter;
-import org.eclipse.sirius.properties.core.api.DescriptionCache;
+import org.eclipse.sirius.properties.core.api.TransformationCache;
 
 /**
  * This class is used to convert custom widget descriptions.
@@ -46,7 +46,7 @@ public class CustomWidgetDescriptionConverter<SIRIUS extends EObject> extends De
     }
 
     @Override
-    protected void convertEReference(SIRIUS siriusEObject, EObject eefEObject, EReference eReference, Map<String, Object> parameters, DescriptionCache cache) {
+    protected void convertEReference(SIRIUS siriusEObject, EObject eefEObject, EReference eReference, Map<String, Object> parameters, TransformationCache cache) {
         if (eReference.equals(PropertiesPackage.Literals.ABSTRACT_CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS)) {
             EReference eefEReference = EefPackage.Literals.EEF_CUSTOM_WIDGET_DESCRIPTION__CUSTOM_EXPRESSIONS;
             Object siriusValue = siriusEObject.eGet(eReference);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 Obeo.
+ * Copyright (c) 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,15 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tests.ui.properties.internal.converters;
+package org.eclipse.sirius.tests.ui.properties.internal.preprocessor;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
-import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EefPackage;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.compare.Comparison;
@@ -33,49 +34,43 @@ import org.eclipse.emf.compare.scope.DefaultComparisonScope;
 import org.eclipse.emf.compare.scope.IComparisonScope;
 import org.eclipse.emf.compare.utils.UseIdentifiers;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.sirius.properties.Category;
-import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
-import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
-import org.eclipse.sirius.properties.core.internal.converter.ViewDescriptionConverter;
-import org.eclipse.sirius.viewpoint.description.Group;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.properties.core.internal.preprocessor.ViewDescriptionPreprocessor;
 import org.junit.Test;
 
 /**
- * Tests of the IDescriptionConverters.
+ * Test suite for the
+ * {@link org.eclipse.sirius.properties.core.api.IDescriptionPreprocessor}.
  * 
- * @author sbegaudeau
+ * @author flatombe
+ * @author mbats
  */
 @SuppressWarnings("restriction")
-public class ConverterTests {
+public final class PreprocessorTest {
     /**
-     * The path of the Sirius model in the bundle.
+     * The path of the input model in the bundle.
      */
-    private static final String SIRIUS_MODEL_PATH = "/data/sirius.odesign";
+    private static final String INPUT_MODEL_PATH = "/data/preprocessor/input.odesign";
 
     /**
      * This test is used to ensure the proper transformation of a Sirius
-     * Properties model into an EEF one.
+     * Properties model with extends and overrides definitions into a resolved
+     * "flat" Sirius Properties model.
      */
     @Test
-    public void testDescriptionConverter() {
-        Group group = (Group) this.load(SIRIUS_MODEL_PATH).getContents().get(0);
-        EObject siriusEObject = this.convert(group.getExtensions().get(0));
-        EObject eefEObject = this.load("/data/eef.xmi").getContents().get(0);
+    public void testPreprocessorTest() {
+        EObject processedEObject = this.preprocess(this.load(INPUT_MODEL_PATH).getContents().get(0).eContents().get(0));
+        EObject expectedEObject = this.load("/data/preprocessor/expected.odesign").getContents().get(0);
 
-        EcoreUtil.resolveAll(siriusEObject.eResource().getResourceSet());
-        EcoreUtil.resolveAll(eefEObject.eResource().getResourceSet());
+        // For debug purpose only
+        print(processedEObject);
 
-        IComparisonScope scope = new DefaultComparisonScope(siriusEObject, eefEObject, null);
+        IComparisonScope scope = new DefaultComparisonScope(processedEObject, expectedEObject, null);
         IEObjectMatcher matcher = DefaultMatchEngine.createDefaultEObjectMatcher(UseIdentifiers.NEVER);
         IComparisonFactory comparisonFactory = new DefaultComparisonFactory(new DefaultEqualityHelperFactory());
         IMatchEngine.Factory matchEngineFactory = new MatchEngineFactoryImpl(matcher, comparisonFactory);
@@ -91,32 +86,43 @@ public class ConverterTests {
     }
 
     /**
+     * For debug use only, used to save the processed odesign into a file to
+     * compare easily the processed result with the expected one.
+     * 
+     * @param resource
+     */
+    private void print(EObject eObject) {
+        try {
+            eObject.eResource().save(System.out, new HashMap<>());
+        } catch (IOException e) {
+            // Nothing
+        }
+    }
+
+    /**
      * Transforms the given Sirius EObject into an EEF EObject.
      * 
      * @param eObject
      *            The Sirius EObject
      * @return The EEF EObject created form the Sirius one
      */
-    private EObject convert(EObject eObject) {
+    private EObject preprocess(EObject eObject) {
         if (eObject instanceof ViewExtensionDescription) {
-            List<PageDescription> pages = new ArrayList<>();
             ViewExtensionDescription viewExtensionDescription = (ViewExtensionDescription) eObject;
-            for (Category category : viewExtensionDescription.getCategories()) {
-                pages.addAll(category.getPages());
+            ViewDescriptionPreprocessor preprocessor = new ViewDescriptionPreprocessor(viewExtensionDescription);
+            Optional<ViewExtensionDescription> processedOptional = preprocessor.convert();
+            if (processedOptional.isPresent()) {
+                EObject processed = processedOptional.get();
+                ResourceSet resourceSet = new ResourceSetImpl();
+                resourceSet.getPackageRegistry().put(EefPackage.eNS_URI, EefPackage.eINSTANCE);
+                resourceSet.getPackageRegistry().put(PropertiesPackage.eNS_URI, PropertiesPackage.eINSTANCE);
+                resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", //$NON-NLS-1$
+                        new XMIResourceFactoryImpl());
+                Resource resource = resourceSet.createResource(URI.createURI(INPUT_MODEL_PATH));
+                resource.getContents().add(processed);
+
+                return processed;
             }
-            ViewDescriptionConverter converter = new ViewDescriptionConverter(pages);
-            SiriusInputDescriptor input = new SiriusInputDescriptor(EcoreFactory.eINSTANCE.createEObject());
-            EEFViewDescription eefViewDescription = converter.convert(input);
-
-            ResourceSet resourceSet = new ResourceSetImpl();
-            resourceSet.getPackageRegistry().put(EefPackage.eNS_URI, EefPackage.eINSTANCE);
-            resourceSet.getPackageRegistry().put(PropertiesPackage.eNS_URI, PropertiesPackage.eINSTANCE);
-            resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", //$NON-NLS-1$
-                    new XMIResourceFactoryImpl());
-            Resource resource = resourceSet.createResource(URI.createURI(SIRIUS_MODEL_PATH));
-            resource.getContents().add(eefViewDescription);
-
-            return eefViewDescription;
         }
         return null;
     }
@@ -131,13 +137,11 @@ public class ConverterTests {
      */
     private Resource load(String uri) {
         ResourceSet resourceSet = new ResourceSetImpl();
-        resourceSet.getPackageRegistry().put(EefPackage.eNS_URI, EefPackage.eINSTANCE);
         resourceSet.getPackageRegistry().put(PropertiesPackage.eNS_URI, PropertiesPackage.eINSTANCE);
-        resourceSet.getPackageRegistry().put(ToolPackage.eNS_URI, ToolPackage.eINSTANCE);
-        resourceSet.getPackageRegistry().put(ValidationPackage.eNS_URI, ValidationPackage.eINSTANCE);
         resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl()); //$NON-NLS-1$
         Resource resource = resourceSet.getResource(URI.createFileURI(System.getProperty("user.dir") + uri), true);
-        resource.setURI(URI.createURI(SIRIUS_MODEL_PATH));
+        resource.setURI(URI.createURI(INPUT_MODEL_PATH));
         return resource;
     }
+
 }

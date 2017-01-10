@@ -20,7 +20,7 @@ import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.GroupStyle;
 import org.eclipse.sirius.properties.core.api.AbstractDescriptionConverter;
-import org.eclipse.sirius.properties.core.api.DescriptionCache;
+import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.internal.Messages;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
@@ -37,7 +37,7 @@ public class GroupStyleDescriptionConverter extends AbstractDescriptionConverter
     }
 
     @Override
-    public EObject convert(EObject description, Map<String, Object> parameters, DescriptionCache cache) {
+    public EObject convert(EObject description, Map<String, Object> parameters, TransformationCache cache) {
         if (description instanceof GroupStyle) {
             GroupStyle groupStyle = (GroupStyle) description;
 

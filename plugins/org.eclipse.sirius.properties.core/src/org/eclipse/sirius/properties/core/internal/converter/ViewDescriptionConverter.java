@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.eef.EEFGroupDescription;
@@ -25,10 +26,10 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
-import org.eclipse.sirius.properties.core.api.DescriptionCache;
 import org.eclipse.sirius.properties.core.api.IDescriptionConverter;
 import org.eclipse.sirius.properties.core.api.IDescriptionLinkResolver;
 import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
+import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 
 /**
@@ -62,42 +63,53 @@ public class ViewDescriptionConverter {
      */
     public EEFViewDescription convert(SiriusInputDescriptor input) {
         EEFViewDescription view = this.createView();
+        TransformationCache cache = new TransformationCache();
 
         Map<String, Object> parameters = new HashMap<>();
         parameters.put(IDescriptionConverter.INPUT, input);
         parameters.put(IDescriptionConverter.VIEW, view);
 
-        DescriptionCache cache = new DescriptionCache();
-
         // Starts the conversion
-        for (PageDescription pageDescription : pageDescriptions) {
-            IDescriptionConverter converter = SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverter(pageDescription);
-            EObject page = converter.convert(pageDescription, parameters, cache);
-            if (page instanceof EEFPageDescription) {
-                view.getPages().add((EEFPageDescription) page);
+        pageDescriptions.forEach(pageDescription -> convertPage(input, view, cache, pageDescription, parameters));
+
+        // Starts the resolution of the links
+        List<IDescriptionLinkResolver> linkResolvers = SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverterLinkResolvers();
+        linkResolvers.forEach(linkResolver -> linkResolver.resolve(view, cache));
+
+        return view;
+    }
+
+    private void convertPage(SiriusInputDescriptor input, EEFViewDescription view, TransformationCache cache, PageDescription pageDescription, Map<String, Object> parameters) {
+        Optional<IDescriptionConverter> converter = SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverter(pageDescription);
+        if (converter.isPresent()) {
+            EObject eObject = converter.get().convert(pageDescription, parameters, cache);
+            if (eObject instanceof EEFPageDescription) {
+                EEFPageDescription convertedPageDescription = (EEFPageDescription) eObject;
+                view.getPages().add(convertedPageDescription);
 
                 for (GroupDescription groupDescription : pageDescription.getGroups()) {
-                    if (!cache.getAllSiriusDescriptions().contains(groupDescription)) {
-                        IDescriptionConverter groupConverter = SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverter(groupDescription);
-                        EObject group = groupConverter.convert(groupDescription, parameters, cache);
-                        if (group instanceof EEFGroupDescription) {
-                            view.getGroups().add((EEFGroupDescription) group);
-                            ((EEFPageDescription) page).getGroups().add((EEFGroupDescription) group);
-                        }
-                    } else {
-                        ((EEFPageDescription) page).getGroups().add((EEFGroupDescription) cache.getEEFDescription(groupDescription));
-                    }
+                    convertGroup(view, cache, parameters, convertedPageDescription, groupDescription);
                 }
             }
         }
+    }
 
-        // Starts the resolution of the links
-        List<IDescriptionLinkResolver> linkResolvers = SiriusPropertiesCorePlugin.getPlugin().getDescriptionLinkResolvers();
-        for (IDescriptionLinkResolver linkResolver : linkResolvers) {
-            linkResolver.resolve(view, cache);
+    private void convertGroup(EEFViewDescription view, TransformationCache cache, Map<String, Object> parameters, EEFPageDescription convertedPageDescription, GroupDescription groupDescription) {
+        if (!cache.getAllInputs().contains(groupDescription)) {
+            Optional<IDescriptionConverter> groupConverter = SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverter(groupDescription);
+            if (groupConverter.isPresent()) {
+                EObject group = groupConverter.get().convert(groupDescription, parameters, cache);
+                if (group instanceof EEFGroupDescription) {
+                    view.getGroups().add((EEFGroupDescription) group);
+                    convertedPageDescription.getGroups().add((EEFGroupDescription) group);
+                }
+            }
+        } else {
+            Optional<Object> output = cache.getOutput(groupDescription);
+            output.filter(EEFGroupDescription.class::isInstance).map(EEFGroupDescription.class::cast).ifPresent(eefGroupDescription -> {
+                convertedPageDescription.getGroups().add(eefGroupDescription);
+            });
         }
-
-        return view;
     }
 
     /**

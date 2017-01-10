@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.properties.internal.tabprovider;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.eef.EEFViewDescription;
@@ -35,13 +36,13 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.sirius.common.interpreter.api.VariableManagerFactory;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.properties.Category;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.core.api.DefaultRulesProvider;
 import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
 import org.eclipse.sirius.properties.core.internal.SiriusInterpreter;
 import org.eclipse.sirius.properties.core.internal.converter.ViewDescriptionConverter;
+import org.eclipse.sirius.properties.core.internal.preprocessor.ViewDescriptionPreprocessor;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -144,17 +145,16 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
 
         List<PageDescription> effectivePages = Lists.newArrayList();
         for (ViewExtensionDescription ved : viewDescriptions) {
-            for (Category category : ved.getCategories()) {
-                effectivePages.addAll(category.getPages());
+            Optional<ViewExtensionDescription> processedVed = new ViewDescriptionPreprocessor(ved).convert();
+            if (processedVed.isPresent()) {
+                processedVed.get().getCategories().forEach(category -> effectivePages.addAll(category.getPages()));
             }
         }
 
         if (effectivePages.size() == 0) {
             ViewExtensionDescription viewExtensionDescription = DefaultRulesProvider.INSTANCE.getDefaultRules();
             if (viewExtensionDescription != null) {
-                for (Category category : viewExtensionDescription.getCategories()) {
-                    effectivePages.addAll(category.getPages());
-                }
+                viewExtensionDescription.getCategories().forEach(category -> effectivePages.addAll(category.getPages()));
             }
         }
 

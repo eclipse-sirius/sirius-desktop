@@ -16,7 +16,7 @@ import java.util.Map;
 import org.eclipse.eef.EEFSemanticValidationRuleDescription;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.properties.core.api.DescriptionCache;
+import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.internal.Messages;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 
@@ -33,7 +33,7 @@ public class SemanticValidationRuleDescriptionConverter extends AbstractValidati
     }
 
     @Override
-    public EObject convert(EObject description, Map<String, Object> parameters, DescriptionCache cache) {
+    public EObject convert(EObject description, Map<String, Object> parameters, TransformationCache cache) {
         if (description instanceof SemanticValidationRule) {
             SemanticValidationRule semanticValidationRule = (SemanticValidationRule) description;
             EEFSemanticValidationRuleDescription eefSemanticValidationRuleDescription = EefFactory.eINSTANCE.createEEFSemanticValidationRuleDescription();

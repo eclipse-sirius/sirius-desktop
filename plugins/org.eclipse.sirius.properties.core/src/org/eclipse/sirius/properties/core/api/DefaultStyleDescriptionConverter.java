@@ -57,7 +57,7 @@ public class DefaultStyleDescriptionConverter<SIRIUS extends EObject> extends De
     }
 
     @Override
-    protected void convertEReference(SIRIUS siriusEObject, EObject eefEObject, EReference eReference, Map<String, Object> parameters, DescriptionCache cache) {
+    protected void convertEReference(SIRIUS siriusEObject, EObject eefEObject, EReference eReference, Map<String, Object> parameters, TransformationCache cache) {
         if (eReference.getEReferenceType().getInstanceClass().equals(ColorDescription.class)) {
             EStructuralFeature eefEStructuralFeature = eefEObject.eClass().getEStructuralFeature(eReference.getName() + "Expression"); //$NON-NLS-1$
             if (eefEStructuralFeature.getEType().getInstanceClass().equals(String.class)) {

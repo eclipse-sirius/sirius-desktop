@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" name="Properties" version="12.0.0.201702091400">
+  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties">
+    <categories name="Default">
+      <pages name="PageInAnotherResource" labelExpression="PageInAnotherResourceLabelExpression" domainClass="PageInAnotherResourceDomainClass" semanticCandidateExpression="PageInAnotherResourceSEmanticCandidateExpression" preconditionExpression="PageInAnotherResourcePreconditionExpression" groups="//@extensions.0/@categories.0/@groups.0" filterGroupsFromExtendedPageExpression="PageInAnotherResourceFilterGroupsFromExtendedPageExpression" filterValidationRulesFromExtendedPageExpression="PageInAnotherResourceFilterValidationRulesFromExtendedPageExpression"/>
+      <groups name="GroupInAnotherResource" labelExpression="GroupInAnotherResource" domainClass="GroupInAnotherResourceDomainClass" semanticCandidateExpression="GroupInAnotherResourceSemanticCandidateExpression" preconditionExpression="GroupInAnotherResourcePreconditionExpression">
+        <controls xsi:type="properties:TextDescription" name="GroupInAnotherResourceText" labelExpression="GroupInAnotherResourceTextLabelExpression" helpExpression="GroupInAnotherResourceTextHelpExpression" isEnabledExpression="GroupInAnotherResourceTextIsEnabledExpression" valueExpression="GroupInAnotherResourceTextValueExpression" filterConditionalStylesFromExtendedTextExpression="GroupInAnotherResourceTextFilterConditionalStylesFromExtendedTextExpression"/>
+      </groups>
+    </categories>
+  </extensions>
+</description:Group>
