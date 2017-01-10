@@ -65,6 +65,7 @@ import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
@@ -212,6 +213,15 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
                 availableVariables.put(IInterpreterSiriusVariables.CONTAINER_VIEW, VariableType.fromStrings(possibleContainerViewTypes));
             }
+        }
+        if (target instanceof ConditionalStyleDescription && this.feature == org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION) {
+            /*
+             * We don't use the Ecore annotation to define the 'diagram'
+             * variable as it is only available for subclasses of
+             * ConditionalStyleDescription which are defined in the
+             * diagram.description EPackage.
+             */
+            availableVariables.put(IInterpreterSiriusVariables.DIAGRAM, VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM));
         }
 
         return availableVariables;
