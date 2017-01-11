@@ -182,16 +182,6 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     }
 
     @Override
-    public void lock(Collection<EObject> elements) {
-        // Nothing
-    }
-
-    @Override
-    public void unlock(Collection<EObject> elements) {
-        // Nothing
-    }
-
-    @Override
     public LockStatus getLockStatus(EObject obj) {
         return convertLockStatus(this.auth.getLockStatus(obj));
     }
