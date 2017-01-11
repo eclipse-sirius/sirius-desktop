@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.properties.provider;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle;
 import org.eclipse.sirius.properties.PropertiesFactory;
@@ -42,6 +43,12 @@ public class CheckboxDescriptionItemProviderSpec extends CheckboxDescriptionItem
         String label = ((CheckboxDescription) object).getLabelExpression();
         return label == null || label.length() == 0 ? getString("_UI_CheckboxDescription_type") : //$NON-NLS-1$
                 label;
+    }
+
+    @Override
+    protected CommandParameter createChildParameter(Object feature, Object child) {
+        Utils.addNoopNavigationOperations(child);
+        return super.createChildParameter(feature, child);
     }
 
     @Override
