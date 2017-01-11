@@ -58,6 +58,7 @@ import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.CreateEdgeView;
 import org.eclipse.sirius.diagram.description.tool.CreateView;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
+import org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
@@ -255,60 +256,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
     @Override
     protected void addVariablesFromToolContext(EObject toolContext) {
         if (toolContext != null) {
-            if (toolContext instanceof EdgeCreationDescription) {
-                EdgeCreationDescription tool = (EdgeCreationDescription) toolContext;
-                declareEdgeSourceTargets(availableVariables, tool.getEdgeMappings(), tool.getExtraSourceMappings(), tool.getExtraTargetMappings());
-            }
-            if (toolContext instanceof ReconnectEdgeDescription) {
-                ReconnectEdgeDescription tool = (ReconnectEdgeDescription) toolContext;
-                declareEdgeSourceTargets(availableVariables, tool.getMappings(), Collections.<DiagramElementMapping> emptyList(), Collections.<DiagramElementMapping> emptyList());
-                availableVariables.put("otherEnd", EDGE_TARGET_POSSIBILITIES); //$NON-NLS-1$
-                availableVariables.put("edgeView", VariableType.fromString(DIAGRAM_D_EDGE_TYPE)); //$NON-NLS-1$
-
-                Collection<String> possibleSources = Lists.newArrayList();
-                for (EdgeMapping eMapping : tool.getMappings()) {
-                    collectSemanticElementType(possibleSources, eMapping);
-                }
-                refineVariableType(availableVariables, IInterpreterSiriusVariables.ELEMENT, possibleSources);
-
-            }
-            if (toolContext instanceof NodeCreationDescription) {
-                NodeCreationDescription tool = (NodeCreationDescription) toolContext;
-                Collection<String> possibleSemanticTypes = Sets.newLinkedHashSet();
-                /*
-                 * gather types for the "container" variable.
-                 */
-                for (AbstractNodeMapping np : tool.getExtraMappings()) {
-                    String domainClass = np.getDomainClass();
-                    if (!StringUtil.isEmpty(domainClass)) {
-                        possibleSemanticTypes.add(domainClass);
-                    }
-                }
-                Collection<String> possibleViewTypes = Sets.newLinkedHashSet();
-                collectPotentialContainerTypes(possibleSemanticTypes, possibleViewTypes, tool.getNodeMappings());
-
-                refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER, possibleSemanticTypes);
-                refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER_VIEW, possibleViewTypes);
-            }
-
-            if (toolContext instanceof ContainerCreationDescription) {
-                ContainerCreationDescription tool = (ContainerCreationDescription) toolContext;
-                Collection<String> possibleTypes = Sets.newLinkedHashSet();
-                /*
-                 * gather types for the "container" variable.
-                 */
-                for (AbstractNodeMapping np : tool.getExtraMappings()) {
-                    String domainClass = np.getDomainClass();
-                    if (!StringUtil.isEmpty(domainClass)) {
-                        possibleTypes.add(domainClass);
-                    }
-                }
-                Collection<String> possibleViewTypes = Sets.newLinkedHashSet();
-                collectPotentialContainerTypes(possibleTypes, possibleViewTypes, tool.getContainerMappings());
-                refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER_VIEW, possibleViewTypes);
-
-                refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER, possibleTypes);
-            }
+            addVariablesForCreationTools(toolContext);
 
             if (toolContext instanceof DeleteElementDescription) {
                 DeleteElementDescription tool = (DeleteElementDescription) toolContext;
@@ -346,6 +294,72 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                     }
                 }
             }
+            if (toolContext instanceof DiagramNavigationDescription) {
+                DiagramNavigationDescription tool = (DiagramNavigationDescription) toolContext;
+                Collection<String> possibleContainerSemanticTypes = Sets.newLinkedHashSet();
+                Collection<String> possibleContainerViewTypes = Sets.newLinkedHashSet();
+                collectPotentialContainerTypes(possibleContainerSemanticTypes, possibleContainerViewTypes, Lists.newArrayList(Iterables.filter(tool.getMappings(), DiagramElementMapping.class)));
+                refineVariableType(availableVariables, tool.getContainerVariable().getName(), possibleContainerSemanticTypes);
+                refineVariableType(availableVariables, tool.getContainerViewVariable().getName(), possibleContainerViewTypes);
+            }
+
+        }
+    }
+
+    private void addVariablesForCreationTools(EObject toolContext) {
+        if (toolContext instanceof EdgeCreationDescription) {
+            EdgeCreationDescription tool = (EdgeCreationDescription) toolContext;
+            declareEdgeSourceTargets(availableVariables, tool.getEdgeMappings(), tool.getExtraSourceMappings(), tool.getExtraTargetMappings());
+        }
+        if (toolContext instanceof ReconnectEdgeDescription) {
+            ReconnectEdgeDescription tool = (ReconnectEdgeDescription) toolContext;
+            declareEdgeSourceTargets(availableVariables, tool.getMappings(), Collections.<DiagramElementMapping> emptyList(), Collections.<DiagramElementMapping> emptyList());
+            availableVariables.put("otherEnd", EDGE_TARGET_POSSIBILITIES); //$NON-NLS-1$
+            availableVariables.put("edgeView", VariableType.fromString(DIAGRAM_D_EDGE_TYPE)); //$NON-NLS-1$
+
+            Collection<String> possibleSources = Lists.newArrayList();
+            for (EdgeMapping eMapping : tool.getMappings()) {
+                collectSemanticElementType(possibleSources, eMapping);
+            }
+            refineVariableType(availableVariables, IInterpreterSiriusVariables.ELEMENT, possibleSources);
+
+        }
+        if (toolContext instanceof NodeCreationDescription) {
+            NodeCreationDescription tool = (NodeCreationDescription) toolContext;
+            Collection<String> possibleSemanticTypes = Sets.newLinkedHashSet();
+            /*
+             * gather types for the "container" variable.
+             */
+            for (AbstractNodeMapping np : tool.getExtraMappings()) {
+                String domainClass = np.getDomainClass();
+                if (!StringUtil.isEmpty(domainClass)) {
+                    possibleSemanticTypes.add(domainClass);
+                }
+            }
+            Collection<String> possibleViewTypes = Sets.newLinkedHashSet();
+            collectPotentialContainerTypes(possibleSemanticTypes, possibleViewTypes, tool.getNodeMappings());
+
+            refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER, possibleSemanticTypes);
+            refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER_VIEW, possibleViewTypes);
+        }
+
+        if (toolContext instanceof ContainerCreationDescription) {
+            ContainerCreationDescription tool = (ContainerCreationDescription) toolContext;
+            Collection<String> possibleTypes = Sets.newLinkedHashSet();
+            /*
+             * gather types for the "container" variable.
+             */
+            for (AbstractNodeMapping np : tool.getExtraMappings()) {
+                String domainClass = np.getDomainClass();
+                if (!StringUtil.isEmpty(domainClass)) {
+                    possibleTypes.add(domainClass);
+                }
+            }
+            Collection<String> possibleViewTypes = Sets.newLinkedHashSet();
+            collectPotentialContainerTypes(possibleTypes, possibleViewTypes, tool.getContainerMappings());
+            refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER_VIEW, possibleViewTypes);
+
+            refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER, possibleTypes);
         }
     }
 

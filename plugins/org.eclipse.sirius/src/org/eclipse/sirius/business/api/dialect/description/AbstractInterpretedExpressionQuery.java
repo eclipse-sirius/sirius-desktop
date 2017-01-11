@@ -34,12 +34,12 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
@@ -49,6 +49,7 @@ import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
@@ -294,7 +295,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                  * the containerView variable is accessible in any Model
                  * operation which is a child of the ToolDescription.
                  */
-                availableVariables.put("containerView", DSEMANTIC_DECORATOR); //$NON-NLS-1$ 
+                availableVariables.put("containerView", DSEMANTIC_DECORATOR); //$NON-NLS-1$
                 /*
                  * Infer type of variables using the tool precondition.
                  */
@@ -311,7 +312,12 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                 }
 
             }
-
+            if (operationContext instanceof RepresentationNavigationDescription) {
+                RepresentationNavigationDescription tool = (RepresentationNavigationDescription) operationContext;
+                if (tool.getRepresentationNameVariable() != null && !StringUtil.isEmpty(tool.getRepresentationNameVariable().getName())) {
+                    availableVariables.put(tool.getRepresentationNameVariable().getName(), VariableType.fromJavaClass(java.lang.String.class)); // $NON-NLS-1$
+                }
+            }
             addVariablesFromToolContext(operationContext);
         }
         collectLocalVariablesDefinitions();
@@ -386,13 +392,14 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
          */
         found = new EObjectQuery(target).getFirstAncestorOfType(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eINSTANCE.getValidationRule());
         if (!found.some()) {
-            if (this.target instanceof OperationAction) {
+            if (this.target instanceof OperationAction || this.target instanceof RepresentationNavigationDescription) {
                 /*
-                 * OperationAction represents its own context for its
-                 * interpreted expression attributes, the variables which are
-                 * child of the OperationAction instance (like 'views') are
-                 * available in the precondition and elements to select
-                 * expressions.
+                 * OperationAction and RepresentationNavigationDescription are
+                 * representing their own context for their interpreted
+                 * expression attributes, the variables which are child of the
+                 * OperationAction and RepresentationNavigationDescription
+                 * instance (like 'views', 'container') are also available in
+                 * the precondition and elements to select expressions.
                  */
                 found = Options.fromNullable(this.target);
             } else {

@@ -33,7 +33,7 @@
         </ownedRules>
       </validationSet>
       <defaultLayer name="Default">
-        <nodeMappings name="ParticipantNode" deletionDescription="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20ParticipantNode']" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='MultipleTypes']" domainClass="interactions.Participant">
+        <nodeMappings name="ParticipantNode" navigationDescriptions="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='ToTable']" deletionDescription="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20ParticipantNode']" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='MultipleTypes']" domainClass="interactions.Participant">
           <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -159,7 +159,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="InteractionContainer" preconditionExpression="aql:containerView.edges->size()  > 0" domainClass="interactions.Interaction">
+        <containerMappings name="InteractionContainer" navigationDescriptions="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='toDiagram']" preconditionExpression="aql:containerView.edges->size()  > 0" domainClass="interactions.Interaction">
           <subContainerMappings name="InteractionContainerInContainer" semanticCandidatesExpression="var:self" domainClass="interactions.Interaction">
             <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.emf.ecore.edit/icons/full/obj16/EClass.gif">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -481,6 +481,16 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="toDiagram" precondition="aql:container.ownedInteractions->size() > 0 and containerView.edges->size() > 0" navigationNameExpression="aql:diagramName + ' ' + containerView.documentation + container.ownedInteractions->size()" diagramDescription="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="description_2:TableNavigationDescription" name="ToTable" navigationNameExpression="var:tableName" tableDescription="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='EditionTable']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="tableName"/>
           </ownedTools>
           <subSections name="Ignored">
             <ownedTools xsi:type="tool_1:DirectEditLabel" name="ElementType">
