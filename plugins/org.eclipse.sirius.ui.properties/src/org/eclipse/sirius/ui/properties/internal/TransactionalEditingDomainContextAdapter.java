@@ -322,7 +322,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
         private ILogListener platformSpy = new ILogListener() {
             @Override
             public void logging(IStatus status, String plugin) {
-                Throwable cause = Throwables.getRootCause(status.getException());
+                Throwable cause = (status != null && status.getException() != null) ? Throwables.getRootCause(status.getException()) : null;
                 if (cause instanceof LockedInstanceException || cause instanceof SecurityException) {
                     if (status.getSeverity() < IStatus.ERROR) {
                         /*
