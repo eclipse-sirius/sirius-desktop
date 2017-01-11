@@ -12,4 +12,15 @@
 -->
 
 <plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.eclipse.sirius.ui.editor.SessionEditor"
+            default="true"
+            extensions="aird"
+            icon="icons/SiriusFile.gif"
+            id="org.eclipse.sirius.ui.editor.session"
+            name="%UI_SessionEditor_label">
+      </editor>
+   </extension>
 </plugin>

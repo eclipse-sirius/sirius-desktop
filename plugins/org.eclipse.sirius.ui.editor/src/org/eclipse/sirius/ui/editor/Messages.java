@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.editor;
 
 import org.eclipse.sirius.ext.base.I18N;
+import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;
 
 /**
  * Helper class to obtains translated strings.
@@ -24,6 +25,17 @@ public final class Messages {
     }
 
     // CHECKSTYLE:OFF
+    @TranslatableMessage
+    public static String UI_SessionEditor_header_title;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_page_loading_error_message;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_session_loading_error_message;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_session_loading_task_title;
     // CHECKSTYLE:ON
 
     private Messages() {

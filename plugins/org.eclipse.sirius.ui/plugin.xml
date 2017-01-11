@@ -557,7 +557,7 @@
    <extension point="org.eclipse.ui.editors">
       <editor
             class="org.eclipse.ui.editors.text.TextEditor"
-            default="true"
+            default="false"
             extensions="aird"
             icon="icons/obj16/SiriusFile.gif"
             id="org.eclipse.sirius.ui.fakeeditoronlyforicon"

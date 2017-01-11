@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,6 @@ import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
-import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.IDecoration;
@@ -48,7 +47,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
@@ -67,9 +66,9 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableColumn;
 import org.osgi.framework.Bundle;
 
 import com.google.common.base.Predicate;
@@ -83,6 +82,11 @@ import com.google.common.collect.Sets;
  * @author mchauvin
  */
 public class ViewpointsSelectionWizardPage extends WizardPage {
+
+    /**
+     * The layout of the main composite of this graphic component.
+     */
+    private GridLayout rootGridLayout;
 
     /** The table viewer. */
     private TableViewer tableViewer;
@@ -103,10 +107,14 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     private Collection<String> fileExtensions;
 
     /**
-     * List of viewpoints names that must be activate by default (ie checked in
-     * the list).
+     * List of viewpoints names that must be activate by default (ie checked in the list).
      */
     private ArrayList<String> viewpointsNamesToActivateByDefault;
+
+    /**
+     * The grid data for the browser component displaying viewpoint information.
+     */
+    private GridData browserGridData;
 
     /**
      * Create a new <code>RepresentationSelectionWizardPage</code>.
@@ -124,8 +132,8 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     }
 
     /**
-     * Create a new <code>RepresentationSelectionWizardPage</code> with default
-     * viewpoints activation. This constructor makes this page optional.
+     * Create a new <code>RepresentationSelectionWizardPage</code> with default viewpoints activation. This constructor
+     * makes this page optional.
      *
      * @param session
      *            the session
@@ -142,8 +150,35 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     }
 
     /**
-     * compute the semantic file extensions to restrict the choice of viewpoint
-     * based on the session.
+     * If true makes the two columns of the main composite equals at layout level if the layout exists. If false makes
+     * the two columns not equals at layout level if the layout exists. Refresh the layout if a modification is done.
+     * Should be called after control creation.
+     * 
+     * @param isEqual
+     *            the equal characteristic to set.
+     */
+    public void setColumnWidthEquality(boolean isEqual) {
+        if (rootGridLayout != null) {
+            rootGridLayout.makeColumnsEqualWidth = isEqual;
+            pageComposite.layout();
+        }
+    }
+
+    /**
+     * Set the minimum width of the browser part of the component by modifying the underlying grid data.
+     * 
+     * @param minWidth
+     *            the minimum width the browser should have.
+     */
+    public void setBrowserMinWidth(int minWidth) {
+        if (browserGridData != null) {
+            browserGridData.minimumWidth = minWidth;
+            pageComposite.layout();
+        }
+    }
+
+    /**
+     * compute the semantic file extensions to restrict the choice of viewpoint based on the session.
      *
      * @param session
      *            the session
@@ -190,12 +225,18 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     }
 
     @Override
+    public Composite getControl() {
+        return pageComposite;
+    }
+
+    @Override
     public void createControl(final Composite parent) {
         initializeDialogUnits(parent);
 
         pageComposite = new Composite(parent, SWT.NONE);
-        pageComposite.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(true).create());
-        pageComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
+        rootGridLayout = GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(true).create();
+        pageComposite.setLayout(rootGridLayout);
+        pageComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
         this.tableViewer = createTableViewer(pageComposite);
         tableViewer.setInput(getAvailableViewpoints());
@@ -225,21 +266,28 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     private Browser createBrowser(final Composite parent) {
 
         try {
-            Browser aBrowser = new Browser(parent, SWT.NONE);
-            final GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
-            aBrowser.setLayoutData(gridData);
+            Browser aBrowser = new Browser(parent, SWT.FILL);
+            browserGridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+            // necessary to avoid bad interaction with expandable toolkit sections
+            browserGridData.widthHint = 0;
+            browserGridData.heightHint = 0;
+            aBrowser.setLayoutData(browserGridData);
             return aBrowser;
         } catch (SWTError error) {
             /*
-             * the browser could not be created, do not display further
-             * information
+             * the browser could not be created, do not display further information
              */
             return null;
         }
 
     }
 
-    private Collection<Viewpoint> getAvailableViewpoints() {
+    /**
+     * Returns all registered viewpoints that define editors for metamodel of loaded session's semantic models.
+     * 
+     * @return all registered viewpoints that define editors for metamodel of loaded session's semantic models.
+     */
+    public Collection<Viewpoint> getAvailableViewpoints() {
 
         ViewpointRegistry registry = ViewpointRegistry.getInstance();
 
@@ -270,17 +318,13 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
 
         CheckboxTableViewer viewer = CheckboxTableViewer.newCheckList(parent, style);
         Table table = viewer.getTable();
-        final GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+        final GridData gridData = new GridData(SWT.FILL, SWT.FILL, false, false);
         viewer.getControl().setLayoutData(gridData);
 
         TableLayout layout = new TableLayout();
         table.setLayout(layout);
         table.setHeaderVisible(false);
         table.setLinesVisible(false);
-
-        TableColumn objectColumn = new TableColumn(table, SWT.NONE);
-        layout.addColumnData(new ColumnWeightData(1, 60, true));
-        objectColumn.setResizable(true);
 
         viewer.setContentProvider(new ArrayContentProvider());
         viewer.setLabelProvider(new ViewpointsTableLabelProvider());
@@ -311,7 +355,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
             }
         });
 
-        viewer.setSorter(new ViewerSorter() {
+        viewer.setComparator(new ViewerComparator() {
             @Override
             public int compare(Viewer viewer, Object e1, Object e2) {
                 final String e1label = new IdentifiedElementQuery((Viewpoint) e1).getLabel();
@@ -343,8 +387,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     }
 
     /*
-     * The following code (HTML handling ) and methods could move to another
-     * class.
+     * The following code (HTML handling ) and methods could move to another class.
      */
     private boolean containsHTMLDocumentation(Viewpoint viewpoint) {
         if (viewpoint != null) {
