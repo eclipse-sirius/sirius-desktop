@@ -455,7 +455,7 @@ import java.util.Map;
 
 import org.eclipse.eef.EEFCustomWidgetDescription;
 import org.eclipse.eef.core.api.EditingContextAdapter;
-import org.eclipse.eef.core.api.controllers.AbstractEEFCustomWidgetController;
+import org.eclipse.eef.core.api.controllers.AbstractEEFWidgetController;
 import org.eclipse.eef.core.api.controllers.IConsumer;
 import org.eclipse.eef.core.api.utils.EvalFactory;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
@@ -471,9 +471,15 @@ public class TableController extends AbstractEEFWidgetController {
 
 	private IConsumer<Object> newValueConsumer;
 
+	private EEFExtTableDescription description;
+
+	private EditingContextAdapter contextAdapter;
+
 	public TableController(EEFExtTableDescription description, IVariableManager variableManager, IInterpreter interpreter,
 			EditingContextAdapter contextAdapter) {
-		super(description, variableManager, interpreter, contextAdapter);
+		super(variableManager, interpreter);
+		this.description = description;
+		this.contextAdapter = contextAdapter;
 	}
 
 	@Override
