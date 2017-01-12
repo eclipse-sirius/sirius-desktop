@@ -93,7 +93,7 @@ public class ODesignGenericInterpreter implements IInterpreter, IProposalProvide
     public void addImport(final String dependency) {
         this.dependencies.add(dependency);
         for (final IInterpreter interpreter : this.loadedInterpreters.values()) {
-            if (interpreter != null) {
+            if (interpreter != null && !blacklisted(interpreter, dependency)) {
                 interpreter.addImport(dependency);
             }
         }
@@ -213,7 +213,9 @@ public class ODesignGenericInterpreter implements IInterpreter, IProposalProvide
                 result.clearImports();
             }
             for (final String dependency : this.dependencies) {
-                result.addImport(dependency);
+                if (!blacklisted(result, dependency)) {
+                    result.addImport(dependency);
+                }
             }
             result.activateMetamodels(additionalMetamodels);
             this.variables.setVariables(result);
@@ -224,6 +226,12 @@ public class ODesignGenericInterpreter implements IInterpreter, IProposalProvide
         }
         result.setCrossReferencer(crossReferencer);
         return result;
+    }
+
+    private boolean blacklisted(IInterpreter interpreter, final String dependency) {
+        String propertiesServiceClassName = "org.eclipse.sirius.ui.properties.internal.SiriusToolServices"; //$NON-NLS-1$
+        String legacyInterpreterName = "org.eclipse.sirius.query.legacy.business.internal.interpreter.AcceleoExtendedInterpreter"; //$NON-NLS-1$
+        return propertiesServiceClassName.equals(dependency) && interpreter.getClass().getName().equals(legacyInterpreterName);
     }
 
     @Override
