@@ -90,6 +90,27 @@ public final class VariableType {
     }
 
     /**
+     * Create a new {@link VariableType} from a collection of EClassifiers and
+     * Java classes.
+     * 
+     * @param types
+     *            a collection of EClassifiers.
+     * @param classes
+     *            a collection of Java classes.
+     * @return the newly created instance.
+     */
+    public static VariableType fromEClassifiersAndClasses(Collection<EClassifier> types, Collection<Class<?>> classes) {
+        VariableType result = new VariableType();
+        for (EClassifier domainClass : types) {
+            result.types.add(TypeName.fromEClassifier(domainClass));
+        }
+        for (Class<?> javaType : classes) {
+            result.types.add(TypeName.fromJavaClass(javaType));
+        }
+        return result;
+    }
+
+    /**
      * Create a new {@link VariableType} from a collection of EClassifiers.
      * 
      * @param type

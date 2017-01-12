@@ -193,6 +193,15 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:containerView">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:edges"/>
                 </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.returnsAnEClassifier()">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.instanceClassName"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:For" expression="aql:self.returnsAListOfEPackages()">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.nsURI"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:nsURI"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.returnsANonEObjectType().message()">
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -728,5 +737,6 @@
       <ownedColumnMappings name="name" featureName="name" labelExpression="feature:name"/>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.tests.unit.diagram.vsm.VSMVariableTypesValidationServices"/>
   </ownedViewpoints>
 </description:Group>

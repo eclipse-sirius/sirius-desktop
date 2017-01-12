@@ -82,20 +82,23 @@ public final class TypesUtil {
         return variableTypes;
     }
 
-    private static Collection<EClassifierType> searchEClassifierType(IQueryEnvironment queryEnvironment, TypeName targetTypeName) {
-        Collection<EClassifier> found = Sets.newLinkedHashSet();
-        if (targetTypeName.getPackagePrefix().some()) {
-            String typeName = targetTypeName.getClassifierName();
-            String name = targetTypeName.getPackagePrefix().get();
-            found.addAll(queryEnvironment.getEPackageProvider().getTypes(name, typeName));
+    private static Collection<IType> searchEClassifierType(IQueryEnvironment queryEnvironment, TypeName targetTypeName) {
+        Collection<IType> types = Sets.newLinkedHashSet();
+        if (targetTypeName.getJavaClass().some()) {
+            types.add(new ClassType(queryEnvironment, targetTypeName.getJavaClass().get()));
         } else {
-            found.addAll(queryEnvironment.getEPackageProvider().getTypes(targetTypeName.getClassifierName()));
-        }
+            Collection<EClassifier> found = Sets.newLinkedHashSet();
+            if (targetTypeName.getPackagePrefix().some()) {
+                String typeName = targetTypeName.getClassifierName();
+                String name = targetTypeName.getPackagePrefix().get();
+                found.addAll(queryEnvironment.getEPackageProvider().getTypes(name, typeName));
+            } else {
+                found.addAll(queryEnvironment.getEPackageProvider().getTypes(targetTypeName.getClassifierName()));
+            }
 
-        Collection<EClassifierType> types = Sets.newLinkedHashSet();
-
-        for (EClassifier eClassifier : found) {
-            types.add(new EClassifierType(queryEnvironment, eClassifier));
+            for (EClassifier eClassifier : found) {
+                types.add(new EClassifierType(queryEnvironment, eClassifier));
+            }
         }
         return types;
     }

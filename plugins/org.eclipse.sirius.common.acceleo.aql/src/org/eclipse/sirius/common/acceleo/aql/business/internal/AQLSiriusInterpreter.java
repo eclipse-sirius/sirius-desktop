@@ -36,6 +36,7 @@ import org.eclipse.acceleo.query.runtime.QueryParsing;
 import org.eclipse.acceleo.query.runtime.QueryValidation;
 import org.eclipse.acceleo.query.runtime.ServiceUtils;
 import org.eclipse.acceleo.query.runtime.ValidationMessageLevel;
+import org.eclipse.acceleo.query.validation.type.ClassType;
 import org.eclipse.acceleo.query.validation.type.EClassifierType;
 import org.eclipse.acceleo.query.validation.type.ICollectionType;
 import org.eclipse.acceleo.query.validation.type.IType;
@@ -305,7 +306,8 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
                 }
                 result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, severity, message.getMessage()));
             }
-            List<String> classifierNames = Lists.newArrayList();
+            List<EClassifier> classifierNames = Lists.newArrayList();
+            List<Class<?>> javaClasses = Lists.newArrayList();
             for (IType type : aqlValidationResult.getPossibleTypes(aqlValidationResult.getAstResult().getAst())) {
                 IType actualType = type;
                 /*
@@ -320,20 +322,29 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
                 }
                 if (actualType instanceof EClassifierType) {
                     EClassifierType eClassifierType = (EClassifierType) actualType;
-                    if (eClassifierType.getType() != null && eClassifierType.getType().getName() != null) {
-                        String typeName = eClassifierType.getType().getName();
-                        if (eClassifierType.getType().getEPackage() != null && eClassifierType.getType().getEPackage().getName() != null) {
-                            typeName = eClassifierType.getType().getEPackage().getName() + "." + typeName; //$NON-NLS-1$
-                        }
-                        classifierNames.add(typeName);
+                    if (eClassifierType.getType() != null) {
+                        classifierNames.add(eClassifierType.getType());
+                    }
+                } else if (actualType instanceof ClassType && actualType.getClass() != null) {
+                    Class<?> clazz = ((ClassType) actualType).getType();
+                    Set<EClassifier> eClassifiersFromJavaClassName = queryEnvironment.getEPackageProvider().getEClassifiers(clazz);
+                    if (eClassifiersFromJavaClassName != null && eClassifiersFromJavaClassName.size() > 0) {
+                        classifierNames.addAll(eClassifiersFromJavaClassName);
+                    } else {
+                        javaClasses.add(clazz);
                     }
                 }
-                result.setReturnType(VariableType.fromStrings(classifierNames));
             }
-        } catch (AcceleoQueryValidationException e) {
+            result.setReturnType(VariableType.fromEClassifiersAndClasses(classifierNames, javaClasses));
+
+        } catch (
+
+        AcceleoQueryValidationException e) {
             result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, e.getMessage()));
             AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.ERROR, AQLSiriusPlugin.INSTANCE.getSymbolicName(), e.getMessage(), e));
-        } catch (AcceleoQueryEvaluationException e) {
+        } catch (
+
+        AcceleoQueryEvaluationException e) {
             result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, e.getMessage()));
         }
 
