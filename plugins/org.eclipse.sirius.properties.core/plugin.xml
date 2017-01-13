@@ -13,4 +13,19 @@
            class="org.eclipse.sirius.properties.core.internal.preferences.SiriusPropertiesViewPreferenceInitializer">
      </initializer>
   </extension>
+  <extension
+        point="org.eclipse.sirius.migrationParticipant">
+     <participant
+           class="org.eclipse.sirius.properties.core.internal.migration.DomainClassExpressionMigrationParticipant"
+           kind="VSM">
+     </participant>
+     <participant
+           class="org.eclipse.sirius.properties.core.internal.migration.FontSizeMigrationParticipant"
+           kind="VSM">
+     </participant>
+     <participant
+           class="org.eclipse.sirius.properties.core.internal.migration.ReferenceWidgetMigrationParticipant"
+           kind="VSM">
+     </participant>
+  </extension>
 </plugin>

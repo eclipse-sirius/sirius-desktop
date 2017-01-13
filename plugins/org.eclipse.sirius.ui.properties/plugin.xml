@@ -70,21 +70,6 @@
      </interpretedExpressionProvider>
   </extension>
   <extension
-        point="org.eclipse.sirius.migrationParticipant">
-     <participant
-           class="org.eclipse.sirius.ui.properties.internal.migration.DomainClassExpressionMigrationParticipant"
-           kind="VSM">
-     </participant>
-     <participant
-           class="org.eclipse.sirius.ui.properties.internal.migration.FontSizeMigrationParticipant"
-           kind="VSM">
-     </participant>
-     <participant
-           class="org.eclipse.sirius.ui.properties.internal.migration.ReferenceWidgetMigrationParticipant"
-           kind="VSM">
-     </participant>
-  </extension>
-  <extension
         point="org.eclipse.eef.properties.ui.eefTabDescriptorFilter">
      <descriptor
            class="org.eclipse.sirius.ui.properties.internal.filter.SiriusTabDescriptorFilter"
