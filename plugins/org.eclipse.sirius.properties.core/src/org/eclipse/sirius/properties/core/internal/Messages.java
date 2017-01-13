@@ -29,6 +29,9 @@ public final class Messages {
     @TranslatableMessage
     public static String DefaultRulesProvider_DefaultPropertiesNotFound;
 
+    @TranslatableMessage
+    public static String SiriusToolServices_MainTabLabel;
+
     // CHECKSTYLE:ON
 
     private Messages() {

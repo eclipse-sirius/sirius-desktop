@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal.expressions;
+package org.eclipse.sirius.properties.core.internal.expressions;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -42,9 +42,9 @@ import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
+import org.eclipse.sirius.properties.core.internal.SiriusToolServices;
 import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
-import org.eclipse.sirius.ui.properties.internal.SiriusInputDescriptor;
-import org.eclipse.sirius.ui.properties.internal.SiriusToolServices;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Extension;
@@ -65,6 +65,7 @@ import com.google.common.collect.Sets;
  *
  * @author pcdavid
  */
+@SuppressWarnings("restriction")
 public final class PropertiesInterpretedExpressionQuery extends AbstractInterpretedExpressionQuery implements IInterpretedExpressionQuery {
     private Collection<EPackage> packagesToImport;
 
@@ -180,7 +181,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
         if (availableVariables == null) {
             availableVariables = Maps.newLinkedHashMap();
         }
-        
+
         // going through eContainer() to declare any For variable (dynamic
         // mappings)
         EObject cur = target;

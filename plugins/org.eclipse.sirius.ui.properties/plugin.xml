@@ -64,12 +64,6 @@
      </siriusPropertySheetPageProvider>
   </extension>
   <extension
-        point="org.eclipse.sirius.interpretedExpressionQueryProvider">
-     <interpretedExpressionProvider
-           class="org.eclipse.sirius.ui.properties.internal.expressions.PropertiesExpressionQueryProvider">
-     </interpretedExpressionProvider>
-  </extension>
-  <extension
         point="org.eclipse.eef.properties.ui.eefTabDescriptorFilter">
      <descriptor
            class="org.eclipse.sirius.ui.properties.internal.filter.SiriusTabDescriptorFilter"

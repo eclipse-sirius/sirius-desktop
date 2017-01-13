@@ -28,6 +28,7 @@ import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRe
 import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistryListener;
 import org.eclipse.sirius.business.internal.session.factory.SessionFactoryRegistryListener;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessorsRegistry;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.internal.ui.ExternalJavaActionRegistryListener;
 import org.eclipse.sirius.tools.internal.validation.EValidatorAdapter;
@@ -135,6 +136,11 @@ public final class SiriusPlugin extends EMFPlugin {
          * The registry for {@link IInterpretedExpressionQueryProvider}.
          */
         private InterpretedExpressionQueryProviderRegistry expressionQueryProviderRegistry;
+
+        /**
+         * The user interface callback.
+         */
+        private UICallBack uiCallback;
 
         /**
          * Creates an instance.
@@ -255,6 +261,25 @@ public final class SiriusPlugin extends EMFPlugin {
                 final IStatus status = new Status(IStatus.WARNING, getDefault().getSymbolicName(), messageToDisplay, e);
                 getLog().log(status);
             }
+        }
+
+        /**
+         * Return callBack.
+         *
+         * @return the uiCallback
+         */
+        public UICallBack getUiCallback() {
+            return uiCallback;
+        }
+
+        /**
+         * Modify callBack.
+         *
+         * @param uiCallback
+         *            the uiCallback to set
+         */
+        public void setUiCallback(UICallBack uiCallback) {
+            this.uiCallback = uiCallback;
         }
 
     }

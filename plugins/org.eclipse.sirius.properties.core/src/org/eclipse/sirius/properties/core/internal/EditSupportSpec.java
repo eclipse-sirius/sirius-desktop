@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal;
+package org.eclipse.sirius.properties.core.internal;
 
 import org.eclipse.eef.common.api.utils.Util;
 import org.eclipse.emf.common.util.BasicEList;

@@ -154,8 +154,6 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
         private Map<ImageDescriptor, Image> descriptorsToImages;
 
-        private UICallBack uiCallback = new GenericSWTCallBack();
-
         private Multimap<String, ISiriusPropertySheetPageProvider> propertySheetPageProviders = HashMultimap.create();
 
         /**
@@ -185,6 +183,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
             // Remember the static instance.
             //
             SiriusEditPlugin.plugin = this;
+            SiriusPlugin.getDefault().setUiCallback(new GenericSWTCallBack());
         }
 
         /**
@@ -516,7 +515,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
          * @return the uiCallback
          */
         public UICallBack getUiCallback() {
-            return uiCallback;
+            return SiriusPlugin.getDefault().getUiCallback();
         }
 
         /**
@@ -526,7 +525,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
          *            the uiCallback to set
          */
         public void setUiCallback(UICallBack uiCallback) {
-            this.uiCallback = uiCallback;
+            SiriusPlugin.getDefault().setUiCallback(uiCallback);
         }
 
     }

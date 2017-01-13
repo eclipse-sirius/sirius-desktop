@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal.expressions;
+package org.eclipse.sirius.properties.core.internal.expressions;
 
 import java.util.Collection;
 import java.util.Collections;

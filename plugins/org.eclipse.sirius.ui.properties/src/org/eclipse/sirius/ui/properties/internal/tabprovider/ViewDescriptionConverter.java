@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,10 +25,10 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
 import org.eclipse.sirius.ui.properties.api.DescriptionCache;
 import org.eclipse.sirius.ui.properties.api.IDescriptionConverter;
 import org.eclipse.sirius.ui.properties.api.IDescriptionLinkResolver;
-import org.eclipse.sirius.ui.properties.internal.SiriusInputDescriptor;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
 
 /**

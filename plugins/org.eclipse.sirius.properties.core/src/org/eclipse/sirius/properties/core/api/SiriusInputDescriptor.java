@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,14 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal;
+package org.eclipse.sirius.properties.core.api;
 
 import java.util.Collection;
 
 import org.eclipse.eef.core.api.InputDescriptor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.properties.core.internal.SiriusContext;
 
 import com.google.common.collect.Sets;
 

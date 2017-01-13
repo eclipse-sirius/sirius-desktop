@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
-import org.eclipse.sirius.ui.properties.internal.SiriusInputDescriptor;
+import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
 import org.eclipse.sirius.ui.properties.internal.tabprovider.ViewDescriptionConverter;
 import org.junit.Test;
 

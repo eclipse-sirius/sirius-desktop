@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal;
+package org.eclipse.sirius.properties.core.internal;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -26,13 +26,14 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.properties.EditSupport;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.core.api.DefaultRulesProvider;
+import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This class contains various services provided by the Sirius UI Properties
@@ -60,7 +61,7 @@ public class SiriusToolServices {
                 ModelOperation modelOperation = findModelOperation(initialCommandUri, session);
                 if (modelOperation != null) {
                     ModelAccessor modelAccessor = session.getModelAccessor();
-                    ICommandTask task = new TaskHelper(modelAccessor, SiriusEditPlugin.getPlugin().getUiCallback()).buildTaskFromModelOperation(eObject, modelOperation);
+                    ICommandTask task = new TaskHelper(modelAccessor, SiriusPlugin.getDefault().getUiCallback()).buildTaskFromModelOperation(eObject, modelOperation);
                     SiriusCommand command = new SiriusCommand(session.getTransactionalEditingDomain(), "SiriusToolServices#executeOperation"); //$NON-NLS-1$
                     command.getTasks().add(task);
                     try {

@@ -28,4 +28,10 @@
            kind="VSM">
      </participant>
   </extension>
+  <extension
+        point="org.eclipse.sirius.interpretedExpressionQueryProvider">
+     <interpretedExpressionProvider
+           class="org.eclipse.sirius.properties.core.internal.expressions.PropertiesExpressionQueryProvider">
+     </interpretedExpressionProvider>
+  </extension>
 </plugin>

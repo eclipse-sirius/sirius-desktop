@@ -22,6 +22,7 @@ import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
+import org.eclipse.sirius.properties.core.internal.SiriusToolServices;
 
 import com.google.common.base.Preconditions;
 

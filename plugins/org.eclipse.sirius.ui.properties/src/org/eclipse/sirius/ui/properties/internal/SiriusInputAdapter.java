@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.properties.internal;
 
 import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.eef.core.api.InputDescriptor;
+import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
 
 /**
  * An adapter factory to convert an element selected in Sirius into a suitable
