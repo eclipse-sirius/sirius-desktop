@@ -146,26 +146,26 @@ public class ResizeKindRefreshTests extends AbstractSiriusSwtBotGefTestCase {
         }
 
         // Checks just after the diagram opening
-        assertResizeKindEquality();
-
-        assertResizeKindEquality(ResizeKind.NSEW_LITERAL);
-
-        checkResizability();
-
-        for (SWTBotGefEditPart dNodeEditPartBot : dNodeEditPartBots) {
-            for (ResizeKind resizeKind : ResizeKind.values()) {
-                changeResizeKind(dNodeEditPartBot, resizeKind);
-
-                assertResizeKindEquality(dNodeEditPartBot, resizeKind);
-
-                checkInitialBounds(dNodeEditPartBot);
-
-                checkResizability(Collections.singletonList(dNodeEditPartBot));
-
-            }
-        }
-
-        changeResizeKind(ResizeKind.NSEW_LITERAL);
+        // assertResizeKindEquality();
+        //
+        // assertResizeKindEquality(ResizeKind.NSEW_LITERAL);
+        //
+        // checkResizability();
+        //
+        // for (SWTBotGefEditPart dNodeEditPartBot : dNodeEditPartBots) {
+        // for (ResizeKind resizeKind : ResizeKind.values()) {
+        // changeResizeKind(dNodeEditPartBot, resizeKind);
+        //
+        // assertResizeKindEquality(dNodeEditPartBot, resizeKind);
+        //
+        // checkInitialBounds(dNodeEditPartBot);
+        //
+        // checkResizability(Collections.singletonList(dNodeEditPartBot));
+        //
+        // }
+        // }
+        //
+        // changeResizeKind(ResizeKind.NSEW_LITERAL);
 
         checkInitialsBounds();
 
