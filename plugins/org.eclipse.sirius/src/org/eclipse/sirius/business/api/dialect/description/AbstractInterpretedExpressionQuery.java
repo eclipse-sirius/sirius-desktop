@@ -29,6 +29,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.tools.internal.interpreter.InterpretedContextImpl;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.AllContents;
@@ -40,6 +41,7 @@ import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
@@ -145,6 +147,8 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * used to calculate target types.
      */
     protected IInterpretedExpressionTargetSwitch targetSwitch;
+
+    private boolean subvariablesBrowsingAuthorized = true;;
 
     /**
      * Default constructor.
@@ -518,7 +522,6 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     protected void collectContextualVariableForOperation(EObject current, Map<String, Collection<VariableType>> definitions, EObject leaf) {
         if (current != leaf) {
             if (current instanceof If) {
-
                 If ifThen = (If) current;
                 IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(ifThen, ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION);
                 ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, ifThen.getConditionExpression());
@@ -548,6 +551,14 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                 VariableType returnTypes = res.getReturnTypes();
                 changeSelfType(returnTypes);
                 addDefinition(definitions, f.getIteratorName(), returnTypes);
+            }
+            if (current instanceof AcceleoVariable) {
+                AcceleoVariable f = (AcceleoVariable) current;
+                IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(f, ToolPackage.Literals.ACCELEO_VARIABLE__COMPUTATION_EXPRESSION);
+                ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, f.getComputationExpression());
+                VariableType returnTypes = res.getReturnTypes();
+                changeSelfType(returnTypes);
+                addDefinition(definitions, f.getName(), returnTypes);
             }
         }
         if (current instanceof CreateInstance) {
@@ -620,6 +631,16 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         EAnnotation varAnnotation = var.eContainingFeature().getEAnnotation(AbstractInterpretedExpressionQuery.VARIABLES_ANNOTATION_SOURCE);
         if (varAnnotation != null && varAnnotation.getDetails().containsKey(AbstractInterpretedExpressionQuery.VARIABLE_TYPE_KEY)) {
             typeName = VariableType.fromString(varAnnotation.getDetails().get(AbstractInterpretedExpressionQuery.VARIABLE_TYPE_KEY));
+        }
+        if (var instanceof AcceleoVariable && !StringUtil.isEmpty(((AcceleoVariable) var).getComputationExpression())) {
+            VariableType self = VariableType.fromString(SELF);
+            if (this.selfType != null) {
+                self = this.selfType;
+            }
+            IInterpreterContext iContext = new InterpretedContextImpl(var, this.targetDomainClass != null && this.targetDomainClass.some(),
+                    ToolPackage.Literals.ACCELEO_VARIABLE__COMPUTATION_EXPRESSION, self, getPackagesToImport(), availableVariables, getDependencies());
+            ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, ((AcceleoVariable) var).getComputationExpression());
+            typeName = res.getReturnTypes();
         }
         return typeName;
     }

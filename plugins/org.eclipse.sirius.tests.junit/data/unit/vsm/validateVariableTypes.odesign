@@ -203,6 +203,9 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:nsURI"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.returnsANonEObjectType().message()"/>
+                <subModelOperations xsi:type="tool:For" expression="aql:interactions" iteratorName="inter">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:inter.executions"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
