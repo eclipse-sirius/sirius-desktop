@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
- Copyright (c) 2015, 2016 Obeo
+ Copyright (c) 2015, 2017 Obeo
  All rights reserved. This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0
  which accompanies this distribution, and is available at
@@ -12,8 +12,6 @@
  
 -->
 <plugin>
-   <extension-point id="descriptionConverter" name="%descriptionConverterExtensionPoint.Name" schema="schema/descriptionConverter.exsd"/>
-   <extension-point id="descriptionLinkResolver" name="%descriptionLinkResolverExtensionPoint.Name" schema="schema/descriptionLinkResolver.exsd"/>
    <extension-point id="contextAdapterProvider" name="%contextAdapterProviderExtensionPoint.Name" schema="schema/contextAdapterProvider.exsd"/>
   <extension point="org.eclipse.core.runtime.adapters">
     <factory adaptableType="org.eclipse.gef.GraphicalEditPart"

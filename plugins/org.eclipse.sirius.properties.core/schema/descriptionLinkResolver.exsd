@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.sirius.ui.properties" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.sirius.properties.core" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.eclipse.sirius.ui.properties" id="descriptionLinkResolver" name="%descriptionLinkResolverExtensionPoint.Name"/>
+         <meta.schema plugin="org.eclipse.sirius.properties.core" id="descriptionLinkResolver" name="%descriptionLinkResolverExtensionPoint.Name"/>
       </appinfo>
       <documentation>
-         This extension point allows the contribution of an &lt;code&gt;org.eclipse.sirius.ui.properties.api.IDescriptionLinkResolver&lt;/code&gt; which can be used after the transformation of the Sirius Properties model into the EEF model in order to resolve some links between elements.
+         This extension point allows the contribution of an &lt;code&gt;org.eclipse.sirius.properties.core.api.IDescriptionLinkResolver&lt;/code&gt; which can be used after the transformation of the Sirius Properties model into the EEF model in order to resolve some links between elements.
       </documentation>
    </annotation>
 
@@ -82,7 +82,7 @@
                   The implementation of the IDescriptionConverter.
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.ui.properties.api.IDescriptionLinkResolver"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.properties.core.api.IDescriptionLinkResolver"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -94,7 +94,7 @@
          <meta.section type="since"/>
       </appinfo>
       <documentation>
-         This extension point has been available since Eclipse Sirius 4.1.0
+         This extension point has been available since Eclipse Sirius 5.0.0
       </documentation>
    </annotation>
 
@@ -121,8 +121,8 @@ import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.WidgetDescription;
-import org.eclipse.sirius.ui.properties.api.DescriptionCache;
-import org.eclipse.sirius.ui.properties.api.IDescriptionLinkResolver;
+import org.eclipse.sirius.properties.core.api.DescriptionCache;
+import org.eclipse.sirius.properties.core.api.IDescriptionLinkResolver;
 
 public class PropertyValidationRuleLinkResolver implements IDescriptionLinkResolver {
 
@@ -191,7 +191,7 @@ public class PropertyValidationRuleLinkResolver implements IDescriptionLinkResol
          <meta.section type="copyright"/>
       </appinfo>
       <documentation>
-         Copyright (c) 2016 Obeo&lt;br/&gt;
+         Copyright (c) 2016, 2017 Obeo&lt;br/&gt;
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License v1.0
 which accompanies this distribution, and is available at

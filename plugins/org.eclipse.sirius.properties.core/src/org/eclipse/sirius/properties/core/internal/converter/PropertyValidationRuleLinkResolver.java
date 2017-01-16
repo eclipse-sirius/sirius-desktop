@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal.tabprovider;
+package org.eclipse.sirius.properties.core.internal.converter;
 
 import java.util.List;
 
@@ -19,8 +19,8 @@ import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.WidgetDescription;
-import org.eclipse.sirius.ui.properties.api.DescriptionCache;
-import org.eclipse.sirius.ui.properties.api.IDescriptionLinkResolver;
+import org.eclipse.sirius.properties.core.api.DescriptionCache;
+import org.eclipse.sirius.properties.core.api.IDescriptionLinkResolver;
 
 /**
  * This class is used to resolve the links between the property validation rules

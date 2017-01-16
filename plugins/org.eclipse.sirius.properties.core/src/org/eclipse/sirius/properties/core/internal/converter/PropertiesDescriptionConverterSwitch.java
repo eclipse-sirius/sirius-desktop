@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal.tabprovider;
+package org.eclipse.sirius.properties.core.internal.converter;
 
 import org.eclipse.eef.EefPackage;
 import org.eclipse.sirius.properties.ButtonDescription;
@@ -52,11 +52,11 @@ import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.WidgetAction;
+import org.eclipse.sirius.properties.core.api.DefaultDescriptionConverter;
+import org.eclipse.sirius.properties.core.api.DefaultDescriptionWithInitialOperationConverter;
+import org.eclipse.sirius.properties.core.api.DefaultStyleDescriptionConverter;
+import org.eclipse.sirius.properties.core.api.IDescriptionConverter;
 import org.eclipse.sirius.properties.util.PropertiesSwitch;
-import org.eclipse.sirius.ui.properties.api.DefaultDescriptionConverter;
-import org.eclipse.sirius.ui.properties.api.DefaultDescriptionWithInitialOperationConverter;
-import org.eclipse.sirius.ui.properties.api.DefaultStyleDescriptionConverter;
-import org.eclipse.sirius.ui.properties.api.IDescriptionConverter;
 
 /**
  * This switch is used to retrieve the proper {@link IDescriptionConverter} for

@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.sirius.ui.properties" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.sirius.properties.core" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.eclipse.sirius.ui.properties" id="descriptionConverter" name="%descriptionConverter.Name"/>
+         <meta.schema plugin="org.eclipse.sirius.properties.core" id="descriptionConverter" name="%descriptionConverter.Name"/>
       </appinfo>
       <documentation>
-         This extension point allows the contribution of an &lt;code&gt;org.eclipse.sirius.ui.properties.api.IDescriptionConverter&lt;/code&gt; which can be used to convert the description of an element from the Sirius Properties DSL to the EEF DSL. With this mechanism, you can translate for the EEF runtime new elements that you have contributed in the Sirius Properties DSL, for example new widgets.
+         This extension point allows the contribution of an &lt;code&gt;org.eclipse.sirius.properties.core.api.IDescriptionConverter&lt;/code&gt; which can be used to convert the description of an element from the Sirius Properties DSL to the EEF DSL. With this mechanism, you can translate for the EEF runtime new elements that you have contributed in the Sirius Properties DSL, for example new widgets.
       </documentation>
    </annotation>
 
@@ -82,7 +82,7 @@
                   The implementation of the IDescriptionConverter.
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.ui.properties.api.IDescriptionConverter"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.properties.core.api.IDescriptionConverter"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -94,7 +94,7 @@
          <meta.section type="since"/>
       </appinfo>
       <documentation>
-         This extension point has been available since Eclipse Sirius 4.1.0
+         This extension point has been available since Eclipse Sirius 5.0.0
       </documentation>
    </annotation>
 
@@ -105,11 +105,11 @@
       <documentation>
          &lt;pre&gt;
 &lt;extension
-      point=&quot;org.eclipse.sirius.ui.properties.descriptionConverter&quot;&gt;
+      point=&quot;org.eclipse.sirius.properties.core.descriptionConverter&quot;&gt;
    &lt;descriptor
-         class=&quot;org.eclipse.sirius.ui.properties.ext.widgets.reference.internal.ExtReferenceDescriptionConverter&quot;
+         class=&quot;org.eclipse.sirius.properties.core.ext.widgets.reference.internal.ExtReferenceDescriptionConverter&quot;
          description=&quot;%referenceDescriptionConverter.Description&quot;
-         id=&quot;org.eclipse.sirius.ui.properties.ext.widgets.reference.descriptionConverter&quot;
+         id=&quot;org.eclipse.sirius.properties.core.ext.widgets.reference.descriptionConverter&quot;
          label=&quot;%referenceDescriptionConverter.Label&quot;&gt;
    &lt;/descriptor&gt;
 &lt;/extension&gt;
@@ -127,8 +127,8 @@ import org.eclipse.eef.ext.widgets.reference.eefextwidgetsreference.EEFExtRefere
 import org.eclipse.eef.ext.widgets.reference.eefextwidgetsreference.EefExtWidgetsReferenceFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
-import org.eclipse.sirius.ui.properties.api.DescriptionCache;
-import org.eclipse.sirius.ui.properties.api.IDescriptionConverter;
+import org.eclipse.sirius.properties.core.api.DescriptionCache;
+import org.eclipse.sirius.properties.core.api.IDescriptionConverter;
 
 public class ExtReferenceDescriptionConverter implements IDescriptionConverter {
 
@@ -154,83 +154,6 @@ public class ExtReferenceDescriptionConverter implements IDescriptionConverter {
             cache.put(extReferenceDescription, eefExtReferenceDescription);
 
             return eefExtReferenceDescription;
-        }
-        return null;
-    }
-}
-&lt;/pre&gt;
-And here is a basic example of the modification of the default rules from the Sirius bridge:
-&lt;pre&gt;
-import java.util.Arrays;
-import java.util.Map;
-
-import org.eclipse.eef.ext.widgets.reference.eefextwidgetsreference.EEFExtReferenceDescription;
-import org.eclipse.eef.ext.widgets.reference.eefextwidgetsreference.EefExtWidgetsReferenceFactory;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.properties.DynamicMappingIf;
-import org.eclipse.sirius.properties.WidgetDescription;
-import org.eclipse.sirius.ui.properties.api.DescriptionCache;
-import org.eclipse.sirius.ui.properties.api.IDescriptionConverter;
-
-public class DefaultRulesReferenceDescriptionConverter implements IDescriptionConverter {
-    /**
-     * The identifier of the widget description for mono-valued containment
-     * references.
-     */
-    private static final String MONO_CONTAINMENT_REFERENCE_ID = &quot;sirius_default_rules_mono_containment_reference&quot;; //$NON-NLS-1$
-
-    /**
-     * The identifier of the widget description for mono-valued non-containment
-     * references.
-     */
-    private static final String MONO_NONCONTAINMENT_REFERENCE_ID = &quot;sirius_default_rules_mono_noncontainment_reference&quot;; //$NON-NLS-1$
-
-    /**
-     * The identifier of the widget description if for multi-valued containment
-     * references.
-     */
-    private static final String MULTI_CONTAINMENT_REFERENCE_ID = &quot;sirius_default_rules_multi_containment_reference&quot;; //$NON-NLS-1$
-
-    /**
-     * The identifier of the widget description if for multi-valued
-     * non-containment references.
-     */
-    private static final String MULTI_NONCONTAINMENT_REFERENCE_ID = &quot;sirius_default_rules_multi_noncontainment_reference&quot;; //$NON-NLS-1$
-
-    /**
-     * The identifier of the descriptions supported by this
-     * {@link IDescriptionConverter}.
-     */
-    private static final String[] SUPPORTED_IDS = new String[] { MONO_CONTAINMENT_REFERENCE_ID, MONO_NONCONTAINMENT_REFERENCE_ID, MULTI_CONTAINMENT_REFERENCE_ID, MULTI_NONCONTAINMENT_REFERENCE_ID };
-
-    /**
-     * The URI of the default rules resource.
-     */
-    private static final String SUPPORTED_URI = &quot;platform:/plugin/org.eclipse.sirius.ui.properties/model/properties.xmi&quot;; //$NON-NLS-1$
-
-    @Override
-    public boolean canHandle(EObject description) {
-        if (description.eResource() != null &amp;&amp; SUPPORTED_URI.equals(description.eResource().getURI().toString())) {
-            if (description instanceof WidgetDescription &amp;&amp; ((WidgetDescription) description).eContainer() instanceof DynamicMappingIf) {
-                WidgetDescription widgetDescription = (WidgetDescription) description;
-                return Arrays.asList(SUPPORTED_IDS).contains(widgetDescription.getIdentifier());
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public EObject convert(EObject description, Map&lt;String, Object&gt; parameters, DescriptionCache cache) {
-        if (description instanceof WidgetDescription &amp;&amp; ((WidgetDescription) description).eContainer() instanceof DynamicMappingIf) {
-            WidgetDescription widgetDescription = (WidgetDescription) description;
-
-            if (Arrays.asList(SUPPORTED_IDS).contains(widgetDescription.getIdentifier())) {
-                EEFExtReferenceDescription eefExtReferenceDescription = EefExtWidgetsReferenceFactory.eINSTANCE.createEEFExtReferenceDescription();
-                eefExtReferenceDescription.setIdentifier(widgetDescription.getIdentifier());
-                eefExtReferenceDescription.setReferenceNameExpression(&quot;aql:eStructuralFeature.name&quot;); //$NON-NLS-1$
-                cache.put(widgetDescription, eefExtReferenceDescription);
-                return eefExtReferenceDescription;
-            }
         }
         return null;
     }
@@ -262,7 +185,7 @@ public class DefaultRulesReferenceDescriptionConverter implements IDescriptionCo
          <meta.section type="copyright"/>
       </appinfo>
       <documentation>
-         Copyright (c) 2016 Obeo&lt;br/&gt;
+         Copyright (c) 2016, 2017 Obeo&lt;br/&gt;
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License v1.0
 which accompanies this distribution, and is available at

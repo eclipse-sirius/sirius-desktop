@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.api;
+package org.eclipse.sirius.properties.core.api;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -19,9 +19,8 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
-import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
-import org.eclipse.sirius.ui.properties.internal.Messages;
-import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
+import org.eclipse.sirius.properties.core.internal.Messages;
+import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
@@ -50,14 +49,14 @@ public abstract class AbstractDescriptionConverter implements IDescriptionConver
      */
     protected <T> T convertEObject(EObject eObject, Map<String, Object> parameters, DescriptionCache cache, Class<T> expectedClass) {
         if (eObject != null) {
-            IDescriptionConverter converter = SiriusUIPropertiesPlugin.getPlugin().getDescriptionConverter(eObject);
+            IDescriptionConverter converter = SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverter(eObject);
             if (converter != null) {
                 EObject eefEObject = converter.convert(eObject, parameters, cache);
                 if (expectedClass.isAssignableFrom(eefEObject.getClass())) {
                     return expectedClass.cast(eefEObject);
                 }
             } else {
-                SiriusUIPropertiesPlugin.getPlugin().error(MessageFormat.format(Messages.AbstractDescriptionConverter_noConverterFound, eObject));
+                SiriusPropertiesCorePlugin.getPlugin().error(MessageFormat.format(Messages.AbstractDescriptionConverter_noConverterFound, eObject));
             }
         }
         return null;

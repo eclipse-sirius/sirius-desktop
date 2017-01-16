@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal.tabprovider;
+package org.eclipse.sirius.properties.core.internal.converter;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -25,11 +25,11 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.core.api.DescriptionCache;
+import org.eclipse.sirius.properties.core.api.IDescriptionConverter;
+import org.eclipse.sirius.properties.core.api.IDescriptionLinkResolver;
 import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
-import org.eclipse.sirius.ui.properties.api.DescriptionCache;
-import org.eclipse.sirius.ui.properties.api.IDescriptionConverter;
-import org.eclipse.sirius.ui.properties.api.IDescriptionLinkResolver;
-import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
+import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 
 /**
  * Interprets the high-level property views description defined in a Sirius VSM
@@ -71,14 +71,14 @@ public class ViewDescriptionConverter {
 
         // Starts the conversion
         for (PageDescription pageDescription : pageDescriptions) {
-            IDescriptionConverter converter = SiriusUIPropertiesPlugin.getPlugin().getDescriptionConverter(pageDescription);
+            IDescriptionConverter converter = SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverter(pageDescription);
             EObject page = converter.convert(pageDescription, parameters, cache);
             if (page instanceof EEFPageDescription) {
                 view.getPages().add((EEFPageDescription) page);
 
                 for (GroupDescription groupDescription : pageDescription.getGroups()) {
                     if (!cache.getAllSiriusDescriptions().contains(groupDescription)) {
-                        IDescriptionConverter groupConverter = SiriusUIPropertiesPlugin.getPlugin().getDescriptionConverter(groupDescription);
+                        IDescriptionConverter groupConverter = SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverter(groupDescription);
                         EObject group = groupConverter.convert(groupDescription, parameters, cache);
                         if (group instanceof EEFGroupDescription) {
                             view.getGroups().add((EEFGroupDescription) group);
@@ -92,7 +92,7 @@ public class ViewDescriptionConverter {
         }
 
         // Starts the resolution of the links
-        List<IDescriptionLinkResolver> linkResolvers = SiriusUIPropertiesPlugin.getPlugin().getDescriptionLinkResolvers();
+        List<IDescriptionLinkResolver> linkResolvers = SiriusPropertiesCorePlugin.getPlugin().getDescriptionLinkResolvers();
         for (IDescriptionLinkResolver linkResolver : linkResolvers) {
             linkResolver.resolve(view, cache);
         }

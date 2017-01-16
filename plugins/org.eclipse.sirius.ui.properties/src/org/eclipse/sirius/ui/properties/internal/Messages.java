@@ -26,16 +26,10 @@ public final class Messages {
 
     // CHECKSTYLE:OFF
     @TranslatableMessage
-    public static String AbstractDescriptionConverter_noConverterFound;
-
-    @TranslatableMessage
     public static String SiriusTabDescriptorProvider_UnsupportedMultipleSelection;
 
     @TranslatableMessage
     public static String SiriusTabDescriptorProvider_UndefinedSemanticElement;
-
-    @TranslatableMessage
-    public static String IDescriptionConverter_InvalidDescriptionType;
 
     @TranslatableMessage
     public static String SiriusToolServices_DefaultCategoryName;

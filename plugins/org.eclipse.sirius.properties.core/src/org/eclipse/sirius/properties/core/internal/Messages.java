@@ -32,6 +32,12 @@ public final class Messages {
     @TranslatableMessage
     public static String SiriusToolServices_MainTabLabel;
 
+    @TranslatableMessage
+    public static String AbstractDescriptionConverter_noConverterFound;
+
+    @TranslatableMessage
+    public static String IDescriptionConverter_InvalidDescriptionType;
+
     // CHECKSTYLE:ON
 
     private Messages() {

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="descriptionConverter" name="%descriptionConverterExtensionPoint.Name" schema="schema/descriptionConverter.exsd"/>
+   <extension-point id="descriptionLinkResolver" name="%descriptionLinkResolverExtensionPoint.Name" schema="schema/descriptionLinkResolver.exsd"/>
   <extension
         point="org.eclipse.sirius.mmdescriptor">
      <descriptorprovider

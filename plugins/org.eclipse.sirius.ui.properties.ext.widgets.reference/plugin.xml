@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.sirius.ui.properties.descriptionConverter">
+         point="org.eclipse.sirius.properties.core.descriptionConverter">
       <descriptor
             class="org.eclipse.sirius.ui.properties.ext.widgets.reference.internal.ExtReferenceDescriptionConverter"
             description="%referenceDescriptionConverter.Description"
