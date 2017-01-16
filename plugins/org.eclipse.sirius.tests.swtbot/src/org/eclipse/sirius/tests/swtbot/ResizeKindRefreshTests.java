@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,6 +48,7 @@ import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
 /**
@@ -155,9 +156,9 @@ public class ResizeKindRefreshTests extends AbstractSiriusSwtBotGefTestCase {
             for (ResizeKind resizeKind : ResizeKind.values()) {
                 changeResizeKind(dNodeEditPartBot, resizeKind);
 
-                checkInitialBounds(dNodeEditPartBot);
-
                 assertResizeKindEquality(dNodeEditPartBot, resizeKind);
+
+                checkInitialBounds(dNodeEditPartBot);
 
                 checkResizability(Collections.singletonList(dNodeEditPartBot));
 
@@ -207,8 +208,23 @@ public class ResizeKindRefreshTests extends AbstractSiriusSwtBotGefTestCase {
         }
     }
 
-    private void assertResizeKindEquality(SWTBotGefEditPart dNodeEditPartBot, ResizeKind resizeKind) {
-        assertEquals("DNode.resizeKind should be equals to " + resizeKind, resizeKind, getDNodeResizeKind(dNodeEditPartBot));
+    private void assertResizeKindEquality(final SWTBotGefEditPart dNodeEditPartBot, final ResizeKind resizeKind) {
+        bot.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return resizeKind.equals(getDNodeResizeKind(dNodeEditPartBot));
+            }
+
+            @Override
+            public void init(SWTBot bot) {
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "DNode.resizeKind should be equals to <" + resizeKind + "> but was: <" + getDNodeResizeKind(dNodeEditPartBot) + ">";
+            }
+        });
     }
 
     private ResizeKind getDNodeResizeKind(SWTBotGefEditPart dNodeEditPartBot) {
@@ -825,6 +841,10 @@ public class ResizeKindRefreshTests extends AbstractSiriusSwtBotGefTestCase {
         SWTBotUtils.waitAllUiEvents();
         try {
             modelerResource.save(Collections.emptyMap());
+            // Force a refresh to consider the new resize kind (this avoids to
+            // wait an automatic refresh).
+            editor.click(0, 0);
+            editor.refresh();
         } catch (IOException e) {
             fail(e.getLocalizedMessage());
         } finally {
