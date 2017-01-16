@@ -16,13 +16,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -30,12 +29,16 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.junit.Assert;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
+
+import junit.framework.TestCase;
 
 /**
  * Test documentation of interpreted expressions.
@@ -277,7 +280,7 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
     protected void assertVariableExistenceAndType(AbstractToolDescription tool, String expectedVariable, String expectedType, Set<String> variables, Map<String, VariableType> variablesToType) {
         assertVariableExistenceAndType(tool, expectedVariable, VariableType.fromString(expectedType), variables, variablesToType);
     }
-    
+
     /**
      * Assert variable existence and test type.
      * 
@@ -294,7 +297,17 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
      */
     protected void assertVariableExistenceAndType(AbstractToolDescription tool, String expectedVariable, VariableType expectedType, Set<String> variables, Map<String, VariableType> variablesToType) {
         assertVariableExistence(tool, expectedVariable, variables);
-        assertEquals("The interpreter context for " + tool.eClass().getName() + " has a bad variable type for variable " + expectedVariable, expectedType.toString(),
-                variablesToType.get(expectedVariable).toString());
+        Function<TypeName, String> toStringFunction = new Function<TypeName, String>() {
+
+            @Override
+            public String apply(TypeName input) {
+                return input.toString();
+            }
+
+        };
+        boolean areSameSets = Sets.symmetricDifference(Sets.newLinkedHashSet(Collections2.transform(expectedType.getPossibleTypes(), toStringFunction)),
+                Sets.newLinkedHashSet(Collections2.transform(variablesToType.get(expectedVariable).getPossibleTypes(), toStringFunction))).size() == 0;
+        assertTrue("The interpreter context for " + tool.eClass().getName() + " has a bad variable type for variable expected:" + expectedVariable + " " + expectedType.toString() + " got instead: "
+                + variablesToType.get(expectedVariable).toString(), areSameSets);
     }
 }
