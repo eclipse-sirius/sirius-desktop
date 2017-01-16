@@ -223,8 +223,22 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
              */
             availableVariables.put(IInterpreterSiriusVariables.DIAGRAM, VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM));
         }
-
+        if ((target instanceof NodeCreationDescription || target instanceof ContainerCreationDescription) && this.feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION) {
+            Collection<String> possibleContainerViewTypes = Sets.newLinkedHashSet();
+            Collection<String> possibleContainerTypes = Sets.newLinkedHashSet();
+            Collection<DiagramElementMapping> mappings = Sets.newLinkedHashSet();
+            if (target instanceof NodeCreationDescription) {
+                mappings.addAll(((NodeCreationDescription) target).getNodeMappings());
+            }
+            if (target instanceof ContainerCreationDescription) {
+                mappings.addAll(((ContainerCreationDescription) target).getContainerMappings());
+            }
+            collectPotentialContainerTypes(possibleContainerTypes, possibleContainerViewTypes, mappings);
+            availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
+            availableVariables.put(IInterpreterSiriusVariables.CONTAINER_VIEW, VariableType.fromStrings(possibleContainerViewTypes));
+        }
         return availableVariables;
+
     }
 
     @Override
