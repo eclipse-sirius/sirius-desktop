@@ -4,6 +4,20 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for all major releases of Sirius.
 
+h2(#sirius2.0.8). Changes in Sirius 2.0.8 (from Sirius 2.0.7)
+
+h3. API Changes
+
+* The method @org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.DefaultModelingProjectResourceListener.isPotentialSemanticResource2(IFile)@ has been added but directly in deprecated. Indeed, it is a part of a temporary fix, waiting for a more impacting fix made in Sirius 5.0.0. This method will be removed in Sirius 5.0.0. It is not intended to be used by clients.
+
+h2(#sirius2.0.7). Changes in Sirius 2.0.7 (from Sirius 2.0.6)
+
+Minor release without APi change.
+
+h2(#sirius2.0.6). Changes in Sirius 2.0.6 (from Sirius 2.0.5)
+
+Minor release without APi change.
+
 h2(#sirius2.0.5). Changes in Sirius 2.0.5 (from Sirius 2.0.4)
 
 h3. API Changes

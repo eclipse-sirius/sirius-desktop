@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -475,6 +475,20 @@ public final class SiriusEditPlugin extends EMFPlugin {
             this.uiCallback = uiCallback;
         }
 
+        /**
+         * Return the instantiated {@link IModelingProjectResourceListener}.
+         * This method has been added only in maintenance branch of Sirius,
+         * directly in deprecated as in will be removed in Sirius 5.0.0. It
+         * should not be used by clients. It has been added to avoid an API
+         * break.
+         * 
+         * @return the instantiated {@link IModelingProjectResourceListener}.
+         * @deprecated
+         */
+        @Deprecated
+        public IModelingProjectResourceListener getModelingProjectListener() {
+            return modelingProjectListener;
+        }
     }
 
     /**

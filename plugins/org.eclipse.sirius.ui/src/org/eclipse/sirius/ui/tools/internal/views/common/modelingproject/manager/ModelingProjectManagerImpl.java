@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,6 +48,8 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
+import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.DefaultModelingProjectResourceListener;
+import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.IModelingProjectResourceListener;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.ModelingProjectFileQuery;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -399,11 +401,20 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     private Command getSemanticResourcesAdditionCommand(IContainer container, Session session, IProgressMonitor monitor) throws CoreException {
         CompoundCommand cc = new CompoundCommand();
         if (container != null) {
+            IModelingProjectResourceListener modelingProjectResourceListener = SiriusEditPlugin.getPlugin().getModelingProjectListener();
             for (IResource resource : container.members()) {
-                if (resource instanceof IFile && new ModelingProjectFileQuery((IFile) resource).isPotentialSemanticResource() && isLoadableModel((IFile) resource, session)) {
+                if (resource instanceof IFile) {
+                    boolean isPotentialSemanticResource;
+                    if (modelingProjectResourceListener instanceof DefaultModelingProjectResourceListener) {
+                        isPotentialSemanticResource = ((DefaultModelingProjectResourceListener) modelingProjectResourceListener).isPotentialSemanticResource2((IFile) resource);
+                    } else {
+                        isPotentialSemanticResource = new ModelingProjectFileQuery((IFile) resource).isPotentialSemanticResource();
+                    }
+                    if (isPotentialSemanticResource && isLoadableModel((IFile) resource, session)) {
                     final URI uri = URI.createPlatformResourceURI(resource.getFullPath().toOSString(), true);
                     AddSemanticResourceCommand cmd = new AddSemanticResourceCommand(session, uri, new SubProgressMonitor(monitor, 1));
                     cc.append(cmd);
+                    }
                 } else if (resource instanceof IContainer) {
                     Command subCc = getSemanticResourcesAdditionCommand((IContainer) resource, session, monitor);
                     if (subCc.canExecute()) {
