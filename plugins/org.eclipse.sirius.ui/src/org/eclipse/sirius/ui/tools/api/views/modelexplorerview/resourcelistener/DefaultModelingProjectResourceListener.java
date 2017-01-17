@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -196,4 +196,22 @@ public class DefaultModelingProjectResourceListener implements IModelingProjectR
         return file != null && new ModelingProjectFileQuery(file).isPotentialSemanticResource();
     }
 
+    /**
+     * Check if the file must be considered as semantic resource during semantic
+     * resource detection. If it is, this listener will check if is it loadable.
+     * <BR>
+     * Added only in maintenance branch to avoid an API break by changing the
+     * visibility of {@link #isPotentialSemanticResource(IFile)}. This method
+     * will be removed in Sirius 5.0.0.<BR>
+     * This method is not intended to be used by clients.
+     * 
+     * @param file
+     *            an added file
+     * @return <code>false</code> if the file should be ignored.
+     * @deprecated
+     */
+    @Deprecated
+    public boolean isPotentialSemanticResource2(IFile file) {
+        return isPotentialSemanticResource(file);
+    }
 }
