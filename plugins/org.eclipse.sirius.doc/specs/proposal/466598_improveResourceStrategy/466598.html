@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationUseResourceStrategytoignoresomeresourcesassemantic">Sirius Evolution Specification: Use 
+			<code>ResourceStrategy</code> to ignore some resources as semantic
+		</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>: The goal of this feature is to extend the scope of the 
+			<code>org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategy</code> by allowing to ignore some resources as semantic resource candidate.
+		</p>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2017-01-17</td>
+				<td>lredor</td>
+				<td>Initial version.</td>
+			</tr>
+			<tr>
+				<td>v0.2</td>
+				<td>PROPOSAL</td>
+				<td>2017-01-19</td>
+				<td>lredor</td>
+				<td>Changes after Sirius team review.</td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets</em>:
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=466598">Bug 466598 &#8211; Inconsistent behavior using org.eclipse.sirius.ui.modelingprojectresourcelistener</a>
+			</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>The extension point 
+			<code>org.eclipse.sirius.ui.modelingprojectresourcelistener</code> allows to contribute their own 
+			<code>IModelingProjectResourceListener</code>, in charge of reacting to interactions on a ModelingProject (such as Resource creation, Drag and Drop...). But the default implementation, 
+			<code>org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.DefaultModelingProjectResourceListener</code> also provides APIs useful in other circumstances than for 
+			<code>IResourceChangeListener</code>:
+		</p>
+		<ul>
+			<li>
+				<code>boolean isLoadableModel(IFile, Session)</code>
+			</li>
+			<li>
+				<code>boolean isPotentialSemanticResource(IFile)</code>
+			</li>
+			<li>
+				<code>boolean isRepresentationsModel(IFile)</code>
+			</li>
+			<li>
+				<code>boolean boolean isVsmModel(IFile)</code>
+			</li>
+		</ul>
+		<p>The documentation of this extension point is not clear. But in the javadoc of the default implementation 
+			<code>DefaultModelingProjectResourceListener</code>, it is said that 
+			<cite>This extension point is not meant to be used by clients, but reserved to internal use.</cite>. This evolution must clarify that and propose an alternative to allow client to override the above API. This alternative is to extend the scope of the 
+			<code>org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategy</code> and make it API.
+		</p>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<p>The extension point 
+			<code>org.eclipse.sirius.ui.modelingprojectresourcelistener</code> is sometimes indirectly used to ignore some file by overriding 
+			<code>DefaultModelingProjectResourceListener.isPotentialSemanticResource(IFile)</code>. 4 methods can be overridden in the class 
+			<code>DefaultModelingProjectResourceListener</code>.
+		</p>
+		<p>There is no real reason to propose to override 
+			<code>isRepresentationsModel</code> and 
+			<code>isVsmModel</code>. These methods are accessible through API  
+			<code>org.eclipse.sirius.business.api.query.FileQuery.FileQuery(IFile)</code> and are core APIs. They will be removed.
+		</p>
+		<p>The 2 other methods will be moved in the existing interface 
+			<code>org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategy</code>. This interface is used through the extension point 
+			<code>org.eclipse.sirius.resourceStrategy</code>. 
+			<br/>The existing methods in 
+			<code>DefaultModelingProjectResourceListener</code> will be removed and this class directly uses the methods of the new extension point.
+		</p>
+		<p>Before Sirius 5.0.0, the extension point 
+			<code>org.eclipse.sirius.resourceStrategy</code> was provisional. It becomes APi in Sirius 5.0.0 (and all its associated classes).
+		</p>
+		<p>To resume, the existing extension point will become &#171;internal&#187;. This should already be the case, but not clearly documented.
+			<br/>The 
+			<code>resourceStrategy</code> extension point will replace the existing one for the 2 methods 
+			<code>isPotentialSemanticResource</code> and 
+			<code>isLoadableModel</code>.
+		</p>
+		<h3 id="InterfaceResourceStrategy">Interface 
+			<code>ResourceStrategy</code>
+		</h3>
+		<p>The new type 
+			<code>SEMANTIC_RESOURCE</code> will be added in the enumeration 
+			<code>org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategy.ResourceStrategyType</code>. This type of resource strategy corresponds to methods 
+			<code>boolean isPotentialSemanticResource(URI)</code> and 
+			<code>isLoadableModel(URI, Session)</code>. These methods are used to identify if a resource must be considered as a semantic resource for a Modeling Project.
+		</p>
+		<ul>
+			<li>
+				<code>boolean isPotentialSemanticResource(URI)</code>
+			</li>
+		</ul>
+		<pre><code>/**
+ * Check if the URI corresponds to a potential semantic model.
+ * 
+ * @param uri
+ *            the uri to test
+ *
+ * @return &lt;code&gt;false&lt;/code&gt; if the model with this &lt;code&gt;uri&lt;/code&gt; should
+ *         be ignored, &lt;code&gt;true&lt;/code&gt; otherwise.
+ */
+</code></pre>
+		<ul>
+			<li>
+				<code>boolean isLoadableModel(URI, Session)</code>
+			</li>
+		</ul>
+		<pre><code>/** 
+ * Check if the URI corresponds to a loadable model. The method
+ * {@link #isPotentialSemanticResource(URI)} must be checked before.
+ * 
+ * @param uri
+ *            the uri to test
+ * @param session
+ *            the session to use for trying to load the model
+ * @return &lt;code&gt;true&lt;/code&gt; if it is, &lt;code&gt;false&lt;/code&gt; otherwise
+ */
+</code></pre>
+		<h3 id="Resourcestrategyregistry">Resource strategy registry</h3>
+		<p>For the only one existing 
+			<code>ResourceStrategy</code> type, 
+			<code>ResourceStrategy.ResourceStrategyType.RELEASE_RESOURCE_AT_RESOURCESET_DISPOSE</code>, only the first implementation, that answer 
+			<i>Yes</i> to the 
+			<code>canHandle()</code> method, is called in the class 
+			<code>org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistry</code> for method 
+			<code>unloadAtResourceSetDispose</code>. 
+		</p>
+		<p>For the new type of 
+			<code>ResourceStrategy</code>, if several implementations are provided, all the methods 
+			<code>isPotentialSemanticResource</code> (of each implementation) are called. This is the same for method 
+			<code>isLoadableModel</code>. If one of the two methods 
+			<code>isPotentialSemanticResource</code> or 
+			<code>isLoadableModel</code> among all found extensions returns false, we consider that it is false for all resource strategies. 
+		</p>
+		<h3 id="ExistingResourceStrategy">Existing ResourceStrategy</h3>
+		<p>The interface 
+			<code>ResourceStrategy</code> is currently implemented by:
+		</p>
+		<ul>
+			<li>
+				<code>DefaultOptimizedResourceStrategyImpl</code>: Implementation used when there is no implementation provided by the extension point or directly through the 
+				<code>ResourceStrategyRegistry</code>.
+			</li>
+			<li>
+				<code>DefaultResourceStrategyImpl</code>: Implementation that can be used to retrieve previous behavior concerning the 
+				<code>org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy.ResourceStrategyType.RELEASE_RESOURCE_AT_RESOURCESET_DISPOSE</code> (before Sirius 4.0.0 M6).
+			</li>
+			<li>
+				<code>TestResourceStrategy</code>: Implementation used for test (provided through 
+				<code>ResourceStrategyRegistry</code>).
+			</li>
+		</ul>
+		<p>An abstract implementation will be added:</p>
+		<ul>
+			<li>It answers 
+				<code>false</code> to both 
+				<code>canHandle()</code> methods.
+			</li>
+			<li>It implements all methods by doing nothing by default.</li>
+		</ul>
+		<p>The extension point will be adapted to use the above abstract implementation, something like 
+			<code>org.eclipse.sirius.business.api.resource.strategy.AbstractResourceStrategyImpl</code> instead of the 
+			<code>ResourceStrategy</code> interface. This allows further future modification of 
+			<code>ResourceStrategy</code> by adding new type of 
+			<code>ResourceStrategy</code> and new associated methods without impacting the existing costumer specific 
+			<code>ResourceStrategy</code> (as 
+			<code>AbstractResourceStrategyImpl</code> will be directly impacted).
+		</p>
+		<h3 id="Initialbug">Initial bug</h3>
+		<p>The initial 
+			<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=466598">bug 466598</a>, 
+			<em>Inconsistent behavior using org.eclipse.sirius.ui.modelingprojectresourcelistener</em>, was caused by the fact that the code of 
+			<code>isPotentialSemanticResource</code> and 
+			<code>isLoadableModel</code> was not the same according to the caller code. After this feature, it is centralized in 
+			<code>ResourceStrategyRegistry</code>.
+		</p>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<p>No model migration is needed. Only clients using 
+			<code>org.eclipse.sirius.ui.modelingprojectresourcelistener</code> extension point must adapt their code to now use the 
+			<code>org.eclipse.sirius.resourceStrategy</code> extension point instead of this one.
+		</p>
+		<h3 id="MetamodelChanges">Metamodel Changes</h3>
+		<p>No metamodel change.</p>
+		<h3 id="APIChanges">API Changes</h3>
+		<p>In class, 
+			<code>org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.DefaultModelingProjectResourceListener</code>, the 4 following methods will be removed:
+		</p>
+		<ul>
+			<li>
+				<code>boolean isLoadableModel(IFile, Session)</code>,
+			</li>
+			<li>
+				<code>boolean isPotentialSemanticResource(IFile)</code>,
+			</li>
+			<li>
+				<code>boolean isRepresentationsModel(IFile)</code>,
+			</li>
+			<li>
+				<code>boolean boolean isVsmModel(IFile)</code>.
+			</li>
+		</ul>
+		<p>
+			<code>isLoadableModel</code> and 
+			<code>isPotentialSemanticResource</code> can be replaced by implementing a new 
+			<code>ResourceStrategy</code> and using the extension point 
+			<code>org.eclipse.sirius.resourceStrategy</code>.
+			<br/>The 2 other methods are no longer consider as overridable.
+		</p>
+		<p>
+			<code>org.eclipse.emf.common.util.URI</code> is used instead of 
+			<code>org.eclipse.core.resources.IFile</code> to avoid dependencies to Eclipse Workspace aspects.
+			<br/>As a reminder:
+		</p>
+		<ul>
+			<li>IFile to URI: 
+				<code>URI.createPlatformResourceURI(iFile.getFullPath().toString(), true)</code>
+			</li>
+			<li>URI to IFile: 
+				<code>ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)))</code> 
+			</li>
+		</ul>
+		<p>During the analysis, it also appears that the linked internal query class, 
+			<code>org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.ModelingProjectFileQuery</code>, can be moved in non UI plug-in, in package 
+			<code>org.eclipse.sirius.tools.internal.resource</code> for example. This is not API but it must also be moved so that non UI plug-ins can call it.
+		</p>
+		<h3 id="UserInterfaceChanges">User Interface Changes</h3>
+		<p>No user interface changes.</p>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<ul>
+			<li>Clarify the documentation of 
+				<code>org.eclipse.sirius.ui.modelingprojectresourcelistener</code> (internal use only)
+			</li>
+			<li>API changes in release notes.</li>
+			<li>Developer documentation to complete the documentation of the new 
+				<code>ResourceStrategy</code> extension point (that was provisional before Sirius 5.0.0).
+			</li>
+		</ul>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<p>The existing tests of class 
+			<code>org.eclipse.sirius.tests.unit.api.convert.ConvertProjectToModelingProjectTest</code> must be adapted to use the new extension point
+		</p>
+		<ul>
+			<li>Test with several implementation to check that the result is really cumulative.</li>
+		</ul>
+		<h2 id="Implementationchoicesandtradeoffs">Implementation choices and tradeoffs</h2>
+		<p>This new feature is probably another candidate to the Session option (see 
+			<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=456326">bugzilla 456326</a> ) and it is not in the scope of this issue.
+		</p>
+	</body>
+</html>
