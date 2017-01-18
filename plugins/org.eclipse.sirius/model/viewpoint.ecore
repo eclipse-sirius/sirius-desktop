@@ -555,8 +555,8 @@
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
           <details key="containerView" value="viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements."/>
           <details key="container" value="ecore.EObject | the semantic element of the container view."/>
-          <details key="viewpoint" value="diagram.DDiagram | (deprecated) the current diagram."/>
-          <details key="diagram" value="diagram.DDiagram | the current diagram."/>
+          <details key="viewpoint" value="diagram.DSemanticDiagram | (deprecated) the current diagram."/>
+          <details key="diagram" value="diagram.DSemanticDiagram | the current diagram."/>
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
@@ -641,7 +641,7 @@
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
+          <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
           <details key="containerView" value="viewpoint.DSemanticDecorator | the view of the container."/>
           <details key="container" value="ecore.EObject | the semantic element of the container."/>
         </eAnnotations>
@@ -659,7 +659,7 @@
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
+          <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
           <details key="containerView" value="viewpoint.DSemanticDecorator | the view of the container."/>
           <details key="container" value="ecore.EObject | the semantic element of the container."/>
         </eAnnotations>
@@ -669,7 +669,7 @@
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
+          <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
           <details key="containerView" value="viewpoint.DSemanticDecorator | the view of the container."/>
           <details key="container" value="ecore.EObject | the semantic element of the container."/>
         </eAnnotations>
@@ -907,7 +907,7 @@
           <details key="returnType" value="Must return an instance of type valueType."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
+          <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="valueType" lowerBound="1"
@@ -956,7 +956,7 @@
             <details key="returnType" value="a string."/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-            <details key="diagram" value="diagram.DDiagram | the current DSemanticDiagram."/>
+            <details key="diagram" value="diagram.DSemanticDiagram | the current DSemanticDiagram."/>
             <details key="view" value="diagram.DDiagramElement | the current view for which the label is calculated."/>
           </eAnnotations>
         </eStructuralFeatures>
@@ -1185,7 +1185,7 @@
             <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-            <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
+            <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
             <details key="containerView" value="viewpoint.DSemanticDecorator | the selected view."/>
             <details key="container" value="ecore.EObject | the semantic element of containerView."/>
           </eAnnotations>
@@ -1201,7 +1201,7 @@
             <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-            <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
+            <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
             <details key="containerView" value="viewpoint.DSemanticDecorator | the selected view."/>
             <details key="container" value="ecore.EObject | the semantic element of containerView."/>
           </eAnnotations>
@@ -1212,7 +1212,7 @@
             <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-            <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
+            <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
             <details key="containerView" value="viewpoint.DSemanticDecorator | the selected view."/>
             <details key="container" value="ecore.EObject | the semantic element of containerView."/>
           </eAnnotations>
@@ -1225,7 +1225,7 @@
             <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-            <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
+            <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
             <details key="containerView" value="viewpoint.DSemanticDecorator | the selected view."/>
             <details key="container" value="ecore.EObject | the semantic element of containerView."/>
           </eAnnotations>

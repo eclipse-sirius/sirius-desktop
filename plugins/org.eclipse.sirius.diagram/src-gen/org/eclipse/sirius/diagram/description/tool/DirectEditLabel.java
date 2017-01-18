@@ -112,7 +112,7 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DSemanticDiagram.' view='diagram.DDiagramElement | the current view for which the label is calculated.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DSemanticDiagram.' view='diagram.DDiagramElement | the current view for which the label is calculated.'"
      * @generated
      */
     String getInputLabelExpression();

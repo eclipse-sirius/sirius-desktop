@@ -128,7 +128,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DDiagram.' viewpoint='diagram.DDiagram | (deprecated) the current DDiagram.' viewPoint='diagram.DDiagram | (deprecated) the current DDiagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DDiagram.' viewpoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.' viewPoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.'"
      * @generated
      */
     String getTargetFinderExpression();
@@ -166,7 +166,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DDiagram.' viewpoint='diagram.DDiagram | (deprecated) the current DDiagram.' viewPoint='diagram.DDiagram | (deprecated) the current DDiagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DDiagram.' viewpoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.' viewPoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.'"
      * @generated
      */
     String getSourceFinderExpression();
@@ -243,7 +243,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DDiagram.' viewpoint='diagram.DDiagram | (deprecated) the current DDiagram.' viewPoint='diagram.DDiagram | (deprecated) the current DDiagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DDiagram.' viewpoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.' viewPoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.'"
      * @generated
      */
     String getTargetExpression();
@@ -353,7 +353,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DDiagram.' viewpoint='diagram.DDiagram | (deprecated) the current DDiagram.' element='ecore.EObject | the semantic element  of the current edge.' source='ecore.EObject | the semantic target of the current source node.' target='ecore.EObject | the semantic element of the current target node.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DDiagram.' viewpoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.' element='ecore.EObject | the semantic element  of the current edge.' source='ecore.EObject | the semantic target of the current source node.' target='ecore.EObject | the semantic element of the current target node.'"
      * @generated
      */
     String getPathExpression();

@@ -1066,8 +1066,8 @@
           <details key="returnType" value="an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
-          <details key="viewpoint" value="diagram.DDiagram | (deprecated) the current DDiagram."/>
+          <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
+          <details key="viewpoint" value="diagram.DSemanticDiagram | (deprecated) the current DDiagram."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="init" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationCreationDescription">
@@ -1250,10 +1250,10 @@
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="containerView" value="diagram.DDiagram | the parent view of potential candidates."/>
-          <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
-          <details key="viewpoint" value="diagram.DDiagram | (deprecated) the current DDiagram."/>
-          <details key="viewPoint" value="diagram.DDiagram | (deprecated) the current DDiagram."/>
+          <details key="containerView" value="diagram.DSemanticDiagram | the parent view of potential candidates."/>
+          <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
+          <details key="viewpoint" value="diagram.DSemanticDiagram | (deprecated) the current DDiagram."/>
+          <details key="viewPoint" value="diagram.DSemanticDiagram | (deprecated) the current DDiagram."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="createElements" lowerBound="1"
@@ -1274,9 +1274,9 @@
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="diagram" value="diagram.DDiagram | the current DSemanticDiagram."/>
+          <details key="diagram" value="diagram.DSemanticDiagram | the current DSemanticDiagram."/>
           <details key="view" value="diagram.DDiagramElement | the current view created from the current mapping."/>
-          <details key="viewpoint" value="diagram.DDiagram | (deprecated) the current DSemanticDiagram."/>
+          <details key="viewpoint" value="diagram.DSemanticDiagram | (deprecated) the current DSemanticDiagram."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="doubleClickDescription"
@@ -1534,9 +1534,9 @@
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
-          <details key="viewpoint" value="diagram.DDiagram | (deprecated) the current DDiagram."/>
-          <details key="viewPoint" value="diagram.DDiagram | (deprecated) the current DDiagram."/>
+          <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
+          <details key="viewpoint" value="diagram.DSemanticDiagram | (deprecated) the current DDiagram."/>
+          <details key="viewPoint" value="diagram.DSemanticDiagram | (deprecated) the current DDiagram."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceFinderExpression"
@@ -1548,9 +1548,9 @@
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
-          <details key="viewpoint" value="diagram.DDiagram | (deprecated) the current DDiagram."/>
-          <details key="viewPoint" value="diagram.DDiagram | (deprecated) the current DDiagram."/>
+          <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
+          <details key="viewpoint" value="diagram.DSemanticDiagram | (deprecated) the current DDiagram."/>
+          <details key="viewPoint" value="diagram.DSemanticDiagram | (deprecated) the current DDiagram."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//description/style/EdgeStyleDescription"
@@ -1573,9 +1573,9 @@
           <details key="returnType" value="an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
-          <details key="viewpoint" value="diagram.DDiagram | (deprecated) the current DDiagram."/>
-          <details key="viewPoint" value="diagram.DDiagram | (deprecated) the current DDiagram."/>
+          <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
+          <details key="viewpoint" value="diagram.DSemanticDiagram | (deprecated) the current DDiagram."/>
+          <details key="viewPoint" value="diagram.DSemanticDiagram | (deprecated) the current DDiagram."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName">
@@ -1592,8 +1592,8 @@
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="diagram" value="diagram.DDiagram | the current DDiagram."/>
-          <details key="viewpoint" value="diagram.DDiagram | (deprecated) the current DDiagram."/>
+          <details key="diagram" value="diagram.DSemanticDiagram | the current DDiagram."/>
+          <details key="viewpoint" value="diagram.DSemanticDiagram | (deprecated) the current DDiagram."/>
           <details key="element" value="ecore.EObject | the semantic element  of the current edge."/>
           <details key="source" value="ecore.EObject | the semantic target of the current source node."/>
           <details key="target" value="ecore.EObject | the semantic element of the current target node."/>
@@ -2168,7 +2168,7 @@
             <details key="returnType" value="an integer."/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-            <details key="diagram" value="diagram.DDiagram | the current DSemanticDiagram."/>
+            <details key="diagram" value="diagram.DSemanticDiagram | the current DSemanticDiagram."/>
             <details key="view" value="diagram.DEdge | the current edge view for which the size is calculated."/>
             <details key="sourceView" value="diagram.EdgeTarget | the source view of the current edge."/>
             <details key="targetView" value="diagram.EdgeTarget | the target view of the current edge."/>
@@ -2437,7 +2437,7 @@
             <details key="container" value="ecore.EObject | the semantic element of diagram."/>
             <details key="preSourceView" value="diagram.EdgeTarget | (edge only) the source view of the current potential edge."/>
             <details key="preSource" value="ecore.EObject | (edge only) the semantic element of $preSourceView."/>
-            <details key="diagram" value="diagram.DDiagram | the diagram of the current potential edge"/>
+            <details key="diagram" value="diagram.DSemanticDiagram | the diagram of the current potential edge"/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
             <details key="returnType" value="a boolean."/>
@@ -2663,7 +2663,7 @@
             <details key="returnType" value="a string."/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-            <details key="diagram" value="diagram.DDiagram | the current DSemanticDiagram."/>
+            <details key="diagram" value="diagram.DSemanticDiagram | the current DSemanticDiagram."/>
             <details key="view" value="diagram.DDiagramElement | the current view for which the label is calculated."/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

@@ -346,7 +346,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DDiagram.' viewpoint='diagram.DDiagram | (deprecated) the current DDiagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DDiagram.' viewpoint='diagram.DSemanticDiagram | (deprecated) the current DDiagram.'"
      * @generated
      */
     String getRootExpression();

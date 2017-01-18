@@ -2861,8 +2861,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addAnnotation(getDecorationDescription_PreconditionExpression(), source,
                 new String[] { "containerView", "viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
                         "container", "ecore.EObject | the semantic element of the container view.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DDiagram | (deprecated) the current diagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "diagram", "diagram.DDiagram | the current diagram." //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current diagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "diagram", "diagram.DSemanticDiagram | the current diagram." //$NON-NLS-1$ //$NON-NLS-2$
                 });
         addAnnotation(getVSMElementCustomization_PredicateExpression(), source, new String[] { "view", "ecore.EObject | the current view.", //$NON-NLS-1$ //$NON-NLS-2$
                 "container", "ecore.EObject | the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
@@ -2871,17 +2871,17 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 "container", "ecore.EObject | the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getSelectionDescription_CandidatesExpression(), source,
-                new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
                         "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
                         "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
                 });
         addAnnotation(getSelectionDescription_RootExpression(), source,
-                new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
                         "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
                         "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
                 });
         addAnnotation(getSelectionDescription_ChildrenExpression(), source,
-                new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
                         "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
                         "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
                 });
@@ -2892,7 +2892,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addAnnotation(getComputedColor_Red(), source, new String[] {});
         addAnnotation(getComputedColor_Green(), source, new String[] {});
         addAnnotation(getComputedColor_Blue(), source, new String[] {});
-        addAnnotation(getTypedVariable_DefaultValueExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+        addAnnotation(getTypedVariable_DefaultValueExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
         });
     }
 

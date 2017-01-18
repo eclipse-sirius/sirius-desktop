@@ -2237,8 +2237,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     protected void createVariablesAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables"; //$NON-NLS-1$
         addAnnotation(getDiagramDescription_PreconditionExpression(), source, new String[] {});
-        addAnnotation(getDiagramDescription_RootExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                "viewpoint", "diagram.DDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+        addAnnotation(getDiagramDescription_RootExpression(), source, new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getDiagramElementMapping_PreconditionExpression(), source,
                 new String[] { "containerView", "diagram.DragAndDropTarget | the view that should contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2251,34 +2251,34 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                         "target", "ecore.EObject | (edge only) the semantic element of targetView." //$NON-NLS-1$ //$NON-NLS-2$
                 });
         addAnnotation(getDiagramElementMapping_SemanticCandidatesExpression(), source,
-                new String[] { "containerView", "diagram.DDiagram | the parent view of potential candidates.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewPoint", "diagram.DDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+                new String[] { "containerView", "diagram.DSemanticDiagram | the parent view of potential candidates.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewPoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
                 });
         addAnnotation(getDiagramElementMapping_SemanticElements(), source,
-                new String[] { "diagram", "diagram.DDiagram | the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                new String[] { "diagram", "diagram.DSemanticDiagram | the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
                         "view", "diagram.DDiagramElement | the current view created from the current mapping.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DDiagram | (deprecated) the current DSemanticDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DSemanticDiagram." //$NON-NLS-1$ //$NON-NLS-2$
                 });
         addAnnotation(getEdgeMapping_TargetFinderExpression(), source,
-                new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewPoint", "diagram.DDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewPoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
                 });
         addAnnotation(getEdgeMapping_SourceFinderExpression(), source,
-                new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewPoint", "diagram.DDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewPoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
                 });
         addAnnotation(getEdgeMapping_TargetExpression(), source,
-                new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewPoint", "diagram.DDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewPoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
                 });
         addAnnotation(getEdgeMapping_PathExpression(), source,
-                new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                        "viewpoint", "diagram.DDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                new String[] { "diagram", "diagram.DSemanticDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
                         "element", "ecore.EObject | the semantic element  of the current edge.", //$NON-NLS-1$ //$NON-NLS-2$
                         "source", "ecore.EObject | the semantic target of the current source node.", //$NON-NLS-1$ //$NON-NLS-2$
                         "target", "ecore.EObject | the semantic element of the current target node." //$NON-NLS-1$ //$NON-NLS-2$

@@ -159,7 +159,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="InteractionContainer" navigationDescriptions="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='toDiagram']" preconditionExpression="aql:containerView.edges->size()  > 0" domainClass="interactions.Interaction">
+        <containerMappings name="InteractionContainer" navigationDescriptions="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='toDiagram']" preconditionExpression="aql:containerView.edges->size()  > 0" semanticCandidatesExpression="aql:containerView.target.eAllContents(interactions::Interaction)" domainClass="interactions.Interaction">
           <subContainerMappings name="InteractionContainerInContainer" semanticCandidatesExpression="var:self" domainClass="interactions.Interaction">
             <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.emf.ecore.edit/icons/full/obj16/EClass.gif">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

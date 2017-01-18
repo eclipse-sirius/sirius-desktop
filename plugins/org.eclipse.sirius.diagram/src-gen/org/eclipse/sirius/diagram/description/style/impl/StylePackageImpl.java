@@ -1631,7 +1631,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         addAnnotation(getSizeComputationContainerStyleDescription_WidthComputationExpression(), source, new String[] {});
         addAnnotation(getSizeComputationContainerStyleDescription_HeightComputationExpression(), source, new String[] {});
         addAnnotation(getEdgeStyleDescription_SizeComputationExpression(), source,
-                new String[] { "diagram", "diagram.DDiagram | the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                new String[] { "diagram", "diagram.DSemanticDiagram | the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
                         "view", "diagram.DEdge | the current edge view for which the size is calculated.", //$NON-NLS-1$ //$NON-NLS-2$
                         "sourceView", "diagram.EdgeTarget | the source view of the current edge.", //$NON-NLS-1$ //$NON-NLS-2$
                         "targetView", "diagram.EdgeTarget | the target view of the current edge." //$NON-NLS-1$ //$NON-NLS-2$

@@ -208,7 +208,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DSemanticDiagram.' view='diagram.DEdge | the current edge view for which the size is calculated.' sourceView='diagram.EdgeTarget | the source view of the current edge.' targetView='diagram.EdgeTarget | the target view of the current edge.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DSemanticDiagram | the current DSemanticDiagram.' view='diagram.DEdge | the current edge view for which the size is calculated.' sourceView='diagram.EdgeTarget | the source view of the current edge.' targetView='diagram.EdgeTarget | the target view of the current edge.'"
      * @generated
      */
     String getSizeComputationExpression();

@@ -139,7 +139,7 @@ public interface DecorationDescription extends EObject {
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables containerView='viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.' container='ecore.EObject | the semantic element of the container view.' viewpoint='diagram.DDiagram | (deprecated) the current diagram.' diagram='diagram.DDiagram | the current diagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables containerView='viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.' container='ecore.EObject | the semantic element of the container view.' viewpoint='diagram.DSemanticDiagram | (deprecated) the current diagram.' diagram='diagram.DSemanticDiagram | the current diagram.'"
      * @generated
      */
     String getPreconditionExpression();
