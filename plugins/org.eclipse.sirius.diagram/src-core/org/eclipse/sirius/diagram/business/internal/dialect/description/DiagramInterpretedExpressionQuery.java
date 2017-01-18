@@ -247,6 +247,11 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             }
             refineVariableType(availableVariables, SELF, possibleSemanticTypes);
         }
+        if (target instanceof ReconnectEdgeDescription && this.feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION) {
+            Collection<String> possibleContainerTypes = Sets.newLinkedHashSet();
+            collectPotentialContainerTypes(possibleContainerTypes, Sets.<String> newLinkedHashSet(), ((ReconnectEdgeDescription) target).getMappings());
+            availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
+        }
         return availableVariables;
 
     }
