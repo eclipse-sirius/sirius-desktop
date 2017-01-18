@@ -60,6 +60,7 @@ import org.eclipse.sirius.diagram.description.tool.CreateView;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
+import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
@@ -301,6 +302,16 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 collectPotentialContainerTypes(possibleContainerSemanticTypes, possibleContainerViewTypes, Lists.newArrayList(Iterables.filter(tool.getMappings(), DiagramElementMapping.class)));
                 refineVariableType(availableVariables, tool.getContainerVariable().getName(), possibleContainerSemanticTypes);
                 refineVariableType(availableVariables, tool.getContainerViewVariable().getName(), possibleContainerViewTypes);
+            }
+            if (toolContext instanceof DoubleClickDescription) {
+                DoubleClickDescription tool = (DoubleClickDescription) toolContext;
+                Collection<String> possibleSemanticTypes = Sets.newLinkedHashSet();
+                Collection<String> possibleViewTypes = Sets.newLinkedHashSet();
+                for (DiagramElementMapping m : tool.getMappings()) {
+                    collectTypes(possibleSemanticTypes, possibleViewTypes, m);
+                }
+                refineVariableType(availableVariables, tool.getElement().getName(), possibleSemanticTypes);
+                refineVariableType(availableVariables, tool.getElementView().getName(), possibleViewTypes);
             }
 
         }

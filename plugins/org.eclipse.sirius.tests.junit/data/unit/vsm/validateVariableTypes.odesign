@@ -54,7 +54,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="InteractionNode" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='MultipleTypes']" domainClass="interactions.Interaction">
+        <nodeMappings name="InteractionNode" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='MultipleTypes']" doubleClickDescription="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='DoubleClick%20on%20Interaction']" domainClass="interactions.Interaction">
           <style xsi:type="style:LozengeNodeDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -494,6 +494,18 @@
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="tableName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DoubleClick on Interaction" mappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='InteractionNode']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.executions"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:elementView">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.resizeKind"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
           <subSections name="Ignored">
             <ownedTools xsi:type="tool_1:DirectEditLabel" name="ElementType">
