@@ -42,6 +42,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
+import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
@@ -525,6 +526,20 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                 If ifThen = (If) current;
                 IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(ifThen, ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION);
                 ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, ifThen.getConditionExpression());
+                Map<String, VariableType> inferedTypes = res.getInferredVariableTypes(Boolean.TRUE);
+                for (Entry<String, VariableType> infered : inferedTypes.entrySet()) {
+                    if (SELF.equals(infered.getKey())) {
+                        changeSelfType(infered.getValue());
+                    } else {
+                        addDefinition(definitions, infered.getKey(), infered.getValue());
+                    }
+
+                }
+            }
+            if (current instanceof Case) {
+                Case switchCase = (Case) current;
+                IInterpreterContext caseContext = SiriusInterpreterContextFactory.createInterpreterContext(switchCase, ToolPackage.Literals.CASE__CONDITION_EXPRESSION);
+                ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(caseContext, switchCase.getConditionExpression());
                 Map<String, VariableType> inferedTypes = res.getInferredVariableTypes(Boolean.TRUE);
                 for (Entry<String, VariableType> infered : inferedTypes.entrySet()) {
                     if (SELF.equals(infered.getKey())) {

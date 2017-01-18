@@ -450,6 +450,21 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not self.oclIsKindOf(interactions::Interaction)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
                 </subModelOperations>
+                <subModelOperations xsi:type="tool:Switch">
+                  <cases conditionExpression="aql:self.oclIsKindOf(interactions::Interaction)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:executions"/>
+                  </cases>
+                  <cases conditionExpression="aql:self.oclIsKindOf(interactions::Participant)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+                  </cases>
+                  <cases conditionExpression="aql:self.name &lt;> null and self.oclIsKindOf(interactions::Interaction)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:executions"/>
+                  </cases>
+                  <cases conditionExpression="aql:not self.oclIsKindOf(interactions::Interaction)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+                  </cases>
+                  <default/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
