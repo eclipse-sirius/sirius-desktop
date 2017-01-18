@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,8 @@ import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.query.FileQuery;
+import org.eclipse.sirius.business.api.resource.strategy.ResourceStrategyRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.query.ResourceDeltaQuery;
 import org.eclipse.sirius.ext.base.Option;
@@ -65,18 +67,6 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
      * The list of modeling projects that are currently being imported.
      */
     private final Set<ModelingProject> modelingProjectsBeingImported = new HashSet<ModelingProject>();
-
-    private DefaultModelingProjectResourceListener defaultModelingProjectResourceListener;
-
-    /**
-     * Default constructor.
-     * 
-     * @param defaultModelingProjectResourceListener
-     *            the {@link DefaultModelingProjectResourceListener} to use
-     */
-    public ResourceDeltaVisitor(DefaultModelingProjectResourceListener defaultModelingProjectResourceListener) {
-        this.defaultModelingProjectResourceListener = defaultModelingProjectResourceListener;
-    }
 
     /**
      * {@inheritDoc}
@@ -188,7 +178,7 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
                 switch (delta.getKind()) {
                 case IResourceDelta.ADDED:
                 case IResourceDelta.REMOVED:
-                    if (defaultModelingProjectResourceListener.isRepresentationsModel(file)) {
+                    if (new FileQuery(file).isSessionResourceFile()) {
                         // A representations file is added so this project
                         // is potentially became valid, so we must load it.
                         projectsToInitializeAndLoad.add(modelingProject.get());
@@ -226,7 +216,7 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
         final URI uri = URI.createPlatformResourceURI(delta.getFullPath().toString(), true);
         switch (delta.getKind()) {
         case IResourceDelta.ADDED:
-            if (defaultModelingProjectResourceListener.isPotentialSemanticResource(file) && defaultModelingProjectResourceListener.isLoadableModel(file, session)) {
+            if (ResourceStrategyRegistry.getInstance().isPotentialSemanticResource(uri) && ResourceStrategyRegistry.getInstance().isLoadableModel(uri, session)) {
                 if (session != null) {
                     Set<URI> semanticResourcesURIsToAttach = semanticResourcesURIsToAttachPerSession.get(session);
                     if (semanticResourcesURIsToAttach == null) {
@@ -235,7 +225,7 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
                     }
                     semanticResourcesURIsToAttach.add(uri);
                 }
-            } else if (this.defaultModelingProjectResourceListener.isRepresentationsModel(file)) {
+            } else if (new FileQuery(file).isSessionResourceFile()) {
                 projectsToInitialize.add(file.getProject());
             }
             /*
@@ -251,7 +241,7 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
                 }
                 semanticResourcesURIsToDetach.add(uri);
             }
-            if (this.defaultModelingProjectResourceListener.isRepresentationsModel(file)) {
+            if (new FileQuery(file).isSessionResourceFile()) {
                 projectsToInitialize.add(file.getProject());
             }
             break;

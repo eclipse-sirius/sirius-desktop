@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,9 +25,8 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.sirius.business.internal.resource.strategy.DefaultResourceStrategyImpl;
-import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategy;
-import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistry;
+import org.eclipse.sirius.business.api.resource.strategy.LegacyReleaseResourceStrategyImpl;
+import org.eclipse.sirius.business.api.resource.strategy.ResourceStrategyRegistry;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -82,7 +81,7 @@ public class ResourceStrategyTests extends SiriusTestCase {
 
     }
 
-    public class TestResourceStrategy extends DefaultResourceStrategyImpl implements ResourceStrategy {
+    public class TestResourceStrategy extends LegacyReleaseResourceStrategyImpl {
 
         public boolean isUsed;
 
@@ -100,12 +99,13 @@ public class ResourceStrategyTests extends SiriusTestCase {
 
         @Override
         public boolean canHandle(URI resourceURI, ResourceStrategyType resourceStrategyType) {
-            return resourceURI.segment(resourceURI.segmentCount() - 1).matches(handledResourcePattern);
+            return ResourceStrategyType.RELEASE_RESOURCE_AT_RESOURCESET_DISPOSE.equals(resourceStrategyType) && resourceURI.segment(resourceURI.segmentCount() - 1).matches(handledResourcePattern);
         }
 
         @Override
         public boolean canHandle(Resource resource, ResourceStrategyType resourceStrategyType) {
-            return resource.getURI().segment(resource.getURI().segmentCount() - 1).matches(handledResourcePattern);
+            return ResourceStrategyType.RELEASE_RESOURCE_AT_RESOURCESET_DISPOSE.equals(resourceStrategyType)
+                    && resource.getURI().segment(resource.getURI().segmentCount() - 1).matches(handledResourcePattern);
         }
     };
 
@@ -125,9 +125,9 @@ public class ResourceStrategyTests extends SiriusTestCase {
         session.close(new NullProgressMonitor());
 
         // Check that this IResourceStrategy has been used
-        assertFalse("The resource is still loaded : " + repRes, repRes.isLoaded());
-        assertTrue("The resource is unloaded : " + semRes, semRes.isLoaded());
-        assertTrue("The IResourceStrategy is not be used", testResourceStrategy.isUsed);
+        assertFalse("The representationsFile resource is still loaded: " + repRes + ".", repRes.isLoaded());
+        assertTrue("The semantic resource has been unloaded: " + semRes + ".", semRes.isLoaded());
+        assertTrue("The IResourceStrategy has not been used.", testResourceStrategy.isUsed);
     }
 
     /**

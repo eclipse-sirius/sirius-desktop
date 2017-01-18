@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener
 import java.util.LinkedHashMap;
 import java.util.Set;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceDelta;
@@ -22,18 +21,13 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
-import org.eclipse.sirius.business.api.query.FileQuery;
-import org.eclipse.sirius.business.api.resource.LoadEMFResource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.modelingproject.manager.AttachSemanticResourcesJob;
 import org.eclipse.sirius.business.internal.modelingproject.manager.InitializeModelingProjectJob;
-import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.InvalidModelingProjectMarkerUpdaterJob;
-import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.ModelingProjectFileQuery;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 import com.google.common.collect.Lists;
@@ -132,65 +126,6 @@ public class DefaultModelingProjectResourceListener implements IModelingProjectR
      * @return the {@link ResourceDeltaVisitor} to use for visiting changes
      */
     protected ResourceDeltaVisitor getResourceDeltaVisitor() {
-        return new ResourceDeltaVisitor(this);
+        return new ResourceDeltaVisitor();
     }
-
-    /**
-     * Indicates wether the given file contains a DAnalysis model.
-     * 
-     * @param file
-     *            the file to test
-     * @return true if the given file contains a DAnalysis model, false
-     *         otherwise
-     */
-    protected boolean isRepresentationsModel(IFile file) {
-        return new FileQuery(file).isSessionResourceFile();
-    }
-
-    /**
-     * Indicates wether the given file contains a VSM model.
-     * 
-     * @param file
-     *            the file to test
-     * @return true if the given file contains a VSM model, false otherwise
-     */
-    protected boolean isVsmModel(IFile file) {
-        return new FileQuery(file).isVSMFile();
-    }
-
-    /**
-     * Check if file is a loadable model.
-     * 
-     * @see DefaultModelingProjectResourceListener#shouldIgnoreFile(IFile) which
-     *      should be called before the isLoadableModel.
-     * 
-     * @param file
-     *            the file to test
-     * @param session
-     *            the session to use for trying to load the model
-     * 
-     * @return <code>true</code> if it is, <code>false</code> otherwise
-     */
-    protected boolean isLoadableModel(IFile file, Session session) {
-        if (file == null) {
-            return false;
-        }
-        final ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(session.getSessionResource().getURI());
-        LoadEMFResource runnable = new LoadEMFResource(set, file);
-        runnable.run();
-        return runnable.getLoadedResource() != null;
-    }
-
-    /**
-     * Check if the file could be during semantic resource detection. If it is,
-     * this listener will check if is it loadable.
-     * 
-     * @param file
-     *            an added file
-     * @return <code>false</code> if the file should be ignored.
-     */
-    protected boolean isPotentialSemanticResource(IFile file) {
-        return file != null && new ModelingProjectFileQuery(file).isPotentialSemanticResource();
-    }
-
 }

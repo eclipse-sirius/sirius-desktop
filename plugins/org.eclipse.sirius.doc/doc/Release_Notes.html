@@ -113,12 +113,61 @@
 			<li><span class="label label-info">Modified</span> The tab used to configure the metamodels used by the Properties view description is now using the same interface as the metamodels tab used to configure the representations.</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> The extension point 
+				<code>org.eclipse.sirius.ui.modelingprojectresourcelistener</code> is no longer expected to be used. It is an internal extension point. Clients using this extension point to ignore some files as potential semantic models must now use the extension point 
+				<code>org.eclipse.sirius.resourceStrategy</code>. This extension point existed before Sirius 5.0.0 but was not API. It becomes API with Sirius 5.0.0, see the 
+				<a href="developer/extensions-provide_resource_strategy.html">developer documentation</a> for more details.
+				<ul>
+					<li>If you used to override protected methods 
+						<code>boolean isPotentialSemanticResource(IFile)</code> and 
+						<code>boolean isLoadableModel(IFile, Session)</code> of class 
+						<code>org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.DefaultModelingProjectResourceListener</code>, you can now create a 
+						<code>resourceStrategy</code> of type 
+						<code>org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy.ResourceStrategyType.SEMANTIC_RESOURCE</code> and respectively override 
+						<code>boolean isPotentialSemanticResource(URI)</code> and 
+						<code>boolean isLoadableModel(URI,Session)</code>. As a reminder, to get an URI from an IFile, you can use: 
+						<code>URI.createPlatformResourceURI(iFile.getFullPath().toString(), true)</code>. And to get an IFile from an URI, you can use: 
+						<code>ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)))</code>.
+					</li>
+					<li>If you used to override protected methods 
+						<code>boolean isRepresentationsModel(IFile)</code> and 
+						<code>boolean isVsmModel(IFile)</code> of class 
+						<code>org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.DefaultModelingProjectResourceListener</code>, they no longer exist. They correspond to core API and is not supposed to be overridden. They are accessible through API  
+						<code>org.eclipse.sirius.business.api.query.FileQuery.FileQuery(IFile)</code>.
+					</li>
+					<li>All necessary classes for extension point 
+						<code>org.eclipse.sirius.resourceStrategy</code> are now APIs:
+						<ul>
+							<li>
+								<code>org.eclipse.sirius.business.api.resource.strategy.ResourceStrategyRegistry</code>: Registry to have access to all overridable services through a 
+								<code>ResourceStrategy</code>
+							</li>
+							<li>
+								<code>org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy</code>: Interface implemented by all resource strategies
+							</li>
+							<li>
+								<code>org.eclipse.sirius.business.api.resource.strategy.AbstractResourceStrategyImpl</code>: Default implementation of above interface. All resource strategies contributed with the extension need to extend it.
+							</li>
+							<li>
+								<code>org.eclipse.sirius.business.api.resource.strategy.LegacyReleaseResourceStrategyImpl</code> (previously named 
+								<code>DefaultResourceStrategyImpl</code>): A resource strategy with the code used before the optimization concerning the 
+								<code>org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy.ResourceStrategyType.RELEASE_RESOURCE_AT_RESOURCESET_DISPOSE</code>. It is not used but can be quickly contributed by someone that want the previous behavior (before Sirius 4.0.0 M6).
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> The utility method 
-				<code>org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()</code> has been added to allow to load a PDE target platform according to all known OSGi bundles. It is usefull to compile a plug-in in the execution runtime of the tests.
+				<code>org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()</code> has been added to allow to load a PDE target platform according to all known OSGi bundles. It is useful to compile a plug-in in the execution runtime of the tests.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
@@ -404,7 +453,7 @@ SWTBotUtils.waitAllUiEvents();
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -846,7 +895,7 @@ SWTBotUtils.waitAllUiEvents();
 				<a href="developer/extensions-provide_custom_bundled_image_shape.html">developer documentation</a> for more details.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1557,7 +1606,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalBuilder</code> used to build the content proposals with their various parameters more easily.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -2069,7 +2118,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.common.ui.ext</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>

@@ -20,6 +20,7 @@ import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;
  *
  */
 public final class Messages {
+
     static {
         I18N.initializeMessages(Messages.class, SiriusPlugin.INSTANCE);
     }
@@ -52,6 +53,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String AbstractRepresentationDialectServices_initRepresentationMsg;
+
+    @TranslatableMessage
+    public static String AbstractResourceStrategyImpl_methodReleaseNotHandleMsg;
 
     @TranslatableMessage
     public static String AbstractSavingPolicy_saveMsg;
@@ -331,7 +335,7 @@ public final class Messages {
 
     @TranslatableMessage
     public static String InterpreterRegistry_sessionNotFoundErrorMsg;
-    
+
     @TranslatableMessage
     public static String InterpretedExpressionQueryProviderRegistry_instanciationError;
 

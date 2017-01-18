@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject;
+package org.eclipse.sirius.tools.internal.resource;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -63,8 +63,9 @@ public class ModelingProjectFileQuery {
     }
 
     /**
-     * Check if the file is a potential semantic model. The following types will be ignored : VSM file, representation file,
-     * derived file, repair action backup file, derived file, svn file, ...
+     * Check if the file is a potential semantic model. The following types will
+     * be ignored : VSM file, representation file, derived file, repair action
+     * backup file, derived file, svn file, ...
      * 
      * @return <code>false</code> if the file should be ignored.
      */
@@ -77,8 +78,8 @@ public class ModelingProjectFileQuery {
     }
 
     /*
-     * Sirius's Repair action creates a '.old' backup file, it is working on
-     * vsm and representations resources.
+     * Sirius's Repair action creates a '.old' backup file, it is working on vsm
+     * and representations resources.
      */
     private boolean isRepairBackupFile() {
         if ("old".equals(file.getFileExtension())) { //$NON-NLS-1$

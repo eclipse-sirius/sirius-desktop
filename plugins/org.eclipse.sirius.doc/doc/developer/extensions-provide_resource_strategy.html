@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>extensions-provide_resource_strategy</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusProvidearesourcestrategy">Sirius &#8211; Provide a resource strategy</h1>
+		<h2 id="Goals">Goals</h2>
+		<p>The 
+			<em>resource strategy registry</em>, 
+			<code>org.eclipse.sirius.business.api.resource.strategy.ResourceStrategyRegistry</code>, centralizes all behaviors related to resource used in Sirius Session that can be overridden.
+			<br/>The extension point 
+			<code>org.eclipse.sirius.resourceStrategy</code> allows to contribute a new behavior for each 
+			<em>resource strategy type</em>.
+			<br/>When you contribute a new 
+			<code>ResourceStrategy</code>, you need to handle one or more of the 
+			<code>org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy.ResourceStrategyType</code> by using 
+			<code>canHandle</code> methods. For each type, there is one or more methods to override from 
+			<code>org.eclipse.sirius.business.api.resource.strategy.AbstractResourceStrategyImpl</code>. The methods to override are documented in javadoc of each 
+			<code>ResourceStrategyType</code>.
+		</p>
+		<p>To know all behaviors that can be overridden, you must refer to 
+			<code>org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy.ResourceStrategyType</code>.
+		</p>
+		<h2 id="Example">Example</h2>
+		<p>Here is an example that ignore &#8220;*.genmodel&#8221; files as semantic model of Sirius Session.</p>
+		<p>You have to add your resource strategy contribution in the plugin.xml file.</p>
+		<pre>&lt;extension point="org.eclipse.sirius.resourceStrategy"&gt;
+   &lt;resourceStrategy
+     class="org.eclipse.sirius.tests.unit.api.convert.TestResourceStrategyToIgnoreGenModelFile"&gt;
+   &lt;/resourceStrategy&gt;
+&lt;/extension&gt;
+
+</pre>
+		<p>The class references a class extending the 
+			<code>AbstractResourceStrategyImpl</code>. The corresponding code is:
+		</p>
+		<pre>/**
+ * This class overrides AbstractResourceStrategyImpl and also ignores genmodel
+ * files.
+ */
+public class TestResourceStrategyToIgnoreGenModelFile extends AbstractResourceStrategyImpl {
+
+    @Override
+    public boolean isPotentialSemanticResource(URI uri) {
+        boolean result = super.isPotentialSemanticResource(uri);
+        if (result &amp;&amp; uri != null) {
+            result = !"genmodel".equals(uri.fileExtension());
+        }
+        return result;
+    }
+
+    @Override
+    public boolean canHandle(URI resourceURI, ResourceStrategyType resourceStrategyType) {
+        return ResourceStrategyType.SEMANTIC_RESOURCE.equals(resourceStrategyType);
+    }
+}
+
+</pre>
+		<p></p>
+		<ul>
+			<li>
+				<code>canHandle</code> allows to restrict this new resource strategy to only one type (
+				<code>ResourceStrategyType.SEMANTIC_RESOURCE</code>).
+			</li>
+			<li>
+				<code>isPotentialSemanticResource(URI)</code> is overridden to also ignore genmodel.
+			</li>
+			<li>
+				<code>isLoadableModel(URI, Session)</code> is not overridden as we want to keep the default behavior for this method.
+			</li>
+		</ul>
+	</body>
+</html>

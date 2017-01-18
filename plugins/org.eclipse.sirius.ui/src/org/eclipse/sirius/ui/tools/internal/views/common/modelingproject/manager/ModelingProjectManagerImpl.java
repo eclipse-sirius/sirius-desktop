@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.resource.LoadEMFResource;
+import org.eclipse.sirius.business.api.resource.strategy.ResourceStrategyRegistry;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
@@ -53,7 +54,6 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
-import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.ModelingProjectFileQuery;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -457,10 +457,12 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         CompoundCommand cc = new CompoundCommand();
         if (container != null) {
             for (IResource resource : container.members()) {
-                if (resource instanceof IFile && new ModelingProjectFileQuery((IFile) resource).isPotentialSemanticResource() && isLoadableModel((IFile) resource, session)) {
-                    final URI uri = URI.createPlatformResourceURI(resource.getFullPath().toOSString(), true);
-                    AddSemanticResourceCommand cmd = new AddSemanticResourceCommand(session, uri, new SubProgressMonitor(monitor, 1));
-                    cc.append(cmd);
+                if (resource instanceof IFile) {
+                    URI uri = URI.createPlatformResourceURI(resource.getFullPath().toOSString(), true);
+                    if (ResourceStrategyRegistry.getInstance().isPotentialSemanticResource(uri) && ResourceStrategyRegistry.getInstance().isLoadableModel(uri, session)) {
+                        AddSemanticResourceCommand cmd = new AddSemanticResourceCommand(session, uri, new SubProgressMonitor(monitor, 1));
+                        cc.append(cmd);
+                    }
                 } else if (resource instanceof IContainer) {
                     Command subCc = getSemanticResourcesAdditionCommand((IContainer) resource, session, monitor);
                     if (subCc.canExecute()) {

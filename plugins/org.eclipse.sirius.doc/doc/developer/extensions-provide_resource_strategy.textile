@@ -1,0 +1,53 @@
+h1. Sirius - Provide a resource strategy
+
+h2. Goals
+
+The _resource strategy registry_, @org.eclipse.sirius.business.api.resource.strategy.ResourceStrategyRegistry@, centralizes all behaviors related to resource used in Sirius Session that can be overridden.
+The extension point @org.eclipse.sirius.resourceStrategy@ allows to contribute a new behavior for each _resource strategy type_.
+When you contribute a new @ResourceStrategy@, you need to handle one or more of the @org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy.ResourceStrategyType@ by using @canHandle@ methods. For each type, there is one or more methods to override from @org.eclipse.sirius.business.api.resource.strategy.AbstractResourceStrategyImpl@. The methods to override are documented in javadoc of each @ResourceStrategyType@.
+
+To know all behaviors that can be overridden, you must refer to @org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy.ResourceStrategyType@.
+
+h2. Example
+
+Here is an example that ignore "*.genmodel" files as semantic model of Sirius Session.
+
+You have to add your resource strategy contribution in the plugin.xml file.
+
+pre.. 
+<extension point="org.eclipse.sirius.resourceStrategy">
+   <resourceStrategy
+     class="org.eclipse.sirius.tests.unit.api.convert.TestResourceStrategyToIgnoreGenModelFile">
+   </resourceStrategy>
+</extension>
+
+p. The class references a class extending the @AbstractResourceStrategyImpl@. The corresponding code is:
+
+pre.. 
+/**
+ * This class overrides AbstractResourceStrategyImpl and also ignores genmodel
+ * files.
+ */
+public class TestResourceStrategyToIgnoreGenModelFile extends AbstractResourceStrategyImpl {
+
+    @Override
+    public boolean isPotentialSemanticResource(URI uri) {
+        boolean result = super.isPotentialSemanticResource(uri);
+        if (result && uri != null) {
+            result = !"genmodel".equals(uri.fileExtension());
+        }
+        return result;
+    }
+
+    @Override
+    public boolean canHandle(URI resourceURI, ResourceStrategyType resourceStrategyType) {
+        return ResourceStrategyType.SEMANTIC_RESOURCE.equals(resourceStrategyType);
+    }
+}
+
+p. 
+
+* @canHandle@ allows to restrict this new resource strategy to only one type (@ResourceStrategyType.SEMANTIC_RESOURCE@).
+* @isPotentialSemanticResource(URI)@ is overridden to also ignore genmodel.
+* @isLoadableModel(URI, Session)@ is not overridden as we want to keep the default behavior for this method.
+

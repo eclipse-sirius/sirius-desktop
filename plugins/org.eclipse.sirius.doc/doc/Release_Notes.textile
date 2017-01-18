@@ -12,9 +12,20 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+h4. Changes in @org.eclipse.sirius@
+
+* <span class="label label-info">Modified</span> The extension point @org.eclipse.sirius.ui.modelingprojectresourcelistener@ is no longer expected to be used. It is an internal extension point. Clients using this extension point to ignore some files as potential semantic models must now use the extension point @org.eclipse.sirius.resourceStrategy@. This extension point existed before Sirius 5.0.0 but was not API. It becomes API with Sirius 5.0.0, see the "developer documentation":developer/extensions-provide_resource_strategy.html for more details.
+** If you used to override protected methods @boolean isPotentialSemanticResource(IFile)@ and @boolean isLoadableModel(IFile, Session)@ of class @org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.DefaultModelingProjectResourceListener@, you can now create a @resourceStrategy@ of type @org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy.ResourceStrategyType.SEMANTIC_RESOURCE@ and respectively override @boolean isPotentialSemanticResource(URI)@ and @boolean isLoadableModel(URI,Session)@. As a reminder, to get an URI from an IFile, you can use: @URI.createPlatformResourceURI(iFile.getFullPath().toString(), true)@. And to get an IFile from an URI, you can use: @ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)))@.
+** If you used to override protected methods @boolean isRepresentationsModel(IFile)@ and @boolean isVsmModel(IFile)@ of class @org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.DefaultModelingProjectResourceListener@, they no longer exist. They correspond to core API and is not supposed to be overridden. They are accessible through API  @org.eclipse.sirius.business.api.query.FileQuery.FileQuery(IFile)@.
+** All necessary classes for extension point @org.eclipse.sirius.resourceStrategy@ are now APIs:
+*** @org.eclipse.sirius.business.api.resource.strategy.ResourceStrategyRegistry@: Registry to have access to all overridable services through a @ResourceStrategy@
+*** @org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy@: Interface implemented by all resource strategies
+*** @org.eclipse.sirius.business.api.resource.strategy.AbstractResourceStrategyImpl@: Default implementation of above interface. All resource strategies contributed with the extension need to extend it.
+*** @org.eclipse.sirius.business.api.resource.strategy.LegacyReleaseResourceStrategyImpl@ (previously named @DefaultResourceStrategyImpl@): A resource strategy with the code used before the optimization concerning the @org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy.ResourceStrategyType.RELEASE_RESOURCE_AT_RESOURCESET_DISPOSE@. It is not used but can be quickly contributed by someone that want the previous behavior (before Sirius 4.0.0 M6).
+
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
-* <span class="label label-success">Added</span> The utility method @org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()@ has been added to allow to load a PDE target platform according to all known OSGi bundles. It is usefull to compile a plug-in in the execution runtime of the tests.
+* <span class="label label-success">Added</span> The utility method @org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()@ has been added to allow to load a PDE target platform according to all known OSGi bundles. It is useful to compile a plug-in in the execution runtime of the tests.
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
