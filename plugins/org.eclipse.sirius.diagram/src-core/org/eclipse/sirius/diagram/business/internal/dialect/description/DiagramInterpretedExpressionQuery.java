@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -216,6 +217,24 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
                 availableVariables.put(IInterpreterSiriusVariables.CONTAINER_VIEW, VariableType.fromStrings(possibleContainerViewTypes));
             }
+        }
+        if (target instanceof EdgeMapping && this.feature == DescriptionPackage.Literals.DIAGRAM_ELEMENT_MAPPING__PRECONDITION_EXPRESSION) {
+            EdgeMapping edge = (EdgeMapping) target;
+            Set<String> sourceSemanticType = Sets.newLinkedHashSet();
+            Set<String> sourceViewType = Sets.newLinkedHashSet();
+            for (DiagramElementMapping m : edge.getSourceMapping()) {
+                collectTypes(sourceSemanticType, sourceViewType, m);
+            }
+            availableVariables.put(IInterpreterSiriusVariables.SOURCE, VariableType.fromStrings(sourceSemanticType));
+            availableVariables.put(IInterpreterSiriusVariables.SOURCE_VIEW, VariableType.fromStrings(sourceViewType));
+            Set<String> targetSemanticType = Sets.newLinkedHashSet();
+            Set<String> targetViewType = Sets.newLinkedHashSet();
+            for (DiagramElementMapping m : edge.getTargetMapping()) {
+                collectTypes(targetSemanticType, targetViewType, m);
+            }
+            availableVariables.put(IInterpreterSiriusVariables.TARGET, VariableType.fromStrings(targetSemanticType));
+            availableVariables.put(IInterpreterSiriusVariables.TARGET_VIEW, VariableType.fromStrings(targetViewType));
+
         }
         if (target instanceof ConditionalStyleDescription && this.feature == org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION) {
             /*
