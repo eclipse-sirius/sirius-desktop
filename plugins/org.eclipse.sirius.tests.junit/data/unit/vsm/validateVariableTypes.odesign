@@ -329,7 +329,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Domain ParticipantNode to Interaction Node" edgeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='ParticipantNode%20to%20InteractionNode%20through%20Message']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Domain ParticipantNode to Interaction Node" precondition="aql:preTarget.executions->size() > 0 and preTargetView.resizeKind &lt;> null and container.ownedInteractions->size() > 0" edgeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@edgeMappings[name='ParticipantNode%20to%20InteractionNode%20through%20Message']" connectionStartPrecondition="aql:preSource.type &lt;> null and preSourceView.resizeKind &lt;> null and container.ownedInteractions->size() > 0">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>

@@ -197,12 +197,9 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
          * complete the AbstractInterpretedExpressionQuery to make it able to
          * find specific variables for concrete types.
          */
-        if (target instanceof EdgeCreationDescription && ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION.equals(feature)) {
-            availableVariables.put(IInterpreterSiriusVariables.DIAGRAM, VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM));
-            availableVariables.put("preSource", VariableType.fromString("ecore.EObject")); //$NON-NLS-1$ //$NON-NLS-2$
-            availableVariables.put("preSourceView", EDGE_TARGET_POSSIBILITIES); //$NON-NLS-1$
-            availableVariables.put("preTarget", VariableType.fromString("ecore.EObject")); //$NON-NLS-1$ //$NON-NLS-2$
-            availableVariables.put("preTargetView", EDGE_TARGET_POSSIBILITIES); //$NON-NLS-1$
+        if (target instanceof EdgeCreationDescription) {
+            EdgeCreationDescription tool = (EdgeCreationDescription) target;
+            collectEdgeCreationDescriptionVariableTypes(availableVariables, tool);
         } else if (target instanceof ConditionalNodeStyleDescription || target instanceof NodeStyleDescription) {
             availableVariables.put(IInterpreterSiriusVariables.VIEW, VariableType.fromString(DIAGRAM_D_NODE));
         } else if (target instanceof ConditionalContainerStyleDescription || target instanceof ContainerStyleDescription) {
@@ -273,6 +270,43 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         }
         return availableVariables;
 
+    }
+
+    private void collectEdgeCreationDescriptionVariableTypes(Map<String, VariableType> availableVariables, EdgeCreationDescription tool) {
+        Collection<String> possibleSemanticSources = Sets.newLinkedHashSet();
+        Collection<String> possibleViewSources = Sets.newLinkedHashSet();
+        Collection<String> possibleSemanticTargets = Sets.newLinkedHashSet();
+        Collection<String> possibleViewTargets = Sets.newLinkedHashSet();
+        Collection<String> possibleContainerTypes = Sets.newLinkedHashSet();
+        collectPotentialContainerTypes(possibleContainerTypes, Sets.<String> newLinkedHashSet(), tool.getEdgeMappings());
+        for (EdgeMapping eMapping : tool.getEdgeMappings()) {
+            for (DiagramElementMapping endMapping : eMapping.getSourceMapping()) {
+                collectTypes(possibleSemanticSources, possibleViewSources, endMapping);
+            }
+            for (DiagramElementMapping endMapping : eMapping.getTargetMapping()) {
+                collectTypes(possibleSemanticTargets, possibleViewTargets, endMapping);
+            }
+        }
+        for (DiagramElementMapping extraSource : tool.getExtraSourceMappings()) {
+            collectTypes(possibleSemanticSources, possibleViewSources, extraSource);
+        }
+        for (DiagramElementMapping extraTarget : tool.getExtraTargetMappings()) {
+            collectTypes(possibleSemanticTargets, possibleViewTargets, extraTarget);
+        }
+        if (ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION.equals(feature)) {
+            availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
+            availableVariables.put(IInterpreterSiriusVariables.DIAGRAM, VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM));
+            availableVariables.put(IInterpreterSiriusVariables.SOURCE_PRE, VariableType.fromStrings(possibleSemanticSources));
+            availableVariables.put(IInterpreterSiriusVariables.SOURCE_VIEW_PRE, VariableType.fromStrings(possibleViewSources));
+            availableVariables.put(IInterpreterSiriusVariables.TARGET_PRE, VariableType.fromStrings(possibleSemanticTargets));
+            availableVariables.put(IInterpreterSiriusVariables.TARGET_VIEW_PRE, VariableType.fromStrings(possibleViewTargets));
+        }
+        if (this.feature == org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION) {
+            availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
+            availableVariables.put(IInterpreterSiriusVariables.DIAGRAM, VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM));
+            availableVariables.put(IInterpreterSiriusVariables.SOURCE_PRE, VariableType.fromStrings(possibleSemanticSources));
+            availableVariables.put(IInterpreterSiriusVariables.SOURCE_VIEW_PRE, VariableType.fromStrings(possibleViewSources));
+        }
     }
 
     @Override
@@ -497,6 +531,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             collectTypes(possibleSemanticTargets, possibleViewTargets, extraTarget);
         }
         refineVariableType(availableVariables, IInterpreterSiriusVariables.SOURCE_VIEW, possibleViewSources);
+        refineVariableType(availableVariables, IInterpreterSiriusVariables.SOURCE_VIEW_PRE, possibleViewSources);
         refineVariableType(availableVariables, IInterpreterSiriusVariables.TARGET_VIEW, possibleViewTargets);
         refineVariableType(availableVariables, IInterpreterSiriusVariables.SOURCE_PRE, possibleSemanticSources);
         refineVariableType(availableVariables, IInterpreterSiriusVariables.SOURCE, possibleSemanticSources);
@@ -504,6 +539,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         if (feature != org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION) {
             refineVariableType(availableVariables, IInterpreterSiriusVariables.TARGET_PRE, possibleSemanticTargets);
             refineVariableType(availableVariables, IInterpreterSiriusVariables.TARGET, possibleSemanticTargets);
+            refineVariableType(availableVariables, IInterpreterSiriusVariables.TARGET_VIEW_PRE, possibleViewTargets);
         }
     }
 
