@@ -461,6 +461,7 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:elementView">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:width"/>
                 </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

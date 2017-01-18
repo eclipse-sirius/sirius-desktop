@@ -196,7 +196,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
          * find specific variables for concrete types.
          */
         if (target instanceof EdgeCreationDescription && ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION.equals(feature)) {
-            availableVariables.put("diagram", VariableType.fromString("diagram.DDiagram")); //$NON-NLS-1$ //$NON-NLS-2$
+            availableVariables.put(IInterpreterSiriusVariables.DIAGRAM, VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM));
             availableVariables.put("preSource", VariableType.fromString("ecore.EObject")); //$NON-NLS-1$ //$NON-NLS-2$
             availableVariables.put("preSourceView", EDGE_TARGET_POSSIBILITIES); //$NON-NLS-1$
             availableVariables.put("preTarget", VariableType.fromString("ecore.EObject")); //$NON-NLS-1$ //$NON-NLS-2$
@@ -276,7 +276,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             if (toolContext instanceof OperationAction) {
                 OperationAction tool = (OperationAction) toolContext;
                 if (new EObjectQuery(tool).getFirstAncestorOfType(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION).some()) {
-                    availableVariables.put("diagram", VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM)); //$NON-NLS-1$
+                    availableVariables.put(IInterpreterSiriusVariables.DIAGRAM, VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM));
                 }
                 availableVariables.put("views", VariableType.fromString("viewpoint.DSemanticDecorator")); //$NON-NLS-1$ //$NON-NLS-2$
             }
@@ -293,6 +293,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                             availableVariables.put(infered.getKey(), infered.getValue());
                         }
                     }
+                    availableVariables.put(IInterpreterSiriusVariables.DIAGRAM, VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM));
                 }
             }
             if (toolContext instanceof DiagramNavigationDescription) {
