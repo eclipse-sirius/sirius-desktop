@@ -32,6 +32,7 @@
           </fixes>
         </ownedRules>
       </validationSet>
+      <layout xsi:type="description_1:OrderedTreeLayout" childrenExpression="aql:self.executions" nodeMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='InteractionNode']"/>
       <defaultLayer name="Default">
         <nodeMappings name="ParticipantNode" navigationDescriptions="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='ToTable']" deletionDescription="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20ParticipantNode']" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='MultipleTypes']" domainClass="interactions.Participant">
           <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">

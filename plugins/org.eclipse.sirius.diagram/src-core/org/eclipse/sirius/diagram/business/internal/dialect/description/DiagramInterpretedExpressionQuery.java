@@ -48,6 +48,7 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.OrderedTreeLayout;
 import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
@@ -238,6 +239,13 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             collectPotentialContainerTypes(possibleContainerTypes, possibleContainerViewTypes, mappings);
             availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
             availableVariables.put(IInterpreterSiriusVariables.CONTAINER_VIEW, VariableType.fromStrings(possibleContainerViewTypes));
+        }
+        if (target instanceof OrderedTreeLayout && this.feature == DescriptionPackage.Literals.ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION) {
+            Collection<String> possibleSemanticTypes = Sets.newLinkedHashSet();
+            for (AbstractNodeMapping n : ((OrderedTreeLayout) target).getNodeMapping()) {
+                collectTypes(possibleSemanticTypes, Sets.<String> newLinkedHashSet(), n);
+            }
+            refineVariableType(availableVariables, SELF, possibleSemanticTypes);
         }
         return availableVariables;
 
