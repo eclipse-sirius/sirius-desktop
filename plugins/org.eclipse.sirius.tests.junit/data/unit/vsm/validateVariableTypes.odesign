@@ -562,6 +562,16 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Pane based selection wizard" precondition="aql:self.oclIsKindOf(interactions::Interaction)" message="Pick a participant" candidatesExpression="aql:self.participants" tree="true" rootExpression="aql:self" childrenExpression="aql:self.eContents()">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="aql:element">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.states"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <subSections name="Ignored">
             <ownedTools xsi:type="tool_1:DirectEditLabel" name="ElementType">
               <mask mask="{0}"/>

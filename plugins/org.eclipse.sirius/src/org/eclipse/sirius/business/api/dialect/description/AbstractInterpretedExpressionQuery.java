@@ -52,6 +52,7 @@ import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
+import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
@@ -329,6 +330,17 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
 
                 }
             }
+            if (operationContext instanceof PaneBasedSelectionWizardDescription) {
+                IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(operationContext, ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION);
+                ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, ((AbstractToolDescription) operationContext).getPrecondition());
+                Map<String, VariableType> inferedTypes = res.getInferredVariableTypes(Boolean.TRUE);
+                for (Entry<String, VariableType> infered : inferedTypes.entrySet()) {
+                    if (SELF.equals(infered.getKey())) {
+                        availableVariables.put(((PaneBasedSelectionWizardDescription) operationContext).getElement().getName(), infered.getValue());
+                    }
+
+                }
+            }
         }
         collectLocalVariablesDefinitions();
         if (this.target instanceof ToolDescription && feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION) {
@@ -347,9 +359,10 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
             addVariablesFromToolContext(target);
             addVariablesFromCreateOperation(target);
         }
-        if (target instanceof SelectionWizardDescription) {
-            SelectionWizardDescription wiz = (SelectionWizardDescription) target;
-            if (this.feature == DescriptionPackage.Literals.SELECTION_DESCRIPTION__CANDIDATES_EXPRESSION) {
+        if (target instanceof SelectionWizardDescription || target instanceof PaneBasedSelectionWizardDescription) {
+            AbstractToolDescription wiz = (AbstractToolDescription) target;
+            if (this.feature == DescriptionPackage.Literals.SELECTION_DESCRIPTION__CANDIDATES_EXPRESSION
+                    || this.feature == ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CANDIDATES_EXPRESSION) {
                 /*
                  * Infer type of variables using the tool precondition.
                  */
