@@ -53,6 +53,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
@@ -301,20 +302,6 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                  * operation which is a child of the ToolDescription.
                  */
                 availableVariables.put("containerView", DSEMANTIC_DECORATOR); //$NON-NLS-1$
-                /*
-                 * Infer type of variables using the tool precondition.
-                 */
-                IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(operationContext, ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION);
-                ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, ((ToolDescription) operationContext).getPrecondition());
-                Map<String, VariableType> inferedTypes = res.getInferredVariableTypes(Boolean.TRUE);
-                for (Entry<String, VariableType> infered : inferedTypes.entrySet()) {
-                    if (SELF.equals(infered.getKey())) {
-                        changeSelfType(infered.getValue());
-                    } else {
-                        availableVariables.put(infered.getKey(), infered.getValue());
-                    }
-
-                }
 
             }
             if (operationContext instanceof RepresentationNavigationDescription) {
@@ -324,6 +311,17 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                 }
             }
             addVariablesFromToolContext(operationContext);
+            if (operationContext instanceof SelectionWizardDescription) {
+                IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(operationContext, ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION);
+                ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, ((AbstractToolDescription) operationContext).getPrecondition());
+                Map<String, VariableType> inferedTypes = res.getInferredVariableTypes(Boolean.TRUE);
+                for (Entry<String, VariableType> infered : inferedTypes.entrySet()) {
+                    if (SELF.equals(infered.getKey())) {
+                        availableVariables.put(((SelectionWizardDescription) operationContext).getElement().getName(), infered.getValue());
+                    }
+
+                }
+            }
         }
         collectLocalVariablesDefinitions();
         if (this.target instanceof ToolDescription && feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION) {
@@ -341,6 +339,25 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
             collectContextualVariableDefinitions(target, target);
             addVariablesFromToolContext(target);
             addVariablesFromCreateOperation(target);
+        }
+        if (target instanceof SelectionWizardDescription) {
+            SelectionWizardDescription wiz = (SelectionWizardDescription) target;
+            if (this.feature == DescriptionPackage.Literals.SELECTION_DESCRIPTION__CANDIDATES_EXPRESSION) {
+                /*
+                 * Infer type of variables using the tool precondition.
+                 */
+                IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(wiz, ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION);
+                ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, wiz.getPrecondition());
+                Map<String, VariableType> inferedTypes = res.getInferredVariableTypes(Boolean.TRUE);
+                for (Entry<String, VariableType> infered : inferedTypes.entrySet()) {
+                    if (SELF.equals(infered.getKey())) {
+                        changeSelfType(infered.getValue());
+                    } else {
+                        availableVariables.put(infered.getKey(), infered.getValue());
+                    }
+
+                }
+            }
         }
 
         return availableVariables;
