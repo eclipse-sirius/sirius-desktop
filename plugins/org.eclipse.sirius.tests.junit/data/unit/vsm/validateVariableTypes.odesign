@@ -160,7 +160,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="InteractionContainer" navigationDescriptions="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='toDiagram']" preconditionExpression="aql:containerView.edges->size()  > 0" semanticCandidatesExpression="aql:containerView.target.eAllContents(interactions::Interaction)" domainClass="interactions.Interaction">
+        <containerMappings name="InteractionContainer" detailDescriptions="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='Create%20diag%20from%20interaction']" navigationDescriptions="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='toDiagram']" preconditionExpression="aql:containerView.edges->size()  > 0" semanticCandidatesExpression="aql:containerView.target.eAllContents(interactions::Interaction)" domainClass="interactions.Interaction">
           <subContainerMappings name="InteractionContainerInContainer" semanticCandidatesExpression="var:self" domainClass="interactions.Interaction">
             <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.emf.ecore.edit/icons/full/obj16/EClass.gif">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -550,6 +550,17 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.states"/>
               </firstModelOperations>
             </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Create diag from interaction" precondition="aql:self.participants->size() > 0 and  container.ownedInteractions->size() > 0" titleExpression="aql:self.participants->size()" browseExpression="aql:self.participants->first()" diagramDescription="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.name = diagramName">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.edges"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
           </ownedTools>
           <subSections name="Ignored">
             <ownedTools xsi:type="tool_1:DirectEditLabel" name="ElementType">

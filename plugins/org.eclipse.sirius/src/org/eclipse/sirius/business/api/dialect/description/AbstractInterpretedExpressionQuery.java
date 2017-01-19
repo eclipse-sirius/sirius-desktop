@@ -52,6 +52,7 @@ import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
@@ -310,6 +311,12 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                     availableVariables.put(tool.getRepresentationNameVariable().getName(), VariableType.fromJavaClass(java.lang.String.class)); // $NON-NLS-1$
                 }
             }
+            if (operationContext instanceof RepresentationCreationDescription) {
+                RepresentationCreationDescription tool = (RepresentationCreationDescription) operationContext;
+                if (tool.getRepresentationNameVariable() != null && !StringUtil.isEmpty(tool.getRepresentationNameVariable().getName())) {
+                    availableVariables.put(tool.getRepresentationNameVariable().getName(), VariableType.fromJavaClass(java.lang.String.class)); // $NON-NLS-1$
+                }
+            }
             addVariablesFromToolContext(operationContext);
             if (operationContext instanceof SelectionWizardDescription) {
                 IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(operationContext, ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION);
@@ -414,7 +421,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
          */
         found = new EObjectQuery(target).getFirstAncestorOfType(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eINSTANCE.getValidationRule());
         if (!found.some()) {
-            if (this.target instanceof OperationAction || this.target instanceof RepresentationNavigationDescription) {
+            if (this.target instanceof OperationAction || this.target instanceof RepresentationNavigationDescription || this.target instanceof RepresentationCreationDescription) {
                 /*
                  * OperationAction and RepresentationNavigationDescription are
                  * representing their own context for their interpreted

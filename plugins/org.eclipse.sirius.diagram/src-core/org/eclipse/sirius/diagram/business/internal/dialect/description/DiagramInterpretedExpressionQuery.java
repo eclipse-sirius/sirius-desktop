@@ -76,6 +76,7 @@ import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -268,8 +269,39 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             collectPotentialContainerTypes(possibleContainerTypes, Sets.<String> newLinkedHashSet(), ((ReconnectEdgeDescription) target).getMappings());
             availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
         }
+        if (target instanceof RepresentationCreationDescription) {
+            typeVariablesForDiagramCreationRepresentation((RepresentationCreationDescription) target, availableVariables);
+        }
         return availableVariables;
 
+    }
+
+    private void typeVariablesForDiagramCreationRepresentation(RepresentationCreationDescription desc, Map<String, VariableType> availableVariables) {
+        Collection<String> possibleSemanticTypes = Sets.newLinkedHashSet();
+        Collection<String> possibleViewTypes = Sets.newLinkedHashSet();
+        Collection<String> possibleContainerViewTypes = Sets.newLinkedHashSet();
+        Collection<String> possibleContainerTypes = Sets.newLinkedHashSet();
+        for (DiagramElementMapping n : Iterables.filter(desc.getMappings(), DiagramElementMapping.class)) {
+            collectTypes(possibleSemanticTypes, possibleViewTypes, n);
+            collectPotentialContainerTypes(possibleContainerTypes, possibleContainerViewTypes, n);
+        }
+        refineVariableType(availableVariables, SELF, possibleSemanticTypes);
+        if (this.feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION) {
+            /*
+             * then we are validating the attribute expressions of the tool.
+             */
+            availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
+            availableVariables.put(IInterpreterSiriusVariables.CONTAINER_VIEW, VariableType.fromStrings(possibleContainerViewTypes));
+        } else if (this.feature != ToolPackage.Literals.REPRESENTATION_CREATION_DESCRIPTION__BROWSE_EXPRESSION) {
+            /*
+             * we are in the model operations
+             */
+            availableVariables.put(IInterpreterSiriusVariables.CONTAINER_VIEW, VariableType.fromStrings(possibleContainerViewTypes));
+            if (desc.getRepresentationNameVariable() != null && !StringUtil.isEmpty(desc.getRepresentationNameVariable().getName())) {
+                availableVariables.put(desc.getRepresentationNameVariable().getName(), VariableType.fromJavaClass(java.lang.String.class)); // $NON-NLS-1$
+            }
+
+        }
     }
 
     private void collectEdgeCreationDescriptionVariableTypes(Map<String, VariableType> availableVariables, EdgeCreationDescription tool) {
@@ -379,6 +411,9 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 }
                 refineVariableType(availableVariables, tool.getElement().getName(), possibleSemanticTypes);
                 refineVariableType(availableVariables, tool.getElementView().getName(), possibleViewTypes);
+            }
+            if (toolContext instanceof RepresentationCreationDescription) {
+                typeVariablesForDiagramCreationRepresentation((RepresentationCreationDescription) toolContext, availableVariables);
             }
 
         }
