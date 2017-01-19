@@ -404,6 +404,21 @@
             </constraint>
             <constraint
                   lang="Java"
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ResolvableTypeNameConstraint"
+                  severity="WARNING"
+                  mode="Batch"
+                  name="%constraint.resolvableTypeName.name"
+                  id="org.eclipse.sirius.diagram.constraints.ResolvableTypeName"
+                  statusCode="1">
+               <description>
+                  %constraint.resolvableTypeName.description
+               </description>
+               <message>
+                  %constraint.resolvableTypeName.message
+               </message>
+            </constraint>
+            <constraint
+                  lang="Java"
                   class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ExistingDefaultLayerConstraint"
                   severity="ERROR"
                   mode="Batch"
