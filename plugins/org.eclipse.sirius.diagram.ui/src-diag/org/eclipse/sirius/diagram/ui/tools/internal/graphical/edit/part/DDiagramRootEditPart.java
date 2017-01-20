@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemsAwareFreeFormLayer;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.diagram.ui.render.editparts.RenderedDiagramRootEditPart;
-import org.eclipse.gmf.runtime.gef.ui.internal.editparts.AnimatableZoomManager;
 import org.eclipse.gmf.runtime.notation.MeasurementUnit;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.DConnectionLayerEx;
@@ -114,8 +113,8 @@ public class DDiagramRootEditPart extends RenderedDiagramRootEditPart {
 
     @Override
     public void zoomIn(Point center) {
-        if (getZoomManager() instanceof AnimatableZoomManager) {
-            ((AnimatableZoomManager) getZoomManager()).zoomTo(getZoomManager().getNextZoomLevel(), center);
+        if (getZoomManager() instanceof SiriusAnimatableZoomManager) {
+            ((SiriusAnimatableZoomManager) getZoomManager()).zoomTo(getZoomManager().getNextZoomLevel(), center);
         }
     }
 
@@ -126,15 +125,15 @@ public class DDiagramRootEditPart extends RenderedDiagramRootEditPart {
 
     @Override
     public void zoomOut(Point center) {
-        if (getZoomManager() instanceof AnimatableZoomManager) {
-            ((AnimatableZoomManager) getZoomManager()).zoomTo(getZoomManager().getPreviousZoomLevel(), center);
+        if (getZoomManager() instanceof SiriusAnimatableZoomManager) {
+            ((SiriusAnimatableZoomManager) getZoomManager()).zoomTo(getZoomManager().getPreviousZoomLevel(), center);
         }
     }
 
     @Override
     public void zoomTo(double zoom, Point center) {
-        if (getZoomManager() instanceof AnimatableZoomManager) {
-            ((AnimatableZoomManager) getZoomManager()).zoomTo(zoom, center);
+        if (getZoomManager() instanceof SiriusAnimatableZoomManager) {
+            ((SiriusAnimatableZoomManager) getZoomManager()).zoomTo(zoom, center);
         }
     }
 
