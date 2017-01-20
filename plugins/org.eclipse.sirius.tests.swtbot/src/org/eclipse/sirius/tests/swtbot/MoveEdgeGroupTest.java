@@ -164,7 +164,7 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMoveObliqueEdgeGroup() {
         moveBendpoint(ZoomLevel.ZOOM_100, "edge4", new Point(-10, -10), PositionConstants.VERTICAL, true);
-        moveSegment(ZoomLevel.ZOOM_100, new Point(-20, -20), PositionConstants.VERTICAL, false, "edge3");
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-25, -25), PositionConstants.VERTICAL, false, "edge3");
         moveSegment(ZoomLevel.ZOOM_100, new Point(-10, -10), PositionConstants.VERTICAL, true, "edge3");
     }
 
@@ -184,7 +184,7 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMoveObliqueEdgeGroupMultipleSelection() {
         moveBendpoint(ZoomLevel.ZOOM_100, "edge4", new Point(-10, -10), PositionConstants.VERTICAL, true);
-        moveSegment(ZoomLevel.ZOOM_100, new Point(-20, -20), PositionConstants.VERTICAL, false, "edge3", "edge3bis");
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-25, -25), PositionConstants.VERTICAL, false, "edge3", "edge3bis");
         moveSegment(ZoomLevel.ZOOM_100, new Point(-10, -10), PositionConstants.VERTICAL, true, "edge3", "edge3bis");
     }
 
@@ -235,7 +235,7 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMoveObliqueEdgeGroupZoom125() {
         moveBendpoint(ZoomLevel.ZOOM_125, "edge4", new Point(-10, -10), PositionConstants.VERTICAL, true);
-        moveSegment(ZoomLevel.ZOOM_125, new Point(-20, -20), PositionConstants.VERTICAL, false, "edge3");
+        moveSegment(ZoomLevel.ZOOM_125, new Point(-25, -25), PositionConstants.VERTICAL, false, "edge3");
         moveSegment(ZoomLevel.ZOOM_125, new Point(-10, -10), PositionConstants.VERTICAL, true, "edge3");
     }
 
@@ -245,7 +245,7 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMoveObliqueEdgeGroupZoom125MultipleSelection() {
         moveBendpoint(ZoomLevel.ZOOM_125, "edge4", new Point(-10, -10), PositionConstants.VERTICAL, true);
-        moveSegment(ZoomLevel.ZOOM_125, new Point(-20, -20), PositionConstants.VERTICAL, false, "edge3", "edge3bis");
+        moveSegment(ZoomLevel.ZOOM_125, new Point(-25, -25), PositionConstants.VERTICAL, false, "edge3", "edge3bis");
         moveSegment(ZoomLevel.ZOOM_125, new Point(-10, -10), PositionConstants.VERTICAL, true, "edge3", "edge3bis");
     }
 
