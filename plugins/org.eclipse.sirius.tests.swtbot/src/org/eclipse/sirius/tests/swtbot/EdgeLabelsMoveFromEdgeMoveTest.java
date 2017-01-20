@@ -626,7 +626,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
                 Point targetLocation = new Point(initialLocation.x + moveDelta.x, initialLocation.y + moveDelta.y);
                 // Perform drag
                 final AtomicBoolean dragFinished = new AtomicBoolean(false);
-                diagramEditor.dragWithKey(initialLocation.x, initialLocation.y, targetLocation.x, targetLocation.y, SWT.None);
+                diagramEditor.dragWithKey(initialLocation.x, initialLocation.y, targetLocation.x, targetLocation.y, SWT.None, dragFinished);
                 // Wait that the drag is done (the async Runnable simulating the
                 // drag)
                 bot.waitUntil(new ICondition() {
@@ -1116,7 +1116,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
 
         // Perform drag
         final AtomicBoolean dragFinished = new AtomicBoolean(false);
-        diagramEditor.dragWithKey(initialLocation.x, initialLocation.y, targetLocation.x, targetLocation.y, SWT.None);
+        diagramEditor.dragWithKey(initialLocation.x, initialLocation.y, targetLocation.x, targetLocation.y, SWT.None, dragFinished);
         // Wait that the drag is done (the async Runnable simulating the
         // drag)
         bot.waitUntil(new ICondition() {

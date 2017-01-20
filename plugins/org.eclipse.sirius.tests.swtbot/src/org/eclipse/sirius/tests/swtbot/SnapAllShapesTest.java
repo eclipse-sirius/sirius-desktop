@@ -1,5 +1,11 @@
 /*******************************************************************************
+<<<<<<< HEAD
  * Copyright (c) 2015 THALES GLOBAL SERVICES.
+||||||| parent of 1f42bfc... [471104] Make tests fail systematically
+ * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES.
+=======
+ * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES.
+>>>>>>> 1f42bfc... [471104] Make tests fail systematically
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +15,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.geometry.Point;
@@ -38,6 +46,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
 /**
  * Check the snap to all feature (move and resize).
@@ -265,7 +275,28 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
         pointToMove.scale(zoomLevel.getAmount());
         endpoint.scale(zoomLevel.getAmount());
         // First move without F4 key pressed
-        editor.dragWithKey(pointToMove.x, pointToMove.y, endpoint.x, endpoint.y, SWT.None);
+        final AtomicBoolean dragFinished = new AtomicBoolean(false);
+        editor.dragWithKey(pointToMove.x, pointToMove.y, endpoint.x, endpoint.y, SWT.None, dragFinished);
+        // Wait that the drag is done (the async Runnable simulating the
+        // drag)
+        bot.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return dragFinished.get();
+            }
+
+            @Override
+            public void init(SWTBot bot) {
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The drag'n'drop operation has not finished.";
+            }
+        });
+        // Wait that the figures are redrawn. In a fast environment, figures
+        // are not really redrawn and the rest of the test is not reliable.
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(new BendpointLocationCondition((PolylineConnection) connectionEditPart.getFigure(), 1, false, targetNodeBounds.getBottom().y - 4,
                 "Second bendpoint of edge is not at expected y location after resize without F4 key pressed", !ZoomLevel.ZOOM_100.equals(zoomLevel)));
@@ -277,7 +308,28 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
         editor.scrollTo(0, 0);
 
         // Second move with F4 key pressed
-        editor.dragWithKey(pointToMove.x, pointToMove.y, endpoint.x, endpoint.y, SWT.F4);
+        dragFinished.set(false);
+        editor.dragWithKey(pointToMove.x, pointToMove.y, endpoint.x, endpoint.y, SWT.F4, dragFinished);
+        // Wait that the drag is done (the async Runnable simulating the
+        // drag)
+        bot.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return dragFinished.get();
+            }
+
+            @Override
+            public void init(SWTBot bot) {
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The drag'n'drop operation has not finished.";
+            }
+        });
+        // Wait that the figures are redrawn. In a fast environment, figures
+        // are not really redrawn and the rest of the test is not reliable.
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(new BendpointLocationCondition((PolylineConnection) connectionEditPart.getFigure(), 1, false, targetNodeBounds.getBottom().y - 1,
                 "Second bendpoint of edge is not at expected y location after resize with F4 key pressed", false));
@@ -286,6 +338,90 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
     private void moveTopOfElementNearBottomOfAnother(String elementNameToMove, Class<? extends EditPart> expectedEditPartTypeOfMovedElement, String referenceElementName,
             Class<? extends EditPart> expectedEditPartTypeOfReferenceElement) {
         moveTopOfElementNearBottomOfAnother(elementNameToMove, expectedEditPartTypeOfMovedElement, referenceElementName, expectedEditPartTypeOfReferenceElement, ZoomLevel.ZOOM_100);
+    }
+
+    private void moveCenterOfElementNearCenterOfAnotherVertically(String elementNameToMove, Class<? extends EditPart> expectedEditPartTypeOfMovedElement, String referenceElementName,
+            Class<? extends EditPart> expectedEditPartTypeOfReferenceElement) {
+        moveCenterOfElementNearCenterOfAnotherVertically(elementNameToMove, expectedEditPartTypeOfMovedElement, referenceElementName, expectedEditPartTypeOfReferenceElement, ZoomLevel.ZOOM_100);
+    }
+
+    /**
+     * Move element a first time without F4 and check the location is the
+     * expected one (ie the mouse location).<BR>
+     * Move element a second time with F4 and check the location is the expected
+     * one (snap to another figure).<BR>
+     */
+    private void moveCenterOfElementNearCenterOfAnotherVertically(String elementNameToMove, Class<? extends EditPart> expectedEditPartTypeOfMovedElement, String referenceElementName,
+            Class<? extends EditPart> expectedEditPartTypeOfReferenceElement, ZoomLevel zoomLevel) {
+        editor.zoom(zoomLevel);
+        editor.scrollTo(0, 0);
+
+        SWTBotGefEditPart elementToMove = editor.getEditPart(elementNameToMove, expectedEditPartTypeOfMovedElement);
+        // Select the element to move
+        editor.select(elementToMove);
+
+        // Get the top center coordinates, just a little below, of the element
+        // to move
+        final Rectangle originalBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) elementToMove.part());
+        Point pointToDrag = originalBounds.getTop().getTranslated(0, 3);
+        if (TextEditPart.class.equals(expectedEditPartTypeOfMovedElement)) {
+            pointToDrag = originalBounds.getTop().getTranslated(0, 5);
+        }
+
+        Point scaledPointToDrag = new PrecisionPoint(pointToDrag);
+        GraphicalHelper.logical2screen(scaledPointToDrag, (IGraphicalEditPart) elementToMove.part());
+        // Compute the drop destination (at 4 pixels of the center of another
+        // part)
+
+        final Rectangle targetNodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) editor.getEditPart(referenceElementName, expectedEditPartTypeOfReferenceElement).part());
+        final Point endpoint = new Point(pointToDrag.x, pointToDrag.y - (originalBounds.getCenter().y - targetNodeBounds.getCenter().y + 4));
+        Point scaledEndpoint = new PrecisionPoint(endpoint);
+        GraphicalHelper.logical2screen(scaledEndpoint, (IGraphicalEditPart) elementToMove.part());
+
+        // First move without F4 key pressed
+        editor.drag(scaledPointToDrag.x, scaledPointToDrag.y, scaledEndpoint.x, scaledEndpoint.y);
+        SWTBotUtils.waitAllUiEvents();
+        // Get the new bounds and compare with the expected. It should be
+        // precisely where the drag has been done: at 4 pixels of the bottom of
+        // the other figure
+        Rectangle newBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) elementToMove.part());
+        assertEquals("Center of element \"" + elementNameToMove + "\" is not at expected y location after move without F4 key pressed", targetNodeBounds.getCenter().y - 4, newBounds.getCenter().y);
+
+        // Move to initial location
+        undo(localSession.getOpenedSession());
+        // Scroll to 0, 0 is needed because the first move can cause a scroll of
+        // the diagram not reverted by the Undo.
+        editor.scrollTo(0, 0);
+
+        // Second move with F4 key pressed
+        final AtomicBoolean dragFinished = new AtomicBoolean(false);
+        editor.dragWithKey(scaledPointToDrag.x, scaledPointToDrag.y, scaledEndpoint.x, scaledEndpoint.y, SWT.F4, dragFinished);
+        // Wait that the drag is done (the async Runnable simulating the
+        // drag)
+        bot.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return dragFinished.get();
+            }
+
+            @Override
+            public void init(SWTBot bot) {
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The drag'n'drop operation has not finished.";
+            }
+        });
+        // Wait that the figures are redrawn. In a fast environment, figures
+        // are not really redrawn and the rest of the test is not reliable.
+        SWTBotUtils.waitAllUiEvents();
+        // Get the new bounds and compare with the expected. It should be
+        // aligned to the bottom of the other figure: at 1 pixel of the bottom
+        // as computed guide in SiriusSnapToGeometry.populateRowsAndCols(List)
+        newBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) elementToMove.part());
+        assertEquals("Center of element \"" + elementNameToMove + "\" is not at expected location after move with F4 key pressed", targetNodeBounds.getCenter().y, newBounds.getCenter().y);
     }
 
     /**
@@ -336,7 +472,28 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
         editor.scrollTo(0, 0);
 
         // Second move with F4 key pressed
-        editor.dragWithKey(scaledPointToDrag.x, scaledPointToDrag.y, scaledEndpoint.x, scaledEndpoint.y, SWT.F4);
+        final AtomicBoolean dragFinished = new AtomicBoolean(false);
+        editor.dragWithKey(scaledPointToDrag.x, scaledPointToDrag.y, scaledEndpoint.x, scaledEndpoint.y, SWT.F4, dragFinished);
+        // Wait that the drag is done (the async Runnable simulating the
+        // drag)
+        bot.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return dragFinished.get();
+            }
+
+            @Override
+            public void init(SWTBot bot) {
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The drag'n'drop operation has not finished.";
+            }
+        });
+        // Wait that the figures are redrawn. In a fast environment, figures
+        // are not really redrawn and the rest of the test is not reliable.
         SWTBotUtils.waitAllUiEvents();
         // Get the new bounds and compare with the expected. It should be
         // aligned to the bottom of the other figure: at 1 pixel of the bottom
@@ -393,7 +550,28 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
         editor.scrollTo(0, 0);
 
         // Second move with F4 key pressed
-        editor.dragWithKey(scaledPointToDrag.x, scaledPointToDrag.y, scaledEndpoint.x, scaledEndpoint.y, SWT.F4);
+        final AtomicBoolean dragFinished = new AtomicBoolean(false);
+        editor.dragWithKey(scaledPointToDrag.x, scaledPointToDrag.y, scaledEndpoint.x, scaledEndpoint.y, SWT.F4, dragFinished);
+        // Wait that the drag is done (the async Runnable simulating the
+        // drag)
+        bot.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return dragFinished.get();
+            }
+
+            @Override
+            public void init(SWTBot bot) {
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The drag'n'drop operation has not finished.";
+            }
+        });
+        // Wait that the figures are redrawn. In a fast environment, figures
+        // are not really redrawn and the rest of the test is not reliable.
         SWTBotUtils.waitAllUiEvents();
         // Get the new bounds and compare with the expected. It should be
         // aligned to the bottom of the other figure: at 1 pixel of the bottom

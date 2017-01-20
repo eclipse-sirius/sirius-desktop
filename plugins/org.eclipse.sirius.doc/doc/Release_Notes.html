@@ -13,10 +13,18 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="#sirius3.1.8">Changes in Sirius 3.1.8</a>
+						<a href="#sirius3.1.9">Changes in Sirius 3.1.9</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#APIChanges">API Changes</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#sirius3.1.8">Changes in Sirius 3.1.8</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#APIChanges2">API Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -110,7 +118,7 @@
 								<a href="#SpecifierVisibleChanges6">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#APIChanges2">API Changes</a>
+								<a href="#APIChanges3">API Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -120,8 +128,48 @@
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
-		<h2 id="sirius3.1.8">Changes in Sirius 3.1.8</h2>
+		<h2 id="sirius3.1.9">Changes in Sirius 3.1.9</h2>
 		<h3 id="APIChanges">API Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
+			<code>org.eclipse.sirius.tests.swtbot.support</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> A new AtomicBoolean parameter has been added to the utility method 
+				<code>mouseDragWithKey(int, int, int, int, int)</code> in classes 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor</code>, 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer</code> and 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas</code>. This allows to correctly wait the end of the drag&#8217;n&#8217;drop.
+				<ul>
+					<li>Sample of code to use:</li>
+				</ul>
+			</li>
+		</ul>
+		<pre>final AtomicBoolean dragFinished = new AtomicBoolean(false);
+editor.dragWithKey(start.x, start.y, endpoint.x, endpoint.y, SWT.F3, dragFinished);
+// Wait that the drag is done (the async Runnable simulating the
+// drag)
+bot.waitUntil(new ICondition() {
+    @Override
+    public boolean test() throws Exception {
+        return dragFinished.get();
+    }
+
+    @Override
+    public void init(SWTBot bot) {
+    }
+
+    @Override
+    public String getFailureMessage() {
+        return "The drag'n'drop operation has not finished.";
+    }
+});
+// Wait that the figures are redrawn. In a fast environment, figures
+// are not really redrawn and the rest of the test is not reliable.
+SWTBotUtils.waitAllUiEvents();
+
+</pre>
+		<h2 id="sirius3.1.8">Changes in Sirius 3.1.8</h2>
+		<h3 id="APIChanges2">API Changes</h3>
 		<ul>
 			<li>The method 
 				<code>org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.DefaultModelingProjectResourceListener.isPotentialSemanticResource2(IFile)</code> has been added but directly in deprecated. Indeed, it is a part of a temporary fix, waiting for a more impacting fix made in Sirius 5.0.0. This method will be removed in Sirius 5.0.0. It is not intended to be used by clients.
@@ -681,7 +729,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -1640,7 +1688,7 @@
 				<code>org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper.setReadOnlyStatus(boolean, IResource...)</code> can be used instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -1762,7 +1810,7 @@
 			</li>
 			<li>&#171;Lozenge&#187; is replaced by &#171;Diamond&#187; in diagram style.</li>
 		</ul>
-		<h3 id="APIChanges2">API Changes</h3>
+		<h3 id="APIChanges3">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -2084,7 +2132,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support4">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>

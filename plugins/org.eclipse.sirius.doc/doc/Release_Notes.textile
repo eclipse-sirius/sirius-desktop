@@ -4,6 +4,37 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius3.1.9). Changes in Sirius 3.1.9
+
+h3. API Changes
+
+h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
+
+* <span class="label label-info">Modified</span> A new AtomicBoolean parameter has been added to the utility method @mouseDragWithKey(int, int, int, int, int)@ in classes @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer@ and @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas@. This allows to correctly wait the end of the drag'n'drop.
+** Sample of code to use:
+pre.. final AtomicBoolean dragFinished = new AtomicBoolean(false);
+editor.dragWithKey(start.x, start.y, endpoint.x, endpoint.y, SWT.F3, dragFinished);
+// Wait that the drag is done (the async Runnable simulating the
+// drag)
+bot.waitUntil(new ICondition() {
+    @Override
+    public boolean test() throws Exception {
+        return dragFinished.get();
+    }
+
+    @Override
+    public void init(SWTBot bot) {
+    }
+
+    @Override
+    public String getFailureMessage() {
+        return "The drag'n'drop operation has not finished.";
+    }
+});
+// Wait that the figures are redrawn. In a fast environment, figures
+// are not really redrawn and the rest of the test is not reliable.
+SWTBotUtils.waitAllUiEvents();
+
 h2(#sirius3.1.8). Changes in Sirius 3.1.8
 
 h3. API Changes
