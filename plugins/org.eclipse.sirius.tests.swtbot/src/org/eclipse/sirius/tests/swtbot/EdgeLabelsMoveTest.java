@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.GraphicalEditPart;
@@ -155,7 +157,8 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
         int originalX = part.getFigure().getBounds().x;
         int originalY = part.getFigure().getBounds().y;
         CheckEditPartMoved checkEditPartMoved = new CheckEditPartMoved(editPart);
-        diagramEditor.dragWithKey(part.getFigure().getBounds().x + 10, part.getFigure().getBounds().y, part.getFigure().getBounds().x + 10, part.getFigure().getBounds().y - 10, SWT.None);
+        diagramEditor.dragWithKey(part.getFigure().getBounds().x + 10, part.getFigure().getBounds().y, part.getFigure().getBounds().x + 10, part.getFigure().getBounds().y - 10, SWT.None,
+                new AtomicBoolean(false));
         bot.waitUntil(checkEditPartMoved);
 
         assertEquals("The x coordinate should be the same as the move is only on y axis.", originalX, part.getFigure().getBounds().x);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *      Obeo - Initial API and implementation
  */
 package org.eclipse.sirius.tests.swtbot.support.api.widget;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.LightweightSystem;
@@ -20,7 +22,9 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefFigureCanvas;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
+import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
+import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
 
 /**
  * Specific FigureCanvas to:
@@ -202,11 +206,19 @@ public class SWTBotSiriusFigureCanvas extends SWTBotGefFigureCanvas {
      *            the key code of the key that was typed, as defined by the key
      *            code constants in class <code>SWT</code>, or {@link SWT#None}
      *            if no key. @see org.eclipse.swt.SWT
+     * @param dragFinished
+     *            An AtomicBoolean allows to add a waiting condition. It was set
+     *            to true when the drag is finished.<BR>
+     *            Warning: When the drag is finished, the associated figures
+     *            have not their "moved" bound. Another
+     *            {@link org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils#waitAllUiEvents()}
+     *            is needed.
      */
-    public void mouseDragWithKey(final int fromXPosition, final int fromYPosition, final int toXPosition, final int toYPosition, final int keyCode) {
-        UIThreadRunnable.asyncExec(new VoidResult() {
+    public void mouseDragWithKey(final int fromXPosition, final int fromYPosition, final int toXPosition, final int toYPosition, final int keyCode, final AtomicBoolean dragFinished) {
+        final Result<Boolean> toExecute = new Result<Boolean>() {
+
             @Override
-            public void run() {
+            public Boolean run() {
                 org.eclipse.swt.events.MouseEvent meMove = wrapMouseEvent(fromXPosition, fromYPosition, 0, 0, 0);
                 eventDispatcher.dispatchMouseMoved(meMove);
                 org.eclipse.swt.events.MouseEvent meDown = wrapMouseEvent(fromXPosition, fromYPosition, 1, SWT.BUTTON1, 1);
@@ -238,6 +250,13 @@ public class SWTBotSiriusFigureCanvas extends SWTBotGefFigureCanvas {
                 if (keyCode != SWT.None) {
                     eventDispatcher.dispatchKeyReleased(keyEvent);
                 }
+                return true;
+            }
+        };
+        SWTUtils.display().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                dragFinished.set(toExecute.run());
             }
         });
     }

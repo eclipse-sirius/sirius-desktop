@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.swtbot.support.api.editor;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.FigureCanvas;
@@ -316,10 +317,17 @@ public class SWTBotSiriusGefViewer extends SWTBotGefViewer {
      *            code constants in class <code>SWT</code>, or
      *            {@link org.eclipse.swt.SWT#None} if no key. @see
      *            org.eclipse.swt.SWT
+     * @param dragFinished
+     *            An AtomicBoolean allows to add a waiting condition. It was set
+     *            to true when the drag is finished.<BR>
+     *            Warning: When the drag is finished, the associated figures
+     *            have not their "moved" bound. Another
+     *            {@link org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils#waitAllUiEvents()}
+     *            is needed.
      */
-    public void dragWithKey(final int fromXPosition, final int fromYPosition, final int toXPosition, final int toYPosition, final int keyCode) {
+    public void dragWithKey(final int fromXPosition, final int fromYPosition, final int toXPosition, final int toYPosition, final int keyCode, final AtomicBoolean dragFinished) {
         if (canvas instanceof SWTBotSiriusFigureCanvas) {
-            ((SWTBotSiriusFigureCanvas) canvas).mouseDragWithKey(fromXPosition, fromYPosition, toXPosition, toYPosition, keyCode);
+            ((SWTBotSiriusFigureCanvas) canvas).mouseDragWithKey(fromXPosition, fromYPosition, toXPosition, toYPosition, keyCode, dragFinished);
         } else {
             canvas.mouseDrag(fromXPosition, fromYPosition, toXPosition, toYPosition);
         }
