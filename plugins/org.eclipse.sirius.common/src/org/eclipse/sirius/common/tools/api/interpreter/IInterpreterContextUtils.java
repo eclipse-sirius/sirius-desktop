@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -86,9 +86,11 @@ public final class IInterpreterContextUtils {
     private static void collectProjectName(Resource eResource, Set<String> projectsOrBundleInScope) {
         if (eResource.getURI() != null && eResource.getURI().segmentCount() >= 2) {
             URI vsmURI = eResource.getURI();
-            String bundleOrProjectName = vsmURI.segment(1);
-            if (!StringUtil.isEmpty(bundleOrProjectName)) {
-                projectsOrBundleInScope.add(bundleOrProjectName);
+            if (vsmURI.isPlatform()) {
+                String bundleOrProjectName = vsmURI.segment(1);
+                if (!StringUtil.isEmpty(bundleOrProjectName)) {
+                    projectsOrBundleInScope.add(bundleOrProjectName);
+                }
             }
 
         }
