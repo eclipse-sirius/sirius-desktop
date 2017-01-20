@@ -49,7 +49,7 @@
       </defaultLayer>
       <additionalLayers name="Men" activeByDefault="true">
         <nodeMappings name="ManNode" labelDirectEdit="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='editName']" doubleClickDescription="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDoubleClick']" domainClass="basicfamily.Man">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.sample.basicfamily.design/icons/man.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.sample.basicfamily.advanced.design/icons/man.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -63,7 +63,7 @@
           </style>
         </edgeMappings>
         <toolSections name="Tools">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createMan" nodeMappings="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@nodeMappings[name='ManNode']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createMan" label="Man" nodeMappings="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@nodeMappings[name='ManNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -74,7 +74,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="setFather" precondition="aql:preTarget.differs(preSource) and preSource.oclAsType(basicfamily::Person).children->excludes(preTarget)" edgeMappings="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@edgeMappings[name='fatherEdge']" iconPath="/org.eclipse.sirius.sample.basicfamily.design/icons/father.png">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="setFather" label="Father" precondition="aql:preTarget.differs(preSource) and preSource.oclAsType(basicfamily::Person).children->excludes(preTarget)" edgeMappings="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@edgeMappings[name='fatherEdge']" iconPath="/org.eclipse.sirius.sample.basicfamily.advanced.design/icons/father.png">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -110,7 +110,7 @@
       </additionalLayers>
       <additionalLayers name="Women" activeByDefault="true">
         <nodeMappings name="WomanNode" labelDirectEdit="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='editName']" semanticCandidatesExpression="feature:members" doubleClickDescription="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDoubleClick']" domainClass="basicfamily.Woman">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.sample.basicfamily.design/icons/woman.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.sample.basicfamily.advanced.design/icons/woman.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -124,7 +124,7 @@
           </style>
         </edgeMappings>
         <toolSections name="Tools">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createWoman" nodeMappings="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Women']/@nodeMappings[name='WomanNode']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="createWoman" label="Woman" nodeMappings="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Women']/@nodeMappings[name='WomanNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -135,7 +135,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="setMother" precondition="aql:preTarget.differs(preSource) and preSource.oclAsType(basicfamily::Person).children->excludes(preTarget)" edgeMappings="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Women']/@edgeMappings[name='motherEdge']" iconPath="/org.eclipse.sirius.sample.basicfamily.design/icons/mother.png">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="setMother" label="Mother" precondition="aql:preTarget.differs(preSource) and preSource.oclAsType(basicfamily::Person).children->excludes(preTarget)" edgeMappings="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Women']/@edgeMappings[name='motherEdge']" iconPath="/org.eclipse.sirius.sample.basicfamily.advanced.design/icons/mother.png">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -225,6 +225,26 @@
     <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Persons table" domainClass="basicfamily.Family">
       <metamodel href="http://www.eclipse.org/sirius/sample/basicfamily#/"/>
       <ownedLineMappings name="PersonLine" domainClass="basicfamily.Person" semanticCandidatesExpression="feature:members" headerLabelExpression="feature:name"/>
+      <ownedCreateLine name="createManLine" label="New Man" mapping="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20table']/@ownedLineMappings[name='PersonLine']">
+        <variables name="root" documentation="The semantic root element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="basicfamily.Man" referenceName="members">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'man'+container.members->filter(basicfamily::Man)->size()"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedCreateLine name="createWomanLine" label="New Woman" mapping="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20table']/@ownedLineMappings[name='PersonLine']">
+        <variables name="root" documentation="The semantic root element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="basicfamily.Woman" referenceName="members">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'woman'+container.members->filter(basicfamily::Woman)->size()"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
       <ownedColumnMappings name="fatherCol" headerLabelExpression="Father" featureName="father" labelExpression="aql:self.father.name"/>
       <ownedColumnMappings name="motherCol" headerLabelExpression="Mother" featureName="mother" labelExpression="aql:self.mother.name"/>
       <ownedColumnMappings name="childrenCol" headerLabelExpression="Children" featureName="children" labelExpression="aql:self.children->size()"/>

@@ -38,6 +38,7 @@
 
     </wizard>
 
+<!--
     <wizard category="org.eclipse.ui.Examples/org.eclipse.sirius.samples.category"
             class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
             icon="icons/Family.gif"
@@ -46,7 +47,7 @@
             project="true">
       <description>A sample graphical modeler to view an edit family models (requires the Basic Family Metamodel Definition to be installed).</description>
     </wizard>
-    
+-->    
     <wizard category="org.eclipse.ui.Examples/org.eclipse.sirius.samples.category"
             class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
             icon="icons/Family.gif"
@@ -100,12 +101,13 @@
                          description="A sample model representing a family."/>
   	</example>
 
-	<!-- Brings down VSP with the basic family modeler definition described in the tutorial -->
+	<!-- Brings down VSP with the basic family modeler definition described in the tutorial
   	<example wizardID="org.eclipse.sirius.samples.family.NewBasicFamilyVSM">
       <projectDescriptor name="org.eclipse.sirius.sample.basicfamily.design"
                          contentURI="samples/org.eclipse.sirius.sample.basicfamily.design/"
                          description="A sample graphical modeler to view and edit family models."/>
   	</example>
+  	 -->
 
     <!-- Brings down VSP with the starter tutorial solution -->
     <example wizardID="org.eclipse.sirius.samples.family.NewBasicFamilyStarterTutorialSolution">
