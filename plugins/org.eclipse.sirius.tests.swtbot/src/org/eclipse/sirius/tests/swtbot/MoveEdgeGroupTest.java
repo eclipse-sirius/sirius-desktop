@@ -101,8 +101,8 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMoveRectilinearEdgeGroup() {
         moveBendpoint(ZoomLevel.ZOOM_100, "edge1", new Point(-20, -20), PositionConstants.HORIZONTAL, true);
-        moveSegment(ZoomLevel.ZOOM_100, "edge1", new Point(-20, -20), PositionConstants.HORIZONTAL, true);
-        moveSegment(ZoomLevel.ZOOM_100, "edge2", new Point(15, -20), PositionConstants.HORIZONTAL, false);
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-20, -20), PositionConstants.HORIZONTAL, true, "edge1");
+        moveSegment(ZoomLevel.ZOOM_100, new Point(15, -20), PositionConstants.HORIZONTAL, false, "edge2");
     }
 
     /**
@@ -111,10 +111,10 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMoveRectilinearEdgeGroupZoom125() {
         moveBendpoint(ZoomLevel.ZOOM_125, "edge1", new Point(-20, -20), PositionConstants.HORIZONTAL, true);
-        moveSegment(ZoomLevel.ZOOM_125, "edge1", new Point(-20, -20), PositionConstants.HORIZONTAL, true);
-        moveSegment(ZoomLevel.ZOOM_125, "edge2", new Point(15, -20), PositionConstants.HORIZONTAL, false);
+        moveSegment(ZoomLevel.ZOOM_125, new Point(-20, -20), PositionConstants.HORIZONTAL, true, "edge1");
+        moveSegment(ZoomLevel.ZOOM_125, new Point(15, -20), PositionConstants.HORIZONTAL, false, "edge2");
     }
-
+    
     /**
      * Tests that moving an oblique edge group works properly for the following
      * cases:
@@ -131,22 +131,24 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMoveObliqueEdgeGroup() {
         moveBendpoint(ZoomLevel.ZOOM_100, "edge4", new Point(-10, -10), PositionConstants.VERTICAL, true);
-        moveSegment(ZoomLevel.ZOOM_100, "edge3", new Point(-20, -20), PositionConstants.VERTICAL, false);
-        moveSegment(ZoomLevel.ZOOM_100, "edge3", new Point(-10, -10), PositionConstants.VERTICAL, true);
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-25, -25), PositionConstants.VERTICAL, false, "edge3");
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-10, -10), PositionConstants.VERTICAL, true, "edge3");
     }
+
 
     /**
      * Tests that moving an oblique edge group works properly with a 125% zoom.
      */
     public void testMoveObliqueEdgeGroupZoom125() {
         moveBendpoint(ZoomLevel.ZOOM_125, "edge4", new Point(-10, -10), PositionConstants.VERTICAL, true);
-        moveSegment(ZoomLevel.ZOOM_125, "edge3", new Point(-20, -20), PositionConstants.VERTICAL, false);
-        moveSegment(ZoomLevel.ZOOM_125, "edge3", new Point(-10, -10), PositionConstants.VERTICAL, true);
+        moveSegment(ZoomLevel.ZOOM_125, new Point(-25, -25), PositionConstants.VERTICAL, false, "edge3");
+        moveSegment(ZoomLevel.ZOOM_125, new Point(-10, -10), PositionConstants.VERTICAL, true, "edge3");
     }
 
-    private void moveSegment(ZoomLevel zoomLevel, String name, Point delta, int expectedAxis, boolean authorized) {
+    private void moveSegment(ZoomLevel zoomLevel, Point delta, int expectedAxis, boolean authorized, String name) {
         editor.zoom(zoomLevel);
         editor.scrollTo(0, 0);
+
 
         SWTBotGefEditPart elementToMove = editor.getEditPart(name, AbstractDiagramEdgeEditPart.class);
 
