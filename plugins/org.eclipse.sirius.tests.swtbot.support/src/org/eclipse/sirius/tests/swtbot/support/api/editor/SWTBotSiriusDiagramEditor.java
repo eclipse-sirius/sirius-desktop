@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
@@ -935,9 +936,16 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      *            code constants in class <code>SWT</code>, or
      *            {@link org.eclipse.swt.SWT#None} if no key. @see
      *            org.eclipse.swt.SWT
+     * @param dragFinished
+     *            An AtomicBoolean allows to add a waiting condition. It was set
+     *            to true when the drag is finished.<BR>
+     *            Warning: When the drag is finished, the associated figures
+     *            have not their "moved" bound. Another
+     *            {@link org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils#waitAllUiEvents()}
+     *            is needed.
      */
-    public void dragWithKey(int fromXPosition, int fromYPosition, int toXPosition, int toYPosition, int keyCode) {
-        ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).dragWithKey(fromXPosition, fromYPosition, toXPosition, toYPosition, keyCode);
+    public void dragWithKey(int fromXPosition, int fromYPosition, int toXPosition, int toYPosition, int keyCode, final AtomicBoolean dragFinished) {
+        ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).dragWithKey(fromXPosition, fromYPosition, toXPosition, toYPosition, keyCode, dragFinished);
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
@@ -57,6 +58,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
@@ -630,7 +633,29 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
             for (int i = 0; i < 10; i++) {
                 Point targetLocation = new Point(initialLocation.x + moveDelta.x, initialLocation.y + moveDelta.y);
                 // Perform drag
-                diagramEditor.dragWithKey(initialLocation.x, initialLocation.y, targetLocation.x, targetLocation.y, SWT.None);
+                final AtomicBoolean dragFinished = new AtomicBoolean(false);
+                diagramEditor.dragWithKey(initialLocation.x, initialLocation.y, targetLocation.x, targetLocation.y, SWT.None, dragFinished);
+                // Wait that the drag is done (the async Runnable simulating the
+                // drag)
+                bot.waitUntil(new ICondition() {
+
+                    @Override
+                    public boolean test() throws Exception {
+                        return dragFinished.get();
+                    }
+
+                    @Override
+                    public void init(SWTBot bot) {
+                    }
+
+                    @Override
+                    public String getFailureMessage() {
+                        return "The drag'n'drop operation has not finished.";
+                    }
+                });
+                // Wait that the figures are redrawn. In a fast environment,
+                // figures are not really redrawn and the rest of the test is
+                // not reliable.
                 SWTBotUtils.waitAllUiEvents();
                 initialLocation = targetLocation;
             }
@@ -1098,7 +1123,28 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         Point targetLocation = new Point(initialLocation.x + moveDelta.x, initialLocation.y + moveDelta.y);
 
         // Perform drag
-        diagramEditor.dragWithKey(initialLocation.x, initialLocation.y, targetLocation.x, targetLocation.y, SWT.None);
+        final AtomicBoolean dragFinished = new AtomicBoolean(false);
+        diagramEditor.dragWithKey(initialLocation.x, initialLocation.y, targetLocation.x, targetLocation.y, SWT.None, dragFinished);
+        // Wait that the drag is done (the async Runnable simulating the
+        // drag)
+        bot.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return dragFinished.get();
+            }
+
+            @Override
+            public void init(SWTBot bot) {
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The drag'n'drop operation has not finished.";
+            }
+        });
+        // Wait that the figures are redrawn. In a fast environment, figures
+        // are not really redrawn and the rest of the test is not reliable.
         SWTBotUtils.waitAllUiEvents();
         try {
             assertEquals("Drag as failed: selection should be the same before and after drag.", selectedEditParts, diagramEditor.selectedEditParts());

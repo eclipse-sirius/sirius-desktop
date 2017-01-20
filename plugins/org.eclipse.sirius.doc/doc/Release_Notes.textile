@@ -36,6 +36,33 @@ h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
 * <span class="label label-success">Added</span> The utility method @org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()@ has been added to allow to load a PDE target platform according to all known OSGi bundles. It is usefull to compile a plug-in in the execution runtime of the tests.
 
+h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
+
+* <span class="label label-info">Modified</span> A new AtomicBoolean parameter has been added to the utility method @mouseDragWithKey(int, int, int, int, int)@ in classes @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer@ and @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas@. This allows to correctly wait the end of the drag'n'drop.
+** Sample of code to use:
+pre.. final AtomicBoolean dragFinished = new AtomicBoolean(false);
+editor.dragWithKey(start.x, start.y, endpoint.x, endpoint.y, SWT.F3, dragFinished);
+// Wait that the drag is done (the async Runnable simulating the
+// drag)
+bot.waitUntil(new ICondition() {
+    @Override
+    public boolean test() throws Exception {
+        return dragFinished.get();
+    }
+
+    @Override
+    public void init(SWTBot bot) {
+    }
+
+    @Override
+    public String getFailureMessage() {
+        return "The drag'n'drop operation has not finished.";
+    }
+});
+// Wait that the figures are redrawn. In a fast environment, figures
+// are not really redrawn and the rest of the test is not reliable.
+SWTBotUtils.waitAllUiEvents();
+
 h2(#sirius4.1.2). Changes in Sirius 4.1.2
 
 h3. User-Visible Changes
