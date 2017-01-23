@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,9 @@ import org.eclipse.draw2d.ScalableFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.EditPart;
+import org.eclipse.gef.palette.ToolEntry;
+import org.eclipse.gef.ui.palette.PaletteViewer;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -49,6 +52,43 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
  *
  */
 public class DiagramMouseZoomTest extends AbstractSiriusSwtBotGefTestCase {
+
+    /**
+     * Used to activate a given palette tool.
+     * 
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
+     */
+    public class PaletteButtonActivation implements Runnable {
+
+        private final PaletteViewer viewer;
+
+        private final ToolEntry toolEntry;
+
+        /**
+         * Constructor.
+         * 
+         * @param viewer
+         *            viewer used for tool activation.
+         * @param toolEntry
+         *            Tool to activate.
+         */
+        public PaletteButtonActivation(PaletteViewer viewer, ToolEntry toolEntry) {
+            this.viewer = viewer;
+            this.toolEntry = toolEntry;
+        }
+
+        /*
+         * (non-Javadoc)
+         * @see java.lang.Runnable#run()
+         */
+        @Override
+        public void run() {
+            viewer.setActiveTool(toolEntry);
+
+        }
+
+    }
 
     private static final String FILE_DIR = "/";
 
@@ -134,9 +174,17 @@ public class DiagramMouseZoomTest extends AbstractSiriusSwtBotGefTestCase {
      *            is at the lowest and rightmost position. And the zoomed point
      *            has been shifted regarding the zoom on a lower and rightmost
      *            direction.
+     * @param paletteZoomIn
+     *            true if a GEF palette zoom-in must be done.
+     * @param paletteZoomOut
+     *            true if a GEF palette zoom-out must be done.
+     * @param useMouseSquareSelection
+     *            true if the zoom must be done by doing a square with the
+     *            mouse. Taken in consideration only used when a zoom palette
+     *            tool is used.
      */
     private void assertViewportShiftedRightForMouseZoom(SWTBotGefEditPart editPart, ZoomLevel originalZoomLevel, ZoomLevel targetZoomLevel, int zoomIncrement, int scrollX, int scrollY,
-            BoundariesVisible boundariesVisible) {
+            BoundariesVisible boundariesVisible, boolean paletteZoomIn, boolean paletteZoomOut, boolean useMouseSquareSelection) {
         ICondition condition = new CheckDiagramSelected(editor);
         editor.click(new Point(0, 0));
         bot.waitUntil(condition);
@@ -162,31 +210,69 @@ public class DiagramMouseZoomTest extends AbstractSiriusSwtBotGefTestCase {
         Point scaledPoint = new Point(expectedMouseRelativeLocation.x, expectedMouseRelativeLocation.y).scale(targetZoomLevel.getAmount() / originalZoomLevel.getAmount());
         Point expectedViewportOriginPoint = scaledPoint.getTranslated(difference);
 
-        editor.mouseScrollWithKey(mouseZoomAbsoluteLocationBeforeZoom.x, mouseZoomAbsoluteLocationBeforeZoom.y, SWT.CTRL, zoomIncrement);
+        if (paletteZoomIn || paletteZoomOut) {
+            SWTBotGefEditPart paletteRootEditPartBot = editor.getPaletteRootEditPartBot();
+            SWTBotGefEditPart swtBotGefEditPart = null;
+            if (paletteZoomIn) {
+                swtBotGefEditPart = paletteRootEditPartBot.children().iterator().next().children().get(0).children().get(1);
+                assertEquals("The wrong tool is used.", "ToolEntryEditPart( Palette Entry (Zoom In) )", swtBotGefEditPart.part().toString());
+            } else {
+                swtBotGefEditPart = paletteRootEditPartBot.children().iterator().next().children().get(0).children().get(2);
+                assertEquals("The wrong tool is used.", "ToolEntryEditPart( Palette Entry (Zoom Out) )", swtBotGefEditPart.part().toString());
+            }
+
+            swtBotGefEditPart.select();
+            EditPart part = swtBotGefEditPart.part();
+            final PaletteViewer viewer = (PaletteViewer) swtBotGefEditPart.part().getViewer();
+            final ToolEntry toolEntry = (ToolEntry) part.getModel();
+
+            editor.bot().getDisplay().asyncExec(new PaletteButtonActivation(viewer, toolEntry));
+            if (useMouseSquareSelection) {
+                editor.drag(new Point(mouseZoomAbsoluteLocationBeforeZoom.x, mouseZoomAbsoluteLocationBeforeZoom.y),
+                        new Point(mouseZoomAbsoluteLocationBeforeZoom.x + 1, mouseZoomAbsoluteLocationBeforeZoom.y + 1));
+            } else {
+                editor.click(new Point(mouseZoomAbsoluteLocationBeforeZoom.x, mouseZoomAbsoluteLocationBeforeZoom.y));
+            }
+        } else {
+            editor.mouseScrollWithKey(mouseZoomAbsoluteLocationBeforeZoom.x, mouseZoomAbsoluteLocationBeforeZoom.y, SWT.CTRL, zoomIncrement);
+        }
         SWTBotUtils.waitAllUiEvents();
 
         Point newViewLocation = diagramPart.getViewport().getViewLocation();
-        if (BoundariesVisible.NONE == boundariesVisible) {
-            assertEquals("viewport after zoom has not been placed at the right position on the x axis.", expectedViewportOriginPoint.x, newViewLocation.x, 1);
-            assertEquals("viewport after zoom has not been placed at the right position on the y axis.", expectedViewportOriginPoint.y, newViewLocation.y, 1);
-        } else if (BoundariesVisible.ZOOMOUT == boundariesVisible) {
-            assertEquals("viewport after zoom has not been placed at the right position on the x axis.", 0, newViewLocation.x, 1);
-            assertEquals("viewport after zoom has not been placed at the right position on the y axis.", 0, newViewLocation.y, 1);
-        } else if (BoundariesVisible.ZOOMIN == boundariesVisible) {
-            assertEquals("viewport after zoom has not been placed at the rightest and lowest position on the x axis.", diagramPart.getViewport().getHorizontalRangeModel().getMaximum(),
-                    newViewLocation.x + diagramPart.getViewport().getHorizontalRangeModel().getExtent(), 1);
-            assertEquals("viewport after zoom has not been placed at the rightest and lowest position on the y axis.", diagramPart.getViewport().getVerticalRangeModel().getMaximum(),
-                    newViewLocation.y + diagramPart.getViewport().getVerticalRangeModel().getExtent(), 1);
+        if (!useMouseSquareSelection) {
+            if (BoundariesVisible.NONE == boundariesVisible) {
+                assertEquals("viewport after zoom has not been placed at the right position on the x axis.", expectedViewportOriginPoint.x, newViewLocation.x, 1);
+                assertEquals("viewport after zoom has not been placed at the right position on the y axis.", expectedViewportOriginPoint.y, newViewLocation.y, 1);
+            } else if (BoundariesVisible.ZOOMOUT == boundariesVisible) {
+                assertEquals("viewport after zoom has not been placed at the right position on the x axis.", 0, newViewLocation.x, 1);
+                assertEquals("viewport after zoom has not been placed at the right position on the y axis.", 0, newViewLocation.y, 1);
+            } else if (BoundariesVisible.ZOOMIN == boundariesVisible) {
+                assertEquals("viewport after zoom has not been placed at the rightest and lowest position on the x axis.", diagramPart.getViewport().getHorizontalRangeModel().getMaximum(),
+                        newViewLocation.x + diagramPart.getViewport().getHorizontalRangeModel().getExtent(), 1);
+                assertEquals("viewport after zoom has not been placed at the rightest and lowest position on the y axis.", diagramPart.getViewport().getVerticalRangeModel().getMaximum(),
+                        newViewLocation.y + diagramPart.getViewport().getVerticalRangeModel().getExtent(), 1);
+            } else {
+                throw new UnsupportedOperationException("nothing is tested.");
+            }
         } else {
-            throw new UnsupportedOperationException("nothing is tested.");
+            // we use a square of 2x2 pixel so the zoom should be maximum
+            // because there is not enough zoom to zoom the four pixel zone. We
+            // are only limited to 400%.
+            Point expectedResult = new Point(530, 168);
+            assertEquals("viewport after zoom has not been placed at the right position on the x axis.", expectedResult.x, newViewLocation.x, 2);
+            assertEquals("viewport after zoom has not been placed at the right position on the y axis.", expectedResult.y, newViewLocation.y, 2);
         }
         Rectangle zoomTargetAbsoluteBoundsAfterZoom = zoomTargetPart.getFigure().getBounds().getCopy();
         zoomTargetPart.getFigure().translateToAbsolute(zoomTargetAbsoluteBoundsAfterZoom);
         if (BoundariesVisible.NONE == boundariesVisible) {
+            // When using the mouse square selection we move the mouse so the
+            // original point
+            // is not the same.
+            int delta = useMouseSquareSelection ? 3 : 1;
             assertEquals("The point behind the mouse is not the same one after zoom than before. x axis does not match.", mouseZoomAbsoluteLocationBeforeZoom.x, zoomTargetAbsoluteBoundsAfterZoom.x,
-                    1);
+                    delta);
             assertEquals("The point behind the mouse is not the same one after zoom than before. y axis does not match.", mouseZoomAbsoluteLocationBeforeZoom.y, zoomTargetAbsoluteBoundsAfterZoom.y,
-                    1);
+                    delta);
         } else if (BoundariesVisible.ZOOMIN == boundariesVisible) {
             assertEquals("The point behind the mouse is the same one after zoom than before. Whereas it should be shifted regarding the zoom.",
                     mouseZoomAbsoluteLocationBeforeZoom.x - difference.width, zoomTargetAbsoluteBoundsAfterZoom.x, 1);
@@ -208,6 +294,66 @@ public class DiagramMouseZoomTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Tests that the viewport is shifted to the right position after zoom when
+     * a zoom in from 100% to 125% is done by using the palette zoom-in tool.
+     * 
+     * The zoomed point is in the left upper corner.
+     * 
+     * No diagram boundaries are visible after zoom so the viewport must keep
+     * the point behind the mouse to the same location on it after zoom on x and
+     * y axis.
+     * 
+     * Original scroll is (0,0).
+     */
+    public void testPaletteZoomIn() {
+        openDiagram(DIAGRAM_DESCRIPTION, DIAGRAM_INSTANCE_NAME, ZoomLevel.ZOOM_100);
+        SWTBotGefEditPart editPart = editor.getEditPart("A");
+
+        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_100, ZoomLevel.ZOOM_125, 2, 0, 0, BoundariesVisible.NONE, true, false, false);
+
+    }
+
+    /**
+     * Tests that the viewport is shifted to the right position after zoom when
+     * a zoom in from 100% to 125% is done by using the palette zoom-in tool
+     * with a square selection.
+     * 
+     * The zoomed point is in the left upper corner.
+     * 
+     * No diagram boundaries are visible after zoom so the viewport must keep
+     * the point behind the mouse to the same location on it after zoom on x and
+     * y axis.
+     * 
+     * Original scroll is (0,0).
+     */
+    public void testPaletteZoomInBySquareSelection() {
+        openDiagram(DIAGRAM_DESCRIPTION, DIAGRAM_INSTANCE_NAME, ZoomLevel.ZOOM_100);
+        SWTBotGefEditPart editPart = editor.getEditPart("A");
+
+        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_100, ZoomLevel.ZOOM_125, 2, 0, 0, BoundariesVisible.NONE, true, false, true);
+
+    }
+
+    /**
+     * Tests that the viewport is shifted to the right position after zoom when
+     * a zoom out from 175% to 150% is done by using the palette zoom-out tool.
+     * 
+     * The zoomed point is in the left upper corner.
+     * 
+     * No diagram boundaries are visible after zoom out so the viewport must
+     * keep the point behind the mouse to the same location on it after zoom on
+     * x and y axis.
+     * 
+     * Original scroll is (60,60).
+     */
+    public void testPaletteZoomOut() {
+        openDiagram(DIAGRAM_DESCRIPTION, DIAGRAM_INSTANCE_NAME, ZoomLevel.ZOOM_175);
+        SWTBotGefEditPart editPart = editor.getEditPart("A");
+
+        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_175, ZoomLevel.ZOOM_150, -2, 60, 60, BoundariesVisible.NONE, false, true, false);
+    }
+
+    /**
+     * Tests that the viewport is shifted to the right position after zoom when
      * a zoom in from 100% to 125% is done.
      * 
      * The zoomed point is in the left upper corner.
@@ -222,7 +368,7 @@ public class DiagramMouseZoomTest extends AbstractSiriusSwtBotGefTestCase {
         openDiagram(DIAGRAM_DESCRIPTION, DIAGRAM_INSTANCE_NAME, ZoomLevel.ZOOM_100);
         SWTBotGefEditPart editPart = editor.getEditPart("A");
 
-        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_100, ZoomLevel.ZOOM_125, 2, 0, 0, BoundariesVisible.NONE);
+        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_100, ZoomLevel.ZOOM_125, 2, 0, 0, BoundariesVisible.NONE, false, false, false);
 
     }
 
@@ -243,7 +389,7 @@ public class DiagramMouseZoomTest extends AbstractSiriusSwtBotGefTestCase {
         openDiagram(DIAGRAM_DESCRIPTION, DIAGRAM_INSTANCE_NAME, ZoomLevel.ZOOM_25);
         SWTBotGefEditPart editPart = editor.getEditPart("A");
 
-        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_25, ZoomLevel.ZOOM_50, 2, 0, 0, BoundariesVisible.ZOOMIN);
+        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_25, ZoomLevel.ZOOM_50, 2, 0, 0, BoundariesVisible.ZOOMIN, false, false, false);
     }
 
     /**
@@ -263,7 +409,7 @@ public class DiagramMouseZoomTest extends AbstractSiriusSwtBotGefTestCase {
         openDiagram(DIAGRAM_DESCRIPTION, DIAGRAM_INSTANCE_NAME, ZoomLevel.ZOOM_25);
         SWTBotGefEditPart editPart = editor.getEditPart("F");
 
-        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_25, ZoomLevel.ZOOM_50, 2, 0, 0, BoundariesVisible.ZOOMIN);
+        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_25, ZoomLevel.ZOOM_50, 2, 0, 0, BoundariesVisible.ZOOMIN, false, false, false);
     }
 
     /**
@@ -282,7 +428,7 @@ public class DiagramMouseZoomTest extends AbstractSiriusSwtBotGefTestCase {
         openDiagram(DIAGRAM_DESCRIPTION, DIAGRAM_INSTANCE_NAME, ZoomLevel.ZOOM_175);
         SWTBotGefEditPart editPart = editor.getEditPart("A");
 
-        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_175, ZoomLevel.ZOOM_150, -2, 60, 60, BoundariesVisible.NONE);
+        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_175, ZoomLevel.ZOOM_150, -2, 60, 60, BoundariesVisible.NONE, false, false, false);
     }
 
     /**
@@ -302,7 +448,7 @@ public class DiagramMouseZoomTest extends AbstractSiriusSwtBotGefTestCase {
         openDiagram(DIAGRAM_DESCRIPTION, DIAGRAM_INSTANCE_NAME, ZoomLevel.ZOOM_75);
         SWTBotGefEditPart editPart = editor.getEditPart("A");
 
-        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_75, ZoomLevel.ZOOM_50, -2, 0, 0, BoundariesVisible.ZOOMOUT);
+        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_75, ZoomLevel.ZOOM_50, -2, 0, 0, BoundariesVisible.ZOOMOUT, false, false, false);
     }
 
     /**
@@ -322,6 +468,6 @@ public class DiagramMouseZoomTest extends AbstractSiriusSwtBotGefTestCase {
         openDiagram(DIAGRAM_DESCRIPTION, DIAGRAM_INSTANCE_NAME, ZoomLevel.ZOOM_50);
         SWTBotGefEditPart editPart = editor.getEditPart("F");
 
-        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_50, ZoomLevel.ZOOM_25, -2, 0, 0, BoundariesVisible.ZOOMOUT);
+        assertViewportShiftedRightForMouseZoom(editPart, ZoomLevel.ZOOM_50, ZoomLevel.ZOOM_25, -2, 0, 0, BoundariesVisible.ZOOMOUT, false, false, false);
     }
 }
