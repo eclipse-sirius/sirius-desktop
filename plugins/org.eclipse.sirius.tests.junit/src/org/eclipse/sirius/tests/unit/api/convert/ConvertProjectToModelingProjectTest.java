@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -193,6 +193,74 @@ public class ConvertProjectToModelingProjectTest extends SiriusTestCase {
         checkModelingProject(project, representationFile, 0);
     }
 
+    /**
+     * Launch the conversion on project with an ignored file. This file is
+     * ignored through the extension point
+     * org.eclipse.sirius.ui.modelingprojectresourcelistener. This extension
+     * point is, in theory used only for resources added or removed in an
+     * existing Modeling Project. But ignored files by this extension point were
+     * not ignored during a conversion. A fix has been done in maintenance
+     * branch to also ignore the file during conversion. A new extension point,
+     * more general, will be added in Sirius 5.0.0.
+     */
+    public void testConverProjectToModelingProjectWithIgnoredFiles() {
+        // Create a project with no Modeling project nature
+        IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME);
+        assertNotNull("The project should not be null", project);
+
+        // Copy an ecore file and its associated genModel
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, DATA_UNIT_PROJECT_MODELING, "My.ecore", "My.genmodel");
+
+        // Convert the project to a Modeling Project
+        createAndExecuteConvertAction(project);
+
+        // check project is a Modeling project
+        checkProjectNatureIsModeling(project);
+
+        // check representation file is created
+        IFile representationFile = checkRepresentationFileExists(project);
+
+        // check modeling project is loaded with 2 semantic files ("My.ecore",
+        // "My.genmodel")
+        Session session = checkModelingProject(project, representationFile, 2);
+
+        // Convert the project to a "non Modeling Project"
+        createAndExecuteConvertAction(project);
+
+        // check project is not a Modeling project
+        checkProjectNatureIsNotModeling(project);
+
+        // Close the existing session (the "Remove Modeling Project Nature"
+        // action does not close the session)
+        session.close(new NullProgressMonitor());
+        // Delete the representations file
+        try {
+            representationFile.delete(true, new NullProgressMonitor());
+        } catch (CoreException e) {
+            fail("Impossible to delete representation file " + representationFile.getLocation().toOSString() + ": " + e.getMessage());
+        }
+
+        try {
+            // Register the extension that ignores genmodel files
+            TestModelingProjectResourceListener.enable();
+
+            // create convert action
+            createAndExecuteConvertAction(project);
+
+            // check project is a Modeling project
+            checkProjectNatureIsModeling(project);
+
+            // check representation file is created
+            checkRepresentationFileExists(project);
+
+            // check modeling project is loaded with 1 semantic file
+            // ("My.genmodel" must be ignored)
+            checkModelingProject(project, representationFile, 1);
+        } finally {
+            TestModelingProjectResourceListener.disable();
+        }
+    }
+
     private IFile createRepresentationFile(IProject project) {
         try {
             ModelingProjectManager.INSTANCE.createLocalRepresentationsFile(project, new NullProgressMonitor());
@@ -327,7 +395,7 @@ public class ConvertProjectToModelingProjectTest extends SiriusTestCase {
         checkModelingProject(project, representationFile, 3);
     }
 
-    private void checkModelingProject(IProject project, IFile representationFile, int expectedSemanticResources) {
+    private Session checkModelingProject(IProject project, IFile representationFile, int expectedSemanticResources) {
         Option<ModelingProject> modelingProject = ModelingProject.asModelingProject(project);
         assertTrue(modelingProject.some());
         URI representationFileURI = URI.createPlatformResourceURI(representationFile.getFullPath().toOSString(), true);
@@ -347,6 +415,8 @@ public class ConvertProjectToModelingProjectTest extends SiriusTestCase {
 
         // check there are 1 session resource
         assertEquals("The session should contains one session resource.", 1, modelingSession.getAllSessionResources().size());
+
+        return modelingSession;
     }
 
     private IFile checkRepresentationFileExists(IProject project) {
