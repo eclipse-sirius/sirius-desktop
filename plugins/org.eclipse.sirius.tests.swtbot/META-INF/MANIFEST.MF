@@ -55,7 +55,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edit.ui,
  org.eclipse.gmf.runtime.diagram.ui.render
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Eclipse-RegisterBuddy: org.apache.log4j
 Bundle-Vendor: %providerName
 Export-Package: org.eclipse.sirius.tests.swtbot,

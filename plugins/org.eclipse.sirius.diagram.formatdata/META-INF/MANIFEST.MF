@@ -6,7 +6,7 @@ Bundle-Version: 5.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.sirius.diagram.formatdata;version="4.1.0";
   uses:="org.eclipse.emf.ecore,
    org.eclipse.emf.common.util",
