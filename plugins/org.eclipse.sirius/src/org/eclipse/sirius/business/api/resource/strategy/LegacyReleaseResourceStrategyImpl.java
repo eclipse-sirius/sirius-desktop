@@ -11,23 +11,23 @@
 package org.eclipse.sirius.business.api.resource.strategy;
 
 import java.text.MessageFormat;
+import java.util.Objects;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
- * This legacy implementation can be used by client who don't want the new
- * optimized behavior. They just have to contributed to {@link ResourceStrategy}
- * extension point with this class to keep the old and non optimized
+ * This legacy implementation can be used by client who don't want the new optimized behavior. They just have to
+ * contributed to {@link ResourceStrategy} extension point with this class to keep the old and non optimized
  * behavior.</br>
  * 
- * @deprecated This class corresponds to the previous code. It will be removed
- *             in a future version of Sirius (6.0.0).
+ * @deprecated This class corresponds to the previous code. It will be removed in a future version of Sirius (6.0.0).
  * 
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  */
@@ -37,8 +37,12 @@ public class LegacyReleaseResourceStrategyImpl extends AbstractResourceStrategyI
     @Override
     public IStatus releaseResourceAtResourceSetDispose(Resource resource, IProgressMonitor monitor) {
         try {
-            // Don't try to unload metamodel resources.
-            if (!isFromPackageRegistry(resource)) {
+            URI uri = resource.getURI();
+            if (uri != null && Objects.equals(URIQuery.INMEMORY_URI_SCHEME, uri.scheme())) {
+                // InMemory resources must be unloaded explicitly for their memory
+                // buffers to be released.
+                resource.unload();
+            } else if (!isFromPackageRegistry(resource)) {
                 resource.unload();
             }
         } catch (final IllegalStateException e) {
