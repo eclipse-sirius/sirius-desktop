@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -265,8 +265,12 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
      *            the {@link DialectEditor}.
      */
     private void addSelectionListener(DialectEditor editor) {
-        ISelectionProvider selectionProvider = editor.getEditorSite().getSelectionProvider();
-        selectionProvider.addSelectionChangedListener(this);
+        if (editor != null && editor.getEditorSite() != null) {
+            ISelectionProvider selectionProvider = editor.getEditorSite().getSelectionProvider();
+            if (selectionProvider != null) {
+                selectionProvider.addSelectionChangedListener(this);
+            }
+        }
     }
 
     private IPartService getPartService() {
@@ -320,8 +324,11 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
      *            the {@link DialectEditor}.
      */
     private void removeSelectionListener(DialectEditor dialectEditor) {
-        ISelectionProvider selectionProvider = dialectEditor.getEditorSite().getSelectionProvider();
-        selectionProvider.removeSelectionChangedListener(this);
+        if (dialectEditor != null && dialectEditor.getEditorSite() != null) {
+            ISelectionProvider selectionProvider = dialectEditor.getEditorSite().getSelectionProvider();
+            if (selectionProvider != null) {
+                selectionProvider.removeSelectionChangedListener(this);
+            }
+        }
     }
-
 }
