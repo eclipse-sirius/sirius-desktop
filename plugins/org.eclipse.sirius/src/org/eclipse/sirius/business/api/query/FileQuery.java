@@ -10,14 +10,17 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.internal.session.danalysis.DRepresentationLocationRule;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 
 /**
- * Query allowing to determine the type of a file (i.e. if it contains a VSM, a
- * DAnalysis...). It is leaner than the {@link ResourceQuery}, which requires a
- * loaded EMF resource.
+ * Query allowing to determine the type of a file (i.e. if it contains a VSM, a DAnalysis...). It is leaner than the
+ * {@link ResourceQuery}, which requires a loaded EMF resource.
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
@@ -25,6 +28,8 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 public class FileQuery {
 
     private static Object sessionResourceFactory;
+
+    private static Object repResourceFactory;
 
     private String fileExtension;
 
@@ -51,8 +56,7 @@ public class FileQuery {
     /**
      * Indicates if the file extension indicates that it contains a VSM.
      * 
-     * @return true if the file extension indicates that it contains a VSM,
-     *         false otherwise
+     * @return true if the file extension indicates that it contains a VSM, false otherwise
      */
     public boolean isVSMFile() {
 
@@ -60,11 +64,9 @@ public class FileQuery {
     }
 
     /**
-     * Indicates if the file extension indicates that it contains a DAnalysis
-     * (aird, aird fragments...).
+     * Indicates if the file extension indicates that it contains a DAnalysis (aird, aird fragments...).
      * 
-     * @return true if the file extension indicates that it contains a
-     *         DAnalysis, false otherwise
+     * @return true if the file extension indicates that it contains a DAnalysis, false otherwise
      */
     public boolean isSessionResourceFile() {
         Object fileResourceFactory = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get(fileExtension);
@@ -80,4 +82,25 @@ public class FileQuery {
         return sessionResourceFactory;
     }
 
+    /**
+     * Indicates if the file extension is dedicated to a file containing representations.
+     * 
+     * @return true if the file is dedicated to representations, false otherwise
+     */
+    public boolean isSrmFile() {
+        List<DRepresentationLocationRule> extensionPointRules = EclipseUtil.getExtensionPlugins(DRepresentationLocationRule.class, DRepresentationLocationRule.ID,
+                DRepresentationLocationRule.CLASS_ATTRIBUTE);
+
+        boolean isSrmFile = extensionPointRules.stream().filter(rule -> rule.isARepresentationResource(fileExtension)).findFirst().isPresent();
+        if (!isSrmFile) {
+            if (repResourceFactory == null) {
+                repResourceFactory = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get(SiriusUtil.REPRESENTATION_FILE_EXTENSION);
+            }
+            Object fileResourceFactory = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get(fileExtension);
+            // A representation resource file should be associated to the same
+            // ResourceFactory than "srm" files
+            isSrmFile = fileResourceFactory != null && fileResourceFactory.equals(repResourceFactory);
+        }
+        return isSrmFile;
+    }
 }

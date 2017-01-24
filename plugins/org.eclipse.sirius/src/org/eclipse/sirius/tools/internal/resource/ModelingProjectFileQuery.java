@@ -44,8 +44,7 @@ public class ModelingProjectFileQuery {
      * 
      * @param aFile
      *            the file to test
-     * @return true if the given file contains a DAnalysis model, false
-     *         otherwise
+     * @return true if the given file contains a DAnalysis model, false otherwise
      */
     protected boolean isRepresentationsModel(IFile aFile) {
         return new FileQuery(aFile).isSessionResourceFile();
@@ -63,23 +62,25 @@ public class ModelingProjectFileQuery {
     }
 
     /**
-     * Check if the file is a potential semantic model. The following types will
-     * be ignored : VSM file, representation file, derived file, repair action
-     * backup file, derived file, svn file, ...
+     * Check if the file is a potential semantic model. The following types will be ignored : VSM file, representation
+     * file, derived file, repair action backup file, derived file, svn file, ...
      * 
      * @return <code>false</code> if the file should be ignored.
      */
     public boolean isPotentialSemanticResource() {
-        boolean fileToIgnore = isRepresentationsModel(file) || isVsmModel(file);
+        boolean fileToIgnore = isRepresentationsModel(file) || isVsmModel(file) || isRepFile(file);
         if (!fileToIgnore) {
             fileToIgnore = file.isDerived(IResource.CHECK_ANCESTORS) || file.getFullPath().toString().contains("/.svn/") || isRepairBackupFile(); //$NON-NLS-1$
         }
         return !fileToIgnore;
     }
 
+    private boolean isRepFile(IFile aFile) {
+        return new FileQuery(aFile).isSrmFile();
+    }
+
     /*
-     * Sirius's Repair action creates a '.old' backup file, it is working on vsm
-     * and representations resources.
+     * Sirius's Repair action creates a '.old' backup file, it is working on vsm and representations resources.
      */
     private boolean isRepairBackupFile() {
         if ("old".equals(file.getFileExtension())) { //$NON-NLS-1$

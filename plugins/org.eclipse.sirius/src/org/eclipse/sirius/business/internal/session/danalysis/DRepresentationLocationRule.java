@@ -55,4 +55,14 @@ public interface DRepresentationLocationRule {
      * @return the new {@link URI}
      */
     URI getResourceURI(DRepresentation representation, Resource dViewResource);
+
+    /**
+     * Indicates if the given file extension is considered as a representation file.
+     * 
+     * @param fileExtension
+     *            the file extension
+     * 
+     * @return true if the fileExtension is known as a representation file
+     */
+    Boolean isARepresentationResource(String fileExtension);
 }
