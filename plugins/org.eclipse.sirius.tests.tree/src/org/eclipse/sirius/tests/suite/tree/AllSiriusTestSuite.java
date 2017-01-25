@@ -34,7 +34,7 @@ public class AllSiriusTestSuite extends TestCase {
      */
     public static Test suite() {
         final TestSuite suite = new TestSuite("Sirius tests tree");
-        suite.addTest(AllTreePluginTests.suite());
+//        suite.addTest(AllTreePluginTests.suite());
         return suite;
     }
 }

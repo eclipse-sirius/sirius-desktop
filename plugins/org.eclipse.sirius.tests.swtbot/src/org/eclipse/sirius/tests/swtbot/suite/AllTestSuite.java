@@ -109,8 +109,8 @@ public class AllTestSuite extends TestCase {
      */
     public static Test suite() {
         TestSuite suite = new TestSuite("Sirius SwtBot tests");
-        addPart1(suite);
-        addPart2(suite);
+//        addPart1(suite);
+//        addPart2(suite);
         return suite;
     }
 

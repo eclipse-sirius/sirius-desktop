@@ -150,45 +150,45 @@ public class SequenceSwtBotTestSuite extends TestCase {
      */
     public static Test suite() {
         final TestSuite suite = new TestSuite("SwtBot tests on sequence diagram");
-        addGerritPart(suite);
-
-        suite.addTestSuite(SequenceReturnMessageTest.class);
-        suite.addTestSuite(SyncCallTest.class);
-        suite.addTestSuite(SyncCallMoveTest.class);
-        suite.addTestSuite(SyncCall2Test.class);
-        suite.addTestSuite(SyncCall3Test.class);
-        suite.addTestSuite(SyncCallInOperandReorderTest.class);
-        suite.addTestSuite(CreateMessageOnCollapsedExecutionTest.class);
-        suite.addTestSuite(SequenceExecutionMessageToSelfTest.class);
-        suite.addTestSuite(SequenceDestroyMessageTest.class);
-        suite.addTestSuite(NoteAttachmentTest.class);
-        suite.addTestSuite(SequenceArrangeLinkedBorderedNodesTest.class);
-        suite.addTestSuite(InteractionUseSingleClickCreationTests.class);
-        suite.addTestSuite(InteractionUseTwoClickCreationTests.class);
-        suite.addTestSuite(InteractionUseCoverageTests.class);
-        suite.addTestSuite(InteractionUseTests.class);
-        suite.addTestSuite(InteractionUseMoveDownTests.class);
-        suite.addTestSuite(InteractionUseResizeTests.class);
-        suite.addTestSuite(CombinedFragmentsSingleClickCreationTests.class);
-        suite.addTestSuite(CombinedFragmentsTwoClickCreationTests.class);
-        suite.addTestSuite(CombinedFragmentsWithInclusionCreationTests.class);
-        suite.addTestSuite(CombinedFragmentsAndElementsCreationTests.class);
-        suite.addTestSuite(CombinedFragmentsAndMessagesCreationTests.class);
-        suite.addTestSuite(CombinedFragmentsTests.class);
-        suite.addTestSuite(CombinedFragmentsOperandCreationTests.class);
-        suite.addTestSuite(CombinedFragmentsOperandOverlapTests.class);
-        suite.addTestSuite(StateBasicTests.class);
-        suite.addTestSuite(PunctualStateTests.class);
-        suite.addTestSuite(RefreshLayoutNotExecutedOnNoSequenceChangesTests.class);
-        suite.addTestSuite(StateNoMessageTests.class);
-        suite.addTestSuite(ComplexInOutCombinedFragmentTest.class);
-        suite.addTestSuite(ObservationPointTests.class);
-        suite.addTestSuite(ActionDisabledOnSequenceDiagramTest.class);
-        suite.addTestSuite(ActionDisabledOnExtendedMessagesTest.class);
-        suite.addTestSuite(FrameReparentTest.class);
-        suite.addTestSuite(InstanceRoleOrderingTests.class);
-
-        suite.addTestSuite(HeaderSequenceDiagramTests.class);
+//        addGerritPart(suite);
+//
+//        suite.addTestSuite(SequenceReturnMessageTest.class);
+//        suite.addTestSuite(SyncCallTest.class);
+//        suite.addTestSuite(SyncCallMoveTest.class);
+//        suite.addTestSuite(SyncCall2Test.class);
+//        suite.addTestSuite(SyncCall3Test.class);
+//        suite.addTestSuite(SyncCallInOperandReorderTest.class);
+//        suite.addTestSuite(CreateMessageOnCollapsedExecutionTest.class);
+//        suite.addTestSuite(SequenceExecutionMessageToSelfTest.class);
+//        suite.addTestSuite(SequenceDestroyMessageTest.class);
+//        suite.addTestSuite(NoteAttachmentTest.class);
+//        suite.addTestSuite(SequenceArrangeLinkedBorderedNodesTest.class);
+//        suite.addTestSuite(InteractionUseSingleClickCreationTests.class);
+//        suite.addTestSuite(InteractionUseTwoClickCreationTests.class);
+//        suite.addTestSuite(InteractionUseCoverageTests.class);
+//        suite.addTestSuite(InteractionUseTests.class);
+//        suite.addTestSuite(InteractionUseMoveDownTests.class);
+//        suite.addTestSuite(InteractionUseResizeTests.class);
+//        suite.addTestSuite(CombinedFragmentsSingleClickCreationTests.class);
+//        suite.addTestSuite(CombinedFragmentsTwoClickCreationTests.class);
+//        suite.addTestSuite(CombinedFragmentsWithInclusionCreationTests.class);
+//        suite.addTestSuite(CombinedFragmentsAndElementsCreationTests.class);
+//        suite.addTestSuite(CombinedFragmentsAndMessagesCreationTests.class);
+//        suite.addTestSuite(CombinedFragmentsTests.class);
+//        suite.addTestSuite(CombinedFragmentsOperandCreationTests.class);
+//        suite.addTestSuite(CombinedFragmentsOperandOverlapTests.class);
+//        suite.addTestSuite(StateBasicTests.class);
+//        suite.addTestSuite(PunctualStateTests.class);
+//        suite.addTestSuite(RefreshLayoutNotExecutedOnNoSequenceChangesTests.class);
+//        suite.addTestSuite(StateNoMessageTests.class);
+//        suite.addTestSuite(ComplexInOutCombinedFragmentTest.class);
+//        suite.addTestSuite(ObservationPointTests.class);
+//        suite.addTestSuite(ActionDisabledOnSequenceDiagramTest.class);
+//        suite.addTestSuite(ActionDisabledOnExtendedMessagesTest.class);
+//        suite.addTestSuite(FrameReparentTest.class);
+//        suite.addTestSuite(InstanceRoleOrderingTests.class);
+//
+//        suite.addTestSuite(HeaderSequenceDiagramTests.class);
 
         return suite;
     }
