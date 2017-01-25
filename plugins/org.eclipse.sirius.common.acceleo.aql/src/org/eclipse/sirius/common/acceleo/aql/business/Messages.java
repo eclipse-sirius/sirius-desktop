@@ -31,6 +31,9 @@ public final class Messages {
     @TranslatableMessage
     public static String AQLInterpreter_javaClassNotFound;
 
+    @TranslatableMessage
+    public static String AQLInterpreter_errorWithExpression;
+
     // CHECKSTYLE:ON
 
     private Messages() {

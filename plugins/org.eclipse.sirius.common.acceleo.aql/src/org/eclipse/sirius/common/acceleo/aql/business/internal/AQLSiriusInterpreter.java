@@ -51,6 +51,7 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.common.acceleo.aql.business.AQLSiriusPlugin;
 import org.eclipse.sirius.common.acceleo.aql.business.Messages;
 import org.eclipse.sirius.common.acceleo.aql.business.api.AQLConstants;
@@ -191,7 +192,9 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         // We fire the exception to keep the old behavior
         Diagnostic diagnostic = evaluationResult.getDiagnostic();
         if (diagnostic.getSeverity() == Diagnostic.ERROR) {
-            throw new EvaluationException(diagnostic.getMessage(), diagnostic.getException());
+            String uri = EcoreUtil.getURI(target).toString();
+            String message = MessageFormat.format(Messages.AQLInterpreter_errorWithExpression, fullExpression, diagnostic.toString(), uri, target);
+            throw new EvaluationException(message, diagnostic.getException());
         }
         return evaluationResult.getValue();
     }
