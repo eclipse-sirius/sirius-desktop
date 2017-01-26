@@ -74,7 +74,7 @@ public class SiriusSnapToHelperUtil extends SnapToHelperUtil {
         List<SnapToHelper> snapStrategies = new ArrayList<SnapToHelper>();
         EditPartViewer viewer = diagramEditPart.getViewer();
 
-        Boolean val = (Boolean) editPart.getViewer().getProperty(RulerProvider.PROPERTY_RULER_VISIBILITY);
+        Boolean val = (Boolean) viewer.getProperty(RulerProvider.PROPERTY_RULER_VISIBILITY);
 
         if (val != null && val.booleanValue()) {
             snapStrategies.add(new SnapToGuidesEx(diagramEditPart));
