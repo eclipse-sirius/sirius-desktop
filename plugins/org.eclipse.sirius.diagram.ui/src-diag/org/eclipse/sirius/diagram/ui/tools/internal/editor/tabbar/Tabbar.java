@@ -160,9 +160,11 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
      *            the selection
      */
     public void reinitToolBar(ISelection iSelection) {
-        diagramFiller.update(iSelection);
+        if (diagramFiller != null) {
+            diagramFiller.update(iSelection);
 
-        updateAllItems();
+            updateAllItems();
+        }
     }
 
     /**
