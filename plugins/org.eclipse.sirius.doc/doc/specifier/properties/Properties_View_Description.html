@@ -68,7 +68,7 @@
 								<a href="#list">List</a>
 							</li>
 							<li>
-								<a href="#custom">Basic Custom Widgets</a>
+								<a href="#basic_custom_widgets">Basic Custom Widgets</a>
 							</li>
 							<li>
 								<a href="#advanced_custom_widgets">Advanced Custom Widgets</a>
@@ -79,7 +79,7 @@
 						<a href="#dynamic_mappings">Dynamic Mappings</a>
 					</li>
 					<li>
-						<a href="#containers">Containers and Layout</a>
+						<a href="#containers_and_layout">Containers and Layout</a>
 					</li>
 					<li>
 						<a href="#styling">Styling</a>
@@ -652,7 +652,9 @@
 			<a href="#properties_view_description">above</a> to determine the semantic elements for which a widget should be created.
 		</p>
 		<p>Much like the other properties view elements, you can specify the widget&#8217;s 
-			<em>Label Expression</em>":#label_expression, 
+			<a href="#label_expression">
+				<em>Label Expression</em>
+			</a>, 
 			<a href="#help_expression">
 				<em>Help Expression</em>
 			</a>,  
@@ -753,8 +755,8 @@
 		<p>For buttons, you must define the 
 			<em>Button Label Expression</em> which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is the empty string.
 		</p>
-		<h4 id="pushed_button">Button Push</h4>
-		<p>To define the behavior of the button when it is pushed, simply specify the behavior associated to the edition inside the 
+		<h4 id="pushed_button">Behavior executed on click</h4>
+		<p>To define the behavior of the button when it is clicked, simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
 			<a href="../general/Model_Operations.html">model operations</a>. The root operation is executed in the context of the semantic target element.
 		</p>
@@ -787,10 +789,10 @@
 			<em>Value Expression</em> using the variable 
 			<code>value</code> and it should return a string. If the expression is not specified, the default value is the empty string.
 		</p>
-		<h4 id="label_actions">Label Actions</h4>
+		<h4 id="label_actions">Widget Actions</h4>
 		<p>A 
 			<em>Label</em> can optionally define one or more 
-			<em>Actions</em>, which are created as children element of the 
+			<em>Widget Actions</em>, which are created as children element of the 
 			<em>Label</em> element (
 			<em>New &gt; Widget Action</em>). Each action has a 
 			<em>Label Expression</em> and a behavior defined by 
@@ -843,7 +845,7 @@
 			<em>Value Expression</em> which is used to compute the checked/unchecked state of the checkbox and so should return a boolean (return 
 			<em>true</em> to display the checkbox checked).
 		</p>
-		<h4 id="checkbox_change_value">Value Change</h4>
+		<h4 id="checkbox_change_value">Change value</h4>
 		<p>To define the behavior of the checkbox when the user clicks on it, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
 			<a href="../general/Model_Operations.html">model operations</a>.
@@ -888,7 +890,7 @@
 				<em>Candidates Expression</em>.
 			</li>
 		</ul>
-		<h4 id="select_change_value">Value Change</h4>
+		<h4 id="select_change_value">Change value</h4>
 		<p>To define the behavior of the 
 			<em>Select</em> when the user selects a different element, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
@@ -932,7 +934,7 @@
 				<em>Candidates Expression</em>.
 			</li>
 		</ul>
-		<h4 id="radio_change_value">Value Change</h4>
+		<h4 id="radio_change_value">Change value</h4>
 		<p>To define the behavior of the radio group when the selection changes, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
 			<a href="../general/Model_Operations.html">model operations</a>.
@@ -969,15 +971,15 @@
 			<em>Value Expression</em> using the variable named 
 			<code>value</code> and it should return a String.
 		</p>
-		<h4 id="hyperlink_click_on_value">Click on Value</h4>
+		<h4 id="hyperlink_click_on_value">Behavior executed on click</h4>
 		<p>To define the behavior of the hyperlink when it is clicked, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
 			<a href="../general/Model_Operations.html">model operations</a>.
 		</p>
-		<h4 id="hyperlink_actions">Additional Hyperlink Actions</h4>
+		<h4 id="hyperlink_actions">Widget Actions</h4>
 		<p>A 
 			<em>Hyperlink</em> can optionally define one or more 
-			<em>Actions</em>, which are created as children element of the 
+			<em>Widget Actions</em>, which are created as children element of the 
 			<em>Hyperlink</em> element (
 			<em>New &gt; Widget Action</em>). Each action has a 
 			<em>Label Expression</em> and a behavior defined by 
@@ -1066,7 +1068,7 @@
 		</p>
 		<p>Depending on the parameters configuration the list widget will be represented thanks to a list and multiple buttons when 
 			<a href="#list_actions">
-				<em>Action Widgets</em>
+				<em>Widget Actions</em>
 			</a> are defined.
 		</p>
 		<p>The definition of a list follows the general rules described 
@@ -1081,24 +1083,23 @@
 				<em>Display Expression</em> which is used to compute the text displayed in the text field and should return a string. It is evaluated in the context of the semantic target element and has access to the variable 
 				<code>value</code> which corresponds to the element to display.
 			</li>
-			<li>the "
-				<em>actions</em>"#actions are used to associate some buttons to the text field.
+			<li>the 
+				<a href="#list_actions">
+					<em>Widget Actions</em>
+				</a> are used to associate some buttons to the text field.
 			</li>
 		</ul>
-		<h4 id="list_click_on_value">Click on Value</h4>
-		<p>If the 
-			<em>On Click Operation</em> is set then this operation defines the behavior executed when the user clicks or double-clicks on an element in the table. A variable named 
-			<code>onClickEventKind</code> is available to determine if the operation has been triggered by a single click or double click. In case of a single click, the variable has the value &#8220;SINGLE_CLICK&#8221; and &#8220;DOUBLE_CLICK&#8221; in case of a double click.
-		</p>
+		<h4 id="list_on_click_operation">Behavior executed on click</h4>
 		<p>To define the behavior, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
-			<a href="../general/Model_Operations.html">model operations</a>.
+			<a href="../general/Model_Operations.html">model operations</a>. A variable named 
+			<code>onClickEventKind</code> is available to determine if the operation has been triggered by a single click or double click. In case of a single click, the variable has the value &#8220;SINGLE_CLICK&#8221; and &#8220;DOUBLE_CLICK&#8221; in case of a double click.
 		</p>
 		<p>The expressions defined under the 
 			<em>Begin</em> can use the 
 			<code>selection</code> variable which represents the values selected by the user. This variable will contain the list of the values selected.
 		</p>
-		<h4 id="list_actions">Actions</h4>
+		<h4 id="list_actions">Widget actions</h4>
 		<p>A list can contain 
 			<em>actions</em> which represent 
 			<strong>buttons</strong> associated to the list field.
@@ -1123,7 +1124,7 @@
 			<a href="#conditional_styles">conditional styles</a> and 
 			<a href="#widgets_styles">widgets styles</a> section to find details on what is specific to widgets.
 		</p>
-		<h3 id="custom">Basic Custom Widgets</h3>
+		<h3 id="basic_custom_widgets">Basic Custom Widgets</h3>
 		<p>A 
 			<em>Custom Description</em> is used when none of the predefined styles correspond to your need. Custom widgets are implemented in Java and use the 
 			<code>org.eclipse.eef.ide.ui.eefLifecycleManagerProvider</code> extension point.
@@ -1137,12 +1138,12 @@
 		<p>See 
 			<a href="../../developer/extensions-properties_provide_custom_widget_basic.html">the reference documentation</a> for how to actually implement your own basic custom widgets.
 		</p>
-		<h5 id="custom_expression">Custom Expression/Operation</h5>
+		<h5 id="basic_custom_widgets_expression">Custom Expression/Operation</h5>
 		<p>When you define a custom widget, it is possible to define some custom expression or operation which will be used by the custom widget implementation. 
 			<br/>In this case, the 
 			<em>Identifier</em> is mandatory. It would be used in the Java code to find the expression/operation contributed with the VSM.
 		</p>
-		<h5 id="custom_styles">Custom Styles</h5>
+		<h5 id="basic_custom_widgets_styles">Custom Styles</h5>
 		<p>See the 
 			<a href="#styling">styles</a> section for a general presentation of how styles are defined, including 
 			<a href="#conditional_styles">conditional styles</a> and 
@@ -1218,7 +1219,7 @@
 		<p>Thanks to this mechanism we defined that all the 
 			<code>String</code> elements in our metamodel will be represented with a text field.
 		</p>
-		<h2 id="containers">Containers and Layout</h2>
+		<h2 id="containers_and_layout">Containers and Layout</h2>
 		<p>Sirius provides a default algorithm to perform an automatic layout of all the controls in a properties view. If the default algorithm does not fit your needs, you can specify some parameters for alternate layouts directly inside the VSM. To do this you must first create a 
 			<em>Container</em> which will contains all the widgets to which the layout will apply, and then create and configure the layout to be used by the container to organize its children widgets:
 		</p>

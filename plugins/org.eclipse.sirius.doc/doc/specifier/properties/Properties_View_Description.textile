@@ -178,7 +178,7 @@ A widget is used to represent model elements in the properties view and, for mos
 
 The definition of a widget follows the general rules described "above":#properties_view_description to determine the semantic elements for which a widget should be created.
 
-Much like the other properties view elements, you can specify the widget's _Label Expression_":#label_expression, "_Help Expression_":#help_expression,  "_Is Enabled Expression_":#is_enabled_expression, "_Styles_":#styles, "_Conditional Styles_":#conditional_styles.
+Much like the other properties view elements, you can specify the widget's "_Label Expression_":#label_expression, "_Help Expression_":#help_expression,  "_Is Enabled Expression_":#is_enabled_expression, "_Styles_":#styles, "_Conditional Styles_":#conditional_styles.
 
 h3(#text). Text / Text area
 
@@ -229,9 +229,9 @@ The definition of a button follows the general rules described "above":#widgets 
 
 For buttons, you must define the _Button Label Expression_ which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is the empty string.
 
-h4(#pushed_button). Button Push
+h4(#pushed_button). Behavior executed on click
 
-To define the behavior of the button when it is pushed, simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html. The root operation is executed in the context of the semantic target element.
+To define the behavior of the button when it is clicked, simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html. The root operation is executed in the context of the semantic target element.
 
 h4(#button_styles). Button Styles
 
@@ -249,9 +249,9 @@ The definition of a label follows the general rules described "above":#widgets t
 
 For labels, you must define the _Value Expression_ which is used to compute the text displayed in the description. The _Value Expression_ can return any kind of object but the result displayed will be the result of a call to @Object.toString()@. If you want to customize how the result will be displayed, you can return a string in the value expression or use the _Display Expression_. The _Display Expression_ will have access to the result of the _Value Expression_ using the variable @value@ and it should return a string. If the expression is not specified, the default value is the empty string.
 
-h4(#label_actions). Label Actions
+h4(#label_actions). Widget Actions
 
-A _Label_ can optionally define one or more _Actions_, which are created as children element of the _Label_ element (_New > Widget Action_). Each action has a _Label Expression_ and a behavior defined by "model operations":../general/Model_Operations.html contained inside. If present, actions will be rendered as buttons on the right of the label itself. The button's text is defined by the _Label Expression_, and its behavior when pushed by the model operations.
+A _Label_ can optionally define one or more _Widget Actions_, which are created as children element of the _Label_ element (_New > Widget Action_). Each action has a _Label Expression_ and a behavior defined by "model operations":../general/Model_Operations.html contained inside. If present, actions will be rendered as buttons on the right of the label itself. The button's text is defined by the _Label Expression_, and its behavior when pushed by the model operations.
 
 h4(#label_styles). Label Styles
 
@@ -276,7 +276,7 @@ The definition of a checkbox follows the general rules described "above":#widget
 
 For checkboxes, you must define the _Value Expression_ which is used to compute the checked/unchecked state of the checkbox and so should return a boolean (return _true_ to display the checkbox checked).
 
-h4(#checkbox_change_value). Value Change
+h4(#checkbox_change_value). Change value
 
 To define the behavior of the checkbox when the user clicks on it, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
@@ -299,7 +299,7 @@ For selects, you must define :
 * the _Candidate Display Expression_ which is used to compute the label displayed for each possible candidate in the combo and so should return a string. The _Candidate Display Expression_ can use the @candidate@ variable which represents the element currently evaluated.
 * the _Value Expression_ which is used to compute the element selected in the combo and should return an object, which should be an element of the collection returned by _Candidates Expression_.
 
-h4(#select_change_value). Value Change
+h4(#select_change_value). Change value
 
 To define the behavior of the _Select_ when the user selects a different element, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
@@ -322,7 +322,7 @@ For radio groups, you must define :
 * the _Candidate Display Expression_ which is used to compute the label displayed for each possible candidate in the radio group and so should return a string. The _Candidate Display Expression_ can use the @candidate@ variable which represents the element currently evaluated.
 * the _Value Expression_ which is used to compute the element selected in the radio group and should return an object, which should be an element of the collection returned by _Candidates Expression_.
 
-h4(#radio_change_value). Value Change
+h4(#radio_change_value). Change value
 
 To define the behavior of the radio group when the selection changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
@@ -342,13 +342,13 @@ The definition of an hyperlink follows the general rules described "above":#widg
 
 For hyperlinks, you must define the _Value Expression_ which is used to compute the hyperlink displayed. The _Value Expression_ can return any kind of object but the result displayed will be the result of a call to _java.lang.Object#toString()_. If you want to customize how the result will be displayed, you can return a String in the value expression or use the _Display Expression_. The _Display Expression_ will have access to the result of the _Value Expression_ using the variable named @value@ and it should return a String.
 
-h4(#hyperlink_click_on_value). Click on Value
+h4(#hyperlink_click_on_value). Behavior executed on click
 
 To define the behavior of the hyperlink when it is clicked, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
-h4(#hyperlink_actions). Additional Hyperlink Actions
+h4(#hyperlink_actions). Widget Actions
 
-A _Hyperlink_ can optionally define one or more _Actions_, which are created as children element of the _Hyperlink_ element (_New > Widget Action_). Each action has a _Label Expression_ and a behavior defined by "model operations":../general/Model_Operations.html contained inside. If present, actions will be rendered as buttons on the right of the label itself. The button's text is defined by the _Label Expression_, and its behavior when pushed by the model operations.
+A _Hyperlink_ can optionally define one or more _Widget Actions_, which are created as children element of the _Hyperlink_ element (_New > Widget Action_). Each action has a _Label Expression_ and a behavior defined by "model operations":../general/Model_Operations.html contained inside. If present, actions will be rendered as buttons on the right of the label itself. The button's text is defined by the _Label Expression_, and its behavior when pushed by the model operations.
 
 h4(#hyperlink_styles). Hyperlink Styles
 
@@ -389,24 +389,22 @@ h3(#list). List
 
 A _List_ is used to represent a *list with buttons* in a "group":#groups or in a "container":#containers.
 
-Depending on the parameters configuration the list widget will be represented thanks to a list and multiple buttons when "_Action Widgets_":#list_actions are defined.
+Depending on the parameters configuration the list widget will be represented thanks to a list and multiple buttons when "_Widget Actions_":#list_actions are defined.
 
 The definition of a list follows the general rules described "above":#widgets to determine the semantic elements for which a list should be created. It is evaluated in the context of the semantic target element.
 
 For lists, you must define:
 * the _Value Expression_ which is used to compute the element to display and should return an object.
 * the _Display Expression_ which is used to compute the text displayed in the text field and should return a string. It is evaluated in the context of the semantic target element and has access to the variable @value@ which corresponds to the element to display.
-* the "_actions_"#actions are used to associate some buttons to the text field.
+* the "_Widget Actions_":#list_actions are used to associate some buttons to the text field.
 
-h4(#list_click_on_value). Click on Value
+h4(#list_on_click_operation). Behavior executed on click
 
-If the _On Click Operation_ is set then this operation defines the behavior executed when the user clicks or double-clicks on an element in the table. A variable named @onClickEventKind@ is available to determine if the operation has been triggered by a single click or double click. In case of a single click, the variable has the value "SINGLE_CLICK" and "DOUBLE_CLICK" in case of a double click.
-
-To define the behavior, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+To define the behavior, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html. A variable named @onClickEventKind@ is available to determine if the operation has been triggered by a single click or double click. In case of a single click, the variable has the value "SINGLE_CLICK" and "DOUBLE_CLICK" in case of a double click.
 
 The expressions defined under the _Begin_ can use the @selection@ variable which represents the values selected by the user. This variable will contain the list of the values selected.
 
-h4(#list_actions). Actions
+h4(#list_actions). Widget actions
 
 A list can contain _actions_ which represent *buttons* associated to the list field.
 
@@ -422,7 +420,7 @@ h4(#list_styles). List Styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets.
 
-h3(#custom). Basic Custom Widgets
+h3(#basic_custom_widgets). Basic Custom Widgets
 
 A _Custom Description_ is used when none of the predefined styles correspond to your need. Custom widgets are implemented in Java and use the @org.eclipse.eef.ide.ui.eefLifecycleManagerProvider@ extension point.
 
@@ -432,12 +430,12 @@ For custom widgets, the _Identifier_ is mandatory. It is used to find the widget
 
 See "the reference documentation":../../developer/extensions-properties_provide_custom_widget_basic.html for how to actually implement your own basic custom widgets.
 
-h5(#custom_expression). Custom Expression/Operation
+h5(#basic_custom_widgets_expression). Custom Expression/Operation
 
 When you define a custom widget, it is possible to define some custom expression or operation which will be used by the custom widget implementation. 
 In this case, the _Identifier_ is mandatory. It would be used in the Java code to find the expression/operation contributed with the VSM.
 
-h5(#custom_styles). Custom Styles
+h5(#basic_custom_widgets_styles). Custom Styles
 
 See the "styles":#styling section for a general presentation of how styles are defined, including "conditional styles":#conditional_styles and "widgets styles":#widgets_styles section to find details on what is specific to widgets. This section only presents the aspects which are specific to texts.
 
@@ -468,7 +466,7 @@ If we take one of the default rules implemented by Sirius we have:
 
 Thanks to this mechanism we defined that all the @String@ elements in our metamodel will be represented with a text field.
 
-h2(#containers). Containers and Layout
+h2(#containers_and_layout). Containers and Layout
 
 Sirius provides a default algorithm to perform an automatic layout of all the controls in a properties view. If the default algorithm does not fit your needs, you can specify some parameters for alternate layouts directly inside the VSM. To do this you must first create a _Container_ which will contains all the widgets to which the layout will apply, and then create and configure the layout to be used by the container to organize its children widgets:
 
