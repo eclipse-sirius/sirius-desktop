@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="PropertiesTests" version="11.0.0.201601261200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="PropertiesTests" version="11.1.1.201610211630">
   <ownedViewpoints name="PropertiesTestsValidation"/>
   <extensions xsi:type="properties:ViewExtensionDescription">
     <pages identifier="" labelExpression="Validation" groups="//@extensions.0/@groups.0">
@@ -25,12 +25,12 @@
       <controls xsi:type="properties:SelectDescription" identifier="Select Error" labelExpression="Select Error" valueExpression="aql:self.reference" candidatesExpression="aql:self.eResource().getContents().eAllContents()" candidateDisplayExpression="aql:candidate.stringAttribute"/>
       <controls xsi:type="properties:TextAreaDescription" identifier="Text area Error" labelExpression="Text area Error" valueExpression="aql:self.stringAttribute"/>
       <controls xsi:type="properties:RadioDescription" identifier="Radio Error" labelExpression="Radio Error" valueExpression="aql:propertiestests::TestEnum.getEEnumLiteral(self.enumAttribute.toString())" candidatesExpression="aql:propertiestests::TestEnum.eLiterals" candidateDisplayExpression="aql:candidate.name"/>
-      <controls xsi:type="properties:ReferenceDescription" identifier="Reference Error" labelExpression="Reference Error" helpExpression="" valueExpression="aql:self.containmentReference" displayExpression="aql:self.stringAttribute"/>
-      <controls xsi:type="properties:ReferenceDescription" identifier="Multi Reference Error" labelExpression="Multi Reference Error" helpExpression="" multiple="true" valueExpression="aql:self.containmentReferences" displayExpression="aql:self.stringAttribute"/>
-      <controls xsi:type="properties:HyperlinkDescription" identifier="Hyperlink Error" labelExpression="Hyperlink Error" valueExpression="Hyperlink"/>
-      <controls xsi:type="properties:DynamicMappingFor" iterator="eStructuralFeature" domainClassExpression="aql:self.eClass().eAllStructuralFeatures">
+      <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" labelExpression="Reference Error" referenceNameExpression="containmentReference"/>
+      <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" labelExpression="Multi Reference Error" referenceNameExpression="containmentReferences"/>
+      <controls xsi:type="properties:HyperlinkDescription" identifier="Hyperlink Error" labelExpression="Hyperlink Error" valueExpression="aql:self" displayExpression="Hyperlink"/>
+      <controls xsi:type="properties:DynamicMappingFor" iterator="eStructuralFeature" iterableExpression="aql:self.eClass().eAllStructuralFeatures">
         <ifs predicateExpression="aql:eStructuralFeature.eType.instanceTypeName = 'java.lang.String' and not(eStructuralFeature.many)">
-          <widget xsi:type="properties:TextDescription" identifier="Dynamic mapping Error" labelExpression="Dynamic mapping Error" helpExpression="" valueExpression="aql:self.eGet(eStructuralFeature)"/>
+          <widget xsi:type="properties:TextDescription" identifier="Dynamic mapping Error" labelExpression="Dynamic mapping Error" helpExpression="" valueExpression="aql:self.eGet(eStructuralFeature.name)"/>
         </ifs>
       </controls>
       <validationSet>

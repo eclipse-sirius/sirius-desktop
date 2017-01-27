@@ -43,7 +43,7 @@ with [get-view Properties | get-section Text | get-editbox -index 3] {
         get-property enablement | equals true | verify-true
         get-property containMenu | equals false | verify-true
         get-property text | equals Element1 | verify-true
-	get-property "getFont().getFontData().FontData[0].name" | equals "Times new roman" | verify-true
+	get-property "getFont().getFontData().FontData[0].name" | equals "Times New Roman" | verify-true
 	get-property "getFont().getFontData().FontData[0].height" | equals "12.0" | verify-true
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

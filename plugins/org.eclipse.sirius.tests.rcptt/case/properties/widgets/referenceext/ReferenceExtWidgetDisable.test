@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _qrPocH5BEeaV4rq9brcgag
 Runtime-Version: 2.1.0.201606221726
-Save-Time: 9/19/16 2:19 PM
+Save-Time: 1/24/17 3:02 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -53,40 +53,41 @@ with [get-view Properties | get-section Reference] {
 
 // Create new objects in the reference table in order to see the vertical scrollbar
 get-view Properties | get-section Reference | get-button "Create a new object" 
-    -after [get-label "Test Element Element2" -after [get-label "Test Element Element2"]] -index 1 | click
+    -after [get-label "Test Element Element2"] -index 1 | click
 with [get-window Create] {
     get-tree 
         | select "platform:\\/resource\\/org.eclipse.sirius.tests.rcptt.properties.instance\\/PropertiesTestsInstance.propertiestests/Test Root"
     get-button Finish | click
 }
 get-view Properties | get-section Reference | get-button "Create a new object" 
-    -after [get-label "Test Element Element2" -after [get-label "Test Element Element2"]] -index 1 | click
+    -after [get-label "Test Element Element2"] -index 1 | click
 with [get-window Create] {
     get-tree 
         | select "platform:\\/resource\\/org.eclipse.sirius.tests.rcptt.properties.instance\\/PropertiesTestsInstance.propertiestests/Test Root"
     get-button Finish | click
 }
 get-view Properties | get-section Reference | get-button "Create a new object" 
-    -after [get-label "Test Element Element2" -after [get-label "Test Element Element2"]] -index 1 | click
+    -after [get-label "Test Element Element2"] -index 1 | click
 with [get-window Create] {
     get-tree 
         | select "platform:\\/resource\\/org.eclipse.sirius.tests.rcptt.properties.instance\\/PropertiesTestsInstance.propertiestests/Test Root"
     get-button Finish | click
 }
 get-view Properties | get-section Reference | get-button "Create a new object" 
-    -after [get-label "Test Element Element2" -after [get-label "Test Element Element2"]] -index 1 | click
+    -after [get-label "Test Element Element2"] -index 1 | click
 with [get-window Create] {
     get-tree 
         | select "platform:\\/resource\\/org.eclipse.sirius.tests.rcptt.properties.instance\\/PropertiesTestsInstance.propertiestests/Test Root"
     get-button Finish | click
 }
 get-view Properties | get-section Reference | get-button "Create a new object" 
-    -after [get-label "Test Element Element2" -after [get-label "Test Element Element2"]] -index 1 | click
+    -after [get-label "Test Element Element2"] -index 1 | click
 with [get-window Create] {
     get-tree 
         | select "platform:\\/resource\\/org.eclipse.sirius.tests.rcptt.properties.instance\\/PropertiesTestsInstance.propertiestests/Test Root"
     get-button Finish | click
 }
+
 // Checks the scrollbar is visible and enabled but the elements are disabled
 with [get-view Properties | get-section Reference] {
     with [get-table -after [get-label "Test Element Element2" -after [get-label "Test Element Element2"]]] {

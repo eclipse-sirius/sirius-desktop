@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _n3bUgG7AEeafMeCy9JeUaw
 Runtime-Version: 2.1.0.201606221726
-Save-Time: 8/31/16 5:13 PM
+Save-Time: 1/27/17 3:28 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -147,7 +147,10 @@ with [get-view Properties | get-section Reference | get-table] {
 	get-property "getItems().TableItem[1].getText()" | equals "Test Element Element12" | verify-true
 }
 // Select an element and move it down in the list
-get-view Properties | get-section Reference | get-button "Move down the selected value" | click
+with [get-view Properties | get-section Reference] {
+	get-table | select "Test Element Element13"
+	get-button "Move down the selected value" | click
+}
 // Check the element was moved down
 with [get-view Properties | get-section Reference | get-table] {
 	get-property "getItems().TableItem[0].getText()" | equals "Test Element Element12" | verify-true

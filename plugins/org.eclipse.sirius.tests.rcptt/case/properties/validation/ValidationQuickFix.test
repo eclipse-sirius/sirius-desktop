@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _jxzdgEN_EeagKLHJ7g9jQA
 Runtime-Version: 2.1.0.201606221726
-Save-Time: 7/6/16 3:57 PM
+Save-Time: 1/24/17 5:38 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -29,7 +29,7 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 // Select the text error
-get-view Properties | get-link "14 errors detected" | click
+get-view Properties | get-link "21 errors detected" | click
 with [get-window "Quick Fix"] {
     get-table | select "Text error message..."
 }
@@ -58,6 +58,6 @@ get-view Properties | get-section Validation | get-editbox -index 1 | get-proper
 // Check that the error decorator is not anymore on the widget
 with [get-view Properties] {
     get-section Validation | get-editbox -index 5 | get-property "decorators[0].visible" | equals false | verify-true
-    get-link "13 errors detected" | get-property caption | equals "13 errors detected" | verify-true
+    get-link "20 errors detected" | get-property caption | equals "20 errors detected" | verify-true
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -11,7 +11,7 @@
         </initialOperation>
       </controls>
       <controls xsi:type="properties:HyperlinkDescription" labelExpression="Style Hyperlink Font" helpExpression="" valueExpression="aql:self" displayExpression="aql:self.stringAttribute">
-        <style labelFontNameExpression="" fontNameExpression="Times new roman" fontSizeExpression="14"/>
+        <style labelFontNameExpression="" fontNameExpression="Times New Roman" fontSizeExpression="14"/>
       </controls>
       <controls xsi:type="properties:HyperlinkDescription" labelExpression="Style Hyperlink Italic" helpExpression="" valueExpression="aql:self" displayExpression="aql:self.stringAttribute">
         <style labelFontNameExpression="" fontNameExpression="">
@@ -39,7 +39,7 @@
         </style>
       </controls>
       <controls xsi:type="properties:HyperlinkDescription" labelExpression="Style Hyperlink All" helpExpression="" valueExpression="aql:self" displayExpression="aql:self.stringAttribute">
-        <style labelFontNameExpression="" fontNameExpression="Times new roman" fontSizeExpression="14">
+        <style labelFontNameExpression="" fontNameExpression="Times New Roman" fontSizeExpression="14">
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           <fontFormat>italic</fontFormat>
           <fontFormat>bold</fontFormat>

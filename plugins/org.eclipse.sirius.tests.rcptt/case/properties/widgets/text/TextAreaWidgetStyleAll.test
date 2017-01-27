@@ -48,7 +48,7 @@ with [get-view Properties | get-section TextArea | get-editbox -index 17] {
 	get-property text | equals Element1 | verify-true
     get-property "styles[0].underline" | equals single | verify-true
     get-property "styles[0].strikeout" | equals true | verify-true
-    get-property "getFont().getFontData().FontData[0].name" | equals "Times new roman" | verify-true
+    get-property "getFont().getFontData().FontData[0].name" | equals "Times New Roman" | verify-true
     get-property "getFont().getFontData().FontData[0].height" | equals "12.0" | verify-true
     get-property "getFont().getFontData().FontData[0].style" | equals 3 | verify-true
     get-property foregroundColor | equals "#9A6717" | verify-true

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="PropertiesTests" version="11.0.0.201601261200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="PropertiesTests" version="11.1.1.201610211630">
   <ownedViewpoints name="PropertiesTestsText"/>
   <extensions xsi:type="properties:ViewExtensionDescription">
     <pages identifier="" labelExpression="Text" groups="//@extensions.0/@groups.0"/>
@@ -11,7 +11,7 @@
         </initialOperation>
       </controls>
       <controls xsi:type="properties:TextDescription" identifier="" labelExpression="Style Text Font" helpExpression="Help" valueExpression="aql:self.stringAttribute">
-        <style labelFontNameExpression="" fontNameExpression="Times new roman" fontSize="12"/>
+        <style labelFontNameExpression="" fontNameExpression="Times New Roman" fontSizeExpression="12"/>
       </controls>
       <controls xsi:type="properties:TextDescription" identifier="" labelExpression="Style Text Italic" helpExpression="Help" valueExpression="aql:self.stringAttribute">
         <style labelFontNameExpression="" fontNameExpression="">
@@ -44,7 +44,7 @@
         </style>
       </controls>
       <controls xsi:type="properties:TextDescription" identifier="" labelExpression="Style Text All" helpExpression="Help" valueExpression="aql:self.stringAttribute">
-        <style labelFontNameExpression="" fontNameExpression="Times new roman" fontSize="12">
+        <style labelFontNameExpression="" fontNameExpression="Times New Roman" fontSizeExpression="12">
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_chocolate']"/>
           <fontFormat>italic</fontFormat>
@@ -69,7 +69,7 @@
         </initialOperation>
       </controls>
       <controls xsi:type="properties:TextAreaDescription" identifier="" labelExpression="Style Text Area Font" isEnabledExpression="" valueExpression="aql:self.stringAttribute">
-        <style labelFontNameExpression="" fontNameExpression="Times new roman" fontSize="12"/>
+        <style labelFontNameExpression="" fontNameExpression="Times New Roman" fontSizeExpression="12"/>
       </controls>
       <controls xsi:type="properties:TextAreaDescription" identifier="" labelExpression="Style Text Area Italic" isEnabledExpression="" valueExpression="aql:self.stringAttribute">
         <style labelFontNameExpression="" fontNameExpression="">
@@ -102,7 +102,7 @@
         </style>
       </controls>
       <controls xsi:type="properties:TextAreaDescription" identifier="" labelExpression="Style Text Area All" valueExpression="aql:self.stringAttribute">
-        <style labelFontNameExpression="" fontNameExpression="Times new roman" fontSize="12">
+        <style labelFontNameExpression="" fontNameExpression="Times New Roman" fontSizeExpression="12">
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_chocolate']"/>
           <fontFormat>italic</fontFormat>

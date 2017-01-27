@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _vnVkEENeEeagKLHJ7g9jQA
 Runtime-Version: 2.1.0.201606221726
-Save-Time: 9/19/16 10:23 AM
+Save-Time: 1/24/17 3:22 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -18,8 +18,7 @@ with [get-view "Model Explorer" | get-tree] {
 with [get-window "Viewpoints Selection"] {
     with [get-table] {
         get-item PropertiesTests | check
-        select PropertiesTestsheck
-        select PropertiesTestsWidget
+        select PropertiesTests | check
         get-item PropertiesTestsValidation | check
         select PropertiesTestsValidation
     }

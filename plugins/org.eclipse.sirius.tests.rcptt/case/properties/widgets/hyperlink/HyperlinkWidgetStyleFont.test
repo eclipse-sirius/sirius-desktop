@@ -43,7 +43,7 @@ with [get-view Properties | get-section Hyperlink | get-editbox -index 3] {
         get-property enablement | equals true | verify-true
         get-property containMenu | equals false | verify-true
         get-property text | equals Element1 | verify-true
-	get-property "getFont().getFontData().FontData[0].name" | equals "Times new roman" | verify-true
+	get-property "getFont().getFontData().FontData[0].name" | equals "Times New Roman" | verify-true
 	get-property "getFont().getFontData().FontData[0].height" | equals "14.0" | verify-true
 	get-property "styles[0].underline" | equals link | verify-true
 }
