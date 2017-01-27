@@ -119,17 +119,17 @@
         <topic href="doc/specifier/properties/Properties_View_Description.html#groups" label="Groups">
           <topic href="doc/specifier/properties/Properties_View_Description.html#group_styles" label="Group styles"></topic>
         </topic>
-        <topic href="doc/specifier/properties/Properties_View_Description.html#controls" label="Controls"></topic>
         <topic href="doc/specifier/properties/Properties_View_Description.html#widgets" label="Widgets">
           <topic href="doc/specifier/properties/Properties_View_Description.html#text" label="Text / Text area">
-            <topic href="doc/specifier/properties/Properties_View_Description.html#edit_text" label="Edit text"></topic>
+            <topic href="doc/specifier/properties/Properties_View_Description.html#edit_text" label="Text edition"></topic>
             <topic href="doc/specifier/properties/Properties_View_Description.html#text_styles" label="Text/Text area styles"></topic>
           </topic>
           <topic href="doc/specifier/properties/Properties_View_Description.html#button" label="Button">
-            <topic href="doc/specifier/properties/Properties_View_Description.html#pushed_button" label="Pushed button"></topic>
+            <topic href="doc/specifier/properties/Properties_View_Description.html#pushed_button" label="Behavior executed on click"></topic>
             <topic href="doc/specifier/properties/Properties_View_Description.html#button_styles" label="Button styles"></topic>
           </topic>
           <topic href="doc/specifier/properties/Properties_View_Description.html#label" label="Label">
+          	<topic href="doc/specifier/properties/Properties_View_Description.html#label_actions" label="Widget actions"></topic>
             <topic href="doc/specifier/properties/Properties_View_Description.html#label_styles" label="Label styles"></topic>
           </topic>
           <topic href="doc/specifier/properties/Properties_View_Description.html#checkbox" label="Checkbox">
@@ -145,35 +145,42 @@
             <topic href="doc/specifier/properties/Properties_View_Description.html#radio_styles" label="Radio styles"></topic>
           </topic>
           <topic href="doc/specifier/properties/Properties_View_Description.html#hyperlink" label="Hyperlink">
-            <topic href="doc/specifier/properties/Properties_View_Description.html#hyperlink_click_on_value" label="Click on value"></topic>
+            <topic href="doc/specifier/properties/Properties_View_Description.html#hyperlink_click_on_value" label="Behavior executed on click"></topic>
+            <topic href="doc/specifier/properties/Properties_View_Description.html#hyperlink_actions" label="Widget actions"></topic>
             <topic href="doc/specifier/properties/Properties_View_Description.html#hyperlink_styles" label="Hyperlink styles"></topic>
           </topic>
           <topic href="doc/specifier/properties/Properties_View_Description.html#reference" label="Reference">
-            <topic href="doc/specifier/properties/Properties_View_Description.html#reference_click_on_value" label="Click on value"></topic>
-            <topic href="doc/specifier/properties/Properties_View_Description.html#actions" label="Actions"></topic>
-            <topic href="doc/specifier/properties/Properties_View_Description.html#action_pushed_button" label="Action pushed button"></topic>
             <topic href="doc/specifier/properties/Properties_View_Description.html#reference_styles" label="Reference styles"></topic>
           </topic>
-          <topic href="doc/specifier/properties/Properties_View_Description.html#custom" label="Custom">
-            <topic href="doc/specifier/properties/Properties_View_Description.html#custom_expression" label="Custom Expression/Operation"></topic>
-            <topic href="doc/specifier/properties/Properties_View_Description.html#custom_styles" label="Custom styles"></topic>
+          <topic href="doc/specifier/properties/Properties_View_Description.html#list" label="List">
+            <topic href="doc/specifier/properties/Properties_View_Description.html#list_on_click_operation" label="Behavior executed on click"></topic>
+            <topic href="doc/specifier/properties/Properties_View_Description.html#list_actions" label="Widget actions"></topic>
+            <topic href="doc/specifier/properties/Properties_View_Description.html#list_action_pushed_button" label="Action pushed button"></topic>
+            <topic href="doc/specifier/properties/Properties_View_Description.html#list_styles" label="List styles"></topic>
           </topic>
+          <topic href="doc/specifier/properties/Properties_View_Description.html#basic_custom_widgets" label="Basic custom widgets">
+            <topic href="doc/specifier/properties/Properties_View_Description.html#basic_custom_widgets_expression" label="Custom Expression/Operation"></topic>
+            <topic href="doc/specifier/properties/Properties_View_Description.html#basic_custom_widgets_styles" label="Custom styles"></topic>
+          </topic>
+          <topic href="doc/specifier/properties/Properties_View_Description.html#advanced_custom_widgets" label="Advanced custom widgets"></topic>
         </topic>
         <topic href="doc/specifier/properties/Properties_View_Description.html#dynamic_mappings" label="Dynamic mappings"></topic>
-        <topic href="doc/specifier/properties/Properties_View_Description.html#containers" label="Containers">
-          <topic href="doc/specifier/properties/Properties_View_Description.html#layout" label="Layout"></topic>
+        <topic href="doc/specifier/properties/Properties_View_Description.html#containers_and_layout" label="Containers and Layout">
         </topic>
       </topic>
       <topic href="doc/specifier/properties/Properties_View_Description.html#styling" label="Styling">
         <topic href="doc/specifier/properties/Properties_View_Description.html#widgets_styles" label="Widgets styles"></topic>
         <topic href="doc/specifier/properties/Properties_View_Description.html#colors" label="Colors"></topic>
         <topic href="doc/specifier/properties/Properties_View_Description.html#conditional_styles" label="Conditional styles"></topic>
-        <topic href="doc/specifier/properties/Properties_View_Description.html#label_properties" label="Label properties"></topic>
       </topic>
       <topic href="doc/specifier/properties/Properties_View_Description.html#validation_rules" label="Validation rules">
         <topic href="doc/specifier/properties/Properties_View_Description.html#page_semantic_validation_rule" label="Page semantic validation rule"></topic>
         <topic href="doc/specifier/properties/Properties_View_Description.html#group_semantic_validation_rule" label="Group semantic validation rule"></topic>
         <topic href="doc/specifier/properties/Properties_View_Description.html#group_property_validation_rule" label="Group property validation rule"></topic>
+      </topic>
+      <topic href="doc/specifier/properties/Properties_View_Description.html#extension_points" label="Extension Points">
+        <topic href="doc/specifier/properties/Properties_View_Description.html#advanced_custom_widgets_extension_points" label="Extension Points for Advanced Custom Widgets"></topic>
+        <topic href="doc/specifier/properties/Properties_View_Description.html#tab_filtering" label="Tab Filtering"></topic>
       </topic>
     </topic>
     <anchor id="moreSpecifierDialectRefs" />
