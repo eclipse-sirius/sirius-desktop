@@ -1,8 +1,8 @@
-target "aql-3.6"
+target "aql-3.7"
 
 with source, requirements
 
-location Acceleo-3.6 "http://download.eclipse.org/acceleo/updates/releases/3.6/R201610060831/" {
+location Acceleo-3.7 "http://download.eclipse.org/acceleo/updates/milestones/3.7/S201701271332" {
 	org.eclipse.acceleo.query.feature.group lazy
 	org.eclipse.acceleo.query.source.feature.group lazy
 	org.antlr.runtime [4.3.0,4.4.0)
