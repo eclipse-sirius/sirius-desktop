@@ -556,12 +556,22 @@
     </propertyTabs>
   </extension>
   <extension point="org.eclipse.sirius.editor.menuBuilder">
-     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.WidgetsMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.WidgetMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.StyleMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.ConditionalStyleMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.ContainerMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.ValidationMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.DynamicMappingMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.PageMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.GroupMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.CategoryMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.CreateWidgetFromDomainClassMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.LayoutMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.PropertiesMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.OverridesMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.CustomOperationMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.CustomExpressionMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.WidgetActionMenuBuilder" />
   </extension>
 </plugin>    
 <!-- End of user code plugin.xml end specifics  -->

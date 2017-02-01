@@ -64,5 +64,7 @@ public class ListDescriptionItemProviderSpec extends ListDescriptionItemProvider
         ListWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createListWidgetConditionalStyle();
         conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createListWidgetStyle());
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_LIST_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_LIST_DESCRIPTION__ACTIONS, PropertiesFactory.eINSTANCE.createWidgetAction()));
     }
 }

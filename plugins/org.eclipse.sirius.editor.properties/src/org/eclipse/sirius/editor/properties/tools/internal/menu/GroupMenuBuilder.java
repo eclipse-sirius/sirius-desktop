@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 Obeo.
+ * Copyright (c) 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,31 +10,30 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.properties.tools.internal.menu;
 
+import org.eclipse.sirius.editor.properties.internal.Messages;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * The menu builder for the widgets.
+ * The menu builder for the group.
  * 
  * @author sbegaudeau
  */
-public class WidgetsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
-
+public class GroupMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
     /**
      * Create the menu.
      */
-    public WidgetsMenuBuilder() {
-        super();
-        addValidType(PropertiesPackage.eINSTANCE.getWidgetDescription());
+    public GroupMenuBuilder() {
+        this.addValidType(PropertiesPackage.eINSTANCE.getGroupDescription());
     }
 
     @Override
     public String getLabel() {
-        return "New Widget";
+        return Messages.GroupMenuBuilder_label;
     }
 
     @Override
     public int getPriority() {
-        return PropertiesMenuBuilderConstants.WIDGETS;
+        return PropertiesMenuBuilderConstants.GROUPS;
     }
 }

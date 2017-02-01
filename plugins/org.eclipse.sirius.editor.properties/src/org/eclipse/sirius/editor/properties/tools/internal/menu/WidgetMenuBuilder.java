@@ -15,27 +15,27 @@ import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuild
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * The menu builder for the style.
+ * The menu builder for the widgets.
  * 
  * @author sbegaudeau
  */
-public class StyleMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
+public class WidgetMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
 
     /**
      * Create the menu.
      */
-    public StyleMenuBuilder() {
-        this.addValidType(PropertiesPackage.eINSTANCE.getGroupStyle());
-        this.addValidType(PropertiesPackage.eINSTANCE.getWidgetStyle());
+    public WidgetMenuBuilder() {
+        super();
+        addValidType(PropertiesPackage.eINSTANCE.getWidgetDescription());
     }
 
     @Override
     public String getLabel() {
-        return Messages.StyleMenuBuilder_label;
+        return Messages.WidgetMenuBuilder_label;
     }
 
     @Override
     public int getPriority() {
-        return PropertiesMenuBuilderConstants.STYLE;
+        return PropertiesMenuBuilderConstants.WIDGET;
     }
 }

@@ -22,14 +22,39 @@ import org.eclipse.sirius.editor.properties.internal.SiriusEditorPropertiesPlugi
  */
 public final class PropertiesMenuBuilderConstants {
     /**
+     * The priority of the pages menu.
+     */
+    public static final int PAGES;
+
+    /**
+     * The priority of the groups menu.
+     */
+    public static final int GROUPS;
+
+    /**
+     * The priority of the category menu.
+     */
+    public static final int CATEGORY;
+
+    /**
      * The priority of the widgets menu.
      */
-    public static final int WIDGETS;
+    public static final int WIDGET;
 
     /**
      * The priority of the create widget from domain class menu.
      */
     public static final int WIDGETS_FROM_DOMAIN_CLASS;
+
+    /**
+     * The priority of the container menu.
+     */
+    public static final int CONTAINER;
+
+    /**
+     * The priority of the dynamic mappings menu.
+     */
+    public static final int DYNAMIC_MAPPINGS;
 
     /**
      * The priority of the overrides menu.
@@ -47,6 +72,31 @@ public final class PropertiesMenuBuilderConstants {
     public static final int STYLE;
 
     /**
+     * The priority of the conditional style menu.
+     */
+    public static final int CONDITIONAL_STYLE;
+
+    /**
+     * The priority of the validation menu.
+     */
+    public static final int VALIDATION;
+
+    /**
+     * The priority of the widget action menu.
+     */
+    public static final int WIDGET_ACTION;
+
+    /**
+     * The priority of the custom expression menu.
+     */
+    public static final int CUSTOM_EXPRESSION;
+
+    /**
+     * The priority of the custom operation menu.
+     */
+    public static final int CUSTOM_OPERATION;
+
+    /**
      * The default priority.
      */
     public static final int DEFAULT_PRIORITY = 100000;
@@ -60,11 +110,21 @@ public final class PropertiesMenuBuilderConstants {
 
     static {
         ResourceLocator rl = SiriusEditorPropertiesPlugin.INSTANCE;
-        WIDGETS = getPriority(rl, "WidgetsMenuPriority");
+        PAGES = getPriority(rl, "PagesMenuPriority");
+        GROUPS = getPriority(rl, "GroupsMenuPriority");
+        CATEGORY = getPriority(rl, "CategoryMenuPriority");
+        WIDGET = getPriority(rl, "WidgetsMenuPriority");
         WIDGETS_FROM_DOMAIN_CLASS = getPriority(rl, "WidgetsFromDomainClassMenuPriority");
+        CONTAINER = getPriority(rl, "ContainerMenuPriority");
+        DYNAMIC_MAPPINGS = getPriority(rl, "DynamicMappingsMenuPriority");
         OVERRIDES = getPriority(rl, "OverridesMenuPriority");
         LAYOUT = getPriority(rl, "LayoutMenuPriority");
         STYLE = getPriority(rl, "StyleMenuPriority");
+        CONDITIONAL_STYLE = getPriority(rl, "ConditionalStyleMenuPriority");
+        VALIDATION = getPriority(rl, "ValidationMenuPriority");
+        WIDGET_ACTION = getPriority(rl, "WidgetActionMenuPriority");
+        CUSTOM_EXPRESSION = getPriority(rl, "CustomExpressionMenuPriority");
+        CUSTOM_OPERATION = getPriority(rl, "CustomOperationMenuPriority");
     }
 
     /**

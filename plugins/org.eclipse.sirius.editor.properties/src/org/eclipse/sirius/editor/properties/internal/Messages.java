@@ -61,6 +61,60 @@ public final class Messages {
     @TranslatableMessage
     public static String DefaultMultivaluedEAttributeDescriptionFactory_widgetLabel;
 
+    @TranslatableMessage
+    public static String LayoutMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String OverridesMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String PropertiesMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String PropertiesMenuBuilder_NewPropertiesView_label;
+
+    @TranslatableMessage
+    public static String PropertiesMenuBuilder_ExtendPropertiesView_label;
+
+    @TranslatableMessage
+    public static String PropertiesMenuBuilder_ImportPropertiesView_label;
+
+    @TranslatableMessage
+    public static String WidgetMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String StyleMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String ConditionalStyleMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String ContainerMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String ValidationMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String DynamicMappingMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String PageMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String GroupMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String CategoryMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String WidgetActionMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String CustomOperationMenuBuilder_label;
+
+    @TranslatableMessage
+    public static String CustomExpressionMenuBuilder_label;
+
     // CHECKSTYLE:ON
 
     private Messages() {

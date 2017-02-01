@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 Obeo.
+ * Copyright (c) 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,27 +15,28 @@ import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuild
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * The menu builder for the style.
+ * The menu builder for the custom operations.
  * 
  * @author sbegaudeau
  */
-public class StyleMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
+public class CustomOperationMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
 
     /**
      * Create the menu.
      */
-    public StyleMenuBuilder() {
-        this.addValidType(PropertiesPackage.eINSTANCE.getGroupStyle());
-        this.addValidType(PropertiesPackage.eINSTANCE.getWidgetStyle());
+    public CustomOperationMenuBuilder() {
+        super();
+        addValidType(PropertiesPackage.eINSTANCE.getCustomOperation());
     }
 
     @Override
     public String getLabel() {
-        return Messages.StyleMenuBuilder_label;
+        return Messages.CustomOperationMenuBuilder_label;
     }
 
     @Override
     public int getPriority() {
-        return PropertiesMenuBuilderConstants.STYLE;
+        return PropertiesMenuBuilderConstants.CUSTOM_OPERATION;
     }
+
 }

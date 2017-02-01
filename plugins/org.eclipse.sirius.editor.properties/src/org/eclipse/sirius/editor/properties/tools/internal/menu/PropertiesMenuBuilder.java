@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.editor.properties.internal.Messages;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
 import org.eclipse.sirius.properties.Category;
@@ -49,7 +50,7 @@ public class PropertiesMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
 
     @Override
     public String getLabel() {
-        return "New Properties";
+        return Messages.PropertiesMenuBuilder_label;
     }
 
     @Override
@@ -81,9 +82,9 @@ public class PropertiesMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
                 CommandParameter extendsPropertyViewCommandParameter = this.getExtendsPropertyViewCommandParameter(group);
 
                 Collection<CreateChildAction> actions = new ArrayList<>();
-                actions.add(new PropertiesCreateChildAction(editor, structuredSelection, newPropertyViewCommandParameter, "New Properties View", 1000));
-                actions.add(new PropertiesCreateChildAction(editor, structuredSelection, importPropertyViewCommandParameter, "Import Default Properties View", 2000));
-                actions.add(new PropertiesCreateChildAction(editor, structuredSelection, extendsPropertyViewCommandParameter, "Extend Default Properties View", 3000));
+                actions.add(new PropertiesCreateChildAction(editor, structuredSelection, newPropertyViewCommandParameter, Messages.PropertiesMenuBuilder_NewPropertiesView_label, 1000));
+                actions.add(new PropertiesCreateChildAction(editor, structuredSelection, importPropertyViewCommandParameter, Messages.PropertiesMenuBuilder_ImportPropertiesView_label, 2000));
+                actions.add(new ExtendsPropertyViewCreateChildAction(editor, structuredSelection, extendsPropertyViewCommandParameter));
 
                 this.advancedChildActions = actions;
             });
@@ -111,12 +112,7 @@ public class PropertiesMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     private CommandParameter getExtendsPropertyViewCommandParameter(Group group) {
         ViewExtensionDescription viewExtensionDescription = PropertiesFactory.eINSTANCE.createViewExtensionDescription();
-
         PageDescription pageDescription = PropertiesFactory.eINSTANCE.createPageDescription();
-        ViewExtensionDescription defaultRules = DefaultRulesProvider.INSTANCE.getDefaultRules(group.eResource().getResourceSet());
-
-        Optional<PageDescription> pageDescriptionToExtend = defaultRules.getCategories().stream().findFirst().flatMap(category -> category.getPages().stream().findFirst());
-        pageDescriptionToExtend.ifPresent(pageDescription::setExtends);
 
         Category category = PropertiesFactory.eINSTANCE.createCategory();
         category.getPages().add(pageDescription);
@@ -130,6 +126,54 @@ public class PropertiesMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
             return ((PropertiesCreateChildAction) action).getPriority();
         }
         return super.getPriority(action);
+    }
+
+    /**
+     * Utility class used to extend the Default Property View description
+     * without loading the default rules in the resource set of the odesign
+     * until the moment when the action will be executed.
+     * 
+     * @author sbegaudeau
+     */
+    private static class ExtendsPropertyViewCreateChildAction extends PropertiesCreateChildAction {
+
+        /**
+         * The constructor.
+         * 
+         * @param editorPart
+         *            The editor part
+         * @param selection
+         *            The selection
+         * @param commandParameter
+         *            The command parameter
+         */
+        public ExtendsPropertyViewCreateChildAction(IEditorPart editorPart, ISelection selection, CommandParameter commandParameter) {
+            super(editorPart, selection, commandParameter, Messages.PropertiesMenuBuilder_ExtendPropertiesView_label, 3000);
+        }
+
+        @Override
+        public void run() {
+            if (this.descriptor instanceof CommandParameter) {
+                CommandParameter commandParameter = (CommandParameter) this.descriptor;
+                Object owner = commandParameter.getOwner();
+                Object value = commandParameter.getValue();
+                if (owner instanceof Group && value instanceof ViewExtensionDescription) {
+                    Group group = (Group) owner;
+                    ViewExtensionDescription viewExtensionDescription = (ViewExtensionDescription) value;
+                    viewExtensionDescription.getCategories().stream().findFirst().ifPresent(category -> {
+                        category.getPages().stream().findFirst().ifPresent(pageDescription -> {
+                            ViewExtensionDescription defaultRules = DefaultRulesProvider.INSTANCE.getDefaultRules(group.eResource().getResourceSet());
+                            Optional<PageDescription> pageDescriptionToExtend = defaultRules.getCategories().stream().findFirst()
+                                    .flatMap(defaultCategory -> defaultCategory.getPages().stream().findFirst());
+                            pageDescriptionToExtend.ifPresent(pageDescription::setExtends);
+                        });
+                    });
+                }
+            }
+
+            super.run();
+        }
+
     }
 
 }

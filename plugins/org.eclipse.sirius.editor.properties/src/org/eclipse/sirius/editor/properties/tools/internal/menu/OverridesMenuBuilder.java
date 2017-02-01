@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.properties.tools.internal.menu;
 
+import org.eclipse.sirius.editor.properties.internal.Messages;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
@@ -29,7 +30,7 @@ public class OverridesMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
 
     @Override
     public String getLabel() {
-        return "New Override";
+        return Messages.OverridesMenuBuilder_label;
     }
 
     @Override
