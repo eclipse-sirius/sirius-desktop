@@ -156,7 +156,7 @@
         <input type="org.eclipse.sirius.properties.LabelWidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleFontFormatPropertySection"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleFontFormatPropertySectionSpec"
                id="properties.section.textWidgetStyle.FontFormat"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textwidgetstyle.TextWidgetStyleFontFormatFilter"
                afterSection="properties.section.textWidgetStyle.ForegroundColor"
