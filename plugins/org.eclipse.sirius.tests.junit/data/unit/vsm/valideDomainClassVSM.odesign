@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="valideDomainClassVSM" version="11.0.0.201601261200">
   <ownedViewpoints name="viewpointValidDomain">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="class" domainClass="EClass">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="class" domainClass="ecore.EClass">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
-        <containerMappings name="class1" domainClass="EClass">
-          <subContainerMappings name="attr1" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+        <containerMappings name="class1" domainClass="ecore.EClass">
+          <subContainerMappings name="attr1" semanticCandidatesExpression="feature:eAllContents" domainClass="ecore.EAttribute">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -20,8 +20,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="class2" domainClass="EClass">
-          <subContainerMappings name="attr2" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+        <containerMappings name="class2" domainClass="ecore.EClass">
+          <subContainerMappings name="attr2" semanticCandidatesExpression="feature:eAllContents" domainClass="ecore.EAttribute">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -36,8 +36,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="class3" domainClass="EClass">
-          <subContainerMappings name="attr3" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+        <containerMappings name="class3" domainClass="ecore.EClass">
+          <subContainerMappings name="attr3" semanticCandidatesExpression="feature:eAllContents" domainClass="ecore.EAttribute">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -53,16 +53,16 @@
           </style>
         </containerMappings>
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="Deco" decoratorPath="" domainClass="EClass"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="Deco" decoratorPath="" domainClass="ecore.EClass"/>
         </decorationDescriptionsSet>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="CrossTable" domainClass="EPackage">
+    <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="CrossTable" domainClass="ecore.EPackage">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <ownedLineMappings name="Line" domainClass="EClass"/>
-      <ownedColumnMappings name="Column" domainClass="EClass"/>
+      <ownedLineMappings name="Line" domainClass="ecore.EClass"/>
+      <ownedColumnMappings name="Column" domainClass="ecore.EClass"/>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_3:TreeDescription" name="Tree" domainClass="EPackage">
+    <ownedRepresentations xsi:type="description_3:TreeDescription" name="Tree" domainClass="ecore.EPackage">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
     </ownedRepresentations>
   </ownedViewpoints>

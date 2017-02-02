@@ -31,6 +31,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -42,7 +43,9 @@ import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 import org.eclipse.sirius.diagram.sequence.description.MessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
+import org.eclipse.sirius.ecore.design.service.EcoreSamplePlugin;
 import org.eclipse.sirius.editor.tools.internal.marker.SiriusEditorInterpreterMarkerService;
+import org.eclipse.sirius.sample.interactions.Activator;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle;
@@ -151,8 +154,10 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     public void testAValidationExpressionWithAQL() {
         Layer acceleo2Layer = getLayer(diagramEntitiesAcceleo2, "Default");
         ContainerMapping nodeMapping = getContainerMapping(acceleo2Layer, "EC EClass");
-        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "semanticCandidatesExpression", "aql:self.invalidFeatureExpression","Feature invalidFeatureExpression not found in EClass EPackage");
-        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "semanticElements", "aql:self.invalidFeatureExpression","Feature invalidFeatureExpression not found in EClass EPackage","Feature invalidFeatureExpression not found in EClass EClass");
+        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "semanticCandidatesExpression", "aql:self.invalidFeatureExpression",
+                "Feature invalidFeatureExpression not found in EClass EPackage");
+        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "semanticElements", "aql:self.invalidFeatureExpression", "Feature invalidFeatureExpression not found in EClass EPackage",
+                "Feature invalidFeatureExpression not found in EClass EClass");
     }
 
     /**
@@ -177,12 +182,14 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
         ContainerMapping nodeMapping = getContainerMapping(acceleo3Layer, "EC EClass");
         // invalidFeature ECLass : a validation error should be raised, but not
         // InterpreterException
-        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "domainClass", "Nothing", "The Class Nothing does not exist.");
+        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "domainClass", "Nothing", "The Class Nothing does not exist.",
+                "The type name Nothing used in domainClass does not have a package prefix.");
         // invalidFeature ECLass : a validation error should be raised
-        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "semanticElements", "[self.invalidFeature/]", "Invalid Type: Nothing", "Unrecognized variable: (invalidFeature)",
-                "The Class Nothing does not exist.");
+        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "semanticElements", "[self.invalidFeature/]", "Invalid Type: Nothing",
+                "The type name Nothing used in domainClass does not have a package prefix.", "Unrecognized variable: (invalidFeature)", "The Class Nothing does not exist.");
         // valid EClass : interpreter exceptions should now be raised
-        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "domainClass", "EClass", "Unrecognized variable: (invalidFeature)");
+        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "domainClass", "EClass", "Unrecognized variable: (invalidFeature)",
+                "The type name EClass used in domainClass does not have a package prefix.");
     }
 
     /**
@@ -326,8 +333,11 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
      */
     public void testValidationExpressionWithAcceleo3OnSequenceDiagramInstanceRole() {
         InstanceRoleMapping instanceRole = (InstanceRoleMapping) sequenceDiagramAcceleo3.getDefaultLayer().getNodeMappings().iterator().next();
-        ensureExpressionValidationRaisedExpectedErrors(instanceRole, "semanticCandidatesExpression", "[self/]");
-        ensureExpressionValidationRaisedExpectedErrors(instanceRole, "semanticCandidatesExpression", "[self.invalidFeature/]", "Unrecognized variable: (invalidFeature)");
+        ensureExpressionValidationRaisedExpectedErrors(instanceRole, "semanticCandidatesExpression", "[self/]",
+                "The EClass interactions.Participant used in domainClass is not accessible. You are most likely trying to use an EClass without having a dependency to its plugin.");
+        ensureExpressionValidationRaisedExpectedErrors(instanceRole, "semanticCandidatesExpression", "[self.invalidFeature/]",
+                "The EClass interactions.Participant used in domainClass is not accessible. You are most likely trying to use an EClass without having a dependency to its plugin.",
+                "Unrecognized variable: (invalidFeature)");
     }
 
     /**
@@ -336,8 +346,11 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
     public void testValidationExpressionWithAcceleo3OnSequenceDiagramExecution() {
         InstanceRoleMapping instanceRole = (InstanceRoleMapping) sequenceDiagramAcceleo3.getDefaultLayer().getNodeMappings().iterator().next();
         ExecutionMapping executionMapping = (ExecutionMapping) instanceRole.getAllMappings().iterator().next();
-        ensureExpressionValidationRaisedExpectedErrors(executionMapping, "startingEndFinderExpression", "[self/]");
-        ensureExpressionValidationRaisedExpectedErrors(executionMapping, "startingEndFinderExpression", "[self.invalidFeature/]", "Unrecognized variable: (invalidFeature)");
+        ensureExpressionValidationRaisedExpectedErrors(executionMapping, "startingEndFinderExpression", "[self/]",
+                "The EClass interactions.Participant used in domainClass is not accessible. You are most likely trying to use an EClass without having a dependency to its plugin.");
+        ensureExpressionValidationRaisedExpectedErrors(executionMapping, "startingEndFinderExpression", "[self.invalidFeature/]",
+                "The EClass interactions.Participant used in domainClass is not accessible. You are most likely trying to use an EClass without having a dependency to its plugin.",
+                "Unrecognized variable: (invalidFeature)");
     }
 
     /**
@@ -345,8 +358,11 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
      */
     public void testValidationExpressionWithAcceleo3OnSequenceDiagramMessageEnd() {
         MessageMapping messageMapping = (MessageMapping) sequenceDiagramAcceleo3.getDefaultLayer().getEdgeMappings().iterator().next();
-        ensureExpressionValidationRaisedExpectedErrors(messageMapping, "sendingEndFinderExpression", "[self.sendingEnd/]");
-        ensureExpressionValidationRaisedExpectedErrors(messageMapping, "sendingEndFinderExpression", "[self.invalidFeature/]", "Unrecognized variable: (invalidFeature)");
+        ensureExpressionValidationRaisedExpectedErrors(messageMapping, "sendingEndFinderExpression", "[self.sendingEnd/]",
+                "The EClass interactions.FeatureAccessMessage used in domainClass is not accessible. You are most likely trying to use an EClass without having a dependency to its plugin.");
+        ensureExpressionValidationRaisedExpectedErrors(messageMapping, "sendingEndFinderExpression", "[self.invalidFeature/]",
+                "The EClass interactions.FeatureAccessMessage used in domainClass is not accessible. You are most likely trying to use an EClass without having a dependency to its plugin.",
+                "Unrecognized variable: (invalidFeature)");
     }
 
     protected void ensureExpressionValidationRaisedExpectedErrors(EObject target, String featureName, Object newValue, String... message) {
@@ -418,6 +434,7 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
 
     private Layer getLayer(DiagramDescription diagramDescription, final String expectedLayerName) {
         Iterable<Layer> layers = Iterables.filter(diagramDescription.getAllLayers(), new Predicate<Layer>() {
+            @Override
             public boolean apply(Layer input) {
                 return input.getName().equals(expectedLayerName);
             }

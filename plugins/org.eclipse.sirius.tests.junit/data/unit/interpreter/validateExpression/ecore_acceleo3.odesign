@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_4="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="Ecore Editing Workbench V4.6" version="10.1.3.201511131800">
   <ownedViewpoints endUserDocumentation="Provides graphical and tabular modelers to design an Ecore model." name="Design" modelFileExtension="ecore">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.0/@ownedTools[name='External%20EClass%20from%20treeview'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20external%20package']" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="Entities Acceleo2" titleExpression="aql:self.name + ' package entities'" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.0/@ownedTools[name='External%20EClass%20from%20treeview'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20external%20package']" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="Entities Acceleo2" titleExpression="aql:self.name + ' package entities'" domainClass="ecore.EPackage" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide class content">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
@@ -34,7 +34,7 @@
         </ownedRules>
       </validationSet>
       <defaultLayer name="Default">
-        <edgeMappings name="EC_EReference" preconditionExpression="aql:self.eOpposite = null" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.4/@ownedTools[name='EReference%20Name']" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectEReference']">
+        <edgeMappings name="EC_EReference" preconditionExpression="aql:self.eOpposite = null" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.4/@ownedTools[name='EReference%20Name']" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" domainClass="ecore.EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectEReference']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.render()">
@@ -84,7 +84,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <edgeMappings name="Bi-directional EC_EReference " semanticCandidatesExpression="aql:self.getEOppositeEReferences(self.eAllContents(ecore::EReference))" semanticElements="aql:Sequence{self} + Sequence{self.eOpposite}" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" targetExpression="" domainClass="EReference" useDomainElement="true">
+        <edgeMappings name="Bi-directional EC_EReference " semanticCandidatesExpression="aql:self.getEOppositeEReferences(self.eAllContents(ecore::EReference))" semanticElements="aql:Sequence{self} + Sequence{self.eOpposite}" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" targetExpression="" domainClass="ecore.EReference" useDomainElement="true">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql: if self.derived then '/' + self.getEOppositeEReferenceName() else self.getEOppositeEReferenceName() endif">
@@ -92,8 +92,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EC EClass" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
-          <subNodeMappings name="EC EAttribute" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20EAttribute%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+        <containerMappings name="EC EClass" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="ecore.EClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
+          <subNodeMappings name="EC EAttribute" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20EAttribute%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="ecore.EAttribute">
             <style xsi:type="style:BundledImageDescription" labelExpression="aql:self.render()" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -146,7 +146,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EC External EClass" semanticCandidatesExpression="aql:self.allRoots().eAllContents(ecore::EClass) - self.eContents()->filter(ecore::EClass)" createElements="false" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
+        <containerMappings name="EC External EClass" semanticCandidatesExpression="aql:self.allRoots().eAllContents(ecore::EClass) - self.eContents()->filter(ecore::EClass)" createElements="false" domainClass="ecore.EClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="aql:self.name + ' in ' + self.eResource().getURI().lastSegment()" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -160,7 +160,7 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'new EClass ' + self.eContainer().eContents()->filter(ecore::EClass)->size()"/>
                 </firstModelOperations>
               </initialOperation>
@@ -169,7 +169,7 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'new AbstractClass ' + self.eContainer().eContents()->filter(ecore::EClass)->size()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="true"/>
                 </firstModelOperations>
@@ -179,7 +179,7 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'new Interface ' + self.eContainer().eContents()->filter(ecore::EClass)->size()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="interface" valueExpression="true"/>
                 </firstModelOperations>
@@ -231,7 +231,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EAttribute" referenceName="eStructuralFeatures">
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EAttribute" referenceName="eStructuralFeatures">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new Attribute"/>
               </firstModelOperations>
             </initialOperation>
@@ -283,7 +283,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EReference" referenceName="eStructuralFeatures">
                   <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'newEReference' + self.eContainerOrSelf(ecore::EClassifier).eAllContents(ecore::EReference)->size()"/>
                 </subModelOperations>
@@ -297,12 +297,12 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="instanceTarget">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EReference" referenceName="eStructuralFeatures" variableName="instanceTarget">
                   <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:source"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:source.name.toLower()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="instanceSource">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EReference" referenceName="eStructuralFeatures" variableName="instanceSource">
                     <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:target.name.toLower()"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="eOpposite" valueExpression="var:instanceTarget"/>
@@ -321,7 +321,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EReference" referenceName="eStructuralFeatures">
                   <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new EReference"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="containment" valueExpression="aql:true"/>
@@ -463,7 +463,7 @@
         </toolSections>
       </defaultLayer>
       <additionalLayers endUserDocumentation="Add support for sub-packages." name="Package" activeByDefault="true">
-        <containerMappings name="Design Package" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
+        <containerMappings name="Design Package" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -471,7 +471,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Dropped Package" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" createElements="false" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EDataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package']">
+        <containerMappings name="Dropped Package" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" createElements="false" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EDataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package']">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -484,7 +484,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EPackage" referenceName="eSubpackages" variableName="package">
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages" variableName="package">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:package">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'new Package ' + self.eContainer().eContents()->filter(ecore::EPackage)->size()"/>
                 </subModelOperations>
@@ -538,7 +538,7 @@
         </toolSections>
       </additionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.0/@ownedTools[name='External%20EClass%20from%20treeview'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20external%20package']" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="Entities Acceleo3" titleExpression="aql:self.name + ' package entities'" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.0/@ownedTools[name='External%20EClass%20from%20treeview'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20external%20package']" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="Entities Acceleo3" titleExpression="aql:self.name + ' package entities'" domainClass="ecore.EPackage" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide class content">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
@@ -574,7 +574,7 @@
         </ownedRules>
       </validationSet>
       <defaultLayer name="Default">
-        <edgeMappings name="EC_EReference" preconditionExpression="aql:self.eOpposite = null" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.4/@ownedTools[name='EReference%20Name']" semanticElements="[self/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="[self.eType/]" sourceFinderExpression="[eContainer(OclAny)/]" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectEReference']">
+        <edgeMappings name="EC_EReference" preconditionExpression="aql:self.eOpposite = null" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.4/@ownedTools[name='EReference%20Name']" semanticElements="[self/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="[self.eType/]" sourceFinderExpression="[eContainer(OclAny)/]" domainClass="ecore.EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectEReference']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="[name/]">
@@ -624,7 +624,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <edgeMappings name="Bi-directional EC_EReference " semanticCandidatesExpression="aql:self.getEOppositeEReferences(self.eAllContents(ecore::EReference))" semanticElements="aql:Sequence{self} + Sequence{self.eOpposite}" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="[eType/]" sourceFinderExpression="[eContainer(OclAny)/]" targetExpression="" domainClass="EReference" useDomainElement="true">
+        <edgeMappings name="Bi-directional EC_EReference " semanticCandidatesExpression="aql:self.getEOppositeEReferences(self.eAllContents(ecore::EReference))" semanticElements="aql:Sequence{self} + Sequence{self.eOpposite}" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="[eType/]" sourceFinderExpression="[eContainer(OclAny)/]" targetExpression="" domainClass="ecore.EReference" useDomainElement="true">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql: if self.derived then '/' + self.getEOppositeEReferenceName() else self.getEOppositeEReferenceName() endif">
@@ -632,8 +632,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EC EClass" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
-          <subNodeMappings name="EC EAttribute" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20EAttribute%20Name']" semanticCandidatesExpression="[eAttributes/]" domainClass="EAttribute">
+        <containerMappings name="EC EClass" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
+          <subNodeMappings name="EC EAttribute" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20EAttribute%20Name']" semanticCandidatesExpression="[eAttributes/]" domainClass="ecore.EAttribute">
             <style xsi:type="style:BundledImageDescription" labelExpression="[name/]" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -686,7 +686,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EC External EClass" semanticCandidatesExpression="aql:self.allRoots().eAllContents(ecore::EClass) - self.eContents()->filter(ecore::EClass)" createElements="false" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
+        <containerMappings name="EC External EClass" semanticCandidatesExpression="aql:self.allRoots().eAllContents(ecore::EClass) - self.eContents()->filter(ecore::EClass)" createElements="false" domainClass="ecore.EClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="aql:self.name + ' in ' + self.eResource().getURI().lastSegment()" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -700,7 +700,7 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['new EClass '.concat(self.eContainer(EPackage).eClassifiers->size().oclAsType(String))/]"/>
                 </firstModelOperations>
               </initialOperation>
@@ -709,7 +709,7 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'new AbstractClass ' + self.eContainer().eContents()->filter(ecore::EClass)->size()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="true"/>
                 </firstModelOperations>
@@ -719,7 +719,7 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'new Interface ' + self.eContainer().eContents()->filter(ecore::EClass)->size()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="interface" valueExpression="true"/>
                 </firstModelOperations>
@@ -771,7 +771,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EAttribute" referenceName="eStructuralFeatures">
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EAttribute" referenceName="eStructuralFeatures">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new Attribute"/>
               </firstModelOperations>
             </initialOperation>
@@ -823,7 +823,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EReference" referenceName="eStructuralFeatures">
                   <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'newEReference' + self.eContainerOrSelf(ecore::EClassifier).eAllContents(ecore::EReference)->size()"/>
                 </subModelOperations>
@@ -837,12 +837,12 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="instanceTarget">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EReference" referenceName="eStructuralFeatures" variableName="instanceTarget">
                   <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:source"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:source.name.toLower()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="instanceSource">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EReference" referenceName="eStructuralFeatures" variableName="instanceSource">
                     <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:target.name.toLower()"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="eOpposite" valueExpression="var:instanceTarget"/>
@@ -861,7 +861,7 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EReference" referenceName="eStructuralFeatures">
                   <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new EReference"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="containment" valueExpression="aql:true"/>
@@ -1003,7 +1003,7 @@
         </toolSections>
       </defaultLayer>
       <additionalLayers endUserDocumentation="Add support for sub-packages." name="Package" activeByDefault="true">
-        <containerMappings name="Design Package" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
+        <containerMappings name="Design Package" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1011,7 +1011,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Dropped Package" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" createElements="false" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EDataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package']">
+        <containerMappings name="Dropped Package" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" createElements="false" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EDataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package']">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1024,7 +1024,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EPackage" referenceName="eSubpackages" variableName="package">
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages" variableName="package">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:package">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'new Package ' + self.eContainer().eContents()->filter(ecore::EPackage)->size()"/>
                 </subModelOperations>
@@ -1078,9 +1078,9 @@
         </toolSections>
       </additionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:EditionTableDescription" endUserDocumentation="A tabular editor (spreadsheet-like) of the entities in an Ecore model." name="Classes Acceleo3" titleExpression="aql:'Classes in ' + self.name + ' package'" domainClass="EPackage">
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" endUserDocumentation="A tabular editor (spreadsheet-like) of the entities in an Ecore model." name="Classes Acceleo3" titleExpression="aql:'Classes in ' + self.name + ' package'" domainClass="ecore.EPackage">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <ownedLineMappings name="Classes lines" domainClass="EClass" semanticCandidatesExpression="[eClassifiers/]">
+      <ownedLineMappings name="Classes lines" domainClass="ecore.EClass" semanticCandidatesExpression="[eClassifiers/]">
         <foregroundConditionalStyle predicateExpression="[abstract/]">
           <style labelSize="10">
             <labelFormat>italic</labelFormat>
@@ -1089,11 +1089,11 @@
         </foregroundConditionalStyle>
         <ownedSubLines name="Feature" domainClass="EStructuralFeature" semanticCandidatesExpression="[eStructuralFeatures/]"/>
       </ownedLineMappings>
-      <ownedLineMappings name="Package" domainClass="EPackage" headerLabelExpression="aql:self.name">
+      <ownedLineMappings name="Package" domainClass="ecore.EPackage" headerLabelExpression="aql:self.name">
         <defaultBackground>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
         </defaultBackground>
-        <ownedSubLines name="Classes lines" domainClass="EClass" semanticCandidatesExpression="[eClassifiers/]">
+        <ownedSubLines name="Classes lines" domainClass="ecore.EClass" semanticCandidatesExpression="[eClassifiers/]">
           <ownedSubLines name="Feature" domainClass="EStructuralFeature" semanticCandidatesExpression="[eStructuralFeatures/]"/>
         </ownedSubLines>
       </ownedLineMappings>
@@ -1102,16 +1102,16 @@
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
         <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[container/]">
-          <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
             <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="NewEClass"/>
           </subModelOperations>
         </firstModelOperation>
       </ownedCreateLine>
       <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="name" labelExpression="aql: if self.derived then '/' + self.name else self.name endif"/>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_3:TreeDescription" name="Classes Acceleo3 (Tree)" domainClass="EPackage">
+    <ownedRepresentations xsi:type="description_3:TreeDescription" name="Classes Acceleo3 (Tree)" domainClass="ecore.EPackage">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <subItemMappings name="Class (TreeItem)" domainClass="EClass" semanticCandidatesExpression="[self.eClassifiers/]">
+      <subItemMappings name="Class (TreeItem)" domainClass="ecore.EClass" semanticCandidatesExpression="[self.eClassifiers/]">
         <defaultStyle labelExpression="[name/]">
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

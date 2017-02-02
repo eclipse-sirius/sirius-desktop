@@ -4,7 +4,7 @@
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Extension C" viewpointURI="viewpoint:/DesignerTestProject/ViewpointA" representationName="FirstDiagram">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <layers name="additionnalLayer">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="TheMegaExtension" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="TheMegaExtension" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EClass">
           <style xsi:type="style:DotDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

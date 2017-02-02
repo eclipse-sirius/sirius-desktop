@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="compartments" version="11.0.0.201601261200">
   <ownedViewpoints name="Compartments">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diag with VStack" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diag with VStack" domainClass="ecore.EPackage" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
-        <containerMappings name="VStack" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="VerticalStack">
-          <subContainerMappings name="ListRegions" semanticCandidatesExpression="feature:eContents" domainClass="EClass" childrenPresentation="List">
-            <subNodeMappings name="Attributes" semanticCandidatesExpression="feature:eContents" domainClass="EAttribute">
+        <containerMappings name="VStack" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage" childrenPresentation="VerticalStack">
+          <subContainerMappings name="ListRegions" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EClass" childrenPresentation="List">
+            <subNodeMappings name="Attributes" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EAttribute">
               <style xsi:type="style:SquareDescription" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -45,8 +45,8 @@
               </style>
             </conditionnalStyles>
           </subContainerMappings>
-          <subContainerMappings name="FreeFormRegions" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@toolSections.0/@ownedTools[name='drop%20class']">
-            <subNodeMappings name="nodes" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <subContainerMappings name="FreeFormRegions" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@toolSections.0/@ownedTools[name='drop%20class']">
+            <subNodeMappings name="nodes" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EClass">
               <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -106,7 +106,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EAttribute" referenceName="eStructuralFeatures">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EAttribute" referenceName="eStructuralFeatures">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'attr' + container.eContents()->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -117,7 +117,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'p' + container.eSubpackages->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -128,7 +128,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'class' + container.eClassifiers->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -139,7 +139,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'class' + container.eClassifiers->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -161,9 +161,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'p' + container.eSubpackages->size()"/>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="newClass">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="newClass">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Left_C' + container.eClassifiers->size()"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -175,12 +175,12 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'p' + container.eSubpackages->size()"/>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="newClass">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="newClass">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Left_C0"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="newClass">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="newClass">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Left_C1"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -192,7 +192,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Hide' + container.eSubpackages->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -203,7 +203,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Init_p' + container.eSubpackages->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -214,9 +214,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Init_p' + container.eSubpackages->size()"/>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="newClass">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="newClass">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Left_C' + container.eClassifiers->size()"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -228,12 +228,12 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Init_p' + container.eSubpackages->size()"/>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="newClass">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="newClass">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Left_C0"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="newClass">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="newClass">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Left_C1"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -243,12 +243,12 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diag with HStack" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diag with HStack" domainClass="ecore.EPackage" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
-        <containerMappings name="HStack" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="HorizontalStack">
-          <subContainerMappings name="HListRegions" semanticCandidatesExpression="feature:eContents" domainClass="EClass" childrenPresentation="List">
-            <subNodeMappings name="HAttributes" semanticCandidatesExpression="feature:eContents" domainClass="EAttribute">
+        <containerMappings name="HStack" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="HListRegions" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EClass" childrenPresentation="List">
+            <subNodeMappings name="HAttributes" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EAttribute">
               <style xsi:type="style:SquareDescription" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -287,8 +287,8 @@
               </style>
             </conditionnalStyles>
           </subContainerMappings>
-          <subContainerMappings name="FreeFormRegions" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@toolSections.0/@ownedTools[name='drop%20class']">
-            <subNodeMappings name="nodes" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <subContainerMappings name="FreeFormRegions" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@toolSections.0/@ownedTools[name='drop%20class']">
+            <subNodeMappings name="nodes" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EClass">
               <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -342,7 +342,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EAttribute" referenceName="eStructuralFeatures">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EAttribute" referenceName="eStructuralFeatures">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'attr'+ container.eContents()->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -353,7 +353,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'p' + container.eSubpackages->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -364,7 +364,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'class' + container.eClassifiers->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -375,7 +375,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'class' + container.eClassifiers->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -397,9 +397,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'p' + container.eSubpackages->size()"/>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="newClass">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="newClass">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Left_C' + container.eClassifiers->size()"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -411,12 +411,12 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'p' + container.eSubpackages->size()"/>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="newClass">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="newClass">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Left_C0"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="newClass">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="newClass">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Left_C1"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -428,7 +428,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Hide' + container.eSubpackages->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -439,7 +439,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Init_p' + container.eSubpackages->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -450,9 +450,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Init_p' + container.eSubpackages->size()"/>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="newClass">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="newClass">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Left_C' + container.eClassifiers->size()"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -464,12 +464,12 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Init_p' + container.eSubpackages->size()"/>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="newClass">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="newClass">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Left_C0"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="newClass">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="newClass">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Left_C1"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -479,12 +479,12 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="RecurDiag" domainClass="EPackage">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="RecurDiag" domainClass="ecore.EPackage">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
-        <containerMappings name="EPackageHStack1" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="HorizontalStack">
-          <subContainerMappings name="LeftPane" semanticCandidatesExpression="var:self" domainClass="EPackage">
-            <subNodeMappings name="ListElt" semanticCandidatesExpression="feature:eContents" synchronizationLock="true" domainClass="EPackage">
+        <containerMappings name="EPackageHStack1" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="LeftPane" semanticCandidatesExpression="var:self" domainClass="ecore.EPackage">
+            <subNodeMappings name="ListElt" semanticCandidatesExpression="feature:eContents" synchronizationLock="true" domainClass="ecore.EPackage">
               <style xsi:type="style:BundledImageDescription" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -499,9 +499,9 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="EPackageVStack2" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="VerticalStack">
-            <subContainerMappings name="EPackageCont" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='drop']" childrenPresentation="List">
-              <subNodeMappings name="cl" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <subContainerMappings name="EPackageVStack2" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage" childrenPresentation="VerticalStack">
+            <subContainerMappings name="EPackageCont" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='drop']" childrenPresentation="List">
+              <subNodeMappings name="cl" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EClass">
                 <style xsi:type="style:BundledImageDescription" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -547,12 +547,12 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diag with Image" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diag with Image" domainClass="ecore.EPackage" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
-        <containerMappings name="RCWithImage" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="VerticalStack">
-          <subContainerMappings name="RegionsWithImage" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
-            <subNodeMappings name="nodes" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+        <containerMappings name="RCWithImage" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage" childrenPresentation="VerticalStack">
+          <subContainerMappings name="RegionsWithImage" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage">
+            <subNodeMappings name="nodes" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EClass">
               <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -571,11 +571,11 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20packages']" name="Diag with VStack and DnD" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20packages']" name="Diag with VStack and DnD" domainClass="ecore.EPackage" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
-        <containerMappings name="VStackWithDnd" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="VerticalStack">
-          <subContainerMappings name="FreeFormRegionsWithDnD" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20packages']" reusedContainerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']">
+        <containerMappings name="VStackWithDnd" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage" childrenPresentation="VerticalStack">
+          <subContainerMappings name="FreeFormRegionsWithDnD" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20packages']" reusedContainerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" labelAlignment="RIGHT" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
@@ -603,11 +603,11 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20packages']" name="Diag with HStack and DnD" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20packages']" name="Diag with HStack and DnD" domainClass="ecore.EPackage" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
-        <containerMappings name="HStackWithDnd" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="HorizontalStack">
-          <subContainerMappings name="FreeFormRegionsWithDnD" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20packages']" reusedContainerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']">
+        <containerMappings name="HStackWithDnd" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="FreeFormRegionsWithDnD" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20packages']" reusedContainerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" labelAlignment="RIGHT" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>

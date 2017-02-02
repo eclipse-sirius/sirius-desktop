@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="11.0.0.201601261200">
   <ownedViewpoints name="V">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="D" domainClass="EClass">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="D" domainClass="ecore.EClass">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default" icon="  /org.eclipse.sirius.tests.junit/images/logo_o.png   ">
-        <containerMappings name="C1" domainClass="EAttribute">
+        <containerMappings name="C1" domainClass="ecore.EAttribute">
           <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/Actor.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
-        <containerMappings name="C2" domainClass="EAttribute">
+        <containerMappings name="C2" domainClass="ecore.EAttribute">
           <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/test/noimage.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -35,7 +35,7 @@
           </ownedTools>
         </toolSections>
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="DecorationSemantic" domainClass="EAttribute"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="DecorationSemantic" domainClass="ecore.EAttribute"/>
           <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="DecorationMapping" decoratorPath="/org.eclipse.sirius.tests.junit/images/notexisting.png" mappings="//@ownedViewpoints[name='V']/@ownedRepresentations[name='D']/@defaultLayer/@containerMappings[name='C1']"/>
           <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="DecoMap" decoratorPath="/Project/es.png" mappings="//@ownedViewpoints[name='V']/@ownedRepresentations[name='D']/@defaultLayer/@containerMappings[name='C2']"/>
         </decorationDescriptionsSet>

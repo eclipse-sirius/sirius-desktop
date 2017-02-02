@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VP-3834" version="11.0.0.201601261200">
   <ownedViewpoints name="VP-3834_Viewpoint" modelFileExtension="ecore">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3834_Diagram" initialisation="true" domainClass="EPackage" preconditionExpression="aql:self.eContainer() = null">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3834_Diagram" initialisation="true" domainClass="ecore.EPackage" preconditionExpression="aql:self.eContainer() = null">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
         <nodeMappings name="EClassMapping" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
@@ -32,7 +32,7 @@
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ePackage"/>
                 <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']" containerViewExpression="[elementView/]"/>
               </firstModelOperations>
@@ -42,7 +42,7 @@
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eClass"/>
                 <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']" containerViewExpression="[elementView/]"/>
               </firstModelOperations>
@@ -52,7 +52,7 @@
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EReference" referenceName="eStructuralFeatures">
                 <subModelOperations xsi:type="tool:SetValue" featureName="eReferenceType" valueExpression="[element/]"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ref"/>
                 <subModelOperations xsi:type="tool_1:CreateEdgeView" mapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@edgeMappings[name='EReferenceMapping']" containerViewExpression="[elementView.eContainer()/]" sourceExpression="[elementView/]" targetExpression="[elementView/]"/>
@@ -63,7 +63,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eClass"/>
               </firstModelOperations>
             </initialOperation>
@@ -129,7 +129,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappingImports>
-        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingTer" preconditionExpression="aql:self.eContainer() &lt;> null" semanticCandidatesExpression="aql:self.oclAsType(ecore::EPackage).eSubpackages" domainClass="EPackage" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@containerMappings[name='EPackageMappingBis']">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingTer" preconditionExpression="aql:self.eContainer() &lt;> null" semanticCandidatesExpression="aql:self.oclAsType(ecore::EPackage).eSubpackages" domainClass="ecore.EPackage" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@containerMappings[name='EPackageMappingBis']">
           <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
