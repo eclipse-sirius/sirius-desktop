@@ -12,6 +12,7 @@
   <property name="severity" value="warning"/>
   <module name="TreeWalker">
     <module name="FileContentsHolder"/>
+    <module name="SuppressWarningsHolder"/>
     <module name="JavadocMethod">
       <property name="severity" value="error"/>
       <property name="scope" value="protected"/>
@@ -311,12 +312,13 @@
     <module name="StringLiteralEquality">
       <property name="severity" value="error"/>
     </module>
-  </module>
-  <module name="StrictDuplicateCode">
-    <property name="severity" value="ignore"/>
-    <property name="min" value="20"/>
-    <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity" value="error"/>
-    <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+    <module name="StrictDuplicateCode">
+      <property name="severity" value="ignore"/>
+      <property name="min" value="20"/>
+      <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity" value="error"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+    </module>
+    <module name="SuppressWarnings"/>
   </module>
   <module name="SuppressionCommentFilter"/>
   <module name="FileLength">
@@ -347,4 +349,5 @@
     <property name="format" value="[^a-zA-Z0-9_!:;,\.\+\(\)/\\\]\[{}\-\*&lt;&gt;%@\&amp; \|\t\n&quot;' =$#\r\?éèàê\^]"/>
     <property name="message" value="Character could cause encoding issue."/>
   </module>
+  <module name="SuppressWarningsFilter"/>
 </module>
