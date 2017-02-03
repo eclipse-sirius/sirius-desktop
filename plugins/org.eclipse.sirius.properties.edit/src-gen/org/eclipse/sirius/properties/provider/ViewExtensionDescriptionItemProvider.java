@@ -29,8 +29,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.properties.GroupDescription;
-import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
@@ -110,7 +108,7 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +123,7 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -140,7 +138,7 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This returns ViewExtensionDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,14 +149,14 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((ViewExtensionDescription) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_ViewExtensionDescription_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_ViewExtensionDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -166,7 +164,7 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -190,21 +188,15 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated NOT
+     * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        PageDescription page = PropertiesFactory.eINSTANCE.createPageDescription();
-        page.setLabelExpression("Page"); //$NON-NLS-1$
-        page.setSemanticCandidateExpression(ViewExtensionDescriptionItemProvider.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__PAGES, page));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__PAGES, PropertiesFactory.eINSTANCE.createPageDescription()));
 
-        GroupDescription group = PropertiesFactory.eINSTANCE.createGroupDescription();
-        group.setLabelExpression("Group"); //$NON-NLS-1$
-        group.setSemanticCandidateExpression(ViewExtensionDescriptionItemProvider.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__GROUPS, group));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__GROUPS, PropertiesFactory.eINSTANCE.createGroupDescription()));
     }
 
     /**

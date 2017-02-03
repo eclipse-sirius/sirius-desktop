@@ -71,7 +71,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Predicate Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addPredicateExpressionPropertyDescriptor(Object object) {
@@ -88,7 +88,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
     /**
      * This returns DynamicMappingIf.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -128,14 +128,14 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((DynamicMappingIf) object).getPredicateExpression();
         return label == null || label.length() == 0 ? getString("_UI_DynamicMappingIf_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_DynamicMappingIf_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -143,7 +143,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

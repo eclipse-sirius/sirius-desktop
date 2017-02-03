@@ -74,7 +74,7 @@ public class GridLayoutDescriptionItemProvider extends LayoutDescriptionItemProv
     /**
      * This adds a property descriptor for the Make Columns With Equal Width
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addMakeColumnsWithEqualWidthPropertyDescriptor(Object object) {
@@ -87,7 +87,7 @@ public class GridLayoutDescriptionItemProvider extends LayoutDescriptionItemProv
     /**
      * This returns GridLayoutDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class GridLayoutDescriptionItemProvider extends LayoutDescriptionItemProv
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class GridLayoutDescriptionItemProvider extends LayoutDescriptionItemProv
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

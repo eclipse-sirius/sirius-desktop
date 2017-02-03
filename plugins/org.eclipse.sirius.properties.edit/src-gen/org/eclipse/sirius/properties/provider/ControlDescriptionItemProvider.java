@@ -82,14 +82,14 @@ public class ControlDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((ControlDescription) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_ControlDescription_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_ControlDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -97,7 +97,7 @@ public class ControlDescriptionItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

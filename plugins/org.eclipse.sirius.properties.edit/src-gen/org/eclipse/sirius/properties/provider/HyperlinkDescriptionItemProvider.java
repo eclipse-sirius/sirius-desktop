@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.HyperlinkDescription;
-import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
@@ -96,7 +95,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +112,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -128,7 +127,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
     /**
      * This returns HyperlinkDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -139,14 +138,14 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((HyperlinkDescription) object).getLabelExpression();
+        String label = ((HyperlinkDescription) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_HyperlinkDescription_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_HyperlinkDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -154,7 +153,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -175,7 +174,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
         }
         super.notifyChanged(notification);
     }
-    
+
     @Override
     protected CommandParameter createChildParameter(Object feature, Object child) {
         PropertiesItemProviderAdapterFactory.addNoopNavigationOperations(child);
@@ -187,7 +186,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated NOT
+     * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -197,9 +196,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createHyperlinkWidgetStyle()));
 
-        HyperlinkWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createHyperlinkWidgetConditionalStyle();
-        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createHyperlinkWidgetStyle());
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createHyperlinkWidgetConditionalStyle()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__ACTIONS, PropertiesFactory.eINSTANCE.createWidgetAction()));
     }

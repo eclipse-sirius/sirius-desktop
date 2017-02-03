@@ -95,7 +95,7 @@ public class ListDescriptionItemProvider extends WidgetDescriptionItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class ListDescriptionItemProvider extends WidgetDescriptionItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class ListDescriptionItemProvider extends WidgetDescriptionItemProvider {
     /**
      * This returns ListDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -138,14 +138,14 @@ public class ListDescriptionItemProvider extends WidgetDescriptionItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((ListDescription) object).getLabelExpression();
+        String label = ((ListDescription) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_ListDescription_type") : //$NON-NLS-1$
-                label;
+                getString("_UI_ListDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -153,7 +153,7 @@ public class ListDescriptionItemProvider extends WidgetDescriptionItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
