@@ -27,9 +27,23 @@
 			<tr>
 				<td>v0.2</td>
 				<td>PROPOSED</td>
-				<td>2016-10-20</td>
+				<td>2016-12-02</td>
 				<td>lfasani</td>
 				<td>updated version.</td>
+			</tr>
+			<tr>
+				<td>v1.0</td>
+				<td>ACCEPTED</td>
+				<td>2016-12-22</td>
+				<td>lfasani</td>
+				<td>updated version.</td>
+			</tr>
+			<tr>
+				<td>v1.1</td>
+				<td>PROPOSED</td>
+				<td>2017-02-06</td>
+				<td>lfasani</td>
+				<td>Remove TransientLayer(keeping transient layer concept) and precise the decoration refresh behavior</td>
 			</tr>
 		</table>
 		<p>
@@ -223,12 +237,15 @@
 			<br/>The activation/deactivation of decorations will keep being managed by layers.
 			<br/>Currently, if a custom decoration is defined in a layer, the application of the layer will dirty the diagram.
 			<br/>To avoid the dirty status, the concept of a 
-			<b>transient layer</b> is created. The transient layer contains only decorations.
+			<b>transient layer</b> is created. A transient layer, is an 
+			<code>AdditionalLayer</code> that contains only decorations or tools, that is, none of things that would change the Diagram content when applied.
 			<br/>At save, the transient layer application is not persisted in the diagram and decorations are not persisted either.
 		</p>
-		<p>A transient layer has the following features:
-			<br/> * activeByDefault : if true, the layer is activated at each diagram opening.
-			<br/> * optional : if true the layer can be deactivated and if false, the layer is always activated. In the latter case, activeByDefault is ignored.
+		<p>A transient layer has a slightly different definition for 
+			<em>activeByDefault</em> feature: if activeByDefault is true, the transient layer is activated at each diagram 
+			<strong>opening</strong> whereas the non transient layer is activated at diagram 
+			<strong>creation</strong>. As a reminder, if 
+			<em>optional</em> feature is true, the layer can be deactivated and if false, the layer is always activated. In the latter case, activeByDefault of a transient layer is forced to be set to true.
 		</p>
 		<p>A transient layer is a layer that can be used like a non transient layer. 
 			<br/>From layers drop down menu in diagram editor tabbar, the transient layers are displayed at end the end of the menu. A separator isolates non transient and transient layers.
@@ -240,9 +257,24 @@
 		<h3 id="Decorationrefresh">Decoration refresh</h3>
 		<p>In auto refresh, the decoration is updated at any change in the session. The refresh is done for all opened diagrams as it is the case today.</p>
 		<p>In manual refresh, the decoration refresh does not work very well. It is refreshed when modifying the semantic element but only in the case the decoration should be removed.
-			<br/>This specification includes the fix of this bug. As expected behavior, in manual refresh, the decorations of a DDiagramElement should be correctly updated after a change on the semantic element and/or elements returned by associated elements expression.
+			<br/>This specification includes the fix of this bug. 
+			<br/>As expected behavior, in manual refresh, after a change on the 
+			<code>DSemanticDecorator.target</code> element and/or 
+			<code>DiagramElementMapping.semanticsElements</code> elements (named associated elements expression in the VSM UI):
 		</p>
-		<p>When applying a layer, transient or not, in manual refresh, the diagram elements won&#8217;t be refreshed if the layer contains only decorations (contrary to the current behavior). Only the decorations will be refreshed.</p>
+		<ul>
+			<li>the decorations of a DDiagramElement should be correctly updated without modifying the 
+				<code>DDiagramElement</code>
+			</li>
+			<li>the 
+				<code>DDiagramElement</code> may be updated (as it it the case today) and, if updated, will set the diagram as modified.
+			</li>
+		</ul>
+		<p>When applying a transient layer, in manual refresh, the 
+			<code>DDiagramElement</code> won&#8217;t be refreshed (contrary to the current behavior). Only the decorations on these 
+			<code>DDiagramElement</code> will be refreshed without modifying the 
+			<code>DDiagramElement</code>.
+		</p>
 		<h3 id="PrintExportvisibility">Print/Export visibility</h3>
 		<p>The preference 
 			<a href="#size_adaptation">authorize overlapping</a> is also used for export and print.
@@ -306,14 +338,6 @@
 		<h2 id="tech_spec">Detailed Technical Specification</h2>
 		<h3 id="Transientdecoration" class="transient_decoration">Transient decoration</h3>
 		<p>
-			<code>TransientLayer</code> is added to distinguish layers which application in diagram should be persisted or not.
-			<br/>The abstract class BasicLayer is created which is a super class of Layer and TransientLayer. It owns the attributes decorationDescriptionsSet and icon.
-			<br/>For now, it will only be possible to add decorations in that kind of layer.
-			<br/>
-			<code>DiagramDescription.transientLayers</code> and 
-			<code>DiagramExtensionDescription.transientLayers</code> are added to add a transient layer.
-		</p>
-		<p>
 			<code>DDiagram.activatedTransientLayers</code> is added as a transient feature. When applying a transient additional layer, it is added in 
 			<code>DDiagram.activatedTransientLayers</code> so that the resource will not be set as modified (according to ResourceModifiedFieldUpdater) and the layer appliance will not be serialized.
 		</p>
@@ -321,7 +345,7 @@
 			<a href="#decorationDescription">DecorationDescription specific case</a>, 
 			<code>DDiagramElement.transientDecoration</code> is added as transient feature so that this information will not be serialized.
 		</p>
-		<p>An API, will be provided to call the decorations refresh on a diagram.</p>
+		<p>An API will be provided to call the decorations refresh on a diagram.</p>
 		<h3 id="Customdecorationgenericdecoration" class="generic_decoration">Custom decoration : generic decoration</h3>
 		<p>A new 
 			<code>GenericDecorationDescription</code> inheriting from 
@@ -424,13 +448,12 @@
 		<h3 id="APIChanges">API Changes</h3>
 		<p>The API will evolve accordingly to the meta-model changes. 
 			<br/>Changes are done in diagram.ecore in the packages 
-			<code>diagram</code> and 
-			<code>diagram/description</code> and viewpoint.ecore in the packages 
+			<code>diagram</code> and viewpoint.ecore in the packages 
 			<code>viewpoint</code> and 
 			<code>viewpoint/description</code>.
 		</p>
 		<p>Refer to 
-			<a href="#tech_spec">technical specification</a> to see the change
+			<a href="#tech_spec">technical specification</a> to see the changes.
 		</p>
 		<p>As other changes, the transient, derived feature 
 			<code>DDiagram.getAllActivatedLayers</code> is added to get 
@@ -470,10 +493,10 @@
 		</ul>
 		<h3 id="Transientlayerapplicationbyuser">Transient layer application by user</h3>
 		<p>This enhancement has been discussed but is out of scope for this specification.
-			<br/>As it is defined in this specification, the concept of transient layer is defined par the specifier in the VSM.
+			<br/>As it is defined in this specification, the concept of transient layer is inferred by the layer content, defined by the specifier in the VSM.
 			<br/>It would be up to the user to choose if the layer is applied transient or not.
 			<br/>There would be a dedicated UI to choose between &#171;not applied&#187;, &#171;applied&#187; or &#171;applied transiently&#187;.
-			<br/>The concept of transient layer in the VSM would not be needed any more.
+			<br/>The concept of transient layer would not be inferred any more but should be the result of user choice.
 		</p>
 	</body>
 </html>
