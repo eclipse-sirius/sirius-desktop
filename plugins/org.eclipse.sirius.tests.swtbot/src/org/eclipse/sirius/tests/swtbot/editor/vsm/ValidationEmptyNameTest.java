@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2016 Obeo.
+ * Copyright (c) 2014, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -100,7 +100,7 @@ public class ValidationEmptyNameTest extends AbstractSiriusSwtBotGefTestCase {
      *            the tree validated
      */
     private void checkIconNodeInvalidate(final SWTBotVSMEditor odesignEditor, SWTBotTree tree) {
-        final SWTBotTreeItem treeItem = tree.getTreeItem(ODESIGN).getNode("Group").getNode("emptyName").getNode("diagTest").getNode("Default").getNode("Node").select();
+        final SWTBotTreeItem treeItem = tree.getTreeItem(ODESIGN).getNode("Group").getNode("emptyName").expandNode("diagTest", "Default", "Node").select();
         bot.waitUntil(new TreeItemWithImageCondition(treeItem, getNodeMappingWithErrorImage(), "A red cross must appear on overlay of the node mapping image."));
     }
 
