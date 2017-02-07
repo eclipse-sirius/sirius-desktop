@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,13 +27,19 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tree.DTree;
+import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
+import org.eclipse.sirius.tree.ui.tools.api.preferences.SiriusTreeUiPreferencesKeys;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
+import org.eclipse.ui.PlatformUI;
 import org.junit.Test;
 
 /**
@@ -156,6 +162,13 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
     private Color labelColor;
 
     /**
+     * The original value of the preference
+     * {@link SiriusTreeUiPreferencesKeys#PREF_ALWAYS_USE_STANDARD_FONT_SIZE} to
+     * restore after test execution.
+     */
+    private boolean originalStandardFontSizePrefValue;
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -171,6 +184,12 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
+    }
+
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+        originalStandardFontSizePrefValue = TreeUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE.name());
     }
 
     /**
@@ -311,7 +330,7 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
 
         assertNotNull("The tree item for the class is null", widgetNewEclass1);
 
-        checkTreeItemStyle(widgetNewEclass1, false, 8, NEWECLASS1, lightGreen, lightYellow, "bold");
+        checkTreeItemStyle(widgetNewEclass1, false, 8, NEWECLASS1, lightGreen, lightYellow, false, "bold");
 
         // Manual refresh with click context menu
         editor.bot().tree().contextMenu(REFRESH_TREE).click();
@@ -320,6 +339,41 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
         refreshEditorTest();
 
         localSession.closeNoDirty();
+    }
+
+    /**
+     * Tests that the Sirius tree item's font size is the runtime one and not
+     * the VSM one when the option
+     * {@link SiriusTreeUiPreferencesKeys#PREF_ALWAYS_USE_STANDARD_FONT_SIZE} is
+     * set to true.
+     */
+    @Test
+    public void testTreeItemStyleWithStandardFontSizeOptionActivated() {
+        TreeUIPlugin.getPlugin().getPreferenceStore().setValue(SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE.name(), true);
+
+        // Open editor
+        editor = openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DTree.class);
+
+        editor.save();
+        SWTBotUtils.waitProgressMonitorClose("Progress Information");
+
+        TreeItem widgetNewEclass1 = null;
+
+        if (editor.bot().tree().getTreeItem(NEWECLASS1).widget instanceof TreeItem) {
+            widgetNewEclass1 = editor.bot().tree().getTreeItem(NEWECLASS1).widget;
+        }
+
+        assertNotNull("The tree item for the class is null", widgetNewEclass1);
+
+        checkTreeItemStyle(widgetNewEclass1, false, syncExec(new Result<Integer>() {
+            @Override
+            public Integer run() {
+                Font defaultFont = PlatformUI.getWorkbench().getDisplay().getSystemFont();
+                FontData fontData = defaultFont.getFontData()[0];
+                return fontData.getHeight();
+            }
+        }), NEWECLASS1, lightGreen, lightYellow, true, "bold");
+
     }
 
     /**
@@ -365,28 +419,31 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
      * @param widgetNewEclass1
      */
     private void checkTreeItemStyle(TreeItem widgetNewEclass1, boolean expectedShowIcon, int expectedFontSize, String expectedLabel, Color expectedLabelColor, Color expectedBackgroundColor,
-            String... expectedFontFormat) {
+            boolean checkOnlyTreeItemFontStyle, String... expectedFontFormat) {
         assertNotNull(widgetNewEclass1);
-
-        // Retrieve show icon, label size, label expression, label alignment,
-        // label format, color background, label color of 'new EClass 1'
-        boolean showIcon = isShowIcon(widgetNewEclass1);
-        int labelSize = getLabelSize(widgetNewEclass1);
-        String labelExpression = getWidgetLabelExpression(widgetNewEclass1);
-        String iconPath = getIconPath(widgetNewEclass1);
-        // String labelAlignment = getLabelAlignment(widgetNewEclass1);
-
-        // Check the DTreeItem and its style
-        assertEquals(expectedShowIcon, showIcon);
-        assertEquals(expectedFontSize, labelSize);
-        assertEquals(expectedLabel, labelExpression);
-        // assertThat(labelAlignment, equalTo("RIGHT"));
-        List<String> actual = getLabelFormat(widgetNewEclass1);;
+        List<String> actual = getLabelFormat(widgetNewEclass1);
         List<String> expected = Arrays.asList(expectedFontFormat);
-        assertThat(actual, is(expected));
-        assertThat(iconPath, anyOf(equalTo(""), nullValue()));
-        assertEquals(expectedBackgroundColor, getLabelBackgroundColor(widgetNewEclass1));
-        assertEquals(expectedLabelColor, getLabelColor(widgetNewEclass1));
+        if (!checkOnlyTreeItemFontStyle) {
+            // Retrieve show icon, label size, label expression, label
+            // alignment,
+            // label format, color background, label color of 'new EClass 1'
+            boolean showIcon = isShowIcon(widgetNewEclass1);
+            int labelSize = getLabelSize(widgetNewEclass1);
+            String labelExpression = getWidgetLabelExpression(widgetNewEclass1);
+            String iconPath = getIconPath(widgetNewEclass1);
+            // String labelAlignment = getLabelAlignment(widgetNewEclass1);
+
+            // Check the DTreeItem and its style
+            assertEquals(expectedShowIcon, showIcon);
+            assertEquals(expectedFontSize, labelSize);
+            assertEquals(expectedLabel, labelExpression);
+            // assertThat(labelAlignment, equalTo("RIGHT"));
+
+            assertThat(actual, is(expected));
+            assertThat(iconPath, anyOf(equalTo(""), nullValue()));
+            assertEquals(expectedBackgroundColor, getLabelBackgroundColor(widgetNewEclass1));
+            assertEquals(expectedLabelColor, getLabelColor(widgetNewEclass1));
+        }
 
         // Check the widget
         actual = getFontFormatLiterals(SWTBotUtils.getWidgetFormat(widgetNewEclass1));
@@ -462,7 +519,7 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
             widgetNewEclass1 = editor.bot().tree().getTreeItem(treeItemName).widget;
         }
 
-        checkTreeItemStyle(widgetNewEclass1, true, 12, "Testnew EClass 1", blue, black, "italic", "bold");
+        checkTreeItemStyle(widgetNewEclass1, true, 12, "Testnew EClass 1", blue, black, false, "italic", "bold");
     }
 
     /**
@@ -546,6 +603,11 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
         bot.viewByTitle(PROPERTIES).bot().ccomboBox(0).setSelection(newLabelColorValue);
         String newLabelColor = bot.viewByTitle(PROPERTIES).bot().ccomboBox(0).selection();
         assertThat(newLabelColor, equalTo(MAPCOLORVALUE.get(newLabelColorValue)));
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
     }
 
 }

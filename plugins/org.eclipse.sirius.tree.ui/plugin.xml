@@ -236,5 +236,20 @@
             sequence="M1+O">
       </key>
    </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipse.sirius.tree.ui.internal.preferences.TreeUIPreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.sirius.ui.page"
+            class="org.eclipse.sirius.tree.ui.internal.preferences.TreePreferencePage"
+            id="org.eclipse.sirius.tree.ui.page"
+            name="%page.sirius.tree.name">
+      </page>
+   </extension>
    
 </plugin>

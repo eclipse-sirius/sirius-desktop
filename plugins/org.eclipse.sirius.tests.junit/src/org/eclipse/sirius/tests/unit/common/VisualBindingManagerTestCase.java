@@ -12,20 +12,26 @@ package org.eclipse.sirius.tests.unit.common;
 
 import static org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.clamp;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import junit.framework.TestCase;
-
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.sirius.viewpoint.description.UserFixedColor;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.widgets.Display;
 
 import com.google.common.collect.Sets;
+
+import junit.framework.TestCase;
 
 /**
  * Visual binding manager test.
@@ -129,5 +135,20 @@ public class VisualBindingManagerTestCase extends TestCase {
         assertEquals(100, clamp(100, 99, 100));
         assertEquals(99, clamp(99, 99, 100));
         assertEquals(-1, clamp(-1, -1, 0));
+    }
+
+    /**
+     * Tests
+     * {@link VisualBindingManager#getDefaultFontWithDefaultSizeAndGivenLabelFormat(List)}
+     * . The created font should have the runtime height and the given format.
+     */
+    public void testGetFontFromLabelFormatAndSize() {
+        List<FontFormat> labelFormat = new ArrayList<FontFormat>();
+        labelFormat.add(FontFormat.get(FontFormat.BOLD));
+        Font fontFromLabelFormatAndSize = visualManager.getDefaultFontWithWorkbenchDefaultSizeAndFromLabelFormat(labelFormat);
+        FontData fontData = fontFromLabelFormatAndSize.getFontData()[0];
+        assertEquals("the font height is not the runtime one.", Display.getDefault().getSystemFont().getFontData()[0].getHeight(), fontData.getHeight());
+        assertEquals("the font style is not the specified one.", FontFormat.BOLD, fontData.getStyle());
+        assertEquals("the font name is not the default one.", "ARIAL", fontData.getName());
     }
 }

@@ -131,10 +131,14 @@
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.ui.tools.api.wizards.page.ViewpointsSelectionWizardPage.setBrowserMinWidth(int)</code> has been added to allow modification of the minimum width (with default value &#8220;0&#8221;) of the browser part of the viewpoint selection wizard.
 			</li>
-		</ul>
-		<ul>
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.ui.tools.api.wizards.page.ViewpointsSelectionWizardPage.setColumnWidthEquality(boolean)</code> has been added to allow modification of column width equality (with default value &#8220;false&#8221;) of the root composite of the viewpoint selection wizard.
+			</li>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getDefaultFontWithRuntimeSizeAndFromLabelFormat(List&lt;FontFormat&gt;)</code> has been added to allow to retrieve a font using the given format and the default Sirius font (arial) and the runtime height.
+			</li>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getFontFromNameAndLabelFormatAndWithDefaultSize(List&lt;FontFormat&gt;, String)</code> has been added to allow to retrieve a font using the given format and the given font name and the runtime height.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
@@ -145,13 +149,9 @@
 				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride.aroundRefresh(DDiagram)</code> has been moved to 
 				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension</code> to unify methods handling refresh extension under one interface. 
 			</li>
-		</ul>
-		<ul>
 			<li><span class="label label-info">Modified</span> The method 
 				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension.aroundRefresh(DDiagram)</code> has been modified with a default behavior that is the one before introduction of the method to avoid breaking compatibility.
 			</li>
-		</ul>
-		<ul>
 			<li><span class="label label-danger">Removed</span> The interface 
 				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride</code> has been removed because its only method has been moved into 
 				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension</code> interface
@@ -210,6 +210,15 @@
 				<code>SiriusUncontrolCommand(EObject, boolean, IProgressMonitor)</code> has been removed; instead, use the alternate constructor with an additional explicit 
 				<code>boolean shouldEndBySaving</code> parameter (set it to 
 				<code>true</code> to obtain the same behavior as the removed constructor).
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tree.ui">Changes in 
+			<code>org.eclipse.sirius.tree.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The enum class for Sirius tree preferences 
+				<code>org.eclipse.sirius.tree.ui.tools.api.preferences.SiriusTreeUiPreferencesKeys</code> has been added with the enum value 
+				<code>SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE</code>. This enum value is the preference when true allowing to use runtime font height when displaying Sirius tree editor&#8217;s items instead of the one specified in the VSM.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
@@ -289,8 +298,8 @@ bot.waitUntil(new ICondition() {
 // are not really redrawn and the rest of the test is not reliable.
 SWTBotUtils.waitAllUiEvents();
 
-</pre>
 
+</pre>
 		<h2 id="sirius4.1.2">Changes in Sirius 4.1.2</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
@@ -2630,7 +2639,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>RefreshEditorsPrecommitListener</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tree.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tree.ui2">Changes in 
 			<code>org.eclipse.sirius.tree.ui</code>
 		</h4>
 		<ul>

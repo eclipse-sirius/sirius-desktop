@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,14 +73,19 @@ public class DTreeItemLabelProvider extends DSemanticTargetBasedLabelProvider im
 
     @Override
     public Font getFont(final Object element) {
+        Font resultFont = null;
         if (element instanceof DTreeItem) {
             final DTreeItem item = (DTreeItem) element;
             if (item.getOwnedStyle() != null) {
                 TreeItemStyle style = item.getOwnedStyle();
-                return VisualBindingManager.getDefault().getFontFromLabelFormatAndSize(style.getLabelFormat(), style.getLabelSize());
+                if (TreeUIPlugin.getPlugin().useStandardFont()) {
+                    resultFont = VisualBindingManager.getDefault().getDefaultFontWithWorkbenchDefaultSizeAndFromLabelFormat(style.getLabelFormat());
+                } else {
+                    resultFont = VisualBindingManager.getDefault().getFontFromLabelFormatAndSize(style.getLabelFormat(), style.getLabelSize());
+                }
             }
         }
-        return null;
+        return resultFont;
     }
 
     @Override

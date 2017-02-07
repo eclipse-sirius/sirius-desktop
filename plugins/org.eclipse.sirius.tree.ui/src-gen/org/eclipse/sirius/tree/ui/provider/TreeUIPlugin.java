@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,14 +27,18 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.common.ui.tools.internal.preference.DynamicConfigurationHelper;
 import org.eclipse.sirius.tree.provider.TreeItemProviderAdapterFactory;
+import org.eclipse.sirius.tree.ui.tools.api.preferences.SiriusTreeUiPreferencesKeys;
 import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
@@ -169,11 +173,31 @@ public final class TreeUIPlugin extends EMFPlugin {
 
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
+     *
+     * @generated NOT
      */
-    public static class Implementation extends EclipsePlugin {
+    public static class Implementation extends EclipseUIPlugin {
         private ComposedAdapterFactory adapterFactory;
+
+        /**
+         * Encapsulates the configurable parameters regarding trees usage, and keeps it in sync with possible changes in
+         * the preferences.
+         */
+        private static class Configuration extends DynamicConfigurationHelper {
+
+            /**
+             * True if the font size of the Sirius tree editor's items will always be the one specified by your Eclipse
+             * environment. False otherwise.
+             */
+            boolean useStandardFont;
+
+            Configuration(IPreferenceStore store) {
+                super(store);
+                bindBoolean(SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE.name(), "useStandardFont"); //$NON-NLS-1$
+            }
+        }
+
+        private Configuration preferencesConfiguration;
 
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -184,8 +208,8 @@ public final class TreeUIPlugin extends EMFPlugin {
             super();
 
             // Remember the static instance.
-            //
             TreeUIPlugin.plugin = this;
+            preferencesConfiguration = new Configuration(getPreferenceStore());
         }
 
         /**
@@ -241,6 +265,18 @@ public final class TreeUIPlugin extends EMFPlugin {
                 IStatus status = new Status(IStatus.ERROR, this.getBundle().getSymbolicName(), message, e);
                 this.getLog().log(status);
             }
+        }
+
+        /**
+         * Returns true if the font size of the Sirius tree editor's items will always be the one specified by your
+         * Eclipse environment.
+         * 
+         * @return true if the font size of the Sirius tree editor's items will always be the one specified by your
+         *         Eclipse environment. False if the font size that should be used to display Sirius tree editor's items
+         *         must be the one specified by the editor.
+         */
+        public boolean useStandardFont() {
+            return preferencesConfiguration.useStandardFont;
         }
     }
 

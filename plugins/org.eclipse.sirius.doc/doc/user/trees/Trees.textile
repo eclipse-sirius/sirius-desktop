@@ -56,3 +56,13 @@ h2(#quick_outline). Quick Outline
 A quick outline is available with the shortcut @Ctrl@ + @O@. This allows you to rapidly search text in the displayed name or the contained String attributes of your table elements elements.
 
 The star, @*@, is a joker character, allowing you to search with more complicated patterns. Regarding this, an element is found if there is a word in its name or one of its attributes that match with the text in the filter, so if you want to search within words too, add @*@ at the start of your pattern. Also, you can navigate along the matching elements with @↑@ and @↓@, and go to the selected element in your editor with @Enter@.
+
+h2. Overriding tree item height
+
+The tree editor always specify a font height to use when displaying tree items. If this height does not render well on your machine for any reason, you can tell Sirius to use the font height of your environment.
+
+To do so, go to "Window>Preferences". In the preference window: 
+* select the Sirius Tree preferences and check the preference "Always use standard font size".
+ !images/runtime_font_height_preference.png!
+* reopen all the tree editors currently opened. The font height used is now your runtime one.
+

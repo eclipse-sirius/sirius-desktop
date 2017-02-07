@@ -21,15 +21,14 @@ h3. Developer-Visible Changes
 h4. Changes in @org.eclipse.sirius.ui@
 
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.wizards.page.ViewpointsSelectionWizardPage.setBrowserMinWidth(int)@ has been added to allow modification of the minimum width (with default value "0") of the browser part of the viewpoint selection wizard.
-
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.wizards.page.ViewpointsSelectionWizardPage.setColumnWidthEquality(boolean)@ has been added to allow modification of column width equality (with default value "false") of the root composite of the viewpoint selection wizard.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getDefaultFontWithRuntimeSizeAndFromLabelFormat(List<FontFormat>)@ has been added to allow to retrieve a font using the given format and the default Sirius font (arial) and the runtime height.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getFontFromNameAndLabelFormatAndWithDefaultSize(List<FontFormat>, String)@ has been added to allow to retrieve a font using the given format and the given font name and the runtime height.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 
 * <span class="label label-info">Moved</span> The method @org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride.aroundRefresh(DDiagram)@ has been moved to @org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension@ to unify methods handling refresh extension under one interface. 
-
 * <span class="label label-info">Modified</span> The method @org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension.aroundRefresh(DDiagram)@ has been modified with a default behavior that is the one before introduction of the method to avoid breaking compatibility.
-
 * <span class="label label-danger">Removed</span> The interface @org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride@ has been removed because its only method has been moved into @org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension@ interface
 
 h4. Changes in @org.eclipse.sirius@
@@ -43,6 +42,10 @@ h4. Changes in @org.eclipse.sirius@
 *** @org.eclipse.sirius.business.api.resource.strategy.AbstractResourceStrategyImpl@: Default implementation of above interface. All resource strategies contributed with the extension need to extend it.
 *** @org.eclipse.sirius.business.api.resource.strategy.LegacyReleaseResourceStrategyImpl@ (previously named @DefaultResourceStrategyImpl@): A resource strategy with the code used before the optimization concerning the @org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy.ResourceStrategyType.RELEASE_RESOURCE_AT_RESOURCESET_DISPOSE@. It is not used but can be quickly contributed by someone that want the previous behavior (before Sirius 4.0.0 M6).
 * <span class="label label-danger">Removed</span> The already deprecated constructor of @org.eclipse.sirius.business.api.control.SiriusUncontrolCommand@ with signature @SiriusUncontrolCommand(EObject, boolean, IProgressMonitor)@ has been removed; instead, use the alternate constructor with an additional explicit @boolean shouldEndBySaving@ parameter (set it to @true@ to obtain the same behavior as the removed constructor).
+
+h4. Changes in @org.eclipse.sirius.tree.ui@
+
+* <span class="label label-success">Added</span> The enum class for Sirius tree preferences @org.eclipse.sirius.tree.ui.tools.api.preferences.SiriusTreeUiPreferencesKeys@ has been added with the enum value @SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE@. This enum value is the preference when true allowing to use runtime font height when displaying Sirius tree editor's items instead of the one specified in the VSM.
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 

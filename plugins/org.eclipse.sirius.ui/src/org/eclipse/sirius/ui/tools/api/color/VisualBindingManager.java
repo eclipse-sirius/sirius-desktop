@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Pattern;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.graphics.Resource;
@@ -712,6 +713,71 @@ public class VisualBindingManager {
     }
 
     /**
+     * Return a font from a label format and using default runtime height and
+     * default font (Arial).
+     * 
+     * @param labelFormats
+     *            current {@link FontFormat}.
+     * @return a font from a label format and using default runtime height and
+     *         default font (Arial).
+     */
+    public Font getDefaultFontWithWorkbenchDefaultSizeAndFromLabelFormat(final List<FontFormat> labelFormats) {
+        return getFontFromNameAndLabelFormatAndWithDefaultSize(labelFormats, DEFAULT_FONT_NAME);
+    }
+
+    /**
+     * Return a font from a label format and a label size.
+     * 
+     * @param labelFormats
+     *            current {@link FontFormat}.
+     * @param fontName
+     *            the name of the font.
+     * @return a Font from a {@link FontFormat} and a size.
+     */
+    public Font getFontFromNameAndLabelFormatAndWithDefaultSize(final List<FontFormat> labelFormats, final String fontName) {
+        int fontHeight;
+        Font defaultFont = Display.getDefault().getSystemFont();
+        FontData fontData = defaultFont.getFontData()[0];
+        fontHeight = fontData.getHeight();
+
+        return createFont(labelFormats, fontName, fontHeight);
+    }
+
+    /**
+     * Return a font with the given name, format and height. If new the font is
+     * cached.
+     * 
+     * @param labelFormats
+     *            all the format the font should have.
+     * @param fontName
+     *            the name of the font.
+     * @param fontHeight
+     *            the height of the font.
+     * @return a font with the given name, format and height.
+     */
+    private Font createFont(final List<FontFormat> labelFormats, final String fontName, int fontHeight) {
+        FontStyleDescriptor desc;
+        desc = new FontStyleDescriptor(labelFormats, fontHeight, fontName);
+
+        if (!fontCache.containsKey(desc)) {
+            int format = SWT.NORMAL;
+
+            for (FontFormat fontFormat : labelFormats) {
+                if (FontFormat.BOLD_LITERAL.equals(fontFormat)) {
+                    format = format | SWT.BOLD;
+                }
+                if (FontFormat.ITALIC_LITERAL.equals(fontFormat)) {
+                    format = format | SWT.ITALIC;
+                }
+            }
+            Font fontToUse = new Font(Display.getDefault(), fontName, fontHeight, format);
+            fontCache.put(desc, fontToUse);
+            return fontToUse;
+        }
+        return fontCache.get(desc);
+    }
+
+    /**
      * Return a font from a label format and a label size.
      * 
      * @param labelFormat
@@ -723,23 +789,10 @@ public class VisualBindingManager {
      * @return a Font from a {@link FontFormat} and a size.
      */
     public Font getFontFromLabelFormatAndSize(final List<FontFormat> labelFormat, final int labelSize, final String fontName) {
-        final int rangedSize = Math.max(labelSize, 1);
-        final FontStyleDescriptor desc = new FontStyleDescriptor(labelFormat, rangedSize, fontName);
-        if (!fontCache.containsKey(desc)) {
-            int format = SWT.NORMAL;
+        FontStyleDescriptor desc = null;
+        int fontHeight = Math.max(labelSize, 1);
 
-            for (FontFormat fontFormat : labelFormat) {
-                if (FontFormat.BOLD_LITERAL.equals(fontFormat)) {
-                    format = format | SWT.BOLD;
-                }
-                if (FontFormat.ITALIC_LITERAL.equals(fontFormat)) {
-                    format = format | SWT.ITALIC;
-                }
-            }
-
-            fontCache.put(desc, new Font(Display.getDefault(), fontName, rangedSize, format));
-        }
-        return fontCache.get(desc);
+        return createFont(labelFormat, fontName, fontHeight);
     }
 
     /**
