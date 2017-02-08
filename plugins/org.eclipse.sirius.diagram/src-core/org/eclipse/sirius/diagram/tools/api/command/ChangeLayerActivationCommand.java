@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.Layer;
 
 /**
@@ -60,9 +61,6 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
         this.monitor = monitor;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void doExecute() {
         try {
@@ -72,10 +70,19 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
                 NotificationUtil.sendNotification(dDiagram, Notification.Kind.START, Notification.VISIBILITY);
             }
             monitor.worked(1);
-            if (dDiagram.getActivatedLayers().contains(layer)) {
-                dDiagram.getActivatedLayers().remove(layer);
+            boolean transientLayer = LayerHelper.isTransientLayer(layer);
+            if (!transientLayer) {
+                if (dDiagram.getActivatedLayers().contains(layer)) {
+                    dDiagram.getActivatedLayers().remove(layer);
+                } else {
+                    dDiagram.getActivatedLayers().add(layer);
+                }
             } else {
-                dDiagram.getActivatedLayers().add(layer);
+                if (dDiagram.getActivatedTransientLayers().contains(layer)) {
+                    dDiagram.getActivatedTransientLayers().remove(layer);
+                } else {
+                    dDiagram.getActivatedTransientLayers().add((AdditionalLayer) layer);
+                }
             }
             monitor.worked(1);
 

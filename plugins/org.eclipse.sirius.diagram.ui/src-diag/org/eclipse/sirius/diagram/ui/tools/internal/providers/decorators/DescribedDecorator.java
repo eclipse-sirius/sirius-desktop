@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,6 +53,12 @@ public class DescribedDecorator extends AbstractSiriusDecorator {
             DDiagramElement element = ((IDiagramElementEditPart) editPart).resolveDiagramElement();
             if (element != null) {
                 for (Decoration decoration : element.getDecorations()) {
+                    Image image = getImage(decoration);
+                    if (image != null) {
+                        addDecoration(getDecoratorTarget().addShapeDecoration(image, getPosition(decoration), margin, false));
+                    }
+                }
+                for (Decoration decoration : element.getTransientDecorations()) {
                     Image image = getImage(decoration);
                     if (image != null) {
                         addDecoration(getDecoratorTarget().addShapeDecoration(image, getPosition(decoration), margin, false));

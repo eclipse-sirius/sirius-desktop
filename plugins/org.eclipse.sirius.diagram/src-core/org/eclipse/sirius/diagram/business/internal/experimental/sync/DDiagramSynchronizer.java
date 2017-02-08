@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -638,9 +638,11 @@ public class DDiagramSynchronizer {
      * @param edgeToMappingBasedDecoration
      *            an empty map
      */
-    public void computeDecorations(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets,
-            final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration, final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration) {
-        final List<Layer> activatedLayers = diagram.getActivatedLayers();
+    public void computeDecorations(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration,
+            final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration) {
+        final List<Layer> activatedLayers = Lists.newArrayList();
+        activatedLayers.addAll(diagram.getActivatedLayers());
+        activatedLayers.addAll(diagram.getActivatedTransientLayers());
 
         for (final Layer layer : activatedLayers) {
             if (layer.getDecorationDescriptionsSet() != null && layer.getDecorationDescriptionsSet().getDecorationDescriptions().size() > 0) {
@@ -855,7 +857,9 @@ public class DDiagramSynchronizer {
                 /* If it's a DNodeContainer then we can have sub-containers. */
                 if (newNode instanceof DNodeContainer) {
                     DNodeContainer newContainer = (DNodeContainer) newNode;
-                    /* here we have a recursive call for recursive containment. */
+                    /*
+                     * here we have a recursive call for recursive containment.
+                     */
                     final List<ContainerMapping> childMappings = diagramMappingsManager.getContainerMappings(newContainer);
                     final List<NodeMapping> childNodeMappings = diagramMappingsManager.getNodeMappings(newContainer);
 
@@ -963,13 +967,17 @@ public class DDiagramSynchronizer {
                     createdNodes.addAll(createNewContent(borderStatus.getNewElements(), newNodeDDT, bordermapping, true, new SubProgressMonitor(monitor, 1)));
                     handleKeptNodes(newNodeDDT, borderStatus, keptNodes, true, new SubProgressMonitor(monitor, 1));
 
-                    /* kept candidates and new ones are handled in the same way. */
+                    /*
+                     * kept candidates and new ones are handled in the same way.
+                     */
                     final Collection<DDiagramElement> addedBorderNodes = new MultipleCollection<DDiagramElement>();
                     addedBorderNodes.addAll(createdNodes);
                     addedBorderNodes.addAll(keptNodes);
                     putOrAdd(mappingsToAbstractNodes, bordermapping, addedBorderNodes);
 
-                    /* Now try to create bordered nodes from the created nodes. */
+                    /*
+                     * Now try to create bordered nodes from the created nodes.
+                     */
                     for (final AbstractDNode bNewNode : Iterables.filter(addedBorderNodes, AbstractDNode.class)) {
                         refreshBorderNodeMapping(mappingsToAbstractNodes, bNewNode, semanticFilter, new SubProgressMonitor(monitor, 1));
                     }

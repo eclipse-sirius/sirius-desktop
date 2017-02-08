@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,6 +60,7 @@ public class LayersActivationAction extends Action {
     public void run() {
         try {
             IRunnableWithProgress runnable = new IRunnableWithProgress() {
+                @Override
                 public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                     TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(dDiagram);
                     Command changeActivatedLayersCmd = new ChangeLayerActivationCommand(domain, dDiagram, layer, monitor);
@@ -79,7 +80,7 @@ public class LayersActivationAction extends Action {
 
     @Override
     public boolean isChecked() {
-        return dDiagram.getActivatedLayers().contains(layer);
+        return dDiagram.getActivatedLayers().contains(layer) || dDiagram.getActivatedTransientLayers().contains(layer);
     }
 
     /**

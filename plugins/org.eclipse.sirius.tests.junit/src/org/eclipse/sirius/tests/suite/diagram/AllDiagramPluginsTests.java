@@ -101,6 +101,7 @@ import org.eclipse.sirius.tests.unit.diagram.control.HierarchicalControlTest;
 import org.eclipse.sirius.tests.unit.diagram.control.HierarchicalControlWithRootElementReadOnlyTest;
 import org.eclipse.sirius.tests.unit.diagram.copier.RepresentationCopierTest;
 import org.eclipse.sirius.tests.unit.diagram.decorators.DecoratorsTest;
+import org.eclipse.sirius.tests.unit.diagram.decorators.TransientDecoratorsTest;
 import org.eclipse.sirius.tests.unit.diagram.dialect.DiagramDialectServicesTests;
 import org.eclipse.sirius.tests.unit.diagram.dragndrop.DraggedObjectTesterTests;
 import org.eclipse.sirius.tests.unit.diagram.dragndrop.LabelVisibilityOnCreationTest;
@@ -344,6 +345,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(RepresentationCopierTest.class);
         // suite.addTestSuite(ExtensionAccessTest.class);
         suite.addTestSuite(DecoratorsTest.class);
+        suite.addTestSuite(TransientDecoratorsTest.class);
         suite.addTestSuite(DeleteFromModelActionTests.class);
         suite.addTestSuite(DeleteWithoutToolFromModelActionTests.class);
         suite.addTestSuite(DeleteFromDiagramActionTests.class);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
+import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -199,15 +200,12 @@ public final class LayerHelper {
             boolean visible = false;
             if (diagram != null && session.getActiveParentLayers(mapping).size() > 0) {
                 /*
-                 * We are visible in the following cases:
-                 * 
-                 * 1. the mapping is in active layer and not hidden by owner
-                 * mapping in an active layer and container is diagram
-                 * 
-                 * 2- the mapping is in active layer and not hidden by owner
-                 * mapping in an active layer and container is element and
-                 * element.mapping contains mapping and element is
-                 * visible
+                 * We are visible in the following cases: 1. the mapping is in
+                 * active layer and not hidden by owner mapping in an active
+                 * layer and container is diagram 2- the mapping is in active
+                 * layer and not hidden by owner mapping in an active layer and
+                 * container is element and element.mapping contains mapping and
+                 * element is visible
                  */
 
                 /*
@@ -519,10 +517,34 @@ public final class LayerHelper {
      *         otherwise
      */
     public static boolean containsOnlyTools(final Layer layer) {
+        final boolean containsMappings = containsMappings(layer);
+        final boolean isNoDecorationDescritionSet = layer.getDecorationDescriptionsSet() == null || layer.getDecorationDescriptionsSet().getDecorationDescriptions().isEmpty();
+        return !containsMappings && isNoDecorationDescritionSet;
+    }
+
+    private static boolean containsMappings(final Layer layer) {
         final boolean isNoMapping = layer.getContainerMappings().isEmpty() && layer.getEdgeMappings().isEmpty() && layer.getNodeMappings().isEmpty();
         final boolean isNoImportOrReusedMapping = layer.getEdgeMappingImports().isEmpty() && layer.getReusedMappings().isEmpty();
-        final boolean isNoDecorationDescritionSet = layer.getDecorationDescriptionsSet() == null || layer.getDecorationDescriptionsSet().getDecorationDescriptions().isEmpty();
-        return isNoMapping && isNoImportOrReusedMapping && isNoDecorationDescritionSet;
+        return !(isNoMapping && isNoImportOrReusedMapping);
+    }
+
+    /**
+     * Check if this layer is considered as Transient. A transient layer is an
+     * additional layer that contains at most tools or decorationDescription.
+     * 
+     * @param layer
+     *            the layer to check
+     * @return <code>true</code> if it is transient, <code>false</code>
+     *         otherwise
+     */
+    public static boolean isTransientLayer(final Layer layer) {
+        if (layer instanceof AdditionalLayer) {
+            boolean containsMappings = containsMappings(layer);
+            boolean containsCusto = layer.getCustomization() != null && !layer.getCustomization().getVsmElementCustomizations().isEmpty();
+            return !containsMappings && !containsCusto;
+        }
+        return false;
+
     }
 
 }

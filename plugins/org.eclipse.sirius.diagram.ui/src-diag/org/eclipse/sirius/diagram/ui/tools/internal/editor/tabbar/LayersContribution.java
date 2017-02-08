@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,18 +12,21 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.ImageProvider;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -36,6 +39,7 @@ import org.eclipse.swt.graphics.Image;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Contribute a menu to tab bar to activate and deactivate layers.
@@ -93,18 +97,30 @@ public class LayersContribution extends AbstractMenuContributionItem {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.AbstractMenuContributionItem#menuShow(org.eclipse.jface.action.IMenuManager)
-     */
     @Override
     protected void menuShow(IMenuManager manager) {
-        for (final Layer layer : getLayers()) {
+        Collection<Layer> layers = getLayers();
+        List<Layer> nonTransientlayers = Lists.newArrayList();
+        List<Layer> transientLayers = Lists.newArrayList();
+        for (Layer layer : layers) {
+            if (LayerHelper.isTransientLayer(layer)) {
+                transientLayers.add(layer);
+            } else {
+                nonTransientlayers.add(layer);
+            }
+        }
+        for (Layer layer : nonTransientlayers) {
+            addLayerMenuItem(manager, layer);
+        }
+        manager.add(new Separator("Transient layers")); //$NON-NLS-1$
+        for (Layer layer : transientLayers) {
             addLayerMenuItem(manager, layer);
         }
     }
 
+    /**
+     * @return All {@link Layer} of the current {@link DDiagram}.
+     */
     private Collection<Layer> getLayers() {
         DiagramDescription diagramDesc = diagram.getDescription();
         Collection<Layer> allLayers = new ArrayList<Layer>(new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), diagramDesc));

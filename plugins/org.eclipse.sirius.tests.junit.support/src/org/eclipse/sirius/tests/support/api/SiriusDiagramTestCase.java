@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,8 +18,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import junit.framework.TestCase;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -111,6 +109,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
+
+import junit.framework.TestCase;
 
 /**
  * Diagram specific generic test case.
@@ -329,7 +329,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     protected void delete(final EditPart... editParts) {
         final DeleteFromModelAction actionDelegate = new DeleteFromModelAction();
         final IEditorPart editor = EclipseUIUtil.getActiveEditor();
-        final GraphicalViewer viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
+        final GraphicalViewer viewer = editor.getAdapter(GraphicalViewer.class);
         for (EditPart editPart : editParts) {
             viewer.appendSelection(editPart);
         }
@@ -348,7 +348,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     protected void deleteViaKeyboard(final EditPart editPart) {
         final IEditorPart editor = EclipseUIUtil.getActiveEditor();
         final DeleteWithHookAction actionDelegate = new DeleteWithHookAction(editor);
-        final GraphicalViewer viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
+        final GraphicalViewer viewer = editor.getAdapter(GraphicalViewer.class);
         viewer.appendSelection(editPart);
         actionDelegate.update();
         actionDelegate.run();
@@ -363,7 +363,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
     protected void deleteFromDiagram(final EditPart editPart) {
         final DeleteFromDiagramAction actionDelegate = new DeleteFromDiagramAction();
         final IEditorPart editor = EclipseUIUtil.getActiveEditor();
-        final GraphicalViewer viewer = (GraphicalViewer) editor.getAdapter(GraphicalViewer.class);
+        final GraphicalViewer viewer = editor.getAdapter(GraphicalViewer.class);
         viewer.appendSelection(editPart);
         final Action mockAction = new Action() {
             // Nothing to specialize
@@ -1433,8 +1433,8 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      *            the file to pass in read only status
      * @throws Exception
      *             the exception
-     * @deprecated use {@link
-     *             EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(boolean,
+     * @deprecated use
+     *             {@link EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(boolean,
      *             IFile...)} instead and explicitly check its effect.
      */
     @Deprecated

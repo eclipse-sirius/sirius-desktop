@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -562,15 +562,39 @@ public class DDiagramElementSynchronizer {
                 it.remove();
             }
         }
+        it = element.getTransientDecorations().iterator();
+        while (it.hasNext()) {
+            Decoration decoration = it.next();
+            final DecorationDescription description = decoration.getDescription();
+            if (!diagram.getActivatedTransientLayers().contains(LayerHelper.getParentLayer(description))
+                    || !checkDecoratorPrecondition(element.getTarget(), (DSemanticDecorator) element.eContainer(), description)) {
+                it.remove();
+            }
+        }
         for (Layer layer : diagram.getActivatedLayers()) {
-            if (layer.getDecorationDescriptionsSet() != null) {
-                EList<DecorationDescription> decorationDescriptions = layer.getDecorationDescriptionsSet().getDecorationDescriptions();
-                for (DecorationDescription decorationDescription : decorationDescriptions) {
-                    if (decorationDescription instanceof MappingBasedDecoration && ((MappingBasedDecoration) decorationDescription).getMappings().contains(element.getDiagramElementMapping())
-                            || decorationDescription instanceof SemanticBasedDecoration
-                                    && accessor.eInstanceOf(element.getTarget(), ((SemanticBasedDecoration) decorationDescription).getDomainClass())) {
-                        addDecoration(element, decorationDescription);
-                    }
+            updateDecorationToAdd(element, layer);
+        }
+        for (Layer layer : diagram.getActivatedTransientLayers()) {
+            updateDecorationToAdd(element, layer);
+        }
+    }
+
+    /**
+     * Investigate {@link DecorationDescription} from the given
+     * {@link Layer} and call addDecoration with it.
+     * 
+     * @param element
+     *            current {@link DDiagramElement} to decorate
+     * @param layer
+     *            current {@link Layer} to investigate
+     */
+    private void updateDecorationToAdd(final DDiagramElement element, Layer layer) {
+        if (layer.getDecorationDescriptionsSet() != null) {
+            EList<DecorationDescription> decorationDescriptions = layer.getDecorationDescriptionsSet().getDecorationDescriptions();
+            for (DecorationDescription decorationDescription : decorationDescriptions) {
+                if (decorationDescription instanceof MappingBasedDecoration && ((MappingBasedDecoration) decorationDescription).getMappings().contains(element.getDiagramElementMapping())
+                        || decorationDescription instanceof SemanticBasedDecoration && accessor.eInstanceOf(element.getTarget(), ((SemanticBasedDecoration) decorationDescription).getDomainClass())) {
+                    addDecoration(element, decorationDescription);
                 }
             }
         }
@@ -934,7 +958,12 @@ public class DDiagramElementSynchronizer {
      *            description of the decoration
      */
     public void addDecoration(final DDiagramElement element, final DecorationDescription decorationDescription) {
-        for (final Decoration decoration : new ArrayList<Decoration>(element.getDecorations())) {
+        for (final Decoration decoration : element.getDecorations()) {
+            if (EcoreUtil.equals(decorationDescription, decoration.getDescription())) {
+                return;
+            }
+        }
+        for (final Decoration decoration : element.getTransientDecorations()) {
             if (EcoreUtil.equals(decorationDescription, decoration.getDescription())) {
                 return;
             }
@@ -943,7 +972,11 @@ public class DDiagramElementSynchronizer {
         if (checkDecoratorPrecondition(element.getTarget(), (DSemanticDecorator) element.eContainer(), decorationDescription)) {
             final Decoration decoration = ViewpointFactory.eINSTANCE.createDecoration();
             decoration.setDescription(decorationDescription);
-            element.getDecorations().add(decoration);
+            if (LayerHelper.isTransientLayer((Layer) decorationDescription.eContainer().eContainer())) {
+                element.getTransientDecorations().add(decoration);
+            } else {
+                element.getDecorations().add(decoration);
+            }
         }
     }
 

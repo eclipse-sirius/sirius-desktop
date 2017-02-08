@@ -95,7 +95,8 @@ h4. Changes in @org.eclipse.sirius.editor.properties@
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
-* <span class="label label-success">Added</span> The utility method @org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()@ has been added to allow to load a PDE target platform according to all known OSGi bundles. It is usefull to compile a plug-in in the execution runtime of the tests.
+* <span class="label label-success">Added</span> The utility method @org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()@ has been added to allow to load a PDE target platform according to all known OSGi bundles. It is useful to compile a plug-in in the execution runtime of the tests.
+* <span class="label label-success">Added</span> The utility class @org.eclipse.sirius.tests.support.api.OpenedSessionsCondition@ has been extracted from a junit test to be used by multiple junit tests. It allows to wait until a session is in opened state.
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 

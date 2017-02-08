@@ -30,8 +30,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.repair.SiriusRepairProcess;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -41,14 +39,13 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
-import org.eclipse.sirius.tests.support.api.ICondition;
+import org.eclipse.sirius.tests.support.api.OpenedSessionsCondition;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -466,49 +463,5 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
         editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
         assertEquals("The session should not be dirty.", SessionStatus.SYNC, session.getStatus());
-    }
-
-    /**
-     * A condition to wait until the {@link SessionManager} return the expected
-     * number of sessions.
-     * 
-     * @author <a href="mailto:maxime.porhel@obeo.fr">Maxime Porhel</a>
-     */
-    private static class OpenedSessionsCondition implements ICondition {
-
-        private final int expectedNumber;
-
-        /**
-         * Construct a condition to wait until a session is closed.
-         * 
-         * @param expectedNumber
-         *            the expected number of session
-         */
-        public OpenedSessionsCondition(int expectedNumber) {
-            this.expectedNumber = expectedNumber;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public boolean test() throws Exception {
-            Collection<Session> knownSession = SessionManager.INSTANCE.getSessions();
-
-            // Sessions are added to the SessionManager during their opening,
-            // but they might not be completelty opened yet.
-            Iterable<Session> openedSessions = Iterables.filter(knownSession, new Predicate<Session>() {
-                @Override
-                public boolean apply(Session input) {
-                    return input.isOpen();
-                }
-            });
-            return expectedNumber == Iterables.size(openedSessions);
-        }
-
-        @Override
-        public String getFailureMessage() {
-            return "The expected number of session was not reached.";
-        }
     }
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="decorator" version="11.1.1.201610211630">
+  <ownedViewpoints name="Transient_Decorator" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Transient_Decorator" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="EClass" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="MBD_TransientLayer" label="Transient layer with mapping based decorator">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="MBD_Class" position="SOUTH" imageExpression="/org.eclipse.sirius.tests.junit/data/unit/decorators/transientDecorators/yellow_car.png" mappings="//@ownedViewpoints[name='Transient_Decorator']/@ownedRepresentations[name='Transient_Decorator']/@defaultLayer/@containerMappings[name='EClass']" decoratorPath="/decorator.design/description/yellow_car.png"/>
+        </decorationDescriptionsSet>
+      </additionalLayers>
+      <additionalLayers name="SBD_TransientLayer" label="Transient layer with semantic based decorator">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="SBD_Class" position="NORTH" imageExpression="/org.eclipse.sirius.tests.junit/data/unit/decorators/transientDecorators/yellow_car.png" domainClass="EClass"/>
+        </decorationDescriptionsSet>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="decorator.design.Services"/>
+  </ownedViewpoints>
+</description:Group>
