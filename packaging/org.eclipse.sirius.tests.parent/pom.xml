@@ -12,13 +12,13 @@
   <parent>
     <groupId>org.eclipse.sirius</groupId>
     <artifactId>sirius-parent</artifactId>
-    <version>3.1.7-SNAPSHOT</version>
+    <version>3.1.8-SNAPSHOT</version>
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
   <groupId>org.eclipse.sirius</groupId>
   <artifactId>sirius-tests-parent</artifactId>
-  <version>3.1.7-SNAPSHOT</version>
+  <version>3.1.8-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Sirius Tests Parent</name>
@@ -103,7 +103,7 @@
             <artifact>
               <groupId>org.eclipse.sirius</groupId>
               <artifactId>sirius-tests-parent</artifactId>
-              <version>3.1.7-SNAPSHOT</version>
+              <version>3.1.8-SNAPSHOT</version>
               <classifier>../../releng/org.eclipse.sirius.targets/sirius_tests_${platform-version-name}</classifier>
             </artifact>
           </target>
