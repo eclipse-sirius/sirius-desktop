@@ -79,7 +79,9 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
                 }
             } else {
                 if (dDiagram.getActivatedTransientLayers().contains(layer)) {
-                    dDiagram.getActivatedTransientLayers().remove(layer);
+                    if (((AdditionalLayer) layer).isOptional()) {
+                        dDiagram.getActivatedTransientLayers().remove(layer);
+                    }
                 } else {
                     dDiagram.getActivatedTransientLayers().add((AdditionalLayer) layer);
                 }

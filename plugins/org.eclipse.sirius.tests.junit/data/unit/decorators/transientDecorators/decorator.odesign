@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="decorator" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="decorator" version="11.1.1.201612201200">
   <ownedViewpoints name="Transient_Decorator" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Transient_Decorator" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
@@ -14,7 +14,7 @@
       </defaultLayer>
       <additionalLayers name="MBD_TransientLayer" label="Transient layer with mapping based decorator">
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="MBD_Class" position="SOUTH" imageExpression="/org.eclipse.sirius.tests.junit/data/unit/decorators/transientDecorators/yellow_car.png" mappings="//@ownedViewpoints[name='Transient_Decorator']/@ownedRepresentations[name='Transient_Decorator']/@defaultLayer/@containerMappings[name='EClass']" decoratorPath="/decorator.design/description/yellow_car.png"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="MBD_Class" position="SOUTH" imageExpression="/org.eclipse.sirius.tests.junit/data/unit/decorators/transientDecorators/yellow_car.png" mappings="//@ownedViewpoints[name='Transient_Decorator']/@ownedRepresentations[name='Transient_Decorator']/@defaultLayer/@containerMappings[name='EClass']"/>
         </decorationDescriptionsSet>
       </additionalLayers>
       <additionalLayers name="SBD_TransientLayer" label="Transient layer with semantic based decorator">
@@ -22,7 +22,26 @@
           <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="SBD_Class" position="NORTH" imageExpression="/org.eclipse.sirius.tests.junit/data/unit/decorators/transientDecorators/yellow_car.png" domainClass="EClass"/>
         </decorationDescriptionsSet>
       </additionalLayers>
+      <additionalLayers name="MBD_TransientLayer_default_optional" label="Transient layer with mapping based decorator - Default and Optional" activeByDefault="true">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="MBD_Class" imageExpression="/org.eclipse.sirius.tests.junit/data/unit/decorators/transientDecorators/yellow_car.png" mappings="//@ownedViewpoints[name='Transient_Decorator']/@ownedRepresentations[name='Transient_Decorator']/@defaultLayer/@containerMappings[name='EClass']"/>
+        </decorationDescriptionsSet>
+      </additionalLayers>
+      <additionalLayers name="SBD_TransientLayer_default_optional" label="Transient layer with semantic based decorator - Default and Optional" activeByDefault="true">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="SBD_Class" position="NORTH_WEST" imageExpression="/org.eclipse.sirius.tests.junit/data/unit/decorators/transientDecorators/yellow_car.png" domainClass="EClass"/>
+        </decorationDescriptionsSet>
+      </additionalLayers>
+      <additionalLayers name="MBD_TransientLayer_default_not_optional" label="Transient layer with mapping based decorator - Default and not Optional" activeByDefault="true" optional="false">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="MBD_Class" position="SOUTH_EAST" imageExpression="/org.eclipse.sirius.tests.junit/data/unit/decorators/transientDecorators/yellow_car.png" mappings="//@ownedViewpoints[name='Transient_Decorator']/@ownedRepresentations[name='Transient_Decorator']/@defaultLayer/@containerMappings[name='EClass']"/>
+        </decorationDescriptionsSet>
+      </additionalLayers>
+      <additionalLayers name="SBD_TransientLayer_default_not_optional" label="Transient layer with semantic based decorator - Default and not Optional" activeByDefault="true" optional="false">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="SBD_Class" position="NORTH_EAST" imageExpression="/org.eclipse.sirius.tests.junit/data/unit/decorators/transientDecorators/yellow_car.png" domainClass="EClass"/>
+        </decorationDescriptionsSet>
+      </additionalLayers>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="decorator.design.Services"/>
   </ownedViewpoints>
 </description:Group>

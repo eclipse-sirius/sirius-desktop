@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,8 +21,8 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle.
  * 
- * @author Laurent Goubet <a
- *         href="mailto:laurent.goubet@obeo.fr">laurent.goubet@obeo.fr</a>
+ * @author Laurent Goubet
+ *         <a href="mailto:laurent.goubet@obeo.fr">laurent.goubet@obeo.fr</a>
  */
 public class SiriusTestsPlugin extends Plugin {
     /** The plug-in ID. */
@@ -70,6 +70,8 @@ public class SiriusTestsPlugin extends Plugin {
         viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/data/unit/tools/palette/extension/toolSection_extension.odesign"));
         viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/data/unit/mappings/trac1926.odesign"));
         viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/data/unit/computelabel/testComputeLabelDiagram.odesign"));
+        viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/data/unit/decorators/transientDecorators/decorator.odesign"));
+        viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/data/unit/decorators/transientDecorators/decorator_extension.odesign"));
     }
 
     /**

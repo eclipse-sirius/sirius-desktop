@@ -916,7 +916,7 @@ public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
      */
     protected final boolean deactivateLayer(final DDiagram dDiagram, final String layerName) {
         Layer layer = getLayer(dDiagram, layerName);
-        if (layer != null && dDiagram.getActivatedLayers().contains(layer)) {
+        if (layer != null && (dDiagram.getActivatedLayers().contains(layer) || dDiagram.getActivatedTransientLayers().contains(layer))) {
             Command changeLayersActivationCmd = new ChangeLayerActivationCommand(session.getTransactionalEditingDomain(), dDiagram, layer, new NullProgressMonitor());
             session.getTransactionalEditingDomain().getCommandStack().execute(changeLayersActivationCmd);
             return true;

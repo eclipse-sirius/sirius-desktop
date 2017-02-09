@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -101,7 +101,7 @@ import org.eclipse.sirius.tests.unit.diagram.control.HierarchicalControlTest;
 import org.eclipse.sirius.tests.unit.diagram.control.HierarchicalControlWithRootElementReadOnlyTest;
 import org.eclipse.sirius.tests.unit.diagram.copier.RepresentationCopierTest;
 import org.eclipse.sirius.tests.unit.diagram.decorators.DecoratorsTest;
-import org.eclipse.sirius.tests.unit.diagram.decorators.TransientDecoratorsTest;
+import org.eclipse.sirius.tests.unit.diagram.decorators.TransientLayerAndDecoratorTest;
 import org.eclipse.sirius.tests.unit.diagram.dialect.DiagramDialectServicesTests;
 import org.eclipse.sirius.tests.unit.diagram.dragndrop.DraggedObjectTesterTests;
 import org.eclipse.sirius.tests.unit.diagram.dragndrop.LabelVisibilityOnCreationTest;
@@ -345,7 +345,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(RepresentationCopierTest.class);
         // suite.addTestSuite(ExtensionAccessTest.class);
         suite.addTestSuite(DecoratorsTest.class);
-        suite.addTestSuite(TransientDecoratorsTest.class);
+        suite.addTestSuite(TransientLayerAndDecoratorTest.class);
         suite.addTestSuite(DeleteFromModelActionTests.class);
         suite.addTestSuite(DeleteWithoutToolFromModelActionTests.class);
         suite.addTestSuite(DeleteFromDiagramActionTests.class);

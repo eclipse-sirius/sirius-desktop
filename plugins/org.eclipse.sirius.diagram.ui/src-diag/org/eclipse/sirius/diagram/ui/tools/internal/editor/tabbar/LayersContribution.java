@@ -99,7 +99,7 @@ public class LayersContribution extends AbstractMenuContributionItem {
 
     @Override
     protected void menuShow(IMenuManager manager) {
-        Collection<Layer> layers = getLayers();
+        Collection<Layer> layers = getOptionalLayers();
         List<Layer> nonTransientlayers = Lists.newArrayList();
         List<Layer> transientLayers = Lists.newArrayList();
         for (Layer layer : layers) {
@@ -121,7 +121,7 @@ public class LayersContribution extends AbstractMenuContributionItem {
     /**
      * @return All {@link Layer} of the current {@link DDiagram}.
      */
-    private Collection<Layer> getLayers() {
+    private Collection<Layer> getOptionalLayers() {
         DiagramDescription diagramDesc = diagram.getDescription();
         Collection<Layer> allLayers = new ArrayList<Layer>(new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), diagramDesc));
 

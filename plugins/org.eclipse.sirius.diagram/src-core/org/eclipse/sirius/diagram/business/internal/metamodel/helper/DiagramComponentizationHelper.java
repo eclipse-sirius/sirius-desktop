@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,9 +29,11 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
+
 /**
- * This class helps to use the Imported Diagram and Diagram Extension on Sirius
- * .
+ * This class helps to use the Imported Diagram and Diagram Extension on Sirius .
  * 
  * @author amartin
  */
@@ -41,8 +43,7 @@ public final class DiagramComponentizationHelper {
     }
 
     /**
-     * Give the set of layers from a DiagramDescription. useful for Diagram
-     * Extension.
+     * Give the set of layers from a DiagramDescription. useful for Diagram Extension.
      * 
      * @param diagramDescription
      *            the Diagram description
@@ -53,14 +54,34 @@ public final class DiagramComponentizationHelper {
     public static Set<Layer> getContributedLayers(final DiagramDescription diagramDescription, final Collection<Viewpoint> viewpoints) {
 
         /*
-         * We browse all the representationExtension of viewpoints registered
-         * through the Sirius Registry in order to retrieve all the Layers
-         * concerning the diagramDescription given in parameter. To know how a
-         * representationExtension contribute to the given diagramDescription,
-         * it should contains : -the URI of the diagramDescription -the name of
-         * the diagramDescription
+         * We browse all the representationExtension of viewpoints registered through the Sirius Registry in order to
+         * retrieve all the Layers concerning the diagramDescription given in parameter. To know how a
+         * representationExtension contribute to the given diagramDescription, it should contains : -the URI of the
+         * diagramDescription -the name of the diagramDescription
          */
         final Set<Layer> result = new LinkedHashSet<Layer>();
+        processGetContributedLayers(diagramDescription, viewpoints, result, false);
+
+        return Sets.newLinkedHashSet(Iterables.filter(result, Layer.class));
+    }
+
+    /**
+     * Give the set of layers from a DiagramDescription. useful for Diagram Extension.
+     * 
+     * @param diagramDescription
+     *            the Diagram description
+     * @param viewpoints
+     *            the available viewpoints
+     * @return the layer set of a given DiagramDescription
+     */
+    private static void processGetContributedLayers(final DiagramDescription diagramDescription, final Collection<Viewpoint> viewpoints, Set<Layer> result, boolean addTransientLayers) {
+
+        /*
+         * We browse all the representationExtension of viewpoints registered through the Sirius Registry in order to
+         * retrieve all the Layers concerning the diagramDescription given in parameter. To know how a
+         * representationExtension contribute to the given diagramDescription, it should contains : -the URI of the
+         * diagramDescription -the name of the diagramDescription
+         */
         final List<RepresentationExtensionDescription> foundDiagramContributors = new BasicEList<RepresentationExtensionDescription>();
         final List<RepresentationExtensionDescription> newDiagramContributors = new BasicEList<RepresentationExtensionDescription>();
         // result.addAll(diagramDescription.getOptionalLayers());
@@ -69,8 +90,8 @@ public final class DiagramComponentizationHelper {
         Iterator<RepresentationExtensionDescription> it;
 
         /*
-         * We browse a first time, all the DIagramRepresentation in all
-         * Viewpoints to find contribution to the "diagramDescription"
+         * We browse a first time, all the DiagramRepresentation in all Viewpoints to find contribution to the
+         * "diagramDescription"
          */
         for (final Viewpoint viewpoint : viewpoints) {
             for (final RepresentationExtensionDescription representationExtension : viewpoint.getOwnedRepresentationExtensions()) {
@@ -85,8 +106,8 @@ public final class DiagramComponentizationHelper {
         }
 
         /*
-         * We browse all the DIagramRepresentation in all Viewpoints to find
-         * contribution to the DiagramRepresentation which already contribute.
+         * We browse all the DiagramRepresentation in all Viewpoints to find contribution to the DiagramRepresentation
+         * which already contribute.
          */
         while (!foundDiagramContributors.isEmpty()) {
             for (final Viewpoint viewpoint : viewpoints) {
@@ -112,13 +133,10 @@ public final class DiagramComponentizationHelper {
             foundDiagramContributors.addAll(newDiagramContributors);
             newDiagramContributors.clear();
         }
-
-        return result;
     }
 
     /**
-     * Get the diagram description associated with the diagram extension
-     * description.
+     * Get the diagram description associated with the diagram extension description.
      * 
      * @param diagramExtensionDescription
      *            the diagram extension description
@@ -131,7 +149,8 @@ public final class DiagramComponentizationHelper {
         DiagramDescription diagramDescriptionFound = null;
         for (Iterator<Viewpoint> iterator = viewpoints.iterator(); iterator.hasNext() && diagramDescriptionFound == null; /* */) {
             Viewpoint viewpoint = iterator.next();
-            for (Iterator<RepresentationDescription> iterator2 = new ViewpointQuery(viewpoint).getAllRepresentationDescriptions().iterator(); iterator2.hasNext() && diagramDescriptionFound == null; /* */) {
+            for (Iterator<RepresentationDescription> iterator2 = new ViewpointQuery(viewpoint).getAllRepresentationDescriptions().iterator(); iterator2.hasNext()
+                    && diagramDescriptionFound == null; /* */) {
                 RepresentationDescription representation = iterator2.next();
                 if (representation instanceof DiagramDescription) {
                     if (DiagramComponentizationHelper.match(representation, diagramExtensionDescription)) {
@@ -164,8 +183,7 @@ public final class DiagramComponentizationHelper {
 
     private static boolean match(final EObject desc, final String descName, final RepresentationExtensionDescription representationExtensionDescription) {
         /*
-         * desc.eContainer might be null if desc is a proxy and we can't resolve
-         * it.
+         * desc.eContainer might be null if desc is a proxy and we can't resolve it.
          */
         final EObject container = desc.eContainer();
         if (container != null) {

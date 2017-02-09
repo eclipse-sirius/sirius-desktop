@@ -57,6 +57,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.Messages;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramHelper;
@@ -71,6 +72,7 @@ import org.eclipse.sirius.diagram.business.api.refresh.RefreshExtensionService;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.sync.visitor.DiagramElementsHierarchyVisitor;
@@ -280,27 +282,59 @@ public class DDiagramSynchronizer {
 
     }
 
-    private void activateInitialLayers() {
-        final Collection<Layer> layersToActivate = getAllInitialyActiveLayers();
+    /**
+     * Activates {@link Layer} that should be active on initialization.
+     */
+    public void activateInitialLayers() {
+        List<Layer> layersToActivate = Lists.newArrayList();
+        List<AdditionalLayer> transientLayersToActivate = Lists.newArrayList();
+        getInitialActiveLayers(layersToActivate, transientLayersToActivate);
         this.diagram.getActivatedLayers().addAll(layersToActivate);
+        this.diagram.getActivatedTransientLayers().addAll(transientLayersToActivate);
     }
 
-    private Collection<Layer> getAllInitialyActiveLayers() {
+    /**
+     * Activates transient {@link Layer}.
+     */
+    public void activateTransientLayers() {
+        // Activate only the first time
+        if (!this.diagram.isSetActivatedTransientLayers()) {
+            List<Layer> layersToActivate = Lists.newArrayList();
+            List<AdditionalLayer> transientLayersToActivate = Lists.newArrayList();
+            getInitialActiveLayers(layersToActivate, transientLayersToActivate);
+            this.diagram.getActivatedTransientLayers().addAll(transientLayersToActivate);
+        }
+    }
+
+    private void getInitialActiveLayers(List<Layer> layersToActivate, List<AdditionalLayer> transientLayersToActivate) {
         final Predicate<Layer> isActiveByDefault = new Predicate<Layer>() {
             @Override
             public boolean apply(final Layer layer) {
-                return (layer instanceof AdditionalLayer) && (((AdditionalLayer) layer).isActiveByDefault() || !((AdditionalLayer) layer).isOptional());
+                boolean result = true;
+                if (layer instanceof AdditionalLayer) {
+                    AdditionalLayer additionalLayer = (AdditionalLayer) layer;
+                    result = additionalLayer.isActiveByDefault() || !additionalLayer.isOptional();
+                }
+                return result;
             }
         };
 
-        final Collection<Layer> result = new ArrayList<Layer>();
-        final Layer mandatoryLayer = this.description.getDefaultLayer();
-        if (mandatoryLayer != null) {
-            result.add(mandatoryLayer);
+        getFilteredLayers(layersToActivate, transientLayersToActivate, isActiveByDefault);
+    }
+
+    private void getFilteredLayers(List<Layer> layers, List<AdditionalLayer> transientLayers, Predicate<Layer> predicate) {
+        Collection<Layer> allLayers = new ArrayList<Layer>(new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), description));
+
+        Collection<Layer> allActivatedLayers = Collections2.filter(allLayers, predicate);
+        allActivatedLayers.addAll(Collections2.filter(DiagramComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedViewpoints(false)), predicate));
+
+        for (Layer layer : allActivatedLayers) {
+            if (LayerHelper.isTransientLayer(layer)) {
+                transientLayers.add((AdditionalLayer) layer);
+            } else {
+                layers.add(layer);
+            }
         }
-        result.addAll(Collections2.filter(this.description.getAdditionalLayers(), isActiveByDefault));
-        result.addAll(Collections2.filter(DiagramComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedViewpoints(false)), isActiveByDefault));
-        return result;
     }
 
     /**
@@ -308,18 +342,14 @@ public class DDiagramSynchronizer {
      * activate them.
      */
     private void activateNewMandatoryAdditionalLayers() {
-        Collection<Layer> allMandatoryAdditionalLayers = getAllMandatoriesAdditionalLayers();
-        Collection<Layer> allMandatoryAdditionalLayersToAdd = new ArrayList<Layer>();
+        List<Layer> layersToActivate = Lists.newArrayList();
+        List<AdditionalLayer> transientLayersToActivate = Lists.newArrayList();
+        getMandatoriesAdditionalLayers(layersToActivate, transientLayersToActivate);
 
-        EList<Layer> activatedLayers = diagram.getActivatedLayers();
-
-        for (Layer layer : allMandatoryAdditionalLayers) {
-            if (!activatedLayers.contains(layer)) {
-                allMandatoryAdditionalLayersToAdd.add(layer);
-            }
-        }
-
-        diagram.getActivatedLayers().addAll(allMandatoryAdditionalLayersToAdd);
+        layersToActivate.removeAll(this.diagram.getActivatedLayers());
+        transientLayersToActivate.removeAll(this.diagram.getActivatedTransientLayers());
+        this.diagram.getActivatedLayers().addAll(layersToActivate);
+        this.diagram.getActivatedTransientLayers().addAll(transientLayersToActivate);
     }
 
     /**
@@ -327,22 +357,14 @@ public class DDiagramSynchronizer {
      * 
      * @return all mandatories layers.
      */
-    private Collection<Layer> getAllMandatoriesAdditionalLayers() {
+    private void getMandatoriesAdditionalLayers(List<Layer> layers, List<AdditionalLayer> transientLayers) {
         final Predicate<Layer> isMandatory = new Predicate<Layer>() {
             @Override
             public boolean apply(final Layer layer) {
                 return (layer instanceof AdditionalLayer) && !((AdditionalLayer) layer).isOptional();
             }
         };
-
-        final Collection<Layer> result = new ArrayList<Layer>();
-        final Layer mandatoryLayer = this.description.getDefaultLayer();
-        if (mandatoryLayer != null) {
-            result.add(mandatoryLayer);
-        }
-        result.addAll(Collections2.filter(this.description.getAdditionalLayers(), isMandatory));
-        result.addAll(Collections2.filter(DiagramComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedViewpoints(false)), isMandatory));
-        return result;
+        getFilteredLayers(layers, transientLayers, isMandatory);
     }
 
     /**

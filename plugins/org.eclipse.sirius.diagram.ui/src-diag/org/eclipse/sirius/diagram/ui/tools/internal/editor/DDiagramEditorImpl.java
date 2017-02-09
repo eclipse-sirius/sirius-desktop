@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IDisposable;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.gef.DefaultEditDomain;
@@ -114,6 +115,7 @@ import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
+import org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
@@ -167,6 +169,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.views.outlineview.DiagramOut
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineComparator;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineContentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineLabelProvider;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
@@ -189,6 +192,7 @@ import org.eclipse.sirius.ui.tools.internal.editor.SelectDRepresentationElements
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTarget;
@@ -231,9 +235,8 @@ import com.google.common.collect.Sets;
  */
 public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramEditor, ISelectionListener, SessionListener {
     /**
-     * This class has the responsibility to open the editing session
-     * corresponding to a session added to the session manager and attaching to
-     * it the current editor so it can be handled correctly.
+     * This class has the responsibility to open the editing session corresponding to a session added to the session
+     * manager and attaching to it the current editor so it can be handled correctly.
      * 
      * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
      *
@@ -254,8 +257,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                 editingSession.open();
                 editingSession.attachEditor(editor);
                 /*
-                 * need to reinit command factory provider to take the right
-                 * model accesor
+                 * need to reinit command factory provider to take the right model accesor
                  */
                 editor.initCommandFactoryProviders();
                 // important to remove the reference to the editor because this
@@ -271,9 +273,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     protected class DDiagramEditorTransferDropTargetListener extends AbstractTransferDropTargetListener {
 
         /**
-         * Constructs a new AbstractTransferDropTargetListener and sets the
-         * EditPartViewer and Transfer. The Viewer's Control should be the Drop
-         * target.
+         * Constructs a new AbstractTransferDropTargetListener and sets the EditPartViewer and Transfer. The Viewer's
+         * Control should be the Drop target.
          *
          * @param viewer
          *            the EditPartViewer
@@ -338,8 +339,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     protected IUndoContext undoContext;
 
     /**
-     * This is the one adapter factory used for providing views of the model (as
-     * in EcoreEditor).
+     * This is the one adapter factory used for providing views of the model (as in EcoreEditor).
      */
     protected AdapterFactory adapterFactory;
 
@@ -385,8 +385,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     private Tabbar tabbar;
 
     /**
-     * A Selection listeners that react to any selection changes by updating the
-     * "Diagram" Menu.
+     * A Selection listeners that react to any selection changes by updating the "Diagram" Menu.
      */
     private DiagramMenuUpdater diagramMenuUpdater;
 
@@ -437,8 +436,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     /**
-     * We have to take care of the case when Eclipse starts up with a session.
-     * and diagram already open. {@inheritDoc}
+     * We have to take care of the case when Eclipse starts up with a session. and diagram already open. {@inheritDoc}
      *
      * @see org.eclipse.sirius.diagram.part.SiriusDiagramEditor#init(org.eclipse.ui.IEditorSite,
      *      org.eclipse.ui.IEditorInput)
@@ -454,8 +452,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         try {
             if (getSession() != null) {
                 /*
-                 * we are during eclipse boot, we are not trying to close the
-                 * editor
+                 * we are during eclipse boot, we are not trying to close the editor
                  */
                 Collection<Session> sessions = SessionManager.INSTANCE.getSessions();
                 if (sessions.isEmpty() && (!isClosing)) {
@@ -488,10 +485,27 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
             initPermissionAuthority();
 
+            activateTransientLayers();
+
         } catch (NullPointerException e) {
             DiagramPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, DiagramPlugin.ID, Messages.DDiagramEditorImpl_noSessionMsg, e));
         }
 
+    }
+
+    private void activateTransientLayers() {
+        EObject semantic = ((DSemanticDecorator) this.getRepresentation()).getTarget();
+        final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
+        final ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semantic);
+        final DDiagramSynchronizer sync = new DDiagramSynchronizer(interpreter, ((DDiagram) this.getRepresentation()).getDescription(), accessor);
+        sync.setDiagram((DSemanticDiagram) this.getRepresentation());
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+
+            @Override
+            protected void doExecute() {
+                sync.activateTransientLayers();
+            }
+        });
     }
 
     private void initUndoContext() {
@@ -556,8 +570,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     /**
-     * Overridden to instantiate a {@link SiriusPaletteViewer} instead of the
-     * standard one, to support creation from the palette with drag'n drop.
+     * Overridden to instantiate a {@link SiriusPaletteViewer} instead of the standard one, to support creation from the
+     * palette with drag'n drop.
      *
      * {@inheritDoc}
      */
@@ -589,8 +603,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     /**
-     * Initialize {@link IPermissionAuthority} and the title image if the
-     * Diagram is already locked by the current user before opening.
+     * Initialize {@link IPermissionAuthority} and the title image if the Diagram is already locked by the current user
+     * before opening.
      */
     private void initPermissionAuthority() {
         // This IPermissionAuthority is added only on shared
@@ -683,8 +697,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     /**
-     * Overridden to not create a new {@link TransactionalEditingDomain} but
-     * return the {@link Session#getTransactionalEditingDomain()}.
+     * Overridden to not create a new {@link TransactionalEditingDomain} but return the
+     * {@link Session#getTransactionalEditingDomain()}.
      *
      * @return the {@link Session#getTransactionalEditingDomain()}
      */
@@ -806,9 +820,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     /**
-     * Dispose all graphical listeners. This method can be called as soon as the
-     * close of the editor is in progress. This avoids that these listeners
-     * react to notification whereas the editor will be closed.
+     * Dispose all graphical listeners. This method can be called as soon as the close of the editor is in progress.
+     * This avoids that these listeners react to notification whereas the editor will be closed.
      */
     protected void disposeGraphicalListeners() {
         // Dispose post-commit listener
@@ -956,8 +969,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     /**
-     * We hook the set focus in order to refresh the root edit part so that the
-     * sub diagram decorators will get refreshed.
+     * We hook the set focus in order to refresh the root edit part so that the sub diagram decorators will get
+     * refreshed.
      */
     @Override
     public void setFocus() {
@@ -971,8 +984,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                     if (semanticElement != null && (semanticElement.eResource() == null || semanticElement.getTarget() == null || semanticElement.getTarget().eResource() == null)) {
                         if (SessionManager.INSTANCE.getSession(semanticElement.getTarget()) != null) {
                             /*
-                             * The element has been deleted, we should close the
-                             * editor
+                             * The element has been deleted, we should close the editor
                              */
                             myDialogFactory.editorWillBeClosedInformationDialog(getSite().getShell());
                             close(false);
@@ -1117,8 +1129,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     protected void setDocumentProvider(final IEditorInput input) {
         if (getSession() != null/*
-                                 * && (input instanceof IFileEditorInput ||
-                                 * input instanceof URIEditorInput)
+                                 * && (input instanceof IFileEditorInput || input instanceof URIEditorInput)
                                  */) {
             setDocumentProvider(DiagramUIPlugin.getPlugin().getDocumentProvider(getSession().getTransactionalEditingDomain()));
         } else {
@@ -1170,8 +1181,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     /**
-     * Overridden to delegate {@link SessionListener} events to
-     * {@link DDiagramEditorSessionListenerDelegate}.
+     * Overridden to delegate {@link SessionListener} events to {@link DDiagramEditorSessionListenerDelegate}.
      *
      * {@inheritDoc}
      *
@@ -1237,8 +1247,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     /**
      * @param opening
-     *            True if this refresh is launch during the opening of the
-     *            editor, false otherwise.
+     *            True if this refresh is launch during the opening of the editor, false otherwise.
      */
     private void launchRefresh(boolean opening) {
         Diagram gmfDiag = getDiagram();
@@ -1419,8 +1428,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     /**
      * {@inheritDoc}
      *
-     * @not-generated : we're making sure the property is set as soon as
-     *                possible.
+     * @not-generated : we're making sure the property is set as soon as possible.
      */
     @Override
     protected void setGraphicalViewer(GraphicalViewer viewer) {
@@ -1429,11 +1437,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     /*
-     * We override this method because the super type DiagramEditor initialize
-     * the default zoom handler in this method. So we replace it by our own
-     * handler just after. (non-Javadoc)
-     * @see org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor#
-     * initializeGraphicalViewerContents()
+     * We override this method because the super type DiagramEditor initialize the default zoom handler in this method.
+     * So we replace it by our own handler just after. (non-Javadoc)
+     * @see org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor# initializeGraphicalViewerContents()
      */
     @Override
     protected void initializeGraphicalViewerContents() {
@@ -1538,16 +1544,15 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     /**
      * Override to not dispose undo context. We dispose
-     * {@link org.eclipse.emf.workspace.impl.WorkspaceCommandStackImpl#defaultUndoContext}
-     * only at {@link Session#close(org.eclipse.core.runtime.IProgressMonitor)}
-     * call.
+     * {@link org.eclipse.emf.workspace.impl.WorkspaceCommandStackImpl#defaultUndoContext} only at
+     * {@link Session#close(org.eclipse.core.runtime.IProgressMonitor)} call.
      */
     @Override
     protected void stopListening() {
         if (getDocumentProvider() != null && getEditingDomain() == null) {
             /*
-             * if editing domain is null, so undo context is not yet activated
-             * => we should not create one with getUndoContext()
+             * if editing domain is null, so undo context is not yet activated => we should not create one with
+             * getUndoContext()
              */
             super.stopListening();
         } else {
@@ -1562,8 +1567,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     /**
-     * This will create the quick outline presenter and install it on this
-     * editor.
+     * This will create the quick outline presenter and install it on this editor.
      *
      * @return The quick outline presenter.
      */
@@ -1615,8 +1619,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         } else {
 
             /*
-             * Step 1 : getting the view corresponding to the given
-             * representation element
+             * Step 1 : getting the view corresponding to the given representation element
              */
             final View targetView = getTargetView(marker);
 
@@ -1665,12 +1668,11 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     /**
-     * Remove the diagram event broker for the listening of the transactional
-     * editing domain <B>if possible</B>. GMF never remove its
-     * DiagramEventBroker ant this can let think to memoryLeak if the
-     * weakHashMap used bu DiagramEventBroker is not clean.<BR>
-     * But if there is no more GMF editor, using this transactional editing
-     * domain, opened when can remove the diagram event broker to be more clear.
+     * Remove the diagram event broker for the listening of the transactional editing domain <B>if possible</B>. GMF
+     * never remove its DiagramEventBroker ant this can let think to memoryLeak if the weakHashMap used bu
+     * DiagramEventBroker is not clean.<BR>
+     * But if there is no more GMF editor, using this transactional editing domain, opened when can remove the diagram
+     * event broker to be more clear.
      *
      * @param ted
      *            The transactional editing domain used by the current editor.
@@ -1710,11 +1712,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * {@inheritDoc}
      *
      * Overridden for two reason: <br/>
-     * - to update the given input in case the URI is a DDiagram instead of a
-     * GMF Diagram <br/>
-     * - to have the title image stable during super.setInput(input) because the
-     * title image can change depending on the representation is editable status
-     * (permission authority).
+     * - to update the given input in case the URI is a DDiagram instead of a GMF Diagram <br/>
+     * - to have the title image stable during super.setInput(input) because the title image can change depending on the
+     * representation is editable status (permission authority).
      */
     @Override
     public void setInput(IEditorInput input) {
