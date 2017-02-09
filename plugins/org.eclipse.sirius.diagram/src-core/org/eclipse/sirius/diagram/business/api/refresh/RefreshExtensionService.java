@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.business.internal.helper.refresh.RefreshExtens
  * 
  * @author ymortier
  */
-public final class RefreshExtensionService implements IRefreshExtension, IRefreshOverride {
+public final class RefreshExtensionService implements IRefreshExtension {
 
     /** Name of the extension point to parse for refresh extension providers. */
     private static final String REFRESH_EXTENSION_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.refreshExtensionProvider"; //$NON-NLS-1$
@@ -40,7 +40,9 @@ public final class RefreshExtensionService implements IRefreshExtension, IRefres
     /** The instance of the service. */
     private static RefreshExtensionService instance = new RefreshExtensionService();
 
-    /** All providers (instance of {@link RefreshExtensionProviderDescriptor}. */
+    /**
+     * All providers (instance of {@link RefreshExtensionProviderDescriptor}.
+     */
     private List<RefreshExtensionProviderDescriptor> providers;
 
     /** <code>true</code> if providers are loaded. */
@@ -110,6 +112,7 @@ public final class RefreshExtensionService implements IRefreshExtension, IRefres
      * {@inheritDoc}
      * 
      */
+    @Override
     public void beforeRefresh(final DDiagram viewPoint) {
         final ListIterator<RefreshExtensionProviderDescriptor> iterProviders = this.getProviders().listIterator();
 
@@ -128,6 +131,7 @@ public final class RefreshExtensionService implements IRefreshExtension, IRefres
      * {@inheritDoc}
      * 
      */
+    @Override
     public void postRefresh(final DDiagram viewPoint) {
         final ListIterator<RefreshExtensionProviderDescriptor> iterProviders = this.getProviders().listIterator();
 
@@ -158,9 +162,7 @@ public final class RefreshExtensionService implements IRefreshExtension, IRefres
 
             if (RefreshExtensionService.safeProvides(refreshExtensionProvider, dDiagram)) {
                 final IRefreshExtension refreshExtension = RefreshExtensionService.safeGetRefreshExtension(refreshExtensionProvider, dDiagram);
-                if (refreshExtension instanceof IRefreshOverride) {
-                    oneOverride = ((IRefreshOverride) refreshExtension).aroundRefresh(dDiagram) || oneOverride;
-                }
+                oneOverride = refreshExtension.aroundRefresh(dDiagram) || oneOverride;
             }
         }
         return oneOverride;

@@ -23,6 +23,14 @@ h4. Changes in @org.eclipse.sirius.ui@
 
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.wizards.page.ViewpointsSelectionWizardPage.setColumnWidthEquality(boolean)@ has been added to allow modification of column width equality (with default value "false") of the root composite of the viewpoint selection wizard.
 
+h4. Changes in @org.eclipse.sirius.diagram@
+
+* <span class="label label-info">Moved</span> The method @org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride.aroundRefresh(DDiagram)@ has been moved to @org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension@ to unify methods handling refresh extension under one interface. 
+
+* <span class="label label-info">Modified</span> The method @org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension.aroundRefresh(DDiagram)@ has been modified with a default behavior that is the one before introduction of the method to avoid breaking compatibility.
+
+* <span class="label label-danger">Removed</span> The interface @org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride@ has been removed because its only method has been moved into @org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension@ interface
+
 h4. Changes in @org.eclipse.sirius@
 
 * <span class="label label-info">Modified</span> The extension point @org.eclipse.sirius.ui.modelingprojectresourcelistener@ is no longer expected to be used. It is an internal extension point. Clients using this extension point to ignore some files as potential semantic models must now use the extension point @org.eclipse.sirius.resourceStrategy@. This extension point existed before Sirius 5.0.0 but was not API. It becomes API with Sirius 5.0.0, see the "developer documentation":developer/extensions-provide_resource_strategy.html for more details.
