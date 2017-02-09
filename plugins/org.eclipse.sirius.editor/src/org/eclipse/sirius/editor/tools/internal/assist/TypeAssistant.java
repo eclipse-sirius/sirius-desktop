@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -29,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 
 /**
- * A Type Assistant provides type names from incomplete names.
+ * A Type Assistant provides type names (domain classes) from incomplete names.
  * 
  * @author cbrun
  * 
@@ -126,8 +127,11 @@ public class TypeAssistant {
 
     private void addProposals(final Collection<EClassifier> proposals, final EPackage ePackage, final String incompleteName) {
         for (final EClassifier clazz : ePackage.getEClassifiers()) {
-            // CHECKSTYLE:OFF
-            if ((clazz.getName() != null && clazz.getName().startsWith(incompleteName)) || ((ePackage.getName() != null && (ePackage.getName() + "." + clazz.getName()).startsWith(incompleteName))) || ((ePackage.getName() != null && (ePackage.getName() + "::" + clazz.getName()).startsWith(incompleteName)))) {
+            boolean addProposal = clazz.getName() != null && clazz.getName().startsWith(incompleteName);
+            addProposal = addProposal || ((ePackage.getName() != null && (ePackage.getName() + "." + clazz.getName()).startsWith(incompleteName)));
+            addProposal = addProposal || ((ePackage.getName() != null && (ePackage.getName() + "::" + clazz.getName()).startsWith(incompleteName)));
+            addProposal = addProposal && clazz instanceof EClass;
+            if (addProposal) {
                 proposals.add(clazz);
             }
         }

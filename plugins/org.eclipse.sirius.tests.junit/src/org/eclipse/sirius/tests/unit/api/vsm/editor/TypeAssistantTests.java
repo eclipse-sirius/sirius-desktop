@@ -14,6 +14,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.EcoreFactory;
@@ -79,7 +81,7 @@ public class TypeAssistantTests extends TestCase {
     public void testAddProposalsWithAQLSyntaxSeparator() {
         registryStub.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
         List<EClassifier> proposals = typeAssistant.proposal("ecore:");
-        assertEquals("with ':' as beginning we should have 53 proposals", 53, proposals.size());
+        assertEquals("with ':' as beginning we should have 20 proposals", 20, proposals.size());
     }
 
     /**
@@ -89,7 +91,7 @@ public class TypeAssistantTests extends TestCase {
     public void testAddProposalsWithAQLSyntaxSeparator2() {
         registryStub.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
         List<EClassifier> proposals = typeAssistant.proposal("ecore::");
-        assertEquals("with ':' as beginning we should have 53 proposals", 53, proposals.size());
+        assertEquals("with ':' as beginning we should have 20 proposals", 20, proposals.size());
     }
 
     /**
@@ -107,6 +109,40 @@ public class TypeAssistantTests extends TestCase {
         List<EClassifier> proposals = typeAssistant.proposal("OneT");
         assertEquals("with OneT as beginning we should have 1 proposals", 1, proposals.size());
         assertEquals("with OneT as beginning we should have OneType proposal", eClass, proposals.get(0));
+    }
+
+    /**
+     * Test that {@link EEnum} are not proposed from {@link TypeAssistant}
+     * because Sirius does not handle it.
+     */
+    public void testProposalsWithEEnum() {
+        EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
+        ePackage.setName("EPackage");
+        ePackage.setNsURI("http://www.example.com/dsl/viewpoint/tests/TypeAssistantTests/0.1.0");
+        EEnum eEnum = EcoreFactory.eINSTANCE.createEEnum();
+        eEnum.setName("OneType");
+        ePackage.getEClassifiers().add(eEnum);
+        registryStub.put(ePackage.getNsURI(), ePackage);
+
+        List<EClassifier> proposals = typeAssistant.proposal("OneT");
+        assertEquals("EEnum should not be proposed.", 0, proposals.size());
+    }
+
+    /**
+     * Test that {@link EDatatype} are not proposed from {@link TypeAssistant}
+     * because Sirius does not handle it.
+     */
+    public void testProposalsWithEDatatype() {
+        EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
+        ePackage.setName("EPackage");
+        ePackage.setNsURI("http://www.example.com/dsl/viewpoint/tests/TypeAssistantTests/0.1.0");
+        EDataType eDatatype = EcoreFactory.eINSTANCE.createEDataType();
+        eDatatype.setName("OneType");
+        ePackage.getEClassifiers().add(eDatatype);
+        registryStub.put(ePackage.getNsURI(), ePackage);
+
+        List<EClassifier> proposals = typeAssistant.proposal("OneT");
+        assertEquals("EEnum should not be proposed.", 0, proposals.size());
     }
 
     @Override

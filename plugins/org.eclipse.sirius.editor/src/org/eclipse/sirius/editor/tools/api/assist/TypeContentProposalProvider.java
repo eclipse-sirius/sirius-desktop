@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 
 /**
- * Content Proposal Provider for Type names.
+ * Content Proposal Provider for Type names (domain classes).
  * 
  * @author cbrun
  * 
@@ -57,6 +57,7 @@ public class TypeContentProposalProvider implements IContentProposalProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public IContentProposal[] getProposals(final String contents, final int position) {
         final String incompleteText = contents.substring(0, position);
         final List<EClassifier> proposals = assistant.proposal(incompleteText);
@@ -91,12 +92,14 @@ public class TypeContentProposalProvider implements IContentProposalProvider {
 
             adapter.addContentProposalListener(new IContentProposalListener2() {
 
+                @Override
                 public void proposalPopupClosed(final ContentProposalAdapter arg0) {
                     if (section instanceof ModelViewBinding) {
                         ((ModelViewBinding) section).enableModelUpdating();
                     }
                 }
 
+                @Override
                 public void proposalPopupOpened(final ContentProposalAdapter arg0) {
                     if (section instanceof ModelViewBinding) {
                         ((ModelViewBinding) section).disableModelUpdating();
@@ -122,11 +125,11 @@ public class TypeContentProposalProvider implements IContentProposalProvider {
             IAssistContentProvider contentProposalAdapter = extension.get(0);
             contentProposalAdapter.setView(section);
             IBindingService bindingService = PlatformUI.getWorkbench().getService(IBindingService.class); // gives
-                                                                                                                            // the
-                                                                                                                            // user
-                                                                                                                            // content
-                                                                                                                            // assist
-                                                                                                                            // binding
+                                                                                                          // the
+                                                                                                          // user
+                                                                                                          // content
+                                                                                                          // assist
+                                                                                                          // binding
             TriggerSequence[] activeBindinds = bindingService.getActiveBindingsFor(ITextEditorActionDefinitionIds.CONTENT_ASSIST_PROPOSALS);
             if (activeBindinds != null && activeBindinds.length > 0) {
                 TriggerSequence sequence = activeBindinds[0];
