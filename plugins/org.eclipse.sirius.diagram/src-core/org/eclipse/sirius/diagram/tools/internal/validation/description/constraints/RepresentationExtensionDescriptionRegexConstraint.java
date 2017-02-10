@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Customization;
+import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 
 import com.google.common.base.Predicates;
@@ -30,7 +31,8 @@ import com.google.common.collect.Iterables;
 /**
  * Validation constraint to check that
  * {@link RepresentationExtensionDescription} using regular expression for
- * "viewpoint URI" or "representation name" contains only {@link Customization}.
+ * "viewpoint URI" or "representation name" contains only {@link Customization}
+ * or {@DecorationDescription}.
  * 
  * @author fbarbin
  * 
@@ -71,9 +73,9 @@ public class RepresentationExtensionDescriptionRegexConstraint extends AbstractM
                 } else {
                     // Check that all additional layers of diagram extension
                     // contains only style
-                    // customizations.
+                    // customizations or decorations.
                     for (AdditionalLayer additionalLayer : ((DiagramExtensionDescription) representationExtensionDescription).getLayers()) {
-                        if (!Iterables.all(additionalLayer.eContents(), Predicates.instanceOf(Customization.class))) {
+                        if (!Iterables.all(additionalLayer.eContents(), Predicates.or(Predicates.instanceOf(DecorationDescriptionsSet.class), Predicates.instanceOf(Customization.class)))) {
                             status = ctx.createFailureStatus(MessageFormat.format(ERROR_MESSAGE, representationExtensionDescription.getName()));
                         }
                     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +9,6 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.vsm;
-
-import junit.framework.TestCase;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -36,6 +34,8 @@ import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
 import org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import junit.framework.TestCase;
 
 /**
  * A {@link TestCase} to test VSM with Customization validation.
@@ -114,9 +114,10 @@ public class VSMWithCustomizationValidationTests extends TestCase {
 
     /**
      * Test that validation pass successfully with diagram extension using
-     * regular expression with only custom style inside his additional layers.
+     * regular expression with only custom style or decorations inside his
+     * additional layers.
      */
-    public void testDiagramExtensionRegexWithOnlyCustumStyle() {
+    public void testDiagramExtensionRegexWithOnlyCustomStyle() {
         Diagnostician diagnostician = new Diagnostician();
         Diagnostic diagnostic = diagnostician.validate(groupB);
         assertEquals("Validation should be successful", IStatus.OK, diagnostic.getSeverity());
@@ -161,9 +162,9 @@ public class VSMWithCustomizationValidationTests extends TestCase {
     public void testIncorrectEAttributeCustomizationAppliedOnValidation() {
         // Add a style description element not having the labelSize attribute to
         // have validation detects this issue
-        GaugeCompositeStyleDescription gaugeCompositeStyleDescription = (GaugeCompositeStyleDescription) diagramDescription1.getDefaultLayer().getContainerMappings().get(1).getSubNodeMappings()
-                .get(0).getStyle();
-        GaugeSectionDescription gaugeSectionDescription = (GaugeSectionDescription) gaugeCompositeStyleDescription.getSections().get(0);
+        GaugeCompositeStyleDescription gaugeCompositeStyleDescription = (GaugeCompositeStyleDescription) diagramDescription1.getDefaultLayer().getContainerMappings().get(1).getSubNodeMappings().get(0)
+                .getStyle();
+        GaugeSectionDescription gaugeSectionDescription = gaugeCompositeStyleDescription.getSections().get(0);
         eAttributeCustomization.getAppliedOn().add(gaugeSectionDescription);
 
         // Test validate
@@ -183,8 +184,8 @@ public class VSMWithCustomizationValidationTests extends TestCase {
         // Add a style description element not having the backgroundColor
         // reference to
         // have validation detects this issue
-        GaugeCompositeStyleDescription gaugeCompositeStyleDescription = (GaugeCompositeStyleDescription) diagramDescription1.getDefaultLayer().getContainerMappings().get(1).getSubNodeMappings()
-                .get(0).getStyle();
+        GaugeCompositeStyleDescription gaugeCompositeStyleDescription = (GaugeCompositeStyleDescription) diagramDescription1.getDefaultLayer().getContainerMappings().get(1).getSubNodeMappings().get(0)
+                .getStyle();
         eReferenceCustomization.getAppliedOn().add(gaugeCompositeStyleDescription);
 
         // Test validate
@@ -314,9 +315,9 @@ public class VSMWithCustomizationValidationTests extends TestCase {
         // have validation detects the issue that the appliedOn have not both
         // EAttribute name and EReference name
         vsmElementCustomizationReuse2.getReuse().add(eAttributeCustomization);
-        GaugeCompositeStyleDescription gaugeCompositeStyleDescription = (GaugeCompositeStyleDescription) diagramDescription1.getDefaultLayer().getContainerMappings().get(1).getSubNodeMappings()
-                .get(0).getStyle();
-        GaugeSectionDescription gaugeSectionDescription = (GaugeSectionDescription) gaugeCompositeStyleDescription.getSections().get(0);
+        GaugeCompositeStyleDescription gaugeCompositeStyleDescription = (GaugeCompositeStyleDescription) diagramDescription1.getDefaultLayer().getContainerMappings().get(1).getSubNodeMappings().get(0)
+                .getStyle();
+        GaugeSectionDescription gaugeSectionDescription = gaugeCompositeStyleDescription.getSections().get(0);
         vsmElementCustomizationReuse2.getAppliedOn().clear();
         vsmElementCustomizationReuse2.getAppliedOn().add(gaugeSectionDescription);
 
