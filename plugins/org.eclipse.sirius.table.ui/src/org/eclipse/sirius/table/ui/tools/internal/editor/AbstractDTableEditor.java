@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -111,10 +111,9 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
         if (isDeleted(getEditorInput())) {
             if (isSaveAsAllowed()) {
                 /*
-                 * 1GEUSSR: ITPUI:ALL - User should never loose changes made in
-                 * the editors. Changed Behavior to make sure that if called
-                 * inside a regular save (because of deletion of input element)
-                 * there is a way to report back to the caller.
+                 * 1GEUSSR: ITPUI:ALL - User should never loose changes made in the editors. Changed Behavior to make
+                 * sure that if called inside a regular save (because of deletion of input element) there is a way to
+                 * report back to the caller.
                  */
                 performSaveAs(progressMonitor);
             } else {
@@ -286,9 +285,8 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     }
 
     /**
-     * Overridden to update the UI part when the {@link DTable} model is changed
-     * outside of a EMF Command (which notify DTableContentAdapter) in case of
-     * collab model.
+     * Overridden to update the UI part when the {@link DTable} model is changed outside of a EMF Command (which notify
+     * DTableContentAdapter) in case of collab model.
      * 
      * {@inheritDoc}
      */
@@ -351,10 +349,9 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
      * @param uri
      *            the URI to resolve.
      * @param loadOnDemand
-     *            whether to create and load the resource, if it doesn't already
-     *            exists.
-     * @return the DTable resource resolved by the URI, or <code>null</code> if
-     *         there isn't one and it's not being demand loaded.
+     *            whether to create and load the resource, if it doesn't already exists.
+     * @return the DTable resource resolved by the URI, or <code>null</code> if there isn't one and it's not being
+     *         demand loaded.
      */
     private DTable getDTable(final URI uri, final boolean loadOnDemand) {
         DTable result = null;
@@ -415,8 +412,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     }
 
     /**
-     * Sets the cursor and selection state for an editor to reveal the position
-     * of the given marker.
+     * Sets the cursor and selection state for an editor to reveal the position of the given marker.
      * 
      * @param marker
      *            the marker to go to
@@ -498,4 +494,16 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             refreshAtOpeningActivator = null;
         }
     }
+
+    @Override
+    protected void updateEditorAfterAirdResourceReload() {
+        // We update all components that keeps Aird proxified element after an
+        // Aird resource reload.
+        treeViewerManager.updateDRepresentation(getTableModel());
+        getSite().getPage().removePartListener(refreshAtOpeningActivator);
+        refreshAtOpeningActivator = new RefreshAtOpeningActivator(session, this);
+        getSite().getPage().addPartListener(refreshAtOpeningActivator);
+        treeViewerManager.getTreeViewer().refresh();
+    }
+
 }

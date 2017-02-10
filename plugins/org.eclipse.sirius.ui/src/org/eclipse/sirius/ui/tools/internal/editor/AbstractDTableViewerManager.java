@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,7 +62,7 @@ public abstract class AbstractDTableViewerManager {
     /**
      * the model editing by this Viewer.
      */
-    protected final DRepresentation dRepresentation;
+    protected DRepresentation dRepresentation;
 
     /**
      * The model accessor.
@@ -148,7 +148,8 @@ public abstract class AbstractDTableViewerManager {
     protected abstract void createTreeViewer(Composite composite);
 
     /**
-     * Initialize a cache and add, if needed, the contextual menu for the table. <BR>
+     * Initialize a cache and add, if needed, the contextual menu for the table.
+     * <BR>
      * Cached the actions of creation and deletion in order to increase
      * performance and not calculate it on each contextual menu.<BR>
      * Problem for action on column header :
@@ -229,5 +230,14 @@ public abstract class AbstractDTableViewerManager {
     public void setDescriptionFileChanged(final boolean modified) {
         descriptionFileChanged = modified;
     }
+
+    /**
+     * Update this viewer manager representation with the new given
+     * {@link DRepresentation}. It replaces all references to the old used one.
+     * 
+     * @param newDRepresentation
+     *            the representation that will replace the current one used.
+     */
+    public abstract void updateDRepresentation(final DRepresentation newDRepresentation);
 
 }

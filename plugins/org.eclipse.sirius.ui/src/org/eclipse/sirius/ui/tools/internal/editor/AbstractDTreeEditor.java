@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -433,22 +433,11 @@ public abstract class AbstractDTreeEditor extends EditorPart
     @Override
     public void setFocus() {
         if (treeViewerManager != null) {
-            /*
-             * A regression in Kepler can cause an NPE inside the
-             * treeViewerManager.getControl().setFocus() below. The guard
-             * condition is a workaround, which seems to fix the problem (or at
-             * least the symptom) in our tests. See
-             * https://bugs.eclipse.org/bugs/show_bug.cgi?id=378846#c16
-             */
-            AbstractDTreeViewer viewer = treeViewerManager.getTreeViewer();
-            if (viewer != null && viewer.getTree() != null && viewer.getTree().getTopItem() != null) {
-                treeViewerManager.getControl().setFocus();
-            }
-            setEclipseWindowTitle();
-
             // Resolve proxy model after aird reload.
             DRepresentation representation = getRepresentation();
+            boolean representationProxyDetected = false;
             if (representation != null && representation.eIsProxy() && session != null) {
+                representationProxyDetected = true;
                 IEditorInput editorInput = getEditorInput();
                 if (editorInput instanceof URIEditorInput) {
                     URIEditorInput sessionEditorInput = (URIEditorInput) editorInput;
@@ -475,10 +464,34 @@ public abstract class AbstractDTreeEditor extends EditorPart
             }
 
             checkSemanticAssociation();
+
+            if (representationProxyDetected) {
+                updateEditorAfterAirdResourceReload();
+            }
+            /*
+             * A regression in Kepler can cause an NPE inside the
+             * treeViewerManager.getControl().setFocus() below. The guard
+             * condition is a workaround, which seems to fix the problem (or at
+             * least the symptom) in our tests. See
+             * https://bugs.eclipse.org/bugs/show_bug.cgi?id=378846#c16
+             */
+            AbstractDTreeViewer viewer = treeViewerManager.getTreeViewer();
+            if (viewer != null && viewer.getTree() != null && viewer.getTree().getTopItem() != null) {
+                treeViewerManager.getControl().setFocus();
+            }
+            setEclipseWindowTitle();
+
         } else if (control != null) {
             control.setFocus();
         }
     }
+
+    /**
+     * Update all needed editor elements after an Aird resource reload like
+     * {@link Tree} or {@link AbstractDTableViewerManager} referencing previous
+     * Aird elements as proxies.
+     */
+    protected abstract void updateEditorAfterAirdResourceReload();
 
     /**
      * Retrieve and set the representation from the given URI.
@@ -491,7 +504,10 @@ public abstract class AbstractDTreeEditor extends EditorPart
      */
     protected abstract void setRepresentation(URI uri, boolean loadOnDemand);
 
-    private void checkSemanticAssociation() {
+    /**
+     * Close this editor if root element has been removed.
+     */
+    protected void checkSemanticAssociation() {
         DRepresentation representation = getRepresentation();
         boolean shouldClose = representation == null || representation.eResource() == null;
         if (!shouldClose && representation instanceof DSemanticDecorator) {

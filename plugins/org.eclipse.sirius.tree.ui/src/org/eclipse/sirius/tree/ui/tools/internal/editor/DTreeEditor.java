@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -248,9 +248,8 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
     }
 
     /**
-     * Overridden to update the UI part when the {@link DTree} model is changed
-     * outside of a EMF Command (which notify DTreeContentAdapter) in case of
-     * collab model.
+     * Overridden to update the UI part when the {@link DTree} model is changed outside of a EMF Command (which notify
+     * DTreeContentAdapter) in case of collab model.
      * 
      * {@inheritDoc}
      */
@@ -320,10 +319,9 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
      * @param uri
      *            the URI to resolve.
      * @param loadOnDemand
-     *            whether to create and load the resource, if it doesn't already
-     *            exists.
-     * @return the DTree resource resolved by the URI, or <code>null</code> if
-     *         there isn't one and it's not being demand loaded.
+     *            whether to create and load the resource, if it doesn't already exists.
+     * @return the DTree resource resolved by the URI, or <code>null</code> if there isn't one and it's not being demand
+     *         loaded.
      */
     private DTree getDTree(final URI uri, final boolean loadOnDemand) {
         DTree result = null;
@@ -378,8 +376,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
     }
 
     /**
-     * Sets the cursor and selection state for an editor to reveal the position
-     * of the given marker.
+     * Sets the cursor and selection state for an editor to reveal the position of the given marker.
      * 
      * @param marker
      *            the marker to go to
@@ -494,4 +491,17 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         }
         return initialTitleImage;
     }
+
+    @Override
+    protected void updateEditorAfterAirdResourceReload() {
+        // We update all components that keep Aird proxified element after an
+        // Aird resource reload.
+        treeViewerManager.updateDRepresentation(getTreeModel());
+        getSite().getPage().removePartListener(refreshAtOpeningActivator);
+        refreshAtOpeningActivator = new RefreshAtOpeningActivator(this);
+        getSite().getPage().addPartListener(refreshAtOpeningActivator);
+        treeViewerManager.getTreeViewer().refresh();
+
+    }
+
 }

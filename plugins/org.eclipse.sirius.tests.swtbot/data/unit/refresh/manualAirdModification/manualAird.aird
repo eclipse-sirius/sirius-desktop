@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:tree="http://www.eclipse.org/sirius/tree/1.0.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/tree/description/1.0.0 http://www.eclipse.org/sirius/tree/1.0.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description">
+  <viewpoint:DAnalysis xmi:id="_59Je0PIJEea1GeqoRSXufw" selectedViews="_BJd7kPIKEeaCXtca9wOvKA" version="11.1.0.201608251200">
+    <semanticResources>manualAird.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_BJd7kPIKEeaCXtca9wOvKA">
+      <viewpoint xmi:type="description:Viewpoint" href="manualAird.odesign#//@ownedViewpoints[name='manualAird']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_9qLDwPLFEeaQMeHKkdbtDQ" name="manualAirdTree" representation="_9qLDwfLFEeaQMeHKkdbtDQ">
+        <description xmi:type="description_1:TreeDescription" href="manualAird.odesign#//@ownedViewpoints[name='manualAird']/@ownedRepresentations[name='manualAirdTree']"/>
+        <target xmi:type="ecore:EPackage" href="manualAird.ecore#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_-Rh-sPLFEeaQMeHKkdbtDQ" name="manualAirdTable" representation="_-RilwPLFEeaQMeHKkdbtDQ">
+        <description xmi:type="description_2:EditionTableDescription" href="manualAird.odesign#//@ownedViewpoints[name='manualAird']/@ownedRepresentations[name='manualAirdTable']"/>
+        <target xmi:type="ecore:EPackage" href="manualAird.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <tree:DTree xmi:id="_9qLDwfLFEeaQMeHKkdbtDQ" name="manualAirdTree">
+    <target xmi:type="ecore:EPackage" href="manualAird.ecore#/"/>
+    <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_9qLDwvLFEeaQMeHKkdbtDQ" name="C1">
+      <target xmi:type="ecore:EClass" href="manualAird.ecore#//C1"/>
+      <semanticElements xmi:type="ecore:EClass" href="manualAird.ecore#//C1"/>
+      <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_9qLDw_LFEeaQMeHKkdbtDQ"/>
+      <actualMapping xmi:type="description_1:TreeItemMapping" href="manualAird.odesign#//@ownedViewpoints[name='manualAird']/@ownedRepresentations[name='manualAirdTree']/@subItemMappings[name='eclass2']"/>
+    </ownedTreeItems>
+    <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_9qLDxPLFEeaQMeHKkdbtDQ" name="C2">
+      <target xmi:type="ecore:EClass" href="manualAird.ecore#//C2"/>
+      <semanticElements xmi:type="ecore:EClass" href="manualAird.ecore#//C2"/>
+      <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_9qLDxfLFEeaQMeHKkdbtDQ"/>
+      <actualMapping xmi:type="description_1:TreeItemMapping" href="manualAird.odesign#//@ownedViewpoints[name='manualAird']/@ownedRepresentations[name='manualAirdTree']/@subItemMappings[name='eclass2']"/>
+    </ownedTreeItems>
+    <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_9qLDxvLFEeaQMeHKkdbtDQ" name="C3">
+      <target xmi:type="ecore:EClass" href="manualAird.ecore#//C3"/>
+      <semanticElements xmi:type="ecore:EClass" href="manualAird.ecore#//C3"/>
+      <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_9qLDx_LFEeaQMeHKkdbtDQ"/>
+      <actualMapping xmi:type="description_1:TreeItemMapping" href="manualAird.odesign#//@ownedViewpoints[name='manualAird']/@ownedRepresentations[name='manualAirdTree']/@subItemMappings[name='eclass2']"/>
+    </ownedTreeItems>
+    <description xmi:type="description_1:TreeDescription" href="manualAird.odesign#//@ownedViewpoints[name='manualAird']/@ownedRepresentations[name='manualAirdTree']"/>
+  </tree:DTree>
+  <table:DTable xmi:id="_-RilwPLFEeaQMeHKkdbtDQ" name="manualAirdTable" headerColumnWidth="59">
+    <target xmi:type="ecore:EPackage" href="manualAird.ecore#/"/>
+    <lines xmi:type="table:DLine" xmi:id="_-RilwfLFEeaQMeHKkdbtDQ" label="C1">
+      <target xmi:type="ecore:EClass" href="manualAird.ecore#//C1"/>
+      <semanticElements xmi:type="ecore:EClass" href="manualAird.ecore#//C1"/>
+      <originMapping xmi:type="description_2:LineMapping" href="manualAird.odesign#//@ownedViewpoints[name='manualAird']/@ownedRepresentations[name='manualAirdTable']/@ownedLineMappings[name='Classes']"/>
+      <cells xmi:type="table:DCell" xmi:id="_-RilwvLFEeaQMeHKkdbtDQ" label="true" column="_-RilyvLFEeaQMeHKkdbtDQ">
+        <target xmi:type="ecore:EClass" href="manualAird.ecore#//C1"/>
+        <semanticElements xmi:type="ecore:EClass" href="manualAird.ecore#//C1"/>
+      </cells>
+      <cells xmi:type="table:DCell" xmi:id="_-Rilw_LFEeaQMeHKkdbtDQ" label="DC1" column="_-Rily_LFEeaQMeHKkdbtDQ">
+        <target xmi:type="ecore:EClass" href="manualAird.ecore#//C1"/>
+        <semanticElements xmi:type="ecore:EClass" href="manualAird.ecore#//C1"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" xmi:id="_-RilxPLFEeaQMeHKkdbtDQ" label="C2">
+      <target xmi:type="ecore:EClass" href="manualAird.ecore#//C2"/>
+      <semanticElements xmi:type="ecore:EClass" href="manualAird.ecore#//C2"/>
+      <originMapping xmi:type="description_2:LineMapping" href="manualAird.odesign#//@ownedViewpoints[name='manualAird']/@ownedRepresentations[name='manualAirdTable']/@ownedLineMappings[name='Classes']"/>
+      <cells xmi:type="table:DCell" xmi:id="_-RilxfLFEeaQMeHKkdbtDQ" label="false" column="_-RilyvLFEeaQMeHKkdbtDQ">
+        <target xmi:type="ecore:EClass" href="manualAird.ecore#//C2"/>
+        <semanticElements xmi:type="ecore:EClass" href="manualAird.ecore#//C2"/>
+      </cells>
+      <cells xmi:type="table:DCell" xmi:id="_-RilxvLFEeaQMeHKkdbtDQ" label="DC2" column="_-Rily_LFEeaQMeHKkdbtDQ">
+        <target xmi:type="ecore:EClass" href="manualAird.ecore#//C2"/>
+        <semanticElements xmi:type="ecore:EClass" href="manualAird.ecore#//C2"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" xmi:id="_-Rilx_LFEeaQMeHKkdbtDQ" label="C3">
+      <target xmi:type="ecore:EClass" href="manualAird.ecore#//C3"/>
+      <semanticElements xmi:type="ecore:EClass" href="manualAird.ecore#//C3"/>
+      <originMapping xmi:type="description_2:LineMapping" href="manualAird.odesign#//@ownedViewpoints[name='manualAird']/@ownedRepresentations[name='manualAirdTable']/@ownedLineMappings[name='Classes']"/>
+      <cells xmi:type="table:DCell" xmi:id="_-RilyPLFEeaQMeHKkdbtDQ" label="false" column="_-RilyvLFEeaQMeHKkdbtDQ">
+        <target xmi:type="ecore:EClass" href="manualAird.ecore#//C3"/>
+        <semanticElements xmi:type="ecore:EClass" href="manualAird.ecore#//C3"/>
+      </cells>
+      <cells xmi:type="table:DCell" xmi:id="_-RilyfLFEeaQMeHKkdbtDQ" label="DC3" column="_-Rily_LFEeaQMeHKkdbtDQ">
+        <target xmi:type="ecore:EClass" href="manualAird.ecore#//C3"/>
+        <semanticElements xmi:type="ecore:EClass" href="manualAird.ecore#//C3"/>
+      </cells>
+    </lines>
+    <columns xmi:type="table:DFeatureColumn" xmi:id="_-RilyvLFEeaQMeHKkdbtDQ" label="Is Abstract?" cells="_-RilwvLFEeaQMeHKkdbtDQ _-RilxfLFEeaQMeHKkdbtDQ _-RilyPLFEeaQMeHKkdbtDQ" width="75" featureName="abstract">
+      <originMapping xmi:type="description_2:FeatureColumnMapping" href="manualAird.odesign#//@ownedViewpoints[name='manualAird']/@ownedRepresentations[name='manualAirdTable']/@ownedColumnMappings[name='IsAbstractColumn']"/>
+    </columns>
+    <columns xmi:type="table:DFeatureColumn" xmi:id="_-Rily_LFEeaQMeHKkdbtDQ" label="Label" cells="_-Rilw_LFEeaQMeHKkdbtDQ _-RilxvLFEeaQMeHKkdbtDQ _-RilyfLFEeaQMeHKkdbtDQ" width="43" featureName="name">
+      <originMapping xmi:type="description_2:FeatureColumnMapping" href="manualAird.odesign#//@ownedViewpoints[name='manualAird']/@ownedRepresentations[name='manualAirdTable']/@ownedColumnMappings[name='Class%20label']"/>
+    </columns>
+    <description xmi:type="description_2:EditionTableDescription" href="manualAird.odesign#//@ownedViewpoints[name='manualAird']/@ownedRepresentations[name='manualAirdTable']"/>
+  </table:DTable>
+</xmi:XMI>

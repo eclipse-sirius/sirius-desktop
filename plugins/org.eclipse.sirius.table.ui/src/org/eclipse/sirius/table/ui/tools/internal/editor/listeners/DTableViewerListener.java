@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,9 +36,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TreeColumn;
 
 /**
- * A {@link ITreeViewerListener} and {@link ControlListener} to update the
- * DTable model when a SWT TreeItem is collapsed/expanded and
- * {@link TreeColumn#getWidth()} change.
+ * A {@link ITreeViewerListener} and {@link ControlListener} to update the DTable model when a SWT TreeItem is
+ * collapsed/expanded and {@link TreeColumn#getWidth()} change.
  *
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -148,6 +147,14 @@ public class DTableViewerListener implements ITreeViewerListener, ControlListene
                 domain.getCommandStack().execute(updateWidthCmd);
             }
         }
+    }
+
+    /**
+     * Replace the current DTable used with the given one.
+     * 
+     */
+    public void resetDTable() {
+        this.dTable = (DTable) this.dTableViewerManager.getEditor().getRepresentation();
     }
 
 }

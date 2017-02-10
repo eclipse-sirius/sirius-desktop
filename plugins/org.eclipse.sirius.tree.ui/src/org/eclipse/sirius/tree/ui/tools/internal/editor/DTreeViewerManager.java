@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,6 +67,7 @@ import org.eclipse.sirius.ui.tools.internal.editor.DTableTreeFocusListener;
 import org.eclipse.sirius.ui.tools.internal.editor.DescriptionFileChangedNotifier;
 import org.eclipse.sirius.ui.tools.internal.editor.SelectDRepresentationElementsListener;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters.ModelDragTargetAdapter;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.DND;
@@ -116,6 +117,10 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
 
     private SelectDRepresentationElementsListener selectTableElementsListener;
 
+    private TreeColumnLayout treeLayout;
+
+    private Composite composite;
+
     /**
      * The constructor.
      * 
@@ -152,12 +157,13 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
      *            the Container of the TreeViewer to create
      */
     @Override
-    protected void createTreeViewer(final Composite composite) {
+    protected void createTreeViewer(final Composite theComposite) {
+        this.composite = theComposite;
         // Create a composite to hold the children
         final GridData gridData = new GridData(GridData.FILL_BOTH);
         composite.setLayoutData(gridData);
 
-        final TreeColumnLayout treeLayout = new TreeColumnLayout();
+        treeLayout = new TreeColumnLayout();
         composite.setLayout(treeLayout);
 
         // Create and setup the TreeViewer
@@ -459,6 +465,24 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         dTreeContentProvider = null;
         super.dispose();
         createTreeItemMenu.dispose();
+    }
+
+    @Override
+    public void updateDRepresentation(DRepresentation newDRepresentation) {
+        this.dRepresentation = newDRepresentation;
+        treeUIUpdater.dispose();
+        treeUIUpdater = new TreeUIUpdater((DTreeViewer) treeViewer, dRepresentation);
+
+        getTreeViewer().getTree().removeAll();
+        getTreeViewer().getTree().clearAll(true);
+
+        treeLayout = new TreeColumnLayout();
+        composite.setLayout(treeLayout);
+
+        treeViewer.setInput(dRepresentation);
+
+        // Expands the line according to the model
+        treeViewer.setExpandedElements(TreeHelper.getExpandedItems((DTree) dRepresentation).toArray());
     }
 
 }

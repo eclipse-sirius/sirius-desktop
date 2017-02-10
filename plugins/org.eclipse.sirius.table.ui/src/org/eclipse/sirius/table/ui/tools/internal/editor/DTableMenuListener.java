@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -115,7 +115,7 @@ public class DTableMenuListener implements IMenuListener {
 
     private final AdapterFactory adapterFactory;
 
-    private final DTable dTable;
+    private DTable dTable;
 
     private final DTableViewerManager treeViewManager;
 
@@ -155,15 +155,11 @@ public class DTableMenuListener implements IMenuListener {
      * @param treeViewManager
      *            The manager of the TreeView
      * @param mappingToCreateActions
-     *            A map which associates {@link TableMapping} with the
-     *            corresponding list of {@link AbstractToolAction} (
-     *            {@link org.eclipse.sirius.table.ui.tools.internal.editor.action.CreateLineAction}
-     *            or
-     *            {@link org.eclipse.sirius.table.ui.tools.internal.editor.action.CreateTargetColumnAction}
-     *            )
+     *            A map which associates {@link TableMapping} with the corresponding list of {@link AbstractToolAction}
+     *            ( {@link org.eclipse.sirius.table.ui.tools.internal.editor.action.CreateLineAction} or
+     *            {@link org.eclipse.sirius.table.ui.tools.internal.editor.action.CreateTargetColumnAction} )
      * @param mappingToDeleteColumnActions
-     *            A map which associates {@link TableMapping} with the
-     *            corresponding
+     *            A map which associates {@link TableMapping} with the corresponding
      *            {@link org.eclipse.sirius.table.ui.tools.internal.editor.action.DeleteTargetColumnAction}
      * @param createActionsForTable
      *            A list of the actions for create lines under the table.
@@ -615,15 +611,14 @@ public class DTableMenuListener implements IMenuListener {
     }
 
     /**
-     * Tests whether a representation description belongs to a viewpoint which
-     * is currently active in the session.
+     * Tests whether a representation description belongs to a viewpoint which is currently active in the session.
      * 
      * @param session
      *            the current session.
      * @param representationDescription
      *            the representation description to check.
-     * @return <code>true</code> if the representation description belongs to a
-     *         viewpoint which is currently active in the session.
+     * @return <code>true</code> if the representation description belongs to a viewpoint which is currently active in
+     *         the session.
      */
     private boolean isFromActiveViewpoint(final Session session, final RepresentationDescription representationDescription) {
         final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(representationDescription);
@@ -631,15 +626,13 @@ public class DTableMenuListener implements IMenuListener {
     }
 
     /**
-     * Tests whether a representation belongs to a viewpoint which is currently
-     * active in the session.
+     * Tests whether a representation belongs to a viewpoint which is currently active in the session.
      * 
      * @param session
      *            the current session.
      * @param representation
      *            the representation to check.
-     * @return <code>true</code> if the representation belongs to a viewpoint
-     *         which is currently active in the session.
+     * @return <code>true</code> if the representation belongs to a viewpoint which is currently active in the session.
      */
     private boolean isFromActiveViewpoint(final Session session, final DRepresentation representation) {
         final RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
@@ -668,5 +661,10 @@ public class DTableMenuListener implements IMenuListener {
 
     public void setCreateActionsForTable(final List<AbstractToolAction> createActionsForTable) {
         this.createActionsForTable = createActionsForTable;
+    }
+
+    public void setTable(DTable newDRepresentation) {
+        this.dTable = newDRepresentation;
+
     }
 }

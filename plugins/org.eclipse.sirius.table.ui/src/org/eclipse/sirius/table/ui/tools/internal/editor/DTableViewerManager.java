@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -74,6 +74,7 @@ import org.eclipse.sirius.ui.tools.internal.editor.DTableTreeFocusListener;
 import org.eclipse.sirius.ui.tools.internal.editor.DescriptionFileChangedNotifier;
 import org.eclipse.sirius.ui.tools.internal.editor.SelectDRepresentationElementsListener;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters.ModelDragTargetAdapter;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.DND;
@@ -157,6 +158,11 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
+     * True if the dRepresentation has just been replaced.
+     */
+    protected boolean dRepresentationReplaced;
+
+    /**
      * the current active column.
      */
     private int activeColumn = -1;
@@ -178,6 +184,10 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     private DTableMenuListener actualMenuListener;
 
     private SelectDRepresentationElementsListener selectTableElementsListener;
+
+    private TreeColumnLayout treeLayout;
+
+    private Composite composite;
 
     /**
      * The constructor.
@@ -212,49 +222,76 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     /**
      * Create the TreeViewer.
      * 
-     * Problem for action on column header :
-     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=23103
+     * Problem for action on column header : https://bugs.eclipse.org/bugs/show_bug.cgi?id=23103
      * 
-     * @param composite
+     * @param theComposite
      *            the parent composite
      */
     @Override
-    protected void createTreeViewer(final Composite composite) {
+    protected void createTreeViewer(final Composite theComposite) {
+        this.composite = theComposite;
         // Create a composite to hold the children
         final GridData gridData = new GridData(GridData.HORIZONTAL_ALIGN_FILL | GridData.FILL_BOTH);
-        composite.setLayoutData(gridData);
-        final TreeColumnLayout treeLayout = new TreeColumnLayout();
-        composite.setLayout(treeLayout);
+        theComposite.setLayoutData(gridData);
+        treeLayout = new TreeColumnLayout();
+        theComposite.setLayout(treeLayout);
         // Create and setup the TreeViewer
         final int style = SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.MULTI;
-        treeViewer = new DTableTreeViewer(composite, style, this);
+        treeViewer = new DTableTreeViewer(theComposite, style, this);
+        treeViewer.addTreeListener(tableViewerListener);
+        initializeDragSupport();
+        treeViewer.setUseHashlookup(true);
         // Add a focus listener to deactivate the EMF actions on the Tree
         treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(treeEditor, treeViewer.getTree()));
-        initializeDragSupport();
+        descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
+        dTableContentProvider = new DTableContentProvider();
+        treeViewer.setContentProvider(dTableContentProvider);
+        ColumnViewerToolTipSupport.enableFor(treeViewer);
+        treeViewer.getTree().setLinesVisible(true);
+        treeViewer.getTree().setHeaderVisible(true);
+        // Manage height of the lines, selected colors,
+        triggerCustomDrawingTreeItems();
+        // Create a new CellFocusManager
+        final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
+        // Create a TreeViewerEditor with focusable cell
+        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer),
+                ColumnViewerEditor.TABBING_HORIZONTAL | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
+        initializeKeyBindingSupport();
+        triggerColumnSelectedColumn();
+        initializeColumnsAndComponentsRelatedToDRepresentation(treeLayout);
+    }
+
+    /**
+     * Initialize the columns and everything initialized according to DRepresentation.
+     * 
+     * @param theTreeLayout
+     *            the tree layout used to layout the columns.
+     */
+    private void initializeColumnsAndComponentsRelatedToDRepresentation(final TreeColumnLayout theTreeLayout) {
+
         sortListener = new DLinesSorter(getEditingDomain(), getEditor().getTableModel());
         // 1st column with line labels
-        TreeViewerColumn headerTreeColumn = addFirstColumn(treeLayout);
+        TreeViewerColumn headerTreeColumn = addFirstColumn(theTreeLayout);
 
         // Next columns
         int index = 1;
         for (final DColumn column : ((DTable) dRepresentation).getColumns()) {
             addNewColumn(column, index++);
         }
-        treeViewer.setUseHashlookup(true);
+
         // TableUIUpdater must be called before {@link
         // SelectDRepresentationElementsListener} to have TreeItem created
         tableUIUpdater = new TableUIUpdater(this, dRepresentation);
+
+        if (selectTableElementsListener != null) {
+            selectTableElementsListener.dispose();
+        }
         selectTableElementsListener = new SelectDRepresentationElementsListener(treeEditor, true);
-        descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
-        dTableContentProvider = new DTableContentProvider();
-        treeViewer.setContentProvider(dTableContentProvider);
+
         // The input for the table viewer is the instance of DTable
         treeViewer.setInput(dRepresentation);
-        ColumnViewerToolTipSupport.enableFor(treeViewer);
-        treeViewer.getTree().setLinesVisible(true);
-        treeViewer.getTree().setHeaderVisible(true);
+
         fillMenu();
-        triggerColumnSelectedColumn();
 
         // Expands the line according to the model
         treeViewer.setExpandedElements(TableHelper.getExpandedLines((DTable) dRepresentation).toArray());
@@ -267,22 +304,14 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
                 treeViewer.getTree().getColumn(i).pack();
             }
         }
-        treeViewer.addTreeListener(tableViewerListener);
-        // Manage height of the lines, selected colors,
-        triggerCustomDrawingTreeItems();
 
-        // Create a new CellFocusManager
-        final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
-        // Create a TreeViewerEditor with focusable cell
-        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer),
-                ColumnViewerEditor.TABBING_HORIZONTAL | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
         // Set after the setInput to avoid layout call it several time for
         // nothing at opening
         headerTreeColumn.getColumn().addControlListener(tableViewerListener);
-        initializeKeyBindingSupport();
+
     }
 
-    private TreeViewerColumn addFirstColumn(TreeColumnLayout treeLayout) {
+    private TreeViewerColumn addFirstColumn(TreeColumnLayout theTreeLayout) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
         final TreeViewerColumn headerTreeColumn = new TreeViewerColumn(treeViewer, SWT.CENTER, 0);
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.SET_COLUMN_NAME_KEY);
@@ -306,12 +335,12 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         headerTreeColumn.setLabelProvider(lineheaderColumnLabelProvider);
         int headerColumnWidth = ((DTable) dRepresentation).getHeaderColumnWidth();
         if (headerColumnWidth != 0) {
-            treeLayout.setColumnData(headerTreeColumn.getColumn(), new ColumnPixelData(headerColumnWidth));
+            theTreeLayout.setColumnData(headerTreeColumn.getColumn(), new ColumnPixelData(headerColumnWidth));
             if (headerTreeColumn.getColumn().getWidth() != headerColumnWidth) {
                 headerTreeColumn.getColumn().setWidth(headerColumnWidth);
             }
         } else {
-            treeLayout.setColumnData(headerTreeColumn.getColumn(), new ColumnWeightData(1));
+            theTreeLayout.setColumnData(headerTreeColumn.getColumn(), new ColumnWeightData(1));
             if (IS_GTK_OS) {
                 // Do not launch treeViewerColumn.getColumn().pack() here
                 // for windows because the size is computed only with the
@@ -358,29 +387,26 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Initialize a cache and add, if needed, the contextual menu for the table.
-     * <BR>
-     * Cached the actions of creation and deletion in order to increase
-     * performance and not calculate it on each contextual menu.<BR>
-     * Problem for action on column header :
-     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=23103 <BR>
+     * Initialize a cache and add, if needed, the contextual menu for the table. <BR>
+     * Cached the actions of creation and deletion in order to increase performance and not calculate it on each
+     * contextual menu.<BR>
+     * Problem for action on column header : https://bugs.eclipse.org/bugs/show_bug.cgi?id=23103 <BR>
      */
     @Override
     public void fillMenu() {
-        if (descriptionFileChanged) {
+        if (descriptionFileChanged || dRepresentationReplaced) {
             descriptionFileChanged = false;
+
             final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteActions = Maps.newHashMap();
             final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions = Maps.newHashMap();
             final List<AbstractToolAction> createActionsForTable = Lists.newArrayList();
             calculateAvailableMenus(mappingToDeleteActions, mappingToCreateActions, createActionsForTable);
 
             mgr.setRemoveAllWhenShown(true);
-            if (actualMenuListener != null) {
-                mgr.removeAll();
-                actualMenuListener.setMappingToCreateActions(mappingToCreateActions);
-                actualMenuListener.setMappingToDeleteActions(mappingToDeleteActions);
-                actualMenuListener.setCreateActionsForTable(createActionsForTable);
-            } else {
+            if (dRepresentationReplaced || actualMenuListener == null) {
+                if (dRepresentationReplaced) {
+                    mgr.removeMenuListener(actualMenuListener);
+                }
                 actualMenuListener = new DTableMenuListener((DTable) dRepresentation, this, mappingToCreateActions, mappingToDeleteActions, createActionsForTable);
                 mgr.addMenuListener(actualMenuListener);
 
@@ -388,23 +414,27 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
                 treeViewer.getControl().setMenu(menu);
                 // Add this line to have others contextual menus
                 treeEditor.getSite().registerContextMenu(mgr, treeViewer);
+            } else {
+                mgr.removeAll();
+                actualMenuListener.setMappingToCreateActions(mappingToCreateActions);
+                actualMenuListener.setMappingToDeleteActions(mappingToDeleteActions);
+                actualMenuListener.setCreateActionsForTable(createActionsForTable);
             }
             getCreateLineMenu().update(createActionsForTable);
             getCreateTargetColumnMenu().update(createActionsForTable);
+            dRepresentationReplaced = false;
         }
     }
 
     /**
-     * Create the menus according to the {@link TableMapping} and the associated
-     * {@link CreateTool} and {@link DeleteTool}.
+     * Create the menus according to the {@link TableMapping} and the associated {@link CreateTool} and
+     * {@link DeleteTool}.
      * 
      * @param mappingToDeleteActions
-     *            A map which associates {@link TableMapping} with the
-     *            corresponding {@link DeleteTargetColumnAction}
+     *            A map which associates {@link TableMapping} with the corresponding {@link DeleteTargetColumnAction}
      * @param mappingToCreateActions
-     *            A map which associates {@link TableMapping} with the
-     *            corresponding list of {@link AbstractToolAction} (
-     *            {@link CreateLineAction} or {@link CreateTargetColumnAction})
+     *            A map which associates {@link TableMapping} with the corresponding list of {@link AbstractToolAction}
+     *            ( {@link CreateLineAction} or {@link CreateTargetColumnAction})
      * @param createActionsForTable
      *            A list of the actions for create lines under the table.
      */
@@ -441,18 +471,16 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Create the menus according to the {@link ElementColumnMapping} and the
-     * associated {@link CreateTool} and {@link DeleteTool}.
+     * Create the menus according to the {@link ElementColumnMapping} and the associated {@link CreateTool} and
+     * {@link DeleteTool}.
      * 
      * @param columnMappings
      *            List of {@link ElementColumnMapping}
      * @param mappingToDeleteActions
-     *            A map which associates {@link TableMapping} with the
-     *            corresponding {@link DeleteTargetColumnAction}
+     *            A map which associates {@link TableMapping} with the corresponding {@link DeleteTargetColumnAction}
      * @param mappingToCreateActions
-     *            A map which associates {@link TableMapping} with the
-     *            corresponding list of {@link AbstractToolAction} (
-     *            {@link CreateLineAction} or {@link CreateTargetColumnAction})
+     *            A map which associates {@link TableMapping} with the corresponding list of {@link AbstractToolAction}
+     *            ( {@link CreateLineAction} or {@link CreateTargetColumnAction})
      */
     private void calculateAvailableMenusForColumn(final EList<ElementColumnMapping> columnMappings, final Map<TableMapping, DeleteTargetColumnAction> mappingToDeleteActions,
             final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions) {
@@ -476,15 +504,14 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Create the menus according to the {@link LineMapping} and the associated
-     * {@link CreateTool} and {@link DeleteTool}.
+     * Create the menus according to the {@link LineMapping} and the associated {@link CreateTool} and
+     * {@link DeleteTool}.
      * 
      * @param lineMappings
      *            List of {@link LineMapping}
      * @param mappingToCreateActions
-     *            A map which associates {@link TableMapping} with the
-     *            corresponding list of {@link AbstractToolAction} (
-     *            {@link CreateLineAction} or {@link CreateTargetColumnAction})
+     *            A map which associates {@link TableMapping} with the corresponding list of {@link AbstractToolAction}
+     *            ( {@link CreateLineAction} or {@link CreateTargetColumnAction})
      */
     private void calculateAvailableMenusForLine(final EList<LineMapping> lineMappings, final Map<TableMapping, List<AbstractToolAction>> mappingToCreateActions,
             final List<LineMapping> processedLineMappings) {
@@ -516,8 +543,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Add a listener on the tree to listen the mouseDouwn or the key left-right
-     * arrows and store the activeColumn.
+     * Add a listener on the tree to listen the mouseDouwn or the key left-right arrows and store the activeColumn.
      */
     protected void triggerColumnSelectedColumn() {
         treeViewer.getTree().addMouseListener(new MouseAdapter() {
@@ -611,8 +637,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      * @param index
      *            the index at which to place the newly created column
      * @param changeInput
-     *            true if we must change the input of the SWT tree to null
-     *            before adding the SWT column, false otherwise
+     *            true if we must change the input of the SWT tree to null before adding the SWT column, false otherwise
      */
     public void addNewColumn(final DColumn newColumn, final int index, final boolean changeInput) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
@@ -750,4 +775,20 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         createTargetColumnMenu = null;
     }
 
+    @Override
+    public void updateDRepresentation(DRepresentation newDRepresentation) {
+        this.dRepresentation = newDRepresentation;
+        tableViewerListener.resetDTable();
+
+        getTreeViewer().getTree().removeAll();
+        getTreeViewer().getTree().clearAll(true);
+        while (getTreeViewer().getTree().getColumnCount() > 0) {
+            getTreeViewer().getTree().getColumns()[0].dispose();
+        }
+        treeLayout = new TreeColumnLayout();
+        composite.setLayout(treeLayout);
+        dRepresentationReplaced = true;
+        initializeColumnsAndComponentsRelatedToDRepresentation(treeLayout);
+
+    }
 }
