@@ -427,6 +427,9 @@
          type="aird"
          class="org.eclipse.sirius.business.internal.resource.AirDResourceFactory">
       </parser>
+      <parser
+            type="srm" class="org.eclipse.sirius.business.internal.resource.SiriusRepresentationResourceFactory">
+      </parser>
    </extension>
    <extension
          point="org.eclipse.sirius.mmdescriptor">

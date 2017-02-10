@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,71 +7,50 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *    IBM Corporation and others - The code for default load/save options was lifted
- *      from GMF's org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory.
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.resource;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
-import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
-import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
-import org.eclipse.sirius.common.tools.api.resource.ResourceMigrationMarker;
-import org.osgi.framework.Version;
 
 import com.google.common.collect.Maps;
 
 /**
- * A resource factory decorator to set XMI encodings.
+ * A new Factory to create a specific resource for *.srm files. A srm file contains one or several Sirius
+ * representations contained in its own resource.
  * 
- * @author ymortier
+ * @author Florian Barbin
+ *
  */
-public class AirDResourceFactory extends SiriusResourceFactory {
+public class SiriusRepresentationResourceFactory extends SiriusResourceFactory {
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory#createResource(org.eclipse.emf.common.util.URI)
-     */
     @Override
     public Resource createResource(final URI uri) {
-        RepresentationsFileVersionSAXParser parser = new RepresentationsFileVersionSAXParser(uri);
-        boolean migrationIsNeeded = true;
-        String loadedVersion = parser.getVersion(new NullProgressMonitor());
-        if (loadedVersion != null) {
-            migrationIsNeeded = RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion));
-        }
-
-        final XMIResource resource = doCreateAirdResourceImpl(uri);
-        setOptions(resource, migrationIsNeeded, loadedVersion);
+        final XMIResource resource = doCreateResource(uri);
+        setOptions(resource);
 
         if (!resource.getEncoding().equals(XMI_ENCODING)) {
             resource.setEncoding(XMI_ENCODING);
         }
 
-        if (migrationIsNeeded) {
-            ResourceMigrationMarker.addMigrationMarker(resource);
-        }
         return resource;
     }
 
     /**
-     * Returns the implementation of the AirdResourceImpl to use.
+     * Returns the implementation of the RepFileXMIResourceImpl to use.
      * 
      * @param uri
-     *            the uri of the AirdResource
-     * @return the implementation of the AirdResourceImpl to use
+     *            the uri of the Resource
+     * @return the implementation of the RepFileXMIResourceImpl to use
      */
-    protected XMIResource doCreateAirdResourceImpl(URI uri) {
-        return new AirDResourceImpl(uri);
+    protected XMIResource doCreateResource(URI uri) {
+        return new SiriusRepresentationXMIResourceImpl(uri);
     }
 
     /**
@@ -79,12 +58,8 @@ public class AirDResourceFactory extends SiriusResourceFactory {
      * 
      * @param resource
      *            the resource being loaded
-     * @param migrationIsNeeded
-     *            if a migration is needed.
-     * @param loadedVersion
-     *            the loaded version.
      */
-    private void setOptions(XMIResource resource, boolean migrationIsNeeded, String loadedVersion) {
+    private void setOptions(XMIResource resource) {
 
         final Map<Object, Object> loadOptions = new HashMap<Object, Object>();
         final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
@@ -99,17 +74,10 @@ public class AirDResourceFactory extends SiriusResourceFactory {
         loadOptions.put(XMLResource.OPTION_USE_PARSER_POOL, new XMLParserPoolImpl(true));
         loadOptions.put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, Maps.newHashMap());
 
-        // extendedMetaData and resourceHandler
-
-        if (migrationIsNeeded) {
-            AirDResourceImpl.addMigrationOptions(loadedVersion, loadOptions, saveOptions);
-        }
-
         loadOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
         saveOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 
         resource.getDefaultSaveOptions().putAll(saveOptions);
         resource.getDefaultLoadOptions().putAll(loadOptions);
     }
-
 }
