@@ -181,7 +181,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * @return the value of the '<em>Icon</em>' attribute.
      * @see #setIcon(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_Icon()
-     * @model
+     * @model dataType="org.eclipse.sirius.viewpoint.description.ImagePath"
      * @generated
      */
     String getIcon();

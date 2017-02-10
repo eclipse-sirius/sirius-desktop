@@ -35,6 +35,7 @@ import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
+import org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
@@ -46,6 +47,7 @@ import org.eclipse.sirius.viewpoint.description.Environment;
 import org.eclipse.sirius.viewpoint.description.Extension;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
+import org.eclipse.sirius.viewpoint.description.GenericDecorationDescription;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.IVSMElementCustomization;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
@@ -235,6 +237,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EClass semanticBasedDecorationEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass genericDecorationDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -431,6 +440,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EEnum positionEEnum = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EEnum decorationDistributionDirectionEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1204,7 +1220,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
-    public EAttribute getDecorationDescription_DecoratorPath() {
+    public EAttribute getDecorationDescription_DistributionDirection() {
         return (EAttribute) decorationDescriptionEClass.getEStructuralFeatures().get(2);
     }
 
@@ -1216,6 +1232,26 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     @Override
     public EAttribute getDecorationDescription_PreconditionExpression() {
         return (EAttribute) decorationDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getDecorationDescription_ImageExpression() {
+        return (EAttribute) decorationDescriptionEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getDecorationDescription_TooltipExpression() {
+        return (EAttribute) decorationDescriptionEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -1236,6 +1272,16 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     @Override
     public EAttribute getSemanticBasedDecoration_DomainClass() {
         return (EAttribute) semanticBasedDecorationEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EClass getGenericDecorationDescription() {
+        return genericDecorationDescriptionEClass;
     }
 
     /**
@@ -2004,6 +2050,16 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
+    public EEnum getDecorationDistributionDirection() {
+        return decorationDistributionDirectionEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EEnum getSystemColors() {
         return systemColorsEEnum;
     }
@@ -2180,11 +2236,15 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         decorationDescriptionEClass = createEClass(DescriptionPackage.DECORATION_DESCRIPTION);
         createEAttribute(decorationDescriptionEClass, DescriptionPackage.DECORATION_DESCRIPTION__NAME);
         createEAttribute(decorationDescriptionEClass, DescriptionPackage.DECORATION_DESCRIPTION__POSITION);
-        createEAttribute(decorationDescriptionEClass, DescriptionPackage.DECORATION_DESCRIPTION__DECORATOR_PATH);
+        createEAttribute(decorationDescriptionEClass, DescriptionPackage.DECORATION_DESCRIPTION__DISTRIBUTION_DIRECTION);
         createEAttribute(decorationDescriptionEClass, DescriptionPackage.DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION);
+        createEAttribute(decorationDescriptionEClass, DescriptionPackage.DECORATION_DESCRIPTION__IMAGE_EXPRESSION);
+        createEAttribute(decorationDescriptionEClass, DescriptionPackage.DECORATION_DESCRIPTION__TOOLTIP_EXPRESSION);
 
         semanticBasedDecorationEClass = createEClass(DescriptionPackage.SEMANTIC_BASED_DECORATION);
         createEAttribute(semanticBasedDecorationEClass, DescriptionPackage.SEMANTIC_BASED_DECORATION__DOMAIN_CLASS);
+
+        genericDecorationDescriptionEClass = createEClass(DescriptionPackage.GENERIC_DECORATION_DESCRIPTION);
 
         customizationEClass = createEClass(DescriptionPackage.CUSTOMIZATION);
         createEReference(customizationEClass, DescriptionPackage.CUSTOMIZATION__VSM_ELEMENT_CUSTOMIZATIONS);
@@ -2290,6 +2350,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
         // Create enums
         positionEEnum = createEEnum(DescriptionPackage.POSITION);
+        decorationDistributionDirectionEEnum = createEEnum(DescriptionPackage.DECORATION_DISTRIBUTION_DIRECTION);
         systemColorsEEnum = createEEnum(DescriptionPackage.SYSTEM_COLORS);
 
         // Create data types
@@ -2355,6 +2416,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         representationImportDescriptionEClass.getESuperTypes().add(this.getRepresentationDescription());
         representationElementMappingEClass.getESuperTypes().add(this.getIdentifiedElement());
         semanticBasedDecorationEClass.getESuperTypes().add(this.getDecorationDescription());
+        genericDecorationDescriptionEClass.getESuperTypes().add(this.getDecorationDescription());
         vsmElementCustomizationEClass.getESuperTypes().add(this.getIVSMElementCustomization());
         vsmElementCustomizationReuseEClass.getESuperTypes().add(this.getIVSMElementCustomization());
         eAttributeCustomizationEClass.getESuperTypes().add(this.getEStructuralFeatureCustomization());
@@ -2549,16 +2611,24 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getDecorationDescription_Position(), this.getPosition(), "position", "SOUTH_WEST", 1, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getDecorationDescription_DecoratorPath(), this.getImagePath(), "decoratorPath", null, 1, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDecorationDescription_DistributionDirection(), this.getDecorationDistributionDirection(), "distributionDirection", null, 1, 1, DecorationDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEAttribute(getDecorationDescription_PreconditionExpression(), this.getInterpretedExpression(), "preconditionExpression", null, 0, 1, DecorationDescription.class, //$NON-NLS-1$
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
+        initEAttribute(getDecorationDescription_ImageExpression(), this.getInterpretedExpression(), "imageExpression", null, 1, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDecorationDescription_TooltipExpression(), this.getInterpretedExpression(), "tooltipExpression", null, 0, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(semanticBasedDecorationEClass, SemanticBasedDecoration.class, "SemanticBasedDecoration", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getSemanticBasedDecoration_DomainClass(), this.getTypeName(), "domainClass", null, 1, 1, SemanticBasedDecoration.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(genericDecorationDescriptionEClass, GenericDecorationDescription.class, "GenericDecorationDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(customizationEClass, Customization.class, "Customization", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getCustomization_VsmElementCustomizations(), this.getIVSMElementCustomization(), null, "vsmElementCustomizations", null, 1, -1, Customization.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
@@ -2751,6 +2821,10 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addEEnumLiteral(positionEEnum, Position.SOUTH_EAST_LITERAL);
         addEEnumLiteral(positionEEnum, Position.CENTER_LITERAL);
 
+        initEEnum(decorationDistributionDirectionEEnum, DecorationDistributionDirection.class, "DecorationDistributionDirection"); //$NON-NLS-1$
+        addEEnumLiteral(decorationDistributionDirectionEEnum, DecorationDistributionDirection.VERTICAL);
+        addEEnumLiteral(decorationDistributionDirectionEEnum, DecorationDistributionDirection.HORIZONTAL);
+
         initEEnum(systemColorsEEnum, SystemColors.class, "SystemColors"); //$NON-NLS-1$
         addEEnumLiteral(systemColorsEEnum, SystemColors.BLACK_LITERAL);
         addEEnumLiteral(systemColorsEEnum, SystemColors.BLUE_LITERAL);
@@ -2808,6 +2882,10 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         });
         addAnnotation(getDecorationDescription_PreconditionExpression(), source, new String[] { "returnType", "a boolean." //$NON-NLS-1$ //$NON-NLS-2$
         });
+        addAnnotation(getDecorationDescription_ImageExpression(), source, new String[] { "returnType", "a String, an Image or an IFigure" //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getDecorationDescription_TooltipExpression(), source, new String[] { "returnType", "a String, an Image or an IFigure" //$NON-NLS-1$ //$NON-NLS-2$
+        });
         addAnnotation(getVSMElementCustomization_PredicateExpression(), source,
                 new String[] { "returnType", "a boolean result. True to enable the customization, false to disabled it. True by default." //$NON-NLS-1$ //$NON-NLS-2$
                 });
@@ -2854,6 +2932,16 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                         "container", "ecore.EObject | the semantic element of the container view.", //$NON-NLS-1$ //$NON-NLS-2$
                         "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current diagram.", //$NON-NLS-1$ //$NON-NLS-2$
                         "diagram", "diagram.DSemanticDiagram | the current diagram." //$NON-NLS-1$ //$NON-NLS-2$
+                });
+        addAnnotation(getDecorationDescription_ImageExpression(), source,
+                new String[] { "containerView", "viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "container", "ecore.EObject | the semantic element of the container view.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "diagram", "diagram.DDiagram | the current diagram." //$NON-NLS-1$ //$NON-NLS-2$
+                });
+        addAnnotation(getDecorationDescription_TooltipExpression(), source,
+                new String[] { "containerView", "viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "container", "ecore.EObject | the semantic element of the container view.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "diagram", "diagram.DDiagram | the current diagram." //$NON-NLS-1$ //$NON-NLS-2$
                 });
         addAnnotation(getVSMElementCustomization_PredicateExpression(), source, new String[] { "view", "ecore.EObject | the current view.", //$NON-NLS-1$ //$NON-NLS-2$
                 "container", "ecore.EObject | the semantic container." //$NON-NLS-1$ //$NON-NLS-2$

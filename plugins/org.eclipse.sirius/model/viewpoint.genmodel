@@ -130,6 +130,7 @@
     <genClasses ecoreClass="viewpoint.ecore#//UIState">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//UIState/inverseSelectionOrder"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//UIState/elementsToSelect"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//UIState/decorationImage"/>
     </genClasses>
     <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius.viewpoint"
         resource="XMI" disposableProviderFactory="true" extensibleProviderFactory="true"
@@ -144,6 +145,10 @@
         <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/SOUTH_WEST"/>
         <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/SOUTH_EAST"/>
         <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/CENTER"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="viewpoint.ecore#//description/DecorationDistributionDirection">
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/DecorationDistributionDirection/VERTICAL"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/DecorationDistributionDirection/HORIZONTAL"/>
       </genEnums>
       <genEnums ecoreEnum="viewpoint.ecore#//description/SystemColors">
         <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/black"/>
@@ -293,14 +298,19 @@
         <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DecorationDescription/name"/>
         <genFeatures createChild="false" propertyCategory="General" propertyDescription="Position of the decoration relatively to the figure."
             ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DecorationDescription/position"/>
-        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Path of the icon of the decoration. In the form of /myProjectID/path/to/image.png"
-            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DecorationDescription/decoratorPath"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Used when there are more than one decoration at a given position."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DecorationDescription/distributionDirection"/>
         <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression that filters the elements on which we want to display the decoration."
             ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DecorationDescription/preconditionExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression that provides the decoration as the following choices :\n* a path to an image in the form of /myProjectID/path/to/image.png\n* an expression that gives a path to an image\n* an expression that provides an instance of org.eclipse.swt.graphics.Image\n* an expression that provides an instance of org.eclipse.draw2d.IFigure"
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DecorationDescription/imageExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression that provides the tool-tip as the following choices :\n* a fixed tool-tip string\n* an expression that provides a tool-tip string\n* an expression that provides an instance of org.eclipse.draw2d.IFigure"
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DecorationDescription/tooltipExpression"/>
       </genClasses>
       <genClasses ecoreClass="viewpoint.ecore#//description/SemanticBasedDecoration">
         <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SemanticBasedDecoration/domainClass"/>
       </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/GenericDecorationDescription"/>
       <genClasses ecoreClass="viewpoint.ecore#//description/Customization">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Customization/vsmElementCustomizations"/>
       </genClasses>

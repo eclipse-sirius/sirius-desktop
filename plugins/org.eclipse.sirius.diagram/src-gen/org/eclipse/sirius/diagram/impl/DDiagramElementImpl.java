@@ -111,6 +111,16 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     protected EList<Decoration> decorations;
 
     /**
+     * The cached value of the '{@link #getTransientDecorations() <em>Transient Decorations</em>}' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getTransientDecorations()
+     * @generated
+     * @ordered
+     */
+    protected EList<Decoration> transientDecorations;
+
+    /**
      * The cached value of the '{@link #getGraphicalFilters() <em>Graphical Filters</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -217,6 +227,19 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EList<Decoration> getTransientDecorations() {
+        if (transientDecorations == null) {
+            transientDecorations = new EObjectContainmentEList.Resolving<Decoration>(Decoration.class, this, DiagramPackage.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS);
+        }
+        return transientDecorations;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated (for CDO native compatibility reason)
      */
@@ -270,6 +293,8 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
         switch (featureID) {
         case DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS:
             return ((InternalEList<?>) getDecorations()).basicRemove(otherEnd, msgs);
+        case DiagramPackage.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS:
+            return ((InternalEList<?>) getTransientDecorations()).basicRemove(otherEnd, msgs);
         case DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS:
             return ((InternalEList<?>) getGraphicalFilters()).basicRemove(otherEnd, msgs);
         }
@@ -292,6 +317,8 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
             return getParentLayers();
         case DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS:
             return getDecorations();
+        case DiagramPackage.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS:
+            return getTransientDecorations();
         case DiagramPackage.DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING:
             if (resolve) {
                 return getDiagramElementMapping();
@@ -326,6 +353,10 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
             getDecorations().clear();
             getDecorations().addAll((Collection<? extends Decoration>) newValue);
             return;
+        case DiagramPackage.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS:
+            getTransientDecorations().clear();
+            getTransientDecorations().addAll((Collection<? extends Decoration>) newValue);
+            return;
         case DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS:
             getGraphicalFilters().clear();
             getGraphicalFilters().addAll((Collection<? extends GraphicalFilter>) newValue);
@@ -354,6 +385,9 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
         case DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS:
             getDecorations().clear();
             return;
+        case DiagramPackage.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS:
+            getTransientDecorations().clear();
+            return;
         case DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS:
             getGraphicalFilters().clear();
             return;
@@ -377,6 +411,8 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
             return parentLayers != null && !parentLayers.isEmpty();
         case DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS:
             return decorations != null && !decorations.isEmpty();
+        case DiagramPackage.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS:
+            return transientDecorations != null && !transientDecorations.isEmpty();
         case DiagramPackage.DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING:
             return basicGetDiagramElementMapping() != null;
         case DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS:

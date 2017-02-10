@@ -237,6 +237,7 @@ public class SiriusEditor extends MultiPageEditorPart
      * This listens for when the outline becomes active
      */
     protected IPartListener partListener = new IPartListener() {
+        @Override
         public void partActivated(IWorkbenchPart p) {
             if (p instanceof ContentOutline) {
                 if (((ContentOutline) p).getCurrentPage() == contentOutlinePage) {
@@ -254,15 +255,19 @@ public class SiriusEditor extends MultiPageEditorPart
             }
         }
 
+        @Override
         public void partBroughtToTop(IWorkbenchPart p) {
         }
 
+        @Override
         public void partClosed(IWorkbenchPart p) {
         }
 
+        @Override
         public void partDeactivated(IWorkbenchPart p) {
         }
 
+        @Override
         public void partOpened(IWorkbenchPart p) {
         }
     };
@@ -306,6 +311,7 @@ public class SiriusEditor extends MultiPageEditorPart
      * Adapter used to update the problem indication when resources are demanded loaded.
      */
     protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
+        @Override
         public void notifyChanged(Notification notification) {
             if (notification.getNotifier() instanceof Resource) {
                 switch (notification.getFeatureID(Resource.class)) {
@@ -322,6 +328,7 @@ public class SiriusEditor extends MultiPageEditorPart
 
                     if (updateProblemIndication) {
                         getSite().getShell().getDisplay().asyncExec(new Runnable() {
+                            @Override
                             public void run() {
                                 updateProblemIndication();
                             }
@@ -334,10 +341,12 @@ public class SiriusEditor extends MultiPageEditorPart
             }
         }
 
+        @Override
         protected void setTarget(Resource target) {
             basicSetTarget(target);
         }
 
+        @Override
         protected void unsetTarget(Resource target) {
             basicUnsetTarget(target);
         }
@@ -347,6 +356,7 @@ public class SiriusEditor extends MultiPageEditorPart
      * This listens for workspace changes.
      */
     protected IResourceChangeListener resourceChangeListener = new IResourceChangeListener() {
+        @Override
         public void resourceChanged(IResourceChangeEvent event) {
             // Only listening to these.
             // if (event.getType() == IResourceDelta.POST_CHANGE)
@@ -362,6 +372,7 @@ public class SiriusEditor extends MultiPageEditorPart
 
                         protected Collection<Resource> markerUpdatedResources = new ArrayList<Resource>();
 
+                        @Override
                         public boolean visit(IResourceDelta delta) {
                             if (delta.getResource().getType() == IResource.FILE) {
                                 if ((delta.getKind() & (IResourceDelta.CHANGED | IResourceDelta.REMOVED)) != 0) {
@@ -401,6 +412,7 @@ public class SiriusEditor extends MultiPageEditorPart
                         removedResources.addAll(visitor.getRemovedResources());
                         if (!isDirty()) {
                             getSite().getShell().getDisplay().asyncExec(new Runnable() {
+                                @Override
                                 public void run() {
                                     getSite().getPage().closeEditor(SiriusEditor.this, false);
                                     SiriusEditor.this.dispose();
@@ -413,6 +425,7 @@ public class SiriusEditor extends MultiPageEditorPart
                         changedResources.addAll(visitor.getChangedResources());
                         if (getSite().getPage().getActiveEditor() == SiriusEditor.this) {
                             getSite().getShell().getDisplay().asyncExec(new Runnable() {
+                                @Override
                                 public void run() {
                                     handleActivate();
                                 }
@@ -423,6 +436,7 @@ public class SiriusEditor extends MultiPageEditorPart
                     if (!visitor.getMarkerUpdatedResources().isEmpty()) {
                         markerUpdatedResources.addAll(visitor.getMarkerUpdatedResources());
                         getSite().getShell().getDisplay().asyncExec(new Runnable() {
+                            @Override
                             public void run() {
                                 refreshViewer();
                             }
@@ -447,6 +461,7 @@ public class SiriusEditor extends MultiPageEditorPart
                     // We simply refresh the editor ; interpreter errors
                     // decorations will be refreshed
                     currentViewer.getControl().getDisplay().asyncExec(new Runnable() {
+                        @Override
                         public void run() {
                             // As this code is launched asynchronously, viewer
                             // can have been disposed
@@ -618,8 +633,10 @@ public class SiriusEditor extends MultiPageEditorPart
         // focus.
         //
         commandStack.addCommandStackListener(new CommandStackListener() {
+            @Override
             public void commandStackChanged(final EventObject event) {
                 getContainer().getDisplay().asyncExec(new Runnable() {
+                    @Override
                     public void run() {
                         firePropertyChange(IEditorPart.PROP_DIRTY);
 
@@ -645,6 +662,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * This is here for the listener to be able to call it.
      */
+    @Override
     protected void firePropertyChange(int action) {
         super.firePropertyChange(action);
     }
@@ -663,6 +681,7 @@ public class SiriusEditor extends MultiPageEditorPart
             //
             //
             Runnable runnable = new Runnable() {
+                @Override
                 public void run() {
                     // Try to select the items in the current content viewer of the editor.
                     //
@@ -680,6 +699,7 @@ public class SiriusEditor extends MultiPageEditorPart
      * for implementing the static methods of {@link AdapterFactoryEditingDomain} and for supporting
      * {@link org.eclipse.emf.edit.ui.action.CommandAction}.
      */
+    @Override
     public EditingDomain getEditingDomain() {
         return editingDomain;
     }
@@ -708,6 +728,7 @@ public class SiriusEditor extends MultiPageEditorPart
                 selectionChangedListener = new ISelectionChangedListener() {
                     // This just notifies those things that are affected by the section.
                     //
+                    @Override
                     public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
                         setSelection(selectionChangedEvent.getSelection());
                     }
@@ -739,6 +760,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * This returns the viewer as required by the {@link IViewerProvider} interface.
      */
+    @Override
     public Viewer getViewer() {
         return currentViewer;
     }
@@ -807,6 +829,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * This is the method used by the framework to install your own controls.
      */
+    @Override
     public void createPages() {
         // Creates the model from the editor input
         //
@@ -819,12 +842,14 @@ public class SiriusEditor extends MultiPageEditorPart
             //
             {
                 ViewerPane viewerPane = new ViewerPane(getSite().getPage(), SiriusEditor.this) {
+                    @Override
                     public Viewer createViewer(Composite composite) {
                         Tree tree = new Tree(composite, SWT.MULTI);
                         TreeViewer newTreeViewer = new TreeViewer(tree);
                         return newTreeViewer;
                     }
 
+                    @Override
                     public void requestActivation() {
                         super.requestActivation();
                         setCurrentViewerPane(this);
@@ -858,6 +883,7 @@ public class SiriusEditor extends MultiPageEditorPart
         getContainer().addControlListener(new ControlAdapter() {
             boolean guard = false;
 
+            @Override
             public void controlResized(ControlEvent event) {
                 if (!guard) {
                     guard = true;
@@ -901,6 +927,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * This is used to track the active viewer.
      */
+    @Override
     protected void pageChange(int pageIndex) {
         super.pageChange(pageIndex);
 
@@ -912,6 +939,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * This is how the framework determines which interfaces we implement.
      */
+    @Override
     public Object getAdapter(@SuppressWarnings("rawtypes") Class key) {
         if (key.equals(IContentOutlinePage.class)) {
             return showOutlineView() ? getContentOutlinePage() : null;
@@ -932,6 +960,7 @@ public class SiriusEditor extends MultiPageEditorPart
             // The content outline is just a tree.
             //
             class MyContentOutlinePage extends ContentOutlinePage {
+                @Override
                 public void createControl(Composite parent) {
                     super.createControl(parent);
                     contentOutlineViewer = getTreeViewer();
@@ -956,11 +985,13 @@ public class SiriusEditor extends MultiPageEditorPart
                     }
                 }
 
+                @Override
                 public void makeContributions(IMenuManager menuManager, IToolBarManager toolBarManager, IStatusLineManager statusLineManager) {
                     super.makeContributions(menuManager, toolBarManager, statusLineManager);
                     contentOutlineStatusLineManager = statusLineManager;
                 }
 
+                @Override
                 public void setActionBars(IActionBars actionBars) {
                     super.setActionBars(actionBars);
                     getActionBarContributor().shareGlobalActions(this, actionBars);
@@ -974,6 +1005,7 @@ public class SiriusEditor extends MultiPageEditorPart
             contentOutlinePage.addSelectionChangedListener(new ISelectionChangedListener() {
                 // This ensures that we handle selections correctly.
                 //
+                @Override
                 public void selectionChanged(SelectionChangedEvent event) {
                     handleContentOutlineSelection(event.getSelection());
                 }
@@ -1032,6 +1064,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * This is for implementing {@link IEditorPart} and simply tests the command stack.
      */
+    @Override
     public boolean isDirty() {
         return ((BasicCommandStack) editingDomain.getCommandStack()).isSaveNeeded();
     }
@@ -1039,12 +1072,14 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * This is for implementing {@link IEditorPart} and simply saves the model file.
      */
+    @Override
     public void doSave(IProgressMonitor progressMonitor) {
         // Do the work within an operation because this is a long running activity that modifies the workbench.
         //
         WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
             // This is the method that gets invoked when the operation runs.
             //
+            @Override
             public void execute(IProgressMonitor monitor) {
                 // Save the resources to the file system.
                 //
@@ -1103,6 +1138,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * This always returns true because it is not currently supported.
      */
+    @Override
     public boolean isSaveAsAllowed() {
         return true;
     }
@@ -1110,6 +1146,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * This also changes the editor's input.
      */
+    @Override
     public void doSaveAs() {
         SaveAsDialog saveAsDialog = new SaveAsDialog(getSite().getShell());
         saveAsDialog.open();
@@ -1130,6 +1167,7 @@ public class SiriusEditor extends MultiPageEditorPart
         doSave(progressMonitor);
     }
 
+    @Override
     public void gotoMarker(IMarker marker) {
         try {
             if (marker.getType().equals(EValidator.MARKER)) {
@@ -1150,6 +1188,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * This is called during startup.
      */
+    @Override
     public void init(IEditorSite site, IEditorInput editorInput) {
         setSite(site);
         setInputWithNotify(editorInput);
@@ -1159,6 +1198,7 @@ public class SiriusEditor extends MultiPageEditorPart
         ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener, IResourceChangeEvent.POST_CHANGE);
     }
 
+    @Override
     public void setFocus() {
         if (currentViewerPane != null) {
             currentViewerPane.setFocus();
@@ -1170,6 +1210,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * This implements {@link org.eclipse.jface.viewers.ISelectionProvider}.
      */
+    @Override
     public void addSelectionChangedListener(ISelectionChangedListener listener) {
         selectionChangedListeners.add(listener);
     }
@@ -1177,6 +1218,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * This implements {@link org.eclipse.jface.viewers.ISelectionProvider}.
      */
+    @Override
     public void removeSelectionChangedListener(ISelectionChangedListener listener) {
         selectionChangedListeners.remove(listener);
     }
@@ -1184,6 +1226,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to return this editor's overall selection.
      */
+    @Override
     public ISelection getSelection() {
         return editorSelection;
     }
@@ -1192,6 +1235,7 @@ public class SiriusEditor extends MultiPageEditorPart
      * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to set this editor's overall selection.
      * Calling this result will notify the listeners.
      */
+    @Override
     public void setSelection(ISelection selection) {
         editorSelection = selection;
 
@@ -1255,6 +1299,7 @@ public class SiriusEditor extends MultiPageEditorPart
      * This implements {@link org.eclipse.jface.action.IMenuListener} to help fill the context menus with contributions
      * from the Edit menu.
      */
+    @Override
     public void menuAboutToShow(IMenuManager menuManager) {
         ((IMenuListener) getEditorSite().getActionBarContributor()).menuAboutToShow(menuManager);
     }
@@ -1267,10 +1312,12 @@ public class SiriusEditor extends MultiPageEditorPart
         return getActionBarContributor().getActionBars();
     }
 
+    @Override
     public AdapterFactory getAdapterFactory() {
         return adapterFactory;
     }
 
+    @Override
     public void dispose() {
         updateProblemIndication = false;
 
@@ -1305,6 +1352,7 @@ public class SiriusEditor extends MultiPageEditorPart
     /**
      * The contributor id for this configuration
      */
+    @Override
     public String getContributorId() {
         return "org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor";
     }

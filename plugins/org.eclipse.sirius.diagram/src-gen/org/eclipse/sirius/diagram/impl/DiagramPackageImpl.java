@@ -697,7 +697,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
-    public EReference getDDiagram_AllFilters() {
+    public EReference getDDiagram_ActivatedTransientLayers() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(9);
     }
 
@@ -707,7 +707,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
-    public EReference getDDiagram_ActivatedRules() {
+    public EReference getDDiagram_AllFilters() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(10);
     }
 
@@ -717,7 +717,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
-    public EReference getDDiagram_ActivateBehaviors() {
+    public EReference getDDiagram_ActivatedRules() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(11);
     }
 
@@ -727,7 +727,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
-    public EReference getDDiagram_FilterVariableHistory() {
+    public EReference getDDiagram_ActivateBehaviors() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(12);
     }
 
@@ -737,7 +737,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
-    public EReference getDDiagram_ActivatedLayers() {
+    public EReference getDDiagram_FilterVariableHistory() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(13);
     }
 
@@ -747,8 +747,18 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
+    public EReference getDDiagram_ActivatedLayers() {
+        return (EReference) dDiagramEClass.getEStructuralFeatures().get(14);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EAttribute getDDiagram_Synchronized() {
-        return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(14);
+        return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(15);
     }
 
     /**
@@ -758,7 +768,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      */
     @Override
     public EReference getDDiagram_HiddenElements() {
-        return (EReference) dDiagramEClass.getEStructuralFeatures().get(15);
+        return (EReference) dDiagramEClass.getEStructuralFeatures().get(16);
     }
 
     /**
@@ -768,7 +778,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      */
     @Override
     public EAttribute getDDiagram_IsInLayoutingMode() {
-        return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(16);
+        return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(17);
     }
 
     /**
@@ -778,7 +788,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      */
     @Override
     public EAttribute getDDiagram_HeaderHeight() {
-        return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(17);
+        return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(18);
     }
 
     /**
@@ -847,7 +857,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
-    public EReference getDDiagramElement_DiagramElementMapping() {
+    public EReference getDDiagramElement_TransientDecorations() {
         return (EReference) dDiagramElementEClass.getEStructuralFeatures().get(4);
     }
 
@@ -857,8 +867,18 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
-    public EReference getDDiagramElement_GraphicalFilters() {
+    public EReference getDDiagramElement_DiagramElementMapping() {
         return (EReference) dDiagramElementEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EReference getDDiagramElement_GraphicalFilters() {
+        return (EReference) dDiagramElementEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -2461,6 +2481,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEReference(dDiagramEClass, DiagramPackage.DDIAGRAM__CONTAINERS);
         createEReference(dDiagramEClass, DiagramPackage.DDIAGRAM__CURRENT_CONCERN);
         createEReference(dDiagramEClass, DiagramPackage.DDIAGRAM__ACTIVATED_FILTERS);
+        createEReference(dDiagramEClass, DiagramPackage.DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS);
         createEReference(dDiagramEClass, DiagramPackage.DDIAGRAM__ALL_FILTERS);
         createEReference(dDiagramEClass, DiagramPackage.DDIAGRAM__ACTIVATED_RULES);
         createEReference(dDiagramEClass, DiagramPackage.DDIAGRAM__ACTIVATE_BEHAVIORS);
@@ -2478,6 +2499,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEAttribute(dDiagramElementEClass, DiagramPackage.DDIAGRAM_ELEMENT__TOOLTIP_TEXT);
         createEReference(dDiagramElementEClass, DiagramPackage.DDIAGRAM_ELEMENT__PARENT_LAYERS);
         createEReference(dDiagramElementEClass, DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS);
+        createEReference(dDiagramElementEClass, DiagramPackage.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS);
         createEReference(dDiagramElementEClass, DiagramPackage.DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING);
         createEReference(dDiagramElementEClass, DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS);
 
@@ -2814,6 +2836,9 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         initEReference(getDDiagram_ActivatedFilters(), theFilterPackage.getFilterDescription(), null, "activatedFilters", null, 0, -1, DDiagram.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDDiagram_ActivatedTransientLayers(), theDescriptionPackage.getAdditionalLayer(), null, "activatedTransientLayers", null, 0, -1, DDiagram.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getDDiagram_AllFilters(), theFilterPackage.getFilterDescription(), null, "allFilters", null, 0, -1, DDiagram.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
@@ -2860,6 +2885,9 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getDDiagramElement_Decorations(), theViewpointPackage.getDecoration(), null, "decorations", null, 0, -1, DDiagramElement.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDDiagramElement_TransientDecorations(), theViewpointPackage.getDecoration(), null, "transientDecorations", null, 0, -1, DDiagramElement.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getDDiagramElement_DiagramElementMapping(), theDescriptionPackage.getDiagramElementMapping(), null, "diagramElementMapping", null, 0, 1, DDiagramElement.class, //$NON-NLS-1$

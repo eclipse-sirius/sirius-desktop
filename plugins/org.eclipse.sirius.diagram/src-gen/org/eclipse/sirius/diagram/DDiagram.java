@@ -12,6 +12,7 @@
 package org.eclipse.sirius.diagram;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -44,6 +45,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getContainers <em>Containers</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getCurrentConcern <em>Current Concern</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getActivatedFilters <em>Activated Filters</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getActivatedTransientLayers <em>Activated Transient Layers</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getAllFilters <em>All Filters</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getActivatedRules <em>Activated Rules</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getActivateBehaviors <em>Activate Behaviors</em>}</li>
@@ -191,6 +193,45 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * @generated
      */
     EList<FilterDescription> getActivatedFilters();
+
+    /**
+     * Returns the value of the '<em><b>Activated Transient Layers</b></em>' reference list. The list contents are of
+     * type {@link org.eclipse.sirius.diagram.description.AdditionalLayer}. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Activated Transient Layers</em>' reference list isn't clear, there really should be
+     * more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Activated Transient Layers</em>' reference list.
+     * @see #isSetActivatedTransientLayers()
+     * @see #unsetActivatedTransientLayers()
+     * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_ActivatedTransientLayers()
+     * @model unsettable="true" transient="true"
+     * @generated
+     */
+    EList<AdditionalLayer> getActivatedTransientLayers();
+
+    /**
+     * Unsets the value of the '{@link org.eclipse.sirius.diagram.DDiagram#getActivatedTransientLayers
+     * <em>Activated Transient Layers</em>}' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #isSetActivatedTransientLayers()
+     * @see #getActivatedTransientLayers()
+     * @generated
+     */
+    void unsetActivatedTransientLayers();
+
+    /**
+     * Returns whether the value of the '{@link org.eclipse.sirius.diagram.DDiagram#getActivatedTransientLayers
+     * <em>Activated Transient Layers</em>}' reference list is set. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return whether the value of the '<em>Activated Transient Layers</em>' reference list is set.
+     * @see #unsetActivatedTransientLayers()
+     * @see #getActivatedTransientLayers()
+     * @generated
+     */
+    boolean isSetActivatedTransientLayers();
 
     /**
      * Returns the value of the '<em><b>All Filters</b></em>' reference list. The list contents are of type

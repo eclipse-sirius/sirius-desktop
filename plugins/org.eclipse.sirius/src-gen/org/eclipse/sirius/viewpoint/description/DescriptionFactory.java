@@ -87,6 +87,15 @@ public interface DescriptionFactory extends EFactory {
     SemanticBasedDecoration createSemanticBasedDecoration();
 
     /**
+     * Returns a new object of class '<em>Generic Decoration Description</em>'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return a new object of class '<em>Generic Decoration Description</em>'.
+     * @generated
+     */
+    GenericDecorationDescription createGenericDecorationDescription();
+
+    /**
      * Returns a new object of class '<em>Customization</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return a new object of class '<em>Customization</em>'.

@@ -88,6 +88,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/containers"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/currentConcern"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/activatedFilters"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/activatedTransientLayers"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/allFilters"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/activatedRules"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/activateBehaviors"/>
@@ -113,6 +114,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DDiagramElement/tooltipText"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramElement/parentLayers"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramElement/decorations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramElement/transientDecorations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramElement/diagramElementMapping"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramElement/graphicalFilters"/>
       <genOperations ecoreOperation="diagram.ecore#//DDiagramElement/getParentDiagram"/>

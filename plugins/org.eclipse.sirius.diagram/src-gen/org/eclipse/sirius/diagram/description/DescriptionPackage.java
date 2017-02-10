@@ -2685,12 +2685,13 @@ public interface DescriptionPackage extends EPackage {
     int MAPPING_BASED_DECORATION__POSITION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DECORATION_DESCRIPTION__POSITION;
 
     /**
-     * The feature id for the '<em><b>Decorator Path</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Distribution Direction</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int MAPPING_BASED_DECORATION__DECORATOR_PATH = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DECORATION_DESCRIPTION__DECORATOR_PATH;
+    int MAPPING_BASED_DECORATION__DISTRIBUTION_DIRECTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DECORATION_DESCRIPTION__DISTRIBUTION_DIRECTION;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -2700,6 +2701,24 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int MAPPING_BASED_DECORATION__PRECONDITION_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Image Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int MAPPING_BASED_DECORATION__IMAGE_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DECORATION_DESCRIPTION__IMAGE_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int MAPPING_BASED_DECORATION__TOOLTIP_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DECORATION_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Mappings</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -209,13 +209,22 @@ public interface DiagramPackage extends EPackage {
     int DDIAGRAM__ACTIVATED_FILTERS = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 8;
 
     /**
+     * The feature id for the '<em><b>Activated Transient Layers</b></em>' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 9;
+
+    /**
      * The feature id for the '<em><b>All Filters</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
      * @generated
      * @ordered
      */
-    int DDIAGRAM__ALL_FILTERS = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 9;
+    int DDIAGRAM__ALL_FILTERS = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Activated Rules</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -224,7 +233,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM__ACTIVATED_RULES = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 10;
+    int DDIAGRAM__ACTIVATED_RULES = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Activate Behaviors</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -233,7 +242,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM__ACTIVATE_BEHAVIORS = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 11;
+    int DDIAGRAM__ACTIVATE_BEHAVIORS = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Filter Variable History</b></em>' containment reference. <!-- begin-user-doc -->
@@ -242,7 +251,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM__FILTER_VARIABLE_HISTORY = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 12;
+    int DDIAGRAM__FILTER_VARIABLE_HISTORY = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 13;
 
     /**
      * The feature id for the '<em><b>Activated Layers</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -251,7 +260,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM__ACTIVATED_LAYERS = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 13;
+    int DDIAGRAM__ACTIVATED_LAYERS = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 14;
 
     /**
      * The feature id for the '<em><b>Synchronized</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -259,7 +268,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM__SYNCHRONIZED = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 14;
+    int DDIAGRAM__SYNCHRONIZED = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 15;
 
     /**
      * The feature id for the '<em><b>Hidden Elements</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -268,7 +277,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM__HIDDEN_ELEMENTS = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 15;
+    int DDIAGRAM__HIDDEN_ELEMENTS = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 16;
 
     /**
      * The feature id for the '<em><b>Is In Layouting Mode</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -277,7 +286,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM__IS_IN_LAYOUTING_MODE = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 16;
+    int DDIAGRAM__IS_IN_LAYOUTING_MODE = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 17;
 
     /**
      * The feature id for the '<em><b>Header Height</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -285,7 +294,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM__HEADER_HEIGHT = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 17;
+    int DDIAGRAM__HEADER_HEIGHT = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 18;
 
     /**
      * The number of structural features of the '<em>DDiagram</em>' class. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -293,7 +302,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 18;
+    int DDIAGRAM_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 19;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.impl.DSemanticDiagramImpl
@@ -441,6 +450,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DSEMANTIC_DIAGRAM__ACTIVATED_FILTERS = DiagramPackage.DDIAGRAM__ACTIVATED_FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Activated Transient Layers</b></em>' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DSEMANTIC_DIAGRAM__ACTIVATED_TRANSIENT_LAYERS = DiagramPackage.DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS;
 
     /**
      * The feature id for the '<em><b>All Filters</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
@@ -608,13 +626,22 @@ public interface DiagramPackage extends EPackage {
     int DDIAGRAM_ELEMENT__DECORATIONS = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 3;
 
     /**
+     * The feature id for the '<em><b>Transient Decorations</b></em>' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 4;
+
+    /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 4;
+    int DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Graphical Filters</b></em>' containment reference list. <!-- begin-user-doc -->
@@ -623,7 +650,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 5;
+    int DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 6;
 
     /**
      * The number of structural features of the '<em>DDiagram Element</em>' class. <!-- begin-user-doc --> <!--
@@ -632,7 +659,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 6;
+    int DDIAGRAM_ELEMENT_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 7;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.GraphicalFilter <em>Graphical Filter</em>}' class.
@@ -878,6 +905,15 @@ public interface DiagramPackage extends EPackage {
     int ABSTRACT_DNODE__DECORATIONS = DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS;
 
     /**
+     * The feature id for the '<em><b>Transient Decorations</b></em>' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_DNODE__TRANSIENT_DECORATIONS = DiagramPackage.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS;
+
+    /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
@@ -990,6 +1026,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DNODE__DECORATIONS = DiagramPackage.ABSTRACT_DNODE__DECORATIONS;
+
+    /**
+     * The feature id for the '<em><b>Transient Decorations</b></em>' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DNODE__TRANSIENT_DECORATIONS = DiagramPackage.ABSTRACT_DNODE__TRANSIENT_DECORATIONS;
 
     /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>' reference. <!-- begin-user-doc --> <!--
@@ -1187,6 +1232,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DDIAGRAM_ELEMENT_CONTAINER__DECORATIONS = DiagramPackage.ABSTRACT_DNODE__DECORATIONS;
+
+    /**
+     * The feature id for the '<em><b>Transient Decorations</b></em>' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DDIAGRAM_ELEMENT_CONTAINER__TRANSIENT_DECORATIONS = DiagramPackage.ABSTRACT_DNODE__TRANSIENT_DECORATIONS;
 
     /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>' reference. <!-- begin-user-doc --> <!--
@@ -1393,6 +1447,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DNODE_CONTAINER__DECORATIONS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__DECORATIONS;
+
+    /**
+     * The feature id for the '<em><b>Transient Decorations</b></em>' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DNODE_CONTAINER__TRANSIENT_DECORATIONS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__TRANSIENT_DECORATIONS;
 
     /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>' reference. <!-- begin-user-doc --> <!--
@@ -1619,6 +1682,15 @@ public interface DiagramPackage extends EPackage {
     int DNODE_LIST__DECORATIONS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__DECORATIONS;
 
     /**
+     * The feature id for the '<em><b>Transient Decorations</b></em>' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DNODE_LIST__TRANSIENT_DECORATIONS = DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__TRANSIENT_DECORATIONS;
+
+    /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
@@ -1834,6 +1906,15 @@ public interface DiagramPackage extends EPackage {
     int DNODE_LIST_ELEMENT__DECORATIONS = DiagramPackage.ABSTRACT_DNODE__DECORATIONS;
 
     /**
+     * The feature id for the '<em><b>Transient Decorations</b></em>' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DNODE_LIST_ELEMENT__TRANSIENT_DECORATIONS = DiagramPackage.ABSTRACT_DNODE__TRANSIENT_DECORATIONS;
+
+    /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
@@ -1980,6 +2061,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DEDGE__DECORATIONS = DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS;
+
+    /**
+     * The feature id for the '<em><b>Transient Decorations</b></em>' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DEDGE__TRANSIENT_DECORATIONS = DiagramPackage.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS;
 
     /**
      * The feature id for the '<em><b>Diagram Element Mapping</b></em>' reference. <!-- begin-user-doc --> <!--
@@ -5203,6 +5293,18 @@ public interface DiagramPackage extends EPackage {
     EReference getDDiagram_ActivatedFilters();
 
     /**
+     * Returns the meta object for the reference list '
+     * {@link org.eclipse.sirius.diagram.DDiagram#getActivatedTransientLayers <em>Activated Transient Layers</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference list '<em>Activated Transient Layers</em>'.
+     * @see org.eclipse.sirius.diagram.DDiagram#getActivatedTransientLayers()
+     * @see #getDDiagram()
+     * @generated
+     */
+    EReference getDDiagram_ActivatedTransientLayers();
+
+    /**
      * Returns the meta object for the reference list '{@link org.eclipse.sirius.diagram.DDiagram#getAllFilters
      * <em>All Filters</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -5366,6 +5468,18 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     EReference getDDiagramElement_Decorations();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.diagram.DDiagramElement#getTransientDecorations <em>Transient Decorations</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference list '<em>Transient Decorations</em>'.
+     * @see org.eclipse.sirius.diagram.DDiagramElement#getTransientDecorations()
+     * @see #getDDiagramElement()
+     * @generated
+     */
+    EReference getDDiagramElement_TransientDecorations();
 
     /**
      * Returns the meta object for the reference '
@@ -7188,6 +7302,14 @@ public interface DiagramPackage extends EPackage {
         EReference DDIAGRAM__ACTIVATED_FILTERS = DiagramPackage.eINSTANCE.getDDiagram_ActivatedFilters();
 
         /**
+         * The meta object literal for the '<em><b>Activated Transient Layers</b></em>' reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS = DiagramPackage.eINSTANCE.getDDiagram_ActivatedTransientLayers();
+
+        /**
          * The meta object literal for the '<em><b>All Filters</b></em>' reference list feature. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * 
@@ -7310,6 +7432,14 @@ public interface DiagramPackage extends EPackage {
          * @generated
          */
         EReference DDIAGRAM_ELEMENT__DECORATIONS = DiagramPackage.eINSTANCE.getDDiagramElement_Decorations();
+
+        /**
+         * The meta object literal for the '<em><b>Transient Decorations</b></em>' containment reference list feature.
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS = DiagramPackage.eINSTANCE.getDDiagramElement_TransientDecorations();
 
         /**
          * The meta object literal for the ' <em><b>Diagram Element Mapping</b></em>' reference feature. <!--

@@ -206,6 +206,15 @@ public interface SequencePackage extends EPackage {
     int SEQUENCE_DDIAGRAM__ACTIVATED_FILTERS = DiagramPackage.DSEMANTIC_DIAGRAM__ACTIVATED_FILTERS;
 
     /**
+     * The feature id for the '<em><b>Activated Transient Layers</b></em>' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SEQUENCE_DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS = DiagramPackage.DSEMANTIC_DIAGRAM__ACTIVATED_TRANSIENT_LAYERS;
+
+    /**
      * The feature id for the '<em><b>All Filters</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *

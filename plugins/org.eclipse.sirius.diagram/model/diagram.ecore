@@ -91,6 +91,8 @@
         <details key="documentation" value="Filters that are currently activated for this viewpoint."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activatedTransientLayers"
+        upperBound="-1" eType="#//description/AdditionalLayer" transient="true" unsettable="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allFilters" upperBound="-1"
         eType="#//description/filter/FilterDescription" changeable="false" volatile="true"
         transient="true" derived="true">
@@ -159,6 +161,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="decorations" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//Decoration"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transientDecorations" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//Decoration"
+        transient="true" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="diagramElementMapping"
         eType="#//description/DiagramElementMapping" changeable="false" volatile="true"
         transient="true" derived="true">

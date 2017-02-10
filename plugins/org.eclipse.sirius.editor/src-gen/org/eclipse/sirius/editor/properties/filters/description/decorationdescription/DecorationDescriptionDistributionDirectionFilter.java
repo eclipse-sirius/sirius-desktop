@@ -18,15 +18,15 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 // End of user code specific imports
 
 /**
- * A filter for the decoratorPath property section.
+ * A filter for the distributionDirection property section.
  */
-public class DecorationDescriptionDecoratorPathFilter extends ViewpointPropertyFilter {
+public class DecorationDescriptionDistributionDirectionFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     protected EStructuralFeature getFeature() {
-        return DescriptionPackage.eINSTANCE.getDecorationDescription_DecoratorPath();
+        return DescriptionPackage.eINSTANCE.getDecorationDescription_DistributionDirection();
     }
 
     /**

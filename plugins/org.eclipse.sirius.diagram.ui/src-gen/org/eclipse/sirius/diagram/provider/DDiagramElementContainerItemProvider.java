@@ -286,4 +286,24 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, DiagramFactory.eINSTANCE.createWorkspaceImage()));
     }
 
+    /**
+     * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+        Object childFeature = feature;
+        Object childObject = child;
+
+        boolean qualify = childFeature == DiagramPackage.Literals.DDIAGRAM_ELEMENT__DECORATIONS || childFeature == DiagramPackage.Literals.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS;
+
+        if (qualify) {
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+        }
+        return super.getCreateChildText(owner, feature, child, selection);
+    }
+
 }

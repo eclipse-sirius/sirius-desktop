@@ -125,6 +125,7 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(DiagramPackage.Literals.DDIAGRAM_ELEMENT__DECORATIONS);
+            childrenFeatures.add(DiagramPackage.Literals.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS);
             childrenFeatures.add(DiagramPackage.Literals.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS);
         }
         return childrenFeatures;
@@ -172,6 +173,7 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS:
+        case DiagramPackage.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS:
         case DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
@@ -191,6 +193,8 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM_ELEMENT__DECORATIONS, ViewpointFactory.eINSTANCE.createDecoration()));
 
+        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS, ViewpointFactory.eINSTANCE.createDecoration()));
+
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS, DiagramFactory.eINSTANCE.createHideFilter()));
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS, DiagramFactory.eINSTANCE.createHideLabelFilter()));
@@ -206,6 +210,26 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS, DiagramFactory.eINSTANCE.createCollapseFilter()));
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS, DiagramFactory.eINSTANCE.createIndirectlyCollapseFilter()));
+    }
+
+    /**
+     * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+        Object childFeature = feature;
+        Object childObject = child;
+
+        boolean qualify = childFeature == DiagramPackage.Literals.DDIAGRAM_ELEMENT__DECORATIONS || childFeature == DiagramPackage.Literals.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS;
+
+        if (qualify) {
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+        }
+        return super.getCreateChildText(owner, feature, child, selection);
     }
 
     /**

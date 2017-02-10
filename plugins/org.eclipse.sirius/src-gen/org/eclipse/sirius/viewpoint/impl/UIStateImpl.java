@@ -12,6 +12,7 @@
 package org.eclipse.sirius.viewpoint.impl;
 
 import java.util.Collection;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -21,8 +22,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+
+import com.google.common.collect.Maps;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>UI State</b></em>'. <!-- end-user-doc -->
@@ -33,6 +37,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <li>{@link org.eclipse.sirius.viewpoint.impl.UIStateImpl#isInverseSelectionOrder <em>Inverse Selection Order</em>}
  * </li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.UIStateImpl#getElementsToSelect <em>Elements To Select</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.UIStateImpl#getDecorationImage <em>Decoration Image</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +72,16 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
      * @ordered
      */
     protected EList<EObject> elementsToSelect;
+
+    /**
+     * The cached value of the '{@link #getDecorationImage() <em>Image Decoration</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getDecorationImage()
+     * @generated NOT
+     * @ordered
+     */
+    protected Map<Decoration, Object> decorationImage = Maps.newHashMap();
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -152,12 +167,38 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
      * @generated
      */
     @Override
+    public Map<Decoration, Object> getDecorationImage() {
+        return decorationImage;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setDecorationImage(Map<Decoration, Object> newDecorationImage) {
+        Map<Decoration, Object> oldDecorationImage = decorationImage;
+        decorationImage = newDecorationImage;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.UI_STATE__DECORATION_IMAGE, oldDecorationImage, decorationImage));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ViewpointPackage.UI_STATE__INVERSE_SELECTION_ORDER:
             return isInverseSelectionOrder();
         case ViewpointPackage.UI_STATE__ELEMENTS_TO_SELECT:
             return getElementsToSelect();
+        case ViewpointPackage.UI_STATE__DECORATION_IMAGE:
+            return getDecorationImage();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -178,6 +219,9 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
             getElementsToSelect().clear();
             getElementsToSelect().addAll((Collection<? extends EObject>) newValue);
             return;
+        case ViewpointPackage.UI_STATE__DECORATION_IMAGE:
+            setDecorationImage((Map<Decoration, Object>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -196,6 +240,9 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
         case ViewpointPackage.UI_STATE__ELEMENTS_TO_SELECT:
             unsetElementsToSelect();
             return;
+        case ViewpointPackage.UI_STATE__DECORATION_IMAGE:
+            setDecorationImage((Map<Decoration, Object>) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -212,6 +259,8 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
             return inverseSelectionOrder != UIStateImpl.INVERSE_SELECTION_ORDER_EDEFAULT;
         case ViewpointPackage.UI_STATE__ELEMENTS_TO_SELECT:
             return isSetElementsToSelect();
+        case ViewpointPackage.UI_STATE__DECORATION_IMAGE:
+            return decorationImage != null;
         }
         return super.eIsSet(featureID);
     }
@@ -230,6 +279,8 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (inverseSelectionOrder: "); //$NON-NLS-1$
         result.append(inverseSelectionOrder);
+        result.append(", decorationImage: "); //$NON-NLS-1$
+        result.append(decorationImage);
         result.append(')');
         return result.toString();
     }

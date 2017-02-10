@@ -31,6 +31,7 @@ import org.eclipse.sirius.viewpoint.Decoration;
  * <li>{@link org.eclipse.sirius.diagram.DDiagramElement#getDecorations <em>Decorations</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagramElement#getDiagramElementMapping <em>Diagram Element Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagramElement#getGraphicalFilters <em>Graphical Filters</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagramElement#getTransientDecorations <em>Transient Decorations</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElement()
@@ -116,6 +117,22 @@ public interface DDiagramElement extends DRepresentationElement {
      * @generated
      */
     EList<Decoration> getDecorations();
+
+    /**
+     * Returns the value of the '<em><b>Transient Decorations</b></em>' containment reference list. The list contents
+     * are of type {@link org.eclipse.sirius.viewpoint.Decoration}. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transient Decorations</em>' containment reference list isn't clear, there really
+     * should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Transient Decorations</em>' containment reference list.
+     * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElement_TransientDecorations()
+     * @model containment="true" resolveProxies="true" transient="true"
+     * @generated
+     */
+    EList<Decoration> getTransientDecorations();
 
     /**
      * Returns the value of the '<em><b>Diagram Element Mapping</b></em>' reference. <!-- begin-user-doc --> <!--

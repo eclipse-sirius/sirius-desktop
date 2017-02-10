@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
 import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 import com.google.common.collect.Lists;
@@ -39,6 +40,8 @@ import com.google.common.collect.Lists;
  * @author bgrouhan
  */
 public class ValidImageConstraint extends AbstractConstraint {
+
+    private static final String INTERPRETER_SEPARATOR = ":"; //$NON-NLS-1$
 
     @Override
     public IStatus validate(IValidationContext ctx) {
@@ -54,6 +57,14 @@ public class ValidImageConstraint extends AbstractConstraint {
                 if (attr.getEAttributeType() == DescriptionPackage.eINSTANCE.getImagePath()) {
                     path = (String) eObj.eGet(attr);
                     statuses.add(validateImagePath(ctx, rs, path));
+                } else if (eObj instanceof DecorationDescription && attr.equals(DescriptionPackage.eINSTANCE.getDecorationDescription_ImageExpression())) {
+                    path = (String) eObj.eGet(attr);
+                    // We consider it is an image path if the image expression is not an expression
+                    // oDesignGenericInterpreter.provides always returns an IInterpreter so we can not rely on this
+                    // check to know if this is an interpreted expression
+                    if (path == null || !path.contains(INTERPRETER_SEPARATOR)) {
+                        statuses.add(validateImagePath(ctx, rs, path));
+                    }
                 }
             }
             if (statuses.size() > 0) {

@@ -739,7 +739,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getIdentifiedElement()
      * @generated
      */
-    int IDENTIFIED_ELEMENT = 41;
+    int IDENTIFIED_ELEMENT = 42;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1002,12 +1002,13 @@ public interface DescriptionPackage extends EPackage {
     int DECORATION_DESCRIPTION__POSITION = 1;
 
     /**
-     * The feature id for the '<em><b>Decorator Path</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Distribution Direction</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DECORATION_DESCRIPTION__DECORATOR_PATH = 2;
+    int DECORATION_DESCRIPTION__DISTRIBUTION_DIRECTION = 2;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1019,13 +1020,31 @@ public interface DescriptionPackage extends EPackage {
     int DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION = 3;
 
     /**
+     * The feature id for the '<em><b>Image Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DECORATION_DESCRIPTION__IMAGE_EXPRESSION = 4;
+
+    /**
+     * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DECORATION_DESCRIPTION__TOOLTIP_EXPRESSION = 5;
+
+    /**
      * The number of structural features of the '<em>Decoration Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DECORATION_DESCRIPTION_FEATURE_COUNT = 4;
+    int DECORATION_DESCRIPTION_FEATURE_COUNT = 6;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl
@@ -1054,12 +1073,13 @@ public interface DescriptionPackage extends EPackage {
     int SEMANTIC_BASED_DECORATION__POSITION = DescriptionPackage.DECORATION_DESCRIPTION__POSITION;
 
     /**
-     * The feature id for the '<em><b>Decorator Path</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Distribution Direction</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int SEMANTIC_BASED_DECORATION__DECORATOR_PATH = DescriptionPackage.DECORATION_DESCRIPTION__DECORATOR_PATH;
+    int SEMANTIC_BASED_DECORATION__DISTRIBUTION_DIRECTION = DescriptionPackage.DECORATION_DESCRIPTION__DISTRIBUTION_DIRECTION;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1069,6 +1089,24 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int SEMANTIC_BASED_DECORATION__PRECONDITION_EXPRESSION = DescriptionPackage.DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Image Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SEMANTIC_BASED_DECORATION__IMAGE_EXPRESSION = DescriptionPackage.DECORATION_DESCRIPTION__IMAGE_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SEMANTIC_BASED_DECORATION__TOOLTIP_EXPRESSION = DescriptionPackage.DECORATION_DESCRIPTION__TOOLTIP_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1088,6 +1126,77 @@ public interface DescriptionPackage extends EPackage {
     int SEMANTIC_BASED_DECORATION_FEATURE_COUNT = DescriptionPackage.DECORATION_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.impl.GenericDecorationDescriptionImpl
+     * <em>Generic Decoration Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.impl.GenericDecorationDescriptionImpl
+     * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getGenericDecorationDescription()
+     * @generated
+     */
+    int GENERIC_DECORATION_DESCRIPTION = 21;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int GENERIC_DECORATION_DESCRIPTION__NAME = DescriptionPackage.DECORATION_DESCRIPTION__NAME;
+
+    /**
+     * The feature id for the '<em><b>Position</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int GENERIC_DECORATION_DESCRIPTION__POSITION = DescriptionPackage.DECORATION_DESCRIPTION__POSITION;
+
+    /**
+     * The feature id for the '<em><b>Distribution Direction</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int GENERIC_DECORATION_DESCRIPTION__DISTRIBUTION_DIRECTION = DescriptionPackage.DECORATION_DESCRIPTION__DISTRIBUTION_DIRECTION;
+
+    /**
+     * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int GENERIC_DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION = DescriptionPackage.DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Image Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int GENERIC_DECORATION_DESCRIPTION__IMAGE_EXPRESSION = DescriptionPackage.DECORATION_DESCRIPTION__IMAGE_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int GENERIC_DECORATION_DESCRIPTION__TOOLTIP_EXPRESSION = DescriptionPackage.DECORATION_DESCRIPTION__TOOLTIP_EXPRESSION;
+
+    /**
+     * The number of structural features of the '<em>Generic Decoration Description</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int GENERIC_DECORATION_DESCRIPTION_FEATURE_COUNT = DescriptionPackage.DECORATION_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.impl.CustomizationImpl
      * <em>Customization</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1095,7 +1204,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getCustomization()
      * @generated
      */
-    int CUSTOMIZATION = 21;
+    int CUSTOMIZATION = 22;
 
     /**
      * The feature id for the '<em><b>Vsm Element Customizations</b></em>' containment reference list. <!--
@@ -1123,7 +1232,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getIVSMElementCustomization()
      * @generated
      */
-    int IVSM_ELEMENT_CUSTOMIZATION = 22;
+    int IVSM_ELEMENT_CUSTOMIZATION = 23;
 
     /**
      * The number of structural features of the '<em>IVSM Element Customization</em>' class. <!-- begin-user-doc -->
@@ -1142,7 +1251,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getVSMElementCustomization()
      * @generated
      */
-    int VSM_ELEMENT_CUSTOMIZATION = 23;
+    int VSM_ELEMENT_CUSTOMIZATION = 24;
 
     /**
      * The feature id for the '<em><b>Predicate Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1179,7 +1288,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getVSMElementCustomizationReuse()
      * @generated
      */
-    int VSM_ELEMENT_CUSTOMIZATION_REUSE = 24;
+    int VSM_ELEMENT_CUSTOMIZATION_REUSE = 25;
 
     /**
      * The feature id for the '<em><b>Reuse</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1215,7 +1324,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getEStructuralFeatureCustomization()
      * @generated
      */
-    int ESTRUCTURAL_FEATURE_CUSTOMIZATION = 25;
+    int ESTRUCTURAL_FEATURE_CUSTOMIZATION = 26;
 
     /**
      * The feature id for the '<em><b>Applied On</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1250,7 +1359,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getEAttributeCustomization()
      * @generated
      */
-    int EATTRIBUTE_CUSTOMIZATION = 26;
+    int EATTRIBUTE_CUSTOMIZATION = 27;
 
     /**
      * The feature id for the '<em><b>Applied On</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1301,7 +1410,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getEReferenceCustomization()
      * @generated
      */
-    int EREFERENCE_CUSTOMIZATION = 27;
+    int EREFERENCE_CUSTOMIZATION = 28;
 
     /**
      * The feature id for the '<em><b>Applied On</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1352,7 +1461,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getSelectionDescription()
      * @generated
      */
-    int SELECTION_DESCRIPTION = 28;
+    int SELECTION_DESCRIPTION = 29;
 
     /**
      * The feature id for the '<em><b>Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1421,7 +1530,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getColorDescription()
      * @generated
      */
-    int COLOR_DESCRIPTION = 29;
+    int COLOR_DESCRIPTION = 30;
 
     /**
      * The number of structural features of the '<em>Color Description</em>' class. <!-- begin-user-doc --> <!--
@@ -1440,7 +1549,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getFixedColor()
      * @generated
      */
-    int FIXED_COLOR = 33;
+    int FIXED_COLOR = 34;
 
     /**
      * The feature id for the '<em><b>Red</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1483,7 +1592,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getSystemColor()
      * @generated
      */
-    int SYSTEM_COLOR = 30;
+    int SYSTEM_COLOR = 31;
 
     /**
      * The feature id for the '<em><b>Red</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1534,7 +1643,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getInterpolatedColor()
      * @generated
      */
-    int INTERPOLATED_COLOR = 31;
+    int INTERPOLATED_COLOR = 32;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1597,7 +1706,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getColorStep()
      * @generated
      */
-    int COLOR_STEP = 32;
+    int COLOR_STEP = 33;
 
     /**
      * The feature id for the '<em><b>Associated Value</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1634,7 +1743,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getUserFixedColor()
      * @generated
      */
-    int USER_FIXED_COLOR = 34;
+    int USER_FIXED_COLOR = 35;
 
     /**
      * The feature id for the '<em><b>Red</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1685,7 +1794,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getUserColor()
      * @generated
      */
-    int USER_COLOR = 35;
+    int USER_COLOR = 36;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1712,7 +1821,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getEnvironment()
      * @generated
      */
-    int ENVIRONMENT = 36;
+    int ENVIRONMENT = 37;
 
     /**
      * The feature id for the '<em><b>System Colors</b></em>' containment reference. <!-- begin-user-doc --> <!--
@@ -1758,7 +1867,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getSytemColorsPalette()
      * @generated
      */
-    int SYTEM_COLORS_PALETTE = 37;
+    int SYTEM_COLORS_PALETTE = 38;
 
     /**
      * The feature id for the '<em><b>Entries</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -1786,7 +1895,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getUserColorsPalette()
      * @generated
      */
-    int USER_COLORS_PALETTE = 38;
+    int USER_COLORS_PALETTE = 39;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1822,7 +1931,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getAnnotationEntry()
      * @generated
      */
-    int ANNOTATION_ENTRY = 39;
+    int ANNOTATION_ENTRY = 40;
 
     /**
      * The feature id for the '<em><b>Source</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1858,7 +1967,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getEndUserDocumentedElement()
      * @generated
      */
-    int END_USER_DOCUMENTED_ELEMENT = 40;
+    int END_USER_DOCUMENTED_ELEMENT = 41;
 
     /**
      * The feature id for the '<em><b>End User Documentation</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1886,7 +1995,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getComputedColor()
      * @generated
      */
-    int COMPUTED_COLOR = 42;
+    int COMPUTED_COLOR = 43;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1937,7 +2046,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getDAnnotationEntry()
      * @generated
      */
-    int DANNOTATION_ENTRY = 43;
+    int DANNOTATION_ENTRY = 44;
 
     /**
      * The feature id for the '<em><b>Source</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1972,7 +2081,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getAbstractVariable()
      * @generated
      */
-    int ABSTRACT_VARIABLE = 44;
+    int ABSTRACT_VARIABLE = 45;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1999,7 +2108,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getSubVariable()
      * @generated
      */
-    int SUB_VARIABLE = 45;
+    int SUB_VARIABLE = 46;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2026,7 +2135,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getInteractiveVariableDescription()
      * @generated
      */
-    int INTERACTIVE_VARIABLE_DESCRIPTION = 46;
+    int INTERACTIVE_VARIABLE_DESCRIPTION = 47;
 
     /**
      * The feature id for the '<em><b>User Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2054,7 +2163,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getTypedVariable()
      * @generated
      */
-    int TYPED_VARIABLE = 47;
+    int TYPED_VARIABLE = 48;
 
     /**
      * The feature id for the '<em><b>User Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2107,7 +2216,17 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getPosition()
      * @generated
      */
-    int POSITION = 48;
+    int POSITION = 49;
+
+    /**
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection
+     * <em>Decoration Distribution Direction</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection
+     * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getDecorationDistributionDirection()
+     * @generated
+     */
+    int DECORATION_DISTRIBUTION_DIRECTION = 50;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.description.SystemColors <em>System Colors</em>}'
@@ -2117,7 +2236,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getSystemColors()
      * @generated
      */
-    int SYSTEM_COLORS = 49;
+    int SYSTEM_COLORS = 51;
 
     /**
      * The meta object id for the '<em>Type Name</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2126,7 +2245,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getTypeName()
      * @generated
      */
-    int TYPE_NAME = 50;
+    int TYPE_NAME = 52;
 
     /**
      * The meta object id for the '<em>Interpreted Expression</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2136,7 +2255,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getInterpretedExpression()
      * @generated
      */
-    int INTERPRETED_EXPRESSION = 51;
+    int INTERPRETED_EXPRESSION = 53;
 
     /**
      * The meta object id for the '<em>Feature Name</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2145,7 +2264,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getFeatureName()
      * @generated
      */
-    int FEATURE_NAME = 52;
+    int FEATURE_NAME = 54;
 
     /**
      * The meta object id for the '<em>Image Path</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2154,7 +2273,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getImagePath()
      * @generated
      */
-    int IMAGE_PATH = 53;
+    int IMAGE_PATH = 55;
 
     /**
      * The meta object id for the '<em>URI</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2163,7 +2282,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getURI()
      * @generated
      */
-    int URI = 54;
+    int URI = 56;
 
     /**
      * The meta object id for the '<em>Translatable Message</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2173,7 +2292,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getTranslatableMessage()
      * @generated
      */
-    int TRANSLATABLE_MESSAGE = 55;
+    int TRANSLATABLE_MESSAGE = 57;
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.description.Group <em>Group</em>}'. <!--
@@ -2890,15 +3009,15 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getDecoratorPath <em>Decorator Path</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getDistributionDirection
+     * <em>Distribution Direction</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @return the meta object for the attribute '<em>Decorator Path</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.DecorationDescription#getDecoratorPath()
+     * @return the meta object for the attribute '<em>Distribution Direction</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.DecorationDescription#getDistributionDirection()
      * @see #getDecorationDescription()
      * @generated
      */
-    EAttribute getDecorationDescription_DecoratorPath();
+    EAttribute getDecorationDescription_DistributionDirection();
 
     /**
      * Returns the meta object for the attribute '
@@ -2911,6 +3030,30 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      */
     EAttribute getDecorationDescription_PreconditionExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getImageExpression
+     * <em>Image Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Image Expression</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.DecorationDescription#getImageExpression()
+     * @see #getDecorationDescription()
+     * @generated
+     */
+    EAttribute getDecorationDescription_ImageExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.viewpoint.description.DecorationDescription#getTooltipExpression
+     * <em>Tooltip Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Tooltip Expression</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.DecorationDescription#getTooltipExpression()
+     * @see #getDecorationDescription()
+     * @generated
+     */
+    EAttribute getDecorationDescription_TooltipExpression();
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration
@@ -2933,6 +3076,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      */
     EAttribute getSemanticBasedDecoration_DomainClass();
+
+    /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.description.GenericDecorationDescription
+     * <em>Generic Decoration Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Generic Decoration Description</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.GenericDecorationDescription
+     * @generated
+     */
+    EClass getGenericDecorationDescription();
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.description.Customization
@@ -3784,6 +3937,16 @@ public interface DescriptionPackage extends EPackage {
     EEnum getPosition();
 
     /**
+     * Returns the meta object for enum '{@link org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection
+     * <em>Decoration Distribution Direction</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for enum '<em>Decoration Distribution Direction</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection
+     * @generated
+     */
+    EEnum getDecorationDistributionDirection();
+
+    /**
      * Returns the meta object for enum '{@link org.eclipse.sirius.viewpoint.description.SystemColors
      * <em>System Colors</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4435,12 +4598,12 @@ public interface DescriptionPackage extends EPackage {
         EAttribute DECORATION_DESCRIPTION__POSITION = DescriptionPackage.eINSTANCE.getDecorationDescription_Position();
 
         /**
-         * The meta object literal for the '<em><b>Decorator Path</b></em>' attribute feature. <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Distribution Direction</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EAttribute DECORATION_DESCRIPTION__DECORATOR_PATH = DescriptionPackage.eINSTANCE.getDecorationDescription_DecoratorPath();
+        EAttribute DECORATION_DESCRIPTION__DISTRIBUTION_DIRECTION = DescriptionPackage.eINSTANCE.getDecorationDescription_DistributionDirection();
 
         /**
          * The meta object literal for the ' <em><b>Precondition Expression</b></em>' attribute feature. <!--
@@ -4449,6 +4612,22 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EAttribute DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION = DescriptionPackage.eINSTANCE.getDecorationDescription_PreconditionExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Image Expression</b></em>' attribute feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute DECORATION_DESCRIPTION__IMAGE_EXPRESSION = DescriptionPackage.eINSTANCE.getDecorationDescription_ImageExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Tooltip Expression</b></em>' attribute feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute DECORATION_DESCRIPTION__TOOLTIP_EXPRESSION = DescriptionPackage.eINSTANCE.getDecorationDescription_TooltipExpression();
 
         /**
          * The meta object literal for the '
@@ -4468,6 +4647,17 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EAttribute SEMANTIC_BASED_DECORATION__DOMAIN_CLASS = DescriptionPackage.eINSTANCE.getSemanticBasedDecoration_DomainClass();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.viewpoint.description.impl.GenericDecorationDescriptionImpl
+         * <em>Generic Decoration Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.viewpoint.description.impl.GenericDecorationDescriptionImpl
+         * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getGenericDecorationDescription()
+         * @generated
+         */
+        EClass GENERIC_DECORATION_DESCRIPTION = DescriptionPackage.eINSTANCE.getGenericDecorationDescription();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.description.impl.CustomizationImpl
@@ -5139,6 +5329,17 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EEnum POSITION = DescriptionPackage.eINSTANCE.getPosition();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection
+         * <em>Decoration Distribution Direction</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection
+         * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getDecorationDistributionDirection()
+         * @generated
+         */
+        EEnum DECORATION_DISTRIBUTION_DIRECTION = DescriptionPackage.eINSTANCE.getDecorationDistributionDirection();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.description.SystemColors

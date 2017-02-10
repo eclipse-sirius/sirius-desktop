@@ -39,6 +39,7 @@ import org.eclipse.sirius.viewpoint.description.Environment;
 import org.eclipse.sirius.viewpoint.description.Extension;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
+import org.eclipse.sirius.viewpoint.description.GenericDecorationDescription;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.IVSMElementCustomization;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
@@ -219,6 +220,11 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseSemanticBasedDecoration(SemanticBasedDecoration object) {
             return createSemanticBasedDecorationAdapter();
+        }
+
+        @Override
+        public Adapter caseGenericDecorationDescription(GenericDecorationDescription object) {
+            return createGenericDecorationDescriptionAdapter();
         }
 
         @Override
@@ -670,6 +676,21 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createSemanticBasedDecorationAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.description.GenericDecorationDescription
+     * <em>Generic Decoration Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so
+     * that we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.GenericDecorationDescription
+     * @generated
+     */
+    public Adapter createGenericDecorationDescriptionAdapter() {
         return null;
     }
 

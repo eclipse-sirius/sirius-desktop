@@ -60,8 +60,10 @@ public class DecorationDescriptionItemProvider extends ItemProviderAdapter
 
             addNamePropertyDescriptor(object);
             addPositionPropertyDescriptor(object);
-            addDecoratorPathPropertyDescriptor(object);
+            addDistributionDirectionPropertyDescriptor(object);
             addPreconditionExpressionPropertyDescriptor(object);
+            addImageExpressionPropertyDescriptor(object);
+            addTooltipExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -93,16 +95,17 @@ public class DecorationDescriptionItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Decorator Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Distribution Direction feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      * 
      * @generated
      */
-    protected void addDecoratorPathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DecorationDescription_decoratorPath_feature"), //$NON-NLS-1$
-                        getString("_UI_DecorationDescription_decoratorPath_description"), //$NON-NLS-1$
-                        DescriptionPackage.Literals.DECORATION_DESCRIPTION__DECORATOR_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                        null));
+    protected void addDistributionDirectionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_DecorationDescription_distributionDirection_feature"), //$NON-NLS-1$
+                getString("_UI_DecorationDescription_distributionDirection_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.DECORATION_DESCRIPTION__DISTRIBUTION_DIRECTION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -116,6 +119,32 @@ public class DecorationDescriptionItemProvider extends ItemProviderAdapter
                 getString("_UI_DecorationDescription_preconditionExpression_feature"), //$NON-NLS-1$
                 getString("_UI_DecorationDescription_preconditionExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
+    }
+
+    /**
+     * This adds a property descriptor for the Image Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addImageExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DecorationDescription_imageExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_DecorationDescription_imageExpression_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.DECORATION_DESCRIPTION__IMAGE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
+    }
+
+    /**
+     * This adds a property descriptor for the Tooltip Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addTooltipExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_DecorationDescription_tooltipExpression_feature"), //$NON-NLS-1$
+                getString("_UI_DecorationDescription_tooltipExpression_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.DECORATION_DESCRIPTION__TOOLTIP_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -145,8 +174,10 @@ public class DecorationDescriptionItemProvider extends ItemProviderAdapter
         switch (notification.getFeatureID(DecorationDescription.class)) {
         case DescriptionPackage.DECORATION_DESCRIPTION__NAME:
         case DescriptionPackage.DECORATION_DESCRIPTION__POSITION:
-        case DescriptionPackage.DECORATION_DESCRIPTION__DECORATOR_PATH:
+        case DescriptionPackage.DECORATION_DESCRIPTION__DISTRIBUTION_DIRECTION:
         case DescriptionPackage.DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION:
+        case DescriptionPackage.DECORATION_DESCRIPTION__IMAGE_EXPRESSION:
+        case DescriptionPackage.DECORATION_DESCRIPTION__TOOLTIP_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

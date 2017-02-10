@@ -9,12 +9,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.properties.sections.description.decorationdescription;
 
-// Start of user code imports
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
-import org.eclipse.sirius.editor.tools.internal.presentation.WorkspaceAndPluginsResourceDialog;
+import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
+import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
+import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -29,9 +29,9 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the decoratorPath property of a DecorationDescription object.
+ * A section for the imageExpression property of a DecorationDescription object.
  */
-public class DecorationDescriptionDecoratorPathPropertySection extends AbstractTextWithButtonPropertySection {
+public class DecorationDescriptionImageExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /** Help control of the section. */
     protected CLabel help;
@@ -52,7 +52,7 @@ public class DecorationDescriptionDecoratorPathPropertySection extends AbstractT
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
-        return "DecoratorPath"; //$NON-NLS-1$
+        return "ImageExpression"; //$NON-NLS-1$
     }
 
     /**
@@ -71,7 +71,7 @@ public class DecorationDescriptionDecoratorPathPropertySection extends AbstractT
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
     public EAttribute getFeature() {
-        return DescriptionPackage.eINSTANCE.getDecorationDescription_DecoratorPath();
+        return DescriptionPackage.eINSTANCE.getDecorationDescription_ImageExpression();
     }
 
     /**
@@ -93,6 +93,10 @@ public class DecorationDescriptionDecoratorPathPropertySection extends AbstractT
      */
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
+        /*
+         * We set the color as it's a InterpretedExpression
+         */
+        text.setBackground(SiriusEditor.getColorRegistry().get("yellow"));
 
         text.setToolTipText(getToolTipText());
 
@@ -105,6 +109,8 @@ public class DecorationDescriptionDecoratorPathPropertySection extends AbstractT
         help.setToolTipText(getToolTipText());
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
 
+        TypeContentProposalProvider.bindPluginsCompletionProcessors(this, text);
+
         // Start of user code create controls
 
         // End of user code create controls
@@ -115,11 +121,10 @@ public class DecorationDescriptionDecoratorPathPropertySection extends AbstractT
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
-                String imagePath = WorkspaceAndPluginsResourceDialog.openDialogForImages(composite.getShell());
-                if (imagePath != null) {
-                    text.setText(imagePath);
-                    handleTextModified();
-                }
+                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), DecorationDescriptionImageExpressionPropertySection.this, text.getText());
+                dialog.open();
+                text.setText(dialog.getResult());
+                handleTextModified();
             }
         };
     }
@@ -128,7 +133,7 @@ public class DecorationDescriptionDecoratorPathPropertySection extends AbstractT
      * {@inheritDoc}
      */
     protected String getPropertyDescription() {
-        return "Path of the icon of the decoration. In the form of /myProjectID/path/to/image.png";
+        return "Expression that provides the decoration as the following choices :\n* a path to an image in the form of /myProjectID/path/to/image.png\n* an expression that gives a path to an image\n* an expression that provides an instance of org.eclipse.swt.graphics.Image\n* an expression that provides an instance of org.eclipse.draw2d.IFigure";
     }
 
     // Start of user code user operations

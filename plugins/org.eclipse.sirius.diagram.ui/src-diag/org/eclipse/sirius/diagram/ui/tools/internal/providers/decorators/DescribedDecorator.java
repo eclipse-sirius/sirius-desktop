@@ -109,7 +109,7 @@ public class DescribedDecorator extends AbstractSiriusDecorator {
     private Image getImage(final Decoration decoration) {
         DecorationDescription description = decoration.getDescription();
         if (description != null) {
-            return WorkspaceImageFigure.getImageInstanceFromPath(description.getDecoratorPath());
+            return WorkspaceImageFigure.getImageInstanceFromPath(description.getImageExpression());
         } else {
             return null;
         }

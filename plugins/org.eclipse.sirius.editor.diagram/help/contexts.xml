@@ -208,7 +208,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code NodeStyle description -->
@@ -223,9 +223,9 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - strokeSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code Dot description -->
@@ -252,7 +252,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code ContainerStyle description -->
@@ -266,7 +266,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code FlatContainerStyle description -->
@@ -280,7 +280,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code ShapeContainerStyle description -->
@@ -295,7 +295,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code Square description -->
@@ -310,7 +310,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code Ellipse description -->
@@ -325,7 +325,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code Lozenge description -->
@@ -340,7 +340,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code BundledImage description -->
@@ -355,7 +355,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code WorkspaceImage description -->
@@ -369,7 +369,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code CustomStyle description -->
@@ -408,7 +408,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code GaugeCompositeStyle description -->
@@ -422,7 +422,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code BorderedStyle description -->
@@ -436,7 +436,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code Note description -->
@@ -599,13 +599,13 @@
 
        Interpreted expressions, requested return type and available variables:
           - titleExpression: a string.
-
+       
           - preconditionExpression: a boolean.
-
+       
           - rootExpression: an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
-
+       
 
          
    <!-- Start of user code DiagramDescription description -->
@@ -619,13 +619,13 @@
        
        Interpreted expressions, requested return type and available variables:
           - titleExpression: a string.
-
+       
           - preconditionExpression: a boolean.
-
+       
           - rootExpression: an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
-
+       
 
          
    <!-- Start of user code DiagramImportDescription description -->
@@ -659,18 +659,18 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
 
          
    <!-- Start of user code DiagramElementMapping description -->
@@ -693,18 +693,18 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
 
          
    <!-- Start of user code AbstractNodeMapping description -->
@@ -727,18 +727,18 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
 
          
    <!-- Start of user code NodeMapping description -->
@@ -761,18 +761,18 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
 
          
    <!-- Start of user code ContainerMapping description -->
@@ -795,18 +795,18 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
 
          
    <!-- Start of user code NodeMappingImport description -->
@@ -829,18 +829,18 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
 
          
    <!-- Start of user code ContainerMappingImport description -->
@@ -863,40 +863,40 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
           - targetFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - sourceFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - targetExpression: an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - pathExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . element: the semantic element  of the current edge.
                 . source: the semantic target of the current source node.
                 . target: the semantic element of the current target node.
-
+       
 
          
    <!-- Start of user code EdgeMapping description -->
@@ -934,7 +934,7 @@
           - predicateExpression: a boolean.
                 . view: the current view.
                 . container: the semantic container.
-
+       
 
          
    <!-- Start of user code ConditionalNodeStyleDescription description -->
@@ -950,7 +950,7 @@
           - predicateExpression: a boolean.
                 . view: the current view.
                 . container: the semantic container.
-
+       
 
          
    <!-- Start of user code ConditionalEdgeStyleDescription description -->
@@ -966,7 +966,7 @@
           - predicateExpression: a boolean.
                 . view: the current view.
                 . container: the semantic container.
-
+       
 
          
    <!-- Start of user code ConditionalContainerStyleDescription description -->
@@ -992,7 +992,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - childrenExpression: a Collection&lt;EObject> or an EObject.
-
+       
 
          
    <!-- Start of user code OrderedTreeLayout description -->
@@ -1022,7 +1022,17 @@
                 . container: the semantic element of the container view.
                 . viewpoint: (deprecated) the current diagram.
                 . diagram: the current diagram.
-
+       
+          - imageExpression: a String, an Image or an IFigure
+                . containerView: the view that would contain the potential views of the checked elements.
+                . container: the semantic element of the container view.
+                . diagram: the current diagram.
+       
+          - tooltipExpression: a String, an Image or an IFigure
+                . containerView: the view that would contain the potential views of the checked elements.
+                . container: the semantic element of the container view.
+                . diagram: the current diagram.
+       
 
          
    <!-- Start of user code MappingBasedDecoration description -->
@@ -1070,7 +1080,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code BorderedStyleDescription description -->
@@ -1085,16 +1095,16 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
           - sizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code NodeStyleDescription description -->
@@ -1108,16 +1118,16 @@
        
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
           - sizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code CustomStyleDescription description -->
@@ -1132,16 +1142,16 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
           - sizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code SquareDescription description -->
@@ -1156,20 +1166,20 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
           - sizeComputationExpression: an integer.
-
+       
           - widthComputationExpression: an integer.
-
+       
           - heightComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code LozengeNodeDescription description -->
@@ -1184,20 +1194,20 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
           - sizeComputationExpression: an integer.
-
+       
           - horizontalDiameterComputationExpression: an integer.
-
+       
           - verticalDiameterComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code EllipseNodeDescription description -->
@@ -1212,16 +1222,16 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
           - sizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code BundledImageDescription description -->
@@ -1235,16 +1245,16 @@
        
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
           - sizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code NoteDescription description -->
@@ -1259,18 +1269,18 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
           - sizeComputationExpression: an integer.
-
+       
           - strokeSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code DotDescription description -->
@@ -1285,16 +1295,16 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
           - sizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code GaugeCompositeStyleDescription description -->
@@ -1309,11 +1319,11 @@
 
        Interpreted expressions, requested return type and available variables:
           - minValueExpression: an integer.
-
+       
           - maxValueExpression: an integer.
-
+       
           - valueExpression: an integer.
-
+       
 
          
    <!-- Start of user code GaugeSectionDescription description -->
@@ -1327,9 +1337,9 @@
        
        Interpreted expressions, requested return type and available variables:
           - widthComputationExpression: an integer.
-
+       
           - heightComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code SizeComputationContainerStyleDescription description -->
@@ -1355,14 +1365,14 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
 
          
    <!-- Start of user code ContainerStyleDescription description -->
@@ -1376,18 +1386,18 @@
        
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
           - widthComputationExpression: an integer.
-
+       
           - heightComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code FlatContainerStyleDescription description -->
@@ -1401,18 +1411,18 @@
        
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
           - widthComputationExpression: an integer.
-
+       
           - heightComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code ShapeContainerStyleDescription description -->
@@ -1427,16 +1437,16 @@
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
           - sizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code WorkspaceImageDescription description -->
@@ -1455,7 +1465,7 @@
                 . view: the current edge view for which the size is calculated.
                 . sourceView: the source view of the current edge.
                 . targetView: the target view of the current edge.
-
+       
 
          
    <!-- Start of user code EdgeStyleDescription description -->
@@ -1472,7 +1482,7 @@
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
 
          
    <!-- Start of user code BeginLabelStyleDescription description -->
@@ -1489,7 +1499,7 @@
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
 
          
    <!-- Start of user code CenterLabelStyleDescription description -->
@@ -1506,7 +1516,7 @@
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
 
          
    <!-- Start of user code EndLabelStyleDescription description -->
@@ -1524,7 +1534,7 @@
                 . view: the current edge view for which the size is calculated.
                 . sourceView: the source view of the current edge.
                 . targetView: the target view of the current edge.
-
+       
 
          
    <!-- Start of user code BracketEdgeStyleDescription description -->
@@ -1585,9 +1595,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
        List of the available variables for tool operations:
             - container: The variable container that represents the semantic element of the clicked view.
@@ -1606,15 +1616,15 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
           - connectionStartPrecondition: a boolean.
                 . container: the semantic element of diagram.
                 . preSourceView: (edge only) the source view of the current potential edge.
                 . preSource: (edge only) the semantic element of $preSourceView.
                 . diagram: the diagram of the current potential edge
-
+       
 
        List of the available variables for tool operations:
             - source: The semantic element of the source view.
@@ -1635,9 +1645,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
        List of the available variables for tool operations:
             - container: The semantic element of the cicked view.
@@ -1656,9 +1666,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
        List of the available variables for tool operations:
             - element: The semantic element of the ViewPointElement to delete.
@@ -1678,9 +1688,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
        List of the available variables for tool operations:
             - element: The semantic element of the ViewPointElement to delete.
@@ -1708,7 +1718,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - value: a Collection&lt;EObject> or an EObject.
-
+       
 
          
    <!-- Start of user code DeleteHookParameter description -->
@@ -1724,9 +1734,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
        List of the available variables for tool operations:
             - source: The semantic element of the source view of the reconnection operation.
@@ -1748,9 +1758,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
          
    <!-- Start of user code RequestDescription description -->
@@ -1766,13 +1776,13 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
           - inputLabelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
 
          
    <!-- Start of user code DirectEditLabel description -->
@@ -1788,9 +1798,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
          
    <!-- Start of user code BehaviorTool description -->
@@ -1871,7 +1881,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - containerViewExpression: a view (DNode, DEdge, DDiagram -> any DSemanticDecorator).
-
+       
 
          
    <!-- Start of user code CreateView description -->
@@ -1885,11 +1895,11 @@
        
        Interpreted expressions, requested return type and available variables:
           - containerViewExpression: a view (DNode, DEdge, DDiagram -> any DSemanticDecorator).
-
+       
           - sourceExpression: an EObject.
-
+       
           - targetExpression: an EObject.
-
+       
 
          
    <!-- Start of user code CreateEdgeView description -->
@@ -1916,13 +1926,13 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
           - titleExpression: a string.
-
+       
           - browseExpression: an EObject.
-
+       
 
        List of the available variables for tool operations:
             - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
@@ -1940,14 +1950,14 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
           - browseExpression: an EObject.
-
+       
           - navigationNameExpression: a string.
                 . name: name of the targeted Representation.
-
+       
 
        List of the available variables for tool operations:
             - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
@@ -1967,9 +1977,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
        List of the available variables for tool operations:
             - oldSemanticElement: The semantic element of the old container view.
@@ -2013,9 +2023,9 @@
 
        Interpreted expressions, requested return type and available variables:
           - semanticConditionExpression: a boolean.
-
+       
           - viewConditionExpression: a boolean.
-
+       
 
          
    <!-- Start of user code MappingFilter description -->
@@ -2042,7 +2052,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - semanticConditionExpression: a boolean.
-
+       
 
          
    <!-- Start of user code VariableFilter description -->

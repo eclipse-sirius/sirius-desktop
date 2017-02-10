@@ -300,7 +300,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
                 "^The image '  /org.eclipse.sirius.tests.junit/images/logo_o.png   ' does not exist.$", "^The image '/test/noimage.gif' does not exist.$",
                 "^The path 'icon' does not correspond to an image.$", "^The image 'icon' does not exist.$", "^The path '/org.eclipse.sirius.tests.junit/plugin.xml' does not correspond to an image.$",
                 "^The image 'C:\\\\images\\\\image.png' does not exist.$", "^The image '/org.eclipse.sirius.tests.junit/images/notexisting.png' does not exist.$",
-                "^The required feature 'decoratorPath' of 'org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl@.*' must be set$" };
+                "^The required feature 'imageExpression' of 'org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl@.*' must be set$" };
 
         assertEquals("The diagnostic must contain " + expectedMessagesPatterns.length + " validation errors. Returned messages were :\n"
                 + Joiner.on('\n').join(Iterables.transform(children, new Function<Diagnostic, String>() {
@@ -311,7 +311,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
                     }
                 })), expectedMessagesPatterns.length, children.size());
         for (int i = 0; i < expectedMessagesPatterns.length; i++) {
-            assertTrue("Unexpected validation error at position " + i, children.get(i).getMessage().matches(expectedMessagesPatterns[i]));
+            assertTrue("Unexpected validation error at position " + i + ": " + children.get(i).getMessage(), children.get(i).getMessage().matches(expectedMessagesPatterns[i]));
         }
     }
 

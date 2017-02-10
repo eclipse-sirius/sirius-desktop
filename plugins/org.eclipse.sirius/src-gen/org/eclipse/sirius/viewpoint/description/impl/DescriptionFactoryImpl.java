@@ -34,12 +34,14 @@ import org.eclipse.sirius.viewpoint.description.Customization;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
+import org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 import org.eclipse.sirius.viewpoint.description.Environment;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
+import org.eclipse.sirius.viewpoint.description.GenericDecorationDescription;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
@@ -111,6 +113,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createDecorationDescriptionsSet();
         case DescriptionPackage.SEMANTIC_BASED_DECORATION:
             return createSemanticBasedDecoration();
+        case DescriptionPackage.GENERIC_DECORATION_DESCRIPTION:
+            return createGenericDecorationDescription();
         case DescriptionPackage.CUSTOMIZATION:
             return createCustomization();
         case DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION:
@@ -162,6 +166,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         switch (eDataType.getClassifierID()) {
         case DescriptionPackage.POSITION:
             return createPositionFromString(eDataType, initialValue);
+        case DescriptionPackage.DECORATION_DISTRIBUTION_DIRECTION:
+            return createDecorationDistributionDirectionFromString(eDataType, initialValue);
         case DescriptionPackage.SYSTEM_COLORS:
             return createSystemColorsFromString(eDataType, initialValue);
         case DescriptionPackage.TYPE_NAME:
@@ -191,6 +197,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         switch (eDataType.getClassifierID()) {
         case DescriptionPackage.POSITION:
             return convertPositionToString(eDataType, instanceValue);
+        case DescriptionPackage.DECORATION_DISTRIBUTION_DIRECTION:
+            return convertDecorationDistributionDirectionToString(eDataType, instanceValue);
         case DescriptionPackage.SYSTEM_COLORS:
             return convertSystemColorsToString(eDataType, instanceValue);
         case DescriptionPackage.TYPE_NAME:
@@ -293,6 +301,17 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public SemanticBasedDecoration createSemanticBasedDecoration() {
         SemanticBasedDecorationImpl semanticBasedDecoration = new SemanticBasedDecorationImpl();
         return semanticBasedDecoration;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public GenericDecorationDescription createGenericDecorationDescription() {
+        GenericDecorationDescriptionImpl genericDecorationDescription = new GenericDecorationDescriptionImpl();
+        return genericDecorationDescription;
     }
 
     /**
@@ -514,6 +533,28 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * @generated
      */
     public String convertPositionToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public DecorationDistributionDirection createDecorationDistributionDirectionFromString(EDataType eDataType, String initialValue) {
+        DecorationDistributionDirection result = DecorationDistributionDirection.get(initialValue);
+        if (result == null) {
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        }
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String convertDecorationDistributionDirectionToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

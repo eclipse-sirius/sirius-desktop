@@ -296,6 +296,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="elementsToSelect" upperBound="-1"
         eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
         transient="true" unsettable="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="decorationImage" transient="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This map associates a Decoration to its computed image (Object as value) which can be either an Image or an IFigure."/>
+      </eAnnotations>
+      <eGenericType eClassifier="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EMap">
+        <eTypeArguments eClassifier="#//Decoration"/>
+        <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </eGenericType>
+    </eStructuralFeatures>
   </eClassifiers>
   <eSubpackages name="description" nsURI="http://www.eclipse.org/sirius/description/1.1.0"
       nsPrefix="description">
@@ -538,12 +547,8 @@
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" lowerBound="1"
           eType="#//description/Position" defaultValueLiteral="SOUTH_WEST"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="decoratorPath" lowerBound="1"
-          eType="#//description/ImagePath">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The path of the icon of the decoration."/>
-        </eAnnotations>
-      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="distributionDirection"
+          lowerBound="1" eType="#//description/DecorationDistributionDirection"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
           eType="#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -559,6 +564,33 @@
           <details key="diagram" value="diagram.DSemanticDiagram | the current diagram."/>
         </eAnnotations>
       </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageExpression" lowerBound="1"
+          eType="#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Expression that provides the decoration as the following choices :&#xD;&#xA;* a path to an image in the form of /myProjectID/path/to/image.png&#xD;&#xA;* an expression that gives a path to an image&#xD;&#xA;* an expression that provides an instance of org.eclipse.swt.graphics.Image&#xD;&#xA;* an expression that provides an instance of org.eclipse.draw2d.IFigure"/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a String, an Image or an IFigure"/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
+          <details key="containerView" value="viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements."/>
+          <details key="container" value="ecore.EObject | the semantic element of the container view."/>
+          <details key="diagram" value="diagram.DDiagram | the current diagram."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="tooltipExpression" eType="#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Expression that provides the tool-tip as the following choices :&#xD;&#xA;* a fixed tool-tip string&#xD;&#xA;* an expression that provides a tool-tip string&#xD;&#xA;* an expression that provides an instance of org.eclipse.draw2d.IFigure"/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a String, an Image or an IFigure"/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
+          <details key="containerView" value="viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements."/>
+          <details key="container" value="ecore.EObject | the semantic element of the container view."/>
+          <details key="diagram" value="diagram.DDiagram | the current diagram."/>
+        </eAnnotations>
+      </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="Position">
       <eLiterals name="NORTH" literal="NORTH"/>
@@ -571,6 +603,10 @@
       <eLiterals name="SOUTH_EAST" value="7" literal="SOUTH_EAST"/>
       <eLiterals name="CENTER" value="8" literal="CENTER"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="DecorationDistributionDirection">
+      <eLiterals name="VERTICAL"/>
+      <eLiterals name="HORIZONTAL"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="SemanticBasedDecoration" eSuperTypes="#//description/DecorationDescription">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A SemanticBasedDecoration applies decoration on views that targeted an element of the given type."/>
@@ -581,6 +617,11 @@
           <details key="documentation" value="The path of the icon of the decoration."/>
         </eAnnotations>
       </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="GenericDecorationDescription" eSuperTypes="#//description/DecorationDescription">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A GenericDecorationDescription applies decoration on views targeting an element that fulfill the preconditionExpression."/>
+      </eAnnotations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Customization">
       <eStructuralFeatures xsi:type="ecore:EReference" name="vsmElementCustomizations"

@@ -11,6 +11,8 @@
  */
 package org.eclipse.sirius.viewpoint;
 
+import java.util.Map;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
@@ -25,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.UIState#isInverseSelectionOrder <em>Inverse Selection Order</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.UIState#getElementsToSelect <em>Elements To Select</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.UIState#getDecorationImage <em>Decoration Image</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getUIState()
@@ -98,5 +101,33 @@ public interface UIState extends EObject {
      * @generated
      */
     boolean isSetElementsToSelect();
+
+    /**
+     * Returns the value of the '<em><b>Image Decoration</b></em>' attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Image Decoration</em>' attribute isn't clear, there really should be more of a
+     * description here...
+     * </p>
+     * <!-- end-user-doc --> <!-- begin-model-doc --> This map associates a Decoration to its computed decoration(Object
+     * as value) which can be either an Image or an IFigure. <!-- end-model-doc -->
+     *
+     * @return the value of the '<em>Image Decoration</em>' attribute.
+     * @see #setDecorationImage(Map)
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getUIState_DecorationImage()
+     * @model transient="true"
+     * @generated
+     */
+    Map<Decoration, Object> getDecorationImage();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.UIState#getDecorationImage <em>Decoration Image</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Decoration Image</em>' attribute.
+     * @see #getDecorationImage()
+     * @generated
+     */
+    void setDecorationImage(Map<Decoration, Object> value);
 
 } // UIState

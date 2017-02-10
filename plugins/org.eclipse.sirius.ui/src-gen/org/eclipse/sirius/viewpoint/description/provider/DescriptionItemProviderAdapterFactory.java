@@ -255,6 +255,30 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.viewpoint.description.GenericDecorationDescription} instances. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected GenericDecorationDescriptionItemProvider genericDecorationDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.description.GenericDecorationDescription}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createGenericDecorationDescriptionAdapter() {
+        if (genericDecorationDescriptionItemProvider == null) {
+            genericDecorationDescriptionItemProvider = new GenericDecorationDescriptionItemProvider(this);
+        }
+
+        return genericDecorationDescriptionItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.viewpoint.description.Customization}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -826,6 +850,9 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
         }
         if (semanticBasedDecorationItemProvider != null) {
             semanticBasedDecorationItemProvider.dispose();
+        }
+        if (genericDecorationDescriptionItemProvider != null) {
+            genericDecorationDescriptionItemProvider.dispose();
         }
         if (customizationItemProvider != null) {
             customizationItemProvider.dispose();

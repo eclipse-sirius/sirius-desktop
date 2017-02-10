@@ -531,7 +531,17 @@
                 . container: the semantic element of the container view.
                 . viewpoint: (deprecated) the current diagram.
                 . diagram: the current diagram.
-
+                
+          - imageExpression: a String, an Image or an IFigure
+                . containerView: the view that would contain the potential views of the checked elements.
+                . container: the semantic element of the container view.
+                . diagram: the current diagram.
+       
+          - tooltipExpression: a String, an Image or an IFigure
+                . containerView: the view that would contain the potential views of the checked elements.
+                . container: the semantic element of the container view.
+                . diagram: the current diagram.
+       
 
          
    <!-- Start of user code DecorationDescription description -->
@@ -551,11 +561,49 @@
                 . viewpoint: (deprecated) the current diagram.
                 . diagram: the current diagram.
 
-
+          - imageExpression: a String, an Image or an IFigure
+                . containerView: the view that would contain the potential views of the checked elements.
+                . container: the semantic element of the container view.
+                . diagram: the current diagram.
+       
+          - tooltipExpression: a String, an Image or an IFigure
+                . containerView: the view that would contain the potential views of the checked elements.
+                . container: the semantic element of the container view.
+                . diagram: the current diagram.
+       
          
    <!-- Start of user code SemanticBasedDecoration description -->
    
    <!-- End of user code SemanticBasedDecoration description -->
+   
+      </description>
+   </context>
+   <context id="GenericDecorationDescription">
+     <description>
+       A GenericDecorationDescription applies decoration on views targeting an element that fulfill the preconditionExpression.
+
+       Interpreted expressions, requested return type and available variables:
+          - preconditionExpression: a boolean.
+                . containerView: the view that would contain the potential views of the checked elements.
+                . container: the semantic element of the container view.
+                . viewpoint: (deprecated) the current diagram.
+                . diagram: the current diagram.
+       
+          - imageExpression: a String, an Image or an IFigure
+                . containerView: the view that would contain the potential views of the checked elements.
+                . container: the semantic element of the container view.
+                . diagram: the current diagram.
+       
+          - tooltipExpression: a String, an Image or an IFigure
+                . containerView: the view that would contain the potential views of the checked elements.
+                . container: the semantic element of the container view.
+                . diagram: the current diagram.
+       
+
+         
+   <!-- Start of user code GenericDecorationDescription description -->
+   
+   <!-- End of user code GenericDecorationDescription description -->
    
       </description>
    </context>

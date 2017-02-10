@@ -777,7 +777,7 @@
                 tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.diagram.description.style.BorderedStyleDescription"/>
       </propertySection>
-  	  <propertySection
+      <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.description.additionallayer.AdditionalLayerOptionalPropertySection"
                id="description.section.additionalLayer.Optional"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.description.additionallayer.AdditionalLayerOptionalFilter"
@@ -824,6 +824,14 @@
                afterSection="description.section.decorationDescription.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.MappingBasedDecoration"/>
+      </propertySection>
+  	  <propertySection
+           afterSection="description.section.decorationDescription.Name"
+           class="org.eclipse.sirius.editor.properties.sections.description.semanticbaseddecoration.SemanticBasedDecorationDomainClassPropertySection"
+           filter="org.eclipse.sirius.editor.properties.filters.description.semanticbaseddecoration.SemanticBasedDecorationDomainClassFilter"
+           id="description.section.semanticBasedDecoration.DomainClass"
+           tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.description.compositelayout.CompositeLayoutDirectionPropertySection"

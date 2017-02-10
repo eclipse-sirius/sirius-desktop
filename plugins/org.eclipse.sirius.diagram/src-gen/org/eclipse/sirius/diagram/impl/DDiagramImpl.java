@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.FilterVariableHistory;
+import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
@@ -57,6 +58,8 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getContainers <em>Containers</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getCurrentConcern <em>Current Concern</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivatedFilters <em>Activated Filters</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivatedTransientLayers
+ * <em>Activated Transient Layers</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getAllFilters <em>All Filters</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivatedRules <em>Activated Rules</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivateBehaviors <em>Activate Behaviors</em>}</li>
@@ -111,6 +114,16 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * @ordered
      */
     protected EList<FilterDescription> activatedFilters;
+
+    /**
+     * The cached value of the '{@link #getActivatedTransientLayers() <em>Activated Transient Layers</em>}' reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getActivatedTransientLayers()
+     * @generated
+     * @ordered
+     */
+    protected EList<AdditionalLayer> activatedTransientLayers;
 
     /**
      * The cached value of the '{@link #getActivatedRules() <em>Activated Rules</em>}' reference list. <!--
@@ -432,6 +445,41 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * @generated
      */
     @Override
+    public EList<AdditionalLayer> getActivatedTransientLayers() {
+        if (activatedTransientLayers == null) {
+            activatedTransientLayers = new EObjectResolvingEList.Unsettable<AdditionalLayer>(AdditionalLayer.class, this, DiagramPackage.DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS);
+        }
+        return activatedTransientLayers;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void unsetActivatedTransientLayers() {
+        if (activatedTransientLayers != null) {
+            ((InternalEList.Unsettable<?>) activatedTransientLayers).unset();
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public boolean isSetActivatedTransientLayers() {
+        return activatedTransientLayers != null && ((InternalEList.Unsettable<?>) activatedTransientLayers).isSet();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EList<FilterDescription> getAllFilters() {
         // TODO: implement this method to return the 'All Filters' reference list
         // Ensure that you remove @generated or mark it @generated NOT
@@ -740,6 +788,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             return basicGetCurrentConcern();
         case DiagramPackage.DDIAGRAM__ACTIVATED_FILTERS:
             return getActivatedFilters();
+        case DiagramPackage.DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS:
+            return getActivatedTransientLayers();
         case DiagramPackage.DDIAGRAM__ALL_FILTERS:
             return getAllFilters();
         case DiagramPackage.DDIAGRAM__ACTIVATED_RULES:
@@ -787,6 +837,10 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         case DiagramPackage.DDIAGRAM__ACTIVATED_FILTERS:
             getActivatedFilters().clear();
             getActivatedFilters().addAll((Collection<? extends FilterDescription>) newValue);
+            return;
+        case DiagramPackage.DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS:
+            getActivatedTransientLayers().clear();
+            getActivatedTransientLayers().addAll((Collection<? extends AdditionalLayer>) newValue);
             return;
         case DiagramPackage.DDIAGRAM__ACTIVATED_RULES:
             getActivatedRules().clear();
@@ -839,6 +893,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             return;
         case DiagramPackage.DDIAGRAM__ACTIVATED_FILTERS:
             getActivatedFilters().clear();
+            return;
+        case DiagramPackage.DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS:
+            unsetActivatedTransientLayers();
             return;
         case DiagramPackage.DDIAGRAM__ACTIVATED_RULES:
             getActivatedRules().clear();
@@ -894,6 +951,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             return currentConcern != null;
         case DiagramPackage.DDIAGRAM__ACTIVATED_FILTERS:
             return activatedFilters != null && !activatedFilters.isEmpty();
+        case DiagramPackage.DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS:
+            return isSetActivatedTransientLayers();
         case DiagramPackage.DDIAGRAM__ALL_FILTERS:
             return !getAllFilters().isEmpty();
         case DiagramPackage.DDIAGRAM__ACTIVATED_RULES:

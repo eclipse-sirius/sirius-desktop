@@ -925,25 +925,18 @@
         <input type="org.eclipse.sirius.viewpoint.description.VSMElementCustomization"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.description.semanticbaseddecoration.SemanticBasedDecorationDomainClassPropertySection"
-               filter="org.eclipse.sirius.editor.properties.filters.description.semanticbaseddecoration.SemanticBasedDecorationDomainClassFilter"
-               id="description.section.semanticBasedDecoration.DomainClass"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration"/>        
-      </propertySection>
-  	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.decorationdescription.DecorationDescriptionPreconditionExpressionPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.decorationdescription.DecorationDescriptionPreconditionExpressionFilter"
                id="description.section.decorationDescription.PreconditionExpression"
-               afterSection="description.section.decorationDescription.DecoratorPath"
+               afterSection="description.section.decorationDescription.ImageExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.viewpoint.description.DecorationDescription"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.description.decorationdescription.DecorationDescriptionDecoratorPathPropertySection"
-               filter="org.eclipse.sirius.editor.properties.filters.description.decorationdescription.DecorationDescriptionDecoratorPathFilter"
-               id="description.section.decorationDescription.DecoratorPath"
-               afterSection="description.section.decorationDescription.Position"
+               class="org.eclipse.sirius.editor.properties.sections.description.decorationdescription.DecorationDescriptionImageExpressionPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.description.decorationdescription.DecorationDescriptionImageExpressionFilter"
+               id="description.section.decorationDescription.ImageExpression"
+               afterSection="description.section.decorationDescription.DistributionDirection"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.viewpoint.description.DecorationDescription"/>        
       </propertySection>
@@ -951,7 +944,14 @@
                class="org.eclipse.sirius.editor.properties.sections.description.decorationdescription.DecorationDescriptionPositionPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.decorationdescription.DecorationDescriptionPositionFilter"
                id="description.section.decorationDescription.Position"
-               afterSection="description.section.decorationDescription.Name"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.viewpoint.description.DecorationDescription"/>        
+      </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.description.decorationdescription.DecorationDescriptionDistributionDirectionPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.description.decorationdescription.DecorationDescriptionDistributionDirectionFilter"
+               id="description.section.decorationDescription.DistributionDirection"
+               afterSection="description.section.decorationDescription.Position"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.viewpoint.description.DecorationDescription"/>        
       </propertySection>
@@ -959,6 +959,14 @@
                class="org.eclipse.sirius.editor.properties.sections.description.decorationdescription.DecorationDescriptionNamePropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.decorationdescription.DecorationDescriptionNameFilter"
                id="description.section.decorationDescription.Name"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.viewpoint.description.DecorationDescription"/>        
+      </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.description.decorationdescription.DecorationDescriptionTooltipExpressionPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.description.decorationdescription.DecorationDescriptionTooltipExpressionFilter"
+               id="description.section.decorationDescription.TooltipExpression"
+               afterSection="description.section.decorationDescription.PreconditionExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.viewpoint.description.DecorationDescription"/>        
       </propertySection>

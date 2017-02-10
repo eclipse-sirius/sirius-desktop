@@ -39,6 +39,7 @@ import org.eclipse.sirius.viewpoint.description.Environment;
 import org.eclipse.sirius.viewpoint.description.Extension;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
+import org.eclipse.sirius.viewpoint.description.GenericDecorationDescription;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.IVSMElementCustomization;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
@@ -336,6 +337,17 @@ public class DescriptionSwitch<T> {
             T result = caseSemanticBasedDecoration(semanticBasedDecoration);
             if (result == null) {
                 result = caseDecorationDescription(semanticBasedDecoration);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DescriptionPackage.GENERIC_DECORATION_DESCRIPTION: {
+            GenericDecorationDescription genericDecorationDescription = (GenericDecorationDescription) theEObject;
+            T result = caseGenericDecorationDescription(genericDecorationDescription);
+            if (result == null) {
+                result = caseDecorationDescription(genericDecorationDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -924,6 +936,21 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public T caseSemanticBasedDecoration(SemanticBasedDecoration object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Generic Decoration Description</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Generic Decoration Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGenericDecorationDescription(GenericDecorationDescription object) {
         return null;
     }
 

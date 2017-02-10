@@ -62,6 +62,7 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
             addContainersPropertyDescriptor(object);
             addCurrentConcernPropertyDescriptor(object);
             addActivatedFiltersPropertyDescriptor(object);
+            addActivatedTransientLayersPropertyDescriptor(object);
             addAllFiltersPropertyDescriptor(object);
             addActivatedRulesPropertyDescriptor(object);
             addActivateBehaviorsPropertyDescriptor(object);
@@ -214,6 +215,19 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DDiagram_activatedLayers_feature"), //$NON-NLS-1$
                         getString("_UI_PropertyDescriptor_description", "_UI_DDiagram_activatedLayers_feature", "_UI_DDiagram_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         DiagramPackage.Literals.DDIAGRAM__ACTIVATED_LAYERS, true, false, true, null, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Activated Transient Layers feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addActivatedTransientLayersPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DDiagram_activatedTransientLayers_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DDiagram_activatedTransientLayers_feature", "_UI_DDiagram_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS, true, false, true, null, null, null));
     }
 
     /**

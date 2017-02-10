@@ -174,7 +174,8 @@ public class DNodeContainerItemProvider extends DDiagramElementContainerItemProv
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == DiagramPackage.Literals.ABSTRACT_DNODE__OWNED_BORDERED_NODES || childFeature == DiagramPackage.Literals.DNODE_CONTAINER__OWNED_DIAGRAM_ELEMENTS;
+        boolean qualify = childFeature == DiagramPackage.Literals.DDIAGRAM_ELEMENT__DECORATIONS || childFeature == DiagramPackage.Literals.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS
+                || childFeature == DiagramPackage.Literals.ABSTRACT_DNODE__OWNED_BORDERED_NODES || childFeature == DiagramPackage.Literals.DNODE_CONTAINER__OWNED_DIAGRAM_ELEMENTS;
 
         if (qualify) {
             return getString("_UI_CreateChild_text2", //$NON-NLS-1$
