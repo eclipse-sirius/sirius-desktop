@@ -35,7 +35,7 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ContentViewer;
-import org.eclipse.jface.viewers.DecoratingLabelProvider;
+import org.eclipse.jface.viewers.DecoratingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -97,8 +97,8 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
                 Viewer viewer = ((IViewerProvider) activeEditor).getViewer();
                 if (viewer instanceof ContentViewer) {
                     IBaseLabelProvider labelProvider = ((ContentViewer) viewer).getLabelProvider();
-                    if (labelProvider instanceof DecoratingLabelProvider) {
-                        labelProvider = ((DecoratingLabelProvider) labelProvider).getLabelProvider();
+                    if (labelProvider instanceof DecoratingStyledCellLabelProvider) {
+                        labelProvider = ((DecoratingStyledCellLabelProvider) labelProvider).getStyledStringProvider();
                     }
                     if (labelProvider instanceof CustomSiriusAdapterFactoryLabelProvider) {
                         return (CustomSiriusAdapterFactoryLabelProvider) labelProvider;

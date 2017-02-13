@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,19 +12,19 @@ package org.eclipse.sirius.editor.tools.internal.presentation;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider.StyledLabelProvider;
+import org.eclipse.jface.viewers.Viewer;
 
 /**
  * @author <a href="mailto:julien.dupont@obeo.fr">Julien DUPONT</a>
  * 
  */
-class CustomSiriusAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider {
+class CustomSiriusAdapterFactoryLabelProvider extends StyledLabelProvider {
     private boolean showTypes;
 
-    public CustomSiriusAdapterFactoryLabelProvider(AdapterFactory adapterFactory) {
-        super(adapterFactory);
+    public CustomSiriusAdapterFactoryLabelProvider(AdapterFactory adapterFactory, Viewer viewer) {
+        super(adapterFactory, viewer);
     }
-
 
     @Override
     public String getText(Object object) {

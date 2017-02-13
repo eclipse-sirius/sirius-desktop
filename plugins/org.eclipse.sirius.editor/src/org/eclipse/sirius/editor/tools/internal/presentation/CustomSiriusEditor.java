@@ -41,11 +41,12 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
-import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
@@ -203,7 +204,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         contextService.activateContext(CONTEXT_ID);
 
         if (selectionViewer != null) {
-            selectionViewer.setLabelProvider(new CustomSiriusAdapterFactoryLabelProvider(adapterFactory));
+            selectionViewer.setLabelProvider(new CustomSiriusAdapterFactoryLabelProvider(adapterFactory, selectionViewer));
             selectionViewer.addFilter(new ViewerFilter() {
                 @Override
                 public boolean select(final Viewer viewer, final Object parentElement, final Object element) {
@@ -224,26 +225,26 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                  * Customize the label provider to add the URI of the corresponding resource for Viewpoints loaded by
                  * dependency.
                  */
-                decoratingLabelProvider = new GeneratedElementsLabelProvider((ILabelProvider) selectionViewer.getLabelProvider(), validationDecorator) {
+                decoratingLabelProvider = new GeneratedElementsLabelProvider((IStyledLabelProvider) selectionViewer.getLabelProvider(), validationDecorator) {
                     @Override
-                    public String getText(Object element) {
-                        String result = super.getText(element);
+                    protected StyledString getStyledText(Object element) {
+                        StyledString result = super.getStyledText(element);
                         if (element instanceof Viewpoint) {
                             Viewpoint viewpoint = (Viewpoint) element;
                             Resource resource = viewpoint.eResource();
                             if (resource != null) {
                                 // CHECKSTYLE:OFF
                                 if (resource.getResourceSet().getResources().indexOf(resource) != 0) {
-                                    result = result + " (" + resource.getURI() + ")";
+                                    result.append(result + " (" + resource.getURI() + ")");
                                 }
                                 // CHECKSTYLE:ON
                             }
                         }
                         return result;
-                    };
+                    }
                 };
             } else {
-                decoratingLabelProvider = new GeneratedElementsLabelProvider((ILabelProvider) selectionViewer.getLabelProvider(), validationDecorator);
+                decoratingLabelProvider = new GeneratedElementsLabelProvider((IStyledLabelProvider) selectionViewer.getLabelProvider(), validationDecorator);
             }
             decoratingLabelProvider.setLabelDecorator(new SiriusInterpreterErrorDecorator(this.getURIFromInput(getEditorInput())));
 
