@@ -23,8 +23,7 @@ import org.osgi.framework.Version;
 import com.google.common.collect.Lists;
 
 /**
- * Remove the old font format attribute values used before the multi valued
- * label font format attribute.
+ * Remove the old font format attribute values used before the multi valued label font format attribute.
  * 
  * @author mbats
  */
@@ -59,6 +58,10 @@ public class FontFormatMigrationParticipant extends AbstractMigrationParticipant
                 // "if contains" blocks.
                 if (oldFontFormat.contains(BOLD)) {
                     FontFormatHelper.setFontFormat(labelFormat, FontFormat.BOLD_LITERAL);
+                }
+                // If it is a valid value just set it.
+                if (FontFormat.get((String) value) != null) {
+                    FontFormatHelper.setFontFormat(labelFormat, FontFormat.get((String) value));
                 }
                 return labelFormat.toString().replaceAll(",", "").replace("[", "").replace("]", ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
             }
