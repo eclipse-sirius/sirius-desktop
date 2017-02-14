@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.properties.tools.internal.menu;
 
-import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
+/**
+ * The menu builder for the widgets.
+ * 
+ * @author sbegaudeau
+ */
 public class WidgetsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
+
     /**
      * Create the menu.
      */
@@ -30,6 +35,6 @@ public class WidgetsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
 
     @Override
     public int getPriority() {
-        return AbstractMenuBuilder.DIAGRAM_ELEMENT;
+        return PropertiesMenuBuilderConstants.WIDGETS;
     }
 }

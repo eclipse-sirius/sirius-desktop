@@ -495,7 +495,14 @@ public abstract class AbstractMenuBuilder {
         manager.update(true);
     }
 
-    private int getPriority(IAction action) {
+    /**
+     * Returns the priority of the given action.
+     * 
+     * @param action
+     *            The action
+     * @return The priority of the action
+     */
+    protected int getPriority(IAction action) {
         if (action instanceof CustomCreateChildAction) {
             return getPriority(((CustomCreateChildAction) action).getCreatedElementType());
         } else {

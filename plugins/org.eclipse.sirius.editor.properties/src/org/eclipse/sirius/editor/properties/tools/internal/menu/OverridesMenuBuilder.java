@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.properties.tools.internal.menu;
 
-import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
@@ -35,7 +34,7 @@ public class OverridesMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
 
     @Override
     public int getPriority() {
-        return AbstractMenuBuilder.STYLE;
+        return PropertiesMenuBuilderConstants.OVERRIDES;
     }
 
 }

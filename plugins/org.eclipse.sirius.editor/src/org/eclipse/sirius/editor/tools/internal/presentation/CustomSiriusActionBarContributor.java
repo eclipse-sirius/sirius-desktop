@@ -62,6 +62,7 @@ import org.eclipse.sirius.editor.tools.internal.menu.child.RepresentationTemplat
 import org.eclipse.sirius.editor.tools.internal.menu.child.StyleMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.ValidationMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.VariablesMenuBuilder;
+import org.eclipse.sirius.editor.tools.internal.menu.child.ViewpointAndPaletteMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.refactoring.RefactoringMenu;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
@@ -212,6 +213,7 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
         allMenusBuilders.add(new OperationsMenuBuilder());
         allMenusBuilders.add(new ValidationMenuBuilder());
         allMenusBuilders.add(new ExtensionsMenuBuilder());
+        allMenusBuilders.add(new ViewpointAndPaletteMenuBuilder());
 
         // Add contributions
         allMenusBuilders.addAll(MenuBuildersManager.getInstance().getContributedMenuBuilders());

@@ -42,7 +42,7 @@ public final class DefaultRulesProvider {
     /**
      * The resource set used to load the default rules.
      */
-    private ResourceSet resourceSet = new ResourceSetImpl();
+    private ResourceSet defaultRulesResourceSet = new ResourceSetImpl();
 
     /**
      * The constructor.
@@ -57,7 +57,20 @@ public final class DefaultRulesProvider {
      * @return The root element of the default rules
      */
     public ViewExtensionDescription getDefaultRules() {
-        Resource resource = this.resourceSet.getResource(DEFAULT_RULES_RESOURCE_URI, true);
+        return this.getDefaultRules(this.defaultRulesResourceSet);
+    }
+
+    /**
+     * Loads the default rules in the given resource set and returns the root
+     * element of the default rules.
+     * 
+     * @param resourceSet
+     *            The resource set in which the default rules should be loaded
+     * 
+     * @return The root element of the default rules
+     */
+    public ViewExtensionDescription getDefaultRules(ResourceSet resourceSet) {
+        Resource resource = resourceSet.getResource(DEFAULT_RULES_RESOURCE_URI, true);
         if (resource == null) {
             SiriusPropertiesCorePlugin.getPlugin().error(Messages.DefaultRulesProvider_DefaultPropertiesNotFound);
         } else {

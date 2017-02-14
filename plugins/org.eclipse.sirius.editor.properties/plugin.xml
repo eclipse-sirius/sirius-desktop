@@ -555,13 +555,11 @@
       <propertyTab category="default" id="viewpoint.tab.widget" label="%viewpoint.tab.widget.name" afterTab="viewpoint.tab.label"/>
     </propertyTabs>
   </extension>
-   <extension point="org.eclipse.emf.edit.childCreationExtenders">
-      <extender uri="http://www.eclipse.org/sirius/description/1.1.0" class="org.eclipse.sirius.editor.properties.DefaultRulesCreationExtender"/>
-   </extension>  
   <extension point="org.eclipse.sirius.editor.menuBuilder">
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.WidgetsMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.StyleMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.LayoutMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.PropertiesMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.OverridesMenuBuilder" />
   </extension>
 </plugin>    
