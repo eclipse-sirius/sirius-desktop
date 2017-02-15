@@ -19,8 +19,11 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -35,6 +38,7 @@ import org.eclipse.sirius.tests.support.api.OpenedSessionsCondition;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
@@ -394,8 +398,12 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
     }
 
     /**
-     * This test checks that a default layer is applied by default. As it is
-     * optional, it also checks that the layer can be deactivated.
+     * This test checks that a default layer is applied by default. </br>
+     * - As it is optional, it also checks that the layer can be
+     * deactivated.</br>
+     * - After closing and reopening the diagram, the transient layer activation
+     * should not change .</br>
+     * - The transient layer application should not dirtyfy the diagram
      * 
      * @throws OperationCanceledException
      * @throws InterruptedException
@@ -440,7 +448,64 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
 
         Assert.assertFalse("The optional transient layer that has been deactivated should still be deactivated after closing and reoping diagram",
                 dDiagram.getActivatedTransientLayers().contains(transientLayer));
+    }
 
+    /**
+     * This test checks that the transient layer activation or deactivation will
+     * not update the diagram making the session dirty.
+     * 
+     * @throws OperationCanceledException
+     * @throws InterruptedException
+     */
+    public void testTransientLayerActivationInManualRefresh() {
+        changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
+
+        // Initialization: Check that the transient layers and decorator are as
+        // expected
+        final DiagramDescription diagramDescription = findDiagramDescription(DIAGRAM_DESCRIPTION_NAME);
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, diagramDescription);
+
+        final EList<AdditionalLayer> transientLayers = diagramDescription.getAdditionalLayers();
+        Assert.assertEquals("There should be 6 transient layers", 6, transientLayers.size());
+        AdditionalLayer transientLayer = transientLayers.get(3);
+        Assert.assertEquals("The second transient layer has not the expected name", TRANSIENT_LAYER_SEMANTIC_BASED_DECORATOR_DEFAULT_OPTIONAL_LABEL, transientLayer.getLabel());
+
+        assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, transientLayer.getDecorationDescriptionsSet());
+        final List<SemanticBasedDecoration> decorationDescriptions = Lists
+                .newArrayList(Iterables.filter(transientLayer.getDecorationDescriptionsSet().getDecorationDescriptions(), SemanticBasedDecoration.class));
+        assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 1, Iterables.size(decorationDescriptions));
+
+        // Initialize the diagram
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+
+            @Override
+            protected void doExecute() {
+                dDiagram = (DDiagram) DialectManager.INSTANCE.createRepresentation(DIAGRAM_DESCRIPTION_NAME, semanticModel, diagramDescription, session, new NullProgressMonitor());
+                ((EPackage) semanticModel).getEClassifiers().add(EcoreFactory.eINSTANCE.createEClass());
+            }
+        });
+        editor = DialectUIManager.INSTANCE.openEditor(session, dDiagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        session.save(new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+
+        // check that there is only one DDiagramElement
+        String badNumberOfElements = "The sirius refresh has occurred when changing transient layer activation status. Bad number of DDiagramElement in the diagram";
+        Assert.assertEquals(badNumberOfElements, 1, dDiagram.getDiagramElements().size());
+        Assert.assertTrue("A default transient layer was unexpectedly not among the activated transient layers of the diagram", dDiagram.getActivatedTransientLayers().contains(transientLayer));
+
+        // activate and deactivate transient layer and check that the sirius
+        // refresh won't be done
+        deactivateLayer(dDiagram, TRANSIENT_LAYER_SEMANTIC_BASED_DECORATOR_DEFAULT_OPTIONAL_NAME);
+
+        Assert.assertFalse("The optional transient layer was not deactivated", dDiagram.getActivatedTransientLayers().contains(transientLayer));
+        Assert.assertEquals(badNumberOfElements, 1, dDiagram.getDiagramElements().size());
+
+        activateLayer(dDiagram, TRANSIENT_LAYER_SEMANTIC_BASED_DECORATOR_DEFAULT_OPTIONAL_NAME);
+
+        Assert.assertTrue("The optional transient layer was not activated", dDiagram.getActivatedTransientLayers().contains(transientLayer));
+        Assert.assertEquals(badNumberOfElements, 1, dDiagram.getDiagramElements().size());
     }
 
     /**

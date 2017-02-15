@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDN
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
+import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -127,7 +128,7 @@ public class CreateDDiagramElementCommand extends RecordingCommand {
 
             /* create the mapping to edge targets map */
             final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets = elementSync.computeMappingsToEdgeTargets(session.getSelectedViewpoints(false));
-            diagramSync.computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
+            new DecorationHelperInternal(getParentDiagram(), interpreter, accessor).computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
             elementSync.createNewEdge(mappingManager, edgeCandidate, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
         }
 

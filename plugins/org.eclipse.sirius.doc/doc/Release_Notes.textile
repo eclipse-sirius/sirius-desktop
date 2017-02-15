@@ -93,6 +93,11 @@ h4. Changes in @org.eclipse.sirius.editor.properties@
 * <span class="label label-info">Modified</span> In the package @org.eclipse.sirius.editor.properties.sections.description.representationdescription@ the class @RepresentationDescriptionMetamodelsUpdater@ has been replaced by @DescriptionMetamodelsUpdater@ which can now be used with any EObject with a many-valued EReference to EPackages. The behavior of the class @RepresentationDescriptionMetamodelPropertySectionSpec@ has been transfered to an abstract class independent of @RepresentationDescription@ named @AbstractMetamodelPropertySectionSpec@. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
  
 
+h4. Changes in @org.eclipse.sirius.diagram@
+
+* <span class="label label-success">Added</span> 
+The utility class @org.eclipse.sirius.diagram.business.api.helper.decoration.DecorationHelper@ has been added. It provides @updateDecorations(List<Layer>)@ and @updateAllDecorations@ methods that allow to update only decorations in a diagram.
+
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
 * <span class="label label-success">Added</span> The utility method @org.eclipse.sirius.tests.support.api.TestsUtil.setTargetPlatform()@ has been added to allow to load a PDE target platform according to all known OSGi bundles. It is useful to compile a plug-in in the execution runtime of the tests.

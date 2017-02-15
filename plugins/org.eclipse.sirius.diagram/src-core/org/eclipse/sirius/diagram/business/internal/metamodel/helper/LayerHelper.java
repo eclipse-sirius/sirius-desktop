@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -30,6 +31,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
@@ -44,6 +46,10 @@ import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
 
 /**
  * An helper to deal with layers stuffs.
@@ -544,7 +550,73 @@ public final class LayerHelper {
             return !containsMappings && !containsCusto;
         }
         return false;
+    }
 
+    /**
+     * Get the transient or non transient layers to activate.
+     * 
+     * @param diagDescription
+     *            the {@link DiagramDescription} to get the layers from
+     * @param viewpointsFilter
+     *            viewpoints to consider
+     * @param layersToActivate
+     *            returned non transient layers to activate
+     * @param transientLayersToActivate
+     *            returned transient layers to activate
+     */
+    public static void getInitialActiveLayers(DiagramDescription diagDescription, Collection<Viewpoint> viewpointsFilter, List<Layer> layersToActivate,
+            List<AdditionalLayer> transientLayersToActivate) {
+        final Predicate<Layer> isActiveByDefault = new Predicate<Layer>() {
+            @Override
+            public boolean apply(final Layer layer) {
+                boolean result = true;
+                if (layer instanceof AdditionalLayer) {
+                    AdditionalLayer additionalLayer = (AdditionalLayer) layer;
+                    result = additionalLayer.isActiveByDefault() || !additionalLayer.isOptional();
+                }
+                return result;
+            }
+        };
+
+        getFilteredLayers(diagDescription, viewpointsFilter, layersToActivate, transientLayersToActivate, isActiveByDefault);
+    }
+
+    private static void getFilteredLayers(DiagramDescription diagDescription, Collection<Viewpoint> viewpointsFilter, List<Layer> layers, List<AdditionalLayer> transientLayers,
+            Predicate<Layer> predicate) {
+        Collection<Layer> allLayers = new ArrayList<Layer>(new DiagramComponentizationManager().getAllLayers(viewpointsFilter, diagDescription));
+
+        Collection<Layer> allActivatedLayers = Collections2.filter(allLayers, predicate);
+        allActivatedLayers.addAll(Collections2.filter(DiagramComponentizationHelper.getContributedLayers(diagDescription, viewpointsFilter), predicate));
+
+        for (Layer layer : allActivatedLayers) {
+            if (LayerHelper.isTransientLayer(layer)) {
+                transientLayers.add((AdditionalLayer) layer);
+            } else {
+                layers.add(layer);
+            }
+        }
+    }
+
+    /**
+     * Get, from descriptions, the list of mandatories layers.
+     * 
+     * @param diagDescription
+     *            the {@link DiagramDescription} to get the layers from
+     * @param viewpointsFilter
+     *            viewpoints to consider
+     * @param layers
+     *            returned non transient layers to activate
+     * @param transientLayers
+     *            returned transient layers to activate
+     */
+    public static void getMandatoriesAdditionalLayers(DiagramDescription diagDescription, Collection<Viewpoint> viewpointsFilter, List<Layer> layers, List<AdditionalLayer> transientLayers) {
+        final Predicate<Layer> isMandatory = new Predicate<Layer>() {
+            @Override
+            public boolean apply(final Layer layer) {
+                return (layer instanceof AdditionalLayer) && !((AdditionalLayer) layer).isOptional();
+            }
+        };
+        getFilteredLayers(diagDescription, viewpointsFilter, layers, transientLayers, isMandatory);
     }
 
 }

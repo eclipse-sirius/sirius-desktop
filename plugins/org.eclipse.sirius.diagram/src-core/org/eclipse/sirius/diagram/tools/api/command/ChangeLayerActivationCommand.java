@@ -23,9 +23,12 @@ import org.eclipse.sirius.common.tools.api.listener.Notification;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.Messages;
+import org.eclipse.sirius.diagram.business.api.helper.decoration.DecorationHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.Layer;
+
+import com.google.common.collect.Lists;
 
 /**
  * Specific command to change layer activation.
@@ -65,12 +68,11 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
     protected void doExecute() {
         try {
             monitor.beginTask(Messages.ChangeLayerActivationCommand_executeMsg, 3);
-            boolean launchRefresh = !LayerHelper.containsOnlyTools(layer) || layer.getCustomization() != null;
-            if (!launchRefresh) {
+            boolean transientLayer = LayerHelper.isTransientLayer(layer);
+            if (transientLayer) {
                 NotificationUtil.sendNotification(dDiagram, Notification.Kind.START, Notification.VISIBILITY);
             }
             monitor.worked(1);
-            boolean transientLayer = LayerHelper.isTransientLayer(layer);
             if (!transientLayer) {
                 if (dDiagram.getActivatedLayers().contains(layer)) {
                     dDiagram.getActivatedLayers().remove(layer);
@@ -88,9 +90,13 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
             }
             monitor.worked(1);
 
-            if (launchRefresh) {
+            if (!transientLayer) {
                 new RefreshRepresentationsCommand(TransactionUtil.getEditingDomain(dDiagram), new SubProgressMonitor(monitor, 1), dDiagram).execute();
             } else {
+                // update decorations
+                DecorationHelper decoHelper = new DecorationHelper(dDiagram);
+                decoHelper.updateDecorations(Lists.<Layer> newArrayList(layer));
+
                 NotificationUtil.sendNotification(dDiagram, Notification.Kind.STOP, Notification.VISIBILITY);
             }
             monitor.worked(1);

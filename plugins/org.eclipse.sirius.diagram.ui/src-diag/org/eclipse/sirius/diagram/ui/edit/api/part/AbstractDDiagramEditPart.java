@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -152,8 +152,7 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         }
 
         /*
-         * If the notification is a REMOVE of an NoteAttachment, we want to
-         * refresh the editpart.
+         * If the notification is a REMOVE of an NoteAttachment, we want to refresh the editpart.
          */
         if (NotationPackage.eINSTANCE.getDiagram_PersistedEdges().equals(notification.getFeature()) || NotationPackage.eINSTANCE.getDiagram_TransientEdges().equals(notification.getFeature())) {
             if (notification.getOldValue() instanceof Edge) {
@@ -170,31 +169,32 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         if (DiagramPackage.eINSTANCE.getDDiagram_ActivatedFilters().equals(notification.getFeature())) {
             refresh();
             refreshSourceAndTargetOfRevealedEdges(notification);
+        } else if (DiagramPackage.eINSTANCE.getDDiagram_ActivatedTransientLayers().equals(notification.getFeature())
+                || DiagramPackage.eINSTANCE.getDDiagram_ActivatedLayers().equals(notification.getFeature())) {
+            // We don't launch a refresh if the notification is an addition of
+            // a layer that has only tools
+            if (!(notification.getNewValue() instanceof Layer && LayerHelper.containsOnlyTools((Layer) notification.getNewValue()))) {
+                refresh();
+            }
         } else {
             /**
-             * If the notification is an ADD we want to refresh the editpart as
-             * it may mean that some elements are filtered.
+             * If the notification is an ADD we want to refresh the editpart as it may mean that some elements are
+             * filtered.
              * 
-             * We don't want to refresh on a REMOVE event or it would make the
-             * element deletion fail if a diagram is open.
+             * We don't want to refresh on a REMOVE event or it would make the element deletion fail if a diagram is
+             * open.
              */
             if (notification.getEventType() == Notification.SET || notification.getEventType() == Notification.UNSET || notification.getEventType() == Notification.ADD) {
-                // We don't launch a refresh is the notification is a adding of
-                // a layer that has only tools
-                if (!(notification.getEventType() == Notification.ADD && notification.getNewValue() instanceof Layer && LayerHelper.containsOnlyTools((Layer) notification.getNewValue()))) {
-                    refresh();
-                }
+                refresh();
             }
         }
     }
 
     /**
-     * Creates an Edit Part for a newly revealed Edge (if necessary), by refresh
-     * its source and target.
+     * Creates an Edit Part for a newly revealed Edge (if necessary), by refresh its source and target.
      * 
      * @param notification
-     *            A notification of feature
-     *            NotationPackage.Literals.VIEW__VISIBLE
+     *            A notification of feature NotationPackage.Literals.VIEW__VISIBLE
      */
     protected void createEditPartForRevealedEdge(Notification notification) {
         // Step 1 : determine if an edit part needs to be created for this edge
@@ -229,14 +229,13 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
     }
 
     /**
-     * Launch a refresh on the SourceEditPart and TargetEditPart of all edges
-     * revealed with the deactivation of a filter.<BR>
-     * This is usefull if the edge is created when the filter is activated and
-     * so it has been never created (no corresponding editpart)
+     * Launch a refresh on the SourceEditPart and TargetEditPart of all edges revealed with the deactivation of a
+     * filter.<BR>
+     * This is usefull if the edge is created when the filter is activated and so it has been never created (no
+     * corresponding editpart)
      * 
      * @param notification
-     *            A notification of feature
-     *            DiagramPackage.eINSTANCE.getDDiagram_ActivatedFilters()
+     *            A notification of feature DiagramPackage.eINSTANCE.getDDiagram_ActivatedFilters()
      */
     protected void refreshSourceAndTargetOfRevealedEdges(Notification notification) {
         EList<Edge> edgesToRefresh = new BasicEList<Edge>();
@@ -269,8 +268,7 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
     }
 
     /**
-     * Get all GMF edges of this diagram which have a DEdge with mapping
-     * contains in <code>edgeMappingsKindOf<code>
+     * Get all GMF edges of this diagram which have a DEdge with mapping contains in <code>edgeMappingsKindOf<code>
      * 
      * @param edgeMappingsKindOf
      *            The edges must have a mapping contained in this list.
@@ -455,8 +453,8 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
     }
 
     /**
-     * {@inheritDoc} Override to use specific MarqueeSelectionTool (GEf name) or
-     * RubberbandDragTracker (GMF name) to allow ports selection.
+     * {@inheritDoc} Override to use specific MarqueeSelectionTool (GEf name) or RubberbandDragTracker (GMF name) to
+     * allow ports selection.
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart#getDragTracker(org.eclipse.gef.Request)
      */

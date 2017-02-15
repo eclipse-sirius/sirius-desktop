@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -93,8 +92,8 @@ public class OptionalLayersActivationTests extends SiriusDiagramTestCase {
         final IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
         uiSession.open();
 
-        enableSirius(VP_INIT_AND_NOT_ACTIVE);
-        assertEquals(1, findDiagram(session).getActivatedLayers().size());
+        enableViewpoint(VP_INIT_AND_NOT_ACTIVE);
+        assertEquals(1, getNbActivatedLayers());
     }
 
     public void testCreateActiveByDefault() throws Exception {
@@ -113,8 +112,8 @@ public class OptionalLayersActivationTests extends SiriusDiagramTestCase {
         final IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
         uiSession.open();
 
-        enableSirius(VP_INIT_AND_ACTIVE);
-        assertEquals(2, findDiagram(session).getActivatedLayers().size());
+        enableViewpoint(VP_INIT_AND_ACTIVE);
+        assertEquals(2, getNbActivatedLayers());
     }
 
     public void testAddExtensionSiriusNotActiveByDefault() throws Exception {
@@ -133,12 +132,12 @@ public class OptionalLayersActivationTests extends SiriusDiagramTestCase {
         final IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
         uiSession.open();
 
-        enableSirius(VP_INIT_AND_NOT_ACTIVE);
-        assertEquals(1, findDiagram(session).getActivatedLayers().size());
-        enableSirius(VP_EXTENSION_AND_NOT_ACTIVE);
-        assertEquals(1, findDiagram(session).getActivatedLayers().size());
+        enableViewpoint(VP_INIT_AND_NOT_ACTIVE);
+        assertEquals(1, getNbActivatedLayers());
+        enableViewpoint(VP_EXTENSION_AND_NOT_ACTIVE);
+        assertEquals(1, getNbActivatedLayers());
         deactivateViewpoint(VP_EXTENSION_AND_NOT_ACTIVE);
-        assertEquals(1, findDiagram(session).getActivatedLayers().size());
+        assertEquals(1, getNbActivatedLayers());
     }
 
     public void testAddExtensionSiriusActiveByDefault() throws Exception {
@@ -157,12 +156,12 @@ public class OptionalLayersActivationTests extends SiriusDiagramTestCase {
         final IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
         uiSession.open();
 
-        enableSirius(VP_INIT_AND_NOT_ACTIVE);
-        assertEquals(1, findDiagram(session).getActivatedLayers().size());
-        enableSirius(VP_EXTENSION_AND_ACTIVE);
-        assertEquals(2, findDiagram(session).getActivatedLayers().size());
+        enableViewpoint(VP_INIT_AND_NOT_ACTIVE);
+        assertEquals(1, getNbActivatedLayers());
+        enableViewpoint(VP_EXTENSION_AND_ACTIVE);
+        assertEquals(2, getNbActivatedLayers());
         deactivateViewpoint(VP_EXTENSION_AND_ACTIVE);
-        assertEquals(1, findDiagram(session).getActivatedLayers().size());
+        assertEquals(1, getNbActivatedLayers());
     }
 
     public void testActivationStatusStoredInSession() throws Exception {
@@ -181,26 +180,26 @@ public class OptionalLayersActivationTests extends SiriusDiagramTestCase {
         final IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
         uiSession.open();
 
-        enableSirius(VP_INIT_AND_ACTIVE);
-        assertEquals(2, findDiagram(session).getActivatedLayers().size());
+        enableViewpoint(VP_INIT_AND_ACTIVE);
+        assertEquals(2, getNbActivatedLayers());
 
         // Explicitly disable the optional layer and save the new state
         final AdditionalLayer layer = findFirstAdditionalLayer();
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
-                findDiagram(session).getActivatedLayers().remove(layer);
+                findDiagram().getActivatedLayers().remove(layer);
             }
         });
         SessionUIManager.INSTANCE.getUISession(session).close(true);
         TestsUtil.emptyEventsFromUIThread();
 
         session = SessionManager.INSTANCE.getSession(sessionResourceURI, new NullProgressMonitor());
-        assertEquals(1, findDiagram(session).getActivatedLayers().size());
+        assertEquals(1, getNbActivatedLayers());
     }
 
     private AdditionalLayer findFirstAdditionalLayer() {
-        for (final Layer l : findDiagram(session).getActivatedLayers()) {
+        for (final Layer l : findDiagram().getActivatedLayers()) {
             if (l instanceof AdditionalLayer) {
                 return (AdditionalLayer) l;
             }
@@ -208,7 +207,7 @@ public class OptionalLayersActivationTests extends SiriusDiagramTestCase {
         return null;
     }
 
-    private void enableSirius(final String name) throws Exception {
+    private void enableViewpoint(final String name) throws Exception {
         activateViewpoint(name);
     }
 
@@ -220,7 +219,7 @@ public class OptionalLayersActivationTests extends SiriusDiagramTestCase {
         return (EPackage) ModelUtils.load(URI.createPlatformPluginURI(semanticModelPath, true), domain.getResourceSet());
     }
 
-    private DDiagram findDiagram(final Session session) {
+    private DDiagram findDiagram() {
         for (final DView view : session.getOwnedViews()) {
             for (final DRepresentation repr : new DViewQuery(view).getLoadedRepresentations()) {
                 if (repr instanceof DDiagram) {
@@ -229,5 +228,10 @@ public class OptionalLayersActivationTests extends SiriusDiagramTestCase {
             }
         }
         return null;
+    }
+
+    private int getNbActivatedLayers() {
+        DDiagram diagram = findDiagram();
+        return diagram.getActivatedLayers().size() + diagram.getActivatedTransientLayers().size();
     }
 }

@@ -42,7 +42,6 @@ import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IDisposable;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.gef.DefaultEditDomain;
@@ -115,7 +114,9 @@ import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
-import org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.description.AdditionalLayer;
+import org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
@@ -169,7 +170,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.views.outlineview.DiagramOut
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineComparator;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineContentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineLabelProvider;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
@@ -192,7 +192,6 @@ import org.eclipse.sirius.ui.tools.internal.editor.SelectDRepresentationElements
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTarget;
@@ -225,6 +224,7 @@ import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -494,18 +494,19 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     private void activateTransientLayers() {
-        EObject semantic = ((DSemanticDecorator) this.getRepresentation()).getTarget();
-        final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
-        final ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semantic);
-        final DDiagramSynchronizer sync = new DDiagramSynchronizer(interpreter, ((DDiagram) this.getRepresentation()).getDescription(), accessor);
-        sync.setDiagram((DSemanticDiagram) this.getRepresentation());
-        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+        DDiagram diagram = (DDiagram) getRepresentation();
+        // Activate only the first time
+        if (diagram != null && !diagram.isSetActivatedTransientLayers()) {
+            // activate layer
+            List<AdditionalLayer> transientLayersToActivate = Lists.newArrayList();
+            LayerHelper.getInitialActiveLayers(diagram.getDescription(), session.getSelectedViewpoints(false), Lists.newArrayList(), transientLayersToActivate);
 
-            @Override
-            protected void doExecute() {
-                sync.activateTransientLayers();
-            }
-        });
+            org.eclipse.emf.common.command.CommandStack commandStack = session.getTransactionalEditingDomain().getCommandStack();
+            //@formatter:off
+            transientLayersToActivate.stream()
+            .forEach(layer -> commandStack.execute(new ChangeLayerActivationCommand(session.getTransactionalEditingDomain(), diagram, layer, new NullProgressMonitor())));
+            //@formatter:on
+        }
     }
 
     private void initUndoContext() {

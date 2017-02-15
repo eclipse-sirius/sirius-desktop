@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsM
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
@@ -113,7 +114,7 @@ public class CreateDEdgeTask extends AbstractCommandTask implements ICreationTas
         DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, dSemanticDiagram);
         /* create the mapping to edge targets map */
         Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets = dDiagramElementSynchronizer.computeMappingsToEdgeTargets(session.getSelectedViewpoints(false));
-        dDiagramSynchronizer.computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
+        new DecorationHelperInternal(dSemanticDiagram, interpreter, modelAccessor).computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
 
         for (EObject semanticElt : getAllSemantics()) {
             BestMappingGetter bestMappingGetter = new BestMappingGetter(sourceView, targetView, semanticElt);

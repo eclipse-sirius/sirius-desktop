@@ -57,7 +57,6 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.Messages;
-import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramHelper;
@@ -69,8 +68,8 @@ import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.RefreshExtensionService;
+import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
@@ -102,14 +101,11 @@ import org.eclipse.sirius.ext.base.collect.SetIntersection;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.description.DecorationDescription;
-import org.eclipse.sirius.viewpoint.description.GenericDecorationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Lists;
@@ -119,18 +115,16 @@ import com.google.common.collect.SetMultimap;
 import com.google.common.collect.Sets;
 
 /**
- * This class is able to synchronize a {@link DSemanticDiagram} instance from a
- * semantic model and a {@link SimpleMapping}.
+ * This class is able to synchronize a {@link DSemanticDiagram} instance from a semantic model and a
+ * {@link SimpleMapping}.
  * 
  * @author cbrun
  */
 public class DDiagramSynchronizer {
     /**
-     * A dummy, non-null value used to build valid EObjectCouples when we do not
-     * have an actual mapping (even a proxy one) to pass as the second
-     * parameter. This can happen in collab mode because CDO can not always
-     * create proxies for non-existing VSM elements and uses null instead, but
-     * EObjectCouple needs a non-null value.
+     * A dummy, non-null value used to build valid EObjectCouples when we do not have an actual mapping (even a proxy
+     * one) to pass as the second parameter. This can happen in collab mode because CDO can not always create proxies
+     * for non-existing VSM elements and uses null instead, but EObjectCouple needs a non-null value.
      */
     private static final EObject FAKE_MAPPING = EcoreFactory.eINSTANCE.createEObject();
 
@@ -165,6 +159,8 @@ public class DDiagramSynchronizer {
     private boolean forceRetrieve;
 
     private RefreshIdsHolder ids;
+
+    private DecorationHelperInternal decorationHelper;
 
     /**
      * Create a new synchronizer.
@@ -213,6 +209,7 @@ public class DDiagramSynchronizer {
     public void setDiagram(final DSemanticDiagram diagram) {
         this.diagram = diagram;
         this.session = SessionManager.INSTANCE.getSession(diagram.getTarget());
+        this.decorationHelper = new DecorationHelperInternal(diagram, interpreter, accessor);
         this.sync = new DDiagramElementSynchronizer(this.diagram, this.interpreter, this.accessor);
         initDiagramRelatedFields();
     }
@@ -232,6 +229,7 @@ public class DDiagramSynchronizer {
             monitor.beginTask(Messages.DDiagramSynchronizer_initDiagramMsg, 4);
             this.session = SessionManager.INSTANCE.getSession(target);
             this.diagram = createEmptyDiagram(name, target);
+            this.decorationHelper = new DecorationHelperInternal(diagram, interpreter, accessor);
             monitor.worked(1);
             applyInitializationOperation(target);
             monitor.worked(1);
@@ -288,83 +286,23 @@ public class DDiagramSynchronizer {
     public void activateInitialLayers() {
         List<Layer> layersToActivate = Lists.newArrayList();
         List<AdditionalLayer> transientLayersToActivate = Lists.newArrayList();
-        getInitialActiveLayers(layersToActivate, transientLayersToActivate);
+        LayerHelper.getInitialActiveLayers(description, session.getSelectedViewpoints(false), layersToActivate, transientLayersToActivate);
         this.diagram.getActivatedLayers().addAll(layersToActivate);
         this.diagram.getActivatedTransientLayers().addAll(transientLayersToActivate);
     }
 
     /**
-     * Activates transient {@link Layer}.
-     */
-    public void activateTransientLayers() {
-        // Activate only the first time
-        if (!this.diagram.isSetActivatedTransientLayers()) {
-            List<Layer> layersToActivate = Lists.newArrayList();
-            List<AdditionalLayer> transientLayersToActivate = Lists.newArrayList();
-            getInitialActiveLayers(layersToActivate, transientLayersToActivate);
-            this.diagram.getActivatedTransientLayers().addAll(transientLayersToActivate);
-        }
-    }
-
-    private void getInitialActiveLayers(List<Layer> layersToActivate, List<AdditionalLayer> transientLayersToActivate) {
-        final Predicate<Layer> isActiveByDefault = new Predicate<Layer>() {
-            @Override
-            public boolean apply(final Layer layer) {
-                boolean result = true;
-                if (layer instanceof AdditionalLayer) {
-                    AdditionalLayer additionalLayer = (AdditionalLayer) layer;
-                    result = additionalLayer.isActiveByDefault() || !additionalLayer.isOptional();
-                }
-                return result;
-            }
-        };
-
-        getFilteredLayers(layersToActivate, transientLayersToActivate, isActiveByDefault);
-    }
-
-    private void getFilteredLayers(List<Layer> layers, List<AdditionalLayer> transientLayers, Predicate<Layer> predicate) {
-        Collection<Layer> allLayers = new ArrayList<Layer>(new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), description));
-
-        Collection<Layer> allActivatedLayers = Collections2.filter(allLayers, predicate);
-        allActivatedLayers.addAll(Collections2.filter(DiagramComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedViewpoints(false)), predicate));
-
-        for (Layer layer : allActivatedLayers) {
-            if (LayerHelper.isTransientLayer(layer)) {
-                transientLayers.add((AdditionalLayer) layer);
-            } else {
-                layers.add(layer);
-            }
-        }
-    }
-
-    /**
-     * If new additional layers have been added into the VSM, we have to
-     * activate them.
+     * If new additional layers have been added into the VSM, we have to activate them.
      */
     private void activateNewMandatoryAdditionalLayers() {
         List<Layer> layersToActivate = Lists.newArrayList();
         List<AdditionalLayer> transientLayersToActivate = Lists.newArrayList();
-        getMandatoriesAdditionalLayers(layersToActivate, transientLayersToActivate);
+        LayerHelper.getMandatoriesAdditionalLayers(description, session.getSelectedViewpoints(false), layersToActivate, transientLayersToActivate);
 
         layersToActivate.removeAll(this.diagram.getActivatedLayers());
         transientLayersToActivate.removeAll(this.diagram.getActivatedTransientLayers());
         this.diagram.getActivatedLayers().addAll(layersToActivate);
         this.diagram.getActivatedTransientLayers().addAll(transientLayersToActivate);
-    }
-
-    /**
-     * Get from descriptions the list of mandatories layers.
-     * 
-     * @return all mandatories layers.
-     */
-    private void getMandatoriesAdditionalLayers(List<Layer> layers, List<AdditionalLayer> transientLayers) {
-        final Predicate<Layer> isMandatory = new Predicate<Layer>() {
-            @Override
-            public boolean apply(final Layer layer) {
-                return (layer instanceof AdditionalLayer) && !((AdditionalLayer) layer).isOptional();
-            }
-        };
-        getFilteredLayers(layers, transientLayers, isMandatory);
     }
 
     /**
@@ -414,8 +352,7 @@ public class DDiagramSynchronizer {
                     monitor.beginTask(Messages.DDiagramSynchronizer_refreshMappingsMsg, mappingNumbers);
 
                     /*
-                     * compute a first time the cache with old mappings =>
-                     * updater need the cache
+                     * compute a first time the cache with old mappings => updater need the cache
                      */
                     computePreviousCandidatesCache();
                     /* update mappings */
@@ -445,11 +382,10 @@ public class DDiagramSynchronizer {
                     handleImportersIssues();
 
                     /* Compute the decorations. */
-                    computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
+                    decorationHelper.computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
 
                     /*
-                     * now all the nodes/containers are done and ready in the
-                     * mappintToEdgeTarget map.
+                     * now all the nodes/containers are done and ready in the mappintToEdgeTarget map.
                      */
                     edgesDones = new HashSet<DDiagramElement>();
 
@@ -474,8 +410,7 @@ public class DDiagramSynchronizer {
     }
 
     /**
-     * Order and process edge mappings refresh to have both end of the edge
-     * refreshed before its own refresh.
+     * Order and process edge mappings refresh to have both end of the edge refreshed before its own refresh.
      * 
      * @param edgeMappings
      *            list of EdgeMapping to refresh
@@ -622,8 +557,7 @@ public class DDiagramSynchronizer {
             for (final DDiagramElement element : elements) {
                 final EObject semanticElement = element.getTarget();
                 /*
-                 * if semantic element is null then node is a remaining dust
-                 * that we should delete
+                 * if semantic element is null then node is a remaining dust that we should delete
                  */
                 if (semanticElement == null) {
                     this.accessor.eDelete(element, session != null ? session.getSemanticCrossReferencer() : null);
@@ -649,81 +583,6 @@ public class DDiagramSynchronizer {
 
     private boolean shouldKeepElement(DiagramMappingsManager mappingManager, final DDiagramElement element) {
         return element.getParentDiagram() != null && !DisplayServiceManager.INSTANCE.getDisplayService().computeVisibility(mappingManager, this.diagram, element);
-    }
-
-    /**
-     * compute all decorations.
-     * 
-     * @param mappingsToEdgeTargets
-     *            the mapping to edge targets
-     * @param edgeToSemanticBasedDecoration
-     *            an empty map
-     * @param edgeToMappingBasedDecoration
-     *            an empty map
-     */
-    public void computeDecorations(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration,
-            final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration) {
-        final List<Layer> activatedLayers = Lists.newArrayList();
-        activatedLayers.addAll(diagram.getActivatedLayers());
-        activatedLayers.addAll(diagram.getActivatedTransientLayers());
-
-        for (final Layer layer : activatedLayers) {
-            if (layer.getDecorationDescriptionsSet() != null && layer.getDecorationDescriptionsSet().getDecorationDescriptions().size() > 0) {
-                for (final DecorationDescription decorationDescription : layer.getDecorationDescriptionsSet().getDecorationDescriptions()) {
-                    if (decorationDescription instanceof MappingBasedDecoration) {
-                        computeDecoration((MappingBasedDecoration) decorationDescription, mappingsToEdgeTargets, edgeToMappingBasedDecoration);
-                    } else if (decorationDescription instanceof SemanticBasedDecoration) {
-                        computeDecoration((SemanticBasedDecoration) decorationDescription, mappingsToEdgeTargets, edgeToSemanticBasedDecoration);
-                    } else if (decorationDescription instanceof GenericDecorationDescription) {
-                        computeDecoration((GenericDecorationDescription) decorationDescription, mappingsToEdgeTargets);
-                    }
-                }
-            }
-        }
-    }
-
-    private void computeDecoration(final SemanticBasedDecoration decorationDescription, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets,
-            final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration) {
-        final String domainClass = decorationDescription.getDomainClass();
-        for (final Collection<EdgeTarget> collection : mappingsToEdgeTargets.values()) {
-            for (final DDiagramElement element : Iterables.filter(collection, DDiagramElement.class)) {
-                if (accessor.eInstanceOf(element.getTarget(), decorationDescription.getDomainClass())) {
-                    this.sync.addDecoration(element, decorationDescription);
-                }
-            }
-        }
-        if (!edgeToSemanticBasedDecoration.containsKey(domainClass)) {
-            edgeToSemanticBasedDecoration.put(domainClass, new HashSet<SemanticBasedDecoration>());
-        }
-        edgeToSemanticBasedDecoration.get(domainClass).add(decorationDescription);
-    }
-
-    private void computeDecoration(final MappingBasedDecoration decorationDescription, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets,
-            final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration) {
-        for (final DiagramElementMapping mapping : decorationDescription.getMappings()) {
-            if (mapping instanceof AbstractNodeMapping) {
-                final Collection<EdgeTarget> targets = mappingsToEdgeTargets.get(mapping);
-                if (targets != null) {
-                    for (final DDiagramElement element : Iterables.filter(targets, DDiagramElement.class)) {
-                        this.sync.addDecoration(element, decorationDescription);
-                    }
-                }
-            } else if (mapping instanceof EdgeMapping) {
-                if (!edgeToMappingBasedDecoration.containsKey(mapping)) {
-                    edgeToMappingBasedDecoration.put((EdgeMapping) mapping, new HashSet<MappingBasedDecoration>());
-                }
-                edgeToMappingBasedDecoration.get(mapping).add(decorationDescription);
-            }
-        }
-
-    }
-
-    private void computeDecoration(final GenericDecorationDescription decorationDescription, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets) {
-        for (final Collection<EdgeTarget> collection : mappingsToEdgeTargets.values()) {
-            for (final DDiagramElement element : Iterables.filter(collection, DDiagramElement.class)) {
-                this.sync.addDecoration(element, decorationDescription);
-            }
-        }
     }
 
     private void convertType(final EObject eObject) {
@@ -816,12 +675,10 @@ public class DDiagramSynchronizer {
     }
 
     /**
-     * Refresh a container mapping putting in the given mappingsToEdgeTargets
-     * newly created and kept containers.
+     * Refresh a container mapping putting in the given mappingsToEdgeTargets newly created and kept containers.
      * 
      * @param mappingsToEdgeTargets
-     *            map containing for each mapping the edge targets existing in
-     *            the diagram.
+     *            map containing for each mapping the edge targets existing in the diagram.
      * @param viewContainer
      *            current view container.
      * @param mapping
@@ -829,11 +686,9 @@ public class DDiagramSynchronizer {
      * @param border
      *            true if refreshing borders, false otherwise.
      * @param orderBySemantic
-     *            tells if children must be grouped by mapping and ordered by
-     *            semantics.
+     *            tells if children must be grouped by mapping and ordered by semantics.
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of refresh of
-     *            container
+     *            a {@link IProgressMonitor} to show progression of refresh of container
      */
     private void refreshContainerMapping(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final DragAndDropTarget viewContainer, final ContainerMapping mapping,
             final Set<AbstractDNodeCandidate> semanticFilter, final boolean border, final boolean orderBySemantic, IProgressMonitor monitor) {
@@ -936,8 +791,7 @@ public class DDiagramSynchronizer {
      * @param mapping
      *            the mapping to update.
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of nodes
-     *            refresh
+     *            a {@link IProgressMonitor} to show progression of nodes refresh
      */
     private void refreshNodeMapping(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToAbstractNodes, final DragAndDropTarget viewContainer, final NodeMapping mapping,
             final Set<AbstractDNodeCandidate> semanticFilter, IProgressMonitor monitor) {
@@ -973,13 +827,11 @@ public class DDiagramSynchronizer {
      * Refresh border node mappings of a node.
      * 
      * @param mappingsToAbstractNodes
-     *            map which will get updated with the kept and newly created
-     *            nodes.
+     *            map which will get updated with the kept and newly created nodes.
      * @param newNode
      *            new node to refresh.
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of refresh of
-     *            borderedNodes
+     *            a {@link IProgressMonitor} to show progression of refresh of borderedNodes
      */
     private void refreshBorderNodeMapping(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToAbstractNodes, final AbstractDNode newNode,
             final Set<AbstractDNodeCandidate> semanticFilter, IProgressMonitor monitor) {
@@ -1055,10 +907,9 @@ public class DDiagramSynchronizer {
             int mappingBeginIndex = refreshOrderHelper.getMappingBeginIndex();
             int currentGlobalPosition = 0;
             /*
-             * The status returns all the candidates in the right order through
-             * getAllElements(). We'll iterate and for each candidate determine
-             * if it has to be added to the current appending position, only
-             * refreshed, or moved to another position.
+             * The status returns all the candidates in the right order through getAllElements(). We'll iterate and for
+             * each candidate determine if it has to be added to the current appending position, only refreshed, or
+             * moved to another position.
              */
             for (final AbstractDNodeCandidate candidate : allElements) {
                 int positionToAppend = mappingBeginIndex + currentGlobalPosition;
@@ -1137,8 +988,7 @@ public class DDiagramSynchronizer {
     }
 
     /**
-     * Compute edge candidates to be added to this diagram for the given
-     * mapping.
+     * Compute edge candidates to be added to this diagram for the given mapping.
      * 
      * @param mapping
      *            the mapping for which to compute candidates
@@ -1207,16 +1057,14 @@ public class DDiagramSynchronizer {
     }
 
     /**
-     * Compute node candidates to be added to the given container for the given
-     * mapping.
+     * Compute node candidates to be added to the given container for the given mapping.
      * 
      * @param container
      *            the container in which candidates will be added
      * @param mapping
      *            the mapping
      * @param semanticFilter
-     *            the filter which contains candidates to not add in the
-     *            returned collection
+     *            the filter which contains candidates to not add in the returned collection
      * @return all node candidates
      */
     public Collection<AbstractDNodeCandidate> computeNodeCandidates(final DragAndDropTarget container, final AbstractNodeMapping mapping, final Set<AbstractDNodeCandidate> semanticFilter) {
@@ -1224,8 +1072,8 @@ public class DDiagramSynchronizer {
     }
 
     /**
-     * This method browse the current container to update the given map with
-     * Container/Mapping => diagram elements information.
+     * This method browse the current container to update the given map with Container/Mapping => diagram elements
+     * information.
      * 
      * @param container
      *            the container to browse.
@@ -1255,8 +1103,7 @@ public class DDiagramSynchronizer {
     }
 
     /**
-     * Browse the given container and add existing graphical elements having the
-     * given mapping.
+     * Browse the given container and add existing graphical elements having the given mapping.
      * 
      * @param biSet
      *            the status that will get's updated.
@@ -1297,11 +1144,9 @@ public class DDiagramSynchronizer {
      * @param mapping
      *            the mapping of the candidates to create.
      * @param border
-     *            true if the elements should be created on the border, false
-     *            otherwise.
+     *            true if the elements should be created on the border, false otherwise.
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of
-     *            {@link AbstractDNode}s creation
+     *            a {@link IProgressMonitor} to show progression of {@link AbstractDNode}s creation
      * @return the newly created nodes.
      */
     private List<AbstractDNode> createNewContent(final Collection<AbstractDNodeCandidate> candidatesToCreate, final DragAndDropTarget container, final AbstractNodeMapping mapping,
@@ -1334,8 +1179,7 @@ public class DDiagramSynchronizer {
      * Create the edges candidates.
      * 
      * @param mappingManager
-     *            the manager used to handle return the Mappings to consider
-     *            regarding the enablement of Viewpoints.
+     *            the manager used to handle return the Mappings to consider regarding the enablement of Viewpoints.
      * @param mappingsToEdgeTargets
      *            edge target
      * @param mapping
@@ -1429,8 +1273,7 @@ public class DDiagramSynchronizer {
         }
 
         /*
-         * Now we've got the status we can delete the edge to delete, create the
-         * new ones and refresh the existing ones.
+         * Now we've got the status we can delete the edge to delete, create the new ones and refresh the existing ones.
          */
         for (final DEdgeCandidate edgeCandidate : Iterables.concat(status.getRemovedElements(), invalidCandidates)) {
             if (!isDefinedInAnotherLayer(edgeCandidate, mappingsToEdgeTargets)) {
@@ -1503,16 +1346,13 @@ public class DDiagramSynchronizer {
     }
 
     /**
-     * Returns <code>true</code> if the given edge is displayed in another
-     * specific layer configuration.
+     * Returns <code>true</code> if the given edge is displayed in another specific layer configuration.
      * 
      * @param edgeCandidate
      *            the edge to check.
      * @param mappingsToEdgeTargets
-     *            mapping to edges, it contains nodes that are actually
-     *            displayed (with the actual layer configuration).
-     * @return <code>true</code> if the given edge is displayed in a specific
-     *         layer configuration.
+     *            mapping to edges, it contains nodes that are actually displayed (with the actual layer configuration).
+     * @return <code>true</code> if the given edge is displayed in a specific layer configuration.
      */
     private boolean isDefinedInAnotherLayer(final DEdgeCandidate edgeCandidate, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets) {
         if (edgeCandidate.getEdge() == null) {
@@ -1522,16 +1362,14 @@ public class DDiagramSynchronizer {
         final EdgeTarget source = edge.getSourceNode();
         final EdgeTarget target = edge.getTargetNode();
         /*
-         * If the source of target is not a DDiagramElement then i don't know
-         * how to manage it. I expect that the behavior is managed by another
-         * component.
+         * If the source of target is not a DDiagramElement then i don't know how to manage it. I expect that the
+         * behavior is managed by another component.
          */
         final boolean sourceIsValid = source != null && (!(source instanceof DDiagramElement) || ((DDiagramElement) source).getParentDiagram() == this.diagram);
         final boolean targetIsValid = target != null && (!(target instanceof DDiagramElement) || ((DDiagramElement) target).getParentDiagram() == this.diagram);
         /*
-         * If the source and the target are valid then we need to check that
-         * there are not displayed on the diagram (it means that the edge is not
-         * displayed).
+         * If the source and the target are valid then we need to check that there are not displayed on the diagram (it
+         * means that the edge is not displayed).
          */
         final Option<EdgeMapping> actualMapping = new IEdgeMappingQuery(edgeCandidate.getMapping()).getEdgeMapping();
 
@@ -1632,11 +1470,9 @@ public class DDiagramSynchronizer {
             EList<EObject> ownedDDiagramElements = getOwnedDDiagramElements();
             mappingBeginIndex = ownedDDiagramElements.size();
             /*
-             * First step : we might need to move elements' position in their
-             * list. To avoid un-necessary iterations on this list while
-             * iterating on the candidate, we start by computing a map of
-             * Elements->positions In the meantime we try to locate the position
-             * of the very first element being of this mapping.
+             * First step : we might need to move elements' position in their list. To avoid un-necessary iterations on
+             * this list while iterating on the candidate, we start by computing a map of Elements->positions In the
+             * meantime we try to locate the position of the very first element being of this mapping.
              */
             int position = 0;
             for (DDiagramElement diagElement : Iterables.filter(ownedDDiagramElements, DDiagramElement.class)) {
@@ -1649,8 +1485,7 @@ public class DDiagramSynchronizer {
                 position++;
             }
             /*
-             * if no element from the same mapping already exists, just append
-             * to the end of the list.
+             * if no element from the same mapping already exists, just append to the end of the list.
              */
             if (mappingBeginIndex < 0) {
                 mappingBeginIndex = ownedDDiagramElements.size() - 1;
@@ -1669,10 +1504,8 @@ public class DDiagramSynchronizer {
         }
 
         /*
-         * The code here only get a loosely typed viewContainer, we first need
-         * to retrieve the actual EList which we have to update. To do so we
-         * first have to find the corresponding EReference depending on the
-         * viewContainer.
+         * The code here only get a loosely typed viewContainer, we first need to retrieve the actual EList which we
+         * have to update. To do so we first have to find the corresponding EReference depending on the viewContainer.
          */
         protected EReference getOwnedDiagramElementsToUpdate() {
             EReference ref = null;
@@ -1685,8 +1518,8 @@ public class DDiagramSynchronizer {
             }
             if (ref == null) {
                 /*
-                 * No way we ends up here, the ViewContainer is either a diagram
-                 * or a node container when asking to refresh a node mapping.
+                 * No way we ends up here, the ViewContainer is either a diagram or a node container when asking to
+                 * refresh a node mapping.
                  */
                 throw new IllegalArgumentException();
             }

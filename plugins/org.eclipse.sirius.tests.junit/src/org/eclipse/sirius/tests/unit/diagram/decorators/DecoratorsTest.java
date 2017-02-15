@@ -36,6 +36,8 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -91,17 +93,28 @@ public class DecoratorsTest extends GenericTestCase {
 
     private void setLayerVisibility(final DDiagram diagram, final Layer layer, final boolean visible) {
 
-        final List<Layer> activatedLayers = diagram.getActivatedLayers();
+        boolean transientLayer = LayerHelper.isTransientLayer(layer);
+        EList<Layer> activatedLayers = diagram.getActivatedLayers();
+        EList<AdditionalLayer> activatedTransientLayers = diagram.getActivatedTransientLayers();
 
         final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         domain.getCommandStack().execute(new RecordingCommand(domain) {
 
             @Override
             protected void doExecute() {
-                if (visible)
-                    activatedLayers.add(layer);
-                else
-                    activatedLayers.remove(layer);
+                if (visible) {
+                    if (transientLayer) {
+                        activatedTransientLayers.add((AdditionalLayer) layer);
+                    } else {
+                        activatedLayers.add(layer);
+                    }
+                } else {
+                    if (transientLayer) {
+                        activatedTransientLayers.remove(layer);
+                    } else {
+                        activatedLayers.remove(layer);
+                    }
+                }
             }
         });
     }
@@ -399,10 +412,11 @@ public class DecoratorsTest extends GenericTestCase {
     }
 
     private void checkDecoration(final DDiagramElement diagramElement) {
+        int ndDecos = diagramElement.getDecorations().size() + diagramElement.getTransientDecorations().size();
         if (diagramElement.getTarget() instanceof NamedElement && !((NamedElement) diagramElement.getTarget()).getName().startsWith("false")) {
-            assertEquals("We should have 1 decoration here", 1, diagramElement.getDecorations().size());
+            assertEquals("We should have 1 decoration here", 1, ndDecos);
         } else {
-            assertEquals("We should have no decoration here", 0, diagramElement.getDecorations().size());
+            assertEquals("We should have no decoration here", 0, ndDecos);
         }
     }
 

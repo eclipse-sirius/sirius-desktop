@@ -43,6 +43,7 @@ import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
+import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -276,7 +277,7 @@ public final class DnDTasksOperations {
             }
 
             if (!selectedCandidates.isEmpty()) {
-                diagramSync.computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
+                new DecorationHelperInternal(parentDiagram, interpreter, accessor).computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
             }
 
             for (final DEdgeCandidate candidate : selectedCandidates) {

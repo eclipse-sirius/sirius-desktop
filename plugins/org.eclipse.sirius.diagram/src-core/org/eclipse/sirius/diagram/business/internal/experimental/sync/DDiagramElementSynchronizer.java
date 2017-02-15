@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -22,7 +21,6 @@ import java.util.Set;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
@@ -57,8 +55,8 @@ import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionMappingManagerQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.componentization.mappings.DiagramDescriptionMappingsManagerImpl;
+import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramElementMappingHelper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.StyleHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
@@ -68,7 +66,6 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
-import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
@@ -84,11 +81,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.description.DecorationDescription;
-import org.eclipse.sirius.viewpoint.description.GenericDecorationDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
@@ -118,6 +111,8 @@ public class DDiagramElementSynchronizer {
 
     private final MappingHelper mappingHelper;
 
+    private final DecorationHelperInternal decorationHelper;
+
     /**
      * Create a new synchronizer for the given diagram.
      * 
@@ -135,6 +130,7 @@ public class DDiagramElementSynchronizer {
         this.accessor = accessor;
         this.styleHelper = new StyleHelper(interpreter);
         this.mappingHelper = new MappingHelper(interpreter);
+        this.decorationHelper = new DecorationHelperInternal(diagram, interpreter, accessor);
     }
 
     /**
@@ -378,14 +374,14 @@ public class DDiagramElementSynchronizer {
         if (edgeMapping.some() && edgeMapping.get().isUseDomainElement() && edgeToSemanticBasedDecoration.containsKey(edgeMapping.get().getDomainClass())) {
             final Collection<SemanticBasedDecoration> semanticBasedDecorations = edgeToSemanticBasedDecoration.get(edgeMapping.get().getDomainClass());
             for (final SemanticBasedDecoration semanticBasedDecoration : semanticBasedDecorations) {
-                this.addDecoration(edge, semanticBasedDecoration);
+                decorationHelper.addDecoration(edge, semanticBasedDecoration);
             }
         }
         /* mapping based decoration */
         if (edgeToMappingBasedDecoration.containsKey(actualMapping)) {
             final Collection<MappingBasedDecoration> mappingBasedDecorations = edgeToMappingBasedDecoration.get(actualMapping);
             for (final MappingBasedDecoration mappingBasedDecoration : mappingBasedDecorations) {
-                this.addDecoration(edge, mappingBasedDecoration);
+                decorationHelper.addDecoration(edge, mappingBasedDecoration);
             }
         }
     }
@@ -430,7 +426,7 @@ public class DDiagramElementSynchronizer {
         }
 
         // update decorations
-        updateDecoration(edge);
+        decorationHelper.updateDecoration(edge);
     }
 
     /**
@@ -549,81 +545,8 @@ public class DDiagramElementSynchronizer {
             }
         }
         // clean decorations
-        updateDecoration(container);
+        decorationHelper.updateDecoration(container);
         refreshSemanticElements(container, containerMapping);
-    }
-
-    private void updateDecoration(final DDiagramElement element) {
-        Iterator<Decoration> it = element.getDecorations().iterator();
-        while (it.hasNext()) {
-            Decoration decoration = it.next();
-            final DecorationDescription description = decoration.getDescription();
-            if (!diagram.getActivatedLayers().contains(LayerHelper.getParentLayer(description))
-                    || !checkDecoratorPrecondition(element.getTarget(), (DSemanticDecorator) element.eContainer(), description)) {
-                it.remove();
-            }
-        }
-        it = element.getTransientDecorations().iterator();
-        while (it.hasNext()) {
-            Decoration decoration = it.next();
-            final DecorationDescription description = decoration.getDescription();
-            if (!diagram.getActivatedTransientLayers().contains(LayerHelper.getParentLayer(description))
-                    || !checkDecoratorPrecondition(element.getTarget(), (DSemanticDecorator) element.eContainer(), description)) {
-                it.remove();
-            }
-        }
-        for (Layer layer : diagram.getActivatedLayers()) {
-            updateDecorationToAdd(element, layer);
-        }
-        for (Layer layer : diagram.getActivatedTransientLayers()) {
-            updateDecorationToAdd(element, layer);
-        }
-    }
-
-    /**
-     * Investigate {@link DecorationDescription} from the given {@link Layer}
-     * and call addDecoration with it.
-     * 
-     * @param element
-     *            current {@link DDiagramElement} to decorate
-     * @param layer
-     *            current {@link Layer} to investigate
-     */
-    private void updateDecorationToAdd(final DDiagramElement element, Layer layer) {
-        if (layer.getDecorationDescriptionsSet() != null) {
-            EList<DecorationDescription> decorationDescriptions = layer.getDecorationDescriptionsSet().getDecorationDescriptions();
-            for (DecorationDescription decorationDescription : decorationDescriptions) {
-                if (checkDecoratorCondition(element, decorationDescription)) {
-                    addDecoration(element, decorationDescription);
-                }
-            }
-        }
-    }
-
-    /**
-     * Check that the {@link DecorationDescription} conditions (and not
-     * preconditions) are valid for the {@link DDiagramElement}.
-     * 
-     * @param element
-     *            the {@link DDiagramElement} that is investigated for
-     *            decoration update.
-     * @param decorationDescription
-     *            the {@link DecorationDescription} to be applied or not on the
-     *            {@link DDiagramElement}.
-     * @return if this {@link DecorationDescription} should be applied on the
-     *         given {@link DDiagramElement}.
-     */
-    private boolean checkDecoratorCondition(final DDiagramElement element, DecorationDescription decorationDescription) {
-        // True if it is a GenericDecorationDescription
-        Boolean result = decorationDescription instanceof GenericDecorationDescription;
-        // True if it is a MappingBasedDecoration define on the same mapping as
-        // the DDiagramElement
-        result = result || decorationDescription instanceof MappingBasedDecoration && ((MappingBasedDecoration) decorationDescription).getMappings().contains(element.getDiagramElementMapping());
-        // True if it is a SemanticBasedDecoration define on the same domain
-        // class
-        // as the DDiagramElement
-        result = result || decorationDescription instanceof SemanticBasedDecoration && accessor.eInstanceOf(element.getTarget(), ((SemanticBasedDecoration) decorationDescription).getDomainClass());
-        return result;
     }
 
     /**
@@ -661,7 +584,7 @@ public class DDiagramElementSynchronizer {
         }
 
         // update decorations
-        updateDecoration(newNode);
+        decorationHelper.updateDecoration(newNode);
         refreshSemanticElements(newNode, newNode.getDiagramElementMapping());
     }
 
@@ -973,64 +896,6 @@ public class DDiagramElementSynchronizer {
             }
         }
         return semanticToEdgeTargets;
-    }
-
-    /**
-     * Add a decoration to a DdiagramElement.
-     * 
-     * @param element
-     *            element to decorate
-     * @param decorationDescription
-     *            description of the decoration
-     */
-    public void addDecoration(final DDiagramElement element, final DecorationDescription decorationDescription) {
-        for (final Decoration decoration : element.getDecorations()) {
-            if (EcoreUtil.equals(decorationDescription, decoration.getDescription())) {
-                return;
-            }
-        }
-        for (final Decoration decoration : element.getTransientDecorations()) {
-            if (EcoreUtil.equals(decorationDescription, decoration.getDescription())) {
-                return;
-            }
-        }
-        // new decoration
-        if (checkDecoratorPrecondition(element.getTarget(), (DSemanticDecorator) element.eContainer(), decorationDescription)) {
-            final Decoration decoration = ViewpointFactory.eINSTANCE.createDecoration();
-            decoration.setDescription(decorationDescription);
-            if (LayerHelper.isTransientLayer((Layer) decorationDescription.eContainer().eContainer())) {
-                element.getTransientDecorations().add(decoration);
-            } else {
-                element.getDecorations().add(decoration);
-            }
-        }
-    }
-
-    private boolean checkDecoratorPrecondition(final EObject semantic, final DSemanticDecorator container, final DecorationDescription decorationDescription) {
-        DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHECK_PRECONDITION_KEY);
-        boolean result = false;
-        if (decorationDescription != null && !decorationDescription.eIsProxy()) {
-            result = true;
-            final String preconditionExpression = decorationDescription.getPreconditionExpression();
-            if (!StringUtil.isEmpty(preconditionExpression)) {
-                this.interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, container);
-                this.interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, container != null ? container.getTarget() : null);
-                this.interpreter.setVariable(IInterpreterSiriusVariables.VIEWPOINT, this.diagram);
-                this.interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, this.diagram);
-                try {
-                    result = interpreter.evaluateBoolean(semantic, preconditionExpression);
-                } catch (final EvaluationException e) {
-                    RuntimeLoggerManager.INSTANCE.error(decorationDescription, org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getDecorationDescription_PreconditionExpression(),
-                            e);
-                }
-                this.interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER_VIEW);
-                this.interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
-                this.interpreter.unSetVariable(IInterpreterSiriusVariables.VIEWPOINT);
-                this.interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
-            }
-        }
-        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CHECK_PRECONDITION_KEY);
-        return result;
     }
 
     private void refreshSemanticElements(final DDiagramElement element, final DiagramElementMapping mapping) {
