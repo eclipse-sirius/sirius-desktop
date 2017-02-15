@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -122,27 +122,24 @@ public final class DiagramNodeEditPartOperation {
                 DDiagramElement dDiagramElement = self.resolveDiagramElement();
                 if (dDiagramElement instanceof DNode) {
                     DNode viewNode = (DNode) dDiagramElement;
-                    if (((NodeStyle) viewNode.getStyle()).getLabelPosition() != null && ((NodeStyle) viewNode.getStyle()).getLabelPosition() == LabelPosition.NODE_LITERAL
-                            && !styledFigure.getChildren().contains(self.getNodeLabel())) {
+                    NodeStyle nodeStyle = (NodeStyle) viewNode.getStyle();
+
+                    LabelPosition labelPosition = nodeStyle.getLabelPosition();
+                    if (labelPosition != null && labelPosition == LabelPosition.NODE_LITERAL && !styledFigure.getChildren().contains(self.getNodeLabel())) {
                         styledFigure.add(self.getNodeLabel());
                     }
-                    if (((NodeStyle) viewNode.getStyle()).getLabelPosition() != null && ((NodeStyle) viewNode.getStyle()).getLabelPosition() == LabelPosition.BORDER_LITERAL
-                            && styledFigure.getChildren().contains(self.getNodeLabel())) {
+                    if (labelPosition != null && labelPosition == LabelPosition.BORDER_LITERAL && styledFigure.getChildren().contains(self.getNodeLabel())) {
                         styledFigure.remove(self.getNodeLabel());
                     }
                     if (styledFigure.getChildren().contains(self.getNodeLabel())) {
                         DiagramElementEditPartOperation.refreshFont(self, viewNode, self.getNodeLabel());
                         self.getNodeLabel().setText(viewNode.getName());
-                        StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(viewNode.getDiagramElementMapping(), viewNode.getStyle());
-                        self.getNodeLabel().setIcon(new StyleConfigurationQuery(styleConfiguration).getLabelIcon(self.resolveDiagramElement(), self));
+                        StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(viewNode.getDiagramElementMapping(), nodeStyle);
+                        self.getNodeLabel().setIcon(new StyleConfigurationQuery(styleConfiguration).getLabelIcon(dDiagramElement, self));
                         styleConfiguration.adaptNodeLabel(viewNode, self.getNodeLabel());
                     }
 
-                    if (viewNode.getStyle() instanceof BorderedStyle) {
-                        BorderedStyle borderedStyle = (BorderedStyle) viewNode.getStyle();
-                        DiagramNodeEditPartOperation.refreshBorderFigure(borderedStyle, styledFigure);
-                    }
-
+                    DiagramNodeEditPartOperation.refreshBorderFigure(nodeStyle, styledFigure);
                     self.setTooltipText(viewNode.getTooltipText());
                     self.getNodeLabel().revalidate();
                 }
@@ -151,7 +148,6 @@ public final class DiagramNodeEditPartOperation {
     }
 
     private static void refreshBorderFigure(final BorderedStyle borderedStyle, final StyledFigure styledFigure) {
-
         LineBorder lineBorder = null;
         if (styledFigure.getBorder() instanceof LineBorder) {
             lineBorder = (LineBorder) styledFigure.getBorder();
@@ -178,7 +174,7 @@ public final class DiagramNodeEditPartOperation {
         if (borderSize == 0) {
             /* NoteFigure in GMF does not expect a null figure since GMF 2.2 */
             if (!(styledFigure instanceof NoteFigure)) {
-              styledFigure.setBorder(null);
+                styledFigure.setBorder(null);
             }
         }
     }
