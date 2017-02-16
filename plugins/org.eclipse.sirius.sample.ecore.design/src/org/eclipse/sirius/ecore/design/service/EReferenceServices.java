@@ -173,7 +173,7 @@ public class EReferenceServices {
         } else {
             try {
                 return Integer.parseInt(bound.trim());
-            } catch (NumberFormatException _) {
+            } catch (NumberFormatException nfe) {
                 return null;
             }
         }
