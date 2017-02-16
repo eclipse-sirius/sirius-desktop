@@ -16,18 +16,20 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.dialect.command.DeleteRepresentationCommand;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.ReloadingPolicy.Action;
 import org.eclipse.sirius.business.api.session.SessionListener;
@@ -35,6 +37,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.SyncStatus;
@@ -233,15 +236,21 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
      *            The resource to remove
      */
     private void removeResourceFromSession(Resource resource, IProgressMonitor pm) {
-        if (session.getAllSemanticResources().contains(resource)) {
+        if (session.getSrmResources().contains(resource)) {
+            // @formatter:off
+            Set<DRepresentationDescriptor> descriptors2Delete = DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream()
+                    .filter(descriptor -> resource.equals(descriptor.getRepresentation().eResource()))
+                    .collect(Collectors.toSet());
+            // @formatter:on
+            DeleteRepresentationCommand command = new DeleteRepresentationCommand(session, descriptors2Delete);
+            session.getTransactionalEditingDomain().getCommandStack().execute(command);
+        } else if (session.getAllSemanticResources().contains(resource)) {
             session.getTransactionalEditingDomain().getCommandStack().execute(new RemoveSemanticResourceCommand(session, resource, new NullProgressMonitor(), false));
         } else if (session.getAllSessionResources().contains(resource)) {
             session.removeAnalysis(resource);
         }
         if (session.getResources().contains(resource)) {
-            for (final EObject root : Lists.newArrayList(resource.getContents())) {
-                EcoreUtil.remove(root);
-            }
+            resource.getContents().stream().forEach(EcoreUtil::remove);
             session.getResources().remove(resource);
         }
         // delete session only if no more aird file is open
@@ -289,10 +298,13 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
         Multimap<ResourceStatus, Resource> representationResourcesNewStatuses = LinkedHashMultimap.create();
         Iterable<Resource> semanticOrControlledresources = getAllSemanticResources();
         Set<Resource> representationResources = session.getAllSessionResources();
+        Collection<Resource> repFiles = session.getSrmResources();
         for (ResourceStatusChange change : changes) {
             if (session.isResourceOfSession(change.getResource(), semanticOrControlledresources)) {
                 impactingNewStatuses.put(change.getNewStatus(), change.getResource());
             } else if (session.isResourceOfSession(change.getResource(), representationResources)) {
+                representationResourcesNewStatuses.put(change.getNewStatus(), change.getResource());
+            } else if (session.isResourceOfSession(change.getResource(), repFiles)) {
                 representationResourcesNewStatuses.put(change.getNewStatus(), change.getResource());
             }
         }
