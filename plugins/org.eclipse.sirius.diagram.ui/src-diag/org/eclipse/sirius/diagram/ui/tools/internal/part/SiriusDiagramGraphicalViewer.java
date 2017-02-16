@@ -13,14 +13,20 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.part;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.text.MessageFormat;
 import java.util.List;
 
 import org.eclipse.draw2d.DeferredUpdateManager;
+import org.eclipse.draw2d.EventDispatcher;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LightweightSystem;
+import org.eclipse.draw2d.SWTEventDispatcher;
+import org.eclipse.draw2d.ToolTipHelper;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.EditDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.parts.PaletteToolTransferDropTargetListener;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
@@ -33,21 +39,21 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.SiriusPaletteToolDropTargetListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorder;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
- * {@link org.eclipse.gef.GraphicalViewer} used for the
- * {@link org.eclipse.sirius.diagram.DDiagram} modeler.
+ * {@link org.eclipse.gef.GraphicalViewer} used for the {@link org.eclipse.sirius.diagram.DDiagram} modeler.
  * 
  * @author mchauvin
  */
 @SuppressWarnings("restriction")
 public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer implements IDiagramDialectGraphicalViewer {
+    private static final int TOOLTIP_HIDE_DELAY = 10_000;
 
     private ChangeBoundRequestRecorder recorder = new ChangeBoundRequestRecorder();
 
     /**
-     * A registry of editparts on the diagram, mapping an element's id string to
-     * a list of <code>EditParts</code>.
+     * A registry of editparts on the diagram, mapping an element's id string to a list of <code>EditParts</code>.
      */
     private final SemanticElementToEditPartsMap elementToEditPartsMap = new SemanticElementToEditPartsMap();
 
@@ -104,9 +110,8 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
     }
 
     /**
-     * <code>boolean</code> <code>true</code> if client wishes to disable
-     * updates on the figure canvas, <code>false</code> indicates normal updates
-     * are to take place.
+     * <code>boolean</code> <code>true</code> if client wishes to disable updates on the figure canvas,
+     * <code>false</code> indicates normal updates are to take place.
      * 
      * {@inheritDoc}
      * 
@@ -132,9 +137,8 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
     }
 
     /**
-     * Special version of the ToggleUpdateManager normally used in the
-     * super-class, with a workaround to avoid infinite loops triggered during
-     * figure validation.
+     * Special version of the ToggleUpdateManager normally used in the super-class, with a workaround to avoid infinite
+     * loops triggered during figure validation.
      * 
      * @author ymortier
      */
@@ -371,5 +375,22 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
         if (part == null)
             return getContents();
         return part;
+    }
+
+    @Override
+    public void setEditDomain(EditDomain domain) {
+        super.setEditDomain(domain);
+
+        // Change the tooltip hide delay using reflection API
+        EventDispatcher eventDispatcher = getEventDispatcher();
+        Method getToolTipHelperMethod = null;
+        try {
+            getToolTipHelperMethod = SWTEventDispatcher.class.getDeclaredMethod("getToolTipHelper"); //$NON-NLS-1$
+            getToolTipHelperMethod.setAccessible(true);
+            ToolTipHelper toolTipHelper = (ToolTipHelper) getToolTipHelperMethod.invoke(eventDispatcher);
+            toolTipHelper.setHideDelay(TOOLTIP_HIDE_DELAY);
+        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+            SiriusPlugin.getDefault().error(Messages.SiriusDiagramGraphicalViewer_tooltipDisplayDelay, e);
+        }
     }
 }
