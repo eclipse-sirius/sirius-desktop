@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,8 +47,7 @@ public class EditModeDecorator extends AbstractSiriusDecorator {
      * 
      * @param editPart
      *            the edit part to check
-     * @return <code>true</code> if the editPart is not broken to be decorated,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the editPart is not broken to be decorated, <code>false</code> otherwise
      */
     protected boolean isBroken(EditPart editPart) {
         if (editPart instanceof IDiagramElementEditPart) {
@@ -81,34 +80,11 @@ public class EditModeDecorator extends AbstractSiriusDecorator {
      * 
      * @param editPart
      *            the editPart to check
-     * @return true if the editPart respect conditions to be decorate, false
-     *         otherwise
+     * @return true if the editPart respect conditions to be decorate, false otherwise
      */
     @Override
     protected boolean shouldBeDecorated(final EditPart editPart) {
-        boolean shouldBeDecorated = super.shouldBeDecorated(editPart);
-
-        if (shouldBeDecorated && editPart instanceof IDiagramElementEditPart) {
-            IDiagramElementEditPart part = (IDiagramElementEditPart) editPart;
-
-            // Case 1 : permission authority forbids the edition of the semantic
-            // element associated to this edit part
-            if (isDecorableEditPart(part)) {
-                IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(part.getEditingDomain().getResourceSet());
-                if (auth != null) {
-                    EObject representedObject = part.resolveTargetSemanticElement();
-                    if (representedObject != null) {
-                        shouldBeDecorated = LockStatus.LOCKED_BY_OTHER.equals(auth.getLockStatus(representedObject));
-                    }
-                }
-            }
-
-            // Case 2 : edit part is broken
-            if (!shouldBeDecorated) {
-                shouldBeDecorated = isBroken(editPart);
-            }
-        }
-        return shouldBeDecorated;
+        return editPart instanceof IDiagramElementEditPart && super.shouldBeDecorated(editPart);
     }
 
     /**
@@ -120,15 +96,45 @@ public class EditModeDecorator extends AbstractSiriusDecorator {
      */
     @Override
     protected Image getDecorationImage(EditPart editPart) {
-        if (isBroken(editPart)) {
-            // If the edit part is borken, we return a "delete" image (red
-            // cross)
-            return DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
-        } else {
+        Image decorationImage = null;
+        if (editPart instanceof IDiagramElementEditPart) {
+            IDiagramElementEditPart part = (IDiagramElementEditPart) editPart;
+
+            // Case 1 : permission authority forbids the edition of the semantic
+            // element associated to this edit part
+            if (isDecorableEditPart(part)) {
+                IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(part.getEditingDomain().getResourceSet());
+                if (auth != null) {
+                    EObject representedObject = part.resolveTargetSemanticElement();
+                    if (representedObject != null) {
+                        decorationImage = getLockStatusDecorationImage(auth.getLockStatus(representedObject));
+                    }
+                }
+            }
+
+            // Case 2 : edit part is broken
+            if (decorationImage == null && isBroken(editPart)) {
+                // If the edit part is broken, we return a "deleted" image (red cross)
+                decorationImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
+            }
+        }
+        return decorationImage;
+    }
+
+    /**
+     * Return the image corresponding to the given {@link LockStatus}.
+     * 
+     * @param lockStatus
+     *            the lock status of the element to decorate.
+     * @return the image corresponding to the given {@link LockStatus}
+     */
+    protected Image getLockStatusDecorationImage(LockStatus lockStatus) {
+        if (LockStatus.LOCKED_BY_OTHER.equals(lockStatus)) {
             // It means that the semantic element referenced by this edit part
             // is not editable, we return a "locked" image (red padlock)
             return DiagramUIPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif")); //$NON-NLS-1$
         }
+        return null;
     }
 
     @Override

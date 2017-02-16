@@ -75,23 +75,26 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
         if (view != null && (shouldConsiderDetachedViews() || view.eResource() != null)) {
             final EditPart editPart = (EditPart) getDecoratorTarget().getAdapter(EditPart.class);
             if (shouldBeDecorated(editPart)) {
-                // Get margin
-                int margin = MARGIN;
-                if (editPart instanceof org.eclipse.gef.GraphicalEditPart) {
-                    margin = MapModeUtil.getMapMode(((org.eclipse.gef.GraphicalEditPart) editPart).getFigure()).DPtoLP(margin);
-                }
-
                 Image decorationImage = getDecorationImage(editPart);
                 if (null != decorationImage) {
                     boolean isVolatile = !shouldBeVisibleAtPrint();
                     if (editPart instanceof AbstractConnectionEditPart) {
                         addDecoration(getDecoratorTarget().addConnectionDecoration(decorationImage, 50, isVolatile));
                     } else {
-                        addDecoration(getDecoratorTarget().addShapeDecoration(decorationImage, getDirection(editPart), margin, isVolatile));
+                        addDecoration(getDecoratorTarget().addShapeDecoration(decorationImage, getDirection(editPart), getMargin(editPart), isVolatile));
                     }
                 }
             }
         }
+    }
+
+    private int getMargin(EditPart editPart) {
+        // Get margin
+        int margin = MARGIN;
+        if (editPart instanceof org.eclipse.gef.GraphicalEditPart) {
+            margin = MapModeUtil.getMapMode(((org.eclipse.gef.GraphicalEditPart) editPart).getFigure()).DPtoLP(margin);
+        }
+        return margin;
     }
 
     private void refreshTooltip(IDecoration decoration) {
@@ -119,10 +122,8 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
     }
 
     /**
-     * Tells if the decoration added by this decorator should be visible at
-     * image export or print. By default true is returned to have decoration
-     * visible at image export and print. Override this method to change this
-     * behavior.
+     * Tells if the decoration added by this decorator should be visible at image export or print. By default true is
+     * returned to have decoration visible at image export and print. Override this method to change this behavior.
      * 
      * @return true to have decorations visible at image export and at print
      */
@@ -131,11 +132,10 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
     }
 
     /**
-     * Indicates whether this decorator should consider detached {@link View}s
-     * (i.e. {@link View}s which eResource() is null).
+     * Indicates whether this decorator should consider detached {@link View}s (i.e. {@link View}s which eResource() is
+     * null).
      * 
-     * @return true if this decorator should consider detached {@link View}s,
-     *         false otherwise.
+     * @return true if this decorator should consider detached {@link View}s, false otherwise.
      */
     protected boolean shouldConsiderDetachedViews() {
         return false;
@@ -165,8 +165,7 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
      * 
      * @param editPart
      *            the editPart to check
-     * @return true if the editPart respect conditions to be decorate, false
-     *         otherwise
+     * @return true if the editPart respect conditions to be decorate, false otherwise
      */
     protected boolean shouldBeDecorated(final EditPart editPart) {
         boolean shouldBeDecorated = true;
@@ -261,14 +260,12 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
     }
 
     /**
-     * Indicates if the given editPart should contain decorations according to
-     * its type. For example, {@link DNodeListNameEditPart}s should not be
-     * decorated.
+     * Indicates if the given editPart should contain decorations according to its type. For example,
+     * {@link DNodeListNameEditPart}s should not be decorated.
      * 
      * @param editPart
      *            the edit part to inspect
-     * @return true if the given editPart should contain decorations, false
-     *         otherwise
+     * @return true if the given editPart should contain decorations, false otherwise
      */
     public boolean isDecorableEditPart(IDiagramElementEditPart editPart) {
         boolean result = true;
