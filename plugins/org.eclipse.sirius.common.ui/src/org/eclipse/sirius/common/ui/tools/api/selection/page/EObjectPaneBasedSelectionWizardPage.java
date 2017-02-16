@@ -394,7 +394,7 @@ public class EObjectPaneBasedSelectionWizardPage extends AbstractSelectionWizard
      */
     private TableViewer createTableViewer(final Composite parent) {
         TableViewer viewer = null;
-        viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER);
+        viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER | SWT.VIRTUAL);
         final GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
         viewer.getControl().setLayoutData(gridData);
         viewer.getTable().setHeaderVisible(false);

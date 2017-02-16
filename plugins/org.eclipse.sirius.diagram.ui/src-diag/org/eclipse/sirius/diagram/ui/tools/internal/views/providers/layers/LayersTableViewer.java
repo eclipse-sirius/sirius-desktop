@@ -55,7 +55,7 @@ public final class LayersTableViewer {
      */
     public static TableViewer createLayersTableViewer(final Composite control, final IDiagramWorkbenchPart diagramPart) {
 
-        final TableViewer tableViewer = new TableViewer(control, SWT.BORDER | SWT.FULL_SELECTION);
+        final TableViewer tableViewer = new TableViewer(control, SWT.BORDER | SWT.FULL_SELECTION | SWT.VIRTUAL);
         ColumnViewerToolTipSupport.enableFor(tableViewer, ToolTip.RECREATE);
 
         final Table table = tableViewer.getTable();

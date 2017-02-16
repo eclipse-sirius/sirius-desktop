@@ -253,7 +253,7 @@ public class FiltersPropertySection extends AbstractPropertySection {
         choiceTable = getWidgetFactory().createTable(choiceComposite, SWT.MULTI | SWT.BORDER);
         choiceTable.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-        availableElementsTableViewer = new TableViewer(choiceTable);
+        availableElementsTableViewer = new TableViewer(choiceTable, SWT.VIRTUAL);
 
         final Composite controlButtons = getWidgetFactory().createComposite(composite, SWT.NONE);
         controlButtons.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));

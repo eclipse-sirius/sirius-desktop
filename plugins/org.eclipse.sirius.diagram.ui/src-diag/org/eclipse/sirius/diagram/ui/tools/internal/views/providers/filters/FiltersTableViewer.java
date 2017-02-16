@@ -54,7 +54,7 @@ public final class FiltersTableViewer {
      */
     public static TableViewer createFiltersTableViewer(final Composite control, final IDiagramWorkbenchPart workbenchPart) {
 
-        final TableViewer tableViewer = new TableViewer(control, SWT.BORDER | SWT.FULL_SELECTION);
+        final TableViewer tableViewer = new TableViewer(control, SWT.BORDER | SWT.FULL_SELECTION | SWT.VIRTUAL);
         final Table table = tableViewer.getTable();
 
         table.setLayoutData(new GridData(GridData.FILL_BOTH));
