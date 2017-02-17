@@ -3,6 +3,8 @@
   <representations xsi:type="migrationmodeler:Diagram" name="useCase">
     <containers id="container1">
       <elements xsi:type="migrationmodeler:Bordered" id="bn1"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn_c1_1"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn_c1_2"/>
     </containers>
     <containers id="container2">
       <elements xsi:type="migrationmodeler:Bordered" id="bn2"/>
@@ -11,6 +13,7 @@
     <containers id="container4">
       <elements xsi:type="migrationmodeler:Bordered" id="bn3"/>
       <elements xsi:type="migrationmodeler:Bordered" id="bn4"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn_c4_1"/>
     </containers>
     <containers id="container5">
       <elements xsi:type="migrationmodeler:Bordered" id="bn5"/>
@@ -31,6 +34,7 @@
         <elements xsi:type="migrationmodeler:Bordered" id="b_c8_1_4"/>
         <elements xsi:type="migrationmodeler:Bordered" id="b_c8_1_3"/>
       </elements>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn_c8_1"/>
     </containers>
     <containers id="container9">
       <elements xsi:type="migrationmodeler:Node" id="node_c9_1"/>
@@ -75,5 +79,7 @@
     <edges id="edge21" source="//@representations.0/@containers.7/@elements.1/@elements.1" target="//@representations.0/@containers.8/@elements.3"/>
     <edges id="edge23" source="//@representations.0/@containers.7/@elements.1/@elements.2" target="//@representations.0/@containers.8/@elements.5"/>
     <edges id="edge22" source="//@representations.0/@containers.7/@elements.1/@elements.3" target="//@representations.0/@containers.8/@elements.4"/>
+    <edges id="edge24" source="//@representations.0/@containers.3/@elements.2" target="//@representations.0/@containers.0/@elements.1"/>
+    <edges id="edge25" source="//@representations.0/@containers.0/@elements.2" target="//@representations.0/@containers.7/@elements.2"/>
   </representations>
 </migrationmodeler:TestCase>

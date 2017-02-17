@@ -638,26 +638,34 @@ public class StraightenToCommand extends AbstractTransactionalCommand {
         // border node after move.
         CanonicalDBorderItemLocator borderItemLocator = new CanonicalDBorderItemLocator(parentNode, PositionConstants.NSEW);
         borderItemLocator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
-        LayoutConstraint layoutConstraint = node.getLayoutConstraint();
-        if (layoutConstraint instanceof Location) {
-            Rectangle constraint;
-            if (layoutConstraint instanceof Bounds) {
-                Bounds bounds = (Bounds) layoutConstraint;
-                constraint = new Rectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
+        LayoutConstraint initialLayoutConstraint = node.getLayoutConstraint();
+        if (initialLayoutConstraint instanceof Location) {
+            Rectangle initialRelativeConstraint;
+            if (initialLayoutConstraint instanceof Bounds) {
+                Bounds bounds = (Bounds) initialLayoutConstraint;
+                initialRelativeConstraint = new Rectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
             } else {
-                Location location = (Location) layoutConstraint;
-                constraint = new Rectangle(location.getX(), location.getY(), -1, -1);
+                Location location = (Location) initialLayoutConstraint;
+                initialRelativeConstraint = new Rectangle(location.getX(), location.getY(), -1, -1);
             }
-            // Change the constraint to respect the expected move
-            constraint.translate(data.deltaX, data.deltaY);
-            Point originalLocation = constraint.getLocation();
-            // Check if this location is available
+            // Get the valid location (validInitialAbsoluteConstraint) before
+            // the move. It should be the same as the one stored in GMF but
+            // sometimes, probably caused by some bugs, it could be wrong in
+            // GMF.
             Point parentAbsoluteLocation = GMFHelper.getAbsoluteLocation(parentNode);
-            constraint.translate(parentAbsoluteLocation.x, parentAbsoluteLocation.y);
-            final Point realLocation = borderItemLocator.getValidLocation(constraint, node, movedBorderNodes);
-            final Dimension d = realLocation.getDifference(parentAbsoluteLocation);
-            realLocation.setLocation(new Point(d.width, d.height));
-            if (!originalLocation.equals(realLocation)) {
+            Rectangle initialAsboluteConstraint = initialRelativeConstraint.getTranslated(parentAbsoluteLocation);
+            Point validInitialAbsoluteLocation = borderItemLocator.getValidLocation(initialAsboluteConstraint, node, Lists.newArrayList(node));
+            Rectangle validInitialAbsoluteConstraint = initialAsboluteConstraint.getCopy();
+            if ((straightenType == StraightenToAction.TO_LEFT || straightenType == StraightenToAction.TO_RIGHT) && initialAsboluteConstraint.y != validInitialAbsoluteLocation.y) {
+                // There is probably a bug in the GMF location, fix it.
+                validInitialAbsoluteConstraint.setY(validInitialAbsoluteLocation.y);
+            } else if ((straightenType == StraightenToAction.TO_TOP || straightenType == StraightenToAction.TO_BOTTOM) && initialAsboluteConstraint.x != validInitialAbsoluteLocation.x) {
+                // There is probably a bug in the GMF location, fix it.
+                validInitialAbsoluteConstraint.setX(validInitialAbsoluteLocation.x);
+            }
+            // Compute the expected constraint and check that it is available
+            Rectangle expectedAsboluteConstraint = validInitialAbsoluteConstraint.getTranslated(data.deltaX, data.deltaY);
+            if (!expectedAsboluteConstraint.getLocation().equals(borderItemLocator.getValidLocation(expectedAsboluteConstraint, node, movedBorderNodes))) {
                 isOverlapped = true;
             }
         }

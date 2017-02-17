@@ -113,6 +113,22 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * <UL>
+     * <LI>Straighten oblique edge24 to Left: Expected OK</LI>
+     * <LI>Straighten oblique edge24 to Right: Expected OK</LI>
+     * <LI>Straighten oblique edge24 to Top: Expected: menu disabled (invalid
+     * axis)</LI>
+     * <LI>Straighten oblique edge24 to Bottom: Expected: menu disabled (invalid
+     * axis)</LI>
+     * </UL>
+     */
+    public void testObliqueEdgeLeftAndRightWithWrongYGMFCoordinate() {
+        // {top,bottom,left,right}
+        boolean[] availableDirections = { false, false, true, true };
+        checkEdgeActions(availableDirections, "edge24");
+    }
+
+    /**
      * <ul>
      * <LI>Straighten oblique edge8 to Right: Expected: menu disabled (centered
      * edge on source side)</LI>
@@ -148,6 +164,18 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
         // {top,bottom,left,right}
         boolean[] availableDirections = { true, true, false, false };
         checkEdgeActions(availableDirections, "edge15");
+    }
+
+    /**
+     * <UL>
+     * <LI>Straighten oblique edge25 to Top: Expected OK</LI>
+     * <LI>Straighten oblique edge25 to Bottom: Expected OK</LI>
+     * </UL>
+     */
+    public void testObliqueEdgeTopAndBottomWithWrongXGMFCoordinate() {
+        // {top,bottom,left,right}
+        boolean[] availableDirections = { true, true, false, false };
+        checkEdgeActions(availableDirections, "edge25");
     }
 
     /**
