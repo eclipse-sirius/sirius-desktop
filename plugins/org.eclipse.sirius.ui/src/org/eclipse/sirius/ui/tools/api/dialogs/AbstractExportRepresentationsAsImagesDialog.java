@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,8 +40,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
 /**
- * Dialog used by the export diagram to image files action to prompt the user
- * for a destination and image format.
+ * Dialog used by the export diagram to image files action to prompt the user for a destination and image format.
  * 
  * @author jdupont
  */
@@ -70,7 +69,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     /**
      * The empty string.
      */
-    protected static final String EMPTY_STRING = ""; //$NON-NLS-1$    
+    protected static final String EMPTY_STRING = ""; //$NON-NLS-1$
 
     /**
      * the image format label text.
@@ -100,7 +99,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     /**
      * The id for the persistent settings for this dialog.
      */
-    private static final String DIALOG_SETTINGS_ID = "ExportRepresentationsAsImagesDialog"; //$NON-NLS-1$       
+    private static final String DIALOG_SETTINGS_ID = "ExportRepresentationsAsImagesDialog"; //$NON-NLS-1$
 
     /**
      * Combo length history path.
@@ -128,14 +127,12 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     protected String folder;
 
     /**
-     * the message image field, displays the error (X) icon when the file name
-     * or folder is invalid
+     * the message image field, displays the error (X) icon when the file name or folder is invalid
      */
     private Label messageImageLabel;
 
     /**
-     * the message field, displays an error message when the file name or folder
-     * is invalid
+     * the message field, displays an error message when the file name or folder is invalid
      */
     private Label messageLabel;
 
@@ -148,6 +145,11 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
      * true to export to HTML.
      */
     private boolean exportToHTML;
+
+    /**
+     * true to export decorations.
+     */
+    private boolean exportDecorations;
 
     /**
      * Creates an instance of the copy to image dialog.
@@ -202,20 +204,28 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     /**
      * Check if the user choose to export as Html.
      * 
-     * @return <code>true</code> if it decided to export as Html ,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if it decided to export as Html , <code>false</code> otherwise
      */
     public boolean isExportToHtml() {
         return exportToHTML;
     }
 
     /**
-     * Returns height and width data in a GridData for the button that was
-     * passed in. You can call button.setLayoutData with the returned data.
+     * Check if the user choose to export decorations.
+     * 
+     * @return <code>true</code> if he decided to export decorations , <code>false</code> otherwise
+     */
+    public boolean isExportDecorations() {
+        return exportDecorations;
+    }
+
+    /**
+     * Returns height and width data in a GridData for the button that was passed in. You can call button.setLayoutData
+     * with the returned data.
      * 
      * @param button
-     *            which has already been made. We'll be making the GridData for
-     *            this button, so be sure that the text has already been set.
+     *            which has already been made. We'll be making the GridData for this button, so be sure that the text
+     *            has already been set.
      * @return GridData for this button with the suggested height and width
      */
     public static GridData makeButtonData(Button button) {
@@ -267,8 +277,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
      * Initialize the settings for this dialog.
      * 
      * @param path
-     *            the default path to use for the diagram file or null if the
-     *            dialog should use some default path.
+     *            the default path to use for the diagram file or null if the dialog should use some default path.
      */
     protected abstract void initDialogSettings(IPath path);
 
@@ -325,8 +334,8 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
 
     // CHECKSTYLE:ON
     /**
-     * Set the dialog into error state mode. The error image (x) label and error
-     * label are made visible and the ok button is disabled.
+     * Set the dialog into error state mode. The error image (x) label and error label are made visible and the ok
+     * button is disabled.
      * 
      * @param message
      *            the error message
@@ -364,6 +373,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
         final Composite composite = (Composite) super.createDialogArea(parent);
         createFolderGroup(composite);
         createImageFormatGroup(composite);
+        createExportDecorationsGroup(composite);
         if (DialectUIManager.INSTANCE.canExport(new ExportFormat(ExportDocumentFormat.HTML, null))) {
             createGenerateHTMLGroup(composite);
         }
@@ -373,8 +383,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     }
 
     /**
-     * {@inheritDoc} Configures the shell in preparation for opening this window
-     * in it.
+     * {@inheritDoc} Configures the shell in preparation for opening this window in it.
      * 
      * @see org.eclipse.jface.window.Window#configureShell(org.eclipse.swt.widgets.Shell)
      */
@@ -398,8 +407,8 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     protected abstract void initListeners();
 
     /**
-     * Hook method for restoring widget values to the values that they held last
-     * time this wizard was used to completion.
+     * Hook method for restoring widget values to the values that they held last time this wizard was used to
+     * completion.
      */
     protected abstract void restoreWidgetValues();
 
@@ -416,13 +425,28 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
         Composite composite = SWTUtil.createCompositeHorizontalFill(parent, 1, false);
         exportToHTMLCheckbox = new Button(composite, SWT.CHECK | SWT.LEFT);
         exportToHTMLCheckbox.setText(Messages.AbstractExportRepresentationsAsImagesDialog_htmlExport);
-        GridData data = new GridData(GridData.FILL_HORIZONTAL);
+        GridData data = new GridData(GridData.FILL, 0, true, false);
         exportToHTMLCheckbox.setLayoutData(data);
         exportToHTMLCheckbox.setSelection(exportToHTML);
         exportToHTMLCheckbox.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent event) {
                 exportToHTML = exportToHTMLCheckbox.getSelection();
+            }
+        });
+    }
+
+    private void createExportDecorationsGroup(Composite parent) {
+        Composite composite = SWTUtil.createCompositeHorizontalFill(parent, 1, false);
+        final Button exportDecorationsCheckBox = new Button(composite, SWT.CHECK | SWT.LEFT);
+        exportDecorationsCheckBox.setText(Messages.AbstractExportRepresentationsAsImagesDialog_decorationExport);
+        GridData data = new GridData(GridData.FILL, 0, true, false);
+        exportDecorationsCheckBox.setLayoutData(data);
+        exportDecorationsCheckBox.setSelection(exportDecorations);
+        exportDecorationsCheckBox.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent event) {
+                exportDecorations = exportDecorationsCheckBox.getSelection();
             }
         });
     }
@@ -448,8 +472,8 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     }
 
     /**
-     * Set the dialog into ok state mode. The error image (x) label and error
-     * label and made not visible and the ok button is enabled.
+     * Set the dialog into ok state mode. The error image (x) label and error label and made not visible and the ok
+     * button is enabled.
      */
     private void setDialogOKState() {
         messageImageLabel.setVisible(false);
@@ -459,9 +483,8 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     }
 
     /**
-     * Adds an entry to a history, while taking care of duplicate history items
-     * and excessively long histories. The assumption is made that all histories
-     * should be of length
+     * Adds an entry to a history, while taking care of duplicate history items and excessively long histories. The
+     * assumption is made that all histories should be of length
      * <code>WizardDataTransferPage.COMBO_HISTORY_LENGTH</code>.
      * 
      * @param history
@@ -479,9 +502,8 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     }
 
     /**
-     * Adds an entry to a history, while taking care of duplicate history items
-     * and excessively long histories. The assumption is made that all histories
-     * should be of length
+     * Adds an entry to a history, while taking care of duplicate history items and excessively long histories. The
+     * assumption is made that all histories should be of length
      * <code>WizardDataTransferPage.COMBO_HISTORY_LENGTH</code>.
      * 
      * @param history

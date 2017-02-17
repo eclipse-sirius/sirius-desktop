@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,11 +60,15 @@ public class ExportAction extends WorkspaceModifyOperation {
     private boolean exportToHtml;
 
     /**
+     * Indicates if the diagram graphical element decorations will be in the exported image.
+     */
+    private boolean exportDecorations;
+
+    /**
      * Default constructor.
      *
      * @param session
-     *            The {@link Session} which owns the {@link DRepresentation}s to
-     *            export as image
+     *            The {@link Session} which owns the {@link DRepresentation}s to export as image
      * @param dRepresentationsToExportAsImage
      *            the {@link DRepresentation}s to export as image
      * @param outputPath
@@ -72,15 +76,17 @@ public class ExportAction extends WorkspaceModifyOperation {
      * @param imageFormat
      *            the format of the image, result of the export
      * @param exportToHtml
-     *            true if we must export {@link DRepresentation} to html instead
-     *            of image
+     *            true if we must export {@link DRepresentation} to html instead of image
+     * @param exportDecorations
+     *            true if we want the image to contain diagram element decorations
      */
-    public ExportAction(Session session, Collection<DRepresentation> dRepresentationsToExportAsImage, IPath outputPath, ImageFileFormat imageFormat, boolean exportToHtml) {
+    public ExportAction(Session session, Collection<DRepresentation> dRepresentationsToExportAsImage, IPath outputPath, ImageFileFormat imageFormat, boolean exportToHtml, boolean exportDecorations) {
         this.session = session;
         this.dRepresentationsToExportAsImage = dRepresentationsToExportAsImage;
         this.outputPath = outputPath;
         this.imageFormat = imageFormat;
         this.exportToHtml = exportToHtml;
+        this.exportDecorations = exportDecorations;
     }
 
     /**
@@ -173,7 +179,7 @@ public class ExportAction extends WorkspaceModifyOperation {
                     }
                     if (DialectUIManager.INSTANCE.canHandle(representation)) {
                         try {
-                            DialectUIManager.INSTANCE.export(representation, session, filePath, exportFormat, new SubProgressMonitor(monitor, 7));
+                            DialectUIManager.INSTANCE.export(representation, session, filePath, exportFormat, new SubProgressMonitor(monitor, 7), exportDecorations);
                         } catch (CoreException exception) {
                             if (exception instanceof SizeTooLargeException) {
                                 errorDuringExport = true;
@@ -218,9 +224,8 @@ public class ExportAction extends WorkspaceModifyOperation {
     }
 
     /**
-     * Get the {@link IPath} of the file to write. This method try first to use
-     * the filename given. If the file already exists, it appends a number to
-     * its name.
+     * Get the {@link IPath} of the file to write. This method try first to use the filename given. If the file already
+     * exists, it appends a number to its name.
      *
      * @param destinationFolder
      *            the folder where to write the file

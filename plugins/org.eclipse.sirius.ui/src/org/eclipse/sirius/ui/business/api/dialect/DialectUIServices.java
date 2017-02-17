@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -221,10 +221,13 @@ public interface DialectUIServices {
      *            the export format.
      * @param monitor
      *            the progress monitor
+     * @param exportDecorations
+     *            true if we want the image to contain diagram element
+     *            decorations
      * @throws SizeTooLargeException
      *             if size image to export is too large.
      */
-    void export(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) throws SizeTooLargeException;
+    void export(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor, boolean exportDecorations) throws SizeTooLargeException;
 
     /**
      * Tell whether the dialect is able to handle the given representation.

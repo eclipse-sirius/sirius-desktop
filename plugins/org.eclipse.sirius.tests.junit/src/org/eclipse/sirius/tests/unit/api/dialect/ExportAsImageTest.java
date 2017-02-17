@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -114,7 +114,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         IPath absoluteImagePath = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME).getLocation().append(IMAGE_FILE_NAME);
 
         // Export the image
-        DialectUIManager.INSTANCE.export(representation, session, absoluteImagePath, new ExportFormat(ExportDocumentFormat.NONE, ImageFileFormat.PNG), new NullProgressMonitor());
+        DialectUIManager.INSTANCE.export(representation, session, absoluteImagePath, new ExportFormat(ExportDocumentFormat.NONE, ImageFileFormat.PNG), new NullProgressMonitor(), false);
 
         // Asserts that the image had been created
         SiriusAssert.assertFileExists("/" + TEMPORARY_PROJECT_NAME + "/" + IMAGE_FILE_NAME);
@@ -161,7 +161,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
 
         // Export the image
         IPath absoluteImagePath = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME).getLocation().append(IMAGE_FILE_NAME);
-        DialectUIManager.INSTANCE.export(representation, newSession, absoluteImagePath, new ExportFormat(ExportDocumentFormat.NONE, ImageFileFormat.PNG), new NullProgressMonitor());
+        DialectUIManager.INSTANCE.export(representation, newSession, absoluteImagePath, new ExportFormat(ExportDocumentFormat.NONE, ImageFileFormat.PNG), new NullProgressMonitor(), false);
 
         // Asserts that the image had been created
         SiriusAssert.assertFileExists("/" + TEMPORARY_PROJECT_NAME + "/" + IMAGE_FILE_NAME);

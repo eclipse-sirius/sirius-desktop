@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,6 +78,7 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
                 final IPath outputPath = dialog.getOutputPath();
                 final ImageFileFormat imageFormat = dialog.getImageFormat();
                 final boolean exportToHtml = dialog.isExportToHtml();
+                final boolean exportDecorations = dialog.isExportDecorations();
 
                 IRunnableWithProgress exportAllRepresentationsRunnable = new WorkspaceModifyOperation() {
 
@@ -90,7 +91,7 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
                             session = SessionManager.INSTANCE.openSession(sessionResourceURI, new SubProgressMonitor(monitor, 2), SiriusEditPlugin.getPlugin().getUiCallback());
 
                             if (session != null) {
-                                ExportAction exportAction = new ExportAction(session, dRepresentationsToExportAsImage, outputPath, imageFormat, exportToHtml);
+                                ExportAction exportAction = new ExportAction(session, dRepresentationsToExportAsImage, outputPath, imageFormat, exportToHtml, exportDecorations);
                                 exportAction.run(new SubProgressMonitor(monitor, 7));
                             }
                         } finally {

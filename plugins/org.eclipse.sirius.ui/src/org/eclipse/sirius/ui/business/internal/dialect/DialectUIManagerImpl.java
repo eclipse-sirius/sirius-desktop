@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -254,11 +254,12 @@ public class DialectUIManagerImpl implements DialectUIManager {
     }
 
     @Override
-    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
+    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor, boolean exportDecorations)
+            throws SizeTooLargeException {
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().canHandle(representation)) {
                 try {
-                    dialect.getServices().export(representation, session, path, format, monitor);
+                    dialect.getServices().export(representation, session, path, format, monitor, exportDecorations);
                 } catch (CoreException exception) {
                     if (exception instanceof SizeTooLargeException) {
                         throw (SizeTooLargeException) exception;

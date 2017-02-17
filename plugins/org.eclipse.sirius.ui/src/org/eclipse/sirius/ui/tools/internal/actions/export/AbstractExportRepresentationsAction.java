@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -132,7 +132,7 @@ public abstract class AbstractExportRepresentationsAction extends Action {
                 dRepresentations.add(dRepresentationDescriptor.getRepresentation());
             }
             List<DRepresentation> toExport = Lists.<DRepresentation> newArrayList(dRepresentations);
-            final ExportAction exportAction = new ExportAction(session, toExport, dialog.getOutputPath(), dialog.getImageFormat(), dialog.isExportToHtml());
+            final ExportAction exportAction = new ExportAction(session, toExport, dialog.getOutputPath(), dialog.getImageFormat(), dialog.isExportToHtml(), dialog.isExportDecorations());
             final ProgressMonitorDialog pmd = new ProgressMonitorDialog(shell);
             try {
                 pmd.run(false, false, exportAction);

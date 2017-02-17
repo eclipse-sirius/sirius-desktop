@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -240,7 +240,7 @@ public class TableDialectUIServices implements DialectUIServices {
     }
 
     @Override
-    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat exportFormat, final IProgressMonitor monitor) {
+    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat exportFormat, final IProgressMonitor monitor, boolean exportDecorations) {
         String content = null;
         if (exportFormat.getDocumentFormat().equals(ExportDocumentFormat.CSV)) {
             content = TableExportHelper.INSTANCE.exportToCsv((DTable) representation);

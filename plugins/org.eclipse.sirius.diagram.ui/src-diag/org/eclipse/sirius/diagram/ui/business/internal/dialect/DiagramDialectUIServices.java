@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,6 +93,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
+import org.eclipse.sirius.diagram.ui.tools.internal.decoration.SiriusDecoratorProvider;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -470,7 +471,8 @@ public class DiagramDialectUIServices implements DialectUIServices {
      *      org.eclipse.sirius.business.api.session.Session)
      */
     @Override
-    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
+    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor, boolean exportDecorations)
+            throws SizeTooLargeException {
 
         final boolean exportToHtml = exportToHtml(format);
         final String imageFileExtension = getImageFileExtension(format);
@@ -489,6 +491,10 @@ public class DiagramDialectUIServices implements DialectUIServices {
                     if (exportToHtml) {
                         tool.exportToHtml();
                     }
+
+                    boolean isActivateSiriusDecorationPrevious = SiriusDecoratorProvider.isActivateSiriusDecoration();
+                    SiriusDecoratorProvider.setActivateSiriusDecoration(exportDecorations);
+
                     final DiagramEditPart diagramEditPart = tool.createDiagramEditPart(diagram, shell, PreferencesHint.USE_DEFAULTS);
 
                     try {
@@ -535,6 +541,8 @@ public class DiagramDialectUIServices implements DialectUIServices {
                          */
                         throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representation.getName()));
                     } finally {
+                        SiriusDecoratorProvider.setActivateSiriusDecoration(isActivateSiriusDecorationPrevious);
+
                         diagramEditPart.deactivate();
                         // Memory leak : also disposing the
                         // DiagramGraphicalViewer associated to this

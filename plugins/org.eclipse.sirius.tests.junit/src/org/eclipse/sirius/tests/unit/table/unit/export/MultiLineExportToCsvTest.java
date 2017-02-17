@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -82,7 +82,7 @@ public class MultiLineExportToCsvTest extends SiriusDiagramTestCase {
         // Asserts that the editor is a DTableEditor
         if (editor instanceof DTableEditor) {
             try {
-                DialectUIManager.INSTANCE.export(dTable, session, absoluteImagePath, new ExportFormat(ExportDocumentFormat.CSV, null), new NullProgressMonitor());
+                DialectUIManager.INSTANCE.export(dTable, session, absoluteImagePath, new ExportFormat(ExportDocumentFormat.CSV, null), new NullProgressMonitor(), false);
             } catch (CoreException e) {
                 fail(e.getMessage());
             }
