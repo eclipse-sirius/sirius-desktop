@@ -414,6 +414,12 @@ public final class Messages {
     public static String DiagramRepairParticipant_removeDiagramElementTaskName;
 
     @TranslatableMessage
+    public static String DiagramPrintingPreferencePage_optionsGroupText;
+
+    @TranslatableMessage
+    public static String DiagramPrintingPreferencePage_printDecorations;
+
+    @TranslatableMessage
     public static String DiagramRepairParticipant_restoreModelStateTaskName;
 
     @TranslatableMessage

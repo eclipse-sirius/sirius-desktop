@@ -45,6 +45,7 @@ import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
@@ -56,6 +57,7 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationDescriptorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -104,6 +106,11 @@ public class SiriusGenericDecorator extends AbstractDecorator {
 
     private Set<SiriusDecorationDescriptorProvider> decorationDescriptorProviders;
 
+    /**
+     * Indicates if the decorations should be set on a printable layer.
+     */
+    private boolean printDecoration;
+
     private Session session;
 
     /**
@@ -116,6 +123,9 @@ public class SiriusGenericDecorator extends AbstractDecorator {
      */
     public SiriusGenericDecorator(IDecoratorTarget decoratorTarget, Set<SiriusDecorationDescriptorProvider> decorationDescriptorProviders) {
         super(decoratorTarget);
+
+        IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
+        printDecoration = prefs.getBoolean(SiriusDiagramUiPreferencesKeys.PREF_PRINT_DECORATION.name());
 
         this.decorationDescriptorProviders = decorationDescriptorProviders;
         editPart = (GraphicalEditPart) getDecoratorTarget().getAdapter(GraphicalEditPart.class);
@@ -172,7 +182,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
 
                 Map<Position, IFigure> figureAtPosition = computeGroupDecorationsFigure(positionToDecorators, margin);
                 if (figureAtPosition != null) {
-                    addDecoration(getDecoratorTarget().addConnectionDecoration(figureAtPosition.get(Position.CENTER_LITERAL), 50, false));
+                    addDecoration(getDecoratorTarget().addConnectionDecoration(figureAtPosition.get(Position.CENTER_LITERAL), 50, !printDecoration));
                 }
             } else {
                 for (DecorationDescriptor decorationDescriptor : decorationDescriptors) {
@@ -189,7 +199,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
                 Map<Position, IFigure> figureAtPosition = computeGroupDecorationsFigure(positionToDecorators, margin);
                 if (figureAtPosition != null) {
                     for (Position position : figureAtPosition.keySet()) {
-                        addDecoration(getDecoratorTarget().addShapeDecoration(figureAtPosition.get(position), getGMFPosition(position), -margin, false));
+                        addDecoration(getDecoratorTarget().addShapeDecoration(figureAtPosition.get(position), getGMFPosition(position), -margin, !printDecoration));
                     }
                 }
             }
