@@ -1470,6 +1470,14 @@
          <context decoratorTargets="SIRIUS_ABSTRACT_NODE_PRIMARY_VIEW,SIRIUS_EDGE_PRIMARY_VIEW"/>
       </decoratorProvider>
    </extension>
+   <extension id="removeGMFPresentationDecoratorProvider" name="RemoveGMFPresentationDecoratorProvider" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <decoratorProvider class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusBookmarkAndUnresolvedViewDecoratorProvider">
+         <Priority name="High"/>
+         <object class="org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart(org.eclipse.sirius.diagram.ui)" id="SIRIUS_ABSTRACT_NODE_PRIMARY_VIEW"/>
+         <object class="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart(org.eclipse.sirius.diagram.ui)" id="SIRIUS_EDGE_PRIMARY_VIEW"/>
+         <context decoratorTargets="SIRIUS_ABSTRACT_NODE_PRIMARY_VIEW,SIRIUS_EDGE_PRIMARY_VIEW"/>
+      </decoratorProvider>
+   </extension>
   <extension
         point="org.eclipse.gmf.runtime.emf.clipboard.core.clipboardSupport">
      <factory
@@ -1917,4 +1925,5 @@
             class="org.eclipse.sirius.diagram.ui.internal.refresh.factory.CanonicalSynchronizerFactoryImpl">
       </factory>
    </extension>
+
 </plugin>
