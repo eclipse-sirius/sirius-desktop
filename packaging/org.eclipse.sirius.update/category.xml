@@ -116,10 +116,10 @@
     <!-- Non-categorized -->
    <feature id="org.eclipse.acceleo.query" version="0.0.0" />
    <feature id="org.eclipse.acceleo.query.source" version="0.0.0" />
-   <feature id="org.eclipse.eef.sdk.feature" version="0.0.0" />
-   <!-- <feature id="org.eclipse.eef.sdk.feature.source" version="0.0.0" /> -->
-   <feature id="org.eclipse.eef.ext.widgets.reference.feature" version="0.0.0" />
-   <!-- <feature id="org.eclipse.eef.ext.widgets.reference.feature.source" version="0.0.0" /> -->
+   <feature id="org.eclipse.eef.sdk.feature" version="0.0.0"/>
+   <feature id="org.eclipse.eef.sdk.feature.source" version="0.0.0"/>
+   <feature id="org.eclipse.eef.ext.widgets.reference.feature" version="0.0.0"/>
+   <feature id="org.eclipse.eef.ext.widgets.reference.feature.source" version="0.0.0"/>
 
    <category-def name="Sirius" label="Sirius">
       <description>
