@@ -108,8 +108,8 @@ public class FeatureChangeListenerItemProvider extends ItemProviderAdapter
     @Override
     public String getText(Object object) {
         String label = ((FeatureChangeListener) object).getFeatureName();
-        return label == null || label.length() == 0 ? getString("_UI_FeatureChangeListener_type") : //$NON-NLS-1$
-                getString("_UI_FeatureChangeListener_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        return label == null || label.length() == 0 ? getString("_UI_FeatureChangeListener_type") //$NON-NLS-1$
+                : getString("_UI_FeatureChangeListener_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

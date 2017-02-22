@@ -1066,6 +1066,29 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.viewpoint.description.tool.Let}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected LetItemProvider letItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.viewpoint.description.tool.Let}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createLetAdapter() {
+        if (letItemProvider == null) {
+            letItemProvider = new LetItemProvider(this);
+        }
+
+        return letItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -1316,6 +1339,9 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
         }
         if (switchItemProvider != null) {
             switchItemProvider.dispose();
+        }
+        if (letItemProvider != null) {
+            letItemProvider.dispose();
         }
     }
 

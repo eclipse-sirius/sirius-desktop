@@ -97,8 +97,8 @@ public class ForItemProvider extends ContainerModelOperationItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((For) object).getIteratorName();
-        return label == null || label.length() == 0 ? getString("_UI_For_type") : //$NON-NLS-1$
-                getString("_UI_For_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        return label == null || label.length() == 0 ? getString("_UI_For_type") //$NON-NLS-1$
+                : getString("_UI_For_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -20,6 +20,7 @@ import org.eclipse.sirius.business.internal.helper.task.operations.ChangeContext
 import org.eclipse.sirius.business.internal.helper.task.operations.CreateInstanceTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.ForTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.IfTask;
+import org.eclipse.sirius.business.internal.helper.task.operations.LetTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.MoveElementTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.RemoveElementTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.SetValueTask;
@@ -44,6 +45,7 @@ import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.Default;
 import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.If;
+import org.eclipse.sirius.viewpoint.description.tool.Let;
 import org.eclipse.sirius.viewpoint.description.tool.MoveElement;
 import org.eclipse.sirius.viewpoint.description.tool.RemoveElement;
 import org.eclipse.sirius.viewpoint.description.tool.SetObject;
@@ -231,7 +233,8 @@ public class OperationTest extends DocbookTestCase {
         // check that there is no instance of chapter with an id equal to
         // "newChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='newChapterID')->size()").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='newChapterID')->size()")
+                    .intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -254,7 +257,8 @@ public class OperationTest extends DocbookTestCase {
         // check that there is one instance of chapter with an id equal to
         // "newChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='newChapterID')->size()").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='newChapterID')->size()")
+                    .intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -493,7 +497,8 @@ public class OperationTest extends DocbookTestCase {
 
         // check that there is no sect1 referenced under the second chapter.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->last().eContents()->filter(docbook::Sect1)->size()").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->last().eContents()->filter(docbook::Sect1)->size()")
+                    .intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -534,7 +539,8 @@ public class OperationTest extends DocbookTestCase {
         // check that there is now one sect1 referenced under the second
         // chapter.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->last().eContents()->filter(docbook::Sect1)->size()").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->last().eContents()->filter(docbook::Sect1)->size()")
+                    .intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -669,6 +675,192 @@ public class OperationTest extends DocbookTestCase {
         testSwitch(null, 0, 0, 0, 1);
     }
 
+    /**
+     * Check that a new variable is properly created by the Let operation.
+     */
+    public void testLetOperation() {
+        final Let let = ToolFactory.eINSTANCE.createLet();
+        let.setVariableName("id");
+        let.setValueExpression("aql:'IDENTIFIER'");
+
+        final SetValue set = ToolFactory.eINSTANCE.createSetValue();
+        set.setFeatureName("id");
+        set.setValueExpression("var:id");
+
+        let.getSubModelOperations().add(set);
+
+        EObject chapter = null;
+
+        // definition of a new context with chapter as first and last element.
+        try {
+            chapter = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first()");
+        } catch (EvaluationException e) {
+            fail("Exception while trying to get the eObject chapter.");
+            e.printStackTrace();
+        }
+        assertNotNull("Not possible to catch the semantic model element.", chapter);
+
+        // Check that the id of the chapter DOES NOT have the expected value yet
+        String chapterName = "";
+        try {
+            chapterName = INTERPRETER.evaluateString(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first().id");
+        } catch (EvaluationException e) {
+            fail("Exception while trying to get the instance count.");
+            e.printStackTrace();
+        }
+        assertEquals("chap0", chapterName);
+
+        final CommandContext chapContext = new CommandContext(chapter, null);
+        final AbstractOperationTask letTask = new LetTask(chapContext, accessor, let, session.getInterpreter());
+        final AbstractOperationTask setTask = new SetValueTask(chapContext, accessor, set, session.getInterpreter());
+        letTask.getChildrenTasks().add(setTask);
+        SiriusCommand command = new SiriusCommand(session.getTransactionalEditingDomain());
+        command.getTasks().add(letTask);
+
+        assertTrue("Could not execute the command.", execute(command));
+
+        // Check that the id of the chapter has been modified to the expected
+        // value
+        chapterName = "";
+        try {
+            chapterName = INTERPRETER.evaluateString(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first().id");
+        } catch (EvaluationException e) {
+            fail("Exception while trying to get the instance count.");
+            e.printStackTrace();
+        }
+        assertEquals("IDENTIFIER", chapterName);
+    }
+
+    /**
+     * Check that an existing variable (in this case, self) can be overridden by
+     * the Let operation.
+     */
+    public void testLetOperationOverrideSelf() {
+        final Let let = ToolFactory.eINSTANCE.createLet();
+        let.setVariableName("self");
+        let.setValueExpression("aql:self.eContainer()");
+
+        final SetValue set = ToolFactory.eINSTANCE.createSetValue();
+        set.setFeatureName("id");
+        set.setValueExpression("aql:'IDENTIFIER'");
+
+        let.getSubModelOperations().add(set);
+
+        EObject chapter = null;
+
+        // definition of a new context with chapter as first and last element.
+        try {
+            chapter = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first()");
+        } catch (EvaluationException e) {
+            fail("Exception while trying to get the eObject chapter.");
+            e.printStackTrace();
+        }
+        assertNotNull("Not possible to catch the semantic model element.", chapter);
+
+        // Check that the id of the book DOES NOT have the expected value yet
+        String chapterName = "";
+        try {
+            chapterName = INTERPRETER.evaluateString(semanticModel, "aql:self.eResource().getContents()->first().id");
+        } catch (EvaluationException e) {
+            fail("Exception while trying to get the instance count.");
+            e.printStackTrace();
+        }
+        assertEquals("livre premier", chapterName);
+
+        final CommandContext chapContext = new CommandContext(chapter, null);
+        final AbstractOperationTask letTask = new LetTask(chapContext, accessor, let, session.getInterpreter());
+        final AbstractOperationTask setTask = new SetValueTask(chapContext, accessor, set, session.getInterpreter());
+        letTask.getChildrenTasks().add(setTask);
+        SiriusCommand command = new SiriusCommand(session.getTransactionalEditingDomain());
+        command.getTasks().add(letTask);
+
+        assertTrue("Could not execute the command.", execute(command));
+
+        // Check that the id of the chapter has NOT been modified
+        chapterName = "";
+        try {
+            chapterName = INTERPRETER.evaluateString(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first().id");
+        } catch (EvaluationException e) {
+            fail("Exception while trying to get the instance count.");
+            e.printStackTrace();
+        }
+        assertEquals("chap0", chapterName);
+
+        // Check that the id of the book has been modified to the expected
+        // value
+        chapterName = "";
+        try {
+            chapterName = INTERPRETER.evaluateString(semanticModel, "aql:self.eResource().getContents()->first().id");
+        } catch (EvaluationException e) {
+            fail("Exception while trying to get the instance count.");
+            e.printStackTrace();
+        }
+        assertEquals("IDENTIFIER", chapterName);
+    }
+
+    /**
+     * Check that an existing variable can be overriden by a Let operation.
+     */
+    public void testLetOperationOverrideExistingVariable() {
+        final Let let = ToolFactory.eINSTANCE.createLet();
+        let.setVariableName("id");
+        let.setValueExpression("aql:'IDENTIFIER'");
+
+        final Let subLet = ToolFactory.eINSTANCE.createLet();
+        subLet.setVariableName("id");
+        subLet.setValueExpression("aql:'NEW_IDENTIFIER'");
+
+        final SetValue set = ToolFactory.eINSTANCE.createSetValue();
+        set.setFeatureName("id");
+        set.setValueExpression("var:id");
+
+        let.getSubModelOperations().add(subLet);
+        subLet.getSubModelOperations().add(set);
+
+        EObject chapter = null;
+
+        // definition of a new context with chapter as first and last element.
+        try {
+            chapter = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first()");
+        } catch (EvaluationException e) {
+            fail("Exception while trying to get the eObject chapter.");
+            e.printStackTrace();
+        }
+        assertNotNull("Not possible to catch the semantic model element.", chapter);
+
+        // Check that the id of the chapter DOES NOT have the expected value yet
+        String chapterName = "";
+        try {
+            chapterName = INTERPRETER.evaluateString(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first().id");
+        } catch (EvaluationException e) {
+            fail("Exception while trying to get the instance count.");
+            e.printStackTrace();
+        }
+        assertEquals("chap0", chapterName);
+
+        final CommandContext chapContext = new CommandContext(chapter, null);
+        final AbstractOperationTask letTask = new LetTask(chapContext, accessor, let, session.getInterpreter());
+        final AbstractOperationTask subLetTask = new LetTask(chapContext, accessor, subLet, session.getInterpreter());
+        final AbstractOperationTask setTask = new SetValueTask(chapContext, accessor, set, session.getInterpreter());
+        letTask.getChildrenTasks().add(subLetTask);
+        subLetTask.getChildrenTasks().add(setTask);
+        SiriusCommand command = new SiriusCommand(session.getTransactionalEditingDomain());
+        command.getTasks().add(letTask);
+
+        assertTrue("Could not execute the command.", execute(command));
+
+        // Check that the id of the chapter has been modified to the expected
+        // value
+        chapterName = "";
+        try {
+            chapterName = INTERPRETER.evaluateString(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first().id");
+        } catch (EvaluationException e) {
+            fail("Exception while trying to get the instance count.");
+            e.printStackTrace();
+        }
+        assertEquals("NEW_IDENTIFIER", chapterName);
+    }
+
     public void testForOperation() {
         final For forop = ToolFactory.eINSTANCE.createFor();
         final SetValue setop = ToolFactory.eINSTANCE.createSetValue();
@@ -795,7 +987,8 @@ public class OperationTest extends DocbookTestCase {
         // check that there is no instance of chapter with an id equal to
         // "newChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='newChapterID')->size()").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='newChapterID')->size()")
+                    .intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -809,7 +1002,8 @@ public class OperationTest extends DocbookTestCase {
         // check that there is one instance of chapter with an id equal to
         // "newChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='newChapterID')->size()").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='newChapterID')->size()")
+                    .intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -895,7 +1089,8 @@ public class OperationTest extends DocbookTestCase {
         // check that there is no instance of chapter with an id equal to
         // "newChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='" + labelId1 + "')->size()").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='" + labelId1 + "')->size()")
+                    .intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -909,7 +1104,8 @@ public class OperationTest extends DocbookTestCase {
         // check that there is one instance of chapter with an id equal to
         // "newChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='" + labelId1 + "')->size()").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='" + labelId1 + "')->size()")
+                    .intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -919,7 +1115,8 @@ public class OperationTest extends DocbookTestCase {
         // check that there is no instance of chapter with an id equal to
         // "newChapterID2" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='" + labelId2 + "')->size()").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='" + labelId2 + "')->size()")
+                    .intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -929,7 +1126,8 @@ public class OperationTest extends DocbookTestCase {
         // check that there is no instance of chapter with an id equal to
         // "defaultChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='" + labelIdDefault + "')->size()").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='" + labelIdDefault + "')->size()")
+                    .intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();

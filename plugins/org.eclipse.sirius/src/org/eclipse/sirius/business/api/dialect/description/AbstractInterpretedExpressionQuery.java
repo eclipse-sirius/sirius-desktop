@@ -50,6 +50,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.tool.Let;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
@@ -601,6 +602,17 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                 VariableType returnTypes = res.getReturnTypes();
                 changeSelfType(returnTypes);
                 addDefinition(definitions, f.getIteratorName(), returnTypes);
+            }
+            if (current instanceof Let) {
+                Let let = (Let) current;
+                IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(let, ToolPackage.Literals.LET__VALUE_EXPRESSION);
+                ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, let.getValueExpression());
+                VariableType returnTypes = res.getReturnTypes();
+                if (SELF.equals(let.getVariableName())) {
+                    changeSelfType(returnTypes);
+                } else {
+                    addDefinition(definitions, let.getVariableName(), returnTypes);
+                }
             }
             if (current instanceof AcceleoVariable) {
                 AcceleoVariable f = (AcceleoVariable) current;

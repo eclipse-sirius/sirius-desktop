@@ -22,13 +22,14 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.For;
+import org.eclipse.sirius.viewpoint.description.tool.Let;
 import org.eclipse.sirius.viewpoint.description.tool.MoveElement;
 import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
@@ -44,7 +45,9 @@ import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
  */
 public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
 
-    /** contains all variables names for a vpeMapping precondition expression. */
+    /**
+     * contains all variables names for a vpeMapping precondition expression.
+     */
     private static final Set<String> VPE_MAPPING_PRECONDITION_VARIABLES;
 
     /**
@@ -262,8 +265,8 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      */
     protected IStatus checkCreateInstanceReferenceName(final IValidationContext ctx, final CreateInstance createInstanceOp) {
         if (createInstanceOp.getReferenceName() != null) {
-            return this.checkVariables(ctx, createInstanceOp.getReferenceName(), getDeclaredVariables(createInstanceOp), createInstanceOp, ToolPackage.eINSTANCE.getCreateInstance_ReferenceName()
-                    .getName());
+            return this.checkVariables(ctx, createInstanceOp.getReferenceName(), getDeclaredVariables(createInstanceOp), createInstanceOp,
+                    ToolPackage.eINSTANCE.getCreateInstance_ReferenceName().getName());
         }
         return ctx.createSuccessStatus();
     }
@@ -279,8 +282,8 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      * @return the validation status.
      */
     protected IStatus checkChangeContextBrowse(final IValidationContext ctx, final ChangeContext changeContextOp) {
-        return this.checkVariables(ctx, changeContextOp.getBrowseExpression(), getDeclaredVariables(changeContextOp), changeContextOp, ToolPackage.eINSTANCE.getChangeContext_BrowseExpression()
-                .getName());
+        return this.checkVariables(ctx, changeContextOp.getBrowseExpression(), getDeclaredVariables(changeContextOp), changeContextOp,
+                ToolPackage.eINSTANCE.getChangeContext_BrowseExpression().getName());
     }
 
     /**
@@ -298,6 +301,20 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
     }
 
     /**
+     * Checks that the feature <code>valueExpression</code> of the instance of
+     * <code>Let</code> doesn't contain invalid acceleo variables.
+     * 
+     * @param ctx
+     *            the validation context.
+     * @param letOp
+     *            the tool to check.
+     * @return the validation status.
+     */
+    protected IStatus checkLetValue(final IValidationContext ctx, final Let letOp) {
+        return this.checkVariables(ctx, letOp.getValueExpression(), getDeclaredVariables(letOp), letOp, ToolPackage.eINSTANCE.getLet_ValueExpression().getName());
+    }
+
+    /**
      * Checks that the feature <code>newContainerExpression</code> of the
      * instance of <code>MoveElement</code> doesn't contain invalid acceleo
      * variables.
@@ -309,8 +326,8 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      * @return the validation status.
      */
     protected IStatus checkMoveElementNewContainer(final IValidationContext ctx, final MoveElement moveElementOp) {
-        return this.checkVariables(ctx, moveElementOp.getNewContainerExpression(), getDeclaredVariables(moveElementOp), moveElementOp, ToolPackage.eINSTANCE.getMoveElement_NewContainerExpression()
-                .getName());
+        return this.checkVariables(ctx, moveElementOp.getNewContainerExpression(), getDeclaredVariables(moveElementOp), moveElementOp,
+                ToolPackage.eINSTANCE.getMoveElement_NewContainerExpression().getName());
     }
 
     /**
@@ -339,8 +356,8 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      * @return the validation status.
      */
     protected IStatus checkAcceleoVariableComputation(final IValidationContext ctx, final AcceleoVariable acceleoVariableOp) {
-        return this.checkVariables(ctx, acceleoVariableOp.getComputationExpression(), getDeclaredVariables(acceleoVariableOp), acceleoVariableOp, ToolPackage.eINSTANCE
-                .getAcceleoVariable_ComputationExpression().getName());
+        return this.checkVariables(ctx, acceleoVariableOp.getComputationExpression(), getDeclaredVariables(acceleoVariableOp), acceleoVariableOp,
+                ToolPackage.eINSTANCE.getAcceleoVariable_ComputationExpression().getName());
     }
 
     /**
@@ -374,6 +391,11 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
                     result.add(((For) next).getIteratorName());
                 } else if (next instanceof CreateInstance) {
                     final String name = ((CreateInstance) next).getVariableName();
+                    if (!StringUtil.isEmpty(name)) {
+                        result.add(name);
+                    }
+                } else if (next instanceof Let) {
+                    final String name = ((Let) next).getVariableName();
                     if (!StringUtil.isEmpty(name)) {
                         result.add(name);
                     }
@@ -597,6 +619,24 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
                 final IStatus superStatus = super.caseFor(object);
                 if (superStatus == null || superStatus.isOK()) {
                     this.currentStatus = checkFor(ctx, object);
+                } else {
+                    this.currentStatus = superStatus;
+                }
+            }
+            return this.currentStatus;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseLet(org.eclipse.sirius.viewpoint.description.tool.Let)
+         */
+        @Override
+        public IStatus caseLet(Let object) {
+            if (this.currentStatus.isOK()) {
+                final IStatus superStatus = super.caseLet(object);
+                if (superStatus == null || superStatus.isOK()) {
+                    this.currentStatus = checkLetValue(ctx, object);
                 } else {
                     this.currentStatus = superStatus;
                 }

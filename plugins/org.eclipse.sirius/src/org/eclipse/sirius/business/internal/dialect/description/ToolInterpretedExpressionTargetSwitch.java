@@ -35,6 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
 import org.eclipse.sirius.viewpoint.description.tool.For;
+import org.eclipse.sirius.viewpoint.description.tool.Let;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
@@ -517,4 +518,18 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         }
         return result;
     }
+    
+    @Override
+    public Option<Collection<String>> caseLet(Let object) {
+        Option<Collection<String>> result = null;
+        switch (getFeatureId(object.eClass())) {
+        case DO_NOT_CONSIDER_FEATURE:
+            Collection<String> target = Collections.singleton(object.getVariableName());
+            result = Options.newSome(target);
+            break;
+        default:
+            break;
+        }
+        return result;
+    };
 }

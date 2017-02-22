@@ -41,14 +41,15 @@ import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.util.ToolSwitch;
 import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 import org.eclipse.sirius.viewpoint.description.tool.For;
+import org.eclipse.sirius.viewpoint.description.tool.Let;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
@@ -543,6 +544,11 @@ public class DiagramExistingExpressionVariablesConstraint extends AbstractConstr
                     result.add(((For) next).getIteratorName());
                 } else if (next instanceof CreateInstance) {
                     final String name = ((CreateInstance) next).getVariableName();
+                    if (!StringUtil.isEmpty(name)) {
+                        result.add(name);
+                    }
+                } else if (next instanceof Let) {
+                    final String name = ((Let) next).getVariableName();
                     if (!StringUtil.isEmpty(name)) {
                         result.add(name);
                     }

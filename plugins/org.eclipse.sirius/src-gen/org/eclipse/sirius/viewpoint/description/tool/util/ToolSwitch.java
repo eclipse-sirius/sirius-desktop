@@ -48,6 +48,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialNodeCreationOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.tool.Let;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference;
@@ -81,21 +82,21 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  * {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object and proceeding up the inheritance hierarchy until a non-null result is
  * returned, which is the result of the switch. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage
  * @generated
  */
 public class ToolSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static ToolPackage modelPackage;
 
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ToolSwitch() {
@@ -107,7 +108,7 @@ public class ToolSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -118,7 +119,7 @@ public class ToolSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -134,7 +135,7 @@ public class ToolSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -912,6 +913,20 @@ public class ToolSwitch<T> {
             }
             return result;
         }
+        case ToolPackage.LET: {
+            Let let = (Let) theEObject;
+            T result = caseLet(let);
+            if (result == null) {
+                result = caseContainerModelOperation(let);
+            }
+            if (result == null) {
+                result = caseModelOperation(let);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         default:
             return defaultCase(theEObject);
         }
@@ -920,7 +935,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Entry</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Entry</em>'.
@@ -964,7 +979,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Description</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Description</em>'.
@@ -1009,7 +1024,7 @@ public class ToolSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Pane Based Selection Wizard Description</em>
      * '. <!-- begin-user-doc --> This implementation returns null; returning a non-null result will terminate the
      * switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Pane Based Selection Wizard Description</em>
@@ -1025,7 +1040,7 @@ public class ToolSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Representation Creation Description</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Representation Creation Description</em>'.
@@ -1040,7 +1055,7 @@ public class ToolSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Representation Navigation Description</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Representation Navigation Description</em>'.
@@ -1144,7 +1159,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Popup Menu</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Popup Menu</em>'.
@@ -1473,7 +1488,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Set Value</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Set Value</em>'.
@@ -1487,7 +1502,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Set Object</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Set Object</em>'.
@@ -1501,7 +1516,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Unset</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Unset</em>'.
@@ -1515,7 +1530,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Move Element</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Move Element</em>'.
@@ -1544,7 +1559,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>For</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>For</em>'.
@@ -1558,7 +1573,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>If</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>If</em>'.
@@ -1572,7 +1587,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Delete View</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Delete View</em>'.
@@ -1586,7 +1601,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Name Variable</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Name Variable</em>'.
@@ -1645,7 +1660,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Case</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Case</em>'.
@@ -1659,7 +1674,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Switch Child</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Switch Child</em>'.
@@ -1673,7 +1688,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Default</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Default</em>'.
@@ -1687,7 +1702,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Switch</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Switch</em>'.
@@ -1695,6 +1710,20 @@ public class ToolSwitch<T> {
      * @generated
      */
     public T caseSwitch(Switch object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Let</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Let</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseLet(Let object) {
         return null;
     }
 
@@ -1761,7 +1790,7 @@ public class ToolSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Sub Variable</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Sub Variable</em>'.
@@ -1791,7 +1820,7 @@ public class ToolSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>EObject</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch, but this is the last case
      * anyway. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>EObject</em>'.

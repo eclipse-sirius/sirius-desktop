@@ -44,6 +44,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialNodeCreationOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.tool.Let;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference;
 import org.eclipse.sirius.viewpoint.description.tool.MoveElement;
 import org.eclipse.sirius.viewpoint.description.tool.NameVariable;
@@ -66,13 +67,13 @@ import org.eclipse.sirius.viewpoint.description.tool.Unset;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static ToolFactory init() {
@@ -89,7 +90,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ToolFactoryImpl() {
@@ -98,7 +99,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,6 +187,8 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
             return createDefault();
         case ToolPackage.SWITCH:
             return createSwitch();
+        case ToolPackage.LET:
+            return createLet();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -193,7 +196,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -208,7 +211,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -317,7 +320,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -344,7 +347,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -355,7 +358,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -366,7 +369,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -377,7 +380,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -388,7 +391,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -399,7 +402,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -410,7 +413,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -421,7 +424,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -432,7 +435,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -443,7 +446,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -454,7 +457,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -465,7 +468,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -476,7 +479,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -499,7 +502,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -510,7 +513,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -521,7 +524,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -532,7 +535,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -543,7 +546,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -554,7 +557,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -565,7 +568,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -576,7 +579,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -587,7 +590,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -598,7 +601,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -609,7 +612,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -620,7 +623,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -631,7 +634,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -642,7 +645,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -653,7 +656,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -664,7 +667,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -675,7 +678,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -686,7 +689,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -697,7 +700,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -708,7 +711,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -719,7 +722,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -730,7 +733,18 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public Let createLet() {
+        LetImpl let = new LetImpl();
+        return let;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public DragSource createDragSourceFromString(EDataType eDataType, String initialValue) {
@@ -743,7 +757,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertDragSourceToString(EDataType eDataType, Object instanceValue) {
@@ -752,7 +766,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -762,7 +776,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

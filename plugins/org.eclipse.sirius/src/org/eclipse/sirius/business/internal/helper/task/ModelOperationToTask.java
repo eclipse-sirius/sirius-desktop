@@ -20,6 +20,7 @@ import org.eclipse.sirius.business.internal.helper.task.operations.CreateInstanc
 import org.eclipse.sirius.business.internal.helper.task.operations.ExternalJavaActionTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.ForTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.IfTask;
+import org.eclipse.sirius.business.internal.helper.task.operations.LetTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.MoveElementTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.RemoveElementTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.SetValueTask;
@@ -38,6 +39,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.If;
+import org.eclipse.sirius.viewpoint.description.tool.Let;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.MoveElement;
 import org.eclipse.sirius.viewpoint.description.tool.RemoveElement;
@@ -138,6 +140,8 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
             task = new ExternalJavaActionTask(context, extPackage, ((ExternalJavaActionCall) op).getAction(), interpreter, uiCallback);
         } else if (op instanceof Switch) {
             task = new SwitchTask(context, extPackage, (Switch) op, session, uiCallback);
+        } else if (op instanceof Let) {
+            task = new LetTask(context, extPackage, (Let) op, interpreter);
         }
         return task;
     }

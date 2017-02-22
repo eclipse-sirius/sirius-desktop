@@ -675,6 +675,10 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/Switch/cases"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/Switch/default"/>
         </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/Let">
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Let/variableName"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Let/valueExpression"/>
+        </genClasses>
       </nestedGenPackages>
       <nestedGenPackages prefix="Validation" basePackage="org.eclipse.sirius.viewpoint.description"
           disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="viewpoint.ecore#//description/validation">

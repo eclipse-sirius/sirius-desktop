@@ -358,6 +358,9 @@ public final class Messages {
     public static String LaunchRunnableTask_label;
 
     @TranslatableMessage
+    public static String LetTask_label;
+
+    @TranslatableMessage
     public static String LoadEMFResource_loadingErrorMsg;
 
     @TranslatableMessage

@@ -166,6 +166,8 @@ public class InitialOperationItemProvider extends ItemProviderAdapter
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createDeleteView()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createSwitch()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createLet()));
     }
 
     /**
