@@ -215,7 +215,7 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
          * @param sourceEditPart
          *            the execution edit part
          */
-        public LifeLineSelectionDragEditPartsTrackerEx(EditPart sourceEditPart) {
+        LifeLineSelectionDragEditPartsTrackerEx(EditPart sourceEditPart) {
             super(sourceEditPart);
         }
 

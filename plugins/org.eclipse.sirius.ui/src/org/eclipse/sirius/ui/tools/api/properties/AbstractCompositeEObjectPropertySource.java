@@ -237,7 +237,7 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
          */
         private Identifier identifier;
 
-        public PropertyDescriptorDecorator(final IPropertyDescriptor decorated, final String category, final EObject eObject) {
+        PropertyDescriptorDecorator(final IPropertyDescriptor decorated, final String category, final EObject eObject) {
             this.category = category;
             this.decorated = decorated;
             this.identifier = new Identifier(eObject, this.decorated.getId());
@@ -470,7 +470,7 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
          * @throws IllegalArgumentException
          *             if <code>eObject</code> is <code>null</code>.
          */
-        public EObjectIndexer(final int index, final EObject eObject) throws IllegalArgumentException {
+        EObjectIndexer(final int index, final EObject eObject) throws IllegalArgumentException {
             if (eObject == null) {
                 throw new IllegalArgumentException();
             }

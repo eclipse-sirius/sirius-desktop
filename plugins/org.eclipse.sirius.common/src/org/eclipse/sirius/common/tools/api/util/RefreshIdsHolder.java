@@ -113,7 +113,7 @@ class StateFullIDFactoryAdapter extends AdapterImpl {
      * @param id
      *            element ID.
      */
-    public StateFullIDFactoryAdapter(final RefreshIdsHolder id) {
+    StateFullIDFactoryAdapter(final RefreshIdsHolder id) {
         this.id = id;
     }
 

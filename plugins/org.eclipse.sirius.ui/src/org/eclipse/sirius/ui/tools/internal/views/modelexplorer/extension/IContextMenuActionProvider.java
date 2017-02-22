@@ -29,7 +29,7 @@ public interface IContextMenuActionProvider {
      *            the element on which context menu will be displayed
      * @return the actions to add, an empty collection if none.
      */
-    Iterable<IAction> getContextMenuActions(final ISelection selection);
+    Iterable<IAction> getContextMenuActions(ISelection selection);
 
     /**
      * Get the actions to add to context menu for the selection.
@@ -38,6 +38,6 @@ public interface IContextMenuActionProvider {
      *            the element on which context menu will be displayed
      * @return the actions to add, an empty collection if none.
      */
-    Iterable<IContributionItem> getContextualMenuContributionItems(final ISelection selection);
+    Iterable<IContributionItem> getContextualMenuContributionItems(ISelection selection);
 
 }

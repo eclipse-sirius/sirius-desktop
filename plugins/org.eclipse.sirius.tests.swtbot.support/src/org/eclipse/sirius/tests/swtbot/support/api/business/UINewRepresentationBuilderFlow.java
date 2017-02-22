@@ -34,7 +34,7 @@ public class UINewRepresentationBuilderFlow {
          *            Tree item on which you want to create new representation.
          * @return Current {@link NameChoice}
          */
-        NameChoice<R> on(final SWTBotTreeItem treeItem);
+        NameChoice<R> on(SWTBotTreeItem treeItem);
     }
 
     /**
@@ -54,7 +54,7 @@ public class UINewRepresentationBuilderFlow {
          *            name of the new representation.
          * @return Current {@link EndFlow}
          */
-        EndFlow<R> withName(final String name);
+        EndFlow<R> withName(String name);
 
         /**
          * New representation with default name.

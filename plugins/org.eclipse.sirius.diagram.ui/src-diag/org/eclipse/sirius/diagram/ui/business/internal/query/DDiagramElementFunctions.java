@@ -25,7 +25,7 @@ public final class DDiagramElementFunctions {
      * 
      * @author pcdavid
      */
-    private static enum IsVisiblePredicate implements Predicate<DDiagramElement> {
+    private enum IsVisiblePredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
         public boolean apply(DDiagramElement input) {

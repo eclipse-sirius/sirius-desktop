@@ -105,7 +105,7 @@ public abstract class AbstractDTreeEditor extends EditorPart
     private static final class SessionHandlingForEditor extends SessionManagerListener.Stub {
         private AbstractDTreeEditor editor;
 
-        public SessionHandlingForEditor(AbstractDTreeEditor editor) {
+        SessionHandlingForEditor(AbstractDTreeEditor editor) {
             this.editor = editor;
         }
 

@@ -147,7 +147,7 @@ public class ModelContributor {
 
         final EObject targetObject;
 
-        public ResolvedContribution(Contribution contribution, EObject sourceObject, EObject targetObject) {
+        ResolvedContribution(Contribution contribution, EObject sourceObject, EObject targetObject) {
             this.contribution = contribution;
             this.sourceObject = sourceObject;
             this.targetObject = targetObject;
@@ -173,7 +173,7 @@ public class ModelContributor {
 
         final EObject targetObject;
 
-        public ResolvedFeatureContribution(FeatureContribution featureContribution, EObject sourceObject, EObject targetObject) {
+        ResolvedFeatureContribution(FeatureContribution featureContribution, EObject sourceObject, EObject targetObject) {
             this.featureContribution = featureContribution;
             this.sourceObject = sourceObject;
             this.targetObject = targetObject;

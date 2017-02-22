@@ -22,7 +22,7 @@ import org.eclipse.jface.viewers.Viewer;
 class CustomSiriusAdapterFactoryLabelProvider extends StyledLabelProvider {
     private boolean showTypes;
 
-    public CustomSiriusAdapterFactoryLabelProvider(AdapterFactory adapterFactory, Viewer viewer) {
+    CustomSiriusAdapterFactoryLabelProvider(AdapterFactory adapterFactory, Viewer viewer) {
         super(adapterFactory, viewer);
     }
 

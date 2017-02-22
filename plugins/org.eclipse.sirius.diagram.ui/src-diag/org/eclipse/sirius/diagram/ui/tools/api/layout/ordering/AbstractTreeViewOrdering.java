@@ -271,7 +271,7 @@ public abstract class AbstractTreeViewOrdering implements ViewOrdering {
          * @param view
          *            the view of the node.
          */
-        public AirTree(final View view) {
+        AirTree(final View view) {
             this.view = view;
         }
 
@@ -320,13 +320,6 @@ public abstract class AbstractTreeViewOrdering implements ViewOrdering {
         private int orientation = PositionConstants.HORIZONTAL;
 
         /**
-         * Default constructor.
-         */
-        public UserAwareCapableOrdering() {
-            // empty.
-        }
-
-        /**
          * 
          * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractNodeViewOrdering#compare(org.eclipse.gmf.runtime.notation.Node,
          *      org.eclipse.gmf.runtime.notation.Node)
@@ -372,8 +365,8 @@ public abstract class AbstractTreeViewOrdering implements ViewOrdering {
         /**
          * Creates an empty grid.
          */
-        public ExtendedGrid() {
-            this.grid = new ArrayList<List<Object>>();
+        ExtendedGrid() {
+            this.grid = new ArrayList<>();
             this.nbColumns = 0;
             this.nbLines = 0;
         }

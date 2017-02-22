@@ -135,7 +135,7 @@ public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperat
         /**
          * Constructor.
          */
-        public CustomVerticalPositionFunction(SequenceDDiagram diagram) {
+        CustomVerticalPositionFunction(SequenceDDiagram diagram) {
             super(diagram);
         }
 

@@ -66,7 +66,7 @@ public final class SWTBotUtils {
 
         Composite compositeToInvestigate;
 
-        public LabelChecker(String label, Composite composite) {
+        LabelChecker(String label, Composite composite) {
             super();
             this.labelToLookFor = label;
             this.compositeToInvestigate = composite;

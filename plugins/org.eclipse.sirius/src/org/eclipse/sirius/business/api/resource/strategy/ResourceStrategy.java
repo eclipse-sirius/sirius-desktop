@@ -41,7 +41,7 @@ public interface ResourceStrategy {
      * 
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
-    public enum ResourceStrategyType {
+    enum ResourceStrategyType {
         /**
          * To contribute a resource strategy that handles this type, you need to
          * implement method

@@ -168,7 +168,7 @@ public class StylePropertySection extends SemanticPropertySection {
          * An instance is constructed from an object and its item property
          * source.
          */
-        public StylePropertySource(final Object object, final IItemPropertySource itemPropertySource) {
+        StylePropertySource(final Object object, final IItemPropertySource itemPropertySource) {
             super(object, itemPropertySource);
             this.view = null;
         }
@@ -177,7 +177,7 @@ public class StylePropertySection extends SemanticPropertySection {
          * An instance is constructed from an object, its edit part and its item
          * property source.
          */
-        public StylePropertySource(final Object object, final View view, final IItemPropertySource itemPropertySource) {
+        StylePropertySource(final Object object, final View view, final IItemPropertySource itemPropertySource) {
             super(object, itemPropertySource);
             this.view = view;
         }

@@ -523,7 +523,7 @@ public class VisualBindingManager {
          * @param foregrounColor
          *            the forground color
          */
-        public PatternDescriptor(final int x, final int y, final int w, final int h, final Color backgroundColor, final Color foregrounColor) {
+        PatternDescriptor(final int x, final int y, final int w, final int h, final Color backgroundColor, final Color foregrounColor) {
             this.x = x;
             this.y = y;
             this.w = w;
@@ -808,7 +808,7 @@ public class VisualBindingManager {
 
         final int size;
 
-        public FontStyleDescriptor(final List<FontFormat> format, final int size, final String name) {
+        FontStyleDescriptor(final List<FontFormat> format, final int size, final String name) {
             this.format = format.isEmpty() ? null : EnumSet.copyOf(format);
             this.size = size;
             this.name = name;

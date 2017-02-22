@@ -33,7 +33,7 @@ public class DTableTreeFocusListener implements FocusListener {
         /**
          * The default constructor.
          */
-        public DisabledAction() {
+        DisabledAction() {
             setEnabled(false);
         }
     }

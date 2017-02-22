@@ -282,7 +282,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
          * @param styleDescription
          *            the styledescription.
          */
-        public StyleWrapper(final DiagramElementMapping vpElementMapping, final StyleDescription styleDescription) {
+        StyleWrapper(final DiagramElementMapping vpElementMapping, final StyleDescription styleDescription) {
             this.vpElementMapping = vpElementMapping;
             this.style = styleDescription;
             this.hashCode = computeHashCode();

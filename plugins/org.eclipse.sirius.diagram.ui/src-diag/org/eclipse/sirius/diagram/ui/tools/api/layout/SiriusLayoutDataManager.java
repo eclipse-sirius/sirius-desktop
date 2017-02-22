@@ -33,7 +33,7 @@ public interface SiriusLayoutDataManager {
      *            The key
      * @return the layout data corresponding to the key or null if not found.
      */
-    AbstractLayoutData getLayoutData(final LayoutDataKey key);
+    AbstractLayoutData getLayoutData(LayoutDataKey key);
 
     /**
      * Add a layout data according to the key.
@@ -43,7 +43,7 @@ public interface SiriusLayoutDataManager {
      * @param layoutData
      *            The layout data
      */
-    void addLayoutData(final LayoutDataKey key, final AbstractLayoutData layoutData);
+    void addLayoutData(LayoutDataKey key, AbstractLayoutData layoutData);
 
     /**
      * Create a key corresponding to the semanticDecorator and available for
@@ -54,7 +54,7 @@ public interface SiriusLayoutDataManager {
      * @return a new key corresponding to the semanticDecorator and available
      *         for this manager.
      */
-    LayoutDataKey createKey(final DSemanticDecorator semanticDecorator);
+    LayoutDataKey createKey(DSemanticDecorator semanticDecorator);
 
     /**
      * Store the layout data for this edit part and all it's children.

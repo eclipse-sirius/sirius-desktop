@@ -40,7 +40,7 @@ public interface DisplayService {
      *            the element
      * @return true if the element is visible, false otherwise
      */
-    boolean isDisplayed(final DDiagram diagram, final DDiagramElement element);
+    boolean isDisplayed(DDiagram diagram, DDiagramElement element);
 
     /**
      * Check if an element has to be displayed in the diagram.
@@ -53,7 +53,7 @@ public interface DisplayService {
      *            the element
      * @return true if the element is visible, false otherwise
      */
-    boolean computeVisibility(DiagramMappingsManager session, final DDiagram diagram, final DDiagramElement element);
+    boolean computeVisibility(DiagramMappingsManager session, DDiagram diagram, DDiagramElement element);
 
     /**
      * Check if the label of this element has to be displayed in the diagram
@@ -66,7 +66,7 @@ public interface DisplayService {
      * @return true if the label of element must be visible, false otherwise
      * @since 0.9.0
      */
-    boolean computeLabelVisibility(final DDiagram diagram, final DDiagramElement element);
+    boolean computeLabelVisibility(DDiagram diagram, DDiagramElement element);
 
     /**
      * Refresh visibility of given diagram elements.
@@ -75,6 +75,6 @@ public interface DisplayService {
      *            the given diagram.
      * @since 0.9.0
      */
-    void refreshAllElementsVisibility(final DDiagram diagram);
+    void refreshAllElementsVisibility(DDiagram diagram);
 
 }

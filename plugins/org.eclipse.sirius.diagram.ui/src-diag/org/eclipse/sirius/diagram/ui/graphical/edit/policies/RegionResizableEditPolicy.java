@@ -592,7 +592,7 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
          *            the region part to notify when drawer syle is expanded or
          *            collapsed.
          */
-        public RegionCollapseHandle(IGraphicalEditPart owner, LabelAlignment alignment, AbstractDiagramElementContainerEditPart regionPart) {
+        RegionCollapseHandle(IGraphicalEditPart owner, LabelAlignment alignment, AbstractDiagramElementContainerEditPart regionPart) {
             super(owner);
             this.regionPart = regionPart;
             setLocator(new RegionCollapseHandleLocator(alignment));
@@ -611,7 +611,7 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         private class RegionCollapseHandleLocator implements Locator {
             private boolean isRegionTextLeftAligned;
 
-            public RegionCollapseHandleLocator(LabelAlignment alignment) {
+            RegionCollapseHandleLocator(LabelAlignment alignment) {
                 this.isRegionTextLeftAligned = LabelAlignment.LEFT.equals(alignment);
             }
 

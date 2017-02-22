@@ -183,7 +183,7 @@ public class ExtractRepresentationsWizard extends Wizard {
 
     private class DiagramFileCreationOperation extends WorkspaceModifyOperation {
 
-        public DiagramFileCreationOperation() {
+        DiagramFileCreationOperation() {
             super(null);
         }
 

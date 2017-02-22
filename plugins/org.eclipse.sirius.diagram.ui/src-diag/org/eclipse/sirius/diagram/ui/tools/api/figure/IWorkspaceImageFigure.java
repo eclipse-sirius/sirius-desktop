@@ -27,7 +27,7 @@ public interface IWorkspaceImageFigure extends IFigure {
      * @param containerStyle
      *            the style of the container
      */
-    void refreshFigure(final ContainerStyle containerStyle);
+    void refreshFigure(ContainerStyle containerStyle);
 
     /**
      * refresh the figure.
@@ -35,7 +35,7 @@ public interface IWorkspaceImageFigure extends IFigure {
      * @param workspaceImage
      *            the image associated to the figure
      */
-    void refreshFigure(final WorkspaceImage workspaceImage);
+    void refreshFigure(WorkspaceImage workspaceImage);
 
     /**
      * Get the image aspect ratio.

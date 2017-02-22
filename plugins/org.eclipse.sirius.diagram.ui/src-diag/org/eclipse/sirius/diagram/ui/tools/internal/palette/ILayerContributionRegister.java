@@ -26,7 +26,7 @@ public interface ILayerContributionRegister {
      * @param layer
      *            the layer to add
      */
-    void addLayer(final Layer layer);
+    void addLayer(Layer layer);
 
     /**
      * Remove a layer as section contributor.
@@ -34,7 +34,7 @@ public interface ILayerContributionRegister {
      * @param layer
      *            the layer to remove
      */
-    void removeLayer(final Layer layer);
+    void removeLayer(Layer layer);
 
     /**
      * Check if an activated layer contribute to this section drawer.

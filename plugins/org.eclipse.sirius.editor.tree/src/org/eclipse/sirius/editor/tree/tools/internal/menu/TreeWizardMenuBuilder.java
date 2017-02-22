@@ -99,7 +99,7 @@ public class TreeWizardMenuBuilder extends AbstractMenuBuilder {
 
 class InitializeTreeFromEClass extends AbstractEObjectRefactoringAction {
 
-    public InitializeTreeFromEClass(IEditorPart editor, ISelection selection) {
+    InitializeTreeFromEClass(IEditorPart editor, ISelection selection) {
         super(editor, selection);
     }
 
@@ -180,7 +180,7 @@ class TreeDescriptionBuilderFromEClass {
 
     private EClassHierarchy hiearchy;
 
-    public TreeDescriptionBuilderFromEClass(TreeDescription treeDesc, EClass eClassToStartFrom) {
+    TreeDescriptionBuilderFromEClass(TreeDescription treeDesc, EClass eClassToStartFrom) {
         this.rootEClass = eClassToStartFrom;
         this.treeDesc = treeDesc;
         /*
@@ -355,7 +355,7 @@ class EClassHierarchy {
 
     private Multimap<EClass, EClass> mostSpecific = HashMultimap.create();
 
-    public EClassHierarchy(ResourceSet resourceSet) {
+    EClassHierarchy(ResourceSet resourceSet) {
 
         Set<EClass> allClasses = Sets.newLinkedHashSet(Lists.newArrayList(Iterators.filter(resourceSet.getAllContents(), EClass.class)));
 

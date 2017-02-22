@@ -137,7 +137,7 @@ public class DesignerViews {
 
         private final SWTBotButton okButton;
 
-        public OKButtonEnabledCondition(final SWTBotButton okButton) {
+        OKButtonEnabledCondition(final SWTBotButton okButton) {
             this.okButton = okButton;
         }
 

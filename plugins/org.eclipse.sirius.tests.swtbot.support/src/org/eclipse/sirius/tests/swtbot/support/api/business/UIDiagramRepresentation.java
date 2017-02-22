@@ -40,7 +40,7 @@ public class UIDiagramRepresentation extends AbstractUIRepresentation<SWTBotSiri
      * 
      * @author dlecan
      */
-    public static enum ZoomLevel {
+    public enum ZoomLevel {
         /**
          * Zoom 25%.
          */
@@ -89,7 +89,7 @@ public class UIDiagramRepresentation extends AbstractUIRepresentation<SWTBotSiri
 
         private final double amount;
 
-        private ZoomLevel(final String level, final double amount) {
+        ZoomLevel(final String level, final double amount) {
             this.level = level;
             this.amount = amount;
         }

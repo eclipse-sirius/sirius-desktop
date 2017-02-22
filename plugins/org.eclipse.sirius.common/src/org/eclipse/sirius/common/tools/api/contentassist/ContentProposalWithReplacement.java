@@ -22,7 +22,7 @@ public class ContentProposalWithReplacement extends ContentProposal {
      * 
      * @author <a href="mailto:stephane.begaudeau@obeo.fr">Stephane Begaudeau</a>
      */
-    public static enum ImageKind {
+    public enum ImageKind {
         /**
          * A SWT image.
          */

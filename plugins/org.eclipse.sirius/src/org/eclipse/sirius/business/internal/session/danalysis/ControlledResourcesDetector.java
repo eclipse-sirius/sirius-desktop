@@ -155,7 +155,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     private static class RefreshControlledResourcesCommand extends RecordingCommand {
         private final DAnalysisSessionImpl session;
 
-        public RefreshControlledResourcesCommand(DAnalysisSessionImpl session) {
+        RefreshControlledResourcesCommand(DAnalysisSessionImpl session) {
             super(session.getTransactionalEditingDomain(), Messages.ControlledResourcesDetector_refreshCommandLabel);
             this.session = session;
         }

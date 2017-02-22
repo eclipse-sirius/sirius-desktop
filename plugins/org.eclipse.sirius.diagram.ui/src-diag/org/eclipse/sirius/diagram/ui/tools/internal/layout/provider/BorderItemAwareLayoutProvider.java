@@ -199,11 +199,11 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
          */
         int side;
 
-        public BorderItemOppositeElementData(Point centerPoint) {
+        BorderItemOppositeElementData(Point centerPoint) {
             this(centerPoint, PositionConstants.NONE);
         }
 
-        public BorderItemOppositeElementData(Point centerPoint, int side) {
+        BorderItemOppositeElementData(Point centerPoint, int side) {
             center = centerPoint;
             this.side = side;
         }
@@ -227,7 +227,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
          * 
          * @param oppositeElementsDataByEditPart
          */
-        public AbstractCoordinateComparator(final Map<IBorderItemEditPart, BorderItemOppositeElementData> oppositeElementsDataByEditPart) {
+        AbstractCoordinateComparator(final Map<IBorderItemEditPart, BorderItemOppositeElementData> oppositeElementsDataByEditPart) {
             this.oppositeElementsDataByEditPart = oppositeElementsDataByEditPart;
         }
     }
@@ -243,7 +243,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
          * 
          * @param vectorsByEditPart
          */
-        public EastCoordinateComparator(final Map<IBorderItemEditPart, BorderItemOppositeElementData> oppositeElementsDataByEditPart) {
+        EastCoordinateComparator(final Map<IBorderItemEditPart, BorderItemOppositeElementData> oppositeElementsDataByEditPart) {
             super(oppositeElementsDataByEditPart);
         }
 
@@ -282,7 +282,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
          * 
          * @param vectorsByEditPart
          */
-        public SouthCoordinateComparator(final Map<IBorderItemEditPart, BorderItemOppositeElementData> targetPointsByEditPart) {
+        SouthCoordinateComparator(final Map<IBorderItemEditPart, BorderItemOppositeElementData> targetPointsByEditPart) {
             super(targetPointsByEditPart);
         }
 
@@ -321,7 +321,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
          * 
          * @param vectorsByEditPart
          */
-        public WestCoordinateComparator(final Map<IBorderItemEditPart, BorderItemOppositeElementData> targetPointsByEditPart) {
+        WestCoordinateComparator(final Map<IBorderItemEditPart, BorderItemOppositeElementData> targetPointsByEditPart) {
             super(targetPointsByEditPart);
         }
 
@@ -360,7 +360,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
          * 
          * @param vectorsByEditPart
          */
-        public NorthCoordinateComparator(final Map<IBorderItemEditPart, BorderItemOppositeElementData> targetPointsByEditPart) {
+        NorthCoordinateComparator(final Map<IBorderItemEditPart, BorderItemOppositeElementData> targetPointsByEditPart) {
             super(targetPointsByEditPart);
         }
 

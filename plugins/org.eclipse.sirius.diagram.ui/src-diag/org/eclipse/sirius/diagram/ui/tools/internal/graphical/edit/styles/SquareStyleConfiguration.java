@@ -160,7 +160,7 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
          * @param p
          *            the position of the anchor.
          */
-        public SquareStyleSlidableAnchor(final IFigure f, final PrecisionPoint p) {
+        SquareStyleSlidableAnchor(final IFigure f, final PrecisionPoint p) {
             super(f, p);
         }
 
@@ -170,7 +170,7 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
          * @param f
          *            the figure (the bundled image).
          */
-        public SquareStyleSlidableAnchor(final IFigure f) {
+        SquareStyleSlidableAnchor(final IFigure f) {
             super(f);
         }
 

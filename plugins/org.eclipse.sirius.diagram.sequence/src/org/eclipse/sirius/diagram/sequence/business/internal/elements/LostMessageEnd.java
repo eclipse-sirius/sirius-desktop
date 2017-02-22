@@ -49,7 +49,7 @@ public class LostMessageEnd extends AbstractSequenceNode {
      * Predicate to check whether a Sirius DDiagramElement represents an Lost
      * Message End.
      */
-    private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
+    private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
         @Override

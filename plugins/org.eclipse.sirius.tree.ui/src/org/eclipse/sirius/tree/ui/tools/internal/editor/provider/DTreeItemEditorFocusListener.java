@@ -40,7 +40,7 @@ public class DTreeItemEditorFocusListener implements FocusListener {
          * @param textCellEditor
          *            The current cell editor
          */
-        public StandardCutAction(final TextCellEditor textCellEditor) {
+        StandardCutAction(final TextCellEditor textCellEditor) {
             this.textCellEditor = textCellEditor;
         }
 
@@ -64,7 +64,7 @@ public class DTreeItemEditorFocusListener implements FocusListener {
          * @param textCellEditor
          *            The current cell editor
          */
-        public StandardCopyAction(final TextCellEditor textCellEditor) {
+        StandardCopyAction(final TextCellEditor textCellEditor) {
             this.textCellEditor = textCellEditor;
         }
 
@@ -88,7 +88,7 @@ public class DTreeItemEditorFocusListener implements FocusListener {
          * @param textCellEditor
          *            The current cell editor
          */
-        public StandardPasteAction(final TextCellEditor textCellEditor) {
+        StandardPasteAction(final TextCellEditor textCellEditor) {
             this.textCellEditor = textCellEditor;
         }
 

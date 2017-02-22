@@ -58,7 +58,7 @@ public interface DialectEditor extends IEditorPart, IGotoMarker, IEditingDomainP
      * @param dialogFactory
      *            the dialog factory to use
      */
-    void setDialogFactory(final DialectEditorDialogFactory dialogFactory);
+    void setDialogFactory(DialectEditorDialogFactory dialogFactory);
 
     /**
      * Returns the {@link DialectEditorDialogFactory} associated to this editor.

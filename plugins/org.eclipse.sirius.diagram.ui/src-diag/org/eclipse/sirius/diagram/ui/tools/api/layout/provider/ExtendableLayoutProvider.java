@@ -36,7 +36,7 @@ public interface ExtendableLayoutProvider {
      *            a node.
      * @return the node metric
      */
-    Rectangle provideNodeMetrics(final Node node);
+    Rectangle provideNodeMetrics(Node node);
 
     /**
      * return the layout extender used.

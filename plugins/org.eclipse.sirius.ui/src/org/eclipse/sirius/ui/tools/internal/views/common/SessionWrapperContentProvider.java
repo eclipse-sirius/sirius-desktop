@@ -318,7 +318,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
          * @param scope
          *            the viewpoints to test.
          */
-        public InViewpointPredicate(Collection<Viewpoint> scope) {
+        InViewpointPredicate(Collection<Viewpoint> scope) {
             this.scope = scope;
         }
 

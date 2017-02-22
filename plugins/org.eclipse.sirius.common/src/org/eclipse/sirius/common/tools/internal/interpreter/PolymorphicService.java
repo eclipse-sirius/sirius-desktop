@@ -34,7 +34,7 @@ class PolymorphicService implements IPolymorphicService {
 
     private final Set<IMonomorphicService> implementers = Sets.newLinkedHashSet();
 
-    public PolymorphicService(String name) {
+    PolymorphicService(String name) {
         this.name = Preconditions.checkNotNull(name);
     }
 

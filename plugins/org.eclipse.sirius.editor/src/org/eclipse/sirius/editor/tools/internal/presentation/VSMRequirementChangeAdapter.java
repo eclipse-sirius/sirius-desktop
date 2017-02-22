@@ -46,7 +46,7 @@ class VSMRequirementChangeAdapter extends EContentAdapter {
      */
     private final Multimap<URI, Viewpoint> requirements = HashMultimap.create();
 
-    public VSMRequirementChangeAdapter(Resource res, DynamicVSMLoader loader) {
+    VSMRequirementChangeAdapter(Resource res, DynamicVSMLoader loader) {
         this.resource = res;
         this.loader = loader;
     }

@@ -220,7 +220,7 @@ public class NotificationFigure extends RectangleFigure {
      */
     private static class Cross extends Shape {
 
-        public Cross() {
+        Cross() {
             this.setSize(10, 10);
         }
 

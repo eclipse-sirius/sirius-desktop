@@ -45,7 +45,7 @@ public final class EditPartsHelper {
      * 
      * @author pcdavid
      */
-    private static enum IsValidPredicate implements Predicate<IGraphicalEditPart> {
+    private enum IsValidPredicate implements Predicate<IGraphicalEditPart> {
         INSTANCE;
 
         public boolean apply(IGraphicalEditPart input) {

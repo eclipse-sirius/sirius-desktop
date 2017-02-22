@@ -37,7 +37,7 @@ public interface IDiagramElementState<D extends DDiagramElement> {
      * @param element
      *            Element which state is to be saved
      */
-    void storeElementState(final EObject target, final DiagramElementMapping mapping, final D element);
+    void storeElementState(EObject target, DiagramElementMapping mapping, D element);
 
     /**
      * Sets the state of the given element to the values saved within this
@@ -46,7 +46,7 @@ public interface IDiagramElementState<D extends DDiagramElement> {
      * @param element
      *            Element which state is to be restored.
      */
-    void restoreElementState(final D element);
+    void restoreElementState(D element);
 
     /**
      * Returns the identifier of this state.

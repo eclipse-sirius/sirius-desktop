@@ -89,7 +89,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
          * @param vp
          *            the viewpoint
          */
-        public Item(Viewpoint vp) {
+        Item(Viewpoint vp) {
             this.viewpoint = vp;
         }
 

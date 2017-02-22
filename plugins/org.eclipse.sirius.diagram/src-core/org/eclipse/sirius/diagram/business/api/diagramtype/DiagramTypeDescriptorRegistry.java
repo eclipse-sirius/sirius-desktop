@@ -166,7 +166,7 @@ public final class DiagramTypeDescriptorRegistry {
          * @throws IllegalArgumentException
          *             if one of the arguments is <code>null</code>.
          */
-        public PluginDiagramTypeDescriptor(final String label, final IDiagramDescriptionProvider diagramDescriptionProvider) throws IllegalArgumentException {
+        PluginDiagramTypeDescriptor(final String label, final IDiagramDescriptionProvider diagramDescriptionProvider) throws IllegalArgumentException {
             this.label = label;
             this.diagramDescriptionProvider = diagramDescriptionProvider;
         }

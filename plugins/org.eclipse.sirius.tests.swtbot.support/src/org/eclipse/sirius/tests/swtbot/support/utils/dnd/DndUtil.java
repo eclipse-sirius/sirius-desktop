@@ -291,7 +291,7 @@ public class DndUtil {
      */
     private static class SWTBotTreeItemForDnd extends SWTBotTreeItem {
 
-        public SWTBotTreeItemForDnd(TreeItem treeItem) throws WidgetNotFoundException {
+        SWTBotTreeItemForDnd(TreeItem treeItem) throws WidgetNotFoundException {
             super(treeItem);
         }
 
@@ -314,7 +314,7 @@ public class DndUtil {
      */
     private static class SWTBotGefFigureCanvasForDnd extends SWTBotGefFigureCanvas {
 
-        public SWTBotGefFigureCanvasForDnd(FigureCanvas canvas) throws WidgetNotFoundException {
+        SWTBotGefFigureCanvasForDnd(FigureCanvas canvas) throws WidgetNotFoundException {
             super(canvas);
         }
 

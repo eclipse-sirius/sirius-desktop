@@ -34,7 +34,7 @@ public interface SiriusFormatDataManager {
      *             handling more copy/paste cases by using mapping information.
      */
     @Deprecated
-    AbstractFormatData getFormatData(final FormatDataKey key);
+    AbstractFormatData getFormatData(FormatDataKey key);
 
     /**
      * Add a format data according to the key.
@@ -48,7 +48,7 @@ public interface SiriusFormatDataManager {
      *             handling more copy/paste cases by using mapping information.
      */
     @Deprecated
-    void addFormatData(final FormatDataKey key, final AbstractFormatData formatData);
+    void addFormatData(FormatDataKey key, AbstractFormatData formatData);
 
     /**
      * Create a key corresponding to the semanticDecorator and available for
@@ -59,7 +59,7 @@ public interface SiriusFormatDataManager {
      * @return a new key corresponding to the semanticDecorator and available
      *         for this manager.
      */
-    FormatDataKey createKey(final DSemanticDecorator semanticDecorator);
+    FormatDataKey createKey(DSemanticDecorator semanticDecorator);
 
     /**
      * Store the format data for this edit part and all it's children.

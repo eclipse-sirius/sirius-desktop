@@ -26,5 +26,5 @@ public interface IEObjectNavigable {
      *            uri of the EObject to reveal.
      * @return true of the EObject has been revealed, false otherwise.
      */
-    boolean navigateToEObject(final URI uri);
+    boolean navigateToEObject(URI uri);
 }

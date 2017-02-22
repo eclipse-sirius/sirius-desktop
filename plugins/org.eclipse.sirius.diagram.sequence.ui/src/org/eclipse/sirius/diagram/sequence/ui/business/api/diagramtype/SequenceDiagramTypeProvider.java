@@ -383,7 +383,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
 
         private final SequenceToolInterpretedExpressionSwitch toolSwitch;
 
-        public SequenceGlobalInterpretedTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch parentSwitch) {
+        SequenceGlobalInterpretedTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch parentSwitch) {
             defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, parentSwitch);
             sequenceSwitch = new SequenceDiagramInterpretedExpressionSwitch(feature, parentSwitch);
             toolSwitch = new SequenceToolInterpretedExpressionSwitch(feature, parentSwitch);

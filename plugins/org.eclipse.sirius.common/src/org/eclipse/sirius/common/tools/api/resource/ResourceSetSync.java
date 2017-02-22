@@ -594,8 +594,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     class MarkerAdapter extends AdapterImpl {
         private ResourceSetSync synchronizer;
 
-        public MarkerAdapter(final ResourceSetSync synchronizer) {
-            super();
+        MarkerAdapter(final ResourceSetSync synchronizer) {
             this.synchronizer = synchronizer;
         }
 

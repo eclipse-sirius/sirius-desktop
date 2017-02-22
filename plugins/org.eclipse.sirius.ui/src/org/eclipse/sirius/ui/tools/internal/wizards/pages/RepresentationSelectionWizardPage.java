@@ -201,13 +201,6 @@ public class RepresentationSelectionWizardPage extends WizardPage {
 
         private static Object[] empty = new Object[0];
 
-        /**
-         * Create a new <code>SemanticContentProvider</code> with the specified
-         * session.
-         */
-        public SessionContentProvider() {
-        }
-
         @Override
         public Object[] getChildren(final Object parentElement) {
             Object[] children = SessionContentProvider.empty;

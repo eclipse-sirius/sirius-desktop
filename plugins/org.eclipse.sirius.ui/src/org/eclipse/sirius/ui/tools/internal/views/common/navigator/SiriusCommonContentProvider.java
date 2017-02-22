@@ -924,7 +924,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     private class RefreshViewerTrigger extends ResourceSetListenerImpl {
         private final Session session;
 
-        public RefreshViewerTrigger(Session openedSession) {
+        RefreshViewerTrigger(Session openedSession) {
             super(NotificationFilter.NOT_TOUCH);
             session = openedSession;
         }
@@ -996,7 +996,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
         private Set<Resource> allSemanticResources = Sets.newHashSet();
 
-        public RefreshViewerTriggerScope(Session session) {
+        RefreshViewerTriggerScope(Session session) {
             this.session = session;
             allSemanticResources = Sets.newHashSet();
             allSemanticResources.addAll(session.getSemanticResources());

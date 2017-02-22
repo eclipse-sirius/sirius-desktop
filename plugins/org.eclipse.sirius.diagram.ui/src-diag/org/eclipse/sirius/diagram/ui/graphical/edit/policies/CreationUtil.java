@@ -423,7 +423,7 @@ public class CreationUtil {
          * @param host
          *            the graphical edit part
          */
-        public RequestToolCommand(final Request req, final RequestDescription desc, final EditPart host) {
+        RequestToolCommand(final Request req, final RequestDescription desc, final EditPart host) {
             super(desc.getName());
             this.req = req;
             this.requestDescription = desc;

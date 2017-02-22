@@ -145,7 +145,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
 
         private final Field validatingField;
 
-        public ToggleUpdateManager() {
+        ToggleUpdateManager() {
             invalidFiguresField = getAccessibleField("invalidFigures"); //$NON-NLS-1$
             validatingField = getAccessibleField("validating"); //$NON-NLS-1$
         }

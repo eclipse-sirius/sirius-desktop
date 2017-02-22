@@ -57,5 +57,5 @@ public interface IInterpreterWithDiagnostic {
      * @throws EvaluationException
      *             if the evaluation was not successful.
      */
-    IEvaluationResult evaluateExpression(final EObject target, final String expression) throws EvaluationException;
+    IEvaluationResult evaluateExpression(EObject target, String expression) throws EvaluationException;
 }

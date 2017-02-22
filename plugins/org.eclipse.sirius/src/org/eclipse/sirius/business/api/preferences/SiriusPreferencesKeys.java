@@ -37,7 +37,7 @@ public enum SiriusPreferencesKeys {
      * @param type
      *            the type of the value of the preference.
      */
-    private SiriusPreferencesKeys(final Class<?> type) {
+    SiriusPreferencesKeys(final Class<?> type) {
         this.type = type;
     }
 

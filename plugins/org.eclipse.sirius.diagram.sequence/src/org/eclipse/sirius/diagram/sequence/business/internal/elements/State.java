@@ -50,7 +50,7 @@ public class State extends AbstractNodeEvent {
     /**
      * Predicate to check whether a Sirius DDiagramElement represents a state.
      */
-    private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
+    private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
         @Override

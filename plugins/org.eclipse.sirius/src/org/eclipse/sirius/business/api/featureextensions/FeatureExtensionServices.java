@@ -39,7 +39,7 @@ public interface FeatureExtensionServices {
      * @return a List of T instances or <code>null</code> if the input class is
      *         not the expected one.
      */
-    <T extends FeatureExtensionDescription> List<T> getFeatureExtensionDescriptions(final Viewpoint viewpoint, final Class<T> clazz);
+    <T extends FeatureExtensionDescription> List<T> getFeatureExtensionDescriptions(Viewpoint viewpoint, Class<T> clazz);
 
     /**
      * Save custom data.
@@ -54,7 +54,7 @@ public interface FeatureExtensionServices {
      * @param data
      *            data to keep.
      */
-    void saveFeatureExtensionData(final String id, final Session session, EObject associatedInstance, DFeatureExtension data);
+    void saveFeatureExtensionData(String id, Session session, EObject associatedInstance, DFeatureExtension data);
 
     /**
      * Retrieve custom data.
@@ -65,6 +65,6 @@ public interface FeatureExtensionServices {
      *            session used to keep the data.
      * @return the previously persisted data
      */
-    Collection<DFeatureExtension> retrieveFeatureExtensionData(final String id, final Session session);
+    Collection<DFeatureExtension> retrieveFeatureExtensionData(String id, Session session);
 
 }

@@ -54,7 +54,7 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
      * Predicate to check whether a Sirius DDiagramElement represents a
      * lifeline.
      */
-    private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
+    private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
         @Override

@@ -69,7 +69,7 @@ public class TemplateToDiagramDescriptionTransformer {
      */
     private class Template2SequenceDiag extends AbstractRule<TSequenceDiagram, SequenceDiagramDescription> {
 
-        public Template2SequenceDiag(ModelGeneratedMaker marker) {
+        Template2SequenceDiag(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -95,7 +95,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private class Lifeline2InstanceRoleMapping extends AbstractRule<TLifelineMapping, InstanceRoleMapping> {
 
-        public Lifeline2InstanceRoleMapping(ModelGeneratedMaker marker) {
+        Lifeline2InstanceRoleMapping(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -124,7 +124,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
         private static final String SELF = "var:self"; //$NON-NLS-1$
 
-        public Lifeline2ExecutionMapping(ModelGeneratedMaker marker) {
+        Lifeline2ExecutionMapping(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -157,7 +157,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
         private static final String SELF = "var:self"; //$NON-NLS-1$
 
-        public Lifeline2EndOfLifeMapping(ModelGeneratedMaker marker) {
+        Lifeline2EndOfLifeMapping(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -180,7 +180,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private class Execution2ExecutionMapping extends AbstractRule<TExecutionMapping, ExecutionMapping> {
 
-        public Execution2ExecutionMapping(ModelGeneratedMaker marker) {
+        Execution2ExecutionMapping(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -211,7 +211,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private class TBasicMessage2EdgeMapping extends AbstractRule<TBasicMessageMapping, BasicMessageMapping> {
 
-        public TBasicMessage2EdgeMapping(ModelGeneratedMaker marker) {
+        TBasicMessage2EdgeMapping(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -246,7 +246,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private class TCreationMessage2EdgeMapping extends AbstractRule<TCreationMessageMapping, CreationMessageMapping> {
 
-        public TCreationMessage2EdgeMapping(ModelGeneratedMaker marker) {
+        TCreationMessage2EdgeMapping(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -282,7 +282,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private class TDestructionMessage2EdgeMapping extends AbstractRule<TDestructionMessageMapping, DestructionMessageMapping> {
 
-        public TDestructionMessage2EdgeMapping(ModelGeneratedMaker marker) {
+        TDestructionMessage2EdgeMapping(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -317,7 +317,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private class TReturnMessage2EdgeMapping extends AbstractRule<TReturnMessageMapping, ReturnMessageMapping> {
 
-        public TReturnMessage2EdgeMapping(ModelGeneratedMaker marker) {
+        TReturnMessage2EdgeMapping(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -344,7 +344,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private static class TMessageStyle2EdgeStyle extends AbstractRule<TMessageStyle, EdgeStyleDescription> {
 
-        public TMessageStyle2EdgeStyle(ModelGeneratedMaker marker) {
+        TMessageStyle2EdgeStyle(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -367,7 +367,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private class TConditionalMessageStyle2ConditionalEdgeStyle extends AbstractRule<TConditionalMessageStyle, ConditionalEdgeStyleDescription> {
 
-        public TConditionalMessageStyle2ConditionalEdgeStyle(ModelGeneratedMaker marker) {
+        TConditionalMessageStyle2ConditionalEdgeStyle(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -386,7 +386,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private static class TLifelineStyle2NodeStyle extends AbstractRule<TLifelineStyle, SquareDescription> {
 
-        public TLifelineStyle2NodeStyle(ModelGeneratedMaker marker) {
+        TLifelineStyle2NodeStyle(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -409,7 +409,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private class TConditionalLifelineStyle2ConditionalNodeStyle extends AbstractRule<TConditionalLifelineStyle, ConditionalNodeStyleDescription> {
 
-        public TConditionalLifelineStyle2ConditionalNodeStyle(ModelGeneratedMaker marker) {
+        TConditionalLifelineStyle2ConditionalNodeStyle(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -429,7 +429,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private static class TExecutionStyle2NodeStyle extends AbstractRule<TExecutionStyle, SquareDescription> {
 
-        public TExecutionStyle2NodeStyle(ModelGeneratedMaker marker) {
+        TExecutionStyle2NodeStyle(ModelGeneratedMaker marker) {
             super(marker);
         }
 
@@ -456,7 +456,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private class TConditionalExecutionStyle2NodeStyle extends AbstractRule<TConditionalExecutionStyle, ConditionalNodeStyleDescription> {
 
-        public TConditionalExecutionStyle2NodeStyle(ModelGeneratedMaker marker) {
+        TConditionalExecutionStyle2NodeStyle(ModelGeneratedMaker marker) {
             super(marker);
         }
 

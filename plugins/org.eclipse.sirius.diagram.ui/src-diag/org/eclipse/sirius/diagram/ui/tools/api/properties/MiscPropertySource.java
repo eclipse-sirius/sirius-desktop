@@ -168,7 +168,7 @@ public class MiscPropertySource implements IPropertySource {
          * @param category
          *            the name of the category.
          */
-        public ReflectPropertyDescriptor(final Object id, final String displayName, final String category) {
+        ReflectPropertyDescriptor(final Object id, final String displayName, final String category) {
             super(id, displayName);
             this.category = category;
         }

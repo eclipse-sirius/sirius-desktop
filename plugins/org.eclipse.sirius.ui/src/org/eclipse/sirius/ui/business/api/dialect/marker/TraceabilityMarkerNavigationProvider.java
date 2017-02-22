@@ -586,7 +586,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
          * @param contentProvider
          *            the content provider to evaluate the tree structure
          */
-        public RepresentationToOpenDialog(Shell parent, Session session, Set<DRepresentation> candidateRepresentations, EObject semanticElement) {
+        RepresentationToOpenDialog(Shell parent, Session session, Set<DRepresentation> candidateRepresentations, EObject semanticElement) {
             super(parent, new SessionLabelProvider(ViewHelper.INSTANCE.createAdapterFactory()),
                     new CandidateRepresentationContentProvider(ViewHelper.INSTANCE.createAdapterFactory(), candidateRepresentations, session));
             SessionLabelProvider labelProvider = new SessionLabelProvider(ViewHelper.INSTANCE.createAdapterFactory());
@@ -608,7 +608,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
 
         private Session session;
 
-        public CandidateRepresentationContentProvider(AdapterFactory createAdapterFactory, Set<DRepresentation> representations, Session session) {
+        CandidateRepresentationContentProvider(AdapterFactory createAdapterFactory, Set<DRepresentation> representations, Session session) {
             this.candidateRepresentations = representations;
             this.session = session;
         }

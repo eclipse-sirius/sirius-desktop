@@ -203,7 +203,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
          * @param parent
          *            the parent composite.
          */
-        public DescDiagramSelectionTreeViewer(final Composite parent) {
+        DescDiagramSelectionTreeViewer(final Composite parent) {
             super(parent);
         }
 
@@ -215,7 +215,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
          * @param style
          *            the style.
          */
-        public DescDiagramSelectionTreeViewer(final Composite parent, final int style) {
+        DescDiagramSelectionTreeViewer(final Composite parent, final int style) {
             super(parent, style);
         }
 
@@ -225,7 +225,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
          * @param tree
          *            the tree.
          */
-        public DescDiagramSelectionTreeViewer(final Tree tree) {
+        DescDiagramSelectionTreeViewer(final Tree tree) {
             super(tree);
         }
 
@@ -332,7 +332,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
          * @param functionnalAnalysis
          *            the analysis to browse.
          */
-        public SessionContentProvider(final Session session) {
+        SessionContentProvider(final Session session) {
             this.session = session;
             final AdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
             this.semanticProvider = new AdapterFactoryContentProvider(adapterFactory);

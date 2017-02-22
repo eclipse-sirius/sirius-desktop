@@ -231,7 +231,7 @@ public class NewSessionWizard extends Wizard implements INewWizard {
 
         private Session session;
 
-        public SessionCreationOperation(URI sessionModelURI, Collection<URI> semanticResourceURIs) {
+        SessionCreationOperation(URI sessionModelURI, Collection<URI> semanticResourceURIs) {
             super();
             this.sessionModelURI = sessionModelURI;
             this.semanticResourceURIs = semanticResourceURIs;

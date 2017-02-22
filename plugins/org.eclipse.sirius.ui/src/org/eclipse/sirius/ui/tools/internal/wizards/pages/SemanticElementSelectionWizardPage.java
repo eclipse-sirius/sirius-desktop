@@ -140,13 +140,6 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
 
         private static Object[] empty = new Object[0];
 
-        /**
-         * Create a new <code>SemanticContentProvider</code>.
-         *
-         */
-        public SessionContentProvider() {
-        }
-
         @Override
         public Object[] getChildren(final Object parentElement) {
             Object[] children = SessionContentProvider.empty;

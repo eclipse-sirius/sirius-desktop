@@ -118,7 +118,7 @@ public class ResourceMissingDocumentProvider {
          * @param session
          *            the current session.
          */
-        public AddErrorCommand(TransactionalEditingDomain domain, Diagram diagram, Resource resource, String noteMessage) {
+        AddErrorCommand(TransactionalEditingDomain domain, Diagram diagram, Resource resource, String noteMessage) {
             super(domain, Messages.AddErrorCommand_label);
             this.diagram = diagram;
             this.resource = resource;

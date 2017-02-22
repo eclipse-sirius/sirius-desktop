@@ -38,7 +38,7 @@ class MonomorphicService implements IMonomorphicService {
      */
     private final Method serviceMethod;
 
-    public MonomorphicService(Object serviceInstance, Method serviceMethod) {
+    MonomorphicService(Object serviceInstance, Method serviceMethod) {
         this.serviceInstance = Preconditions.checkNotNull(serviceInstance);
         this.serviceMethod = Preconditions.checkNotNull(serviceMethod);
         Preconditions.checkArgument(ServiceInterpreter.isValidServiceMethod(serviceMethod));

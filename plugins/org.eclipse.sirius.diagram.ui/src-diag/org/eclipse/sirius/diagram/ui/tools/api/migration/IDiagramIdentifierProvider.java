@@ -28,7 +28,7 @@ public interface IDiagramIdentifierProvider {
      * @return <code>true</code> if this provider provides an identifier for the
      *         given diagram element;
      */
-    boolean provides(final DDiagramElement element);
+    boolean provides(DDiagramElement element);
 
     /**
      * Returns the identifier of the given diagram element.
@@ -37,6 +37,6 @@ public interface IDiagramIdentifierProvider {
      *            the element.
      * @return the identifier of the given diagram element.
      */
-    String computeIdentifier(final DDiagramElement element);
+    String computeIdentifier(DDiagramElement element);
 
 }

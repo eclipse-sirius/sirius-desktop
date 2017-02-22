@@ -46,7 +46,7 @@ public interface ITreeCommandFactory extends ICommandFactory {
      * @return a command able to create the line and putting it in the
      *         container, corresponding to the {@link CreateTool}.
      */
-    Command buildCreateLineCommandFromTool(final DTreeItemContainer lineContainer, final EObject semanticCurrentElement, final TreeItemCreationTool tool);
+    Command buildCreateLineCommandFromTool(DTreeItemContainer lineContainer, EObject semanticCurrentElement, TreeItemCreationTool tool);
 
     /**
      * Returns a command that can delete the specified element.
@@ -58,7 +58,7 @@ public interface ITreeCommandFactory extends ICommandFactory {
      *            ).
      * @return a command that can delete the specified element.
      */
-    Command buildDeleteTreeElement(final DTreeElement element);
+    Command buildDeleteTreeElement(DTreeElement element);
 
     /**
      * Set the model accessor.
@@ -66,7 +66,7 @@ public interface ITreeCommandFactory extends ICommandFactory {
      * @param modelAccessor
      *            the modelAccessor to set
      */
-    void setModelAccessor(final ModelAccessor modelAccessor);
+    void setModelAccessor(ModelAccessor modelAccessor);
 
     /**
      * Build a direct edit label command using the corresponding tool

@@ -85,7 +85,7 @@ public interface IInterpreter {
      * @throws EvaluationException
      *             if the evaluation fails.
      */
-    Collection<EObject> evaluateCollection(final EObject context, final String expression) throws EvaluationException;
+    Collection<EObject> evaluateCollection(EObject context, String expression) throws EvaluationException;
 
     /**
      * Wrapper method to evaluate an expression.
@@ -98,7 +98,7 @@ public interface IInterpreter {
      * @throws EvaluationException
      *             if the evaluation was not successful.
      */
-    Object evaluate(final EObject target, final String expression) throws EvaluationException;
+    Object evaluate(EObject target, String expression) throws EvaluationException;
 
     /**
      * Evaluates the given expression on the given context and returns the
@@ -112,7 +112,7 @@ public interface IInterpreter {
      * @throws EvaluationException
      *             if the evaluation fails.
      */
-    boolean evaluateBoolean(final EObject context, final String expression) throws EvaluationException;
+    boolean evaluateBoolean(EObject context, String expression) throws EvaluationException;
 
     /**
      * Evaluates the given expression on the given context and returns the
@@ -126,7 +126,7 @@ public interface IInterpreter {
      * @throws EvaluationException
      *             if the evaluation fails.
      */
-    EObject evaluateEObject(final EObject context, final String expression) throws EvaluationException;
+    EObject evaluateEObject(EObject context, String expression) throws EvaluationException;
 
     /**
      * Evaluates the given expression on the given context and returns the
@@ -140,7 +140,7 @@ public interface IInterpreter {
      * @throws EvaluationException
      *             if the evaluation fails.
      */
-    String evaluateString(final EObject context, final String expression) throws EvaluationException;
+    String evaluateString(EObject context, String expression) throws EvaluationException;
 
     /**
      * Evaluates the given expression on the given context and returns the
@@ -154,7 +154,7 @@ public interface IInterpreter {
      * @throws EvaluationException
      *             if the evaluation fails.
      */
-    Integer evaluateInteger(final EObject context, final String expression) throws EvaluationException;
+    Integer evaluateInteger(EObject context, String expression) throws EvaluationException;
 
     /**
      * Clear all dependencies of this interpreter.
@@ -223,7 +223,7 @@ public interface IInterpreter {
      * @param newListener
      *            the listener.
      */
-    void addVariableStatusListener(final IVariableStatusListener newListener);
+    void addVariableStatusListener(IVariableStatusListener newListener);
 
     /**
      * Removes a variables listener.
@@ -231,7 +231,7 @@ public interface IInterpreter {
      * @param listener
      *            the listener.
      */
-    void removeVariableStatusListener(final IVariableStatusListener listener);
+    void removeVariableStatusListener(IVariableStatusListener listener);
 
     /**
      * Returns all declared variables.
@@ -246,7 +246,7 @@ public interface IInterpreter {
      * @param modelAccessor
      *            the optional model accessor to use.
      */
-    void setModelAccessor(final ModelAccessor modelAccessor);
+    void setModelAccessor(ModelAccessor modelAccessor);
 
     /**
      * Get the prefix.

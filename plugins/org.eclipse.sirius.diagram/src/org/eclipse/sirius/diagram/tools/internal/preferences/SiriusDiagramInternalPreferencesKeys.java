@@ -32,7 +32,7 @@ public enum SiriusDiagramInternalPreferencesKeys {
      * @param type
      *            the type of the value of the preference.
      */
-    private SiriusDiagramInternalPreferencesKeys(final Class<?> type) {
+    SiriusDiagramInternalPreferencesKeys(Class<?> type) {
         this.type = type;
     }
 

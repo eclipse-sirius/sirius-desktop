@@ -28,7 +28,7 @@ public interface IPermissionAuthorityRegistry {
      *            any instance.
      * @return the permission authority associated with the given element.
      */
-    IPermissionAuthority getPermissionAuthority(final EObject modelElement);
+    IPermissionAuthority getPermissionAuthority(EObject modelElement);
 
     /**
      * return the permission authority associated with the given element.
@@ -37,7 +37,7 @@ public interface IPermissionAuthorityRegistry {
      *            any model.
      * @return the permission authority associated with the given element.
      */
-    IPermissionAuthority getPermissionAuthority(final ResourceSet resourceSet);
+    IPermissionAuthority getPermissionAuthority(ResourceSet resourceSet);
 
     /**
      * return the permission authority associated with the given element.
@@ -46,7 +46,7 @@ public interface IPermissionAuthorityRegistry {
      *            any resource.
      * @return the permission authority associated with the given element.
      */
-    IPermissionAuthority getPermissionAuthority(final Resource res);
+    IPermissionAuthority getPermissionAuthority(Resource res);
 
     /**
      * clear all the known permission authorities.

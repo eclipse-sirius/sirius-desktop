@@ -333,7 +333,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
          *            ignored during deletion or not (can be null if all
          *            references should be considered)
          */
-        public RemoveDanglingReferencesCommand(TransactionalEditingDomain domain, ModelAccessor accessor, ECrossReferenceAdapter xRef, Collection<Resource> semanticResources,
+        RemoveDanglingReferencesCommand(TransactionalEditingDomain domain, ModelAccessor accessor, ECrossReferenceAdapter xRef, Collection<Resource> semanticResources,
                 RefreshEditorsPrecommitListener refreshEditorsPrecommitListener, Collection<EObject> toRemoveXRefFrom, EReferencePredicate isReferenceToIgnore) {
             super(domain, Messages.DanglingRefRemovalTrigger_removeDanglingCmdLabel);
             this.modelAccessor = accessor;

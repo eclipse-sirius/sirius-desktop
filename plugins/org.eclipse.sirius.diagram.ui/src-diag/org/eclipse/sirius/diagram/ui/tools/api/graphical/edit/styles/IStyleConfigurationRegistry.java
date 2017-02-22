@@ -36,6 +36,6 @@ public interface IStyleConfigurationRegistry {
      *            the style.
      * @return the style configuration
      */
-    StyleConfiguration getStyleConfiguration(final DiagramElementMapping vpElementMapping, final Style style);
+    StyleConfiguration getStyleConfiguration(DiagramElementMapping vpElementMapping, Style style);
 
 }

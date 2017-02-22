@@ -270,7 +270,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
      *            the default path to use for the diagram file or null if the
      *            dialog should use some default path.
      */
-    protected abstract void initDialogSettings(final IPath path);
+    protected abstract void initDialogSettings(IPath path);
 
     /**
      * Retrieves the persistent settings for this dialog.
@@ -390,7 +390,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
      * @param parent
      *            the parent widget
      */
-    protected abstract void createFolderGroup(final Composite parent);
+    protected abstract void createFolderGroup(Composite parent);
 
     /**
      * Initialize the field listeners when all field are created.
@@ -409,7 +409,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
      * @param parent
      *            the parent widget
      */
-    protected abstract void createImageFormatGroup(final Composite parent);
+    protected abstract void createImageFormatGroup(Composite parent);
 
     private void createGenerateHTMLGroup(Composite parent) {
 

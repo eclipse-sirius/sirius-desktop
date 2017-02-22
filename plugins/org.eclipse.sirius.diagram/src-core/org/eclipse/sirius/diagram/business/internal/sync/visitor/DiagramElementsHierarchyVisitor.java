@@ -32,6 +32,6 @@ public interface DiagramElementsHierarchyVisitor {
      *            the diagram element
      * @return the diagram element children
      */
-    Iterable<? extends DDiagramElement> getChildren(final DragAndDropTarget element);
+    Iterable<? extends DDiagramElement> getChildren(DragAndDropTarget element);
 
 }

@@ -120,7 +120,7 @@ public class MappingsUpdater {
          * @param container
          *            the container
          */
-        public MappingUpdateVisitor(final DragAndDropTarget container, RefreshIdsHolder factory) {
+        MappingUpdateVisitor(final DragAndDropTarget container, RefreshIdsHolder factory) {
             this.container = container;
             this.factory = factory;
         }

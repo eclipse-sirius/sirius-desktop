@@ -123,7 +123,7 @@ public final class DeleteHelper {
 
         private Set<View> noteToHide = Sets.newHashSet();
 
-        public DeleteRelatedNotesTask(final View deletedView) {
+        DeleteRelatedNotesTask(final View deletedView) {
             super();
             this.view = deletedView;
         }
@@ -260,7 +260,7 @@ public final class DeleteHelper {
 
         private View view;
 
-        public DeleteRelatedNoteAttachmentsTask(final View deletedView) {
+        DeleteRelatedNoteAttachmentsTask(final View deletedView) {
             this.view = deletedView;
         }
 

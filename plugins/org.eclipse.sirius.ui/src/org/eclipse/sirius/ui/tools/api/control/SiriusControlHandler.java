@@ -304,7 +304,7 @@ public class SiriusControlHandler extends AbstractHandler {
     private class ControlResourceDialog extends ResourceDialog {
         private final String defaultURI;
 
-        public ControlResourceDialog(final Shell parent, final String defaultURI) {
+        ControlResourceDialog(final Shell parent, final String defaultURI) {
             super(parent, EMFEditUIPlugin.INSTANCE.getString("_UI_ControlDialog_title"), SWT.SAVE); //$NON-NLS-1$
             this.defaultURI = defaultURI;
         }

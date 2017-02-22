@@ -53,7 +53,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
     /**
      * Predicate to check whether a GMF View represents a sequence diagram.
      */
-    private static enum NotationPredicate implements Predicate<View> {
+    private enum NotationPredicate implements Predicate<View> {
         INSTANCE;
 
         @Override
@@ -72,7 +72,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * Predicate to check whether a Sirius DDiagram represents a sequence
      * diagram.
      */
-    private static enum SiriusElementPredicate implements Predicate<DDiagram> {
+    private enum SiriusElementPredicate implements Predicate<DDiagram> {
         INSTANCE;
 
         @Override

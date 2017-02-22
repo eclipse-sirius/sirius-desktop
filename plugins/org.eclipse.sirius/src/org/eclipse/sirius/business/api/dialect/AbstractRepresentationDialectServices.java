@@ -571,7 +571,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      * @param <T>
      *            the real sub type of {@link RepresentationDescription}
      */
-    protected abstract <T extends RepresentationDescription> void initRepresentationForElement(final T representationDescription, final EObject semanticElement, IProgressMonitor monitor);
+    protected abstract <T extends RepresentationDescription> void initRepresentationForElement(T representationDescription, EObject semanticElement, IProgressMonitor monitor);
 
     /**
      * Indicates whether a representation should be initialized on the given

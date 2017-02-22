@@ -23,7 +23,7 @@ public interface PrintHelper {
      * @param name
      *            the job name
      */
-    void launchPrintJob(final String name);
+    void launchPrintJob(String name);
 
     /**
      * Dispose the system resources created.

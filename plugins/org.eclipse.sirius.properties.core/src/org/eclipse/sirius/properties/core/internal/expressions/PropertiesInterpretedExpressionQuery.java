@@ -332,7 +332,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
          * GroupDescription instead.
          */
         private static class CustomToolInterpretedExpressionTargetSwitch extends ToolInterpretedExpressionTargetSwitch {
-            public CustomToolInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch defaultSwitch) {
+            CustomToolInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch defaultSwitch) {
                 super(feature, defaultSwitch);
             }
 
@@ -353,7 +353,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
             }
         }
 
-        public PropertiesExpressionsGlobalTargetSwitch(EStructuralFeature feature) {
+        PropertiesExpressionsGlobalTargetSwitch(EStructuralFeature feature) {
             this.propertiesSwitch = new DomainClassSwitch(feature);
             this.delegateSwitch = new CustomToolInterpretedExpressionTargetSwitch(feature, this);
         }

@@ -410,7 +410,7 @@ public class WorkspaceJavaImportHandler extends AbstractImportHandler {
          *            Java file (from the workspace) from where the content of
          *            this module should be parsed.
          */
-        public WorkspaceJavaModuleDescriptor(URI moduleURI, String qualifiedName, IFile javaFile) {
+        WorkspaceJavaModuleDescriptor(URI moduleURI, String qualifiedName, IFile javaFile) {
             // The "module content" for this descriptor will be dynamic.
             super(moduleURI, qualifiedName, ""); //$NON-NLS-1$
             this.javaFile = javaFile;

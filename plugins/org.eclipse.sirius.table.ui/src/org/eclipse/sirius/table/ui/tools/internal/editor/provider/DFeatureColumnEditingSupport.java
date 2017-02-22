@@ -637,7 +637,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
         private Object value;
 
-        public StandardSetValueRecordingCommand(TransactionalEditingDomain domain, String label, DCell cell, Object value) {
+        StandardSetValueRecordingCommand(TransactionalEditingDomain domain, String label, DCell cell, Object value) {
             super(domain, label);
             this.cell = cell;
             this.value = value;

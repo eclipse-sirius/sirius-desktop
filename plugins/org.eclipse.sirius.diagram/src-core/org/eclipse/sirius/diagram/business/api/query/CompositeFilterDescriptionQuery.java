@@ -99,7 +99,7 @@ public class CompositeFilterDescriptionQuery {
          * @param filterKind
          *            the expected filter kind
          */
-        public FilterKindPredicate(FilterKind filterKind) {
+        FilterKindPredicate(FilterKind filterKind) {
             super();
             this.filterKind = filterKind;
         }

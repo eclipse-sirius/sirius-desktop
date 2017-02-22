@@ -871,7 +871,7 @@ public class PaletteManagerImpl implements PaletteManager {
          * @param id
          * @param label
          */
-        public PaletteGroup(final String id, final String label) {
+        PaletteGroup(final String id, final String label) {
             super(label);
             setId(id);
         }
@@ -892,7 +892,7 @@ public class PaletteManagerImpl implements PaletteManager {
          * @param toolDescription
          *            the tool corresponding to the current entry.
          */
-        public PaletteToolBasedCreationFactory(AbstractToolDescription toolDescription) {
+        PaletteToolBasedCreationFactory(AbstractToolDescription toolDescription) {
             this.toolDescription = toolDescription;
         }
 

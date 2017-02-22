@@ -30,7 +30,7 @@ final class ModificationTrackingEnabler extends AdapterImpl {
      * @param resourceSet
      *            the resource set to watch.
      */
-    public ModificationTrackingEnabler(ResourceSet resourceSet) {
+    ModificationTrackingEnabler(ResourceSet resourceSet) {
         this.resourceSet = resourceSet;
     }
 

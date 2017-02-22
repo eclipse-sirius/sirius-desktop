@@ -26,7 +26,7 @@ public interface DAnalysisSelectorProvider {
      * @return <code>true</code> if this provider provides a selector for the
      *         given session.
      */
-    boolean provides(final DAnalysisSession session);
+    boolean provides(DAnalysisSession session);
 
     /**
      * Returns the selector to use for the given session.
@@ -35,6 +35,6 @@ public interface DAnalysisSelectorProvider {
      *            the session.
      * @return the selector to use for the given session.
      */
-    DAnalysisSelector getSelector(final DAnalysisSession session);
+    DAnalysisSelector getSelector(DAnalysisSession session);
 
 }

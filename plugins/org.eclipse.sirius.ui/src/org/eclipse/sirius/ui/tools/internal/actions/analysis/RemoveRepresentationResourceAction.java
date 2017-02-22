@@ -114,7 +114,7 @@ public class RemoveRepresentationResourceAction extends Action {
 
         private final DAnalysisSession session;
 
-        public RemoveRepresentationResourcesCommand(DAnalysisSession session, Collection<Resource> analysisResourcesToRemove) {
+        RemoveRepresentationResourcesCommand(DAnalysisSession session, Collection<Resource> analysisResourcesToRemove) {
             super(session.getTransactionalEditingDomain());
             this.session = session;
 

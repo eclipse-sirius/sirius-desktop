@@ -111,7 +111,7 @@ public class SiriusContentAssistProcessor implements IContentAssistProcessor {
     private class CompletionProposalConverter implements Function<ContentProposal, ICompletionProposal> {
         final Point currentRange;
 
-        public CompletionProposalConverter(Point currentRange) {
+        CompletionProposalConverter(Point currentRange) {
             this.currentRange = currentRange;
         }
 

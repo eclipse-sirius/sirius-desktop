@@ -257,7 +257,7 @@ public class TabbarColorPropertyContributionItem extends ColorPropertyContributi
          * @param rgb
          *            The color bar RGB value
          */
-        public ColorMenuImageDescriptor(ImageData basicImgData, RGB rgb) {
+        ColorMenuImageDescriptor(ImageData basicImgData, RGB rgb) {
             this.basicImgData = basicImgData;
             this.rgb = rgb;
         }

@@ -40,7 +40,7 @@ public interface FeatureExtensionsUIManager extends FeatureExtensionUIServices {
      * @param featureExtension
      *            feature extension to enable.
      */
-    void enableAspectUI(final FeatureExtensionUI featureExtension);
+    void enableAspectUI(FeatureExtensionUI featureExtension);
 
     /**
      * Disable an feature extension. If it was not enabled : do nothing.
@@ -48,6 +48,6 @@ public interface FeatureExtensionsUIManager extends FeatureExtensionUIServices {
      * @param featureExtension
      *            feature extension to disable.
      */
-    void disableAspectUI(final FeatureExtensionUI featureExtension);
+    void disableAspectUI(FeatureExtensionUI featureExtension);
 
 }

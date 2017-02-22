@@ -82,7 +82,7 @@ public class RevealAllElementsCommand extends RecordingCommand {
 
         private static final long serialVersionUID = 1L;
 
-        public NonConcurrentEAllContentIterator(EObject object) {
+        NonConcurrentEAllContentIterator(EObject object) {
             super(object, false);
         }
 

@@ -84,7 +84,7 @@ public final class SiriusInformationPresenterFactory {
          * @param information
          *            Editor on which the quick outline will be displayed.
          */
-        public SiriusQuickOutlineInformationProvider(Object information) {
+        SiriusQuickOutlineInformationProvider(Object information) {
             this.information2 = information;
         }
 

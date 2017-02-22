@@ -170,7 +170,7 @@ public final class DefaultDirectEditOperation {
          * 
          * @param view
          */
-        public DefaultTextAwareEditPart(final View modelView, final IFigure label, final EditPartViewer viewer) {
+        DefaultTextAwareEditPart(final View modelView, final IFigure label, final EditPartViewer viewer) {
             super(modelView);
             this.label = label;
             this.viewer = viewer;

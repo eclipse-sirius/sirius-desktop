@@ -84,7 +84,7 @@ public class WorkspaceImagePathSelector extends SelectionAdapter {
          */
         private List<String> extensions;
 
-        public FileExtensionFilter(List<String> extensions) {
+        FileExtensionFilter(List<String> extensions) {
             this.extensions = extensions;
         }
 

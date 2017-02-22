@@ -233,7 +233,7 @@ public final class ViewpointSelection {
         /**
          * Constructor.
          */
-        public WizardViewpointsTableLazyCellModifier(final Map<Viewpoint, Boolean> viewpoints, final IWizardContainer wizardContainer) {
+        WizardViewpointsTableLazyCellModifier(final Map<Viewpoint, Boolean> viewpoints, final IWizardContainer wizardContainer) {
             super(viewpoints);
             this.wizardContainer = wizardContainer;
         }
@@ -588,7 +588,7 @@ public final class ViewpointSelection {
          * @param viewpoints
          *            the viewpoints
          */
-        public ViewpointsTableLabelProvider(final Map<Viewpoint, Boolean> viewpoints) {
+        ViewpointsTableLabelProvider(final Map<Viewpoint, Boolean> viewpoints) {
             super();
             this.viewpoints = viewpoints;
         }
@@ -749,7 +749,7 @@ public final class ViewpointSelection {
          * @param viewer
          *            the viewer to update
          */
-        void setViewer(final TableViewer viewer);
+        void setViewer(TableViewer viewer);
     }
 
     /**
@@ -770,7 +770,7 @@ public final class ViewpointSelection {
          * @param viewpoints
          *            All viewpoints and there selection state.
          */
-        public AbstractViewpointsTableCellModifier(final Map<Viewpoint, Boolean> viewpoints) {
+        AbstractViewpointsTableCellModifier(final Map<Viewpoint, Boolean> viewpoints) {
             this.viewpoints = viewpoints;
         }
 
@@ -804,7 +804,7 @@ public final class ViewpointSelection {
          * @param viewpoints
          *            All viewpoints and there selection state.
          */
-        public ViewpointsTableLazyCellModifier(final Map<Viewpoint, Boolean> viewpoints) {
+        ViewpointsTableLazyCellModifier(final Map<Viewpoint, Boolean> viewpoints) {
             super(viewpoints);
         }
 

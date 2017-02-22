@@ -60,7 +60,7 @@ public class VSMResourceXMILoad extends XMILoadImpl {
      */
     class VSMHandler extends SAXXMIHandler {
 
-        public VSMHandler(XMLResource xmiResource, XMLHelper helper, Map<?, ?> options) {
+        VSMHandler(XMLResource xmiResource, XMLHelper helper, Map<?, ?> options) {
             super(xmiResource, helper, options);
         }
 

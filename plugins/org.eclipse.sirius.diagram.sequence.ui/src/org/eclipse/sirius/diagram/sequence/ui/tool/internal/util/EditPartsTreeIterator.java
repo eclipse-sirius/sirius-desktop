@@ -36,7 +36,7 @@ class EditPartsTreeIterator extends AbstractTreeIterator<IGraphicalEditPart> {
      * @param root
      *            the root edit part of the iteration.
      */
-    public EditPartsTreeIterator(IGraphicalEditPart root) {
+    EditPartsTreeIterator(IGraphicalEditPart root) {
         super(root);
     }
 
@@ -49,7 +49,7 @@ class EditPartsTreeIterator extends AbstractTreeIterator<IGraphicalEditPart> {
      * @param includeRoot
      *            if <code>true</code>, the iterator includes the root element.
      */
-    public EditPartsTreeIterator(IGraphicalEditPart root, boolean includeRoot) {
+    EditPartsTreeIterator(IGraphicalEditPart root, boolean includeRoot) {
         super(root, includeRoot);
     }
 

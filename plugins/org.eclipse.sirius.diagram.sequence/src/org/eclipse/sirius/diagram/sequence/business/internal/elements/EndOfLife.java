@@ -48,7 +48,7 @@ public class EndOfLife extends AbstractSequenceNode {
      * Predicate to check whether a Sirius DDiagramElement represents an
      * EndOfLife.
      */
-    private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
+    private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
         @Override

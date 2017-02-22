@@ -65,7 +65,7 @@ final class Saver extends TransactionalEditingDomainListenerImpl {
      * @param session
      *            the session to save.
      */
-    public Saver(DAnalysisSessionImpl session) {
+    Saver(DAnalysisSessionImpl session) {
         this.session = session;
         domain = session.getTransactionalEditingDomain();
         Lifecycle lifecycle = TransactionUtil.getAdapter(domain, Lifecycle.class);

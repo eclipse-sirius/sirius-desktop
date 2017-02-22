@@ -58,6 +58,6 @@ public abstract class AbstractEdgeLayoutData extends AbstractLayoutData {
      * @param gmfEdge
      *            the corresponding GMF edge
      */
-    protected abstract void init(final Edge gmfEdge);
+    protected abstract void init(Edge gmfEdge);
 
 }

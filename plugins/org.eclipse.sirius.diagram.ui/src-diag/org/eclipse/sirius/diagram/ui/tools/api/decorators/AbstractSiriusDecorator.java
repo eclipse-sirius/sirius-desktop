@@ -158,7 +158,7 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
      *            the edit part
      * @return a Direction
      */
-    protected abstract Direction getDirection(final EditPart editPart);
+    protected abstract Direction getDirection(EditPart editPart);
 
     /**
      * Check if the edit part respect conditions to be decorate.

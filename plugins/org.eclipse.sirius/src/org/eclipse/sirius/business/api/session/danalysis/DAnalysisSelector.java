@@ -33,7 +33,7 @@ public interface DAnalysisSelector {
      *            the analysis candidates
      * @return the selected analysis
      */
-    DAnalysis selectSmartlyAnalysisForAddedResource(final Resource resource, final Collection<DAnalysis> allAnalysis);
+    DAnalysis selectSmartlyAnalysisForAddedResource(Resource resource, Collection<DAnalysis> allAnalysis);
 
     /**
      * Select the most smartly you can the right analysis to store a new
@@ -45,6 +45,6 @@ public interface DAnalysisSelector {
      *            the analysis candidates
      * @return the selected analysis
      */
-    DAnalysis selectSmartlyAnalysisForAddedRepresentation(final DRepresentation representation, final Collection<DAnalysis> allAnalysis);
+    DAnalysis selectSmartlyAnalysisForAddedRepresentation(DRepresentation representation, Collection<DAnalysis> allAnalysis);
 
 }

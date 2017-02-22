@@ -62,7 +62,7 @@ public class Operand extends AbstractSequenceNode implements ISequenceEvent {
      * Predicate to check whether a Sirius DDiagramElement represents an
      * execution.
      */
-    private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
+    private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
         @Override

@@ -68,7 +68,7 @@ public class SiriusDeleteGlobalActionHandlerProvider extends AbstractGlobalActio
 
         private IWorkbenchPart localPart;
 
-        public PartListener(IWorkbenchPart part) {
+        PartListener(IWorkbenchPart part) {
             this.localPart = part;
         }
 

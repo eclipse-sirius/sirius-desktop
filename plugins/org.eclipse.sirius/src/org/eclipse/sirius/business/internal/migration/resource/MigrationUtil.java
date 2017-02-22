@@ -294,7 +294,7 @@ public final class MigrationUtil {
          * @return true if the unknown feature represented by entry must be
          *         deleted in the resource
          */
-        protected abstract boolean handleFeature(final EObject owner, final FeatureMap.Entry entry);
+        protected abstract boolean handleFeature(EObject owner, FeatureMap.Entry entry);
     }
 
 }

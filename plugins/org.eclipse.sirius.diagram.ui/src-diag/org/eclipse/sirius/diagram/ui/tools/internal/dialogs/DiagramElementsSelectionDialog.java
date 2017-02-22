@@ -581,7 +581,7 @@ public class DiagramElementsSelectionDialog {
 
         private final String name;
 
-        private FilteringMode(String name) {
+        FilteringMode(String name) {
             this.name = name;
         }
 
@@ -843,7 +843,7 @@ public class DiagramElementsSelectionDialog {
 
         private boolean includeLabel;
 
-        public DiagramItemProviderWithLabelAdapterFactory(boolean includeLabel) {
+        DiagramItemProviderWithLabelAdapterFactory(boolean includeLabel) {
             this.includeLabel = includeLabel;
         }
 

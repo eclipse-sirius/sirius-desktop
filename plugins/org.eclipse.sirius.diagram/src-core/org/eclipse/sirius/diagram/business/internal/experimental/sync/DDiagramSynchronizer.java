@@ -1581,7 +1581,7 @@ public class DDiagramSynchronizer {
 
         private int mappingBeginIndex;
 
-        public RefreshOrderHelper(DragAndDropTarget viewContainer, RepresentationElementMapping mapping) {
+        RefreshOrderHelper(DragAndDropTarget viewContainer, RepresentationElementMapping mapping) {
             this.viewContainer = viewContainer;
             this.mapping = mapping;
             init();

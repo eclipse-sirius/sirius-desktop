@@ -58,7 +58,7 @@ public interface SiriusLayoutDataManager {
      * @param layoutData
      *            A new LayoutData
      */
-    void addData(final AbstractLayoutData layoutData);
+    void addData(AbstractLayoutData layoutData);
 
     /**
      * Search recursively in all the LayoutData is there is one which have the
@@ -68,7 +68,7 @@ public interface SiriusLayoutDataManager {
      *            The search element
      * @return the corresponding LayoutData or null if not found.
      */
-    LayoutData getData(final AbstractDNode node);
+    LayoutData getData(AbstractDNode node);
 
     /**
      * Search recursively in all the LayoutData is there is one which have the
@@ -82,7 +82,7 @@ public interface SiriusLayoutDataManager {
      *            object).
      * @return the corresponding LayoutData or null if not found.
      */
-    LayoutData getData(final AbstractDNode node, final boolean searchForParent);
+    LayoutData getData(AbstractDNode node, boolean searchForParent);
 
     /**
      * Search recursively in all the LayoutData is there is one which have the
@@ -95,7 +95,7 @@ public interface SiriusLayoutDataManager {
      *            data must be retrieve from parent for a creation of an object)
      * @return the corresponding EdgeLayoutData or null if not found.
      */
-    EdgeLayoutData getData(final DEdge edge, final boolean searchParent);
+    EdgeLayoutData getData(DEdge edge, boolean searchParent);
 
     /**
      * Search recursively in all the LayoutData if there is one which have the
@@ -144,7 +144,7 @@ public interface SiriusLayoutDataManager {
      *            The search element
      * @return the corresponding EdgeLayoutData or null if not found.
      */
-    EdgeLabelLayoutData getLabelData(final DEdge edge);
+    EdgeLabelLayoutData getLabelData(DEdge edge);
 
     /**
      * Initializes a new transactional command with the editing domain in which
@@ -158,7 +158,7 @@ public interface SiriusLayoutDataManager {
      *            A {@link IAdaptable} of a {@link View}
      * @return A new transactional command.
      */
-    AbstractTransactionalCommand getAddAdapterMakerCommand(final TransactionalEditingDomain domain, final IAdaptable viewAdapter);
+    AbstractTransactionalCommand getAddAdapterMakerCommand(TransactionalEditingDomain domain, IAdaptable viewAdapter);
 
     /**
      * Initializes a new transactional command with the editing domain in which
@@ -171,7 +171,7 @@ public interface SiriusLayoutDataManager {
      *            A {@link IAdaptable} of a {@link View}
      * @return A new transactional command.
      */
-    AbstractTransactionalCommand getAddCenterAdapterMakerCommand(final TransactionalEditingDomain domain, final IAdaptable viewAdapter);
+    AbstractTransactionalCommand getAddCenterAdapterMakerCommand(TransactionalEditingDomain domain, IAdaptable viewAdapter);
 
     /**
      * Initializes a new transactional command with the editing domain in which
@@ -184,7 +184,7 @@ public interface SiriusLayoutDataManager {
      *            A view
      * @return A new transactional command.
      */
-    AbstractTransactionalCommand getAddAdapterMakerOnOpeningCommand(final TransactionalEditingDomain domain, final View createdView);
+    AbstractTransactionalCommand getAddAdapterMakerOnOpeningCommand(TransactionalEditingDomain domain, View createdView);
 
     /**
      * layout the new created views.

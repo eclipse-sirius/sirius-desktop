@@ -140,7 +140,7 @@ public interface DialectUIServices {
      *            the representation from which to retrieve the editor name
      * @return the editor name to use
      */
-    String getEditorName(final DRepresentation representation);
+    String getEditorName(DRepresentation representation);
 
     /**
      * Creates a new {@link AdapterFactory} used in the description editor for

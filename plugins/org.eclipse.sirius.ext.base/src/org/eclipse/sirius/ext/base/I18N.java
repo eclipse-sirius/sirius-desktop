@@ -43,6 +43,8 @@ public final class I18N {
         /**
          * The (optional) value of the message key. If absent, the key is
          * assumed to be the same as the Java field's name.
+         * 
+         * @return an explicit message key.
          */
         String[] value() default {};
     }

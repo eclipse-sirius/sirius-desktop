@@ -247,7 +247,7 @@ public class SiriusJPSRenderedDiagramPrinter extends JPSDiagramPrinter {
 
         private final TextUtilitiesEx textUtilities = new TextUtilitiesEx(MapModeTypes.IDENTITY_MM);
 
-        public PrinterGraphicsToGraphics2DAdapter(Graphics2D graphics, Rectangle viewPort) {
+        PrinterGraphicsToGraphics2DAdapter(Graphics2D graphics, Rectangle viewPort) {
             super(graphics, viewPort);
         }
 

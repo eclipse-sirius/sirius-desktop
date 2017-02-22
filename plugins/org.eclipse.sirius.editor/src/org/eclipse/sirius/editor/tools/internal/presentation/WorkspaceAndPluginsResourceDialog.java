@@ -165,7 +165,7 @@ public class WorkspaceAndPluginsResourceDialog extends ElementTreeSelectionDialo
         /**
          * Constructor for the root element.
          */
-        public WorkbenchProxyObject() {
+        WorkbenchProxyObject() {
             containedObject = null;
             root = true;
             checked = true;
@@ -179,7 +179,7 @@ public class WorkspaceAndPluginsResourceDialog extends ElementTreeSelectionDialo
          * @param pluginName
          *            the name of the plugin.
          */
-        public WorkbenchProxyObject(Object object, String pluginName) {
+        WorkbenchProxyObject(Object object, String pluginName) {
             pluginPath = pluginName;
             containedObject = object;
             root = false;

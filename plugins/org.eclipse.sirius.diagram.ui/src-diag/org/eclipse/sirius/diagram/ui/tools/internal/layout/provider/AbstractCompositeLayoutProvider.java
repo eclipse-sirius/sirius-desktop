@@ -100,7 +100,7 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
      * Made public to be available from ArrangeAllWithAutoSize.
      */
     @Override
-    public abstract Rectangle translateToGraph(final Rectangle r);
+    public abstract Rectangle translateToGraph(Rectangle r);
 
     /**
      * {@inheritDoc}
@@ -108,7 +108,7 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
      * Made public to be available from ArrangeAllWithAutoSize.
      */
     @Override
-    public abstract Rectangle translateFromGraph(final Rectangle rect);
+    public abstract Rectangle translateFromGraph(Rectangle rect);
 
     /**
      * {@inheritDoc}

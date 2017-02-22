@@ -159,7 +159,7 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
          * @param editingDomain
          *            the editing domain.
          */
-        public SequenceInstanceRoleRepairCommand(SequenceDiagram sequenceDiagram, TransactionalEditingDomain editingDomain) {
+        SequenceInstanceRoleRepairCommand(SequenceDiagram sequenceDiagram, TransactionalEditingDomain editingDomain) {
             super(editingDomain);
             this.sequenceDiagram = sequenceDiagram;
         }
@@ -204,7 +204,7 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
          */
         SequenceDiagram diagram;
 
-        public FlagSequenceEventsCommand(TransactionalEditingDomain domain, SequenceDiagram diagram) {
+        FlagSequenceEventsCommand(TransactionalEditingDomain domain, SequenceDiagram diagram) {
             super(domain, Messages.FlagSequenceEventsCommand_commandName);
             this.diagram = diagram;
         }

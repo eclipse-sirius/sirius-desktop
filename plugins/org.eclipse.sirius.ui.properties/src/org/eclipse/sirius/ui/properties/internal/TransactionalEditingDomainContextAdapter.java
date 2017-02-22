@@ -220,7 +220,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
      * @author pcdavid
      */
     private class PostCommitListener extends ResourceSetListenerImpl {
-        public PostCommitListener() {
+        PostCommitListener() {
             super(FILTER);
         }
 
@@ -330,7 +330,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
             }
         };
 
-        public RuntimeLoggerSpy(RuntimeLoggerManager instance) {
+        RuntimeLoggerSpy(RuntimeLoggerManager instance) {
             this.manager = instance;
         }
 

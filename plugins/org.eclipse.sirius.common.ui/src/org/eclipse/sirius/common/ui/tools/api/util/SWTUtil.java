@@ -549,7 +549,7 @@ public final class SWTUtil {
          * 
          * @param composite
          */
-        public DefaultDisposeListener(final Composite composite) {
+        DefaultDisposeListener(final Composite composite) {
             this.composite = composite;
         }
 

@@ -77,7 +77,7 @@ public interface DiagramMappingsManager {
      *            the container
      * @return container mappings
      */
-    List<ContainerMapping> getContainerMappings(final DNodeContainer container);
+    List<ContainerMapping> getContainerMappings(DNodeContainer container);
 
     /**
      * Get {@link ContainerMapping}s valid to create view children of the
@@ -98,7 +98,7 @@ public interface DiagramMappingsManager {
      * @return bordered {@link ContainerMapping}s valid to create view children
      *         of the specified <code>node</code> view
      */
-    List<ContainerMapping> getContainerMappings(final DNodeContainer container, boolean takeAlsoChildrenOfAllImportedMappings);
+    List<ContainerMapping> getContainerMappings(DNodeContainer container, boolean takeAlsoChildrenOfAllImportedMappings);
 
     /**
      * Get available node mappings children of the mapping of the given
@@ -108,7 +108,7 @@ public interface DiagramMappingsManager {
      *            the container
      * @return node mappings
      */
-    List<NodeMapping> getNodeMappings(final DNodeContainer container);
+    List<NodeMapping> getNodeMappings(DNodeContainer container);
 
     /**
      * Get {@link NodeMapping}s valid to create view children of the specified
@@ -129,7 +129,7 @@ public interface DiagramMappingsManager {
      * @return bordered {@link NodeMapping}s valid to create view children of
      *         the specified <code>node</code> view
      */
-    List<NodeMapping> getNodeMappings(final DNodeContainer container, boolean takeAlsoChildrenOfAllImportedMappings);
+    List<NodeMapping> getNodeMappings(DNodeContainer container, boolean takeAlsoChildrenOfAllImportedMappings);
 
     /**
      * Get available node mappings children of the mapping of the given
@@ -139,7 +139,7 @@ public interface DiagramMappingsManager {
      *            the container
      * @return node mappings
      */
-    List<NodeMapping> getNodeMappings(final DNodeList container);
+    List<NodeMapping> getNodeMappings(DNodeList container);
 
     /**
      * Get {@link NodeMapping}s valid to create view children of the specified
@@ -160,7 +160,7 @@ public interface DiagramMappingsManager {
      * @return bordered {@link NodeMapping}s valid to create view children of
      *         the specified <code>node</code> view
      */
-    List<NodeMapping> getNodeMappings(final DNodeList container, boolean takeAlsoChildrenOfAllImportedMappings);
+    List<NodeMapping> getNodeMappings(DNodeList container, boolean takeAlsoChildrenOfAllImportedMappings);
 
     /**
      * Get available bordered of the mapping of the given node or container.
@@ -169,7 +169,7 @@ public interface DiagramMappingsManager {
      *            the node or container
      * @return bordered node mappings
      */
-    List<NodeMapping> getBorderedNodeMappings(final AbstractDNode node);
+    List<NodeMapping> getBorderedNodeMappings(AbstractDNode node);
 
     /**
      * Get bordered {@link NodeMapping}s valid to create view children of the
@@ -190,7 +190,7 @@ public interface DiagramMappingsManager {
      * @return bordered {@link NodeMapping}s valid to create view children of
      *         the specified <code>node</code> view
      */
-    List<NodeMapping> getBorderedNodeMappings(final AbstractDNode node, boolean takeAlsoChildrenOfAllImportedMappings);
+    List<NodeMapping> getBorderedNodeMappings(AbstractDNode node, boolean takeAlsoChildrenOfAllImportedMappings);
 
     /**
      * Get the all the importer mappings which were not selected as primary
@@ -208,7 +208,7 @@ public interface DiagramMappingsManager {
      *            any {@link DiagramElementMapping} .
      * @return a containing Layer if available.
      */
-    Collection<Layer> getActiveParentLayers(final DiagramElementMapping mapping);
+    Collection<Layer> getActiveParentLayers(DiagramElementMapping mapping);
 
     /**
      * Iterate over the mappings in the smartest way for layers. The mappings
@@ -227,5 +227,5 @@ public interface DiagramMappingsManager {
      * @param container
      *            the viewpoint container
      */
-    <T extends AbstractNodeMapping> void iterate(final MappingsListVisitor visitor, final DragAndDropTarget container);
+    <T extends AbstractNodeMapping> void iterate(MappingsListVisitor visitor, DragAndDropTarget container);
 }

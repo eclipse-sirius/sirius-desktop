@@ -77,5 +77,5 @@ public abstract class DTableElementSorter<T extends DTableElement> implements Co
      *            the element to sort.
      * @return the label to use as sort key for that element.
      */
-    protected abstract String getSortLabel(final T element);
+    protected abstract String getSortLabel(T element);
 }

@@ -826,7 +826,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
         private boolean needsCompoundMove;
 
-        public MoveType(boolean needsCompoundMove, boolean fromTop) {
+        MoveType(boolean needsCompoundMove, boolean fromTop) {
             this.fromTop = fromTop;
             this.needsCompoundMove = needsCompoundMove;
         }

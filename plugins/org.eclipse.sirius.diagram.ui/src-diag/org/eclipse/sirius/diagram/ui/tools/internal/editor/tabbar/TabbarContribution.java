@@ -28,7 +28,7 @@ public interface TabbarContribution {
      * @param groupId
      *            the group id where that action will be set up after.
      */
-    void create(final ToolBarManager tb, String groupId);
+    void create(ToolBarManager tb, String groupId);
 
     /**
      * .

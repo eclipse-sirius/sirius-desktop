@@ -220,7 +220,7 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
          * @param editPartToStore
          *            the edit part to store
          */
-        public CopyFormatDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToStore) {
+        CopyFormatDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToStore) {
             super(domain, Messages.CopyFormatDataCommand_label, null);
             this.dDiagram = dDiagram;
             this.toStore = editPartToStore;

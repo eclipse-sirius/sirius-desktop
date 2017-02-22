@@ -405,7 +405,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
          * @param functionnalAnalysis
          *            the analysis to browse.
          */
-        public SemanticDViewContentProvider(final DView functionnalAnalysis) {
+        SemanticDViewContentProvider(final DView functionnalAnalysis) {
             this.representationContainer = functionnalAnalysis;
             final AdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
             this.semanticProvider = new AdapterFactoryContentProvider(adapterFactory);

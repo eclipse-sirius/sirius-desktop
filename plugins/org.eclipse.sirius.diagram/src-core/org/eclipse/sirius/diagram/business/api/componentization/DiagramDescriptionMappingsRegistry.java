@@ -34,7 +34,7 @@ public interface DiagramDescriptionMappingsRegistry {
      *            the diagram description
      * @return the associated mappings manager
      */
-    DiagramDescriptionMappingsManager getDiagramDescriptionMappingsManager(final Session session, final DiagramDescription description);
+    DiagramDescriptionMappingsManager getDiagramDescriptionMappingsManager(Session session, DiagramDescription description);
 
     /**
      * Compute the available mappings for all

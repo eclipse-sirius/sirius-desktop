@@ -1131,7 +1131,7 @@ public class FilteredCommonTree extends Composite {
          * @param parent
          * @param style
          */
-        public NotifyingCommonViewer(String viewerId, Composite parent, int style) {
+        NotifyingCommonViewer(String viewerId, Composite parent, int style) {
             super(viewerId, parent, style);
         }
 

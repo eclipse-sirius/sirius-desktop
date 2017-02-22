@@ -59,7 +59,7 @@ public class ColorPalettePopup {
 
         private RGB rgb;
 
-        public InventoryColorDescriptor(RGB colorValue) {
+        InventoryColorDescriptor(RGB colorValue) {
             this.rgb = colorValue;
 
         }

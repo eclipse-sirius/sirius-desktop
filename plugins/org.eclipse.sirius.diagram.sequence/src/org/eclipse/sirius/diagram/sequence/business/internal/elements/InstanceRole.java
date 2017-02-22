@@ -47,7 +47,7 @@ public class InstanceRole extends AbstractSequenceNode {
      * Predicate to check whether a Sirius DDiagramElement represents an
      * instance role.
      */
-    private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
+    private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
         @Override

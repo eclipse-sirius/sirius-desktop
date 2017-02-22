@@ -44,5 +44,5 @@ public interface RuntimeLoggerManager extends RuntimeLogger {
      *            the interpreter to decorate
      * @return the safe interpreter
      */
-    RuntimeLoggerInterpreter decorate(final IInterpreter interpreter);
+    RuntimeLoggerInterpreter decorate(IInterpreter interpreter);
 }

@@ -222,7 +222,7 @@ public class WorkspaceResourceDialog extends Dialog {
         /**
          * Default constructor.
          */
-        public FileExtensionFilter() {
+        FileExtensionFilter() {
             super();
         }
 

@@ -265,7 +265,7 @@ public class DTreeItemEditingSupport extends EditingSupport {
 
         private Object value;
 
-        public StandardSetValueRecordingCommand(TransactionalEditingDomain domain, String label, DTreeItem treeItem, Object value) {
+        StandardSetValueRecordingCommand(TransactionalEditingDomain domain, String label, DTreeItem treeItem, Object value) {
             super(domain, label);
             this.treeItem = treeItem;
             this.value = value;

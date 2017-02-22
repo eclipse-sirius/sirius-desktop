@@ -73,7 +73,7 @@ public interface DiagramDescriptionMappingsManager {
      *            the container mapping
      * @return container mappings
      */
-    List<ContainerMapping> getContainerMappings(final ContainerMapping containerMapping);
+    List<ContainerMapping> getContainerMappings(ContainerMapping containerMapping);
 
     /**
      * Get available node mappings children for the container mapping.
@@ -82,7 +82,7 @@ public interface DiagramDescriptionMappingsManager {
      *            the container mapping
      * @return node mappings
      */
-    List<NodeMapping> getNodeMappings(final ContainerMapping containerMapping);
+    List<NodeMapping> getNodeMappings(ContainerMapping containerMapping);
 
     /**
      * Get available bordered of the mapping for the mapping.
@@ -91,7 +91,7 @@ public interface DiagramDescriptionMappingsManager {
      *            the node or container mapping
      * @return bordered node mappings
      */
-    List<NodeMapping> getBorderedNodeMappings(final AbstractNodeMapping mapping);
+    List<NodeMapping> getBorderedNodeMappings(AbstractNodeMapping mapping);
 
     /**
      * Get available edge mappings for the diagram description.

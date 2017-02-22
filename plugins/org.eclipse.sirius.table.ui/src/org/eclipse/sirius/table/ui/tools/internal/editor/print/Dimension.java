@@ -33,7 +33,7 @@ public enum Dimension {
 
     private int height;
 
-    private Dimension(final int width, final int height) {
+    Dimension(int width, int height) {
         this.width = width;
         this.height = height;
     }

@@ -71,46 +71,19 @@ public interface SessionManagerListener {
     /**
      * An empty implementation of SessionManagerListener for convenience.
      */
-    public class Stub implements SessionManagerListener {
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notify(org.eclipse.sirius.business.api.session.Session,
-         *      int)
-         */
+    class Stub implements SessionManagerListener {
         public void notify(final Session updated, final int notification) {
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notifyAddSession(org.eclipse.sirius.business.api.session.Session)
-         */
         public void notifyAddSession(final Session newSession) {
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notifyRemoveSession(org.eclipse.sirius.business.api.session.Session)
-         */
         public void notifyRemoveSession(final Session removedSession) {
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointDeselected(org.eclipse.sirius.viewpoint.description.Viewpoint)
-         */
         public void viewpointDeselected(final Viewpoint deselectedSirius) {
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointSelected(org.eclipse.sirius.viewpoint.description.Viewpoint)
-         */
         public void viewpointSelected(final Viewpoint selectedSirius) {
         }
 

@@ -124,7 +124,7 @@ public interface Session {
      * @param monitor
      *            the {@link IProgressMonitor} to associate to this operation
      */
-    void addSemanticResource(final URI semanticResourceURI, IProgressMonitor monitor);
+    void addSemanticResource(URI semanticResourceURI, IProgressMonitor monitor);
 
     /**
      * return the semantic resources associated with the session. NOTE : this
@@ -145,7 +145,7 @@ public interface Session {
      * @param removeReferencingResources
      *            indicates if the referencing resources are also to remove
      */
-    void removeSemanticResource(final Resource semanticResource, IProgressMonitor monitor, boolean removeReferencingResources);
+    void removeSemanticResource(Resource semanticResource, IProgressMonitor monitor, boolean removeReferencingResources);
 
     /**
      * Save the session data.
@@ -249,7 +249,7 @@ public interface Session {
      * @throws IllegalArgumentException
      *             if the view cannot be added to the selected views.
      */
-    void addSelectedView(final DView view, IProgressMonitor monitor) throws IllegalArgumentException;
+    void addSelectedView(DView view, IProgressMonitor monitor) throws IllegalArgumentException;
 
     /**
      * Removes the given view from the selected views. if the given view is not
@@ -261,7 +261,7 @@ public interface Session {
      *            a {@link IProgressMonitor} to show progression of
      *            {@link DView} unselection
      */
-    void removeSelectedView(final DView view, IProgressMonitor monitor);
+    void removeSelectedView(DView view, IProgressMonitor monitor);
 
     /**
      * Returns all selected views. The returned collection is unmodifiable.

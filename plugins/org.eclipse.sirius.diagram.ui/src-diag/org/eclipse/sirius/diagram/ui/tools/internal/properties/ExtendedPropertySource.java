@@ -239,7 +239,7 @@ public class ExtendedPropertySource implements IPropertySource {
          * @param extensionDescription
          *            the corresponding extension.
          */
-        public ExtendedPropertyDescriptor(final ExtensionFeatureDescription extensionDescription) {
+        ExtendedPropertyDescriptor(final ExtensionFeatureDescription extensionDescription) {
             this.extensionDescription = extensionDescription;
         }
 

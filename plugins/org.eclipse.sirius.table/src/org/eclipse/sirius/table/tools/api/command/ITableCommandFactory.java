@@ -42,7 +42,7 @@ public interface ITableCommandFactory extends ICommandFactory {
      * @return a command able to create the line and putting it in the
      *         container, corresponding to the {@link CreateTool}.
      */
-    Command buildCreateLineCommandFromTool(final LineContainer lineContainer, final EObject semanticCurrentElement, final CreateTool tool);
+    Command buildCreateLineCommandFromTool(LineContainer lineContainer, EObject semanticCurrentElement, CreateTool tool);
 
     /**
      * Create a command that creates a column.
@@ -57,7 +57,7 @@ public interface ITableCommandFactory extends ICommandFactory {
      * @return a command able to create the line and putting it in the
      *         container, corresponding to the {@link CreateTool}.
      */
-    Command buildCreateColumnCommandFromTool(final DTable containerView, final EObject semanticCurrentElement, final CreateTool tool);
+    Command buildCreateColumnCommandFromTool(DTable containerView, EObject semanticCurrentElement, CreateTool tool);
 
     /**
      * Returns a command that can delete the specified element.
@@ -69,7 +69,7 @@ public interface ITableCommandFactory extends ICommandFactory {
      *            ).
      * @return a command that can delete the specified element.
      */
-    Command buildDeleteTableElement(final DTableElement element);
+    Command buildDeleteTableElement(DTableElement element);
 
     /**
      * Create a command that creates a cell using the
@@ -102,7 +102,7 @@ public interface ITableCommandFactory extends ICommandFactory {
      *         {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool
      *         CreateCellTool}.
      */
-    Command buildSetCellValueFromTool(final DCell editedCell, final Object newValue);
+    Command buildSetCellValueFromTool(DCell editedCell, Object newValue);
 
     /**
      * Set the model accessor.
@@ -110,7 +110,7 @@ public interface ITableCommandFactory extends ICommandFactory {
      * @param modelAccessor
      *            the modelAccessor to set
      */
-    void setModelAccessor(final ModelAccessor modelAccessor);
+    void setModelAccessor(ModelAccessor modelAccessor);
 
     /**
      * Create a command that set a value on an instance feature.
@@ -123,7 +123,7 @@ public interface ITableCommandFactory extends ICommandFactory {
      *            value to set
      * @return a command able to set the value of an instance feature
      */
-    Command buildSetValue(final EObject instance, final String name, final Object value);
+    Command buildSetValue(EObject instance, String name, Object value);
 
     /**
      * Create a command that add a value on an instance feature.
@@ -136,7 +136,7 @@ public interface ITableCommandFactory extends ICommandFactory {
      *            value to add
      * @return a command able to add the value of an instance feature
      */
-    Command buildAddValue(final EObject instance, final String name, final Object value);
+    Command buildAddValue(EObject instance, String name, Object value);
 
     /**
      * Create a command that clear ths values of an instance feature.
@@ -147,5 +147,5 @@ public interface ITableCommandFactory extends ICommandFactory {
      *            name of the feature to clear.
      * @return a command able to clear the values of an instance feature
      */
-    Command buildClearValue(final EObject instance, final String name);
+    Command buildClearValue(EObject instance, String name);
 }

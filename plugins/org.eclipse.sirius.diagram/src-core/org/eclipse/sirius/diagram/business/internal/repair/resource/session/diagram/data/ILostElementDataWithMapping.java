@@ -25,7 +25,7 @@ public interface ILostElementDataWithMapping extends ILostElementDataWithTarget 
      * @param mapping
      *            The mapping to set.
      */
-    void setMapping(final RepresentationElementMapping mapping);
+    void setMapping(RepresentationElementMapping mapping);
 
     /**
      * Returns the mapping.

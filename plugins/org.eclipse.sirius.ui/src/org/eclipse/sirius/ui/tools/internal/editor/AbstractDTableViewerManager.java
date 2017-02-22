@@ -145,7 +145,7 @@ public abstract class AbstractDTableViewerManager {
      * @param composite
      *            parent composite for the tree viewer
      */
-    protected abstract void createTreeViewer(final Composite composite);
+    protected abstract void createTreeViewer(Composite composite);
 
     /**
      * Initialize a cache and add, if needed, the contextual menu for the table. <BR>

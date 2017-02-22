@@ -241,7 +241,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     private static final class SessionHandlingForEditor extends SessionManagerListener.Stub {
         private DDiagramEditorImpl editor;
 
-        public SessionHandlingForEditor(DDiagramEditorImpl editor) {
+        SessionHandlingForEditor(DDiagramEditorImpl editor) {
             this.editor = editor;
         }
 

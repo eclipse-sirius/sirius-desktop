@@ -41,7 +41,7 @@ public interface IAddModelDependencyWizard extends INewWizard {
      * @param availableSessions
      *            the available sessions
      */
-    void setSessions(final List<Session> availableSessions);
+    void setSessions(List<Session> availableSessions);
 
     /**
      * Returns the title to use for this wizard.

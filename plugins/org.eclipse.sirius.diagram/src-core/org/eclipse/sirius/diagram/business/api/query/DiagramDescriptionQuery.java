@@ -103,7 +103,7 @@ public class DiagramDescriptionQuery {
 
         private DiagramDescription desc;
 
-        public SuperTypes(final DiagramDescription description) {
+        SuperTypes(final DiagramDescription description) {
             this.desc = description;
         }
 
@@ -122,7 +122,7 @@ public class DiagramDescriptionQuery {
     private static class SuperTypesIterator implements Iterator<DiagramDescription> {
         private DiagramDescription cur;
 
-        public SuperTypesIterator(DiagramDescription map) {
+        SuperTypesIterator(DiagramDescription map) {
             this.cur = map;
         }
 

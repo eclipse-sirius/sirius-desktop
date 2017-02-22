@@ -74,7 +74,7 @@ public class ColorPropertyContributionItem extends PropertyChangeContributionIte
          * @param rgb
          *            The color bar RGB value
          */
-        public ColorMenuImageDescriptor(ImageData basicImgData, RGB rgb) {
+        ColorMenuImageDescriptor(ImageData basicImgData, RGB rgb) {
             this.basicImgData = basicImgData;
             this.rgb = rgb;
         }
@@ -118,7 +118,7 @@ public class ColorPropertyContributionItem extends PropertyChangeContributionIte
          * @param rgb
          *            The color value in RGB scheme
          */
-        public ColorBoxImageDescriptor(RGB rgb) {
+        ColorBoxImageDescriptor(RGB rgb) {
             this.rgb = rgb;
         }
 

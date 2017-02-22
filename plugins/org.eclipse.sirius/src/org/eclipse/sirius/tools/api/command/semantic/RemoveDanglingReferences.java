@@ -145,7 +145,7 @@ public class RemoveDanglingReferences extends RecordingCommand {
          * @param resource
          *            the resource to cross reference.
          */
-        public DanglingReferencesDetector(Resource eResource) {
+        DanglingReferencesDetector(Resource eResource) {
             super(eResource);
             crossReference();
             done();
@@ -157,7 +157,7 @@ public class RemoveDanglingReferences extends RecordingCommand {
          * @param resourceSet
          *            the resource set to cross reference.
          */
-        public DanglingReferencesDetector(ResourceSet resourceSet) {
+        DanglingReferencesDetector(ResourceSet resourceSet) {
             super(resourceSet);
             crossReference();
             done();

@@ -36,7 +36,7 @@ public interface DiagramMappingsManagerRegistry {
      *            the diagram for which to retrieve the mappings manager
      * @return the manager to retrieve available mappings for a given diagram
      */
-    DiagramMappingsManager getDiagramMappingsManager(final Session session, final DDiagram diagram);
+    DiagramMappingsManager getDiagramMappingsManager(Session session, DDiagram diagram);
 
     /**
      * Remove the given diagram mappings manager, forcing them to be recomputed
@@ -46,6 +46,6 @@ public interface DiagramMappingsManagerRegistry {
      * @param manager
      *            the diagram mappings manager to remove
      */
-    void removeDiagramMappingsManagers(final DiagramMappingsManager manager);
+    void removeDiagramMappingsManagers(DiagramMappingsManager manager);
 
 }

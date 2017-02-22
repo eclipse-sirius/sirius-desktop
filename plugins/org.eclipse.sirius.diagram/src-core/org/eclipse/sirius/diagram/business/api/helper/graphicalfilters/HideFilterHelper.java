@@ -32,7 +32,7 @@ public interface HideFilterHelper {
      * @param element
      *            the element to hide
      */
-    void hide(final DDiagramElement element);
+    void hide(DDiagramElement element);
 
     /**
      * Reveal the current element.
@@ -40,7 +40,7 @@ public interface HideFilterHelper {
      * @param element
      *            the element to reveal
      */
-    void reveal(final DDiagramElement element);
+    void reveal(DDiagramElement element);
 
     /**
      * Hide the label of the current element.
@@ -48,7 +48,7 @@ public interface HideFilterHelper {
      * @param element
      *            the element to hide
      */
-    void hideLabel(final DDiagramElement element);
+    void hideLabel(DDiagramElement element);
 
     /**
      * Reveal the label of the current element.
@@ -56,5 +56,5 @@ public interface HideFilterHelper {
      * @param element
      *            the element to reveal
      */
-    void revealLabel(final DDiagramElement element);
+    void revealLabel(DDiagramElement element);
 }

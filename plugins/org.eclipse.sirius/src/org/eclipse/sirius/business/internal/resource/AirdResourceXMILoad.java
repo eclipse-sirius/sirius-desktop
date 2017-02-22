@@ -92,7 +92,7 @@ public class AirdResourceXMILoad extends XMILoadImpl {
     class AirdHandler extends SAXXMIHandler {
         private boolean abortOnError;
 
-        public AirdHandler(XMLResource xmiResource, XMLHelper helper, Map<?, ?> options) {
+        AirdHandler(XMLResource xmiResource, XMLHelper helper, Map<?, ?> options) {
             super(xmiResource, helper, options);
 
             if (Boolean.TRUE.equals(options.get(AirDResourceImpl.OPTION_ABORT_ON_ERROR))) {

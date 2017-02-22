@@ -200,7 +200,7 @@ public abstract class AbstractMenuContributionItem extends AbstractTabbarContrib
 
         private ToolBarManager toolBarManager;
 
-        public TabbarContributionItem(ToolBarManager tb) {
+        TabbarContributionItem(ToolBarManager tb) {
             this.toolBarManager = tb;
         }
 

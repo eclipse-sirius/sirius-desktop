@@ -25,7 +25,7 @@ public interface ILostElementDataWithTarget extends ILostElementData {
      * @param target
      *            the target.
      */
-    void setTarget(final EObject target);
+    void setTarget(EObject target);
 
     /**
      * Get the target.

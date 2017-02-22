@@ -204,7 +204,7 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
 
         private final DDiagram diagram;
 
-        public SequencePostRefreshFactory(DDiagram parentDiagram, Session session, Collection<EObject> mainSemantics, Collection<EObject> createdObjects) {
+        SequencePostRefreshFactory(DDiagram parentDiagram, Session session, Collection<EObject> mainSemantics, Collection<EObject> createdObjects) {
             this.diagram = parentDiagram;
             this.session = session;
             this.mainSemantics.addAll(mainSemantics);
@@ -241,7 +241,7 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
 
         private final Diagram gmfDiag;
 
-        public SequenceFlagAndSyncCommand(TransactionalEditingDomain domain, Diagram gmfDiag, Collection<EObject> mainSemantics, Collection<EObject> createdObjects) {
+        SequenceFlagAndSyncCommand(TransactionalEditingDomain domain, Diagram gmfDiag, Collection<EObject> mainSemantics, Collection<EObject> createdObjects) {
             super(domain, Messages.SequenceFlagAndSyncCommand_commandName);
             this.gmfDiag = gmfDiag;
             this.mainSemantics.addAll(mainSemantics);

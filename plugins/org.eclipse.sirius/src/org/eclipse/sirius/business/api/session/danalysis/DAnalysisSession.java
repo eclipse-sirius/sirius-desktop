@@ -67,7 +67,7 @@ public interface DAnalysisSession extends Session {
      *            corresponds to the representation to move (must not be
      *            <code>null</code>).
      */
-    void moveRepresentation(final DAnalysis newDAnalysisContainer, final DRepresentationDescriptor repDescriptor);
+    void moveRepresentation(DAnalysis newDAnalysisContainer, DRepresentationDescriptor repDescriptor);
 
     /**
      * Add a referenced analysis.
@@ -83,7 +83,7 @@ public interface DAnalysisSession extends Session {
      * @param analysis
      *            the analysis to reference (must not be <code>null</code> ).
      */
-    void addReferencedAnalysis(final DAnalysis analysis);
+    void addReferencedAnalysis(DAnalysis analysis);
 
     /**
      * Add a referenced analysis.
@@ -101,7 +101,7 @@ public interface DAnalysisSession extends Session {
      *            the analysis on which the reference is added (must not be
      *            <code>null</code>).
      */
-    void addReferencedAnalysis(final DAnalysis analysis, final Collection<DAnalysis> referencers);
+    void addReferencedAnalysis(DAnalysis analysis, Collection<DAnalysis> referencers);
 
     /**
      * Remove a referenced analysis.
@@ -118,7 +118,7 @@ public interface DAnalysisSession extends Session {
      * 
      * @since 0.9.0
      */
-    void removeReferencedAnalysis(final DAnalysis analysis);
+    void removeReferencedAnalysis(DAnalysis analysis);
 
     /**
      * Clients should call that method when a control action has been applied on

@@ -261,7 +261,7 @@ public class DiagramElementMappingQuery {
 
         private DiagramElementMapping mapping;
 
-        public SuperTypes(final DiagramElementMapping mapping) {
+        SuperTypes(final DiagramElementMapping mapping) {
             this.mapping = mapping;
         }
 
@@ -281,7 +281,7 @@ public class DiagramElementMappingQuery {
     private static class SuperTypesIterator implements Iterator<DiagramElementMapping> {
         private DiagramElementMapping cur;
 
-        public SuperTypesIterator(DiagramElementMapping map) {
+        SuperTypesIterator(DiagramElementMapping map) {
             this.cur = map;
         }
 

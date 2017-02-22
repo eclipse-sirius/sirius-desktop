@@ -34,7 +34,7 @@ public interface TableExportHelper {
      * @param fileName
      *            the file name
      */
-    void saveContent(final String content, final String fileName);
+    void saveContent(String content, String fileName);
 
     /**
      * Export to CSV a table.
@@ -43,6 +43,6 @@ public interface TableExportHelper {
      *            the table to export
      * @return the result as a {@link String}
      */
-    String exportToCsv(final DTable table);
+    String exportToCsv(DTable table);
 
 }

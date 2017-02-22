@@ -96,7 +96,7 @@ public final class RangeHelper {
     /**
      * The "lowerBound" function.
      */
-    private static enum LowerBoundFunction implements Function<Range, Integer> {
+    private enum LowerBoundFunction implements Function<Range, Integer> {
         INSTANCE;
 
         public Integer apply(Range from) {
@@ -112,7 +112,7 @@ public final class RangeHelper {
     /**
      * The "upperBound" function.
      */
-    private static enum UpperBoundFunction implements Function<Range, Integer> {
+    private enum UpperBoundFunction implements Function<Range, Integer> {
         INSTANCE;
 
         public Integer apply(Range from) {
@@ -128,7 +128,7 @@ public final class RangeHelper {
     /**
      * The "widthBound" function.
      */
-    private static enum WidthFunction implements Function<Range, Integer> {
+    private enum WidthFunction implements Function<Range, Integer> {
         INSTANCE;
 
         public Integer apply(Range from) {

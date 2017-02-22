@@ -155,7 +155,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
 
         private final DiagramDescription description;
 
-        public Key(final Session session, final DiagramDescription description) {
+        Key(final Session session, final DiagramDescription description) {
             this.session = session;
             this.description = description;
         }

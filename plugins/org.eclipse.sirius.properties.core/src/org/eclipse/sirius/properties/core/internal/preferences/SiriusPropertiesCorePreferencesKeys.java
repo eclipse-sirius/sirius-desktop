@@ -43,7 +43,7 @@ public enum SiriusPropertiesCorePreferencesKeys {
      * @param defaultValue
      *            The default value
      */
-    private SiriusPropertiesCorePreferencesKeys(String defaultValue) {
+    SiriusPropertiesCorePreferencesKeys(String defaultValue) {
         this.defaultValue = defaultValue;
     }
 

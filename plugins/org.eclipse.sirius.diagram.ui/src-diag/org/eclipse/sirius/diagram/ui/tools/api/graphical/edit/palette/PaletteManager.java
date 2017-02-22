@@ -28,7 +28,7 @@ public interface PaletteManager {
      * @param layer
      *            the layer
      */
-    void hideLayer(final Layer layer);
+    void hideLayer(Layer layer);
 
     /**
      * Show all tools provided by a layer.
@@ -36,7 +36,7 @@ public interface PaletteManager {
      * @param layer
      *            the layer
      */
-    void showLayer(final Layer layer);
+    void showLayer(Layer layer);
 
     /**
      * Add a filter (if not already added) to hide a tool .

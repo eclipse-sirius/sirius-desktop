@@ -221,7 +221,7 @@ public class AbstractDNodeCandidate {
 
         private Integer value;
 
-        public Id(final Integer value) {
+        Id(final Integer value) {
             this.value = value;
         }
 

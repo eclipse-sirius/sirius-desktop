@@ -119,7 +119,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
     /**
      * Predicate to check whether a Sirius DDiagramElement represents a message.
      */
-    private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
+    private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
         @Override

@@ -30,7 +30,7 @@ public class StraightenToMenuManager extends ActionMenuManager {
      * manager
      */
     private static class StraightenMenuAction extends Action {
-        public StraightenMenuAction() {
+        StraightenMenuAction() {
             setText(Messages.StraightenToMenuAction_text);
             setToolTipText(Messages.StraightenToMenuAction_tooltip);
             ImageDescriptor imageDesc = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.STRAIGHTEN_TO_TOP);

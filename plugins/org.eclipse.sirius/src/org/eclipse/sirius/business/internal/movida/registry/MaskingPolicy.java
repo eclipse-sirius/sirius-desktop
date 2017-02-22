@@ -80,7 +80,7 @@ public class MaskingPolicy {
         /** The resource which provides the logical Sirius. */
         private final Resource provider;
 
-        public SiriusImplementation(URI logicalURI, Resource provider) {
+        SiriusImplementation(URI logicalURI, Resource provider) {
             this.logicalURI = Preconditions.checkNotNull(logicalURI);
             this.provider = Preconditions.checkNotNull(provider);
         }

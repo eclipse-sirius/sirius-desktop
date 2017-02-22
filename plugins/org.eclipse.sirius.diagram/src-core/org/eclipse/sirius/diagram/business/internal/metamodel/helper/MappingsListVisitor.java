@@ -33,6 +33,6 @@ public interface MappingsListVisitor {
      * @return the list of displayed candidate elements by this mapping. The
      *         method must return an empty list, if there is none.
      */
-    Set<AbstractDNodeCandidate> visit(final DiagramElementMapping mapping, final Set<AbstractDNodeCandidate> candidateFilter);
+    Set<AbstractDNodeCandidate> visit(DiagramElementMapping mapping, Set<AbstractDNodeCandidate> candidateFilter);
 
 }

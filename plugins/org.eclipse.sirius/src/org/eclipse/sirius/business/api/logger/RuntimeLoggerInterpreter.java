@@ -36,7 +36,7 @@ public interface RuntimeLoggerInterpreter {
      * @return the {@link Object} value if the evaluation succeed,
      *         <code>null</code> otherwise
      */
-    Object evaluate(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature);
+    Object evaluate(EObject context, EObject descriptionObject, EStructuralFeature descriptionFeature);
 
     /**
      * Evaluates the value of object feature given as parameter as an expression
@@ -50,7 +50,7 @@ public interface RuntimeLoggerInterpreter {
      *            the feature which the value will be evaluated as an expression
      * @return the boolean value if the evaluation succeed, false otherwise
      */
-    boolean evaluateBoolean(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature);
+    boolean evaluateBoolean(EObject context, EObject descriptionObject, EStructuralFeature descriptionFeature);
 
     /**
      * Evaluates the value of object feature given as parameter as an expression
@@ -67,7 +67,7 @@ public interface RuntimeLoggerInterpreter {
      *            IfTask or SwitchTask
      * @return the boolean value if the evaluation succeed, false otherwise
      */
-    boolean evaluateBoolean(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature, final boolean flagCondition);
+    boolean evaluateBoolean(EObject context, EObject descriptionObject, EStructuralFeature descriptionFeature, boolean flagCondition);
 
     /**
      * Evaluates the value of object feature given as parameter as an expression
@@ -82,7 +82,7 @@ public interface RuntimeLoggerInterpreter {
      * @return the integer reference if the evaluation succeed,
      *         <code>null</code> otherwise
      */
-    Integer evaluateInteger(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature);
+    Integer evaluateInteger(EObject context, EObject descriptionObject, EStructuralFeature descriptionFeature);
 
     /**
      * Evaluates the value of object feature given as parameter as an expression
@@ -97,7 +97,7 @@ public interface RuntimeLoggerInterpreter {
      * @return the string object if the evaluation succeed, <code>null</code>
      *         otherwise
      */
-    String evaluateString(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature);
+    String evaluateString(EObject context, EObject descriptionObject, EStructuralFeature descriptionFeature);
 
     /**
      * Evaluates the value of object feature given as parameter as an expression
@@ -112,7 +112,7 @@ public interface RuntimeLoggerInterpreter {
      * @return the {@link EObject} value if the evaluation succeed,
      *         <code>null</code> otherwise
      */
-    EObject evaluateEObject(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature);
+    EObject evaluateEObject(EObject context, EObject descriptionObject, EStructuralFeature descriptionFeature);
 
     /**
      * Evaluates the value of object feature given as parameter as an expression
@@ -128,6 +128,6 @@ public interface RuntimeLoggerInterpreter {
      * @return the collection if the evaluation succeed, an empty collection
      *         otherwise
      */
-    Collection<EObject> evaluateCollection(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature);
+    Collection<EObject> evaluateCollection(EObject context, EObject descriptionObject, EStructuralFeature descriptionFeature);
 
 }

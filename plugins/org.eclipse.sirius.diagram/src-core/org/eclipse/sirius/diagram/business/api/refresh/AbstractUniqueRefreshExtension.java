@@ -194,7 +194,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
          * @param viewNode
          *            the element.
          */
-        public NodeFilter(final DNode viewNode) {
+        NodeFilter(final DNode viewNode) {
             if (viewNode == null) {
                 throw new IllegalArgumentException(Messages.NodeFilter_notNullErrorMsg);
             }
@@ -208,7 +208,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
          * @param viewNodeListElement
          *            the element.
          */
-        public NodeFilter(final DNodeListElement viewNodeListElement) {
+        NodeFilter(final DNodeListElement viewNodeListElement) {
             if (viewNodeListElement == null) {
                 throw new IllegalArgumentException(Messages.NodeFilter_notNullErrorMsg);
             }
@@ -222,7 +222,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
          * @param viewNodeList
          *            the element.
          */
-        public NodeFilter(final DNodeList viewNodeList) {
+        NodeFilter(final DNodeList viewNodeList) {
             if (viewNodeList == null) {
                 throw new IllegalArgumentException(Messages.NodeFilter_notNullErrorMsg);
             }
@@ -236,7 +236,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
          * @param viewNodeContainer
          *            the element.
          */
-        public NodeFilter(final DNodeContainer viewNodeContainer) {
+        NodeFilter(final DNodeContainer viewNodeContainer) {
             if (viewNodeContainer == null) {
                 throw new IllegalArgumentException(Messages.NodeFilter_notNullErrorMsg);
             }

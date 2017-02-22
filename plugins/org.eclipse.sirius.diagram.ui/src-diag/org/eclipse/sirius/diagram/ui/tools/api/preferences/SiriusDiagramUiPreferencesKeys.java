@@ -75,7 +75,7 @@ public enum SiriusDiagramUiPreferencesKeys {
      * @param type
      *            the type of the value of the preference.
      */
-    private SiriusDiagramUiPreferencesKeys(final Class<?> type) {
+    SiriusDiagramUiPreferencesKeys(final Class<?> type) {
         this.type = type;
     }
 

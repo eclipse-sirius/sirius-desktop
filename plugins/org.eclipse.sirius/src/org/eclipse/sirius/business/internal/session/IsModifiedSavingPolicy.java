@@ -217,7 +217,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
     private static class ResourceHasReferenceTo implements Predicate<Resource> {
         private final Predicate<Resource> modifiedResources;
 
-        public ResourceHasReferenceTo(Predicate<Resource> logicallyModifieds) {
+        ResourceHasReferenceTo(Predicate<Resource> logicallyModifieds) {
             this.modifiedResources = logicallyModifieds;
         }
 
@@ -231,7 +231,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
     private static class EObjectHasReferencesTo implements Predicate<EObject> {
         private final Predicate<Resource> modifiedResources;
 
-        public EObjectHasReferencesTo(Predicate<Resource> logicallyModifieds) {
+        EObjectHasReferencesTo(Predicate<Resource> logicallyModifieds) {
             this.modifiedResources = logicallyModifieds;
         }
 

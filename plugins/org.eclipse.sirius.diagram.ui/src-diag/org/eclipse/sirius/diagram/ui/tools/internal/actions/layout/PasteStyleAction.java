@@ -147,7 +147,7 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
          * @param editPartToRestore
          *            the edit part to restore
          */
-        public PasteStyleDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToRestore) {
+        PasteStyleDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToRestore) {
             super(domain, Messages.PasteStyleDataCommand_label, null);
             this.dDiagram = dDiagram;
             this.editPartToRestore = editPartToRestore;

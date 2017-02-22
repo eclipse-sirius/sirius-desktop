@@ -250,7 +250,7 @@ public class ObservationPointEditPart extends DNodeEditPart {
          * @param anchorProvider
          *            the anchor provider.
          */
-        public ObservationPointFigure(final Dimension defSize, final AnchorProvider anchorProvider) {
+        ObservationPointFigure(final Dimension defSize, final AnchorProvider anchorProvider) {
             super(defSize, anchorProvider);
         }
 
@@ -264,7 +264,7 @@ public class ObservationPointEditPart extends DNodeEditPart {
          * @param anchorProvider
          *            the anchor provider.
          */
-        public ObservationPointFigure(final int width, final int height, final AnchorProvider anchorProvider) {
+        ObservationPointFigure(final int width, final int height, final AnchorProvider anchorProvider) {
             super(width, height, anchorProvider);
         }
 

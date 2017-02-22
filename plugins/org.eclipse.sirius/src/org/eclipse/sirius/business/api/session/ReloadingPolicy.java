@@ -28,7 +28,7 @@ public interface ReloadingPolicy {
      * @author cedric
      * 
      */
-    public enum Action {
+    enum Action {
         /**
          * 
          * The action to do.
@@ -49,6 +49,6 @@ public interface ReloadingPolicy {
      * @return a list of actions to take, might be an empty list of there's
      *         nothing to do.
      */
-    List<Action> getActions(final Session session, final Resource resource, final ResourceStatus newStatus);
+    List<Action> getActions(Session session, Resource resource, ResourceStatus newStatus);
 
 }

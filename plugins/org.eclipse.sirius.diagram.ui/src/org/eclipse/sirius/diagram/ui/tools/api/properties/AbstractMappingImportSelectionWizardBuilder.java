@@ -194,7 +194,7 @@ public abstract class AbstractMappingImportSelectionWizardBuilder {
      *            the diagram description
      * @return all mappings directly contained.
      */
-    protected abstract <T extends AbstractNodeMapping> Collection<T> getAllMappings(final DiagramDescription diagramDescription);
+    protected abstract <T extends AbstractNodeMapping> Collection<T> getAllMappings(DiagramDescription diagramDescription);
 
     /**
      * Add mappings for the current diagram description.
@@ -204,5 +204,5 @@ public abstract class AbstractMappingImportSelectionWizardBuilder {
      * @param diagramDescription
      *            the diagram description
      */
-    protected abstract void addMappings(final TreeItemWrapper parentItem, final DiagramDescription diagramDescription);
+    protected abstract void addMappings(TreeItemWrapper parentItem, DiagramDescription diagramDescription);
 }

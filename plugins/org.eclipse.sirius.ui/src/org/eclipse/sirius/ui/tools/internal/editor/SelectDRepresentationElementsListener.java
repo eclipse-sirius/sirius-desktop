@@ -341,7 +341,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
          * @param elementsToSelect
          *            the new selection
          */
-        public SetSelectionRunnable(DialectEditor dialectEditor, Collection<DRepresentationElement> elementsToSelect) {
+        SetSelectionRunnable(DialectEditor dialectEditor, Collection<DRepresentationElement> elementsToSelect) {
             super();
             this.dialectEditor = dialectEditor;
             this.newSelection = Lists.newArrayList(elementsToSelect);

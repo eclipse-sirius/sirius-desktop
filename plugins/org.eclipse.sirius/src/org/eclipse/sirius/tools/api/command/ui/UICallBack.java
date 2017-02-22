@@ -149,7 +149,7 @@ public interface UICallBack {
      * @param representation
      *            the representation to open with the session.
      */
-    void openRepresentation(final Session openedSession, final DRepresentation representation);
+    void openRepresentation(Session openedSession, DRepresentation representation);
 
     /**
      * Load a resource in the resource set associated to the editing domain
@@ -162,7 +162,7 @@ public interface UICallBack {
      * @return the loaded resource, <code>null</code> if the loading fails.
      * @since 0.9.0
      */
-    Resource loadResource(final EditingDomain domain, final IFile file);
+    Resource loadResource(EditingDomain domain, IFile file);
 
     /**
      * Called when the user interface should prompt for a choice.
@@ -172,7 +172,7 @@ public interface UICallBack {
      * @return <code>true</code> if the resource should be reloaded.
      * @since 0.9.0
      */
-    boolean shouldReload(final Resource resource);
+    boolean shouldReload(Resource resource);
 
     /**
      * Called when the user interface should prompt for a choice.
@@ -183,7 +183,7 @@ public interface UICallBack {
      *         session.
      * @since 0.9.0
      */
-    boolean shouldRemove(final Resource resource);
+    boolean shouldRemove(Resource resource);
 
     /**
      * Called when the user interface should prompt for a choice. The deleted
@@ -196,7 +196,7 @@ public interface UICallBack {
      * @return <code>true</code> if the session should be closed.
      * @since 0.9.0
      */
-    boolean shouldClose(final Session session, final Resource resource);
+    boolean shouldClose(Session session, Resource resource);
 
     /**
      * Session name to display while saving this.

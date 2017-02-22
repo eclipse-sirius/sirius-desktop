@@ -306,7 +306,7 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
 
         final IModelExplorerTabExtension tab;
 
-        public TabInfo(String id, Image image, IModelExplorerTabExtension tab) {
+        TabInfo(String id, Image image, IModelExplorerTabExtension tab) {
             this.id = id;
             this.image = image;
             this.tab = tab;

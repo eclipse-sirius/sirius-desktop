@@ -30,7 +30,7 @@ public class DistributeMenuManager extends ActionMenuManager {
      * manager
      */
     private static class DistributeMenuAction extends Action {
-        public DistributeMenuAction() {
+        DistributeMenuAction() {
             setText(Messages.DistributeMenuAction_text);
             setToolTipText(Messages.DistributeMenuAction_tooltip);
             ImageDescriptor imageDesc = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DISTRIBUTE_WITH_UNIFORM_GAPS_HORIZONTALLY);

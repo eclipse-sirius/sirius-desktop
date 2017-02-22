@@ -277,7 +277,7 @@ public class PrintAsImageCallback implements PrintCallback {
          * @param dest
          *            the destination
          */
-        public ImageHeightBoundsForPage(final int src, final int dest) {
+        ImageHeightBoundsForPage(int src, int dest) {
             this.scr = src;
             this.dest = dest;
             this.size = dest - src;

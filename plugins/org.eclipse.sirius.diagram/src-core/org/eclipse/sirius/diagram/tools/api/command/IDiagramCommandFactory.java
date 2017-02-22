@@ -231,7 +231,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *            the tool that describes the operation.
      * @return a command able to drop a node into a container.
      */
-    Command buildDropInContainerCommandFromTool(final DragAndDropTarget dContainer, final DDiagramElement element, ContainerDropDescription tool);
+    Command buildDropInContainerCommandFromTool(DragAndDropTarget dContainer, DDiagramElement element, ContainerDropDescription tool);
 
     /**
      * Create a command able to drop a node into a container.
@@ -245,7 +245,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *            the tool that describes the operation.
      * @return a command able to drop a node into a container.
      */
-    Command buildDropInContainerCommandFromTool(final DragAndDropTarget dContainer, final EObject droppedElement, ContainerDropDescription tool);
+    Command buildDropInContainerCommandFromTool(DragAndDropTarget dContainer, EObject droppedElement, ContainerDropDescription tool);
 
     /**
      * Create a command able to paste a semantic element into a container.
@@ -258,7 +258,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *            the tool that describes the operation.
      * @return a command able to paste a semantic element into a container.
      */
-    Command buildPasteCommandFromTool(final DSemanticDecorator dContainer, final DSemanticDecorator element, PasteDescription tool);
+    Command buildPasteCommandFromTool(DSemanticDecorator dContainer, DSemanticDecorator element, PasteDescription tool);
 
     /**
      * Create a command able to paste a semantic element into a container.
@@ -272,7 +272,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *            the tool that describes the operation.
      * @return a command able to drop a node into a container.
      */
-    Command buildPasteCommandFromTool(final DSemanticDecorator dContainer, final EObject copiedElement, PasteDescription tool);
+    Command buildPasteCommandFromTool(DSemanticDecorator dContainer, EObject copiedElement, PasteDescription tool);
 
     /**
      * Create a command able to execute an action when double clicking on an
@@ -286,7 +286,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * @return a command able to execute a defined action when double clicking
      *         on dDiagramElement.
      */
-    Command buildDoubleClickOnElementCommandFromTool(final DDiagramElement dDiagramElement, DoubleClickDescription tool);
+    Command buildDoubleClickOnElementCommandFromTool(DDiagramElement dDiagramElement, DoubleClickDescription tool);
 
     /**
      * Create a command that creates a container.
@@ -319,7 +319,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *            the viewpoint to delete.
      * @return the command.
      */
-    Command buildDeleteDiagram(final DDiagram vp);
+    Command buildDeleteDiagram(DDiagram vp);
 
     /**
      * Create a command to delete a viewpoint element from the diagram.
@@ -329,7 +329,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * @return a command that delete the DDiagramElement without deleting the
      *         semantic one.
      */
-    Command buildDeleteFromDiagramCommand(final DDiagramElement element);
+    Command buildDeleteFromDiagramCommand(DDiagramElement element);
 
     /**
      * Returns a command that can delete the specified element.
@@ -338,7 +338,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *            the element to delete.
      * @return a command that can delete the specified element.
      */
-    Command buildDeleteDiagramElement(final DDiagramElement element);
+    Command buildDeleteDiagramElement(DDiagramElement element);
 
     /**
      * Build a direct edit label command using the corresponding tool

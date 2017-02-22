@@ -38,7 +38,7 @@ public interface EclipseTestsSupportHelper {
      * 
      * @return a new created Project
      */
-    IProject createProject(final String projectName);
+    IProject createProject(String projectName);
 
     /**
      * Create a project.
@@ -51,7 +51,7 @@ public interface EclipseTestsSupportHelper {
      * 
      * @return a new created Project
      */
-    IProject createModelingProject(final String projectName, final boolean createAndOpenBlankRepresentationsFile);
+    IProject createModelingProject(String projectName, boolean createAndOpenBlankRepresentationsFile);
 
     /**
      * Create a resource in a project.
@@ -64,7 +64,7 @@ public interface EclipseTestsSupportHelper {
      *            name of the file to create
      * @return the created resource
      */
-    Resource createResourceInProject(final ResourceSet set, final String projectName, final String fileName);
+    Resource createResourceInProject(ResourceSet set, String projectName, String fileName);
 
     /**
      * Delete the project.
@@ -72,7 +72,7 @@ public interface EclipseTestsSupportHelper {
      * @param projectName
      *            name of the project to delete.
      */
-    void deleteProject(final String projectName);
+    void deleteProject(String projectName);
 
     /**
      * Copy a file from a plug-in in the workspace.
@@ -84,7 +84,7 @@ public interface EclipseTestsSupportHelper {
      * @param destinationWorkspaceRelativePath
      *            the destination path
      */
-    void copyFile(final String bundleID, final String projectRelativePath, final String destinationWorkspaceRelativePath);
+    void copyFile(String bundleID, String projectRelativePath, String destinationWorkspaceRelativePath);
 
     /**
      * Copy a file from a plug-in in the workspace.
@@ -98,7 +98,7 @@ public interface EclipseTestsSupportHelper {
      * @param refreshAfterCopy
      *            should refresh destination file after copy
      */
-    void copyFile(final String bundleID, final String projectRelativePath, final String destinationWorkspaceRelativePath, final boolean refreshAfterCopy);
+    void copyFile(String bundleID, String projectRelativePath, String destinationWorkspaceRelativePath, boolean refreshAfterCopy);
 
     /**
      * Copy a file from a plug-in in the workspace.
@@ -108,7 +108,7 @@ public interface EclipseTestsSupportHelper {
      * @param destinationWorkspaceRelativePath
      *            the destination path
      */
-    void copyFile(final String relativePath, final String destinationWorkspaceRelativePath);
+    void copyFile(String relativePath, String destinationWorkspaceRelativePath);
 
     /**
      * Copy a file to another one.
@@ -120,7 +120,7 @@ public interface EclipseTestsSupportHelper {
      * @throws IOException
      *             In case of problem
      */
-    void copyFile(final File sourceFile, final File destFile) throws IOException;
+    void copyFile(File sourceFile, File destFile) throws IOException;
 
     /**
      * Change the read only status of the file with the given path.
@@ -131,7 +131,7 @@ public interface EclipseTestsSupportHelper {
      *            <code>true</code> if specified file must be read-only,
      *            <code>false</code> otherwise.
      */
-    void changeFileReadOnlyAttribute(final String fileWorkspaceRelativePath, boolean readOnly);
+    void changeFileReadOnlyAttribute(String fileWorkspaceRelativePath, boolean readOnly);
 
     /**
      * Change the read only status of the given resources.

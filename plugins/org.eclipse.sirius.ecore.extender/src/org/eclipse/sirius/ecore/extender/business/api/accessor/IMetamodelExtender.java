@@ -220,7 +220,7 @@ public interface IMetamodelExtender {
      * 
      * @return an Iterator browsing the whole model.
      */
-    Iterator<EObject> eContents(final EObject root);
+    Iterator<EObject> eContents(EObject root);
 
     /**
      * Return the name of the feature containing this instance.

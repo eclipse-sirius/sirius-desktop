@@ -31,7 +31,7 @@ public interface IProposalProvider {
      *            the context.
      * @return content proposal list.
      */
-    List<ContentProposal> getProposals(IInterpreter interpreter, final ContentContext context);
+    List<ContentProposal> getProposals(IInterpreter interpreter, ContentContext context);
 
     /**
      * Evaluates the content proposals for a given expression and returns the
@@ -43,7 +43,7 @@ public interface IProposalProvider {
      *            the context.
      * @return content proposal list.
      */
-    List<ContentProposal> getProposals(final IInterpreter interpreter, final ContentInstanceContext context);
+    List<ContentProposal> getProposals(IInterpreter interpreter, ContentInstanceContext context);
 
     /**
      * Get a proposal to start a new expression handled by the current

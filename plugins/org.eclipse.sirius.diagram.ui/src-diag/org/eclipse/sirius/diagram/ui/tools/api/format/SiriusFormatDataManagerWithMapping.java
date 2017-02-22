@@ -34,7 +34,7 @@ public interface SiriusFormatDataManagerWithMapping extends SiriusFormatDataMana
      *            than one format.
      * @return the format data corresponding to the key or null if not found.
      */
-    AbstractFormatData getFormatData(final FormatDataKey key, RepresentationElementMapping mapping);
+    AbstractFormatData getFormatData(FormatDataKey key, RepresentationElementMapping mapping);
 
     /**
      * Add a format data according to the key and the mapping information.
@@ -48,6 +48,6 @@ public interface SiriusFormatDataManagerWithMapping extends SiriusFormatDataMana
      * @param formatData
      *            The format data associated to the key and mapping.
      */
-    void addFormatData(final FormatDataKey key, RepresentationElementMapping mapping, final AbstractFormatData formatData);
+    void addFormatData(FormatDataKey key, RepresentationElementMapping mapping, AbstractFormatData formatData);
 
 }

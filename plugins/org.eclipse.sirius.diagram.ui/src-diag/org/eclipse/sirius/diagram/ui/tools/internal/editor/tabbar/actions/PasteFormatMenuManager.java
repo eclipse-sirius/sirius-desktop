@@ -31,7 +31,7 @@ public class PasteFormatMenuManager extends ActionMenuManager {
      * manager
      */
     private static class PasteFormatMenuAction extends Action {
-        public PasteFormatMenuAction() {
+        PasteFormatMenuAction() {
             setText(Messages.PasteFormatAction_text);
             setToolTipText(Messages.PasteFormatAction_toolTipText);
             ImageDescriptor imageDesc = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_FORMAT_ICON);

@@ -143,7 +143,7 @@ public class CreateSessionResourceWizard extends Wizard implements INewWizard {
 
     private class DiagramFileCreationOperation extends WorkspaceModifyOperation {
 
-        public DiagramFileCreationOperation() {
+        DiagramFileCreationOperation() {
             super(null);
         }
 

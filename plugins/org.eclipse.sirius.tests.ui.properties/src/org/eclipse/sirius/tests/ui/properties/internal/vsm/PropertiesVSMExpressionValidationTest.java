@@ -208,7 +208,7 @@ class InterpretedExpression {
 
     private EAttribute feature;
 
-    public InterpretedExpression(String expression, EObject declaration, EAttribute feature) {
+    InterpretedExpression(String expression, EObject declaration, EAttribute feature) {
         super();
         this.expression = expression;
         this.declaration = declaration;

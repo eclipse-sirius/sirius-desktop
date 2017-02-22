@@ -149,7 +149,7 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
          * @param editPartToRestore
          *            the edit part to restore
          */
-        public PasteLayoutDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToRestore) {
+        PasteLayoutDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToRestore) {
             super(domain, Messages.PasteLayoutDataCommand_label, null);
             this.dDiagram = dDiagram;
             this.editPartToRestore = editPartToRestore;
