@@ -37,11 +37,7 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
-import org.eclipse.sirius.business.api.query.ResourceQuery;
-import org.eclipse.sirius.business.api.resource.LoadEMFResource;
 import org.eclipse.sirius.business.api.resource.strategy.ResourceStrategyRegistry;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
@@ -50,7 +46,6 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
 import org.eclipse.sirius.business.internal.query.ModelingProjectQuery;
-import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
@@ -473,26 +468,4 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         }
         return cc;
     }
-
-    /**
-     * Check if file is a loadable model.
-     *
-     * @param file
-     *            IFile
-     * @param session
-     *            Session
-     *
-     * @return <code>true</code> if it is, <code>false</code> otherwise
-     */
-    private boolean isLoadableModel(IFile file, Session session) {
-        if (file == null) {
-            return false;
-        }
-        final ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(session.getSessionResource().getURI());
-        LoadEMFResource runnable = new LoadEMFResource(set, file);
-        runnable.run();
-        Resource resource = runnable.getLoadedResource();
-        return resource != null && !(new ResourceQuery(resource).isRepresentationsResource());
-    }
-
 }
