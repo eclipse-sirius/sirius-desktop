@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.profiler;
 
+import com.google.common.base.Objects;
+
 /**
  * Represents a task.
  * 
@@ -41,8 +43,7 @@ public class ProfilerTask {
      * @param name
      *            the name.
      * @throws IllegalArgumentException
-     *             if <code>category</code> or <code>name</code> is
-     *             <code>null</code>.
+     *             if <code>category</code> or <code>name</code> is <code>null</code>.
      */
     public ProfilerTask(final String category, final String name) throws IllegalArgumentException {
         if (category == null) {
@@ -65,8 +66,7 @@ public class ProfilerTask {
      * @param categoryImage
      *            the image path of the category.
      * @throws IllegalArgumentException
-     *             if <code>category</code> or <code>name</code> is
-     *             <code>null</code>.
+     *             if <code>category</code> or <code>name</code> is <code>null</code>.
      */
     public ProfilerTask(final String category, final String name, final String categoryImage) throws IllegalArgumentException {
         if (category == null) {
@@ -92,8 +92,7 @@ public class ProfilerTask {
      * @param taskImage
      *            the image path of the task.
      * @throws IllegalArgumentException
-     *             if <code>category</code> or <code>name</code> is
-     *             <code>null</code>.
+     *             if <code>category</code> or <code>name</code> is <code>null</code>.
      */
     public ProfilerTask(final String category, final String name, final String categoryImage, final String taskImage) throws IllegalArgumentException {
         if (category == null) {
@@ -134,6 +133,19 @@ public class ProfilerTask {
     @Override
     public int hashCode() {
         return category.hashCode() ^ name.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean result = false;
+        if (this == obj) {
+            result = true;
+        } else if (obj instanceof ProfilerTask) {
+            ProfilerTask that = (ProfilerTask) obj;
+            result = Objects.equal(this.name, that.name) && Objects.equal(this.category, that.category) && Objects.equal(this.categoryImage, that.categoryImage)
+                    && Objects.equal(this.taskImage, that.taskImage);
+        }
+        return result;
     }
 
     /**
