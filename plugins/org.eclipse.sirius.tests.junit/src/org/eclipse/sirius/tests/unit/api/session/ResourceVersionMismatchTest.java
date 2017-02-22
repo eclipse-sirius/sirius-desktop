@@ -180,10 +180,9 @@ public class ResourceVersionMismatchTest extends SiriusTestCase {
         setupFileVersionMismatch(true, false, false);
 
         // Test
-        Session session = null;
         try {
             clearErrors();
-            session = SessionManager.INSTANCE.openSession(sessionResourceURI, new NullProgressMonitor(), SiriusEditPlugin.getPlugin().getUiCallback());
+            SessionManager.INSTANCE.openSession(sessionResourceURI, new NullProgressMonitor(), SiriusEditPlugin.getPlugin().getUiCallback());
             fail(Messages.format(THROWN_EXCEPTION, new String[] { RuntimeException.class.getName(), "VSM" }));
         } catch (RuntimeException e) {
         }

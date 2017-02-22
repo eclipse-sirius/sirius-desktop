@@ -152,8 +152,6 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      */
     protected IInterpretedExpressionTargetSwitch targetSwitch;
 
-    private boolean subvariablesBrowsingAuthorized = true;;
-
     /**
      * Default constructor.
      * 

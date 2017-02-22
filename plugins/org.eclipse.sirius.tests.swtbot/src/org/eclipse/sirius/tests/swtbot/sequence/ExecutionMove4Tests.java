@@ -21,7 +21,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDi
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.sample.interactions.Interaction;
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckSequenceMessageEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
 import org.eclipse.sirius.tests.swtbot.support.api.matcher.WithSemantic;
@@ -194,31 +193,11 @@ public class ExecutionMove4Tests extends AbstractDefaultModelSequenceTests {
         
         ICondition conditionE2 = new CheckEditPartMoved(e2Bot);
         ICondition conditionE3 = new CheckEditPartResized(e3Bot);
-        
-        ICondition conditionCreateMessageOfBBot = new CheckSequenceMessageEditPartMoved(createMessageOfBBot);
-        ICondition conditionCreateMessageOfDBot = new CheckSequenceMessageEditPartMoved(createMessageOfDBot);
-        ICondition conditionReadMessageM5Bot = new CheckSequenceMessageEditPartMoved(readMessageM5Bot);
-        ICondition conditionReadMessageM6Bot = new CheckSequenceMessageEditPartMoved(readMessageM6Bot);
-        ICondition conditionReadMessageM7Bot = new CheckSequenceMessageEditPartMoved(readMessageM7Bot);
-        ICondition conditionDestroyMessageOfBBot = new CheckSequenceMessageEditPartMoved(destroyMessageOfBBot);
-        ICondition conditionDestroyMessageOfDBot = new CheckSequenceMessageEditPartMoved(destroyMessageOfDBot);
-        
+
         editor.drag(e1Bot, e1Bounds.x, newY);
         
         bot.waitUntil(conditionE2);
         bot.waitUntil(conditionE3);
-        
-        /*
-         * Waiting conditions about MessageEditPart don't work correctly.
-         */
-        
-//        bot.waitUntil(conditionCreateMessageOfBBot);
-//        bot.waitUntil(conditionCreateMessageOfDBot);
-//        bot.waitUntil(conditionReadMessageM5Bot);
-//        bot.waitUntil(conditionReadMessageM6Bot);
-//        bot.waitUntil(conditionReadMessageM7Bot);
-//        bot.waitUntil(conditionDestroyMessageOfBBot);
-//        bot.waitUntil(conditionDestroyMessageOfDBot);
 
         e1Bot = e3Bot.descendants(WithSemantic.withSemantic(e1)).get(0);
 

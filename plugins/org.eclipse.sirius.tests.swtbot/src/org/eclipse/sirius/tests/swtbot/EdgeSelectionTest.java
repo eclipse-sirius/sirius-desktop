@@ -56,8 +56,6 @@ public class EdgeSelectionTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String FILE_DIR = "/";
 
-    private static final String VIEWPOINT_NAME = "3358";
-
     private static final String DIAGRAM_INSTANCE_NAME = "diagram_3358";
 
     private static final String DIAGRAM_DESCRIPTION = "diagram_3358";

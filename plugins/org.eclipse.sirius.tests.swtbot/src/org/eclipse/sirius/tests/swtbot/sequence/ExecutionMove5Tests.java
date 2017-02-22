@@ -21,8 +21,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMe
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.sample.interactions.Interaction;
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckSequenceMessageEditPartMoved;
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckSequenceMessageEditPartResized;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
 import org.eclipse.sirius.tests.swtbot.support.api.matcher.WithSemantic;
@@ -245,20 +243,6 @@ public class ExecutionMove5Tests extends AbstractDefaultModelSequenceTests {
         ICondition conditionE5 = new CheckEditPartMoved(e5Bot);
         ICondition conditionE6 = new CheckEditPartMoved(e6Bot);
 
-        ICondition conditionCallMessageOnE1 = new CheckSequenceMessageEditPartMoved(callMessageOnE1Bot);
-        ICondition conditionCallMessageOnE2 = new CheckSequenceMessageEditPartMoved(callMessageOnE2Bot);
-        ICondition conditionCallMessageOnE3 = new CheckSequenceMessageEditPartMoved(callMessageOnE3Bot);
-        ICondition conditionCallMessageOnE4 = new CheckSequenceMessageEditPartMoved(callMessageOnE4Bot);
-        ICondition conditionCallMessageOnE5 = new CheckSequenceMessageEditPartMoved(callMessageOnE5Bot);
-        ICondition conditionCallMessageOnE6 = new CheckSequenceMessageEditPartMoved(callMessageOnE6Bot);
-
-        ICondition conditionReturnMessageOfE1 = new CheckSequenceMessageEditPartMoved(returnMessageOfE1Bot);
-        ICondition conditionReturnMessageOfE2 = new CheckSequenceMessageEditPartMoved(returnMessageOfE2Bot);
-        ICondition conditionReturnMessageOfE3 = new CheckSequenceMessageEditPartMoved(returnMessageOfE3Bot);
-        ICondition conditionReturnMessageOfE4 = new CheckSequenceMessageEditPartMoved(returnMessageOfE4Bot);
-        ICondition conditionReturnMessageOfE5 = new CheckSequenceMessageEditPartMoved(returnMessageOfE5Bot);
-        ICondition conditionReturnMessageOfE6 = new CheckSequenceMessageEditPartMoved(returnMessageOfE6Bot);
-
         editor.drag(e2Bot, e2Bounds.x, newY);
 
         bot.waitUntil(conditionE1);
@@ -267,24 +251,6 @@ public class ExecutionMove5Tests extends AbstractDefaultModelSequenceTests {
         bot.waitUntil(conditionE4);
         bot.waitUntil(conditionE5);
         bot.waitUntil(conditionE6);
-
-        /*
-         * Waiting conditions about MessageEditPart don't work correctly.
-         */
-
-        // bot.waitUntil(conditionCallMessageOnE1);
-        // bot.waitUntil(conditionCallMessageOnE2);
-        // bot.waitUntil(conditionCallMessageOnE3);
-        // bot.waitUntil(conditionCallMessageOnE4);
-        // bot.waitUntil(conditionCallMessageOnE5);
-        // bot.waitUntil(conditionCallMessageOnE6);
-
-        // bot.waitUntil(conditionReturnMessageOfE1);
-        // bot.waitUntil(conditionReturnMessageOfE2);
-        // bot.waitUntil(conditionReturnMessageOfE3);
-        // bot.waitUntil(conditionReturnMessageOfE4);
-        // bot.waitUntil(conditionReturnMessageOfE5);
-        // bot.waitUntil(conditionReturnMessageOfE6);
 
         int dyShift = e2Bounds.height;
         assertEquals(e1Bounds.getTranslated(0, dyShift), editor.getBounds(e1Bot));
@@ -324,19 +290,6 @@ public class ExecutionMove5Tests extends AbstractDefaultModelSequenceTests {
         ICondition conditionE5 = new CheckEditPartMoved(e5Bot);
         ICondition conditionE6 = new CheckEditPartMoved(e6Bot);
 
-        ICondition conditionCallMessageOnE2 = new CheckSequenceMessageEditPartMoved(callMessageOnE2Bot);
-        ICondition conditionCallMessageOnE3 = new CheckSequenceMessageEditPartMoved(callMessageOnE3Bot);
-        ICondition conditionCallMessageOnE4 = new CheckSequenceMessageEditPartMoved(callMessageOnE4Bot);
-        ICondition conditionCallMessageOnE5 = new CheckSequenceMessageEditPartMoved(callMessageOnE5Bot);
-        ICondition conditionCallMessageOnE6 = new CheckSequenceMessageEditPartMoved(callMessageOnE6Bot);
-
-        ICondition conditionReturnMessageOfE1 = new CheckSequenceMessageEditPartMoved(returnMessageOfE1Bot);
-        ICondition conditionReturnMessageOfE2 = new CheckSequenceMessageEditPartMoved(returnMessageOfE2Bot);
-        ICondition conditionReturnMessageOfE3 = new CheckSequenceMessageEditPartMoved(returnMessageOfE3Bot);
-        ICondition conditionReturnMessageOfE4 = new CheckSequenceMessageEditPartMoved(returnMessageOfE4Bot);
-        ICondition conditionReturnMessageOfE5 = new CheckSequenceMessageEditPartMoved(returnMessageOfE5Bot);
-        ICondition conditionReturnMessageOfE6 = new CheckSequenceMessageEditPartMoved(returnMessageOfE6Bot);
-
         editor.drag(e2Bot, e2Bounds.x, newY);
 
         bot.waitUntil(conditionE1);
@@ -344,22 +297,6 @@ public class ExecutionMove5Tests extends AbstractDefaultModelSequenceTests {
         bot.waitUntil(conditionE4);
         bot.waitUntil(conditionE5);
         bot.waitUntil(conditionE6);
-
-        /*
-         * Waiting conditions about MessageEditPart don't work correctly.
-         */
-        // bot.waitUntil(conditionCallMessageOnE2);
-        // bot.waitUntil(conditionCallMessageOnE3);
-        // bot.waitUntil(conditionCallMessageOnE4);
-        // bot.waitUntil(conditionCallMessageOnE5);
-        // bot.waitUntil(conditionCallMessageOnE6);
-
-        // bot.waitUntil(conditionReturnMessageOfE1);
-        // bot.waitUntil(conditionReturnMessageOfE2);
-        // bot.waitUntil(conditionReturnMessageOfE3);
-        // bot.waitUntil(conditionReturnMessageOfE4);
-        // bot.waitUntil(conditionReturnMessageOfE5);
-        // bot.waitUntil(conditionReturnMessageOfE6);
 
         e2Bot = e1Bot.descendants(WithSemantic.withSemantic(e2)).get(0);
 
@@ -401,22 +338,9 @@ public class ExecutionMove5Tests extends AbstractDefaultModelSequenceTests {
 
         ICondition conditionE3 = new CheckEditPartMoved(e3Bot);
 
-        ICondition conditionCallMessageOnE1Bot = new CheckSequenceMessageEditPartResized(callMessageOnE1Bot);
-        ICondition conditionCallMessageOnE3Bot = new CheckSequenceMessageEditPartMoved(callMessageOnE3Bot);
-        ICondition conditionReturnMessageOfE1Bot = new CheckSequenceMessageEditPartResized(returnMessageOfE1Bot);
-        ICondition conditionReturnMessageOfE3Bot = new CheckSequenceMessageEditPartMoved(returnMessageOfE3Bot);
-
         editor.drag(e3Bot, e3Bounds.x, newY);
 
         bot.waitUntil(conditionE3);
-
-        /*
-         * Waiting conditions about MessageEditPart don't work correctly.
-         */
-        // bot.waitUntil(conditionCallMessageOnE1Bot);
-        // bot.waitUntil(conditionCallMessageOnE3Bot);
-        // bot.waitUntil(conditionReturnMessageOfE1Bot);
-        // bot.waitUntil(conditionReturnMessageOfE3Bot);
 
         assertEquals(e1Bounds, editor.getBounds(e1Bot));
         assertEquals(e2Bounds, editor.getBounds(e2Bot));

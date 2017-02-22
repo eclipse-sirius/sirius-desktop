@@ -18,7 +18,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEd
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckSequenceMessageEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
@@ -180,14 +179,6 @@ public class ExecutionMove2Tests extends AbstractDefaultModelSequenceTests {
         ICondition conditionE3 = new CheckEditPartMoved(e3Bot);
         ICondition conditionE4 = new CheckEditPartMoved(e4Bot);
         ICondition conditionE5 = new CheckEditPartMoved(e5Bot);
-        
-        ICondition conditionReadMessage2 = new CheckSequenceMessageEditPartMoved(readMessage2Bot);
-        ICondition conditionReadMessage3 = new CheckSequenceMessageEditPartMoved(readMessage3Bot);
-        ICondition conditionReadMessage4 = new CheckSequenceMessageEditPartMoved(readMessage4Bot);
-        ICondition conditionReadMessage5 = new CheckSequenceMessageEditPartMoved(readMessage5Bot);
-        ICondition conditionReadMessage6 = new CheckSequenceMessageEditPartMoved(readMessage6Bot);
-        ICondition conditionReadMessage7 = new CheckSequenceMessageEditPartMoved(readMessage7Bot);
-        
         editor.drag(e3Bot, e3Bounds.x, newY);
         
         bot.waitUntil(conditionE1);
@@ -195,18 +186,6 @@ public class ExecutionMove2Tests extends AbstractDefaultModelSequenceTests {
         bot.waitUntil(conditionE3);
         bot.waitUntil(conditionE4);
         bot.waitUntil(conditionE5);
-        
-        /*
-         * Waiting conditions about MessageEditPart don't work correctly.
-         */
-        
-//        bot.waitUntil(conditionReadMessage2);
-//        bot.waitUntil(conditionReadMessage3);
-//        bot.waitUntil(conditionReadMessage4);
-//        bot.waitUntil(conditionReadMessage5);
-//        bot.waitUntil(conditionReadMessage6);
-//        bot.waitUntil(conditionReadMessage7);
-        
 
         // On lifeline 'a'
         int dyShift = e3Bounds.height;
