@@ -147,7 +147,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
             final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, BIG_SESSION);
             localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
             exportBigAsImageFromProjectExplorerView("PNG");
-            valideBigExportResult("png", REPRESENTATION_INSTANCE_BIG);
+            valideExportResult("png", REPRESENTATION_INSTANCE_BIG);
         } finally {
             setErrorCatchActive(true);
         }
@@ -220,7 +220,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
             localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
             openDiagramEditor();
             exportAsImageFromEditorTabBar("PNG");
-            valideBigExportResult("png", REPRESENTATION_INSTANCE_BIG);
+            valideExportResult("png", REPRESENTATION_INSTANCE_BIG);
         } finally {
             setErrorCatchActive(true);
         }

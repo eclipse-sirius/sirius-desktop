@@ -153,25 +153,31 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     public byte[] copyToImageByteArray(DiagramEditPart diagramEP, List editParts, int maxWidth, int maxHeight, ImageFileFormat format, IProgressMonitor monitor, boolean useMargins)
             throws CoreException {
         Assert.isNotNull(diagramEP);
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        DiagramGenerator gen = getDiagramGenerator(diagramEP, format);
-        if (editParts == null || editParts.isEmpty()) {
-            // CHECKSTYLE:OFF
-            editParts = diagramEP.getPrimaryEditParts();
-            // CHECKSTYLE:ON
-        }
-        if (format.equals(ImageFileFormat.SVG) || format.equals(ImageFileFormat.PDF)) {
-            gen.createConstrainedSWTImageDecriptorForParts(editParts, maxWidth, maxHeight, useMargins);
-            monitor.worked(1);
-            saveToOutputStream(stream, (SiriusDiagramSVGGenerator) gen, format, monitor);
-        } else {
-            Image image = gen.createConstrainedSWTImageDecriptorForParts(editParts, maxWidth, maxHeight, useMargins).createImage();
-            monitor.worked(1);
-            saveToOutputStream(stream, image, format, monitor);
-            image.dispose();
+        byte[] result = null;
+        try (ByteArrayOutputStream stream = new ByteArrayOutputStream()) {
+
+            DiagramGenerator gen = getDiagramGenerator(diagramEP, format);
+            if (editParts == null || editParts.isEmpty()) {
+                // CHECKSTYLE:OFF
+                editParts = diagramEP.getPrimaryEditParts();
+                // CHECKSTYLE:ON
+            }
+            if (format.equals(ImageFileFormat.SVG) || format.equals(ImageFileFormat.PDF)) {
+                gen.createConstrainedSWTImageDecriptorForParts(editParts, maxWidth, maxHeight, useMargins);
+                monitor.worked(1);
+                saveToOutputStream(stream, (SiriusDiagramSVGGenerator) gen, format, monitor);
+            } else {
+                Image image = gen.createConstrainedSWTImageDecriptorForParts(editParts, maxWidth, maxHeight, useMargins).createImage();
+                monitor.worked(1);
+                saveToOutputStream(stream, image, format, monitor);
+                image.dispose();
+            }
+            result = stream.toByteArray();
+        } catch (IOException e) {
+            throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, -1, MessageFormat.format(Messages.DiagramEditPartService_imageExportException, "i/o exception"), e)); //$NON-NLS-1$
         }
         monitor.worked(1);
-        return stream.toByteArray();
+        return result;
     }
 
     /**
@@ -327,14 +333,12 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         }
 
         // CHECKSTYLE:OFF (duplicate code from GMF)
-        try {
-            FileOutputStream stream = new FileOutputStream(destination.toOSString());
+        try (FileOutputStream stream = new FileOutputStream(destination.toOSString())) {
             saveToOutputStream(stream, image, imageFormat, monitor);
-            stream.close();
         } catch (Exception e) {
             SiriusPlugin.getDefault().error(e.getMessage(), e);
             IStatus status = new Status(IStatus.ERROR, "exportToFile", IStatus.OK, //$NON-NLS-1$
-                    e.getMessage(), null);
+                    e.getMessage(), e);
             throw new CoreException(status);
         }
         // CHECKSTYLE:ON

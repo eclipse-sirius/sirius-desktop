@@ -114,6 +114,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.swt.SWTException;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
@@ -519,8 +520,20 @@ public class DiagramDialectUIServices implements DialectUIServices {
                     } catch (final CoreException exception) {
                         if (exception instanceof SizeTooLargeException) {
                             throw (SizeTooLargeException) exception;
+                        } else if (exception.getStatus() != null && exception.getStatus().getException() instanceof SWTException) {
+                            /* Case that can occurs on Windows.*/
+                            throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representation.getName()));
                         }
                         SiriusPlugin.getDefault().error(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageCreationError, correctPath), exception);
+                    } catch (final ArrayIndexOutOfBoundsException e) {
+                        /*
+                         * On linux and when using Cairo it might happen that the image creation fails with an
+                         * ArrayIndexOutOfBoundsException from the Image.init() method. This happens when a cairo
+                         * surface gets created correctly but for some reason (most likely a size limitation from cairo)
+                         * the cairo_image_surface_get_stride() call returns 0, leading to the creation of a 0 sized
+                         * buffer to copy the image to.
+                         */
+                        throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representation.getName()));
                     } finally {
                         diagramEditPart.deactivate();
                         // Memory leak : also disposing the
