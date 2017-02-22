@@ -47,7 +47,7 @@ import com.google.common.collect.Sets;
  * 
  * @author ymortier
  */
-public class ODesignGenericInterpreter implements IInterpreter, IProposalProvider, IInterpreterWithDiagnostic {
+public class SessionInterpreter implements IInterpreter, IProposalProvider, IInterpreterWithDiagnostic {
 
     /** Maps provider with interpreters. */
     private final Map<IInterpreterProvider, IInterpreter> loadedInterpreters = new HashMap<IInterpreterProvider, IInterpreter>();

@@ -92,7 +92,7 @@ import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
-import org.eclipse.sirius.tools.internal.interpreter.ODesignGenericInterpreter;
+import org.eclipse.sirius.tools.internal.interpreter.SessionInterpreter;
 import org.eclipse.sirius.tools.internal.resource.ResourceSetUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -185,7 +185,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         this.transactionalEditingDomain = Preconditions.checkNotNull(TransactionUtil.getEditingDomain(mainDAnalysis), Messages.DAnalysisSessionImpl_noEditingDomainErrorMsg);
         this.mainDAnalysis = mainDAnalysis;
         this.saver = new Saver(this);
-        this.interpreter = new ODesignGenericInterpreter();
+        this.interpreter = new SessionInterpreter();
         this.representationsChangeAdapter = new RepresentationsChangeAdapter(this);
         super.getAnalyses().add(mainDAnalysis);
         super.getResources().add(sessionResource);
