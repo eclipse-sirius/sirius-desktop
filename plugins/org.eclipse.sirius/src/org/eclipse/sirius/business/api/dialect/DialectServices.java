@@ -11,7 +11,6 @@
 package org.eclipse.sirius.business.api.dialect;
 
 import java.util.Collection;
-import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -19,7 +18,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
-import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -283,27 +281,6 @@ public interface DialectServices {
      *            representations initialization
      */
     void initRepresentations(Viewpoint vp, EObject semantic, IProgressMonitor monitor);
-
-    /**
-     * Tell whether the dialect is able to create an identifier.
-     * 
-     * @param representationElement
-     *            the representation element for which to create an identifier
-     * @return <code>true</code> if it cans, <code>false</code> otherwise.
-     */
-    boolean canCreateIdentifier(EObject representationElement);
-
-    /**
-     * Create an identifier.
-     * 
-     * @param representationElement
-     *            the representation element for which to create an identifier
-     * @param elementToIdentifier
-     *            a map which contains element as key and identifier as value
-     * @return the created identifier, or <code>null</code> if it can not be
-     *         created.
-     */
-    RepresentationElementIdentifier createIdentifier(EObject representationElement, Map<EObject, RepresentationElementIdentifier> elementToIdentifier);
 
     /**
      * Update all the existing representations in a session which are extended

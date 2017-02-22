@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -25,7 +24,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -114,24 +112,6 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     @Override
     public void notify(RepresentationNotification notification) {
         // Empty default implementation.
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean canCreateIdentifier(EObject representationElement) {
-        // No support for identifiers by default.
-        return false;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public RepresentationElementIdentifier createIdentifier(EObject representationElement, Map<EObject, RepresentationElementIdentifier> elementToIdentifier) {
-        // No support for identifiers by default.
-        return null;
     }
 
     /**

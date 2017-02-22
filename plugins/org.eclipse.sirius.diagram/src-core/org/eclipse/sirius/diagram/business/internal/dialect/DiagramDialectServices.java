@@ -31,7 +31,6 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
-import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
@@ -43,13 +42,10 @@ import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHel
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
-import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.Messages;
-import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
@@ -58,11 +54,6 @@ import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.business.internal.dialect.description.DiagramInterpretedExpressionQuery;
-import org.eclipse.sirius.diagram.business.internal.dialect.identifier.DiagramIdentifier;
-import org.eclipse.sirius.diagram.business.internal.dialect.identifier.EdgeIdentifier;
-import org.eclipse.sirius.diagram.business.internal.dialect.identifier.NodeContainerIdentifier;
-import org.eclipse.sirius.diagram.business.internal.dialect.identifier.NodeIdentifier;
-import org.eclipse.sirius.diagram.business.internal.dialect.identifier.NodeStyleIdentifier;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.helper.task.operations.CreateViewTask;
 import org.eclipse.sirius.diagram.business.internal.helper.task.operations.NavigationTask;
@@ -359,69 +350,6 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
                 }
             }
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean canCreateIdentifier(final EObject representationElement) {
-        return representationElement instanceof DDiagram || representationElement instanceof DDiagramElement || representationElement instanceof NodeStyle;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public RepresentationElementIdentifier createIdentifier(final EObject representationElement, final Map<EObject, RepresentationElementIdentifier> elementToIdentifier) {
-
-        RepresentationElementIdentifier identifier = null;
-
-        if (representationElement instanceof DSemanticDiagram) {
-
-            identifier = new DiagramIdentifier((DSemanticDiagram) representationElement);
-
-        } else if (representationElement instanceof AbstractDNode) {
-
-            final AbstractDNode node = (AbstractDNode) representationElement;
-            final EObject container = node.eContainer();
-            final RepresentationElementIdentifier containerIdentifier = getOrCreateIdentifier(container, elementToIdentifier);
-            if (containerIdentifier != null) {
-                identifier = new NodeIdentifier(node, (NodeContainerIdentifier) containerIdentifier);
-            }
-
-        } else if (representationElement instanceof DEdge) {
-
-            final DEdge edge = (DEdge) representationElement;
-            if (edge.getSourceNode() instanceof AbstractDNode && edge.getTargetNode() instanceof AbstractDNode) {
-                final AbstractDNode source = (AbstractDNode) edge.getSourceNode();
-                final AbstractDNode target = (AbstractDNode) edge.getTargetNode();
-                final RepresentationElementIdentifier sourceIdentifier = getOrCreateIdentifier(source, elementToIdentifier);
-                final RepresentationElementIdentifier targetIdentifier = getOrCreateIdentifier(target, elementToIdentifier);
-                if (sourceIdentifier != null && targetIdentifier != null) {
-                    identifier = new EdgeIdentifier(edge, (NodeIdentifier) sourceIdentifier, (NodeIdentifier) targetIdentifier);
-                }
-            }
-
-        } else if (representationElement instanceof NodeStyle) {
-
-            final NodeStyle node = (NodeStyle) representationElement;
-            final EObject container = node.eContainer();
-            final RepresentationElementIdentifier containerIdentifier = getOrCreateIdentifier(container, elementToIdentifier);
-            if (containerIdentifier != null) {
-                identifier = new NodeStyleIdentifier(node, (NodeIdentifier) containerIdentifier);
-            }
-        }
-
-        if (identifier != null) {
-            elementToIdentifier.put(representationElement, identifier);
-        }
-
-        return identifier;
-    }
-
-    private RepresentationElementIdentifier getOrCreateIdentifier(final EObject key, final Map<EObject, RepresentationElementIdentifier> elementToIdentifier) {
-        return elementToIdentifier.containsKey(key) ? elementToIdentifier.get(key) : createIdentifier(key, elementToIdentifier);
     }
 
     /**

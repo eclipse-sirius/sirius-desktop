@@ -32,7 +32,6 @@ import org.eclipse.sirius.business.api.dialect.RepresentationNotification;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQueryProvider;
-import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -359,27 +358,6 @@ public class DialectManagerImpl implements DialectManager {
         for (final Dialect dialect : dialects.values()) {
             dialect.getServices().initRepresentations(vp, semantic, monitor);
         }
-    }
-
-    @Override
-    public boolean canCreateIdentifier(final EObject representationElement) {
-        for (final Dialect dialect : dialects.values()) {
-            if (dialect.getServices().canCreateIdentifier(representationElement)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public RepresentationElementIdentifier createIdentifier(final EObject representationElement, final Map<EObject, RepresentationElementIdentifier> elementToIdentifier) {
-        for (final Dialect dialect : dialects.values()) {
-            if (dialect.getServices().canCreateIdentifier(representationElement)) {
-                return dialect.getServices().createIdentifier(representationElement, elementToIdentifier);
-            }
-        }
-
-        return null;
     }
 
     @Override
