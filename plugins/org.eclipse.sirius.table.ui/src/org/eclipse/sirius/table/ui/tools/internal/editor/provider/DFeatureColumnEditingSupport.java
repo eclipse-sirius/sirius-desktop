@@ -128,11 +128,6 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
         this.adapterFactory = new ComposedAdapterFactory(factories);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.jface.viewers.EditingSupport#canEdit(java.lang.Object)
-     */
     @Override
     protected boolean canEdit(final Object element) {
         boolean result = false;
@@ -157,11 +152,6 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.jface.viewers.EditingSupport#getCellEditor(java.lang.Object)
-     */
     @Override
     protected CellEditor getCellEditor(final Object element) {
         if (element instanceof DLine) {
@@ -175,11 +165,6 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.jface.viewers.EditingSupport#getValue(java.lang.Object)
-     */
     @Override
     protected Object getValue(final Object element) {
         Object result = null;
@@ -233,12 +218,6 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.jface.viewers.EditingSupport#setValue(java.lang.Object,
-     *      java.lang.Object)
-     */
     @Override
     protected void setValue(final Object element, final Object value) {
         if (element instanceof DLine) {
@@ -402,9 +381,8 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                         }
                         final TextCellEditor textEditor = new TextCellEditor(tree, style) {
                             /**
-                             * {@inheritDoc} We override the doSetFocus for
-                             * clearing the selection for the direct edition of
-                             * the cell.
+                             * {@inheritDoc} We override the doSetFocus for clearing the selection for the direct
+                             * edition of the cell.
                              *
                              * @see org.eclipse.jface.viewers.TextCellEditor#doSetFocus()
                              */
@@ -440,8 +418,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
         }
         final TextCellEditor textEditor = new TextCellEditor(tree, style) {
             /**
-             * {@inheritDoc} Override for problem when the feature name defines
-             * in the odesign is not valid.
+             * {@inheritDoc} Override for problem when the feature name defines in the odesign is not valid.
              *
              * @see org.eclipse.jface.viewers.TextCellEditor#doSetValue(java.lang.Object)
              */
@@ -453,8 +430,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
             }
 
             /**
-             * {@inheritDoc} We override the doSetFocus for clearing the
-             * selection for the direct edition of the cell.
+             * {@inheritDoc} We override the doSetFocus for clearing the selection for the direct edition of the cell.
              *
              * @see org.eclipse.jface.viewers.TextCellEditor#doSetFocus()
              */
@@ -468,8 +444,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
         };
         textEditor.setValidator(new ICellEditorValidator() {
             /**
-             * {@inheritDoc} Override for problem when the feature name defines
-             * in the odesign is not valid.
+             * {@inheritDoc} Override for problem when the feature name defines in the odesign is not valid.
              *
              * @see org.eclipse.jface.viewers.ICellEditorValidator#isValid(java.lang.Object)
              */
@@ -503,8 +478,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
     }
 
     /**
-     * Get the classifier of the attribute corresponding the attribute with
-     * featureName of the this element.
+     * Get the classifier of the attribute corresponding the attribute with featureName of the this element.
      *
      * @param element
      *            The current element
@@ -572,10 +546,8 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     /**
      * @param target
-     *            The target for which it wishes to check if the feature is a
-     *            eReference
-     * @return true if the feature name corresponds to a EReference feature,
-     *         false otherwise
+     *            The target for which it wishes to check if the feature is a eReference
+     * @return true if the feature name corresponds to a EReference feature, false otherwise
      */
     private boolean isEReference(final EObject target) {
         if (target == null) {
@@ -587,10 +559,8 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     /**
      * @param target
-     *            The target for which it wishes to check if the feature can
-     *            have more than one value
-     * @return true if the feature name corresponds to a feature that can hav
-     *         more than one value, false otherwise
+     *            The target for which it wishes to check if the feature can have more than one value
+     * @return true if the feature name corresponds to a feature that can hav more than one value, false otherwise
      */
     private boolean isMany(final EObject target) {
         final EStructuralFeature structuralFeature = target.eClass().getEStructuralFeature(getFeatureName());
@@ -626,13 +596,11 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
     }
 
     /**
-     * Return the propertyDescriptor corresponding to the feature of this column
-     * for the instance
+     * Return the propertyDescriptor corresponding to the feature of this column for the instance
      *
      * @param instance
      *            the instance.
-     * @return the propertyDescriptor corresponding to the feature of this
-     *         column for the instance or null
+     * @return the propertyDescriptor corresponding to the feature of this column for the instance or null
      */
     private IItemPropertyDescriptor getPropertyDescriptor(final EObject instance) {
         if (instance == null) {
@@ -654,12 +622,6 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
         return propertyDescriptor;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.jface.viewers.EditingSupport#initializeCellEditorValue(org.eclipse.jface.viewers.CellEditor,
-     *      org.eclipse.jface.viewers.ViewerCell)
-     */
     @Override
     protected void initializeCellEditorValue(final CellEditor cellEditor, final ViewerCell cell) {
         if (((DTableTreeViewer) getViewer()).getFirstEditionCharacter() != null) {
@@ -684,12 +646,14 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
         @Override
         protected void doExecute() {
             try {
-                if ((getAccessor().eGet(cell.getTarget(), getFeatureName()) == null && value != null)
-                        || (getAccessor().eGet(cell.getTarget(), getFeatureName()) != null && !getAccessor().eGet(cell.getTarget(), getFeatureName()).equals(value))) {
-                    if (isMany(cell.getTarget())) {
-                        getAccessor().eClear(cell.getTarget(), getFeatureName());
+                EObject target = cell.getTarget();
+                String featureName = getFeatureName();
+                Object previousFeatureValue = getAccessor().eGet(target, featureName);
+                if ((previousFeatureValue == null && value != null) || (previousFeatureValue != null && !previousFeatureValue.equals(value))) {
+                    if (isMany(target)) {
+                        getAccessor().eClear(target, featureName);
                     }
-                    getAccessor().eSet(cell.getTarget(), getFeatureName(), value);
+                    getAccessor().eSet(target, featureName, value);
                 }
             } catch (final LockedInstanceException e) {
                 SiriusPlugin.getDefault().error(IInterpreterMessages.EVALUATION_ERROR_ON_MODEL_MODIFICATION, e);
