@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -1407,13 +1407,23 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     private synchronized void errorOccurs(IStatus status, String sourcePlugin) {
         if (errorCatchActive) {
-            // Ignore error caused by bugzilla 489335 when tests are launched
-            // with product "org.eclipse.platform.ide".
-            if (!("org.eclipse.core.runtime".equals(sourcePlugin) && status != null && "Could not acquire INavigatorContentService: Project Explorer not found.".equals(status.getMessage()))) {
+            boolean ignoreMessage = false;
+            if ("org.eclipse.core.runtime".equals(sourcePlugin) && status != null) {
+                if ("Could not acquire INavigatorContentService: Project Explorer not found.".equals(status.getMessage())) {
+                    // Ignore error caused by bugzilla 489335 when tests are
+                    // launched with product "org.eclipse.platform.ide".
+                    ignoreMessage = true;
+                } else if (status.getMessage() != null && status.getMessage().startsWith("Resource '/.org.eclipse.jdt.core.external.folders/.link")
+                        && status.getMessage().endsWith("' already exists.")) {
+                    // Ignore errors that sometimes appears only with runtime
+                    // environment during VSP creation.
+                    ignoreMessage = true;
+                }
+            }
+            if (!ignoreMessage) {
                 errors.put(sourcePlugin, status);
             }
         }
-
     }
 
     /**
