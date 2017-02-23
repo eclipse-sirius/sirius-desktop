@@ -419,6 +419,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
             resourceforRepresentation = dView.eResource();
         }
         if (resourceforRepresentation != null) {
+            session.registerResourceInCrossReferencer(resourceforRepresentation);
             resourceforRepresentation.getContents().add(representation);
         }
 

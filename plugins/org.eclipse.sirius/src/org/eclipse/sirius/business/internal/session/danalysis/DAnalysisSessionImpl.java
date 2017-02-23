@@ -308,8 +308,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         Collection<Resource> semanticResources = getSemanticResources();
         Collection<Resource> controlledResources = getControlledResources();
         Set<Resource> allSessionResources = getAllSessionResources();
+        Collection<Resource> srmResources = getSrmResources();
         Object semanticCrossReferencer = getSemanticCrossReferencer();
-        Iterable<Resource> resources = Iterables.concat(semanticResources, controlledResources, allSessionResources);
+        Iterable<Resource> resources = Iterables.concat(semanticResources, controlledResources, allSessionResources, srmResources);
         for (Resource resource : resources) {
             if (!(resourceSet.getResources().contains(resource))) {
                 disableCrossReferencerResolve(resource);
