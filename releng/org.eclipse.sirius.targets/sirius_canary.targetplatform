@@ -9,7 +9,7 @@ location Sirius-Interpreter-Nightly-Neo "http://download.eclipse.org/sirius/upda
     org.eclipse.sirius.common.interpreter lazy
 }
 
-location Eclipse-Oxygen-Integration "http://download.eclipse.org/eclipse/updates/4.7-N-builds/" {
+location Eclipse-Oxygen-Integration "http://download.eclipse.org/eclipse/updates/4.7-I-builds/" {
 	org.eclipse.platform.ide lazy
 	org.eclipse.platform.sdk lazy
 	org.eclipse.sdk.ide lazy
