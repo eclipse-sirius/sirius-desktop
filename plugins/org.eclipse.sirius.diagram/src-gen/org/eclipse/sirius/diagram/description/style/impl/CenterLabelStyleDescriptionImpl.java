@@ -17,15 +17,15 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.impl.BasicLabelStyleDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Center Label Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Center Label Style Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public class CenterLabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl implements CenterLabelStyleDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CenterLabelStyleDescriptionImpl() {
@@ -34,7 +34,7 @@ public class CenterLabelStyleDescriptionImpl extends BasicLabelStyleDescriptionI
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

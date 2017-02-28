@@ -34,35 +34,27 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperati
 import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Container Drop Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Container Drop Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getMappings
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getMappings
  * <em>Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getOldContainer
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getOldContainer
  * <em>Old Container</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getNewContainer
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getNewContainer
  * <em>New Container</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getElement
- * <em>Element</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getNewViewContainer
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getElement <em>Element</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getNewViewContainer
  * <em>New View Container</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getInitialOperation
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getDragSource
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getDragSource
  * <em>Drag Source</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#isMoveEdges
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#isMoveEdges
  * <em>Move Edges</em>}</li>
  * </ul>
  *
@@ -70,9 +62,9 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  */
 public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImpl implements ContainerDropDescription {
     /**
-     * The cached value of the '{@link #getMappings() <em>Mappings</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getMappings() <em>Mappings</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getMappings()
      * @generated
      * @ordered
@@ -80,8 +72,8 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
     protected EList<DiagramElementMapping> mappings;
 
     /**
-     * The cached value of the '{@link #getOldContainer() <em>Old Container</em>
-     * }' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOldContainer() <em>Old Container</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getOldContainer()
      * @generated
@@ -90,8 +82,8 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
     protected DropContainerVariable oldContainer;
 
     /**
-     * The cached value of the '{@link #getNewContainer() <em>New Container</em>
-     * }' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getNewContainer() <em>New Container</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getNewContainer()
      * @generated
@@ -100,9 +92,9 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
     protected DropContainerVariable newContainer;
 
     /**
-     * The cached value of the '{@link #getElement() <em>Element</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getElement()
      * @generated
      * @ordered
@@ -110,9 +102,8 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
     protected ElementDropVariable element;
 
     /**
-     * The cached value of the '{@link #getNewViewContainer()
-     * <em>New View Container</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getNewViewContainer() <em>New View Container</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getNewViewContainer()
      * @generated
@@ -121,9 +112,8 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
     protected ContainerViewVariable newViewContainer;
 
     /**
-     * The cached value of the '{@link #getInitialOperation()
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInitialOperation()
      * @generated
@@ -132,9 +122,9 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
     protected InitialContainerDropOperation initialOperation;
 
     /**
-     * The default value of the '{@link #getDragSource() <em>Drag Source</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getDragSource() <em>Drag Source</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getDragSource()
      * @generated
      * @ordered
@@ -142,9 +132,9 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
     protected static final DragSource DRAG_SOURCE_EDEFAULT = DragSource.DIAGRAM_LITERAL;
 
     /**
-     * The cached value of the '{@link #getDragSource() <em>Drag Source</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getDragSource() <em>Drag Source</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getDragSource()
      * @generated
      * @ordered
@@ -152,9 +142,9 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
     protected DragSource dragSource = ContainerDropDescriptionImpl.DRAG_SOURCE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isMoveEdges() <em>Move Edges</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #isMoveEdges() <em>Move Edges</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isMoveEdges()
      * @generated
      * @ordered
@@ -162,9 +152,9 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
     protected static final boolean MOVE_EDGES_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isMoveEdges() <em>Move Edges</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #isMoveEdges() <em>Move Edges</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isMoveEdges()
      * @generated
      * @ordered
@@ -173,7 +163,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ContainerDropDescriptionImpl() {
@@ -182,7 +172,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -192,7 +182,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -205,7 +195,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -232,7 +222,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public DropContainerVariable basicGetOldContainer() {
@@ -241,7 +231,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetOldContainer(DropContainerVariable newOldContainer, NotificationChain msgs) {
@@ -260,7 +250,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -284,7 +274,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -311,7 +301,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public DropContainerVariable basicGetNewContainer() {
@@ -320,7 +310,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetNewContainer(DropContainerVariable newNewContainer, NotificationChain msgs) {
@@ -339,7 +329,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -363,7 +353,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -390,7 +380,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ElementDropVariable basicGetElement() {
@@ -399,7 +389,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetElement(ElementDropVariable newElement, NotificationChain msgs) {
@@ -418,7 +408,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -442,7 +432,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -469,7 +459,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ContainerViewVariable basicGetNewViewContainer() {
@@ -478,7 +468,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetNewViewContainer(ContainerViewVariable newNewViewContainer, NotificationChain msgs) {
@@ -497,7 +487,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -521,7 +511,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -548,7 +538,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public InitialContainerDropOperation basicGetInitialOperation() {
@@ -557,7 +547,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialContainerDropOperation newInitialOperation, NotificationChain msgs) {
@@ -576,7 +566,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -600,7 +590,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -610,7 +600,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -624,7 +614,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -634,7 +624,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -648,7 +638,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -660,7 +650,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -672,7 +662,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -694,7 +684,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -737,7 +727,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -775,7 +765,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -811,7 +801,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -839,7 +829,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

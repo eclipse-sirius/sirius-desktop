@@ -25,17 +25,15 @@ import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Foreground Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Foreground Style Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl#getLabelSize
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl#getLabelSize
  * <em>Label Size</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl#getLabelFormat
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl#getLabelFormat
  * <em>Label Format</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl#getForeGroundColor
@@ -47,9 +45,9 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
 public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container implements ForegroundStyleDescription {
 
     /**
-     * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelSize() <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -57,9 +55,9 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
     protected static final int LABEL_SIZE_EDEFAULT = 12;
 
     /**
-     * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -67,9 +65,9 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
     protected int labelSize = ForegroundStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
-     * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}' attribute list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getLabelFormat()
      * @generated
      * @ordered
@@ -77,10 +75,9 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
     protected EList<FontFormat> labelFormat;
 
     /**
-     * The cached value of the '{@link #getForeGroundColor()
-     * <em>Fore Ground Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getForeGroundColor() <em>Fore Ground Color</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getForeGroundColor()
      * @generated
      * @ordered
@@ -89,7 +86,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ForegroundStyleDescriptionImpl() {
@@ -98,7 +95,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +105,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -118,7 +115,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +129,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +142,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -164,7 +161,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetForeGroundColor() {
@@ -173,7 +170,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -187,7 +184,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -208,7 +205,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -231,7 +228,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -252,7 +249,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -270,7 +267,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

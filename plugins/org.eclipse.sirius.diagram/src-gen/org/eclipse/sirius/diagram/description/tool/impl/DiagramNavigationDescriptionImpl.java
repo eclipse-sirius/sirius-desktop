@@ -21,14 +21,13 @@ import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigationDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Diagram Navigation Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Diagram Navigation Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.DiagramNavigationDescriptionImpl#getDiagramDescription
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.DiagramNavigationDescriptionImpl#getDiagramDescription
  * <em>Diagram Description</em>}</li>
  * </ul>
  *
@@ -36,9 +35,8 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigati
  */
 public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDescriptionImpl implements DiagramNavigationDescription {
     /**
-     * The cached value of the '{@link #getDiagramDescription()
-     * <em>Diagram Description</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getDiagramDescription() <em>Diagram Description</em>}' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDiagramDescription()
      * @generated
@@ -48,7 +46,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DiagramNavigationDescriptionImpl() {
@@ -57,7 +55,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -67,7 +65,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -86,7 +84,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public DiagramDescription basicGetDiagramDescription() {
@@ -95,7 +93,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -109,7 +107,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +124,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +139,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +154,7 @@ public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

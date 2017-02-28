@@ -17,15 +17,15 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Hide Label Filter</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Hide Label Filter</b></em>'. <!-- end-user-doc
+ * -->
  *
  * @generated
  */
 public class HideLabelFilterImpl extends MinimalEObjectImpl.Container implements HideLabelFilter {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected HideLabelFilterImpl() {
@@ -34,7 +34,7 @@ public class HideLabelFilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

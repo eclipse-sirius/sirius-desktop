@@ -13,18 +13,15 @@ package org.eclipse.sirius.diagram;
 import org.eclipse.sirius.viewpoint.description.TypedVariable;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Typed Variable Value</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Typed Variable Value</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.TypedVariableValue#getVariableDefinition
- * <em>Variable Definition</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.TypedVariableValue#getValue
- * <em>Value</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.TypedVariableValue#getVariableDefinition <em>Variable Definition</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.TypedVariableValue#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getTypedVariableValue()
@@ -33,14 +30,13 @@ import org.eclipse.sirius.viewpoint.description.TypedVariable;
  */
 public interface TypedVariableValue extends VariableValue {
     /**
-     * Returns the value of the '<em><b>Variable Definition</b></em>' reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Variable Definition</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Variable Definition</em>' reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Variable Definition</em>' reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Variable Definition</em>' reference.
      * @see #setVariableDefinition(TypedVariable)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getTypedVariableValue_VariableDefinition()
@@ -50,11 +46,9 @@ public interface TypedVariableValue extends VariableValue {
     TypedVariable getVariableDefinition();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.TypedVariableValue#getVariableDefinition
-     * <em>Variable Definition</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.TypedVariableValue#getVariableDefinition
+     * <em>Variable Definition</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Variable Definition</em>' reference.
      * @see #getVariableDefinition()
@@ -63,14 +57,13 @@ public interface TypedVariableValue extends VariableValue {
     void setVariableDefinition(TypedVariable value);
 
     /**
-     * Returns the value of the '<em><b>Value</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Value</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Value</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Value</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getTypedVariableValue_Value()
@@ -80,10 +73,9 @@ public interface TypedVariableValue extends VariableValue {
     String getValue();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.TypedVariableValue#getValue
-     * <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.TypedVariableValue#getValue <em>Value</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Value</em>' attribute.
      * @see #getValue()

@@ -17,19 +17,17 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '
- * <em><b>Tree Drag Source</b></em>', and utility methods for working with them.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration ' <em><b>Tree Drag Source</b></em>', and
+ * utility methods for working with them. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeDragSource()
  * @model
  * @generated
  */
 public enum TreeDragSource implements Enumerator {
     /**
-     * The '<em><b>TREE</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>TREE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #TREE_VALUE
      * @generated
      * @ordered
@@ -37,9 +35,8 @@ public enum TreeDragSource implements Enumerator {
     TREE(1, "TREE", "TREE"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>PROJECT EXPLORER</b></em>' literal object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The '<em><b>PROJECT EXPLORER</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #PROJECT_EXPLORER_VALUE
      * @generated
      * @ordered
@@ -47,9 +44,8 @@ public enum TreeDragSource implements Enumerator {
     PROJECT_EXPLORER(2, "PROJECT_EXPLORER", "PROJECT_EXPLORER"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>BOTH</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>BOTH</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #BOTH_VALUE
      * @generated
      * @ordered
@@ -59,11 +55,11 @@ public enum TreeDragSource implements Enumerator {
     /**
      * The '<em><b>TREE</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>TREE</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>TREE</b></em>' literal object isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #TREE
      * @model
      * @generated
@@ -72,14 +68,13 @@ public enum TreeDragSource implements Enumerator {
     public static final int TREE_VALUE = 1;
 
     /**
-     * The '<em><b>PROJECT EXPLORER</b></em>' literal value. <!-- begin-user-doc
-     * -->
+     * The '<em><b>PROJECT EXPLORER</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>PROJECT EXPLORER</b></em>' literal object isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of '<em><b>PROJECT EXPLORER</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #PROJECT_EXPLORER
      * @model
      * @generated
@@ -90,11 +85,11 @@ public enum TreeDragSource implements Enumerator {
     /**
      * The '<em><b>BOTH</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>BOTH</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>BOTH</b></em>' literal object isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #BOTH
      * @model
      * @generated
@@ -103,25 +98,24 @@ public enum TreeDragSource implements Enumerator {
     public static final int BOTH_VALUE = 3;
 
     /**
-     * An array of all the '<em><b>Tree Drag Source</b></em>' enumerators. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * An array of all the '<em><b>Tree Drag Source</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private static final TreeDragSource[] VALUES_ARRAY = new TreeDragSource[] { TREE, PROJECT_EXPLORER, BOTH, };
 
     /**
-     * A public read-only list of all the '<em><b>Tree Drag Source</b></em>'
-     * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * A public read-only list of all the '<em><b>Tree Drag Source</b></em>' enumerators. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public static final List<TreeDragSource> VALUES = Collections.unmodifiableList(Arrays.asList(TreeDragSource.VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>Tree Drag Source</b></em>' literal with the specified
-     * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Tree Drag Source</b></em>' literal with the specified literal value. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -137,9 +131,9 @@ public enum TreeDragSource implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Tree Drag Source</b></em>' literal with the specified
-     * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Tree Drag Source</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param name
      *            the name.
      * @return the matching enumerator or <code>null</code>.
@@ -155,9 +149,9 @@ public enum TreeDragSource implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Tree Drag Source</b></em>' literal with the specified
-     * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Tree Drag Source</b></em>' literal with the specified integer value. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -177,29 +171,28 @@ public enum TreeDragSource implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
 
     /**
-     * Only this class can construct instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private TreeDragSource(int value, String name, String literal) {
@@ -210,7 +203,7 @@ public enum TreeDragSource implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -220,7 +213,7 @@ public enum TreeDragSource implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -230,7 +223,7 @@ public enum TreeDragSource implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -239,9 +232,9 @@ public enum TreeDragSource implements Enumerator {
     }
 
     /**
-     * Returns the literal value of the enumerator, which is its string
-     * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override

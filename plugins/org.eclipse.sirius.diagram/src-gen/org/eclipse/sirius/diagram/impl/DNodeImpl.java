@@ -38,46 +38,32 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DNode</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DNode</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getOwnedBorderedNodes
- * <em>Owned Bordered Nodes</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getArrangeConstraints
- * <em>Arrange Constraints</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getOutgoingEdges
- * <em>Outgoing Edges</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getIncomingEdges
- * <em>Incoming Edges</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getWidth <em>Width</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getHeight
- * <em>Height</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getOwnedStyle
- * <em>Owned Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getLabelPosition
- * <em>Label Position</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getResizeKind
- * <em>Resize Kind</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getOriginalStyle
- * <em>Original Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getActualMapping
- * <em>Actual Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getCandidatesMapping
- * <em>Candidates Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getOwnedBorderedNodes <em>Owned Bordered Nodes</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getArrangeConstraints <em>Arrange Constraints</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getOutgoingEdges <em>Outgoing Edges</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getIncomingEdges <em>Incoming Edges</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getWidth <em>Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getHeight <em>Height</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getOwnedStyle <em>Owned Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getLabelPosition <em>Label Position</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getResizeKind <em>Resize Kind</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getOriginalStyle <em>Original Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getActualMapping <em>Actual Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getCandidatesMapping <em>Candidates Mapping</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DNodeImpl extends DDiagramElementImpl implements DNode {
     /**
-     * The cached value of the '{@link #getOwnedBorderedNodes()
-     * <em>Owned Bordered Nodes</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedBorderedNodes() <em>Owned Bordered Nodes</em>}' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getOwnedBorderedNodes()
      * @generated
      * @ordered
@@ -85,9 +71,8 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected EList<DNode> ownedBorderedNodes;
 
     /**
-     * The cached value of the '{@link #getArrangeConstraints()
-     * <em>Arrange Constraints</em>}' attribute list. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getArrangeConstraints() <em>Arrange Constraints</em>}' attribute list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getArrangeConstraints()
      * @generated
@@ -96,10 +81,9 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected EList<ArrangeConstraint> arrangeConstraints;
 
     /**
-     * The cached value of the '{@link #getOutgoingEdges()
-     * <em>Outgoing Edges</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getOutgoingEdges() <em>Outgoing Edges</em>}' reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getOutgoingEdges()
      * @generated
      * @ordered
@@ -107,10 +91,9 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected EList<DEdge> outgoingEdges;
 
     /**
-     * The cached value of the '{@link #getIncomingEdges()
-     * <em>Incoming Edges</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getIncomingEdges() <em>Incoming Edges</em>}' reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getIncomingEdges()
      * @generated
      * @ordered
@@ -118,9 +101,9 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected EList<DEdge> incomingEdges;
 
     /**
-     * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getWidth()
      * @generated
      * @ordered
@@ -128,8 +111,8 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected static final Integer WIDTH_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getWidth()
      * @generated
@@ -138,9 +121,9 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected Integer width = DNodeImpl.WIDTH_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getHeight() <em>Height</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getHeight()
      * @generated
      * @ordered
@@ -148,9 +131,9 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected static final Integer HEIGHT_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getHeight()
      * @generated
      * @ordered
@@ -158,8 +141,8 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected Integer height = DNodeImpl.HEIGHT_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getOwnedStyle() <em>Owned Style</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOwnedStyle() <em>Owned Style</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getOwnedStyle()
      * @generated
@@ -168,10 +151,9 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected NodeStyle ownedStyle;
 
     /**
-     * The default value of the '{@link #getLabelPosition()
-     * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelPosition() <em>Label Position</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getLabelPosition()
      * @generated
      * @ordered
@@ -179,10 +161,9 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected static final LabelPosition LABEL_POSITION_EDEFAULT = LabelPosition.BORDER_LITERAL;
 
     /**
-     * The cached value of the '{@link #getLabelPosition()
-     * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelPosition() <em>Label Position</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getLabelPosition()
      * @generated
      * @ordered
@@ -191,9 +172,9 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected LabelPosition labelPosition = DNodeImpl.LABEL_POSITION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getResizeKind() <em>Resize Kind</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getResizeKind() <em>Resize Kind</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getResizeKind()
      * @generated
      * @ordered
@@ -201,9 +182,9 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected static final ResizeKind RESIZE_KIND_EDEFAULT = ResizeKind.NONE_LITERAL;
 
     /**
-     * The cached value of the '{@link #getResizeKind() <em>Resize Kind</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getResizeKind() <em>Resize Kind</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getResizeKind()
      * @generated
      * @ordered
@@ -211,10 +192,9 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected ResizeKind resizeKind = DNodeImpl.RESIZE_KIND_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getOriginalStyle()
-     * <em>Original Style</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getOriginalStyle() <em>Original Style</em>}' reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getOriginalStyle()
      * @generated
      * @ordered
@@ -222,10 +202,9 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected Style originalStyle;
 
     /**
-     * The cached value of the '{@link #getActualMapping()
-     * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getActualMapping() <em>Actual Mapping</em>}' reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getActualMapping()
      * @generated
      * @ordered
@@ -233,9 +212,8 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
     protected NodeMapping actualMapping;
 
     /**
-     * The cached value of the '{@link #getCandidatesMapping()
-     * <em>Candidates Mapping</em>}' reference list. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getCandidatesMapping() <em>Candidates Mapping</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCandidatesMapping()
      * @generated
@@ -245,7 +223,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DNodeImpl() {
@@ -254,7 +232,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -264,7 +242,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -277,7 +255,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -290,7 +268,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -303,7 +281,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -316,7 +294,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -326,7 +304,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -340,7 +318,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -350,7 +328,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -364,7 +342,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -391,7 +369,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NodeStyle basicGetOwnedStyle() {
@@ -400,7 +378,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetOwnedStyle(NodeStyle newOwnedStyle, NotificationChain msgs) {
@@ -419,7 +397,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -443,7 +421,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -453,7 +431,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -467,7 +445,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -477,7 +455,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -491,7 +469,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -510,7 +488,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public Style basicGetOriginalStyle() {
@@ -519,7 +497,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -533,7 +511,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -552,7 +530,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NodeMapping basicGetActualMapping() {
@@ -561,7 +539,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -575,7 +553,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -588,7 +566,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -600,7 +578,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -617,7 +595,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -637,7 +615,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -682,7 +660,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -736,7 +714,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -784,7 +762,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -820,7 +798,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -846,7 +824,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -872,7 +850,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

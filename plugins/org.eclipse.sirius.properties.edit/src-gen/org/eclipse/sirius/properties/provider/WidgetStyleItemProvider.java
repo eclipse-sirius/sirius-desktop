@@ -32,8 +32,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.WidgetStyle;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.WidgetStyle} object. <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.eclipse.sirius.properties.WidgetStyle} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
  * 
  * @generated
@@ -41,9 +40,8 @@ import org.eclipse.sirius.properties.WidgetStyle;
 public class WidgetStyleItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public WidgetStyleItemProvider(AdapterFactory adapterFactory) {
@@ -51,9 +49,8 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -71,8 +68,8 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Label Font Name Expression
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Label Font Name Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @generated
      */
@@ -84,8 +81,8 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Label Font Size Expression
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Label Font Size Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @generated
      */
@@ -97,9 +94,9 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Label Background Color feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * This adds a property descriptor for the Label Background Color feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @generated
      */
     protected void addLabelBackgroundColorPropertyDescriptor(Object object) {
@@ -110,9 +107,9 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Label Foreground Color feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * This adds a property descriptor for the Label Foreground Color feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @generated
      */
     protected void addLabelForegroundColorPropertyDescriptor(Object object) {
@@ -123,9 +120,8 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Label Font Format feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Label Font Format feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addLabelFontFormatPropertyDescriptor(Object object) {
@@ -136,9 +132,8 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This returns WidgetStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * This returns WidgetStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -147,8 +142,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -160,11 +154,10 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @generated
      */
     @Override
@@ -182,10 +175,9 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -194,9 +186,8 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

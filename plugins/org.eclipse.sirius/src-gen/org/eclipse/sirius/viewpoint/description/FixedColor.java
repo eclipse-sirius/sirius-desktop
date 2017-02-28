@@ -12,22 +12,17 @@
 package org.eclipse.sirius.viewpoint.description;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Fixed Color</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Fixed Color</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> A fixed color description defined by a specific RGB
- * triplet. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> A fixed color description defined by a specific RGB triplet. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.FixedColor#getRed
- * <em>Red</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.FixedColor#getGreen
- * <em>Green</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.FixedColor#getBlue
- * <em>Blue</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.FixedColor#getRed <em>Red</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.FixedColor#getGreen <em>Green</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.FixedColor#getBlue <em>Blue</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getFixedColor()
@@ -36,9 +31,8 @@ package org.eclipse.sirius.viewpoint.description;
  */
 public interface FixedColor extends ColorDescription {
     /**
-     * Returns the value of the '<em><b>Red</b></em>' attribute. The default
-     * value is <code>"125"</code>. <!-- begin-user-doc --> <!-- end-user-doc
-     * --> <!-- begin-model-doc --> The red value of the RGB color. <!--
+     * Returns the value of the '<em><b>Red</b></em>' attribute. The default value is <code>"125"</code>. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The red value of the RGB color. <!--
      * end-model-doc -->
      *
      * @return the value of the '<em>Red</em>' attribute.
@@ -50,10 +44,9 @@ public interface FixedColor extends ColorDescription {
     int getRed();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.FixedColor#getRed
-     * <em>Red</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.FixedColor#getRed <em>Red</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Red</em>' attribute.
      * @see #getRed()
@@ -62,9 +55,8 @@ public interface FixedColor extends ColorDescription {
     void setRed(int value);
 
     /**
-     * Returns the value of the '<em><b>Green</b></em>' attribute. The default
-     * value is <code>"125"</code>. <!-- begin-user-doc --> <!-- end-user-doc
-     * --> <!-- begin-model-doc --> The green value of the RGB color. <!--
+     * Returns the value of the '<em><b>Green</b></em>' attribute. The default value is <code>"125"</code>. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The green value of the RGB color. <!--
      * end-model-doc -->
      *
      * @return the value of the '<em>Green</em>' attribute.
@@ -76,10 +68,9 @@ public interface FixedColor extends ColorDescription {
     int getGreen();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.FixedColor#getGreen
-     * <em>Green</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.FixedColor#getGreen <em>Green</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Green</em>' attribute.
      * @see #getGreen()
@@ -88,9 +79,8 @@ public interface FixedColor extends ColorDescription {
     void setGreen(int value);
 
     /**
-     * Returns the value of the '<em><b>Blue</b></em>' attribute. The default
-     * value is <code>"125"</code>. <!-- begin-user-doc --> <!-- end-user-doc
-     * --> <!-- begin-model-doc --> The blue value of the RGB color. <!--
+     * Returns the value of the '<em><b>Blue</b></em>' attribute. The default value is <code>"125"</code>. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The blue value of the RGB color. <!--
      * end-model-doc -->
      *
      * @return the value of the '<em>Blue</em>' attribute.
@@ -102,10 +92,9 @@ public interface FixedColor extends ColorDescription {
     int getBlue();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.FixedColor#getBlue
-     * <em>Blue</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.FixedColor#getBlue <em>Blue</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Blue</em>' attribute.
      * @see #getBlue()

@@ -14,11 +14,9 @@ package org.eclipse.sirius.viewpoint;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DRefreshable</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DRefreshable</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> An element that can be refreshed. <!-- end-model-doc
- * -->
+ * <!-- begin-model-doc --> An element that can be refreshed. <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRefreshable()
@@ -27,8 +25,8 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface DRefreshable extends EObject {
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Refresh the element. <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Refresh the element. <!-- end-model-doc
+     * -->
      *
      * @model
      * @generated

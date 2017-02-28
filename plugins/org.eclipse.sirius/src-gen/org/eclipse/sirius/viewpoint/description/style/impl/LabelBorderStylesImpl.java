@@ -25,14 +25,13 @@ import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyles;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Label Border Styles</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Label Border Styles</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStylesImpl#getLabelBorderStyleDescriptions
+ * <li>{@link org.eclipse.sirius.viewpoint.description.style.impl.LabelBorderStylesImpl#getLabelBorderStyleDescriptions
  * <em>Label Border Style Descriptions</em>}</li>
  * </ul>
  *
@@ -40,10 +39,9 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  */
 public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implements LabelBorderStyles {
     /**
-     * The cached value of the '{@link #getLabelBorderStyleDescriptions()
-     * <em>Label Border Style Descriptions</em>}' containment reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelBorderStyleDescriptions() <em>Label Border Style Descriptions</em>}'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getLabelBorderStyleDescriptions()
      * @generated
      * @ordered
@@ -52,7 +50,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected LabelBorderStylesImpl() {
@@ -61,7 +59,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -71,7 +69,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +83,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +97,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +111,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -130,7 +128,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +143,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

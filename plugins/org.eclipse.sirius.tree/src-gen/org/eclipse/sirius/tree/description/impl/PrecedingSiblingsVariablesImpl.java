@@ -15,15 +15,15 @@ import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.PrecedingSiblingsVariables;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Preceding Siblings Variables</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Preceding Siblings Variables</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public class PrecedingSiblingsVariablesImpl extends TreeVariableImpl implements PrecedingSiblingsVariables {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected PrecedingSiblingsVariablesImpl() {
@@ -32,7 +32,7 @@ public class PrecedingSiblingsVariablesImpl extends TreeVariableImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

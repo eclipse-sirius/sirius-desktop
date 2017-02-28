@@ -21,23 +21,21 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Decoration</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Decoration</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DecorationImpl#getDescription
- * <em>Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DecorationImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DecorationImpl extends MinimalEObjectImpl.Container implements Decoration {
     /**
-     * The cached value of the '{@link #getDescription() <em>Description</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getDescription() <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getDescription()
      * @generated
      * @ordered
@@ -46,7 +44,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DecorationImpl() {
@@ -55,7 +53,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -65,7 +63,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -84,7 +82,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public DecorationDescription basicGetDescription() {
@@ -93,7 +91,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -107,7 +105,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -124,7 +122,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -139,7 +137,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -154,7 +152,7 @@ public class DecorationImpl extends MinimalEObjectImpl.Container implements Deco
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -18,17 +18,15 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.MessageMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Message Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Message Mapping</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.impl.MessageMappingImpl#getSendingEndFinderExpression
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.impl.MessageMappingImpl#getSendingEndFinderExpression
  * <em>Sending End Finder Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.impl.MessageMappingImpl#getReceivingEndFinderExpression
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.impl.MessageMappingImpl#getReceivingEndFinderExpression
  * <em>Receiving End Finder Expression</em>}</li>
  * </ul>
  *
@@ -36,10 +34,9 @@ import org.eclipse.sirius.diagram.sequence.description.MessageMapping;
  */
 public abstract class MessageMappingImpl extends EdgeMappingImpl implements MessageMapping {
     /**
-     * The default value of the '{@link #getSendingEndFinderExpression()
-     * <em>Sending End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getSendingEndFinderExpression() <em>Sending End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getSendingEndFinderExpression()
      * @generated
      * @ordered
@@ -47,10 +44,9 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
     protected static final String SENDING_END_FINDER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getSendingEndFinderExpression()
-     * <em>Sending End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getSendingEndFinderExpression() <em>Sending End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getSendingEndFinderExpression()
      * @generated
      * @ordered
@@ -58,10 +54,9 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
     protected String sendingEndFinderExpression = MessageMappingImpl.SENDING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getReceivingEndFinderExpression()
-     * <em>Receiving End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getReceivingEndFinderExpression() <em>Receiving End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getReceivingEndFinderExpression()
      * @generated
      * @ordered
@@ -69,10 +64,9 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
     protected static final String RECEIVING_END_FINDER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getReceivingEndFinderExpression()
-     * <em>Receiving End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getReceivingEndFinderExpression() <em>Receiving End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getReceivingEndFinderExpression()
      * @generated
      * @ordered
@@ -81,7 +75,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected MessageMappingImpl() {
@@ -90,7 +84,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +94,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -110,7 +104,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -124,7 +118,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -134,7 +128,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -148,7 +142,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -164,7 +158,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +176,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -200,7 +194,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -218,7 +212,7 @@ public abstract class MessageMappingImpl extends EdgeMappingImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -19,15 +19,15 @@ import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DTable Element Synchronizer</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DTable Element Synchronizer</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public abstract class DTableElementSynchronizerImpl extends MinimalEObjectImpl.Container implements DTableElementSynchronizer {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DTableElementSynchronizerImpl() {
@@ -36,7 +36,7 @@ public abstract class DTableElementSynchronizerImpl extends MinimalEObjectImpl.C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -46,7 +46,7 @@ public abstract class DTableElementSynchronizerImpl extends MinimalEObjectImpl.C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public abstract class DTableElementSynchronizerImpl extends MinimalEObjectImpl.C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -70,7 +70,7 @@ public abstract class DTableElementSynchronizerImpl extends MinimalEObjectImpl.C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

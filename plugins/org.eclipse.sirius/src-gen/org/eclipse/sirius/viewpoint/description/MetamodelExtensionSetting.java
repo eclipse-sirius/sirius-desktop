@@ -14,18 +14,16 @@ package org.eclipse.sirius.viewpoint.description;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Metamodel Extension Setting</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Metamodel Extension Setting</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> Describe the Meta Model extension to use. <!--
- * end-model-doc -->
+ * <!-- begin-model-doc --> Describe the Meta Model extension to use. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting#getExtensionGroup
+ * <li>{@link org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting#getExtensionGroup
  * <em>Extension Group</em>}</li>
  * </ul>
  *
@@ -35,9 +33,8 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface MetamodelExtensionSetting extends EObject {
     /**
-     * Returns the value of the '<em><b>Extension Group</b></em>' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The Meta Model extension. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Extension Group</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> The Meta Model extension. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Extension Group</em>' reference.
      * @see #setExtensionGroup(EObject)
@@ -50,9 +47,8 @@ public interface MetamodelExtensionSetting extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting#getExtensionGroup
-     * <em>Extension Group</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Extension Group</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Extension Group</em>' reference.
      * @see #getExtensionGroup()

@@ -14,16 +14,14 @@ package org.eclipse.sirius.viewpoint.description;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Documented Element</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Documented Element</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.DocumentedElement#getDocumentation
- * <em>Documentation</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.DocumentedElement#getDocumentation <em>Documentation</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDocumentedElement()
@@ -32,11 +30,11 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface DocumentedElement extends EObject {
     /**
-     * Returns the value of the '<em><b>Documentation</b></em>' attribute. The
-     * default value is <code>""</code>. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Documentation</b></em>' attribute. The default value is <code>""</code>. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Documentation</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Documentation</em>' attribute isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -49,11 +47,9 @@ public interface DocumentedElement extends EObject {
     String getDocumentation();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.DocumentedElement#getDocumentation
-     * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.DocumentedElement#getDocumentation
+     * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Documentation</em>' attribute.
      * @see #getDocumentation()

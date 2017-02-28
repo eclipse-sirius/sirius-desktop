@@ -14,15 +14,14 @@ import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Instance Role Creation Tool</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Instance Role Creation Tool</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool#getPredecessor
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool#getPredecessor
  * <em>Predecessor</em>}</li>
  * </ul>
  *
@@ -32,14 +31,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
  */
 public interface InstanceRoleCreationTool extends NodeCreationDescription, SequenceDiagramToolDescription {
     /**
-     * Returns the value of the '<em><b>Predecessor</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Predecessor</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Predecessor</em>' containment reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Predecessor</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Predecessor</em>' containment reference.
      * @see #setPredecessor(ElementVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getInstanceRoleCreationTool_Predecessor()
@@ -51,12 +49,10 @@ public interface InstanceRoleCreationTool extends NodeCreationDescription, Seque
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool#getPredecessor
-     * <em>Predecessor</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * <em>Predecessor</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Predecessor</em>' containment
-     *            reference.
+     *            the new value of the '<em>Predecessor</em>' containment reference.
      * @see #getPredecessor()
      * @generated
      */

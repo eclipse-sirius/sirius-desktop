@@ -25,14 +25,13 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Decoration Descriptions Set</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Decoration Descriptions Set</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.DecorationDescriptionsSetImpl#getDecorationDescriptions
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.DecorationDescriptionsSetImpl#getDecorationDescriptions
  * <em>Decoration Descriptions</em>}</li>
  * </ul>
  *
@@ -40,10 +39,9 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  */
 public class DecorationDescriptionsSetImpl extends MinimalEObjectImpl.Container implements DecorationDescriptionsSet {
     /**
-     * The cached value of the '{@link #getDecorationDescriptions()
-     * <em>Decoration Descriptions</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getDecorationDescriptions() <em>Decoration Descriptions</em>}' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getDecorationDescriptions()
      * @generated
      * @ordered
@@ -52,7 +50,7 @@ public class DecorationDescriptionsSetImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DecorationDescriptionsSetImpl() {
@@ -61,7 +59,7 @@ public class DecorationDescriptionsSetImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -71,7 +69,7 @@ public class DecorationDescriptionsSetImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +83,7 @@ public class DecorationDescriptionsSetImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +97,7 @@ public class DecorationDescriptionsSetImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +111,7 @@ public class DecorationDescriptionsSetImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -130,7 +128,7 @@ public class DecorationDescriptionsSetImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +143,7 @@ public class DecorationDescriptionsSetImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

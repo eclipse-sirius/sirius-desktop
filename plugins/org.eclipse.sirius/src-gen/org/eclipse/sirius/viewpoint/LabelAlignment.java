@@ -18,8 +18,8 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '
- * <em><b>Label Alignment</b></em>', and utility methods for working with them.
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration ' <em><b>Label Alignment</b></em>', and
+ * utility methods for working with them.
  *
  * @since 0.9.0 <!-- end-user-doc -->
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getLabelAlignment()
@@ -28,9 +28,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum LabelAlignment implements Enumerator {
     /**
-     * The '<em><b>CENTER</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>CENTER</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #CENTER_VALUE
      * @generated
      * @ordered
@@ -38,9 +37,8 @@ public enum LabelAlignment implements Enumerator {
     CENTER(0, "CENTER", "CENTER"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>LEFT</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>LEFT</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #LEFT_VALUE
      * @generated
      * @ordered
@@ -48,9 +46,8 @@ public enum LabelAlignment implements Enumerator {
     LEFT(1, "LEFT", "LEFT"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>RIGHT</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>RIGHT</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #RIGHT_VALUE
      * @generated
      * @ordered
@@ -60,11 +57,11 @@ public enum LabelAlignment implements Enumerator {
     /**
      * The '<em><b>CENTER</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>CENTER</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>CENTER</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #CENTER
      * @model
      * @generated
@@ -75,11 +72,11 @@ public enum LabelAlignment implements Enumerator {
     /**
      * The '<em><b>LEFT</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>LEFT</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>LEFT</b></em>' literal object isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LEFT
      * @model
      * @generated
@@ -90,11 +87,11 @@ public enum LabelAlignment implements Enumerator {
     /**
      * The '<em><b>RIGHT</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>RIGHT</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>RIGHT</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #RIGHT
      * @model
      * @generated
@@ -103,25 +100,24 @@ public enum LabelAlignment implements Enumerator {
     public static final int RIGHT_VALUE = 2;
 
     /**
-     * An array of all the '<em><b>Label Alignment</b></em>' enumerators. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * An array of all the '<em><b>Label Alignment</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private static final LabelAlignment[] VALUES_ARRAY = new LabelAlignment[] { CENTER, LEFT, RIGHT, };
 
     /**
-     * A public read-only list of all the '<em><b>Label Alignment</b></em>'
-     * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * A public read-only list of all the '<em><b>Label Alignment</b></em>' enumerators. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public static final List<LabelAlignment> VALUES = Collections.unmodifiableList(Arrays.asList(LabelAlignment.VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>Label Alignment</b></em>' literal with the specified
-     * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Label Alignment</b></em>' literal with the specified literal value. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -137,9 +133,9 @@ public enum LabelAlignment implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Label Alignment</b></em>' literal with the specified
-     * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Label Alignment</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param name
      *            the name.
      * @return the matching enumerator or <code>null</code>.
@@ -155,9 +151,9 @@ public enum LabelAlignment implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Label Alignment</b></em>' literal with the specified
-     * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Label Alignment</b></em>' literal with the specified integer value. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -177,29 +173,28 @@ public enum LabelAlignment implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
 
     /**
-     * Only this class can construct instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private LabelAlignment(int value, String name, String literal) {
@@ -210,7 +205,7 @@ public enum LabelAlignment implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -220,7 +215,7 @@ public enum LabelAlignment implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -230,7 +225,7 @@ public enum LabelAlignment implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -239,9 +234,9 @@ public enum LabelAlignment implements Enumerator {
     }
 
     /**
-     * Returns the literal value of the enumerator, which is its string
-     * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override

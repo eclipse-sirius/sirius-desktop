@@ -29,38 +29,30 @@ import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>List Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>List Description</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getValueExpression
- * <em>Value Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getDisplayExpression
- * <em>Display Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getOnClickOperation
- * <em>On Click Operation</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getActions
- * <em>Actions</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getStyle
- * <em>Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getConditionalStyles
- * <em>Conditional Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getValueExpression <em>Value Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getDisplayExpression <em>Display Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getOnClickOperation <em>On Click Operation</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getActions <em>Actions</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getStyle <em>Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getConditionalStyles <em>Conditional Styles</em>}
+ * </li>
  * </ul>
  *
  * @generated
  */
 public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDescription {
     /**
-     * The default value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -68,10 +60,9 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
     protected static final String VALUE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -79,9 +70,8 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
     protected String valueExpression = ListDescriptionImpl.VALUE_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getDisplayExpression()
-     * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getDisplayExpression() <em>Display Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDisplayExpression()
      * @generated
@@ -90,9 +80,8 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
     protected static final String DISPLAY_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getDisplayExpression()
-     * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getDisplayExpression() <em>Display Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDisplayExpression()
      * @generated
@@ -101,9 +90,8 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
     protected String displayExpression = ListDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getOnClickOperation()
-     * <em>On Click Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOnClickOperation() <em>On Click Operation</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getOnClickOperation()
      * @generated
@@ -112,9 +100,9 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
     protected InitialOperation onClickOperation;
 
     /**
-     * The cached value of the '{@link #getActions() <em>Actions</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getActions()
      * @generated
      * @ordered
@@ -122,9 +110,9 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
     protected EList<WidgetAction> actions;
 
     /**
-     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -132,10 +120,9 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
     protected ListWidgetStyle style;
 
     /**
-     * The cached value of the '{@link #getConditionalStyles()
-     * <em>Conditional Styles</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -144,7 +131,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ListDescriptionImpl() {
@@ -153,7 +140,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -163,7 +150,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -173,7 +160,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -187,7 +174,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -197,7 +184,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -211,7 +198,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -221,7 +208,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetOnClickOperation(InitialOperation newOnClickOperation, NotificationChain msgs) {
@@ -240,7 +227,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -264,7 +251,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -277,7 +264,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -287,7 +274,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(ListWidgetStyle newStyle, NotificationChain msgs) {
@@ -306,7 +293,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -330,7 +317,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -343,7 +330,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -363,7 +350,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -387,7 +374,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -420,7 +407,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -450,7 +437,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -474,7 +461,7 @@ public class ListDescriptionImpl extends WidgetDescriptionImpl implements ListDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

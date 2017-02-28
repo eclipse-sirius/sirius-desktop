@@ -12,18 +12,15 @@
 package org.eclipse.sirius.viewpoint.description.tool;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Operation Action</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Operation Action</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.OperationAction#getView
- * <em>View</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.OperationAction#getInitialOperation
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.OperationAction#getView <em>View</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.OperationAction#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
  *
@@ -33,14 +30,13 @@ package org.eclipse.sirius.viewpoint.description.tool;
  */
 public interface OperationAction extends MenuItemDescription {
     /**
-     * Returns the value of the '<em><b>View</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>View</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>View</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>View</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>View</em>' containment reference.
      * @see #setView(ContainerViewVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getOperationAction_View()
@@ -50,11 +46,9 @@ public interface OperationAction extends MenuItemDescription {
     ContainerViewVariable getView();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.OperationAction#getView
-     * <em>View</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.OperationAction#getView <em>View</em>
+     * }' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>View</em>' containment reference.
      * @see #getView()
@@ -63,16 +57,14 @@ public interface OperationAction extends MenuItemDescription {
     void setView(ContainerViewVariable value);
 
     /**
-     * Returns the value of the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Initial Operation</em>' containment reference
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Initial Operation</em>' containment reference isn't clear, there really should be more
+     * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Initial Operation</em>' containment
-     *         reference.
+     * 
+     * @return the value of the '<em>Initial Operation</em>' containment reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getOperationAction_InitialOperation()
      * @model containment="true" resolveProxies="true" required="true"
@@ -81,14 +73,11 @@ public interface OperationAction extends MenuItemDescription {
     InitialOperation getInitialOperation();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.OperationAction#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.OperationAction#getInitialOperation
+     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Initial Operation</em>' containment
-     *            reference.
+     *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()
      * @generated
      */

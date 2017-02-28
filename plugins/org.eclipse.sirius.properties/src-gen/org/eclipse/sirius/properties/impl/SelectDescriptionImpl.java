@@ -28,39 +28,32 @@ import org.eclipse.sirius.properties.SelectWidgetStyle;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Select Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Select Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getValueExpression
- * <em>Value Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getInitialOperation
- * <em>Initial Operation</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getCandidatesExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getValueExpression <em>Value Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getInitialOperation <em>Initial Operation</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getCandidatesExpression
  * <em>Candidates Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getCandidateDisplayExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getCandidateDisplayExpression
  * <em>Candidate Display Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getStyle
- * <em>Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getConditionalStyles
- * <em>Conditional Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getStyle <em>Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getConditionalStyles <em>Conditional Styles</em>}
+ * </li>
  * </ul>
  *
  * @generated
  */
 public class SelectDescriptionImpl extends WidgetDescriptionImpl implements SelectDescription {
     /**
-     * The default value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -68,10 +61,9 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     protected static final String VALUE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -79,9 +71,8 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     protected String valueExpression = SelectDescriptionImpl.VALUE_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getInitialOperation()
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInitialOperation()
      * @generated
@@ -90,9 +81,8 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     protected InitialOperation initialOperation;
 
     /**
-     * The default value of the '{@link #getCandidatesExpression()
-     * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getCandidatesExpression() <em>Candidates Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCandidatesExpression()
      * @generated
@@ -101,9 +91,8 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     protected static final String CANDIDATES_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getCandidatesExpression()
-     * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getCandidatesExpression() <em>Candidates Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCandidatesExpression()
      * @generated
@@ -112,10 +101,9 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     protected String candidatesExpression = SelectDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getCandidateDisplayExpression()
-     * <em>Candidate Display Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getCandidateDisplayExpression() <em>Candidate Display Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getCandidateDisplayExpression()
      * @generated
      * @ordered
@@ -123,10 +111,9 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     protected static final String CANDIDATE_DISPLAY_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getCandidateDisplayExpression()
-     * <em>Candidate Display Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getCandidateDisplayExpression() <em>Candidate Display Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getCandidateDisplayExpression()
      * @generated
      * @ordered
@@ -134,9 +121,9 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     protected String candidateDisplayExpression = SelectDescriptionImpl.CANDIDATE_DISPLAY_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -144,10 +131,9 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     protected SelectWidgetStyle style;
 
     /**
-     * The cached value of the '{@link #getConditionalStyles()
-     * <em>Conditional Styles</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -156,7 +142,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SelectDescriptionImpl() {
@@ -165,7 +151,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -175,7 +161,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -185,7 +171,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -199,7 +185,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -209,7 +195,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -228,7 +214,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -252,7 +238,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -262,7 +248,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -276,7 +262,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -286,7 +272,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -300,7 +286,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -310,7 +296,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(SelectWidgetStyle newStyle, NotificationChain msgs) {
@@ -329,7 +315,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -353,7 +339,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -366,7 +352,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -384,7 +370,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -408,7 +394,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -440,7 +426,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -470,7 +456,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -495,7 +481,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

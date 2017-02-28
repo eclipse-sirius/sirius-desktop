@@ -21,14 +21,13 @@ import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Diagram Creation Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Diagram Creation Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.DiagramCreationDescriptionImpl#getDiagramDescription
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.DiagramCreationDescriptionImpl#getDiagramDescription
  * <em>Diagram Description</em>}</li>
  * </ul>
  *
@@ -36,9 +35,8 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreation
  */
 public class DiagramCreationDescriptionImpl extends RepresentationCreationDescriptionImpl implements DiagramCreationDescription {
     /**
-     * The cached value of the '{@link #getDiagramDescription()
-     * <em>Diagram Description</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getDiagramDescription() <em>Diagram Description</em>}' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDiagramDescription()
      * @generated
@@ -48,7 +46,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DiagramCreationDescriptionImpl() {
@@ -57,7 +55,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -67,7 +65,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -86,7 +84,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public DiagramDescription basicGetDiagramDescription() {
@@ -95,7 +93,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -109,7 +107,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +124,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +139,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +154,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

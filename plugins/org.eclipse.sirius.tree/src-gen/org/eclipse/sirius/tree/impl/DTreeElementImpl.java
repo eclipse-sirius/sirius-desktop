@@ -18,15 +18,12 @@ import org.eclipse.sirius.tree.description.TreeMapping;
 import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DTree Element</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DTree Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.impl.DTreeElementImpl#getTreeElementMapping
- * <em>Tree Element Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeElementImpl#getTreeElementMapping <em>Tree Element Mapping</em>}</li>
  * </ul>
  *
  * @generated
@@ -34,7 +31,7 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
 public class DTreeElementImpl extends DRepresentationElementImpl implements DTreeElement {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DTreeElementImpl() {
@@ -43,7 +40,7 @@ public class DTreeElementImpl extends DRepresentationElementImpl implements DTre
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -53,7 +50,7 @@ public class DTreeElementImpl extends DRepresentationElementImpl implements DTre
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -64,12 +61,11 @@ public class DTreeElementImpl extends DRepresentationElementImpl implements DTre
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public TreeMapping basicGetTreeElementMapping() {
-        // TODO: implement this method to return the 'Tree Element Mapping'
-        // reference
+        // TODO: implement this method to return the 'Tree Element Mapping' reference
         // -> do not perform proxy resolution
         // Ensure that you remove @generated or mark it @generated NOT
         throw new UnsupportedOperationException();
@@ -77,7 +73,7 @@ public class DTreeElementImpl extends DRepresentationElementImpl implements DTre
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -94,7 +90,7 @@ public class DTreeElementImpl extends DRepresentationElementImpl implements DTre
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -21,23 +21,22 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DSemantic Decorator</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DSemantic Decorator</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl#getTarget
- * <em>Target</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Container implements DSemanticDecorator {
     /**
-     * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getTarget() <em>Target</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getTarget()
      * @generated
      * @ordered
@@ -46,7 +45,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DSemanticDecoratorImpl() {
@@ -55,7 +54,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -65,7 +64,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -84,7 +83,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public EObject basicGetTarget() {
@@ -93,7 +92,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -107,7 +106,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -124,7 +123,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -139,7 +138,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -154,7 +153,7 @@ public abstract class DSemanticDecoratorImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

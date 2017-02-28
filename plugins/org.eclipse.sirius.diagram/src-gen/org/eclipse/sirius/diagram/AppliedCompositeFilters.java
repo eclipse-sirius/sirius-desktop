@@ -15,18 +15,17 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Applied Composite Filters</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Applied Composite Filters</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> Graphical filter listing the active filters applied
- * on a diagram element. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> Graphical filter listing the active filters applied on a diagram element. <!-- end-model-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.AppliedCompositeFilters#getCompositeFilterDescriptions
+ * <li>{@link org.eclipse.sirius.diagram.AppliedCompositeFilters#getCompositeFilterDescriptions
  * <em>Composite Filter Descriptions</em>}</li>
  * </ul>
  *
@@ -36,18 +35,15 @@ import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
  */
 public interface AppliedCompositeFilters extends GraphicalFilter {
     /**
-     * Returns the value of the '<em><b>Composite Filter Descriptions</b></em>'
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Composite Filter Descriptions</b></em>' reference list. The list contents are of
+     * type {@link org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Composite Filter Descriptions</em>' reference
-     * list isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Composite Filter Descriptions</em>' reference list isn't clear, there really should be
+     * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Composite Filter Descriptions</em>'
-     *         reference list.
+     * 
+     * @return the value of the '<em>Composite Filter Descriptions</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAppliedCompositeFilters_CompositeFilterDescriptions()
      * @model
      * @generated

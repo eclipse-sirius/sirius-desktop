@@ -15,8 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Filter</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Filter</b></em>'. <!-- end-user-doc -->
  *
  * <!-- begin-model-doc --> A filter. <!-- end-model-doc -->
  *
@@ -24,8 +23,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.filter.Filter#getFilterKind
- * <em>Filter Kind</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.filter.Filter#getFilterKind <em>Filter Kind</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getFilter()
@@ -34,14 +32,10 @@ import org.eclipse.sirius.diagram.DDiagramElement;
  */
 public interface Filter extends EObject {
     /**
-     * Returns the value of the '<em><b>Filter Kind</b></em>' attribute. The
-     * default value is <code>"HIDE"</code>. The literals are from the
-     * enumeration
-     * {@link org.eclipse.sirius.diagram.description.filter.FilterKind}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> A
-     * filter might hide elements or just shrink them. In the case of the
-     * shrink, the edges going to this element will be kept. <!-- end-model-doc
-     * -->
+     * Returns the value of the '<em><b>Filter Kind</b></em>' attribute. The default value is <code>"HIDE"</code>. The
+     * literals are from the enumeration {@link org.eclipse.sirius.diagram.description.filter.FilterKind}. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> A filter might hide elements or just shrink
+     * them. In the case of the shrink, the edges going to this element will be kept. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Filter Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.description.filter.FilterKind
@@ -53,11 +47,9 @@ public interface Filter extends EObject {
     FilterKind getFilterKind();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.filter.Filter#getFilterKind
-     * <em>Filter Kind</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.filter.Filter#getFilterKind
+     * <em>Filter Kind</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Filter Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.description.filter.FilterKind
@@ -67,9 +59,8 @@ public interface Filter extends EObject {
     void setFilterKind(FilterKind value);
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Return true if the specified viewpoint element is visible for this
-     * filter.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Return true if the specified viewpoint
+     * element is visible for this filter.
      *
      * @param element
      *            The element to test. <!-- end-model-doc -->

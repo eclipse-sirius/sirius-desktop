@@ -18,27 +18,22 @@ import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>For</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>For</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ForImpl#getExpression
- * <em>Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ForImpl#getIteratorName
- * <em>Iterator Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.ForImpl#getExpression <em>Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.ForImpl#getIteratorName <em>Iterator Name</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ForImpl extends ContainerModelOperationImpl implements For {
     /**
-     * The default value of the '{@link #getExpression() <em>Expression</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getExpression()
      * @generated
      * @ordered
@@ -46,9 +41,9 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
     protected static final String EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getExpression() <em>Expression</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getExpression() <em>Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getExpression()
      * @generated
      * @ordered
@@ -56,10 +51,9 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
     protected String expression = ForImpl.EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getIteratorName()
-     * <em>Iterator Name</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getIteratorName() <em>Iterator Name</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getIteratorName()
      * @generated
      * @ordered
@@ -67,9 +61,9 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
     protected static final String ITERATOR_NAME_EDEFAULT = "i"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getIteratorName() <em>Iterator Name</em>
-     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getIteratorName() <em>Iterator Name</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getIteratorName()
      * @generated
      * @ordered
@@ -78,7 +72,7 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ForImpl() {
@@ -87,7 +81,7 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +91,7 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -107,7 +101,7 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -121,7 +115,7 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -131,7 +125,7 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +139,7 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -161,7 +155,7 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -179,7 +173,7 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -197,7 +191,7 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -213,7 +207,7 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

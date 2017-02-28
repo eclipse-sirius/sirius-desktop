@@ -22,24 +22,22 @@ import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DAnalysis Custom Data</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DAnalysis Custom Data</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisCustomDataImpl#getKey
- * <em>Key</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisCustomDataImpl#getData
- * <em>Data</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisCustomDataImpl#getKey <em>Key</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisCustomDataImpl#getData <em>Data</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implements DAnalysisCustomData {
     /**
-     * The default value of the '{@link #getKey() <em>Key</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getKey() <em>Key</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getKey()
      * @generated
@@ -48,9 +46,8 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
     protected static final String KEY_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getKey() <em>Key</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getKey() <em>Key</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getKey()
      * @generated
      * @ordered
@@ -58,9 +55,9 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
     protected String key = DAnalysisCustomDataImpl.KEY_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getData() <em>Data</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getData() <em>Data</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getData()
      * @generated
      * @ordered
@@ -69,7 +66,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DAnalysisCustomDataImpl() {
@@ -78,7 +75,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -88,7 +85,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +95,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +109,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -139,7 +136,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public EObject basicGetData() {
@@ -148,7 +145,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetData(EObject newData, NotificationChain msgs) {
@@ -167,7 +164,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -191,7 +188,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -205,7 +202,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -224,7 +221,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -242,7 +239,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -260,7 +257,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -276,7 +273,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

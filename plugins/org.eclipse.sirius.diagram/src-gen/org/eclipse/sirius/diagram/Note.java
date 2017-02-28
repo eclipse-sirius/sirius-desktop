@@ -14,8 +14,7 @@ package org.eclipse.sirius.diagram;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Note</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Note</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -30,25 +29,25 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  */
 public interface Note extends NodeStyle {
     /**
-     * Returns the value of the '<em><b>Color</b></em>' attribute. <!--
+     * Returns the value of the '<em><b>Color</b></em>' attribute. The default value is <code>"252,233,79"</code>. <!--
      * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Color</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Color</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Color</em>' attribute.
      * @see #setColor(RGBValues)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getNote_Color()
-     * @model dataType="org.eclipse.sirius.viewpoint.RGBValues"
+     * @model default="252,233,79" dataType="org.eclipse.sirius.viewpoint.RGBValues"
      * @generated
      */
     RGBValues getColor();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.Note#getColor
-     * <em>Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.Note#getColor <em>Color</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Color</em>' attribute.

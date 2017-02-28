@@ -16,15 +16,14 @@ import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DProject</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DProject</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public class DProjectImpl extends DResourceContainerImpl implements DProject {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DProjectImpl() {
@@ -33,7 +32,7 @@ public class DProjectImpl extends DResourceContainerImpl implements DProject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

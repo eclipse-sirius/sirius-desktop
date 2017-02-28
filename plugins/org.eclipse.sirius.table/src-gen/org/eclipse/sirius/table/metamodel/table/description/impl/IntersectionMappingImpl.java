@@ -35,59 +35,48 @@ import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Intersection Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Intersection Mapping</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDirectEdit
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDirectEdit
  * <em>Direct Edit</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getCanEdit
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getCanEdit
  * <em>Can Edit</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDefaultForeground
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDefaultForeground
  * <em>Default Foreground</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getForegroundConditionalStyle
  * <em>Foreground Conditional Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDefaultBackground
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDefaultBackground
  * <em>Default Background</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getBackgroundConditionalStyle
  * <em>Background Conditional Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getLineMapping
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getLineMapping
  * <em>Line Mapping</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getColumnMapping
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getColumnMapping
  * <em>Column Mapping</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getLabelExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getLabelExpression
  * <em>Label Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#isUseDomainClass
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#isUseDomainClass
  * <em>Use Domain Class</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getColumnFinderExpression
  * <em>Column Finder Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getLineFinderExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getLineFinderExpression
  * <em>Line Finder Expression</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getSemanticCandidatesExpression
  * <em>Semantic Candidates Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDomainClass
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDomainClass
  * <em>Domain Class</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getPreconditionExpression
  * <em>Precondition Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getCreate
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getCreate
  * <em>Create</em>}</li>
  * </ul>
  *
@@ -95,8 +84,8 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  */
 public class IntersectionMappingImpl extends TableMappingImpl implements IntersectionMapping {
     /**
-     * The cached value of the '{@link #getDirectEdit() <em>Direct Edit</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getDirectEdit() <em>Direct Edit</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDirectEdit()
      * @generated
@@ -105,9 +94,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected LabelEditTool directEdit;
 
     /**
-     * The default value of the '{@link #getCanEdit() <em>Can Edit</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getCanEdit() <em>Can Edit</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getCanEdit()
      * @generated
      * @ordered
@@ -115,9 +104,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected static final String CAN_EDIT_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getCanEdit() <em>Can Edit</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getCanEdit() <em>Can Edit</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getCanEdit()
      * @generated
      * @ordered
@@ -125,9 +114,8 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected String canEdit = IntersectionMappingImpl.CAN_EDIT_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getDefaultForeground()
-     * <em>Default Foreground</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getDefaultForeground() <em>Default Foreground</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDefaultForeground()
      * @generated
@@ -136,10 +124,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected ForegroundStyleDescription defaultForeground;
 
     /**
-     * The cached value of the '{@link #getForegroundConditionalStyle()
-     * <em>Foreground Conditional Style</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getForegroundConditionalStyle() <em>Foreground Conditional Style</em>}'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getForegroundConditionalStyle()
      * @generated
      * @ordered
@@ -147,9 +134,8 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected EList<ForegroundConditionalStyle> foregroundConditionalStyle;
 
     /**
-     * The cached value of the '{@link #getDefaultBackground()
-     * <em>Default Background</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getDefaultBackground() <em>Default Background</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDefaultBackground()
      * @generated
@@ -158,10 +144,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected BackgroundStyleDescription defaultBackground;
 
     /**
-     * The cached value of the '{@link #getBackgroundConditionalStyle()
-     * <em>Background Conditional Style</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getBackgroundConditionalStyle() <em>Background Conditional Style</em>}'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundConditionalStyle()
      * @generated
      * @ordered
@@ -169,9 +154,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected EList<BackgroundConditionalStyle> backgroundConditionalStyle;
 
     /**
-     * The cached value of the '{@link #getLineMapping() <em>Line Mapping</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLineMapping() <em>Line Mapping</em>}' reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getLineMapping()
      * @generated
      * @ordered
@@ -179,10 +164,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected EList<LineMapping> lineMapping;
 
     /**
-     * The cached value of the '{@link #getColumnMapping()
-     * <em>Column Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getColumnMapping() <em>Column Mapping</em>}' reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getColumnMapping()
      * @generated
      * @ordered
@@ -190,10 +174,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected ColumnMapping columnMapping;
 
     /**
-     * The default value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -201,10 +184,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected static final String LABEL_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -212,10 +194,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected String labelExpression = IntersectionMappingImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isUseDomainClass()
-     * <em>Use Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #isUseDomainClass() <em>Use Domain Class</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #isUseDomainClass()
      * @generated
      * @ordered
@@ -223,10 +204,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected static final boolean USE_DOMAIN_CLASS_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isUseDomainClass()
-     * <em>Use Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #isUseDomainClass() <em>Use Domain Class</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #isUseDomainClass()
      * @generated
      * @ordered
@@ -234,9 +214,8 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected boolean useDomainClass = IntersectionMappingImpl.USE_DOMAIN_CLASS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getColumnFinderExpression()
-     * <em>Column Finder Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getColumnFinderExpression() <em>Column Finder Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getColumnFinderExpression()
      * @generated
@@ -245,9 +224,8 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected static final String COLUMN_FINDER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getColumnFinderExpression()
-     * <em>Column Finder Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getColumnFinderExpression() <em>Column Finder Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getColumnFinderExpression()
      * @generated
@@ -256,9 +234,8 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected String columnFinderExpression = IntersectionMappingImpl.COLUMN_FINDER_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLineFinderExpression()
-     * <em>Line Finder Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getLineFinderExpression() <em>Line Finder Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getLineFinderExpression()
      * @generated
@@ -267,9 +244,8 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected static final String LINE_FINDER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getLineFinderExpression()
-     * <em>Line Finder Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getLineFinderExpression() <em>Line Finder Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getLineFinderExpression()
      * @generated
@@ -278,10 +254,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected String lineFinderExpression = IntersectionMappingImpl.LINE_FINDER_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getSemanticCandidatesExpression()
-     * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getSemanticCandidatesExpression() <em>Semantic Candidates Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -289,10 +264,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected static final String SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getSemanticCandidatesExpression()
-     * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getSemanticCandidatesExpression() <em>Semantic Candidates Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -300,9 +274,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected String semanticCandidatesExpression = IntersectionMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -310,9 +284,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected static final String DOMAIN_CLASS_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -320,9 +294,8 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected String domainClass = IntersectionMappingImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getPreconditionExpression()
-     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getPreconditionExpression() <em>Precondition Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPreconditionExpression()
      * @generated
@@ -331,9 +304,8 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected static final String PRECONDITION_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getPreconditionExpression()
-     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getPreconditionExpression() <em>Precondition Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPreconditionExpression()
      * @generated
@@ -342,9 +314,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     protected String preconditionExpression = IntersectionMappingImpl.PRECONDITION_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getCreate() <em>Create</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getCreate() <em>Create</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getCreate()
      * @generated
      * @ordered
@@ -353,7 +325,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected IntersectionMappingImpl() {
@@ -362,7 +334,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -372,7 +344,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -382,7 +354,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetDirectEdit(LabelEditTool newDirectEdit, NotificationChain msgs) {
@@ -401,7 +373,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -425,7 +397,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -435,7 +407,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -449,7 +421,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -459,7 +431,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetDefaultForeground(ForegroundStyleDescription newDefaultForeground, NotificationChain msgs) {
@@ -478,7 +450,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -502,7 +474,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -516,7 +488,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -526,7 +498,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetDefaultBackground(BackgroundStyleDescription newDefaultBackground, NotificationChain msgs) {
@@ -545,7 +517,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -569,7 +541,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -583,7 +555,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -596,7 +568,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -615,7 +587,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColumnMapping basicGetColumnMapping() {
@@ -624,7 +596,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -638,7 +610,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -648,7 +620,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -662,7 +634,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -672,7 +644,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -686,7 +658,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -696,7 +668,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -710,7 +682,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -720,7 +692,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -734,7 +706,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -744,7 +716,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -759,7 +731,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -769,7 +741,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -783,7 +755,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -793,7 +765,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -807,7 +779,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -817,7 +789,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetCreate(CreateCellTool newCreate, NotificationChain msgs) {
@@ -836,7 +808,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -860,7 +832,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -872,7 +844,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -884,7 +856,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -901,7 +873,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -925,7 +897,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -972,7 +944,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -1036,7 +1008,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1096,7 +1068,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1144,7 +1116,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1178,7 +1150,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1212,7 +1184,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

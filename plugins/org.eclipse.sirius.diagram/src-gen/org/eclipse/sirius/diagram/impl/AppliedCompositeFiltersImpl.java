@@ -22,14 +22,13 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Applied Composite Filters</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Applied Composite Filters</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.AppliedCompositeFiltersImpl#getCompositeFilterDescriptions
+ * <li>{@link org.eclipse.sirius.diagram.impl.AppliedCompositeFiltersImpl#getCompositeFilterDescriptions
  * <em>Composite Filter Descriptions</em>}</li>
  * </ul>
  *
@@ -37,10 +36,9 @@ import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
  */
 public class AppliedCompositeFiltersImpl extends MinimalEObjectImpl.Container implements AppliedCompositeFilters {
     /**
-     * The cached value of the '{@link #getCompositeFilterDescriptions()
-     * <em>Composite Filter Descriptions</em>}' reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getCompositeFilterDescriptions() <em>Composite Filter Descriptions</em>}'
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getCompositeFilterDescriptions()
      * @generated
      * @ordered
@@ -49,7 +47,7 @@ public class AppliedCompositeFiltersImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AppliedCompositeFiltersImpl() {
@@ -58,7 +56,7 @@ public class AppliedCompositeFiltersImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -68,7 +66,7 @@ public class AppliedCompositeFiltersImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -82,7 +80,7 @@ public class AppliedCompositeFiltersImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +94,7 @@ public class AppliedCompositeFiltersImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -113,7 +111,7 @@ public class AppliedCompositeFiltersImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -128,7 +126,7 @@ public class AppliedCompositeFiltersImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

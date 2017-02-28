@@ -23,8 +23,8 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Flat Container Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Flat Container Style Description</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -35,17 +35,13 @@ import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescriptio
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl#getHeightComputationExpression
  * <em>Height Computation Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl#getBackgroundStyle
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl#getBackgroundStyle
  * <em>Background Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl#getBackgroundColor
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl#getForegroundColor
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl#getForegroundColor
  * <em>Foreground Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl#getLabelBorderStyle
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl#getLabelBorderStyle
  * <em>Label Border Style</em>}</li>
  * </ul>
  *
@@ -53,10 +49,9 @@ import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescriptio
  */
 public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescriptionImpl implements FlatContainerStyleDescription {
     /**
-     * The default value of the '{@link #getWidthComputationExpression()
-     * <em>Width Computation Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getWidthComputationExpression() <em>Width Computation Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getWidthComputationExpression()
      * @generated
      * @ordered
@@ -64,10 +59,9 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
     protected static final String WIDTH_COMPUTATION_EXPRESSION_EDEFAULT = "-1"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getWidthComputationExpression()
-     * <em>Width Computation Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getWidthComputationExpression() <em>Width Computation Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getWidthComputationExpression()
      * @generated
      * @ordered
@@ -75,10 +69,9 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
     protected String widthComputationExpression = FlatContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getHeightComputationExpression()
-     * <em>Height Computation Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getHeightComputationExpression() <em>Height Computation Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getHeightComputationExpression()
      * @generated
      * @ordered
@@ -86,10 +79,9 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
     protected static final String HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT = "-1"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getHeightComputationExpression()
-     * <em>Height Computation Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getHeightComputationExpression() <em>Height Computation Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getHeightComputationExpression()
      * @generated
      * @ordered
@@ -97,10 +89,9 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
     protected String heightComputationExpression = FlatContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getBackgroundStyle()
-     * <em>Background Style</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getBackgroundStyle() <em>Background Style</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundStyle()
      * @generated
      * @ordered
@@ -108,10 +99,9 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
     protected static final BackgroundStyle BACKGROUND_STYLE_EDEFAULT = BackgroundStyle.GRADIENT_LEFT_TO_RIGHT_LITERAL;
 
     /**
-     * The cached value of the '{@link #getBackgroundStyle()
-     * <em>Background Style</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBackgroundStyle() <em>Background Style</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundStyle()
      * @generated
      * @ordered
@@ -119,10 +109,9 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
     protected BackgroundStyle backgroundStyle = FlatContainerStyleDescriptionImpl.BACKGROUND_STYLE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -130,10 +119,9 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
     protected ColorDescription backgroundColor;
 
     /**
-     * The cached value of the '{@link #getForegroundColor()
-     * <em>Foreground Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getForegroundColor() <em>Foreground Color</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -141,9 +129,8 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
     protected ColorDescription foregroundColor;
 
     /**
-     * The cached value of the '{@link #getLabelBorderStyle()
-     * <em>Label Border Style</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getLabelBorderStyle() <em>Label Border Style</em>}' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getLabelBorderStyle()
      * @generated
@@ -153,7 +140,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected FlatContainerStyleDescriptionImpl() {
@@ -162,7 +149,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -172,7 +159,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +169,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -197,7 +184,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -207,7 +194,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -222,7 +209,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -232,7 +219,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -246,7 +233,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -265,7 +252,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetBackgroundColor() {
@@ -274,7 +261,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -288,7 +275,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -307,7 +294,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetForegroundColor() {
@@ -316,7 +303,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -330,7 +317,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -349,7 +336,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public LabelBorderStyleDescription basicGetLabelBorderStyle() {
@@ -358,7 +345,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -372,7 +359,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -405,7 +392,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -435,7 +422,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -465,7 +452,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -491,7 +478,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -511,7 +498,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -531,7 +518,7 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

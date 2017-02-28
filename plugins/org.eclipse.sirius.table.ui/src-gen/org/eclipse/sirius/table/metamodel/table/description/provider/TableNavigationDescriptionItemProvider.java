@@ -27,16 +27,15 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.RepresentationNavi
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * {@link org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription} object. <!-- begin-user-doc
+ * --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class TableNavigationDescriptionItemProvider extends RepresentationNavigationDescriptionItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public TableNavigationDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -44,9 +43,8 @@ public class TableNavigationDescriptionItemProvider extends RepresentationNaviga
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -60,9 +58,8 @@ public class TableNavigationDescriptionItemProvider extends RepresentationNaviga
     }
 
     /**
-     * This adds a property descriptor for the Table Description feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Table Description feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addTableDescriptionPropertyDescriptor(Object object) {
@@ -74,9 +71,8 @@ public class TableNavigationDescriptionItemProvider extends RepresentationNaviga
     }
 
     /**
-     * This returns TableNavigationDescription.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns TableNavigationDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -85,8 +81,7 @@ public class TableNavigationDescriptionItemProvider extends RepresentationNaviga
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -97,10 +92,9 @@ public class TableNavigationDescriptionItemProvider extends RepresentationNaviga
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -111,10 +105,9 @@ public class TableNavigationDescriptionItemProvider extends RepresentationNaviga
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -123,9 +116,8 @@ public class TableNavigationDescriptionItemProvider extends RepresentationNaviga
     }
 
     /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

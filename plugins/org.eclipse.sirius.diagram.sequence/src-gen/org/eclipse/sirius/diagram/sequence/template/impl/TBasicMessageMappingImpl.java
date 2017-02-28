@@ -20,24 +20,22 @@ import org.eclipse.sirius.diagram.sequence.template.TMessageExtremity;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>TBasic Message Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>TBasic Message Mapping</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.impl.TBasicMessageMappingImpl#getTarget
- * <em>Target</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TBasicMessageMappingImpl#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl implements TBasicMessageMapping {
     /**
-     * The cached value of the '{@link #getTarget() <em>Target</em>}' reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getTarget() <em>Target</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getTarget()
      * @generated
      * @ordered
@@ -46,7 +44,7 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TBasicMessageMappingImpl() {
@@ -55,7 +53,7 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -65,7 +63,7 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -78,7 +76,7 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -92,7 +90,7 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -109,7 +107,7 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -124,7 +122,7 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

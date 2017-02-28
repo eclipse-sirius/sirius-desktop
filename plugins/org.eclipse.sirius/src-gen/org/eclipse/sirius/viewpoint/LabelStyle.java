@@ -12,8 +12,7 @@
 package org.eclipse.sirius.viewpoint;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Label Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Label Style</b></em>'. <!-- end-user-doc -->
  *
  * <!-- begin-model-doc --> The style of a label. <!-- end-model-doc -->
  *
@@ -21,8 +20,7 @@ package org.eclipse.sirius.viewpoint;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.LabelStyle#getLabelAlignment
- * <em>Label Alignment</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.LabelStyle#getLabelAlignment <em>Label Alignment</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getLabelStyle()
@@ -31,13 +29,11 @@ package org.eclipse.sirius.viewpoint;
  */
 public interface LabelStyle extends BasicLabelStyle {
     /**
-     * Returns the value of the '<em><b>Label Alignment</b></em>' attribute. The
-     * literals are from the enumeration
-     * {@link org.eclipse.sirius.viewpoint.LabelAlignment}. <!-- begin-user-doc
-     * -->
+     * Returns the value of the '<em><b>Label Alignment</b></em>' attribute. The literals are from the enumeration
+     * {@link org.eclipse.sirius.viewpoint.LabelAlignment}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Label Alignment</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Label Alignment</em>' attribute isn't clear, there really should be more of a
+     * description here...
      * </p>
      *
      *
@@ -52,9 +48,8 @@ public interface LabelStyle extends BasicLabelStyle {
     LabelAlignment getLabelAlignment();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.LabelStyle#getLabelAlignment
-     * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.LabelStyle#getLabelAlignment <em>Label Alignment</em>}
+     * ' attribute. <!-- begin-user-doc -->
      *
      * @since 0.9.0 <!-- end-user-doc -->
      * @param value

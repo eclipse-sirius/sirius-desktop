@@ -36,8 +36,8 @@ import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Node Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Node Style Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -45,50 +45,35 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getBorderSizeComputationExpression
  * <em>Border Size Computation Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getBorderColor
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getBorderColor
  * <em>Border Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getBorderLineStyle
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getBorderLineStyle
  * <em>Border Line Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getLabelSize
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getLabelSize
  * <em>Label Size</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getLabelFormat
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getLabelFormat
  * <em>Label Format</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#isShowIcon
- * <em>Show Icon</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getLabelExpression
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#isShowIcon <em>Show Icon</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getLabelExpression
  * <em>Label Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getLabelColor
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getLabelColor
  * <em>Label Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getIconPath
- * <em>Icon Path</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getLabelAlignment
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getIconPath <em>Icon Path</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getLabelAlignment
  * <em>Label Alignment</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getTooltipExpression
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getTooltipExpression
  * <em>Tooltip Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#isHideLabelByDefault
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#isHideLabelByDefault
  * <em>Hide Label By Default</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getSizeComputationExpression
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getSizeComputationExpression
  * <em>Size Computation Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getLabelPosition
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getLabelPosition
  * <em>Label Position</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getResizeKind
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getResizeKind
  * <em>Resize Kind</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getForbiddenSides
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getForbiddenSides
  * <em>Forbidden Sides</em>}</li>
  * </ul>
  *
@@ -98,9 +83,8 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * The default value of the '{@link #getBorderSizeComputationExpression()
-     * <em>Border Size Computation Expression</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * <em>Border Size Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -108,10 +92,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getBorderSizeComputationExpression()
-     * <em>Border Size Computation Expression</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getBorderSizeComputationExpression() <em>Border Size Computation Expression</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -119,9 +102,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected String borderSizeComputationExpression = NodeStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getBorderColor()
      * @generated
      * @ordered
@@ -129,9 +112,8 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected ColorDescription borderColor;
 
     /**
-     * The default value of the '{@link #getBorderLineStyle()
-     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getBorderLineStyle() <em>Border Line Style</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getBorderLineStyle()
      * @generated
@@ -140,10 +122,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected static final LineStyle BORDER_LINE_STYLE_EDEFAULT = LineStyle.SOLID_LITERAL;
 
     /**
-     * The cached value of the '{@link #getBorderLineStyle()
-     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBorderLineStyle() <em>Border Line Style</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBorderLineStyle()
      * @generated
      * @ordered
@@ -151,9 +132,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected LineStyle borderLineStyle = NodeStyleDescriptionImpl.BORDER_LINE_STYLE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelSize() <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -161,9 +142,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected static final int LABEL_SIZE_EDEFAULT = 8;
 
     /**
-     * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -171,9 +152,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected int labelSize = NodeStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
-     * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}' attribute list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getLabelFormat()
      * @generated
      * @ordered
@@ -181,9 +162,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected EList<FontFormat> labelFormat;
 
     /**
-     * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isShowIcon()
      * @generated
      * @ordered
@@ -191,9 +172,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected static final boolean SHOW_ICON_EDEFAULT = true;
 
     /**
-     * The cached value of the '{@link #isShowIcon() <em>Show Icon</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #isShowIcon() <em>Show Icon</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isShowIcon()
      * @generated
      * @ordered
@@ -201,10 +182,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected boolean showIcon = NodeStyleDescriptionImpl.SHOW_ICON_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -212,10 +192,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected static final String LABEL_EXPRESSION_EDEFAULT = "feature:name"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -223,9 +202,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected String labelExpression = NodeStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabelColor()
      * @generated
      * @ordered
@@ -233,9 +212,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected ColorDescription labelColor;
 
     /**
-     * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -243,9 +222,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected static final String ICON_PATH_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -253,10 +232,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected String iconPath = NodeStyleDescriptionImpl.ICON_PATH_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelAlignment()
-     * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelAlignment() <em>Label Alignment</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelAlignment()
      * @generated
      * @ordered
@@ -264,10 +242,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected static final LabelAlignment LABEL_ALIGNMENT_EDEFAULT = LabelAlignment.CENTER;
 
     /**
-     * The cached value of the '{@link #getLabelAlignment()
-     * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelAlignment() <em>Label Alignment</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelAlignment()
      * @generated
      * @ordered
@@ -275,9 +252,8 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected LabelAlignment labelAlignment = NodeStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTooltipExpression()
-     * <em>Tooltip Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getTooltipExpression() <em>Tooltip Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getTooltipExpression()
      * @generated
@@ -286,9 +262,8 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected static final String TOOLTIP_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getTooltipExpression()
-     * <em>Tooltip Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getTooltipExpression() <em>Tooltip Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getTooltipExpression()
      * @generated
@@ -297,9 +272,8 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected String tooltipExpression = NodeStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isHideLabelByDefault()
-     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #isHideLabelByDefault() <em>Hide Label By Default</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isHideLabelByDefault()
      * @generated
@@ -308,9 +282,8 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected static final boolean HIDE_LABEL_BY_DEFAULT_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isHideLabelByDefault()
-     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #isHideLabelByDefault() <em>Hide Label By Default</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isHideLabelByDefault()
      * @generated
@@ -319,10 +292,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected boolean hideLabelByDefault = NodeStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getSizeComputationExpression()
-     * <em>Size Computation Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getSizeComputationExpression() <em>Size Computation Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getSizeComputationExpression()
      * @generated
      * @ordered
@@ -330,10 +302,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected static final String SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "3"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getSizeComputationExpression()
-     * <em>Size Computation Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getSizeComputationExpression() <em>Size Computation Expression</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getSizeComputationExpression()
      * @generated
      * @ordered
@@ -341,10 +312,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected String sizeComputationExpression = NodeStyleDescriptionImpl.SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelPosition()
-     * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelPosition() <em>Label Position</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getLabelPosition()
      * @generated
      * @ordered
@@ -352,10 +322,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected static final LabelPosition LABEL_POSITION_EDEFAULT = LabelPosition.BORDER_LITERAL;
 
     /**
-     * The cached value of the '{@link #getLabelPosition()
-     * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelPosition() <em>Label Position</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getLabelPosition()
      * @generated
      * @ordered
@@ -363,9 +332,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected LabelPosition labelPosition = NodeStyleDescriptionImpl.LABEL_POSITION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getResizeKind() <em>Resize Kind</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getResizeKind() <em>Resize Kind</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getResizeKind()
      * @generated
      * @ordered
@@ -373,9 +342,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected static final ResizeKind RESIZE_KIND_EDEFAULT = ResizeKind.NONE_LITERAL;
 
     /**
-     * The cached value of the '{@link #getResizeKind() <em>Resize Kind</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getResizeKind() <em>Resize Kind</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getResizeKind()
      * @generated
      * @ordered
@@ -383,9 +352,8 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     protected ResizeKind resizeKind = NodeStyleDescriptionImpl.RESIZE_KIND_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getForbiddenSides()
-     * <em>Forbidden Sides</em>}' attribute list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getForbiddenSides() <em>Forbidden Sides</em>}' attribute list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getForbiddenSides()
      * @generated
@@ -395,7 +363,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected NodeStyleDescriptionImpl() {
@@ -404,7 +372,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -414,7 +382,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -424,7 +392,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -439,7 +407,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -458,7 +426,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetBorderColor() {
@@ -467,7 +435,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -481,7 +449,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -491,7 +459,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -505,7 +473,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -515,7 +483,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -529,7 +497,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -542,7 +510,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -552,7 +520,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -566,7 +534,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -576,7 +544,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -590,7 +558,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -609,7 +577,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetLabelColor() {
@@ -618,7 +586,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -632,7 +600,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -642,7 +610,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -656,7 +624,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -666,7 +634,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -680,7 +648,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -690,7 +658,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -704,7 +672,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -714,7 +682,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -728,7 +696,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -738,7 +706,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -752,7 +720,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -762,7 +730,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -776,7 +744,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -786,7 +754,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -800,7 +768,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -813,7 +781,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -863,7 +831,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -926,7 +894,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -986,7 +954,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1032,7 +1000,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1096,7 +1064,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1160,7 +1128,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

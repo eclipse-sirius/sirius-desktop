@@ -30,17 +30,15 @@ import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.description.AdditionalLayer} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.AdditionalLayer} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class AdditionalLayerItemProvider extends LayerItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public AdditionalLayerItemProvider(AdapterFactory adapterFactory) {
@@ -48,9 +46,8 @@ public class AdditionalLayerItemProvider extends LayerItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -65,9 +62,8 @@ public class AdditionalLayerItemProvider extends LayerItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Active By Default feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Active By Default feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addActiveByDefaultPropertyDescriptor(Object object) {
@@ -79,9 +75,8 @@ public class AdditionalLayerItemProvider extends LayerItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Optional feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Optional feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addOptionalPropertyDescriptor(Object object) {
@@ -93,8 +88,7 @@ public class AdditionalLayerItemProvider extends LayerItemProvider {
     }
 
     /**
-     * This returns AdditionalLayer.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This returns AdditionalLayer.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -110,8 +104,7 @@ public class AdditionalLayerItemProvider extends LayerItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -122,10 +115,9 @@ public class AdditionalLayerItemProvider extends LayerItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -143,10 +135,9 @@ public class AdditionalLayerItemProvider extends LayerItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

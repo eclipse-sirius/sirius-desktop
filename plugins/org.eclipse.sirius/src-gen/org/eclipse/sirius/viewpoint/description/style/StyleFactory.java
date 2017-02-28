@@ -14,24 +14,23 @@ package org.eclipse.sirius.viewpoint.description.style;
 import org.eclipse.emf.ecore.EFactory;
 
 /**
- * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
- * create method for each non-abstract class of the model. <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a create method for each non-abstract class of
+ * the model. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.sirius.viewpoint.description.style.StylePackage
  * @generated
  */
 public interface StyleFactory extends EFactory {
     /**
-     * The singleton instance of the factory. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The singleton instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     StyleFactory eINSTANCE = org.eclipse.sirius.viewpoint.description.style.impl.StyleFactoryImpl.init();
 
     /**
-     * Returns a new object of class '<em>Basic Label Style Description</em>'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns a new object of class '<em>Basic Label Style Description</em>'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @return a new object of class '<em>Basic Label Style Description</em>'.
      * @generated
@@ -39,35 +38,32 @@ public interface StyleFactory extends EFactory {
     BasicLabelStyleDescription createBasicLabelStyleDescription();
 
     /**
-     * Returns a new object of class '<em>Label Style Description</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns a new object of class '<em>Label Style Description</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Label Style Description</em>'.
      * @generated
      */
     LabelStyleDescription createLabelStyleDescription();
 
     /**
-     * Returns a new object of class '<em>Label Border Styles</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns a new object of class '<em>Label Border Styles</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return a new object of class '<em>Label Border Styles</em>'.
      * @generated
      */
     LabelBorderStyles createLabelBorderStyles();
 
     /**
-     * Returns a new object of class '<em>Label Border Style Description</em>'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns a new object of class '<em>Label Border Style Description</em>'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @return a new object of class '<em>Label Border Style Description</em>'.
      * @generated
      */
     LabelBorderStyleDescription createLabelBorderStyleDescription();
 
     /**
-     * Returns a new object of class '<em>Tooltip Style Description</em>'. <!--
-     * begin-user-doc -->
+     * Returns a new object of class '<em>Tooltip Style Description</em>'. <!-- begin-user-doc -->
      *
      * @since 0.9.0 <!-- end-user-doc -->
      * @return a new object of class '<em>Tooltip Style Description</em>'.
@@ -76,9 +72,8 @@ public interface StyleFactory extends EFactory {
     TooltipStyleDescription createTooltipStyleDescription();
 
     /**
-     * Returns the package supported by this factory. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the package supported by this factory.
      * @generated
      */

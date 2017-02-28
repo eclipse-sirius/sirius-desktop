@@ -15,16 +15,15 @@ import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Tree Item Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Tree Item Style Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemStyleDescription#getBackgroundColor
- * <em>Background Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemStyleDescription#getBackgroundColor <em>Background Color</em>}
+ * </li>
  * </ul>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemStyleDescription()
@@ -33,14 +32,12 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  */
 public interface TreeItemStyleDescription extends StyleDescription, LabelStyleDescription {
     /**
-     * Returns the value of the '<em><b>Background Color</b></em>' reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Background Color</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Background Color</em>' containment reference
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Background Color</em>' containment reference isn't clear, there really should be more
+     * of a description here...
      * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Color of background <!--
-     * end-model-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> Color of background <!-- end-model-doc -->
      *
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
@@ -51,11 +48,9 @@ public interface TreeItemStyleDescription extends StyleDescription, LabelStyleDe
     ColorDescription getBackgroundColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.description.TreeItemStyleDescription#getBackgroundColor
-     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemStyleDescription#getBackgroundColor
+     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()

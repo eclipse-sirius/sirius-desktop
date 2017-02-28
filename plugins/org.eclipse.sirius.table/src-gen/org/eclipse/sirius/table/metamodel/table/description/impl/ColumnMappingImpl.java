@@ -17,17 +17,15 @@ import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Column Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Column Mapping</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ColumnMappingImpl#getHeaderLabelExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ColumnMappingImpl#getHeaderLabelExpression
  * <em>Header Label Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ColumnMappingImpl#getInitialWidth
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ColumnMappingImpl#getInitialWidth
  * <em>Initial Width</em>}</li>
  * </ul>
  *
@@ -35,9 +33,8 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
  */
 public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping {
     /**
-     * The default value of the '{@link #getHeaderLabelExpression()
-     * <em>Header Label Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getHeaderLabelExpression() <em>Header Label Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getHeaderLabelExpression()
      * @generated
@@ -46,9 +43,8 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
     protected static final String HEADER_LABEL_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getHeaderLabelExpression()
-     * <em>Header Label Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getHeaderLabelExpression() <em>Header Label Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getHeaderLabelExpression()
      * @generated
@@ -57,10 +53,9 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
     protected String headerLabelExpression = ColumnMappingImpl.HEADER_LABEL_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getInitialWidth()
-     * <em>Initial Width</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getInitialWidth() <em>Initial Width</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getInitialWidth()
      * @generated
      * @ordered
@@ -68,9 +63,9 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
     protected static final int INITIAL_WIDTH_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getInitialWidth() <em>Initial Width</em>
-     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getInitialWidth() <em>Initial Width</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getInitialWidth()
      * @generated
      * @ordered
@@ -79,7 +74,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ColumnMappingImpl() {
@@ -88,7 +83,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +93,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +103,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -122,7 +117,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +127,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +141,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +157,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -180,7 +175,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +193,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -214,7 +209,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

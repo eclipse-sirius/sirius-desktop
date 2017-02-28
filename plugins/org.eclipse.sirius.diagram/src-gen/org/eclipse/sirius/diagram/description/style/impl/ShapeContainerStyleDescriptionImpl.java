@@ -22,8 +22,8 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Shape Container Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Shape Container Style Description</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -34,11 +34,9 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl#getHeightComputationExpression
  * <em>Height Computation Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl#getShape
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl#getShape
  * <em>Shape</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl#getBackgroundColor
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
  * </ul>
  *
@@ -46,10 +44,9 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  */
 public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptionImpl implements ShapeContainerStyleDescription {
     /**
-     * The default value of the '{@link #getWidthComputationExpression()
-     * <em>Width Computation Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getWidthComputationExpression() <em>Width Computation Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getWidthComputationExpression()
      * @generated
      * @ordered
@@ -57,10 +54,9 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
     protected static final String WIDTH_COMPUTATION_EXPRESSION_EDEFAULT = "-1"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getWidthComputationExpression()
-     * <em>Width Computation Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getWidthComputationExpression() <em>Width Computation Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getWidthComputationExpression()
      * @generated
      * @ordered
@@ -68,10 +64,9 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
     protected String widthComputationExpression = ShapeContainerStyleDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getHeightComputationExpression()
-     * <em>Height Computation Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getHeightComputationExpression() <em>Height Computation Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getHeightComputationExpression()
      * @generated
      * @ordered
@@ -79,10 +74,9 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
     protected static final String HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT = "-1"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getHeightComputationExpression()
-     * <em>Height Computation Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getHeightComputationExpression() <em>Height Computation Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getHeightComputationExpression()
      * @generated
      * @ordered
@@ -90,9 +84,9 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
     protected String heightComputationExpression = ShapeContainerStyleDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getShape() <em>Shape</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getShape() <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getShape()
      * @generated
      * @ordered
@@ -100,8 +94,8 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
     protected static final ContainerShape SHAPE_EDEFAULT = ContainerShape.PARALLELOGRAM_LITERAL;
 
     /**
-     * The cached value of the '{@link #getShape() <em>Shape</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getShape() <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getShape()
      * @generated
@@ -110,10 +104,9 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
     protected ContainerShape shape = ShapeContainerStyleDescriptionImpl.SHAPE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -122,7 +115,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ShapeContainerStyleDescriptionImpl() {
@@ -131,7 +124,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +134,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,7 +144,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -166,7 +159,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -176,7 +169,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -191,7 +184,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -201,7 +194,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -215,7 +208,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -234,7 +227,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetBackgroundColor() {
@@ -243,7 +236,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -257,7 +250,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -280,7 +273,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -304,7 +297,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -328,7 +321,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -350,7 +343,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -370,7 +363,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -390,7 +383,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

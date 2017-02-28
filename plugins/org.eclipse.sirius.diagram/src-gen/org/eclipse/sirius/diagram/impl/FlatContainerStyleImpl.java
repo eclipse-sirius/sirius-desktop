@@ -22,31 +22,24 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Flat Container Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Flat Container Style</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.FlatContainerStyleImpl#getBackgroundStyle
- * <em>Background Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.FlatContainerStyleImpl#getBackgroundColor
- * <em>Background Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.FlatContainerStyleImpl#getForegroundColor
- * <em>Foreground Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.FlatContainerStyleImpl#getBackgroundStyle <em>Background Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.FlatContainerStyleImpl#getBackgroundColor <em>Background Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.FlatContainerStyleImpl#getForegroundColor <em>Foreground Color</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatContainerStyle {
     /**
-     * The default value of the '{@link #getBackgroundStyle()
-     * <em>Background Style</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getBackgroundStyle() <em>Background Style</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundStyle()
      * @generated
      * @ordered
@@ -54,10 +47,9 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     protected static final BackgroundStyle BACKGROUND_STYLE_EDEFAULT = BackgroundStyle.GRADIENT_LEFT_TO_RIGHT_LITERAL;
 
     /**
-     * The cached value of the '{@link #getBackgroundStyle()
-     * <em>Background Style</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBackgroundStyle() <em>Background Style</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundStyle()
      * @generated
      * @ordered
@@ -65,10 +57,9 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     protected BackgroundStyle backgroundStyle = FlatContainerStyleImpl.BACKGROUND_STYLE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -76,10 +67,9 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "255,255,255"); //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -87,10 +77,9 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     protected RGBValues backgroundColor = FlatContainerStyleImpl.BACKGROUND_COLOR_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getForegroundColor()
-     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getForegroundColor() <em>Foreground Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -98,10 +87,9 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     protected static final RGBValues FOREGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "209,209,209"); //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getForegroundColor()
-     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getForegroundColor() <em>Foreground Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -110,7 +98,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected FlatContainerStyleImpl() {
@@ -119,7 +107,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +117,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -139,7 +127,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -153,7 +141,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -163,7 +151,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -177,7 +165,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -187,7 +175,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -201,7 +189,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -219,7 +207,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -240,7 +228,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -261,7 +249,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -279,7 +267,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

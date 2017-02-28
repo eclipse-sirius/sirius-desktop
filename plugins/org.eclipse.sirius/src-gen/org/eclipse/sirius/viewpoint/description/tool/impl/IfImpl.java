@@ -18,14 +18,12 @@ import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>If</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>If</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.IfImpl#getConditionExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.IfImpl#getConditionExpression
  * <em>Condition Expression</em>}</li>
  * </ul>
  *
@@ -33,9 +31,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public class IfImpl extends ContainerModelOperationImpl implements If {
     /**
-     * The default value of the '{@link #getConditionExpression()
-     * <em>Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getConditionExpression() <em>Condition Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getConditionExpression()
      * @generated
@@ -44,9 +41,8 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
     protected static final String CONDITION_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getConditionExpression()
-     * <em>Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getConditionExpression() <em>Condition Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getConditionExpression()
      * @generated
@@ -56,7 +52,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected IfImpl() {
@@ -65,7 +61,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -75,7 +71,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +81,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +95,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +109,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -128,7 +124,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -143,7 +139,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -157,7 +153,7 @@ public class IfImpl extends ContainerModelOperationImpl implements If {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

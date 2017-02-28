@@ -13,16 +13,14 @@ package org.eclipse.sirius.diagram.sequence.template;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>TDestruction Message Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>TDestruction Message Mapping</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.TDestructionMessageMapping#getTarget
- * <em>Target</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.TDestructionMessageMapping#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTDestructionMessageMapping()
@@ -32,16 +30,14 @@ import org.eclipse.emf.common.util.EList;
 public interface TDestructionMessageMapping extends TSourceTargetMessageMapping {
 
     /**
-     * Returns the value of the '<em><b>Target</b></em>' reference list. The
-     * list contents are of type
-     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Target</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Target</em>' reference list isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Target</em>' reference list isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Target</em>' reference list.
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTDestructionMessageMapping_Target()
      * @model required="true"

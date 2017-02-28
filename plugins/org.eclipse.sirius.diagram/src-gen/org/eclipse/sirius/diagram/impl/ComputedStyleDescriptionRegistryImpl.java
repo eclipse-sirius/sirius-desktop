@@ -25,14 +25,13 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Computed Style Description Registry</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Computed Style Description Registry</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.ComputedStyleDescriptionRegistryImpl#getComputedStyleDescriptions
+ * <li>{@link org.eclipse.sirius.diagram.impl.ComputedStyleDescriptionRegistryImpl#getComputedStyleDescriptions
  * <em>Computed Style Descriptions</em>}</li>
  * </ul>
  *
@@ -40,10 +39,9 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  */
 public class ComputedStyleDescriptionRegistryImpl extends MinimalEObjectImpl.Container implements ComputedStyleDescriptionRegistry {
     /**
-     * The cached value of the '{@link #getComputedStyleDescriptions()
-     * <em>Computed Style Descriptions</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getComputedStyleDescriptions() <em>Computed Style Descriptions</em>}'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getComputedStyleDescriptions()
      * @generated
      * @ordered
@@ -52,7 +50,7 @@ public class ComputedStyleDescriptionRegistryImpl extends MinimalEObjectImpl.Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ComputedStyleDescriptionRegistryImpl() {
@@ -61,7 +59,7 @@ public class ComputedStyleDescriptionRegistryImpl extends MinimalEObjectImpl.Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -71,7 +69,7 @@ public class ComputedStyleDescriptionRegistryImpl extends MinimalEObjectImpl.Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +83,7 @@ public class ComputedStyleDescriptionRegistryImpl extends MinimalEObjectImpl.Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +97,7 @@ public class ComputedStyleDescriptionRegistryImpl extends MinimalEObjectImpl.Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +111,7 @@ public class ComputedStyleDescriptionRegistryImpl extends MinimalEObjectImpl.Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -130,7 +128,7 @@ public class ComputedStyleDescriptionRegistryImpl extends MinimalEObjectImpl.Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +143,7 @@ public class ComputedStyleDescriptionRegistryImpl extends MinimalEObjectImpl.Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

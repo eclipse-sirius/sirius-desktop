@@ -15,11 +15,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Drag And Drop Target</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Drag And Drop Target</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> A DragAndDropTarget is an element that can managed
- * drop requests. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> A DragAndDropTarget is an element that can managed drop requests. <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDragAndDropTarget()
@@ -28,8 +27,8 @@ import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
  */
 public interface DragAndDropTarget extends EObject {
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Return the description of this Drag&Drop Target. <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Return the description of this Drag&Drop
+     * Target. <!-- end-model-doc -->
      *
      * @model kind="operation"
      * @generated

@@ -14,19 +14,16 @@ package org.eclipse.sirius.viewpoint.description;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>EReference Customization</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>EReference Customization</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization#getReferenceName
- * <em>Reference Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization#getValue
- * <em>Value</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization#getReferenceName <em>Reference Name</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEReferenceCustomization()
@@ -35,14 +32,13 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface EReferenceCustomization extends EStructuralFeatureCustomization {
     /**
-     * Returns the value of the '<em><b>Reference Name</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Reference Name</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Reference Name</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Reference Name</em>' attribute isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Reference Name</em>' attribute.
      * @see #setReferenceName(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEReferenceCustomization_ReferenceName()
@@ -52,11 +48,9 @@ public interface EReferenceCustomization extends EStructuralFeatureCustomization
     String getReferenceName();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization#getReferenceName
-     * <em>Reference Name</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization#getReferenceName
+     * <em>Reference Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Reference Name</em>' attribute.
      * @see #getReferenceName()
@@ -65,14 +59,13 @@ public interface EReferenceCustomization extends EStructuralFeatureCustomization
     void setReferenceName(String value);
 
     /**
-     * Returns the value of the '<em><b>Value</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Value</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Value</em>' reference isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Value</em>' reference isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Value</em>' reference.
      * @see #setValue(EObject)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEReferenceCustomization_Value()
@@ -82,10 +75,9 @@ public interface EReferenceCustomization extends EStructuralFeatureCustomization
     EObject getValue();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization#getValue
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization#getValue
      * <em>Value</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Value</em>' reference.
      * @see #getValue()

@@ -24,17 +24,15 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.Dot;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.Dot} object. <!-- begin-user-doc --> <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.Dot} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
 public class DotItemProvider extends NodeStyleItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DotItemProvider(AdapterFactory adapterFactory) {
@@ -42,9 +40,8 @@ public class DotItemProvider extends NodeStyleItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -59,9 +56,9 @@ public class DotItemProvider extends NodeStyleItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Stroke Size Computation
-     * Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Stroke Size Computation Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addStrokeSizeComputationExpressionPropertyDescriptor(Object object) {
@@ -72,9 +69,8 @@ public class DotItemProvider extends NodeStyleItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Background Color feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Background Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
@@ -86,7 +82,7 @@ public class DotItemProvider extends NodeStyleItemProvider {
 
     /**
      * This returns Dot.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -95,9 +91,8 @@ public class DotItemProvider extends NodeStyleItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -107,10 +102,9 @@ public class DotItemProvider extends NodeStyleItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -128,10 +122,9 @@ public class DotItemProvider extends NodeStyleItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

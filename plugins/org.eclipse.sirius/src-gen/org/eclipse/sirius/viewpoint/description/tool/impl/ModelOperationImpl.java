@@ -17,15 +17,15 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Model Operation</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Model Operation</b></em>'. <!-- end-user-doc
+ * -->
  *
  * @generated
  */
 public abstract class ModelOperationImpl extends MinimalEObjectImpl.Container implements ModelOperation {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ModelOperationImpl() {
@@ -34,7 +34,7 @@ public abstract class ModelOperationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

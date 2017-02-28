@@ -22,24 +22,22 @@ import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Property Validation Rule</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Property Validation Rule</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.PropertyValidationRuleImpl#getTargets
- * <em>Targets</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.PropertyValidationRuleImpl#getTargets <em>Targets</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class PropertyValidationRuleImpl extends ValidationRuleImpl implements PropertyValidationRule {
     /**
-     * The cached value of the '{@link #getTargets() <em>Targets</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getTargets() <em>Targets</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getTargets()
      * @generated
      * @ordered
@@ -48,7 +46,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected PropertyValidationRuleImpl() {
@@ -57,7 +55,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -67,7 +65,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -80,7 +78,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -94,7 +92,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -111,7 +109,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +124,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

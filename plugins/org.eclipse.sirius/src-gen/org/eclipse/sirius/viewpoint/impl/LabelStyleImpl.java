@@ -19,22 +19,20 @@ import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Label Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Label Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.LabelStyleImpl#getLabelAlignment
- * <em>Label Alignment</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.LabelStyleImpl#getLabelAlignment <em>Label Alignment</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
     /**
-     * The default value of the '{@link #getLabelAlignment()
-     * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc -->
+     * The default value of the '{@link #getLabelAlignment() <em>Label Alignment</em>}' attribute. <!-- begin-user-doc
+     * -->
      *
      * @since 0.9.0 <!-- end-user-doc -->
      * @see #getLabelAlignment()
@@ -44,8 +42,8 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
     protected static final LabelAlignment LABEL_ALIGNMENT_EDEFAULT = LabelAlignment.CENTER;
 
     /**
-     * The cached value of the '{@link #getLabelAlignment()
-     * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc -->
+     * The cached value of the '{@link #getLabelAlignment() <em>Label Alignment</em>}' attribute. <!-- begin-user-doc
+     * -->
      *
      * @since 0.9.0 <!-- end-user-doc -->
      * @see #getLabelAlignment()
@@ -56,7 +54,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected LabelStyleImpl() {
@@ -65,7 +63,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -101,7 +99,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -115,7 +113,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -130,7 +128,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +143,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +157,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

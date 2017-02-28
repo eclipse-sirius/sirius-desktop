@@ -18,24 +18,21 @@ import org.eclipse.sirius.diagram.description.style.CustomStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Custom Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Custom Style Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.CustomStyleDescriptionImpl#getId
- * <em>Id</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.CustomStyleDescriptionImpl#getId <em>Id</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl implements CustomStyleDescription {
     /**
-     * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getId()
      * @generated
      * @ordered
@@ -43,9 +40,8 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
     protected static final String ID_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getId()
      * @generated
      * @ordered
@@ -54,7 +50,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CustomStyleDescriptionImpl() {
@@ -63,7 +59,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -73,7 +69,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +79,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +93,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +107,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +122,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +137,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +151,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

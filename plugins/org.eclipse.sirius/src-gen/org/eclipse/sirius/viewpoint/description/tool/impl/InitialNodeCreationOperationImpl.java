@@ -22,8 +22,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Initial Node Creation Operation</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Initial Node Creation Operation</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -37,10 +37,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Container implements InitialNodeCreationOperation {
     /**
-     * The cached value of the '{@link #getFirstModelOperations()
-     * <em>First Model Operations</em>}' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFirstModelOperations() <em>First Model Operations</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFirstModelOperations()
      * @generated
      * @ordered
@@ -49,7 +48,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected InitialNodeCreationOperationImpl() {
@@ -58,7 +57,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -68,7 +67,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +95,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ModelOperation basicGetFirstModelOperations() {
@@ -105,7 +104,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetFirstModelOperations(ModelOperation newFirstModelOperations, NotificationChain msgs) {
@@ -125,7 +124,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,7 +150,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +164,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +181,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -197,7 +196,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +211,7 @@ public class InitialNodeCreationOperationImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -12,8 +12,7 @@
 package org.eclipse.sirius.diagram;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Custom Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Custom Style</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -28,14 +27,12 @@ package org.eclipse.sirius.diagram;
  */
 public interface CustomStyle extends NodeStyle {
     /**
-     * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
-     * should be more of a description here...
+     * If the meaning of the '<em>Id</em>' attribute isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getCustomStyle_Id()
@@ -45,9 +42,8 @@ public interface CustomStyle extends NodeStyle {
     String getId();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.CustomStyle#getId <em>Id</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.CustomStyle#getId <em>Id</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.

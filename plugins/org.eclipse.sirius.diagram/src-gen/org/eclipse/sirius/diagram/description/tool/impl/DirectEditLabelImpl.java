@@ -25,20 +25,16 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Direct Edit Label</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Direct Edit Label</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.DirectEditLabelImpl#getMask
- * <em>Mask</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.DirectEditLabelImpl#getInitialOperation
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.DirectEditLabelImpl#getMask <em>Mask</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.DirectEditLabelImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.DirectEditLabelImpl#getInputLabelExpression
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.DirectEditLabelImpl#getInputLabelExpression
  * <em>Input Label Expression</em>}</li>
  * </ul>
  *
@@ -46,9 +42,9 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  */
 public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl implements DirectEditLabel {
     /**
-     * The cached value of the '{@link #getMask() <em>Mask</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getMask() <em>Mask</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getMask()
      * @generated
      * @ordered
@@ -56,9 +52,8 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
     protected EditMaskVariables mask;
 
     /**
-     * The cached value of the '{@link #getInitialOperation()
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInitialOperation()
      * @generated
@@ -67,9 +62,8 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
     protected InitialOperation initialOperation;
 
     /**
-     * The default value of the '{@link #getInputLabelExpression()
-     * <em>Input Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getInputLabelExpression() <em>Input Label Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInputLabelExpression()
      * @generated
@@ -78,9 +72,8 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
     protected static final String INPUT_LABEL_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getInputLabelExpression()
-     * <em>Input Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getInputLabelExpression() <em>Input Label Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInputLabelExpression()
      * @generated
@@ -90,7 +83,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DirectEditLabelImpl() {
@@ -99,7 +92,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -109,7 +102,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -136,7 +129,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public EditMaskVariables basicGetMask() {
@@ -145,7 +138,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetMask(EditMaskVariables newMask, NotificationChain msgs) {
@@ -164,7 +157,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -188,7 +181,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -215,7 +208,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -224,7 +217,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -243,7 +236,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -267,7 +260,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -277,7 +270,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -291,7 +284,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -303,7 +296,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -319,7 +312,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -343,7 +336,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -364,7 +357,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -385,7 +378,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -403,7 +396,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

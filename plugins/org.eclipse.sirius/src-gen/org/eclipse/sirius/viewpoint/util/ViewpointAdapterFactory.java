@@ -46,25 +46,23 @@ import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
 /**
- * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
- * an adapter <code>createXXX</code> method for each class of the model. <!--
- * end-user-doc -->
- *
+ * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter <code>createXXX</code>
+ * method for each class of the model. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage
  * @generated
  */
 public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected static ViewpointPackage modelPackage;
 
     /**
-     * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ViewpointAdapterFactory() {
@@ -74,11 +72,10 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Returns whether this factory is applicable for the type of the object.
-     * <!-- begin-user-doc --> This implementation returns <code>true</code> if
-     * the object is either the model's package or is an instance object of the
-     * model. <!-- end-user-doc -->
-     *
+     * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc --> This
+     * implementation returns <code>true</code> if the object is either the model's package or is an instance object of
+     * the model. <!-- end-user-doc -->
+     * 
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
@@ -94,9 +91,8 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * The switch that delegates to the <code>createXXX</code> methods. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected ViewpointSwitch<Adapter> modelSwitch = new ViewpointSwitch<Adapter>() {
@@ -247,9 +243,8 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     };
 
     /**
-     * Creates an adapter for the <code>target</code>. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param target
      *            the object to adapt.
      * @return the adapter for the <code>target</code>.
@@ -261,12 +256,10 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DAnalysis <em>DAnalysis</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DAnalysis <em>DAnalysis</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DAnalysis
      * @generated
@@ -276,13 +269,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DFeatureExtension
-     * <em>DFeature Extension</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DFeatureExtension
+     * <em>DFeature Extension</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DFeatureExtension
      * @generated
@@ -292,11 +283,10 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DStylizable <em>DStylizable</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DStylizable
+     * <em>DStylizable</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DStylizable
@@ -307,11 +297,10 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DRefreshable <em>DRefreshable</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DRefreshable
+     * <em>DRefreshable</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DRefreshable
@@ -322,11 +311,10 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DMappingBased <em>DMapping Based</em>
-     * }'. <!-- begin-user-doc --> This default implementation returns null so
-     * that we can easily ignore cases; it's useful to ignore a case when
-     * inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DMappingBased
+     * <em>DMapping Based</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DMappingBased
@@ -337,13 +325,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DSemanticDecorator
-     * <em>DSemantic Decorator</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DSemanticDecorator
+     * <em>DSemantic Decorator</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DSemanticDecorator
      * @generated
@@ -353,13 +339,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor
-     * <em>DRepresentation Descriptor</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor
+     * <em>DRepresentation Descriptor</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DRepresentationDescriptor
      * @generated
@@ -369,13 +353,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DRepresentation
-     * <em>DRepresentation</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DRepresentation
+     * <em>DRepresentation</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DRepresentation
      * @generated
@@ -385,13 +367,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DRepresentationElement
-     * <em>DRepresentation Element</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DRepresentationElement
+     * <em>DRepresentation Element</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DRepresentationElement
      * @generated
@@ -401,11 +381,9 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DView <em>DView</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class ' {@link org.eclipse.sirius.viewpoint.DView <em>DView</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+     * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DView
@@ -416,13 +394,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.MetaModelExtension
-     * <em>Meta Model Extension</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.MetaModelExtension
+     * <em>Meta Model Extension</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.MetaModelExtension
      * @generated
@@ -432,12 +408,10 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.Decoration <em>Decoration</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.Decoration <em>Decoration</em>}
+     * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.Decoration
      * @generated
@@ -447,13 +421,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DAnalysisCustomData
-     * <em>DAnalysis Custom Data</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DAnalysisCustomData
+     * <em>DAnalysis Custom Data</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DAnalysisCustomData
      * @generated
@@ -463,12 +435,10 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.LabelStyle <em>Label Style</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.LabelStyle <em>Label Style</em>
+     * }'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.LabelStyle
      * @generated
@@ -478,11 +448,9 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.Style <em>Style</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class ' {@link org.eclipse.sirius.viewpoint.Style <em>Style</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+     * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.Style
@@ -493,13 +461,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject
-     * <em>DAnalysis Session EObject</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject
+     * <em>DAnalysis Session EObject</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DAnalysisSessionEObject
      * @generated
@@ -509,13 +475,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.SessionManagerEObject
-     * <em>Session Manager EObject</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.SessionManagerEObject
+     * <em>Session Manager EObject</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.SessionManagerEObject
      * @generated
@@ -525,12 +489,10 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DResource <em>DResource</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DResource <em>DResource</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DResource
      * @generated
@@ -540,11 +502,9 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DFile <em>DFile</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class ' {@link org.eclipse.sirius.viewpoint.DFile <em>DFile</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+     * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DFile
@@ -555,13 +515,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DResourceContainer
-     * <em>DResource Container</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DResourceContainer
+     * <em>DResource Container</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DResourceContainer
      * @generated
@@ -571,12 +529,10 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DProject <em>DProject</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DProject <em>DProject</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DProject
      * @generated
@@ -586,12 +542,10 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DFolder <em>DFolder</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DFolder <em>DFolder</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DFolder
      * @generated
@@ -601,11 +555,9 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DModel <em>DModel</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class ' {@link org.eclipse.sirius.viewpoint.DModel <em>DModel</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+     * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DModel
@@ -616,13 +568,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle
-     * <em>Basic Label Style</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.BasicLabelStyle
+     * <em>Basic Label Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.BasicLabelStyle
      * @generated
@@ -632,11 +582,10 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.Customizable <em>Customizable</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.Customizable
+     * <em>Customizable</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.Customizable
@@ -647,12 +596,10 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.UIState <em>UI State</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.UIState <em>UI State</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.UIState
      * @generated
@@ -662,13 +609,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.DocumentedElement
-     * <em>Documented Element</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     *
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.description.DocumentedElement
+     * <em>Documented Element</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.DocumentedElement
      * @generated
@@ -678,12 +623,10 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.DModelElement
-     * <em>DModel Element</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.description.DModelElement
+     * <em>DModel Element</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.DModelElement
@@ -694,9 +637,9 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for the default case. <!-- begin-user-doc --> This
-     * default implementation returns null. <!-- end-user-doc -->
-     *
+     * Creates a new adapter for the default case. <!-- begin-user-doc --> This default implementation returns null.
+     * <!-- end-user-doc -->
+     * 
      * @return the new adapter.
      * @generated
      */

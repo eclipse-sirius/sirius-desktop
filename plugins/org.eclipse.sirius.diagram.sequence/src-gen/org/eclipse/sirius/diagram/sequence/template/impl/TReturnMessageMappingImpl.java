@@ -19,14 +19,13 @@ import org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>TReturn Message Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>TReturn Message Mapping</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.impl.TReturnMessageMappingImpl#getInvocationMapping
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TReturnMessageMappingImpl#getInvocationMapping
  * <em>Invocation Mapping</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.impl.TReturnMessageMappingImpl#getInvocationMessageFinderExpression
@@ -37,9 +36,8 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  */
 public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TReturnMessageMapping {
     /**
-     * The cached value of the '{@link #getInvocationMapping()
-     * <em>Invocation Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getInvocationMapping() <em>Invocation Mapping</em>}' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInvocationMapping()
      * @generated
@@ -49,9 +47,8 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * The default value of the '{@link #getInvocationMessageFinderExpression()
-     * <em>Invocation Message Finder Expression</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * <em>Invocation Message Finder Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getInvocationMessageFinderExpression()
      * @generated
      * @ordered
@@ -60,9 +57,8 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * The cached value of the '{@link #getInvocationMessageFinderExpression()
-     * <em>Invocation Message Finder Expression</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * <em>Invocation Message Finder Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getInvocationMessageFinderExpression()
      * @generated
      * @ordered
@@ -71,7 +67,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TReturnMessageMappingImpl() {
@@ -80,7 +76,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -90,7 +86,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -109,7 +105,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public TBasicMessageMapping basicGetInvocationMapping() {
@@ -118,7 +114,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +128,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -142,7 +138,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -157,7 +153,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -176,7 +172,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -194,7 +190,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +208,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -229,7 +225,7 @@ public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TR
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -13,25 +13,19 @@ package org.eclipse.sirius.table.metamodel.table.description;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Element Column Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Element Column Mapping</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDomainClass
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDomainClass
  * <em>Domain Class</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getSemanticCandidatesExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getSemanticCandidatesExpression
  * <em>Semantic Candidates Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getCreate
- * <em>Create</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDelete
- * <em>Delete</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getCreate <em>Create</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDelete <em>Delete</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getElementColumnMapping()
@@ -40,18 +34,17 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
     /**
-     * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Domain Class</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Domain Class</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getElementColumnMapping_DomainClass()
-     * @model dataType="org.eclipse.sirius.description.TypeName" required="true"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.TypeName" required="true"
      * @generated
      */
     String getDomainClass();
@@ -59,9 +52,8 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDomainClass
-     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -70,21 +62,17 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
     void setDomainClass(String value);
 
     /**
-     * Returns the value of the '<em><b>Semantic Candidates Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Semantic Candidates Expression</em>' attribute
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Semantic Candidates Expression</em>' attribute isn't clear, there really should be
+     * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Semantic Candidates Expression</em>'
-     *         attribute.
+     * 
+     * @return the value of the '<em>Semantic Candidates Expression</em>' attribute.
      * @see #setSemanticCandidatesExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getElementColumnMapping_SemanticCandidatesExpression()
-     * @model dataType=
-     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation=
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/variables viewpoint='table.DTable | (deprecated) current DTable.' table='table.DTable | current DTable.' containerView='table.DTable | current DTable.' container='ecore.EObject | semantic element targeted by the current DTable.'"
@@ -95,30 +83,26 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getSemanticCandidatesExpression
-     * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Semantic Candidates Expression</em>'
-     *            attribute.
+     *            the new value of the '<em>Semantic Candidates Expression</em>' attribute.
      * @see #getSemanticCandidatesExpression()
      * @generated
      */
     void setSemanticCandidatesExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Create</b></em>' containment reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool}
-     * . It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool#getMapping
+     * Returns the value of the '<em><b>Create</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool}. It is bidirectional and its
+     * opposite is '{@link org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool#getMapping
      * <em>Mapping</em>}'. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Create</em>' containment reference list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Create</em>' containment reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Create</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getElementColumnMapping_Create()
      * @see org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool#getMapping
@@ -128,13 +112,12 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
     EList<CreateColumnTool> getCreate();
 
     /**
-     * Returns the value of the '<em><b>Delete</b></em>' containment reference.
-     * It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.DeleteColumnTool#getMapping
-     * <em>Mapping</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Delete</b></em>' containment reference. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.DeleteColumnTool#getMapping <em>Mapping</em>}'. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Delete</em>' containment reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Delete</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -148,11 +131,9 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
     DeleteColumnTool getDelete();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDelete
-     * <em>Delete</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDelete
+     * <em>Delete</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Delete</em>' containment reference.
      * @see #getDelete()

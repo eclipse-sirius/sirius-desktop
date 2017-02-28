@@ -22,26 +22,23 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.WidgetDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Dynamic Mapping If</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Dynamic Mapping If</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.DynamicMappingIfImpl#getPredicateExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingIfImpl#getPredicateExpression
  * <em>Predicate Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingIfImpl#getWidget
- * <em>Widget</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingIfImpl#getWidget <em>Widget</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implements DynamicMappingIf {
     /**
-     * The default value of the '{@link #getPredicateExpression()
-     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getPredicateExpression() <em>Predicate Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPredicateExpression()
      * @generated
@@ -50,9 +47,8 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
     protected static final String PREDICATE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getPredicateExpression()
-     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getPredicateExpression() <em>Predicate Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPredicateExpression()
      * @generated
@@ -61,9 +57,9 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
     protected String predicateExpression = DynamicMappingIfImpl.PREDICATE_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getWidget() <em>Widget</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getWidget() <em>Widget</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getWidget()
      * @generated
      * @ordered
@@ -72,7 +68,7 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DynamicMappingIfImpl() {
@@ -81,7 +77,7 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -91,7 +87,7 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -101,7 +97,7 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -115,7 +111,7 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +121,7 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetWidget(WidgetDescription newWidget, NotificationChain msgs) {
@@ -144,7 +140,7 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -168,7 +164,7 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +178,7 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +194,7 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -216,7 +212,7 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -234,7 +230,7 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -250,7 +246,7 @@ public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -24,17 +24,15 @@ import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.LabelStyle} object. <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.LabelStyle} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public LabelStyleItemProvider(AdapterFactory adapterFactory) {
@@ -42,9 +40,8 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -58,8 +55,7 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Label Alignment feature. <!--
-     * begin-user-doc -->
+     * This adds a property descriptor for the Label Alignment feature. <!-- begin-user-doc -->
      *
      * @since 0.9.0 <!-- end-user-doc -->
      * @generated
@@ -72,9 +68,8 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
     }
 
     /**
-     * This returns LabelStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * This returns LabelStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -83,9 +78,8 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -95,10 +89,9 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -115,10 +108,9 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -25,16 +25,14 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
- * end-user-doc -->
- *
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory {
     /**
-     * Creates the default factory implementation. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static OrderingFactory init() {
@@ -50,9 +48,8 @@ public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory
     }
 
     /**
-     * Creates an instance of the factory. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public OrderingFactoryImpl() {
@@ -61,7 +58,7 @@ public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -82,7 +79,7 @@ public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -115,7 +112,7 @@ public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +123,7 @@ public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -136,7 +133,7 @@ public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @deprecated
      * @generated
      */

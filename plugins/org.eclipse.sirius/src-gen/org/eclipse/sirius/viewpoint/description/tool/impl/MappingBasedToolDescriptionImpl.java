@@ -16,15 +16,15 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Mapping Based Tool Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Mapping Based Tool Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public abstract class MappingBasedToolDescriptionImpl extends AbstractToolDescriptionImpl implements MappingBasedToolDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected MappingBasedToolDescriptionImpl() {
@@ -33,7 +33,7 @@ public abstract class MappingBasedToolDescriptionImpl extends AbstractToolDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -16,24 +16,20 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Flat Container Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Flat Container Style Description</b></em>'.
+ * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getBackgroundStyle
+ * <li>{@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getBackgroundStyle
  * <em>Background Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getBackgroundColor
+ * <li>{@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getBackgroundColor
  * <em>Background Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getForegroundColor
+ * <li>{@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getForegroundColor
  * <em>Foreground Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getLabelBorderStyle
+ * <li>{@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getLabelBorderStyle
  * <em>Label Border Style</em>}</li>
  * </ul>
  *
@@ -43,11 +39,9 @@ import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescriptio
  */
 public interface FlatContainerStyleDescription extends ContainerStyleDescription, SizeComputationContainerStyleDescription {
     /**
-     * Returns the value of the '<em><b>Background Style</b></em>' attribute.
-     * The literals are from the enumeration
-     * {@link org.eclipse.sirius.diagram.BackgroundStyle}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The background style.
-     * <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Background Style</b></em>' attribute. The literals are from the enumeration
+     * {@link org.eclipse.sirius.diagram.BackgroundStyle}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The background style. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Background Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.BackgroundStyle
@@ -61,9 +55,8 @@ public interface FlatContainerStyleDescription extends ContainerStyleDescription
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getBackgroundStyle
-     * <em>Background Style</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Background Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Background Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.BackgroundStyle
@@ -73,9 +66,8 @@ public interface FlatContainerStyleDescription extends ContainerStyleDescription
     void setBackgroundStyle(BackgroundStyle value);
 
     /**
-     * Returns the value of the '<em><b>Background Color</b></em>' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The color to use. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Background Color</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> The color to use. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
@@ -88,9 +80,8 @@ public interface FlatContainerStyleDescription extends ContainerStyleDescription
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getBackgroundColor
-     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()
@@ -99,9 +90,8 @@ public interface FlatContainerStyleDescription extends ContainerStyleDescription
     void setBackgroundColor(ColorDescription value);
 
     /**
-     * Returns the value of the '<em><b>Foreground Color</b></em>' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The color to use. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Foreground Color</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> The color to use. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Foreground Color</em>' reference.
      * @see #setForegroundColor(ColorDescription)
@@ -114,9 +104,8 @@ public interface FlatContainerStyleDescription extends ContainerStyleDescription
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getForegroundColor
-     * <em>Foreground Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Foreground Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Foreground Color</em>' reference.
      * @see #getForegroundColor()
@@ -125,14 +114,13 @@ public interface FlatContainerStyleDescription extends ContainerStyleDescription
     void setForegroundColor(ColorDescription value);
 
     /**
-     * Returns the value of the '<em><b>Label Border Style</b></em>' reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Label Border Style</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Label Border Style</em>' reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Label Border Style</em>' reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Label Border Style</em>' reference.
      * @see #setLabelBorderStyle(LabelBorderStyleDescription)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getFlatContainerStyleDescription_LabelBorderStyle()
@@ -144,9 +132,8 @@ public interface FlatContainerStyleDescription extends ContainerStyleDescription
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription#getLabelBorderStyle
-     * <em>Label Border Style</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Label Border Style</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Label Border Style</em>' reference.
      * @see #getLabelBorderStyle()

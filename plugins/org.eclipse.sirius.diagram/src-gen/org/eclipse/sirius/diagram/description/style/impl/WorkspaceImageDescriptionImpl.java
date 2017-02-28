@@ -20,23 +20,19 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Workspace Image Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Workspace Image Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl#getArcWidth
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl#getArcWidth
  * <em>Arc Width</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl#getArcHeight
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl#getArcHeight
  * <em>Arc Height</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl#isRoundedCorner
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl#isRoundedCorner
  * <em>Rounded Corner</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl#getWorkspacePath
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl#getWorkspacePath
  * <em>Workspace Path</em>}</li>
  * </ul>
  *
@@ -44,9 +40,9 @@ import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
  */
 public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl implements WorkspaceImageDescription {
     /**
-     * The default value of the '{@link #getArcWidth() <em>Arc Width</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getArcWidth() <em>Arc Width</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getArcWidth()
      * @generated
      * @ordered
@@ -54,9 +50,9 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
     protected static final Integer ARC_WIDTH_EDEFAULT = new Integer(10);
 
     /**
-     * The cached value of the '{@link #getArcWidth() <em>Arc Width</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getArcWidth() <em>Arc Width</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getArcWidth()
      * @generated
      * @ordered
@@ -64,9 +60,9 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
     protected Integer arcWidth = WorkspaceImageDescriptionImpl.ARC_WIDTH_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getArcHeight() <em>Arc Height</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getArcHeight() <em>Arc Height</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getArcHeight()
      * @generated
      * @ordered
@@ -74,9 +70,9 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
     protected static final Integer ARC_HEIGHT_EDEFAULT = new Integer(10);
 
     /**
-     * The cached value of the '{@link #getArcHeight() <em>Arc Height</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getArcHeight() <em>Arc Height</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getArcHeight()
      * @generated
      * @ordered
@@ -84,10 +80,9 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
     protected Integer arcHeight = WorkspaceImageDescriptionImpl.ARC_HEIGHT_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isRoundedCorner()
-     * <em>Rounded Corner</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #isRoundedCorner() <em>Rounded Corner</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isRoundedCorner()
      * @generated
      * @ordered
@@ -95,10 +90,9 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
     protected static final boolean ROUNDED_CORNER_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isRoundedCorner()
-     * <em>Rounded Corner</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #isRoundedCorner() <em>Rounded Corner</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isRoundedCorner()
      * @generated
      * @ordered
@@ -106,10 +100,9 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
     protected boolean roundedCorner = WorkspaceImageDescriptionImpl.ROUNDED_CORNER_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getWorkspacePath()
-     * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getWorkspacePath() <em>Workspace Path</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getWorkspacePath()
      * @generated
      * @ordered
@@ -117,10 +110,9 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
     protected static final String WORKSPACE_PATH_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getWorkspacePath()
-     * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getWorkspacePath() <em>Workspace Path</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getWorkspacePath()
      * @generated
      * @ordered
@@ -129,7 +121,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected WorkspaceImageDescriptionImpl() {
@@ -138,7 +130,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -148,7 +140,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +150,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -172,7 +164,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +174,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -196,7 +188,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -206,7 +198,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -220,7 +212,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -230,7 +222,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -244,7 +236,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -264,7 +256,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -288,7 +280,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -312,7 +304,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -332,7 +324,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -360,7 +352,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -388,7 +380,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

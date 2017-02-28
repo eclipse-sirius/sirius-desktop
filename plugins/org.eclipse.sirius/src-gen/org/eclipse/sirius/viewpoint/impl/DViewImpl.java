@@ -30,30 +30,25 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DView</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DView</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getViewpoint
- * <em>Viewpoint</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getOwnedRepresentationDescriptors
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getViewpoint <em>Viewpoint</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getOwnedRepresentationDescriptors
  * <em>Owned Representation Descriptors</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getOwnedExtensions
- * <em>Owned Extensions</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getModels
- * <em>Models</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getOwnedExtensions <em>Owned Extensions</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getModels <em>Models</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     /**
-     * The cached value of the '{@link #getViewpoint() <em>Viewpoint</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getViewpoint() <em>Viewpoint</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getViewpoint()
      * @generated
      * @ordered
@@ -61,10 +56,9 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     protected Viewpoint viewpoint;
 
     /**
-     * The cached value of the '{@link #getOwnedRepresentationDescriptors()
-     * <em>Owned Representation Descriptors</em>}' containment reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedRepresentationDescriptors() <em>Owned Representation Descriptors</em>}'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getOwnedRepresentationDescriptors()
      * @generated
      * @ordered
@@ -72,9 +66,8 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     protected EList<DRepresentationDescriptor> ownedRepresentationDescriptors;
 
     /**
-     * The cached value of the '{@link #getOwnedExtensions()
-     * <em>Owned Extensions</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOwnedExtensions() <em>Owned Extensions</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getOwnedExtensions()
      * @generated
@@ -84,7 +77,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DViewImpl() {
@@ -93,7 +86,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -103,7 +96,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -130,7 +123,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public MetaModelExtension basicGetOwnedExtensions() {
@@ -139,7 +132,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetOwnedExtensions(MetaModelExtension newOwnedExtensions, NotificationChain msgs) {
@@ -158,7 +151,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +175,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -201,7 +194,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public Viewpoint basicGetViewpoint() {
@@ -210,7 +203,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -224,7 +217,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -238,24 +231,22 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<EObject> getModels() {
         // TODO: implement this method to return the 'Models' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -267,7 +258,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -283,7 +274,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -309,7 +300,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -332,7 +323,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -353,7 +344,7 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -22,33 +22,26 @@ import org.eclipse.sirius.viewpoint.description.SubVariable;
 import org.eclipse.sirius.viewpoint.description.TypedVariable;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Typed Variable</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Typed Variable</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.TypedVariableImpl#getUserDocumentation
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.TypedVariableImpl#getUserDocumentation
  * <em>User Documentation</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.TypedVariableImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.TypedVariableImpl#getDefaultValueExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.TypedVariableImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.TypedVariableImpl#getDefaultValueExpression
  * <em>Default Value Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.TypedVariableImpl#getValueType
- * <em>Value Type</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.TypedVariableImpl#getValueType <em>Value Type</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class TypedVariableImpl extends MinimalEObjectImpl.Container implements TypedVariable {
     /**
-     * The default value of the '{@link #getUserDocumentation()
-     * <em>User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getUserDocumentation() <em>User Documentation</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getUserDocumentation()
      * @generated
@@ -57,9 +50,8 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
     protected static final String USER_DOCUMENTATION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getUserDocumentation()
-     * <em>User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getUserDocumentation() <em>User Documentation</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getUserDocumentation()
      * @generated
@@ -68,8 +60,8 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
     protected String userDocumentation = TypedVariableImpl.USER_DOCUMENTATION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -78,8 +70,8 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -88,9 +80,8 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
     protected String name = TypedVariableImpl.NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getDefaultValueExpression()
-     * <em>Default Value Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getDefaultValueExpression() <em>Default Value Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDefaultValueExpression()
      * @generated
@@ -99,9 +90,8 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
     protected static final String DEFAULT_VALUE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getDefaultValueExpression()
-     * <em>Default Value Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getDefaultValueExpression() <em>Default Value Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDefaultValueExpression()
      * @generated
@@ -110,9 +100,9 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
     protected String defaultValueExpression = TypedVariableImpl.DEFAULT_VALUE_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getValueType() <em>Value Type</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getValueType() <em>Value Type</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getValueType()
      * @generated
      * @ordered
@@ -121,7 +111,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TypedVariableImpl() {
@@ -130,7 +120,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -140,7 +130,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -150,7 +140,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -164,7 +154,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -174,7 +164,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -188,7 +178,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +188,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +202,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -231,7 +221,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public EDataType basicGetValueType() {
@@ -240,7 +230,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -254,7 +244,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -277,7 +267,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -301,7 +291,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -325,7 +315,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -345,7 +335,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -369,7 +359,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -393,7 +383,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

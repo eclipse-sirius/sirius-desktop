@@ -25,17 +25,15 @@ import org.eclipse.sirius.diagram.description.style.SquareDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.description.style.SquareDescription}
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.style.SquareDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class SquareDescriptionItemProvider extends NodeStyleDescriptionItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public SquareDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -43,9 +41,8 @@ public class SquareDescriptionItemProvider extends NodeStyleDescriptionItemProvi
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -61,9 +58,8 @@ public class SquareDescriptionItemProvider extends NodeStyleDescriptionItemProvi
     }
 
     /**
-     * This adds a property descriptor for the Width feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Width feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addWidthPropertyDescriptor(Object object) {
@@ -75,9 +71,8 @@ public class SquareDescriptionItemProvider extends NodeStyleDescriptionItemProvi
     }
 
     /**
-     * This adds a property descriptor for the Height feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Height feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addHeightPropertyDescriptor(Object object) {
@@ -89,9 +84,8 @@ public class SquareDescriptionItemProvider extends NodeStyleDescriptionItemProvi
     }
 
     /**
-     * This adds a property descriptor for the Color feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addColorPropertyDescriptor(Object object) {
@@ -103,9 +97,8 @@ public class SquareDescriptionItemProvider extends NodeStyleDescriptionItemProvi
     }
 
     /**
-     * This returns SquareDescription.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns SquareDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -114,8 +107,7 @@ public class SquareDescriptionItemProvider extends NodeStyleDescriptionItemProvi
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -133,10 +125,9 @@ public class SquareDescriptionItemProvider extends NodeStyleDescriptionItemProvi
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -155,10 +146,9 @@ public class SquareDescriptionItemProvider extends NodeStyleDescriptionItemProvi
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -18,9 +18,8 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '
- * <em><b>Bundled Image Shape</b></em>', and utility methods for working with
- * them. <!-- end-user-doc --> <!-- begin-model-doc --> Default shapes. <!--
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration ' <em><b>Bundled Image Shape</b></em>',
+ * and utility methods for working with them. <!-- end-user-doc --> <!-- begin-model-doc --> Default shapes. <!--
  * end-model-doc -->
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getBundledImageShape()
@@ -29,9 +28,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum BundledImageShape implements Enumerator {
     /**
-     * The '<em><b>Square</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>Square</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #SQUARE
      * @generated
      * @ordered
@@ -39,9 +37,8 @@ public enum BundledImageShape implements Enumerator {
     SQUARE_LITERAL(0, "square", "square"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Stroke</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>Stroke</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #STROKE
      * @generated
      * @ordered
@@ -49,9 +46,8 @@ public enum BundledImageShape implements Enumerator {
     STROKE_LITERAL(1, "stroke", "stroke"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Triangle</b></em>' literal object. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The '<em><b>Triangle</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #TRIANGLE
      * @generated
      * @ordered
@@ -59,9 +55,8 @@ public enum BundledImageShape implements Enumerator {
     TRIANGLE_LITERAL(3, "triangle", "triangle"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Dot</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>Dot</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #DOT
      * @generated
      * @ordered
@@ -69,9 +64,8 @@ public enum BundledImageShape implements Enumerator {
     DOT_LITERAL(4, "dot", "dot"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Ring</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>Ring</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #RING
      * @generated
      * @ordered
@@ -79,9 +73,8 @@ public enum BundledImageShape implements Enumerator {
     RING_LITERAL(5, "ring", "ring"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Provided Shape</b></em>' literal object. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The '<em><b>Provided Shape</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #PROVIDED_SHAPE
      * @generated
      * @ordered
@@ -91,11 +84,11 @@ public enum BundledImageShape implements Enumerator {
     /**
      * The '<em><b>Square</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Square</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Square</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #SQUARE_LITERAL
      * @model name="square"
      * @generated
@@ -106,11 +99,11 @@ public enum BundledImageShape implements Enumerator {
     /**
      * The '<em><b>Stroke</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Stroke</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Stroke</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #STROKE_LITERAL
      * @model name="stroke"
      * @generated
@@ -121,11 +114,11 @@ public enum BundledImageShape implements Enumerator {
     /**
      * The '<em><b>Triangle</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Triangle</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Triangle</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #TRIANGLE_LITERAL
      * @model name="triangle"
      * @generated
@@ -136,11 +129,11 @@ public enum BundledImageShape implements Enumerator {
     /**
      * The '<em><b>Dot</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Dot</b></em>' literal object isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of '<em><b>Dot</b></em>' literal object isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DOT_LITERAL
      * @model name="dot"
      * @generated
@@ -151,11 +144,11 @@ public enum BundledImageShape implements Enumerator {
     /**
      * The '<em><b>Ring</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Ring</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Ring</b></em>' literal object isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #RING_LITERAL
      * @model name="ring"
      * @generated
@@ -164,14 +157,13 @@ public enum BundledImageShape implements Enumerator {
     public static final int RING = 5;
 
     /**
-     * The '<em><b>Provided Shape</b></em>' literal value. <!-- begin-user-doc
-     * -->
+     * The '<em><b>Provided Shape</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Provided Shape</b></em>' literal object isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of '<em><b>Provided Shape</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #PROVIDED_SHAPE_LITERAL
      * @model name="providedShape"
      * @generated
@@ -180,25 +172,25 @@ public enum BundledImageShape implements Enumerator {
     public static final int PROVIDED_SHAPE = 6;
 
     /**
-     * An array of all the '<em><b>Bundled Image Shape</b></em>' enumerators.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * An array of all the '<em><b>Bundled Image Shape</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
     private static final BundledImageShape[] VALUES_ARRAY = new BundledImageShape[] { SQUARE_LITERAL, STROKE_LITERAL, TRIANGLE_LITERAL, DOT_LITERAL, RING_LITERAL, PROVIDED_SHAPE_LITERAL, };
 
     /**
-     * A public read-only list of all the '<em><b>Bundled Image Shape</b></em>'
-     * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * A public read-only list of all the '<em><b>Bundled Image Shape</b></em>' enumerators. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final List<BundledImageShape> VALUES = Collections.unmodifiableList(Arrays.asList(BundledImageShape.VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>Bundled Image Shape</b></em>' literal with the
-     * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Bundled Image Shape</b></em>' literal with the specified literal value. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -214,9 +206,9 @@ public enum BundledImageShape implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Bundled Image Shape</b></em>' literal with the
-     * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Bundled Image Shape</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param name
      *            the name.
      * @return the matching enumerator or <code>null</code>.
@@ -232,9 +224,9 @@ public enum BundledImageShape implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Bundled Image Shape</b></em>' literal with the
-     * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Bundled Image Shape</b></em>' literal with the specified integer value. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -260,29 +252,28 @@ public enum BundledImageShape implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
 
     /**
-     * Only this class can construct instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private BundledImageShape(int value, String name, String literal) {
@@ -293,7 +284,7 @@ public enum BundledImageShape implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -303,7 +294,7 @@ public enum BundledImageShape implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -313,7 +304,7 @@ public enum BundledImageShape implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -322,9 +313,9 @@ public enum BundledImageShape implements Enumerator {
     }
 
     /**
-     * Returns the literal value of the enumerator, which is its string
-     * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override

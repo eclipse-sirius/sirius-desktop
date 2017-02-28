@@ -20,23 +20,21 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Note Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Note Description</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.NoteDescriptionImpl#getColor
- * <em>Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.NoteDescriptionImpl#getColor <em>Color</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements NoteDescription {
     /**
-     * The cached value of the '{@link #getColor() <em>Color</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getColor() <em>Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getColor()
      * @generated
@@ -46,7 +44,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected NoteDescriptionImpl() {
@@ -55,7 +53,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -65,7 +63,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -84,7 +82,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetColor() {
@@ -93,7 +91,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -107,7 +105,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -124,7 +122,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -139,7 +137,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -154,7 +152,7 @@ public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements Not
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

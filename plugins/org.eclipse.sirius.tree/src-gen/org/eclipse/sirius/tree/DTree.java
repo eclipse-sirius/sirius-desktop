@@ -16,17 +16,14 @@ import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DTree</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DTree</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.DTree#getSemanticElements
- * <em>Semantic Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.DTree#getDescription <em>Description</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.tree.DTree#getSemanticElements <em>Semantic Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTree#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.tree.TreePackage#getDTree()
@@ -36,15 +33,14 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 public interface DTree extends DRepresentation, DTreeItemContainer {
 
     /**
-     * Returns the value of the '<em><b>Semantic Elements</b></em>' reference
-     * list. The list contents are of type {@link org.eclipse.emf.ecore.EObject}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Semantic Elements</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.emf.ecore.EObject}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Semantic Elements</em>' reference list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Semantic Elements</em>' reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Semantic Elements</em>' reference list.
      * @see org.eclipse.sirius.tree.TreePackage#getDTree_SemanticElements()
      * @model
@@ -53,14 +49,13 @@ public interface DTree extends DRepresentation, DTreeItemContainer {
     EList<EObject> getSemanticElements();
 
     /**
-     * Returns the value of the '<em><b>Description</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Description</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Description</em>' reference isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Description</em>' reference isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(TreeDescription)
      * @see org.eclipse.sirius.tree.TreePackage#getDTree_Description()
@@ -70,9 +65,8 @@ public interface DTree extends DRepresentation, DTreeItemContainer {
     TreeDescription getDescription();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.DTree#getDescription <em>Description</em>}
-     * ' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.tree.DTree#getDescription <em>Description</em>}' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Description</em>' reference.

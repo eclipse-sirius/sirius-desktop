@@ -27,17 +27,15 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet}
+ * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class ValidationSetItemProvider extends DocumentedElementItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ValidationSetItemProvider(AdapterFactory adapterFactory) {
@@ -45,9 +43,8 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -63,9 +60,8 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Name feature. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -77,9 +73,8 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Reused Rules feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Reused Rules feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addReusedRulesPropertyDescriptor(Object object) {
@@ -91,9 +86,8 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the All Rules feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the All Rules feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addAllRulesPropertyDescriptor(Object object) {
@@ -105,13 +99,11 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to
-     * deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand},
-     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in
-     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -125,22 +117,20 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper
-        // feature to use for
+        // Check the type of the specified child object and return the proper feature to use for
         // adding (see {@link AddCommand}) it as a child.
 
         return super.getChildFeature(object, child);
     }
 
     /**
-     * This returns ValidationSet.gif. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * This returns ValidationSet.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -149,9 +139,8 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -162,10 +151,9 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -185,10 +173,9 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

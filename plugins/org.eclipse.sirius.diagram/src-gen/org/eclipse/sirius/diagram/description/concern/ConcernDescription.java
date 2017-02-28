@@ -19,26 +19,18 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Description</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> Describe a concern. A concern could be seen as an
- * aspect. It allows to enable some filters, validation rules or behaviors in
- * one click. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> Describe a concern. A concern could be seen as an aspect. It allows to enable some filters,
+ * validation rules or behaviors in one click. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription#getFilters
- * <em>Filters</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription#getRules
- * <em>Rules</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription#getBehaviors
- * <em>Behaviors</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.concern.ConcernDescription#getFilters <em>Filters</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.concern.ConcernDescription#getRules <em>Rules</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.concern.ConcernDescription#getBehaviors <em>Behaviors</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernDescription()
@@ -47,11 +39,9 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  */
 public interface ConcernDescription extends DocumentedElement, IdentifiedElement {
     /**
-     * Returns the value of the '<em><b>Filters</b></em>' reference list. The
-     * list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.filter.FilterDescription}.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * All filters of this concern. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Filters</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.description.filter.FilterDescription}. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> All filters of this concern. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Filters</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernDescription_Filters()
@@ -61,11 +51,9 @@ public interface ConcernDescription extends DocumentedElement, IdentifiedElement
     EList<FilterDescription> getFilters();
 
     /**
-     * Returns the value of the '<em><b>Rules</b></em>' reference list. The list
-     * contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule}
-     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * All rules of this concern. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Rules</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule} . <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> All rules of this concern. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Rules</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernDescription_Rules()
@@ -75,12 +63,10 @@ public interface ConcernDescription extends DocumentedElement, IdentifiedElement
     EList<ValidationRule> getRules();
 
     /**
-     * Returns the value of the '<em><b>Behaviors</b></em>' reference list. The
-     * list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
-     * behaviors of the concern. <!-- end-model-doc -->
-     *
+     * Returns the value of the '<em><b>Behaviors</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool}. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-model-doc --> All behaviors of the concern. <!-- end-model-doc -->
+     * 
      * @return the value of the '<em>Behaviors</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernDescription_Behaviors()
      * @model

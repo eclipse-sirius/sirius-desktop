@@ -15,18 +15,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Fix</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Fix</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getInitialOperation
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
  *
@@ -36,9 +32,8 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  */
 public interface ValidationFix extends EObject {
     /**
-     * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Name of
-     * the quick fix displayed to the user. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Name of the quick fix displayed to the user. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
@@ -49,10 +44,9 @@ public interface ValidationFix extends EObject {
     String getName();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getName
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -61,12 +55,10 @@ public interface ValidationFix extends EObject {
     void setName(String value);
 
     /**
-     * Returns the value of the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> The first operation. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> The first operation. <!-- end-model-doc -->
      *
-     * @return the value of the '<em>Initial Operation</em>' containment
-     *         reference.
+     * @return the value of the '<em>Initial Operation</em>' containment reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationFix_InitialOperation()
      * @model containment="true" resolveProxies="true" required="true"
@@ -77,12 +69,10 @@ public interface ValidationFix extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Initial Operation</em>' containment
-     *            reference.
+     *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()
      * @generated
      */

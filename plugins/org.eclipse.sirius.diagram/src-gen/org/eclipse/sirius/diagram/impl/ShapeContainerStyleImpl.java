@@ -22,26 +22,23 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Shape Container Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Shape Container Style</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.ShapeContainerStyleImpl#getShape
- * <em>Shape</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.ShapeContainerStyleImpl#getBackgroundColor
- * <em>Background Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.ShapeContainerStyleImpl#getShape <em>Shape</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.ShapeContainerStyleImpl#getBackgroundColor <em>Background Color</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ShapeContainerStyleImpl extends ContainerStyleImpl implements ShapeContainerStyle {
     /**
-     * The default value of the '{@link #getShape() <em>Shape</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getShape() <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getShape()
      * @generated
      * @ordered
@@ -49,8 +46,8 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
     protected static final ContainerShape SHAPE_EDEFAULT = ContainerShape.PARALLELOGRAM_LITERAL;
 
     /**
-     * The cached value of the '{@link #getShape() <em>Shape</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getShape() <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getShape()
      * @generated
@@ -59,10 +56,9 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
     protected ContainerShape shape = ShapeContainerStyleImpl.SHAPE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -70,10 +66,9 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
     protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "209,209,209"); //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -82,7 +77,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ShapeContainerStyleImpl() {
@@ -91,7 +86,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -101,7 +96,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +106,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +120,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -135,7 +130,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -149,7 +144,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +160,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -183,7 +178,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -201,7 +196,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -217,7 +212,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

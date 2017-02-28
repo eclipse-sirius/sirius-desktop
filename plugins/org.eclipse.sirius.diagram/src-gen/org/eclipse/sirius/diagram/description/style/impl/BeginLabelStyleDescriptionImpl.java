@@ -17,15 +17,15 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.impl.BasicLabelStyleDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Begin Label Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Begin Label Style Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public class BeginLabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl implements BeginLabelStyleDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected BeginLabelStyleDescriptionImpl() {
@@ -34,7 +34,7 @@ public class BeginLabelStyleDescriptionImpl extends BasicLabelStyleDescriptionIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -18,19 +18,17 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '
- * <em><b>Kind</b></em>', and utility methods for working with them. <!--
- * end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration ' <em><b>Kind</b></em>', and utility
+ * methods for working with them. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getFilterKind()
  * @model
  * @generated
  */
 public enum FilterKind implements Enumerator {
     /**
-     * The '<em><b>HIDE</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>HIDE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #HIDE
      * @generated
      * @ordered
@@ -38,9 +36,8 @@ public enum FilterKind implements Enumerator {
     HIDE_LITERAL(0, "HIDE", "HIDE"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>COLLAPSE</b></em>' literal object. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The '<em><b>COLLAPSE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #COLLAPSE
      * @generated
      * @ordered
@@ -50,11 +47,11 @@ public enum FilterKind implements Enumerator {
     /**
      * The '<em><b>HIDE</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>HIDE</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>HIDE</b></em>' literal object isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #HIDE_LITERAL
      * @model
      * @generated
@@ -65,11 +62,11 @@ public enum FilterKind implements Enumerator {
     /**
      * The '<em><b>COLLAPSE</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>COLLAPSE</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>COLLAPSE</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #COLLAPSE_LITERAL
      * @model
      * @generated
@@ -78,25 +75,24 @@ public enum FilterKind implements Enumerator {
     public static final int COLLAPSE = 1;
 
     /**
-     * An array of all the '<em><b>Kind</b></em>' enumerators. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * An array of all the '<em><b>Kind</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private static final FilterKind[] VALUES_ARRAY = new FilterKind[] { HIDE_LITERAL, COLLAPSE_LITERAL, };
 
     /**
-     * A public read-only list of all the '<em><b>Kind</b></em>' enumerators.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * A public read-only list of all the '<em><b>Kind</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
     public static final List<FilterKind> VALUES = Collections.unmodifiableList(Arrays.asList(FilterKind.VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>Kind</b></em>' literal with the specified literal
-     * value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Kind</b></em>' literal with the specified literal value. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -112,9 +108,11 @@ public enum FilterKind implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Kind</b></em>' literal with the specified name. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Kind</b></em>' literal with the specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param name
+     *            the name.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static FilterKind getByName(String name) {
@@ -127,9 +125,9 @@ public enum FilterKind implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Kind</b></em>' literal with the specified integer
-     * value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Kind</b></em>' literal with the specified integer value. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -147,29 +145,28 @@ public enum FilterKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
 
     /**
-     * Only this class can construct instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private FilterKind(int value, String name, String literal) {
@@ -180,7 +177,7 @@ public enum FilterKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -190,7 +187,7 @@ public enum FilterKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -200,7 +197,7 @@ public enum FilterKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -209,9 +206,9 @@ public enum FilterKind implements Enumerator {
     }
 
     /**
-     * Returns the literal value of the enumerator, which is its string
-     * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override

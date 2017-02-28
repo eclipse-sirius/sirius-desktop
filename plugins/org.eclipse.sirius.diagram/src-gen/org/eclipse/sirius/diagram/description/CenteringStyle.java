@@ -18,19 +18,17 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '
- * <em><b>Centering Style</b></em>', and utility methods for working with them.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration ' <em><b>Centering Style</b></em>', and
+ * utility methods for working with them. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getCenteringStyle()
  * @model
  * @generated
  */
 public enum CenteringStyle implements Enumerator {
     /**
-     * The '<em><b>None</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>None</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #NONE_VALUE
      * @generated
      * @ordered
@@ -38,9 +36,8 @@ public enum CenteringStyle implements Enumerator {
     NONE(0, "None", "None"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Both</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>Both</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #BOTH_VALUE
      * @generated
      * @ordered
@@ -48,9 +45,8 @@ public enum CenteringStyle implements Enumerator {
     BOTH(1, "Both", "Both"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Source</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>Source</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #SOURCE_VALUE
      * @generated
      * @ordered
@@ -58,9 +54,8 @@ public enum CenteringStyle implements Enumerator {
     SOURCE(2, "Source", "Source"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Target</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>Target</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #TARGET_VALUE
      * @generated
      * @ordered
@@ -70,11 +65,11 @@ public enum CenteringStyle implements Enumerator {
     /**
      * The '<em><b>None</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>None</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>None</b></em>' literal object isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #NONE
      * @model name="None"
      * @generated
@@ -85,11 +80,11 @@ public enum CenteringStyle implements Enumerator {
     /**
      * The '<em><b>Both</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Both</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Both</b></em>' literal object isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #BOTH
      * @model name="Both"
      * @generated
@@ -100,11 +95,11 @@ public enum CenteringStyle implements Enumerator {
     /**
      * The '<em><b>Source</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Source</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Source</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #SOURCE
      * @model name="Source"
      * @generated
@@ -115,11 +110,11 @@ public enum CenteringStyle implements Enumerator {
     /**
      * The '<em><b>Target</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Target</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Target</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #TARGET
      * @model name="Target"
      * @generated
@@ -128,25 +123,24 @@ public enum CenteringStyle implements Enumerator {
     public static final int TARGET_VALUE = 3;
 
     /**
-     * An array of all the '<em><b>Centering Style</b></em>' enumerators. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * An array of all the '<em><b>Centering Style</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private static final CenteringStyle[] VALUES_ARRAY = new CenteringStyle[] { NONE, BOTH, SOURCE, TARGET, };
 
     /**
-     * A public read-only list of all the '<em><b>Centering Style</b></em>'
-     * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * A public read-only list of all the '<em><b>Centering Style</b></em>' enumerators. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public static final List<CenteringStyle> VALUES = Collections.unmodifiableList(Arrays.asList(CenteringStyle.VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>Centering Style</b></em>' literal with the specified
-     * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Centering Style</b></em>' literal with the specified literal value. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -162,9 +156,9 @@ public enum CenteringStyle implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Centering Style</b></em>' literal with the specified
-     * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Centering Style</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param name
      *            the name.
      * @return the matching enumerator or <code>null</code>.
@@ -180,9 +174,9 @@ public enum CenteringStyle implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Centering Style</b></em>' literal with the specified
-     * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Centering Style</b></em>' literal with the specified integer value. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -204,29 +198,28 @@ public enum CenteringStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
 
     /**
-     * Only this class can construct instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private CenteringStyle(int value, String name, String literal) {
@@ -237,7 +230,7 @@ public enum CenteringStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -247,7 +240,7 @@ public enum CenteringStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -257,7 +250,7 @@ public enum CenteringStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -266,9 +259,9 @@ public enum CenteringStyle implements Enumerator {
     }
 
     /**
-     * Returns the literal value of the enumerator, which is its string
-     * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -28,17 +28,15 @@ import org.eclipse.sirius.diagram.sequence.description.FrameMapping;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.sequence.description.FrameMapping} object.
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.sequence.description.FrameMapping} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public FrameMappingItemProvider(AdapterFactory adapterFactory) {
@@ -46,9 +44,8 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -65,9 +62,9 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Starting End Finder Expression
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Starting End Finder Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addStartingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -80,9 +77,9 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Finishing End Finder Expression
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Finishing End Finder Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addFinishingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -95,9 +92,9 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Covered Lifelines Expression
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Covered Lifelines Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addCoveredLifelinesExpressionPropertyDescriptor(Object object) {
@@ -109,9 +106,9 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Center Label Expression feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Center Label Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addCenterLabelExpressionPropertyDescriptor(Object object) {
@@ -123,9 +120,8 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     }
 
     /**
-     * This returns FrameMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * This returns FrameMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -134,8 +130,7 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -146,10 +141,9 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -169,10 +163,9 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -220,10 +213,9 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     }
 
     /**
-     * This returns the label text for
-     * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getCreateChildTextGen(Object owner, Object feature, Object child, Collection<?> selection) {
@@ -241,9 +233,8 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     }
 
     /**
-     * This returns the label text for
-     * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -262,9 +253,8 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     }
 
     /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

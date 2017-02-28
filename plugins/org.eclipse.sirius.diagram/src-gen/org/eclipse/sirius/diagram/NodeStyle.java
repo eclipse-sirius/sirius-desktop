@@ -15,8 +15,7 @@ import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Node Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Node Style</b></em>'. <!-- end-user-doc -->
  *
  * <!-- begin-model-doc --> Style of a node. <!-- end-model-doc -->
  *
@@ -24,8 +23,7 @@ import org.eclipse.sirius.viewpoint.Style;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.NodeStyle#getLabelPosition
- * <em>Label Position</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.NodeStyle#getLabelPosition <em>Label Position</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getNodeStyle()
@@ -34,12 +32,10 @@ import org.eclipse.sirius.viewpoint.Style;
  */
 public interface NodeStyle extends LabelStyle, Style, BorderedStyle, HideLabelCapabilityStyle {
     /**
-     * Returns the value of the '<em><b>Label Position</b></em>' attribute. The
-     * literals are from the enumeration
-     * {@link org.eclipse.sirius.diagram.LabelPosition}. <!-- begin-user-doc -->
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The position of the label
-     * : BORDER : The label is around the node, on the border. NODE : the label
-     * is in the node. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Label Position</b></em>' attribute. The literals are from the enumeration
+     * {@link org.eclipse.sirius.diagram.LabelPosition}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The position of the label : BORDER : The label is around the node, on the border. NODE : the
+     * label is in the node. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.diagram.LabelPosition
@@ -51,11 +47,9 @@ public interface NodeStyle extends LabelStyle, Style, BorderedStyle, HideLabelCa
     LabelPosition getLabelPosition();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.NodeStyle#getLabelPosition
-     * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.NodeStyle#getLabelPosition <em>Label Position</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.diagram.LabelPosition

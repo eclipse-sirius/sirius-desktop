@@ -26,23 +26,18 @@ import org.eclipse.sirius.diagram.sequence.template.TMessageStyle;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>TMessage Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>TMessage Mapping</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageMappingImpl#getSendingEndFinderExpression
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageMappingImpl#getSendingEndFinderExpression
  * <em>Sending End Finder Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageMappingImpl#getReceivingEndFinderExpression
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageMappingImpl#getReceivingEndFinderExpression
  * <em>Receiving End Finder Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageMappingImpl#getStyle
- * <em>Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageMappingImpl#getConditionalStyle
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageMappingImpl#getStyle <em>Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageMappingImpl#getConditionalStyle
  * <em>Conditional Style</em>}</li>
  * </ul>
  *
@@ -50,10 +45,9 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  */
 public abstract class TMessageMappingImpl extends TAbstractMappingImpl implements TMessageMapping {
     /**
-     * The default value of the '{@link #getSendingEndFinderExpression()
-     * <em>Sending End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getSendingEndFinderExpression() <em>Sending End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getSendingEndFinderExpression()
      * @generated
      * @ordered
@@ -61,10 +55,9 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
     protected static final String SENDING_END_FINDER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getSendingEndFinderExpression()
-     * <em>Sending End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getSendingEndFinderExpression() <em>Sending End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getSendingEndFinderExpression()
      * @generated
      * @ordered
@@ -72,10 +65,9 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
     protected String sendingEndFinderExpression = TMessageMappingImpl.SENDING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getReceivingEndFinderExpression()
-     * <em>Receiving End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getReceivingEndFinderExpression() <em>Receiving End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getReceivingEndFinderExpression()
      * @generated
      * @ordered
@@ -83,10 +75,9 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
     protected static final String RECEIVING_END_FINDER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getReceivingEndFinderExpression()
-     * <em>Receiving End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getReceivingEndFinderExpression() <em>Receiving End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getReceivingEndFinderExpression()
      * @generated
      * @ordered
@@ -94,9 +85,9 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
     protected String receivingEndFinderExpression = TMessageMappingImpl.RECEIVING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -104,10 +95,9 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
     protected TMessageStyle style;
 
     /**
-     * The cached value of the '{@link #getConditionalStyle()
-     * <em>Conditional Style</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getConditionalStyle() <em>Conditional Style</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getConditionalStyle()
      * @generated
      * @ordered
@@ -116,7 +106,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TMessageMappingImpl() {
@@ -125,7 +115,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -135,7 +125,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +135,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +149,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -169,7 +159,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -183,7 +173,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +183,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(TMessageStyle newStyle, NotificationChain msgs) {
@@ -212,7 +202,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -236,7 +226,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -249,7 +239,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -265,7 +255,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -285,7 +275,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -311,7 +301,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -335,7 +325,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -357,7 +347,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

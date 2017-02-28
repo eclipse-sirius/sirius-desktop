@@ -15,15 +15,15 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Destruction Message Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Destruction Message Mapping</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public class DestructionMessageMappingImpl extends MessageMappingImpl implements DestructionMessageMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DestructionMessageMappingImpl() {
@@ -32,7 +32,7 @@ public class DestructionMessageMappingImpl extends MessageMappingImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

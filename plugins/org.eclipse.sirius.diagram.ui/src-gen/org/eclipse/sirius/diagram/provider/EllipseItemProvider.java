@@ -24,17 +24,15 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.Ellipse;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.Ellipse} object. <!-- begin-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.Ellipse} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class EllipseItemProvider extends NodeStyleItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EllipseItemProvider(AdapterFactory adapterFactory) {
@@ -42,9 +40,8 @@ public class EllipseItemProvider extends NodeStyleItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -60,8 +57,8 @@ public class EllipseItemProvider extends NodeStyleItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Horizontal Diameter feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Horizontal Diameter feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -73,9 +70,8 @@ public class EllipseItemProvider extends NodeStyleItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Vertical Diameter feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Vertical Diameter feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addVerticalDiameterPropertyDescriptor(Object object) {
@@ -86,9 +82,8 @@ public class EllipseItemProvider extends NodeStyleItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Color feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addColorPropertyDescriptor(Object object) {
@@ -99,7 +94,7 @@ public class EllipseItemProvider extends NodeStyleItemProvider {
 
     /**
      * This returns Ellipse.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,9 +103,8 @@ public class EllipseItemProvider extends NodeStyleItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -120,10 +114,9 @@ public class EllipseItemProvider extends NodeStyleItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -142,10 +135,9 @@ public class EllipseItemProvider extends NodeStyleItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

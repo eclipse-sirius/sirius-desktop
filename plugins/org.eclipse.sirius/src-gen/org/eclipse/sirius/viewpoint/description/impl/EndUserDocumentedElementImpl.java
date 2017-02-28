@@ -19,14 +19,13 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>End User Documented Element</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>End User Documented Element</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.EndUserDocumentedElementImpl#getEndUserDocumentation
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.EndUserDocumentedElementImpl#getEndUserDocumentation
  * <em>End User Documentation</em>}</li>
  * </ul>
  *
@@ -34,9 +33,8 @@ import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
  */
 public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Container implements EndUserDocumentedElement {
     /**
-     * The default value of the '{@link #getEndUserDocumentation()
-     * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getEndUserDocumentation() <em>End User Documentation</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getEndUserDocumentation()
      * @generated
@@ -45,9 +43,8 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
     protected static final String END_USER_DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getEndUserDocumentation()
-     * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getEndUserDocumentation() <em>End User Documentation</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getEndUserDocumentation()
      * @generated
@@ -57,7 +54,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected EndUserDocumentedElementImpl() {
@@ -66,7 +63,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -76,7 +73,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -86,7 +83,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +97,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -114,7 +111,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +126,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -144,7 +141,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +156,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

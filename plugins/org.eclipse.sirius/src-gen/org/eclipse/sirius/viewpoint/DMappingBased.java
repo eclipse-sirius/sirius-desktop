@@ -15,11 +15,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DMapping Based</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DMapping Based</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> An element that has a mapping. <!-- end-model-doc
- * -->
+ * <!-- begin-model-doc --> An element that has a mapping. <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDMappingBased()
@@ -28,8 +26,8 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  */
 public interface DMappingBased extends EObject {
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Return the mapping of the element. <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Return the mapping of the element. <!--
+     * end-model-doc -->
      *
      * @model kind="operation"
      * @generated

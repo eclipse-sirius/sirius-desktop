@@ -30,17 +30,15 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.description.NodeMappingImport} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.NodeMappingImport} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NodeMappingImportItemProvider(AdapterFactory adapterFactory) {
@@ -48,9 +46,8 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -66,9 +63,8 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Hide Sub Mappings feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Hide Sub Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addHideSubMappingsPropertyDescriptor(Object object) {
@@ -80,9 +76,9 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Inherits Ancestor Filters
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Inherits Ancestor Filters feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addInheritsAncestorFiltersPropertyDescriptor(Object object) {
@@ -94,9 +90,8 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Imported Mapping feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Imported Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addImportedMappingPropertyDescriptor(Object object) {
@@ -108,8 +103,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This returns NodeMappingImport.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This returns NodeMappingImport.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -123,8 +117,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -140,9 +133,8 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -153,10 +145,9 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -175,10 +166,9 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

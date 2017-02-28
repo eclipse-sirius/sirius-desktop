@@ -18,19 +18,17 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '
- * <em><b>Position</b></em>', and utility methods for working with them. <!--
- * end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration ' <em><b>Position</b></em>', and utility
+ * methods for working with them. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getPosition()
  * @model
  * @generated
  */
 public enum Position implements Enumerator {
     /**
-     * The '<em><b>NORTH</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>NORTH</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #NORTH
      * @generated
      * @ordered
@@ -38,9 +36,8 @@ public enum Position implements Enumerator {
     NORTH_LITERAL(0, "NORTH", "NORTH"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>WEST</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>WEST</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #WEST
      * @generated
      * @ordered
@@ -48,9 +45,8 @@ public enum Position implements Enumerator {
     WEST_LITERAL(1, "WEST", "WEST"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>SOUTH</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>SOUTH</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #SOUTH
      * @generated
      * @ordered
@@ -58,9 +54,8 @@ public enum Position implements Enumerator {
     SOUTH_LITERAL(2, "SOUTH", "SOUTH"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>EAST</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>EAST</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #EAST
      * @generated
      * @ordered
@@ -68,9 +63,8 @@ public enum Position implements Enumerator {
     EAST_LITERAL(3, "EAST", "EAST"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>NORTH WEST</b></em>' literal object. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The '<em><b>NORTH WEST</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #NORTH_WEST
      * @generated
      * @ordered
@@ -78,9 +72,8 @@ public enum Position implements Enumerator {
     NORTH_WEST_LITERAL(4, "NORTH_WEST", "NORTH_WEST"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>NORTH EAST</b></em>' literal object. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The '<em><b>NORTH EAST</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #NORTH_EAST
      * @generated
      * @ordered
@@ -88,9 +81,8 @@ public enum Position implements Enumerator {
     NORTH_EAST_LITERAL(5, "NORTH_EAST", "NORTH_EAST"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>SOUTH WEST</b></em>' literal object. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The '<em><b>SOUTH WEST</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #SOUTH_WEST
      * @generated
      * @ordered
@@ -98,9 +90,8 @@ public enum Position implements Enumerator {
     SOUTH_WEST_LITERAL(6, "SOUTH_WEST", "SOUTH_WEST"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>SOUTH EAST</b></em>' literal object. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The '<em><b>SOUTH EAST</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #SOUTH_EAST
      * @generated
      * @ordered
@@ -108,9 +99,8 @@ public enum Position implements Enumerator {
     SOUTH_EAST_LITERAL(7, "SOUTH_EAST", "SOUTH_EAST"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>CENTER</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>CENTER</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #CENTER
      * @generated
      * @ordered
@@ -120,11 +110,11 @@ public enum Position implements Enumerator {
     /**
      * The '<em><b>NORTH</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>NORTH</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>NORTH</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #NORTH_LITERAL
      * @model
      * @generated
@@ -135,11 +125,11 @@ public enum Position implements Enumerator {
     /**
      * The '<em><b>WEST</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>WEST</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>WEST</b></em>' literal object isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #WEST_LITERAL
      * @model
      * @generated
@@ -150,11 +140,11 @@ public enum Position implements Enumerator {
     /**
      * The '<em><b>SOUTH</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>SOUTH</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>SOUTH</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #SOUTH_LITERAL
      * @model
      * @generated
@@ -165,11 +155,11 @@ public enum Position implements Enumerator {
     /**
      * The '<em><b>EAST</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>EAST</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>EAST</b></em>' literal object isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #EAST_LITERAL
      * @model
      * @generated
@@ -180,11 +170,11 @@ public enum Position implements Enumerator {
     /**
      * The '<em><b>NORTH WEST</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>NORTH WEST</b></em>' literal object isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of '<em><b>NORTH WEST</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #NORTH_WEST_LITERAL
      * @model
      * @generated
@@ -195,11 +185,11 @@ public enum Position implements Enumerator {
     /**
      * The '<em><b>NORTH EAST</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>NORTH EAST</b></em>' literal object isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of '<em><b>NORTH EAST</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #NORTH_EAST_LITERAL
      * @model
      * @generated
@@ -210,11 +200,11 @@ public enum Position implements Enumerator {
     /**
      * The '<em><b>SOUTH WEST</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>SOUTH WEST</b></em>' literal object isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of '<em><b>SOUTH WEST</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #SOUTH_WEST_LITERAL
      * @model
      * @generated
@@ -225,11 +215,11 @@ public enum Position implements Enumerator {
     /**
      * The '<em><b>SOUTH EAST</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>SOUTH EAST</b></em>' literal object isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of '<em><b>SOUTH EAST</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #SOUTH_EAST_LITERAL
      * @model
      * @generated
@@ -240,11 +230,11 @@ public enum Position implements Enumerator {
     /**
      * The '<em><b>CENTER</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>CENTER</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>CENTER</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #CENTER_LITERAL
      * @model
      * @generated
@@ -253,26 +243,25 @@ public enum Position implements Enumerator {
     public static final int CENTER = 8;
 
     /**
-     * An array of all the '<em><b>Position</b></em>' enumerators. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * An array of all the '<em><b>Position</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private static final Position[] VALUES_ARRAY = new Position[] { NORTH_LITERAL, WEST_LITERAL, SOUTH_LITERAL, EAST_LITERAL, NORTH_WEST_LITERAL, NORTH_EAST_LITERAL, SOUTH_WEST_LITERAL,
             SOUTH_EAST_LITERAL, CENTER_LITERAL, };
 
     /**
-     * A public read-only list of all the '<em><b>Position</b></em>'
-     * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * A public read-only list of all the '<em><b>Position</b></em>' enumerators. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public static final List<Position> VALUES = Collections.unmodifiableList(Arrays.asList(Position.VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>Position</b></em>' literal with the specified literal
-     * value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Position</b></em>' literal with the specified literal value. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -288,8 +277,8 @@ public enum Position implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Position</b></em>' literal with the specified name.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the '<em><b>Position</b></em>' literal with the specified name. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @param name
      *            the name.
@@ -306,9 +295,9 @@ public enum Position implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Position</b></em>' literal with the specified integer
-     * value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Position</b></em>' literal with the specified integer value. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -340,29 +329,28 @@ public enum Position implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
 
     /**
-     * Only this class can construct instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private Position(int value, String name, String literal) {
@@ -373,7 +361,7 @@ public enum Position implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -383,7 +371,7 @@ public enum Position implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -393,7 +381,7 @@ public enum Position implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -402,9 +390,9 @@ public enum Position implements Enumerator {
     }
 
     /**
-     * Returns the literal value of the enumerator, which is its string
-     * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override

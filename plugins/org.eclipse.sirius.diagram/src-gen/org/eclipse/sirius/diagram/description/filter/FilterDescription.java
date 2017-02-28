@@ -16,11 +16,9 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Description</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> Describe a filter. A filter allows to hide some
- * elements. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> Describe a filter. A filter allows to hide some elements. <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getFilterDescription()
@@ -29,9 +27,8 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  */
 public interface FilterDescription extends DocumentedElement, IdentifiedElement {
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Return true if the specified viewpoint element is visible for this
-     * filter.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Return true if the specified viewpoint
+     * element is visible for this filter.
      *
      * @param element
      *            The element to test. <!-- end-model-doc -->

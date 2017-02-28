@@ -20,17 +20,15 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.diagram.DiagramPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.EObjectVariableValue} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.EObjectVariableValue} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class EObjectVariableValueItemProvider extends VariableValueItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public EObjectVariableValueItemProvider(AdapterFactory adapterFactory) {
@@ -38,9 +36,8 @@ public class EObjectVariableValueItemProvider extends VariableValueItemProvider 
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -55,8 +52,8 @@ public class EObjectVariableValueItemProvider extends VariableValueItemProvider 
     }
 
     /**
-     * This adds a property descriptor for the Variable Definition feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Variable Definition feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -68,9 +65,8 @@ public class EObjectVariableValueItemProvider extends VariableValueItemProvider 
     }
 
     /**
-     * This adds a property descriptor for the Model Element feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Model Element feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addModelElementPropertyDescriptor(Object object) {
@@ -81,9 +77,8 @@ public class EObjectVariableValueItemProvider extends VariableValueItemProvider 
     }
 
     /**
-     * This returns EObjectVariableValue.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns EObjectVariableValue.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -92,9 +87,8 @@ public class EObjectVariableValueItemProvider extends VariableValueItemProvider 
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -103,10 +97,9 @@ public class EObjectVariableValueItemProvider extends VariableValueItemProvider 
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -117,10 +110,9 @@ public class EObjectVariableValueItemProvider extends VariableValueItemProvider 
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

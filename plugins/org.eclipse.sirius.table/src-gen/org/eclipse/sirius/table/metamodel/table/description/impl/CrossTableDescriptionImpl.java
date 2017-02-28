@@ -25,20 +25,17 @@ import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping
 import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Cross Table Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Cross Table Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl#getOwnedColumnMappings
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl#getOwnedColumnMappings
  * <em>Owned Column Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl#getIntersection
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl#getIntersection
  * <em>Intersection</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl#getCreateColumn
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl#getCreateColumn
  * <em>Create Column</em>}</li>
  * </ul>
  *
@@ -46,10 +43,9 @@ import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
  */
 public class CrossTableDescriptionImpl extends TableDescriptionImpl implements CrossTableDescription {
     /**
-     * The cached value of the '{@link #getOwnedColumnMappings()
-     * <em>Owned Column Mappings</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedColumnMappings() <em>Owned Column Mappings</em>}' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getOwnedColumnMappings()
      * @generated
      * @ordered
@@ -57,9 +53,8 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
     protected EList<ElementColumnMapping> ownedColumnMappings;
 
     /**
-     * The cached value of the '{@link #getIntersection() <em>Intersection</em>}
-     * ' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The cached value of the '{@link #getIntersection() <em>Intersection</em>} ' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getIntersection()
      * @generated
@@ -68,9 +63,8 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
     protected EList<IntersectionMapping> intersection;
 
     /**
-     * The cached value of the '{@link #getCreateColumn() <em>Create Column</em>
-     * }' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The cached value of the '{@link #getCreateColumn() <em>Create Column</em> }' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCreateColumn()
      * @generated
@@ -80,7 +74,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CrossTableDescriptionImpl() {
@@ -89,7 +83,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +93,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +106,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +119,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -138,7 +132,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +150,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -174,7 +168,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -199,7 +193,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -220,7 +214,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -22,32 +22,25 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Select Model Element Variable</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Select Model Element Variable</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#getCandidatesExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#getCandidatesExpression
  * <em>Candidates Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#isMultiple
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#isMultiple
  * <em>Multiple</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#isTree
- * <em>Tree</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#getRootExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#isTree <em>Tree</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#getRootExpression
  * <em>Root Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#getChildrenExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#getChildrenExpression
  * <em>Children Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#getMessage
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#getMessage
  * <em>Message</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#getUserDocumentation
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#getUserDocumentation
  * <em>User Documentation</em>}</li>
  * </ul>
  *
@@ -55,9 +48,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public class SelectModelElementVariableImpl extends SubVariableImpl implements SelectModelElementVariable {
     /**
-     * The default value of the '{@link #getCandidatesExpression()
-     * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getCandidatesExpression() <em>Candidates Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCandidatesExpression()
      * @generated
@@ -66,9 +58,8 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     protected static final String CANDIDATES_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getCandidatesExpression()
-     * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getCandidatesExpression() <em>Candidates Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCandidatesExpression()
      * @generated
@@ -77,9 +68,9 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     protected String candidatesExpression = SelectModelElementVariableImpl.CANDIDATES_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isMultiple() <em>Multiple</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #isMultiple() <em>Multiple</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isMultiple()
      * @generated
      * @ordered
@@ -87,9 +78,9 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     protected static final boolean MULTIPLE_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isMultiple() <em>Multiple</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #isMultiple() <em>Multiple</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isMultiple()
      * @generated
      * @ordered
@@ -97,8 +88,8 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     protected boolean multiple = SelectModelElementVariableImpl.MULTIPLE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isTree() <em>Tree</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #isTree() <em>Tree</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #isTree()
      * @generated
@@ -107,8 +98,8 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     protected static final boolean TREE_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isTree() <em>Tree</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #isTree() <em>Tree</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #isTree()
      * @generated
@@ -117,10 +108,9 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     protected boolean tree = SelectModelElementVariableImpl.TREE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getRootExpression()
-     * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getRootExpression() <em>Root Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getRootExpression()
      * @generated
      * @ordered
@@ -128,10 +118,9 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     protected static final String ROOT_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getRootExpression()
-     * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getRootExpression() <em>Root Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getRootExpression()
      * @generated
      * @ordered
@@ -139,9 +128,8 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     protected String rootExpression = SelectModelElementVariableImpl.ROOT_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getChildrenExpression()
-     * <em>Children Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getChildrenExpression() <em>Children Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getChildrenExpression()
      * @generated
@@ -150,9 +138,8 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     protected static final String CHILDREN_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getChildrenExpression()
-     * <em>Children Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getChildrenExpression() <em>Children Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getChildrenExpression()
      * @generated
@@ -161,9 +148,9 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     protected String childrenExpression = SelectModelElementVariableImpl.CHILDREN_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getMessage() <em>Message</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getMessage() <em>Message</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getMessage()
      * @generated
      * @ordered
@@ -171,9 +158,9 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     protected static final String MESSAGE_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getMessage() <em>Message</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getMessage() <em>Message</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getMessage()
      * @generated
      * @ordered
@@ -181,9 +168,8 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     protected String message = SelectModelElementVariableImpl.MESSAGE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getUserDocumentation()
-     * <em>User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getUserDocumentation() <em>User Documentation</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getUserDocumentation()
      * @generated
@@ -192,9 +178,8 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
     protected static final String USER_DOCUMENTATION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getUserDocumentation()
-     * <em>User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getUserDocumentation() <em>User Documentation</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getUserDocumentation()
      * @generated
@@ -204,7 +189,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SelectModelElementVariableImpl() {
@@ -213,7 +198,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -223,7 +208,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -233,7 +218,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -247,7 +232,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -257,7 +242,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -271,7 +256,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -281,7 +266,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -295,7 +280,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -305,7 +290,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -319,7 +304,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -329,7 +314,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -343,7 +328,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -353,7 +338,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -367,7 +352,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -377,7 +362,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -391,7 +376,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -417,7 +402,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -450,7 +435,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -483,7 +468,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -512,7 +497,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -548,7 +533,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -584,7 +569,7 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -12,18 +12,16 @@
 package org.eclipse.sirius.viewpoint.description.validation;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Semantic Validation Rule</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Semantic Validation Rule</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> A validation rule that is applied on a semantic
- * element. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> A validation rule that is applied on a semantic element. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule#getTargetClass
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule#getTargetClass
  * <em>Target Class</em>}</li>
  * </ul>
  *
@@ -33,15 +31,13 @@ package org.eclipse.sirius.viewpoint.description.validation;
  */
 public interface SemanticValidationRule extends ValidationRule {
     /**
-     * Returns the value of the '<em><b>Target Class</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * name of the domain class of the element. <!-- end-model-doc -->
-     *
+     * Returns the value of the '<em><b>Target Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-model-doc --> The name of the domain class of the element. <!-- end-model-doc -->
+     * 
      * @return the value of the '<em>Target Class</em>' attribute.
      * @see #setTargetClass(String)
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getSemanticValidationRule_TargetClass()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.TypeName"
-     *        required="true"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.TypeName" required="true"
      * @generated
      */
     String getTargetClass();
@@ -49,9 +45,8 @@ public interface SemanticValidationRule extends ValidationRule {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule#getTargetClass
-     * <em>Target Class</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Target Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Target Class</em>' attribute.
      * @see #getTargetClass()

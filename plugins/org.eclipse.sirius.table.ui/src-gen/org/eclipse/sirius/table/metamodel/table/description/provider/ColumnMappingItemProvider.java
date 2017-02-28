@@ -26,17 +26,15 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping}
+ * This is the item provider adapter for a {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class ColumnMappingItemProvider extends TableMappingItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ColumnMappingItemProvider(AdapterFactory adapterFactory) {
@@ -44,9 +42,8 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -61,9 +58,9 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Header Label Expression feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Header Label Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addHeaderLabelExpressionPropertyDescriptor(Object object) {
@@ -75,9 +72,8 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Initial Width feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Initial Width feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addInitialWidthPropertyDescriptor(Object object) {
@@ -89,9 +85,8 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This returns ColumnMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * This returns ColumnMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -100,8 +95,7 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -112,10 +106,9 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -133,10 +126,9 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

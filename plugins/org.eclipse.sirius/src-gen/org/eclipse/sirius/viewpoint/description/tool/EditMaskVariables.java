@@ -14,16 +14,14 @@ package org.eclipse.sirius.viewpoint.description.tool;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Edit Mask Variables</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Edit Mask Variables</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables#getMask
- * <em>Mask</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables#getMask <em>Mask</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getEditMaskVariables()
@@ -32,9 +30,8 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface EditMaskVariables extends EObject {
     /**
-     * Returns the value of the '<em><b>Mask</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Editing
-     * mask, in the form of {0} : {1} for instance. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Mask</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Editing mask, in the form of {0} : {1} for instance. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Mask</em>' attribute.
      * @see #setMask(String)
@@ -45,10 +42,9 @@ public interface EditMaskVariables extends EObject {
     String getMask();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables#getMask
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables#getMask
      * <em>Mask</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Mask</em>' attribute.
      * @see #getMask()

@@ -14,8 +14,7 @@ package org.eclipse.sirius.viewpoint.description.validation;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Rule Audit</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Rule Audit</b></em>'. <!-- end-user-doc -->
  *
  * <!-- begin-model-doc --> The validation expression. <!-- end-model-doc -->
  *
@@ -23,9 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit#getAuditExpression
- * <em>Audit Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit#getAuditExpression <em>Audit Expression</em>
+ * }</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getRuleAudit()
@@ -34,28 +32,23 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface RuleAudit extends EObject {
     /**
-     * Returns the value of the '<em><b>Audit Expression</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> An
-     * expression checked on the model, if the audit fails (return false) then
-     * the rule fail. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Audit Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> An expression checked on the model, if the audit fails (return false) then the rule
+     * fail. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Audit Expression</em>' attribute.
      * @see #setAuditExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getRuleAudit_AuditExpression()
-     * @model dataType=
-     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        required="true" annotation=
+     * @model dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      * @generated
      */
     String getAuditExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit#getAuditExpression
-     * <em>Audit Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit#getAuditExpression
+     * <em>Audit Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Audit Expression</em>' attribute.
      * @see #getAuditExpression()

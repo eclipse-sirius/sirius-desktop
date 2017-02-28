@@ -21,20 +21,17 @@ import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Node Mapping Import</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Node Mapping Import</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.NodeMappingImportImpl#isHideSubMappings
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.NodeMappingImportImpl#isHideSubMappings
  * <em>Hide Sub Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.NodeMappingImportImpl#isInheritsAncestorFilters
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.NodeMappingImportImpl#isInheritsAncestorFilters
  * <em>Inherits Ancestor Filters</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.NodeMappingImportImpl#getImportedMapping
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.NodeMappingImportImpl#getImportedMapping
  * <em>Imported Mapping</em>}</li>
  * </ul>
  *
@@ -42,10 +39,9 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
  */
 public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappingImport {
     /**
-     * The default value of the '{@link #isHideSubMappings()
-     * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #isHideSubMappings() <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #isHideSubMappings()
      * @generated
      * @ordered
@@ -53,10 +49,9 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
     protected static final boolean HIDE_SUB_MAPPINGS_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isHideSubMappings()
-     * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #isHideSubMappings() <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #isHideSubMappings()
      * @generated
      * @ordered
@@ -64,10 +59,9 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
     protected boolean hideSubMappings = NodeMappingImportImpl.HIDE_SUB_MAPPINGS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isInheritsAncestorFilters()
-     * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #isInheritsAncestorFilters() <em>Inherits Ancestor Filters</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isInheritsAncestorFilters()
      * @generated
      * @ordered
@@ -75,9 +69,8 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
     protected static final boolean INHERITS_ANCESTOR_FILTERS_EDEFAULT = true;
 
     /**
-     * The cached value of the '{@link #isInheritsAncestorFilters()
-     * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #isInheritsAncestorFilters() <em>Inherits Ancestor Filters</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isInheritsAncestorFilters()
      * @generated
@@ -86,10 +79,9 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
     protected boolean inheritsAncestorFilters = NodeMappingImportImpl.INHERITS_ANCESTOR_FILTERS_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getImportedMapping()
-     * <em>Imported Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getImportedMapping() <em>Imported Mapping</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getImportedMapping()
      * @generated
      * @ordered
@@ -98,7 +90,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected NodeMappingImportImpl() {
@@ -107,7 +99,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -117,7 +109,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +119,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +133,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,7 +143,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +157,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -184,7 +176,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NodeMapping basicGetImportedMapping() {
@@ -193,7 +185,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -207,7 +199,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -228,7 +220,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -249,7 +241,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -270,7 +262,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -288,7 +280,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -308,7 +300,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -328,7 +320,7 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -14,17 +14,15 @@ package org.eclipse.sirius.viewpoint.description;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Annotation Entry</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Annotation Entry</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getSource
- * <em>Source</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getData
- * <em>Data</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getSource <em>Source</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getData <em>Data</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAnnotationEntry()
@@ -33,14 +31,13 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface AnnotationEntry extends EObject {
     /**
-     * Returns the value of the '<em><b>Source</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Source</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Source</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Source</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Source</em>' attribute.
      * @see #setSource(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAnnotationEntry_Source()
@@ -50,11 +47,9 @@ public interface AnnotationEntry extends EObject {
     String getSource();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getSource
-     * <em>Source</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getSource <em>Source</em>}
+     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Source</em>' attribute.
      * @see #getSource()
@@ -63,14 +58,13 @@ public interface AnnotationEntry extends EObject {
     void setSource(String value);
 
     /**
-     * Returns the value of the '<em><b>Data</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Data</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Data</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Data</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Data</em>' containment reference.
      * @see #setData(EObject)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAnnotationEntry_Data()
@@ -80,11 +74,9 @@ public interface AnnotationEntry extends EObject {
     EObject getData();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getData
-     * <em>Data</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getData <em>Data</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Data</em>' containment reference.
      * @see #getData()

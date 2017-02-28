@@ -23,17 +23,15 @@ import org.eclipse.sirius.diagram.sequence.description.tool.StateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>State Creation Tool</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>State Creation Tool</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.StateCreationToolImpl#getStartingEndPredecessor
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.StateCreationToolImpl#getStartingEndPredecessor
  * <em>Starting End Predecessor</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.StateCreationToolImpl#getFinishingEndPredecessor
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.impl.StateCreationToolImpl#getFinishingEndPredecessor
  * <em>Finishing End Predecessor</em>}</li>
  * </ul>
  *
@@ -41,10 +39,9 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  */
 public class StateCreationToolImpl extends NodeCreationDescriptionImpl implements StateCreationTool {
     /**
-     * The cached value of the '{@link #getStartingEndPredecessor()
-     * <em>Starting End Predecessor</em>}' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStartingEndPredecessor() <em>Starting End Predecessor</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getStartingEndPredecessor()
      * @generated
      * @ordered
@@ -52,10 +49,9 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
     protected MessageEndVariable startingEndPredecessor;
 
     /**
-     * The cached value of the '{@link #getFinishingEndPredecessor()
-     * <em>Finishing End Predecessor</em>}' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFinishingEndPredecessor() <em>Finishing End Predecessor</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFinishingEndPredecessor()
      * @generated
      * @ordered
@@ -64,7 +60,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected StateCreationToolImpl() {
@@ -73,7 +69,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +79,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -93,7 +89,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStartingEndPredecessor(MessageEndVariable newStartingEndPredecessor, NotificationChain msgs) {
@@ -113,7 +109,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -137,7 +133,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -147,7 +143,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetFinishingEndPredecessor(MessageEndVariable newFinishingEndPredecessor, NotificationChain msgs) {
@@ -167,7 +163,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +189,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -209,7 +205,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -225,7 +221,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -243,7 +239,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -261,7 +257,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -277,7 +273,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -303,7 +299,7 @@ public class StateCreationToolImpl extends NodeCreationDescriptionImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

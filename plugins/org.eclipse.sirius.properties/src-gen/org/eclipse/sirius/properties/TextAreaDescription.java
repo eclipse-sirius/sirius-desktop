@@ -12,18 +12,16 @@
 package org.eclipse.sirius.properties;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Text Area Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Text Area Description</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> Represents a text area in the user interface. <!--
- * end-model-doc -->
+ * <!-- begin-model-doc --> Represents a text area in the user interface. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.TextAreaDescription#getLineCount
- * <em>Line Count</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.TextAreaDescription#getLineCount <em>Line Count</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getTextAreaDescription()
@@ -32,11 +30,11 @@ package org.eclipse.sirius.properties;
  */
 public interface TextAreaDescription extends TextDescription {
     /**
-     * Returns the value of the '<em><b>Line Count</b></em>' attribute. The
-     * default value is <code>"5"</code>. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Line Count</b></em>' attribute. The default value is <code>"5"</code>. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Line Count</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Line Count</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -49,11 +47,9 @@ public interface TextAreaDescription extends TextDescription {
     int getLineCount();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.TextAreaDescription#getLineCount
-     * <em>Line Count</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.TextAreaDescription#getLineCount <em>Line Count</em>}
+     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Line Count</em>' attribute.
      * @see #getLineCount()

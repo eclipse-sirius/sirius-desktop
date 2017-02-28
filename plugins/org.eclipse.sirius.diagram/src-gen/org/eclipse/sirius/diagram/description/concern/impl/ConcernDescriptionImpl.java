@@ -28,35 +28,26 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getLabel
- * <em>Label</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getFilters
- * <em>Filters</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getRules
- * <em>Rules</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getBehaviors
- * <em>Behaviors</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getFilters <em>Filters</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getRules <em>Rules</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl#getBehaviors <em>Behaviors</em>
+ * }</li>
  * </ul>
  *
  * @generated
  */
 public class ConcernDescriptionImpl extends DocumentedElementImpl implements ConcernDescription {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -65,8 +56,8 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -75,9 +66,9 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     protected String name = ConcernDescriptionImpl.NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabel()
      * @generated
      * @ordered
@@ -85,8 +76,8 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     protected static final String LABEL_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getLabel()
      * @generated
@@ -95,9 +86,9 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     protected String label = ConcernDescriptionImpl.LABEL_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getFilters() <em>Filters</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilters() <em>Filters</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getFilters()
      * @generated
      * @ordered
@@ -105,9 +96,9 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     protected EList<FilterDescription> filters;
 
     /**
-     * The cached value of the '{@link #getRules() <em>Rules</em>}' reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getRules() <em>Rules</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getRules()
      * @generated
      * @ordered
@@ -115,9 +106,9 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     protected EList<ValidationRule> rules;
 
     /**
-     * The cached value of the '{@link #getBehaviors() <em>Behaviors</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getBehaviors() <em>Behaviors</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getBehaviors()
      * @generated
      * @ordered
@@ -126,7 +117,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ConcernDescriptionImpl() {
@@ -135,7 +126,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +136,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +146,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -169,7 +160,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -179,7 +170,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +184,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -206,7 +197,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -219,7 +210,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -232,7 +223,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -254,7 +245,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -285,7 +276,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -312,7 +303,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -334,7 +325,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -354,7 +345,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -374,7 +365,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

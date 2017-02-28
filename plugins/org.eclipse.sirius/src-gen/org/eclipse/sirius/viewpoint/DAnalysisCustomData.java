@@ -14,17 +14,15 @@ package org.eclipse.sirius.viewpoint;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DAnalysis Custom Data</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DAnalysis Custom Data</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getKey
- * <em>Key</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getData
- * <em>Data</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getKey <em>Key</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getData <em>Data</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisCustomData()
@@ -33,14 +31,12 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface DAnalysisCustomData extends EObject {
     /**
-     * Returns the value of the '<em><b>Key</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Key</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Key</em>' attribute isn't clear, there really
-     * should be more of a description here...
+     * If the meaning of the '<em>Key</em>' attribute isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Key</em>' attribute.
      * @see #setKey(String)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisCustomData_Key()
@@ -50,10 +46,9 @@ public interface DAnalysisCustomData extends EObject {
     String getKey();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getKey
-     * <em>Key</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getKey <em>Key</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Key</em>' attribute.
      * @see #getKey()
@@ -62,14 +57,13 @@ public interface DAnalysisCustomData extends EObject {
     void setKey(String value);
 
     /**
-     * Returns the value of the '<em><b>Data</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Data</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Data</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Data</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Data</em>' containment reference.
      * @see #setData(EObject)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisCustomData_Data()
@@ -79,11 +73,9 @@ public interface DAnalysisCustomData extends EObject {
     EObject getData();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getData
-     * <em>Data</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getData <em>Data</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Data</em>' containment reference.
      * @see #getData()

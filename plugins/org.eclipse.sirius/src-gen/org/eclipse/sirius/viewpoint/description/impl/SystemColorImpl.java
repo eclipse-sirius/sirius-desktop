@@ -18,23 +18,20 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>System Color</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>System Color</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.SystemColorImpl#getName
- * <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.SystemColorImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SystemColorImpl extends FixedColorImpl implements SystemColor {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -43,8 +40,8 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -54,7 +51,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SystemColorImpl() {
@@ -63,7 +60,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -73,7 +70,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +80,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +94,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +108,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +123,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +138,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +152,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

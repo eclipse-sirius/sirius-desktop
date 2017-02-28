@@ -26,17 +26,15 @@ import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Group Validation Set Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Group Validation Set Description</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.GroupValidationSetDescriptionImpl#getSemanticValidationRules
+ * <li>{@link org.eclipse.sirius.properties.impl.GroupValidationSetDescriptionImpl#getSemanticValidationRules
  * <em>Semantic Validation Rules</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.GroupValidationSetDescriptionImpl#getPropertyValidationRules
+ * <li>{@link org.eclipse.sirius.properties.impl.GroupValidationSetDescriptionImpl#getPropertyValidationRules
  * <em>Property Validation Rules</em>}</li>
  * </ul>
  *
@@ -44,10 +42,9 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
  */
 public class GroupValidationSetDescriptionImpl extends MinimalEObjectImpl.Container implements GroupValidationSetDescription {
     /**
-     * The cached value of the '{@link #getSemanticValidationRules()
-     * <em>Semantic Validation Rules</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getSemanticValidationRules() <em>Semantic Validation Rules</em>}' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getSemanticValidationRules()
      * @generated
      * @ordered
@@ -55,10 +52,9 @@ public class GroupValidationSetDescriptionImpl extends MinimalEObjectImpl.Contai
     protected EList<SemanticValidationRule> semanticValidationRules;
 
     /**
-     * The cached value of the '{@link #getPropertyValidationRules()
-     * <em>Property Validation Rules</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getPropertyValidationRules() <em>Property Validation Rules</em>}' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getPropertyValidationRules()
      * @generated
      * @ordered
@@ -67,7 +63,7 @@ public class GroupValidationSetDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected GroupValidationSetDescriptionImpl() {
@@ -76,7 +72,7 @@ public class GroupValidationSetDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -86,7 +82,7 @@ public class GroupValidationSetDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +96,7 @@ public class GroupValidationSetDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -114,7 +110,7 @@ public class GroupValidationSetDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -130,7 +126,7 @@ public class GroupValidationSetDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +142,7 @@ public class GroupValidationSetDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -167,7 +163,7 @@ public class GroupValidationSetDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -185,7 +181,7 @@ public class GroupValidationSetDescriptionImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

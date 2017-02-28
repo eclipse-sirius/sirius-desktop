@@ -15,16 +15,14 @@ import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Conditional Edge Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Conditional Edge Style Description</b></em>'.
+ * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription#getStyle
- * <em>Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription#getStyle <em>Style</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getConditionalEdgeStyleDescription()
@@ -33,14 +31,13 @@ import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
  */
 public interface ConditionalEdgeStyleDescription extends ConditionalStyleDescription {
     /**
-     * Returns the value of the '<em><b>Style</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Style</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(EdgeStyleDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getConditionalEdgeStyleDescription_Style()
@@ -50,11 +47,9 @@ public interface ConditionalEdgeStyleDescription extends ConditionalStyleDescrip
     EdgeStyleDescription getStyle();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription#getStyle
-     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription#getStyle
+     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

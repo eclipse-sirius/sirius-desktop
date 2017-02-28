@@ -19,14 +19,13 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Documented Element</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Documented Element</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl#getDocumentation
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl#getDocumentation
  * <em>Documentation</em>}</li>
  * </ul>
  *
@@ -34,10 +33,9 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  */
 public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container implements DocumentedElement {
     /**
-     * The default value of the '{@link #getDocumentation()
-     * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -45,10 +43,9 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
     protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getDocumentation()
-     * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -57,7 +54,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DocumentedElementImpl() {
@@ -66,7 +63,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -76,7 +73,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -86,7 +83,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +97,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -114,7 +111,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +126,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -144,7 +141,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +155,7 @@ public abstract class DocumentedElementImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

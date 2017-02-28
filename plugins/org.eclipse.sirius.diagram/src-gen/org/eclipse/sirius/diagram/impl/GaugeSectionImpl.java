@@ -22,34 +22,25 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.impl.CustomizableImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Gauge Section</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Gauge Section</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getMin
- * <em>Min</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getMax
- * <em>Max</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getValue
- * <em>Value</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getLabel
- * <em>Label</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getBackgroundColor
- * <em>Background Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getForegroundColor
- * <em>Foreground Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getMin <em>Min</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getMax <em>Max</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getBackgroundColor <em>Background Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getForegroundColor <em>Foreground Color</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     /**
-     * The default value of the '{@link #getMin() <em>Min</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getMin() <em>Min</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getMin()
      * @generated
@@ -58,9 +49,8 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     protected static final Integer MIN_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getMin() <em>Min</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getMin() <em>Min</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getMin()
      * @generated
      * @ordered
@@ -68,8 +58,8 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     protected Integer min = GaugeSectionImpl.MIN_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getMax() <em>Max</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getMax() <em>Max</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getMax()
      * @generated
@@ -78,9 +68,8 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     protected static final Integer MAX_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getMax() <em>Max</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getMax() <em>Max</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getMax()
      * @generated
      * @ordered
@@ -88,9 +77,9 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     protected Integer max = GaugeSectionImpl.MAX_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getValue() <em>Value</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getValue()
      * @generated
      * @ordered
@@ -98,8 +87,8 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     protected static final Integer VALUE_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getValue() <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getValue()
      * @generated
@@ -108,9 +97,9 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     protected Integer value = GaugeSectionImpl.VALUE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabel()
      * @generated
      * @ordered
@@ -118,8 +107,8 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     protected static final String LABEL_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getLabel()
      * @generated
@@ -128,10 +117,9 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     protected String label = GaugeSectionImpl.LABEL_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -139,10 +127,9 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0"); //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -150,10 +137,9 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     protected RGBValues backgroundColor = GaugeSectionImpl.BACKGROUND_COLOR_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getForegroundColor()
-     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getForegroundColor() <em>Foreground Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -161,10 +147,9 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     protected static final RGBValues FOREGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "138,226,52"); //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getForegroundColor()
-     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getForegroundColor() <em>Foreground Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -173,7 +158,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected GaugeSectionImpl() {
@@ -182,7 +167,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -192,7 +177,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -202,7 +187,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -216,7 +201,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -226,7 +211,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -240,7 +225,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -250,7 +235,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -264,7 +249,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -274,7 +259,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -288,7 +273,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -298,7 +283,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -312,7 +297,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -322,7 +307,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -336,7 +321,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -360,7 +345,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -390,7 +375,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -420,7 +405,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -444,7 +429,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

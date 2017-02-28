@@ -35,18 +35,16 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription}
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public GaugeSectionDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -54,9 +52,8 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -75,8 +72,8 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Min Value Expression feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Min Value Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -88,8 +85,8 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Max Value Expression feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Max Value Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -101,9 +98,8 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Value Expression feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Value Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
@@ -114,9 +110,8 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Background Color feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Background Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
@@ -128,9 +123,8 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Foreground Color feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Foreground Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addForegroundColorPropertyDescriptor(Object object) {
@@ -142,9 +136,8 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds a property descriptor for the Label feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Label feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -155,9 +148,8 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This returns GaugeSectionDescription.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns GaugeSectionDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -166,8 +158,7 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -186,10 +177,9 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -211,10 +201,9 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -223,9 +212,8 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

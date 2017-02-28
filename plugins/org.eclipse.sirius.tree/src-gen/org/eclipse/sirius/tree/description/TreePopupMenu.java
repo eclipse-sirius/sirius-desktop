@@ -15,16 +15,15 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Tree Popup Menu</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Tree Popup Menu</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreePopupMenu#getMenuItemDescriptions
- * <em>Menu Item Descriptions</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreePopupMenu#getMenuItemDescriptions <em>Menu Item Descriptions</em>}
+ * </li>
  * </ul>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreePopupMenu()
@@ -34,19 +33,15 @@ import org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef;
 public interface TreePopupMenu extends AbstractToolDescription {
 
     /**
-     * Returns the value of the '<em><b>Menu Item Descriptions</b></em>'
-     * containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef}. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Menu Item Descriptions</b></em>' containment reference list. The list contents
+     * are of type {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Menu Item Descriptions</em>' containment
-     * reference list isn't clear, there really should be more of a description
-     * here...
+     * If the meaning of the '<em>Menu Item Descriptions</em>' containment reference list isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Menu Item Descriptions</em>' containment
-     *         reference list.
+     * 
+     * @return the value of the '<em>Menu Item Descriptions</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreePopupMenu_MenuItemDescriptions()
      * @model containment="true"
      * @generated

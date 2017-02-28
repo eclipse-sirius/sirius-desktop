@@ -21,17 +21,14 @@ import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.impl.ContainerModelOperationImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Navigation</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Navigation</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.NavigationImpl#isCreateIfNotExistent
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.NavigationImpl#isCreateIfNotExistent
  * <em>Create If Not Existent</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.NavigationImpl#getDiagramDescription
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.NavigationImpl#getDiagramDescription
  * <em>Diagram Description</em>}</li>
  * </ul>
  *
@@ -39,9 +36,8 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.ContainerModelOperatio
  */
 public class NavigationImpl extends ContainerModelOperationImpl implements Navigation {
     /**
-     * The default value of the '{@link #isCreateIfNotExistent()
-     * <em>Create If Not Existent</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #isCreateIfNotExistent() <em>Create If Not Existent</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isCreateIfNotExistent()
      * @generated
@@ -50,9 +46,8 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
     protected static final boolean CREATE_IF_NOT_EXISTENT_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isCreateIfNotExistent()
-     * <em>Create If Not Existent</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #isCreateIfNotExistent() <em>Create If Not Existent</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isCreateIfNotExistent()
      * @generated
@@ -61,9 +56,8 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
     protected boolean createIfNotExistent = NavigationImpl.CREATE_IF_NOT_EXISTENT_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getDiagramDescription()
-     * <em>Diagram Description</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getDiagramDescription() <em>Diagram Description</em>}' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDiagramDescription()
      * @generated
@@ -73,7 +67,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected NavigationImpl() {
@@ -82,7 +76,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -92,7 +86,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -102,7 +96,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -116,7 +110,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -135,7 +129,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public DiagramDescription basicGetDiagramDescription() {
@@ -144,7 +138,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +152,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -177,7 +171,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -195,7 +189,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -213,7 +207,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -229,7 +223,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

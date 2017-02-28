@@ -18,14 +18,13 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Semantic Based Decoration</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Semantic Based Decoration</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl#getDomainClass
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl#getDomainClass
  * <em>Domain Class</em>}</li>
  * </ul>
  *
@@ -33,9 +32,9 @@ import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
  */
 public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl implements SemanticBasedDecoration {
     /**
-     * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -43,9 +42,9 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
     protected static final String DOMAIN_CLASS_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -54,7 +53,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SemanticBasedDecorationImpl() {
@@ -63,7 +62,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -73,7 +72,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +82,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +96,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +110,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +125,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +140,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +154,7 @@ public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

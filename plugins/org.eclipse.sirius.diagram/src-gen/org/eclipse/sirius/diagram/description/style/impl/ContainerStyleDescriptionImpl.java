@@ -32,8 +32,8 @@ import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Container Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Container Style Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -41,41 +41,29 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getBorderSizeComputationExpression
  * <em>Border Size Computation Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getBorderColor
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getBorderColor
  * <em>Border Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getBorderLineStyle
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getBorderLineStyle
  * <em>Border Line Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getLabelSize
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getLabelSize
  * <em>Label Size</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getLabelFormat
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getLabelFormat
  * <em>Label Format</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#isShowIcon
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#isShowIcon
  * <em>Show Icon</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getLabelExpression
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getLabelExpression
  * <em>Label Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getLabelColor
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getLabelColor
  * <em>Label Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getIconPath
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getIconPath
  * <em>Icon Path</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getLabelAlignment
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getLabelAlignment
  * <em>Label Alignment</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getTooltipExpression
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getTooltipExpression
  * <em>Tooltip Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#isHideLabelByDefault
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#isHideLabelByDefault
  * <em>Hide Label By Default</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#isRoundedCorner
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#isRoundedCorner
  * <em>Rounded Corner</em>}</li>
  * </ul>
  *
@@ -85,9 +73,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * The default value of the '{@link #getBorderSizeComputationExpression()
-     * <em>Border Size Computation Expression</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * <em>Border Size Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -95,10 +82,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getBorderSizeComputationExpression()
-     * <em>Border Size Computation Expression</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getBorderSizeComputationExpression() <em>Border Size Computation Expression</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -106,9 +92,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected String borderSizeComputationExpression = ContainerStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getBorderColor()
      * @generated
      * @ordered
@@ -116,9 +102,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected ColorDescription borderColor;
 
     /**
-     * The default value of the '{@link #getBorderLineStyle()
-     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getBorderLineStyle() <em>Border Line Style</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getBorderLineStyle()
      * @generated
@@ -127,10 +112,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected static final LineStyle BORDER_LINE_STYLE_EDEFAULT = LineStyle.SOLID_LITERAL;
 
     /**
-     * The cached value of the '{@link #getBorderLineStyle()
-     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBorderLineStyle() <em>Border Line Style</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBorderLineStyle()
      * @generated
      * @ordered
@@ -138,9 +122,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected LineStyle borderLineStyle = ContainerStyleDescriptionImpl.BORDER_LINE_STYLE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelSize() <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -148,9 +132,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected static final int LABEL_SIZE_EDEFAULT = 8;
 
     /**
-     * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -158,9 +142,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected int labelSize = ContainerStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
-     * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}' attribute list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getLabelFormat()
      * @generated
      * @ordered
@@ -168,9 +152,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected EList<FontFormat> labelFormat;
 
     /**
-     * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isShowIcon()
      * @generated
      * @ordered
@@ -178,9 +162,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected static final boolean SHOW_ICON_EDEFAULT = true;
 
     /**
-     * The cached value of the '{@link #isShowIcon() <em>Show Icon</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #isShowIcon() <em>Show Icon</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isShowIcon()
      * @generated
      * @ordered
@@ -188,10 +172,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected boolean showIcon = ContainerStyleDescriptionImpl.SHOW_ICON_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -199,10 +182,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected static final String LABEL_EXPRESSION_EDEFAULT = "feature:name"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -210,9 +192,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected String labelExpression = ContainerStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabelColor()
      * @generated
      * @ordered
@@ -220,9 +202,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected ColorDescription labelColor;
 
     /**
-     * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -230,9 +212,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected static final String ICON_PATH_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -240,10 +222,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected String iconPath = ContainerStyleDescriptionImpl.ICON_PATH_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelAlignment()
-     * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelAlignment() <em>Label Alignment</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelAlignment()
      * @generated
      * @ordered
@@ -251,10 +232,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected static final LabelAlignment LABEL_ALIGNMENT_EDEFAULT = LabelAlignment.CENTER;
 
     /**
-     * The cached value of the '{@link #getLabelAlignment()
-     * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelAlignment() <em>Label Alignment</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelAlignment()
      * @generated
      * @ordered
@@ -262,9 +242,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected LabelAlignment labelAlignment = ContainerStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTooltipExpression()
-     * <em>Tooltip Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getTooltipExpression() <em>Tooltip Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getTooltipExpression()
      * @generated
@@ -273,9 +252,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected static final String TOOLTIP_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getTooltipExpression()
-     * <em>Tooltip Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getTooltipExpression() <em>Tooltip Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getTooltipExpression()
      * @generated
@@ -284,9 +262,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected String tooltipExpression = ContainerStyleDescriptionImpl.TOOLTIP_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isHideLabelByDefault()
-     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #isHideLabelByDefault() <em>Hide Label By Default</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isHideLabelByDefault()
      * @generated
@@ -295,9 +272,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected static final boolean HIDE_LABEL_BY_DEFAULT_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isHideLabelByDefault()
-     * <em>Hide Label By Default</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #isHideLabelByDefault() <em>Hide Label By Default</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isHideLabelByDefault()
      * @generated
@@ -306,10 +282,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected boolean hideLabelByDefault = ContainerStyleDescriptionImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isRoundedCorner()
-     * <em>Rounded Corner</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #isRoundedCorner() <em>Rounded Corner</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isRoundedCorner()
      * @generated
      * @ordered
@@ -317,10 +292,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     protected static final boolean ROUNDED_CORNER_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isRoundedCorner()
-     * <em>Rounded Corner</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #isRoundedCorner() <em>Rounded Corner</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isRoundedCorner()
      * @generated
      * @ordered
@@ -329,7 +303,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ContainerStyleDescriptionImpl() {
@@ -338,7 +312,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -348,7 +322,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -358,7 +332,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -373,7 +347,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -392,7 +366,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetBorderColor() {
@@ -401,7 +375,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -415,7 +389,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -425,7 +399,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -439,7 +413,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -449,7 +423,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -463,7 +437,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -476,7 +450,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -486,7 +460,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -500,7 +474,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -510,7 +484,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -524,7 +498,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -543,7 +517,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetLabelColor() {
@@ -552,7 +526,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -566,7 +540,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -576,7 +550,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -590,7 +564,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -600,7 +574,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -614,7 +588,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -624,7 +598,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -638,7 +612,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -648,7 +622,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -662,7 +636,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -672,7 +646,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -686,7 +660,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -730,7 +704,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -783,7 +757,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -834,7 +808,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -873,7 +847,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -937,7 +911,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1001,7 +975,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

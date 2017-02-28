@@ -23,24 +23,22 @@ import org.eclipse.sirius.viewpoint.description.impl.ConditionalStyleDescription
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Conditional Container Style Description</b></em>'. <!-- end-user-doc
- * -->
+ * <em><b>Conditional Container Style Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.ConditionalContainerStyleDescriptionImpl#getStyle
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.ConditionalContainerStyleDescriptionImpl#getStyle
  * <em>Style</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDescriptionImpl implements ConditionalContainerStyleDescription {
     /**
-     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -49,7 +47,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ConditionalContainerStyleDescriptionImpl() {
@@ -58,7 +56,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -68,7 +66,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -95,7 +93,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ContainerStyleDescription basicGetStyle() {
@@ -104,7 +102,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(ContainerStyleDescription newStyle, NotificationChain msgs) {
@@ -123,7 +121,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -147,7 +145,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -161,7 +159,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -178,7 +176,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +191,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -208,7 +206,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

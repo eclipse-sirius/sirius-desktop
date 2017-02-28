@@ -39,17 +39,15 @@ import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemPr
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.description.DiagramImportDescription}
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.DiagramImportDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class DiagramImportDescriptionItemProvider extends DocumentedElementItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DiagramImportDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -57,9 +55,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -96,8 +93,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the End User Documentation feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the End User Documentation feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -111,9 +108,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Name feature. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -125,9 +121,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Label feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Label feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -139,9 +134,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Title Expression feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Title Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addTitleExpressionPropertyDescriptor(Object object) {
@@ -153,9 +147,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Initialisation feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Initialisation feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addInitialisationPropertyDescriptor(Object object) {
@@ -167,9 +160,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Metamodel feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Metamodel feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addMetamodelPropertyDescriptor(Object object) {
@@ -181,8 +173,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Show On Startup feature. <!--
-     * begin-user-doc -->
+     * This adds a property descriptor for the Show On Startup feature. <!-- begin-user-doc -->
      *
      * @since 0.9.0 <!-- end-user-doc -->
      * @generated
@@ -196,9 +187,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Drop Descriptions feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Drop Descriptions feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addDropDescriptionsPropertyDescriptor(Object object) {
@@ -211,9 +201,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Paste Descriptions feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Paste Descriptions feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addPasteDescriptionsPropertyDescriptor(Object object) {
@@ -225,9 +214,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the All Edge Mappings feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the All Edge Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addAllEdgeMappingsPropertyDescriptor(Object object) {
@@ -238,9 +226,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the All Node Mappings feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the All Node Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addAllNodeMappingsPropertyDescriptor(Object object) {
@@ -251,8 +238,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the All Container Mappings feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the All Container Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -264,9 +251,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the All Tools feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the All Tools feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addAllToolsPropertyDescriptor(Object object) {
@@ -277,9 +263,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Domain Class feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Domain Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -292,9 +277,9 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Precondition Expression feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Precondition Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
@@ -307,9 +292,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Default Concern feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Default Concern feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addDefaultConcernPropertyDescriptor(Object object) {
@@ -321,9 +305,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Root Expression feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Root Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addRootExpressionPropertyDescriptor(Object object) {
@@ -336,9 +319,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Init feature. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Init feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addInitPropertyDescriptor(Object object) {
@@ -350,9 +332,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the All Layers feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the All Layers feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addAllLayersPropertyDescriptor(Object object) {
@@ -363,8 +344,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the All Activated Tools feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the All Activated Tools feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -376,9 +357,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Reused Mappings feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Reused Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addReusedMappingsPropertyDescriptor(Object object) {
@@ -390,9 +370,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Reused Tools feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Reused Tools feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addReusedToolsPropertyDescriptor(Object object) {
@@ -404,8 +383,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Enable Popup Bars feature. <!--
-     * begin-user-doc -->
+     * This adds a property descriptor for the Enable Popup Bars feature. <!-- begin-user-doc -->
      *
      * @since 0.9.0 <!-- end-user-doc -->
      * @generated
@@ -420,9 +398,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds a property descriptor for the Imported Diagram feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Imported Diagram feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addImportedDiagramPropertyDescriptor(Object object) {
@@ -434,13 +411,11 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to
-     * deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand},
-     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in
-     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -465,22 +440,20 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper
-        // feature to use for
+        // Check the type of the specified child object and return the proper feature to use for
         // adding (see {@link AddCommand}) it as a child.
 
         return super.getChildFeature(object, child);
     }
 
     /**
-     * This returns DiagramImportDescription.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns DiagramImportDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -489,8 +462,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -501,10 +473,9 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -544,9 +515,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -667,9 +637,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * This returns the label text for
-     * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -703,9 +672,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

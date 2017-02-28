@@ -15,8 +15,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Set</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Set</b></em>'. <!-- end-user-doc -->
  *
  * <!-- begin-model-doc --> A set of many concerns. <!-- end-model-doc -->
  *
@@ -24,8 +23,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.concern.ConcernSet#getOwnedConcernDescriptions
+ * <li>{@link org.eclipse.sirius.diagram.description.concern.ConcernSet#getOwnedConcernDescriptions
  * <em>Owned Concern Descriptions</em>}</li>
  * </ul>
  *
@@ -35,14 +33,11 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  */
 public interface ConcernSet extends DocumentedElement {
     /**
-     * Returns the value of the '<em><b>Owned Concern Descriptions</b></em>'
-     * containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * All concerns <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Owned Concern Descriptions</b></em>' containment reference list. The list
+     * contents are of type {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription} . <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All concerns <!-- end-model-doc -->
      *
-     * @return the value of the '<em>Owned Concern Descriptions</em>'
-     *         containment reference list.
+     * @return the value of the '<em>Owned Concern Descriptions</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernSet_OwnedConcernDescriptions()
      * @model containment="true" resolveProxies="true"
      * @generated

@@ -24,14 +24,12 @@ import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Popup Menu</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Popup Menu</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.PopupMenuImpl#getMenuItemDescription
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.PopupMenuImpl#getMenuItemDescription
  * <em>Menu Item Description</em>}</li>
  * </ul>
  *
@@ -39,10 +37,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public class PopupMenuImpl extends AbstractToolDescriptionImpl implements PopupMenu {
     /**
-     * The cached value of the '{@link #getMenuItemDescription()
-     * <em>Menu Item Description</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getMenuItemDescription() <em>Menu Item Description</em>}' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getMenuItemDescription()
      * @generated
      * @ordered
@@ -51,7 +48,7 @@ public class PopupMenuImpl extends AbstractToolDescriptionImpl implements PopupM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected PopupMenuImpl() {
@@ -60,7 +57,7 @@ public class PopupMenuImpl extends AbstractToolDescriptionImpl implements PopupM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -70,7 +67,7 @@ public class PopupMenuImpl extends AbstractToolDescriptionImpl implements PopupM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +80,7 @@ public class PopupMenuImpl extends AbstractToolDescriptionImpl implements PopupM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +94,7 @@ public class PopupMenuImpl extends AbstractToolDescriptionImpl implements PopupM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +108,7 @@ public class PopupMenuImpl extends AbstractToolDescriptionImpl implements PopupM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -128,7 +125,7 @@ public class PopupMenuImpl extends AbstractToolDescriptionImpl implements PopupM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -143,7 +140,7 @@ public class PopupMenuImpl extends AbstractToolDescriptionImpl implements PopupM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

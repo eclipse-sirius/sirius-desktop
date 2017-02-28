@@ -32,35 +32,21 @@ import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Section</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Section</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getLabel
- * <em>Label</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getIcon
- * <em>Icon</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getOwnedTools
- * <em>Owned Tools</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getSubSections
- * <em>Sub Sections</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getPopupMenus
- * <em>Popup Menus</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getReusedTools
- * <em>Reused Tools</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getGroupExtensions
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getIcon <em>Icon</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getOwnedTools <em>Owned Tools</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getSubSections <em>Sub Sections</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getPopupMenus <em>Popup Menus</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getReusedTools <em>Reused Tools</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getGroupExtensions
  * <em>Group Extensions</em>}</li>
  * </ul>
  *
@@ -68,8 +54,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
  */
 public class ToolSectionImpl extends DocumentedElementImpl implements ToolSection {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -78,8 +64,8 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -88,9 +74,9 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     protected String name = ToolSectionImpl.NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabel()
      * @generated
      * @ordered
@@ -98,8 +84,8 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     protected static final String LABEL_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getLabel()
      * @generated
@@ -108,8 +94,8 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     protected String label = ToolSectionImpl.LABEL_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getIcon()
      * @generated
@@ -118,8 +104,8 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     protected static final String ICON_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getIcon()
      * @generated
@@ -128,8 +114,8 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     protected String icon = ToolSectionImpl.ICON_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getOwnedTools() <em>Owned Tools</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOwnedTools() <em>Owned Tools</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getOwnedTools()
      * @generated
@@ -138,8 +124,8 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     protected EList<ToolEntry> ownedTools;
 
     /**
-     * The cached value of the '{@link #getSubSections() <em>Sub Sections</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getSubSections() <em>Sub Sections</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSubSections()
      * @generated
@@ -148,9 +134,9 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     protected EList<ToolSection> subSections;
 
     /**
-     * The cached value of the '{@link #getReusedTools() <em>Reused Tools</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getReusedTools() <em>Reused Tools</em>}' reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getReusedTools()
      * @generated
      * @ordered
@@ -158,10 +144,9 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     protected EList<ToolEntry> reusedTools;
 
     /**
-     * The cached value of the '{@link #getGroupExtensions()
-     * <em>Group Extensions</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getGroupExtensions() <em>Group Extensions</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getGroupExtensions()
      * @generated
      * @ordered
@@ -170,7 +155,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ToolSectionImpl() {
@@ -179,7 +164,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -189,7 +174,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -199,7 +184,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -213,7 +198,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -223,7 +208,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -237,7 +222,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -247,7 +232,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -261,7 +246,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -274,7 +259,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -287,25 +272,22 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<PopupMenu> getPopupMenus() {
-        // TODO: implement this method to return the 'Popup Menus' reference
-        // list
+        // TODO: implement this method to return the 'Popup Menus' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -318,7 +300,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -331,7 +313,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -349,7 +331,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -377,7 +359,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -415,7 +397,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -448,7 +430,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -476,7 +458,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -496,7 +478,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -516,7 +498,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

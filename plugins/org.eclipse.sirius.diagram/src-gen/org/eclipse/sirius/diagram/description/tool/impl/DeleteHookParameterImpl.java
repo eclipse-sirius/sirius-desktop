@@ -19,26 +19,22 @@ import org.eclipse.sirius.diagram.description.tool.DeleteHookParameter;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Delete Hook Parameter</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Delete Hook Parameter</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookParameterImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookParameterImpl#getValue
- * <em>Value</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookParameterImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookParameterImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implements DeleteHookParameter {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -47,8 +43,8 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -57,9 +53,9 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
     protected String name = DeleteHookParameterImpl.NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getValue() <em>Value</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getValue()
      * @generated
      * @ordered
@@ -67,8 +63,8 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
     protected static final String VALUE_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getValue() <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getValue()
      * @generated
@@ -78,7 +74,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DeleteHookParameterImpl() {
@@ -87,7 +83,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +93,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -107,7 +103,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -121,7 +117,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -131,7 +127,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +141,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -161,7 +157,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -179,7 +175,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -197,7 +193,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -213,7 +209,7 @@ public class DeleteHookParameterImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

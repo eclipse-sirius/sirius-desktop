@@ -14,18 +14,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>EObject Variable Value</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>EObject Variable Value</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.EObjectVariableValue#getVariableDefinition
- * <em>Variable Definition</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.EObjectVariableValue#getModelElement
- * <em>Model Element</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.EObjectVariableValue#getVariableDefinition <em>Variable Definition</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.EObjectVariableValue#getModelElement <em>Model Element</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getEObjectVariableValue()
@@ -34,14 +31,13 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
  */
 public interface EObjectVariableValue extends VariableValue {
     /**
-     * Returns the value of the '<em><b>Variable Definition</b></em>' reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Variable Definition</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Variable Definition</em>' reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Variable Definition</em>' reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Variable Definition</em>' reference.
      * @see #setVariableDefinition(SelectModelElementVariable)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getEObjectVariableValue_VariableDefinition()
@@ -51,11 +47,9 @@ public interface EObjectVariableValue extends VariableValue {
     SelectModelElementVariable getVariableDefinition();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.EObjectVariableValue#getVariableDefinition
-     * <em>Variable Definition</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.EObjectVariableValue#getVariableDefinition
+     * <em>Variable Definition</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Variable Definition</em>' reference.
      * @see #getVariableDefinition()
@@ -64,14 +58,13 @@ public interface EObjectVariableValue extends VariableValue {
     void setVariableDefinition(SelectModelElementVariable value);
 
     /**
-     * Returns the value of the '<em><b>Model Element</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Model Element</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Model Element</em>' reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Model Element</em>' reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Model Element</em>' reference.
      * @see #setModelElement(EObject)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getEObjectVariableValue_ModelElement()
@@ -81,11 +74,9 @@ public interface EObjectVariableValue extends VariableValue {
     EObject getModelElement();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.EObjectVariableValue#getModelElement
-     * <em>Model Element</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.EObjectVariableValue#getModelElement
+     * <em>Model Element</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Model Element</em>' reference.
      * @see #getModelElement()

@@ -35,16 +35,14 @@ import org.eclipse.sirius.diagram.sequence.template.TemplateFactory;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
- * end-user-doc -->
- *
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory {
     /**
-     * Creates the default factory implementation. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static TemplateFactory init() {
@@ -60,9 +58,8 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
     }
 
     /**
-     * Creates an instance of the factory. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public TemplateFactoryImpl() {
@@ -71,7 +68,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -114,7 +111,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +122,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -148,7 +145,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +156,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -170,7 +167,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +190,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -216,7 +213,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -227,7 +224,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -238,7 +235,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -249,7 +246,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -260,7 +257,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -271,7 +268,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -282,7 +279,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -292,7 +289,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @deprecated
      * @generated
      */

@@ -20,30 +20,24 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Square Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Square Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.SquareDescriptionImpl#getWidth
- * <em>Width</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.SquareDescriptionImpl#getHeight
- * <em>Height</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.SquareDescriptionImpl#getColor
- * <em>Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.SquareDescriptionImpl#getWidth <em>Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.SquareDescriptionImpl#getHeight <em>Height</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.SquareDescriptionImpl#getColor <em>Color</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements SquareDescription {
     /**
-     * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getWidth()
      * @generated
      * @ordered
@@ -51,8 +45,8 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
     protected static final Integer WIDTH_EDEFAULT = new Integer(0);
 
     /**
-     * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getWidth()
      * @generated
@@ -61,9 +55,9 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
     protected Integer width = SquareDescriptionImpl.WIDTH_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getHeight() <em>Height</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getHeight()
      * @generated
      * @ordered
@@ -71,9 +65,9 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
     protected static final Integer HEIGHT_EDEFAULT = new Integer(0);
 
     /**
-     * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getHeight()
      * @generated
      * @ordered
@@ -81,8 +75,8 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
     protected Integer height = SquareDescriptionImpl.HEIGHT_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getColor() <em>Color</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getColor() <em>Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getColor()
      * @generated
@@ -92,7 +86,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SquareDescriptionImpl() {
@@ -101,7 +95,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +105,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -121,7 +115,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -135,7 +129,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +139,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +153,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -178,7 +172,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetColor() {
@@ -187,7 +181,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -201,7 +195,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -222,7 +216,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -243,7 +237,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -264,7 +258,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -282,7 +276,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

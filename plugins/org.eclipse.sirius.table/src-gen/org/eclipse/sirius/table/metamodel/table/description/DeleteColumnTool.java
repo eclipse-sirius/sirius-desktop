@@ -11,16 +11,14 @@
 package org.eclipse.sirius.table.metamodel.table.description;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Delete Column Tool</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Delete Column Tool</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.DeleteColumnTool#getMapping
- * <em>Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.DeleteColumnTool#getMapping <em>Mapping</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getDeleteColumnTool()
@@ -29,16 +27,15 @@ package org.eclipse.sirius.table.metamodel.table.description;
  */
 public interface DeleteColumnTool extends DeleteTool {
     /**
-     * Returns the value of the '<em><b>Mapping</b></em>' container reference.
-     * It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDelete
-     * <em>Delete</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Mapping</b></em>' container reference. It is bidirectional and its opposite is '
+     * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDelete <em>Delete</em>}'.
+     * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Mapping</em>' container reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Mapping</em>' container reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Mapping</em>' container reference.
      * @see #setMapping(ElementColumnMapping)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getDeleteColumnTool_Mapping()
@@ -49,11 +46,9 @@ public interface DeleteColumnTool extends DeleteTool {
     ElementColumnMapping getMapping();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.DeleteColumnTool#getMapping
-     * <em>Mapping</em>}' container reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.DeleteColumnTool#getMapping
+     * <em>Mapping</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Mapping</em>' container reference.
      * @see #getMapping()

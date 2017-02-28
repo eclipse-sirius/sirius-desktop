@@ -17,24 +17,20 @@ import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Instance Role Reorder Tool</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Instance Role Reorder Tool</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool#getMappings
- * <em>Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool#getPredecessorBefore
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool#getMappings <em>Mappings</em>
+ * }</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool#getPredecessorBefore
  * <em>Predecessor Before</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool#getPredecessorAfter
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool#getPredecessorAfter
  * <em>Predecessor After</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool#getInstanceRoleMoved
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool#getInstanceRoleMoved
  * <em>Instance Role Moved</em>}</li>
  * </ul>
  *
@@ -44,16 +40,14 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  */
 public interface InstanceRoleReorderTool extends AbstractToolDescription, SequenceDiagramToolDescription {
     /**
-     * Returns the value of the '<em><b>Mappings</b></em>' reference list. The
-     * list contents are of type
-     * {@link org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Mappings</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Mappings</em>' reference list isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Mappings</em>' reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getInstanceRoleReorderTool_Mappings()
      * @model
@@ -62,20 +56,17 @@ public interface InstanceRoleReorderTool extends AbstractToolDescription, Sequen
     EList<InstanceRoleMapping> getMappings();
 
     /**
-     * Returns the value of the '<em><b>Predecessor Before</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Predecessor Before</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Predecessor Before</em>' containment reference
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Predecessor Before</em>' containment reference isn't clear, there really should be
+     * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Predecessor Before</em>' containment
-     *         reference.
+     * 
+     * @return the value of the '<em>Predecessor Before</em>' containment reference.
      * @see #setPredecessorBefore(ElementVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getInstanceRoleReorderTool_PredecessorBefore()
-     * @model containment="true" annotation=
-     *        "toolVariable name='predecessorBefore'"
+     * @model containment="true" annotation="toolVariable name='predecessorBefore'"
      * @generated
      */
     ElementVariable getPredecessorBefore();
@@ -83,32 +74,27 @@ public interface InstanceRoleReorderTool extends AbstractToolDescription, Sequen
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool#getPredecessorBefore
-     * <em>Predecessor Before</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * <em>Predecessor Before</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Predecessor Before</em>' containment
-     *            reference.
+     *            the new value of the '<em>Predecessor Before</em>' containment reference.
      * @see #getPredecessorBefore()
      * @generated
      */
     void setPredecessorBefore(ElementVariable value);
 
     /**
-     * Returns the value of the '<em><b>Predecessor After</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Predecessor After</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Predecessor After</em>' containment reference
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Predecessor After</em>' containment reference isn't clear, there really should be more
+     * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Predecessor After</em>' containment
-     *         reference.
+     * 
+     * @return the value of the '<em>Predecessor After</em>' containment reference.
      * @see #setPredecessorAfter(ElementVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getInstanceRoleReorderTool_PredecessorAfter()
-     * @model containment="true" annotation=
-     *        "toolVariable name='predecessorAfter'"
+     * @model containment="true" annotation="toolVariable name='predecessorAfter'"
      * @generated
      */
     ElementVariable getPredecessorAfter();
@@ -116,29 +102,24 @@ public interface InstanceRoleReorderTool extends AbstractToolDescription, Sequen
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool#getPredecessorAfter
-     * <em>Predecessor After</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * <em>Predecessor After</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Predecessor After</em>' containment
-     *            reference.
+     *            the new value of the '<em>Predecessor After</em>' containment reference.
      * @see #getPredecessorAfter()
      * @generated
      */
     void setPredecessorAfter(ElementVariable value);
 
     /**
-     * Returns the value of the '<em><b>Instance Role Moved</b></em>'
-     * containment reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Instance Role Moved</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Instance Role Moved</em>' containment
-     * reference isn't clear, there really should be more of a description
-     * here...
+     * If the meaning of the '<em>Instance Role Moved</em>' containment reference isn't clear, there really should be
+     * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Instance Role Moved</em>' containment
-     *         reference.
+     * 
+     * @return the value of the '<em>Instance Role Moved</em>' containment reference.
      * @see #setInstanceRoleMoved(InitialOperation)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getInstanceRoleReorderTool_InstanceRoleMoved()
      * @model containment="true" required="true"
@@ -149,12 +130,10 @@ public interface InstanceRoleReorderTool extends AbstractToolDescription, Sequen
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool#getInstanceRoleMoved
-     * <em>Instance Role Moved</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * <em>Instance Role Moved</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Instance Role Moved</em>'
-     *            containment reference.
+     *            the new value of the '<em>Instance Role Moved</em>' containment reference.
      * @see #getInstanceRoleMoved()
      * @generated
      */

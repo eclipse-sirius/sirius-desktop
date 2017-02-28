@@ -31,23 +31,19 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Abstract Node Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Abstract Node Mapping</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.AbstractNodeMappingImpl#getDocumentation
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.AbstractNodeMappingImpl#getDocumentation
  * <em>Documentation</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.AbstractNodeMappingImpl#getDomainClass
- * <em>Domain Class</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.AbstractNodeMappingImpl#getBorderedNodeMappings
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.AbstractNodeMappingImpl#getDomainClass <em>Domain Class</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.AbstractNodeMappingImpl#getBorderedNodeMappings
  * <em>Bordered Node Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.AbstractNodeMappingImpl#getReusedBorderedNodeMappings
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.AbstractNodeMappingImpl#getReusedBorderedNodeMappings
  * <em>Reused Bordered Node Mappings</em>}</li>
  * </ul>
  *
@@ -55,10 +51,9 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  */
 public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl implements AbstractNodeMapping {
     /**
-     * The default value of the '{@link #getDocumentation()
-     * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -66,10 +61,9 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
     protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getDocumentation()
-     * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -77,9 +71,9 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
     protected String documentation = AbstractNodeMappingImpl.DOCUMENTATION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -87,9 +81,9 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
     protected static final String DOMAIN_CLASS_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -97,10 +91,9 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
     protected String domainClass = AbstractNodeMappingImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getBorderedNodeMappings()
-     * <em>Bordered Node Mappings</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getBorderedNodeMappings() <em>Bordered Node Mappings</em>}' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getBorderedNodeMappings()
      * @generated
      * @ordered
@@ -108,10 +101,9 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
     protected EList<NodeMapping> borderedNodeMappings;
 
     /**
-     * The cached value of the '{@link #getReusedBorderedNodeMappings()
-     * <em>Reused Bordered Node Mappings</em>}' reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getReusedBorderedNodeMappings() <em>Reused Bordered Node Mappings</em>}'
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getReusedBorderedNodeMappings()
      * @generated
      * @ordered
@@ -120,7 +112,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AbstractNodeMappingImpl() {
@@ -129,7 +121,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -139,7 +131,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -149,7 +141,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -163,7 +155,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -173,7 +165,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -187,7 +179,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -200,7 +192,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -213,7 +205,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -225,7 +217,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -237,7 +229,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -249,7 +241,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -261,7 +253,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -275,7 +267,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -295,7 +287,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -322,7 +314,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -346,7 +338,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -366,7 +358,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -384,7 +376,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -402,7 +394,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

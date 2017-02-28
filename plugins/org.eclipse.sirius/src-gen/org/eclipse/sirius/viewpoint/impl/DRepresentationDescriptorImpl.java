@@ -23,32 +23,25 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DRepresentation Descriptor</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DRepresentation Descriptor</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getDescription
- * <em>Description</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getTarget
- * <em>Target</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getRepresentation
- * <em>Representation</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getDescription <em>Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getTarget <em>Target</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getRepresentation <em>Representation</em>}
+ * </li>
  * </ul>
  *
  * @generated
  */
 public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container implements DRepresentationDescriptor {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -57,8 +50,8 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
     protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -67,9 +60,9 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
     protected String name = DRepresentationDescriptorImpl.NAME_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getDescription() <em>Description</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getDescription() <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getDescription()
      * @generated
      * @ordered
@@ -77,9 +70,9 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
     protected RepresentationDescription description;
 
     /**
-     * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getTarget() <em>Target</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getTarget()
      * @generated
      * @ordered
@@ -87,10 +80,9 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
     protected EObject target;
 
     /**
-     * The cached value of the '{@link #getRepresentation()
-     * <em>Representation</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getRepresentation() <em>Representation</em>}' reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getRepresentation()
      * @generated
      * @ordered
@@ -99,7 +91,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DRepresentationDescriptorImpl() {
@@ -108,7 +100,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -118,7 +110,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -128,7 +120,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -142,7 +134,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -161,7 +153,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public RepresentationDescription basicGetDescription() {
@@ -170,7 +162,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -184,7 +176,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -203,7 +195,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public EObject basicGetTarget() {
@@ -212,7 +204,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -226,7 +218,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -245,7 +237,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public DRepresentation basicGetRepresentation() {
@@ -254,7 +246,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -268,7 +260,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -297,7 +289,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -321,7 +313,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -345,7 +337,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -365,7 +357,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

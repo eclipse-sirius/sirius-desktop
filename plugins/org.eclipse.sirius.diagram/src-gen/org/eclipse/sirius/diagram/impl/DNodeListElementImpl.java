@@ -32,39 +32,30 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DNode List Element</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DNode List Element</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DNodeListElementImpl#getOwnedBorderedNodes
- * <em>Owned Bordered Nodes</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DNodeListElementImpl#getArrangeConstraints
- * <em>Arrange Constraints</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeListElementImpl#getOwnedStyle
- * <em>Owned Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DNodeListElementImpl#getOriginalStyle
- * <em>Original Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DNodeListElementImpl#getActualMapping
- * <em>Actual Mapping</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DNodeListElementImpl#getCandidatesMapping
- * <em>Candidates Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeListElementImpl#getOwnedBorderedNodes <em>Owned Bordered Nodes</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeListElementImpl#getArrangeConstraints <em>Arrange Constraints</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeListElementImpl#getOwnedStyle <em>Owned Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeListElementImpl#getOriginalStyle <em>Original Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeListElementImpl#getActualMapping <em>Actual Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DNodeListElementImpl#getCandidatesMapping <em>Candidates Mapping</em>}
+ * </li>
  * </ul>
  *
  * @generated
  */
 public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeListElement {
     /**
-     * The cached value of the '{@link #getOwnedBorderedNodes()
-     * <em>Owned Bordered Nodes</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedBorderedNodes() <em>Owned Bordered Nodes</em>}' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getOwnedBorderedNodes()
      * @generated
      * @ordered
@@ -72,9 +63,8 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
     protected EList<DNode> ownedBorderedNodes;
 
     /**
-     * The cached value of the '{@link #getArrangeConstraints()
-     * <em>Arrange Constraints</em>}' attribute list. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getArrangeConstraints() <em>Arrange Constraints</em>}' attribute list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getArrangeConstraints()
      * @generated
@@ -83,8 +73,8 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
     protected EList<ArrangeConstraint> arrangeConstraints;
 
     /**
-     * The cached value of the '{@link #getOwnedStyle() <em>Owned Style</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOwnedStyle() <em>Owned Style</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getOwnedStyle()
      * @generated
@@ -93,10 +83,9 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
     protected NodeStyle ownedStyle;
 
     /**
-     * The cached value of the '{@link #getOriginalStyle()
-     * <em>Original Style</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getOriginalStyle() <em>Original Style</em>}' reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getOriginalStyle()
      * @generated
      * @ordered
@@ -104,10 +93,9 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
     protected Style originalStyle;
 
     /**
-     * The cached value of the '{@link #getActualMapping()
-     * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getActualMapping() <em>Actual Mapping</em>}' reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getActualMapping()
      * @generated
      * @ordered
@@ -115,9 +103,8 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
     protected NodeMapping actualMapping;
 
     /**
-     * The cached value of the '{@link #getCandidatesMapping()
-     * <em>Candidates Mapping</em>}' reference list. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getCandidatesMapping() <em>Candidates Mapping</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCandidatesMapping()
      * @generated
@@ -127,7 +114,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DNodeListElementImpl() {
@@ -136,7 +123,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +133,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +146,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -172,7 +159,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -199,7 +186,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NodeStyle basicGetOwnedStyle() {
@@ -208,7 +195,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetOwnedStyle(NodeStyle newOwnedStyle, NotificationChain msgs) {
@@ -227,7 +214,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -251,7 +238,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -270,7 +257,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public Style basicGetOriginalStyle() {
@@ -279,7 +266,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -293,7 +280,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -312,7 +299,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NodeMapping basicGetActualMapping() {
@@ -321,7 +308,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -335,7 +322,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -348,7 +335,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -364,7 +351,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -397,7 +384,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -431,7 +418,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -461,7 +448,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -485,7 +472,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -22,17 +22,15 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Representation Element Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Representation Element Mapping</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.RepresentationElementMappingImpl#getDetailDescriptions
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.RepresentationElementMappingImpl#getDetailDescriptions
  * <em>Detail Descriptions</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.RepresentationElementMappingImpl#getNavigationDescriptions
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.RepresentationElementMappingImpl#getNavigationDescriptions
  * <em>Navigation Descriptions</em>}</li>
  * </ul>
  *
@@ -40,9 +38,8 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  */
 public abstract class RepresentationElementMappingImpl extends IdentifiedElementImpl implements RepresentationElementMapping {
     /**
-     * The cached value of the '{@link #getDetailDescriptions()
-     * <em>Detail Descriptions</em>}' reference list. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getDetailDescriptions() <em>Detail Descriptions</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDetailDescriptions()
      * @generated
@@ -51,10 +48,9 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
     protected EList<RepresentationCreationDescription> detailDescriptions;
 
     /**
-     * The cached value of the '{@link #getNavigationDescriptions()
-     * <em>Navigation Descriptions</em>}' reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getNavigationDescriptions() <em>Navigation Descriptions</em>}' reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getNavigationDescriptions()
      * @generated
      * @ordered
@@ -63,7 +59,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RepresentationElementMappingImpl() {
@@ -72,7 +68,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -82,7 +78,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +92,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -110,7 +106,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +122,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -147,7 +143,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +161,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

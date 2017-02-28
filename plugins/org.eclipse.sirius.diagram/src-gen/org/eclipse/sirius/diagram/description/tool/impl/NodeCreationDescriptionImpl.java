@@ -30,29 +30,23 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialNodeCreationOperatio
 import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Node Creation Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Node Creation Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl#getNodeMappings
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl#getNodeMappings
  * <em>Node Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl#getVariable
- * <em>Variable</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl#getViewVariable
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl#getVariable <em>Variable</em>
+ * }</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl#getViewVariable
  * <em>View Variable</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl#getInitialOperation
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl#getIconPath
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl#getIconPath
  * <em>Icon Path</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl#getExtraMappings
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl#getExtraMappings
  * <em>Extra Mappings</em>}</li>
  * </ul>
  *
@@ -60,9 +54,9 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  */
 public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl implements NodeCreationDescription {
     /**
-     * The cached value of the '{@link #getNodeMappings() <em>Node Mappings</em>
-     * }' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getNodeMappings() <em>Node Mappings</em>}' reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getNodeMappings()
      * @generated
      * @ordered
@@ -70,9 +64,9 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     protected EList<NodeMapping> nodeMappings;
 
     /**
-     * The cached value of the '{@link #getVariable() <em>Variable</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getVariable()
      * @generated
      * @ordered
@@ -80,8 +74,8 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     protected NodeCreationVariable variable;
 
     /**
-     * The cached value of the '{@link #getViewVariable() <em>View Variable</em>
-     * }' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getViewVariable() <em>View Variable</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getViewVariable()
      * @generated
@@ -90,9 +84,8 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     protected ContainerViewVariable viewVariable;
 
     /**
-     * The cached value of the '{@link #getInitialOperation()
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInitialOperation()
      * @generated
@@ -101,9 +94,9 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     protected InitialNodeCreationOperation initialOperation;
 
     /**
-     * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -111,9 +104,9 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     protected static final String ICON_PATH_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -121,10 +114,9 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     protected String iconPath = NodeCreationDescriptionImpl.ICON_PATH_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getExtraMappings()
-     * <em>Extra Mappings</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getExtraMappings() <em>Extra Mappings</em>}' reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getExtraMappings()
      * @generated
      * @ordered
@@ -133,7 +125,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected NodeCreationDescriptionImpl() {
@@ -142,7 +134,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -152,7 +144,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +157,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -192,7 +184,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NodeCreationVariable basicGetVariable() {
@@ -201,7 +193,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetVariable(NodeCreationVariable newVariable, NotificationChain msgs) {
@@ -220,7 +212,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -244,7 +236,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -271,7 +263,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ContainerViewVariable basicGetViewVariable() {
@@ -280,7 +272,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetViewVariable(ContainerViewVariable newViewVariable, NotificationChain msgs) {
@@ -299,7 +291,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -323,7 +315,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -350,7 +342,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public InitialNodeCreationOperation basicGetInitialOperation() {
@@ -359,7 +351,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialNodeCreationOperation newInitialOperation, NotificationChain msgs) {
@@ -378,7 +370,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -402,7 +394,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -412,7 +404,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -426,7 +418,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -439,7 +431,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -457,7 +449,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -490,7 +482,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -523,7 +515,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -553,7 +545,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -577,7 +569,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

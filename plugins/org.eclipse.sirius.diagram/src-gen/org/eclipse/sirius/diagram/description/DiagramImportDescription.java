@@ -14,15 +14,14 @@ package org.eclipse.sirius.diagram.description;
 import org.eclipse.sirius.viewpoint.description.RepresentationImportDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Diagram Import Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Diagram Import Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.DiagramImportDescription#getImportedDiagram
+ * <li>{@link org.eclipse.sirius.diagram.description.DiagramImportDescription#getImportedDiagram
  * <em>Imported Diagram</em>}</li>
  * </ul>
  *
@@ -32,9 +31,8 @@ import org.eclipse.sirius.viewpoint.description.RepresentationImportDescription;
  */
 public interface DiagramImportDescription extends RepresentationImportDescription, DiagramDescription {
     /**
-     * Returns the value of the '<em><b>Imported Diagram</b></em>' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Diagram representation to import. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Imported Diagram</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> Diagram representation to import. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Imported Diagram</em>' reference.
      * @see #setImportedDiagram(DiagramDescription)
@@ -45,11 +43,9 @@ public interface DiagramImportDescription extends RepresentationImportDescriptio
     DiagramDescription getImportedDiagram();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.DiagramImportDescription#getImportedDiagram
-     * <em>Imported Diagram</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.DiagramImportDescription#getImportedDiagram
+     * <em>Imported Diagram</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Imported Diagram</em>' reference.
      * @see #getImportedDiagram()

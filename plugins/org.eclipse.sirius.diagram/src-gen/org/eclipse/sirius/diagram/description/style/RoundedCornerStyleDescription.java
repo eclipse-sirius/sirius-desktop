@@ -14,18 +14,16 @@ package org.eclipse.sirius.diagram.description.style;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Rounded Corner Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Rounded Corner Style Description</b></em>'.
+ * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth
- * <em>Arc Width</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight
+ * <li>{@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth <em>Arc Width</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight
  * <em>Arc Height</em>}</li>
  * </ul>
  *
@@ -35,10 +33,9 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  */
 public interface RoundedCornerStyleDescription extends StyleDescription {
     /**
-     * Returns the value of the '<em><b>Arc Width</b></em>' attribute. The
-     * default value is <code>"1"</code>. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> The width of the ellipse used
-     * to draw the corners. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Arc Width</b></em>' attribute. The default value is <code>"1"</code>. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The width of the ellipse used to draw the
+     * corners. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Arc Width</em>' attribute.
      * @see #setArcWidth(Integer)
@@ -50,10 +47,9 @@ public interface RoundedCornerStyleDescription extends StyleDescription {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth
-     * <em>Arc Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth <em>Arc Width</em>}
+     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Arc Width</em>' attribute.
      * @see #getArcWidth()
@@ -62,10 +58,9 @@ public interface RoundedCornerStyleDescription extends StyleDescription {
     void setArcWidth(Integer value);
 
     /**
-     * Returns the value of the '<em><b>Arc Height</b></em>' attribute. The
-     * default value is <code>"1"</code>. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> The height of the ellipse used
-     * to draw the corners. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Arc Height</b></em>' attribute. The default value is <code>"1"</code>. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The height of the ellipse used to draw the
+     * corners. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Arc Height</em>' attribute.
      * @see #setArcHeight(Integer)
@@ -78,9 +73,8 @@ public interface RoundedCornerStyleDescription extends StyleDescription {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight
-     * <em>Arc Height</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Arc Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Arc Height</em>' attribute.
      * @see #getArcHeight()

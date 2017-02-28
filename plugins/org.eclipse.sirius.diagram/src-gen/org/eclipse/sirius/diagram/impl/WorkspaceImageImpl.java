@@ -18,25 +18,22 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Workspace Image</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Workspace Image</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.WorkspaceImageImpl#getWorkspacePath
- * <em>Workspace Path</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.WorkspaceImageImpl#getWorkspacePath <em>Workspace Path</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage {
     /**
-     * The default value of the '{@link #getWorkspacePath()
-     * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getWorkspacePath() <em>Workspace Path</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getWorkspacePath()
      * @generated
      * @ordered
@@ -44,10 +41,9 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
     protected static final String WORKSPACE_PATH_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getWorkspacePath()
-     * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getWorkspacePath() <em>Workspace Path</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getWorkspacePath()
      * @generated
      * @ordered
@@ -56,7 +52,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected WorkspaceImageImpl() {
@@ -65,7 +61,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -75,7 +71,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +81,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +95,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +109,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -128,7 +124,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -143,7 +139,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -157,7 +153,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

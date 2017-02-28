@@ -26,16 +26,15 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * {@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription} object. <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDescriptionItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ShapeContainerStyleDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -43,9 +42,8 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -62,9 +60,9 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     }
 
     /**
-     * This adds a property descriptor for the Width Computation Expression
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Width Computation Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addWidthComputationExpressionPropertyDescriptor(Object object) {
@@ -77,9 +75,9 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     }
 
     /**
-     * This adds a property descriptor for the Height Computation Expression
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Height Computation Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addHeightComputationExpressionPropertyDescriptor(Object object) {
@@ -93,9 +91,8 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     }
 
     /**
-     * This adds a property descriptor for the Shape feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Shape feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addShapePropertyDescriptor(Object object) {
@@ -107,9 +104,8 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     }
 
     /**
-     * This adds a property descriptor for the Background Color feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Background Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
@@ -121,9 +117,8 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     }
 
     /**
-     * This returns ShapeContainerStyleDescription.gif. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * This returns ShapeContainerStyleDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -132,8 +127,7 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -151,10 +145,9 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -174,10 +167,9 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

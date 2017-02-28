@@ -12,11 +12,9 @@
 package org.eclipse.sirius.viewpoint.description.tool;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Delete View</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Delete View</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> Deletes the current context if it is a view <!--
- * end-model-doc -->
+ * <!-- begin-model-doc --> Deletes the current context if it is a view <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getDeleteView()

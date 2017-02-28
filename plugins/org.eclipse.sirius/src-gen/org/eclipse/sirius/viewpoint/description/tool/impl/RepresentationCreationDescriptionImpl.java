@@ -26,8 +26,8 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Representation Creation Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Representation Creation Description</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -56,10 +56,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public abstract class RepresentationCreationDescriptionImpl extends AbstractToolDescriptionImpl implements RepresentationCreationDescription {
     /**
-     * The default value of the '{@link #getTitleExpression()
-     * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getTitleExpression() <em>Title Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -67,10 +66,9 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
     protected static final String TITLE_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getTitleExpression()
-     * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getTitleExpression() <em>Title Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -78,9 +76,8 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
     protected String titleExpression = RepresentationCreationDescriptionImpl.TITLE_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getBrowseExpression()
-     * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getBrowseExpression() <em>Browse Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getBrowseExpression()
      * @generated
@@ -89,9 +86,8 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
     protected static final String BROWSE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getBrowseExpression()
-     * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getBrowseExpression() <em>Browse Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getBrowseExpression()
      * @generated
@@ -100,9 +96,8 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
     protected String browseExpression = RepresentationCreationDescriptionImpl.BROWSE_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getInitialOperation()
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInitialOperation()
      * @generated
@@ -111,10 +106,9 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
     protected InitialOperation initialOperation;
 
     /**
-     * The cached value of the '{@link #getContainerViewVariable()
-     * <em>Container View Variable</em>}' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getContainerViewVariable() <em>Container View Variable</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getContainerViewVariable()
      * @generated
      * @ordered
@@ -122,10 +116,9 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
     protected ContainerViewVariable containerViewVariable;
 
     /**
-     * The cached value of the '{@link #getRepresentationNameVariable()
-     * <em>Representation Name Variable</em>}' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getRepresentationNameVariable() <em>Representation Name Variable</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getRepresentationNameVariable()
      * @generated
      * @ordered
@@ -134,7 +127,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RepresentationCreationDescriptionImpl() {
@@ -143,7 +136,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -153,7 +146,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -163,7 +156,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -177,7 +170,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -187,7 +180,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -201,7 +194,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -213,12 +206,11 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public RepresentationDescription basicGetRepresentationDescription() {
-        // TODO: implement this method to return the 'Representation
-        // Description' reference
+        // TODO: implement this method to return the 'Representation Description' reference
         // -> do not perform proxy resolution
         // Ensure that you remove @generated or mark it @generated NOT
         throw new UnsupportedOperationException();
@@ -226,7 +218,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -254,7 +246,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -263,7 +255,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -283,7 +275,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -309,7 +301,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -338,7 +330,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ContainerViewVariable basicGetContainerViewVariable() {
@@ -347,7 +339,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetContainerViewVariable(ContainerViewVariable newContainerViewVariable, NotificationChain msgs) {
@@ -367,7 +359,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -393,7 +385,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -423,7 +415,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NameVariable basicGetRepresentationNameVariable() {
@@ -432,7 +424,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetRepresentationNameVariable(NameVariable newRepresentationNameVariable, NotificationChain msgs) {
@@ -452,7 +444,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -479,7 +471,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -491,7 +483,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -509,7 +501,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -545,7 +537,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -572,7 +564,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -599,7 +591,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -625,7 +617,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -20,17 +20,15 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.IndirectlyCollapseFilter} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.IndirectlyCollapseFilter} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public IndirectlyCollapseFilterItemProvider(AdapterFactory adapterFactory) {
@@ -38,9 +36,8 @@ public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProv
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -53,9 +50,8 @@ public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProv
     }
 
     /**
-     * This returns IndirectlyCollapseFilter.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns IndirectlyCollapseFilter.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -64,9 +60,8 @@ public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProv
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -76,10 +71,9 @@ public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProv
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -90,10 +84,9 @@ public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProv
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

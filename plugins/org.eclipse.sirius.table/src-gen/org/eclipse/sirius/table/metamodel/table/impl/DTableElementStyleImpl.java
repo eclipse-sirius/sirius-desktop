@@ -26,29 +26,23 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DTable Element Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DTable Element Style</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getLabelSize
- * <em>Label Size</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getLabelFormat
- * <em>Label Format</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#isDefaultForegroundStyle
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getLabelSize <em>Label Size</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getLabelFormat <em>Label Format</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#isDefaultForegroundStyle
  * <em>Default Foreground Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#isDefaultBackgroundStyle
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#isDefaultBackgroundStyle
  * <em>Default Background Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getForegroundColor
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getForegroundColor
  * <em>Foreground Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getBackgroundColor
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
  * </ul>
  *
@@ -57,9 +51,9 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 public class DTableElementStyleImpl extends MinimalEObjectImpl.Container implements DTableElementStyle {
 
     /**
-     * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelSize() <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -67,9 +61,9 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     protected static final int LABEL_SIZE_EDEFAULT = 8;
 
     /**
-     * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -77,9 +71,9 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     protected int labelSize = DTableElementStyleImpl.LABEL_SIZE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
-     * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}' attribute list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getLabelFormat()
      * @generated
      * @ordered
@@ -87,9 +81,8 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     protected EList<FontFormat> labelFormat;
 
     /**
-     * The default value of the '{@link #isDefaultForegroundStyle()
-     * <em>Default Foreground Style</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #isDefaultForegroundStyle() <em>Default Foreground Style</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isDefaultForegroundStyle()
      * @generated
@@ -98,9 +91,8 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     protected static final boolean DEFAULT_FOREGROUND_STYLE_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isDefaultForegroundStyle()
-     * <em>Default Foreground Style</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #isDefaultForegroundStyle() <em>Default Foreground Style</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isDefaultForegroundStyle()
      * @generated
@@ -109,9 +101,8 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     protected boolean defaultForegroundStyle = DTableElementStyleImpl.DEFAULT_FOREGROUND_STYLE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isDefaultBackgroundStyle()
-     * <em>Default Background Style</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #isDefaultBackgroundStyle() <em>Default Background Style</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isDefaultBackgroundStyle()
      * @generated
@@ -120,9 +111,8 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     protected static final boolean DEFAULT_BACKGROUND_STYLE_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isDefaultBackgroundStyle()
-     * <em>Default Background Style</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #isDefaultBackgroundStyle() <em>Default Background Style</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isDefaultBackgroundStyle()
      * @generated
@@ -131,10 +121,9 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     protected boolean defaultBackgroundStyle = DTableElementStyleImpl.DEFAULT_BACKGROUND_STYLE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getForegroundColor()
-     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getForegroundColor() <em>Foreground Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -142,10 +131,9 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     protected static final RGBValues FOREGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0"); //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getForegroundColor()
-     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getForegroundColor() <em>Foreground Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -153,10 +141,9 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     protected RGBValues foregroundColor = DTableElementStyleImpl.FOREGROUND_COLOR_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -164,10 +151,9 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "255,255,255"); //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -176,7 +162,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DTableElementStyleImpl() {
@@ -185,7 +171,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -195,7 +181,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -205,7 +191,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -219,7 +205,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -232,7 +218,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -242,7 +228,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -256,7 +242,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -266,7 +252,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -280,7 +266,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -290,7 +276,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -304,7 +290,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -314,7 +300,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -328,7 +314,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -352,7 +338,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -384,7 +370,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -414,7 +400,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -438,7 +424,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

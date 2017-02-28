@@ -16,15 +16,15 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.ObservationPointMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Observation Point Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Observation Point Mapping</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public class ObservationPointMappingImpl extends NodeMappingImpl implements ObservationPointMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ObservationPointMappingImpl() {
@@ -33,7 +33,7 @@ public class ObservationPointMappingImpl extends NodeMappingImpl implements Obse
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

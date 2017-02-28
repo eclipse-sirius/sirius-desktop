@@ -18,14 +18,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Change Context</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Change Context</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ChangeContextImpl#getBrowseExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.ChangeContextImpl#getBrowseExpression
  * <em>Browse Expression</em>}</li>
  * </ul>
  *
@@ -33,9 +32,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public class ChangeContextImpl extends ContainerModelOperationImpl implements ChangeContext {
     /**
-     * The default value of the '{@link #getBrowseExpression()
-     * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getBrowseExpression() <em>Browse Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getBrowseExpression()
      * @generated
@@ -44,9 +42,8 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
     protected static final String BROWSE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getBrowseExpression()
-     * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getBrowseExpression() <em>Browse Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getBrowseExpression()
      * @generated
@@ -56,7 +53,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ChangeContextImpl() {
@@ -65,7 +62,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -75,7 +72,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +82,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +96,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +110,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -128,7 +125,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -143,7 +140,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -157,7 +154,7 @@ public class ChangeContextImpl extends ContainerModelOperationImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

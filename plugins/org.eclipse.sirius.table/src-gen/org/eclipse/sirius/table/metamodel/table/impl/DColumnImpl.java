@@ -29,41 +29,28 @@ import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DColumn</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DColumn</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getLabel
- * <em>Label</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getCells
- * <em>Cells</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getOriginMapping
- * <em>Origin Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getTable
- * <em>Table</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getOrderedCells
- * <em>Ordered Cells</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#isVisible
- * <em>Visible</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getWidth
- * <em>Width</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getCurrentStyle
- * <em>Current Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getCells <em>Cells</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getOriginMapping <em>Origin Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getTable <em>Table</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getOrderedCells <em>Ordered Cells</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#isVisible <em>Visible</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getWidth <em>Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl#getCurrentStyle <em>Current Style</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
     /**
-     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabel()
      * @generated
      * @ordered
@@ -71,8 +58,8 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
     protected static final String LABEL_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getLabel()
      * @generated
@@ -81,9 +68,9 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
     protected String label = DColumnImpl.LABEL_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getCells() <em>Cells</em>}' reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getCells() <em>Cells</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getCells()
      * @generated
      * @ordered
@@ -91,10 +78,9 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
     protected EList<DCell> cells;
 
     /**
-     * The cached value of the '{@link #getOriginMapping()
-     * <em>Origin Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getOriginMapping() <em>Origin Mapping</em>}' reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getOriginMapping()
      * @generated
      * @ordered
@@ -102,9 +88,9 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
     protected ColumnMapping originMapping;
 
     /**
-     * The default value of the '{@link #isVisible() <em>Visible</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #isVisible() <em>Visible</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isVisible()
      * @generated
      * @ordered
@@ -112,9 +98,9 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
     protected static final boolean VISIBLE_EDEFAULT = true;
 
     /**
-     * The cached value of the '{@link #isVisible() <em>Visible</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #isVisible() <em>Visible</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isVisible()
      * @generated
      * @ordered
@@ -122,9 +108,9 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
     protected boolean visible = DColumnImpl.VISIBLE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getWidth()
      * @generated
      * @ordered
@@ -132,8 +118,8 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
     protected static final int WIDTH_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getWidth()
      * @generated
@@ -142,8 +128,8 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
     protected int width = DColumnImpl.WIDTH_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getCurrentStyle() <em>Current Style</em>
-     * }' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getCurrentStyle() <em>Current Style</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCurrentStyle()
      * @generated
@@ -153,7 +139,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DColumnImpl() {
@@ -162,7 +148,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -172,7 +158,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +168,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -196,7 +182,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -209,7 +195,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -228,7 +214,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColumnMapping basicGetOriginMapping() {
@@ -237,7 +223,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -251,7 +237,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -264,7 +250,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetTable(DTable newTable, NotificationChain msgs) {
@@ -274,7 +260,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -301,25 +287,22 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<DCell> getOrderedCells() {
-        // TODO: implement this method to return the 'Ordered Cells' reference
-        // list
+        // TODO: implement this method to return the 'Ordered Cells' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -329,7 +312,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -343,7 +326,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -353,7 +336,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -367,7 +350,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -377,7 +360,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetCurrentStyle(DTableElementStyle newCurrentStyle, NotificationChain msgs) {
@@ -396,7 +379,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -420,7 +403,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -440,7 +423,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -458,7 +441,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -472,7 +455,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -503,7 +486,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -538,7 +521,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -571,7 +554,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -599,7 +582,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

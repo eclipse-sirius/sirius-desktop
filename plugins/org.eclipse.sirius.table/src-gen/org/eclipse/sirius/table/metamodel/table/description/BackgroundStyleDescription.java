@@ -14,15 +14,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Background Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Background Style Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription#getBackgroundColor
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription#getBackgroundColor
  * <em>Background Color</em>}</li>
  * </ul>
  *
@@ -32,14 +31,13 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  */
 public interface BackgroundStyleDescription extends EObject {
     /**
-     * Returns the value of the '<em><b>Background Color</b></em>' reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Background Color</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Background Color</em>' containment reference
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Background Color</em>' containment reference isn't clear, there really should be more
+     * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getBackgroundStyleDescription_BackgroundColor()
@@ -51,9 +49,8 @@ public interface BackgroundStyleDescription extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription#getBackgroundColor
-     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()

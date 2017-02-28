@@ -12,18 +12,15 @@
 package org.eclipse.sirius.diagram.description;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Additional Layer</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Additional Layer</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.AdditionalLayer#isActiveByDefault
- * <em>Active By Default</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.AdditionalLayer#isOptional
- * <em>Optional</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.AdditionalLayer#isActiveByDefault <em>Active By Default</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.AdditionalLayer#isOptional <em>Optional</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAdditionalLayer()
@@ -32,14 +29,13 @@ package org.eclipse.sirius.diagram.description;
  */
 public interface AdditionalLayer extends Layer {
     /**
-     * Returns the value of the '<em><b>Active By Default</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Active By Default</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Active By Default</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Active By Default</em>' attribute isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Active By Default</em>' attribute.
      * @see #setActiveByDefault(boolean)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAdditionalLayer_ActiveByDefault()
@@ -49,11 +45,9 @@ public interface AdditionalLayer extends Layer {
     boolean isActiveByDefault();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.AdditionalLayer#isActiveByDefault
-     * <em>Active By Default</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.AdditionalLayer#isActiveByDefault
+     * <em>Active By Default</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Active By Default</em>' attribute.
      * @see #isActiveByDefault()
@@ -62,11 +56,11 @@ public interface AdditionalLayer extends Layer {
     void setActiveByDefault(boolean value);
 
     /**
-     * Returns the value of the '<em><b>Optional</b></em>' attribute. The
-     * default value is <code>"true"</code>. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Optional</b></em>' attribute. The default value is <code>"true"</code>. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Optional</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Optional</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -79,11 +73,9 @@ public interface AdditionalLayer extends Layer {
     boolean isOptional();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.AdditionalLayer#isOptional
-     * <em>Optional</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.AdditionalLayer#isOptional <em>Optional</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Optional</em>' attribute.
      * @see #isOptional()

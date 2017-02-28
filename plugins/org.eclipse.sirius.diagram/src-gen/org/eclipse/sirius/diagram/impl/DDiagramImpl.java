@@ -43,60 +43,39 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DDiagram</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DDiagram</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getOwnedDiagramElements
- * <em>Owned Diagram Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getDiagramElements
- * <em>Diagram Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getDescription
- * <em>Description</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getEdges
- * <em>Edges</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getNodes
- * <em>Nodes</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getNodeListElements
- * <em>Node List Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getContainers
- * <em>Containers</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getCurrentConcern
- * <em>Current Concern</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivatedFilters
- * <em>Activated Filters</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getAllFilters
- * <em>All Filters</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivatedRules
- * <em>Activated Rules</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivateBehaviors
- * <em>Activate Behaviors</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getFilterVariableHistory
- * <em>Filter Variable History</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivatedLayers
- * <em>Activated Layers</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#isSynchronized
- * <em>Synchronized</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getHiddenElements
- * <em>Hidden Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#isIsInLayoutingMode
- * <em>Is In Layouting Mode</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getHeaderHeight
- * <em>Header Height</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getOwnedDiagramElements <em>Owned Diagram Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getDiagramElements <em>Diagram Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getDescription <em>Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getEdges <em>Edges</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getNodes <em>Nodes</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getNodeListElements <em>Node List Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getContainers <em>Containers</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getCurrentConcern <em>Current Concern</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivatedFilters <em>Activated Filters</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getAllFilters <em>All Filters</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivatedRules <em>Activated Rules</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivateBehaviors <em>Activate Behaviors</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getFilterVariableHistory <em>Filter Variable History</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivatedLayers <em>Activated Layers</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#isSynchronized <em>Synchronized</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getHiddenElements <em>Hidden Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#isIsInLayoutingMode <em>Is In Layouting Mode</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getHeaderHeight <em>Header Height</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     /**
-     * The cached value of the '{@link #getOwnedDiagramElements()
-     * <em>Owned Diagram Elements</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedDiagramElements() <em>Owned Diagram Elements</em>}' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getOwnedDiagramElements()
      * @generated
      * @ordered
@@ -104,9 +83,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected EList<DDiagramElement> ownedDiagramElements;
 
     /**
-     * The cached value of the '{@link #getDescription() <em>Description</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getDescription() <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getDescription()
      * @generated
      * @ordered
@@ -114,10 +93,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected DiagramDescription description;
 
     /**
-     * The cached value of the '{@link #getCurrentConcern()
-     * <em>Current Concern</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getCurrentConcern() <em>Current Concern</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getCurrentConcern()
      * @generated
      * @ordered
@@ -125,9 +103,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected ConcernDescription currentConcern;
 
     /**
-     * The cached value of the '{@link #getActivatedFilters()
-     * <em>Activated Filters</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getActivatedFilters() <em>Activated Filters</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getActivatedFilters()
      * @generated
@@ -136,9 +113,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected EList<FilterDescription> activatedFilters;
 
     /**
-     * The cached value of the '{@link #getActivatedRules()
-     * <em>Activated Rules</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getActivatedRules() <em>Activated Rules</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getActivatedRules()
      * @generated
@@ -147,9 +123,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected EList<ValidationRule> activatedRules;
 
     /**
-     * The cached value of the '{@link #getActivateBehaviors()
-     * <em>Activate Behaviors</em>}' reference list. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getActivateBehaviors() <em>Activate Behaviors</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getActivateBehaviors()
      * @generated
@@ -158,10 +133,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected EList<BehaviorTool> activateBehaviors;
 
     /**
-     * The cached value of the '{@link #getFilterVariableHistory()
-     * <em>Filter Variable History</em>}' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterVariableHistory() <em>Filter Variable History</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterVariableHistory()
      * @generated
      * @ordered
@@ -169,9 +143,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected FilterVariableHistory filterVariableHistory;
 
     /**
-     * The cached value of the '{@link #getActivatedLayers()
-     * <em>Activated Layers</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getActivatedLayers() <em>Activated Layers</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getActivatedLayers()
      * @generated
@@ -180,9 +153,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected EList<Layer> activatedLayers;
 
     /**
-     * The default value of the '{@link #isSynchronized() <em>Synchronized</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #isSynchronized() <em>Synchronized</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isSynchronized()
      * @generated
      * @ordered
@@ -190,9 +163,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected static final boolean SYNCHRONIZED_EDEFAULT = true;
 
     /**
-     * The cached value of the '{@link #isSynchronized() <em>Synchronized</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #isSynchronized() <em>Synchronized</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isSynchronized()
      * @generated
      * @ordered
@@ -200,9 +173,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected boolean synchronized_ = DDiagramImpl.SYNCHRONIZED_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getHiddenElements()
-     * <em>Hidden Elements</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getHiddenElements() <em>Hidden Elements</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getHiddenElements()
      * @generated
@@ -211,9 +183,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected EList<DDiagramElement> hiddenElements;
 
     /**
-     * The default value of the '{@link #isIsInLayoutingMode()
-     * <em>Is In Layouting Mode</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #isIsInLayoutingMode() <em>Is In Layouting Mode</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isIsInLayoutingMode()
      * @generated
@@ -222,9 +193,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected static final boolean IS_IN_LAYOUTING_MODE_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isIsInLayoutingMode()
-     * <em>Is In Layouting Mode</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #isIsInLayoutingMode() <em>Is In Layouting Mode</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isIsInLayoutingMode()
      * @generated
@@ -233,10 +203,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected boolean isInLayoutingMode = DDiagramImpl.IS_IN_LAYOUTING_MODE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getHeaderHeight()
-     * <em>Header Height</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getHeaderHeight() <em>Header Height</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getHeaderHeight()
      * @generated
      * @ordered
@@ -244,9 +213,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected static final int HEADER_HEIGHT_EDEFAULT = 1;
 
     /**
-     * The cached value of the '{@link #getHeaderHeight() <em>Header Height</em>
-     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getHeaderHeight() <em>Header Height</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getHeaderHeight()
      * @generated
      * @ordered
@@ -255,7 +224,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DDiagramImpl() {
@@ -264,7 +233,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -274,7 +243,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -287,25 +256,22 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<DDiagramElement> getDiagramElements() {
-        // TODO: implement this method to return the 'Diagram Elements'
-        // reference list
+        // TODO: implement this method to return the 'Diagram Elements' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -324,7 +290,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public DiagramDescription basicGetDescription() {
@@ -333,7 +299,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -347,76 +313,67 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<DEdge> getEdges() {
         // TODO: implement this method to return the 'Edges' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<DNode> getNodes() {
         // TODO: implement this method to return the 'Nodes' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<DNodeListElement> getNodeListElements() {
-        // TODO: implement this method to return the 'Node List Elements'
-        // reference list
+        // TODO: implement this method to return the 'Node List Elements' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<DDiagramElementContainer> getContainers() {
         // TODO: implement this method to return the 'Containers' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -435,7 +392,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ConcernDescription basicGetCurrentConcern() {
@@ -444,7 +401,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -458,7 +415,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -471,25 +428,22 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<FilterDescription> getAllFilters() {
-        // TODO: implement this method to return the 'All Filters' reference
-        // list
+        // TODO: implement this method to return the 'All Filters' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -502,7 +456,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -515,7 +469,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -542,7 +496,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public FilterVariableHistory basicGetFilterVariableHistory() {
@@ -551,7 +505,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetFilterVariableHistory(FilterVariableHistory newFilterVariableHistory, NotificationChain msgs) {
@@ -570,7 +524,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -594,7 +548,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -607,7 +561,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -617,7 +571,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -631,7 +585,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -644,7 +598,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -654,7 +608,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -668,7 +622,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -678,7 +632,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -692,7 +646,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -704,7 +658,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -716,7 +670,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -728,7 +682,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -740,7 +694,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -756,7 +710,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -813,7 +767,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -868,7 +822,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -916,7 +870,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -964,7 +918,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

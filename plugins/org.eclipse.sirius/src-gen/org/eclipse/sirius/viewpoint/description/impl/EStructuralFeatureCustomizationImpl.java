@@ -24,17 +24,15 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>EStructural Feature Customization</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>EStructural Feature Customization</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.EStructuralFeatureCustomizationImpl#getAppliedOn
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.EStructuralFeatureCustomizationImpl#getAppliedOn
  * <em>Applied On</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.EStructuralFeatureCustomizationImpl#isApplyOnAll
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.EStructuralFeatureCustomizationImpl#isApplyOnAll
  * <em>Apply On All</em>}</li>
  * </ul>
  *
@@ -42,9 +40,9 @@ import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
  */
 public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObjectImpl.Container implements EStructuralFeatureCustomization {
     /**
-     * The cached value of the '{@link #getAppliedOn() <em>Applied On</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getAppliedOn() <em>Applied On</em>}' reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getAppliedOn()
      * @generated
      * @ordered
@@ -52,9 +50,9 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
     protected EList<EObject> appliedOn;
 
     /**
-     * The default value of the '{@link #isApplyOnAll() <em>Apply On All</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #isApplyOnAll() <em>Apply On All</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isApplyOnAll()
      * @generated
      * @ordered
@@ -62,9 +60,9 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
     protected static final boolean APPLY_ON_ALL_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isApplyOnAll() <em>Apply On All</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #isApplyOnAll() <em>Apply On All</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isApplyOnAll()
      * @generated
      * @ordered
@@ -73,7 +71,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected EStructuralFeatureCustomizationImpl() {
@@ -82,7 +80,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -92,7 +90,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -105,7 +103,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -115,7 +113,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +127,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +143,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -165,7 +163,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -183,7 +181,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -199,7 +197,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

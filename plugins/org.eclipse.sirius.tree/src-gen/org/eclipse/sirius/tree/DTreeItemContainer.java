@@ -14,15 +14,14 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DTree Item Container</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DTree Item Container</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.DTreeItemContainer#getOwnedTreeItems
- * <em>Owned Tree Items</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItemContainer#getOwnedTreeItems <em>Owned Tree Items</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.tree.TreePackage#getDTreeItemContainer()
@@ -31,19 +30,16 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  */
 public interface DTreeItemContainer extends DSemanticDecorator {
     /**
-     * Returns the value of the '<em><b>Owned Tree Items</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.tree.DTreeItem}. It is bidirectional and its
-     * opposite is '{@link org.eclipse.sirius.tree.DTreeItem#getContainer
-     * <em>Container</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Owned Tree Items</b></em>' containment reference list. The list contents are of
+     * type {@link org.eclipse.sirius.tree.DTreeItem}. It is bidirectional and its opposite is '
+     * {@link org.eclipse.sirius.tree.DTreeItem#getContainer <em>Container</em>}'. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Owned Tree Items</em>' containment reference
-     * list isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Owned Tree Items</em>' containment reference list isn't clear, there really should be
+     * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Owned Tree Items</em>' containment
-     *         reference list.
+     * 
+     * @return the value of the '<em>Owned Tree Items</em>' containment reference list.
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeItemContainer_OwnedTreeItems()
      * @see org.eclipse.sirius.tree.DTreeItem#getContainer
      * @model opposite="container" containment="true"

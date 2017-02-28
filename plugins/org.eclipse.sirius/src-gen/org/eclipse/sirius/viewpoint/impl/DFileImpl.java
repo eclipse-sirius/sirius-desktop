@@ -19,24 +19,21 @@ import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DFile</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DFile</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DFileImpl#getName <em>Name</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DFileImpl#getPath <em>Path</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DFileImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DFileImpl#getPath <em>Path</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -45,8 +42,8 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -55,8 +52,8 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
     protected String name = DFileImpl.NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getPath() <em>Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getPath()
      * @generated
@@ -65,8 +62,8 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
     protected static final String PATH_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getPath() <em>Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getPath()
      * @generated
@@ -76,7 +73,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DFileImpl() {
@@ -85,7 +82,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -95,7 +92,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -105,7 +102,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -119,7 +116,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +126,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -143,7 +140,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +156,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -177,7 +174,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -195,7 +192,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -211,7 +208,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

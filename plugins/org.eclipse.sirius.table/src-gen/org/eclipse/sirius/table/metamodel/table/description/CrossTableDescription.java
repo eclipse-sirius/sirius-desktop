@@ -13,21 +13,18 @@ package org.eclipse.sirius.table.metamodel.table.description;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Cross Table Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Cross Table Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getOwnedColumnMappings
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getOwnedColumnMappings
  * <em>Owned Column Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getIntersection
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getIntersection
  * <em>Intersection</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getCreateColumn
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getCreateColumn
  * <em>Create Column</em>}</li>
  * </ul>
  *
@@ -37,19 +34,16 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface CrossTableDescription extends TableDescription {
     /**
-     * Returns the value of the '<em><b>Owned Column Mappings</b></em>'
-     * containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Owned Column Mappings</b></em>' containment reference list. The list contents
+     * are of type {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping}. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Owned Column Mappings</em>' containment
-     * reference list isn't clear, there really should be more of a description
-     * here...
+     * If the meaning of the '<em>Owned Column Mappings</em>' containment reference list isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Owned Column Mappings</em>' containment
-     *         reference list.
+     * @return the value of the '<em>Owned Column Mappings</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCrossTableDescription_OwnedColumnMappings()
      * @model containment="true" required="true"
      * @generated
@@ -57,18 +51,15 @@ public interface CrossTableDescription extends TableDescription {
     EList<ElementColumnMapping> getOwnedColumnMappings();
 
     /**
-     * Returns the value of the '<em><b>Intersection</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Intersection</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Intersection</em>' containment reference list
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Intersection</em>' containment reference list isn't clear, there really should be more
+     * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Intersection</em>' containment reference
-     *         list.
+     * 
+     * @return the value of the '<em>Intersection</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCrossTableDescription_Intersection()
      * @model containment="true"
      * @generated
@@ -76,18 +67,15 @@ public interface CrossTableDescription extends TableDescription {
     EList<IntersectionMapping> getIntersection();
 
     /**
-     * Returns the value of the '<em><b>Create Column</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Create Column</b></em>' containment reference list. The list contents are of
+     * type {@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Create Column</em>' containment reference list
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Create Column</em>' containment reference list isn't clear, there really should be
+     * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Create Column</em>' containment reference
-     *         list.
+     * 
+     * @return the value of the '<em>Create Column</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCrossTableDescription_CreateColumn()
      * @model containment="true"
      * @generated

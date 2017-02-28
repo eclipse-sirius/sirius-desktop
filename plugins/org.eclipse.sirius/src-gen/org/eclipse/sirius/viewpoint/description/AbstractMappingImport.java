@@ -14,18 +14,16 @@ package org.eclipse.sirius.viewpoint.description;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Abstract Mapping Import</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Abstract Mapping Import</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isHideSubMappings
+ * <li>{@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isHideSubMappings
  * <em>Hide Sub Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isInheritsAncestorFilters
+ * <li>{@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isInheritsAncestorFilters
  * <em>Inherits Ancestor Filters</em>}</li>
  * </ul>
  *
@@ -35,11 +33,9 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface AbstractMappingImport extends EObject {
     /**
-     * Returns the value of the '<em><b>Hide Sub Mappings</b></em>' attribute.
-     * The default value is <code>"false"</code>. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> Set to true if you don't want
-     * to inherit the sub mappings of the imported mapping. <!-- end-model-doc
-     * -->
+     * Returns the value of the '<em><b>Hide Sub Mappings</b></em>' attribute. The default value is <code>"false"</code>
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Set to true if you don't want to inherit
+     * the sub mappings of the imported mapping. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Hide Sub Mappings</em>' attribute.
      * @see #setHideSubMappings(boolean)
@@ -50,11 +46,9 @@ public interface AbstractMappingImport extends EObject {
     boolean isHideSubMappings();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isHideSubMappings
-     * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isHideSubMappings
+     * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Hide Sub Mappings</em>' attribute.
      * @see #isHideSubMappings()
@@ -63,11 +57,9 @@ public interface AbstractMappingImport extends EObject {
     void setHideSubMappings(boolean value);
 
     /**
-     * Returns the value of the '<em><b>Inherits Ancestor Filters</b></em>'
-     * attribute. The default value is <code>"true"</code>. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> Set to true if you
-     * want the filters applying on the imported mappings apply on this one.
-     * <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Inherits Ancestor Filters</b></em>' attribute. The default value is
+     * <code>"true"</code>. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Set to true if you
+     * want the filters applying on the imported mappings apply on this one. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Inherits Ancestor Filters</em>' attribute.
      * @see #setInheritsAncestorFilters(boolean)
@@ -80,12 +72,10 @@ public interface AbstractMappingImport extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isInheritsAncestorFilters
-     * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Inherits Ancestor Filters</em>'
-     *            attribute.
+     *            the new value of the '<em>Inherits Ancestor Filters</em>' attribute.
      * @see #isInheritsAncestorFilters()
      * @generated
      */

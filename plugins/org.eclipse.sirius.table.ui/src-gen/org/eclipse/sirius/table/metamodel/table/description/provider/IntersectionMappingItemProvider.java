@@ -40,16 +40,15 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping} object. <!-- begin-user-doc --> <!--
+ * end-user-doc -->
+ * 
  * @generated
  */
 public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public IntersectionMappingItemProvider(AdapterFactory adapterFactory) {
@@ -57,9 +56,8 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -83,9 +81,8 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Can Edit feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Can Edit feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addCanEditPropertyDescriptor(Object object) {
@@ -97,9 +94,8 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Line Mapping feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Line Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addLineMappingPropertyDescriptor(Object object) {
@@ -111,9 +107,8 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Column Mapping feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Column Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addColumnMappingPropertyDescriptor(Object object) {
@@ -125,9 +120,8 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Label Expression feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Label Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -139,9 +133,8 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Use Domain Class feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Use Domain Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addUseDomainClassPropertyDescriptor(Object object) {
@@ -153,9 +146,9 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Column Finder Expression feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Column Finder Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addColumnFinderExpressionPropertyDescriptor(Object object) {
@@ -167,8 +160,8 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Line Finder Expression feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Line Finder Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -181,9 +174,9 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Semantic Candidates Expression
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Semantic Candidates Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
@@ -196,9 +189,8 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Domain Class feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Domain Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -210,9 +202,9 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Precondition Expression feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Precondition Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
@@ -224,9 +216,8 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Create feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Create feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addCreatePropertyDescriptor(Object object) {
@@ -237,13 +228,11 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to
-     * deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand},
-     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in
-     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -262,22 +251,20 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper
-        // feature to use for
+        // Check the type of the specified child object and return the proper feature to use for
         // adding (see {@link AddCommand}) it as a child.
 
         return super.getChildFeature(object, child);
     }
 
     /**
-     * This returns IntersectionMapping.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns IntersectionMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -286,8 +273,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -298,10 +284,9 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -333,10 +318,9 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
@@ -356,9 +340,8 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * Add the variables to the labelEditTool
      *

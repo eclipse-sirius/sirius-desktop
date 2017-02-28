@@ -28,23 +28,18 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Checkbox Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Checkbox Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getValueExpression
- * <em>Value Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getInitialOperation
- * <em>Initial Operation</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getStyle
- * <em>Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getConditionalStyles
+ * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getValueExpression <em>Value Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getInitialOperation <em>Initial Operation</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getStyle <em>Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getConditionalStyles
  * <em>Conditional Styles</em>}</li>
  * </ul>
  *
@@ -52,10 +47,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  */
 public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements CheckboxDescription {
     /**
-     * The default value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -63,10 +57,9 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
     protected static final String VALUE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -74,9 +67,8 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
     protected String valueExpression = CheckboxDescriptionImpl.VALUE_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getInitialOperation()
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInitialOperation()
      * @generated
@@ -85,9 +77,9 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
     protected InitialOperation initialOperation;
 
     /**
-     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -95,10 +87,9 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
     protected CheckboxWidgetStyle style;
 
     /**
-     * The cached value of the '{@link #getConditionalStyles()
-     * <em>Conditional Styles</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -107,7 +98,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CheckboxDescriptionImpl() {
@@ -116,7 +107,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +117,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -136,7 +127,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -150,7 +141,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -160,7 +151,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -179,7 +170,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -203,7 +194,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -213,7 +204,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(CheckboxWidgetStyle newStyle, NotificationChain msgs) {
@@ -232,7 +223,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -256,7 +247,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -269,7 +260,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -287,7 +278,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -307,7 +298,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -333,7 +324,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -357,7 +348,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -377,7 +368,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

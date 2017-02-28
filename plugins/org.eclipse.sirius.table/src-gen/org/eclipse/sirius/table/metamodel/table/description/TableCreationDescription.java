@@ -13,15 +13,14 @@ package org.eclipse.sirius.table.metamodel.table.description;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Table Creation Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Table Creation Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription#getTableDescription
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription#getTableDescription
  * <em>Table Description</em>}</li>
  * </ul>
  *
@@ -31,14 +30,13 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
  */
 public interface TableCreationDescription extends RepresentationCreationDescription {
     /**
-     * Returns the value of the '<em><b>Table Description</b></em>' reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Table Description</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Table Description</em>' reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Table Description</em>' reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Table Description</em>' reference.
      * @see #setTableDescription(TableDescription)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableCreationDescription_TableDescription()
@@ -50,9 +48,8 @@ public interface TableCreationDescription extends RepresentationCreationDescript
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription#getTableDescription
-     * <em>Table Description</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Table Description</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Table Description</em>' reference.
      * @see #getTableDescription()

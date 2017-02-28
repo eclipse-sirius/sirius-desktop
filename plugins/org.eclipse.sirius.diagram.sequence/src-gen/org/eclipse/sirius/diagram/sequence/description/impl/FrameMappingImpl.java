@@ -20,23 +20,18 @@ import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 import org.eclipse.sirius.diagram.sequence.description.FrameMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Frame Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Frame Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl#getStartingEndFinderExpression
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl#getStartingEndFinderExpression
  * <em>Starting End Finder Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl#getFinishingEndFinderExpression
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl#getFinishingEndFinderExpression
  * <em>Finishing End Finder Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl#getCoveredLifelinesExpression
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl#getCoveredLifelinesExpression
  * <em>Covered Lifelines Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl#getCenterLabelExpression
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.impl.FrameMappingImpl#getCenterLabelExpression
  * <em>Center Label Expression</em>}</li>
  * </ul>
  *
@@ -44,10 +39,9 @@ import org.eclipse.sirius.diagram.sequence.description.FrameMapping;
  */
 public abstract class FrameMappingImpl extends ContainerMappingImpl implements FrameMapping {
     /**
-     * The default value of the '{@link #getStartingEndFinderExpression()
-     * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getStartingEndFinderExpression() <em>Starting End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -55,10 +49,9 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
     protected static final String STARTING_END_FINDER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getStartingEndFinderExpression()
-     * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStartingEndFinderExpression() <em>Starting End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -66,10 +59,9 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
     protected String startingEndFinderExpression = FrameMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFinishingEndFinderExpression()
-     * <em>Finishing End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getFinishingEndFinderExpression() <em>Finishing End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -77,10 +69,9 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
     protected static final String FINISHING_END_FINDER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFinishingEndFinderExpression()
-     * <em>Finishing End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFinishingEndFinderExpression() <em>Finishing End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -88,10 +79,9 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
     protected String finishingEndFinderExpression = FrameMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getCoveredLifelinesExpression()
-     * <em>Covered Lifelines Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getCoveredLifelinesExpression() <em>Covered Lifelines Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getCoveredLifelinesExpression()
      * @generated
      * @ordered
@@ -99,10 +89,9 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
     protected static final String COVERED_LIFELINES_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getCoveredLifelinesExpression()
-     * <em>Covered Lifelines Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getCoveredLifelinesExpression() <em>Covered Lifelines Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getCoveredLifelinesExpression()
      * @generated
      * @ordered
@@ -110,9 +99,8 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
     protected String coveredLifelinesExpression = FrameMappingImpl.COVERED_LIFELINES_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getCenterLabelExpression()
-     * <em>Center Label Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getCenterLabelExpression() <em>Center Label Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCenterLabelExpression()
      * @generated
@@ -121,9 +109,8 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
     protected static final String CENTER_LABEL_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getCenterLabelExpression()
-     * <em>Center Label Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getCenterLabelExpression() <em>Center Label Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCenterLabelExpression()
      * @generated
@@ -133,7 +120,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected FrameMappingImpl() {
@@ -142,7 +129,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -152,7 +139,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +149,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -176,7 +163,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -186,7 +173,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -200,7 +187,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -210,7 +197,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -224,7 +211,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -234,7 +221,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -248,7 +235,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -268,7 +255,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -292,7 +279,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -316,7 +303,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -339,7 +326,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -365,7 +352,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -391,7 +378,7 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

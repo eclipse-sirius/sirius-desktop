@@ -22,14 +22,13 @@ import org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>TSource Target Message Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>TSource Target Message Mapping</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.impl.TSourceTargetMessageMappingImpl#getSource
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TSourceTargetMessageMappingImpl#getSource
  * <em>Source</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.impl.TSourceTargetMessageMappingImpl#getSourceFinderExpression
@@ -37,8 +36,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.impl.TSourceTargetMessageMappingImpl#getTargetFinderExpression
  * <em>Target Finder Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.impl.TSourceTargetMessageMappingImpl#isUseDomainElement
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TSourceTargetMessageMappingImpl#isUseDomainElement
  * <em>Use Domain Element</em>}</li>
  * </ul>
  *
@@ -46,9 +44,9 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  */
 public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImpl implements TSourceTargetMessageMapping {
     /**
-     * The cached value of the '{@link #getSource() <em>Source</em>}' reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getSource() <em>Source</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getSource()
      * @generated
      * @ordered
@@ -56,9 +54,8 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
     protected EList<TMessageExtremity> source;
 
     /**
-     * The default value of the '{@link #getSourceFinderExpression()
-     * <em>Source Finder Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getSourceFinderExpression() <em>Source Finder Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSourceFinderExpression()
      * @generated
@@ -67,9 +64,8 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
     protected static final String SOURCE_FINDER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getSourceFinderExpression()
-     * <em>Source Finder Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getSourceFinderExpression() <em>Source Finder Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSourceFinderExpression()
      * @generated
@@ -78,9 +74,8 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
     protected String sourceFinderExpression = TSourceTargetMessageMappingImpl.SOURCE_FINDER_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTargetFinderExpression()
-     * <em>Target Finder Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getTargetFinderExpression() <em>Target Finder Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getTargetFinderExpression()
      * @generated
@@ -89,9 +84,8 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
     protected static final String TARGET_FINDER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTargetFinderExpression()
-     * <em>Target Finder Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getTargetFinderExpression() <em>Target Finder Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getTargetFinderExpression()
      * @generated
@@ -100,9 +94,8 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
     protected String targetFinderExpression = TSourceTargetMessageMappingImpl.TARGET_FINDER_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isUseDomainElement()
-     * <em>Use Domain Element</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #isUseDomainElement() <em>Use Domain Element</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isUseDomainElement()
      * @generated
@@ -111,9 +104,8 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
     protected static final boolean USE_DOMAIN_ELEMENT_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isUseDomainElement()
-     * <em>Use Domain Element</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #isUseDomainElement() <em>Use Domain Element</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isUseDomainElement()
      * @generated
@@ -123,7 +115,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TSourceTargetMessageMappingImpl() {
@@ -132,7 +124,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -142,7 +134,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +147,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +157,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -179,7 +171,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -189,7 +181,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -203,7 +195,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -213,7 +205,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -227,7 +219,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -247,7 +239,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -273,7 +265,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -297,7 +289,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -319,7 +311,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

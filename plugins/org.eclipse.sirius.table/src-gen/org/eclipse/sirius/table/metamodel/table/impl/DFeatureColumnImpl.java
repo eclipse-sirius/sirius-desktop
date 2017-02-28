@@ -17,24 +17,23 @@ import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DFeature Column</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DFeature Column</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DFeatureColumnImpl#getFeatureName
- * <em>Feature Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DFeatureColumnImpl#getFeatureName <em>Feature Name</em>}
+ * </li>
  * </ul>
  *
  * @generated
  */
 public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
     /**
-     * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -42,9 +41,9 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
     protected static final String FEATURE_NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -53,7 +52,7 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DFeatureColumnImpl() {
@@ -62,7 +61,7 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -72,7 +71,7 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -82,7 +81,7 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +95,7 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -110,7 +109,7 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +124,7 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -140,7 +139,7 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -154,7 +153,7 @@ public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

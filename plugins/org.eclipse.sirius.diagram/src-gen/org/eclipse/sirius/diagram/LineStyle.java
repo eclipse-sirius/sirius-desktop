@@ -18,9 +18,8 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '
- * <em><b>Line Style</b></em>', and utility methods for working with them. <!--
- * end-user-doc --> <!-- begin-model-doc --> Style of a connection. <!--
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration ' <em><b>Line Style</b></em>', and
+ * utility methods for working with them. <!-- end-user-doc --> <!-- begin-model-doc --> Style of a connection. <!--
  * end-model-doc -->
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getLineStyle()
@@ -29,9 +28,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum LineStyle implements Enumerator {
     /**
-     * The '<em><b>Solid</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>Solid</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #SOLID
      * @generated
      * @ordered
@@ -39,9 +37,8 @@ public enum LineStyle implements Enumerator {
     SOLID_LITERAL(0, "solid", "solid"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Dash</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>Dash</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #DASH
      * @generated
      * @ordered
@@ -49,9 +46,8 @@ public enum LineStyle implements Enumerator {
     DASH_LITERAL(1, "dash", "dash"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Dot</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>Dot</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #DOT
      * @generated
      * @ordered
@@ -59,9 +55,8 @@ public enum LineStyle implements Enumerator {
     DOT_LITERAL(2, "dot", "dot"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Dash dot</b></em>' literal object. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The '<em><b>Dash dot</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #DASH_DOT
      * @generated
      * @ordered
@@ -71,11 +66,11 @@ public enum LineStyle implements Enumerator {
     /**
      * The '<em><b>Solid</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Solid</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Solid</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #SOLID_LITERAL
      * @model name="solid"
      * @generated
@@ -86,11 +81,11 @@ public enum LineStyle implements Enumerator {
     /**
      * The '<em><b>Dash</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Dash</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Dash</b></em>' literal object isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DASH_LITERAL
      * @model name="dash"
      * @generated
@@ -101,11 +96,11 @@ public enum LineStyle implements Enumerator {
     /**
      * The '<em><b>Dot</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Dot</b></em>' literal object isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of '<em><b>Dot</b></em>' literal object isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DOT_LITERAL
      * @model name="dot"
      * @generated
@@ -116,11 +111,11 @@ public enum LineStyle implements Enumerator {
     /**
      * The '<em><b>Dash dot</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Dash dot</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>Dash dot</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #DASH_DOT_LITERAL
      * @model name="dash_dot"
      * @generated
@@ -129,25 +124,24 @@ public enum LineStyle implements Enumerator {
     public static final int DASH_DOT = 3;
 
     /**
-     * An array of all the '<em><b>Line Style</b></em>' enumerators. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * An array of all the '<em><b>Line Style</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private static final LineStyle[] VALUES_ARRAY = new LineStyle[] { SOLID_LITERAL, DASH_LITERAL, DOT_LITERAL, DASH_DOT_LITERAL, };
 
     /**
-     * A public read-only list of all the '<em><b>Line Style</b></em>'
-     * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * A public read-only list of all the '<em><b>Line Style</b></em>' enumerators. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public static final List<LineStyle> VALUES = Collections.unmodifiableList(Arrays.asList(LineStyle.VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>Line Style</b></em>' literal with the specified
-     * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Line Style</b></em>' literal with the specified literal value. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -163,9 +157,9 @@ public enum LineStyle implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Line Style</b></em>' literal with the specified name.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Line Style</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param name
      *            the name.
      * @return the matching enumerator or <code>null</code>.
@@ -181,9 +175,9 @@ public enum LineStyle implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Line Style</b></em>' literal with the specified
-     * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Line Style</b></em>' literal with the specified integer value. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -205,29 +199,28 @@ public enum LineStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
 
     /**
-     * Only this class can construct instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private LineStyle(int value, String name, String literal) {
@@ -238,7 +231,7 @@ public enum LineStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -248,7 +241,7 @@ public enum LineStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -258,7 +251,7 @@ public enum LineStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -267,9 +260,9 @@ public enum LineStyle implements Enumerator {
     }
 
     /**
-     * Returns the literal value of the enumerator, which is its string
-     * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override

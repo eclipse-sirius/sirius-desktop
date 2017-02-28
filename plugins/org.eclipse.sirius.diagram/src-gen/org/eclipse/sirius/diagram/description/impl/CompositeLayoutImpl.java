@@ -20,27 +20,23 @@ import org.eclipse.sirius.diagram.description.LayoutDirection;
 import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Composite Layout</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Composite Layout</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.CompositeLayoutImpl#getPadding
- * <em>Padding</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.CompositeLayoutImpl#getDirection
- * <em>Direction</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.CompositeLayoutImpl#getPadding <em>Padding</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.CompositeLayoutImpl#getDirection <em>Direction</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class CompositeLayoutImpl extends DocumentedElementImpl implements CompositeLayout {
     /**
-     * The default value of the '{@link #getPadding() <em>Padding</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getPadding() <em>Padding</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getPadding()
      * @generated
      * @ordered
@@ -48,9 +44,9 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
     protected static final int PADDING_EDEFAULT = 30;
 
     /**
-     * The cached value of the '{@link #getPadding() <em>Padding</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getPadding() <em>Padding</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getPadding()
      * @generated
      * @ordered
@@ -58,9 +54,9 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
     protected int padding = CompositeLayoutImpl.PADDING_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getDirection() <em>Direction</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getDirection() <em>Direction</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getDirection()
      * @generated
      * @ordered
@@ -68,9 +64,9 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
     protected static final LayoutDirection DIRECTION_EDEFAULT = LayoutDirection.TOP_TO_BOTTOM;
 
     /**
-     * The cached value of the '{@link #getDirection() <em>Direction</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getDirection() <em>Direction</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getDirection()
      * @generated
      * @ordered
@@ -79,7 +75,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CompositeLayoutImpl() {
@@ -88,7 +84,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +94,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +104,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -122,7 +118,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +128,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +142,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +158,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -180,7 +176,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +194,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -214,7 +210,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

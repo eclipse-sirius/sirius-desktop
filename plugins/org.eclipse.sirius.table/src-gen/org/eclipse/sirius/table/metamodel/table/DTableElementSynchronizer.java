@@ -13,8 +13,8 @@ package org.eclipse.sirius.table.metamodel.table;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DTable Element Synchronizer</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DTable Element Synchronizer</b></em>'. <!--
+ * end-user-doc -->
  *
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementSynchronizer()
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface DTableElementSynchronizer extends EObject {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model cellRequired="true"
      * @generated
      */
@@ -32,7 +32,7 @@ public interface DTableElementSynchronizer extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model columnRequired="true"
      * @generated
      */
@@ -40,7 +40,7 @@ public interface DTableElementSynchronizer extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model lineRequired="true"
      * @generated
      */

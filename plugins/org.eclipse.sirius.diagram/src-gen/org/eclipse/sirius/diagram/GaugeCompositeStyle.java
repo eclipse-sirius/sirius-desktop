@@ -14,20 +14,17 @@ package org.eclipse.sirius.diagram;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Gauge Composite Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Gauge Composite Style</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> This style groups many GaugeSection. <!--
- * end-model-doc -->
+ * <!-- begin-model-doc --> This style groups many GaugeSection. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.GaugeCompositeStyle#getAlignment
- * <em>Alignment</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.GaugeCompositeStyle#getSections
- * <em>Sections</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.GaugeCompositeStyle#getAlignment <em>Alignment</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.GaugeCompositeStyle#getSections <em>Sections</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getGaugeCompositeStyle()
@@ -36,11 +33,9 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface GaugeCompositeStyle extends NodeStyle {
     /**
-     * Returns the value of the '<em><b>Alignment</b></em>' attribute. The
-     * default value is <code>"SQUARE"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.diagram.AlignmentKind}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * alignment of the gauges <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Alignment</b></em>' attribute. The default value is <code>"SQUARE"</code>. The
+     * literals are from the enumeration {@link org.eclipse.sirius.diagram.AlignmentKind}. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> The alignment of the gauges <!-- end-model-doc -->
      *
      * @return the value of the '<em>Alignment</em>' attribute.
      * @see org.eclipse.sirius.diagram.AlignmentKind
@@ -52,11 +47,9 @@ public interface GaugeCompositeStyle extends NodeStyle {
     AlignmentKind getAlignment();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.GaugeCompositeStyle#getAlignment
-     * <em>Alignment</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.GaugeCompositeStyle#getAlignment <em>Alignment</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Alignment</em>' attribute.
      * @see org.eclipse.sirius.diagram.AlignmentKind
@@ -66,11 +59,9 @@ public interface GaugeCompositeStyle extends NodeStyle {
     void setAlignment(AlignmentKind value);
 
     /**
-     * Returns the value of the '<em><b>Sections</b></em>' containment reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.GaugeSection}. <!-- begin-user-doc -->
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The sections. <!--
-     * end-model-doc -->
+     * Returns the value of the '<em><b>Sections</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.GaugeSection}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The sections. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Sections</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getGaugeCompositeStyle_Sections()

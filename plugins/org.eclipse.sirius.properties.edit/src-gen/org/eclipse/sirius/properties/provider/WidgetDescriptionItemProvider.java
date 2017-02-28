@@ -24,17 +24,15 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.WidgetDescription;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.WidgetDescription} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.properties.WidgetDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public WidgetDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -42,9 +40,8 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -60,9 +57,8 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
     }
 
     /**
-     * This adds a property descriptor for the Label Expression feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Label Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -73,9 +69,8 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
     }
 
     /**
-     * This adds a property descriptor for the Help Expression feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Help Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addHelpExpressionPropertyDescriptor(Object object) {
@@ -86,9 +81,9 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
     }
 
     /**
-     * This adds a property descriptor for the Is Enabled Expression feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * This adds a property descriptor for the Is Enabled Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @generated
      */
     protected void addIsEnabledExpressionPropertyDescriptor(Object object) {
@@ -99,8 +94,7 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -112,11 +106,10 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @generated
      */
     @Override
@@ -134,10 +127,9 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

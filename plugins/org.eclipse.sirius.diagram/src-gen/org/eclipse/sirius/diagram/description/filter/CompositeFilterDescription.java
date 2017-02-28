@@ -14,19 +14,16 @@ package org.eclipse.sirius.diagram.description.filter;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Composite Filter Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Composite Filter Description</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> A composite filter description. <!-- end-model-doc
- * -->
+ * <!-- begin-model-doc --> A composite filter description. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription#getFilters
- * <em>Filters</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription#getFilters <em>Filters</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getCompositeFilterDescription()
@@ -35,11 +32,9 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface CompositeFilterDescription extends FilterDescription {
     /**
-     * Returns the value of the '<em><b>Filters</b></em>' containment reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.filter.Filter}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
-     * filters. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Filters</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.description.filter.Filter}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> All filters. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Filters</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getCompositeFilterDescription_Filters()

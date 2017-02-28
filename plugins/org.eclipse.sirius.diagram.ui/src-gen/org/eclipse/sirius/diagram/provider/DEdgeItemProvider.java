@@ -29,25 +29,22 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeLabelItemProvider;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.DEdge} object. <!-- begin-user-doc --> <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.DEdge} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
 public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
-     * The item provider used to simulate another child for Edge that has label
-     * on border.
+     * The item provider used to simulate another child for Edge that has label on border.
      *
      * @not-generated
      */
     HashMap<Object, DEdgeLabelItemProvider> edgeLabelItemProviders = new HashMap<Object, DEdgeLabelItemProvider>();
 
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DEdgeItemProvider(AdapterFactory adapterFactory) {
@@ -55,9 +52,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -84,9 +80,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Outgoing Edges feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Outgoing Edges feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addOutgoingEdgesPropertyDescriptor(Object object) {
@@ -97,9 +92,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Incoming Edges feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Incoming Edges feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addIncomingEdgesPropertyDescriptor(Object object) {
@@ -110,9 +104,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Size feature. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Size feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addSizePropertyDescriptor(Object object) {
@@ -122,9 +115,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Source Node feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Source Node feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addSourceNodePropertyDescriptor(Object object) {
@@ -134,9 +126,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Target Node feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Target Node feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addTargetNodePropertyDescriptor(Object object) {
@@ -146,9 +137,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Actual Mapping feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Actual Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
@@ -159,9 +149,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Routing Style feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Routing Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addRoutingStylePropertyDescriptor(Object object) {
@@ -172,9 +161,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Is Fold feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Is Fold feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addIsFoldPropertyDescriptor(Object object) {
@@ -184,9 +172,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Is Mock Edge feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Is Mock Edge feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addIsMockEdgePropertyDescriptor(Object object) {
@@ -196,9 +183,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Original Style feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Original Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addOriginalStylePropertyDescriptor(Object object) {
@@ -209,9 +195,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Path feature. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addPathPropertyDescriptor(Object object) {
@@ -221,8 +206,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Arrange Constraints feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Arrange Constraints feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -234,9 +219,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Begin Label feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Begin Label feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addBeginLabelPropertyDescriptor(Object object) {
@@ -246,9 +230,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the End Label feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the End Label feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addEndLabelPropertyDescriptor(Object object) {
@@ -258,13 +241,11 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to
-     * deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand},
-     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in
-     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -278,13 +259,12 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper
-        // feature to use for
+        // Check the type of the specified child object and return the proper feature to use for
         // adding (see {@link AddCommand}) it as a child.
 
         return super.getChildFeature(object, child);
@@ -292,7 +272,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This returns DEdge.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -301,8 +281,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -313,10 +292,9 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -342,10 +320,9 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -412,10 +389,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     private boolean hasRelevantLabelItem(Object object) {
         return DEdgeLabelItemProvider.hasRelevantLabelItem(
                 (DEdge) object); /*
-                                  * || DEdgeBeginLabelItemProvider .
-                                  * hasRelevantLabelItem ( ( DEdge ) object ) ||
-                                  * DEdgeEndLabelItemProvider .
-                                  * hasRelevantLabelItem ( ( DEdge ) object ) ;
+                                  * || DEdgeBeginLabelItemProvider . hasRelevantLabelItem ( ( DEdge ) object ) ||
+                                  * DEdgeEndLabelItemProvider . hasRelevantLabelItem ( ( DEdge ) object ) ;
                                   */
     }
 

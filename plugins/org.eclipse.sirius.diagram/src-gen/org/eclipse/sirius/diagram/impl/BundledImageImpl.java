@@ -22,28 +22,23 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Bundled Image</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Bundled Image</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.BundledImageImpl#getShape
- * <em>Shape</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.BundledImageImpl#getColor
- * <em>Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.BundledImageImpl#getProvidedShapeID
- * <em>Provided Shape ID</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.BundledImageImpl#getShape <em>Shape</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.BundledImageImpl#getColor <em>Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.BundledImageImpl#getProvidedShapeID <em>Provided Shape ID</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     /**
-     * The default value of the '{@link #getShape() <em>Shape</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getShape() <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getShape()
      * @generated
      * @ordered
@@ -51,8 +46,8 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     protected static final BundledImageShape SHAPE_EDEFAULT = BundledImageShape.SQUARE_LITERAL;
 
     /**
-     * The cached value of the '{@link #getShape() <em>Shape</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getShape() <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getShape()
      * @generated
@@ -61,9 +56,9 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     protected BundledImageShape shape = BundledImageImpl.SHAPE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getColor() <em>Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getColor()
      * @generated
      * @ordered
@@ -71,8 +66,8 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     protected static final RGBValues COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0"); //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getColor() <em>Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getColor()
      * @generated
@@ -81,9 +76,8 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     protected RGBValues color = BundledImageImpl.COLOR_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getProvidedShapeID()
-     * <em>Provided Shape ID</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getProvidedShapeID() <em>Provided Shape ID</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getProvidedShapeID()
      * @generated
@@ -92,10 +86,9 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     protected static final String PROVIDED_SHAPE_ID_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getProvidedShapeID()
-     * <em>Provided Shape ID</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getProvidedShapeID() <em>Provided Shape ID</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getProvidedShapeID()
      * @generated
      * @ordered
@@ -104,7 +97,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected BundledImageImpl() {
@@ -113,7 +106,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -123,7 +116,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -133,7 +126,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -147,7 +140,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -157,7 +150,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -171,7 +164,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -181,7 +174,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -195,7 +188,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -213,7 +206,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -234,7 +227,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -255,7 +248,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -273,7 +266,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

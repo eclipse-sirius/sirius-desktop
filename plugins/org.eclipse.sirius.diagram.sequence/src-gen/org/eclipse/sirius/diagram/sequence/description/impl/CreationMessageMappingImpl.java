@@ -15,15 +15,15 @@ import org.eclipse.sirius.diagram.sequence.description.CreationMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Creation Message Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Creation Message Mapping</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public class CreationMessageMappingImpl extends MessageMappingImpl implements CreationMessageMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CreationMessageMappingImpl() {
@@ -32,7 +32,7 @@ public class CreationMessageMappingImpl extends MessageMappingImpl implements Cr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

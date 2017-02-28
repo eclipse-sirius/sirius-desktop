@@ -15,18 +15,14 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Delete Hook</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Delete Hook</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getId
- * <em>Id</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getParameters
- * <em>Parameters</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getParameters <em>Parameters</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDeleteHook()
@@ -35,14 +31,12 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface DeleteHook extends EObject {
     /**
-     * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
-     * should be more of a description here...
+     * If the meaning of the '<em>Id</em>' attribute isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDeleteHook_Id()
@@ -52,10 +46,9 @@ public interface DeleteHook extends EObject {
     String getId();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getId
-     * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getId <em>Id</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -64,18 +57,15 @@ public interface DeleteHook extends EObject {
     void setId(String value);
 
     /**
-     * Returns the value of the '<em><b>Parameters</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteHookParameter}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Parameters</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.description.tool.DeleteHookParameter}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Parameters</em>' containment reference list
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear, there really should be more
+     * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Parameters</em>' containment reference
-     *         list.
+     * 
+     * @return the value of the '<em>Parameters</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDeleteHook_Parameters()
      * @model containment="true" resolveProxies="true"
      * @generated

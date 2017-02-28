@@ -15,24 +15,19 @@ import org.eclipse.sirius.diagram.BundledImageShape;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Bundled Image Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Bundled Image Description</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> The bundled image style allows to use the default
- * images provide by the Viewpoint editor. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> The bundled image style allows to use the default images provide by the Viewpoint editor.
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getShape
- * <em>Shape</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getColor
- * <em>Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getProvidedShapeID
+ * <li>{@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getShape <em>Shape</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getColor <em>Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getProvidedShapeID
  * <em>Provided Shape ID</em>}</li>
  * </ul>
  *
@@ -42,11 +37,9 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  */
 public interface BundledImageDescription extends NodeStyleDescription {
     /**
-     * Returns the value of the '<em><b>Shape</b></em>' attribute. The literals
-     * are from the enumeration
-     * {@link org.eclipse.sirius.diagram.BundledImageShape}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The shape to use. <!--
-     * end-model-doc -->
+     * Returns the value of the '<em><b>Shape</b></em>' attribute. The literals are from the enumeration
+     * {@link org.eclipse.sirius.diagram.BundledImageShape}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The shape to use. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.BundledImageShape
@@ -58,10 +51,9 @@ public interface BundledImageDescription extends NodeStyleDescription {
     BundledImageShape getShape();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getShape
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getShape
      * <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.BundledImageShape
@@ -71,9 +63,8 @@ public interface BundledImageDescription extends NodeStyleDescription {
     void setShape(BundledImageShape value);
 
     /**
-     * Returns the value of the '<em><b>Color</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * color to use. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Color</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The color to use. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Color</em>' reference.
      * @see #setColor(ColorDescription)
@@ -84,10 +75,9 @@ public interface BundledImageDescription extends NodeStyleDescription {
     ColorDescription getColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getColor
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getColor
      * <em>Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Color</em>' reference.
      * @see #getColor()
@@ -96,14 +86,13 @@ public interface BundledImageDescription extends NodeStyleDescription {
     void setColor(ColorDescription value);
 
     /**
-     * Returns the value of the '<em><b>Provided Shape ID</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Provided Shape ID</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Provided Shape ID</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Provided Shape ID</em>' attribute isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Provided Shape ID</em>' attribute.
      * @see #setProvidedShapeID(String)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBundledImageDescription_ProvidedShapeID()
@@ -115,9 +104,8 @@ public interface BundledImageDescription extends NodeStyleDescription {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getProvidedShapeID
-     * <em>Provided Shape ID</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Provided Shape ID</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Provided Shape ID</em>' attribute.
      * @see #getProvidedShapeID()

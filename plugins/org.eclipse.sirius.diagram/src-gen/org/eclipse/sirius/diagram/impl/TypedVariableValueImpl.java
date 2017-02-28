@@ -19,26 +19,23 @@ import org.eclipse.sirius.diagram.TypedVariableValue;
 import org.eclipse.sirius.viewpoint.description.TypedVariable;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Typed Variable Value</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Typed Variable Value</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.TypedVariableValueImpl#getVariableDefinition
- * <em>Variable Definition</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.TypedVariableValueImpl#getValue
- * <em>Value</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.TypedVariableValueImpl#getVariableDefinition <em>Variable Definition</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.TypedVariableValueImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class TypedVariableValueImpl extends VariableValueImpl implements TypedVariableValue {
     /**
-     * The cached value of the '{@link #getVariableDefinition()
-     * <em>Variable Definition</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getVariableDefinition() <em>Variable Definition</em>}' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getVariableDefinition()
      * @generated
@@ -47,9 +44,9 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
     protected TypedVariable variableDefinition;
 
     /**
-     * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getValue() <em>Value</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getValue()
      * @generated
      * @ordered
@@ -57,8 +54,8 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
     protected static final String VALUE_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getValue() <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getValue()
      * @generated
@@ -68,7 +65,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TypedVariableValueImpl() {
@@ -77,7 +74,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -87,7 +84,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -106,7 +103,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public TypedVariable basicGetVariableDefinition() {
@@ -115,7 +112,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +126,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -139,7 +136,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -153,7 +150,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -172,7 +169,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -190,7 +187,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -208,7 +205,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -224,7 +221,7 @@ public class TypedVariableValueImpl extends VariableValueImpl implements TypedVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

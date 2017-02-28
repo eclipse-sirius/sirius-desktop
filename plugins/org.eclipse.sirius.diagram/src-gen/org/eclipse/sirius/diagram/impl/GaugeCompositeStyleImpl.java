@@ -27,27 +27,23 @@ import org.eclipse.sirius.diagram.GaugeCompositeStyle;
 import org.eclipse.sirius.diagram.GaugeSection;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Gauge Composite Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Gauge Composite Style</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.GaugeCompositeStyleImpl#getAlignment
- * <em>Alignment</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.GaugeCompositeStyleImpl#getSections
- * <em>Sections</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.GaugeCompositeStyleImpl#getAlignment <em>Alignment</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.GaugeCompositeStyleImpl#getSections <em>Sections</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompositeStyle {
     /**
-     * The default value of the '{@link #getAlignment() <em>Alignment</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getAlignment() <em>Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getAlignment()
      * @generated
      * @ordered
@@ -55,9 +51,9 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
     protected static final AlignmentKind ALIGNMENT_EDEFAULT = AlignmentKind.SQUARE_LITERAL;
 
     /**
-     * The cached value of the '{@link #getAlignment() <em>Alignment</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getAlignment() <em>Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getAlignment()
      * @generated
      * @ordered
@@ -65,8 +61,8 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
     protected AlignmentKind alignment = GaugeCompositeStyleImpl.ALIGNMENT_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getSections() <em>Sections</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getSections() <em>Sections</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSections()
      * @generated
@@ -76,7 +72,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected GaugeCompositeStyleImpl() {
@@ -85,7 +81,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -95,7 +91,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -105,7 +101,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -119,7 +115,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +128,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +142,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +158,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -182,7 +178,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -200,7 +196,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -216,7 +212,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

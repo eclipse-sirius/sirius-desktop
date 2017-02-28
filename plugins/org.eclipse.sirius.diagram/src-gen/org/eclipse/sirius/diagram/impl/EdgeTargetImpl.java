@@ -25,26 +25,22 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeTarget;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Edge Target</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Edge Target</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeTargetImpl#getOutgoingEdges
- * <em>Outgoing Edges</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeTargetImpl#getIncomingEdges
- * <em>Incoming Edges</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeTargetImpl#getOutgoingEdges <em>Outgoing Edges</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeTargetImpl#getIncomingEdges <em>Incoming Edges</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implements EdgeTarget {
     /**
-     * The cached value of the '{@link #getOutgoingEdges()
-     * <em>Outgoing Edges</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getOutgoingEdges() <em>Outgoing Edges</em>}' reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getOutgoingEdges()
      * @generated
      * @ordered
@@ -52,10 +48,9 @@ public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implem
     protected EList<DEdge> outgoingEdges;
 
     /**
-     * The cached value of the '{@link #getIncomingEdges()
-     * <em>Incoming Edges</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getIncomingEdges() <em>Incoming Edges</em>}' reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getIncomingEdges()
      * @generated
      * @ordered
@@ -64,7 +59,7 @@ public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected EdgeTargetImpl() {
@@ -73,7 +68,7 @@ public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +78,7 @@ public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +91,7 @@ public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -109,7 +104,7 @@ public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -126,7 +121,7 @@ public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -142,7 +137,7 @@ public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +153,7 @@ public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -179,7 +174,7 @@ public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -197,7 +192,7 @@ public abstract class EdgeTargetImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

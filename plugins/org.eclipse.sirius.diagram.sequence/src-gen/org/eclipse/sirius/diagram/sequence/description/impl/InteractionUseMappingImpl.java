@@ -15,15 +15,15 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Interaction Use Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Interaction Use Mapping</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public class InteractionUseMappingImpl extends FrameMappingImpl implements InteractionUseMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected InteractionUseMappingImpl() {
@@ -32,7 +32,7 @@ public class InteractionUseMappingImpl extends FrameMappingImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

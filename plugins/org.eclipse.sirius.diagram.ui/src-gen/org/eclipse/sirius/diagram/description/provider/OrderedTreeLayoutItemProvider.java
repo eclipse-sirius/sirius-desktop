@@ -27,17 +27,15 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.description.OrderedTreeLayout} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.OrderedTreeLayout} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public OrderedTreeLayoutItemProvider(AdapterFactory adapterFactory) {
@@ -45,9 +43,8 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -62,8 +59,8 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
     }
 
     /**
-     * This adds a property descriptor for the Children Expression feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Children Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -76,9 +73,8 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
     }
 
     /**
-     * This adds a property descriptor for the Node Mapping feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Node Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addNodeMappingPropertyDescriptor(Object object) {
@@ -90,9 +86,8 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
     }
 
     /**
-     * This returns OrderedTreeLayout.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns OrderedTreeLayout.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -101,9 +96,8 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -114,10 +108,9 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -134,10 +127,9 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -146,9 +138,8 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
     }
 
     /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

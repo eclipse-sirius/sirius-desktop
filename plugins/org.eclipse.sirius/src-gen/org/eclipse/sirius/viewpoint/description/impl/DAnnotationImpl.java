@@ -27,27 +27,22 @@ import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DAnnotation</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DAnnotation</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.DAnnotationImpl#getSource
- * <em>Source</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.DAnnotationImpl#getDetails
- * <em>Details</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.DAnnotationImpl#getSource <em>Source</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.DAnnotationImpl#getDetails <em>Details</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAnnotation {
     /**
-     * The default value of the '{@link #getSource() <em>Source</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getSource() <em>Source</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getSource()
      * @generated
      * @ordered
@@ -55,9 +50,9 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
     protected static final String SOURCE_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getSource() <em>Source</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getSource() <em>Source</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getSource()
      * @generated
      * @ordered
@@ -65,8 +60,8 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
     protected String source = DAnnotationImpl.SOURCE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getDetails() <em>Details</em>}' map.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getDetails() <em>Details</em>}' map. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getDetails()
      * @generated
@@ -76,7 +71,7 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DAnnotationImpl() {
@@ -85,7 +80,7 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -95,7 +90,7 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -105,7 +100,7 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -119,7 +114,7 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +127,7 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +141,7 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -166,7 +161,7 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -184,7 +179,7 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -202,7 +197,7 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -218,7 +213,7 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

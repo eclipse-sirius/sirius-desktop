@@ -28,35 +28,28 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.WidgetAction;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Label Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Label Description</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getValueExpression
- * <em>Value Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getDisplayExpression
- * <em>Display Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getStyle
- * <em>Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getConditionalStyles
- * <em>Conditional Styles</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getActions
- * <em>Actions</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getValueExpression <em>Value Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getDisplayExpression <em>Display Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getStyle <em>Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getConditionalStyles <em>Conditional Styles</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getActions <em>Actions</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class LabelDescriptionImpl extends WidgetDescriptionImpl implements LabelDescription {
     /**
-     * The default value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -64,10 +57,9 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
     protected static final String VALUE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -75,9 +67,8 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
     protected String valueExpression = LabelDescriptionImpl.VALUE_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getDisplayExpression()
-     * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getDisplayExpression() <em>Display Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDisplayExpression()
      * @generated
@@ -86,9 +77,8 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
     protected static final String DISPLAY_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getDisplayExpression()
-     * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getDisplayExpression() <em>Display Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDisplayExpression()
      * @generated
@@ -97,9 +87,9 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
     protected String displayExpression = LabelDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -107,10 +97,9 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
     protected LabelWidgetStyle style;
 
     /**
-     * The cached value of the '{@link #getConditionalStyles()
-     * <em>Conditional Styles</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -118,9 +107,9 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
     protected EList<LabelWidgetConditionalStyle> conditionalStyles;
 
     /**
-     * The cached value of the '{@link #getActions() <em>Actions</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getActions()
      * @generated
      * @ordered
@@ -129,7 +118,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected LabelDescriptionImpl() {
@@ -138,7 +127,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -148,7 +137,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +147,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -172,7 +161,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +171,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -196,7 +185,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -206,7 +195,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(LabelWidgetStyle newStyle, NotificationChain msgs) {
@@ -225,7 +214,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -249,7 +238,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -262,7 +251,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -275,7 +264,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -293,7 +282,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -315,7 +304,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -345,7 +334,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -372,7 +361,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -394,7 +383,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

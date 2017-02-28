@@ -15,8 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.EdgeStyle;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>IEdge Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>IEdge Mapping</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getIEdgeMapping()
@@ -26,7 +25,7 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 public interface IEdgeMapping extends EObject {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model
      * @generated
      */

@@ -14,29 +14,20 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DLine</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DLine</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getLabel
- * <em>Label</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getOriginMapping
- * <em>Origin Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#isVisible
- * <em>Visible</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#isCollapsed
- * <em>Collapsed</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getCells
- * <em>Cells</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getContainer
- * <em>Container</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getOrderedCells
- * <em>Ordered Cells</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getCurrentStyle
- * <em>Current Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getOriginMapping <em>Origin Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#isVisible <em>Visible</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#isCollapsed <em>Collapsed</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getCells <em>Cells</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getContainer <em>Container</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getOrderedCells <em>Ordered Cells</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getCurrentStyle <em>Current Style</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine()
@@ -45,14 +36,13 @@ import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
  */
 public interface DLine extends LineContainer, DTableElement {
     /**
-     * Returns the value of the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Label</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Label</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_Label()
@@ -62,10 +52,9 @@ public interface DLine extends LineContainer, DTableElement {
     String getLabel();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DLine#getLabel
-     * <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#getLabel <em>Label</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Label</em>' attribute.
      * @see #getLabel()
@@ -74,14 +63,13 @@ public interface DLine extends LineContainer, DTableElement {
     void setLabel(String value);
 
     /**
-     * Returns the value of the '<em><b>Origin Mapping</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Origin Mapping</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Origin Mapping</em>' reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Origin Mapping</em>' reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Origin Mapping</em>' reference.
      * @see #setOriginMapping(LineMapping)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_OriginMapping()
@@ -91,11 +79,9 @@ public interface DLine extends LineContainer, DTableElement {
     LineMapping getOriginMapping();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DLine#getOriginMapping
-     * <em>Origin Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#getOriginMapping
+     * <em>Origin Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Origin Mapping</em>' reference.
      * @see #getOriginMapping()
@@ -104,11 +90,11 @@ public interface DLine extends LineContainer, DTableElement {
     void setOriginMapping(LineMapping value);
 
     /**
-     * Returns the value of the '<em><b>Visible</b></em>' attribute. The default
-     * value is <code>"true"</code>. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Visible</b></em>' attribute. The default value is <code>"true"</code>. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Visible</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Visible</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -121,11 +107,9 @@ public interface DLine extends LineContainer, DTableElement {
     boolean isVisible();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DLine#isVisible
-     * <em>Visible</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#isVisible <em>Visible</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Visible</em>' attribute.
      * @see #isVisible()
@@ -134,11 +118,11 @@ public interface DLine extends LineContainer, DTableElement {
     void setVisible(boolean value);
 
     /**
-     * Returns the value of the '<em><b>Collapsed</b></em>' attribute. The
-     * default value is <code>"false"</code>. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Collapsed</b></em>' attribute. The default value is <code>"false"</code>. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Collapsed</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Collapsed</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -151,11 +135,9 @@ public interface DLine extends LineContainer, DTableElement {
     boolean isCollapsed();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DLine#isCollapsed
-     * <em>Collapsed</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#isCollapsed <em>Collapsed</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Collapsed</em>' attribute.
      * @see #isCollapsed()
@@ -164,20 +146,15 @@ public interface DLine extends LineContainer, DTableElement {
     void setCollapsed(boolean value);
 
     /**
-     * Returns the value of the '<em><b>Cells</b></em>' containment reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.DCell}. It is
-     * bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.DCell#getLine
-     * <em>Line</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Cells</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.table.metamodel.table.DCell}. It is bidirectional and its opposite is '
+     * {@link org.eclipse.sirius.table.metamodel.table.DCell#getLine <em>Line</em>}'. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Cells</em>' containment reference list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Cells</em>' containment reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> List of cells of this
-     * line. This list does not necessarily have as many cells as there are
-     * columns. Indeed, the ?blank cells? are not created. <!-- end-model-doc
-     * -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> List of cells of this line. This list does not necessarily have as
+     * many cells as there are columns. Indeed, the ?blank cells? are not created. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Cells</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_Cells()
@@ -188,16 +165,14 @@ public interface DLine extends LineContainer, DTableElement {
     EList<DCell> getCells();
 
     /**
-     * Returns the value of the '<em><b>Container</b></em>' container reference.
-     * It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.LineContainer#getLines
-     * <em>Lines</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Container</b></em>' container reference. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.table.metamodel.table.LineContainer#getLines <em>Lines</em>}'. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Container</em>' container reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Container</em>' container reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Container</em>' container reference.
      * @see #setContainer(LineContainer)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_Container()
@@ -208,11 +183,9 @@ public interface DLine extends LineContainer, DTableElement {
     LineContainer getContainer();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DLine#getContainer
-     * <em>Container</em>}' container reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#getContainer <em>Container</em>}'
+     * container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Container</em>' container reference.
      * @see #getContainer()
@@ -221,16 +194,15 @@ public interface DLine extends LineContainer, DTableElement {
     void setContainer(LineContainer value);
 
     /**
-     * Returns the value of the '<em><b>Ordered Cells</b></em>' reference list.
-     * The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.DCell}. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Ordered Cells</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.table.metamodel.table.DCell}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Ordered Cells</em>' reference list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Ordered Cells</em>' reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
-     * <!-- end-user-doc -->
-     *
+     * <!-- end-user-doc --> <!-- begin-model-doc --> Same list as "cells" but sorted according to the order of columns.
+     * <!-- end-model-doc -->
+     * 
      * @return the value of the '<em>Ordered Cells</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_OrderedCells()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -239,14 +211,11 @@ public interface DLine extends LineContainer, DTableElement {
     EList<DCell> getOrderedCells();
 
     /**
-     * Returns the value of the '<em><b>Current Style</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> Stores the best style of the LineMapping style
-     * updater : * The first conditional foreground style (with predicate
-     * expression that returns true), otherwise the default foreground style. *
-     * The first conditional background style (with predicate expression that
-     * returns true), otherwise the default background style. <!-- end-model-doc
-     * -->
+     * Returns the value of the '<em><b>Current Style</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> Stores the best style of the LineMapping style updater : * The first
+     * conditional foreground style (with predicate expression that returns true), otherwise the default foreground
+     * style. * The first conditional background style (with predicate expression that returns true), otherwise the
+     * default background style. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Current Style</em>' containment reference.
      * @see #setCurrentStyle(DTableElementStyle)
@@ -257,14 +226,11 @@ public interface DLine extends LineContainer, DTableElement {
     DTableElementStyle getCurrentStyle();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DLine#getCurrentStyle
-     * <em>Current Style</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#getCurrentStyle
+     * <em>Current Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Current Style</em>' containment
-     *            reference.
+     *            the new value of the '<em>Current Style</em>' containment reference.
      * @see #getCurrentStyle()
      * @generated
      */

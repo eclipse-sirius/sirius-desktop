@@ -11,16 +11,14 @@
 package org.eclipse.sirius.table.metamodel.table;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DFeature Column</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DFeature Column</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn#getFeatureName
- * <em>Feature Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn#getFeatureName <em>Feature Name</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDFeatureColumn()
@@ -30,14 +28,13 @@ package org.eclipse.sirius.table.metamodel.table;
 public interface DFeatureColumn extends DColumn {
 
     /**
-     * Returns the value of the '<em><b>Feature Name</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Feature Name</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Feature Name</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Feature Name</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Feature Name</em>' attribute.
      * @see #setFeatureName(String)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDFeatureColumn_FeatureName()
@@ -47,11 +44,9 @@ public interface DFeatureColumn extends DColumn {
     String getFeatureName();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn#getFeatureName
-     * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn#getFeatureName
+     * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()

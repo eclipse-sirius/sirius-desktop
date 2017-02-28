@@ -16,15 +16,14 @@ import org.eclipse.sirius.viewpoint.description.tool.DeleteView;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Delete View</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Delete View</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public class DeleteViewImpl extends ContainerModelOperationImpl implements DeleteView {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DeleteViewImpl() {
@@ -33,7 +32,7 @@ public class DeleteViewImpl extends ContainerModelOperationImpl implements Delet
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

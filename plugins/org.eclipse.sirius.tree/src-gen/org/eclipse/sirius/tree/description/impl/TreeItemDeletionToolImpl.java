@@ -21,15 +21,13 @@ import org.eclipse.sirius.tree.description.TreeItemDeletionTool;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Tree Item Deletion Tool</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Tree Item Deletion Tool</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeItemDeletionToolImpl#getMapping
- * <em>Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemDeletionToolImpl#getMapping <em>Mapping</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,7 +35,7 @@ import org.eclipse.sirius.tree.description.TreeItemMapping;
 public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeItemDeletionTool {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TreeItemDeletionToolImpl() {
@@ -46,7 +44,7 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -56,7 +54,7 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -69,7 +67,7 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetMapping(TreeItemMapping newMapping, NotificationChain msgs) {
@@ -79,7 +77,7 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -106,7 +104,7 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -123,7 +121,7 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -137,7 +135,7 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,7 +149,7 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +163,7 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -180,7 +178,7 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -195,7 +193,7 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

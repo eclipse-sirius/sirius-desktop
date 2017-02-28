@@ -30,23 +30,19 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Double Click Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Double Click Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.DoubleClickDescriptionImpl#getMappings
- * <em>Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.DoubleClickDescriptionImpl#getElement
- * <em>Element</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.DoubleClickDescriptionImpl#getElementView
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.DoubleClickDescriptionImpl#getMappings <em>Mappings</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.DoubleClickDescriptionImpl#getElement <em>Element</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.DoubleClickDescriptionImpl#getElementView
  * <em>Element View</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.DoubleClickDescriptionImpl#getInitialOperation
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.DoubleClickDescriptionImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
  *
@@ -54,9 +50,9 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  */
 public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl implements DoubleClickDescription {
     /**
-     * The cached value of the '{@link #getMappings() <em>Mappings</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getMappings() <em>Mappings</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getMappings()
      * @generated
      * @ordered
@@ -64,9 +60,9 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
     protected EList<DiagramElementMapping> mappings;
 
     /**
-     * The cached value of the '{@link #getElement() <em>Element</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getElement()
      * @generated
      * @ordered
@@ -74,8 +70,8 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
     protected ElementDoubleClickVariable element;
 
     /**
-     * The cached value of the '{@link #getElementView() <em>Element View</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getElementView() <em>Element View</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getElementView()
      * @generated
@@ -84,9 +80,8 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
     protected ElementDoubleClickVariable elementView;
 
     /**
-     * The cached value of the '{@link #getInitialOperation()
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInitialOperation()
      * @generated
@@ -96,7 +91,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DoubleClickDescriptionImpl() {
@@ -105,7 +100,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -115,7 +110,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +124,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +151,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ElementDoubleClickVariable basicGetElement() {
@@ -165,7 +160,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetElement(ElementDoubleClickVariable newElement, NotificationChain msgs) {
@@ -184,7 +179,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -208,7 +203,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -235,7 +230,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ElementDoubleClickVariable basicGetElementView() {
@@ -244,7 +239,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetElementView(ElementDoubleClickVariable newElementView, NotificationChain msgs) {
@@ -263,7 +258,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -287,7 +282,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -314,7 +309,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -323,7 +318,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -342,7 +337,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -366,7 +361,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -381,7 +376,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -401,7 +396,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -430,7 +425,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -456,7 +451,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -480,7 +475,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -16,17 +16,14 @@ import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Conditional Container Style Description</b></em>'. <!-- end-user-doc
- * -->
+ * <em><b>Conditional Container Style Description</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription#getStyle
- * <em>Style</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription#getStyle <em>Style</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getConditionalContainerStyleDescription()
  * @model
@@ -34,14 +31,13 @@ import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
  */
 public interface ConditionalContainerStyleDescription extends ConditionalStyleDescription {
     /**
-     * Returns the value of the '<em><b>Style</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Style</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(ContainerStyleDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getConditionalContainerStyleDescription_Style()
@@ -52,10 +48,9 @@ public interface ConditionalContainerStyleDescription extends ConditionalStyleDe
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription#getStyle
-     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * {@link org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription#getStyle <em>Style</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

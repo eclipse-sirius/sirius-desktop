@@ -15,15 +15,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Customization</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Customization</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.Customization#getVsmElementCustomizations
+ * <li>{@link org.eclipse.sirius.viewpoint.description.Customization#getVsmElementCustomizations
  * <em>Vsm Element Customizations</em>}</li>
  * </ul>
  *
@@ -33,19 +31,16 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Customization extends EObject {
     /**
-     * Returns the value of the '<em><b>Vsm Element Customizations</b></em>'
-     * containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.IVSMElementCustomization}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Vsm Element Customizations</b></em>' containment reference list. The list
+     * contents are of type {@link org.eclipse.sirius.viewpoint.description.IVSMElementCustomization}. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Vsm Element Customizations</em>' containment
-     * reference list isn't clear, there really should be more of a description
-     * here...
+     * If the meaning of the '<em>Vsm Element Customizations</em>' containment reference list isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Vsm Element Customizations</em>'
-     *         containment reference list.
+     * @return the value of the '<em>Vsm Element Customizations</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getCustomization_VsmElementCustomizations()
      * @model containment="true" resolveProxies="true" required="true"
      * @generated

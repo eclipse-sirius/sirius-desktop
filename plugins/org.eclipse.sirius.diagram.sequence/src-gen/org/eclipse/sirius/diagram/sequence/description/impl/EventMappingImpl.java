@@ -16,15 +16,14 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Event Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Event Mapping</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public abstract class EventMappingImpl extends MinimalEObjectImpl.Container implements EventMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected EventMappingImpl() {
@@ -33,7 +32,7 @@ public abstract class EventMappingImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

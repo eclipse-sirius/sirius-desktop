@@ -27,17 +27,15 @@ import org.eclipse.sirius.diagram.description.style.GaugeSectionDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Gauge Composite Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Gauge Composite Style Description</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.GaugeCompositeStyleDescriptionImpl#getAlignment
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.GaugeCompositeStyleDescriptionImpl#getAlignment
  * <em>Alignment</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.GaugeCompositeStyleDescriptionImpl#getSections
+ * <li>{@link org.eclipse.sirius.diagram.description.style.impl.GaugeCompositeStyleDescriptionImpl#getSections
  * <em>Sections</em>}</li>
  * </ul>
  *
@@ -45,9 +43,9 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  */
 public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl implements GaugeCompositeStyleDescription {
     /**
-     * The default value of the '{@link #getAlignment() <em>Alignment</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getAlignment() <em>Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getAlignment()
      * @generated
      * @ordered
@@ -55,9 +53,9 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
     protected static final AlignmentKind ALIGNMENT_EDEFAULT = AlignmentKind.SQUARE_LITERAL;
 
     /**
-     * The cached value of the '{@link #getAlignment() <em>Alignment</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getAlignment() <em>Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getAlignment()
      * @generated
      * @ordered
@@ -65,8 +63,8 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
     protected AlignmentKind alignment = GaugeCompositeStyleDescriptionImpl.ALIGNMENT_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getSections() <em>Sections</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getSections() <em>Sections</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSections()
      * @generated
@@ -76,7 +74,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected GaugeCompositeStyleDescriptionImpl() {
@@ -85,7 +83,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -95,7 +93,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -105,7 +103,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -119,7 +117,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +130,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +144,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +160,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -182,7 +180,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -200,7 +198,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -216,7 +214,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

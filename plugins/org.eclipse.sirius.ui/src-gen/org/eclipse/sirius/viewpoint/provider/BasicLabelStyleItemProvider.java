@@ -24,17 +24,15 @@ import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.BasicLabelStyle} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public BasicLabelStyleItemProvider(AdapterFactory adapterFactory) {
@@ -42,9 +40,8 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -62,9 +59,8 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Label Size feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Label Size feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addLabelSizePropertyDescriptor(Object object) {
@@ -75,9 +71,8 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Label Format feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Label Format feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addLabelFormatPropertyDescriptor(Object object) {
@@ -88,9 +83,8 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Show Icon feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Show Icon feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addShowIconPropertyDescriptor(Object object) {
@@ -101,9 +95,8 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Icon Path feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Icon Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
@@ -114,9 +107,8 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Label Color feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Label Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addLabelColorPropertyDescriptor(Object object) {
@@ -127,9 +119,8 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
     }
 
     /**
-     * This returns BasicLabelStyle.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns BasicLabelStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -138,9 +129,8 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -150,10 +140,9 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -174,10 +163,9 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -24,14 +24,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Container Model Operation</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Container Model Operation</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ContainerModelOperationImpl#getSubModelOperations
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.ContainerModelOperationImpl#getSubModelOperations
  * <em>Sub Model Operations</em>}</li>
  * </ul>
  *
@@ -39,10 +38,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public abstract class ContainerModelOperationImpl extends ModelOperationImpl implements ContainerModelOperation {
     /**
-     * The cached value of the '{@link #getSubModelOperations()
-     * <em>Sub Model Operations</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getSubModelOperations() <em>Sub Model Operations</em>}' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getSubModelOperations()
      * @generated
      * @ordered
@@ -51,7 +49,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ContainerModelOperationImpl() {
@@ -60,7 +58,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -70,7 +68,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +81,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +95,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +109,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -128,7 +126,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -143,7 +141,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

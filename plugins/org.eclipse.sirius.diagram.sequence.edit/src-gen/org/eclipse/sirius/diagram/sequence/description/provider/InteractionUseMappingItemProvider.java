@@ -21,17 +21,15 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping}
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class InteractionUseMappingItemProvider extends FrameMappingItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public InteractionUseMappingItemProvider(AdapterFactory adapterFactory) {
@@ -39,9 +37,8 @@ public class InteractionUseMappingItemProvider extends FrameMappingItemProvider 
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -54,9 +51,8 @@ public class InteractionUseMappingItemProvider extends FrameMappingItemProvider 
     }
 
     /**
-     * This returns InteractionUseMapping.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns InteractionUseMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -65,8 +61,7 @@ public class InteractionUseMappingItemProvider extends FrameMappingItemProvider 
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -77,10 +72,9 @@ public class InteractionUseMappingItemProvider extends FrameMappingItemProvider 
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -91,10 +85,9 @@ public class InteractionUseMappingItemProvider extends FrameMappingItemProvider 
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -103,10 +96,9 @@ public class InteractionUseMappingItemProvider extends FrameMappingItemProvider 
     }
 
     /**
-     * This returns the label text for
-     * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -124,9 +116,8 @@ public class InteractionUseMappingItemProvider extends FrameMappingItemProvider 
     }
 
     /**
-     * This returns the label text for
-     * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @not-generated
      */

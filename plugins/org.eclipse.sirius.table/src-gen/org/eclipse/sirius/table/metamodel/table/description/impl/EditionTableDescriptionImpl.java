@@ -24,8 +24,8 @@ import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescript
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Edition Table Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Edition Table Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -36,8 +36,7 @@ import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl#getReusedColumnMappings
  * <em>Reused Column Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl#getAllColumnMappings
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl#getAllColumnMappings
  * <em>All Column Mappings</em>}</li>
  * </ul>
  *
@@ -45,10 +44,9 @@ import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping
  */
 public class EditionTableDescriptionImpl extends TableDescriptionImpl implements EditionTableDescription {
     /**
-     * The cached value of the '{@link #getOwnedColumnMappings()
-     * <em>Owned Column Mappings</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedColumnMappings() <em>Owned Column Mappings</em>}' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getOwnedColumnMappings()
      * @generated
      * @ordered
@@ -56,9 +54,8 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
     protected EList<FeatureColumnMapping> ownedColumnMappings;
 
     /**
-     * The cached value of the '{@link #getReusedColumnMappings()
-     * <em>Reused Column Mappings</em>}' reference list. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getReusedColumnMappings() <em>Reused Column Mappings</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getReusedColumnMappings()
      * @generated
@@ -68,7 +65,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected EditionTableDescriptionImpl() {
@@ -77,7 +74,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -87,7 +84,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +97,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,25 +110,22 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<FeatureColumnMapping> getAllColumnMappings() {
-        // TODO: implement this method to return the 'All Column Mappings'
-        // reference list
+        // TODO: implement this method to return the 'All Column Mappings' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +139,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -163,7 +157,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -184,7 +178,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -202,7 +196,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

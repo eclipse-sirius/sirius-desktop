@@ -32,43 +32,31 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.impl.StyleImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Edge Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Edge Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getLineStyle
- * <em>Line Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getSourceArrow
- * <em>Source Arrow</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getTargetArrow
- * <em>Target Arrow</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getFoldingStyle
- * <em>Folding Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getSize
- * <em>Size</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getRoutingStyle
- * <em>Routing Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getBeginLabelStyle
- * <em>Begin Label Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getCenterLabelStyle
- * <em>Center Label Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getEndLabelStyle
- * <em>End Label Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getCentered
- * <em>Centered</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getStrokeColor
- * <em>Stroke Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getLineStyle <em>Line Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getSourceArrow <em>Source Arrow</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getTargetArrow <em>Target Arrow</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getFoldingStyle <em>Folding Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getSize <em>Size</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getRoutingStyle <em>Routing Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getBeginLabelStyle <em>Begin Label Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getCenterLabelStyle <em>Center Label Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getEndLabelStyle <em>End Label Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getCentered <em>Centered</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getStrokeColor <em>Stroke Color</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     /**
-     * The default value of the '{@link #getLineStyle() <em>Line Style</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLineStyle() <em>Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLineStyle()
      * @generated
      * @ordered
@@ -76,9 +64,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected static final LineStyle LINE_STYLE_EDEFAULT = LineStyle.SOLID_LITERAL;
 
     /**
-     * The cached value of the '{@link #getLineStyle() <em>Line Style</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLineStyle() <em>Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLineStyle()
      * @generated
      * @ordered
@@ -86,9 +74,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected LineStyle lineStyle = EdgeStyleImpl.LINE_STYLE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getSourceArrow() <em>Source Arrow</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getSourceArrow() <em>Source Arrow</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getSourceArrow()
      * @generated
      * @ordered
@@ -96,9 +84,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected static final EdgeArrows SOURCE_ARROW_EDEFAULT = EdgeArrows.NO_DECORATION_LITERAL;
 
     /**
-     * The cached value of the '{@link #getSourceArrow() <em>Source Arrow</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getSourceArrow() <em>Source Arrow</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getSourceArrow()
      * @generated
      * @ordered
@@ -106,9 +94,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected EdgeArrows sourceArrow = EdgeStyleImpl.SOURCE_ARROW_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTargetArrow() <em>Target Arrow</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getTargetArrow() <em>Target Arrow</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getTargetArrow()
      * @generated
      * @ordered
@@ -116,9 +104,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected static final EdgeArrows TARGET_ARROW_EDEFAULT = EdgeArrows.INPUT_ARROW_LITERAL;
 
     /**
-     * The cached value of the '{@link #getTargetArrow() <em>Target Arrow</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getTargetArrow() <em>Target Arrow</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getTargetArrow()
      * @generated
      * @ordered
@@ -126,10 +114,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected EdgeArrows targetArrow = EdgeStyleImpl.TARGET_ARROW_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFoldingStyle()
-     * <em>Folding Style</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFoldingStyle() <em>Folding Style</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getFoldingStyle()
      * @generated
      * @ordered
@@ -137,9 +124,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected static final FoldingStyle FOLDING_STYLE_EDEFAULT = FoldingStyle.NONE_LITERAL;
 
     /**
-     * The cached value of the '{@link #getFoldingStyle() <em>Folding Style</em>
-     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFoldingStyle() <em>Folding Style</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getFoldingStyle()
      * @generated
      * @ordered
@@ -147,8 +134,8 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected FoldingStyle foldingStyle = EdgeStyleImpl.FOLDING_STYLE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getSize() <em>Size</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getSize()
      * @generated
@@ -157,8 +144,8 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected static final Integer SIZE_EDEFAULT = new Integer(1);
 
     /**
-     * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getSize() <em>Size</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getSize()
      * @generated
@@ -167,10 +154,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected Integer size = EdgeStyleImpl.SIZE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getRoutingStyle()
-     * <em>Routing Style</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getRoutingStyle() <em>Routing Style</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getRoutingStyle()
      * @generated
      * @ordered
@@ -178,9 +164,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected static final EdgeRouting ROUTING_STYLE_EDEFAULT = EdgeRouting.STRAIGHT_LITERAL;
 
     /**
-     * The cached value of the '{@link #getRoutingStyle() <em>Routing Style</em>
-     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getRoutingStyle() <em>Routing Style</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getRoutingStyle()
      * @generated
      * @ordered
@@ -188,9 +174,8 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected EdgeRouting routingStyle = EdgeStyleImpl.ROUTING_STYLE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getBeginLabelStyle()
-     * <em>Begin Label Style</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getBeginLabelStyle() <em>Begin Label Style</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getBeginLabelStyle()
      * @generated
@@ -199,9 +184,8 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected BeginLabelStyle beginLabelStyle;
 
     /**
-     * The cached value of the '{@link #getCenterLabelStyle()
-     * <em>Center Label Style</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getCenterLabelStyle() <em>Center Label Style</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCenterLabelStyle()
      * @generated
@@ -210,9 +194,8 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected CenterLabelStyle centerLabelStyle;
 
     /**
-     * The cached value of the '{@link #getEndLabelStyle()
-     * <em>End Label Style</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getEndLabelStyle() <em>End Label Style</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getEndLabelStyle()
      * @generated
@@ -221,9 +204,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected EndLabelStyle endLabelStyle;
 
     /**
-     * The default value of the '{@link #getCentered() <em>Centered</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getCentered() <em>Centered</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getCentered()
      * @generated
      * @ordered
@@ -231,9 +214,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected static final CenteringStyle CENTERED_EDEFAULT = CenteringStyle.NONE;
 
     /**
-     * The cached value of the '{@link #getCentered() <em>Centered</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getCentered() <em>Centered</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getCentered()
      * @generated
      * @ordered
@@ -241,9 +224,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected CenteringStyle centered = EdgeStyleImpl.CENTERED_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getStrokeColor() <em>Stroke Color</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getStrokeColor() <em>Stroke Color</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getStrokeColor()
      * @generated
      * @ordered
@@ -251,9 +234,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected static final RGBValues STROKE_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "136,136,136"); //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getStrokeColor() <em>Stroke Color</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStrokeColor() <em>Stroke Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getStrokeColor()
      * @generated
      * @ordered
@@ -262,7 +245,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected EdgeStyleImpl() {
@@ -271,7 +254,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -281,7 +264,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -291,7 +274,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -305,7 +288,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -315,7 +298,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -329,7 +312,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -339,7 +322,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -353,7 +336,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -363,7 +346,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -377,7 +360,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -387,7 +370,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -401,7 +384,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -411,7 +394,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -425,7 +408,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -435,7 +418,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -449,7 +432,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -476,7 +459,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public BeginLabelStyle basicGetBeginLabelStyle() {
@@ -485,7 +468,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetBeginLabelStyle(BeginLabelStyle newBeginLabelStyle, NotificationChain msgs) {
@@ -504,7 +487,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -528,7 +511,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -555,7 +538,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public CenterLabelStyle basicGetCenterLabelStyle() {
@@ -564,7 +547,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetCenterLabelStyle(CenterLabelStyle newCenterLabelStyle, NotificationChain msgs) {
@@ -583,7 +566,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -607,7 +590,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -634,7 +617,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public EndLabelStyle basicGetEndLabelStyle() {
@@ -643,7 +626,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetEndLabelStyle(EndLabelStyle newEndLabelStyle, NotificationChain msgs) {
@@ -662,7 +645,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -686,7 +669,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -696,7 +679,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -710,7 +693,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -728,7 +711,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -771,7 +754,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -816,7 +799,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -861,7 +844,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -895,7 +878,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

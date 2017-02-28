@@ -25,14 +25,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Variable Container</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Variable Container</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.VariableContainerImpl#getSubVariables
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.VariableContainerImpl#getSubVariables
  * <em>Sub Variables</em>}</li>
  * </ul>
  *
@@ -40,9 +39,8 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  */
 public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container implements VariableContainer {
     /**
-     * The cached value of the '{@link #getSubVariables() <em>Sub Variables</em>
-     * }' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The cached value of the '{@link #getSubVariables() <em>Sub Variables</em> }' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSubVariables()
      * @generated
@@ -52,7 +50,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected VariableContainerImpl() {
@@ -61,7 +59,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -71,7 +69,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -84,7 +82,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +96,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +110,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -129,7 +127,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -144,7 +142,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

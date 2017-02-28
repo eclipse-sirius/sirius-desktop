@@ -23,17 +23,15 @@ import org.eclipse.sirius.diagram.sequence.template.TExecutionStyle;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle} object.
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public TExecutionStyleItemProvider(AdapterFactory adapterFactory) {
@@ -41,9 +39,8 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -59,9 +56,9 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Border Size Computation
-     * Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Border Size Computation Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addBorderSizeComputationExpressionPropertyDescriptor(Object object) {
@@ -73,9 +70,8 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Border Color feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Border Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addBorderColorPropertyDescriptor(Object object) {
@@ -87,9 +83,8 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Background Color feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Background Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
@@ -101,9 +96,8 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     }
 
     /**
-     * This returns TExecutionStyle.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns TExecutionStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -112,8 +106,7 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -124,10 +117,9 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -144,10 +136,9 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -28,33 +28,27 @@ import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Text Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Text Description</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getValueExpression
- * <em>Value Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getInitialOperation
- * <em>Initial Operation</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getStyle
- * <em>Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getConditionalStyles
- * <em>Conditional Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getValueExpression <em>Value Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getInitialOperation <em>Initial Operation</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getStyle <em>Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getConditionalStyles <em>Conditional Styles</em>}
+ * </li>
  * </ul>
  *
  * @generated
  */
 public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDescription {
     /**
-     * The default value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -62,10 +56,9 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     protected static final String VALUE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -73,9 +66,8 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     protected String valueExpression = TextDescriptionImpl.VALUE_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getInitialOperation()
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInitialOperation()
      * @generated
@@ -84,9 +76,9 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     protected InitialOperation initialOperation;
 
     /**
-     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -94,10 +86,9 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     protected TextWidgetStyle style;
 
     /**
-     * The cached value of the '{@link #getConditionalStyles()
-     * <em>Conditional Styles</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -106,7 +97,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TextDescriptionImpl() {
@@ -115,7 +106,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +116,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -135,7 +126,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -149,7 +140,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +150,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -178,7 +169,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -202,7 +193,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +203,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(TextWidgetStyle newStyle, NotificationChain msgs) {
@@ -231,7 +222,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -255,7 +246,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -268,7 +259,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -286,7 +277,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -306,7 +297,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -332,7 +323,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -356,7 +347,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -376,7 +367,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

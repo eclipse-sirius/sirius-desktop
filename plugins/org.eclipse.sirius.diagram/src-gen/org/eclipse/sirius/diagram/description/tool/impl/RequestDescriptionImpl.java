@@ -19,23 +19,21 @@ import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Request Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Request Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.tool.impl.RequestDescriptionImpl#getType
- * <em>Type</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.impl.RequestDescriptionImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implements RequestDescription {
     /**
-     * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getType()
      * @generated
@@ -44,8 +42,8 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
     protected static final String TYPE_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getType() <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getType()
      * @generated
@@ -55,7 +53,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RequestDescriptionImpl() {
@@ -64,7 +62,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -74,7 +72,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -84,7 +82,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +96,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +110,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +125,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -142,7 +140,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +154,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

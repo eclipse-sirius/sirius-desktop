@@ -16,15 +16,15 @@ import org.eclipse.sirius.diagram.sequence.description.tool.LifelineCreationTool
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Lifeline Creation Tool</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Lifeline Creation Tool</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public class LifelineCreationToolImpl extends ContainerCreationDescriptionImpl implements LifelineCreationTool {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected LifelineCreationToolImpl() {
@@ -33,7 +33,7 @@ public class LifelineCreationToolImpl extends ContainerCreationDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

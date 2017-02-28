@@ -15,17 +15,14 @@ import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DAnnotation</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DAnnotation</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.DAnnotation#getSource
- * <em>Source</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.DAnnotation#getDetails
- * <em>Details</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.DAnnotation#getSource <em>Source</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.DAnnotation#getDetails <em>Details</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotation()
@@ -34,14 +31,13 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface DAnnotation extends EObject {
     /**
-     * Returns the value of the '<em><b>Source</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Source</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Source</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Source</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Source</em>' attribute.
      * @see #setSource(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotation_Source()
@@ -51,11 +47,9 @@ public interface DAnnotation extends EObject {
     String getSource();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.DAnnotation#getSource
-     * <em>Source</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.DAnnotation#getSource <em>Source</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Source</em>' attribute.
      * @see #getSource()
@@ -64,15 +58,13 @@ public interface DAnnotation extends EObject {
     void setSource(String value);
 
     /**
-     * Returns the value of the '<em><b>Details</b></em>' map. The key is of
-     * type {@link java.lang.String}, and the value is of type
-     * {@link java.lang.String}, <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Details</b></em>' map. The key is of type {@link java.lang.String}, and the
+     * value is of type {@link java.lang.String}, <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Details</em>' map isn't clear, there really
-     * should be more of a description here...
+     * If the meaning of the '<em>Details</em>' map isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Details</em>' map.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotation_Details()
      * @model mapType=

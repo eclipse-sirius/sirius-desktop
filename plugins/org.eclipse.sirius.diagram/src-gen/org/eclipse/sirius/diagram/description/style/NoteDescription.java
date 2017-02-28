@@ -14,16 +14,14 @@ package org.eclipse.sirius.diagram.description.style;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Note Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Note Description</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.NoteDescription#getColor
- * <em>Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.NoteDescription#getColor <em>Color</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNoteDescription()
@@ -32,9 +30,8 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  */
 public interface NoteDescription extends NodeStyleDescription {
     /**
-     * Returns the value of the '<em><b>Color</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * color to use. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Color</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The color to use. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Color</em>' reference.
      * @see #setColor(ColorDescription)
@@ -45,10 +42,9 @@ public interface NoteDescription extends NodeStyleDescription {
     ColorDescription getColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.NoteDescription#getColor
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.NoteDescription#getColor
      * <em>Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Color</em>' reference.
      * @see #getColor()

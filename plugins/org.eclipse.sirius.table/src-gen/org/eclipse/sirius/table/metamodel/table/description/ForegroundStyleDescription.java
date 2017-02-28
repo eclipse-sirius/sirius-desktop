@@ -16,21 +16,18 @@ import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Foreground Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Foreground Style Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelSize
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelSize
  * <em>Label Size</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelFormat
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelFormat
  * <em>Label Format</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getForeGroundColor
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getForeGroundColor
  * <em>Fore Ground Color</em>}</li>
  * </ul>
  *
@@ -40,10 +37,8 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  */
 public interface ForegroundStyleDescription extends EObject {
     /**
-     * Returns the value of the '<em><b>Label Size</b></em>' attribute. The
-     * default value is <code>"12"</code>. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> The font size. <!--
-     * end-model-doc -->
+     * Returns the value of the '<em><b>Label Size</b></em>' attribute. The default value is <code>"12"</code>. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The font size. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Label Size</em>' attribute.
      * @see #setLabelSize(int)
@@ -56,9 +51,8 @@ public interface ForegroundStyleDescription extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelSize
-     * <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
      * @see #getLabelSize()
@@ -67,11 +61,9 @@ public interface ForegroundStyleDescription extends EObject {
     void setLabelSize(int value);
 
     /**
-     * Returns the value of the '<em><b>Label Format</b></em>' attribute. The
-     * default value is <code>"normal"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.viewpoint.FontFormat}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * font format. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Label Format</b></em>' attribute. The default value is <code>"normal"</code>.
+     * The literals are from the enumeration {@link org.eclipse.sirius.viewpoint.FontFormat}. <!-- begin-user-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> The font format. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Label Format</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.FontFormat
@@ -83,14 +75,13 @@ public interface ForegroundStyleDescription extends EObject {
     EList<FontFormat> getLabelFormat();
 
     /**
-     * Returns the value of the '<em><b>Fore Ground Color</b></em>' reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Fore Ground Color</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Fore Ground Color</em>' containment reference
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Fore Ground Color</em>' containment reference isn't clear, there really should be more
+     * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Fore Ground Color</em>' reference.
      * @see #setForeGroundColor(ColorDescription)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getForegroundStyleDescription_ForeGroundColor()
@@ -102,9 +93,8 @@ public interface ForegroundStyleDescription extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getForeGroundColor
-     * <em>Fore Ground Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Fore Ground Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Fore Ground Color</em>' reference.
      * @see #getForeGroundColor()

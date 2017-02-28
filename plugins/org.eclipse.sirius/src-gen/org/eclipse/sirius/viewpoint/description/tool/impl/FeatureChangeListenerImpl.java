@@ -19,17 +19,15 @@ import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Feature Change Listener</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Feature Change Listener</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.FeatureChangeListenerImpl#getDomainClass
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.FeatureChangeListenerImpl#getDomainClass
  * <em>Domain Class</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.FeatureChangeListenerImpl#getFeatureName
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.FeatureChangeListenerImpl#getFeatureName
  * <em>Feature Name</em>}</li>
  * </ul>
  *
@@ -37,9 +35,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container implements FeatureChangeListener {
     /**
-     * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -47,9 +45,9 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
     protected static final String DOMAIN_CLASS_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -57,9 +55,9 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
     protected String domainClass = FeatureChangeListenerImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -67,9 +65,9 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
     protected static final String FEATURE_NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -78,7 +76,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected FeatureChangeListenerImpl() {
@@ -87,7 +85,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +95,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -107,7 +105,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -121,7 +119,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -131,7 +129,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +143,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -161,7 +159,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -179,7 +177,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -197,7 +195,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -213,7 +211,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

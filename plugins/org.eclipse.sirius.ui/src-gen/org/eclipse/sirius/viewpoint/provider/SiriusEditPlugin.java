@@ -49,7 +49,6 @@ import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.preferences.DCorePreferences;
 import org.eclipse.sirius.ui.business.internal.dialect.LogThroughActiveDialectEditorLogListener;
-import org.eclipse.sirius.ui.business.internal.session.GenericSWTCallBack;
 import org.eclipse.sirius.ui.business.internal.session.factory.UISessionFactoryDescriptorRegistryListener;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
@@ -73,16 +72,14 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 /**
- * This is the central singleton for the Viewpoint edit plugin. <!--
- * begin-user-doc --> <!-- end-user-doc -->
- *
+ * This is the central singleton for the Viewpoint edit plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public final class SiriusEditPlugin extends EMFPlugin {
     /**
-     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final SiriusEditPlugin INSTANCE = new SiriusEditPlugin();
@@ -90,16 +87,15 @@ public final class SiriusEditPlugin extends EMFPlugin {
     public static final String ID = "org.eclipse.sirius.ui"; //$NON-NLS-1$
 
     /**
-     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private static Implementation plugin;
 
     /**
      * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public SiriusEditPlugin() {
@@ -107,8 +103,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the singleton instance.
      * @not-generated
@@ -132,9 +127,8 @@ public final class SiriusEditPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the singleton instance.
      * @generated
      */
@@ -143,8 +137,8 @@ public final class SiriusEditPlugin extends EMFPlugin {
     }
 
     /**
-     * The actual implementation of the Eclipse <b>Plugin</b>. <!--
-     * begin-user-doc --> Extend UI plug-in<!-- end-user-doc -->
+     * The actual implementation of the Eclipse <b>Plugin</b>. <!-- begin-user-doc --> Extend UI plug-in<!--
+     * end-user-doc -->
      *
      * @not-generated
      */
@@ -157,14 +151,12 @@ public final class SiriusEditPlugin extends EMFPlugin {
         private Multimap<String, ISiriusPropertySheetPageProvider> propertySheetPageProviders = HashMultimap.create();
 
         /**
-         * The registry listener that will be used to listen to extension
-         * changes.
+         * The registry listener that will be used to listen to extension changes.
          */
         private ModelExplorerTabRegistryListener tabRegistryListener;
 
         /**
-         * The listener that will be used to listen to resource changes in
-         * modeling project
+         * The listener that will be used to listen to resource changes in modeling project
          */
         private IModelingProjectResourceListener modelingProjectListener;
 
@@ -174,7 +166,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         public Implementation() {
@@ -183,7 +175,6 @@ public final class SiriusEditPlugin extends EMFPlugin {
             // Remember the static instance.
             //
             SiriusEditPlugin.plugin = this;
-            SiriusPlugin.getDefault().setUiCallback(new GenericSWTCallBack());
         }
 
         /**
@@ -366,8 +357,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
         }
 
         /**
-         * Returns an image descriptor for the image file at the given plug-in
-         * relative path.
+         * Returns an image descriptor for the image file at the given plug-in relative path.
          *
          * @param path
          *            the path
@@ -378,13 +368,12 @@ public final class SiriusEditPlugin extends EMFPlugin {
         }
 
         /**
-         * Respects images residing in any plug-in. If path is relative, then
-         * this bundle is looked up for the image, otherwise, for absolute path,
-         * first segment is taken as id of plug-in with image
+         * Respects images residing in any plug-in. If path is relative, then this bundle is looked up for the image,
+         * otherwise, for absolute path, first segment is taken as id of plug-in with image
          *
          * @param path
-         *            the path to image, either absolute (with plug-in id as
-         *            first segment), or relative for bundled images
+         *            the path to image, either absolute (with plug-in id as first segment), or relative for bundled
+         *            images
          * @return the image descriptor
          */
         public static ImageDescriptor findImageDescriptor(String path) {
@@ -397,9 +386,8 @@ public final class SiriusEditPlugin extends EMFPlugin {
         }
 
         /**
-         * Returns an image for the image file at the given plug-in relative
-         * path. Client do not need to dispose this image. Images will be
-         * disposed automatically.
+         * Returns an image for the image file at the given plug-in relative path. Client do not need to dispose this
+         * image. Images will be disposed automatically.
          *
          * @param path
          *            the path
@@ -445,15 +433,13 @@ public final class SiriusEditPlugin extends EMFPlugin {
         }
 
         /**
-         * Get the most specific IPropertySheetPage adapted for the specified
-         * source.
+         * Get the most specific IPropertySheetPage adapted for the specified source.
          *
          * @param source
          *            the source part.
          * @param contributorId
          *            the contributor id.
-         * @return a IPropertySheetPage adapted for the specified source, or
-         *         <code>null</code> if none was contributed.
+         * @return a IPropertySheetPage adapted for the specified source, or <code>null</code> if none was contributed.
          */
         public IPropertySheetPage getPropertySheetPage(Object source, String contributorId) {
             for (ISiriusPropertySheetPageProvider provider : this.propertySheetPageProviders.get(contributorId)) {
@@ -531,9 +517,8 @@ public final class SiriusEditPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns the ImageDescriptor that can be used to create the image resource
-     * associated with the key. The description will typically be in the form of
-     * a URL to the image data.
+     * Returns the ImageDescriptor that can be used to create the image resource associated with the key. The
+     * description will typically be in the form of a URL to the image data.
      *
      * @param key
      *            the key of the image resource.

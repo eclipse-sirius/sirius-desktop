@@ -24,14 +24,13 @@ import org.eclipse.sirius.diagram.description.filter.Filter;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Composite Filter Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Composite Filter Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.filter.impl.CompositeFilterDescriptionImpl#getFilters
+ * <li>{@link org.eclipse.sirius.diagram.description.filter.impl.CompositeFilterDescriptionImpl#getFilters
  * <em>Filters</em>}</li>
  * </ul>
  *
@@ -39,9 +38,9 @@ import org.eclipse.sirius.diagram.description.filter.FilterPackage;
  */
 public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implements CompositeFilterDescription {
     /**
-     * The cached value of the '{@link #getFilters() <em>Filters</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilters() <em>Filters</em>}' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getFilters()
      * @generated
      * @ordered
@@ -50,7 +49,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CompositeFilterDescriptionImpl() {
@@ -59,7 +58,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -69,7 +68,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -82,7 +81,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +95,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -110,7 +109,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -127,7 +126,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -142,7 +141,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

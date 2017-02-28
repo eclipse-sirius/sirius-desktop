@@ -21,16 +21,15 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * {@link org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping} object. <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class DestructionMessageMappingItemProvider extends MessageMappingItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DestructionMessageMappingItemProvider(AdapterFactory adapterFactory) {
@@ -38,9 +37,8 @@ public class DestructionMessageMappingItemProvider extends MessageMappingItemPro
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -53,9 +51,8 @@ public class DestructionMessageMappingItemProvider extends MessageMappingItemPro
     }
 
     /**
-     * This returns DestructionMessageMapping.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns DestructionMessageMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -64,8 +61,7 @@ public class DestructionMessageMappingItemProvider extends MessageMappingItemPro
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -76,10 +72,9 @@ public class DestructionMessageMappingItemProvider extends MessageMappingItemPro
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -90,10 +85,9 @@ public class DestructionMessageMappingItemProvider extends MessageMappingItemPro
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

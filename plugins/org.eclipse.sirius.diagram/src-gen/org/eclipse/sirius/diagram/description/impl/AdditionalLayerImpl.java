@@ -18,28 +18,24 @@ import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Additional Layer</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Additional Layer</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.AdditionalLayerImpl#isActiveByDefault
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.AdditionalLayerImpl#isActiveByDefault
  * <em>Active By Default</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.AdditionalLayerImpl#isOptional
- * <em>Optional</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.AdditionalLayerImpl#isOptional <em>Optional</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
     /**
-     * The default value of the '{@link #isActiveByDefault()
-     * <em>Active By Default</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #isActiveByDefault() <em>Active By Default</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #isActiveByDefault()
      * @generated
      * @ordered
@@ -47,10 +43,9 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
     protected static final boolean ACTIVE_BY_DEFAULT_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isActiveByDefault()
-     * <em>Active By Default</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #isActiveByDefault() <em>Active By Default</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #isActiveByDefault()
      * @generated
      * @ordered
@@ -58,9 +53,9 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
     protected boolean activeByDefault = AdditionalLayerImpl.ACTIVE_BY_DEFAULT_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isOptional() <em>Optional</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #isOptional() <em>Optional</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isOptional()
      * @generated
      * @ordered
@@ -68,9 +63,9 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
     protected static final boolean OPTIONAL_EDEFAULT = true;
 
     /**
-     * The cached value of the '{@link #isOptional() <em>Optional</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #isOptional() <em>Optional</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isOptional()
      * @generated
      * @ordered
@@ -79,7 +74,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AdditionalLayerImpl() {
@@ -88,7 +83,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +93,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +103,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -122,7 +117,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +127,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +141,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +157,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -180,7 +175,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +193,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -214,7 +209,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

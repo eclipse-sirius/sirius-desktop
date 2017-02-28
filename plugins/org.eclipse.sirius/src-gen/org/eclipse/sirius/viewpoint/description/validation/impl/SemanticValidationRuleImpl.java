@@ -18,14 +18,13 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Semantic Validation Rule</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Semantic Validation Rule</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.validation.impl.SemanticValidationRuleImpl#getTargetClass
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.SemanticValidationRuleImpl#getTargetClass
  * <em>Target Class</em>}</li>
  * </ul>
  *
@@ -33,9 +32,9 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
  */
 public class SemanticValidationRuleImpl extends ValidationRuleImpl implements SemanticValidationRule {
     /**
-     * The default value of the '{@link #getTargetClass() <em>Target Class</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getTargetClass() <em>Target Class</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getTargetClass()
      * @generated
      * @ordered
@@ -43,9 +42,9 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
     protected static final String TARGET_CLASS_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTargetClass() <em>Target Class</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getTargetClass() <em>Target Class</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getTargetClass()
      * @generated
      * @ordered
@@ -54,7 +53,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SemanticValidationRuleImpl() {
@@ -63,7 +62,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -73,7 +72,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +82,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +96,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +110,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +125,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +140,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +154,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

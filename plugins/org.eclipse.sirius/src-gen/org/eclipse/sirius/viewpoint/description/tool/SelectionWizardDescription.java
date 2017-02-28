@@ -14,33 +14,25 @@ package org.eclipse.sirius.viewpoint.description.tool;
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Selection Wizard Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Selection Wizard Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getElement
- * <em>Element</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getContainerView
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getElement <em>Element</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getContainerView
  * <em>Container View</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getContainer
- * <em>Container</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getInitialOperation
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getContainer <em>Container</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getInitialOperation
  * <em>Initial Operation</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getIconPath
- * <em>Icon Path</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getWindowTitle
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getIconPath <em>Icon Path</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getWindowTitle
  * <em>Window Title</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getWindowImagePath
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getWindowImagePath
  * <em>Window Image Path</em>}</li>
  * </ul>
  *
@@ -50,14 +42,13 @@ import org.eclipse.sirius.viewpoint.description.SelectionDescription;
  */
 public interface SelectionWizardDescription extends AbstractToolDescription, SelectionDescription {
     /**
-     * Returns the value of the '<em><b>Element</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Element</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Element</em>' containment reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Element</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Element</em>' containment reference.
      * @see #setElement(ElementSelectVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSelectionWizardDescription_Element()
@@ -67,11 +58,9 @@ public interface SelectionWizardDescription extends AbstractToolDescription, Sel
     ElementSelectVariable getElement();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getElement
-     * <em>Element</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getElement
+     * <em>Element</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Element</em>' containment reference.
      * @see #getElement()
@@ -80,14 +69,13 @@ public interface SelectionWizardDescription extends AbstractToolDescription, Sel
     void setElement(ElementSelectVariable value);
 
     /**
-     * Returns the value of the '<em><b>Container View</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Container View</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Container View</em>' containment reference
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Container View</em>' containment reference isn't clear, there really should be more of
+     * a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Container View</em>' containment reference.
      * @see #setContainerView(ContainerViewVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSelectionWizardDescription_ContainerView()
@@ -99,26 +87,23 @@ public interface SelectionWizardDescription extends AbstractToolDescription, Sel
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getContainerView
-     * <em>Container View</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * <em>Container View</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Container View</em>' containment
-     *            reference.
+     *            the new value of the '<em>Container View</em>' containment reference.
      * @see #getContainerView()
      * @generated
      */
     void setContainerView(ContainerViewVariable value);
 
     /**
-     * Returns the value of the '<em><b>Container</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Container</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Container</em>' containment reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Container</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Container</em>' containment reference.
      * @see #setContainer(SelectContainerVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSelectionWizardDescription_Container()
@@ -129,29 +114,25 @@ public interface SelectionWizardDescription extends AbstractToolDescription, Sel
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getContainer
-     * <em>Container</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getContainer <em>Container</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Container</em>' containment
-     *            reference.
+     *            the new value of the '<em>Container</em>' containment reference.
      * @see #getContainer()
      * @generated
      */
     void setContainer(SelectContainerVariable value);
 
     /**
-     * Returns the value of the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Initial Operation</em>' containment reference
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Initial Operation</em>' containment reference isn't clear, there really should be more
+     * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Initial Operation</em>' containment
-     *         reference.
+     * 
+     * @return the value of the '<em>Initial Operation</em>' containment reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSelectionWizardDescription_InitialOperation()
      * @model containment="true" resolveProxies="true" required="true"
@@ -162,45 +143,38 @@ public interface SelectionWizardDescription extends AbstractToolDescription, Sel
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Initial Operation</em>' containment
-     *            reference.
+     *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()
      * @generated
      */
     void setInitialOperation(InitialOperation value);
 
     /**
-     * Returns the value of the '<em><b>Icon Path</b></em>' attribute. The
-     * default value is
-     * <code>"/org.eclipse.sirius.ui/icons/full/obj16/SelectionWizardDescription.gif"</code>
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Icon Path</b></em>' attribute. The default value is
+     * <code>"/org.eclipse.sirius.ui/icons/full/obj16/SelectionWizardDescription.gif"</code>. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Icon Path</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Icon Path</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Icon Path</em>' attribute.
      * @see #setIconPath(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSelectionWizardDescription_IconPath()
-     * @model default=
-     *        "/org.eclipse.sirius.ui/icons/full/obj16/SelectionWizardDescription.gif"
-     *        dataType="org.eclipse.sirius.viewpoint.description.ImagePath"
-     *        required="true"
+     * @model default="/org.eclipse.sirius.ui/icons/full/obj16/SelectionWizardDescription.gif"
+     *        dataType="org.eclipse.sirius.viewpoint.description.ImagePath" required="true"
      * @generated
      */
     String getIconPath();
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getIconPath
-     * <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getIconPath <em>Icon Path</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Icon Path</em>' attribute.
      * @see #getIconPath()
@@ -209,10 +183,9 @@ public interface SelectionWizardDescription extends AbstractToolDescription, Sel
     void setIconPath(String value);
 
     /**
-     * Returns the value of the '<em><b>Window Title</b></em>' attribute. The
-     * default value is <code>"Selection Wizard"</code>. <!-- begin-user-doc -->
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Title of the dialog. <!--
-     * end-model-doc -->
+     * Returns the value of the '<em><b>Window Title</b></em>' attribute. The default value is
+     * <code>"Selection Wizard"</code>. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Title of
+     * the dialog. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Window Title</em>' attribute.
      * @see #setWindowTitle(String)
@@ -225,9 +198,8 @@ public interface SelectionWizardDescription extends AbstractToolDescription, Sel
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getWindowTitle
-     * <em>Window Title</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Window Title</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Window Title</em>' attribute.
      * @see #getWindowTitle()
@@ -236,14 +208,13 @@ public interface SelectionWizardDescription extends AbstractToolDescription, Sel
     void setWindowTitle(String value);
 
     /**
-     * Returns the value of the '<em><b>Window Image Path</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Window Image Path</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Window Image Path</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Window Image Path</em>' attribute isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Window Image Path</em>' attribute.
      * @see #setWindowImagePath(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSelectionWizardDescription_WindowImagePath()
@@ -255,9 +226,8 @@ public interface SelectionWizardDescription extends AbstractToolDescription, Sel
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getWindowImagePath
-     * <em>Window Image Path</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Window Image Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Window Image Path</em>' attribute.
      * @see #getWindowImagePath()

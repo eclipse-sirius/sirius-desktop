@@ -22,14 +22,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Init Edge Creation Operation</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Init Edge Creation Operation</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.InitEdgeCreationOperationImpl#getFirstModelOperations
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.InitEdgeCreationOperationImpl#getFirstModelOperations
  * <em>First Model Operations</em>}</li>
  * </ul>
  *
@@ -37,10 +36,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container implements InitEdgeCreationOperation {
     /**
-     * The cached value of the '{@link #getFirstModelOperations()
-     * <em>First Model Operations</em>}' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFirstModelOperations() <em>First Model Operations</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFirstModelOperations()
      * @generated
      * @ordered
@@ -49,7 +47,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected InitEdgeCreationOperationImpl() {
@@ -58,7 +56,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -68,7 +66,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +94,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ModelOperation basicGetFirstModelOperations() {
@@ -105,7 +103,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetFirstModelOperations(ModelOperation newFirstModelOperations, NotificationChain msgs) {
@@ -125,7 +123,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,7 +149,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +163,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +180,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -197,7 +195,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +210,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

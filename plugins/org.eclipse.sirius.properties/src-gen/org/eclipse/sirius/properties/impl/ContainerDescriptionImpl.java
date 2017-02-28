@@ -27,26 +27,22 @@ import org.eclipse.sirius.properties.LayoutDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Container Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Container Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getControls
- * <em>Controls</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getLayout
- * <em>Layout</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getControls <em>Controls</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getLayout <em>Layout</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ContainerDescriptionImpl extends ControlDescriptionImpl implements ContainerDescription {
     /**
-     * The cached value of the '{@link #getControls() <em>Controls</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getControls() <em>Controls</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getControls()
      * @generated
@@ -55,9 +51,9 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
     protected EList<ControlDescription> controls;
 
     /**
-     * The cached value of the '{@link #getLayout() <em>Layout</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLayout() <em>Layout</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getLayout()
      * @generated
      * @ordered
@@ -66,7 +62,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ContainerDescriptionImpl() {
@@ -75,7 +71,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +81,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +94,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +104,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetLayout(LayoutDescription newLayout, NotificationChain msgs) {
@@ -127,7 +123,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,7 +147,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -167,7 +163,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -183,7 +179,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -203,7 +199,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -221,7 +217,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

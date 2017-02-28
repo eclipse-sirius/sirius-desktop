@@ -19,14 +19,12 @@ import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Rule Audit</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Rule Audit</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.validation.impl.RuleAuditImpl#getAuditExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.impl.RuleAuditImpl#getAuditExpression
  * <em>Audit Expression</em>}</li>
  * </ul>
  *
@@ -34,10 +32,9 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
  */
 public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleAudit {
     /**
-     * The default value of the '{@link #getAuditExpression()
-     * <em>Audit Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getAuditExpression() <em>Audit Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getAuditExpression()
      * @generated
      * @ordered
@@ -45,10 +42,9 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
     protected static final String AUDIT_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getAuditExpression()
-     * <em>Audit Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getAuditExpression() <em>Audit Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getAuditExpression()
      * @generated
      * @ordered
@@ -57,7 +53,7 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RuleAuditImpl() {
@@ -66,7 +62,7 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -76,7 +72,7 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -86,7 +82,7 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +96,7 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -114,7 +110,7 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +125,7 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -144,7 +140,7 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +154,7 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

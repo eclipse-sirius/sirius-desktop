@@ -33,37 +33,29 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DRepresentation</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DRepresentation</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getEAnnotations
- * <em>EAnnotations</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getOwnedRepresentationElements
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getEAnnotations <em>EAnnotations</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getOwnedRepresentationElements
  * <em>Owned Representation Elements</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getRepresentationElements
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getRepresentationElements
  * <em>Representation Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getOwnedAnnotationEntries
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getOwnedAnnotationEntries
  * <em>Owned Annotation Entries</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getUiState
- * <em>Ui State</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getUiState <em>Ui State</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class DRepresentationImpl extends DocumentedElementImpl implements DRepresentation {
     /**
-     * The cached value of the '{@link #getEAnnotations() <em>EAnnotations</em>}
-     * ' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The cached value of the '{@link #getEAnnotations() <em>EAnnotations</em>} ' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getEAnnotations()
      * @generated
@@ -72,8 +64,8 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     protected EList<DAnnotation> eAnnotations;
 
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -82,8 +74,8 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -92,10 +84,9 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     protected String name = DRepresentationImpl.NAME_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getOwnedAnnotationEntries()
-     * <em>Owned Annotation Entries</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedAnnotationEntries() <em>Owned Annotation Entries</em>}' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getOwnedAnnotationEntries()
      * @generated
      * @ordered
@@ -103,9 +94,9 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     protected EList<AnnotationEntry> ownedAnnotationEntries;
 
     /**
-     * The cached value of the '{@link #getUiState() <em>Ui State</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getUiState() <em>Ui State</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getUiState()
      * @generated
      * @ordered
@@ -114,7 +105,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DRepresentationImpl() {
@@ -123,7 +114,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -133,7 +124,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,43 +137,37 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<DRepresentationElement> getOwnedRepresentationElements() {
-        // TODO: implement this method to return the 'Owned Representation
-        // Elements' reference list
+        // TODO: implement this method to return the 'Owned Representation Elements' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<DRepresentationElement> getRepresentationElements() {
-        // TODO: implement this method to return the 'Representation Elements'
-        // reference list
+        // TODO: implement this method to return the 'Representation Elements' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -192,7 +177,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -206,7 +191,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -219,7 +204,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -229,7 +214,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetUiState(UIState newUiState, NotificationChain msgs) {
@@ -248,7 +233,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -272,7 +257,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -284,7 +269,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -296,7 +281,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -314,7 +299,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -338,7 +323,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -365,7 +350,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -389,7 +374,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -413,7 +398,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -437,7 +422,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -461,7 +446,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

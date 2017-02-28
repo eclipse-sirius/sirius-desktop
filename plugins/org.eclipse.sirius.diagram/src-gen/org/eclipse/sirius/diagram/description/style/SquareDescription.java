@@ -14,25 +14,18 @@ package org.eclipse.sirius.diagram.description.style;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Square Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Square Description</b></em>'. <!-- end-user-doc
+ * -->
  *
- * <!-- begin-model-doc --> The square style to display a node as a square. <!--
- * end-model-doc -->
+ * <!-- begin-model-doc --> The square style to display a node as a square. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.SquareDescription#getWidth
- * <em>Width</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.SquareDescription#getHeight
- * <em>Height</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.SquareDescription#getColor
- * <em>Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.SquareDescription#getWidth <em>Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.SquareDescription#getHeight <em>Height</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.SquareDescription#getColor <em>Color</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getSquareDescription()
@@ -41,10 +34,9 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  */
 public interface SquareDescription extends NodeStyleDescription {
     /**
-     * Returns the value of the '<em><b>Width</b></em>' attribute. The default
-     * value is <code>"0"</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * <!-- begin-model-doc --> Return all nodes that have been created with the
-     * specified mapping. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Width</b></em>' attribute. The default value is <code>"0"</code>. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Return all nodes that have been created with
+     * the specified mapping. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(Integer)
@@ -55,10 +47,9 @@ public interface SquareDescription extends NodeStyleDescription {
     Integer getWidth();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.SquareDescription#getWidth
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.SquareDescription#getWidth
      * <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()
@@ -67,9 +58,9 @@ public interface SquareDescription extends NodeStyleDescription {
     void setWidth(Integer value);
 
     /**
-     * Returns the value of the '<em><b>Height</b></em>' attribute. The default
-     * value is <code>"0"</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * <!-- begin-model-doc --> The height of the square. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Height</b></em>' attribute. The default value is <code>"0"</code>. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The height of the square. <!-- end-model-doc
+     * -->
      *
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(Integer)
@@ -80,11 +71,9 @@ public interface SquareDescription extends NodeStyleDescription {
     Integer getHeight();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.SquareDescription#getHeight
-     * <em>Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.SquareDescription#getHeight
+     * <em>Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()
@@ -93,14 +82,13 @@ public interface SquareDescription extends NodeStyleDescription {
     void setHeight(Integer value);
 
     /**
-     * Returns the value of the '<em><b>Color</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Color</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Color</em>' reference isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Color</em>' reference isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Color</em>' reference.
      * @see #setColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getSquareDescription_Color()
@@ -110,10 +98,9 @@ public interface SquareDescription extends NodeStyleDescription {
     ColorDescription getColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.SquareDescription#getColor
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.SquareDescription#getColor
      * <em>Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Color</em>' reference.
      * @see #getColor()

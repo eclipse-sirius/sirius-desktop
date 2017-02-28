@@ -18,17 +18,15 @@ import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Grid Layout Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Grid Layout Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl#getNumberOfColumns
- * <em>Number Of Columns</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl#isMakeColumnsWithEqualWidth
+ * <li>{@link org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl#getNumberOfColumns <em>Number Of Columns</em>
+ * }</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl#isMakeColumnsWithEqualWidth
  * <em>Make Columns With Equal Width</em>}</li>
  * </ul>
  *
@@ -36,9 +34,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  */
 public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements GridLayoutDescription {
     /**
-     * The default value of the '{@link #getNumberOfColumns()
-     * <em>Number Of Columns</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getNumberOfColumns() <em>Number Of Columns</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getNumberOfColumns()
      * @generated
@@ -47,10 +44,9 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
     protected static final int NUMBER_OF_COLUMNS_EDEFAULT = 1;
 
     /**
-     * The cached value of the '{@link #getNumberOfColumns()
-     * <em>Number Of Columns</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getNumberOfColumns() <em>Number Of Columns</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getNumberOfColumns()
      * @generated
      * @ordered
@@ -58,10 +54,9 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
     protected int numberOfColumns = GridLayoutDescriptionImpl.NUMBER_OF_COLUMNS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isMakeColumnsWithEqualWidth()
-     * <em>Make Columns With Equal Width</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #isMakeColumnsWithEqualWidth() <em>Make Columns With Equal Width</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isMakeColumnsWithEqualWidth()
      * @generated
      * @ordered
@@ -69,10 +64,9 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
     protected static final boolean MAKE_COLUMNS_WITH_EQUAL_WIDTH_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isMakeColumnsWithEqualWidth()
-     * <em>Make Columns With Equal Width</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #isMakeColumnsWithEqualWidth() <em>Make Columns With Equal Width</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #isMakeColumnsWithEqualWidth()
      * @generated
      * @ordered
@@ -81,7 +75,7 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected GridLayoutDescriptionImpl() {
@@ -90,7 +84,7 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +94,7 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -110,7 +104,7 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -124,7 +118,7 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -134,7 +128,7 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -148,7 +142,7 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -164,7 +158,7 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +176,7 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -200,7 +194,7 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -216,7 +210,7 @@ public class GridLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

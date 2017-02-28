@@ -16,8 +16,8 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DNode List Element</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DNode List Element</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <!-- begin-model-doc --> An element of a list. <!-- end-model-doc -->
  *
@@ -25,14 +25,10 @@ import org.eclipse.sirius.viewpoint.Style;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getOwnedStyle
- * <em>Owned Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getOriginalStyle
- * <em>Original Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getActualMapping
- * <em>Actual Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getCandidatesMapping
- * <em>Candidates Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getOwnedStyle <em>Owned Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getOriginalStyle <em>Original Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getActualMapping <em>Actual Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getCandidatesMapping <em>Candidates Mapping</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDNodeListElement()
@@ -41,9 +37,8 @@ import org.eclipse.sirius.viewpoint.Style;
  */
 public interface DNodeListElement extends AbstractDNode {
     /**
-     * Returns the value of the '<em><b>Owned Style</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> The style of this element. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Owned Style</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> The style of this element. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Owned Style</em>' containment reference.
      * @see #setOwnedStyle(NodeStyle)
@@ -54,24 +49,20 @@ public interface DNodeListElement extends AbstractDNode {
     NodeStyle getOwnedStyle();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.DNodeListElement#getOwnedStyle
-     * <em>Owned Style</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.DNodeListElement#getOwnedStyle <em>Owned Style</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Owned Style</em>' containment
-     *            reference.
+     *            the new value of the '<em>Owned Style</em>' containment reference.
      * @see #getOwnedStyle()
      * @generated
      */
     void setOwnedStyle(NodeStyle value);
 
     /**
-     * Returns the value of the '<em><b>Original Style</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * instance of style that is contained by the mapping. The ownedStyle
-     * reference should be a copy of this style. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Original Style</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> The instance of style that is contained by the mapping. The ownedStyle reference
+     * should be a copy of this style. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Original Style</em>' reference.
      * @see #setOriginalStyle(Style)
@@ -82,11 +73,9 @@ public interface DNodeListElement extends AbstractDNode {
     Style getOriginalStyle();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.DNodeListElement#getOriginalStyle
-     * <em>Original Style</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.DNodeListElement#getOriginalStyle
+     * <em>Original Style</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Original Style</em>' reference.
      * @see #getOriginalStyle()
@@ -95,9 +84,8 @@ public interface DNodeListElement extends AbstractDNode {
     void setOriginalStyle(Style value);
 
     /**
-     * Returns the value of the '<em><b>Actual Mapping</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * actual mapping of this node. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Actual Mapping</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> The actual mapping of this node. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Actual Mapping</em>' reference.
      * @see #setActualMapping(NodeMapping)
@@ -108,11 +96,9 @@ public interface DNodeListElement extends AbstractDNode {
     NodeMapping getActualMapping();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.DNodeListElement#getActualMapping
-     * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.DNodeListElement#getActualMapping
+     * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Actual Mapping</em>' reference.
      * @see #getActualMapping()
@@ -121,16 +107,13 @@ public interface DNodeListElement extends AbstractDNode {
     void setActualMapping(NodeMapping value);
 
     /**
-     * Returns the value of the '<em><b>Candidates Mapping</b></em>' reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.NodeMapping}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * candidates mapping of this node. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Candidates Mapping</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.description.NodeMapping}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The candidates mapping of this node. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Candidates Mapping</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDNodeListElement_CandidatesMapping()
-     * @model annotation=
-     *        "http://www.eclipse.org/emf/2002/GenModel deprecated='This element should not be used'"
+     * @model annotation= "http://www.eclipse.org/emf/2002/GenModel deprecated='This element should not be used'"
      * @generated
      */
     EList<NodeMapping> getCandidatesMapping();

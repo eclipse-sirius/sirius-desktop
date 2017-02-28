@@ -29,32 +29,24 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Abstract Tool Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Abstract Tool Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#getLabel
- * <em>Label</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#getPrecondition
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#getLabel <em>Label</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#getPrecondition
  * <em>Precondition</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#isForceRefresh
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#isForceRefresh
  * <em>Force Refresh</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#getFilters
- * <em>Filters</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#getElementsToSelect
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#getFilters <em>Filters</em>
+ * }</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#getElementsToSelect
  * <em>Elements To Select</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#isInverseSelectionOrder
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#isInverseSelectionOrder
  * <em>Inverse Selection Order</em>}</li>
  * </ul>
  *
@@ -62,8 +54,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl implements AbstractToolDescription {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -72,8 +64,8 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -82,9 +74,9 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     protected String name = AbstractToolDescriptionImpl.NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabel()
      * @generated
      * @ordered
@@ -92,8 +84,8 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     protected static final String LABEL_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getLabel()
      * @generated
@@ -102,9 +94,9 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     protected String label = AbstractToolDescriptionImpl.LABEL_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getPrecondition() <em>Precondition</em>
-     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getPrecondition() <em>Precondition</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getPrecondition()
      * @generated
      * @ordered
@@ -112,9 +104,9 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     protected static final String PRECONDITION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getPrecondition() <em>Precondition</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getPrecondition() <em>Precondition</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getPrecondition()
      * @generated
      * @ordered
@@ -122,9 +114,9 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     protected String precondition = AbstractToolDescriptionImpl.PRECONDITION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isForceRefresh() <em>Force Refresh</em>
-     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #isForceRefresh() <em>Force Refresh</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isForceRefresh()
      * @generated
      * @ordered
@@ -132,9 +124,9 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     protected static final boolean FORCE_REFRESH_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isForceRefresh() <em>Force Refresh</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #isForceRefresh() <em>Force Refresh</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isForceRefresh()
      * @generated
      * @ordered
@@ -142,9 +134,9 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     protected boolean forceRefresh = AbstractToolDescriptionImpl.FORCE_REFRESH_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getFilters() <em>Filters</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilters() <em>Filters</em>}' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getFilters()
      * @generated
      * @ordered
@@ -152,9 +144,8 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     protected EList<ToolFilterDescription> filters;
 
     /**
-     * The default value of the '{@link #getElementsToSelect()
-     * <em>Elements To Select</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getElementsToSelect() <em>Elements To Select</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getElementsToSelect()
      * @generated
@@ -163,9 +154,8 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     protected static final String ELEMENTS_TO_SELECT_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getElementsToSelect()
-     * <em>Elements To Select</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getElementsToSelect() <em>Elements To Select</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getElementsToSelect()
      * @generated
@@ -174,9 +164,8 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     protected String elementsToSelect = AbstractToolDescriptionImpl.ELEMENTS_TO_SELECT_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isInverseSelectionOrder()
-     * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #isInverseSelectionOrder() <em>Inverse Selection Order</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isInverseSelectionOrder()
      * @generated
@@ -185,9 +174,8 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     protected static final boolean INVERSE_SELECTION_ORDER_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isInverseSelectionOrder()
-     * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #isInverseSelectionOrder() <em>Inverse Selection Order</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #isInverseSelectionOrder()
      * @generated
@@ -197,7 +185,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AbstractToolDescriptionImpl() {
@@ -206,7 +194,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -216,7 +204,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -226,7 +214,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -240,7 +228,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -250,7 +238,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -264,7 +252,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -274,7 +262,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -288,7 +276,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -298,7 +286,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -312,7 +300,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -325,7 +313,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -335,7 +323,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -349,7 +337,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -359,7 +347,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -373,7 +361,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -387,7 +375,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -413,7 +401,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -448,7 +436,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -481,7 +469,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -507,7 +495,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -527,7 +515,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -547,7 +535,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

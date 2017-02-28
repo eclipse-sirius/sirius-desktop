@@ -13,37 +13,26 @@ package org.eclipse.sirius.tree.description;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Tree Item Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Tree Item Mapping</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDomainClass
- * <em>Domain Class</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getPreconditionExpression
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDomainClass <em>Domain Class</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getPreconditionExpression
  * <em>Precondition Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getSemanticCandidatesExpression
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getSemanticCandidatesExpression
  * <em>Semantic Candidates Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getReusedTreeItemMappings
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getReusedTreeItemMappings
  * <em>Reused Tree Item Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getAllSubMappings
- * <em>All Sub Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getSpecialize
- * <em>Specialize</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDelete
- * <em>Delete</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getCreate
- * <em>Create</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDndTools
- * <em>Dnd Tools</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getPopupMenus
- * <em>Popup Menus</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getAllSubMappings <em>All Sub Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getSpecialize <em>Specialize</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDelete <em>Delete</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getCreate <em>Create</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDndTools <em>Dnd Tools</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getPopupMenus <em>Popup Menus</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping()
@@ -52,28 +41,25 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpdater, TreeItemMappingContainer {
     /**
-     * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Domain Class</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Domain Class</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_DomainClass()
-     * @model dataType="org.eclipse.sirius.description.TypeName" required="true"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.TypeName" required="true"
      * @generated
      */
     String getDomainClass();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getDomainClass
-     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDomainClass
+     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -82,22 +68,19 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     void setDomainClass(String value);
 
     /**
-     * Returns the value of the '<em><b>Precondition Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Precondition Expression</em>' attribute isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Precondition Expression</em>' attribute isn't clear, there really should be more of a
+     * description here...
      * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The elements that are
-     * represented by this mapping. <!-- end-model-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> The elements that are represented by this mapping. <!--
+     * end-model-doc -->
      *
      * @return the value of the '<em>Precondition Expression</em>' attribute.
      * @see #setPreconditionExpression(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_PreconditionExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
-     *        annotation =
-     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
-     *        annotation=
+     * @model dataType="org.eclipse.sirius.description.InterpretedExpression" annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='tree.DTreeElement | current DTreeElement.' containerView='ecore.EObject | container of the current DTreeElement (variable is available if container is not null).' container='ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator).'"
@@ -106,33 +89,26 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     String getPreconditionExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getPreconditionExpression
-     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemMapping#getPreconditionExpression
+     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Precondition Expression</em>'
-     *            attribute.
+     *            the new value of the '<em>Precondition Expression</em>' attribute.
      * @see #getPreconditionExpression()
      * @generated
      */
     void setPreconditionExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Semantic Candidates Expression</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> The elements that are represented by this mapping.
-     * <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> The elements that are represented by this mapping. <!-- end-model-doc
+     * -->
      *
-     * @return the value of the '<em>Semantic Candidates Expression</em>'
-     *         attribute.
+     * @return the value of the '<em>Semantic Candidates Expression</em>' attribute.
      * @see #setSemanticCandidatesExpression(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_SemanticCandidatesExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
-     *        annotation =
-     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
-     *        annotation=
+     * @model dataType="org.eclipse.sirius.description.InterpretedExpression" annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='tree.DTreeElement | current DTreeElement.' containerView='ecore.EObject | container of the current DTreeElement (variable is available if container is not null).' container='ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator).'"
@@ -141,32 +117,26 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     String getSemanticCandidatesExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getSemanticCandidatesExpression
-     * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemMapping#getSemanticCandidatesExpression
+     * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Semantic Candidates Expression</em>'
-     *            attribute.
+     *            the new value of the '<em>Semantic Candidates Expression</em>' attribute.
      * @see #getSemanticCandidatesExpression()
      * @generated
      */
     void setSemanticCandidatesExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Reused Tree Item Mappings</b></em>'
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.tree.description.TreeItemMapping}. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Reused Tree Item Mappings</b></em>' reference list. The list contents are of
+     * type {@link org.eclipse.sirius.tree.description.TreeItemMapping}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Reused Tree Item Mappings</em>' reference list
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Reused Tree Item Mappings</em>' reference list isn't clear, there really should be
+     * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Reused Tree Item Mappings</em>' reference
-     *         list.
+     * 
+     * @return the value of the '<em>Reused Tree Item Mappings</em>' reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_ReusedTreeItemMappings()
      * @model
      * @generated
@@ -174,16 +144,14 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     EList<TreeItemMapping> getReusedTreeItemMappings();
 
     /**
-     * Returns the value of the '<em><b>All Sub Mappings</b></em>' reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.tree.description.TreeItemMapping}. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>All Sub Mappings</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.tree.description.TreeItemMapping}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>All Sub Mappings</em>' reference list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>All Sub Mappings</em>' reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>All Sub Mappings</em>' reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_AllSubMappings()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -192,14 +160,13 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     EList<TreeItemMapping> getAllSubMappings();
 
     /**
-     * Returns the value of the '<em><b>Specialize</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Specialize</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Specialize</em>' reference isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Specialize</em>' reference isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Specialize</em>' reference.
      * @see #setSpecialize(TreeItemMapping)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_Specialize()
@@ -209,11 +176,9 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     TreeItemMapping getSpecialize();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getSpecialize
-     * <em>Specialize</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemMapping#getSpecialize
+     * <em>Specialize</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Specialize</em>' reference.
      * @see #getSpecialize()
@@ -222,13 +187,12 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     void setSpecialize(TreeItemMapping value);
 
     /**
-     * Returns the value of the '<em><b>Delete</b></em>' containment reference.
-     * It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.tree.description.TreeItemDeletionTool#getMapping
-     * <em>Mapping</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Delete</b></em>' containment reference. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.tree.description.TreeItemDeletionTool#getMapping <em>Mapping</em>}'. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Delete</em>' containment reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Delete</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -242,11 +206,9 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     TreeItemDeletionTool getDelete();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getDelete
-     * <em>Delete</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDelete <em>Delete</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Delete</em>' containment reference.
      * @see #getDelete()
@@ -255,16 +217,14 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     void setDelete(TreeItemDeletionTool value);
 
     /**
-     * Returns the value of the '<em><b>Create</b></em>' containment reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.tree.description.TreeItemCreationTool}. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Create</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.tree.description.TreeItemCreationTool}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Create</em>' containment reference list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Create</em>' containment reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Create</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_Create()
      * @model containment="true"
@@ -273,16 +233,14 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     EList<TreeItemCreationTool> getCreate();
 
     /**
-     * Returns the value of the '<em><b>Dnd Tools</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.tree.description.TreeItemDragTool}. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Dnd Tools</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.tree.description.TreeItemDragTool}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Dnd Tools</em>' containment reference list
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Dnd Tools</em>' containment reference list isn't clear, there really should be more of
+     * a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Dnd Tools</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_DndTools()
      * @model containment="true"
@@ -292,18 +250,15 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
     EList<TreeItemDragTool> getDndTools();
 
     /**
-     * Returns the value of the '<em><b>Popup Menus</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.tree.description.TreePopupMenu}. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Popup Menus</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.tree.description.TreePopupMenu}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Popup Menus</em>' containment reference list
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Popup Menus</em>' containment reference list isn't clear, there really should be more
+     * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Popup Menus</em>' containment reference
-     *         list.
+     * 
+     * @return the value of the '<em>Popup Menus</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_PopupMenus()
      * @model containment="true"
      * @generated

@@ -12,18 +12,16 @@
 package org.eclipse.sirius.diagram;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Workspace Image</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Workspace Image</b></em>'. <!-- end-user-doc
+ * -->
  *
- * <!-- begin-model-doc --> A custom image that is present in the user
- * workspace. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> A custom image that is present in the user workspace. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.WorkspaceImage#getWorkspacePath
- * <em>Workspace Path</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.WorkspaceImage#getWorkspacePath <em>Workspace Path</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getWorkspaceImage()
@@ -32,9 +30,8 @@ package org.eclipse.sirius.diagram;
  */
 public interface WorkspaceImage extends NodeStyle, ContainerStyle {
     /**
-     * Returns the value of the '<em><b>Workspace Path</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * path of the image to use. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Workspace Path</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> The path of the image to use. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Workspace Path</em>' attribute.
      * @see #setWorkspacePath(String)
@@ -45,11 +42,9 @@ public interface WorkspaceImage extends NodeStyle, ContainerStyle {
     String getWorkspacePath();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.WorkspaceImage#getWorkspacePath
-     * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.WorkspaceImage#getWorkspacePath <em>Workspace Path</em>}
+     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Workspace Path</em>' attribute.
      * @see #getWorkspacePath()

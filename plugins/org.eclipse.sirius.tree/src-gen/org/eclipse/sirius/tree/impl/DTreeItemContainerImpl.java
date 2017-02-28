@@ -24,23 +24,20 @@ import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DTree Item Container</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DTree Item Container</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.impl.DTreeItemContainerImpl#getOwnedTreeItems
- * <em>Owned Tree Items</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemContainerImpl#getOwnedTreeItems <em>Owned Tree Items</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl implements DTreeItemContainer {
     /**
-     * The cached value of the '{@link #getOwnedTreeItems()
-     * <em>Owned Tree Items</em>}' containment reference list. <!--
+     * The cached value of the '{@link #getOwnedTreeItems() <em>Owned Tree Items</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getOwnedTreeItems()
@@ -51,7 +48,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DTreeItemContainerImpl() {
@@ -60,7 +57,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -70,7 +67,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +80,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -98,7 +95,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +109,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +123,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -143,7 +140,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +155,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

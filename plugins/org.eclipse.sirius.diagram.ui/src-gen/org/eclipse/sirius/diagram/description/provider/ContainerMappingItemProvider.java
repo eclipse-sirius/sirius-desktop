@@ -32,17 +32,15 @@ import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.description.ContainerMapping} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.ContainerMapping} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ContainerMappingItemProvider(AdapterFactory adapterFactory) {
@@ -50,9 +48,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -71,9 +68,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     }
 
     /**
-     * This adds a property descriptor for the Drop Descriptions feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Drop Descriptions feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addDropDescriptionsPropertyDescriptor(Object object) {
@@ -85,9 +81,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     }
 
     /**
-     * This adds a property descriptor for the All Node Mappings feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the All Node Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addAllNodeMappingsPropertyDescriptor(Object object) {
@@ -99,8 +94,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     }
 
     /**
-     * This adds a property descriptor for the Reused Node Mappings feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Reused Node Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -113,9 +108,9 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     }
 
     /**
-     * This adds a property descriptor for the Reused Container Mappings
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Reused Container Mappings feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addReusedContainerMappingsPropertyDescriptor(Object object) {
@@ -127,8 +122,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     }
 
     /**
-     * This adds a property descriptor for the All Container Mappings feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the All Container Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -141,8 +136,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     }
 
     /**
-     * This adds a property descriptor for the Children Presentation feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Children Presentation feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -155,13 +150,11 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to
-     * deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand},
-     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in
-     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -196,9 +189,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     }
 
     /**
-     * This returns ContainerMapping.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns ContainerMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -207,8 +199,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -219,10 +210,9 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -245,16 +235,13 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated:
      *                 <UL>
-     *                 <LI>Add a default semantic candidate expression at
-     *                 creation time.</LI>
-     *                 <LI>Set to 1 the default borderSizeComputationExpression
-     *                 instead of 0 for flatContainerStyle and
+     *                 <LI>Add a default semantic candidate expression at creation time.</LI>
+     *                 <LI>Set to 1 the default borderSizeComputationExpression instead of 0 for flatContainerStyle and
      *                 shapeContainerStyle.</LI>
      *                 </UL>
      */
@@ -292,9 +279,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     }
 
     /**
-     * This returns the label text for
-     * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @not-generated
      */

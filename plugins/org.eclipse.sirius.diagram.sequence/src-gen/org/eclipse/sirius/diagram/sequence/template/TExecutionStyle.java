@@ -13,22 +13,18 @@ package org.eclipse.sirius.diagram.sequence.template;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>TExecution Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>TExecution Style</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBorderSizeComputationExpression
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBorderSizeComputationExpression
  * <em>Border Size Computation Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBorderColor
- * <em>Border Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBackgroundColor
- * <em>Background Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBorderColor <em>Border Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBackgroundColor <em>Background Color</em>}
+ * </li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTExecutionStyle()
@@ -37,19 +33,14 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  */
 public interface TExecutionStyle extends TTransformer {
     /**
-     * Returns the value of the '
-     * <em><b>Border Size Computation Expression</b></em>' attribute. The
-     * default value is <code>"1"</code>. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> An expression computing the
-     * size of the border. <!-- end-model-doc -->
+     * Returns the value of the ' <em><b>Border Size Computation Expression</b></em>' attribute. The default value is
+     * <code>"1"</code>. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> An expression computing
+     * the size of the border. <!-- end-model-doc -->
      *
-     * @return the value of the '<em>Border Size Computation Expression</em>'
-     *         attribute.
+     * @return the value of the '<em>Border Size Computation Expression</em>' attribute.
      * @see #setBorderSizeComputationExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTExecutionStyle_BorderSizeComputationExpression()
-     * @model default="1"
-     *        dataType="org.eclipse.sirius.description.InterpretedExpression"
-     *        annotation=
+     * @model default="1" dataType="org.eclipse.sirius.description.InterpretedExpression" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
@@ -58,26 +49,23 @@ public interface TExecutionStyle extends TTransformer {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBorderSizeComputationExpression
-     * <em>Border Size Computation Expression</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * <em>Border Size Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '
-     *            <em>Border Size Computation Expression</em>' attribute.
+     *            the new value of the '<em>Border Size Computation Expression</em>' attribute.
      * @see #getBorderSizeComputationExpression()
      * @generated
      */
     void setBorderSizeComputationExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Border Color</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Border Color</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Border Color</em>' reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Border Color</em>' reference isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Border Color</em>' reference.
      * @see #setBorderColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTExecutionStyle_BorderColor()
@@ -87,11 +75,9 @@ public interface TExecutionStyle extends TTransformer {
     ColorDescription getBorderColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBorderColor
-     * <em>Border Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBorderColor
+     * <em>Border Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Border Color</em>' reference.
      * @see #getBorderColor()
@@ -100,14 +86,13 @@ public interface TExecutionStyle extends TTransformer {
     void setBorderColor(ColorDescription value);
 
     /**
-     * Returns the value of the '<em><b>Background Color</b></em>' reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Background Color</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Background Color</em>' reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Background Color</em>' reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTExecutionStyle_BackgroundColor()
@@ -117,11 +102,9 @@ public interface TExecutionStyle extends TTransformer {
     ColorDescription getBackgroundColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBackgroundColor
-     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBackgroundColor
+     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()

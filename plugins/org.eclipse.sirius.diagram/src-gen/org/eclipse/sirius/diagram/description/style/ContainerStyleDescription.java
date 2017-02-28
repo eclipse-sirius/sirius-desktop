@@ -15,8 +15,8 @@ import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Container Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Container Style Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <!-- begin-model-doc --> The style of a container. <!-- end-model-doc -->
  *
@@ -24,8 +24,7 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.ContainerStyleDescription#isRoundedCorner
+ * <li>{@link org.eclipse.sirius.diagram.description.style.ContainerStyleDescription#isRoundedCorner
  * <em>Rounded Corner</em>}</li>
  * </ul>
  *
@@ -35,8 +34,8 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  */
 public interface ContainerStyleDescription extends RoundedCornerStyleDescription, BorderedStyleDescription, LabelStyleDescription, TooltipStyleDescription, HideLabelCapabilityStyleDescription {
     /**
-     * Returns the value of the '<em><b>Rounded Corner</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Returns the value of the '<em><b>Rounded Corner</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc -->
      *
      * <!-- end-model-doc -->
      *
@@ -51,9 +50,8 @@ public interface ContainerStyleDescription extends RoundedCornerStyleDescription
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.ContainerStyleDescription#isRoundedCorner
-     * <em>Rounded Corner</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Rounded Corner</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Rounded Corner</em>' attribute.
      * @see #isRoundedCorner()

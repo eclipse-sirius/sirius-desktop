@@ -19,14 +19,13 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Widget Conditional Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Widget Conditional Style</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl#getPreconditionExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl#getPreconditionExpression
  * <em>Precondition Expression</em>}</li>
  * </ul>
  *
@@ -34,9 +33,8 @@ import org.eclipse.sirius.properties.WidgetConditionalStyle;
  */
 public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Container implements WidgetConditionalStyle {
     /**
-     * The default value of the '{@link #getPreconditionExpression()
-     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getPreconditionExpression() <em>Precondition Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPreconditionExpression()
      * @generated
@@ -45,9 +43,8 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
     protected static final String PRECONDITION_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getPreconditionExpression()
-     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getPreconditionExpression() <em>Precondition Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPreconditionExpression()
      * @generated
@@ -57,7 +54,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected WidgetConditionalStyleImpl() {
@@ -66,7 +63,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -76,7 +73,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -86,7 +83,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +97,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -114,7 +111,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +126,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -144,7 +141,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +156,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

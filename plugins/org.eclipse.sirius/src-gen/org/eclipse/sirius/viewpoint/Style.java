@@ -14,18 +14,15 @@ package org.eclipse.sirius.viewpoint;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Style</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> The super class of all styles. <!-- end-model-doc
- * -->
+ * <!-- begin-model-doc --> The super class of all styles. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.Style#getDescription
- * <em>Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.Style#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getStyle()
@@ -34,14 +31,13 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  */
 public interface Style extends DRefreshable, Customizable {
     /**
-     * Returns the value of the '<em><b>Description</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Description</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Description</em>' reference isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Description</em>' reference isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(StyleDescription)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getStyle_Description()
@@ -51,11 +47,9 @@ public interface Style extends DRefreshable, Customizable {
     StyleDescription getDescription();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.Style#getDescription
-     * <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.Style#getDescription <em>Description</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()

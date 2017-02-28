@@ -14,17 +14,15 @@ package org.eclipse.sirius.diagram;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Shape Container Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Shape Container Style</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.ShapeContainerStyle#getShape
- * <em>Shape</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.ShapeContainerStyle#getBackgroundColor
- * <em>Background Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.ShapeContainerStyle#getShape <em>Shape</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.ShapeContainerStyle#getBackgroundColor <em>Background Color</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getShapeContainerStyle()
@@ -33,16 +31,14 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  */
 public interface ShapeContainerStyle extends ContainerStyle {
     /**
-     * Returns the value of the '<em><b>Shape</b></em>' attribute. The literals
-     * are from the enumeration
-     * {@link org.eclipse.sirius.diagram.ContainerShape}. <!-- begin-user-doc
-     * -->
+     * Returns the value of the '<em><b>Shape</b></em>' attribute. The literals are from the enumeration
+     * {@link org.eclipse.sirius.diagram.ContainerShape}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Shape</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Shape</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.ContainerShape
      * @see #setShape(ContainerShape)
@@ -53,10 +49,9 @@ public interface ShapeContainerStyle extends ContainerStyle {
     ContainerShape getShape();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.ShapeContainerStyle#getShape
-     * <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.ShapeContainerStyle#getShape <em>Shape</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.ContainerShape
@@ -66,14 +61,12 @@ public interface ShapeContainerStyle extends ContainerStyle {
     void setShape(ContainerShape value);
 
     /**
-     * Returns the value of the '<em><b>Background Color</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Background Color</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Background Color</em>' containment reference
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Background Color</em>' containment reference isn't clear, there really should be more
+     * of a description here...
      * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The background color. <!--
-     * end-model-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> The background color. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Background Color</em>' attribute.
      * @see #setBackgroundColor(RGBValues)
@@ -84,11 +77,9 @@ public interface ShapeContainerStyle extends ContainerStyle {
     RGBValues getBackgroundColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.ShapeContainerStyle#getBackgroundColor
-     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.ShapeContainerStyle#getBackgroundColor
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Background Color</em>' attribute.
      * @see #getBackgroundColor()

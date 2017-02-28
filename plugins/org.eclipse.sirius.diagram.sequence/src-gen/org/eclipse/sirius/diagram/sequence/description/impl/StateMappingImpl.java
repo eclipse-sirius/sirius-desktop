@@ -20,17 +20,14 @@ import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 import org.eclipse.sirius.diagram.sequence.description.StateMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>State Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>State Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.impl.StateMappingImpl#getStartingEndFinderExpression
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.impl.StateMappingImpl#getStartingEndFinderExpression
  * <em>Starting End Finder Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.description.impl.StateMappingImpl#getFinishingEndFinderExpression
+ * <li>{@link org.eclipse.sirius.diagram.sequence.description.impl.StateMappingImpl#getFinishingEndFinderExpression
  * <em>Finishing End Finder Expression</em>}</li>
  * </ul>
  *
@@ -38,10 +35,9 @@ import org.eclipse.sirius.diagram.sequence.description.StateMapping;
  */
 public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
     /**
-     * The default value of the '{@link #getStartingEndFinderExpression()
-     * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getStartingEndFinderExpression() <em>Starting End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -49,10 +45,9 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
     protected static final String STARTING_END_FINDER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getStartingEndFinderExpression()
-     * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStartingEndFinderExpression() <em>Starting End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -60,10 +55,9 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
     protected String startingEndFinderExpression = StateMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFinishingEndFinderExpression()
-     * <em>Finishing End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getFinishingEndFinderExpression() <em>Finishing End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -71,10 +65,9 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
     protected static final String FINISHING_END_FINDER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFinishingEndFinderExpression()
-     * <em>Finishing End Finder Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFinishingEndFinderExpression() <em>Finishing End Finder Expression</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -83,7 +76,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected StateMappingImpl() {
@@ -92,7 +85,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -102,7 +95,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +105,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +119,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -136,7 +129,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -150,7 +143,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -166,7 +159,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -184,7 +177,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -202,7 +195,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -220,7 +213,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -246,7 +239,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -272,7 +265,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

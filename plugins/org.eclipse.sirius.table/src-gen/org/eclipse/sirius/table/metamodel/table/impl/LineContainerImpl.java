@@ -24,24 +24,22 @@ import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Line Container</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Line Container</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.LineContainerImpl#getLines
- * <em>Lines</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.LineContainerImpl#getLines <em>Lines</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class LineContainerImpl extends DSemanticDecoratorImpl implements LineContainer {
     /**
-     * The cached value of the '{@link #getLines() <em>Lines</em>}' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLines() <em>Lines</em>}' containment reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getLines()
      * @generated
      * @ordered
@@ -50,7 +48,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected LineContainerImpl() {
@@ -59,7 +57,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -69,7 +67,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -82,7 +80,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -97,7 +95,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +109,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +123,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -142,7 +140,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -157,7 +155,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

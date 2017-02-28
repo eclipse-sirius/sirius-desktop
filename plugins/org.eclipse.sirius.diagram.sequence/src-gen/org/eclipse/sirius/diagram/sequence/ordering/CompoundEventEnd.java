@@ -14,16 +14,14 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Compound Event End</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Compound Event End</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd#getEventEnds
- * <em>Event Ends</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd#getEventEnds <em>Event Ends</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getCompoundEventEnd()
@@ -32,18 +30,15 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface CompoundEventEnd extends EventEnd {
     /**
-     * Returns the value of the '<em><b>Event Ends</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd}. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Event Ends</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Event Ends</em>' reference list isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Event Ends</em>' reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Event Ends</em>' containment reference
-     *         list.
+     * 
+     * @return the value of the '<em>Event Ends</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getCompoundEventEnd_EventEnds()
      * @model containment="true" required="true"
      * @generated
@@ -52,7 +47,7 @@ public interface CompoundEventEnd extends EventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model kind="operation"
      * @generated
      */

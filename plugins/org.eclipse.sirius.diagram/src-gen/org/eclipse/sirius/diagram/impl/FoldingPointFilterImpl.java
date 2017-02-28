@@ -17,15 +17,15 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.FoldingPointFilter;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Folding Point Filter</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Folding Point Filter</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public class FoldingPointFilterImpl extends MinimalEObjectImpl.Container implements FoldingPointFilter {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected FoldingPointFilterImpl() {
@@ -34,7 +34,7 @@ public class FoldingPointFilterImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

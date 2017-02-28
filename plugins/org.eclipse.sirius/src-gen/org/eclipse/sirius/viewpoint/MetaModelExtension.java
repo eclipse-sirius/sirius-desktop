@@ -14,19 +14,17 @@ package org.eclipse.sirius.viewpoint;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Meta Model Extension</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Meta Model Extension</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> Represent a Meta Model extension. A meta model
- * extension adds types, attributes and references into an existing meta model
- * <!-- end-model-doc -->
+ * <!-- begin-model-doc --> Represent a Meta Model extension. A meta model extension adds types, attributes and
+ * references into an existing meta model <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.MetaModelExtension#getExtensionGroup
- * <em>Extension Group</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.MetaModelExtension#getExtensionGroup <em>Extension Group</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getMetaModelExtension()
@@ -35,10 +33,9 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface MetaModelExtension extends EObject {
     /**
-     * Returns the value of the '<em><b>Extension Group</b></em>' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The referenced meta model extension. It should be an instance of
-     * ExtensionGroup. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Extension Group</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> The referenced meta model extension. It should be an instance of ExtensionGroup.
+     * <!-- end-model-doc -->
      *
      * @return the value of the '<em>Extension Group</em>' reference.
      * @see #setExtensionGroup(EObject)
@@ -49,11 +46,9 @@ public interface MetaModelExtension extends EObject {
     EObject getExtensionGroup();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.MetaModelExtension#getExtensionGroup
-     * <em>Extension Group</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.MetaModelExtension#getExtensionGroup
+     * <em>Extension Group</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Extension Group</em>' reference.
      * @see #getExtensionGroup()

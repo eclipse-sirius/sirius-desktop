@@ -20,14 +20,13 @@ import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Tree Creation Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Tree Creation Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeCreationDescriptionImpl#getTreeDescription
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeCreationDescriptionImpl#getTreeDescription
  * <em>Tree Description</em>}</li>
  * </ul>
  *
@@ -35,10 +34,9 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreation
  */
 public class TreeCreationDescriptionImpl extends RepresentationCreationDescriptionImpl implements TreeCreationDescription {
     /**
-     * The cached value of the '{@link #getTreeDescription()
-     * <em>Tree Description</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getTreeDescription() <em>Tree Description</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getTreeDescription()
      * @generated
      * @ordered
@@ -47,7 +45,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TreeCreationDescriptionImpl() {
@@ -56,7 +54,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -66,7 +64,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +83,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public TreeDescription basicGetTreeDescription() {
@@ -94,7 +92,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +106,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +123,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -140,7 +138,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +153,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

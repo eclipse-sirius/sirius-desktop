@@ -12,20 +12,17 @@
 package org.eclipse.sirius.viewpoint.description.tool;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>If</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>If</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> If the evaluation of the condition returns true then
- * all operations contains by this If statement will be executed, otherwise all
- * operations will be ignored. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> If the evaluation of the condition returns true then all operations contains by this If
+ * statement will be executed, otherwise all operations will be ignored. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.If#getConditionExpression
- * <em>Condition Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.If#getConditionExpression <em>Condition Expression</em>}
+ * </li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getIf()
@@ -34,34 +31,26 @@ package org.eclipse.sirius.viewpoint.description.tool;
  */
 public interface If extends ContainerModelOperation {
     /**
-     * Returns the value of the '<em><b>Condition Expression</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> Expression representing the condition, if it returns
-     * true, every operation contained by this statement will be executed. <!--
-     * end-model-doc -->
+     * Returns the value of the '<em><b>Condition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> Expression representing the condition, if it returns true, every
+     * operation contained by this statement will be executed. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Condition Expression</em>' attribute.
      * @see #setConditionExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getIf_ConditionExpression()
-     * @model dataType=
-     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation =
-     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
-     *        annotation=
+     * @model dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      * @generated
      */
     String getConditionExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.If#getConditionExpression
-     * <em>Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.If#getConditionExpression
+     * <em>Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Condition Expression</em>'
-     *            attribute.
+     *            the new value of the '<em>Condition Expression</em>' attribute.
      * @see #getConditionExpression()
      * @generated
      */

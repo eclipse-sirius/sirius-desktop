@@ -18,9 +18,8 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '
- * <em><b>ERROR LEVEL</b></em>', and utility methods for working with them. <!--
- * end-user-doc --> <!-- begin-model-doc --> All levels of error for a
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration ' <em><b>ERROR LEVEL</b></em>', and
+ * utility methods for working with them. <!-- end-user-doc --> <!-- begin-model-doc --> All levels of error for a
  * validation rule. <!-- end-model-doc -->
  *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getERROR_LEVEL()
@@ -29,9 +28,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum ERROR_LEVEL implements Enumerator {
     /**
-     * The '<em><b>INFO</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>INFO</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #INFO
      * @generated
      * @ordered
@@ -39,9 +37,8 @@ public enum ERROR_LEVEL implements Enumerator {
     INFO_LITERAL(0, "INFO", "INFO"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>WARNING</b></em>' literal object. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The '<em><b>WARNING</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #WARNING
      * @generated
      * @ordered
@@ -49,9 +46,8 @@ public enum ERROR_LEVEL implements Enumerator {
     WARNING_LITERAL(1, "WARNING", "WARNING"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>ERROR</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>ERROR</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #ERROR
      * @generated
      * @ordered
@@ -59,9 +55,8 @@ public enum ERROR_LEVEL implements Enumerator {
     ERROR_LITERAL(3, "ERROR", "ERROR"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>INFO</b></em>' literal value. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> Info level. <!-- end-model-doc
-     * -->
+     * The '<em><b>INFO</b></em>' literal value. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Info level. <!-- end-model-doc -->
      *
      * @see #INFO_LITERAL
      * @model
@@ -71,9 +66,8 @@ public enum ERROR_LEVEL implements Enumerator {
     public static final int INFO = 0;
 
     /**
-     * The '<em><b>WARNING</b></em>' literal value. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> Warning level. <!--
-     * end-model-doc -->
+     * The '<em><b>WARNING</b></em>' literal value. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc
+     * --> Warning level. <!-- end-model-doc -->
      *
      * @see #WARNING_LITERAL
      * @model
@@ -83,9 +77,8 @@ public enum ERROR_LEVEL implements Enumerator {
     public static final int WARNING = 1;
 
     /**
-     * The '<em><b>ERROR</b></em>' literal value. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> Error level. <!-- end-model-doc
-     * -->
+     * The '<em><b>ERROR</b></em>' literal value. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Error level. <!-- end-model-doc -->
      *
      * @see #ERROR_LITERAL
      * @model
@@ -95,25 +88,24 @@ public enum ERROR_LEVEL implements Enumerator {
     public static final int ERROR = 3;
 
     /**
-     * An array of all the '<em><b>ERROR LEVEL</b></em>' enumerators. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * An array of all the '<em><b>ERROR LEVEL</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private static final ERROR_LEVEL[] VALUES_ARRAY = new ERROR_LEVEL[] { INFO_LITERAL, WARNING_LITERAL, ERROR_LITERAL, };
 
     /**
-     * A public read-only list of all the '<em><b>ERROR LEVEL</b></em>'
-     * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * A public read-only list of all the '<em><b>ERROR LEVEL</b></em>' enumerators. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public static final List<ERROR_LEVEL> VALUES = Collections.unmodifiableList(Arrays.asList(ERROR_LEVEL.VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>ERROR LEVEL</b></em>' literal with the specified
-     * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>ERROR LEVEL</b></em>' literal with the specified literal value. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -129,9 +121,9 @@ public enum ERROR_LEVEL implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>ERROR LEVEL</b></em>' literal with the specified
-     * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>ERROR LEVEL</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param name
      *            the name.
      * @return the matching enumerator or <code>null</code>.
@@ -147,9 +139,9 @@ public enum ERROR_LEVEL implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>ERROR LEVEL</b></em>' literal with the specified
-     * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>ERROR LEVEL</b></em>' literal with the specified integer value. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -169,29 +161,28 @@ public enum ERROR_LEVEL implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
 
     /**
-     * Only this class can construct instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private ERROR_LEVEL(int value, String name, String literal) {
@@ -202,7 +193,7 @@ public enum ERROR_LEVEL implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +203,7 @@ public enum ERROR_LEVEL implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -222,7 +213,7 @@ public enum ERROR_LEVEL implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -231,9 +222,9 @@ public enum ERROR_LEVEL implements Enumerator {
     }
 
     /**
-     * Returns the literal value of the enumerator, which is its string
-     * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override

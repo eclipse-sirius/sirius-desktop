@@ -21,24 +21,21 @@ import org.eclipse.sirius.diagram.description.filter.FilterKind;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Filter</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Filter</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.filter.impl.FilterImpl#getFilterKind
- * <em>Filter Kind</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.filter.impl.FilterImpl#getFilterKind <em>Filter Kind</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class FilterImpl extends MinimalEObjectImpl.Container implements Filter {
     /**
-     * The default value of the '{@link #getFilterKind() <em>Filter Kind</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterKind() <em>Filter Kind</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getFilterKind()
      * @generated
      * @ordered
@@ -46,9 +43,9 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
     protected static final FilterKind FILTER_KIND_EDEFAULT = FilterKind.HIDE_LITERAL;
 
     /**
-     * The cached value of the '{@link #getFilterKind() <em>Filter Kind</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterKind() <em>Filter Kind</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getFilterKind()
      * @generated
      * @ordered
@@ -57,7 +54,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected FilterImpl() {
@@ -66,7 +63,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -76,7 +73,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -86,7 +83,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +97,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +109,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +123,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +138,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +153,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -170,7 +167,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -23,17 +23,15 @@ import org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping}
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public TReturnMessageMappingItemProvider(AdapterFactory adapterFactory) {
@@ -41,9 +39,8 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -58,9 +55,8 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
     }
 
     /**
-     * This adds a property descriptor for the Invocation Mapping feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Invocation Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addInvocationMappingPropertyDescriptor(Object object) {
@@ -72,9 +68,9 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
     }
 
     /**
-     * This adds a property descriptor for the Invocation Message Finder
-     * Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Invocation Message Finder Expression feature. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addInvocationMessageFinderExpressionPropertyDescriptor(Object object) {
@@ -87,9 +83,8 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
     }
 
     /**
-     * This returns TReturnMessageMapping.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns TReturnMessageMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -98,8 +93,7 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -110,10 +104,9 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -130,10 +123,9 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

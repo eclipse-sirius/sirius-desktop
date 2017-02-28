@@ -29,35 +29,25 @@ import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Tree Item Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Tree Item Style Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getLabelSize
- * <em>Label Size</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getLabelFormat
- * <em>Label Format</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#isShowIcon
- * <em>Show Icon</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getLabelExpression
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getLabelSize <em>Label Size</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getLabelFormat <em>Label Format</em>
+ * }</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#isShowIcon <em>Show Icon</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getLabelExpression
  * <em>Label Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getLabelColor
- * <em>Label Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getIconPath
- * <em>Icon Path</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getLabelAlignment
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getLabelColor <em>Label Color</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getIconPath <em>Icon Path</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getLabelAlignment
  * <em>Label Alignment</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getBackgroundColor
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemStyleDescriptionImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
  * </ul>
  *
@@ -66,9 +56,9 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container implements TreeItemStyleDescription {
 
     /**
-     * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelSize() <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -76,9 +66,9 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected static final int LABEL_SIZE_EDEFAULT = 8;
 
     /**
-     * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -86,9 +76,9 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected int labelSize = TreeItemStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
-     * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}' attribute list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getLabelFormat()
      * @generated
      * @ordered
@@ -96,9 +86,9 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected EList<FontFormat> labelFormat;
 
     /**
-     * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isShowIcon()
      * @generated
      * @ordered
@@ -106,9 +96,9 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected static final boolean SHOW_ICON_EDEFAULT = true;
 
     /**
-     * The cached value of the '{@link #isShowIcon() <em>Show Icon</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #isShowIcon() <em>Show Icon</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isShowIcon()
      * @generated
      * @ordered
@@ -116,10 +106,9 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected boolean showIcon = TreeItemStyleDescriptionImpl.SHOW_ICON_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -127,10 +116,9 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected static final String LABEL_EXPRESSION_EDEFAULT = "feature:name"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -138,9 +126,9 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected String labelExpression = TreeItemStyleDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabelColor()
      * @generated
      * @ordered
@@ -148,9 +136,9 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected ColorDescription labelColor;
 
     /**
-     * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -158,9 +146,9 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected static final String ICON_PATH_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -168,10 +156,9 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected String iconPath = TreeItemStyleDescriptionImpl.ICON_PATH_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelAlignment()
-     * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelAlignment() <em>Label Alignment</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelAlignment()
      * @generated
      * @ordered
@@ -179,10 +166,9 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected static final LabelAlignment LABEL_ALIGNMENT_EDEFAULT = LabelAlignment.CENTER;
 
     /**
-     * The cached value of the '{@link #getLabelAlignment()
-     * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelAlignment() <em>Label Alignment</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelAlignment()
      * @generated
      * @ordered
@@ -190,10 +176,9 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected LabelAlignment labelAlignment = TreeItemStyleDescriptionImpl.LABEL_ALIGNMENT_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -202,7 +187,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TreeItemStyleDescriptionImpl() {
@@ -211,7 +196,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -221,7 +206,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -231,7 +216,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -245,7 +230,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -258,7 +243,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -268,7 +253,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -282,7 +267,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -292,7 +277,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -306,7 +291,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -325,7 +310,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetLabelColor() {
@@ -334,7 +319,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -348,7 +333,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -358,7 +343,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -372,7 +357,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -382,7 +367,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -396,7 +381,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -415,7 +400,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetBackgroundColor() {
@@ -424,7 +409,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -438,7 +423,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -472,7 +457,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -510,7 +495,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -546,7 +531,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -574,7 +559,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -610,7 +595,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -646,7 +631,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -14,8 +14,8 @@ package org.eclipse.sirius.viewpoint.description.style;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Label Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Label Style Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <!-- begin-model-doc --> The style of a label. <!-- end-model-doc -->
  *
@@ -23,8 +23,7 @@ import org.eclipse.sirius.viewpoint.LabelAlignment;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription#getLabelAlignment
+ * <li>{@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription#getLabelAlignment
  * <em>Label Alignment</em>}</li>
  * </ul>
  *
@@ -34,13 +33,11 @@ import org.eclipse.sirius.viewpoint.LabelAlignment;
  */
 public interface LabelStyleDescription extends BasicLabelStyleDescription {
     /**
-     * Returns the value of the '<em><b>Label Alignment</b></em>' attribute. The
-     * literals are from the enumeration
-     * {@link org.eclipse.sirius.viewpoint.LabelAlignment}. <!-- begin-user-doc
-     * -->
+     * Returns the value of the '<em><b>Label Alignment</b></em>' attribute. The literals are from the enumeration
+     * {@link org.eclipse.sirius.viewpoint.LabelAlignment}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Label Alignment</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Label Alignment</em>' attribute isn't clear, there really should be more of a
+     * description here...
      * </p>
      *
      *

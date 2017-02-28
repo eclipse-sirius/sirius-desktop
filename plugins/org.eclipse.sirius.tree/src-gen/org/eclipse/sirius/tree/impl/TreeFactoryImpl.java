@@ -26,16 +26,14 @@ import org.eclipse.sirius.tree.business.internal.metamodel.spec.DTreeItemSpec;
 import org.eclipse.sirius.tree.business.internal.metamodel.spec.DTreeSpec;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
- * end-user-doc -->
- *
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
     /**
-     * Creates the default factory implementation. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static TreeFactory init() {
@@ -51,9 +49,8 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
     }
 
     /**
-     * Creates an instance of the factory. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public TreeFactoryImpl() {
@@ -62,7 +59,7 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +93,7 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -118,7 +115,7 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +126,7 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -140,7 +137,7 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -150,7 +147,7 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @deprecated
      * @generated
      */

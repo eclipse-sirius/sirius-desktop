@@ -13,8 +13,8 @@ package org.eclipse.sirius.tree;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DTree Element Synchronizer</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DTree Element Synchronizer</b></em>'. <!--
+ * end-user-doc -->
  *
  *
  * @see org.eclipse.sirius.tree.TreePackage#getDTreeElementSynchronizer()
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface DTreeElementSynchronizer extends EObject {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model DTreeItemRequired="true"
      * @generated
      */

@@ -25,14 +25,13 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Page Validation Set Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Page Validation Set Description</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.PageValidationSetDescriptionImpl#getSemanticValidationRules
+ * <li>{@link org.eclipse.sirius.properties.impl.PageValidationSetDescriptionImpl#getSemanticValidationRules
  * <em>Semantic Validation Rules</em>}</li>
  * </ul>
  *
@@ -40,10 +39,9 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
  */
 public class PageValidationSetDescriptionImpl extends MinimalEObjectImpl.Container implements PageValidationSetDescription {
     /**
-     * The cached value of the '{@link #getSemanticValidationRules()
-     * <em>Semantic Validation Rules</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getSemanticValidationRules() <em>Semantic Validation Rules</em>}' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getSemanticValidationRules()
      * @generated
      * @ordered
@@ -52,7 +50,7 @@ public class PageValidationSetDescriptionImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected PageValidationSetDescriptionImpl() {
@@ -61,7 +59,7 @@ public class PageValidationSetDescriptionImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -71,7 +69,7 @@ public class PageValidationSetDescriptionImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +83,7 @@ public class PageValidationSetDescriptionImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +97,7 @@ public class PageValidationSetDescriptionImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +111,7 @@ public class PageValidationSetDescriptionImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -130,7 +128,7 @@ public class PageValidationSetDescriptionImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -145,7 +143,7 @@ public class PageValidationSetDescriptionImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

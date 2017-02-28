@@ -20,24 +20,23 @@ import org.eclipse.sirius.diagram.sequence.template.TLifelineMapping;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>TDestruction Message Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>TDestruction Message Mapping</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.impl.TDestructionMessageMappingImpl#getTarget
- * <em>Target</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TDestructionMessageMappingImpl#getTarget <em>Target</em>
+ * }</li>
  * </ul>
  *
  * @generated
  */
 public class TDestructionMessageMappingImpl extends TSourceTargetMessageMappingImpl implements TDestructionMessageMapping {
     /**
-     * The cached value of the '{@link #getTarget() <em>Target</em>}' reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getTarget() <em>Target</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getTarget()
      * @generated
      * @ordered
@@ -46,7 +45,7 @@ public class TDestructionMessageMappingImpl extends TSourceTargetMessageMappingI
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TDestructionMessageMappingImpl() {
@@ -55,7 +54,7 @@ public class TDestructionMessageMappingImpl extends TSourceTargetMessageMappingI
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -65,7 +64,7 @@ public class TDestructionMessageMappingImpl extends TSourceTargetMessageMappingI
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -78,7 +77,7 @@ public class TDestructionMessageMappingImpl extends TSourceTargetMessageMappingI
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -92,7 +91,7 @@ public class TDestructionMessageMappingImpl extends TSourceTargetMessageMappingI
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -109,7 +108,7 @@ public class TDestructionMessageMappingImpl extends TSourceTargetMessageMappingI
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -124,7 +123,7 @@ public class TDestructionMessageMappingImpl extends TSourceTargetMessageMappingI
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

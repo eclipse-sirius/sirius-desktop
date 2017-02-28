@@ -34,38 +34,28 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Table Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Table Description</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getEndUserDocumentation
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getEndUserDocumentation
  * <em>End User Documentation</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getLabel
- * <em>Label</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getTitleExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getLabel <em>Label</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getTitleExpression
  * <em>Title Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#isInitialisation
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#isInitialisation
  * <em>Initialisation</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getMetamodel
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getMetamodel
  * <em>Metamodel</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#isShowOnStartup
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#isShowOnStartup
  * <em>Show On Startup</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getPreconditionExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getPreconditionExpression
  * <em>Precondition Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getDomainClass
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getDomainClass
  * <em>Domain Class</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getOwnedRepresentationCreationDescriptions
@@ -85,29 +75,21 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getAllRepresentationNavigationDescriptions
  * <em>All Representation Navigation Descriptions</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getOwnedLineMappings
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getOwnedLineMappings
  * <em>Owned Line Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getReusedLineMappings
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getReusedLineMappings
  * <em>Reused Line Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getAllLineMappings
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getAllLineMappings
  * <em>All Line Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getOwnedCreateLine
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getOwnedCreateLine
  * <em>Owned Create Line</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getReusedCreateLine
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getReusedCreateLine
  * <em>Reused Create Line</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getAllCreateLine
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getAllCreateLine
  * <em>All Create Line</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getInitialHeaderColumnWidth
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getInitialHeaderColumnWidth
  * <em>Initial Header Column Width</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getImportedElements
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getImportedElements
  * <em>Imported Elements</em>}</li>
  * </ul>
  *
@@ -115,9 +97,8 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  */
 public abstract class TableDescriptionImpl extends DocumentedElementImpl implements TableDescription {
     /**
-     * The default value of the '{@link #getEndUserDocumentation()
-     * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getEndUserDocumentation() <em>End User Documentation</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getEndUserDocumentation()
      * @generated
@@ -126,9 +107,8 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected static final String END_USER_DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getEndUserDocumentation()
-     * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getEndUserDocumentation() <em>End User Documentation</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getEndUserDocumentation()
      * @generated
@@ -137,8 +117,8 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected String endUserDocumentation = TableDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -147,8 +127,8 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -157,9 +137,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected String name = TableDescriptionImpl.NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabel()
      * @generated
      * @ordered
@@ -167,8 +147,8 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected static final String LABEL_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getLabel()
      * @generated
@@ -177,10 +157,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected String label = TableDescriptionImpl.LABEL_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTitleExpression()
-     * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getTitleExpression() <em>Title Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -188,10 +167,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected static final String TITLE_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getTitleExpression()
-     * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getTitleExpression() <em>Title Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -199,10 +177,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected String titleExpression = TableDescriptionImpl.TITLE_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isInitialisation()
-     * <em>Initialisation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #isInitialisation() <em>Initialisation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isInitialisation()
      * @generated
      * @ordered
@@ -210,10 +187,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected static final boolean INITIALISATION_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isInitialisation()
-     * <em>Initialisation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #isInitialisation() <em>Initialisation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isInitialisation()
      * @generated
      * @ordered
@@ -221,9 +197,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected boolean initialisation = TableDescriptionImpl.INITIALISATION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getMetamodel()
      * @generated
      * @ordered
@@ -231,10 +207,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected EList<EPackage> metamodel;
 
     /**
-     * The default value of the '{@link #isShowOnStartup()
-     * <em>Show On Startup</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #isShowOnStartup() <em>Show On Startup</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isShowOnStartup()
      * @generated
      * @ordered
@@ -242,10 +217,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected static final boolean SHOW_ON_STARTUP_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isShowOnStartup()
-     * <em>Show On Startup</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #isShowOnStartup() <em>Show On Startup</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isShowOnStartup()
      * @generated
      * @ordered
@@ -253,9 +227,8 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected boolean showOnStartup = TableDescriptionImpl.SHOW_ON_STARTUP_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getPreconditionExpression()
-     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getPreconditionExpression() <em>Precondition Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPreconditionExpression()
      * @generated
@@ -264,9 +237,8 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected static final String PRECONDITION_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getPreconditionExpression()
-     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getPreconditionExpression() <em>Precondition Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPreconditionExpression()
      * @generated
@@ -275,9 +247,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected String preconditionExpression = TableDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -285,9 +257,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected static final String DOMAIN_CLASS_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -295,11 +267,10 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected String domainClass = TableDescriptionImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
-     * The cached value of the '
-     * {@link #getOwnedRepresentationCreationDescriptions()
-     * <em>Owned Representation Creation Descriptions</em>}' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedRepresentationCreationDescriptions()
+     * <em>Owned Representation Creation Descriptions</em>}' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getOwnedRepresentationCreationDescriptions()
      * @generated
      * @ordered
@@ -307,10 +278,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected EList<RepresentationCreationDescription> ownedRepresentationCreationDescriptions;
 
     /**
-     * The cached value of the '
-     * {@link #getReusedRepresentationCreationDescriptions()
-     * <em>Reused Representation Creation Descriptions</em>}' reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getReusedRepresentationCreationDescriptions()
+     * <em>Reused Representation Creation Descriptions</em>}' reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getReusedRepresentationCreationDescriptions()
      * @generated
@@ -319,11 +289,10 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected EList<RepresentationCreationDescription> reusedRepresentationCreationDescriptions;
 
     /**
-     * The cached value of the '
-     * {@link #getOwnedRepresentationNavigationDescriptions()
-     * <em>Owned Representation Navigation Descriptions</em>}' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedRepresentationNavigationDescriptions()
+     * <em>Owned Representation Navigation Descriptions</em>}' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getOwnedRepresentationNavigationDescriptions()
      * @generated
      * @ordered
@@ -331,11 +300,10 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected EList<RepresentationNavigationDescription> ownedRepresentationNavigationDescriptions;
 
     /**
-     * The cached value of the '
-     * {@link #getReusedRepresentationNavigationDescriptions()
-     * <em>Reused Representation Navigation Descriptions</em>}' reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getReusedRepresentationNavigationDescriptions()
+     * <em>Reused Representation Navigation Descriptions</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getReusedRepresentationNavigationDescriptions()
      * @generated
      * @ordered
@@ -343,10 +311,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected EList<RepresentationNavigationDescription> reusedRepresentationNavigationDescriptions;
 
     /**
-     * The cached value of the '{@link #getOwnedLineMappings()
-     * <em>Owned Line Mappings</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedLineMappings() <em>Owned Line Mappings</em>}' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getOwnedLineMappings()
      * @generated
      * @ordered
@@ -354,9 +321,8 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected EList<LineMapping> ownedLineMappings;
 
     /**
-     * The cached value of the '{@link #getReusedLineMappings()
-     * <em>Reused Line Mappings</em>}' reference list. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getReusedLineMappings() <em>Reused Line Mappings</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getReusedLineMappings()
      * @generated
@@ -365,10 +331,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected EList<LineMapping> reusedLineMappings;
 
     /**
-     * The cached value of the '{@link #getOwnedCreateLine()
-     * <em>Owned Create Line</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedCreateLine() <em>Owned Create Line</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getOwnedCreateLine()
      * @generated
      * @ordered
@@ -376,9 +341,8 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected EList<CreateLineTool> ownedCreateLine;
 
     /**
-     * The cached value of the '{@link #getReusedCreateLine()
-     * <em>Reused Create Line</em>}' reference list. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getReusedCreateLine() <em>Reused Create Line</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getReusedCreateLine()
      * @generated
@@ -387,10 +351,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected EList<CreateLineTool> reusedCreateLine;
 
     /**
-     * The default value of the '{@link #getInitialHeaderColumnWidth()
-     * <em>Initial Header Column Width</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getInitialHeaderColumnWidth() <em>Initial Header Column Width</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getInitialHeaderColumnWidth()
      * @generated
      * @ordered
@@ -398,10 +361,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected static final int INITIAL_HEADER_COLUMN_WIDTH_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getInitialHeaderColumnWidth()
-     * <em>Initial Header Column Width</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getInitialHeaderColumnWidth() <em>Initial Header Column Width</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getInitialHeaderColumnWidth()
      * @generated
      * @ordered
@@ -409,10 +371,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected int initialHeaderColumnWidth = TableDescriptionImpl.INITIAL_HEADER_COLUMN_WIDTH_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getImportedElements()
-     * <em>Imported Elements</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getImportedElements() <em>Imported Elements</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getImportedElements()
      * @generated
      * @ordered
@@ -421,7 +382,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TableDescriptionImpl() {
@@ -430,7 +391,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -440,7 +401,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -450,7 +411,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -464,7 +425,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -474,7 +435,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -488,7 +449,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -498,7 +459,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -512,7 +473,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -522,7 +483,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -536,7 +497,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -549,7 +510,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -559,7 +520,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -573,7 +534,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -583,7 +544,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -597,7 +558,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -607,7 +568,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -621,7 +582,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -631,7 +592,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -645,7 +606,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -659,7 +620,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -673,25 +634,22 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<RepresentationCreationDescription> getAllRepresentationCreationDescriptions() {
-        // TODO: implement this method to return the 'All Representation
-        // Creation Descriptions' reference list
+        // TODO: implement this method to return the 'All Representation Creation Descriptions' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -705,7 +663,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -719,25 +677,22 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<RepresentationNavigationDescription> getAllRepresentationNavigationDescriptions() {
-        // TODO: implement this method to return the 'All Representation
-        // Navigation Descriptions' reference list
+        // TODO: implement this method to return the 'All Representation Navigation Descriptions' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -750,7 +705,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -763,25 +718,22 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<LineMapping> getAllLineMappings() {
-        // TODO: implement this method to return the 'All Line Mappings'
-        // reference list
+        // TODO: implement this method to return the 'All Line Mappings' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -794,7 +746,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -807,25 +759,22 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<CreateLineTool> getAllCreateLine() {
-        // TODO: implement this method to return the 'All Create Line' reference
-        // list
+        // TODO: implement this method to return the 'All Create Line' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -835,7 +784,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -849,7 +798,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -862,7 +811,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -884,7 +833,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -942,7 +891,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -1022,7 +971,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1091,7 +1040,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1150,7 +1099,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1178,7 +1127,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1206,7 +1155,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

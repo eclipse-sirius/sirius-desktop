@@ -16,8 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Rule</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Rule</b></em>'. <!-- end-user-doc -->
  *
  * <!-- begin-model-doc --> A validation rule. <!-- end-model-doc -->
  *
@@ -25,18 +24,10 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getLevel
- * <em>Level</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getMessage
- * <em>Message</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getAudits
- * <em>Audits</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getFixes
- * <em>Fixes</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getLevel <em>Level</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getMessage <em>Message</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getAudits <em>Audits</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getFixes <em>Fixes</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule()
@@ -45,13 +36,12 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  */
 public interface ValidationRule extends IdentifiedElement {
     /**
-     * Returns the value of the '<em><b>Level</b></em>' attribute. The default
-     * value is <code>"INFO"</code>. The literals are from the enumeration
-     * {@link org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Level</b></em>' attribute. The default value is <code>"INFO"</code>. The
+     * literals are from the enumeration {@link org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL}. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Level</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Level</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -65,10 +55,9 @@ public interface ValidationRule extends IdentifiedElement {
     ERROR_LEVEL getLevel();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getLevel
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getLevel
      * <em>Level</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Level</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL
@@ -78,31 +67,27 @@ public interface ValidationRule extends IdentifiedElement {
     void setLevel(ERROR_LEVEL value);
 
     /**
-     * Returns the value of the '<em><b>Message</b></em>' attribute. The default
-     * value is <code>"The element has..."</code>. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Message</b></em>' attribute. The default value is
+     * <code>"The element has..."</code>. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Message</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Message</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Message</em>' attribute.
      * @see #setMessage(String)
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule_Message()
-     * @model default="The element has..." dataType=
-     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
+     * @model default="The element has..." dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
      * @generated
      */
     String getMessage();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getMessage
-     * <em>Message</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getMessage
+     * <em>Message</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Message</em>' attribute.
      * @see #getMessage()
@@ -111,16 +96,14 @@ public interface ValidationRule extends IdentifiedElement {
     void setMessage(String value);
 
     /**
-     * Returns the value of the '<em><b>Audits</b></em>' containment reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Audits</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Audits</em>' containment reference list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Audits</em>' containment reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Audits</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule_Audits()
      * @model containment="true" resolveProxies="true"
@@ -129,16 +112,14 @@ public interface ValidationRule extends IdentifiedElement {
     EList<RuleAudit> getAudits();
 
     /**
-     * Returns the value of the '<em><b>Fixes</b></em>' containment reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Fixes</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Fixes</em>' containment reference list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Fixes</em>' containment reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Fixes</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule_Fixes()
      * @model containment="true" resolveProxies="true"
@@ -147,8 +128,7 @@ public interface ValidationRule extends IdentifiedElement {
     EList<ValidationFix> getFixes();
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Check the rule for the specified element.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Check the rule for the specified element.
      *
      * @param eObj
      *            The object to test. <!-- end-model-doc -->
@@ -159,7 +139,7 @@ public interface ValidationRule extends IdentifiedElement {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model
      * @generated
      */

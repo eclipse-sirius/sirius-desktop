@@ -31,17 +31,15 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription}
+ * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class AbstractToolDescriptionItemProvider extends DocumentedElementItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public AbstractToolDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -49,9 +47,8 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -70,9 +67,8 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     }
 
     /**
-     * This adds a property descriptor for the Name feature. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -84,9 +80,8 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     }
 
     /**
-     * This adds a property descriptor for the Label feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Label feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
@@ -98,9 +93,8 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     }
 
     /**
-     * This adds a property descriptor for the Precondition feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Precondition feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addPreconditionPropertyDescriptor(Object object) {
@@ -112,9 +106,8 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     }
 
     /**
-     * This adds a property descriptor for the Force Refresh feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Force Refresh feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addForceRefreshPropertyDescriptor(Object object) {
@@ -126,9 +119,8 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     }
 
     /**
-     * This adds a property descriptor for the Elements To Select feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Elements To Select feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addElementsToSelectPropertyDescriptor(Object object) {
@@ -139,9 +131,9 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     }
 
     /**
-     * This adds a property descriptor for the Inverse Selection Order feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Inverse Selection Order feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addInverseSelectionOrderPropertyDescriptor(Object object) {
@@ -152,13 +144,11 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to
-     * deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand},
-     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in
-     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -172,21 +162,19 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper
-        // feature to use for
+        // Check the type of the specified child object and return the proper feature to use for
         // adding (see {@link AddCommand}) it as a child.
 
         return super.getChildFeature(object, child);
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -197,10 +185,9 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -225,10 +212,9 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

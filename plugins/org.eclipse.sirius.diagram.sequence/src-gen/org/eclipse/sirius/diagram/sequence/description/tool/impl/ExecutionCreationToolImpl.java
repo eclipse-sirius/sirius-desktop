@@ -23,8 +23,8 @@ import org.eclipse.sirius.diagram.sequence.description.tool.SequenceDiagramToolD
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Execution Creation Tool</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Execution Creation Tool</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -41,10 +41,9 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  */
 public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl implements ExecutionCreationTool {
     /**
-     * The cached value of the '{@link #getStartingEndPredecessor()
-     * <em>Starting End Predecessor</em>}' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStartingEndPredecessor() <em>Starting End Predecessor</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getStartingEndPredecessor()
      * @generated
      * @ordered
@@ -52,10 +51,9 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
     protected MessageEndVariable startingEndPredecessor;
 
     /**
-     * The cached value of the '{@link #getFinishingEndPredecessor()
-     * <em>Finishing End Predecessor</em>}' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFinishingEndPredecessor() <em>Finishing End Predecessor</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFinishingEndPredecessor()
      * @generated
      * @ordered
@@ -64,7 +62,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ExecutionCreationToolImpl() {
@@ -73,7 +71,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +81,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -93,7 +91,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStartingEndPredecessor(MessageEndVariable newStartingEndPredecessor, NotificationChain msgs) {
@@ -113,7 +111,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -139,7 +137,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -149,7 +147,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetFinishingEndPredecessor(MessageEndVariable newFinishingEndPredecessor, NotificationChain msgs) {
@@ -169,7 +167,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -195,7 +193,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -211,7 +209,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -227,7 +225,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -245,7 +243,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -263,7 +261,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -279,7 +277,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -305,7 +303,7 @@ public class ExecutionCreationToolImpl extends NodeCreationDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

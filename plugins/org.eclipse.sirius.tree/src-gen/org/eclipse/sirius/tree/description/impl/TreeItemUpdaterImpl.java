@@ -22,23 +22,21 @@ import org.eclipse.sirius.tree.description.TreeItemEditionTool;
 import org.eclipse.sirius.tree.description.TreeItemUpdater;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Tree Item Updater</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Tree Item Updater</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeItemUpdaterImpl#getDirectEdit
- * <em>Direct Edit</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeItemUpdaterImpl#getDirectEdit <em>Direct Edit</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements TreeItemUpdater {
     /**
-     * The cached value of the '{@link #getDirectEdit() <em>Direct Edit</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getDirectEdit() <em>Direct Edit</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDirectEdit()
      * @generated
@@ -48,7 +46,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TreeItemUpdaterImpl() {
@@ -57,7 +55,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -67,7 +65,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -77,7 +75,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetDirectEdit(TreeItemEditionTool newDirectEdit, NotificationChain msgs) {
@@ -96,7 +94,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -120,7 +118,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +130,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -144,7 +142,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +156,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -172,7 +170,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -187,7 +185,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -202,7 +200,7 @@ public class TreeItemUpdaterImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -19,25 +19,23 @@ import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DiagramPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Collapse Filter</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Collapse Filter</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.CollapseFilterImpl#getWidth
- * <em>Width</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.CollapseFilterImpl#getHeight
- * <em>Height</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.CollapseFilterImpl#getWidth <em>Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.CollapseFilterImpl#getHeight <em>Height</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements CollapseFilter {
     /**
-     * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getWidth()
      * @generated
      * @ordered
@@ -45,8 +43,8 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
     protected static final int WIDTH_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getWidth()
      * @generated
@@ -55,9 +53,9 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
     protected int width = CollapseFilterImpl.WIDTH_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getHeight() <em>Height</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getHeight()
      * @generated
      * @ordered
@@ -65,9 +63,9 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
     protected static final int HEIGHT_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getHeight()
      * @generated
      * @ordered
@@ -76,7 +74,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CollapseFilterImpl() {
@@ -85,7 +83,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -95,7 +93,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -105,7 +103,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -119,7 +117,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +127,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -143,7 +141,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +157,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -177,7 +175,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -195,7 +193,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -211,7 +209,7 @@ public class CollapseFilterImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

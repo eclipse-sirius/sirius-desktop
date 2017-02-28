@@ -39,61 +39,41 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DDiagram Element Container</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DDiagram Element Container</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getOwnedBorderedNodes
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getOwnedBorderedNodes
  * <em>Owned Bordered Nodes</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getArrangeConstraints
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getArrangeConstraints
  * <em>Arrange Constraints</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getOutgoingEdges
- * <em>Outgoing Edges</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getIncomingEdges
- * <em>Incoming Edges</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getNodes
- * <em>Nodes</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getContainers
- * <em>Containers</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getElements
- * <em>Elements</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getOwnedStyle
- * <em>Owned Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getOriginalStyle
- * <em>Original Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getActualMapping
- * <em>Actual Mapping</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getCandidatesMapping
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getOutgoingEdges <em>Outgoing Edges</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getIncomingEdges <em>Incoming Edges</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getNodes <em>Nodes</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getContainers <em>Containers</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getElements <em>Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getOwnedStyle <em>Owned Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getOriginalStyle <em>Original Style</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getActualMapping <em>Actual Mapping</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getCandidatesMapping
  * <em>Candidates Mapping</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getWidth
- * <em>Width</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getHeight
- * <em>Height</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getWidth <em>Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getHeight <em>Height</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl implements DDiagramElementContainer {
     /**
-     * The cached value of the '{@link #getOwnedBorderedNodes()
-     * <em>Owned Bordered Nodes</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedBorderedNodes() <em>Owned Bordered Nodes</em>}' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getOwnedBorderedNodes()
      * @generated
      * @ordered
@@ -101,9 +81,8 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     protected EList<DNode> ownedBorderedNodes;
 
     /**
-     * The cached value of the '{@link #getArrangeConstraints()
-     * <em>Arrange Constraints</em>}' attribute list. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getArrangeConstraints() <em>Arrange Constraints</em>}' attribute list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getArrangeConstraints()
      * @generated
@@ -112,10 +91,9 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     protected EList<ArrangeConstraint> arrangeConstraints;
 
     /**
-     * The cached value of the '{@link #getOutgoingEdges()
-     * <em>Outgoing Edges</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getOutgoingEdges() <em>Outgoing Edges</em>}' reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getOutgoingEdges()
      * @generated
      * @ordered
@@ -123,10 +101,9 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     protected EList<DEdge> outgoingEdges;
 
     /**
-     * The cached value of the '{@link #getIncomingEdges()
-     * <em>Incoming Edges</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getIncomingEdges() <em>Incoming Edges</em>}' reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getIncomingEdges()
      * @generated
      * @ordered
@@ -134,8 +111,8 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     protected EList<DEdge> incomingEdges;
 
     /**
-     * The cached value of the '{@link #getOwnedStyle() <em>Owned Style</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOwnedStyle() <em>Owned Style</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getOwnedStyle()
      * @generated
@@ -144,10 +121,9 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     protected ContainerStyle ownedStyle;
 
     /**
-     * The cached value of the '{@link #getOriginalStyle()
-     * <em>Original Style</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getOriginalStyle() <em>Original Style</em>}' reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getOriginalStyle()
      * @generated
      * @ordered
@@ -155,10 +131,9 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     protected Style originalStyle;
 
     /**
-     * The cached value of the '{@link #getActualMapping()
-     * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getActualMapping() <em>Actual Mapping</em>}' reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getActualMapping()
      * @generated
      * @ordered
@@ -166,9 +141,8 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     protected ContainerMapping actualMapping;
 
     /**
-     * The cached value of the '{@link #getCandidatesMapping()
-     * <em>Candidates Mapping</em>}' reference list. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getCandidatesMapping() <em>Candidates Mapping</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCandidatesMapping()
      * @generated
@@ -177,9 +151,9 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     protected EList<ContainerMapping> candidatesMapping;
 
     /**
-     * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getWidth()
      * @generated
      * @ordered
@@ -187,8 +161,8 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     protected static final Integer WIDTH_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getWidth()
      * @generated
@@ -197,9 +171,9 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     protected Integer width = DDiagramElementContainerImpl.WIDTH_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getHeight() <em>Height</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getHeight()
      * @generated
      * @ordered
@@ -207,9 +181,9 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     protected static final Integer HEIGHT_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getHeight()
      * @generated
      * @ordered
@@ -218,7 +192,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DDiagramElementContainerImpl() {
@@ -227,7 +201,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -237,7 +211,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -250,7 +224,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -263,7 +237,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -276,7 +250,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -289,58 +263,52 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<DNode> getNodes() {
         // TODO: implement this method to return the 'Nodes' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<DDiagramElementContainer> getContainers() {
         // TODO: implement this method to return the 'Containers' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EList<DDiagramElement> getElements() {
         // TODO: implement this method to return the 'Elements' reference list
         // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
+        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
         // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -367,7 +335,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ContainerStyle basicGetOwnedStyle() {
@@ -376,7 +344,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetOwnedStyle(ContainerStyle newOwnedStyle, NotificationChain msgs) {
@@ -395,7 +363,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -419,7 +387,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -438,7 +406,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public Style basicGetOriginalStyle() {
@@ -447,7 +415,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -461,7 +429,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -480,7 +448,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ContainerMapping basicGetActualMapping() {
@@ -489,7 +457,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -503,7 +471,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -516,7 +484,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -526,7 +494,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -540,7 +508,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -550,7 +518,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -564,7 +532,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -576,7 +544,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -588,7 +556,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -600,7 +568,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -617,7 +585,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -637,7 +605,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -684,7 +652,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -732,7 +700,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -774,7 +742,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -812,7 +780,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -838,7 +806,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -864,7 +832,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

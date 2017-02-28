@@ -29,17 +29,15 @@ import org.eclipse.sirius.diagram.sequence.description.StateMapping;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.sequence.description.StateMapping} object.
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.sequence.description.StateMapping} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class StateMappingItemProvider extends NodeMappingItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public StateMappingItemProvider(AdapterFactory adapterFactory) {
@@ -47,9 +45,8 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -64,9 +61,9 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Starting End Finder Expression
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Starting End Finder Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addStartingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -79,9 +76,9 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Finishing End Finder Expression
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Finishing End Finder Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     protected void addFinishingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -94,9 +91,8 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This returns StateMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * This returns StateMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -105,8 +101,7 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -117,10 +112,9 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -138,10 +132,9 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -165,9 +158,8 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -176,9 +168,8 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
     }
 
     /**
-     * This returns the label text for
-     * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @not-generated
      */

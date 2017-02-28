@@ -21,15 +21,14 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Delete Column Tool</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Delete Column Tool</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteColumnToolImpl#getMapping
- * <em>Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteColumnToolImpl#getMapping <em>Mapping</em>
+ * }</li>
  * </ul>
  *
  * @generated
@@ -37,7 +36,7 @@ import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping
 public class DeleteColumnToolImpl extends DeleteToolImpl implements DeleteColumnTool {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DeleteColumnToolImpl() {
@@ -46,7 +45,7 @@ public class DeleteColumnToolImpl extends DeleteToolImpl implements DeleteColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -56,7 +55,7 @@ public class DeleteColumnToolImpl extends DeleteToolImpl implements DeleteColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -69,7 +68,7 @@ public class DeleteColumnToolImpl extends DeleteToolImpl implements DeleteColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetMapping(ElementColumnMapping newMapping, NotificationChain msgs) {
@@ -79,7 +78,7 @@ public class DeleteColumnToolImpl extends DeleteToolImpl implements DeleteColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -106,7 +105,7 @@ public class DeleteColumnToolImpl extends DeleteToolImpl implements DeleteColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -123,7 +122,7 @@ public class DeleteColumnToolImpl extends DeleteToolImpl implements DeleteColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -137,7 +136,7 @@ public class DeleteColumnToolImpl extends DeleteToolImpl implements DeleteColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,7 +150,7 @@ public class DeleteColumnToolImpl extends DeleteToolImpl implements DeleteColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +164,7 @@ public class DeleteColumnToolImpl extends DeleteToolImpl implements DeleteColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -180,7 +179,7 @@ public class DeleteColumnToolImpl extends DeleteToolImpl implements DeleteColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -195,7 +194,7 @@ public class DeleteColumnToolImpl extends DeleteToolImpl implements DeleteColumn
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -23,31 +23,26 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.impl.StyleImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Bordered Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Bordered Style</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.BorderedStyleImpl#getBorderSize
- * <em>Border Size</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.BorderedStyleImpl#getBorderSizeComputationExpression
+ * <li>{@link org.eclipse.sirius.diagram.impl.BorderedStyleImpl#getBorderSize <em>Border Size</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.BorderedStyleImpl#getBorderSizeComputationExpression
  * <em>Border Size Computation Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.BorderedStyleImpl#getBorderColor
- * <em>Border Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.BorderedStyleImpl#getBorderLineStyle
- * <em>Border Line Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.BorderedStyleImpl#getBorderColor <em>Border Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.BorderedStyleImpl#getBorderLineStyle <em>Border Line Style</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
     /**
-     * The default value of the '{@link #getBorderSize() <em>Border Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getBorderSize() <em>Border Size</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getBorderSize()
      * @generated
      * @ordered
@@ -55,9 +50,9 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
     protected static final Integer BORDER_SIZE_EDEFAULT = new Integer(0);
 
     /**
-     * The cached value of the '{@link #getBorderSize() <em>Border Size</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getBorderSize() <em>Border Size</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getBorderSize()
      * @generated
      * @ordered
@@ -66,9 +61,8 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * The default value of the '{@link #getBorderSizeComputationExpression()
-     * <em>Border Size Computation Expression</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * <em>Border Size Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -76,10 +70,9 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
     protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getBorderSizeComputationExpression()
-     * <em>Border Size Computation Expression</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getBorderSizeComputationExpression() <em>Border Size Computation Expression</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -87,9 +80,9 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
     protected String borderSizeComputationExpression = BorderedStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getBorderColor() <em>Border Color</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getBorderColor()
      * @generated
      * @ordered
@@ -97,9 +90,9 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
     protected static final RGBValues BORDER_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0"); //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getBorderColor()
      * @generated
      * @ordered
@@ -107,9 +100,8 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
     protected RGBValues borderColor = BorderedStyleImpl.BORDER_COLOR_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getBorderLineStyle()
-     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getBorderLineStyle() <em>Border Line Style</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getBorderLineStyle()
      * @generated
@@ -118,10 +110,9 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
     protected static final LineStyle BORDER_LINE_STYLE_EDEFAULT = LineStyle.SOLID_LITERAL;
 
     /**
-     * The cached value of the '{@link #getBorderLineStyle()
-     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBorderLineStyle() <em>Border Line Style</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBorderLineStyle()
      * @generated
      * @ordered
@@ -130,7 +121,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected BorderedStyleImpl() {
@@ -139,7 +130,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -149,7 +140,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +150,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -173,7 +164,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -183,7 +174,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +189,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -208,7 +199,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -222,7 +213,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -232,7 +223,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -246,7 +237,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -266,7 +257,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -290,7 +281,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -314,7 +305,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -335,7 +326,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -21,23 +21,22 @@ import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReferenc
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Menu Item Description Reference</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Menu Item Description Reference</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.MenuItemDescriptionReferenceImpl#getItem
- * <em>Item</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.MenuItemDescriptionReferenceImpl#getItem <em>Item</em>}
+ * </li>
  * </ul>
  *
  * @generated
  */
 public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Container implements MenuItemDescriptionReference {
     /**
-     * The cached value of the '{@link #getItem() <em>Item</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getItem() <em>Item</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getItem()
      * @generated
@@ -47,7 +46,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected MenuItemDescriptionReferenceImpl() {
@@ -56,7 +55,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -66,7 +65,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +84,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public MenuItemDescription basicGetItem() {
@@ -94,7 +93,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +107,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +124,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -140,7 +139,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +154,7 @@ public class MenuItemDescriptionReferenceImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

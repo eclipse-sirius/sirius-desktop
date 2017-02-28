@@ -28,17 +28,15 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Table Variable</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Table Variable</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableVariableImpl#getSubVariables
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableVariableImpl#getSubVariables
  * <em>Sub Variables</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableVariableImpl#getDocumentation
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableVariableImpl#getDocumentation
  * <em>Documentation</em>}</li>
  * </ul>
  *
@@ -46,9 +44,8 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  */
 public class TableVariableImpl extends AbstractVariableImpl implements TableVariable {
     /**
-     * The cached value of the '{@link #getSubVariables() <em>Sub Variables</em>
-     * }' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The cached value of the '{@link #getSubVariables() <em>Sub Variables</em> }' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSubVariables()
      * @generated
@@ -57,10 +54,9 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
     protected EList<SubVariable> subVariables;
 
     /**
-     * The default value of the '{@link #getDocumentation()
-     * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -68,10 +64,9 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
     protected static final String DOCUMENTATION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getDocumentation()
-     * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -80,7 +75,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TableVariableImpl() {
@@ -89,7 +84,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +94,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +107,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -122,7 +117,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -136,7 +131,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -150,7 +145,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -166,7 +161,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -186,7 +181,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -204,7 +199,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -220,7 +215,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -238,7 +233,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -256,7 +251,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

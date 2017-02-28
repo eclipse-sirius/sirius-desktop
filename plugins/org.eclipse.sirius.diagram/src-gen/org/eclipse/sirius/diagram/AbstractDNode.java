@@ -14,17 +14,14 @@ package org.eclipse.sirius.diagram;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Abstract DNode</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Abstract DNode</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.AbstractDNode#getOwnedBorderedNodes
- * <em>Owned Bordered Nodes</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.AbstractDNode#getArrangeConstraints
- * <em>Arrange Constraints</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.AbstractDNode#getOwnedBorderedNodes <em>Owned Bordered Nodes</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.AbstractDNode#getArrangeConstraints <em>Arrange Constraints</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getAbstractDNode()
@@ -33,14 +30,11 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface AbstractDNode extends DDiagramElement {
     /**
-     * Returns the value of the '<em><b>Owned Bordered Nodes</b></em>'
-     * containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.DNode}. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> The nodes that are on the
-     * border of the container. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Owned Bordered Nodes</b></em>' containment reference list. The list contents are
+     * of type {@link org.eclipse.sirius.diagram.DNode}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The nodes that are on the border of the container. <!-- end-model-doc -->
      *
-     * @return the value of the '<em>Owned Bordered Nodes</em>' containment
-     *         reference list.
+     * @return the value of the '<em>Owned Bordered Nodes</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbstractDNode_OwnedBorderedNodes()
      * @model containment="true" resolveProxies="true"
      * @generated
@@ -48,17 +42,15 @@ public interface AbstractDNode extends DDiagramElement {
     EList<DNode> getOwnedBorderedNodes();
 
     /**
-     * Returns the value of the '<em><b>Arrange Constraints</b></em>' attribute
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.ArrangeConstraint}. The literals are
-     * from the enumeration {@link org.eclipse.sirius.diagram.ArrangeConstraint}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Arrange Constraints</b></em>' attribute list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.ArrangeConstraint}. The literals are from the enumeration
+     * {@link org.eclipse.sirius.diagram.ArrangeConstraint}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Arrange Constraints</em>' attribute list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Arrange Constraints</em>' attribute list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Arrange Constraints</em>' attribute list.
      * @see org.eclipse.sirius.diagram.ArrangeConstraint
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbstractDNode_ArrangeConstraints()

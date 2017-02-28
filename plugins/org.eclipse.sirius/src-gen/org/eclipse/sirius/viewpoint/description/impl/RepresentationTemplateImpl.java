@@ -27,17 +27,14 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Representation Template</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Representation Template</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.RepresentationTemplateImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.RepresentationTemplateImpl#getOwnedRepresentations
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.RepresentationTemplateImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.RepresentationTemplateImpl#getOwnedRepresentations
  * <em>Owned Representations</em>}</li>
  * </ul>
  *
@@ -45,8 +42,8 @@ import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
  */
 public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Container implements RepresentationTemplate {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -55,8 +52,8 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -65,10 +62,9 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
     protected String name = RepresentationTemplateImpl.NAME_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getOwnedRepresentations()
-     * <em>Owned Representations</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedRepresentations() <em>Owned Representations</em>}' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getOwnedRepresentations()
      * @generated
      * @ordered
@@ -77,7 +73,7 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RepresentationTemplateImpl() {
@@ -86,7 +82,7 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +92,7 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -106,7 +102,7 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -120,7 +116,7 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -134,7 +130,7 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -148,7 +144,7 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -164,7 +160,7 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -184,7 +180,7 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -202,7 +198,7 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -218,7 +214,7 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

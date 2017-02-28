@@ -25,33 +25,27 @@ import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Hyperlink Widget Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Hyperlink Widget Style</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontNameExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontNameExpression
  * <em>Font Name Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontSizeExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontSizeExpression
  * <em>Font Size Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getBackgroundColor
- * <em>Background Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontFormat
- * <em>Font Format</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getBackgroundColor <em>Background Color</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontFormat <em>Font Format</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements HyperlinkWidgetStyle {
     /**
-     * The default value of the '{@link #getFontNameExpression()
-     * <em>Font Name Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getFontNameExpression() <em>Font Name Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getFontNameExpression()
      * @generated
@@ -60,9 +54,8 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
     protected static final String FONT_NAME_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFontNameExpression()
-     * <em>Font Name Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getFontNameExpression() <em>Font Name Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getFontNameExpression()
      * @generated
@@ -71,9 +64,8 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
     protected String fontNameExpression = HyperlinkWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFontSizeExpression()
-     * <em>Font Size Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getFontSizeExpression() <em>Font Size Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getFontSizeExpression()
      * @generated
@@ -82,9 +74,8 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
     protected static final String FONT_SIZE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFontSizeExpression()
-     * <em>Font Size Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getFontSizeExpression() <em>Font Size Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getFontSizeExpression()
      * @generated
@@ -93,10 +84,9 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
     protected String fontSizeExpression = HyperlinkWidgetStyleImpl.FONT_SIZE_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -104,9 +94,9 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
     protected ColorDescription backgroundColor;
 
     /**
-     * The cached value of the '{@link #getFontFormat() <em>Font Format</em>}'
-     * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFontFormat() <em>Font Format</em>}' attribute list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getFontFormat()
      * @generated
      * @ordered
@@ -115,7 +105,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected HyperlinkWidgetStyleImpl() {
@@ -124,7 +114,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -134,7 +124,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -144,7 +134,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +148,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -168,7 +158,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +172,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -201,7 +191,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetBackgroundColor() {
@@ -210,7 +200,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -224,7 +214,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -237,7 +227,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -260,7 +250,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -286,7 +276,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -310,7 +300,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -330,7 +320,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

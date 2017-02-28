@@ -14,18 +14,16 @@ package org.eclipse.sirius.viewpoint;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DSemantic Decorator</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DSemantic Decorator</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> An element that has a link to the semantic model.
- * <!-- end-model-doc -->
+ * <!-- begin-model-doc --> An element that has a link to the semantic model. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.DSemanticDecorator#getTarget
- * <em>Target</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DSemanticDecorator#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDSemanticDecorator()
@@ -34,9 +32,8 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface DSemanticDecorator extends EObject {
     /**
-     * Returns the value of the '<em><b>Target</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * referenced EObject. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The referenced EObject. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Target</em>' reference.
      * @see #setTarget(EObject)
@@ -47,11 +44,9 @@ public interface DSemanticDecorator extends EObject {
     EObject getTarget();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DSemanticDecorator#getTarget
-     * <em>Target</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DSemanticDecorator#getTarget <em>Target</em>}'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Target</em>' reference.
      * @see #getTarget()

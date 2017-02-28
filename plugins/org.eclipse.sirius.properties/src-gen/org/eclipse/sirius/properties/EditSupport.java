@@ -16,8 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Edit Support</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Edit Support</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getEditSupport()
@@ -27,7 +26,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 public interface EditSupport extends EObject {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model kind="operation"
      * @generated
      */
@@ -35,7 +34,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model kind="operation"
      * @generated
      */
@@ -43,7 +42,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model featureRequired="true"
      * @generated
      */
@@ -51,7 +50,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model kind="operation"
      * @generated
      */
@@ -59,7 +58,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model featureRequired="true"
      * @generated
      */
@@ -67,7 +66,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model required="true" eStructuralFeatureRequired="true"
      * @generated
      */
@@ -75,7 +74,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model required="true" eStructuralFeatureRequired="true"
      * @generated
      */
@@ -83,7 +82,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model kind="operation"
      * @generated
      */
@@ -91,7 +90,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model featureRequired="true" newValueRequired="true"
      * @generated
      */
@@ -99,7 +98,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model eStructuralFeatureRequired="true"
      * @generated
      */
@@ -107,7 +106,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model eStructuralFeatureRequired="true"
      * @generated
      */

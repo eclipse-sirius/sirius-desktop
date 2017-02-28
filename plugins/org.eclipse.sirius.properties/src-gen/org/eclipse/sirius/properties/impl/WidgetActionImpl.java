@@ -22,28 +22,22 @@ import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Widget Action</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Widget Action</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.WidgetActionImpl#getLabelExpression
- * <em>Label Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.WidgetActionImpl#getInitialOperation
- * <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.WidgetActionImpl#getLabelExpression <em>Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.WidgetActionImpl#getInitialOperation <em>Initial Operation</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class WidgetActionImpl extends MinimalEObjectImpl.Container implements WidgetAction {
     /**
-     * The default value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -51,10 +45,9 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
     protected static final String LABEL_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -62,9 +55,8 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
     protected String labelExpression = WidgetActionImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getInitialOperation()
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getInitialOperation()
      * @generated
@@ -74,7 +66,7 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected WidgetActionImpl() {
@@ -83,7 +75,7 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -93,7 +85,7 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -103,7 +95,7 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -117,7 +109,7 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +119,7 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -146,7 +138,7 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -170,7 +162,7 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -184,7 +176,7 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -200,7 +192,7 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -218,7 +210,7 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -236,7 +228,7 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -252,7 +244,7 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

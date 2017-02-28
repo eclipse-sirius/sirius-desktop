@@ -12,16 +12,14 @@
 package org.eclipse.sirius.diagram.description.style;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Custom Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Custom Style Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.CustomStyleDescription#getId
- * <em>Id</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.style.CustomStyleDescription#getId <em>Id</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getCustomStyleDescription()
@@ -30,11 +28,9 @@ package org.eclipse.sirius.diagram.description.style;
  */
 public interface CustomStyleDescription extends NodeStyleDescription {
     /**
-     * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Set
-     * here an ID to identify your custom style. You'll then be able to provide
-     * your own figure implementation for every representation element having a
-     * style with this ID. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Set here an ID to identify your custom style. You'll then be able to provide your own figure
+     * implementation for every representation element having a style with this ID. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
@@ -45,10 +41,9 @@ public interface CustomStyleDescription extends NodeStyleDescription {
     String getId();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.style.CustomStyleDescription#getId
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.style.CustomStyleDescription#getId
      * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()

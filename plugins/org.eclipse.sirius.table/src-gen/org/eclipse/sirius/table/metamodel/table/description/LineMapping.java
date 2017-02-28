@@ -13,39 +13,27 @@ package org.eclipse.sirius.table.metamodel.table.description;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Line Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Line Mapping</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getOwnedSubLines
- * <em>Owned Sub Lines</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedSubLines
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getOwnedSubLines <em>Owned Sub Lines</em>
+ * }</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedSubLines
  * <em>Reused Sub Lines</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getAllSubLines
- * <em>All Sub Lines</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedInMappings
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getAllSubLines <em>All Sub Lines</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedInMappings
  * <em>Reused In Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getDomainClass
- * <em>Domain Class</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getCreate
- * <em>Create</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getDelete
- * <em>Delete</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getSemanticCandidatesExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getDomainClass <em>Domain Class</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getCreate <em>Create</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getDelete <em>Delete</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getSemanticCandidatesExpression
  * <em>Semantic Candidates Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getHeaderLabelExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getHeaderLabelExpression
  * <em>Header Label Expression</em>}</li>
  * </ul>
  *
@@ -55,18 +43,15 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface LineMapping extends TableMapping, StyleUpdater {
     /**
-     * Returns the value of the '<em><b>Owned Sub Lines</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Owned Sub Lines</b></em>' containment reference list. The list contents are of
+     * type {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Owned Sub Lines</em>' containment reference
-     * list isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Owned Sub Lines</em>' containment reference list isn't clear, there really should be
+     * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Owned Sub Lines</em>' containment reference
-     *         list.
+     * 
+     * @return the value of the '<em>Owned Sub Lines</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_OwnedSubLines()
      * @model containment="true" keys="name"
      * @generated
@@ -74,18 +59,16 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     EList<LineMapping> getOwnedSubLines();
 
     /**
-     * Returns the value of the '<em><b>Reused Sub Lines</b></em>' reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}.
-     * It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedInMappings
+     * Returns the value of the '<em><b>Reused Sub Lines</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedInMappings
      * <em>Reused In Mappings</em>}'. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Reused Sub Lines</em>' reference list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Reused Sub Lines</em>' reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Reused Sub Lines</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_ReusedSubLines()
      * @see org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedInMappings
@@ -95,28 +78,25 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     EList<LineMapping> getReusedSubLines();
 
     /**
-     * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Domain Class</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Domain Class</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_DomainClass()
-     * @model dataType="org.eclipse.sirius.description.TypeName" required="true"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.TypeName" required="true"
      * @generated
      */
     String getDomainClass();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getDomainClass
-     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getDomainClass
+     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -125,16 +105,14 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     void setDomainClass(String value);
 
     /**
-     * Returns the value of the '<em><b>Create</b></em>' containment reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateLineTool}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Create</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateLineTool}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Create</em>' containment reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Create</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Create</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_Create()
      * @model containment="true"
@@ -143,13 +121,12 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     EList<CreateLineTool> getCreate();
 
     /**
-     * Returns the value of the '<em><b>Delete</b></em>' containment reference.
-     * It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool#getMapping
-     * <em>Mapping</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Delete</b></em>' containment reference. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool#getMapping <em>Mapping</em>}'. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Delete</em>' containment reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Delete</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -163,11 +140,9 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     DeleteLineTool getDelete();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getDelete
-     * <em>Delete</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getDelete
+     * <em>Delete</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Delete</em>' containment reference.
      * @see #getDelete()
@@ -176,21 +151,17 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     void setDelete(DeleteLineTool value);
 
     /**
-     * Returns the value of the '<em><b>Semantic Candidates Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Semantic Candidates Expression</em>' attribute
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Semantic Candidates Expression</em>' attribute isn't clear, there really should be
+     * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Semantic Candidates Expression</em>'
-     *         attribute.
+     * 
+     * @return the value of the '<em>Semantic Candidates Expression</em>' attribute.
      * @see #setSemanticCandidatesExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_SemanticCandidatesExpression()
-     * @model dataType=
-     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation=
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/variables viewpoint='table.DTable | (deprecated) current DTable.' table='table.DTable | current DTable.' root='ecore.EObject | semantic target of $table.' containerView='table.LineContainer | current LineContainer (DLine or DTable).' container='ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator).'"
@@ -201,32 +172,27 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getSemanticCandidatesExpression
-     * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Semantic Candidates Expression</em>'
-     *            attribute.
+     *            the new value of the '<em>Semantic Candidates Expression</em>' attribute.
      * @see #getSemanticCandidatesExpression()
      * @generated
      */
     void setSemanticCandidatesExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Header Label Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Header Label Expression</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Header Label Expression</em>' attribute isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Header Label Expression</em>' attribute isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Header Label Expression</em>' attribute.
      * @see #setHeaderLabelExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_HeaderLabelExpression()
-     * @model dataType=
-     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation=
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
      * @generated
      */
@@ -235,28 +201,24 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getHeaderLabelExpression
-     * <em>Header Label Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * <em>Header Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Header Label Expression</em>'
-     *            attribute.
+     *            the new value of the '<em>Header Label Expression</em>' attribute.
      * @see #getHeaderLabelExpression()
      * @generated
      */
     void setHeaderLabelExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>All Sub Lines</b></em>' reference list.
-     * The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>All Sub Lines</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>All Sub Lines</em>' reference list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>All Sub Lines</em>' reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>All Sub Lines</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_AllSubLines()
      * @model transient="true" changeable="false" volatile="true" derived="true"
@@ -265,18 +227,16 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     EList<LineMapping> getAllSubLines();
 
     /**
-     * Returns the value of the '<em><b>Reused In Mappings</b></em>' reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}.
-     * It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedSubLines
+     * Returns the value of the '<em><b>Reused In Mappings</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedSubLines
      * <em>Reused Sub Lines</em>}'. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Reused In Mappings</em>' reference list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Reused In Mappings</em>' reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Reused In Mappings</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_ReusedInMappings()
      * @see org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedSubLines

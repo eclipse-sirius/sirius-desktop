@@ -28,17 +28,15 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.provider.LabelStyleItemProvider;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.ContainerStyle} object. <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.ContainerStyle} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class ContainerStyleItemProvider extends LabelStyleItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ContainerStyleItemProvider(AdapterFactory adapterFactory) {
@@ -46,9 +44,8 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -66,9 +63,8 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Description feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Description feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
@@ -78,9 +74,8 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Border Size feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Border Size feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addBorderSizePropertyDescriptor(Object object) {
@@ -92,9 +87,8 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Border Color feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Border Color feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addBorderColorPropertyDescriptor(Object object) {
@@ -106,9 +100,8 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Border Line Style feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Border Line Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addBorderLineStylePropertyDescriptor(Object object) {
@@ -120,8 +113,8 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Hide Label By Default feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Hide Label By Default feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -133,9 +126,8 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -145,10 +137,9 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -169,10 +160,9 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -181,9 +171,8 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
     }
 
     /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

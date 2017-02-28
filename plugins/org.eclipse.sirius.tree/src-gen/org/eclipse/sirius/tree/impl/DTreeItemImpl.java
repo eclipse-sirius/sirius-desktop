@@ -39,38 +39,28 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DTree Item</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DTree Item</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getName <em>Name</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getSemanticElements
- * <em>Semantic Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getTreeElementMapping
- * <em>Tree Element Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#isExpanded
- * <em>Expanded</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getOwnedStyle
- * <em>Owned Style</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getActualMapping
- * <em>Actual Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getContainer
- * <em>Container</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getStyleUpdater
- * <em>Style Updater</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getUpdater
- * <em>Updater</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getSemanticElements <em>Semantic Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getTreeElementMapping <em>Tree Element Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#isExpanded <em>Expanded</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getOwnedStyle <em>Owned Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getActualMapping <em>Actual Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getContainer <em>Container</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getStyleUpdater <em>Style Updater</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getUpdater <em>Updater</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -79,8 +69,8 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
     protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -89,9 +79,8 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
     protected String name = DTreeItemImpl.NAME_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getSemanticElements()
-     * <em>Semantic Elements</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getSemanticElements() <em>Semantic Elements</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSemanticElements()
      * @generated
@@ -100,9 +89,9 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
     protected EList<EObject> semanticElements;
 
     /**
-     * The default value of the '{@link #isExpanded() <em>Expanded</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #isExpanded() <em>Expanded</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isExpanded()
      * @generated
      * @ordered
@@ -110,9 +99,9 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
     protected static final boolean EXPANDED_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isExpanded() <em>Expanded</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #isExpanded() <em>Expanded</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #isExpanded()
      * @generated
      * @ordered
@@ -120,8 +109,8 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
     protected boolean expanded = DTreeItemImpl.EXPANDED_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getOwnedStyle() <em>Owned Style</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOwnedStyle() <em>Owned Style</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getOwnedStyle()
      * @generated
@@ -130,10 +119,9 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
     protected TreeItemStyle ownedStyle;
 
     /**
-     * The cached value of the '{@link #getActualMapping()
-     * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getActualMapping() <em>Actual Mapping</em>}' reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getActualMapping()
      * @generated
      * @ordered
@@ -142,7 +130,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DTreeItemImpl() {
@@ -151,7 +139,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -161,7 +149,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -171,7 +159,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -185,7 +173,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +186,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -209,12 +197,11 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public TreeMapping basicGetTreeElementMapping() {
-        // TODO: implement this method to return the 'Tree Element Mapping'
-        // reference
+        // TODO: implement this method to return the 'Tree Element Mapping' reference
         // -> do not perform proxy resolution
         // Ensure that you remove @generated or mark it @generated NOT
         throw new UnsupportedOperationException();
@@ -222,7 +209,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -232,7 +219,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -246,7 +233,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -256,7 +243,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetOwnedStyle(TreeItemStyle newOwnedStyle, NotificationChain msgs) {
@@ -275,7 +262,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -299,7 +286,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -318,7 +305,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public TreeItemMapping basicGetActualMapping() {
@@ -327,7 +314,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -341,7 +328,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -354,7 +341,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetContainer(DTreeItemContainer newContainer, NotificationChain msgs) {
@@ -364,7 +351,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -391,7 +378,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -402,7 +389,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public StyleUpdater basicGetStyleUpdater() {
@@ -414,7 +401,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -425,7 +412,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public TreeItemUpdater basicGetUpdater() {
@@ -437,7 +424,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -449,7 +436,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -461,7 +448,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -473,7 +460,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -485,7 +472,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -502,7 +489,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -518,7 +505,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -532,7 +519,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -574,7 +561,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -609,7 +596,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -642,7 +629,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -672,7 +659,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -718,7 +705,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -764,7 +751,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

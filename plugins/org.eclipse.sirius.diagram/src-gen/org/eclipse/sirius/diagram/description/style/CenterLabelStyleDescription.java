@@ -14,8 +14,8 @@ package org.eclipse.sirius.diagram.description.style;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Center Label Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Center Label Style Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <!-- begin-model-doc --> The style of a center label. <!-- end-model-doc -->
  *

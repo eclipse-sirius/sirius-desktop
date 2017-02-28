@@ -15,15 +15,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DFeature Extension</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DFeature Extension</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.DFeatureExtension#getDescription
- * <em>Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DFeatureExtension#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDFeatureExtension()
@@ -32,14 +31,13 @@ import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
  */
 public interface DFeatureExtension extends EObject {
     /**
-     * Returns the value of the '<em><b>Description</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Description</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Description</em>' reference isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Description</em>' reference isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(FeatureExtensionDescription)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDFeatureExtension_Description()
@@ -49,11 +47,9 @@ public interface DFeatureExtension extends EObject {
     FeatureExtensionDescription getDescription();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DFeatureExtension#getDescription
-     * <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DFeatureExtension#getDescription <em>Description</em>}
+     * ' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()

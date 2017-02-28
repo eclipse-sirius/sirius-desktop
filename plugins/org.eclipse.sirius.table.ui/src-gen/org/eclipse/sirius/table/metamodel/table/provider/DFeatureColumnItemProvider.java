@@ -23,17 +23,15 @@ import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class DFeatureColumnItemProvider extends DColumnItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DFeatureColumnItemProvider(AdapterFactory adapterFactory) {
@@ -41,9 +39,8 @@ public class DFeatureColumnItemProvider extends DColumnItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -57,9 +54,8 @@ public class DFeatureColumnItemProvider extends DColumnItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Feature Name feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Feature Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
@@ -70,9 +66,8 @@ public class DFeatureColumnItemProvider extends DColumnItemProvider {
     }
 
     /**
-     * This returns DFeatureColumn.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns DFeatureColumn.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -81,9 +76,8 @@ public class DFeatureColumnItemProvider extends DColumnItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -94,10 +88,9 @@ public class DFeatureColumnItemProvider extends DColumnItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -114,10 +107,9 @@ public class DFeatureColumnItemProvider extends DColumnItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

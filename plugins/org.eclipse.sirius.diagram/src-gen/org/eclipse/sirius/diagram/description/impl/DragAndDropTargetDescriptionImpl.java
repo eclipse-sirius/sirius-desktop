@@ -22,14 +22,13 @@ import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Drag And Drop Target Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Drag And Drop Target Description</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.DragAndDropTargetDescriptionImpl#getDropDescriptions
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.DragAndDropTargetDescriptionImpl#getDropDescriptions
  * <em>Drop Descriptions</em>}</li>
  * </ul>
  *
@@ -37,9 +36,8 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
  */
 public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImpl.Container implements DragAndDropTargetDescription {
     /**
-     * The cached value of the '{@link #getDropDescriptions()
-     * <em>Drop Descriptions</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getDropDescriptions() <em>Drop Descriptions</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDropDescriptions()
      * @generated
@@ -49,7 +47,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DragAndDropTargetDescriptionImpl() {
@@ -58,7 +56,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -68,7 +66,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -81,7 +79,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -95,7 +93,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -112,7 +110,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +125,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

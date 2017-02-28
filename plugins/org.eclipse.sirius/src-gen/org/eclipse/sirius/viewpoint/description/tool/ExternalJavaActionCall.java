@@ -12,19 +12,17 @@
 package org.eclipse.sirius.viewpoint.description.tool;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>External Java Action Call</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>External Java Action Call</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> An operation which can be used to call an
- * ExternalJavaAction defined elsewhere. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> An operation which can be used to call an ExternalJavaAction defined elsewhere. <!--
+ * end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall#getAction
- * <em>Action</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall#getAction <em>Action</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getExternalJavaActionCall()
@@ -33,9 +31,8 @@ package org.eclipse.sirius.viewpoint.description.tool;
  */
 public interface ExternalJavaActionCall extends MenuItemDescription, ContainerModelOperation {
     /**
-     * Returns the value of the '<em><b>Action</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * action to call. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Action</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The action to call. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Action</em>' reference.
      * @see #setAction(ExternalJavaAction)
@@ -46,11 +43,9 @@ public interface ExternalJavaActionCall extends MenuItemDescription, ContainerMo
     ExternalJavaAction getAction();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall#getAction
-     * <em>Action</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall#getAction
+     * <em>Action</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Action</em>' reference.
      * @see #getAction()

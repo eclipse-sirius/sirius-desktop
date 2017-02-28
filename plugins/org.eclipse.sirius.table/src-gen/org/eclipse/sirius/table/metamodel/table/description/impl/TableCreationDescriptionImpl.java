@@ -20,14 +20,13 @@ import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Table Creation Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Table Creation Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableCreationDescriptionImpl#getTableDescription
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableCreationDescriptionImpl#getTableDescription
  * <em>Table Description</em>}</li>
  * </ul>
  *
@@ -35,9 +34,8 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreation
  */
 public class TableCreationDescriptionImpl extends RepresentationCreationDescriptionImpl implements TableCreationDescription {
     /**
-     * The cached value of the '{@link #getTableDescription()
-     * <em>Table Description</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getTableDescription() <em>Table Description</em>}' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getTableDescription()
      * @generated
@@ -47,7 +45,7 @@ public class TableCreationDescriptionImpl extends RepresentationCreationDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TableCreationDescriptionImpl() {
@@ -56,7 +54,7 @@ public class TableCreationDescriptionImpl extends RepresentationCreationDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -66,7 +64,7 @@ public class TableCreationDescriptionImpl extends RepresentationCreationDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +83,7 @@ public class TableCreationDescriptionImpl extends RepresentationCreationDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public TableDescription basicGetTableDescription() {
@@ -94,7 +92,7 @@ public class TableCreationDescriptionImpl extends RepresentationCreationDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +106,7 @@ public class TableCreationDescriptionImpl extends RepresentationCreationDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +123,7 @@ public class TableCreationDescriptionImpl extends RepresentationCreationDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -140,7 +138,7 @@ public class TableCreationDescriptionImpl extends RepresentationCreationDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +153,7 @@ public class TableCreationDescriptionImpl extends RepresentationCreationDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

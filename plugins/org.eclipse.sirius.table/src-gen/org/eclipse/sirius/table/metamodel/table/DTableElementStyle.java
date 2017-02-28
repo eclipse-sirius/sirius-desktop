@@ -16,31 +16,23 @@ import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DTable Element Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DTable Element Style</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelSize
- * <em>Label Size</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelFormat
- * <em>Label Format</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultForegroundStyle
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelSize <em>Label Size</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelFormat <em>Label Format</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultForegroundStyle
  * <em>Default Foreground Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultBackgroundStyle
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultBackgroundStyle
  * <em>Default Background Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getForegroundColor
- * <em>Foreground Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getBackgroundColor
- * <em>Background Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getForegroundColor <em>Foreground Color</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getBackgroundColor <em>Background Color</em>}
+ * </li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementStyle()
@@ -49,10 +41,8 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  */
 public interface DTableElementStyle extends EObject {
     /**
-     * Returns the value of the '<em><b>Label Size</b></em>' attribute. The
-     * default value is <code>"8"</code>. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> The font size. <!--
-     * end-model-doc -->
+     * Returns the value of the '<em><b>Label Size</b></em>' attribute. The default value is <code>"8"</code>. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The font size. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Label Size</em>' attribute.
      * @see #setLabelSize(int)
@@ -63,11 +53,9 @@ public interface DTableElementStyle extends EObject {
     int getLabelSize();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelSize
-     * <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelSize
+     * <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
      * @see #getLabelSize()
@@ -76,11 +64,9 @@ public interface DTableElementStyle extends EObject {
     void setLabelSize(int value);
 
     /**
-     * Returns the value of the '<em><b>Label Format</b></em>' attribute. The
-     * default value is <code>"normal"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.viewpoint.FontFormat}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * font format. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Label Format</b></em>' attribute. The default value is <code>"normal"</code>.
+     * The literals are from the enumeration {@link org.eclipse.sirius.viewpoint.FontFormat}. <!-- begin-user-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> The font format. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Label Format</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.FontFormat
@@ -92,14 +78,14 @@ public interface DTableElementStyle extends EObject {
     EList<FontFormat> getLabelFormat();
 
     /**
-     * Returns the value of the '<em><b>Foreground Color</b></em>' attribute.
-     * The default value is <code>"0,0,0"</code>. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Foreground Color</b></em>' attribute. The default value is <code>"0,0,0"</code>.
+     * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Foreground Color</em>' containment reference
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Foreground Color</em>' containment reference isn't clear, there really should be more
+     * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Foreground Color</em>' attribute.
      * @see #setForegroundColor(RGBValues)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementStyle_ForegroundColor()
@@ -109,11 +95,9 @@ public interface DTableElementStyle extends EObject {
     RGBValues getForegroundColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getForegroundColor
-     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getForegroundColor
+     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Foreground Color</em>' attribute.
      * @see #getForegroundColor()
@@ -122,29 +106,26 @@ public interface DTableElementStyle extends EObject {
     void setForegroundColor(RGBValues value);
 
     /**
-     * Returns the value of the '<em><b>Background Color</b></em>' attribute.
-     * The default value is <code>"255,255,255"</code>. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Background Color</b></em>' attribute. The default value is
+     * <code>"255,255,255"</code>. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Background Color</em>' containment reference
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Background Color</em>' containment reference isn't clear, there really should be more
+     * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Background Color</em>' attribute.
      * @see #setBackgroundColor(RGBValues)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementStyle_BackgroundColor()
-     * @model default="255,255,255"
-     *        dataType="org.eclipse.sirius.viewpoint.RGBValues"
+     * @model default="255,255,255" dataType="org.eclipse.sirius.viewpoint.RGBValues"
      * @generated
      */
     RGBValues getBackgroundColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getBackgroundColor
-     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getBackgroundColor
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Background Color</em>' attribute.
      * @see #getBackgroundColor()
@@ -153,11 +134,9 @@ public interface DTableElementStyle extends EObject {
     void setBackgroundColor(RGBValues value);
 
     /**
-     * Returns the value of the '<em><b>Default Foreground Style</b></em>'
-     * attribute. The default value is <code>"false"</code>. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> Determine if the
-     * foreground part of the style is computed from a conditional style or not
-     * (default style). <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Default Foreground Style</b></em>' attribute. The default value is
+     * <code>"false"</code>. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Determine if the
+     * foreground part of the style is computed from a conditional style or not (default style). <!-- end-model-doc -->
      *
      * @return the value of the '<em>Default Foreground Style</em>' attribute.
      * @see #setDefaultForegroundStyle(boolean)
@@ -170,23 +149,19 @@ public interface DTableElementStyle extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultForegroundStyle
-     * <em>Default Foreground Style</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * <em>Default Foreground Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Default Foreground Style</em>'
-     *            attribute.
+     *            the new value of the '<em>Default Foreground Style</em>' attribute.
      * @see #isDefaultForegroundStyle()
      * @generated
      */
     void setDefaultForegroundStyle(boolean value);
 
     /**
-     * Returns the value of the '<em><b>Default Background Style</b></em>'
-     * attribute. The default value is <code>"false"</code>. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> Determine if the
-     * background part of the style is computed from a conditional style or not
-     * (default style). <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Default Background Style</b></em>' attribute. The default value is
+     * <code>"false"</code>. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Determine if the
+     * background part of the style is computed from a conditional style or not (default style). <!-- end-model-doc -->
      *
      * @return the value of the '<em>Default Background Style</em>' attribute.
      * @see #setDefaultBackgroundStyle(boolean)
@@ -199,12 +174,10 @@ public interface DTableElementStyle extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultBackgroundStyle
-     * <em>Default Background Style</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * <em>Default Background Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Default Background Style</em>'
-     *            attribute.
+     *            the new value of the '<em>Default Background Style</em>' attribute.
      * @see #isDefaultBackgroundStyle()
      * @generated
      */

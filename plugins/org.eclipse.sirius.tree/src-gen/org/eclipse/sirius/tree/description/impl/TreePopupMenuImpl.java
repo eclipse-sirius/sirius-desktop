@@ -24,14 +24,13 @@ import org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef;
 import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Tree Popup Menu</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Tree Popup Menu</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreePopupMenuImpl#getMenuItemDescriptions
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreePopupMenuImpl#getMenuItemDescriptions
  * <em>Menu Item Descriptions</em>}</li>
  * </ul>
  *
@@ -39,10 +38,9 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  */
 public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements TreePopupMenu {
     /**
-     * The cached value of the '{@link #getMenuItemDescriptions()
-     * <em>Menu Item Descriptions</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getMenuItemDescriptions() <em>Menu Item Descriptions</em>}' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getMenuItemDescriptions()
      * @generated
      * @ordered
@@ -51,7 +49,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TreePopupMenuImpl() {
@@ -60,7 +58,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -70,7 +68,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +81,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +95,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +109,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -128,7 +126,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -143,7 +141,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

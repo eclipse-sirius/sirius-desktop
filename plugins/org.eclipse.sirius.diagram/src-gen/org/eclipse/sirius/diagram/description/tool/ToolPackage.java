@@ -19,8 +19,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
- * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
- * accessors for the meta objects to represent
+ * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains accessors for the meta objects to represent
  * <ul>
  * <li>each class,</li>
  * <li>each feature of each class,</li>
@@ -28,7 +27,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- *
+ * 
  * @see org.eclipse.sirius.diagram.description.tool.ToolFactory
  * @model kind="package"
  * @generated
@@ -36,38 +35,36 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 public interface ToolPackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     String eNAME = "tool"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/diagram/description/tool/1.1.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     String eNS_PREFIX = "tool"; //$NON-NLS-1$
 
     /**
-     * The singleton instance of the package. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     ToolPackage eINSTANCE = org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl.init();
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl
      * <em>Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getToolSection()
      * @generated
@@ -75,62 +72,58 @@ public interface ToolPackage extends EPackage {
     int TOOL_SECTION = 0;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_SECTION__DOCUMENTATION = DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_SECTION__NAME = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_SECTION__LABEL = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Icon</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Icon</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_SECTION__ICON = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Owned Tools</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Owned Tools</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_SECTION__OWNED_TOOLS = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 3;
 
     /**
-     * The feature id for the '<em><b>Sub Sections</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Sub Sections</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_SECTION__SUB_SECTIONS = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
 
     /**
-     * The feature id for the '<em><b>Popup Menus</b></em>' reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Popup Menus</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -138,8 +131,8 @@ public interface ToolPackage extends EPackage {
     int TOOL_SECTION__POPUP_MENUS = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 5;
 
     /**
-     * The feature id for the '<em><b>Reused Tools</b></em>' reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Reused Tools</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -147,28 +140,26 @@ public interface ToolPackage extends EPackage {
     int TOOL_SECTION__REUSED_TOOLS = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 6;
 
     /**
-     * The feature id for the '<em><b>Group Extensions</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Group Extensions</b></em>' containment reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_SECTION__GROUP_EXTENSIONS = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 7;
 
     /**
-     * The number of structural features of the '<em>Section</em>' class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The number of structural features of the '<em>Section</em>' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_SECTION_FEATURE_COUNT = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 8;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolGroupImpl
-     * <em>Group</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.ToolGroupImpl <em>Group</em>}
+     * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolGroupImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getToolGroup()
      * @generated
@@ -176,56 +167,50 @@ public interface ToolPackage extends EPackage {
     int TOOL_GROUP = 1;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_GROUP__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.TOOL_ENTRY__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_GROUP__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.TOOL_ENTRY__NAME;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_GROUP__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.TOOL_ENTRY__LABEL;
 
     /**
-     * The feature id for the '<em><b>Tools</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Tools</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_GROUP__TOOLS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.TOOL_ENTRY_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '<em>Group</em>' class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The number of structural features of the '<em>Group</em>' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_GROUP_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.TOOL_ENTRY_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolGroupExtensionImpl
-     * <em>Group Extension</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.ToolGroupExtensionImpl
+     * <em>Group Extension</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolGroupExtensionImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getToolGroupExtension()
      * @generated
@@ -233,38 +218,35 @@ public interface ToolPackage extends EPackage {
     int TOOL_GROUP_EXTENSION = 2;
 
     /**
-     * The feature id for the '<em><b>Group</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Group</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_GROUP_EXTENSION__GROUP = 0;
 
     /**
-     * The feature id for the '<em><b>Tools</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Tools</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_GROUP_EXTENSION__TOOLS = 1;
 
     /**
-     * The number of structural features of the '<em>Group Extension</em>'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The number of structural features of the '<em>Group Extension</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TOOL_GROUP_EXTENSION_FEATURE_COUNT = 2;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl
-     * <em>Node Creation Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl
+     * <em>Node Creation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getNodeCreationDescription()
      * @generated
@@ -272,62 +254,57 @@ public interface ToolPackage extends EPackage {
     int NODE_CREATION_DESCRIPTION = 3;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__NAME;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__LABEL;
 
     /**
-     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_DESCRIPTION__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION;
 
     /**
-     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_DESCRIPTION__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FORCE_REFRESH;
 
     /**
-     * The feature id for the '<em><b>Filters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
 
     /**
-     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -335,17 +312,17 @@ public interface ToolPackage extends EPackage {
     int NODE_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
 
     /**
-     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
-     * The feature id for the '<em><b>Node Mappings</b></em>' reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Node Mappings</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -353,44 +330,43 @@ public interface ToolPackage extends EPackage {
     int NODE_CREATION_DESCRIPTION__NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Variable</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Variable</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_DESCRIPTION__VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>View Variable</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>View Variable</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_DESCRIPTION__VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_DESCRIPTION__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
-     * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_DESCRIPTION__ICON_PATH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
-     * The feature id for the '<em><b>Extra Mappings</b></em>' reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Extra Mappings</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -398,21 +374,18 @@ public interface ToolPackage extends EPackage {
     int NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
-     * The number of structural features of the '
-     * <em>Node Creation Description</em>' class. <!-- begin-user-doc --> <!--
+     * The number of structural features of the '<em>Node Creation Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl
-     * <em>Edge Creation Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl
+     * <em>Edge Creation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getEdgeCreationDescription()
      * @generated
@@ -420,62 +393,57 @@ public interface ToolPackage extends EPackage {
     int EDGE_CREATION_DESCRIPTION = 4;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__NAME;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__LABEL;
 
     /**
-     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION;
 
     /**
-     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FORCE_REFRESH;
 
     /**
-     * The feature id for the '<em><b>Filters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
 
     /**
-     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -483,17 +451,17 @@ public interface ToolPackage extends EPackage {
     int EDGE_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
 
     /**
-     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
-     * The feature id for the '<em><b>Edge Mappings</b></em>' reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Edge Mappings</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -501,91 +469,89 @@ public interface ToolPackage extends EPackage {
     int EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Source Variable</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Source Variable</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Target Variable</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Target Variable</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Source View Variable</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Source View Variable</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
-     * The feature id for the '<em><b>Target View Variable</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Target View Variable</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
-     * The feature id for the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
-     * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__ICON_PATH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
-     * The feature id for the '<em><b>Extra Source Mappings</b></em>' reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Extra Source Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
-     * The feature id for the '<em><b>Extra Target Mappings</b></em>' reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Extra Target Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
-     * The feature id for the '<em><b>Connection Start Precondition</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Connection Start Precondition</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
-     * The number of structural features of the '
-     * <em>Edge Creation Description</em>' class. <!-- begin-user-doc --> <!--
+     * The number of structural features of the '<em>Edge Creation Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -594,9 +560,8 @@ public interface ToolPackage extends EPackage {
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl
-     * <em>Container Creation Description</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * <em>Container Creation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getContainerCreationDescription()
      * @generated
@@ -604,62 +569,57 @@ public interface ToolPackage extends EPackage {
     int CONTAINER_CREATION_DESCRIPTION = 5;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_CREATION_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_CREATION_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__NAME;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_CREATION_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__LABEL;
 
     /**
-     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_CREATION_DESCRIPTION__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION;
 
     /**
-     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_CREATION_DESCRIPTION__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FORCE_REFRESH;
 
     /**
-     * The feature id for the '<em><b>Filters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_CREATION_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
 
     /**
-     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -667,62 +627,61 @@ public interface ToolPackage extends EPackage {
     int CONTAINER_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
 
     /**
-     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
-     * The feature id for the '<em><b>Container Mappings</b></em>' reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Container Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Variable</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Variable</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_CREATION_DESCRIPTION__VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>View Variable</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>View Variable</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
-     * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_CREATION_DESCRIPTION__ICON_PATH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
-     * The feature id for the '<em><b>Extra Mappings</b></em>' reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Extra Mappings</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -730,21 +689,18 @@ public interface ToolPackage extends EPackage {
     int CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
-     * The number of structural features of the '
-     * <em>Container Creation Description</em>' class. <!-- begin-user-doc -->
+     * The number of structural features of the '<em>Container Creation Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.DeleteElementDescriptionImpl
-     * <em>Delete Element Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.DeleteElementDescriptionImpl
+     * <em>Delete Element Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.DeleteElementDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDeleteElementDescription()
      * @generated
@@ -752,62 +708,57 @@ public interface ToolPackage extends EPackage {
     int DELETE_ELEMENT_DESCRIPTION = 6;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_ELEMENT_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_ELEMENT_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__NAME;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_ELEMENT_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__LABEL;
 
     /**
-     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_ELEMENT_DESCRIPTION__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION;
 
     /**
-     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_ELEMENT_DESCRIPTION__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FORCE_REFRESH;
 
     /**
-     * The feature id for the '<em><b>Filters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_ELEMENT_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
 
     /**
-     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -815,17 +766,17 @@ public interface ToolPackage extends EPackage {
     int DELETE_ELEMENT_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
 
     /**
-     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_ELEMENT_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
-     * The feature id for the '<em><b>Element</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Element</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -833,35 +784,35 @@ public interface ToolPackage extends EPackage {
     int DELETE_ELEMENT_DESCRIPTION__ELEMENT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Element View</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Element View</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_ELEMENT_DESCRIPTION__ELEMENT_VIEW = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Container View</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Container View</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_ELEMENT_DESCRIPTION__CONTAINER_VIEW = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_ELEMENT_DESCRIPTION__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
-     * The feature id for the '<em><b>Hook</b></em>' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Hook</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -869,21 +820,18 @@ public interface ToolPackage extends EPackage {
     int DELETE_ELEMENT_DESCRIPTION__HOOK = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
-     * The number of structural features of the '
-     * <em>Delete Element Description</em>' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The number of structural features of the '<em>Delete Element Description</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_ELEMENT_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.DoubleClickDescriptionImpl
-     * <em>Double Click Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.DoubleClickDescriptionImpl
+     * <em>Double Click Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.DoubleClickDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDoubleClickDescription()
      * @generated
@@ -891,62 +839,57 @@ public interface ToolPackage extends EPackage {
     int DOUBLE_CLICK_DESCRIPTION = 7;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DOUBLE_CLICK_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DOUBLE_CLICK_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__NAME;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DOUBLE_CLICK_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__LABEL;
 
     /**
-     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DOUBLE_CLICK_DESCRIPTION__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION;
 
     /**
-     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DOUBLE_CLICK_DESCRIPTION__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FORCE_REFRESH;
 
     /**
-     * The feature id for the '<em><b>Filters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DOUBLE_CLICK_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
 
     /**
-     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -954,26 +897,25 @@ public interface ToolPackage extends EPackage {
     int DOUBLE_CLICK_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
 
     /**
-     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DOUBLE_CLICK_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
-     * The feature id for the '<em><b>Mappings</b></em>' reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Mappings</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DOUBLE_CLICK_DESCRIPTION__MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Element</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Element</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -981,39 +923,36 @@ public interface ToolPackage extends EPackage {
     int DOUBLE_CLICK_DESCRIPTION__ELEMENT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Element View</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Element View</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
-     * The number of structural features of the '
-     * <em>Double Click Description</em>' class. <!-- begin-user-doc --> <!--
+     * The number of structural features of the '<em>Double Click Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
     int DOUBLE_CLICK_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookImpl
-     * <em>Delete Hook</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookImpl
+     * <em>Delete Hook</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.DeleteHookImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDeleteHook()
      * @generated
@@ -1021,26 +960,25 @@ public interface ToolPackage extends EPackage {
     int DELETE_HOOK = 8;
 
     /**
-     * The feature id for the '<em><b>Id</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_HOOK__ID = 0;
 
     /**
-     * The feature id for the '<em><b>Parameters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Parameters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_HOOK__PARAMETERS = 1;
 
     /**
-     * The number of structural features of the '<em>Delete Hook</em>' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The number of structural features of the '<em>Delete Hook</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1048,11 +986,9 @@ public interface ToolPackage extends EPackage {
     int DELETE_HOOK_FEATURE_COUNT = 2;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookParameterImpl
-     * <em>Delete Hook Parameter</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookParameterImpl
+     * <em>Delete Hook Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.DeleteHookParameterImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDeleteHookParameter()
      * @generated
@@ -1060,38 +996,34 @@ public interface ToolPackage extends EPackage {
     int DELETE_HOOK_PARAMETER = 9;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_HOOK_PARAMETER__NAME = 0;
 
     /**
-     * The feature id for the '<em><b>Value</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Value</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_HOOK_PARAMETER__VALUE = 1;
 
     /**
-     * The number of structural features of the '<em>Delete Hook Parameter</em>'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The number of structural features of the '<em>Delete Hook Parameter</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DELETE_HOOK_PARAMETER_FEATURE_COUNT = 2;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.ReconnectEdgeDescriptionImpl
-     * <em>Reconnect Edge Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.ReconnectEdgeDescriptionImpl
+     * <em>Reconnect Edge Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.ReconnectEdgeDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getReconnectEdgeDescription()
      * @generated
@@ -1099,62 +1031,57 @@ public interface ToolPackage extends EPackage {
     int RECONNECT_EDGE_DESCRIPTION = 10;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int RECONNECT_EDGE_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int RECONNECT_EDGE_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__NAME;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int RECONNECT_EDGE_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__LABEL;
 
     /**
-     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int RECONNECT_EDGE_DESCRIPTION__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION;
 
     /**
-     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int RECONNECT_EDGE_DESCRIPTION__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FORCE_REFRESH;
 
     /**
-     * The feature id for the '<em><b>Filters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int RECONNECT_EDGE_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
 
     /**
-     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1162,17 +1089,17 @@ public interface ToolPackage extends EPackage {
     int RECONNECT_EDGE_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
 
     /**
-     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int RECONNECT_EDGE_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
-     * The feature id for the '<em><b>Reconnection Kind</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Reconnection Kind</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1180,8 +1107,8 @@ public interface ToolPackage extends EPackage {
     int RECONNECT_EDGE_DESCRIPTION__RECONNECTION_KIND = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Source</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Source</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1189,8 +1116,8 @@ public interface ToolPackage extends EPackage {
     int RECONNECT_EDGE_DESCRIPTION__SOURCE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Target</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Target</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1198,26 +1125,26 @@ public interface ToolPackage extends EPackage {
     int RECONNECT_EDGE_DESCRIPTION__TARGET = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Source View</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Source View</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
-     * The feature id for the '<em><b>Target View</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Target View</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
-     * The feature id for the '<em><b>Element</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Element</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1225,39 +1152,36 @@ public interface ToolPackage extends EPackage {
     int RECONNECT_EDGE_DESCRIPTION__ELEMENT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
-     * The feature id for the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
-     * The feature id for the '<em><b>Edge View</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Edge View</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
-     * The number of structural features of the '
-     * <em>Reconnect Edge Description</em>' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The number of structural features of the '<em>Reconnect Edge Description</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int RECONNECT_EDGE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.RequestDescriptionImpl
-     * <em>Request Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.RequestDescriptionImpl
+     * <em>Request Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.RequestDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getRequestDescription()
      * @generated
@@ -1265,62 +1189,57 @@ public interface ToolPackage extends EPackage {
     int REQUEST_DESCRIPTION = 11;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int REQUEST_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int REQUEST_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__NAME;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int REQUEST_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__LABEL;
 
     /**
-     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int REQUEST_DESCRIPTION__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION;
 
     /**
-     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int REQUEST_DESCRIPTION__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH;
 
     /**
-     * The feature id for the '<em><b>Filters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int REQUEST_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
 
     /**
-     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1328,38 +1247,35 @@ public interface ToolPackage extends EPackage {
     int REQUEST_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
 
     /**
-     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int REQUEST_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
-     * The feature id for the '<em><b>Type</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Type</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int REQUEST_DESCRIPTION__TYPE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '<em>Request Description</em>'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The number of structural features of the '<em>Request Description</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int REQUEST_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.DirectEditLabelImpl
-     * <em>Direct Edit Label</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.DirectEditLabelImpl
+     * <em>Direct Edit Label</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.DirectEditLabelImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDirectEditLabel()
      * @generated
@@ -1367,62 +1283,57 @@ public interface ToolPackage extends EPackage {
     int DIRECT_EDIT_LABEL = 12;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIRECT_EDIT_LABEL__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIRECT_EDIT_LABEL__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__NAME;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIRECT_EDIT_LABEL__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__LABEL;
 
     /**
-     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIRECT_EDIT_LABEL__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION;
 
     /**
-     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIRECT_EDIT_LABEL__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FORCE_REFRESH;
 
     /**
-     * The feature id for the '<em><b>Filters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIRECT_EDIT_LABEL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
 
     /**
-     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1430,17 +1341,17 @@ public interface ToolPackage extends EPackage {
     int DIRECT_EDIT_LABEL__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
 
     /**
-     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIRECT_EDIT_LABEL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
-     * The feature id for the '<em><b>Mask</b></em>' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Mask</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1448,38 +1359,36 @@ public interface ToolPackage extends EPackage {
     int DIRECT_EDIT_LABEL__MASK = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIRECT_EDIT_LABEL__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Input Label Expression</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Input Label Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIRECT_EDIT_LABEL__INPUT_LABEL_EXPRESSION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
-     * The number of structural features of the '<em>Direct Edit Label</em>'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The number of structural features of the '<em>Direct Edit Label</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIRECT_EDIT_LABEL_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.BehaviorToolImpl
-     * <em>Behavior Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.BehaviorToolImpl
+     * <em>Behavior Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.BehaviorToolImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getBehaviorTool()
      * @generated
@@ -1487,62 +1396,57 @@ public interface ToolPackage extends EPackage {
     int BEHAVIOR_TOOL = 13;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int BEHAVIOR_TOOL__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int BEHAVIOR_TOOL__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__NAME;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int BEHAVIOR_TOOL__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__LABEL;
 
     /**
-     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int BEHAVIOR_TOOL__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION;
 
     /**
-     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int BEHAVIOR_TOOL__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH;
 
     /**
-     * The feature id for the '<em><b>Filters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int BEHAVIOR_TOOL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
 
     /**
-     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1550,36 +1454,35 @@ public interface ToolPackage extends EPackage {
     int BEHAVIOR_TOOL__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
 
     /**
-     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int BEHAVIOR_TOOL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
-     * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int BEHAVIOR_TOOL__DOMAIN_CLASS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int BEHAVIOR_TOOL__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The number of structural features of the '<em>Behavior Tool</em>' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The number of structural features of the '<em>Behavior Tool</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
@@ -1588,9 +1491,8 @@ public interface ToolPackage extends EPackage {
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.tool.impl.SourceEdgeCreationVariableImpl
-     * <em>Source Edge Creation Variable</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * <em>Source Edge Creation Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.SourceEdgeCreationVariableImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getSourceEdgeCreationVariable()
      * @generated
@@ -1598,28 +1500,26 @@ public interface ToolPackage extends EPackage {
     int SOURCE_EDGE_CREATION_VARIABLE = 14;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int SOURCE_EDGE_CREATION_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
-     * The feature id for the '<em><b>Sub Variables</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Sub Variables</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int SOURCE_EDGE_CREATION_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '
-     * <em>Source Edge Creation Variable</em>' class. <!-- begin-user-doc -->
+     * The number of structural features of the '<em>Source Edge Creation Variable</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -1628,9 +1528,8 @@ public interface ToolPackage extends EPackage {
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.tool.impl.SourceEdgeViewCreationVariableImpl
-     * <em>Source Edge View Creation Variable</em>}' class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * <em>Source Edge View Creation Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.SourceEdgeViewCreationVariableImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getSourceEdgeViewCreationVariable()
      * @generated
@@ -1638,28 +1537,26 @@ public interface ToolPackage extends EPackage {
     int SOURCE_EDGE_VIEW_CREATION_VARIABLE = 15;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int SOURCE_EDGE_VIEW_CREATION_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
-     * The feature id for the '<em><b>Sub Variables</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Sub Variables</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int SOURCE_EDGE_VIEW_CREATION_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '
-     * <em>Source Edge View Creation Variable</em>' class. <!-- begin-user-doc
+     * The number of structural features of the '<em>Source Edge View Creation Variable</em>' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -1668,9 +1565,8 @@ public interface ToolPackage extends EPackage {
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.tool.impl.TargetEdgeCreationVariableImpl
-     * <em>Target Edge Creation Variable</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * <em>Target Edge Creation Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.TargetEdgeCreationVariableImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getTargetEdgeCreationVariable()
      * @generated
@@ -1678,28 +1574,26 @@ public interface ToolPackage extends EPackage {
     int TARGET_EDGE_CREATION_VARIABLE = 16;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TARGET_EDGE_CREATION_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
-     * The feature id for the '<em><b>Sub Variables</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Sub Variables</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TARGET_EDGE_CREATION_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '
-     * <em>Target Edge Creation Variable</em>' class. <!-- begin-user-doc -->
+     * The number of structural features of the '<em>Target Edge Creation Variable</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -1708,9 +1602,8 @@ public interface ToolPackage extends EPackage {
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.tool.impl.TargetEdgeViewCreationVariableImpl
-     * <em>Target Edge View Creation Variable</em>}' class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * <em>Target Edge View Creation Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.TargetEdgeViewCreationVariableImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getTargetEdgeViewCreationVariable()
      * @generated
@@ -1718,28 +1611,26 @@ public interface ToolPackage extends EPackage {
     int TARGET_EDGE_VIEW_CREATION_VARIABLE = 17;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TARGET_EDGE_VIEW_CREATION_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
-     * The feature id for the '<em><b>Sub Variables</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Sub Variables</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int TARGET_EDGE_VIEW_CREATION_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '
-     * <em>Target Edge View Creation Variable</em>' class. <!-- begin-user-doc
+     * The number of structural features of the '<em>Target Edge View Creation Variable</em>' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -1748,9 +1639,8 @@ public interface ToolPackage extends EPackage {
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.tool.impl.ElementDoubleClickVariableImpl
-     * <em>Element Double Click Variable</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * <em>Element Double Click Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.ElementDoubleClickVariableImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getElementDoubleClickVariable()
      * @generated
@@ -1758,39 +1648,35 @@ public interface ToolPackage extends EPackage {
     int ELEMENT_DOUBLE_CLICK_VARIABLE = 18;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int ELEMENT_DOUBLE_CLICK_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
-     * The feature id for the '<em><b>Sub Variables</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Sub Variables</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int ELEMENT_DOUBLE_CLICK_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '
-     * <em>Element Double Click Variable</em>' class. <!-- begin-user-doc -->
+     * The number of structural features of the '<em>Element Double Click Variable</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
     int ELEMENT_DOUBLE_CLICK_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationVariableImpl
-     * <em>Node Creation Variable</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationVariableImpl
+     * <em>Node Creation Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.NodeCreationVariableImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getNodeCreationVariable()
      * @generated
@@ -1798,38 +1684,35 @@ public interface ToolPackage extends EPackage {
     int NODE_CREATION_VARIABLE = 19;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
-     * The feature id for the '<em><b>Sub Variables</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Sub Variables</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '<em>Node Creation Variable</em>
-     * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The number of structural features of the '<em>Node Creation Variable</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NODE_CREATION_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.CreateViewImpl
-     * <em>Create View</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.CreateViewImpl
+     * <em>Create View</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.CreateViewImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getCreateView()
      * @generated
@@ -1837,44 +1720,42 @@ public interface ToolPackage extends EPackage {
     int CREATE_VIEW = 20;
 
     /**
-     * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Sub Model Operations</b></em>' containment reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CREATE_VIEW__SUB_MODEL_OPERATIONS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS;
 
     /**
-     * The feature id for the '<em><b>Mapping</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Mapping</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CREATE_VIEW__MAPPING = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_MODEL_OPERATION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Container View Expression</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Container View Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CREATE_VIEW__CONTAINER_VIEW_EXPRESSION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_MODEL_OPERATION_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Variable Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Variable Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CREATE_VIEW__VARIABLE_NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_MODEL_OPERATION_FEATURE_COUNT + 2;
 
     /**
-     * The number of structural features of the '<em>Create View</em>' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The number of structural features of the '<em>Create View</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1882,11 +1763,9 @@ public interface ToolPackage extends EPackage {
     int CREATE_VIEW_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_MODEL_OPERATION_FEATURE_COUNT + 3;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.CreateEdgeViewImpl
-     * <em>Create Edge View</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.CreateEdgeViewImpl
+     * <em>Create Edge View</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.CreateEdgeViewImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getCreateEdgeView()
      * @generated
@@ -1894,44 +1773,42 @@ public interface ToolPackage extends EPackage {
     int CREATE_EDGE_VIEW = 21;
 
     /**
-     * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Sub Model Operations</b></em>' containment reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CREATE_EDGE_VIEW__SUB_MODEL_OPERATIONS = ToolPackage.CREATE_VIEW__SUB_MODEL_OPERATIONS;
 
     /**
-     * The feature id for the '<em><b>Mapping</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Mapping</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CREATE_EDGE_VIEW__MAPPING = ToolPackage.CREATE_VIEW__MAPPING;
 
     /**
-     * The feature id for the '<em><b>Container View Expression</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Container View Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CREATE_EDGE_VIEW__CONTAINER_VIEW_EXPRESSION = ToolPackage.CREATE_VIEW__CONTAINER_VIEW_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Variable Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Variable Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CREATE_EDGE_VIEW__VARIABLE_NAME = ToolPackage.CREATE_VIEW__VARIABLE_NAME;
 
     /**
-     * The feature id for the '<em><b>Source Expression</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Source Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1939,8 +1816,8 @@ public interface ToolPackage extends EPackage {
     int CREATE_EDGE_VIEW__SOURCE_EXPRESSION = ToolPackage.CREATE_VIEW_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Target Expression</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Target Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1948,20 +1825,18 @@ public interface ToolPackage extends EPackage {
     int CREATE_EDGE_VIEW__TARGET_EXPRESSION = ToolPackage.CREATE_VIEW_FEATURE_COUNT + 1;
 
     /**
-     * The number of structural features of the '<em>Create Edge View</em>'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The number of structural features of the '<em>Create Edge View</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CREATE_EDGE_VIEW_FEATURE_COUNT = ToolPackage.CREATE_VIEW_FEATURE_COUNT + 2;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.NavigationImpl
-     * <em>Navigation</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.NavigationImpl
+     * <em>Navigation</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.NavigationImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getNavigation()
      * @generated
@@ -1969,26 +1844,26 @@ public interface ToolPackage extends EPackage {
     int NAVIGATION = 22;
 
     /**
-     * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Sub Model Operations</b></em>' containment reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NAVIGATION__SUB_MODEL_OPERATIONS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS;
 
     /**
-     * The feature id for the '<em><b>Create If Not Existent</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Create If Not Existent</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int NAVIGATION__CREATE_IF_NOT_EXISTENT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_MODEL_OPERATION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Diagram Description</b></em>' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Diagram Description</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -1996,8 +1871,8 @@ public interface ToolPackage extends EPackage {
     int NAVIGATION__DIAGRAM_DESCRIPTION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_MODEL_OPERATION_FEATURE_COUNT + 1;
 
     /**
-     * The number of structural features of the '<em>Navigation</em>' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The number of structural features of the '<em>Navigation</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -2007,9 +1882,8 @@ public interface ToolPackage extends EPackage {
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.tool.impl.DiagramCreationDescriptionImpl
-     * <em>Diagram Creation Description</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * <em>Diagram Creation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.DiagramCreationDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDiagramCreationDescription()
      * @generated
@@ -2017,62 +1891,57 @@ public interface ToolPackage extends EPackage {
     int DIAGRAM_CREATION_DESCRIPTION = 23;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_CREATION_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_CREATION_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__NAME;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_CREATION_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__LABEL;
 
     /**
-     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_CREATION_DESCRIPTION__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__PRECONDITION;
 
     /**
-     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_CREATION_DESCRIPTION__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__FORCE_REFRESH;
 
     /**
-     * The feature id for the '<em><b>Filters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_CREATION_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__FILTERS;
 
     /**
-     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -2080,17 +1949,17 @@ public interface ToolPackage extends EPackage {
     int DIAGRAM_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT;
 
     /**
-     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
-     * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -2098,8 +1967,8 @@ public interface ToolPackage extends EPackage {
     int DIAGRAM_CREATION_DESCRIPTION__TITLE_EXPRESSION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__TITLE_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Browse Expression</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Browse Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -2107,44 +1976,44 @@ public interface ToolPackage extends EPackage {
     int DIAGRAM_CREATION_DESCRIPTION__BROWSE_EXPRESSION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__BROWSE_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Representation Description</b></em>'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Representation Description</b></em>' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_CREATION_DESCRIPTION__REPRESENTATION_DESCRIPTION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_DESCRIPTION;
 
     /**
-     * The feature id for the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_CREATION_DESCRIPTION__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INITIAL_OPERATION;
 
     /**
-     * The feature id for the '<em><b>Container View Variable</b></em>'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Container View Variable</b></em>' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE;
 
     /**
-     * The feature id for the '<em><b>Representation Name Variable</b></em>'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Representation Name Variable</b></em>' containment reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE;
 
     /**
-     * The feature id for the '<em><b>Diagram Description</b></em>' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Diagram Description</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -2152,10 +2021,9 @@ public interface ToolPackage extends EPackage {
     int DIAGRAM_CREATION_DESCRIPTION__DIAGRAM_DESCRIPTION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '
-     * <em>Diagram Creation Description</em>' class. <!-- begin-user-doc -->
+     * The number of structural features of the '<em>Diagram Creation Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -2164,9 +2032,8 @@ public interface ToolPackage extends EPackage {
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.tool.impl.DiagramNavigationDescriptionImpl
-     * <em>Diagram Navigation Description</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * <em>Diagram Navigation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.DiagramNavigationDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDiagramNavigationDescription()
      * @generated
@@ -2174,62 +2041,57 @@ public interface ToolPackage extends EPackage {
     int DIAGRAM_NAVIGATION_DESCRIPTION = 24;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_NAVIGATION_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_NAVIGATION_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__NAME;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_NAVIGATION_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__LABEL;
 
     /**
-     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_NAVIGATION_DESCRIPTION__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__PRECONDITION;
 
     /**
-     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_NAVIGATION_DESCRIPTION__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__FORCE_REFRESH;
 
     /**
-     * The feature id for the '<em><b>Filters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_NAVIGATION_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__FILTERS;
 
     /**
-     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -2237,17 +2099,17 @@ public interface ToolPackage extends EPackage {
     int DIAGRAM_NAVIGATION_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__ELEMENTS_TO_SELECT;
 
     /**
-     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_NAVIGATION_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
-     * The feature id for the '<em><b>Browse Expression</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Browse Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -2255,53 +2117,53 @@ public interface ToolPackage extends EPackage {
     int DIAGRAM_NAVIGATION_DESCRIPTION__BROWSE_EXPRESSION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__BROWSE_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Navigation Name Expression</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Navigation Name Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_NAVIGATION_DESCRIPTION__NAVIGATION_NAME_EXPRESSION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__NAVIGATION_NAME_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Representation Description</b></em>'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Representation Description</b></em>' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_NAVIGATION_DESCRIPTION__REPRESENTATION_DESCRIPTION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_DESCRIPTION;
 
     /**
-     * The feature id for the '<em><b>Container View Variable</b></em>'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Container View Variable</b></em>' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VIEW_VARIABLE;
 
     /**
-     * The feature id for the '<em><b>Container Variable</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Container Variable</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__CONTAINER_VARIABLE;
 
     /**
-     * The feature id for the '<em><b>Representation Name Variable</b></em>'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Representation Name Variable</b></em>' containment reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_NAME_VARIABLE;
 
     /**
-     * The feature id for the '<em><b>Diagram Description</b></em>' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Diagram Description</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -2309,21 +2171,18 @@ public interface ToolPackage extends EPackage {
     int DIAGRAM_NAVIGATION_DESCRIPTION__DIAGRAM_DESCRIPTION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '
-     * <em>Diagram Navigation Description</em>' class. <!-- begin-user-doc -->
+     * The number of structural features of the '<em>Diagram Navigation Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
     int DIAGRAM_NAVIGATION_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl
-     * <em>Container Drop Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl
+     * <em>Container Drop Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getContainerDropDescription()
      * @generated
@@ -2331,62 +2190,57 @@ public interface ToolPackage extends EPackage {
     int CONTAINER_DROP_DESCRIPTION = 25;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__NAME;
 
     /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__LABEL;
 
     /**
-     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION;
 
     /**
-     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FORCE_REFRESH;
 
     /**
-     * The feature id for the '<em><b>Filters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Filters</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
 
     /**
-     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -2394,44 +2248,43 @@ public interface ToolPackage extends EPackage {
     int CONTAINER_DROP_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
 
     /**
-     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
-     * The feature id for the '<em><b>Mappings</b></em>' reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Mappings</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Old Container</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Old Container</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>New Container</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>New Container</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Element</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Element</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      * @ordered
@@ -2439,57 +2292,52 @@ public interface ToolPackage extends EPackage {
     int CONTAINER_DROP_DESCRIPTION__ELEMENT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
-     * The feature id for the '<em><b>New View Container</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>New View Container</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
-     * The feature id for the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
-     * The feature id for the '<em><b>Drag Source</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Drag Source</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
-     * The feature id for the '<em><b>Move Edges</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The feature id for the '<em><b>Move Edges</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__MOVE_EDGES = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
-     * The number of structural features of the '
-     * <em>Container Drop Description</em>' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The number of structural features of the '<em>Container Drop Description</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @generated
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectionKind
-     * <em>Reconnection Kind</em>}' enum. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.tool.ReconnectionKind
+     * <em>Reconnection Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectionKind
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getReconnectionKind()
      * @generated
@@ -2497,10 +2345,9 @@ public interface ToolPackage extends EPackage {
     int RECONNECTION_KIND = 26;
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.ToolSection
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.ToolSection
      * <em>Section</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Section</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ToolSection
      * @generated
@@ -2508,10 +2355,9 @@ public interface ToolPackage extends EPackage {
     EClass getToolSection();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getIcon
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.diagram.description.tool.ToolSection#getIcon
      * <em>Icon</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the attribute '<em>Icon</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ToolSection#getIcon()
      * @see #getToolSection()
@@ -2521,11 +2367,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getOwnedTools
-     * <em>Owned Tools</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getOwnedTools <em>Owned Tools</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for the containment reference list '
-     *         <em>Owned Tools</em>'.
+     * @return the meta object for the containment reference list '<em>Owned Tools</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ToolSection#getOwnedTools()
      * @see #getToolSection()
      * @generated
@@ -2534,11 +2379,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getSubSections
-     * <em>Sub Sections</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getSubSections <em>Sub Sections</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for the containment reference list '
-     *         <em>Sub Sections</em>'.
+     * @return the meta object for the containment reference list '<em>Sub Sections</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ToolSection#getSubSections()
      * @see #getToolSection()
      * @generated
@@ -2547,8 +2391,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getPopupMenus
-     * <em>Popup Menus</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getPopupMenus <em>Popup Menus</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the reference list '<em>Popup Menus</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ToolSection#getPopupMenus()
@@ -2559,8 +2403,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getReusedTools
-     * <em>Reused Tools</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getReusedTools <em>Reused Tools</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the reference list '<em>Reused Tools</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ToolSection#getReusedTools()
@@ -2571,12 +2415,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getGroupExtensions
-     * <em>Group Extensions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the containment reference list '
-     *         <em>Group Extensions</em>'.
+     * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getGroupExtensions <em>Group Extensions</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference list '<em>Group Extensions</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ToolSection#getGroupExtensions()
      * @see #getToolSection()
      * @generated
@@ -2584,10 +2426,9 @@ public interface ToolPackage extends EPackage {
     EReference getToolSection_GroupExtensions();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.ToolGroup
-     * <em>Group</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.ToolGroup <em>Group</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for class '<em>Group</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ToolGroup
      * @generated
@@ -2596,11 +2437,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.description.tool.ToolGroup#getTools
-     * <em>Tools</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference list '
-     *         <em>Tools</em>'.
+     * {@link org.eclipse.sirius.diagram.description.tool.ToolGroup#getTools <em>Tools</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference list '<em>Tools</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ToolGroup#getTools()
      * @see #getToolGroup()
      * @generated
@@ -2608,10 +2448,9 @@ public interface ToolPackage extends EPackage {
     EReference getToolGroup_Tools();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.ToolGroupExtension
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.ToolGroupExtension
      * <em>Group Extension</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Group Extension</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ToolGroupExtension
      * @generated
@@ -2620,8 +2459,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.ToolGroupExtension#getGroup
-     * <em>Group</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.ToolGroupExtension#getGroup <em>Group</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the reference '<em>Group</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ToolGroupExtension#getGroup()
@@ -2632,11 +2471,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.description.tool.ToolGroupExtension#getTools
-     * <em>Tools</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.ToolGroupExtension#getTools <em>Tools</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for the containment reference list '
-     *         <em>Tools</em>'.
+     * @return the meta object for the containment reference list '<em>Tools</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ToolGroupExtension#getTools()
      * @see #getToolGroupExtension()
      * @generated
@@ -2644,11 +2482,9 @@ public interface ToolPackage extends EPackage {
     EReference getToolGroupExtension_Tools();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription
-     * <em>Node Creation Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription
+     * <em>Node Creation Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for class '<em>Node Creation Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.NodeCreationDescription
      * @generated
@@ -2657,9 +2493,9 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getNodeMappings
-     * <em>Node Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getNodeMappings <em>Node Mappings</em>
+     * }'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the reference list '<em>Node Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getNodeMappings()
      * @see #getNodeCreationDescription()
@@ -2669,11 +2505,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getVariable
-     * <em>Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getVariable <em>Variable</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for the containment reference '<em>Variable</em>
-     *         '.
+     * @return the meta object for the containment reference '<em>Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getVariable()
      * @see #getNodeCreationDescription()
      * @generated
@@ -2682,11 +2517,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getViewVariable
-     * <em>View Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>View Variable</em>'.
+     * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getViewVariable <em>View Variable</em>
+     * }'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>View Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getViewVariable()
      * @see #getNodeCreationDescription()
      * @generated
@@ -2696,11 +2530,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getInitialOperation
-     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Initial Operation</em>'.
+     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getInitialOperation()
      * @see #getNodeCreationDescription()
      * @generated
@@ -2709,8 +2541,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getIconPath
-     * <em>Icon Path</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getIconPath <em>Icon Path</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the attribute '<em>Icon Path</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getIconPath()
@@ -2723,7 +2555,7 @@ public interface ToolPackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getExtraMappings
      * <em>Extra Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the reference list '<em>Extra Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.NodeCreationDescription#getExtraMappings()
      * @see #getNodeCreationDescription()
@@ -2732,11 +2564,9 @@ public interface ToolPackage extends EPackage {
     EReference getNodeCreationDescription_ExtraMappings();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription
-     * <em>Edge Creation Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription
+     * <em>Edge Creation Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for class '<em>Edge Creation Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription
      * @generated
@@ -2745,9 +2575,9 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getEdgeMappings
-     * <em>Edge Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getEdgeMappings <em>Edge Mappings</em>
+     * }'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the reference list '<em>Edge Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getEdgeMappings()
      * @see #getEdgeCreationDescription()
@@ -2759,9 +2589,8 @@ public interface ToolPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceVariable
      * <em>Source Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Source Variable</em>'.
+     * 
+     * @return the meta object for the containment reference '<em>Source Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceVariable()
      * @see #getEdgeCreationDescription()
      * @generated
@@ -2772,9 +2601,8 @@ public interface ToolPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetVariable
      * <em>Target Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Target Variable</em>'.
+     * 
+     * @return the meta object for the containment reference '<em>Target Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetVariable()
      * @see #getEdgeCreationDescription()
      * @generated
@@ -2784,11 +2612,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceViewVariable
-     * <em>Source View Variable</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Source View Variable</em>'.
+     * <em>Source View Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Source View Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceViewVariable()
      * @see #getEdgeCreationDescription()
      * @generated
@@ -2798,11 +2624,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetViewVariable
-     * <em>Target View Variable</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Target View Variable</em>'.
+     * <em>Target View Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Target View Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetViewVariable()
      * @see #getEdgeCreationDescription()
      * @generated
@@ -2812,11 +2636,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getInitialOperation
-     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Initial Operation</em>'.
+     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getInitialOperation()
      * @see #getEdgeCreationDescription()
      * @generated
@@ -2825,8 +2647,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getIconPath
-     * <em>Icon Path</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getIconPath <em>Icon Path</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the attribute '<em>Icon Path</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getIconPath()
@@ -2838,11 +2660,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getExtraSourceMappings
-     * <em>Extra Source Mappings</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for the reference list '
-     *         <em>Extra Source Mappings</em>'.
+     * <em>Extra Source Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference list '<em>Extra Source Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getExtraSourceMappings()
      * @see #getEdgeCreationDescription()
      * @generated
@@ -2852,11 +2672,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getExtraTargetMappings
-     * <em>Extra Target Mappings</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for the reference list '
-     *         <em>Extra Target Mappings</em>'.
+     * <em>Extra Target Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference list '<em>Extra Target Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getExtraTargetMappings()
      * @see #getEdgeCreationDescription()
      * @generated
@@ -2866,11 +2684,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getConnectionStartPrecondition
-     * <em>Connection Start Precondition</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for the attribute '
-     *         <em>Connection Start Precondition</em>'.
+     * <em>Connection Start Precondition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Connection Start Precondition</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getConnectionStartPrecondition()
      * @see #getEdgeCreationDescription()
      * @generated
@@ -2880,11 +2696,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription
-     * <em>Container Creation Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for class '
-     *         <em>Container Creation Description</em>'.
+     * <em>Container Creation Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Container Creation Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription
      * @generated
      */
@@ -2893,11 +2707,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getContainerMappings
-     * <em>Container Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the reference list '
-     *         <em>Container Mappings</em>'.
+     * <em>Container Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference list '<em>Container Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getContainerMappings()
      * @see #getContainerCreationDescription()
      * @generated
@@ -2906,11 +2718,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getVariable
-     * <em>Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference '<em>Variable</em>
-     *         '.
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getVariable <em>Variable</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getVariable()
      * @see #getContainerCreationDescription()
      * @generated
@@ -2921,9 +2732,8 @@ public interface ToolPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getViewVariable
      * <em>View Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>View Variable</em>'.
+     * 
+     * @return the meta object for the containment reference '<em>View Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getViewVariable()
      * @see #getContainerCreationDescription()
      * @generated
@@ -2933,11 +2743,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getInitialOperation
-     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Initial Operation</em>'.
+     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getInitialOperation()
      * @see #getContainerCreationDescription()
      * @generated
@@ -2946,9 +2754,9 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getIconPath
-     * <em>Icon Path</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getIconPath <em>Icon Path</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the attribute '<em>Icon Path</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getIconPath()
      * @see #getContainerCreationDescription()
@@ -2960,7 +2768,7 @@ public interface ToolPackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getExtraMappings
      * <em>Extra Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the reference list '<em>Extra Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getExtraMappings()
      * @see #getContainerCreationDescription()
@@ -2969,11 +2777,9 @@ public interface ToolPackage extends EPackage {
     EReference getContainerCreationDescription_ExtraMappings();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription
-     * <em>Delete Element Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription
+     * <em>Delete Element Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for class '<em>Delete Element Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DeleteElementDescription
      * @generated
@@ -2982,8 +2788,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getElement
-     * <em>Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getElement <em>Element</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the containment reference '<em>Element</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getElement()
@@ -2994,11 +2800,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getElementView
-     * <em>Element View</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Element View</em>'.
+     * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getElementView <em>Element View</em>}
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Element View</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getElementView()
      * @see #getDeleteElementDescription()
      * @generated
@@ -3009,9 +2814,8 @@ public interface ToolPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getContainerView
      * <em>Container View</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Container View</em>'.
+     * 
+     * @return the meta object for the containment reference '<em>Container View</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getContainerView()
      * @see #getDeleteElementDescription()
      * @generated
@@ -3021,11 +2825,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getInitialOperation
-     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Initial Operation</em>'.
+     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getInitialOperation()
      * @see #getDeleteElementDescription()
      * @generated
@@ -3034,8 +2836,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getHook
-     * <em>Hook</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getHook <em>Hook</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the containment reference '<em>Hook</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DeleteElementDescription#getHook()
@@ -3045,11 +2847,9 @@ public interface ToolPackage extends EPackage {
     EReference getDeleteElementDescription_Hook();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription
-     * <em>Double Click Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription
+     * <em>Double Click Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for class '<em>Double Click Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DoubleClickDescription
      * @generated
@@ -3058,8 +2858,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getMappings
-     * <em>Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getMappings <em>Mappings</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the reference list '<em>Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getMappings()
@@ -3070,8 +2870,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getElement
-     * <em>Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getElement <em>Element</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the containment reference '<em>Element</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getElement()
@@ -3082,11 +2882,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getElementView
-     * <em>Element View</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Element View</em>'.
+     * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getElementView <em>Element View</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Element View</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getElementView()
      * @see #getDoubleClickDescription()
      * @generated
@@ -3096,11 +2895,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getInitialOperation
-     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Initial Operation</em>'.
+     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getInitialOperation()
      * @see #getDoubleClickDescription()
      * @generated
@@ -3108,10 +2905,9 @@ public interface ToolPackage extends EPackage {
     EReference getDoubleClickDescription_InitialOperation();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteHook
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.DeleteHook
      * <em>Delete Hook</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Delete Hook</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DeleteHook
      * @generated
@@ -3119,10 +2915,9 @@ public interface ToolPackage extends EPackage {
     EClass getDeleteHook();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getId
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DeleteHook#getId()
      * @see #getDeleteHook()
@@ -3132,11 +2927,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getParameters
-     * <em>Parameters</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getParameters <em>Parameters</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for the containment reference list '
-     *         <em>Parameters</em>'.
+     * @return the meta object for the containment reference list '<em>Parameters</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DeleteHook#getParameters()
      * @see #getDeleteHook()
      * @generated
@@ -3144,11 +2938,9 @@ public interface ToolPackage extends EPackage {
     EReference getDeleteHook_Parameters();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteHookParameter
-     * <em>Delete Hook Parameter</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.DeleteHookParameter
+     * <em>Delete Hook Parameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for class '<em>Delete Hook Parameter</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DeleteHookParameter
      * @generated
@@ -3157,8 +2949,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteHookParameter#getName
-     * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.DeleteHookParameter#getName <em>Name</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DeleteHookParameter#getName()
@@ -3169,8 +2961,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.DeleteHookParameter#getValue
-     * <em>Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.DeleteHookParameter#getValue <em>Value</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the attribute '<em>Value</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DeleteHookParameter#getValue()
@@ -3180,11 +2972,9 @@ public interface ToolPackage extends EPackage {
     EAttribute getDeleteHookParameter_Value();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription
-     * <em>Reconnect Edge Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription
+     * <em>Reconnect Edge Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for class '<em>Reconnect Edge Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription
      * @generated
@@ -3194,9 +2984,8 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getReconnectionKind
-     * <em>Reconnection Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * <em>Reconnection Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the attribute '<em>Reconnection Kind</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getReconnectionKind()
      * @see #getReconnectEdgeDescription()
@@ -3206,8 +2995,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getSource
-     * <em>Source</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getSource <em>Source</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the containment reference '<em>Source</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getSource()
@@ -3218,8 +3007,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getTarget
-     * <em>Target</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getTarget <em>Target</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the containment reference '<em>Target</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getTarget()
@@ -3230,11 +3019,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getSourceView
-     * <em>Source View</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Source View</em>'.
+     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getSourceView <em>Source View</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Source View</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getSourceView()
      * @see #getReconnectEdgeDescription()
      * @generated
@@ -3243,11 +3031,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getTargetView
-     * <em>Target View</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Target View</em>'.
+     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getTargetView <em>Target View</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Target View</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getTargetView()
      * @see #getReconnectEdgeDescription()
      * @generated
@@ -3256,8 +3043,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getElement
-     * <em>Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getElement <em>Element</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the containment reference '<em>Element</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getElement()
@@ -3269,11 +3056,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getInitialOperation
-     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Initial Operation</em>'.
+     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getInitialOperation()
      * @see #getReconnectEdgeDescription()
      * @generated
@@ -3282,11 +3067,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getEdgeView
-     * <em>Edge View</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference '<em>Edge View</em>
-     *         '.
+     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getEdgeView <em>Edge View</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Edge View</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getEdgeView()
      * @see #getReconnectEdgeDescription()
      * @generated
@@ -3294,11 +3078,9 @@ public interface ToolPackage extends EPackage {
     EReference getReconnectEdgeDescription_EdgeView();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.RequestDescription
-     * <em>Request Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.RequestDescription
+     * <em>Request Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for class '<em>Request Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.RequestDescription
      * @generated
@@ -3307,8 +3089,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.RequestDescription#getType
-     * <em>Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.RequestDescription#getType <em>Type</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the attribute '<em>Type</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.RequestDescription#getType()
@@ -3318,11 +3100,9 @@ public interface ToolPackage extends EPackage {
     EAttribute getRequestDescription_Type();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel
-     * <em>Direct Edit Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel
+     * <em>Direct Edit Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for class '<em>Direct Edit Label</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DirectEditLabel
      * @generated
@@ -3331,9 +3111,9 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getMask
-     * <em>Mask</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * {@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getMask <em>Mask</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the containment reference '<em>Mask</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getMask()
      * @see #getDirectEditLabel()
@@ -3343,12 +3123,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getInitialOperation
-     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Initial Operation</em>'.
+     * {@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getInitialOperation <em>Initial Operation</em>
+     * }'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getInitialOperation()
      * @see #getDirectEditLabel()
      * @generated
@@ -3358,11 +3136,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getInputLabelExpression
-     * <em>Input Label Expression</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for the attribute '
-     *         <em>Input Label Expression</em>'.
+     * <em>Input Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Input Label Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DirectEditLabel#getInputLabelExpression()
      * @see #getDirectEditLabel()
      * @generated
@@ -3370,10 +3146,9 @@ public interface ToolPackage extends EPackage {
     EAttribute getDirectEditLabel_InputLabelExpression();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.BehaviorTool
      * <em>Behavior Tool</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Behavior Tool</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.BehaviorTool
      * @generated
@@ -3382,8 +3157,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getDomainClass
-     * <em>Domain Class</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getDomainClass <em>Domain Class</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the attribute '<em>Domain Class</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.BehaviorTool#getDomainClass()
@@ -3394,12 +3169,10 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getInitialOperation
-     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Initial Operation</em>'.
+     * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getInitialOperation <em>Initial Operation</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Initial Operation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.BehaviorTool#getInitialOperation()
      * @see #getBehaviorTool()
      * @generated
@@ -3407,13 +3180,10 @@ public interface ToolPackage extends EPackage {
     EReference getBehaviorTool_InitialOperation();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable
-     * <em>Source Edge Creation Variable</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for class '<em>Source Edge Creation Variable</em>
-     *         '.
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable
+     * <em>Source Edge Creation Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Source Edge Creation Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable
      * @generated
      */
@@ -3422,24 +3192,19 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.tool.SourceEdgeViewCreationVariable
-     * <em>Source Edge View Creation Variable</em>}'. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
-     * @return the meta object for class '
-     *         <em>Source Edge View Creation Variable</em>'.
+     * <em>Source Edge View Creation Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Source Edge View Creation Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.SourceEdgeViewCreationVariable
      * @generated
      */
     EClass getSourceEdgeViewCreationVariable();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable
-     * <em>Target Edge Creation Variable</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for class '<em>Target Edge Creation Variable</em>
-     *         '.
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable
+     * <em>Target Edge Creation Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Target Edge Creation Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable
      * @generated
      */
@@ -3448,35 +3213,28 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.tool.TargetEdgeViewCreationVariable
-     * <em>Target Edge View Creation Variable</em>}'. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
-     * @return the meta object for class '
-     *         <em>Target Edge View Creation Variable</em>'.
+     * <em>Target Edge View Creation Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Target Edge View Creation Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.TargetEdgeViewCreationVariable
      * @generated
      */
     EClass getTargetEdgeViewCreationVariable();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.ElementDoubleClickVariable
-     * <em>Element Double Click Variable</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for class '<em>Element Double Click Variable</em>
-     *         '.
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.ElementDoubleClickVariable
+     * <em>Element Double Click Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Element Double Click Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ElementDoubleClickVariable
      * @generated
      */
     EClass getElementDoubleClickVariable();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationVariable
-     * <em>Node Creation Variable</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.NodeCreationVariable
+     * <em>Node Creation Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for class '<em>Node Creation Variable</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.NodeCreationVariable
      * @generated
@@ -3484,10 +3242,9 @@ public interface ToolPackage extends EPackage {
     EClass getNodeCreationVariable();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.CreateView
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.CreateView
      * <em>Create View</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Create View</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.CreateView
      * @generated
@@ -3496,9 +3253,9 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.CreateView#getMapping
-     * <em>Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * {@link org.eclipse.sirius.diagram.description.tool.CreateView#getMapping <em>Mapping</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the reference '<em>Mapping</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.CreateView#getMapping()
      * @see #getCreateView()
@@ -3509,11 +3266,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.tool.CreateView#getContainerViewExpression
-     * <em>Container View Expression</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for the attribute '
-     *         <em>Container View Expression</em>'.
+     * <em>Container View Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Container View Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.CreateView#getContainerViewExpression()
      * @see #getCreateView()
      * @generated
@@ -3522,8 +3277,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.CreateView#getVariableName
-     * <em>Variable Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.CreateView#getVariableName <em>Variable Name</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the attribute '<em>Variable Name</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.CreateView#getVariableName()
@@ -3533,11 +3288,9 @@ public interface ToolPackage extends EPackage {
     EAttribute getCreateView_VariableName();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView
-     * <em>Create Edge View</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView
+     * <em>Create Edge View</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for class '<em>Create Edge View</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.CreateEdgeView
      * @generated
@@ -3546,10 +3299,9 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getSourceExpression
-     * <em>Source Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getSourceExpression <em>Source Expression</em>}
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the attribute '<em>Source Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getSourceExpression()
      * @see #getCreateEdgeView()
@@ -3559,10 +3311,9 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getTargetExpression
-     * <em>Target Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getTargetExpression <em>Target Expression</em>}
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the attribute '<em>Target Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getTargetExpression()
      * @see #getCreateEdgeView()
@@ -3571,10 +3322,9 @@ public interface ToolPackage extends EPackage {
     EAttribute getCreateEdgeView_TargetExpression();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.Navigation
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.Navigation
      * <em>Navigation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Navigation</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.Navigation
      * @generated
@@ -3584,11 +3334,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.tool.Navigation#isCreateIfNotExistent
-     * <em>Create If Not Existent</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for the attribute '
-     *         <em>Create If Not Existent</em>'.
+     * <em>Create If Not Existent</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Create If Not Existent</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.Navigation#isCreateIfNotExistent()
      * @see #getNavigation()
      * @generated
@@ -3597,10 +3345,9 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.Navigation#getDiagramDescription
-     * <em>Diagram Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * {@link org.eclipse.sirius.diagram.description.tool.Navigation#getDiagramDescription <em>Diagram Description</em>}
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the reference '<em>Diagram Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.Navigation#getDiagramDescription()
      * @see #getNavigation()
@@ -3609,13 +3356,10 @@ public interface ToolPackage extends EPackage {
     EReference getNavigation_DiagramDescription();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription
-     * <em>Diagram Creation Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for class '<em>Diagram Creation Description</em>
-     *         '.
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription
+     * <em>Diagram Creation Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Diagram Creation Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription
      * @generated
      */
@@ -3624,9 +3368,8 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription#getDiagramDescription
-     * <em>Diagram Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * <em>Diagram Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the reference '<em>Diagram Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription#getDiagramDescription()
      * @see #getDiagramCreationDescription()
@@ -3637,11 +3380,9 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription
-     * <em>Diagram Navigation Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for class '
-     *         <em>Diagram Navigation Description</em>'.
+     * <em>Diagram Navigation Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Diagram Navigation Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription
      * @generated
      */
@@ -3650,9 +3391,8 @@ public interface ToolPackage extends EPackage {
     /**
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription#getDiagramDescription
-     * <em>Diagram Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * <em>Diagram Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the reference '<em>Diagram Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription#getDiagramDescription()
      * @see #getDiagramNavigationDescription()
@@ -3661,11 +3401,9 @@ public interface ToolPackage extends EPackage {
     EReference getDiagramNavigationDescription_DiagramDescription();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription
-     * <em>Container Drop Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription
+     * <em>Container Drop Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for class '<em>Container Drop Description</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription
      * @generated
@@ -3674,8 +3412,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getMappings
-     * <em>Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getMappings <em>Mappings</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the reference list '<em>Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getMappings()
@@ -3688,9 +3426,8 @@ public interface ToolPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getOldContainer
      * <em>Old Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Old Container</em>'.
+     * 
+     * @return the meta object for the containment reference '<em>Old Container</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getOldContainer()
      * @see #getContainerDropDescription()
      * @generated
@@ -3701,9 +3438,8 @@ public interface ToolPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getNewContainer
      * <em>New Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>New Container</em>'.
+     * 
+     * @return the meta object for the containment reference '<em>New Container</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getNewContainer()
      * @see #getContainerDropDescription()
      * @generated
@@ -3712,8 +3448,8 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getElement
-     * <em>Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getElement <em>Element</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the containment reference '<em>Element</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getElement()
@@ -3724,13 +3460,11 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link ContainerDropDescription#getNewViewContainer
-     * <em>New View Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>New View Container</em>'.
-     * @see ContainerDropDescription#getNewViewContainer()
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getNewViewContainer
+     * <em>New View Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>New View Container</em>'.
+     * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getNewViewContainer()
      * @see #getContainerDropDescription()
      * @generated
      */
@@ -3738,13 +3472,11 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link ContainerDropDescription#getInitialOperation
-     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the containment reference '
-     *         <em>Initial Operation</em>'.
-     * @see ContainerDropDescription#getInitialOperation()
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getInitialOperation
+     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Initial Operation</em>'.
+     * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getInitialOperation()
      * @see #getContainerDropDescription()
      * @generated
      */
@@ -3752,9 +3484,9 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getDragSource
-     * <em>Drag Source</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getDragSource <em>Drag Source</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the attribute '<em>Drag Source</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getDragSource()
      * @see #getContainerDropDescription()
@@ -3764,9 +3496,9 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#isMoveEdges
-     * <em>Move Edges</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#isMoveEdges <em>Move Edges</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for the attribute '<em>Move Edges</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#isMoveEdges()
      * @see #getContainerDropDescription()
@@ -3775,11 +3507,9 @@ public interface ToolPackage extends EPackage {
     EAttribute getContainerDropDescription_MoveEdges();
 
     /**
-     * Returns the meta object for enum '
-     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectionKind
-     * <em>Reconnection Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Returns the meta object for enum '{@link org.eclipse.sirius.diagram.description.tool.ReconnectionKind
+     * <em>Reconnection Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the meta object for enum '<em>Reconnection Kind</em>'.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectionKind
      * @generated
@@ -3787,17 +3517,15 @@ public interface ToolPackage extends EPackage {
     EEnum getReconnectionKind();
 
     /**
-     * Returns the factory that creates the instances of the model. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the factory that creates the instances of the model.
      * @generated
      */
     ToolFactory getToolFactory();
 
     /**
-     * <!-- begin-user-doc --> Defines literals for the meta objects that
-     * represent
+     * <!-- begin-user-doc --> Defines literals for the meta objects that represent
      * <ul>
      * <li>each class,</li>
      * <li>each feature of each class,</li>
@@ -3805,16 +3533,14 @@ public interface ToolPackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     interface Literals {
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl
-         * <em>Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-         * -->
-         *
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl
+         * <em>Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getToolSection()
          * @generated
@@ -3822,61 +3548,57 @@ public interface ToolPackage extends EPackage {
         EClass TOOL_SECTION = ToolPackage.eINSTANCE.getToolSection();
 
         /**
-         * The meta object literal for the '<em><b>Icon</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Icon</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
          * @generated
          */
         EAttribute TOOL_SECTION__ICON = ToolPackage.eINSTANCE.getToolSection_Icon();
 
         /**
-         * The meta object literal for the '<em><b>Owned Tools</b></em>'
-         * containment reference list feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Owned Tools</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference TOOL_SECTION__OWNED_TOOLS = ToolPackage.eINSTANCE.getToolSection_OwnedTools();
 
         /**
-         * The meta object literal for the '<em><b>Sub Sections</b></em>'
-         * containment reference list feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Sub Sections</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference TOOL_SECTION__SUB_SECTIONS = ToolPackage.eINSTANCE.getToolSection_SubSections();
 
         /**
-         * The meta object literal for the '<em><b>Popup Menus</b></em>'
-         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Popup Menus</b></em>' reference list feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference TOOL_SECTION__POPUP_MENUS = ToolPackage.eINSTANCE.getToolSection_PopupMenus();
 
         /**
-         * The meta object literal for the '<em><b>Reused Tools</b></em>'
-         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Reused Tools</b></em>' reference list feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference TOOL_SECTION__REUSED_TOOLS = ToolPackage.eINSTANCE.getToolSection_ReusedTools();
 
         /**
-         * The meta object literal for the '<em><b>Group Extensions</b></em>'
-         * containment reference list feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Group Extensions</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference TOOL_SECTION__GROUP_EXTENSIONS = ToolPackage.eINSTANCE.getToolSection_GroupExtensions();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolGroupImpl
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.tool.impl.ToolGroupImpl
          * <em>Group</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolGroupImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getToolGroup()
          * @generated
@@ -3884,8 +3606,8 @@ public interface ToolPackage extends EPackage {
         EClass TOOL_GROUP = ToolPackage.eINSTANCE.getToolGroup();
 
         /**
-         * The meta object literal for the '<em><b>Tools</b></em>' containment
-         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Tools</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
@@ -3893,10 +3615,9 @@ public interface ToolPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolGroupExtensionImpl
-         * <em>Group Extension</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
+         * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolGroupExtensionImpl <em>Group Extension</em>}'
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolGroupExtensionImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getToolGroupExtension()
          * @generated
@@ -3904,16 +3625,16 @@ public interface ToolPackage extends EPackage {
         EClass TOOL_GROUP_EXTENSION = ToolPackage.eINSTANCE.getToolGroupExtension();
 
         /**
-         * The meta object literal for the '<em><b>Group</b></em>' reference
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Group</b></em>' reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
          * @generated
          */
         EReference TOOL_GROUP_EXTENSION__GROUP = ToolPackage.eINSTANCE.getToolGroupExtension_Group();
 
         /**
-         * The meta object literal for the '<em><b>Tools</b></em>' containment
-         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Tools</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
@@ -3922,9 +3643,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl
-         * <em>Node Creation Description</em>}' class. <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         *
+         * <em>Node Creation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getNodeCreationDescription()
          * @generated
@@ -3932,52 +3652,49 @@ public interface ToolPackage extends EPackage {
         EClass NODE_CREATION_DESCRIPTION = ToolPackage.eINSTANCE.getNodeCreationDescription();
 
         /**
-         * The meta object literal for the '<em><b>Node Mappings</b></em>'
-         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Node Mappings</b></em>' reference list feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference NODE_CREATION_DESCRIPTION__NODE_MAPPINGS = ToolPackage.eINSTANCE.getNodeCreationDescription_NodeMappings();
 
         /**
-         * The meta object literal for the '<em><b>Variable</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference NODE_CREATION_DESCRIPTION__VARIABLE = ToolPackage.eINSTANCE.getNodeCreationDescription_Variable();
 
         /**
-         * The meta object literal for the '<em><b>View Variable</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>View Variable</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference NODE_CREATION_DESCRIPTION__VIEW_VARIABLE = ToolPackage.eINSTANCE.getNodeCreationDescription_ViewVariable();
 
         /**
-         * The meta object literal for the '<em><b>Initial Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Initial Operation</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference NODE_CREATION_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getNodeCreationDescription_InitialOperation();
 
         /**
-         * The meta object literal for the '<em><b>Icon Path</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Icon Path</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
          * @generated
          */
         EAttribute NODE_CREATION_DESCRIPTION__ICON_PATH = ToolPackage.eINSTANCE.getNodeCreationDescription_IconPath();
 
         /**
-         * The meta object literal for the '<em><b>Extra Mappings</b></em>'
-         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Extra Mappings</b></em>' reference list feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS = ToolPackage.eINSTANCE.getNodeCreationDescription_ExtraMappings();
@@ -3985,9 +3702,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl
-         * <em>Edge Creation Description</em>}' class. <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         *
+         * <em>Edge Creation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getEdgeCreationDescription()
          * @generated
@@ -3995,69 +3711,63 @@ public interface ToolPackage extends EPackage {
         EClass EDGE_CREATION_DESCRIPTION = ToolPackage.eINSTANCE.getEdgeCreationDescription();
 
         /**
-         * The meta object literal for the '<em><b>Edge Mappings</b></em>'
-         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Edge Mappings</b></em>' reference list feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS = ToolPackage.eINSTANCE.getEdgeCreationDescription_EdgeMappings();
 
         /**
-         * The meta object literal for the '<em><b>Source Variable</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Source Variable</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE = ToolPackage.eINSTANCE.getEdgeCreationDescription_SourceVariable();
 
         /**
-         * The meta object literal for the '<em><b>Target Variable</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Target Variable</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE = ToolPackage.eINSTANCE.getEdgeCreationDescription_TargetVariable();
 
         /**
-         * The meta object literal for the '<em><b>Source View Variable</b></em>
-         * ' containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Source View Variable</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE = ToolPackage.eINSTANCE.getEdgeCreationDescription_SourceViewVariable();
 
         /**
-         * The meta object literal for the '<em><b>Target View Variable</b></em>
-         * ' containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Target View Variable</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE = ToolPackage.eINSTANCE.getEdgeCreationDescription_TargetViewVariable();
 
         /**
-         * The meta object literal for the '<em><b>Initial Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Initial Operation</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getEdgeCreationDescription_InitialOperation();
 
         /**
-         * The meta object literal for the '<em><b>Icon Path</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Icon Path</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
          * @generated
          */
         EAttribute EDGE_CREATION_DESCRIPTION__ICON_PATH = ToolPackage.eINSTANCE.getEdgeCreationDescription_IconPath();
 
         /**
-         * The meta object literal for the '
-         * <em><b>Extra Source Mappings</b></em>' reference list feature. <!--
+         * The meta object literal for the ' <em><b>Extra Source Mappings</b></em>' reference list feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
@@ -4065,8 +3775,7 @@ public interface ToolPackage extends EPackage {
         EReference EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS = ToolPackage.eINSTANCE.getEdgeCreationDescription_ExtraSourceMappings();
 
         /**
-         * The meta object literal for the '
-         * <em><b>Extra Target Mappings</b></em>' reference list feature. <!--
+         * The meta object literal for the ' <em><b>Extra Target Mappings</b></em>' reference list feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
@@ -4074,9 +3783,8 @@ public interface ToolPackage extends EPackage {
         EReference EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS = ToolPackage.eINSTANCE.getEdgeCreationDescription_ExtraTargetMappings();
 
         /**
-         * The meta object literal for the '
-         * <em><b>Connection Start Precondition</b></em>' attribute feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Connection Start Precondition</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
@@ -4085,9 +3793,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl
-         * <em>Container Creation Description</em>}' class. <!-- begin-user-doc
-         * --> <!-- end-user-doc -->
-         *
+         * <em>Container Creation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getContainerCreationDescription()
          * @generated
@@ -4095,52 +3802,49 @@ public interface ToolPackage extends EPackage {
         EClass CONTAINER_CREATION_DESCRIPTION = ToolPackage.eINSTANCE.getContainerCreationDescription();
 
         /**
-         * The meta object literal for the '<em><b>Container Mappings</b></em>'
-         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Container Mappings</b></em>' reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS = ToolPackage.eINSTANCE.getContainerCreationDescription_ContainerMappings();
 
         /**
-         * The meta object literal for the '<em><b>Variable</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference CONTAINER_CREATION_DESCRIPTION__VARIABLE = ToolPackage.eINSTANCE.getContainerCreationDescription_Variable();
 
         /**
-         * The meta object literal for the '<em><b>View Variable</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>View Variable</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE = ToolPackage.eINSTANCE.getContainerCreationDescription_ViewVariable();
 
         /**
-         * The meta object literal for the '<em><b>Initial Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Initial Operation</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getContainerCreationDescription_InitialOperation();
 
         /**
-         * The meta object literal for the '<em><b>Icon Path</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Icon Path</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
          * @generated
          */
         EAttribute CONTAINER_CREATION_DESCRIPTION__ICON_PATH = ToolPackage.eINSTANCE.getContainerCreationDescription_IconPath();
 
         /**
-         * The meta object literal for the '<em><b>Extra Mappings</b></em>'
-         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Extra Mappings</b></em>' reference list feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS = ToolPackage.eINSTANCE.getContainerCreationDescription_ExtraMappings();
@@ -4148,9 +3852,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.DeleteElementDescriptionImpl
-         * <em>Delete Element Description</em>}' class. <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         *
+         * <em>Delete Element Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.DeleteElementDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDeleteElementDescription()
          * @generated
@@ -4158,44 +3861,41 @@ public interface ToolPackage extends EPackage {
         EClass DELETE_ELEMENT_DESCRIPTION = ToolPackage.eINSTANCE.getDeleteElementDescription();
 
         /**
-         * The meta object literal for the '<em><b>Element</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Element</b></em>' containment reference feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference DELETE_ELEMENT_DESCRIPTION__ELEMENT = ToolPackage.eINSTANCE.getDeleteElementDescription_Element();
 
         /**
-         * The meta object literal for the '<em><b>Element View</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Element View</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference DELETE_ELEMENT_DESCRIPTION__ELEMENT_VIEW = ToolPackage.eINSTANCE.getDeleteElementDescription_ElementView();
 
         /**
-         * The meta object literal for the '<em><b>Container View</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Container View</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference DELETE_ELEMENT_DESCRIPTION__CONTAINER_VIEW = ToolPackage.eINSTANCE.getDeleteElementDescription_ContainerView();
 
         /**
-         * The meta object literal for the '<em><b>Initial Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Initial Operation</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference DELETE_ELEMENT_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getDeleteElementDescription_InitialOperation();
 
         /**
-         * The meta object literal for the '<em><b>Hook</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Hook</b></em>' containment reference feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference DELETE_ELEMENT_DESCRIPTION__HOOK = ToolPackage.eINSTANCE.getDeleteElementDescription_Hook();
@@ -4203,9 +3903,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.DoubleClickDescriptionImpl
-         * <em>Double Click Description</em>}' class. <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         *
+         * <em>Double Click Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.DoubleClickDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDoubleClickDescription()
          * @generated
@@ -4213,45 +3912,41 @@ public interface ToolPackage extends EPackage {
         EClass DOUBLE_CLICK_DESCRIPTION = ToolPackage.eINSTANCE.getDoubleClickDescription();
 
         /**
-         * The meta object literal for the '<em><b>Mappings</b></em>' reference
-         * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Mappings</b></em>' reference list feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference DOUBLE_CLICK_DESCRIPTION__MAPPINGS = ToolPackage.eINSTANCE.getDoubleClickDescription_Mappings();
 
         /**
-         * The meta object literal for the '<em><b>Element</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Element</b></em>' containment reference feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference DOUBLE_CLICK_DESCRIPTION__ELEMENT = ToolPackage.eINSTANCE.getDoubleClickDescription_Element();
 
         /**
-         * The meta object literal for the '<em><b>Element View</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Element View</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW = ToolPackage.eINSTANCE.getDoubleClickDescription_ElementView();
 
         /**
-         * The meta object literal for the '<em><b>Initial Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Initial Operation</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getDoubleClickDescription_InitialOperation();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookImpl
-         * <em>Delete Hook</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookImpl
+         * <em>Delete Hook</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.DeleteHookImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDeleteHook()
          * @generated
@@ -4259,17 +3954,16 @@ public interface ToolPackage extends EPackage {
         EClass DELETE_HOOK = ToolPackage.eINSTANCE.getDeleteHook();
 
         /**
-         * The meta object literal for the '<em><b>Id</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Id</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
          * @generated
          */
         EAttribute DELETE_HOOK__ID = ToolPackage.eINSTANCE.getDeleteHook_Id();
 
         /**
-         * The meta object literal for the '<em><b>Parameters</b></em>'
-         * containment reference list feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
@@ -4278,9 +3972,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookParameterImpl
-         * <em>Delete Hook Parameter</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
+         * <em>Delete Hook Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.DeleteHookParameterImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDeleteHookParameter()
          * @generated
@@ -4288,17 +3981,17 @@ public interface ToolPackage extends EPackage {
         EClass DELETE_HOOK_PARAMETER = ToolPackage.eINSTANCE.getDeleteHookParameter();
 
         /**
-         * The meta object literal for the '<em><b>Name</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Name</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
          * @generated
          */
         EAttribute DELETE_HOOK_PARAMETER__NAME = ToolPackage.eINSTANCE.getDeleteHookParameter_Name();
 
         /**
-         * The meta object literal for the '<em><b>Value</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Value</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
          * @generated
          */
         EAttribute DELETE_HOOK_PARAMETER__VALUE = ToolPackage.eINSTANCE.getDeleteHookParameter_Value();
@@ -4306,9 +3999,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.ReconnectEdgeDescriptionImpl
-         * <em>Reconnect Edge Description</em>}' class. <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         *
+         * <em>Reconnect Edge Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.ReconnectEdgeDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getReconnectEdgeDescription()
          * @generated
@@ -4316,68 +4008,64 @@ public interface ToolPackage extends EPackage {
         EClass RECONNECT_EDGE_DESCRIPTION = ToolPackage.eINSTANCE.getReconnectEdgeDescription();
 
         /**
-         * The meta object literal for the '<em><b>Reconnection Kind</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Reconnection Kind</b></em>' attribute feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EAttribute RECONNECT_EDGE_DESCRIPTION__RECONNECTION_KIND = ToolPackage.eINSTANCE.getReconnectEdgeDescription_ReconnectionKind();
 
         /**
-         * The meta object literal for the '<em><b>Source</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Source</b></em>' containment reference feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference RECONNECT_EDGE_DESCRIPTION__SOURCE = ToolPackage.eINSTANCE.getReconnectEdgeDescription_Source();
 
         /**
-         * The meta object literal for the '<em><b>Target</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Target</b></em>' containment reference feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference RECONNECT_EDGE_DESCRIPTION__TARGET = ToolPackage.eINSTANCE.getReconnectEdgeDescription_Target();
 
         /**
-         * The meta object literal for the '<em><b>Source View</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Source View</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference RECONNECT_EDGE_DESCRIPTION__SOURCE_VIEW = ToolPackage.eINSTANCE.getReconnectEdgeDescription_SourceView();
 
         /**
-         * The meta object literal for the '<em><b>Target View</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Target View</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW = ToolPackage.eINSTANCE.getReconnectEdgeDescription_TargetView();
 
         /**
-         * The meta object literal for the '<em><b>Element</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Element</b></em>' containment reference feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference RECONNECT_EDGE_DESCRIPTION__ELEMENT = ToolPackage.eINSTANCE.getReconnectEdgeDescription_Element();
 
         /**
-         * The meta object literal for the '<em><b>Initial Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Initial Operation</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getReconnectEdgeDescription_InitialOperation();
 
         /**
-         * The meta object literal for the '<em><b>Edge View</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Edge View</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
@@ -4385,10 +4073,9 @@ public interface ToolPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.tool.impl.RequestDescriptionImpl
-         * <em>Request Description</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
+         * {@link org.eclipse.sirius.diagram.description.tool.impl.RequestDescriptionImpl <em>Request Description</em>}'
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.RequestDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getRequestDescription()
          * @generated
@@ -4396,19 +4083,17 @@ public interface ToolPackage extends EPackage {
         EClass REQUEST_DESCRIPTION = ToolPackage.eINSTANCE.getRequestDescription();
 
         /**
-         * The meta object literal for the '<em><b>Type</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Type</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
          * @generated
          */
         EAttribute REQUEST_DESCRIPTION__TYPE = ToolPackage.eINSTANCE.getRequestDescription_Type();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.tool.impl.DirectEditLabelImpl
-         * <em>Direct Edit Label</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.tool.impl.DirectEditLabelImpl
+         * <em>Direct Edit Label</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.DirectEditLabelImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDirectEditLabel()
          * @generated
@@ -4416,25 +4101,23 @@ public interface ToolPackage extends EPackage {
         EClass DIRECT_EDIT_LABEL = ToolPackage.eINSTANCE.getDirectEditLabel();
 
         /**
-         * The meta object literal for the '<em><b>Mask</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Mask</b></em>' containment reference feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference DIRECT_EDIT_LABEL__MASK = ToolPackage.eINSTANCE.getDirectEditLabel_Mask();
 
         /**
-         * The meta object literal for the '<em><b>Initial Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Initial Operation</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference DIRECT_EDIT_LABEL__INITIAL_OPERATION = ToolPackage.eINSTANCE.getDirectEditLabel_InitialOperation();
 
         /**
-         * The meta object literal for the '
-         * <em><b>Input Label Expression</b></em>' attribute feature. <!--
+         * The meta object literal for the ' <em><b>Input Label Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
@@ -4442,11 +4125,9 @@ public interface ToolPackage extends EPackage {
         EAttribute DIRECT_EDIT_LABEL__INPUT_LABEL_EXPRESSION = ToolPackage.eINSTANCE.getDirectEditLabel_InputLabelExpression();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.tool.impl.BehaviorToolImpl
-         * <em>Behavior Tool</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.tool.impl.BehaviorToolImpl
+         * <em>Behavior Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.BehaviorToolImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getBehaviorTool()
          * @generated
@@ -4454,17 +4135,16 @@ public interface ToolPackage extends EPackage {
         EClass BEHAVIOR_TOOL = ToolPackage.eINSTANCE.getBehaviorTool();
 
         /**
-         * The meta object literal for the '<em><b>Domain Class</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Domain Class</b></em>' attribute feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
          * @generated
          */
         EAttribute BEHAVIOR_TOOL__DOMAIN_CLASS = ToolPackage.eINSTANCE.getBehaviorTool_DomainClass();
 
         /**
-         * The meta object literal for the '<em><b>Initial Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Initial Operation</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
@@ -4473,9 +4153,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.SourceEdgeCreationVariableImpl
-         * <em>Source Edge Creation Variable</em>}' class. <!-- begin-user-doc
-         * --> <!-- end-user-doc -->
-         *
+         * <em>Source Edge Creation Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.SourceEdgeCreationVariableImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getSourceEdgeCreationVariable()
          * @generated
@@ -4485,9 +4164,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.SourceEdgeViewCreationVariableImpl
-         * <em>Source Edge View Creation Variable</em>}' class. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         *
+         * <em>Source Edge View Creation Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.SourceEdgeViewCreationVariableImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getSourceEdgeViewCreationVariable()
          * @generated
@@ -4497,9 +4175,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.TargetEdgeCreationVariableImpl
-         * <em>Target Edge Creation Variable</em>}' class. <!-- begin-user-doc
-         * --> <!-- end-user-doc -->
-         *
+         * <em>Target Edge Creation Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.TargetEdgeCreationVariableImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getTargetEdgeCreationVariable()
          * @generated
@@ -4509,9 +4186,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.TargetEdgeViewCreationVariableImpl
-         * <em>Target Edge View Creation Variable</em>}' class. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         *
+         * <em>Target Edge View Creation Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.TargetEdgeViewCreationVariableImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getTargetEdgeViewCreationVariable()
          * @generated
@@ -4521,9 +4197,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.ElementDoubleClickVariableImpl
-         * <em>Element Double Click Variable</em>}' class. <!-- begin-user-doc
-         * --> <!-- end-user-doc -->
-         *
+         * <em>Element Double Click Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.ElementDoubleClickVariableImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getElementDoubleClickVariable()
          * @generated
@@ -4533,9 +4208,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.NodeCreationVariableImpl
-         * <em>Node Creation Variable</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
+         * <em>Node Creation Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.NodeCreationVariableImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getNodeCreationVariable()
          * @generated
@@ -4543,11 +4217,9 @@ public interface ToolPackage extends EPackage {
         EClass NODE_CREATION_VARIABLE = ToolPackage.eINSTANCE.getNodeCreationVariable();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.tool.impl.CreateViewImpl
-         * <em>Create View</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.tool.impl.CreateViewImpl
+         * <em>Create View</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.CreateViewImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getCreateView()
          * @generated
@@ -4555,16 +4227,15 @@ public interface ToolPackage extends EPackage {
         EClass CREATE_VIEW = ToolPackage.eINSTANCE.getCreateView();
 
         /**
-         * The meta object literal for the '<em><b>Mapping</b></em>' reference
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Mapping</b></em>' reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
          * @generated
          */
         EReference CREATE_VIEW__MAPPING = ToolPackage.eINSTANCE.getCreateView_Mapping();
 
         /**
-         * The meta object literal for the '
-         * <em><b>Container View Expression</b></em>' attribute feature. <!--
+         * The meta object literal for the ' <em><b>Container View Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
@@ -4572,19 +4243,17 @@ public interface ToolPackage extends EPackage {
         EAttribute CREATE_VIEW__CONTAINER_VIEW_EXPRESSION = ToolPackage.eINSTANCE.getCreateView_ContainerViewExpression();
 
         /**
-         * The meta object literal for the '<em><b>Variable Name</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Variable Name</b></em>' attribute feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
          * @generated
          */
         EAttribute CREATE_VIEW__VARIABLE_NAME = ToolPackage.eINSTANCE.getCreateView_VariableName();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.tool.impl.CreateEdgeViewImpl
-         * <em>Create Edge View</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.tool.impl.CreateEdgeViewImpl
+         * <em>Create Edge View</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.CreateEdgeViewImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getCreateEdgeView()
          * @generated
@@ -4592,27 +4261,25 @@ public interface ToolPackage extends EPackage {
         EClass CREATE_EDGE_VIEW = ToolPackage.eINSTANCE.getCreateEdgeView();
 
         /**
-         * The meta object literal for the '<em><b>Source Expression</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Source Expression</b></em>' attribute feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EAttribute CREATE_EDGE_VIEW__SOURCE_EXPRESSION = ToolPackage.eINSTANCE.getCreateEdgeView_SourceExpression();
 
         /**
-         * The meta object literal for the '<em><b>Target Expression</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Target Expression</b></em>' attribute feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EAttribute CREATE_EDGE_VIEW__TARGET_EXPRESSION = ToolPackage.eINSTANCE.getCreateEdgeView_TargetExpression();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.tool.impl.NavigationImpl
-         * <em>Navigation</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.tool.impl.NavigationImpl
+         * <em>Navigation</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.NavigationImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getNavigation()
          * @generated
@@ -4620,8 +4287,7 @@ public interface ToolPackage extends EPackage {
         EClass NAVIGATION = ToolPackage.eINSTANCE.getNavigation();
 
         /**
-         * The meta object literal for the '
-         * <em><b>Create If Not Existent</b></em>' attribute feature. <!--
+         * The meta object literal for the ' <em><b>Create If Not Existent</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
@@ -4629,9 +4295,9 @@ public interface ToolPackage extends EPackage {
         EAttribute NAVIGATION__CREATE_IF_NOT_EXISTENT = ToolPackage.eINSTANCE.getNavigation_CreateIfNotExistent();
 
         /**
-         * The meta object literal for the '<em><b>Diagram Description</b></em>'
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Diagram Description</b></em>' reference feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference NAVIGATION__DIAGRAM_DESCRIPTION = ToolPackage.eINSTANCE.getNavigation_DiagramDescription();
@@ -4639,9 +4305,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.DiagramCreationDescriptionImpl
-         * <em>Diagram Creation Description</em>}' class. <!-- begin-user-doc
-         * --> <!-- end-user-doc -->
-         *
+         * <em>Diagram Creation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.DiagramCreationDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDiagramCreationDescription()
          * @generated
@@ -4649,9 +4314,9 @@ public interface ToolPackage extends EPackage {
         EClass DIAGRAM_CREATION_DESCRIPTION = ToolPackage.eINSTANCE.getDiagramCreationDescription();
 
         /**
-         * The meta object literal for the '<em><b>Diagram Description</b></em>'
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Diagram Description</b></em>' reference feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference DIAGRAM_CREATION_DESCRIPTION__DIAGRAM_DESCRIPTION = ToolPackage.eINSTANCE.getDiagramCreationDescription_DiagramDescription();
@@ -4659,9 +4324,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.DiagramNavigationDescriptionImpl
-         * <em>Diagram Navigation Description</em>}' class. <!-- begin-user-doc
-         * --> <!-- end-user-doc -->
-         *
+         * <em>Diagram Navigation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.DiagramNavigationDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getDiagramNavigationDescription()
          * @generated
@@ -4669,9 +4333,9 @@ public interface ToolPackage extends EPackage {
         EClass DIAGRAM_NAVIGATION_DESCRIPTION = ToolPackage.eINSTANCE.getDiagramNavigationDescription();
 
         /**
-         * The meta object literal for the '<em><b>Diagram Description</b></em>'
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Diagram Description</b></em>' reference feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference DIAGRAM_NAVIGATION_DESCRIPTION__DIAGRAM_DESCRIPTION = ToolPackage.eINSTANCE.getDiagramNavigationDescription_DiagramDescription();
@@ -4679,9 +4343,8 @@ public interface ToolPackage extends EPackage {
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl
-         * <em>Container Drop Description</em>}' class. <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         *
+         * <em>Container Drop Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getContainerDropDescription()
          * @generated
@@ -4689,79 +4352,73 @@ public interface ToolPackage extends EPackage {
         EClass CONTAINER_DROP_DESCRIPTION = ToolPackage.eINSTANCE.getContainerDropDescription();
 
         /**
-         * The meta object literal for the '<em><b>Mappings</b></em>' reference
-         * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Mappings</b></em>' reference list feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference CONTAINER_DROP_DESCRIPTION__MAPPINGS = ToolPackage.eINSTANCE.getContainerDropDescription_Mappings();
 
         /**
-         * The meta object literal for the '<em><b>Old Container</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Old Container</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER = ToolPackage.eINSTANCE.getContainerDropDescription_OldContainer();
 
         /**
-         * The meta object literal for the '<em><b>New Container</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>New Container</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER = ToolPackage.eINSTANCE.getContainerDropDescription_NewContainer();
 
         /**
-         * The meta object literal for the '<em><b>Element</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Element</b></em>' containment reference feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
          * @generated
          */
         EReference CONTAINER_DROP_DESCRIPTION__ELEMENT = ToolPackage.eINSTANCE.getContainerDropDescription_Element();
 
         /**
-         * The meta object literal for the '<em><b>New View Container</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>New View Container</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER = ToolPackage.eINSTANCE.getContainerDropDescription_NewViewContainer();
 
         /**
-         * The meta object literal for the '<em><b>Initial Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em><b>Initial Operation</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
         EReference CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION = ToolPackage.eINSTANCE.getContainerDropDescription_InitialOperation();
 
         /**
-         * The meta object literal for the '<em><b>Drag Source</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Drag Source</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
          * @generated
          */
         EAttribute CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE = ToolPackage.eINSTANCE.getContainerDropDescription_DragSource();
 
         /**
-         * The meta object literal for the '<em><b>Move Edges</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * The meta object literal for the '<em><b>Move Edges</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
          * @generated
          */
         EAttribute CONTAINER_DROP_DESCRIPTION__MOVE_EDGES = ToolPackage.eINSTANCE.getContainerDropDescription_MoveEdges();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.tool.ReconnectionKind
-         * <em>Reconnection Kind</em>}' enum. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.tool.ReconnectionKind
+         * <em>Reconnection Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
          * @see org.eclipse.sirius.diagram.description.tool.ReconnectionKind
          * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getReconnectionKind()
          * @generated

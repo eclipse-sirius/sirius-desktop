@@ -24,17 +24,15 @@ import org.eclipse.sirius.viewpoint.description.tool.SetValue;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.tool.SetValue} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.tool.SetValue} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class SetValueItemProvider extends ContainerModelOperationItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public SetValueItemProvider(AdapterFactory adapterFactory) {
@@ -42,9 +40,8 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -59,9 +56,8 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Feature Name feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Feature Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
@@ -73,9 +69,8 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Value Expression feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Value Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
@@ -88,7 +83,7 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
 
     /**
      * This returns SetValue.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,9 +92,8 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -110,10 +104,9 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -131,10 +124,9 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

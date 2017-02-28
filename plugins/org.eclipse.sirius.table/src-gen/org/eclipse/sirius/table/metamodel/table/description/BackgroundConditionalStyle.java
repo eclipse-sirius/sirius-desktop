@@ -13,19 +13,17 @@ package org.eclipse.sirius.table.metamodel.table.description;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Background Conditional Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Background Conditional Style</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle#getPredicateExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle#getPredicateExpression
  * <em>Predicate Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle#getStyle
- * <em>Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle#getStyle <em>Style</em>}
+ * </li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getBackgroundConditionalStyle()
@@ -34,20 +32,17 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface BackgroundConditionalStyle extends EObject {
     /**
-     * Returns the value of the '<em><b>Predicate Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Predicate Expression</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Predicate Expression</em>' attribute isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Predicate Expression</em>' attribute isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Predicate Expression</em>' attribute.
      * @see #setPredicateExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getBackgroundConditionalStyle_PredicateExpression()
-     * @model dataType=
-     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        required="true" annotation=
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      * @generated
      */
@@ -56,26 +51,23 @@ public interface BackgroundConditionalStyle extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle#getPredicateExpression
-     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Predicate Expression</em>'
-     *            attribute.
+     *            the new value of the '<em>Predicate Expression</em>' attribute.
      * @see #getPredicateExpression()
      * @generated
      */
     void setPredicateExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Style</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Style</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(BackgroundStyleDescription)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getBackgroundConditionalStyle_Style()
@@ -86,10 +78,9 @@ public interface BackgroundConditionalStyle extends EObject {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle#getStyle
-     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle#getStyle <em>Style</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

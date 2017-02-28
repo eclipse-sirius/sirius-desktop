@@ -25,28 +25,25 @@ import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Event Ends Ordering</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Event Ends Ordering</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.ordering.impl.EventEndsOrderingImpl#getSequenceDiagram
+ * <li>{@link org.eclipse.sirius.diagram.sequence.ordering.impl.EventEndsOrderingImpl#getSequenceDiagram
  * <em>Sequence Diagram</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.ordering.impl.EventEndsOrderingImpl#getEventEnds
- * <em>Event Ends</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.ordering.impl.EventEndsOrderingImpl#getEventEnds <em>Event Ends</em>}
+ * </li>
  * </ul>
  *
  * @generated
  */
 public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implements EventEndsOrdering {
     /**
-     * The cached value of the '{@link #getSequenceDiagram()
-     * <em>Sequence Diagram</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getSequenceDiagram() <em>Sequence Diagram</em>}' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getSequenceDiagram()
      * @generated
      * @ordered
@@ -54,9 +51,9 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
     protected SequenceDDiagram sequenceDiagram;
 
     /**
-     * The cached value of the '{@link #getEventEnds() <em>Event Ends</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getEventEnds() <em>Event Ends</em>}' reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getEventEnds()
      * @generated
      * @ordered
@@ -65,7 +62,7 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected EventEndsOrderingImpl() {
@@ -74,7 +71,7 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -84,7 +81,7 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -103,7 +100,7 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public SequenceDDiagram basicGetSequenceDiagram() {
@@ -112,7 +109,7 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +123,7 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -139,7 +136,7 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +155,7 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -178,7 +175,7 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -196,7 +193,7 @@ public class EventEndsOrderingImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

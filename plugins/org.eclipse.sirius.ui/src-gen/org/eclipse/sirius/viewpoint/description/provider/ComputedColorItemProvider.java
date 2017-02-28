@@ -24,17 +24,15 @@ import org.eclipse.sirius.viewpoint.description.ComputedColor;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.ComputedColor} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.ComputedColor} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
 public class ComputedColorItemProvider extends UserColorItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ComputedColorItemProvider(AdapterFactory adapterFactory) {
@@ -42,9 +40,8 @@ public class ComputedColorItemProvider extends UserColorItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -60,9 +57,8 @@ public class ComputedColorItemProvider extends UserColorItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Red feature. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Red feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addRedPropertyDescriptor(Object object) {
@@ -73,9 +69,8 @@ public class ComputedColorItemProvider extends UserColorItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Green feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Green feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addGreenPropertyDescriptor(Object object) {
@@ -87,9 +82,8 @@ public class ComputedColorItemProvider extends UserColorItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Blue feature. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Blue feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addBluePropertyDescriptor(Object object) {
@@ -101,9 +95,8 @@ public class ComputedColorItemProvider extends UserColorItemProvider {
     }
 
     /**
-     * This returns ComputedColor.gif. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * This returns ComputedColor.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -112,9 +105,8 @@ public class ComputedColorItemProvider extends UserColorItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -125,10 +117,9 @@ public class ComputedColorItemProvider extends UserColorItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -147,10 +138,9 @@ public class ComputedColorItemProvider extends UserColorItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

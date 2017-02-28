@@ -16,18 +16,16 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Representation Element Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Representation Element Mapping</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.RepresentationElementMapping#getDetailDescriptions
+ * <li>{@link org.eclipse.sirius.viewpoint.description.RepresentationElementMapping#getDetailDescriptions
  * <em>Detail Descriptions</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.RepresentationElementMapping#getNavigationDescriptions
+ * <li>{@link org.eclipse.sirius.viewpoint.description.RepresentationElementMapping#getNavigationDescriptions
  * <em>Navigation Descriptions</em>}</li>
  * </ul>
  *
@@ -37,11 +35,10 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  */
 public interface RepresentationElementMapping extends IdentifiedElement {
     /**
-     * Returns the value of the '<em><b>Detail Descriptions</b></em>' reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * All details that can be created from this node. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Detail Descriptions</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription} . <!-- begin-user-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> All details that can be created from this node. <!-- end-model-doc
+     * -->
      *
      * @return the value of the '<em>Detail Descriptions</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationElementMapping_DetailDescriptions()
@@ -51,14 +48,12 @@ public interface RepresentationElementMapping extends IdentifiedElement {
     EList<RepresentationCreationDescription> getDetailDescriptions();
 
     /**
-     * Returns the value of the '<em><b>Navigation Descriptions</b></em>'
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * All details that can be created from this node. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Navigation Descriptions</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription} . <!-- begin-user-doc
+     * --> <!-- end-user-doc --> <!-- begin-model-doc --> All details that can be created from this node. <!--
+     * end-model-doc -->
      *
-     * @return the value of the '<em>Navigation Descriptions</em>' reference
-     *         list.
+     * @return the value of the '<em>Navigation Descriptions</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationElementMapping_NavigationDescriptions()
      * @model
      * @generated

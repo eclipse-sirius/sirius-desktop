@@ -27,27 +27,23 @@ import org.eclipse.sirius.viewpoint.DResourceContainer;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DResource Container</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DResource Container</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DResourceContainerImpl#getName
- * <em>Name</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DResourceContainerImpl#getPath
- * <em>Path</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DResourceContainerImpl#getMembers
- * <em>Members</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DResourceContainerImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DResourceContainerImpl#getPath <em>Path</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DResourceContainerImpl#getMembers <em>Members</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DResourceContainerImpl extends MinimalEObjectImpl.Container implements DResourceContainer {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -56,8 +52,8 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -66,8 +62,8 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
     protected String name = DResourceContainerImpl.NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getPath() <em>Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getPath()
      * @generated
@@ -76,8 +72,8 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
     protected static final String PATH_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getPath() <em>Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getPath()
      * @generated
@@ -86,9 +82,9 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
     protected String path = DResourceContainerImpl.PATH_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getMembers() <em>Members</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getMembers()
      * @generated
      * @ordered
@@ -97,7 +93,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DResourceContainerImpl() {
@@ -106,7 +102,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -116,7 +112,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +122,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -140,7 +136,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -150,7 +146,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -164,7 +160,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -177,7 +173,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -191,7 +187,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -209,7 +205,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -232,7 +228,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -253,7 +249,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -271,7 +267,7 @@ public class DResourceContainerImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -22,26 +22,23 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Cell Updater</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Cell Updater</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl#getDirectEdit
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl#getDirectEdit
  * <em>Direct Edit</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl#getCanEdit
- * <em>Can Edit</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl#getCanEdit <em>Can Edit</em>}
+ * </li>
  * </ul>
  *
  * @generated
  */
 public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements CellUpdater {
     /**
-     * The cached value of the '{@link #getDirectEdit() <em>Direct Edit</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getDirectEdit() <em>Direct Edit</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDirectEdit()
      * @generated
@@ -50,9 +47,9 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
     protected LabelEditTool directEdit;
 
     /**
-     * The default value of the '{@link #getCanEdit() <em>Can Edit</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getCanEdit() <em>Can Edit</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getCanEdit()
      * @generated
      * @ordered
@@ -60,9 +57,9 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
     protected static final String CAN_EDIT_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getCanEdit() <em>Can Edit</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getCanEdit() <em>Can Edit</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getCanEdit()
      * @generated
      * @ordered
@@ -71,7 +68,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CellUpdaterImpl() {
@@ -80,7 +77,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -90,7 +87,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +97,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetDirectEdit(LabelEditTool newDirectEdit, NotificationChain msgs) {
@@ -119,7 +116,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -143,7 +140,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -153,7 +150,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -167,7 +164,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -179,7 +176,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -191,7 +188,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -205,7 +202,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -221,7 +218,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -239,7 +236,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -257,7 +254,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -273,7 +270,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

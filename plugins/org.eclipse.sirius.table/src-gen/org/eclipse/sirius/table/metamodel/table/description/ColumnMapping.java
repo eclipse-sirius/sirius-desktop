@@ -11,19 +11,16 @@
 package org.eclipse.sirius.table.metamodel.table.description;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Column Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Column Mapping</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getHeaderLabelExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getHeaderLabelExpression
  * <em>Header Label Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getInitialWidth
- * <em>Initial Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getInitialWidth <em>Initial Width</em>}
+ * </li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getColumnMapping()
@@ -33,20 +30,17 @@ package org.eclipse.sirius.table.metamodel.table.description;
 public interface ColumnMapping extends TableMapping {
 
     /**
-     * Returns the value of the '<em><b>Header Label Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Header Label Expression</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Header Label Expression</em>' attribute isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Header Label Expression</em>' attribute isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Header Label Expression</em>' attribute.
      * @see #setHeaderLabelExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getColumnMapping_HeaderLabelExpression()
-     * @model dataType=
-     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation=
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
      * @generated
      */
@@ -55,23 +49,19 @@ public interface ColumnMapping extends TableMapping {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getHeaderLabelExpression
-     * <em>Header Label Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * <em>Header Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Header Label Expression</em>'
-     *            attribute.
+     *            the new value of the '<em>Header Label Expression</em>' attribute.
      * @see #getHeaderLabelExpression()
      * @generated
      */
     void setHeaderLabelExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Initial Width</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * initial width of the column (calculated if not available). <!--
-     * end-model-doc -->
-     *
+     * Returns the value of the '<em><b>Initial Width</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-model-doc --> The initial width of the column (calculated if not available). <!-- end-model-doc -->
+     * 
      * @return the value of the '<em>Initial Width</em>' attribute.
      * @see #setInitialWidth(int)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getColumnMapping_InitialWidth()
@@ -81,11 +71,9 @@ public interface ColumnMapping extends TableMapping {
     int getInitialWidth();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getInitialWidth
-     * <em>Initial Width</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getInitialWidth
+     * <em>Initial Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Initial Width</em>' attribute.
      * @see #getInitialWidth()

@@ -18,24 +18,21 @@ import org.eclipse.sirius.tree.description.TreeMapping;
 import org.eclipse.sirius.viewpoint.description.impl.RepresentationElementMappingImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Tree Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Tree Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeMappingImpl#getSemanticElements
- * <em>Semantic Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeMappingImpl#getSemanticElements <em>Semantic Elements</em>}
+ * </li>
  * </ul>
  *
  * @generated
  */
 public class TreeMappingImpl extends RepresentationElementMappingImpl implements TreeMapping {
     /**
-     * The default value of the '{@link #getSemanticElements()
-     * <em>Semantic Elements</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getSemanticElements() <em>Semantic Elements</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSemanticElements()
      * @generated
@@ -44,9 +41,8 @@ public class TreeMappingImpl extends RepresentationElementMappingImpl implements
     protected static final String SEMANTIC_ELEMENTS_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getSemanticElements()
-     * <em>Semantic Elements</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getSemanticElements() <em>Semantic Elements</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSemanticElements()
      * @generated
@@ -56,7 +52,7 @@ public class TreeMappingImpl extends RepresentationElementMappingImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TreeMappingImpl() {
@@ -65,7 +61,7 @@ public class TreeMappingImpl extends RepresentationElementMappingImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -75,7 +71,7 @@ public class TreeMappingImpl extends RepresentationElementMappingImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +81,7 @@ public class TreeMappingImpl extends RepresentationElementMappingImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +95,7 @@ public class TreeMappingImpl extends RepresentationElementMappingImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +109,7 @@ public class TreeMappingImpl extends RepresentationElementMappingImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -128,7 +124,7 @@ public class TreeMappingImpl extends RepresentationElementMappingImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -143,7 +139,7 @@ public class TreeMappingImpl extends RepresentationElementMappingImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -157,7 +153,7 @@ public class TreeMappingImpl extends RepresentationElementMappingImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

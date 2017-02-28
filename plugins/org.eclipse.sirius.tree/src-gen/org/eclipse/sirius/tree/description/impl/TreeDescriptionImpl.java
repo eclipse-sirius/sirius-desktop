@@ -35,53 +35,34 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Tree Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Tree Description</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getEndUserDocumentation
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getEndUserDocumentation
  * <em>End User Documentation</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getLabel
- * <em>Label</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getTitleExpression
- * <em>Title Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#isInitialisation
- * <em>Initialisation</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getMetamodel
- * <em>Metamodel</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#isShowOnStartup
- * <em>Show On Startup</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getSubItemMappings
- * <em>Sub Item Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getDropTools
- * <em>Drop Tools</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getDomainClass
- * <em>Domain Class</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getPreconditionExpression
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getTitleExpression <em>Title Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#isInitialisation <em>Initialisation</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getMetamodel <em>Metamodel</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#isShowOnStartup <em>Show On Startup</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getSubItemMappings <em>Sub Item Mappings</em>
+ * }</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getDropTools <em>Drop Tools</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getDomainClass <em>Domain Class</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getPreconditionExpression
  * <em>Precondition Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getCreateTreeItem
- * <em>Create Tree Item</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getOwnedRepresentationCreationDescriptions
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getCreateTreeItem <em>Create Tree Item</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getOwnedRepresentationCreationDescriptions
  * <em>Owned Representation Creation Descriptions</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getOwnedRepresentationNavigationDescriptions
+ * <li>{@link org.eclipse.sirius.tree.description.impl.TreeDescriptionImpl#getOwnedRepresentationNavigationDescriptions
  * <em>Owned Representation Navigation Descriptions</em>}</li>
  * </ul>
  *
@@ -89,9 +70,8 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  */
 public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDescription {
     /**
-     * The default value of the '{@link #getEndUserDocumentation()
-     * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getEndUserDocumentation() <em>End User Documentation</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getEndUserDocumentation()
      * @generated
@@ -100,9 +80,8 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected static final String END_USER_DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getEndUserDocumentation()
-     * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getEndUserDocumentation() <em>End User Documentation</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getEndUserDocumentation()
      * @generated
@@ -111,8 +90,8 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected String endUserDocumentation = TreeDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -121,8 +100,8 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -131,9 +110,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected String name = TreeDescriptionImpl.NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLabel()
      * @generated
      * @ordered
@@ -141,8 +120,8 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected static final String LABEL_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getLabel()
      * @generated
@@ -151,10 +130,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected String label = TreeDescriptionImpl.LABEL_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTitleExpression()
-     * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getTitleExpression() <em>Title Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -162,10 +140,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected static final String TITLE_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getTitleExpression()
-     * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getTitleExpression() <em>Title Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -173,10 +150,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected String titleExpression = TreeDescriptionImpl.TITLE_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isInitialisation()
-     * <em>Initialisation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #isInitialisation() <em>Initialisation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isInitialisation()
      * @generated
      * @ordered
@@ -184,10 +160,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected static final boolean INITIALISATION_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isInitialisation()
-     * <em>Initialisation</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #isInitialisation() <em>Initialisation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isInitialisation()
      * @generated
      * @ordered
@@ -195,9 +170,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected boolean initialisation = TreeDescriptionImpl.INITIALISATION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getMetamodel()
      * @generated
      * @ordered
@@ -205,10 +180,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected EList<EPackage> metamodel;
 
     /**
-     * The default value of the '{@link #isShowOnStartup()
-     * <em>Show On Startup</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #isShowOnStartup() <em>Show On Startup</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isShowOnStartup()
      * @generated
      * @ordered
@@ -216,10 +190,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected static final boolean SHOW_ON_STARTUP_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isShowOnStartup()
-     * <em>Show On Startup</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #isShowOnStartup() <em>Show On Startup</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #isShowOnStartup()
      * @generated
      * @ordered
@@ -227,10 +200,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected boolean showOnStartup = TreeDescriptionImpl.SHOW_ON_STARTUP_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getSubItemMappings()
-     * <em>Sub Item Mappings</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getSubItemMappings() <em>Sub Item Mappings</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getSubItemMappings()
      * @generated
      * @ordered
@@ -238,8 +210,8 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected EList<TreeItemMapping> subItemMappings;
 
     /**
-     * The cached value of the '{@link #getDropTools() <em>Drop Tools</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getDropTools() <em>Drop Tools</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDropTools()
      * @generated
@@ -248,9 +220,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected EList<TreeItemContainerDropTool> dropTools;
 
     /**
-     * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -258,9 +230,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected static final String DOMAIN_CLASS_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -268,9 +240,8 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected String domainClass = TreeDescriptionImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getPreconditionExpression()
-     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getPreconditionExpression() <em>Precondition Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPreconditionExpression()
      * @generated
@@ -279,9 +250,8 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected static final String PRECONDITION_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getPreconditionExpression()
-     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getPreconditionExpression() <em>Precondition Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPreconditionExpression()
      * @generated
@@ -290,8 +260,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected String preconditionExpression = TreeDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getCreateTreeItem()
-     * <em>Create Tree Item</em>}' containment reference list. <!--
+     * The cached value of the '{@link #getCreateTreeItem() <em>Create Tree Item</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCreateTreeItem()
@@ -301,11 +270,10 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected EList<TreeItemCreationTool> createTreeItem;
 
     /**
-     * The cached value of the '
-     * {@link #getOwnedRepresentationCreationDescriptions()
-     * <em>Owned Representation Creation Descriptions</em>}' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedRepresentationCreationDescriptions()
+     * <em>Owned Representation Creation Descriptions</em>}' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getOwnedRepresentationCreationDescriptions()
      * @generated
      * @ordered
@@ -313,11 +281,10 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     protected EList<RepresentationCreationDescription> ownedRepresentationCreationDescriptions;
 
     /**
-     * The cached value of the '
-     * {@link #getOwnedRepresentationNavigationDescriptions()
-     * <em>Owned Representation Navigation Descriptions</em>}' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOwnedRepresentationNavigationDescriptions()
+     * <em>Owned Representation Navigation Descriptions</em>}' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getOwnedRepresentationNavigationDescriptions()
      * @generated
      * @ordered
@@ -326,7 +293,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TreeDescriptionImpl() {
@@ -335,7 +302,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -345,7 +312,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -355,7 +322,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -369,7 +336,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -379,7 +346,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -393,7 +360,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -403,7 +370,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -417,7 +384,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -427,7 +394,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -441,7 +408,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -451,7 +418,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -465,7 +432,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -478,7 +445,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -488,7 +455,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -502,7 +469,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -512,7 +479,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -526,7 +493,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -536,7 +503,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -550,7 +517,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -563,7 +530,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -576,7 +543,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -589,7 +556,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -603,7 +570,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -617,7 +584,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -639,7 +606,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -679,7 +646,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -740,7 +707,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -794,7 +761,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -834,7 +801,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -872,7 +839,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -910,7 +877,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

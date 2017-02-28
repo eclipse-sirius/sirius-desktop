@@ -14,11 +14,10 @@ package org.eclipse.sirius.viewpoint.description.audit;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Information Section</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Information Section</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> The section that displays informations about the
- * selected element. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> The section that displays informations about the selected element. <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.sirius.viewpoint.description.audit.AuditPackage#getInformationSection()
@@ -27,8 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface InformationSection extends EObject {
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Return the content of the section.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Return the content of the section.
      *
      * @param eObj
      *            The selected element. <!-- end-model-doc -->

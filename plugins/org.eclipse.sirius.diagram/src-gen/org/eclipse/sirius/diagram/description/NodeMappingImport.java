@@ -14,20 +14,18 @@ package org.eclipse.sirius.diagram.description;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Node Mapping Import</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Node Mapping Import</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> Ease the reuse of existing mappings. If the feature
- * is not defined in this instance it will re-use the feature value of the
- * imported one. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> Ease the reuse of existing mappings. If the feature is not defined in this instance it will
+ * re-use the feature value of the imported one. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.NodeMappingImport#getImportedMapping
- * <em>Imported Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.NodeMappingImport#getImportedMapping <em>Imported Mapping</em>}
+ * </li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getNodeMappingImport()
@@ -36,10 +34,9 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
  */
 public interface NodeMappingImport extends NodeMapping, AbstractMappingImport {
     /**
-     * Returns the value of the '<em><b>Imported Mapping</b></em>' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The imported mapping used to define default values for the current
-     * mapping. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Imported Mapping</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> The imported mapping used to define default values for the current mapping. <!--
+     * end-model-doc -->
      *
      * @return the value of the '<em>Imported Mapping</em>' reference.
      * @see #setImportedMapping(NodeMapping)
@@ -50,11 +47,9 @@ public interface NodeMappingImport extends NodeMapping, AbstractMappingImport {
     NodeMapping getImportedMapping();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.NodeMappingImport#getImportedMapping
-     * <em>Imported Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.NodeMappingImport#getImportedMapping
+     * <em>Imported Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Imported Mapping</em>' reference.
      * @see #getImportedMapping()

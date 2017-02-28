@@ -14,16 +14,14 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Tree Item Creation Tool</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Tree Item Creation Tool</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemCreationTool#getMapping
- * <em>Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemCreationTool#getMapping <em>Mapping</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemCreationTool()
@@ -32,16 +30,14 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  */
 public interface TreeItemCreationTool extends TreeItemTool, MappingBasedToolDescription {
     /**
-     * Returns the value of the '<em><b>Mapping</b></em>' reference list. The
-     * list contents are of type
-     * {@link org.eclipse.sirius.tree.description.TreeItemMapping}. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Mapping</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.tree.description.TreeItemMapping}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Mapping</em>' reference list isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Mapping</em>' reference list isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Mapping</em>' reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemCreationTool_Mapping()
      * @model

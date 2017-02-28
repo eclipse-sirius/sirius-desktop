@@ -21,17 +21,14 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Dot</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Dot</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DotImpl#getStrokeSizeComputationExpression
+ * <li>{@link org.eclipse.sirius.diagram.impl.DotImpl#getStrokeSizeComputationExpression
  * <em>Stroke Size Computation Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DotImpl#getBackgroundColor
- * <em>Background Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DotImpl#getBackgroundColor <em>Background Color</em>}</li>
  * </ul>
  *
  * @generated
@@ -39,9 +36,8 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 public class DotImpl extends NodeStyleImpl implements Dot {
     /**
      * The default value of the '{@link #getStrokeSizeComputationExpression()
-     * <em>Stroke Size Computation Expression</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * <em>Stroke Size Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getStrokeSizeComputationExpression()
      * @generated
      * @ordered
@@ -49,10 +45,9 @@ public class DotImpl extends NodeStyleImpl implements Dot {
     protected static final String STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "2"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getStrokeSizeComputationExpression()
-     * <em>Stroke Size Computation Expression</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStrokeSizeComputationExpression() <em>Stroke Size Computation Expression</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getStrokeSizeComputationExpression()
      * @generated
      * @ordered
@@ -60,10 +55,9 @@ public class DotImpl extends NodeStyleImpl implements Dot {
     protected String strokeSizeComputationExpression = DotImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -71,10 +65,9 @@ public class DotImpl extends NodeStyleImpl implements Dot {
     protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "136,136,136"); //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -83,7 +76,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DotImpl() {
@@ -92,7 +85,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -102,7 +95,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +105,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +119,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -136,7 +129,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -150,7 +143,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -166,7 +159,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -184,7 +177,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -202,7 +195,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -219,7 +212,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

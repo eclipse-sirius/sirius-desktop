@@ -18,8 +18,8 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '
- * <em><b>Alignment Kind</b></em>', and utility methods for working with them.
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration ' <em><b>Alignment Kind</b></em>', and
+ * utility methods for working with them.
  * <p>
  * There are three kinds of alignment :
  * <ul>
@@ -60,8 +60,7 @@ import org.eclipse.emf.common.util.Enumerator;
  *
  * </ul>
  * </p>
- * <!-- end-user-doc --> <!-- begin-model-doc --> Possible alignments of gauges.
- * <!-- end-model-doc -->
+ * <!-- end-user-doc --> <!-- begin-model-doc --> Possible alignments of gauges. <!-- end-model-doc -->
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getAlignmentKind()
  * @model
@@ -69,9 +68,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum AlignmentKind implements Enumerator {
     /**
-     * The '<em><b>VERTICAL</b></em>' literal object. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The '<em><b>VERTICAL</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #VERTICAL
      * @generated
      * @ordered
@@ -79,9 +77,8 @@ public enum AlignmentKind implements Enumerator {
     VERTICAL_LITERAL(0, "VERTICAL", "VERTICAL"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>HORIZONTAL</b></em>' literal object. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * The '<em><b>HORIZONTAL</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #HORIZONTAL
      * @generated
      * @ordered
@@ -89,9 +86,8 @@ public enum AlignmentKind implements Enumerator {
     HORIZONTAL_LITERAL(1, "HORIZONTAL", "HORIZONTAL"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>SQUARE</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The '<em><b>SQUARE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #SQUARE
      * @generated
      * @ordered
@@ -101,11 +97,11 @@ public enum AlignmentKind implements Enumerator {
     /**
      * The '<em><b>VERTICAL</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>VERTICAL</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>VERTICAL</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #VERTICAL_LITERAL
      * @model
      * @generated
@@ -116,11 +112,11 @@ public enum AlignmentKind implements Enumerator {
     /**
      * The '<em><b>HORIZONTAL</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>HORIZONTAL</b></em>' literal object isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of '<em><b>HORIZONTAL</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #HORIZONTAL_LITERAL
      * @model
      * @generated
@@ -131,11 +127,11 @@ public enum AlignmentKind implements Enumerator {
     /**
      * The '<em><b>SQUARE</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>SQUARE</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of '<em><b>SQUARE</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #SQUARE_LITERAL
      * @model
      * @generated
@@ -144,25 +140,24 @@ public enum AlignmentKind implements Enumerator {
     public static final int SQUARE = 2;
 
     /**
-     * An array of all the '<em><b>Alignment Kind</b></em>' enumerators. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * An array of all the '<em><b>Alignment Kind</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private static final AlignmentKind[] VALUES_ARRAY = new AlignmentKind[] { VERTICAL_LITERAL, HORIZONTAL_LITERAL, SQUARE_LITERAL, };
 
     /**
-     * A public read-only list of all the '<em><b>Alignment Kind</b></em>'
-     * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * A public read-only list of all the '<em><b>Alignment Kind</b></em>' enumerators. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public static final List<AlignmentKind> VALUES = Collections.unmodifiableList(Arrays.asList(AlignmentKind.VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>Alignment Kind</b></em>' literal with the specified
-     * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Alignment Kind</b></em>' literal with the specified literal value. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -178,9 +173,9 @@ public enum AlignmentKind implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Alignment Kind</b></em>' literal with the specified
-     * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Alignment Kind</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param name
      *            the name.
      * @return the matching enumerator or <code>null</code>.
@@ -196,9 +191,9 @@ public enum AlignmentKind implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Alignment Kind</b></em>' literal with the specified
-     * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Alignment Kind</b></em>' literal with the specified integer value. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -218,29 +213,28 @@ public enum AlignmentKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
 
     /**
-     * Only this class can construct instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private AlignmentKind(int value, String name, String literal) {
@@ -251,7 +245,7 @@ public enum AlignmentKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -261,7 +255,7 @@ public enum AlignmentKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -271,7 +265,7 @@ public enum AlignmentKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -280,9 +274,9 @@ public enum AlignmentKind implements Enumerator {
     }
 
     /**
-     * Returns the literal value of the enumerator, which is its string
-     * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override

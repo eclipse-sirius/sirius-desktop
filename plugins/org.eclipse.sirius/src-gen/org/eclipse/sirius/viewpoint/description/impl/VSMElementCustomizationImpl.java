@@ -27,17 +27,15 @@ import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
 import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>VSM Element Customization</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>VSM Element Customization</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.VSMElementCustomizationImpl#getPredicateExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.VSMElementCustomizationImpl#getPredicateExpression
  * <em>Predicate Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.VSMElementCustomizationImpl#getFeatureCustomizations
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.VSMElementCustomizationImpl#getFeatureCustomizations
  * <em>Feature Customizations</em>}</li>
  * </ul>
  *
@@ -45,9 +43,8 @@ import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
  */
 public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container implements VSMElementCustomization {
     /**
-     * The default value of the '{@link #getPredicateExpression()
-     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getPredicateExpression() <em>Predicate Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPredicateExpression()
      * @generated
@@ -56,9 +53,8 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
     protected static final String PREDICATE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getPredicateExpression()
-     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getPredicateExpression() <em>Predicate Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPredicateExpression()
      * @generated
@@ -67,10 +63,9 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
     protected String predicateExpression = VSMElementCustomizationImpl.PREDICATE_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getFeatureCustomizations()
-     * <em>Feature Customizations</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFeatureCustomizations() <em>Feature Customizations</em>}' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFeatureCustomizations()
      * @generated
      * @ordered
@@ -79,7 +74,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected VSMElementCustomizationImpl() {
@@ -88,7 +83,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +93,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +103,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -122,7 +117,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -136,7 +131,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -150,7 +145,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -166,7 +161,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -186,7 +181,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -204,7 +199,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -221,7 +216,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

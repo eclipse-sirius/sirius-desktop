@@ -14,15 +14,14 @@ package org.eclipse.sirius.viewpoint.description;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Conditional Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Conditional Style Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription#getPredicateExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription#getPredicateExpression
  * <em>Predicate Expression</em>}</li>
  * </ul>
  *
@@ -32,19 +31,15 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ConditionalStyleDescription extends EObject {
     /**
-     * Returns the value of the '<em><b>Predicate Expression</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> This expression will get evaluated and if it returns
-     * true the contained style will be choosen. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Predicate Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> This expression will get evaluated and if it returns true the contained
+     * style will be choosen. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Predicate Expression</em>' attribute.
      * @see #setPredicateExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getConditionalStyleDescription_PredicateExpression()
-     * @model dataType=
-     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        required="true" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
-     *        annotation=
+     * @model dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true" annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='ecore.EObject | the current view.' container='ecore.EObject | the semantic container.'"
      * @generated
      */
@@ -53,12 +48,10 @@ public interface ConditionalStyleDescription extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription#getPredicateExpression
-     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Predicate Expression</em>'
-     *            attribute.
+     *            the new value of the '<em>Predicate Expression</em>' attribute.
      * @see #getPredicateExpression()
      * @generated
      */
@@ -66,7 +59,7 @@ public interface ConditionalStyleDescription extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @model
      * @generated
      */

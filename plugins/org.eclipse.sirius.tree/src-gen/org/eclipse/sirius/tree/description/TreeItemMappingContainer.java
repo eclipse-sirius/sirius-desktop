@@ -14,19 +14,16 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Tree Item Mapping Container</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Tree Item Mapping Container</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemMappingContainer#getSubItemMappings
- * <em>Sub Item Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemMappingContainer#getDropTools
- * <em>Drop Tools</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMappingContainer#getSubItemMappings <em>Sub Item Mappings</em>
+ * }</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMappingContainer#getDropTools <em>Drop Tools</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMappingContainer()
@@ -35,18 +32,15 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface TreeItemMappingContainer extends EObject {
     /**
-     * Returns the value of the '<em><b>Sub Item Mappings</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.tree.description.TreeItemMapping}. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Sub Item Mappings</b></em>' containment reference list. The list contents are of
+     * type {@link org.eclipse.sirius.tree.description.TreeItemMapping}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Sub Item Mappings</em>' containment reference
-     * list isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Sub Item Mappings</em>' containment reference list isn't clear, there really should be
+     * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Sub Item Mappings</em>' containment
-     *         reference list.
+     * 
+     * @return the value of the '<em>Sub Item Mappings</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMappingContainer_SubItemMappings()
      * @model containment="true" keys="name"
      * @generated
@@ -54,18 +48,15 @@ public interface TreeItemMappingContainer extends EObject {
     EList<TreeItemMapping> getSubItemMappings();
 
     /**
-     * Returns the value of the '<em><b>Drop Tools</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Drop Tools</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Drop Tools</em>' containment reference list
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Drop Tools</em>' containment reference list isn't clear, there really should be more
+     * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Drop Tools</em>' containment reference
-     *         list.
+     * 
+     * @return the value of the '<em>Drop Tools</em>' containment reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMappingContainer_DropTools()
      * @model containment="true"
      * @generated

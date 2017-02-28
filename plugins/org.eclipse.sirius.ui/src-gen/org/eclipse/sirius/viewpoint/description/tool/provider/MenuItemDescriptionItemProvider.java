@@ -27,17 +27,15 @@ import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription}
+ * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public MenuItemDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -45,9 +43,8 @@ public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItem
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -61,9 +58,8 @@ public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItem
     }
 
     /**
-     * This adds a property descriptor for the Icon feature. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Icon feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addIconPropertyDescriptor(Object object) {
@@ -75,8 +71,7 @@ public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItem
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -87,10 +82,9 @@ public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItem
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -107,10 +101,9 @@ public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItem
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

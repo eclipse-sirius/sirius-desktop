@@ -16,21 +16,18 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Edge Mapping Import</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Edge Mapping Import</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.EdgeMappingImport#getImportedMapping
- * <em>Imported Mapping</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.EdgeMappingImport#getConditionnalStyles
+ * <li>{@link org.eclipse.sirius.diagram.description.EdgeMappingImport#getImportedMapping <em>Imported Mapping</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.description.EdgeMappingImport#getConditionnalStyles
  * <em>Conditionnal Styles</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.EdgeMappingImport#isInheritsAncestorFilters
+ * <li>{@link org.eclipse.sirius.diagram.description.EdgeMappingImport#isInheritsAncestorFilters
  * <em>Inherits Ancestor Filters</em>}</li>
  * </ul>
  *
@@ -40,10 +37,9 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  */
 public interface EdgeMappingImport extends DocumentedElement, IEdgeMapping, IdentifiedElement {
     /**
-     * Returns the value of the '<em><b>Imported Mapping</b></em>' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The imported mapping used to define default values for the current
-     * mapping. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Imported Mapping</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> The imported mapping used to define default values for the current mapping. <!--
+     * end-model-doc -->
      *
      * @return the value of the '<em>Imported Mapping</em>' reference.
      * @see #setImportedMapping(IEdgeMapping)
@@ -54,11 +50,9 @@ public interface EdgeMappingImport extends DocumentedElement, IEdgeMapping, Iden
     IEdgeMapping getImportedMapping();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.EdgeMappingImport#getImportedMapping
-     * <em>Imported Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.EdgeMappingImport#getImportedMapping
+     * <em>Imported Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Imported Mapping</em>' reference.
      * @see #getImportedMapping()
@@ -67,14 +61,11 @@ public interface EdgeMappingImport extends DocumentedElement, IEdgeMapping, Iden
     void setImportedMapping(IEdgeMapping value);
 
     /**
-     * Returns the value of the '<em><b>Conditionnal Styles</b></em>'
-     * containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * All conditional styles. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Conditionnal Styles</b></em>' containment reference list. The list contents are
+     * of type {@link org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription} . <!-- begin-user-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> All conditional styles. <!-- end-model-doc -->
      *
-     * @return the value of the '<em>Conditionnal Styles</em>' containment
-     *         reference list.
+     * @return the value of the '<em>Conditionnal Styles</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMappingImport_ConditionnalStyles()
      * @model containment="true" resolveProxies="true"
      * @generated
@@ -82,11 +73,9 @@ public interface EdgeMappingImport extends DocumentedElement, IEdgeMapping, Iden
     EList<ConditionalEdgeStyleDescription> getConditionnalStyles();
 
     /**
-     * Returns the value of the '<em><b>Inherits Ancestor Filters</b></em>'
-     * attribute. The default value is <code>"true"</code>. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> Set to true if you
-     * want the filters applying on the imported mappings apply on this one.
-     * <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Inherits Ancestor Filters</b></em>' attribute. The default value is
+     * <code>"true"</code>. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Set to true if you
+     * want the filters applying on the imported mappings apply on this one. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Inherits Ancestor Filters</em>' attribute.
      * @see #setInheritsAncestorFilters(boolean)
@@ -97,14 +86,11 @@ public interface EdgeMappingImport extends DocumentedElement, IEdgeMapping, Iden
     boolean isInheritsAncestorFilters();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.EdgeMappingImport#isInheritsAncestorFilters
-     * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.description.EdgeMappingImport#isInheritsAncestorFilters
+     * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Inherits Ancestor Filters</em>'
-     *            attribute.
+     *            the new value of the '<em>Inherits Ancestor Filters</em>' attribute.
      * @see #isInheritsAncestorFilters()
      * @generated
      */

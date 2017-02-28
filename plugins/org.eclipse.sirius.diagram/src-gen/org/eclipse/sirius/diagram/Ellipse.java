@@ -14,20 +14,16 @@ package org.eclipse.sirius.diagram;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Ellipse</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Ellipse</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> The ellipse style to display a node as an ellipse.
- * <!-- end-model-doc -->
+ * <!-- begin-model-doc --> The ellipse style to display a node as an ellipse. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.Ellipse#getHorizontalDiameter
- * <em>Horizontal Diameter</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.Ellipse#getVerticalDiameter
- * <em>Vertical Diameter</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.Ellipse#getHorizontalDiameter <em>Horizontal Diameter</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.Ellipse#getVerticalDiameter <em>Vertical Diameter</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.Ellipse#getColor <em>Color</em>}</li>
  * </ul>
  *
@@ -37,10 +33,9 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  */
 public interface Ellipse extends NodeStyle {
     /**
-     * Returns the value of the '<em><b>Horizontal Diameter</b></em>' attribute.
-     * The default value is <code>"0"</code>. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> The horizontal diameter size of
-     * the ellipse. (Semimajor axis) <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Horizontal Diameter</b></em>' attribute. The default value is <code>"0"</code>.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The horizontal diameter size of the
+     * ellipse. (Semimajor axis) <!-- end-model-doc -->
      *
      * @return the value of the '<em>Horizontal Diameter</em>' attribute.
      * @see #setHorizontalDiameter(Integer)
@@ -51,11 +46,9 @@ public interface Ellipse extends NodeStyle {
     Integer getHorizontalDiameter();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.Ellipse#getHorizontalDiameter
-     * <em>Horizontal Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.Ellipse#getHorizontalDiameter
+     * <em>Horizontal Diameter</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Horizontal Diameter</em>' attribute.
      * @see #getHorizontalDiameter()
@@ -64,10 +57,9 @@ public interface Ellipse extends NodeStyle {
     void setHorizontalDiameter(Integer value);
 
     /**
-     * Returns the value of the '<em><b>Vertical Diameter</b></em>' attribute.
-     * The default value is <code>"0"</code>. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> The vertical diameter of the
-     * ellipse. (Semiminor axis) <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Vertical Diameter</b></em>' attribute. The default value is <code>"0"</code>.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The vertical diameter of the ellipse.
+     * (Semiminor axis) <!-- end-model-doc -->
      *
      * @return the value of the '<em>Vertical Diameter</em>' attribute.
      * @see #setVerticalDiameter(Integer)
@@ -78,11 +70,9 @@ public interface Ellipse extends NodeStyle {
     Integer getVerticalDiameter();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.Ellipse#getVerticalDiameter
-     * <em>Vertical Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.Ellipse#getVerticalDiameter <em>Vertical Diameter</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Vertical Diameter</em>' attribute.
      * @see #getVerticalDiameter()
@@ -91,25 +81,25 @@ public interface Ellipse extends NodeStyle {
     void setVerticalDiameter(Integer value);
 
     /**
-     * Returns the value of the '<em><b>Color</b></em>' attribute. <!--
+     * Returns the value of the '<em><b>Color</b></em>' attribute. The default value is <code>"136,136,136"</code>. <!--
      * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Color</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Color</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Color</em>' attribute.
      * @see #setColor(RGBValues)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getEllipse_Color()
-     * @model dataType="org.eclipse.sirius.viewpoint.RGBValues"
+     * @model default="136,136,136" dataType="org.eclipse.sirius.viewpoint.RGBValues"
      * @generated
      */
     RGBValues getColor();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.diagram.Ellipse#getColor
-     * <em>Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.Ellipse#getColor <em>Color</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Color</em>' attribute.

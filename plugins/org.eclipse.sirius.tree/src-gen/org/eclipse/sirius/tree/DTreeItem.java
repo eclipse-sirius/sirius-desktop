@@ -15,25 +15,18 @@ import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.tree.description.TreeItemUpdater;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DTree Item</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DTree Item</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.tree.DTreeItem#getOwnedStyle
- * <em>Owned Style</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.DTreeItem#getActualMapping
- * <em>Actual Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.DTreeItem#getContainer <em>Container</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.tree.DTreeItem#getStyleUpdater
- * <em>Style Updater</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.DTreeItem#getUpdater <em>Updater</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItem#getOwnedStyle <em>Owned Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItem#getActualMapping <em>Actual Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItem#getContainer <em>Container</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItem#getStyleUpdater <em>Style Updater</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItem#getUpdater <em>Updater</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem()
@@ -42,14 +35,13 @@ import org.eclipse.sirius.tree.description.TreeItemUpdater;
  */
 public interface DTreeItem extends DTreeItemContainer, DTreeElement {
     /**
-     * Returns the value of the '<em><b>Expanded</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Expanded</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Expanded</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Expanded</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Expanded</em>' attribute.
      * @see #setExpanded(boolean)
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem_Expanded()
@@ -59,9 +51,8 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
     boolean isExpanded();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Expanded</em>' attribute.
@@ -71,14 +62,13 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
     void setExpanded(boolean value);
 
     /**
-     * Returns the value of the '<em><b>Owned Style</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Owned Style</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Owned Style</em>' containment reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Owned Style</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Owned Style</em>' containment reference.
      * @see #setOwnedStyle(TreeItemStyle)
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem_OwnedStyle()
@@ -88,28 +78,24 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
     TreeItemStyle getOwnedStyle();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.DTreeItem#getOwnedStyle
-     * <em>Owned Style</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.tree.DTreeItem#getOwnedStyle <em>Owned Style</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Owned Style</em>' containment
-     *            reference.
+     *            the new value of the '<em>Owned Style</em>' containment reference.
      * @see #getOwnedStyle()
      * @generated
      */
     void setOwnedStyle(TreeItemStyle value);
 
     /**
-     * Returns the value of the '<em><b>Actual Mapping</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Actual Mapping</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Actual Mapping</em>' reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Actual Mapping</em>' reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Actual Mapping</em>' reference.
      * @see #setActualMapping(TreeItemMapping)
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem_ActualMapping()
@@ -119,11 +105,9 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
     TreeItemMapping getActualMapping();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.DTreeItem#getActualMapping
-     * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.tree.DTreeItem#getActualMapping <em>Actual Mapping</em>}'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Actual Mapping</em>' reference.
      * @see #getActualMapping()
@@ -132,13 +116,12 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
     void setActualMapping(TreeItemMapping value);
 
     /**
-     * Returns the value of the '<em><b>Container</b></em>' container reference.
-     * It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.tree.DTreeItemContainer#getOwnedTreeItems
-     * <em>Owned Tree Items</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Container</b></em>' container reference. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.tree.DTreeItemContainer#getOwnedTreeItems <em>Owned Tree Items</em>}'. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Container</em>' container reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Container</em>' container reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -152,10 +135,9 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
     DTreeItemContainer getContainer();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.DTreeItem#getContainer <em>Container</em>}
-     * ' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.tree.DTreeItem#getContainer <em>Container</em>}' container
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Container</em>' container reference.
      * @see #getContainer()
@@ -164,14 +146,13 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
     void setContainer(DTreeItemContainer value);
 
     /**
-     * Returns the value of the '<em><b>Style Updater</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Style Updater</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Style Updater</em>' reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Style Updater</em>' reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Style Updater</em>' reference.
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem_StyleUpdater()
      * @model transient="true" changeable="false" volatile="true"
@@ -180,14 +161,13 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
     StyleUpdater getStyleUpdater();
 
     /**
-     * Returns the value of the '<em><b>Updater</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Updater</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Updater</em>' reference isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Updater</em>' reference isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Updater</em>' reference.
      * @see #setUpdater(TreeItemUpdater)
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem_Updater()
@@ -197,9 +177,8 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
     TreeItemUpdater getUpdater();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.DTreeItem#getUpdater <em>Updater</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.tree.DTreeItem#getUpdater <em>Updater</em>}' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Updater</em>' reference.

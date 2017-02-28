@@ -22,24 +22,23 @@ import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.impl.ConditionalStyleDescriptionImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Conditional Node Style Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Conditional Node Style Description</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.impl.ConditionalNodeStyleDescriptionImpl#getStyle
- * <em>Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.ConditionalNodeStyleDescriptionImpl#getStyle <em>Style</em>}
+ * </li>
  * </ul>
  *
  * @generated
  */
 public class ConditionalNodeStyleDescriptionImpl extends ConditionalStyleDescriptionImpl implements ConditionalNodeStyleDescription {
     /**
-     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -48,7 +47,7 @@ public class ConditionalNodeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ConditionalNodeStyleDescriptionImpl() {
@@ -57,7 +56,7 @@ public class ConditionalNodeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -67,7 +66,7 @@ public class ConditionalNodeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -94,7 +93,7 @@ public class ConditionalNodeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NodeStyleDescription basicGetStyle() {
@@ -103,7 +102,7 @@ public class ConditionalNodeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(NodeStyleDescription newStyle, NotificationChain msgs) {
@@ -122,7 +121,7 @@ public class ConditionalNodeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +145,7 @@ public class ConditionalNodeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -160,7 +159,7 @@ public class ConditionalNodeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -177,7 +176,7 @@ public class ConditionalNodeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -192,7 +191,7 @@ public class ConditionalNodeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -207,7 +206,7 @@ public class ConditionalNodeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

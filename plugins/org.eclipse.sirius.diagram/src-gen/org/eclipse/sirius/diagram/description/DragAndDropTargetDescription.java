@@ -16,18 +16,17 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Drag And Drop Target Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Drag And Drop Target Description</b></em>'.
+ * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> A DragAndDropTargetDescription is a Description or
- * Mapping that can have many DropTools <!-- end-model-doc -->
+ * <!-- begin-model-doc --> A DragAndDropTargetDescription is a Description or Mapping that can have many DropTools <!--
+ * end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.DragAndDropTargetDescription#getDropDescriptions
+ * <li>{@link org.eclipse.sirius.diagram.description.DragAndDropTargetDescription#getDropDescriptions
  * <em>Drop Descriptions</em>}</li>
  * </ul>
  *
@@ -37,16 +36,14 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
  */
 public interface DragAndDropTargetDescription extends EObject {
     /**
-     * Returns the value of the '<em><b>Drop Descriptions</b></em>' reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Drop Descriptions</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Drop Descriptions</em>' reference list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Drop Descriptions</em>' reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Drop Descriptions</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDragAndDropTargetDescription_DropDescriptions()
      * @model

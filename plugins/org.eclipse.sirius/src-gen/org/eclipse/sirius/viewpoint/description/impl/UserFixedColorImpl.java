@@ -19,23 +19,21 @@ import org.eclipse.sirius.viewpoint.description.UserColor;
 import org.eclipse.sirius.viewpoint.description.UserFixedColor;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>User Fixed Color</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>User Fixed Color</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.UserFixedColorImpl#getName
- * <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.UserFixedColorImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor {
     /**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -44,8 +42,8 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
     protected static final String NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getName()
      * @generated
@@ -55,7 +53,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected UserFixedColorImpl() {
@@ -64,7 +62,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -74,7 +72,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -84,7 +82,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +96,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +110,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +125,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -142,7 +140,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +154,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -174,7 +172,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -192,7 +190,7 @@ public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

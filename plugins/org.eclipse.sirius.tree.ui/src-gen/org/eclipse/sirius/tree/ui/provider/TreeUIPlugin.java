@@ -46,24 +46,21 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import com.google.common.collect.Maps;
 
 /**
- * This is the central singleton for the Tree edit plugin. <!-- begin-user-doc
- * --> <!-- end-user-doc -->
- *
+ * This is the central singleton for the Tree edit plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public final class TreeUIPlugin extends EMFPlugin {
     /**
-     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static final TreeUIPlugin INSTANCE = new TreeUIPlugin();
 
     /**
-     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private static Implementation plugin;
@@ -80,7 +77,7 @@ public final class TreeUIPlugin extends EMFPlugin {
 
     /**
      * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public TreeUIPlugin() {
@@ -88,9 +85,8 @@ public final class TreeUIPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the singleton instance.
      * @generated
      */
@@ -100,9 +96,8 @@ public final class TreeUIPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the singleton instance.
      * @generated
      */
@@ -125,14 +120,12 @@ public final class TreeUIPlugin extends EMFPlugin {
     }
 
     /**
-     * Respects images residing in any plug-in. If path is relative, then this
-     * bundle is looked up for the image, otherwise, for absolute path, first
-     * segment is taken as id of plug-in with image
+     * Respects images residing in any plug-in. If path is relative, then this bundle is looked up for the image,
+     * otherwise, for absolute path, first segment is taken as id of plug-in with image
      *
      * @not-generated
      * @param path
-     *            the path to image, either absolute (with plug-in id as first
-     *            segment), or relative for bundled images
+     *            the path to image, either absolute (with plug-in id as first segment), or relative for bundled images
      * @return the image descriptor
      */
     public static ImageDescriptor findImageDescriptor(String path) {
@@ -163,8 +156,7 @@ public final class TreeUIPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns an image descriptor for the image file at the given plug-in
-     * relative path.
+     * Returns an image descriptor for the image file at the given plug-in relative path.
      *
      * @not-generated
      * @param path
@@ -176,9 +168,8 @@ public final class TreeUIPlugin extends EMFPlugin {
     }
 
     /**
-     * The actual implementation of the Eclipse <b>Plugin</b>. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The actual implementation of the Eclipse <b>Plugin</b>. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static class Implementation extends EclipsePlugin {
@@ -186,7 +177,7 @@ public final class TreeUIPlugin extends EMFPlugin {
 
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         public Implementation() {

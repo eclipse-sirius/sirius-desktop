@@ -19,24 +19,22 @@ import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Fill Layout Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Fill Layout Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.FillLayoutDescriptionImpl#getOrientation
- * <em>Orientation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.FillLayoutDescriptionImpl#getOrientation <em>Orientation</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class FillLayoutDescriptionImpl extends LayoutDescriptionImpl implements FillLayoutDescription {
     /**
-     * The default value of the '{@link #getOrientation() <em>Orientation</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getOrientation() <em>Orientation</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getOrientation()
      * @generated
      * @ordered
@@ -44,9 +42,9 @@ public class FillLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
     protected static final FILL_LAYOUT_ORIENTATION ORIENTATION_EDEFAULT = FILL_LAYOUT_ORIENTATION.VERTICAL;
 
     /**
-     * The cached value of the '{@link #getOrientation() <em>Orientation</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getOrientation() <em>Orientation</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getOrientation()
      * @generated
      * @ordered
@@ -55,7 +53,7 @@ public class FillLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected FillLayoutDescriptionImpl() {
@@ -64,7 +62,7 @@ public class FillLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -74,7 +72,7 @@ public class FillLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -84,7 +82,7 @@ public class FillLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +96,7 @@ public class FillLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +110,7 @@ public class FillLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +125,7 @@ public class FillLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -142,7 +140,7 @@ public class FillLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +154,7 @@ public class FillLayoutDescriptionImpl extends LayoutDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

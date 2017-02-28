@@ -27,27 +27,22 @@ import org.eclipse.sirius.viewpoint.description.tool.Switch;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Switch</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Switch</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SwitchImpl#getCases
- * <em>Cases</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SwitchImpl#getDefault
- * <em>Default</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.SwitchImpl#getCases <em>Cases</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.SwitchImpl#getDefault <em>Default</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SwitchImpl extends ModelOperationImpl implements Switch {
     /**
-     * The cached value of the '{@link #getCases() <em>Cases</em>}' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getCases() <em>Cases</em>}' containment reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getCases()
      * @generated
      * @ordered
@@ -55,9 +50,9 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
     protected EList<Case> cases;
 
     /**
-     * The cached value of the '{@link #getDefault() <em>Default</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getDefault() <em>Default</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getDefault()
      * @generated
      * @ordered
@@ -66,7 +61,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SwitchImpl() {
@@ -75,7 +70,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +80,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +93,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +120,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public Default basicGetDefault() {
@@ -134,7 +129,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetDefault(Default newDefault, NotificationChain msgs) {
@@ -153,7 +148,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -177,7 +172,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +188,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +207,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -232,7 +227,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -250,7 +245,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

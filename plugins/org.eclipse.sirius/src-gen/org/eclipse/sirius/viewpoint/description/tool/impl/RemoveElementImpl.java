@@ -16,15 +16,15 @@ import org.eclipse.sirius.viewpoint.description.tool.RemoveElement;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Remove Element</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Remove Element</b></em>'. <!-- end-user-doc
+ * -->
  *
  * @generated
  */
 public class RemoveElementImpl extends ContainerModelOperationImpl implements RemoveElement {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RemoveElementImpl() {
@@ -33,7 +33,7 @@ public class RemoveElementImpl extends ContainerModelOperationImpl implements Re
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

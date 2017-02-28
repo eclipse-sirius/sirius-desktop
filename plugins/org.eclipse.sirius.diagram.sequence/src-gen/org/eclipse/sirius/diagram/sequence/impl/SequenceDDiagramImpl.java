@@ -22,20 +22,16 @@ import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>DDiagram</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DDiagram</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.impl.SequenceDDiagramImpl#getSemanticOrdering
+ * <li>{@link org.eclipse.sirius.diagram.sequence.impl.SequenceDDiagramImpl#getSemanticOrdering
  * <em>Semantic Ordering</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.impl.SequenceDDiagramImpl#getGraphicalOrdering
+ * <li>{@link org.eclipse.sirius.diagram.sequence.impl.SequenceDDiagramImpl#getGraphicalOrdering
  * <em>Graphical Ordering</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.impl.SequenceDDiagramImpl#getInstanceRoleSemanticOrdering
+ * <li>{@link org.eclipse.sirius.diagram.sequence.impl.SequenceDDiagramImpl#getInstanceRoleSemanticOrdering
  * <em>Instance Role Semantic Ordering</em>}</li>
  * </ul>
  *
@@ -43,9 +39,8 @@ import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
  */
 public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements SequenceDDiagram {
     /**
-     * The cached value of the '{@link #getSemanticOrdering()
-     * <em>Semantic Ordering</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getSemanticOrdering() <em>Semantic Ordering</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSemanticOrdering()
      * @generated
@@ -54,9 +49,8 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
     protected EventEndsOrdering semanticOrdering;
 
     /**
-     * The cached value of the '{@link #getGraphicalOrdering()
-     * <em>Graphical Ordering</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getGraphicalOrdering() <em>Graphical Ordering</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getGraphicalOrdering()
      * @generated
@@ -65,10 +59,9 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
     protected EventEndsOrdering graphicalOrdering;
 
     /**
-     * The cached value of the '{@link #getInstanceRoleSemanticOrdering()
-     * <em>Instance Role Semantic Ordering</em>}' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getInstanceRoleSemanticOrdering() <em>Instance Role Semantic Ordering</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getInstanceRoleSemanticOrdering()
      * @generated
      * @ordered
@@ -77,7 +70,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SequenceDDiagramImpl() {
@@ -86,7 +79,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +89,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -106,7 +99,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetSemanticOrdering(EventEndsOrdering newSemanticOrdering, NotificationChain msgs) {
@@ -125,7 +118,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -149,7 +142,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +152,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetGraphicalOrdering(EventEndsOrdering newGraphicalOrdering, NotificationChain msgs) {
@@ -178,7 +171,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -202,7 +195,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +205,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInstanceRoleSemanticOrdering(InstanceRolesOrdering newInstanceRoleSemanticOrdering, NotificationChain msgs) {
@@ -232,7 +225,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -259,7 +252,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -277,7 +270,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -295,7 +288,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -316,7 +309,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -337,7 +330,7 @@ public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements Sequen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

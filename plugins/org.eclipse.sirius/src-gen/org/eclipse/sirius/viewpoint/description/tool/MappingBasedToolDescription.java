@@ -12,11 +12,10 @@
 package org.eclipse.sirius.viewpoint.description.tool;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Mapping Based Tool Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Mapping Based Tool Description</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> A mapping based tool. This is a tool that create a
- * ViewPointElement. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> A mapping based tool. This is a tool that create a ViewPointElement. <!-- end-model-doc -->
  *
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getMappingBasedToolDescription()

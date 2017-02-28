@@ -18,15 +18,15 @@ import org.eclipse.sirius.viewpoint.description.audit.AuditPackage;
 import org.eclipse.sirius.viewpoint.description.audit.InformationSection;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Information Section</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Information Section</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public abstract class InformationSectionImpl extends MinimalEObjectImpl.Container implements InformationSection {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected InformationSectionImpl() {
@@ -35,7 +35,7 @@ public abstract class InformationSectionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -45,7 +45,7 @@ public abstract class InformationSectionImpl extends MinimalEObjectImpl.Containe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

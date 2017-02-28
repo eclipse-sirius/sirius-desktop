@@ -31,16 +31,14 @@ import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
- * end-user-doc -->
- *
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
     /**
-     * Creates the default factory implementation. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public static TableFactory init() {
@@ -56,9 +54,8 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
     }
 
     /**
-     * Creates an instance of the factory. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public TableFactoryImpl() {
@@ -67,7 +64,7 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,10 +123,9 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
     }
 
     /**
-     * <!-- begin-user-doc --> We automaticcaly add a default BackgroundColor
-     * and ForegroundColor to can display something in the properties View <!--
-     * end-user-doc -->
-     *
+     * <!-- begin-user-doc --> We automaticcaly add a default BackgroundColor and ForegroundColor to can display
+     * something in the properties View <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -162,7 +158,7 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -173,7 +169,7 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -183,7 +179,7 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @deprecated
      * @generated
      */

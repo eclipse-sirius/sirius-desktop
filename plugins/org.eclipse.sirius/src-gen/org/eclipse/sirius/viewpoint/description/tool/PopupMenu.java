@@ -14,15 +14,13 @@ package org.eclipse.sirius.viewpoint.description.tool;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Popup Menu</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Popup Menu</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.PopupMenu#getMenuItemDescription
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.PopupMenu#getMenuItemDescription
  * <em>Menu Item Description</em>}</li>
  * </ul>
  *
@@ -32,19 +30,15 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface PopupMenu extends AbstractToolDescription {
     /**
-     * Returns the value of the '<em><b>Menu Item Description</b></em>'
-     * containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Menu Item Description</b></em>' containment reference list. The list contents
+     * are of type {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Menu Item Description</em>' containment
-     * reference list isn't clear, there really should be more of a description
-     * here...
+     * If the meaning of the '<em>Menu Item Description</em>' containment reference list isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Menu Item Description</em>' containment
-     *         reference list.
+     * 
+     * @return the value of the '<em>Menu Item Description</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPopupMenu_MenuItemDescription()
      * @model containment="true" resolveProxies="true" required="true"
      * @generated

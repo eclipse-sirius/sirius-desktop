@@ -24,17 +24,15 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration}
+ * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class SemanticBasedDecorationItemProvider extends DecorationDescriptionItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public SemanticBasedDecorationItemProvider(AdapterFactory adapterFactory) {
@@ -42,9 +40,8 @@ public class SemanticBasedDecorationItemProvider extends DecorationDescriptionIt
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -58,9 +55,8 @@ public class SemanticBasedDecorationItemProvider extends DecorationDescriptionIt
     }
 
     /**
-     * This adds a property descriptor for the Domain Class feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Domain Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
@@ -72,9 +68,8 @@ public class SemanticBasedDecorationItemProvider extends DecorationDescriptionIt
     }
 
     /**
-     * This returns SemanticBasedDecoration.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * This returns SemanticBasedDecoration.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -83,9 +78,8 @@ public class SemanticBasedDecorationItemProvider extends DecorationDescriptionIt
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -96,10 +90,9 @@ public class SemanticBasedDecorationItemProvider extends DecorationDescriptionIt
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -116,10 +109,9 @@ public class SemanticBasedDecorationItemProvider extends DecorationDescriptionIt
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

@@ -13,16 +13,13 @@ package org.eclipse.sirius.diagram.sequence.ordering;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Event End</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Event End</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.ordering.EventEnd#getSemanticEnd
- * <em>Semantic End</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.ordering.EventEnd#getSemanticEnd <em>Semantic End</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getEventEnd()
@@ -31,14 +28,13 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface EventEnd extends EObject {
     /**
-     * Returns the value of the '<em><b>Semantic End</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Semantic End</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Semantic End</em>' reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Semantic End</em>' reference isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Semantic End</em>' reference.
      * @see #setSemanticEnd(EObject)
      * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getEventEnd_SemanticEnd()
@@ -48,11 +44,9 @@ public interface EventEnd extends EObject {
     EObject getSemanticEnd();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.sequence.ordering.EventEnd#getSemanticEnd
-     * <em>Semantic End</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.sequence.ordering.EventEnd#getSemanticEnd
+     * <em>Semantic End</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Semantic End</em>' reference.
      * @see #getSemanticEnd()

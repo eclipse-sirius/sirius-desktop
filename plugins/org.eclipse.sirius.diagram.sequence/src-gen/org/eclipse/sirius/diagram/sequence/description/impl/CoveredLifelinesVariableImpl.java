@@ -16,15 +16,15 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.impl.AbstractVariableImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Covered Lifelines Variable</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Covered Lifelines Variable</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public class CoveredLifelinesVariableImpl extends AbstractVariableImpl implements CoveredLifelinesVariable {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CoveredLifelinesVariableImpl() {
@@ -33,7 +33,7 @@ public class CoveredLifelinesVariableImpl extends AbstractVariableImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

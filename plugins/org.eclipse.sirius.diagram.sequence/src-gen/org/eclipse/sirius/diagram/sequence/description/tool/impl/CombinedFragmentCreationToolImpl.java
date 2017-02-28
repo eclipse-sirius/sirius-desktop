@@ -25,8 +25,8 @@ import org.eclipse.sirius.diagram.sequence.description.tool.SequenceDiagramToolD
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Combined Fragment Creation Tool</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Combined Fragment Creation Tool</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -46,10 +46,9 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  */
 public class CombinedFragmentCreationToolImpl extends ContainerCreationDescriptionImpl implements CombinedFragmentCreationTool {
     /**
-     * The cached value of the '{@link #getStartingEndPredecessor()
-     * <em>Starting End Predecessor</em>}' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStartingEndPredecessor() <em>Starting End Predecessor</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getStartingEndPredecessor()
      * @generated
      * @ordered
@@ -57,10 +56,9 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
     protected MessageEndVariable startingEndPredecessor;
 
     /**
-     * The cached value of the '{@link #getFinishingEndPredecessor()
-     * <em>Finishing End Predecessor</em>}' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFinishingEndPredecessor() <em>Finishing End Predecessor</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFinishingEndPredecessor()
      * @generated
      * @ordered
@@ -68,9 +66,8 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
     protected MessageEndVariable finishingEndPredecessor;
 
     /**
-     * The cached value of the '{@link #getCoveredLifelines()
-     * <em>Covered Lifelines</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getCoveredLifelines() <em>Covered Lifelines</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getCoveredLifelines()
      * @generated
@@ -80,7 +77,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CombinedFragmentCreationToolImpl() {
@@ -89,7 +86,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +96,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -109,7 +106,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStartingEndPredecessor(MessageEndVariable newStartingEndPredecessor, NotificationChain msgs) {
@@ -129,7 +126,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +152,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +162,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetFinishingEndPredecessor(MessageEndVariable newFinishingEndPredecessor, NotificationChain msgs) {
@@ -185,7 +182,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -211,7 +208,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -221,7 +218,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetCoveredLifelines(CoveredLifelinesVariable newCoveredLifelines, NotificationChain msgs) {
@@ -240,7 +237,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -264,7 +261,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -282,7 +279,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -300,7 +297,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -321,7 +318,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -342,7 +339,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -360,7 +357,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -394,7 +391,7 @@ public class CombinedFragmentCreationToolImpl extends ContainerCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

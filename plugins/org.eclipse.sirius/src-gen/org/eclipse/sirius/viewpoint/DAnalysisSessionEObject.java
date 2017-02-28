@@ -17,27 +17,21 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DAnalysis Session EObject</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DAnalysis Session EObject</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#isOpen
- * <em>Open</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getResources
- * <em>Resources</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getControlledResources
- * <em>Controlled Resources</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getActivatedViewpoints
- * <em>Activated Viewpoints</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getAnalyses
- * <em>Analyses</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getSynchronizationStatus
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#isOpen <em>Open</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getResources <em>Resources</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getControlledResources <em>Controlled Resources</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getActivatedViewpoints <em>Activated Viewpoints</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getAnalyses <em>Analyses</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getSynchronizationStatus
  * <em>Synchronization Status</em>}</li>
  * </ul>
  *
@@ -47,14 +41,12 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  */
 public interface DAnalysisSessionEObject extends EObject {
     /**
-     * Returns the value of the '<em><b>Open</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Open</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Open</em>' attribute isn't clear, there really
-     * should be more of a description here...
+     * If the meaning of the '<em>Open</em>' attribute isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Open</em>' attribute.
      * @see #setOpen(boolean)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_Open()
@@ -64,10 +56,9 @@ public interface DAnalysisSessionEObject extends EObject {
     boolean isOpen();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#isOpen
-     * <em>Open</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#isOpen <em>Open</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Open</em>' attribute.
      * @see #isOpen()
@@ -76,15 +67,14 @@ public interface DAnalysisSessionEObject extends EObject {
     void setOpen(boolean value);
 
     /**
-     * Returns the value of the '<em><b>Resources</b></em>' attribute list. The
-     * list contents are of type {@link org.eclipse.emf.ecore.resource.Resource}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Resources</b></em>' attribute list. The list contents are of type
+     * {@link org.eclipse.emf.ecore.resource.Resource}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Resources</em>' attribute list isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Resources</em>' attribute list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Resources</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_Resources()
      * @model transient="true"
@@ -93,15 +83,14 @@ public interface DAnalysisSessionEObject extends EObject {
     EList<Resource> getResources();
 
     /**
-     * Returns the value of the '<em><b>Controlled Resources</b></em>' attribute
-     * list. The list contents are of type
+     * Returns the value of the '<em><b>Controlled Resources</b></em>' attribute list. The list contents are of type
      * {@link org.eclipse.emf.ecore.resource.Resource}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Controlled Resources</em>' attribute list
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Controlled Resources</em>' attribute list isn't clear, there really should be more of
+     * a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Controlled Resources</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_ControlledResources()
      * @model transient="true"
@@ -110,16 +99,14 @@ public interface DAnalysisSessionEObject extends EObject {
     EList<Resource> getControlledResources();
 
     /**
-     * Returns the value of the '<em><b>Activated Viewpoints</b></em>' reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.Viewpoint}. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Activated Viewpoints</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.Viewpoint}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Activated Viewpoints</em>' reference list
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Activated Viewpoints</em>' reference list isn't clear, there really should be more of
+     * a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Activated Viewpoints</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_ActivatedViewpoints()
      * @model
@@ -128,15 +115,14 @@ public interface DAnalysisSessionEObject extends EObject {
     EList<Viewpoint> getActivatedViewpoints();
 
     /**
-     * Returns the value of the '<em><b>Analyses</b></em>' reference list. The
-     * list contents are of type {@link org.eclipse.sirius.viewpoint.DAnalysis}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Analyses</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.DAnalysis}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Analyses</em>' reference list isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Analyses</em>' reference list isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Analyses</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_Analyses()
      * @model
@@ -145,13 +131,12 @@ public interface DAnalysisSessionEObject extends EObject {
     EList<DAnalysis> getAnalyses();
 
     /**
-     * Returns the value of the '<em><b>Synchronization Status</b></em>'
-     * attribute. The default value is <code>"dirty"</code>. The literals are
-     * from the enumeration {@link org.eclipse.sirius.viewpoint.SyncStatus}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Synchronization Status</b></em>' attribute. The default value is
+     * <code>"dirty"</code>. The literals are from the enumeration {@link org.eclipse.sirius.viewpoint.SyncStatus}. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Synchronization Status</em>' attribute isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Synchronization Status</em>' attribute isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -165,14 +150,11 @@ public interface DAnalysisSessionEObject extends EObject {
     SyncStatus getSynchronizationStatus();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getSynchronizationStatus
-     * <em>Synchronization Status</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getSynchronizationStatus
+     * <em>Synchronization Status</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Synchronization Status</em>'
-     *            attribute.
+     *            the new value of the '<em>Synchronization Status</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.SyncStatus
      * @see #getSynchronizationStatus()
      * @generated

@@ -14,15 +14,13 @@ import org.eclipse.sirius.tree.description.TreeMapping;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DTree Element</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DTree Element</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.DTreeElement#getTreeElementMapping
- * <em>Tree Element Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeElement#getTreeElementMapping <em>Tree Element Mapping</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.tree.TreePackage#getDTreeElement()
@@ -31,14 +29,13 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
  */
 public interface DTreeElement extends DRepresentationElement {
     /**
-     * Returns the value of the '<em><b>Tree Element Mapping</b></em>'
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Tree Element Mapping</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Tree Element Mapping</em>' reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Tree Element Mapping</em>' reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Tree Element Mapping</em>' reference.
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeElement_TreeElementMapping()
      * @model transient="true" changeable="false" volatile="true" derived="true"

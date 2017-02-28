@@ -18,23 +18,21 @@ import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Menu Item Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Menu Item Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.MenuItemDescriptionImpl#getIcon
- * <em>Icon</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.MenuItemDescriptionImpl#getIcon <em>Icon</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImpl implements MenuItemDescription {
     /**
-     * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getIcon()
      * @generated
@@ -43,8 +41,8 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
     protected static final String ICON_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getIcon()
      * @generated
@@ -54,7 +52,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected MenuItemDescriptionImpl() {
@@ -63,7 +61,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -73,7 +71,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +81,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +95,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +109,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +124,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +139,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +153,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

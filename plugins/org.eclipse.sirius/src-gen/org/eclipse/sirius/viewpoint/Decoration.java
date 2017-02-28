@@ -15,11 +15,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Decoration</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Decoration</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> Represent a decoration of a diagram element with a
- * specific icon, based on its relationships with MetaElements of the MetaModel.
+ * <!-- begin-model-doc --> Represent a decoration of a diagram element with a specific icon, based on its relationships
+ * with MetaElements of the MetaModel.
  *
  * <!-- end-model-doc -->
  *
@@ -27,8 +26,7 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.Decoration#getDescription
- * <em>Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.Decoration#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDecoration()
@@ -37,10 +35,9 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
  */
 public interface Decoration extends EObject {
     /**
-     * Returns the value of the '<em><b>Description</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * referenced DecorationDescription. <!-- end-model-doc -->
-     *
+     * Returns the value of the '<em><b>Description</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-model-doc --> The referenced DecorationDescription. <!-- end-model-doc -->
+     * 
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(DecorationDescription)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDecoration_Description()
@@ -50,11 +47,9 @@ public interface Decoration extends EObject {
     DecorationDescription getDescription();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.Decoration#getDescription
-     * <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.Decoration#getDescription <em>Description</em>}'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()

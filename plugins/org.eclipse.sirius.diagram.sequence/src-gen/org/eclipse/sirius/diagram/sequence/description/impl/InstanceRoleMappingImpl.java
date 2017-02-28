@@ -16,15 +16,15 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Instance Role Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Instance Role Mapping</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */
 public class InstanceRoleMappingImpl extends NodeMappingImpl implements InstanceRoleMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected InstanceRoleMappingImpl() {
@@ -33,7 +33,7 @@ public class InstanceRoleMappingImpl extends NodeMappingImpl implements Instance
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

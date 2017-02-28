@@ -14,18 +14,14 @@ package org.eclipse.sirius.viewpoint.description.tool;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Set Object</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Set Object</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.SetObject#getFeatureName
- * <em>Feature Name</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.tool.SetObject#getObject
- * <em>Object</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.SetObject#getFeatureName <em>Feature Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.SetObject#getObject <em>Object</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSetObject()
@@ -34,25 +30,21 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface SetObject extends ContainerModelOperation {
     /**
-     * Returns the value of the '<em><b>Feature Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * name of the feature to set. <!-- end-model-doc -->
-     *
+     * Returns the value of the '<em><b>Feature Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-model-doc --> The name of the feature to set. <!-- end-model-doc -->
+     * 
      * @return the value of the '<em>Feature Name</em>' attribute.
      * @see #setFeatureName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSetObject_FeatureName()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.FeatureName"
-     *        required="true"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.FeatureName" required="true"
      * @generated
      */
     String getFeatureName();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SetObject#getFeatureName
-     * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.SetObject#getFeatureName
+     * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()
@@ -61,10 +53,9 @@ public interface SetObject extends ContainerModelOperation {
     void setFeatureName(String value);
 
     /**
-     * Returns the value of the '<em><b>Object</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> An
-     * instance to set, you might need to use "load resource" in the editor in
-     * order to be able to pick it. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Object</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> An instance to set, you might need to use "load resource" in the editor in order to be able
+     * to pick it. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Object</em>' reference.
      * @see #setObject(EObject)
@@ -75,11 +66,9 @@ public interface SetObject extends ContainerModelOperation {
     EObject getObject();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SetObject#getObject
-     * <em>Object</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.SetObject#getObject <em>Object</em>}'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Object</em>' reference.
      * @see #getObject()

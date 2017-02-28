@@ -15,18 +15,15 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DRepresentation Element</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DRepresentation Element</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.DRepresentationElement#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.DRepresentationElement#getSemanticElements
- * <em>Semantic Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DRepresentationElement#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DRepresentationElement#getSemanticElements <em>Semantic Elements</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentationElement()
@@ -35,9 +32,8 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface DRepresentationElement extends DMappingBased, DStylizable, DRefreshable, DSemanticDecorator {
     /**
-     * Returns the value of the '<em><b>Name</b></em>' attribute. The default
-     * value is <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * <!-- begin-model-doc --> The name of the element. It is the name that is
+     * Returns the value of the '<em><b>Name</b></em>' attribute. The default value is <code>""</code>. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The name of the element. It is the name that is
      * displayed on the diagram. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Name</em>' attribute.
@@ -49,10 +45,9 @@ public interface DRepresentationElement extends DMappingBased, DStylizable, DRef
     String getName();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DRepresentationElement#getName
-     * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DRepresentationElement#getName <em>Name</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -61,11 +56,9 @@ public interface DRepresentationElement extends DMappingBased, DStylizable, DRef
     void setName(String value);
 
     /**
-     * Returns the value of the '<em><b>Semantic Elements</b></em>' reference
-     * list. The list contents are of type {@link org.eclipse.emf.ecore.EObject}
-     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The semantic elements to show that represents this view point element.
-     * <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Semantic Elements</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.emf.ecore.EObject} . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The semantic elements to show that represents this view point element. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Semantic Elements</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentationElement_SemanticElements()

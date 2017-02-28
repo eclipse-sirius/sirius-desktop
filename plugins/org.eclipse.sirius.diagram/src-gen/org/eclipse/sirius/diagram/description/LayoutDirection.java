@@ -18,19 +18,17 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '
- * <em><b>Layout Direction</b></em>', and utility methods for working with them.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration ' <em><b>Layout Direction</b></em>', and
+ * utility methods for working with them. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayoutDirection()
  * @model
  * @generated
  */
 public enum LayoutDirection implements Enumerator {
     /**
-     * The '<em><b>Top To Bottom</b></em>' literal object. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The '<em><b>Top To Bottom</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #TOP_TO_BOTTOM_VALUE
      * @generated
      * @ordered
@@ -38,9 +36,8 @@ public enum LayoutDirection implements Enumerator {
     TOP_TO_BOTTOM(0, "TopToBottom", "topToBottom"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Left To Right</b></em>' literal object. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The '<em><b>Left To Right</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #LEFT_TO_RIGHT_VALUE
      * @generated
      * @ordered
@@ -48,9 +45,8 @@ public enum LayoutDirection implements Enumerator {
     LEFT_TO_RIGHT(1, "LeftToRight", "LeftToRight"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Bottom To Top</b></em>' literal object. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * The '<em><b>Bottom To Top</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #BOTTOM_TO_TOP_VALUE
      * @generated
      * @ordered
@@ -58,14 +54,13 @@ public enum LayoutDirection implements Enumerator {
     BOTTOM_TO_TOP(2, "BottomToTop", "bottomToTop"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Top To Bottom</b></em>' literal value. <!-- begin-user-doc
-     * -->
+     * The '<em><b>Top To Bottom</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Top To Bottom</b></em>' literal object isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of '<em><b>Top To Bottom</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #TOP_TO_BOTTOM
      * @model name="TopToBottom" literal="topToBottom"
      * @generated
@@ -74,14 +69,13 @@ public enum LayoutDirection implements Enumerator {
     public static final int TOP_TO_BOTTOM_VALUE = 0;
 
     /**
-     * The '<em><b>Left To Right</b></em>' literal value. <!-- begin-user-doc
-     * -->
+     * The '<em><b>Left To Right</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Left To Right</b></em>' literal object isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of '<em><b>Left To Right</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #LEFT_TO_RIGHT
      * @model name="LeftToRight"
      * @generated
@@ -90,14 +84,13 @@ public enum LayoutDirection implements Enumerator {
     public static final int LEFT_TO_RIGHT_VALUE = 1;
 
     /**
-     * The '<em><b>Bottom To Top</b></em>' literal value. <!-- begin-user-doc
-     * -->
+     * The '<em><b>Bottom To Top</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>Bottom To Top</b></em>' literal object isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of '<em><b>Bottom To Top</b></em>' literal object isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #BOTTOM_TO_TOP
      * @model name="BottomToTop" literal="bottomToTop"
      * @generated
@@ -106,25 +99,24 @@ public enum LayoutDirection implements Enumerator {
     public static final int BOTTOM_TO_TOP_VALUE = 2;
 
     /**
-     * An array of all the '<em><b>Layout Direction</b></em>' enumerators. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * An array of all the '<em><b>Layout Direction</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private static final LayoutDirection[] VALUES_ARRAY = new LayoutDirection[] { TOP_TO_BOTTOM, LEFT_TO_RIGHT, BOTTOM_TO_TOP, };
 
     /**
-     * A public read-only list of all the '<em><b>Layout Direction</b></em>'
-     * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * A public read-only list of all the '<em><b>Layout Direction</b></em>' enumerators. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public static final List<LayoutDirection> VALUES = Collections.unmodifiableList(Arrays.asList(LayoutDirection.VALUES_ARRAY));
 
     /**
-     * Returns the '<em><b>Layout Direction</b></em>' literal with the specified
-     * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Layout Direction</b></em>' literal with the specified literal value. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @param literal
      *            the literal.
      * @return the matching enumerator or <code>null</code>.
@@ -140,9 +132,9 @@ public enum LayoutDirection implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Layout Direction</b></em>' literal with the specified
-     * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Layout Direction</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @param name
      *            the name.
      * @return the matching enumerator or <code>null</code>.
@@ -158,9 +150,9 @@ public enum LayoutDirection implements Enumerator {
     }
 
     /**
-     * Returns the '<em><b>Layout Direction</b></em>' literal with the specified
-     * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the '<em><b>Layout Direction</b></em>' literal with the specified integer value. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @param value
      *            the integer value.
      * @return the matching enumerator or <code>null</code>.
@@ -180,29 +172,28 @@ public enum LayoutDirection implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
 
     /**
-     * Only this class can construct instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     private LayoutDirection(int value, String name, String literal) {
@@ -213,7 +204,7 @@ public enum LayoutDirection implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -223,7 +214,7 @@ public enum LayoutDirection implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -233,7 +224,7 @@ public enum LayoutDirection implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -242,9 +233,9 @@ public enum LayoutDirection implements Enumerator {
     }
 
     /**
-     * Returns the literal value of the enumerator, which is its string
-     * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override

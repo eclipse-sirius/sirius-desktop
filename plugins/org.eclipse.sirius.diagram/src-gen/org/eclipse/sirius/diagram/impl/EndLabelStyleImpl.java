@@ -21,15 +21,15 @@ import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription
 import org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>End Label Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>End Label Style</b></em>'. <!-- end-user-doc
+ * -->
  *
  * @generated
  */
 public class EndLabelStyleImpl extends BasicLabelStyleImpl implements EndLabelStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected EndLabelStyleImpl() {
@@ -38,7 +38,7 @@ public class EndLabelStyleImpl extends BasicLabelStyleImpl implements EndLabelSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -21,24 +21,22 @@ import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Button Widget Conditional Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Button Widget Conditional Style</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ButtonWidgetConditionalStyleImpl#getStyle
- * <em>Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ButtonWidgetConditionalStyleImpl#getStyle <em>Style</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl implements ButtonWidgetConditionalStyle {
     /**
-     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -47,7 +45,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ButtonWidgetConditionalStyleImpl() {
@@ -56,7 +54,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -66,7 +64,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -76,7 +74,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(ButtonWidgetStyle newStyle, NotificationChain msgs) {
@@ -95,7 +93,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -119,7 +117,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -133,7 +131,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -147,7 +145,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +160,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -177,7 +175,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -14,19 +14,15 @@ package org.eclipse.sirius.viewpoint.description.tool;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>External Java Action</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>External Java Action</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction#getId
- * <em>Id</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction#getParameters
- * <em>Parameters</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction#getParameters <em>Parameters</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getExternalJavaAction()
@@ -35,10 +31,9 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ExternalJavaAction extends MenuItemDescription, ContainerModelOperation {
     /**
-     * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Identifier for your External Java Action provided through extension
-     * points. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Identifier for your External Java Action provided through extension points. <!--
+     * end-model-doc -->
      *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
@@ -49,10 +44,9 @@ public interface ExternalJavaAction extends MenuItemDescription, ContainerModelO
     String getId();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction#getId
-     * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction#getId <em>Id</em>}
+     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -61,18 +55,15 @@ public interface ExternalJavaAction extends MenuItemDescription, ContainerModelO
     void setId(String value);
 
     /**
-     * Returns the value of the '<em><b>Parameters</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter}
-     * . <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Parameters</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Parameters</em>' containment reference list
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear, there really should be more
+     * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Parameters</em>' containment reference
-     *         list.
+     * 
+     * @return the value of the '<em>Parameters</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getExternalJavaAction_Parameters()
      * @model containment="true" resolveProxies="true"
      * @generated

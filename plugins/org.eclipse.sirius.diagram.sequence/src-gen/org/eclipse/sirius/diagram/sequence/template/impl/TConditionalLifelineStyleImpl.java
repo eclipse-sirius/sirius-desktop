@@ -20,27 +20,24 @@ import org.eclipse.sirius.diagram.sequence.template.TLifelineStyle;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>TConditional Lifeline Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>TConditional Lifeline Style</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalLifelineStyleImpl#getPredicateExpression
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalLifelineStyleImpl#getPredicateExpression
  * <em>Predicate Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalLifelineStyleImpl#getStyle
- * <em>Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.sequence.template.impl.TConditionalLifelineStyleImpl#getStyle <em>Style</em>}
+ * </li>
  * </ul>
  *
  * @generated
  */
 public class TConditionalLifelineStyleImpl extends TTransformerImpl implements TConditionalLifelineStyle {
     /**
-     * The default value of the '{@link #getPredicateExpression()
-     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getPredicateExpression() <em>Predicate Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPredicateExpression()
      * @generated
@@ -49,9 +46,8 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
     protected static final String PREDICATE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getPredicateExpression()
-     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getPredicateExpression() <em>Predicate Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPredicateExpression()
      * @generated
@@ -60,9 +56,9 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
     protected String predicateExpression = TConditionalLifelineStyleImpl.PREDICATE_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -71,7 +67,7 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TConditionalLifelineStyleImpl() {
@@ -80,7 +76,7 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -90,7 +86,7 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +96,7 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -114,7 +110,7 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -124,7 +120,7 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(TLifelineStyle newStyle, NotificationChain msgs) {
@@ -143,7 +139,7 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -167,7 +163,7 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -181,7 +177,7 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -197,7 +193,7 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -215,7 +211,7 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -233,7 +229,7 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -250,7 +246,7 @@ public class TConditionalLifelineStyleImpl extends TTransformerImpl implements T
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

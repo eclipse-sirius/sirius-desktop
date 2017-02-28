@@ -12,18 +12,16 @@
 package org.eclipse.sirius.diagram.description.style;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Workspace Image Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Workspace Image Description</b></em>'. <!--
+ * end-user-doc -->
  *
- * <!-- begin-model-doc --> A custom image that is present in the user
- * workspace. <!-- end-model-doc -->
+ * <!-- begin-model-doc --> A custom image that is present in the user workspace. <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription#getWorkspacePath
+ * <li>{@link org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription#getWorkspacePath
  * <em>Workspace Path</em>}</li>
  * </ul>
  *
@@ -33,11 +31,9 @@ package org.eclipse.sirius.diagram.description.style;
  */
 public interface WorkspaceImageDescription extends NodeStyleDescription, ContainerStyleDescription {
     /**
-     * Returns the value of the '<em><b>Workspace Path</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * path of the image to use in the form of /myProjectID/path/to/image.png,
-     * if the image is not found in the workspace it will be looked for in the
-     * plugins. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Workspace Path</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> The path of the image to use in the form of /myProjectID/path/to/image.png, if the
+     * image is not found in the workspace it will be looked for in the plugins. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Workspace Path</em>' attribute.
      * @see #setWorkspacePath(String)
@@ -50,9 +46,8 @@ public interface WorkspaceImageDescription extends NodeStyleDescription, Contain
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription#getWorkspacePath
-     * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Workspace Path</em>' attribute.
      * @see #getWorkspacePath()

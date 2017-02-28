@@ -29,25 +29,22 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.business.api.provider.DNodeLabelItemProvider;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.DNode} object. <!-- begin-user-doc --> <!--
+ * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.DNode} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
 public class DNodeItemProvider extends DDiagramElementItemProvider {
     /**
-     * The item provider used to simulate another child for Node that has label
-     * on border.
+     * The item provider used to simulate another child for Node that has label on border.
      *
      * @not-generated
      */
     HashMap<Object, DNodeLabelItemProvider> nodeLabelItemProviders = new HashMap<Object, DNodeLabelItemProvider>();
 
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DNodeItemProvider(AdapterFactory adapterFactory) {
@@ -55,9 +52,8 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -80,8 +76,8 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Arrange Constraints feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Arrange Constraints feature. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -93,9 +89,8 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Outgoing Edges feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Outgoing Edges feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addOutgoingEdgesPropertyDescriptor(Object object) {
@@ -106,9 +101,8 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Incoming Edges feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Incoming Edges feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addIncomingEdgesPropertyDescriptor(Object object) {
@@ -119,9 +113,8 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Width feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Width feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addWidthPropertyDescriptor(Object object) {
@@ -131,9 +124,8 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Height feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Height feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addHeightPropertyDescriptor(Object object) {
@@ -143,9 +135,8 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Label Position feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Label Position feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addLabelPositionPropertyDescriptor(Object object) {
@@ -156,9 +147,8 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Resize Kind feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Resize Kind feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addResizeKindPropertyDescriptor(Object object) {
@@ -168,9 +158,8 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Original Style feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Original Style feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addOriginalStylePropertyDescriptor(Object object) {
@@ -181,9 +170,8 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Actual Mapping feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Actual Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
@@ -194,9 +182,8 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds a property descriptor for the Candidates Mapping feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Candidates Mapping feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected void addCandidatesMappingPropertyDescriptor(Object object) {
@@ -207,13 +194,11 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to
-     * deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand},
-     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in
-     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -228,13 +213,12 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper
-        // feature to use for
+        // Check the type of the specified child object and return the proper feature to use for
         // adding (see {@link AddCommand}) it as a child.
 
         return super.getChildFeature(object, child);
@@ -242,7 +226,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This returns DNode.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -251,8 +235,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @not-generated
      */
@@ -263,10 +246,9 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
@@ -291,10 +273,9 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

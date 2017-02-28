@@ -18,17 +18,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.Unset;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Unset</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Unset</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.UnsetImpl#getFeatureName
- * <em>Feature Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.UnsetImpl#getElementExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.UnsetImpl#getFeatureName <em>Feature Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.UnsetImpl#getElementExpression
  * <em>Element Expression</em>}</li>
  * </ul>
  *
@@ -36,9 +32,9 @@ import org.eclipse.sirius.viewpoint.description.tool.Unset;
  */
 public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
     /**
-     * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -46,9 +42,9 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
     protected static final String FEATURE_NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -56,9 +52,8 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
     protected String featureName = UnsetImpl.FEATURE_NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getElementExpression()
-     * <em>Element Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getElementExpression() <em>Element Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getElementExpression()
      * @generated
@@ -67,9 +62,8 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
     protected static final String ELEMENT_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getElementExpression()
-     * <em>Element Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getElementExpression() <em>Element Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getElementExpression()
      * @generated
@@ -79,7 +73,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected UnsetImpl() {
@@ -88,7 +82,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +92,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +102,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -122,7 +116,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +126,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +140,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +156,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -180,7 +174,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +192,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -214,7 +208,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -30,33 +30,25 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>View Extension Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>View Extension Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getIdentifier
- * <em>Identifier</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getMetamodels
- * <em>Metamodels</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getPages
- * <em>Pages</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getGroups
- * <em>Groups</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getIdentifier <em>Identifier</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getMetamodels <em>Metamodels</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getPages <em>Pages</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getGroups <em>Groups</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container implements ViewExtensionDescription {
     /**
-     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -64,9 +56,9 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected static final String IDENTIFIER_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -74,9 +66,9 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected String identifier = ViewExtensionDescriptionImpl.IDENTIFIER_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getMetamodels()
      * @generated
      * @ordered
@@ -84,9 +76,9 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected EList<EPackage> metamodels;
 
     /**
-     * The cached value of the '{@link #getPages() <em>Pages</em>}' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getPages() <em>Pages</em>}' containment reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getPages()
      * @generated
      * @ordered
@@ -94,9 +86,9 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected EList<PageDescription> pages;
 
     /**
-     * The cached value of the '{@link #getGroups() <em>Groups</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getGroups() <em>Groups</em>}' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getGroups()
      * @generated
      * @ordered
@@ -105,7 +97,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ViewExtensionDescriptionImpl() {
@@ -114,7 +106,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -124,7 +116,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -134,7 +126,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -148,7 +140,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -161,7 +153,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -174,7 +166,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -187,7 +179,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -203,7 +195,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -223,7 +215,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -251,7 +243,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -275,7 +267,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -295,7 +287,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

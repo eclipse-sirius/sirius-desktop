@@ -15,8 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Size Computation Container Style Description</b></em>'. <!--
- * end-user-doc -->
+ * <em><b>Size Computation Container Style Description</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -36,18 +35,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface SizeComputationContainerStyleDescription extends EObject {
     /**
-     * Returns the value of the '<em><b>Width Computation Expression</b></em>'
-     * attribute. The default value is <code>"-1"</code>. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> Expression that
+     * Returns the value of the '<em><b>Width Computation Expression</b></em>' attribute. The default value is
+     * <code>"-1"</code>. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Expression that
      * computes the size of the node. <!-- end-model-doc -->
      *
-     * @return the value of the '<em>Width Computation Expression</em>'
-     *         attribute.
+     * @return the value of the '<em>Width Computation Expression</em>' attribute.
      * @see #setWidthComputationExpression(String)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getSizeComputationContainerStyleDescription_WidthComputationExpression()
-     * @model default="-1" dataType=
-     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation=
+     * @model default="-1" dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
@@ -56,30 +51,24 @@ public interface SizeComputationContainerStyleDescription extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression
-     * <em>Width Computation Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * <em>Width Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Width Computation Expression</em>'
-     *            attribute.
+     *            the new value of the '<em>Width Computation Expression</em>' attribute.
      * @see #getWidthComputationExpression()
      * @generated
      */
     void setWidthComputationExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Height Computation Expression</b></em>'
-     * attribute. The default value is <code>"-1"</code>. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> Expression that
+     * Returns the value of the '<em><b>Height Computation Expression</b></em>' attribute. The default value is
+     * <code>"-1"</code>. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Expression that
      * computes the size of the node. <!-- end-model-doc -->
      *
-     * @return the value of the '<em>Height Computation Expression</em>'
-     *         attribute.
+     * @return the value of the '<em>Height Computation Expression</em>' attribute.
      * @see #setHeightComputationExpression(String)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getSizeComputationContainerStyleDescription_HeightComputationExpression()
-     * @model default="-1" dataType=
-     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation=
+     * @model default="-1" dataType= "org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
@@ -88,12 +77,10 @@ public interface SizeComputationContainerStyleDescription extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression
-     * <em>Height Computation Expression</em>}' attribute. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
+     * <em>Height Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
-     *            the new value of the '<em>Height Computation Expression</em>'
-     *            attribute.
+     *            the new value of the '<em>Height Computation Expression</em>' attribute.
      * @see #getHeightComputationExpression()
      * @generated
      */

@@ -12,16 +12,14 @@
 package org.eclipse.sirius.viewpoint.description.tool;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Menu Item Description Reference</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Menu Item Description Reference</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference#getItem
- * <em>Item</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference#getItem <em>Item</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getMenuItemDescriptionReference()
@@ -30,14 +28,12 @@ package org.eclipse.sirius.viewpoint.description.tool;
  */
 public interface MenuItemDescriptionReference extends MenuItemOrRef {
     /**
-     * Returns the value of the '<em><b>Item</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Item</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Item</em>' reference isn't clear, there really
-     * should be more of a description here...
+     * If the meaning of the '<em>Item</em>' reference isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Item</em>' reference.
      * @see #setItem(MenuItemDescription)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getMenuItemDescriptionReference_Item()
@@ -47,10 +43,9 @@ public interface MenuItemDescriptionReference extends MenuItemOrRef {
     MenuItemDescription getItem();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference#getItem
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference#getItem
      * <em>Item</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Item</em>' reference.
      * @see #getItem()

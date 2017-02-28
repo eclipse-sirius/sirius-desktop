@@ -18,17 +18,13 @@ import org.eclipse.sirius.viewpoint.description.tool.SetValue;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Set Value</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Set Value</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SetValueImpl#getFeatureName
- * <em>Feature Name</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SetValueImpl#getValueExpression
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.SetValueImpl#getFeatureName <em>Feature Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.tool.impl.SetValueImpl#getValueExpression
  * <em>Value Expression</em>}</li>
  * </ul>
  *
@@ -36,9 +32,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public class SetValueImpl extends ContainerModelOperationImpl implements SetValue {
     /**
-     * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -46,9 +42,9 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
     protected static final String FEATURE_NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -56,10 +52,9 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
     protected String featureName = SetValueImpl.FEATURE_NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -67,10 +62,9 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
     protected static final String VALUE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -79,7 +73,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SetValueImpl() {
@@ -88,7 +82,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +92,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +102,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -122,7 +116,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +126,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +140,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +156,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -180,7 +174,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +192,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -214,7 +208,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

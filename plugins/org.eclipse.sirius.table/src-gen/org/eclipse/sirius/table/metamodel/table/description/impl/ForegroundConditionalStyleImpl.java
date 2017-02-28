@@ -21,8 +21,8 @@ import org.eclipse.sirius.table.metamodel.table.description.ForegroundConditiona
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Foreground Conditional Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Foreground Conditional Style</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -30,8 +30,7 @@ import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescr
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundConditionalStyleImpl#getPredicateExpression
  * <em>Predicate Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundConditionalStyleImpl#getStyle
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundConditionalStyleImpl#getStyle
  * <em>Style</em>}</li>
  * </ul>
  *
@@ -39,9 +38,8 @@ import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescr
  */
 public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container implements ForegroundConditionalStyle {
     /**
-     * The default value of the '{@link #getPredicateExpression()
-     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getPredicateExpression() <em>Predicate Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPredicateExpression()
      * @generated
@@ -50,9 +48,8 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
     protected static final String PREDICATE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getPredicateExpression()
-     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getPredicateExpression() <em>Predicate Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getPredicateExpression()
      * @generated
@@ -61,9 +58,9 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
     protected String predicateExpression = ForegroundConditionalStyleImpl.PREDICATE_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -72,7 +69,7 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ForegroundConditionalStyleImpl() {
@@ -81,7 +78,7 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -91,7 +88,7 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -101,7 +98,7 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -115,7 +112,7 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +122,7 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(ForegroundStyleDescription newStyle, NotificationChain msgs) {
@@ -144,7 +141,7 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -168,7 +165,7 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +179,7 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +195,7 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -216,7 +213,7 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -234,7 +231,7 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -251,7 +248,7 @@ public class ForegroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

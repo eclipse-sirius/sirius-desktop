@@ -18,24 +18,22 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.TextAreaDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Text Area Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Text Area Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.TextAreaDescriptionImpl#getLineCount
- * <em>Line Count</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.TextAreaDescriptionImpl#getLineCount <em>Line Count</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class TextAreaDescriptionImpl extends TextDescriptionImpl implements TextAreaDescription {
     /**
-     * The default value of the '{@link #getLineCount() <em>Line Count</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getLineCount() <em>Line Count</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLineCount()
      * @generated
      * @ordered
@@ -43,9 +41,9 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
     protected static final int LINE_COUNT_EDEFAULT = 5;
 
     /**
-     * The cached value of the '{@link #getLineCount() <em>Line Count</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getLineCount() <em>Line Count</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getLineCount()
      * @generated
      * @ordered
@@ -54,7 +52,7 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TextAreaDescriptionImpl() {
@@ -63,7 +61,7 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -73,7 +71,7 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +81,7 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +95,7 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +109,7 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +124,7 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +139,7 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +153,7 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

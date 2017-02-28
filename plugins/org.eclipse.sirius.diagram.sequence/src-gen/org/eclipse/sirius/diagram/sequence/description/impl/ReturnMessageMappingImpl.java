@@ -17,8 +17,8 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Return Message Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Return Message Mapping</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -33,9 +33,8 @@ import org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping;
 public class ReturnMessageMappingImpl extends MessageMappingImpl implements ReturnMessageMapping {
     /**
      * The default value of the '{@link #getInvocationMessageFinderExpression()
-     * <em>Invocation Message Finder Expression</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * <em>Invocation Message Finder Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getInvocationMessageFinderExpression()
      * @generated
      * @ordered
@@ -44,9 +43,8 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * The cached value of the '{@link #getInvocationMessageFinderExpression()
-     * <em>Invocation Message Finder Expression</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * <em>Invocation Message Finder Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getInvocationMessageFinderExpression()
      * @generated
      * @ordered
@@ -55,7 +53,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ReturnMessageMappingImpl() {
@@ -64,7 +62,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -74,7 +72,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -84,7 +82,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +97,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +111,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -128,7 +126,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -143,7 +141,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +156,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
