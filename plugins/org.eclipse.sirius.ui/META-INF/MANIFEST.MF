@@ -70,6 +70,7 @@ Export-Package: org.eclipse.sirius.description.contribution.provider;version="2.
  org.eclipse.sirius.ui.tools.internal.properties;version="2.0.3";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.selection;version="4.0.0";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.util;version="2.1.0";x-internal:=true,
+ org.eclipse.sirius.ui.tools.internal.viewpoint;version="5.0.0";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views;version="2.1.0";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.common;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.common.action;version="2.1.0";x-internal:=true,

@@ -36,6 +36,10 @@ public final class Messages {
 
     @TranslatableMessage
     public static String UI_SessionEditor_session_loading_task_title;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_default_page_tab_label;
+
     // CHECKSTYLE:ON
 
     private Messages() {

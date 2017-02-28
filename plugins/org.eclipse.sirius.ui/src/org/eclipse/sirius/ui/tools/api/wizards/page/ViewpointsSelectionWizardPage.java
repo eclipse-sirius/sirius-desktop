@@ -56,6 +56,8 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.eclipse.sirius.ui.tools.internal.wizards.pages.IViewpointStateListener;
+import org.eclipse.sirius.ui.tools.internal.wizards.pages.ViewpointStateChangeEvent;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -117,6 +119,12 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     private GridData browserGridData;
 
     /**
+     * The listeners that should be warn when a user tick or untick a viewpoint meaning it should be
+     * activated/deactivated of the session.
+     */
+    private Set<IViewpointStateListener> viewpointStateListeners;
+
+    /**
      * Create a new <code>RepresentationSelectionWizardPage</code>.
      *
      * @param session
@@ -147,6 +155,30 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         this.fileExtensions = computeSemanticFileExtensions(session);
         this.viewpoints = Lists.newArrayList();
         this.viewpointsNamesToActivateByDefault = Lists.newArrayList(viewpointsNamesToActivateByDefault);
+    }
+
+    /**
+     * Add the given listener to the list used by this component.
+     * 
+     * @param viewpointStateListener
+     *            the listener to add.
+     */
+    public void addViewpointStateListeners(IViewpointStateListener viewpointStateListener) {
+        if (viewpointStateListeners != null) {
+            viewpointStateListeners.add(viewpointStateListener);
+        }
+    }
+
+    /**
+     * Remove the given listener from the list used by this component.
+     * 
+     * @param viewpointStateListener
+     *            the listener to remove.
+     */
+    public void removeViewpointStateListeners(IViewpointStateListener viewpointStateListener) {
+        if (viewpointStateListeners != null) {
+            viewpointStateListeners.remove(viewpointStateListener);
+        }
     }
 
     /**
@@ -232,6 +264,8 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     @Override
     public void createControl(final Composite parent) {
         initializeDialogUnits(parent);
+
+        viewpointStateListeners = new HashSet<IViewpointStateListener>();
 
         pageComposite = new Composite(parent, SWT.NONE);
         rootGridLayout = GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(true).create();
@@ -334,8 +368,14 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
             public void checkStateChanged(final CheckStateChangedEvent event) {
                 if (event.getChecked()) {
                     viewpoints.add((Viewpoint) event.getElement());
+                    for (IViewpointStateListener viewpointStateListener : viewpointStateListeners) {
+                        viewpointStateListener.viewpointStateChange(new ViewpointStateChangeEvent((Viewpoint) event.getElement(), true));
+                    }
                 } else {
                     viewpoints.remove(event.getElement());
+                    for (IViewpointStateListener viewpointStateListener : viewpointStateListeners) {
+                        viewpointStateListener.viewpointStateChange(new ViewpointStateChangeEvent((Viewpoint) event.getElement(), false));
+                    }
                 }
                 setPageComplete(isPageComplete());
             }

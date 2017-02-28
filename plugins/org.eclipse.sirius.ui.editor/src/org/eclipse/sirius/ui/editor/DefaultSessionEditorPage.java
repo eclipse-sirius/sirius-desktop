@@ -12,14 +12,22 @@ package org.eclipse.sirius.ui.editor;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.SortedMap;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.layout.GridLayoutFactory;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.ui.tools.api.wizards.page.ViewpointsSelectionWizardPage;
+import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
+import org.eclipse.sirius.ui.tools.internal.wizards.pages.IViewpointStateListener;
+import org.eclipse.sirius.ui.tools.internal.wizards.pages.ViewpointStateChangeEvent;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -33,6 +41,8 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
+import com.google.common.collect.Maps;
+
 /**
  * Class used to create the main page of the session editor which describe
  * Viewpoints used, model and representations.
@@ -44,9 +54,54 @@ import org.eclipse.ui.forms.widgets.Section;
 public class DefaultSessionEditorPage extends FormPage implements SessionListener {
 
     /**
+     * The page's unique id.
+     */
+    private static final String PAGE_ID = "org.eclipse.sirius.ui.editor.DefaultSessionEditorPage"; //$NON-NLS-1$
+
+    /**
      * Delimiter used to separate text part for the page title.
      */
     private static final String DELIMITER = "/"; //$NON-NLS-1$
+
+    /**
+     * The last viewpoints activation status for the current editor session.
+     */
+    private Set<Viewpoint> lastSelectedViewpoints;
+
+    /**
+     * Contains all viewpoints available for use in the runtime environment.
+     */
+    private Set<Viewpoint> allViewpoints;
+
+    /**
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
+     */
+    private class DefaultViewpointStateListener implements IViewpointStateListener {
+
+        @Override
+        public void viewpointStateChange(ViewpointStateChangeEvent viewpointStateChangeEvent) {
+
+            final SortedMap<Viewpoint, Boolean> originalViewpointsMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
+            for (final Viewpoint viewpoint : allViewpoints) {
+                boolean selected = false;
+
+                for (Viewpoint selectedViewpoint : lastSelectedViewpoints) {
+                    if (EqualityHelper.areEquals(selectedViewpoint, viewpoint)) {
+                        selected = true;
+                        break;
+                    }
+                }
+                originalViewpointsMap.put(viewpoint, Boolean.valueOf(selected));
+            }
+            SortedMap<Viewpoint, Boolean> newViewpointMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
+            newViewpointMap.putAll(originalViewpointsMap);
+            newViewpointMap.put(viewpointStateChangeEvent.getViewpoint(), viewpointStateChangeEvent.shouldBeActivated());
+            ViewpointHelper.applyNewViewpointSelection(originalViewpointsMap, newViewpointMap, session, true);
+
+            lastSelectedViewpoints = new HashSet<Viewpoint>(newViewpointMap.keySet().stream().filter(viewpoint -> newViewpointMap.get(viewpoint)).collect(Collectors.toSet()));
+        }
+    }
 
     /**
      * Session to describe and edit.
@@ -64,6 +119,13 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
     private Label informativeLabel;
 
     /**
+     * The listener used to update the session each time the user change the
+     * activation status of a viewpoint by using checkbox in used
+     * {@link ViewpointsSelectionWizardPage}.
+     */
+    private DefaultViewpointStateListener viewpointStateListener;
+
+    /**
      * Constructor.
      * 
      * @param editor
@@ -72,7 +134,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
      *            the session.
      */
     public DefaultSessionEditorPage(SessionEditor editor, Session theSession) {
-        super(editor, "sessionEditorId", "Main"); //$NON-NLS-1$ //$NON-NLS-2$
+        super(editor, PAGE_ID, MessageFormat.format(Messages.UI_SessionEditor_default_page_tab_label, new Object[0]));
         this.session = theSession;
     }
 
@@ -106,6 +168,8 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
 
         createRepresentationsControl(toolkit, rightComposite);
         createViewpointSelectionControl(toolkit, rightComposite);
+
+        session.addListener(this);
     }
 
     /**
@@ -183,14 +247,17 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
             viewpointsName.add(viewpoint.getName());
         }
         viewpointsSelectionWizardPage = new ViewpointsSelectionWizardPage(session, viewpointsName);
+        viewpointStateListener = new DefaultViewpointStateListener();
         viewpointsSelectionWizardPage.createControl(viewpointSectionClient);
+        viewpointsSelectionWizardPage.addViewpointStateListeners(viewpointStateListener);
+        allViewpoints = new HashSet<>(viewpointsSelectionWizardPage.getAvailableViewpoints());
+        lastSelectedViewpoints = new HashSet<>(viewpointsSelectionWizardPage.getViewpoints());
         viewpointsSelectionWizardPage.setColumnWidthEquality(false);
         viewpointsSelectionWizardPage.setBrowserMinWidth(210);
     }
 
     @Override
     public void doSave(IProgressMonitor monitor) {
-        super.doSave(monitor);
     }
 
     @Override
@@ -200,6 +267,17 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
 
     @Override
     public void notify(int changeKind) {
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        session.removeListener(this);
+        session = null;
+        viewpointsSelectionWizardPage.removeViewpointStateListeners(viewpointStateListener);
+        viewpointsSelectionWizardPage = null;
+        lastSelectedViewpoints.clear();
+        allViewpoints.clear();
     }
 
 }
