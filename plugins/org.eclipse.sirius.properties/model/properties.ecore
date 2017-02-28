@@ -27,7 +27,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="PageValidationSetDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="semanticValidationRules"
         upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/validation/SemanticValidationRule"
-        containment="true"/>
+        containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyValidationRule" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/validation/ValidationRule">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
@@ -53,9 +53,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="GroupValidationSetDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="semanticValidationRules"
         upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/validation/SemanticValidationRule"
-        containment="true"/>
+        containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="propertyValidationRules"
-        upperBound="-1" eType="#//PropertyValidationRule" containment="true"/>
+        upperBound="-1" eType="#//PropertyValidationRule" containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ControlDescription" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

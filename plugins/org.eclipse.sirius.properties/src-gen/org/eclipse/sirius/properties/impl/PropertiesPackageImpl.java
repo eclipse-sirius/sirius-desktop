@@ -2743,6 +2743,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getPageValidationSetDescription_SemanticValidationRules(), theValidationPackage.getSemanticValidationRule(), null, "semanticValidationRules", null, 0, -1, //$NON-NLS-1$
                 PageValidationSetDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES,
                 !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        getPageValidationSetDescription_SemanticValidationRules().getEKeys().add(theDescriptionPackage.getIdentifiedElement_Name());
 
         initEClass(propertyValidationRuleEClass, PropertyValidationRule.class, "PropertyValidationRule", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
@@ -2786,9 +2787,11 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getGroupValidationSetDescription_SemanticValidationRules(), theValidationPackage.getSemanticValidationRule(), null, "semanticValidationRules", null, 0, -1, //$NON-NLS-1$
                 GroupValidationSetDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES,
                 !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        getGroupValidationSetDescription_SemanticValidationRules().getEKeys().add(theDescriptionPackage.getIdentifiedElement_Name());
         initEReference(getGroupValidationSetDescription_PropertyValidationRules(), this.getPropertyValidationRule(), null, "propertyValidationRules", null, 0, -1, GroupValidationSetDescription.class, //$NON-NLS-1$
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        getGroupValidationSetDescription_PropertyValidationRules().getEKeys().add(theDescriptionPackage.getIdentifiedElement_Name());
 
         initEClass(controlDescriptionEClass, ControlDescription.class, "ControlDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getControlDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, ControlDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$

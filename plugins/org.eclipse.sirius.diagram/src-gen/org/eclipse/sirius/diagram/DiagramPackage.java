@@ -2161,7 +2161,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2297,7 +2297,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2528,7 +2528,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2656,7 +2656,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2811,7 +2811,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2956,7 +2956,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3115,7 +3115,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3276,7 +3276,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3435,7 +3435,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3596,7 +3596,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3740,7 +3740,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4048,7 +4048,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4271,7 +4271,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4512,7 +4512,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4581,7 +4581,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -4650,7 +4650,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -6732,7 +6732,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * Returns the meta object for the attribute '{@link org.eclipse.sirius.diagram.Note#getColor <em>Color</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Color</em>'.
      * @see org.eclipse.sirius.diagram.Note#getColor()
      * @see #getNote()

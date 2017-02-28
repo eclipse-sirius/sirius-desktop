@@ -292,6 +292,7 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
         initEReference(getConcernDescription_Rules(), theValidationPackage.getValidationRule(), null, "rules", null, 0, -1, ConcernDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
                 !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        getConcernDescription_Rules().getEKeys().add(theDescriptionPackage_1.getIdentifiedElement_Name());
         initEReference(getConcernDescription_Behaviors(), theToolPackage.getBehaviorTool(), null, "behaviors", null, 0, -1, ConcernDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
                 !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);

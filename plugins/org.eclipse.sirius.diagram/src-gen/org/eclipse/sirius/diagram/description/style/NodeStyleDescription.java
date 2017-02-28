@@ -132,7 +132,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * </p>
      * <!-- end-user-doc --> <!-- begin-model-doc --> Select which side of the container is authorized or not. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Forbidden Sides</em>' attribute list.
      * @see org.eclipse.sirius.diagram.description.style.Side
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNodeStyleDescription_ForbiddenSides()

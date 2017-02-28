@@ -146,7 +146,7 @@ public interface DColumn extends DTableElement {
      * </p>
      * <!-- end-user-doc --> <!-- begin-model-doc --> Same list as a"cells" but sorted according to the order of lines.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Ordered Cells</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn_OrderedCells()
      * @model transient="true" changeable="false" volatile="true" derived="true"

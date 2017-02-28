@@ -202,7 +202,7 @@ public interface DLine extends LineContainer, DTableElement {
      * </p>
      * <!-- end-user-doc --> <!-- begin-model-doc --> Same list as "cells" but sorted according to the order of columns.
      * <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Ordered Cells</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDLine_OrderedCells()
      * @model transient="true" changeable="false" volatile="true" derived="true"

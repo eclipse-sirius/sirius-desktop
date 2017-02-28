@@ -62,7 +62,7 @@ public interface GroupValidationSetDescription extends EObject {
      * 
      * @return the value of the '<em>Property Validation Rules</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupValidationSetDescription_PropertyValidationRules()
-     * @model containment="true"
+     * @model containment="true" keys="name"
      * @generated
      */
     EList<PropertyValidationRule> getPropertyValidationRules();

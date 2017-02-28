@@ -104,7 +104,7 @@ public interface BasicLabelStyle extends Customizable {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Color</em>' attribute.
      * @see #setLabelColor(RGBValues)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getBasicLabelStyle_LabelColor()

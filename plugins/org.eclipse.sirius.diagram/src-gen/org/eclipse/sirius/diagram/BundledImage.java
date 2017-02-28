@@ -67,7 +67,7 @@ public interface BundledImage extends NodeStyle {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Color</em>' attribute.
      * @see #setColor(RGBValues)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getBundledImage_Color()

@@ -1691,20 +1691,20 @@
           </eAnnotations>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRules" upperBound="-1"
-            eType="#//description/validation/ValidationRule" containment="true">
+            eType="#//description/validation/ValidationRule" containment="true" eKeys="#//description/IdentifiedElement/name">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="The validation rules owned by this set."/>
           </eAnnotations>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EReference" name="reusedRules" upperBound="-1"
-            eType="#//description/validation/ValidationRule">
+            eType="#//description/validation/ValidationRule" eKeys="#//description/IdentifiedElement/name">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="The validations rules that are reused by this set."/>
           </eAnnotations>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EReference" name="allRules" upperBound="-1"
             eType="#//description/validation/ValidationRule" changeable="false" volatile="true"
-            transient="true" derived="true">
+            transient="true" derived="true" eKeys="#//description/IdentifiedElement/name">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="All rules of the set."/>
           </eAnnotations>

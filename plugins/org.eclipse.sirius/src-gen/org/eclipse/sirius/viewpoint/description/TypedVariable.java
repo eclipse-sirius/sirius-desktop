@@ -61,7 +61,7 @@ public interface TypedVariable extends InteractiveVariableDescription, SubVariab
      * here...
      * </p>
      * <!-- end-user-doc --> <!-- begin-model-doc --> The type of the variable value. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Value Type</em>' reference.
      * @see #setValueType(EDataType)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getTypedVariable_ValueType()
