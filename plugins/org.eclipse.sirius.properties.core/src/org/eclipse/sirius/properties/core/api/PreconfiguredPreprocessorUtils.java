@@ -46,7 +46,7 @@ public final class PreconfiguredPreprocessorUtils {
      */
     public static List<EStructuralFeature> getFeaturesToFilter(EClass eClass) {
         List<EStructuralFeature> featuresToFilter = new ArrayList<EStructuralFeature>();
-        eClass.getEAllStructuralFeatures().stream().filter(feature -> feature.getName().startsWith("filter") || feature.getName().equals("extends")).forEach(featuresToFilter::add); //$NON-NLS-1$ //$NON-NLS-2$
+        eClass.getEAllStructuralFeatures().stream().filter(feature -> feature.getName().equals("extends")).forEach(featuresToFilter::add); //$NON-NLS-1$
         return featuresToFilter;
     }
 

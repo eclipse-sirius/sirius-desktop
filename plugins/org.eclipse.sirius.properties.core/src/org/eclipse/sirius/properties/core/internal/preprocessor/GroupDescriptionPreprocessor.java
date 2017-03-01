@@ -16,6 +16,8 @@ import java.util.Optional;
 
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
@@ -28,12 +30,9 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
 /**
  * Preprocessor for {@link GroupDescription}.
  * <ul>
- * <li>The {@code filterConditionalStylesFromExtendedGroupExpression} attribute
- * is ignored.</li>
- * <li>The {@code filterControlsFromExtendedGroupExpression} attribute is
- * ignored.</li>
- * <li>The {@code filterValidationRulesFromExtendedGroupExpression} attribute is
- * ignored.</li>
+ * <li>The {@code filterConditionalStylesFromExtendedGroupExpression} attribute is ignored.</li>
+ * <li>The {@code filterControlsFromExtendedGroupExpression} attribute is ignored.</li>
+ * <li>The {@code filterValidationRulesFromExtendedGroupExpression} attribute is ignored.</li>
  * <li>The {@code validationSet} containment is handled manually.</li>
  * <li>The {@code controls} containment is handled manually.</li>
  * <li>The {@code style} containment value is copied.</li>
@@ -44,12 +43,6 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
  * @author mbats
  */
 public class GroupDescriptionPreprocessor extends PreconfiguredPreprocessor<GroupDescription> {
-
-    /**
-     * The groups feature is handled separately.
-     */
-    protected static final EReference CONTROLS_FEATURE = PropertiesPackage.Literals.ABSTRACT_GROUP_DESCRIPTION__CONTROLS;
-
     /**
      * The validation set feature is handled separately.
      */
@@ -63,17 +56,18 @@ public class GroupDescriptionPreprocessor extends PreconfiguredPreprocessor<Grou
     }
 
     @Override
-    protected void processMonoValuedEReference(EReference eReference, GroupDescription processedDescription, GroupDescription currentDescription, TransformationCache cache) {
+    protected void processMonoValuedEReference(EReference eReference, GroupDescription processedDescription, GroupDescription currentDescription, TransformationCache cache, IInterpreter interpreter,
+            IVariableManager variableManager) {
         if (!eReference.equals(VALIDATIONSET_FEATURE)) {
-            super.processMonoValuedEReference(eReference, processedDescription, currentDescription, cache);
+            super.processMonoValuedEReference(eReference, processedDescription, currentDescription, cache, interpreter, variableManager);
         } else {
-            processValidationSet(processedDescription, currentDescription, cache);
+            processValidationSet(processedDescription, currentDescription, cache, interpreter, variableManager);
         }
     }
 
     /**
-     * Special case for the validation set. A new set is created if need be. The
-     * rules of the parent description are copied into the set.
+     * Special case for the validation set. A new set is created if need be. The rules of the parent description are
+     * copied into the set.
      * 
      * @param processedDescription
      *            the resulting description.
@@ -81,8 +75,13 @@ public class GroupDescriptionPreprocessor extends PreconfiguredPreprocessor<Grou
      *            the original or parent description.
      * @param cache
      *            the processing cache.
+     * @param interpreter
+     *            the interpreter.
+     * @param variableManager
+     *            the variable manager.
      */
-    private void processValidationSet(GroupDescription processedDescription, GroupDescription currentDescription, TransformationCache cache) {
+    private void processValidationSet(GroupDescription processedDescription, GroupDescription currentDescription, TransformationCache cache, IInterpreter interpreter,
+            IVariableManager variableManager) {
         if (currentDescription.eIsSet(VALIDATIONSET_FEATURE)) {
             GroupValidationSetDescription validationSet = Optional.ofNullable(processedDescription.getValidationSet()).orElse(PropertiesFactory.eINSTANCE.createGroupValidationSetDescription());
             processedDescription.setValidationSet(validationSet);
@@ -91,14 +90,22 @@ public class GroupDescriptionPreprocessor extends PreconfiguredPreprocessor<Grou
             // then those contributed by the current description.
             // Copy all the semantic validation rules
             List<SemanticValidationRule> newSemanticValidationRules = new ArrayList<>();
-            currentDescription.getValidationSet().getSemanticValidationRules().forEach(rule -> newSemanticValidationRules.add(EcoreUtil.copy(rule)));
+            currentDescription.getValidationSet().getSemanticValidationRules().forEach(rule -> {
+                if (!this.isFiltered(PropertiesPackage.eINSTANCE.getGroupValidationSetDescription_SemanticValidationRules(), processedDescription, rule, interpreter, variableManager)) {
+                    newSemanticValidationRules.add(EcoreUtil.copy(rule));
+                }
+            });
             newSemanticValidationRules.addAll(processedDescription.getValidationSet().getSemanticValidationRules());
             processedDescription.getValidationSet().getSemanticValidationRules().clear();
             processedDescription.getValidationSet().getSemanticValidationRules().addAll(newSemanticValidationRules);
 
             // Copy all the property validation rules
             List<PropertyValidationRule> newPropertyValidationRules = new ArrayList<>();
-            currentDescription.getValidationSet().getPropertyValidationRules().forEach(rule -> newPropertyValidationRules.add(EcoreUtil.copy(rule)));
+            currentDescription.getValidationSet().getPropertyValidationRules().forEach(rule -> {
+                if (!this.isFiltered(PropertiesPackage.eINSTANCE.getGroupValidationSetDescription_PropertyValidationRules(), processedDescription, rule, interpreter, variableManager)) {
+                    newPropertyValidationRules.add(EcoreUtil.copy(rule));
+                }
+            });
             newPropertyValidationRules.addAll(processedDescription.getValidationSet().getPropertyValidationRules());
             processedDescription.getValidationSet().getPropertyValidationRules().clear();
             processedDescription.getValidationSet().getPropertyValidationRules().addAll(newPropertyValidationRules);

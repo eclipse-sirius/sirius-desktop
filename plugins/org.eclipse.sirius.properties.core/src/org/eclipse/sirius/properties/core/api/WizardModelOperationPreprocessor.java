@@ -15,6 +15,8 @@ import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
@@ -33,13 +35,29 @@ public class WizardModelOperationPreprocessor {
     private WizardModelOperation wizardModelOperation;
 
     /**
+     * The interpreter.
+     */
+    private IInterpreter interpreter;
+
+    /**
+     * The variable manager.
+     */
+    private IVariableManager variableManager;
+
+    /**
      * The constructor.
      * 
      * @param wizardModelOperation
      *            The description of the wizard model operation
+     * @param interpreter
+     *            The interpreter
+     * @param variableManager
+     *            The variable manager
      */
-    public WizardModelOperationPreprocessor(WizardModelOperation wizardModelOperation) {
+    public WizardModelOperationPreprocessor(WizardModelOperation wizardModelOperation, IInterpreter interpreter, IVariableManager variableManager) {
         this.wizardModelOperation = wizardModelOperation;
+        this.interpreter = interpreter;
+        this.variableManager = variableManager;
     }
 
     /**
@@ -90,7 +108,7 @@ public class WizardModelOperationPreprocessor {
         this.wizardModelOperation.getPages().forEach(pageDescription -> {
             Optional<IDescriptionPreprocessor> optionalPreprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(pageDescription);
             optionalPreprocessor.ifPresent(preprocessor -> {
-                EObject convertedEObject = preprocessor.convert(pageDescription, cache);
+                EObject convertedEObject = preprocessor.convert(pageDescription, cache, this.interpreter, this.variableManager);
                 if (convertedEObject instanceof PageDescription) {
                     convertedWizardModelOperation.getPages().add((PageDescription) convertedEObject);
                 }
@@ -110,7 +128,7 @@ public class WizardModelOperationPreprocessor {
         this.wizardModelOperation.getGroups().forEach(groupDescription -> {
             Optional<IDescriptionPreprocessor> optionalPreprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(groupDescription);
             optionalPreprocessor.ifPresent(preprocessor -> {
-                EObject convertedEObject = preprocessor.convert(groupDescription, cache);
+                EObject convertedEObject = preprocessor.convert(groupDescription, cache, this.interpreter, this.variableManager);
                 if (convertedEObject instanceof GroupDescription) {
                     convertedWizardModelOperation.getGroups().add((GroupDescription) convertedEObject);
                 }

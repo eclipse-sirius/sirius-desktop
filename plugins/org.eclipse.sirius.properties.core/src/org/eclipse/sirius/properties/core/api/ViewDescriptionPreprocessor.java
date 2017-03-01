@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 
@@ -44,14 +46,18 @@ public class ViewDescriptionPreprocessor {
     /**
      * Use the description provided in order to unfold the extends and overrides relations.
      * 
+     * @param interpreter
+     *            The interpreter
+     * @param variableManager
+     *            The variable manager
      * @return The {@link ViewExtensionDescription} computed
      */
-    public Optional<ViewExtensionDescription> convert() {
+    public Optional<ViewExtensionDescription> convert(IInterpreter interpreter, IVariableManager variableManager) {
         TransformationCache cache = new TransformationCache();
 
         // Starts the conversion
         return SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(originalDescription).flatMap(preprocessor -> {
-            EObject viewExtensionDescription = preprocessor.convert(originalDescription, cache);
+            EObject viewExtensionDescription = preprocessor.convert(originalDescription, cache, interpreter, variableManager);
 
             // Starts the resolution of the links
             List<IDescriptionLinkResolver> linkResolvers = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessorLinkResolvers();

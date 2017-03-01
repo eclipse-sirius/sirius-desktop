@@ -11,7 +11,9 @@
 package org.eclipse.sirius.properties.core.api;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
 
@@ -19,12 +21,17 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
+import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 
 /**
  * Default {@link IDescriptionPreprocessor} implementation.
  * 
- * @author Florent Latombe <a href= "mailto:florent.latombe@obeo.fr">florent.latombe@obeo.fr</a>
+ * @author flatombe
+ * @author mbats
  *
  * @param <SIRIUS>
  *            the type of description supported by this preprocessor.
@@ -37,7 +44,14 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
     protected static final String EXTENDS_FEATURE_NAME = "extends"; //$NON-NLS-1$
 
     /**
-     * The type of Sirius description for which this default preprocessor is configured.
+     * <<<<<<< HEAD The type of Sirius description for which this default preprocessor is configured. ======= A generic
+     * name representing the semantic validation rules and the property validation rules.
+     */
+    private static final String VALIDATION_RULES_FEATURE_NAME = "validationRules"; //$NON-NLS-1$
+
+    /**
+     * The type of Sirius description for which this default preprocessor is configured. >>>>>>> ced119b... [496065] Add
+     * support for the filters in the preprocessing of .odesign
      */
     protected Class<SIRIUS> descriptionClass;
 
@@ -52,7 +66,7 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
     }
 
     @Override
-    public EObject convert(EObject originalDescription, TransformationCache cache) {
+    public EObject convert(EObject originalDescription, TransformationCache cache, IInterpreter interpreter, IVariableManager variableManager) {
         SIRIUS processedDescription = null;
         if (this.descriptionClass.isAssignableFrom(originalDescription.getClass())) {
             EObject createdDescription = originalDescription.eClass().getEPackage().getEFactoryInstance().create(originalDescription.eClass());
@@ -61,7 +75,7 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
                 processedDescription = this.descriptionClass.cast(createdDescription);
                 cache.put(originalDescription, processedDescription);
                 SIRIUS siriusOriginalDescription = this.descriptionClass.cast(originalDescription);
-                this.processDescriptionPropertiesRecursively(processedDescription, siriusOriginalDescription, cache);
+                this.processDescriptionPropertiesRecursively(processedDescription, siriusOriginalDescription, cache, interpreter, variableManager);
             }
         }
         return processedDescription;
@@ -76,12 +90,17 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
      *            the original description.
      * @param cache
      *            the processing cache.
+     * @param interpreter
+     *            the interpreter.
+     * @param variableManager
+     *            the variable manager.
      */
-    protected void processDescriptionPropertiesRecursively(SIRIUS processedDescription, SIRIUS originalDescription, TransformationCache cache) {
+    protected void processDescriptionPropertiesRecursively(SIRIUS processedDescription, SIRIUS originalDescription, TransformationCache cache, IInterpreter interpreter,
+            IVariableManager variableManager) {
         Optional<SIRIUS> currentDescription = Optional.of(originalDescription);
         while (currentDescription.isPresent()) {
             for (EStructuralFeature feature : currentDescription.get().eClass().getEAllStructuralFeatures()) {
-                this.processDescriptionFeature(feature, processedDescription, currentDescription.get(), cache);
+                this.processDescriptionFeature(feature, processedDescription, currentDescription.get(), cache, interpreter, variableManager);
             }
             currentDescription = this.getParentOf(currentDescription.get());
         }
@@ -120,8 +139,13 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
      *            the original description or one of its ancestors, from which properties are inherited.
      * @param cache
      *            the processing cache.
+     * @param interpreter
+     *            the interpreter.
+     * @param variableManager
+     *            the variable manager.
      */
-    protected void processDescriptionFeature(EStructuralFeature feature, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache) {
+    protected void processDescriptionFeature(EStructuralFeature feature, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache, IInterpreter interpreter,
+            IVariableManager variableManager) {
         if (feature instanceof EAttribute) {
             if (!feature.isMany()) {
                 this.processMonoValuedEAttribute((EAttribute) feature, processedDescription, currentDescription, cache);
@@ -130,9 +154,9 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
             }
         } else if (feature instanceof EReference) {
             if (!feature.isMany()) {
-                this.processMonoValuedEReference((EReference) feature, processedDescription, currentDescription, cache);
+                this.processMonoValuedEReference((EReference) feature, processedDescription, currentDescription, cache, interpreter, variableManager);
             } else {
-                this.processMultiValuedEReference((EReference) feature, processedDescription, currentDescription, cache);
+                this.processMultiValuedEReference((EReference) feature, processedDescription, currentDescription, cache, interpreter, variableManager);
             }
         }
     }
@@ -191,13 +215,18 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
      *            the current description.
      * @param cache
      *            the processing cache.
+     * @param interpreter
+     *            the interpreter.
+     * @param variableManager
+     *            the variable manager.
      */
-    protected void processMonoValuedEReference(EReference eReference, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache) {
+    protected void processMonoValuedEReference(EReference eReference, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache, IInterpreter interpreter,
+            IVariableManager variableManager) {
         if (!processedDescription.eIsSet(eReference)) {
             Object currentValue = currentDescription.eGet(eReference);
             if (currentValue instanceof EObject) {
                 SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor((EObject) currentValue).ifPresent(preprocessor -> {
-                    Object processedValue = preprocessor.convert((EObject) currentValue, cache);
+                    Object processedValue = preprocessor.convert((EObject) currentValue, cache, interpreter, variableManager);
                     processedDescription.eSet(eReference, processedValue);
                 });
             }
@@ -215,8 +244,13 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
      *            the current description.
      * @param cache
      *            the processing cache.
+     * @param interpreter
+     *            the interpreter.
+     * @param variableManager
+     *            the variable manager.
      */
-    protected void processMultiValuedEReference(EReference eReference, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache) {
+    protected void processMultiValuedEReference(EReference eReference, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache, IInterpreter interpreter,
+            IVariableManager variableManager) {
         Object processedValue = processedDescription.eGet(eReference);
         Object currentValue = currentDescription.eGet(eReference);
         if (currentValue instanceof Iterable<?> && processedValue instanceof Iterable<?>) {
@@ -226,8 +260,11 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
 
             // For each current description, process it and add it to the
             // newValue
-            StreamSupport.stream(currentIterable.spliterator(), false).filter(EObject.class::isInstance).map(EObject.class::cast).forEach(object -> {
-                SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(object).map(preprocessor -> preprocessor.convert(object, cache)).map(newValue::add);
+            StreamSupport.stream(currentIterable.spliterator(), false).filter(EObject.class::isInstance).map(EObject.class::cast).forEach(siriusDescription -> {
+                if (!isFiltered(eReference, processedDescription, siriusDescription, interpreter, variableManager)) {
+                    SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(siriusDescription)
+                            .map(preprocessor -> preprocessor.convert(siriusDescription, cache, interpreter, variableManager)).map(newValue::add);
+                }
             });
 
             // Then add already processed descriptions
@@ -241,5 +278,61 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
     @Override
     public boolean canHandle(EObject description) {
         return true;
+    }
+
+    /**
+     * Check if an eObject must be filtered according to a filtering expression.
+     * 
+     * @param currentDescription
+     *            The current description
+     * @param eStructuralFeature
+     *            the reference
+     * @param processedDescription
+     *            The processed description
+     * @param interpreter
+     *            The interpreter
+     * @param variableManager
+     *            The variable manager
+     * @return True if the eObject must be filtered otherwise false
+     */
+    protected boolean isFiltered(EStructuralFeature eStructuralFeature, EObject processedDescription, EObject currentDescription, IInterpreter interpreter, IVariableManager variableManager) {
+        boolean returnValue = false;
+        String structuralFeatureName = eStructuralFeature.getName();
+        // In the metamodel, it exists only one filtering expression for the
+        // validation rules (the semantic validation rules and the property
+        // validation rules) : filtereValidationRulesFromExtendedXXXExpression.
+        if (PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__SEMANTIC_VALIDATION_RULES.getName().equals(structuralFeatureName)
+                || PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__PROPERTY_VALIDATION_RULES.getName().equals(structuralFeatureName)) { // $NON-NLS-1$
+            structuralFeatureName = VALIDATION_RULES_FEATURE_NAME;
+        }
+        String parentTypeName = processedDescription.eClass().getName().replace("Description", ""); //$NON-NLS-1$ //$NON-NLS-2$
+        String featureName = "filter" + structuralFeatureName.substring(0, 1).toUpperCase() + structuralFeatureName.substring(1) + "FromExtended" //$NON-NLS-1$ //$NON-NLS-2$
+                + parentTypeName + "Expression"; //$NON-NLS-1$
+        Optional<EStructuralFeature> filterStructuralFeature = Optional.ofNullable(processedDescription.eClass().getEStructuralFeature(featureName));
+        Optional<String> filteringExpression = Optional.empty();
+        if (filterStructuralFeature.isPresent()) {
+            filteringExpression = Optional.ofNullable(processedDescription.eGet(filterStructuralFeature.get())).filter(String.class::isInstance).map(String.class::cast);
+            if (filteringExpression.isPresent()) {
+                Map<String, Object> variables = new HashMap<String, Object>();
+                variables.putAll(variableManager.getVariables());
+                // The name of the variable equals the name of the parent type
+                // without the 'Description' suffix, for example from the
+                // filtering expression of a page we will have acess to a
+                // variable named 'group', for a group to variables named
+                // 'control'... It exists only one special case for the semantic
+                // validation rules and the property validation rules, the
+                // variable will be 'validationRule'.
+                String variableName = structuralFeatureName.substring(0, structuralFeatureName.length() - 1);
+                variables.put(variableName, currentDescription);
+                IEvaluationResult evaluationResult = interpreter.evaluateExpression(variables, filteringExpression.get());
+                if (evaluationResult.success()) {
+                    Object value = evaluationResult.getValue();
+                    if (value != null && Boolean.class.isInstance(value)) {
+                        returnValue = Boolean.class.cast(value);
+                    }
+                }
+            }
+        }
+        return returnValue;
     }
 }

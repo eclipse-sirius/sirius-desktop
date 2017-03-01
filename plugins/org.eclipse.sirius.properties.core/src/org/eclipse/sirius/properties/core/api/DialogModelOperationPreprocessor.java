@@ -15,6 +15,8 @@ import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.sirius.properties.DialogButton;
 import org.eclipse.sirius.properties.DialogModelOperation;
 import org.eclipse.sirius.properties.GroupDescription;
@@ -34,13 +36,29 @@ public class DialogModelOperationPreprocessor {
     private DialogModelOperation dialogModelOperation;
 
     /**
+     * The interpreter.
+     */
+    private IInterpreter interpreter;
+
+    /**
+     * The variable manager.
+     */
+    private IVariableManager variableManager;
+
+    /**
      * The constructor.
      * 
      * @param dialogModelOperation
      *            The description of the dialog model operation.
+     * @param interpreter
+     *            The interpreter
+     * @param variableManager
+     *            The variable manager
      */
-    public DialogModelOperationPreprocessor(DialogModelOperation dialogModelOperation) {
+    public DialogModelOperationPreprocessor(DialogModelOperation dialogModelOperation, IInterpreter interpreter, IVariableManager variableManager) {
         this.dialogModelOperation = dialogModelOperation;
+        this.interpreter = interpreter;
+        this.variableManager = variableManager;
     }
 
     /**
@@ -103,7 +121,7 @@ public class DialogModelOperationPreprocessor {
         Optional.ofNullable(this.dialogModelOperation.getPage()).ifPresent(pageDescription -> {
             Optional<IDescriptionPreprocessor> optionalPreprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(pageDescription);
             optionalPreprocessor.ifPresent(preprocessor -> {
-                EObject convertedEObject = preprocessor.convert(pageDescription, cache);
+                EObject convertedEObject = preprocessor.convert(pageDescription, cache, interpreter, variableManager);
                 if (convertedEObject instanceof PageDescription) {
                     convertedDialogModelOperation.setPage((PageDescription) convertedEObject);
                 }
@@ -123,7 +141,7 @@ public class DialogModelOperationPreprocessor {
         this.dialogModelOperation.getGroups().forEach(groupDescription -> {
             Optional<IDescriptionPreprocessor> optionalPreprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(groupDescription);
             optionalPreprocessor.ifPresent(preprocessor -> {
-                EObject convertedEObject = preprocessor.convert(groupDescription, cache);
+                EObject convertedEObject = preprocessor.convert(groupDescription, cache, interpreter, variableManager);
                 if (convertedEObject instanceof GroupDescription) {
                     convertedDialogModelOperation.getGroups().add((GroupDescription) convertedEObject);
                 }

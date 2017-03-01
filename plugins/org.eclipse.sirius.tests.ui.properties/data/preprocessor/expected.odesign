@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="ASCII"?>
 <properties:ViewExtensionDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Properties">
   <categories name="Default">
-    <pages name="DefaultPage" labelExpression="DefaultPageLabelExpression" domainClass="DefaultPageDomainClass" semanticCandidateExpression="DefaultPageSemanticCandidateExpression" preconditionExpression="DefaultPagePreconditionExpression">
+    <pages name="DefaultPage" labelExpression="DefaultPageLabelExpression" domainClass="DefaultPageDomainClass" semanticCandidateExpression="DefaultPageSemanticCandidateExpression" preconditionExpression="DefaultPagePreconditionExpression" filterGroupsFromExtendedPageExpression="DefaultPageFilterGroupsFromExtendedPageExpression" filterValidationRulesFromExtendedPageExpression="DefaultPageFilterValidationRulesFromExtendedPageExpression">
       <validationSet>
         <semanticValidationRules name="DefaultPageSemanticValidationRuleId" label="DefaultPageSemanticValidationRuleLabel" message="DefaultPageSemanticValidationRuleMessage" targetClass="DefaultPageSemanticValidationRuleTargetClass"/>
         <semanticValidationRules name="AnotherDefaultPageSemanticValidationRuleId" label="AnotherDefaultPageSemanticValidationRuleLabel" message="AnotherDefaultPageSemanticValidationRuleMessage" targetClass="AnotherDefaultPageSemanticValidationRuleTargetClass"/>
       </validationSet>
     </pages>
-    <pages name="ExtendsDefaultPage" labelExpression="ExtendsDefaultPageLabelExpression" domainClass="ExtendsDefaultPageDomainClass" semanticCandidateExpression="ExtendsDefaultPageSemanticCandidateExpression" preconditionExpression="ExtendsDefaultPagePreconditionExpression">
+    <pages name="ExtendsDefaultPage" labelExpression="ExtendsDefaultPageLabelExpression" domainClass="ExtendsDefaultPageDomainClass" semanticCandidateExpression="ExtendsDefaultPageSemanticCandidateExpression" preconditionExpression="ExtendsDefaultPagePreconditionExpression" filterGroupsFromExtendedPageExpression="ExtendsDefaultPageFilterGroupsFromExtendedPageExpression" filterValidationRulesFromExtendedPageExpression="ExtendsDefaultPageFilterValidationRulesFromExtendedPageExpression">
       <validationSet>
         <semanticValidationRules name="DefaultPageSemanticValidationRuleId" label="DefaultPageSemanticValidationRuleLabel" message="DefaultPageSemanticValidationRuleMessage" targetClass="DefaultPageSemanticValidationRuleTargetClass"/>
         <semanticValidationRules name="AnotherDefaultPageSemanticValidationRuleId" label="AnotherDefaultPageSemanticValidationRuleLabel" message="AnotherDefaultPageSemanticValidationRuleMessage" targetClass="AnotherDefaultPageSemanticValidationRuleTargetClass"/>
         <semanticValidationRules name="ExtendsDefaultPageSemanticValidationRuleId" label="ExtendsDefaultPageSemanticValidationRuleLabel" message="ExtendsDefaultPageSemanticValidationRuleMessage" targetClass="ExtendsDefaultPageSemanticValidationRuleTargetClass"/>
       </validationSet>
     </pages>
-    <pages name="InheritsDefaultPage" labelExpression="DefaultPageLabelExpression" domainClass="DefaultPageDomainClass" semanticCandidateExpression="DefaultPageSemanticCandidateExpression" preconditionExpression="DefaultPagePreconditionExpression">
+    <pages name="InheritsDefaultPage" labelExpression="DefaultPageLabelExpression" domainClass="DefaultPageDomainClass" semanticCandidateExpression="DefaultPageSemanticCandidateExpression" preconditionExpression="DefaultPagePreconditionExpression" filterGroupsFromExtendedPageExpression="DefaultPageFilterGroupsFromExtendedPageExpression" filterValidationRulesFromExtendedPageExpression="DefaultPageFilterValidationRulesFromExtendedPageExpression">
       <validationSet>
         <semanticValidationRules name="DefaultPageSemanticValidationRuleId" label="DefaultPageSemanticValidationRuleLabel" message="DefaultPageSemanticValidationRuleMessage" targetClass="DefaultPageSemanticValidationRuleTargetClass"/>
         <semanticValidationRules name="AnotherDefaultPageSemanticValidationRuleId" label="AnotherDefaultPageSemanticValidationRuleLabel" message="AnotherDefaultPageSemanticValidationRuleMessage" targetClass="AnotherDefaultPageSemanticValidationRuleTargetClass"/>
       </validationSet>
     </pages>
-    <pages name="PageReferencingGroups" labelExpression="PageReferencingGroupsLabelExpression" domainClass="PageReferencingGroupsDomainClass" semanticCandidateExpression="PageReferencingGroupsSemanticCandidateExpression" preconditionExpression="PageReferencingGroupsPreconditionExpression" groups="//@categories.0/@groups.0 //@categories.0/@groups.1 //@categories.0/@groups.2"/>
-    <pages name="ExtendsExtendsDefaultPage" labelExpression="ExtendsExtendsDefaultPageLabelExpression" domainClass="ExtendsDefaultPageDomainClass" semanticCandidateExpression="ExtendsDefaultPageSemanticCandidateExpression" preconditionExpression="ExtendsDefaultPagePreconditionExpression">
+    <pages name="PageReferencingGroups" labelExpression="PageReferencingGroupsLabelExpression" domainClass="PageReferencingGroupsDomainClass" semanticCandidateExpression="PageReferencingGroupsSemanticCandidateExpression" preconditionExpression="PageReferencingGroupsPreconditionExpression" groups="//@categories.0/@groups.0 //@categories.0/@groups.1 //@categories.0/@groups.2 //@categories.3/@groups.2" filterGroupsFromExtendedPageExpression="PageReferencingGroupsFilterGroupsFromExtendedPageExpression" filterValidationRulesFromExtendedPageExpression="PageReferencingGroupsFilterValidationRulesExtendedPageExpression">
+      <validationSet>
+        <semanticValidationRules name="FilteredSemanticValidationRuleId" label="FilteredSemanticValidationRuleLabel" message="FilteredSemanticValidationRuleMessage" targetClass="FilteredSemanticValidationRuleTargetClass"/>
+        <semanticValidationRules name="PageReferencingGroupsSemanticValidationRuleId" label="PageReferencingGroupsSemanticValidationRuleLabel" message="PageReferencingGroupsSemanticValidationRuleMessage" targetClass="PageReferencingGroupsSemanticValidationRuleTargetClass"/>
+      </validationSet>
+    </pages>
+    <pages name="ExtendsExtendsDefaultPage" labelExpression="ExtendsExtendsDefaultPageLabelExpression" domainClass="ExtendsDefaultPageDomainClass" semanticCandidateExpression="ExtendsDefaultPageSemanticCandidateExpression" preconditionExpression="ExtendsDefaultPagePreconditionExpression" filterGroupsFromExtendedPageExpression="ExtendsDefaultPageFilterGroupsFromExtendedPageExpression" filterValidationRulesFromExtendedPageExpression="ExtendsDefaultPageFilterValidationRulesFromExtendedPageExpression">
       <validationSet>
         <semanticValidationRules name="DefaultPageSemanticValidationRuleId" label="DefaultPageSemanticValidationRuleLabel" message="DefaultPageSemanticValidationRuleMessage" targetClass="DefaultPageSemanticValidationRuleTargetClass"/>
         <semanticValidationRules name="AnotherDefaultPageSemanticValidationRuleId" label="AnotherDefaultPageSemanticValidationRuleLabel" message="AnotherDefaultPageSemanticValidationRuleMessage" targetClass="AnotherDefaultPageSemanticValidationRuleTargetClass"/>
@@ -29,9 +34,18 @@
         <semanticValidationRules name="ExtendsExtendsDefaultPageSemanticValidationRuleId" label="ExtendsExtendsDefaultPageSemanticValidationRuleLabel" message="ExtendsExtendsDefaultPageSemanticValidationRuleMessage" targetClass="ExtendsExtendsDefaultPageSemanticValidationRuleTargetClass"/>
       </validationSet>
     </pages>
-    <pages name="ExtendsPageInAnotherResource" labelExpression="Page" domainClass="" semanticCandidateExpression="var:self" preconditionExpression="PageInAnotherResourcePreconditionExpression" groups="//@categories.0/@groups.4"/>
-    <groups name="DefaultGroup" labelExpression="DefaultGroupLabelExpression" domainClass="DefaultGroupDomainClass" semanticCandidateExpression="DefaultGroupSemanticCandidateExpression" preconditionExpression="DefaultGroupPreconditionExpression">
-      <controls xsi:type="properties:TextDescription" name="DefaultGroupText" labelExpression="DefaultGroupTextLabelExpression" helpExpression="DefaultGroupTextHelpExpression" isEnabledExpression="DefaultGroupTextIsEnabledExpression" valueExpression="DefaultGroupTextValueExpression">
+    <pages name="ExtendsPageInAnotherResource" labelExpression="Page" domainClass="" semanticCandidateExpression="var:self" preconditionExpression="PageInAnotherResourcePreconditionExpression" groups="//@categories.0/@groups.4" filterGroupsFromExtendedPageExpression="" filterValidationRulesFromExtendedPageExpression="PageInAnotherResourceFilterValidationRulesFromExtendedPageExpression"/>
+    <pages name="ExtendsPageReferencingGroups" label="" labelExpression="ExtendsPageReferencingGroupsLabelExpression" domainClass="ExtendsDefaultPageDomainClass" semanticCandidateExpression="ExtendsPageReferencingGroupsSemanticCandidateExpression" preconditionExpression="ExtendsPageReferencingGroupsPreconditionExpression" groups="//@categories.3/@groups.3 //@categories.0/@groups.0 //@categories.0/@groups.1 //@categories.0/@groups.2 //@categories.3/@groups.2" filterGroupsFromExtendedPageExpression="" filterValidationRulesFromExtendedPageExpression="ExtendsPageReferencingGroupsFilterValidationRulesFromExtendedPageExpression">
+      <validationSet>
+        <semanticValidationRules name="FilteredSemanticValidationRuleId" label="FilteredSemanticValidationRuleLabel" message="FilteredSemanticValidationRuleMessage" targetClass="FilteredSemanticValidationRuleTargetClass"/>
+        <semanticValidationRules name="PageReferencingGroupsSemanticValidationRuleId" label="PageReferencingGroupsSemanticValidationRuleLabel" message="PageReferencingGroupsSemanticValidationRuleMessage" targetClass="PageReferencingGroupsSemanticValidationRuleTargetClass"/>
+        <semanticValidationRules name="DefaultPageSemanticValidationRuleId" label="DefaultPageSemanticValidationRuleLabel" message="DefaultPageSemanticValidationRuleMessage" targetClass="DefaultPageSemanticValidationRuleTargetClass"/>
+        <semanticValidationRules name="AnotherDefaultPageSemanticValidationRuleId" label="AnotherDefaultPageSemanticValidationRuleLabel" message="AnotherDefaultPageSemanticValidationRuleMessage" targetClass="AnotherDefaultPageSemanticValidationRuleTargetClass"/>
+      </validationSet>
+    </pages>
+    <groups name="DefaultGroup" labelExpression="DefaultGroupLabelExpression" domainClass="DefaultGroupDomainClass" semanticCandidateExpression="DefaultGroupSemanticCandidateExpression" preconditionExpression="DefaultGroupPreconditionExpression" filterControlsFromExtendedGroupExpression="DefaultGroupFilterControlsFromExtendedGroupExpression" filterValidationRulesFromExtendedGroupExpression="DefaultGroupFilterValidationRulesFromExtendedGroupExpression" filterConditionalStylesFromExtendedGroupExpression="DefaultGroupFilterConditionalStylesFromExtendedGroupExpression">
+      <controls xsi:type="properties:TextDescription" name="DefaultGroupFilteredText"/>
+      <controls xsi:type="properties:TextDescription" name="DefaultGroupText" labelExpression="DefaultGroupTextLabelExpression" helpExpression="DefaultGroupTextHelpExpression" isEnabledExpression="DefaultGroupTextIsEnabledExpression" valueExpression="DefaultGroupTextValueExpression" filterConditionalStylesFromExtendedTextExpression="DefaultGroupTextFilterConditionalStylesFromExtendedTextExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupTextChangeContext"/>
         </initialOperation>
@@ -59,13 +73,25 @@
             <fontFormat>bold</fontFormat>
           </style>
         </conditionalStyles>
+        <conditionalStyles preconditionExpression="DefaultGroupTextFilteredConditionalStylePreconditionExpression">
+          <style labelFontNameExpression="DefaultGroupTextFilteredConditionalStyleLabelFontNameExpression" labelFontSizeExpression="DefaultGroupTextFilteredConditionalStyleLabelFontSizeExpression" fontNameExpression="DefaultGroupTextFilteredConditionalStyleFontNameExpression" fontSizeExpression="DefaultGroupTextFilteredConditionalStyleFontSizeExpression">
+            <labelBackgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <labelForegroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelFontFormat>italic</labelFontFormat>
+            <labelFontFormat>bold</labelFontFormat>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <fontFormat>italic</fontFormat>
+            <fontFormat>bold</fontFormat>
+          </style>
+        </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:TextDescription" name="AnotherDefaultGroupText" labelExpression="AnotherDefaultGroupTextLabelExpression" helpExpression="AnotherDefaultGroupTextHelpExpression" isEnabledExpression="AnotherDefaultGroupTextIsEnabledExpression" valueExpression="AnotherDefaultGroupTextValueExpression">
+      <controls xsi:type="properties:TextDescription" name="AnotherDefaultGroupText" labelExpression="AnotherDefaultGroupTextLabelExpression" helpExpression="AnotherDefaultGroupTextHelpExpression" isEnabledExpression="AnotherDefaultGroupTextIsEnabledExpression" valueExpression="AnotherDefaultGroupTextValueExpression" filterConditionalStylesFromExtendedTextExpression="AnotherDefaultGroupTextFilterConditionalStylesFromExtendedTextExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="AnotherDefaultGroupTextChangeContext"/>
         </initialOperation>
       </controls>
-      <controls xsi:type="properties:ButtonDescription" name="DefaultGroupButton" labelExpression="DefaultGroupButtonLabelExpression" helpExpression="DefaultGroupButtonHelpExpression" isEnabledExpression="DefaultGroupButtonIsEnabledExpression" buttonLabelExpression="DefaultGroupButtonLabelExpression">
+      <controls xsi:type="properties:ButtonDescription" name="DefaultGroupButton" labelExpression="DefaultGroupButtonLabelExpression" helpExpression="DefaultGroupButtonHelpExpression" isEnabledExpression="DefaultGroupButtonIsEnabledExpression" buttonLabelExpression="DefaultGroupButtonLabelExpression" filterConditionalStylesFromExtendedButtonExpression="DefaultGroupButtonFilterConditionalStylesFromExtendedButtonExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupButtonChangeContext"/>
         </initialOperation>
@@ -88,7 +114,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:LabelDescription" name="DefaultGroupLabel" labelExpression="DefaultGroupLabelLabelExpression" helpExpression="DefaultGroupLabelHelpExpression" isEnabledExpression="DefaultGroupLabelIsEnabledExpression" valueExpression="DefaultGroupLabelValueExpression" displayExpression="DefaultGroupLabelDisplayExpression">
+      <controls xsi:type="properties:LabelDescription" name="DefaultGroupLabel" labelExpression="DefaultGroupLabelLabelExpression" helpExpression="DefaultGroupLabelHelpExpression" isEnabledExpression="DefaultGroupLabelIsEnabledExpression" valueExpression="DefaultGroupLabelValueExpression" displayExpression="DefaultGroupLabelDisplayExpression" filterConditionalStylesFromExtendedLabelExpression="DefaultGroupLabelFilterConditionalStylesExtendedLabelExpression" filterActionsFromExtendedLabelExpression="DefaultGroupLabelFilterActionsFromExtendedLabelExpression">
         <style labelFontNameExpression="DefaultGroupLabelStyleLabelFontNameExpression" labelFontSizeExpression="DefaultGroupLabelStyleLabelFontSizeExpression" fontNameExpression="DefaultGroupLabelStyleFontNameExpression" fontSizeExpression="DefaultGroupLabelStyleFontSizeExpression">
           <labelBackgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
           <labelForegroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
@@ -125,7 +151,7 @@
           </initialOperation>
         </actions>
       </controls>
-      <controls xsi:type="properties:CheckboxDescription" name="DefaultGroupCheckbox" labelExpression="DefaultGroupCheckboxLabelExpression" helpExpression="DefaultGroupCheckboxHelpExpression" isEnabledExpression="DefaultGroupCheckboxIsEnabledExpression" valueExpression="DefaultGroupCheckboxValueExpression">
+      <controls xsi:type="properties:CheckboxDescription" name="DefaultGroupCheckbox" labelExpression="DefaultGroupCheckboxLabelExpression" helpExpression="DefaultGroupCheckboxHelpExpression" isEnabledExpression="DefaultGroupCheckboxIsEnabledExpression" valueExpression="DefaultGroupCheckboxValueExpression" filterConditionalStylesFromExtendedCheckboxExpression="DefaultGroupCheckboxFilterConditionalStylesFromExtendedCheckboxExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupCheckboxChangeContext"/>
         </initialOperation>
@@ -148,7 +174,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:SelectDescription" name="DefaultGroupSelect" labelExpression="DefaultGroupSelectLabelExpression" helpExpression="DefaultGroupSelectHelpExpression" isEnabledExpression="DefaultGroupSelectIsEnabledExpression" valueExpression="DefaultGroupSelectValueExpression" candidatesExpression="DefaultGroupSelectCandidatesExpression" candidateDisplayExpression="DefaultGroupSelectCandidateDisplayExpression">
+      <controls xsi:type="properties:SelectDescription" name="DefaultGroupSelect" labelExpression="DefaultGroupSelectLabelExpression" helpExpression="DefaultGroupSelectHelpExpression" isEnabledExpression="DefaultGroupSelectIsEnabledExpression" valueExpression="DefaultGroupSelectValueExpression" candidatesExpression="DefaultGroupSelectCandidatesExpression" candidateDisplayExpression="DefaultGroupSelectCandidateDisplayExpression" filterConditionalStylesFromExtendedSelectExpression="DefaultGroupSelectFilterConditionalStylesExtendedSelectExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupSelectChangeContext"/>
         </initialOperation>
@@ -171,7 +197,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:TextAreaDescription" name="DefaultGroupTextArea" labelExpression="DefaultGroupTextAreaLabelExpression" helpExpression="DefaultGroupTextAreaHelpExpression" isEnabledExpression="DefaultGroupTextAreaIsEnabledExpression" lineCount="42" valueExpression="DefaultGroupTextAreaValue">
+      <controls xsi:type="properties:TextAreaDescription" name="DefaultGroupTextArea" labelExpression="DefaultGroupTextAreaLabelExpression" helpExpression="DefaultGroupTextAreaHelpExpression" isEnabledExpression="DefaultGroupTextAreaIsEnabledExpression" lineCount="42" valueExpression="DefaultGroupTextAreaValue" filterConditionalStylesFromExtendedTextAreaExpression="DefaultGroupTextAreaFilterConditionalStylesFromExtendedTextAreaExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupTextAreaChangeContext"/>
         </initialOperation>
@@ -206,7 +232,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:ListDescription" name="DefaultGroupList" labelExpression="DefaultGroupListLabelExpression" helpExpression="DefaultGroupListHelpExpression" isEnabledExpression="DefaultGroupListIsEnabledExpression" valueExpression="DefaultGroupListValueExpression" displayExpression="DefaultGroupListDisplayExpression">
+      <controls xsi:type="properties:ListDescription" name="DefaultGroupList" labelExpression="DefaultGroupListLabelExpression" helpExpression="DefaultGroupListHelpExpression" isEnabledExpression="DefaultGroupListIsEnabledExpression" valueExpression="DefaultGroupListValueExpression" displayExpression="DefaultGroupListDisplayExpression" filterConditionalStylesFromExtendedListExpression="DefaultGroupListFilterConditionalStylesFromExtendedListExpression" filterActionsFromExtendedListExpression="DefaultGroupListFilterActionsFromExtendedListExpression">
         <onClickOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupListChangeContext"/>
         </onClickOperation>
@@ -234,7 +260,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:RadioDescription" name="DefaultGroupRadioIdentifier" labelExpression="DefaultGroupRadioLabelExpression" helpExpression="DefaultGroupRadioHelpExpression" isEnabledExpression="DefaultGroupRadioIsEnabledExpression" valueExpression="DefaultGroupRadioValueExpression" candidatesExpression="DefaultGroupRadioCandidatesExpression" candidateDisplayExpression="DefaultGroupRadioCandidateDisplayExpression" numberOfColumns="42">
+      <controls xsi:type="properties:RadioDescription" name="DefaultGroupRadioIdentifier" labelExpression="DefaultGroupRadioLabelExpression" helpExpression="DefaultGroupRadioHelpExpression" isEnabledExpression="DefaultGroupRadioIsEnabledExpression" valueExpression="DefaultGroupRadioValueExpression" candidatesExpression="DefaultGroupRadioCandidatesExpression" candidateDisplayExpression="DefaultGroupRadioCandidateDisplayExpression" numberOfColumns="42" filterConditionalStylesFromExtendedRadioExpression="DefaultGroupRadioFilterConditionalStylesFromExtendedRadioExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupRadioChangeContext"/>
         </initialOperation>
@@ -257,7 +283,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:CustomDescription" name="DefaultGroupCustomWidget" labelExpression="DefaultGroupCustomWidgetLabelExpression" helpExpression="DefaultGroupCustomWidgetHelpExpression" isEnabledExpression="DefaultGroupCustomWidgetIsEnabledExpression">
+      <controls xsi:type="properties:CustomDescription" name="DefaultGroupCustomWidget" labelExpression="DefaultGroupCustomWidgetLabelExpression" helpExpression="DefaultGroupCustomWidgetHelpExpression" isEnabledExpression="DefaultGroupCustomWidgetIsEnabledExpression" filterConditionalStylesFromExtendedCustomExpression="DefaultGroupCustomWidgetFilterConditionalStylesFromExtendedCustomExpression">
         <customExpressions name="DefaultGroupCustomWidgetCustomExpressionId" customExpression="DefaultGroupCustomWidgetCustomExpression"/>
         <customOperations name="DefaultGroupCustomWidgetCustomOperation">
           <initialOperation>
@@ -279,7 +305,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:HyperlinkDescription" name="DefaultGroupHyperlink" labelExpression="DefaultGroupHyperlinkLabelExpression" helpExpression="DefaultGroupHyperlinkHelpExpression" isEnabledExpression="DefaultGroupHyperlinkIsEnabledExpression" valueExpression="DefaultGroupHyperlinkValueExpression" displayExpression="DefaultGroupHyperlinkDisplayExpression">
+      <controls xsi:type="properties:HyperlinkDescription" name="DefaultGroupHyperlink" labelExpression="DefaultGroupHyperlinkLabelExpression" helpExpression="DefaultGroupHyperlinkHelpExpression" isEnabledExpression="DefaultGroupHyperlinkIsEnabledExpression" valueExpression="DefaultGroupHyperlinkValueExpression" displayExpression="DefaultGroupHyperlinkDisplayExpression" filterConditionalStylesFromExtendedHyperlinkExpression="DefaultGroupHyperlinkFilterConditionalStylesFromExtendedHyperlinkExpression" filterActionsFromExtendedHyperlinkExpression="DefaultGroupHyperlinkFilterActionsFromExtendedHyperlinkExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupHyperlinkChangeContext"/>
         </initialOperation>
@@ -327,16 +353,18 @@
           <labelFontFormat>strike_through</labelFontFormat>
         </style>
       </controls>
-      <controls xsi:type="properties:DynamicMappingForDescription" name="DefaultGroupDynamicMappingFor" iterator="DefaultGroupDynamicMappingForIterator" iterableExpression="DefaultGroupDynamicMappingForIterablExpression">
+      <controls xsi:type="properties:DynamicMappingForDescription" name="DefaultGroupDynamicMappingFor" iterator="DefaultGroupDynamicMappingForIterator" iterableExpression="DefaultGroupDynamicMappingForIterablExpression" filterIfsFromExtendedDynamicMappingForExpression="DefaultGroupDynamicMappingForFilterIfsFromExtendedDynamicMappingForExpression">
         <ifs name="DefaultGroupDynamicMappingIf" predicateExpression="DefaultGroupDynamicMappingIfPredicateExpression">
-          <widget xsi:type="properties:TextDescription" name="DefaultGroupDynamicMappingIfText" labelExpression="DefaultGroupDynamicMappingIfTextLabelExpression"/>
+          <widget xsi:type="properties:TextDescription" name="DefaultGroupDynamicMappingIfText" labelExpression="DefaultGroupDynamicMappingIfTextLabelExpression" filterConditionalStylesFromExtendedTextExpression=""/>
         </ifs>
       </controls>
       <validationSet>
         <semanticValidationRules name="DefaultGroupSemanticValidationRuleId" label="DefaultGroupSemanticValidationRuleLabel" message="DefaultGroupSemanticValidationRuleMessage" targetClass="DefaultGroupSemanticValidationRuleTargetClass"/>
         <semanticValidationRules name="AnotherDefaultGroupSemanticValidationRuleId" label="AnotherDefaultGroupSemanticValidationRuleLabel" message="AnotherDefaultGroupSemanticValidationRuleMessage" targetClass="AnotherDefaultGroupSemanticValidationRuleTargetClass"/>
-        <propertyValidationRules name="DefaultGroupPropertyValidationRuleId" label="DefaultGroupPropertyValidationRuleLabel" message="DefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.0"/>
-        <propertyValidationRules name="AnotherDefaultGroupPropertyValidationRuleId" label="AnotherDefaultGroupPropertyValidationRuleLabel" message="AnotherDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.1"/>
+        <semanticValidationRules name="DefaultGroupFilteredSemanticValidationRule"/>
+        <propertyValidationRules name="DefaultGroupPropertyValidationRuleId" label="DefaultGroupPropertyValidationRuleLabel" message="DefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.1"/>
+        <propertyValidationRules name="AnotherDefaultGroupPropertyValidationRuleId" label="AnotherDefaultGroupPropertyValidationRuleLabel" message="AnotherDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.2"/>
+        <propertyValidationRules name="DefaultGroupFilteredPropertyValidationRule" label="" message="" targets="//@categories.0/@groups.3/@controls.1"/>
       </validationSet>
       <style fontNameExpression="DefaultGroupStyleFontNameExpression" fontSizeExpression="DefaultGroupStyleFontSizeExpression" barStyle="SHORT_TITLE_BAR" toggleStyle="TREE_NODE" expandedByDefault="true">
         <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -349,8 +377,9 @@
         </style>
       </conditionalStyles>
     </groups>
-    <groups name="ExtendsDefaultGroup" labelExpression="ExtendsDefaultGroupLabelExpression" domainClass="ExtendsDefaultGroupDomainClass" semanticCandidateExpression="ExtendsDefaultGroupSemanticCandidateExpression" preconditionExpression="ExtendsDefaultGroupPreconditionExpression">
-      <controls xsi:type="properties:TextDescription" name="DefaultGroupText" labelExpression="DefaultGroupTextLabelExpression" helpExpression="DefaultGroupTextHelpExpression" isEnabledExpression="DefaultGroupTextIsEnabledExpression" valueExpression="DefaultGroupTextValueExpression">
+    <groups name="ExtendsDefaultGroup" labelExpression="ExtendsDefaultGroupLabelExpression" domainClass="ExtendsDefaultGroupDomainClass" semanticCandidateExpression="ExtendsDefaultGroupSemanticCandidateExpression" preconditionExpression="ExtendsDefaultGroupPreconditionExpression" filterControlsFromExtendedGroupExpression="ExtendsDefaultGroupFilterControlsFromExtendedGroupExpression" filterValidationRulesFromExtendedGroupExpression="ExtendsDefaultGroupFilterValidationRulesFromExtendedGroupExpression" filterConditionalStylesFromExtendedGroupExpression="ExtendsDefaultGroupFilterConditionalStylesFromExtendedGroupExpression">
+      <controls xsi:type="properties:TextDescription" name="DefaultGroupFilteredText"/>
+      <controls xsi:type="properties:TextDescription" name="DefaultGroupText" labelExpression="DefaultGroupTextLabelExpression" helpExpression="DefaultGroupTextHelpExpression" isEnabledExpression="DefaultGroupTextIsEnabledExpression" valueExpression="DefaultGroupTextValueExpression" filterConditionalStylesFromExtendedTextExpression="DefaultGroupTextFilterConditionalStylesFromExtendedTextExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupTextChangeContext"/>
         </initialOperation>
@@ -378,13 +407,25 @@
             <fontFormat>bold</fontFormat>
           </style>
         </conditionalStyles>
+        <conditionalStyles preconditionExpression="DefaultGroupTextFilteredConditionalStylePreconditionExpression">
+          <style labelFontNameExpression="DefaultGroupTextFilteredConditionalStyleLabelFontNameExpression" labelFontSizeExpression="DefaultGroupTextFilteredConditionalStyleLabelFontSizeExpression" fontNameExpression="DefaultGroupTextFilteredConditionalStyleFontNameExpression" fontSizeExpression="DefaultGroupTextFilteredConditionalStyleFontSizeExpression">
+            <labelBackgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <labelForegroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelFontFormat>italic</labelFontFormat>
+            <labelFontFormat>bold</labelFontFormat>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <fontFormat>italic</fontFormat>
+            <fontFormat>bold</fontFormat>
+          </style>
+        </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:TextDescription" name="AnotherDefaultGroupText" labelExpression="AnotherDefaultGroupTextLabelExpression" helpExpression="AnotherDefaultGroupTextHelpExpression" isEnabledExpression="AnotherDefaultGroupTextIsEnabledExpression" valueExpression="AnotherDefaultGroupTextValueExpression">
+      <controls xsi:type="properties:TextDescription" name="AnotherDefaultGroupText" labelExpression="AnotherDefaultGroupTextLabelExpression" helpExpression="AnotherDefaultGroupTextHelpExpression" isEnabledExpression="AnotherDefaultGroupTextIsEnabledExpression" valueExpression="AnotherDefaultGroupTextValueExpression" filterConditionalStylesFromExtendedTextExpression="AnotherDefaultGroupTextFilterConditionalStylesFromExtendedTextExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="AnotherDefaultGroupTextChangeContext"/>
         </initialOperation>
       </controls>
-      <controls xsi:type="properties:ButtonDescription" name="DefaultGroupButton" labelExpression="DefaultGroupButtonLabelExpression" helpExpression="DefaultGroupButtonHelpExpression" isEnabledExpression="DefaultGroupButtonIsEnabledExpression" buttonLabelExpression="DefaultGroupButtonLabelExpression">
+      <controls xsi:type="properties:ButtonDescription" name="DefaultGroupButton" labelExpression="DefaultGroupButtonLabelExpression" helpExpression="DefaultGroupButtonHelpExpression" isEnabledExpression="DefaultGroupButtonIsEnabledExpression" buttonLabelExpression="DefaultGroupButtonLabelExpression" filterConditionalStylesFromExtendedButtonExpression="DefaultGroupButtonFilterConditionalStylesFromExtendedButtonExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupButtonChangeContext"/>
         </initialOperation>
@@ -407,7 +448,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:LabelDescription" name="DefaultGroupLabel" labelExpression="DefaultGroupLabelLabelExpression" helpExpression="DefaultGroupLabelHelpExpression" isEnabledExpression="DefaultGroupLabelIsEnabledExpression" valueExpression="DefaultGroupLabelValueExpression" displayExpression="DefaultGroupLabelDisplayExpression">
+      <controls xsi:type="properties:LabelDescription" name="DefaultGroupLabel" labelExpression="DefaultGroupLabelLabelExpression" helpExpression="DefaultGroupLabelHelpExpression" isEnabledExpression="DefaultGroupLabelIsEnabledExpression" valueExpression="DefaultGroupLabelValueExpression" displayExpression="DefaultGroupLabelDisplayExpression" filterConditionalStylesFromExtendedLabelExpression="DefaultGroupLabelFilterConditionalStylesExtendedLabelExpression" filterActionsFromExtendedLabelExpression="DefaultGroupLabelFilterActionsFromExtendedLabelExpression">
         <style labelFontNameExpression="DefaultGroupLabelStyleLabelFontNameExpression" labelFontSizeExpression="DefaultGroupLabelStyleLabelFontSizeExpression" fontNameExpression="DefaultGroupLabelStyleFontNameExpression" fontSizeExpression="DefaultGroupLabelStyleFontSizeExpression">
           <labelBackgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
           <labelForegroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
@@ -444,7 +485,7 @@
           </initialOperation>
         </actions>
       </controls>
-      <controls xsi:type="properties:CheckboxDescription" name="DefaultGroupCheckbox" labelExpression="DefaultGroupCheckboxLabelExpression" helpExpression="DefaultGroupCheckboxHelpExpression" isEnabledExpression="DefaultGroupCheckboxIsEnabledExpression" valueExpression="DefaultGroupCheckboxValueExpression">
+      <controls xsi:type="properties:CheckboxDescription" name="DefaultGroupCheckbox" labelExpression="DefaultGroupCheckboxLabelExpression" helpExpression="DefaultGroupCheckboxHelpExpression" isEnabledExpression="DefaultGroupCheckboxIsEnabledExpression" valueExpression="DefaultGroupCheckboxValueExpression" filterConditionalStylesFromExtendedCheckboxExpression="DefaultGroupCheckboxFilterConditionalStylesFromExtendedCheckboxExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupCheckboxChangeContext"/>
         </initialOperation>
@@ -467,7 +508,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:SelectDescription" name="DefaultGroupSelect" labelExpression="DefaultGroupSelectLabelExpression" helpExpression="DefaultGroupSelectHelpExpression" isEnabledExpression="DefaultGroupSelectIsEnabledExpression" valueExpression="DefaultGroupSelectValueExpression" candidatesExpression="DefaultGroupSelectCandidatesExpression" candidateDisplayExpression="DefaultGroupSelectCandidateDisplayExpression">
+      <controls xsi:type="properties:SelectDescription" name="DefaultGroupSelect" labelExpression="DefaultGroupSelectLabelExpression" helpExpression="DefaultGroupSelectHelpExpression" isEnabledExpression="DefaultGroupSelectIsEnabledExpression" valueExpression="DefaultGroupSelectValueExpression" candidatesExpression="DefaultGroupSelectCandidatesExpression" candidateDisplayExpression="DefaultGroupSelectCandidateDisplayExpression" filterConditionalStylesFromExtendedSelectExpression="DefaultGroupSelectFilterConditionalStylesExtendedSelectExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupSelectChangeContext"/>
         </initialOperation>
@@ -490,7 +531,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:TextAreaDescription" name="DefaultGroupTextArea" labelExpression="DefaultGroupTextAreaLabelExpression" helpExpression="DefaultGroupTextAreaHelpExpression" isEnabledExpression="DefaultGroupTextAreaIsEnabledExpression" lineCount="42" valueExpression="DefaultGroupTextAreaValue">
+      <controls xsi:type="properties:TextAreaDescription" name="DefaultGroupTextArea" labelExpression="DefaultGroupTextAreaLabelExpression" helpExpression="DefaultGroupTextAreaHelpExpression" isEnabledExpression="DefaultGroupTextAreaIsEnabledExpression" lineCount="42" valueExpression="DefaultGroupTextAreaValue" filterConditionalStylesFromExtendedTextAreaExpression="DefaultGroupTextAreaFilterConditionalStylesFromExtendedTextAreaExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupTextAreaChangeContext"/>
         </initialOperation>
@@ -525,7 +566,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:ListDescription" name="DefaultGroupList" labelExpression="DefaultGroupListLabelExpression" helpExpression="DefaultGroupListHelpExpression" isEnabledExpression="DefaultGroupListIsEnabledExpression" valueExpression="DefaultGroupListValueExpression" displayExpression="DefaultGroupListDisplayExpression">
+      <controls xsi:type="properties:ListDescription" name="DefaultGroupList" labelExpression="DefaultGroupListLabelExpression" helpExpression="DefaultGroupListHelpExpression" isEnabledExpression="DefaultGroupListIsEnabledExpression" valueExpression="DefaultGroupListValueExpression" displayExpression="DefaultGroupListDisplayExpression" filterConditionalStylesFromExtendedListExpression="DefaultGroupListFilterConditionalStylesFromExtendedListExpression" filterActionsFromExtendedListExpression="DefaultGroupListFilterActionsFromExtendedListExpression">
         <onClickOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupListChangeContext"/>
         </onClickOperation>
@@ -553,7 +594,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:RadioDescription" name="DefaultGroupRadioIdentifier" labelExpression="DefaultGroupRadioLabelExpression" helpExpression="DefaultGroupRadioHelpExpression" isEnabledExpression="DefaultGroupRadioIsEnabledExpression" valueExpression="DefaultGroupRadioValueExpression" candidatesExpression="DefaultGroupRadioCandidatesExpression" candidateDisplayExpression="DefaultGroupRadioCandidateDisplayExpression" numberOfColumns="42">
+      <controls xsi:type="properties:RadioDescription" name="DefaultGroupRadioIdentifier" labelExpression="DefaultGroupRadioLabelExpression" helpExpression="DefaultGroupRadioHelpExpression" isEnabledExpression="DefaultGroupRadioIsEnabledExpression" valueExpression="DefaultGroupRadioValueExpression" candidatesExpression="DefaultGroupRadioCandidatesExpression" candidateDisplayExpression="DefaultGroupRadioCandidateDisplayExpression" numberOfColumns="42" filterConditionalStylesFromExtendedRadioExpression="DefaultGroupRadioFilterConditionalStylesFromExtendedRadioExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupRadioChangeContext"/>
         </initialOperation>
@@ -576,7 +617,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:CustomDescription" name="DefaultGroupCustomWidget" labelExpression="DefaultGroupCustomWidgetLabelExpression" helpExpression="DefaultGroupCustomWidgetHelpExpression" isEnabledExpression="DefaultGroupCustomWidgetIsEnabledExpression">
+      <controls xsi:type="properties:CustomDescription" name="DefaultGroupCustomWidget" labelExpression="DefaultGroupCustomWidgetLabelExpression" helpExpression="DefaultGroupCustomWidgetHelpExpression" isEnabledExpression="DefaultGroupCustomWidgetIsEnabledExpression" filterConditionalStylesFromExtendedCustomExpression="DefaultGroupCustomWidgetFilterConditionalStylesFromExtendedCustomExpression">
         <customExpressions name="DefaultGroupCustomWidgetCustomExpressionId" customExpression="DefaultGroupCustomWidgetCustomExpression"/>
         <customOperations name="DefaultGroupCustomWidgetCustomOperation">
           <initialOperation>
@@ -598,7 +639,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:HyperlinkDescription" name="DefaultGroupHyperlink" labelExpression="DefaultGroupHyperlinkLabelExpression" helpExpression="DefaultGroupHyperlinkHelpExpression" isEnabledExpression="DefaultGroupHyperlinkIsEnabledExpression" valueExpression="DefaultGroupHyperlinkValueExpression" displayExpression="DefaultGroupHyperlinkDisplayExpression">
+      <controls xsi:type="properties:HyperlinkDescription" name="DefaultGroupHyperlink" labelExpression="DefaultGroupHyperlinkLabelExpression" helpExpression="DefaultGroupHyperlinkHelpExpression" isEnabledExpression="DefaultGroupHyperlinkIsEnabledExpression" valueExpression="DefaultGroupHyperlinkValueExpression" displayExpression="DefaultGroupHyperlinkDisplayExpression" filterConditionalStylesFromExtendedHyperlinkExpression="DefaultGroupHyperlinkFilterConditionalStylesFromExtendedHyperlinkExpression" filterActionsFromExtendedHyperlinkExpression="DefaultGroupHyperlinkFilterActionsFromExtendedHyperlinkExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupHyperlinkChangeContext"/>
         </initialOperation>
@@ -646,12 +687,12 @@
           <labelFontFormat>strike_through</labelFontFormat>
         </style>
       </controls>
-      <controls xsi:type="properties:DynamicMappingForDescription" name="DefaultGroupDynamicMappingFor" iterator="DefaultGroupDynamicMappingForIterator" iterableExpression="DefaultGroupDynamicMappingForIterablExpression">
+      <controls xsi:type="properties:DynamicMappingForDescription" name="DefaultGroupDynamicMappingFor" iterator="DefaultGroupDynamicMappingForIterator" iterableExpression="DefaultGroupDynamicMappingForIterablExpression" filterIfsFromExtendedDynamicMappingForExpression="DefaultGroupDynamicMappingForFilterIfsFromExtendedDynamicMappingForExpression">
         <ifs name="DefaultGroupDynamicMappingIf" predicateExpression="DefaultGroupDynamicMappingIfPredicateExpression">
-          <widget xsi:type="properties:TextDescription" name="DefaultGroupDynamicMappingIfText" labelExpression="DefaultGroupDynamicMappingIfTextLabelExpression"/>
+          <widget xsi:type="properties:TextDescription" name="DefaultGroupDynamicMappingIfText" labelExpression="DefaultGroupDynamicMappingIfTextLabelExpression" filterConditionalStylesFromExtendedTextExpression=""/>
         </ifs>
       </controls>
-      <controls xsi:type="properties:TextDescription" name="ExtendsDefaultGroupText" labelExpression="ExtendsDefaultGroupTextLabelExpression" helpExpression="ExtendsDefaultGroupTextHelpExpression" isEnabledExpression="ExtendsDefaultGroupTextIsEnabledExpression" valueExpression="ExtendsDefaultGroupTextValueExpression">
+      <controls xsi:type="properties:TextDescription" name="ExtendsDefaultGroupText" labelExpression="ExtendsDefaultGroupTextLabelExpression" helpExpression="ExtendsDefaultGroupTextHelpExpression" isEnabledExpression="ExtendsDefaultGroupTextIsEnabledExpression" valueExpression="ExtendsDefaultGroupTextValueExpression" filterConditionalStylesFromExtendedTextExpression="ExtendsDefaultGroupTextFilterConditionalStylesFromExtendedTextExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="ExtendsDefaultGroupTextChangeContext"/>
         </initialOperation>
@@ -679,14 +720,28 @@
             <fontFormat>bold</fontFormat>
           </style>
         </conditionalStyles>
+        <conditionalStyles preconditionExpression="DefaultGroupTextFilteredConditionalStylePreconditionExpression">
+          <style labelFontNameExpression="DefaultGroupTextFilteredConditionalStyleLabelFontNameExpression" labelFontSizeExpression="DefaultGroupTextFilteredConditionalStyleLabelFontSizeExpression" fontNameExpression="DefaultGroupTextFilteredConditionalStyleFontNameExpression" fontSizeExpression="DefaultGroupTextFilteredConditionalStyleFontSizeExpression">
+            <labelBackgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <labelForegroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelFontFormat>italic</labelFontFormat>
+            <labelFontFormat>bold</labelFontFormat>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <fontFormat>italic</fontFormat>
+            <fontFormat>bold</fontFormat>
+          </style>
+        </conditionalStyles>
       </controls>
       <validationSet>
         <semanticValidationRules name="DefaultGroupSemanticValidationRuleId" label="DefaultGroupSemanticValidationRuleLabel" message="DefaultGroupSemanticValidationRuleMessage" targetClass="DefaultGroupSemanticValidationRuleTargetClass"/>
         <semanticValidationRules name="AnotherDefaultGroupSemanticValidationRuleId" label="AnotherDefaultGroupSemanticValidationRuleLabel" message="AnotherDefaultGroupSemanticValidationRuleMessage" targetClass="AnotherDefaultGroupSemanticValidationRuleTargetClass"/>
+        <semanticValidationRules name="DefaultGroupFilteredSemanticValidationRule"/>
         <semanticValidationRules name="ExtendsDefaultGroupSemanticValidationRuleId" label="ExtendsDefaultGroupSemanticValidationRuleLabel" message="ExtendsDefaultGroupSemanticValidationRuleMessage" targetClass="ExtendsDefaultGroupSemanticValidationRuleTargetClass"/>
-        <propertyValidationRules name="DefaultGroupPropertyValidationRuleId" label="DefaultGroupPropertyValidationRuleLabel" message="DefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.0"/>
-        <propertyValidationRules name="AnotherDefaultGroupPropertyValidationRuleId" label="AnotherDefaultGroupPropertyValidationRuleLabel" message="AnotherDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.1"/>
-        <propertyValidationRules name="ExtendsDefaultGroupPropertyValidationRuleId" label="ExtendsDefaultGroupPropertyValidationRuleLabel" message="ExtendsDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.13"/>
+        <propertyValidationRules name="DefaultGroupPropertyValidationRuleId" label="DefaultGroupPropertyValidationRuleLabel" message="DefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.1"/>
+        <propertyValidationRules name="AnotherDefaultGroupPropertyValidationRuleId" label="AnotherDefaultGroupPropertyValidationRuleLabel" message="AnotherDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.2"/>
+        <propertyValidationRules name="DefaultGroupFilteredPropertyValidationRule" label="" message="" targets="//@categories.0/@groups.3/@controls.1"/>
+        <propertyValidationRules name="ExtendsDefaultGroupPropertyValidationRuleId" label="ExtendsDefaultGroupPropertyValidationRuleLabel" message="ExtendsDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.14"/>
       </validationSet>
       <style fontNameExpression="DefaultGroupStyleFontNameExpression" fontSizeExpression="DefaultGroupStyleFontSizeExpression" barStyle="SHORT_TITLE_BAR" toggleStyle="TREE_NODE" expandedByDefault="true">
         <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -699,8 +754,9 @@
         </style>
       </conditionalStyles>
     </groups>
-    <groups name="InheritsDefaultGroup" labelExpression="DefaultGroupLabelExpression" domainClass="DefaultGroupDomainClass" semanticCandidateExpression="DefaultGroupSemanticCandidateExpression" preconditionExpression="DefaultGroupPreconditionExpression">
-      <controls xsi:type="properties:TextDescription" name="DefaultGroupText" labelExpression="DefaultGroupTextLabelExpression" helpExpression="DefaultGroupTextHelpExpression" isEnabledExpression="DefaultGroupTextIsEnabledExpression" valueExpression="DefaultGroupTextValueExpression">
+    <groups name="InheritsDefaultGroup" labelExpression="DefaultGroupLabelExpression" domainClass="DefaultGroupDomainClass" semanticCandidateExpression="DefaultGroupSemanticCandidateExpression" preconditionExpression="DefaultGroupPreconditionExpression" filterControlsFromExtendedGroupExpression="DefaultGroupFilterControlsFromExtendedGroupExpression" filterValidationRulesFromExtendedGroupExpression="DefaultGroupFilterValidationRulesFromExtendedGroupExpression" filterConditionalStylesFromExtendedGroupExpression="DefaultGroupFilterConditionalStylesFromExtendedGroupExpression">
+      <controls xsi:type="properties:TextDescription" name="DefaultGroupFilteredText"/>
+      <controls xsi:type="properties:TextDescription" name="DefaultGroupText" labelExpression="DefaultGroupTextLabelExpression" helpExpression="DefaultGroupTextHelpExpression" isEnabledExpression="DefaultGroupTextIsEnabledExpression" valueExpression="DefaultGroupTextValueExpression" filterConditionalStylesFromExtendedTextExpression="DefaultGroupTextFilterConditionalStylesFromExtendedTextExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupTextChangeContext"/>
         </initialOperation>
@@ -728,13 +784,25 @@
             <fontFormat>bold</fontFormat>
           </style>
         </conditionalStyles>
+        <conditionalStyles preconditionExpression="DefaultGroupTextFilteredConditionalStylePreconditionExpression">
+          <style labelFontNameExpression="DefaultGroupTextFilteredConditionalStyleLabelFontNameExpression" labelFontSizeExpression="DefaultGroupTextFilteredConditionalStyleLabelFontSizeExpression" fontNameExpression="DefaultGroupTextFilteredConditionalStyleFontNameExpression" fontSizeExpression="DefaultGroupTextFilteredConditionalStyleFontSizeExpression">
+            <labelBackgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <labelForegroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelFontFormat>italic</labelFontFormat>
+            <labelFontFormat>bold</labelFontFormat>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <fontFormat>italic</fontFormat>
+            <fontFormat>bold</fontFormat>
+          </style>
+        </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:TextDescription" name="AnotherDefaultGroupText" labelExpression="AnotherDefaultGroupTextLabelExpression" helpExpression="AnotherDefaultGroupTextHelpExpression" isEnabledExpression="AnotherDefaultGroupTextIsEnabledExpression" valueExpression="AnotherDefaultGroupTextValueExpression">
+      <controls xsi:type="properties:TextDescription" name="AnotherDefaultGroupText" labelExpression="AnotherDefaultGroupTextLabelExpression" helpExpression="AnotherDefaultGroupTextHelpExpression" isEnabledExpression="AnotherDefaultGroupTextIsEnabledExpression" valueExpression="AnotherDefaultGroupTextValueExpression" filterConditionalStylesFromExtendedTextExpression="AnotherDefaultGroupTextFilterConditionalStylesFromExtendedTextExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="AnotherDefaultGroupTextChangeContext"/>
         </initialOperation>
       </controls>
-      <controls xsi:type="properties:ButtonDescription" name="DefaultGroupButton" labelExpression="DefaultGroupButtonLabelExpression" helpExpression="DefaultGroupButtonHelpExpression" isEnabledExpression="DefaultGroupButtonIsEnabledExpression" buttonLabelExpression="DefaultGroupButtonLabelExpression">
+      <controls xsi:type="properties:ButtonDescription" name="DefaultGroupButton" labelExpression="DefaultGroupButtonLabelExpression" helpExpression="DefaultGroupButtonHelpExpression" isEnabledExpression="DefaultGroupButtonIsEnabledExpression" buttonLabelExpression="DefaultGroupButtonLabelExpression" filterConditionalStylesFromExtendedButtonExpression="DefaultGroupButtonFilterConditionalStylesFromExtendedButtonExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupButtonChangeContext"/>
         </initialOperation>
@@ -757,7 +825,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:LabelDescription" name="DefaultGroupLabel" labelExpression="DefaultGroupLabelLabelExpression" helpExpression="DefaultGroupLabelHelpExpression" isEnabledExpression="DefaultGroupLabelIsEnabledExpression" valueExpression="DefaultGroupLabelValueExpression" displayExpression="DefaultGroupLabelDisplayExpression">
+      <controls xsi:type="properties:LabelDescription" name="DefaultGroupLabel" labelExpression="DefaultGroupLabelLabelExpression" helpExpression="DefaultGroupLabelHelpExpression" isEnabledExpression="DefaultGroupLabelIsEnabledExpression" valueExpression="DefaultGroupLabelValueExpression" displayExpression="DefaultGroupLabelDisplayExpression" filterConditionalStylesFromExtendedLabelExpression="DefaultGroupLabelFilterConditionalStylesExtendedLabelExpression" filterActionsFromExtendedLabelExpression="DefaultGroupLabelFilterActionsFromExtendedLabelExpression">
         <style labelFontNameExpression="DefaultGroupLabelStyleLabelFontNameExpression" labelFontSizeExpression="DefaultGroupLabelStyleLabelFontSizeExpression" fontNameExpression="DefaultGroupLabelStyleFontNameExpression" fontSizeExpression="DefaultGroupLabelStyleFontSizeExpression">
           <labelBackgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
           <labelForegroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
@@ -794,7 +862,7 @@
           </initialOperation>
         </actions>
       </controls>
-      <controls xsi:type="properties:CheckboxDescription" name="DefaultGroupCheckbox" labelExpression="DefaultGroupCheckboxLabelExpression" helpExpression="DefaultGroupCheckboxHelpExpression" isEnabledExpression="DefaultGroupCheckboxIsEnabledExpression" valueExpression="DefaultGroupCheckboxValueExpression">
+      <controls xsi:type="properties:CheckboxDescription" name="DefaultGroupCheckbox" labelExpression="DefaultGroupCheckboxLabelExpression" helpExpression="DefaultGroupCheckboxHelpExpression" isEnabledExpression="DefaultGroupCheckboxIsEnabledExpression" valueExpression="DefaultGroupCheckboxValueExpression" filterConditionalStylesFromExtendedCheckboxExpression="DefaultGroupCheckboxFilterConditionalStylesFromExtendedCheckboxExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupCheckboxChangeContext"/>
         </initialOperation>
@@ -817,7 +885,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:SelectDescription" name="DefaultGroupSelect" labelExpression="DefaultGroupSelectLabelExpression" helpExpression="DefaultGroupSelectHelpExpression" isEnabledExpression="DefaultGroupSelectIsEnabledExpression" valueExpression="DefaultGroupSelectValueExpression" candidatesExpression="DefaultGroupSelectCandidatesExpression" candidateDisplayExpression="DefaultGroupSelectCandidateDisplayExpression">
+      <controls xsi:type="properties:SelectDescription" name="DefaultGroupSelect" labelExpression="DefaultGroupSelectLabelExpression" helpExpression="DefaultGroupSelectHelpExpression" isEnabledExpression="DefaultGroupSelectIsEnabledExpression" valueExpression="DefaultGroupSelectValueExpression" candidatesExpression="DefaultGroupSelectCandidatesExpression" candidateDisplayExpression="DefaultGroupSelectCandidateDisplayExpression" filterConditionalStylesFromExtendedSelectExpression="DefaultGroupSelectFilterConditionalStylesExtendedSelectExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupSelectChangeContext"/>
         </initialOperation>
@@ -840,7 +908,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:TextAreaDescription" name="DefaultGroupTextArea" labelExpression="DefaultGroupTextAreaLabelExpression" helpExpression="DefaultGroupTextAreaHelpExpression" isEnabledExpression="DefaultGroupTextAreaIsEnabledExpression" lineCount="42" valueExpression="DefaultGroupTextAreaValue">
+      <controls xsi:type="properties:TextAreaDescription" name="DefaultGroupTextArea" labelExpression="DefaultGroupTextAreaLabelExpression" helpExpression="DefaultGroupTextAreaHelpExpression" isEnabledExpression="DefaultGroupTextAreaIsEnabledExpression" lineCount="42" valueExpression="DefaultGroupTextAreaValue" filterConditionalStylesFromExtendedTextAreaExpression="DefaultGroupTextAreaFilterConditionalStylesFromExtendedTextAreaExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupTextAreaChangeContext"/>
         </initialOperation>
@@ -875,7 +943,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:ListDescription" name="DefaultGroupList" labelExpression="DefaultGroupListLabelExpression" helpExpression="DefaultGroupListHelpExpression" isEnabledExpression="DefaultGroupListIsEnabledExpression" valueExpression="DefaultGroupListValueExpression" displayExpression="DefaultGroupListDisplayExpression">
+      <controls xsi:type="properties:ListDescription" name="DefaultGroupList" labelExpression="DefaultGroupListLabelExpression" helpExpression="DefaultGroupListHelpExpression" isEnabledExpression="DefaultGroupListIsEnabledExpression" valueExpression="DefaultGroupListValueExpression" displayExpression="DefaultGroupListDisplayExpression" filterConditionalStylesFromExtendedListExpression="DefaultGroupListFilterConditionalStylesFromExtendedListExpression" filterActionsFromExtendedListExpression="DefaultGroupListFilterActionsFromExtendedListExpression">
         <onClickOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupListChangeContext"/>
         </onClickOperation>
@@ -903,7 +971,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:RadioDescription" name="DefaultGroupRadioIdentifier" labelExpression="DefaultGroupRadioLabelExpression" helpExpression="DefaultGroupRadioHelpExpression" isEnabledExpression="DefaultGroupRadioIsEnabledExpression" valueExpression="DefaultGroupRadioValueExpression" candidatesExpression="DefaultGroupRadioCandidatesExpression" candidateDisplayExpression="DefaultGroupRadioCandidateDisplayExpression" numberOfColumns="42">
+      <controls xsi:type="properties:RadioDescription" name="DefaultGroupRadioIdentifier" labelExpression="DefaultGroupRadioLabelExpression" helpExpression="DefaultGroupRadioHelpExpression" isEnabledExpression="DefaultGroupRadioIsEnabledExpression" valueExpression="DefaultGroupRadioValueExpression" candidatesExpression="DefaultGroupRadioCandidatesExpression" candidateDisplayExpression="DefaultGroupRadioCandidateDisplayExpression" numberOfColumns="42" filterConditionalStylesFromExtendedRadioExpression="DefaultGroupRadioFilterConditionalStylesFromExtendedRadioExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupRadioChangeContext"/>
         </initialOperation>
@@ -926,7 +994,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:CustomDescription" name="DefaultGroupCustomWidget" labelExpression="DefaultGroupCustomWidgetLabelExpression" helpExpression="DefaultGroupCustomWidgetHelpExpression" isEnabledExpression="DefaultGroupCustomWidgetIsEnabledExpression">
+      <controls xsi:type="properties:CustomDescription" name="DefaultGroupCustomWidget" labelExpression="DefaultGroupCustomWidgetLabelExpression" helpExpression="DefaultGroupCustomWidgetHelpExpression" isEnabledExpression="DefaultGroupCustomWidgetIsEnabledExpression" filterConditionalStylesFromExtendedCustomExpression="DefaultGroupCustomWidgetFilterConditionalStylesFromExtendedCustomExpression">
         <customExpressions name="DefaultGroupCustomWidgetCustomExpressionId" customExpression="DefaultGroupCustomWidgetCustomExpression"/>
         <customOperations name="DefaultGroupCustomWidgetCustomOperation">
           <initialOperation>
@@ -948,7 +1016,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:HyperlinkDescription" name="DefaultGroupHyperlink" labelExpression="DefaultGroupHyperlinkLabelExpression" helpExpression="DefaultGroupHyperlinkHelpExpression" isEnabledExpression="DefaultGroupHyperlinkIsEnabledExpression" valueExpression="DefaultGroupHyperlinkValueExpression" displayExpression="DefaultGroupHyperlinkDisplayExpression">
+      <controls xsi:type="properties:HyperlinkDescription" name="DefaultGroupHyperlink" labelExpression="DefaultGroupHyperlinkLabelExpression" helpExpression="DefaultGroupHyperlinkHelpExpression" isEnabledExpression="DefaultGroupHyperlinkIsEnabledExpression" valueExpression="DefaultGroupHyperlinkValueExpression" displayExpression="DefaultGroupHyperlinkDisplayExpression" filterConditionalStylesFromExtendedHyperlinkExpression="DefaultGroupHyperlinkFilterConditionalStylesFromExtendedHyperlinkExpression" filterActionsFromExtendedHyperlinkExpression="DefaultGroupHyperlinkFilterActionsFromExtendedHyperlinkExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupHyperlinkChangeContext"/>
         </initialOperation>
@@ -996,16 +1064,18 @@
           <labelFontFormat>strike_through</labelFontFormat>
         </style>
       </controls>
-      <controls xsi:type="properties:DynamicMappingForDescription" name="DefaultGroupDynamicMappingFor" iterator="DefaultGroupDynamicMappingForIterator" iterableExpression="DefaultGroupDynamicMappingForIterablExpression">
+      <controls xsi:type="properties:DynamicMappingForDescription" name="DefaultGroupDynamicMappingFor" iterator="DefaultGroupDynamicMappingForIterator" iterableExpression="DefaultGroupDynamicMappingForIterablExpression" filterIfsFromExtendedDynamicMappingForExpression="DefaultGroupDynamicMappingForFilterIfsFromExtendedDynamicMappingForExpression">
         <ifs name="DefaultGroupDynamicMappingIf" predicateExpression="DefaultGroupDynamicMappingIfPredicateExpression">
-          <widget xsi:type="properties:TextDescription" name="DefaultGroupDynamicMappingIfText" labelExpression="DefaultGroupDynamicMappingIfTextLabelExpression"/>
+          <widget xsi:type="properties:TextDescription" name="DefaultGroupDynamicMappingIfText" labelExpression="DefaultGroupDynamicMappingIfTextLabelExpression" filterConditionalStylesFromExtendedTextExpression=""/>
         </ifs>
       </controls>
       <validationSet>
         <semanticValidationRules name="DefaultGroupSemanticValidationRuleId" label="DefaultGroupSemanticValidationRuleLabel" message="DefaultGroupSemanticValidationRuleMessage" targetClass="DefaultGroupSemanticValidationRuleTargetClass"/>
         <semanticValidationRules name="AnotherDefaultGroupSemanticValidationRuleId" label="AnotherDefaultGroupSemanticValidationRuleLabel" message="AnotherDefaultGroupSemanticValidationRuleMessage" targetClass="AnotherDefaultGroupSemanticValidationRuleTargetClass"/>
-        <propertyValidationRules name="DefaultGroupPropertyValidationRuleId" label="DefaultGroupPropertyValidationRuleLabel" message="DefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.0"/>
-        <propertyValidationRules name="AnotherDefaultGroupPropertyValidationRuleId" label="AnotherDefaultGroupPropertyValidationRuleLabel" message="AnotherDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.1"/>
+        <semanticValidationRules name="DefaultGroupFilteredSemanticValidationRule"/>
+        <propertyValidationRules name="DefaultGroupPropertyValidationRuleId" label="DefaultGroupPropertyValidationRuleLabel" message="DefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.1"/>
+        <propertyValidationRules name="AnotherDefaultGroupPropertyValidationRuleId" label="AnotherDefaultGroupPropertyValidationRuleLabel" message="AnotherDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.2"/>
+        <propertyValidationRules name="DefaultGroupFilteredPropertyValidationRule" label="" message="" targets="//@categories.0/@groups.3/@controls.1"/>
       </validationSet>
       <style fontNameExpression="DefaultGroupStyleFontNameExpression" fontSizeExpression="DefaultGroupStyleFontSizeExpression" barStyle="SHORT_TITLE_BAR" toggleStyle="TREE_NODE" expandedByDefault="true">
         <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -1018,8 +1088,9 @@
         </style>
       </conditionalStyles>
     </groups>
-    <groups name="ExtendsExtendsDefaultGroup" labelExpression="ExtendsDefaultGroupLabelExpression" domainClass="ExtendsDefaultGroupDomainClass" semanticCandidateExpression="ExtendsDefaultGroupSemanticCandidateExpression" preconditionExpression="ExtendsDefaultGroupPreconditionExpression">
-      <controls xsi:type="properties:TextDescription" name="DefaultGroupText" labelExpression="DefaultGroupTextLabelExpression" helpExpression="DefaultGroupTextHelpExpression" isEnabledExpression="DefaultGroupTextIsEnabledExpression" valueExpression="DefaultGroupTextValueExpression">
+    <groups name="ExtendsExtendsDefaultGroup" labelExpression="ExtendsDefaultGroupLabelExpression" domainClass="ExtendsDefaultGroupDomainClass" semanticCandidateExpression="ExtendsDefaultGroupSemanticCandidateExpression" preconditionExpression="ExtendsDefaultGroupPreconditionExpression" filterControlsFromExtendedGroupExpression="" filterValidationRulesFromExtendedGroupExpression="ExtendsDefaultGroupFilterValidationRulesFromExtendedGroupExpression" filterConditionalStylesFromExtendedGroupExpression="ExtendsDefaultGroupFilterConditionalStylesFromExtendedGroupExpression">
+      <controls xsi:type="properties:TextDescription" name="DefaultGroupFilteredText"/>
+      <controls xsi:type="properties:TextDescription" name="DefaultGroupText" labelExpression="DefaultGroupTextLabelExpression" helpExpression="DefaultGroupTextHelpExpression" isEnabledExpression="DefaultGroupTextIsEnabledExpression" valueExpression="DefaultGroupTextValueExpression" filterConditionalStylesFromExtendedTextExpression="DefaultGroupTextFilterConditionalStylesFromExtendedTextExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupTextChangeContext"/>
         </initialOperation>
@@ -1047,13 +1118,25 @@
             <fontFormat>bold</fontFormat>
           </style>
         </conditionalStyles>
+        <conditionalStyles preconditionExpression="DefaultGroupTextFilteredConditionalStylePreconditionExpression">
+          <style labelFontNameExpression="DefaultGroupTextFilteredConditionalStyleLabelFontNameExpression" labelFontSizeExpression="DefaultGroupTextFilteredConditionalStyleLabelFontSizeExpression" fontNameExpression="DefaultGroupTextFilteredConditionalStyleFontNameExpression" fontSizeExpression="DefaultGroupTextFilteredConditionalStyleFontSizeExpression">
+            <labelBackgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <labelForegroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelFontFormat>italic</labelFontFormat>
+            <labelFontFormat>bold</labelFontFormat>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <fontFormat>italic</fontFormat>
+            <fontFormat>bold</fontFormat>
+          </style>
+        </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:TextDescription" name="AnotherDefaultGroupText" labelExpression="AnotherDefaultGroupTextLabelExpression" helpExpression="AnotherDefaultGroupTextHelpExpression" isEnabledExpression="AnotherDefaultGroupTextIsEnabledExpression" valueExpression="AnotherDefaultGroupTextValueExpression">
+      <controls xsi:type="properties:TextDescription" name="AnotherDefaultGroupText" labelExpression="AnotherDefaultGroupTextLabelExpression" helpExpression="AnotherDefaultGroupTextHelpExpression" isEnabledExpression="AnotherDefaultGroupTextIsEnabledExpression" valueExpression="AnotherDefaultGroupTextValueExpression" filterConditionalStylesFromExtendedTextExpression="AnotherDefaultGroupTextFilterConditionalStylesFromExtendedTextExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="AnotherDefaultGroupTextChangeContext"/>
         </initialOperation>
       </controls>
-      <controls xsi:type="properties:ButtonDescription" name="DefaultGroupButton" labelExpression="DefaultGroupButtonLabelExpression" helpExpression="DefaultGroupButtonHelpExpression" isEnabledExpression="DefaultGroupButtonIsEnabledExpression" buttonLabelExpression="DefaultGroupButtonLabelExpression">
+      <controls xsi:type="properties:ButtonDescription" name="DefaultGroupButton" labelExpression="DefaultGroupButtonLabelExpression" helpExpression="DefaultGroupButtonHelpExpression" isEnabledExpression="DefaultGroupButtonIsEnabledExpression" buttonLabelExpression="DefaultGroupButtonLabelExpression" filterConditionalStylesFromExtendedButtonExpression="DefaultGroupButtonFilterConditionalStylesFromExtendedButtonExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupButtonChangeContext"/>
         </initialOperation>
@@ -1076,7 +1159,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:LabelDescription" name="DefaultGroupLabel" labelExpression="DefaultGroupLabelLabelExpression" helpExpression="DefaultGroupLabelHelpExpression" isEnabledExpression="DefaultGroupLabelIsEnabledExpression" valueExpression="DefaultGroupLabelValueExpression" displayExpression="DefaultGroupLabelDisplayExpression">
+      <controls xsi:type="properties:LabelDescription" name="DefaultGroupLabel" labelExpression="DefaultGroupLabelLabelExpression" helpExpression="DefaultGroupLabelHelpExpression" isEnabledExpression="DefaultGroupLabelIsEnabledExpression" valueExpression="DefaultGroupLabelValueExpression" displayExpression="DefaultGroupLabelDisplayExpression" filterConditionalStylesFromExtendedLabelExpression="DefaultGroupLabelFilterConditionalStylesExtendedLabelExpression" filterActionsFromExtendedLabelExpression="DefaultGroupLabelFilterActionsFromExtendedLabelExpression">
         <style labelFontNameExpression="DefaultGroupLabelStyleLabelFontNameExpression" labelFontSizeExpression="DefaultGroupLabelStyleLabelFontSizeExpression" fontNameExpression="DefaultGroupLabelStyleFontNameExpression" fontSizeExpression="DefaultGroupLabelStyleFontSizeExpression">
           <labelBackgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
           <labelForegroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
@@ -1113,7 +1196,7 @@
           </initialOperation>
         </actions>
       </controls>
-      <controls xsi:type="properties:CheckboxDescription" name="DefaultGroupCheckbox" labelExpression="DefaultGroupCheckboxLabelExpression" helpExpression="DefaultGroupCheckboxHelpExpression" isEnabledExpression="DefaultGroupCheckboxIsEnabledExpression" valueExpression="DefaultGroupCheckboxValueExpression">
+      <controls xsi:type="properties:CheckboxDescription" name="DefaultGroupCheckbox" labelExpression="DefaultGroupCheckboxLabelExpression" helpExpression="DefaultGroupCheckboxHelpExpression" isEnabledExpression="DefaultGroupCheckboxIsEnabledExpression" valueExpression="DefaultGroupCheckboxValueExpression" filterConditionalStylesFromExtendedCheckboxExpression="DefaultGroupCheckboxFilterConditionalStylesFromExtendedCheckboxExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupCheckboxChangeContext"/>
         </initialOperation>
@@ -1136,7 +1219,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:SelectDescription" name="DefaultGroupSelect" labelExpression="DefaultGroupSelectLabelExpression" helpExpression="DefaultGroupSelectHelpExpression" isEnabledExpression="DefaultGroupSelectIsEnabledExpression" valueExpression="DefaultGroupSelectValueExpression" candidatesExpression="DefaultGroupSelectCandidatesExpression" candidateDisplayExpression="DefaultGroupSelectCandidateDisplayExpression">
+      <controls xsi:type="properties:SelectDescription" name="DefaultGroupSelect" labelExpression="DefaultGroupSelectLabelExpression" helpExpression="DefaultGroupSelectHelpExpression" isEnabledExpression="DefaultGroupSelectIsEnabledExpression" valueExpression="DefaultGroupSelectValueExpression" candidatesExpression="DefaultGroupSelectCandidatesExpression" candidateDisplayExpression="DefaultGroupSelectCandidateDisplayExpression" filterConditionalStylesFromExtendedSelectExpression="DefaultGroupSelectFilterConditionalStylesExtendedSelectExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupSelectChangeContext"/>
         </initialOperation>
@@ -1159,7 +1242,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:TextAreaDescription" name="DefaultGroupTextArea" labelExpression="DefaultGroupTextAreaLabelExpression" helpExpression="DefaultGroupTextAreaHelpExpression" isEnabledExpression="DefaultGroupTextAreaIsEnabledExpression" lineCount="42" valueExpression="DefaultGroupTextAreaValue">
+      <controls xsi:type="properties:TextAreaDescription" name="DefaultGroupTextArea" labelExpression="DefaultGroupTextAreaLabelExpression" helpExpression="DefaultGroupTextAreaHelpExpression" isEnabledExpression="DefaultGroupTextAreaIsEnabledExpression" lineCount="42" valueExpression="DefaultGroupTextAreaValue" filterConditionalStylesFromExtendedTextAreaExpression="DefaultGroupTextAreaFilterConditionalStylesFromExtendedTextAreaExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupTextAreaChangeContext"/>
         </initialOperation>
@@ -1194,7 +1277,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:ListDescription" name="DefaultGroupList" labelExpression="DefaultGroupListLabelExpression" helpExpression="DefaultGroupListHelpExpression" isEnabledExpression="DefaultGroupListIsEnabledExpression" valueExpression="DefaultGroupListValueExpression" displayExpression="DefaultGroupListDisplayExpression">
+      <controls xsi:type="properties:ListDescription" name="DefaultGroupList" labelExpression="DefaultGroupListLabelExpression" helpExpression="DefaultGroupListHelpExpression" isEnabledExpression="DefaultGroupListIsEnabledExpression" valueExpression="DefaultGroupListValueExpression" displayExpression="DefaultGroupListDisplayExpression" filterConditionalStylesFromExtendedListExpression="DefaultGroupListFilterConditionalStylesFromExtendedListExpression" filterActionsFromExtendedListExpression="DefaultGroupListFilterActionsFromExtendedListExpression">
         <onClickOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupListChangeContext"/>
         </onClickOperation>
@@ -1222,7 +1305,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:RadioDescription" name="DefaultGroupRadioIdentifier" labelExpression="DefaultGroupRadioLabelExpression" helpExpression="DefaultGroupRadioHelpExpression" isEnabledExpression="DefaultGroupRadioIsEnabledExpression" valueExpression="DefaultGroupRadioValueExpression" candidatesExpression="DefaultGroupRadioCandidatesExpression" candidateDisplayExpression="DefaultGroupRadioCandidateDisplayExpression" numberOfColumns="42">
+      <controls xsi:type="properties:RadioDescription" name="DefaultGroupRadioIdentifier" labelExpression="DefaultGroupRadioLabelExpression" helpExpression="DefaultGroupRadioHelpExpression" isEnabledExpression="DefaultGroupRadioIsEnabledExpression" valueExpression="DefaultGroupRadioValueExpression" candidatesExpression="DefaultGroupRadioCandidatesExpression" candidateDisplayExpression="DefaultGroupRadioCandidateDisplayExpression" numberOfColumns="42" filterConditionalStylesFromExtendedRadioExpression="DefaultGroupRadioFilterConditionalStylesFromExtendedRadioExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupRadioChangeContext"/>
         </initialOperation>
@@ -1245,7 +1328,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:CustomDescription" name="DefaultGroupCustomWidget" labelExpression="DefaultGroupCustomWidgetLabelExpression" helpExpression="DefaultGroupCustomWidgetHelpExpression" isEnabledExpression="DefaultGroupCustomWidgetIsEnabledExpression">
+      <controls xsi:type="properties:CustomDescription" name="DefaultGroupCustomWidget" labelExpression="DefaultGroupCustomWidgetLabelExpression" helpExpression="DefaultGroupCustomWidgetHelpExpression" isEnabledExpression="DefaultGroupCustomWidgetIsEnabledExpression" filterConditionalStylesFromExtendedCustomExpression="DefaultGroupCustomWidgetFilterConditionalStylesFromExtendedCustomExpression">
         <customExpressions name="DefaultGroupCustomWidgetCustomExpressionId" customExpression="DefaultGroupCustomWidgetCustomExpression"/>
         <customOperations name="DefaultGroupCustomWidgetCustomOperation">
           <initialOperation>
@@ -1267,7 +1350,7 @@
           </style>
         </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:HyperlinkDescription" name="DefaultGroupHyperlink" labelExpression="DefaultGroupHyperlinkLabelExpression" helpExpression="DefaultGroupHyperlinkHelpExpression" isEnabledExpression="DefaultGroupHyperlinkIsEnabledExpression" valueExpression="DefaultGroupHyperlinkValueExpression" displayExpression="DefaultGroupHyperlinkDisplayExpression">
+      <controls xsi:type="properties:HyperlinkDescription" name="DefaultGroupHyperlink" labelExpression="DefaultGroupHyperlinkLabelExpression" helpExpression="DefaultGroupHyperlinkHelpExpression" isEnabledExpression="DefaultGroupHyperlinkIsEnabledExpression" valueExpression="DefaultGroupHyperlinkValueExpression" displayExpression="DefaultGroupHyperlinkDisplayExpression" filterConditionalStylesFromExtendedHyperlinkExpression="DefaultGroupHyperlinkFilterConditionalStylesFromExtendedHyperlinkExpression" filterActionsFromExtendedHyperlinkExpression="DefaultGroupHyperlinkFilterActionsFromExtendedHyperlinkExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="DefaultGroupHyperlinkChangeContext"/>
         </initialOperation>
@@ -1315,12 +1398,12 @@
           <labelFontFormat>strike_through</labelFontFormat>
         </style>
       </controls>
-      <controls xsi:type="properties:DynamicMappingForDescription" name="DefaultGroupDynamicMappingFor" iterator="DefaultGroupDynamicMappingForIterator" iterableExpression="DefaultGroupDynamicMappingForIterablExpression">
+      <controls xsi:type="properties:DynamicMappingForDescription" name="DefaultGroupDynamicMappingFor" iterator="DefaultGroupDynamicMappingForIterator" iterableExpression="DefaultGroupDynamicMappingForIterablExpression" filterIfsFromExtendedDynamicMappingForExpression="DefaultGroupDynamicMappingForFilterIfsFromExtendedDynamicMappingForExpression">
         <ifs name="DefaultGroupDynamicMappingIf" predicateExpression="DefaultGroupDynamicMappingIfPredicateExpression">
-          <widget xsi:type="properties:TextDescription" name="DefaultGroupDynamicMappingIfText" labelExpression="DefaultGroupDynamicMappingIfTextLabelExpression"/>
+          <widget xsi:type="properties:TextDescription" name="DefaultGroupDynamicMappingIfText" labelExpression="DefaultGroupDynamicMappingIfTextLabelExpression" filterConditionalStylesFromExtendedTextExpression=""/>
         </ifs>
       </controls>
-      <controls xsi:type="properties:TextDescription" name="ExtendsDefaultGroupText" labelExpression="ExtendsDefaultGroupTextLabelExpression" helpExpression="ExtendsDefaultGroupTextHelpExpression" isEnabledExpression="ExtendsDefaultGroupTextIsEnabledExpression" valueExpression="ExtendsDefaultGroupTextValueExpression">
+      <controls xsi:type="properties:TextDescription" name="ExtendsDefaultGroupText" labelExpression="ExtendsDefaultGroupTextLabelExpression" helpExpression="ExtendsDefaultGroupTextHelpExpression" isEnabledExpression="ExtendsDefaultGroupTextIsEnabledExpression" valueExpression="ExtendsDefaultGroupTextValueExpression" filterConditionalStylesFromExtendedTextExpression="ExtendsDefaultGroupTextFilterConditionalStylesFromExtendedTextExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="ExtendsDefaultGroupTextChangeContext"/>
         </initialOperation>
@@ -1348,8 +1431,20 @@
             <fontFormat>bold</fontFormat>
           </style>
         </conditionalStyles>
+        <conditionalStyles preconditionExpression="DefaultGroupTextFilteredConditionalStylePreconditionExpression">
+          <style labelFontNameExpression="DefaultGroupTextFilteredConditionalStyleLabelFontNameExpression" labelFontSizeExpression="DefaultGroupTextFilteredConditionalStyleLabelFontSizeExpression" fontNameExpression="DefaultGroupTextFilteredConditionalStyleFontNameExpression" fontSizeExpression="DefaultGroupTextFilteredConditionalStyleFontSizeExpression">
+            <labelBackgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <labelForegroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelFontFormat>italic</labelFontFormat>
+            <labelFontFormat>bold</labelFontFormat>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <fontFormat>italic</fontFormat>
+            <fontFormat>bold</fontFormat>
+          </style>
+        </conditionalStyles>
       </controls>
-      <controls xsi:type="properties:TextDescription" name="ExtendsExtendsDefaultGroupText" labelExpression="ExtendsExtendsDefaultGroupTextLabelExpression" helpExpression="ExtendsExtendsDefaultGroupTextHelpExpression" isEnabledExpression="ExtendsExtendsDefaultGroupTextIsEnabledExpression" valueExpression="ExtendsExtendsDefaultGroupTextValueExpression">
+      <controls xsi:type="properties:TextDescription" name="ExtendsExtendsDefaultGroupText" labelExpression="ExtendsExtendsDefaultGroupTextLabelExpression" helpExpression="ExtendsExtendsDefaultGroupTextHelpExpression" isEnabledExpression="ExtendsExtendsDefaultGroupTextIsEnabledExpression" valueExpression="ExtendsExtendsDefaultGroupTextValueExpression" filterConditionalStylesFromExtendedTextExpression="ExtendsExtendsDefaultGroupTextFilterConditionalStylesExtendedTextExpression">
         <initialOperation>
           <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
         </initialOperation>
@@ -1357,12 +1452,14 @@
       <validationSet>
         <semanticValidationRules name="DefaultGroupSemanticValidationRuleId" label="DefaultGroupSemanticValidationRuleLabel" message="DefaultGroupSemanticValidationRuleMessage" targetClass="DefaultGroupSemanticValidationRuleTargetClass"/>
         <semanticValidationRules name="AnotherDefaultGroupSemanticValidationRuleId" label="AnotherDefaultGroupSemanticValidationRuleLabel" message="AnotherDefaultGroupSemanticValidationRuleMessage" targetClass="AnotherDefaultGroupSemanticValidationRuleTargetClass"/>
+        <semanticValidationRules name="DefaultGroupFilteredSemanticValidationRule"/>
         <semanticValidationRules name="ExtendsDefaultGroupSemanticValidationRuleId" label="ExtendsDefaultGroupSemanticValidationRuleLabel" message="ExtendsDefaultGroupSemanticValidationRuleMessage" targetClass="ExtendsDefaultGroupSemanticValidationRuleTargetClass"/>
         <semanticValidationRules name="ExtendsExtendsDefaultGroupSemanticValidationRuleId" label="ExtendsExtendsDefaultGroupSemanticValidationRuleLabel" message="ExtendsExtendsDefaultGroupSemanticValidationRuleMessage" targetClass="ExtendsExtendsDefaultGroupSemanticValidationRuleTargetClass"/>
-        <propertyValidationRules name="DefaultGroupPropertyValidationRuleId" label="DefaultGroupPropertyValidationRuleLabel" message="DefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.0"/>
-        <propertyValidationRules name="AnotherDefaultGroupPropertyValidationRuleId" label="AnotherDefaultGroupPropertyValidationRuleLabel" message="AnotherDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.1"/>
-        <propertyValidationRules name="ExtendsDefaultGroupPropertyValidationRuleId" label="ExtendsDefaultGroupPropertyValidationRuleLabel" message="ExtendsDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.13"/>
-        <propertyValidationRules name="ExtendsExtendsDefaultGroupPropertyValidationRuleId" label="ExtendsExtendsDefaultGroupPropertyValidationRuleLabel" message="ExtendsExtendsDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.0 //@categories.0/@groups.3/@controls.13 //@categories.0/@groups.3/@controls.14"/>
+        <propertyValidationRules name="DefaultGroupPropertyValidationRuleId" label="DefaultGroupPropertyValidationRuleLabel" message="DefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.1"/>
+        <propertyValidationRules name="AnotherDefaultGroupPropertyValidationRuleId" label="AnotherDefaultGroupPropertyValidationRuleLabel" message="AnotherDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.2"/>
+        <propertyValidationRules name="DefaultGroupFilteredPropertyValidationRule" label="" message="" targets="//@categories.0/@groups.3/@controls.1"/>
+        <propertyValidationRules name="ExtendsDefaultGroupPropertyValidationRuleId" label="ExtendsDefaultGroupPropertyValidationRuleLabel" message="ExtendsDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.14"/>
+        <propertyValidationRules name="ExtendsExtendsDefaultGroupPropertyValidationRuleId" label="ExtendsExtendsDefaultGroupPropertyValidationRuleLabel" message="ExtendsExtendsDefaultGroupPropertyValidationRuleMessage" targets="//@categories.0/@groups.3/@controls.1 //@categories.0/@groups.3/@controls.14 //@categories.0/@groups.3/@controls.15"/>
       </validationSet>
       <style fontNameExpression="DefaultGroupStyleFontNameExpression" fontSizeExpression="DefaultGroupStyleFontSizeExpression" barStyle="SHORT_TITLE_BAR" toggleStyle="TREE_NODE" expandedByDefault="true">
         <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -1376,11 +1473,11 @@
       </conditionalStyles>
     </groups>
     <groups name="GroupInAnotherResource" labelExpression="GroupInAnotherResource" domainClass="GroupInAnotherResourceDomainClass" semanticCandidateExpression="GroupInAnotherResourceSemanticCandidateExpression" preconditionExpression="GroupInAnotherResourcePreconditionExpression">
-      <controls xsi:type="properties:TextDescription" name="GroupInAnotherResourceText" labelExpression="GroupInAnotherResourceTextLabelExpression" helpExpression="GroupInAnotherResourceTextHelpExpression" isEnabledExpression="GroupInAnotherResourceTextIsEnabledExpression" valueExpression="GroupInAnotherResourceTextValueExpression"/>
+      <controls xsi:type="properties:TextDescription" name="GroupInAnotherResourceText" labelExpression="GroupInAnotherResourceTextLabelExpression" helpExpression="GroupInAnotherResourceTextHelpExpression" isEnabledExpression="GroupInAnotherResourceTextIsEnabledExpression" valueExpression="GroupInAnotherResourceTextValueExpression" filterConditionalStylesFromExtendedTextExpression="GroupInAnotherResourceTextFilterConditionalStylesFromExtendedTextExpression"/>
     </groups>
   </categories>
   <categories name="AnotherCategory">
-    <pages name="AnotherCategoryPageReferencingGroups" labelExpression="AnotherCategoryPageReferencingGroupsLabelExpression" domainClass="AnotherCategoryPageReferencingGroupsDomainClass" semanticCandidateExpression="AnotherCategoryPageReferencingGroupsSemanticCandidateExpression" preconditionExpression="AnotherCategoryPageReferencingGroupsPreconditionExpression" groups="//@categories.0/@groups.0 //@categories.0/@groups.1 //@categories.0/@groups.2">
+    <pages name="AnotherCategoryPageReferencingGroups" labelExpression="AnotherCategoryPageReferencingGroupsLabelExpression" domainClass="AnotherCategoryPageReferencingGroupsDomainClass" semanticCandidateExpression="AnotherCategoryPageReferencingGroupsSemanticCandidateExpression" preconditionExpression="AnotherCategoryPageReferencingGroupsPreconditionExpression" groups="//@categories.0/@groups.0 //@categories.0/@groups.1 //@categories.0/@groups.2" filterGroupsFromExtendedPageExpression="AnotherCategoryPageReferencingGroupsFilterGroupsFromExtendedPageExpression" filterValidationRulesFromExtendedPageExpression="AnotherCategoryPageReferencingGroupsFilterValidationRulesFromExtendedPageExpression">
       <validationSet>
         <semanticValidationRules name="AnotherCategoryPageReferencingGroupsSemanticValidationRuleId" label="AnotherCategoryPageReferencingGroupsSemanticValidationRuleLabel" level="WARNING" message="AnotherCategoryPageReferencingGroupsSemanticValidationRuleMessage" targetClass="AnotherCategoryPageReferencingGroupsSemanticValidationRuleTargetClass"/>
       </validationSet>
@@ -1388,5 +1485,140 @@
   </categories>
   <categories name="DefaultRuleCategory">
     <pages name="ExtendsDefaultRules" labelExpression="ExtendsDefaultRules"/>
+  </categories>
+  <categories name="Filter">
+    <pages name="OriginalPage" label="" labelExpression="" semanticCandidateExpression="" groups="//@categories.3/@groups.2 //@categories.3/@groups.0 //@categories.3/@groups.3">
+      <validationSet>
+        <semanticValidationRules name="SemanticValidationRule"/>
+        <semanticValidationRules name="FilteredSemanticValidationRule"/>
+      </validationSet>
+    </pages>
+    <pages name="ExtendsOriginalPageAndFilter" label="" labelExpression="" domainClass="" semanticCandidateExpression="" preconditionExpression="" groups="//@categories.3/@groups.4 //@categories.3/@groups.0 //@categories.3/@groups.3" filterGroupsFromExtendedPageExpression="aql:group.name.contains('FilteredGroup')" filterValidationRulesFromExtendedPageExpression="aql:validationRule.name.contains('FilteredSemanticValidationRule')">
+      <validationSet>
+        <semanticValidationRules name="SemanticValidationRule"/>
+        <semanticValidationRules name="AnotherFilteredSemanticValidationRule"/>
+      </validationSet>
+    </pages>
+    <pages name="ExtendsExtendsOriginalPageAndFilter" label="" labelExpression="" domainClass="" semanticCandidateExpression="" preconditionExpression="" groups="//@categories.3/@groups.2 //@categories.3/@groups.0 //@categories.3/@groups.3" filterGroupsFromExtendedPageExpression="aql:group.name.contains('AnotherFilteredGroup')" filterValidationRulesFromExtendedPageExpression="aql:validationRule.name.contains('AnotherFiltered')">
+      <validationSet>
+        <semanticValidationRules name="SemanticValidationRule"/>
+        <semanticValidationRules name="FilteredSemanticValidationRule"/>
+      </validationSet>
+    </pages>
+    <groups name="OriginalGroup" labelExpression="Group" semanticCandidateExpression="var:self">
+      <controls xsi:type="properties:TextDescription" name="OriginalGroupText">
+        <style labelFontNameExpression="OriginalGroupTextStyle" fontNameExpression="">
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+        </style>
+        <conditionalStyles preconditionExpression="OriginalGroupTextConditionalStylePrecondition">
+          <style labelFontNameExpression="ConditionalStyle" fontNameExpression="">
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </conditionalStyles>
+        <conditionalStyles preconditionExpression="OriginalGroupTextFilteredConditionalStylePrecondition">
+          <style labelFontNameExpression="OriginalGroupTextFilteredConditionalStyle" fontNameExpression="">
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </conditionalStyles>
+      </controls>
+      <controls xsi:type="properties:TextDescription" name="OriginalGroupFilteredText"/>
+      <validationSet>
+        <semanticValidationRules name="OriginalGroupSemanticValidationRule"/>
+        <semanticValidationRules name="OriginalGroupFilteredSemanticValidationRule"/>
+        <propertyValidationRules name="OriginalGroupPropertyValidationRule"/>
+        <propertyValidationRules name="OriginalGroupFilteredPropertyValidationRule"/>
+      </validationSet>
+    </groups>
+    <groups name="ExtendsOriginalGroupAndFilter" labelExpression="" domainClass="" semanticCandidateExpression="" preconditionExpression="" filterControlsFromExtendedGroupExpression="aql:control.name.contains('Filter')" filterValidationRulesFromExtendedGroupExpression="aql:validationRule.name.contains('Filter')" filterConditionalStylesFromExtendedGroupExpression="">
+      <controls xsi:type="properties:TextDescription" name="OriginalGroupText">
+        <style labelFontNameExpression="OriginalGroupTextStyle" fontNameExpression="">
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+        </style>
+        <conditionalStyles preconditionExpression="OriginalGroupTextConditionalStylePrecondition">
+          <style labelFontNameExpression="ConditionalStyle" fontNameExpression="">
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </conditionalStyles>
+        <conditionalStyles preconditionExpression="OriginalGroupTextFilteredConditionalStylePrecondition">
+          <style labelFontNameExpression="OriginalGroupTextFilteredConditionalStyle" fontNameExpression="">
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </conditionalStyles>
+      </controls>
+      <controls xsi:type="properties:TextDescription" name="ExtendsOriginalGroupTextAndFilter" labelExpression="" helpExpression="" isEnabledExpression="" valueExpression="" filterConditionalStylesFromExtendedTextExpression="aql:conditionalStyle.preconditionExpression.contains('Filter')">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="ExtendsOriginalGroupTextChangeContext"/>
+        </initialOperation>
+        <style labelFontNameExpression="OriginalGroupTextStyle" fontNameExpression="">
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+        </style>
+        <conditionalStyles preconditionExpression="OriginalGroupTextConditionalStylePrecondition">
+          <style labelFontNameExpression="ConditionalStyle" fontNameExpression="">
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </conditionalStyles>
+      </controls>
+      <validationSet>
+        <semanticValidationRules name="OriginalGroupSemanticValidationRule"/>
+        <semanticValidationRules name="ExtendsOriginalGroupSemanticValidationRule" label="" message="" targetClass=""/>
+        <propertyValidationRules name="OriginalGroupPropertyValidationRule"/>
+        <propertyValidationRules name="ExtendsOriginalGroupPropertyValidationRule" label="" message="" targets="//@categories.3/@groups.5/@controls.2"/>
+      </validationSet>
+    </groups>
+    <groups name="FilteredGroup" labelExpression="" domainClass="" semanticCandidateExpression="" preconditionExpression="" filterControlsFromExtendedGroupExpression="" filterValidationRulesFromExtendedGroupExpression="" filterConditionalStylesFromExtendedGroupExpression=""/>
+    <groups name="AnotherGroup" labelExpression="" domainClass="" semanticCandidateExpression="" preconditionExpression="" filterControlsFromExtendedGroupExpression="" filterValidationRulesFromExtendedGroupExpression="" filterConditionalStylesFromExtendedGroupExpression=""/>
+    <groups name="AnotherFilteredGroup" labelExpression="" domainClass="" semanticCandidateExpression="" preconditionExpression="" filterControlsFromExtendedGroupExpression="" filterValidationRulesFromExtendedGroupExpression="" filterConditionalStylesFromExtendedGroupExpression=""/>
+    <groups name="ExtendsExtendsOriginalGroupAndFilter" labelExpression="" domainClass="" semanticCandidateExpression="" preconditionExpression="" filterControlsFromExtendedGroupExpression="aql:control.name.contains('ExtendsOrignialGroupTextAndFilter')" filterValidationRulesFromExtendedGroupExpression="aql:validationRule.name.contains('ExtendsOriginalGroup')" filterConditionalStylesFromExtendedGroupExpression="">
+      <controls xsi:type="properties:TextDescription" name="OriginalGroupText">
+        <style labelFontNameExpression="OriginalGroupTextStyle" fontNameExpression="">
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+        </style>
+        <conditionalStyles preconditionExpression="OriginalGroupTextConditionalStylePrecondition">
+          <style labelFontNameExpression="ConditionalStyle" fontNameExpression="">
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </conditionalStyles>
+        <conditionalStyles preconditionExpression="OriginalGroupTextFilteredConditionalStylePrecondition">
+          <style labelFontNameExpression="OriginalGroupTextFilteredConditionalStyle" fontNameExpression="">
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </conditionalStyles>
+      </controls>
+      <controls xsi:type="properties:TextDescription" name="OriginalGroupFilteredText"/>
+      <controls xsi:type="properties:TextDescription" name="ExtendsOriginalGroupTextAndFilter" labelExpression="" helpExpression="" isEnabledExpression="" valueExpression="" filterConditionalStylesFromExtendedTextExpression="aql:conditionalStyle.preconditionExpression.contains('Filter')">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="ExtendsOriginalGroupTextChangeContext"/>
+        </initialOperation>
+        <style labelFontNameExpression="OriginalGroupTextStyle" fontNameExpression="">
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+        </style>
+        <conditionalStyles preconditionExpression="OriginalGroupTextConditionalStylePrecondition">
+          <style labelFontNameExpression="ConditionalStyle" fontNameExpression="">
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </conditionalStyles>
+      </controls>
+      <validationSet>
+        <semanticValidationRules name="OriginalGroupSemanticValidationRule"/>
+        <semanticValidationRules name="OriginalGroupFilteredSemanticValidationRule"/>
+        <semanticValidationRules name="ExtendsExtendsOriginalGroupSemanticValidationRule" label="" message="" targetClass=""/>
+        <propertyValidationRules name="OriginalGroupPropertyValidationRule"/>
+        <propertyValidationRules name="OriginalGroupFilteredPropertyValidationRule"/>
+        <propertyValidationRules name="ExtendsExtendsOriginalGroupPropertyValidationRule" label="" message=""/>
+      </validationSet>
+    </groups>
   </categories>
 </properties:ViewExtensionDescription>

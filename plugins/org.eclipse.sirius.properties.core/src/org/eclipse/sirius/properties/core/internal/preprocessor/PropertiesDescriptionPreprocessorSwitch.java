@@ -48,6 +48,14 @@ import org.eclipse.sirius.properties.util.PropertiesSwitch;
  * @author mbats
  */
 public class PropertiesDescriptionPreprocessorSwitch extends PropertiesSwitch<Optional<IDescriptionPreprocessor>> {
+
+    /**
+     * The constructor.
+     */
+    public PropertiesDescriptionPreprocessorSwitch() {
+        super();
+    }
+
     @Override
     public Optional<IDescriptionPreprocessor> caseViewExtensionDescription(ViewExtensionDescription object) {
         Collection<EStructuralFeature> featuresToCopy = new ArrayList<>();

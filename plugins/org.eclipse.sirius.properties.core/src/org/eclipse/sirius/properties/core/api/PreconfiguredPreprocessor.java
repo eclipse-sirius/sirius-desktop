@@ -18,12 +18,13 @@ import java.util.stream.StreamSupport;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 
 /**
- * {@link IDescriptionPreprocessor} implementation that supports most of the
- * cases by ignoring :
+ * {@link IDescriptionPreprocessor} implementation that supports most of the cases by ignoring :
  * <ul>
  * <li>the extends reference,</li>
  * <li>all the filters of the extension mechanism.</li>
@@ -54,13 +55,14 @@ public class PreconfiguredPreprocessor<SIRIUS extends EObject> extends DefaultDe
     public PreconfiguredPreprocessor(Class<SIRIUS> descriptionClass, EClass eClass) {
         super(descriptionClass, PreconfiguredPreprocessorUtils.getFeaturesToFilter(eClass), PreconfiguredPreprocessorUtils.getFeaturesToCopy(eClass));
     }
-    
+
     @Override
-    protected void processManyValuedFeatureByCopying(EStructuralFeature manyValuedFeature, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache) {
+    protected void processManyValuedFeatureByCopying(EStructuralFeature manyValuedFeature, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache, IInterpreter interpreter,
+            IVariableManager variableManager) {
         if (!PropertiesPackage.Literals.WIDGET_ACTION.equals(manyValuedFeature.getEType())) {
-            super.processManyValuedFeatureByCopying(manyValuedFeature, processedDescription, currentDescription, cache);
+            super.processManyValuedFeatureByCopying(manyValuedFeature, processedDescription, currentDescription, cache, interpreter, variableManager);
         }
-        
+
         Object processedValue = processedDescription.eGet(manyValuedFeature);
         Object currentValue = currentDescription.eGet(manyValuedFeature);
         if (currentValue instanceof Iterable<?> && processedValue instanceof Iterable<?>) {
@@ -72,11 +74,10 @@ public class PreconfiguredPreprocessor<SIRIUS extends EObject> extends DefaultDe
             StreamSupport.stream(currentIterable.spliterator(), false).filter(EObject.class::isInstance).map(EObject.class::cast).forEach(object -> {
                 Optional<IDescriptionPreprocessor> preprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(object);
                 if (preprocessor.isPresent()) {
-                    Object processedWidgetAction = preprocessor.get().convert(object, cache);
+                    Object processedWidgetAction = preprocessor.get().convert(object, cache, interpreter, variableManager);
                     newValue.add(processedWidgetAction);
                 }
             });
-            
 
             // Get all the already processed values
             processedIterable.forEach(newValue::add);

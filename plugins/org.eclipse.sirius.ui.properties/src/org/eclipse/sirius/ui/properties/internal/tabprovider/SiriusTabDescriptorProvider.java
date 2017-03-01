@@ -127,7 +127,10 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
 
         List<PageDescription> effectivePages = Lists.newArrayList();
         viewExtensionDescriptions.forEach(viewExtensionDescription -> {
-            new ViewDescriptionPreprocessor(viewExtensionDescription).convert().ifPresent(processedViewExtensionDescription -> {
+            IVariableManager variableManager = new VariableManagerFactory().createVariableManager();
+            variableManager.put(EEFExpressionUtils.SELF, viewExtensionDescription);
+
+            new ViewDescriptionPreprocessor(viewExtensionDescription).convert(new SiriusInterpreter(session), variableManager).ifPresent(processedViewExtensionDescription -> {
                 processedViewExtensionDescription.getCategories().forEach(category -> effectivePages.addAll(category.getPages()));
             });
         });

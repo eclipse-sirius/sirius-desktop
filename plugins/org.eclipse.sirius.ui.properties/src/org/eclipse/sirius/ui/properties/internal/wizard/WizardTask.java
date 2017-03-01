@@ -85,20 +85,22 @@ public class WizardTask extends AbstractOperationTask {
 
     @Override
     public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
-        WizardModelOperationPreprocessor preprocessor = new WizardModelOperationPreprocessor(this.wizardModelOperation);
+        SiriusInputDescriptor input = new SiriusInputDescriptor(this.context.getCurrentTarget());
+
+        IVariableManager variableManager = new VariableManagerFactory().createVariableManager();
+        variableManager.put(EEFExpressionUtils.SELF, input.getSemanticElement());
+        variableManager.put(EEFExpressionUtils.INPUT, input);
+
+        SiriusInterpreter siriusInterpreter = new SiriusInterpreter(this.session);
+
+        WizardModelOperationPreprocessor preprocessor = new WizardModelOperationPreprocessor(this.wizardModelOperation, siriusInterpreter, variableManager);
         Optional<WizardModelOperation> optionalWizardModelOperation = preprocessor.convert();
         optionalWizardModelOperation.ifPresent(convertedWizardModelOperation -> {
-            SiriusInputDescriptor input = new SiriusInputDescriptor(this.context.getCurrentTarget());
             ViewDescriptionConverter viewDescriptionConverter = new ViewDescriptionConverter(convertedWizardModelOperation.getPages());
             EEFViewDescription eefViewDescription = viewDescriptionConverter.convert(input);
 
-            IVariableManager variableManager = new VariableManagerFactory().createVariableManager();
-            variableManager.put(EEFExpressionUtils.SELF, input.getSemanticElement());
-            variableManager.put(EEFExpressionUtils.INPUT, input);
-
             EditingContextAdapter editingContextAdapter = SiriusUIPropertiesPlugin.getPlugin().getEditingContextAdapter(session);
             EditingContextAdapterWrapper editingContextAdapterWrapper = new EditingContextAdapterWrapper(editingContextAdapter);
-            SiriusInterpreter siriusInterpreter = new SiriusInterpreter(this.session);
 
             EEFViewFactory eefViewFactory = new EEFViewFactory();
             EEFView eefView = eefViewFactory.createEEFView(eefViewDescription, variableManager, siriusInterpreter, editingContextAdapterWrapper, new SiriusDomainClassTester(session), input);

@@ -38,6 +38,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
+import org.eclipse.sirius.common.interpreter.api.VariableManagerFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.core.api.ViewDescriptionPreprocessor;
@@ -110,7 +112,9 @@ public final class PreprocessorTest {
         if (eObject instanceof ViewExtensionDescription) {
             ViewExtensionDescription viewExtensionDescription = (ViewExtensionDescription) eObject;
             ViewDescriptionPreprocessor preprocessor = new ViewDescriptionPreprocessor(viewExtensionDescription);
-            Optional<ViewExtensionDescription> processedOptional = preprocessor.convert();
+            IVariableManager variableManager = new VariableManagerFactory().createVariableManager();
+            variableManager.put("self", viewExtensionDescription);
+            Optional<ViewExtensionDescription> processedOptional = preprocessor.convert(new AQLInterpreter(), variableManager);
             if (processedOptional.isPresent()) {
                 EObject processed = processedOptional.get();
                 ResourceSet resourceSet = new ResourceSetImpl();

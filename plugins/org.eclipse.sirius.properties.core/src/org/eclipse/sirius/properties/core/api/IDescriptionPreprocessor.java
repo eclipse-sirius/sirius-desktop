@@ -11,6 +11,8 @@
 package org.eclipse.sirius.properties.core.api;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 
 /**
  * Implementations of this interface are used by Sirius to resolve inheritance
@@ -20,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * @author mbats
  */
 public interface IDescriptionPreprocessor {
-    
+
     /**
      * Indicates if the converter can handle the given description.
      * 
@@ -30,7 +32,7 @@ public interface IDescriptionPreprocessor {
      *         <code>false</code> otherwise
      */
     boolean canHandle(EObject description);
-    
+
     /**
      * Processes a property view description or part of it. The initial
      * description is not modified.
@@ -39,9 +41,13 @@ public interface IDescriptionPreprocessor {
      *            the description to process
      * @param cache
      *            the cache of already-processed descriptions
+     * @param interpreter
+     *            the interpreter
+     * @param variableManager
+     *            the variable manager
      * @return a semantically equivalent description to
      *         {@code originalDescription}, but with inheritance and extension
      *         relations unfolded.
      */
-    EObject convert(EObject description, TransformationCache cache);
+    EObject convert(EObject description, TransformationCache cache, IInterpreter interpreter, IVariableManager variableManager);
 }

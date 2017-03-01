@@ -66,10 +66,23 @@
           domainClass="PageReferencingGroupsDomainClass"
           semanticCandidateExpression="PageReferencingGroupsSemanticCandidateExpression"
           preconditionExpression="PageReferencingGroupsPreconditionExpression"
-          groups="//@extensions.0/@categories.0/@groups.0 //@extensions.0/@categories.0/@groups.1 //@extensions.0/@categories.0/@groups.2"
+          groups="//@extensions.0/@categories.0/@groups.0 //@extensions.0/@categories.0/@groups.1 //@extensions.0/@categories.0/@groups.2 //@extensions.0/@categories.3/@groups.2"
           filterGroupsFromExtendedPageExpression="PageReferencingGroupsFilterGroupsFromExtendedPageExpression"
           filterValidationRulesFromExtendedPageExpression="PageReferencingGroupsFilterValidationRulesExtendedPageExpression"
-          documentation="A page referencing groups must reference the processed groups after the preprocess operation"/>
+          documentation="A page referencing groups must reference the processed groups after the preprocess operation">
+        <validationSet>
+          <semanticValidationRules
+              name="FilteredSemanticValidationRuleId"
+              label="FilteredSemanticValidationRuleLabel"
+              message="FilteredSemanticValidationRuleMessage"
+              targetClass="FilteredSemanticValidationRuleTargetClass"/>
+          <semanticValidationRules
+              name="PageReferencingGroupsSemanticValidationRuleId"
+              label="PageReferencingGroupsSemanticValidationRuleLabel"
+              message="PageReferencingGroupsSemanticValidationRuleMessage"
+              targetClass="PageReferencingGroupsSemanticValidationRuleTargetClass"/>
+        </validationSet>
+      </pages>
       <pages
           name="ExtendsExtendsDefaultPage"
           labelExpression="ExtendsExtendsDefaultPageLabelExpression"
@@ -92,6 +105,30 @@
         <extends
             href="input2.odesign#//@extensions.0/@categories.0/@pages.0"/>
       </pages>
+      <pages
+          name="ExtendsPageReferencingGroups"
+          label=""
+          labelExpression="ExtendsPageReferencingGroupsLabelExpression"
+          domainClass="ExtendsDefaultPageDomainClass"
+          semanticCandidateExpression="ExtendsPageReferencingGroupsSemanticCandidateExpression"
+          preconditionExpression="ExtendsPageReferencingGroupsPreconditionExpression"
+          groups="//@extensions.0/@categories.3/@groups.3"
+          extends="//@extensions.0/@categories.0/@pages.3"
+          filterGroupsFromExtendedPageExpression=""
+          filterValidationRulesFromExtendedPageExpression="ExtendsPageReferencingGroupsFilterValidationRulesFromExtendedPageExpression">
+        <validationSet>
+          <semanticValidationRules
+              name="DefaultPageSemanticValidationRuleId"
+              label="DefaultPageSemanticValidationRuleLabel"
+              message="DefaultPageSemanticValidationRuleMessage"
+              targetClass="DefaultPageSemanticValidationRuleTargetClass"/>
+          <semanticValidationRules
+              name="AnotherDefaultPageSemanticValidationRuleId"
+              label="AnotherDefaultPageSemanticValidationRuleLabel"
+              message="AnotherDefaultPageSemanticValidationRuleMessage"
+              targetClass="AnotherDefaultPageSemanticValidationRuleTargetClass"/>
+        </validationSet>
+      </pages>
       <groups
           name="DefaultGroup"
           labelExpression="DefaultGroupLabelExpression"
@@ -102,6 +139,9 @@
           filterValidationRulesFromExtendedGroupExpression="DefaultGroupFilterValidationRulesFromExtendedGroupExpression"
           filterConditionalStylesFromExtendedGroupExpression="DefaultGroupFilterConditionalStylesFromExtendedGroupExpression"
           documentation="Classical groups are well copied, all their features and contained elements (controls, group validation set, validation rules...)&#xA;">
+        <controls
+            xsi:type="properties:TextDescription"
+            name="DefaultGroupFilteredText"/>
         <controls
             xsi:type="properties:TextDescription"
             name="DefaultGroupText"
@@ -147,6 +187,31 @@
                 labelFontSizeExpression="DefaultGroupTextConditionalStyleLabelFontSizeExpression"
                 fontNameExpression="DefaultGroupTextConditionalStyleFontNameExpression"
                 fontSizeExpression="DefaultGroupTextConditionalStyleFontSizeExpression">
+              <labelBackgroundColor
+                  xsi:type="description:SystemColor"
+                  href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              <labelForegroundColor
+                  xsi:type="description:SystemColor"
+                  href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelFontFormat>italic</labelFontFormat>
+              <labelFontFormat>bold</labelFontFormat>
+              <backgroundColor
+                  xsi:type="description:SystemColor"
+                  href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <foregroundColor
+                  xsi:type="description:SystemColor"
+                  href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <fontFormat>italic</fontFormat>
+              <fontFormat>bold</fontFormat>
+            </style>
+          </conditionalStyles>
+          <conditionalStyles
+              preconditionExpression="DefaultGroupTextFilteredConditionalStylePreconditionExpression">
+            <style
+                labelFontNameExpression="DefaultGroupTextFilteredConditionalStyleLabelFontNameExpression"
+                labelFontSizeExpression="DefaultGroupTextFilteredConditionalStyleLabelFontSizeExpression"
+                fontNameExpression="DefaultGroupTextFilteredConditionalStyleFontNameExpression"
+                fontSizeExpression="DefaultGroupTextFilteredConditionalStyleFontSizeExpression">
               <labelBackgroundColor
                   xsi:type="description:SystemColor"
                   href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
@@ -743,15 +808,22 @@
               label="AnotherDefaultGroupSemanticValidationRuleLabel"
               message="AnotherDefaultGroupSemanticValidationRuleMessage"
               targetClass="AnotherDefaultGroupSemanticValidationRuleTargetClass"/>
+          <semanticValidationRules
+              name="DefaultGroupFilteredSemanticValidationRule"/>
           <propertyValidationRules
               name="DefaultGroupPropertyValidationRuleId"
               label="DefaultGroupPropertyValidationRuleLabel"
               message="DefaultGroupPropertyValidationRuleMessage"
-              targets="//@extensions.0/@categories.0/@groups.0/@controls.0"/>
+              targets="//@extensions.0/@categories.0/@groups.0/@controls.1"/>
           <propertyValidationRules
               name="AnotherDefaultGroupPropertyValidationRuleId"
               label="AnotherDefaultGroupPropertyValidationRuleLabel"
               message="AnotherDefaultGroupPropertyValidationRuleMessage"
+              targets="//@extensions.0/@categories.0/@groups.0/@controls.2"/>
+          <propertyValidationRules
+              name="DefaultGroupFilteredPropertyValidationRule"
+              label=""
+              message=""
               targets="//@extensions.0/@categories.0/@groups.0/@controls.1"/>
         </validationSet>
         <style
@@ -799,7 +871,7 @@
             helpExpression="ExtendsDefaultGroupTextHelpExpression"
             isEnabledExpression="ExtendsDefaultGroupTextIsEnabledExpression"
             valueExpression="ExtendsDefaultGroupTextValueExpression"
-            extends="//@extensions.0/@categories.0/@groups.0/@controls.0"
+            extends="//@extensions.0/@categories.0/@groups.0/@controls.1"
             filterConditionalStylesFromExtendedTextExpression="ExtendsDefaultGroupTextFilterConditionalStylesFromExtendedTextExpression"
             documentation="A default text is just copied">
           <initialOperation>
@@ -854,7 +926,7 @@
               name="ExtendsExtendsDefaultGroupPropertyValidationRuleId"
               label="ExtendsExtendsDefaultGroupPropertyValidationRuleLabel"
               message="ExtendsExtendsDefaultGroupPropertyValidationRuleMessage"
-              targets="//@extensions.0/@categories.0/@groups.0/@controls.0 //@extensions.0/@categories.0/@groups.1/@controls.0 //@extensions.0/@categories.0/@groups.3/@controls.0"/>
+              targets="//@extensions.0/@categories.0/@groups.0/@controls.1 //@extensions.0/@categories.0/@groups.1/@controls.0 //@extensions.0/@categories.0/@groups.3/@controls.0"/>
         </validationSet>
       </groups>
     </categories>
@@ -889,6 +961,193 @@
         <extends
             href="../../../../plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@pages.0"/>
       </pages>
+    </categories>
+    <categories
+        name="Filter">
+      <pages
+          name="OriginalPage"
+          label=""
+          labelExpression=""
+          semanticCandidateExpression=""
+          groups="//@extensions.0/@categories.3/@groups.2 //@extensions.0/@categories.3/@groups.0 //@extensions.0/@categories.3/@groups.3">
+        <validationSet>
+          <semanticValidationRules
+              name="SemanticValidationRule"/>
+          <semanticValidationRules
+              name="FilteredSemanticValidationRule"/>
+        </validationSet>
+      </pages>
+      <pages
+          name="ExtendsOriginalPageAndFilter"
+          label=""
+          labelExpression=""
+          domainClass=""
+          semanticCandidateExpression=""
+          preconditionExpression=""
+          groups="//@extensions.0/@categories.3/@groups.4"
+          extends="//@extensions.0/@categories.3/@pages.0"
+          filterGroupsFromExtendedPageExpression="aql:group.name.contains('FilteredGroup')"
+          filterValidationRulesFromExtendedPageExpression="aql:validationRule.name.contains('FilteredSemanticValidationRule')">
+        <validationSet>
+          <semanticValidationRules
+              name="AnotherFilteredSemanticValidationRule"/>
+        </validationSet>
+      </pages>
+      <pages
+          name="ExtendsExtendsOriginalPageAndFilter"
+          label=""
+          labelExpression=""
+          domainClass=""
+          semanticCandidateExpression=""
+          preconditionExpression=""
+          extends="//@extensions.0/@categories.3/@pages.1"
+          filterGroupsFromExtendedPageExpression="aql:group.name.contains('AnotherFilteredGroup')"
+          filterValidationRulesFromExtendedPageExpression="aql:validationRule.name.contains('AnotherFiltered')"/>
+      <groups
+          name="OriginalGroup"
+          labelExpression="Group"
+          semanticCandidateExpression="var:self">
+        <controls
+            xsi:type="properties:TextDescription"
+            name="OriginalGroupText">
+          <style
+              labelFontNameExpression="OriginalGroupTextStyle"
+              fontNameExpression="">
+            <backgroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+          <conditionalStyles
+              preconditionExpression="OriginalGroupTextConditionalStylePrecondition">
+            <style
+                labelFontNameExpression="ConditionalStyle"
+                fontNameExpression="">
+              <backgroundColor
+                  xsi:type="description:SystemColor"
+                  href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              <foregroundColor
+                  xsi:type="description:SystemColor"
+                  href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </conditionalStyles>
+          <conditionalStyles
+              preconditionExpression="OriginalGroupTextFilteredConditionalStylePrecondition">
+            <style
+                labelFontNameExpression="OriginalGroupTextFilteredConditionalStyle"
+                fontNameExpression="">
+              <backgroundColor
+                  xsi:type="description:SystemColor"
+                  href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              <foregroundColor
+                  xsi:type="description:SystemColor"
+                  href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </conditionalStyles>
+        </controls>
+        <controls
+            xsi:type="properties:TextDescription"
+            name="OriginalGroupFilteredText"/>
+        <validationSet>
+          <semanticValidationRules
+              name="OriginalGroupSemanticValidationRule"/>
+          <semanticValidationRules
+              name="OriginalGroupFilteredSemanticValidationRule"/>
+          <propertyValidationRules
+              name="OriginalGroupPropertyValidationRule"/>
+          <propertyValidationRules
+              name="OriginalGroupFilteredPropertyValidationRule"/>
+        </validationSet>
+      </groups>
+      <groups
+          name="ExtendsOriginalGroupAndFilter"
+          labelExpression=""
+          domainClass=""
+          semanticCandidateExpression=""
+          preconditionExpression=""
+          extends="//@extensions.0/@categories.3/@groups.0"
+          filterControlsFromExtendedGroupExpression="aql:control.name.contains('Filter')"
+          filterValidationRulesFromExtendedGroupExpression="aql:validationRule.name.contains('Filter')"
+          filterConditionalStylesFromExtendedGroupExpression="">
+        <controls
+            xsi:type="properties:TextDescription"
+            name="ExtendsOriginalGroupTextAndFilter"
+            labelExpression=""
+            helpExpression=""
+            isEnabledExpression=""
+            valueExpression=""
+            extends="//@extensions.0/@categories.3/@groups.0/@controls.0"
+            filterConditionalStylesFromExtendedTextExpression="aql:conditionalStyle.preconditionExpression.contains('Filter')">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool:ChangeContext"
+                browseExpression="ExtendsOriginalGroupTextChangeContext"/>
+          </initialOperation>
+        </controls>
+        <validationSet>
+          <semanticValidationRules
+              name="ExtendsOriginalGroupSemanticValidationRule"
+              label=""
+              message=""
+              targetClass=""/>
+          <propertyValidationRules
+              name="ExtendsOriginalGroupPropertyValidationRule"
+              label=""
+              message=""
+              targets="//@extensions.0/@categories.3/@groups.1/@controls.0"/>
+        </validationSet>
+      </groups>
+      <groups
+          name="FilteredGroup"
+          labelExpression=""
+          domainClass=""
+          semanticCandidateExpression=""
+          preconditionExpression=""
+          filterControlsFromExtendedGroupExpression=""
+          filterValidationRulesFromExtendedGroupExpression=""
+          filterConditionalStylesFromExtendedGroupExpression=""/>
+      <groups
+          name="AnotherGroup"
+          labelExpression=""
+          domainClass=""
+          semanticCandidateExpression=""
+          preconditionExpression=""
+          filterControlsFromExtendedGroupExpression=""
+          filterValidationRulesFromExtendedGroupExpression=""
+          filterConditionalStylesFromExtendedGroupExpression=""/>
+      <groups
+          name="AnotherFilteredGroup"
+          labelExpression=""
+          domainClass=""
+          semanticCandidateExpression=""
+          preconditionExpression=""
+          filterControlsFromExtendedGroupExpression=""
+          filterValidationRulesFromExtendedGroupExpression=""
+          filterConditionalStylesFromExtendedGroupExpression=""/>
+      <groups
+          name="ExtendsExtendsOriginalGroupAndFilter"
+          labelExpression=""
+          domainClass=""
+          semanticCandidateExpression=""
+          preconditionExpression=""
+          extends="//@extensions.0/@categories.3/@groups.1"
+          filterControlsFromExtendedGroupExpression="aql:control.name.contains('ExtendsOrignialGroupTextAndFilter')"
+          filterValidationRulesFromExtendedGroupExpression="aql:validationRule.name.contains('ExtendsOriginalGroup')"
+          filterConditionalStylesFromExtendedGroupExpression="">
+        <validationSet>
+          <semanticValidationRules
+              name="ExtendsExtendsOriginalGroupSemanticValidationRule"
+              label=""
+              message=""
+              targetClass=""/>
+          <propertyValidationRules
+              name="ExtendsExtendsOriginalGroupPropertyValidationRule"
+              label=""
+              message=""/>
+        </validationSet>
+      </groups>
     </categories>
   </extensions>
 </description:Group>

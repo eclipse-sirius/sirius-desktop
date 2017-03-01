@@ -18,6 +18,8 @@ import java.util.stream.StreamSupport;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.sirius.properties.core.internal.converter.SiriusInitialOperationAdapter;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
@@ -72,18 +74,23 @@ public class DefaultDescriptionPreprocessorWithFiltering<SIRIUS extends EObject>
      *            the original description or one of its ancestors, from which properties are inherited.
      * @param cache
      *            the processing cache.
+     * @param interpreter
+     *            the interpreter.
+     * @param variableManager
+     *            the variable manager.
      */
     @Override
-    protected void processDescriptionFeature(EStructuralFeature feature, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache) {
+    protected void processDescriptionFeature(EStructuralFeature feature, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache, IInterpreter interpreter,
+            IVariableManager variableManager) {
         if (!featuresToFilter.contains(feature)) {
             if (featuresToCopy.contains(feature)) {
                 if (!feature.isMany()) {
                     processMonoValuedFeatureByCopying(feature, processedDescription, currentDescription, cache);
                 } else {
-                    processManyValuedFeatureByCopying(feature, processedDescription, currentDescription, cache);
+                    processManyValuedFeatureByCopying(feature, processedDescription, currentDescription, cache, interpreter, variableManager);
                 }
             } else {
-                super.processDescriptionFeature(feature, processedDescription, currentDescription, cache);
+                super.processDescriptionFeature(feature, processedDescription, currentDescription, cache, interpreter, variableManager);
             }
         }
     }
@@ -125,8 +132,13 @@ public class DefaultDescriptionPreprocessorWithFiltering<SIRIUS extends EObject>
      *            the original or an ancestor description.
      * @param cache
      *            the cache
+     * @param interpreter
+     *            The interpreter
+     * @param variableManager
+     *            The variable manager
      */
-    protected void processManyValuedFeatureByCopying(EStructuralFeature manyValuedFeature, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache) {
+    protected void processManyValuedFeatureByCopying(EStructuralFeature manyValuedFeature, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache, IInterpreter interpreter,
+            IVariableManager variableManager) {
         Object processedValue = processedDescription.eGet(manyValuedFeature);
         Object currentValue = currentDescription.eGet(manyValuedFeature);
         if (currentValue instanceof Iterable<?> && processedValue instanceof Iterable<?>) {
@@ -134,14 +146,17 @@ public class DefaultDescriptionPreprocessorWithFiltering<SIRIUS extends EObject>
             Iterable<?> currentIterable = (Iterable<?>) currentValue;
             Iterable<?> processedIterable = (Iterable<?>) processedValue;
 
-            // For each current description create a copy and set it in the new values
+            // For each current description create a copy and set it in the new
+            // values
             StreamSupport.stream(currentIterable.spliterator(), false).filter(EObject.class::isInstance).map(EObject.class::cast).forEach(object -> {
-                EObject newEObject = EcoreUtil.copy(object);
-                cache.put(object, newEObject);
-                newValue.add(newEObject);
+                if (!this.isFiltered(manyValuedFeature, processedDescription, object, interpreter, variableManager)) {
+                    EObject newEObject = EcoreUtil.copy(object);
+                    cache.put(object, newEObject);
+                    newValue.add(newEObject);
 
-                if (object instanceof InitialOperation) {
-                    newEObject.eAdapters().add(new SiriusInitialOperationAdapter(EcoreUtil.getURI(object)));
+                    if (object instanceof InitialOperation) {
+                        newEObject.eAdapters().add(new SiriusInitialOperationAdapter(EcoreUtil.getURI(object)));
+                    }
                 }
             });
 
