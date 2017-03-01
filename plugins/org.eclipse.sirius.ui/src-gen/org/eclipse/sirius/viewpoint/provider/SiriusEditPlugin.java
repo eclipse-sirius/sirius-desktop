@@ -14,9 +14,11 @@ package org.eclipse.sirius.viewpoint.provider;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -58,6 +60,7 @@ import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.
 import org.eclipse.sirius.ui.tools.internal.actions.analysis.IAddModelDependencyWizardRegistryListener;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.resourcelistener.ModelingProjectResourceListenerRegistry;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab.ModelExplorerTabRegistryListener;
+import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.resourcelistener.ISessionFileLoadingListener;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
@@ -166,6 +169,11 @@ public final class SiriusEditPlugin extends EMFPlugin {
         private IAddModelDependencyWizardRegistryListener resourceWizardRegistryListener;
 
         /**
+         * Listeners that will be used to listen to session's file opening.
+         */
+        private Set<ISessionFileLoadingListener> sessionFileLoadingListenersRegistry;
+
+        /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated NOT
@@ -177,6 +185,40 @@ public final class SiriusEditPlugin extends EMFPlugin {
             //
             SiriusEditPlugin.plugin = this;
             SiriusPlugin.getDefault().setUiCallback(new GenericSWTCallBack());
+            sessionFileLoadingListenersRegistry = new HashSet<ISessionFileLoadingListener>();
+        }
+
+        /**
+         * Returns all listeners that must be worn when a session file has been loaded.
+         * 
+         * @return all listeners that must be worn when a session file has been loaded.
+         */
+        public Set<ISessionFileLoadingListener> getSessionFileLoadingListeners() {
+            return sessionFileLoadingListenersRegistry;
+        }
+
+        /**
+         * Add the given listener to the registry.
+         * 
+         * @param sessionFileLoadingListener
+         *            the listener to add.
+         */
+        public void addSessionFileLoadingListener(ISessionFileLoadingListener sessionFileLoadingListener) {
+            if (sessionFileLoadingListenersRegistry != null) {
+                sessionFileLoadingListenersRegistry.add(sessionFileLoadingListener);
+            }
+        }
+
+        /**
+         * Add the given listener from the registry.
+         * 
+         * @param sessionFileLoadingListener
+         *            the listener to add.
+         */
+        public void removeSessionFileLoadingListener(ISessionFileLoadingListener sessionFileLoadingListener) {
+            if (sessionFileLoadingListenersRegistry != null) {
+                sessionFileLoadingListenersRegistry.remove(sessionFileLoadingListener);
+            }
         }
 
         /**
@@ -347,6 +389,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
             uiSessionFactoryDescriptorRegistryListener = null;
             resourceWizardRegistryListener.dispose();
             resourceWizardRegistryListener = null;
+            sessionFileLoadingListenersRegistry = null;
 
             try {
                 Platform.removeLogListener(LogThroughActiveDialectEditorLogListener.INSTANCE);

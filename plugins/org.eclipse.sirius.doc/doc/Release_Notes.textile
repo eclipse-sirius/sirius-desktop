@@ -22,11 +22,10 @@ h3. Developer-Visible Changes
 
 h4. Changes in @org.eclipse.sirius.ui@
 
-* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.wizards.page.ViewpointsSelectionWizardPage.setBrowserMinWidth(int)@ has been added to allow modification of the minimum width (with default value "0") of the browser part of the viewpoint selection wizard.
-* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.wizards.page.ViewpointsSelectionWizardPage.setColumnWidthEquality(boolean)@ has been added to allow modification of column width equality (with default value "false") of the root composite of the viewpoint selection wizard.
+* <span class="label label-info">Modified</span> The method @org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.createLocalRepresentationsFile(IProject, IProgressMonitor)@ has its return type changed from @void@ to @Session@ to allow callers to have access to the newly created session directly.
+
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getDefaultFontWithRuntimeSizeAndFromLabelFormat(List<FontFormat>)@ has been added to allow to retrieve a font using the given format and the default Sirius font (arial) and the runtime height.
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getFontFromNameAndLabelFormatAndWithDefaultSize(List<FontFormat>, String)@ has been added to allow to retrieve a font using the given format and the given font name and the runtime height.
-
 h4. Changes in @org.eclipse.sirius.diagram@
 
 * <span class="label label-info">Moved</span> The method @org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride.aroundRefresh(DDiagram)@ has been moved to @org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension@ to unify methods handling refresh extension under one interface. 

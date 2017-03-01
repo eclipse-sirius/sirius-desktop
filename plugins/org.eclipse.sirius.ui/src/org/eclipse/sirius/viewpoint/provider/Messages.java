@@ -916,6 +916,9 @@ public final class Messages {
     public static String SiriusPreferencePage_refreshOnRepresentationOpening;
 
     @TranslatableMessage
+    public static String SiriusPreferencePage_autoSessionEditorOpening;
+
+    @TranslatableMessage
     public static String SiriusUncontrolHandler_uncontrolRepresentationsMessage;
 
     @TranslatableMessage
@@ -1034,6 +1037,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ViewpointsSelectionWizardPage_title;
+
+    @TranslatableMessage
+    public static String SiriusPreferencePage_sessionEditorGroup;
 
     // CHECKSTYLE:ON
 

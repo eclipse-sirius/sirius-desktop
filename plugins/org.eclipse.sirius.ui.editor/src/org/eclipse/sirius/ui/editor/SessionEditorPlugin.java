@@ -14,7 +14,16 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.ui.EclipseUIPlugin;
+import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.resourcelistener.ISessionFileLoadingListener;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.BundleContext;
 
 public class SessionEditorPlugin extends EMFPlugin {
     /**
@@ -56,12 +65,48 @@ public class SessionEditorPlugin extends EMFPlugin {
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
-    public static class Implementation extends EclipsePlugin {
+    public static class Implementation extends EclipseUIPlugin {
+        /**
+         * Listener used to open the session's editor when the modeling project
+         * has been expanded whereas it's session was not loaded.
+         */
+        private ISessionFileLoadingListener modelingProjectExpansionListener;
+
         /**
          * Creates an instance.
          */
         public Implementation() {
             plugin = this;
+        }
+
+        @Override
+        public void start(BundleContext context) throws Exception {
+            super.start(context);
+            modelingProjectExpansionListener = new ISessionFileLoadingListener() {
+
+                @Override
+                public void notifySessionLoadedFromModelingProjectExpansion(Session session) {
+                    URI uri = session.getSessionResource().getURI();
+
+                    PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+                        try {
+                            PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(new URIEditorInput(uri), SessionEditor.EDITOR_ID);
+                        } catch (PartInitException e) {
+                            error("An error occurred while opening the session's editor.", e); //$NON-NLS-1$
+                        }
+
+                    });
+
+                }
+            };
+            SiriusEditPlugin.getPlugin().addSessionFileLoadingListener(modelingProjectExpansionListener);
+        }
+
+        @Override
+        public void stop(BundleContext context) throws Exception {
+            SiriusEditPlugin.getPlugin().removeSessionFileLoadingListener(modelingProjectExpansionListener);
+            modelingProjectExpansionListener = null;
+            super.stop(context);
         }
 
         /**

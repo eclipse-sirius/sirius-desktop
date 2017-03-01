@@ -49,7 +49,9 @@ import org.eclipse.sirius.business.internal.query.ModelingProjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
+import org.eclipse.sirius.ui.tools.internal.preference.SessionEditorUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
+import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.resourcelistener.ISessionFileLoadingListener;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -97,9 +99,8 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     };
 
     /**
-     * Set of representations files that are currently loading. There can be
-     * only one representations file in loading at same time. However there may
-     * be many waiting to be loaded.
+     * Set of representations files that are currently loading. There can be only one representations file in loading at
+     * same time. However there may be many waiting to be loaded.
      */
     private Set<URI> sessionFileLoading = Sets.newHashSet();
 
@@ -139,11 +140,9 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
      * @param representationsFilesURIs
      *            The URIs of the representations files to open.
      * @param user
-     *            <code>true</code> if this job is a user-initiated job, and
-     *            <code>false</code> otherwise.
+     *            <code>true</code> if this job is a user-initiated job, and <code>false</code> otherwise.
      * @throws CoreException
-     *             Only useful in case of
-     *             <code>alreadyInUserWorkspaceModifyOperation</code> is true.
+     *             Only useful in case of <code>alreadyInUserWorkspaceModifyOperation</code> is true.
      */
     private void loadAndOpenRepresentationsFiles(final List<URI> representationsFilesURIs, boolean user) {
         try {
@@ -155,21 +154,18 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     }
 
     /**
-     * Load and open representations files by scheduling a new job or by
-     * launching directly the job (when
+     * Load and open representations files by scheduling a new job or by launching directly the job (when
      * <code>alreadyInUserWorkspaceModifyOperation</code> is true).
      * 
      * @param representationsFilesURIs
      *            The URIs of the representations files to open.
      * @param user
-     *            <code>true</code> if this job is a user-initiated job, and
-     *            <code>false</code> otherwise.
+     *            <code>true</code> if this job is a user-initiated job, and <code>false</code> otherwise.
      * @param alreadyInUserWorkspaceModifyOperation
-     *            true if the loading and opening of representations files
-     *            already occurs in a WorkspaceModifyOperation launches by user.
+     *            true if the loading and opening of representations files already occurs in a WorkspaceModifyOperation
+     *            launches by user.
      * @throws CoreException
-     *             Only useful in case of
-     *             <code>alreadyInUserWorkspaceModifyOperation</code> is true.
+     *             Only useful in case of <code>alreadyInUserWorkspaceModifyOperation</code> is true.
      */
     private void loadAndOpenRepresentationsFiles(final List<URI> representationsFilesURIs, boolean user, boolean alreadyInUserWorkspaceModifyOperation) throws CoreException {
         // Add the specific sessions listener (if not already added).
@@ -203,8 +199,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     }
 
     /**
-     * Check if the representations file is already loaded (known by
-     * SessionManager).
+     * Check if the representations file is already loaded (known by SessionManager).
      *
      * @param representationsFileURI
      *            The URI of the representations file.
@@ -255,7 +250,13 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
 
                         if (createAndOpenBlankRepresentationsFile) {
                             monitor.subTask(Messages.ModelingProjectManagerImpl_createRepresentationFileTask);
-                            createLocalRepresentationsFile(project, new SubProgressMonitor(monitor, 1));
+                            Session newSession = createLocalRepresentationsFile(project, new SubProgressMonitor(monitor, 1));
+                            if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_AT_MODELING_PROJECT_EXPANSION.name())) {
+                                Set<ISessionFileLoadingListener> sessionFileLoadingListeners = SiriusEditPlugin.getPlugin().getSessionFileLoadingListeners();
+                                for (ISessionFileLoadingListener sessionFileLoadingListener : sessionFileLoadingListeners) {
+                                    sessionFileLoadingListener.notifySessionLoadedFromModelingProjectExpansion(newSession);
+                                }
+                            }
                         }
                     }
                     if (!project.isOpen()) {
@@ -309,25 +310,24 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     }
 
     @Override
-    public void createLocalRepresentationsFile(IProject project, IProgressMonitor monitor) throws CoreException {
+    public Session createLocalRepresentationsFile(IProject project, IProgressMonitor monitor) throws CoreException {
         URI representationsURI = URI.createPlatformResourceURI(project.getFullPath().append(ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME).toString(), true);
 
         /* Create a Session from the session model URI */
         org.eclipse.sirius.business.api.session.SessionCreationOperation sessionCreationOperation = new DefaultLocalSessionCreationOperation(representationsURI, monitor);
         sessionCreationOperation.execute();
+        return sessionCreationOperation.getCreatedSession();
     }
 
     /**
-     * Add the modeling nature. Open or create the main aird file. Look for
-     * semantic resources to add.<br>
-     * This method must be called from a WorkspaceModifyOperation with
-     * WorkspaceRoot scheduling rule as it modifies the nature of the project.
+     * Add the modeling nature. Open or create the main aird file. Look for semantic resources to add.<br>
+     * This method must be called from a WorkspaceModifyOperation with WorkspaceRoot scheduling rule as it modifies the
+     * nature of the project.
      *
      * @param project
      *            the project to convert.
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of Modeling
-     *            Project nature addition
+     *            a {@link IProgressMonitor} to show progression of Modeling Project nature addition
      * @throws CoreException
      *             if something fails.
      */
@@ -408,8 +408,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
      * @param project
      *            the project to convert.
      * @param monitor
-     *            a {@link IProgressMonitor} to show Modeling Project nature
-     *            removal progression
+     *            a {@link IProgressMonitor} to show Modeling Project nature removal progression
      * @throws CoreException
      *             if something fails.
      */

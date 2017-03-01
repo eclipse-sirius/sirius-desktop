@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.manager.ModelingProjectManagerImpl;
 
 /**
@@ -44,8 +45,7 @@ public interface ModelingProjectManager {
      * @param representationsFileURI
      *            The URI of the representations file to open.
      * @param user
-     *            <code>true</code> if this job is a user-initiated job, and
-     *            <code>false</code> otherwise.
+     *            <code>true</code> if this job is a user-initiated job, and <code>false</code> otherwise.
      */
     void loadAndOpenRepresentationsFile(URI representationsFileURI, boolean user);
 
@@ -71,11 +71,9 @@ public interface ModelingProjectManager {
      * @param projectName
      *            The project name
      * @param createAndOpenBlankRepresentationsFile
-     *            true if a blank representations file must be created and open,
-     *            false otherwise
+     *            true if a blank representations file must be created and open, false otherwise
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of Modeling
-     *            Project creation
+     *            a {@link IProgressMonitor} to show progression of Modeling Project creation
      * @return The new project
      * @throws CoreException
      *             in case of problem
@@ -90,11 +88,9 @@ public interface ModelingProjectManager {
      * @param projectLocationPath
      *            The project location path
      * @param createAndOpenBlankRepresentationsFile
-     *            true if a blank representations file must be created and open,
-     *            false otherwise
+     *            true if a blank representations file must be created and open, false otherwise
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of Modeling
-     *            Project creation
+     *            a {@link IProgressMonitor} to show progression of Modeling Project creation
      * @return The new project
      * @throws CoreException
      *             in case of problem
@@ -107,18 +103,16 @@ public interface ModelingProjectManager {
      * @param project
      *            the {@link IProject} to convert.
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of local
-     *            representations resource file creation
+     *            a {@link IProgressMonitor} to show progression of local representations resource file creation
+     * @return the newly created session.
      * @throws CoreException
      *             in case of problem (2 aird and no main one for example).
      */
-    void createLocalRepresentationsFile(IProject project, IProgressMonitor monitor) throws CoreException;
+    Session createLocalRepresentationsFile(IProject project, IProgressMonitor monitor) throws CoreException;
 
     /**
-     * Convert an existing project to a modeling project : add the modeling
-     * project nature, look for an existing main aird file or create it and then
-     * populate the semantic resources with existing models contained in the
-     * project.
+     * Convert an existing project to a modeling project : add the modeling project nature, look for an existing main
+     * aird file or create it and then populate the semantic resources with existing models contained in the project.
      * 
      * @param project
      *            IProject
@@ -135,8 +129,7 @@ public interface ModelingProjectManager {
      * @param project
      *            IProject
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of Modeling
-     *            Project nature removal
+     *            a {@link IProgressMonitor} to show progression of Modeling Project nature removal
      * @throws CoreException
      *             in case of problem
      */

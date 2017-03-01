@@ -8,40 +8,34 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.editor;
+package org.eclipse.sirius.ui.editor.internal.pages;
 
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.SortedMap;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.layout.GridLayoutFactory;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
-import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.ui.tools.api.wizards.page.ViewpointsSelectionWizardPage;
-import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
-import org.eclipse.sirius.ui.tools.internal.wizards.pages.IViewpointStateListener;
-import org.eclipse.sirius.ui.tools.internal.wizards.pages.ViewpointStateChangeEvent;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.business.api.session.SessionStatus;
+import org.eclipse.sirius.ui.editor.Messages;
+import org.eclipse.sirius.ui.editor.SessionEditor;
+import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalRepresentationHandler;
+import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalSemanticModelsHandler;
+import org.eclipse.sirius.ui.tools.internal.viewpoint.DynamicViewpointsSelectionComponent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
-import com.google.common.collect.Maps;
 
 /**
  * Class used to create the main page of the session editor which describe
@@ -64,54 +58,11 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
     private static final String DELIMITER = "/"; //$NON-NLS-1$
 
     /**
-     * The last viewpoints activation status for the current editor session.
-     */
-    private Set<Viewpoint> lastSelectedViewpoints;
-
-    /**
-     * Contains all viewpoints available for use in the runtime environment.
-     */
-    private Set<Viewpoint> allViewpoints;
-
-    /**
-     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
-     *
-     */
-    private class DefaultViewpointStateListener implements IViewpointStateListener {
-
-        @Override
-        public void viewpointStateChange(ViewpointStateChangeEvent viewpointStateChangeEvent) {
-
-            final SortedMap<Viewpoint, Boolean> originalViewpointsMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
-            for (final Viewpoint viewpoint : allViewpoints) {
-                boolean selected = false;
-
-                for (Viewpoint selectedViewpoint : lastSelectedViewpoints) {
-                    if (EqualityHelper.areEquals(selectedViewpoint, viewpoint)) {
-                        selected = true;
-                        break;
-                    }
-                }
-                originalViewpointsMap.put(viewpoint, Boolean.valueOf(selected));
-            }
-            SortedMap<Viewpoint, Boolean> newViewpointMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
-            newViewpointMap.putAll(originalViewpointsMap);
-            newViewpointMap.put(viewpointStateChangeEvent.getViewpoint(), viewpointStateChangeEvent.shouldBeActivated());
-            ViewpointHelper.applyNewViewpointSelection(originalViewpointsMap, newViewpointMap, session, true);
-
-            lastSelectedViewpoints = new HashSet<Viewpoint>(newViewpointMap.keySet().stream().filter(viewpoint -> newViewpointMap.get(viewpoint)).collect(Collectors.toSet()));
-        }
-    }
-
-    /**
      * Session to describe and edit.
      */
     private Session session;
 
-    /**
-     * Wizard used to list Viewpoints for the session.
-     */
-    private ViewpointsSelectionWizardPage viewpointsSelectionWizardPage;
+    private DynamicViewpointsSelectionComponent dynamicViewpointsSelectionComponent;
 
     /**
      * Label used to provides information regarding editor's context.
@@ -119,11 +70,16 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
     private Label informativeLabel;
 
     /**
-     * The listener used to update the session each time the user change the
-     * activation status of a viewpoint by using checkbox in used
-     * {@link ViewpointsSelectionWizardPage}.
+     * This graphical component provides a viewer showing all semantic models
+     * loaded in the given session.
      */
-    private DefaultViewpointStateListener viewpointStateListener;
+    private GraphicalSemanticModelsHandler graphicalModelingHandler;
+
+    /**
+     * The graphical component providing a viewer showing all representations
+     * belonging to the given session under corresponding viewpoints objects
+     */
+    private GraphicalRepresentationHandler graphicalRepresentationHandler;
 
     /**
      * Constructor.
@@ -134,7 +90,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
      *            the session.
      */
     public DefaultSessionEditorPage(SessionEditor editor, Session theSession) {
-        super(editor, PAGE_ID, MessageFormat.format(Messages.UI_SessionEditor_default_page_tab_label, new Object[0]));
+        super(editor, PAGE_ID, Messages.UI_SessionEditor_default_page_tab_label);
         this.session = theSession;
     }
 
@@ -153,7 +109,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         Composite body = managedForm.getForm().getBody();
         body.setLayout(GridLayoutFactory.swtDefaults().create());
 
-        informativeLabel = toolkit.createLabel(body, "Informative message."); //$NON-NLS-1$
+        informativeLabel = toolkit.createLabel(body, "This editor is a work in progress, currently in alpha state."); //$NON-NLS-1$
         informativeLabel.setForeground(body.getDisplay().getSystemColor(SWT.COLOR_RED));
 
         Composite subBody = toolkit.createComposite(body);
@@ -167,9 +123,13 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         rightComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
         createRepresentationsControl(toolkit, rightComposite);
-        createViewpointSelectionControl(toolkit, rightComposite);
+        createViewpointSelectionControl(toolkit, rightComposite, scrolledForm);
 
         session.addListener(this);
+
+        // needed when opening editor from explorer views or scrollbar is not
+        // visible if needed.
+        scrolledForm.reflow(true);
     }
 
     /**
@@ -185,15 +145,18 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         modelSection.setLayout(GridLayoutFactory.swtDefaults().create());
         modelSection.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
 
-        modelSection.setText("Models"); //$NON-NLS-1$
-        modelSection.setDescription("Model Block description"); //$NON-NLS-1$
+        modelSection.setText(Messages.UI_SessionEditor_models_title);
+        modelSection.setDescription(Messages.UI_SessionEditor_models_description);
 
         Composite modelSectionClient = toolkit.createComposite(modelSection, SWT.NONE);
-        modelSectionClient.setLayout(GridLayoutFactory.swtDefaults().create());
-        modelSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
+        modelSectionClient.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).create());
+        modelSectionClient.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false));
         modelSection.setClient(modelSectionClient);
 
-        toolkit.createLabel(modelSectionClient, "Root element stub"); //$NON-NLS-1$
+        graphicalModelingHandler = new GraphicalSemanticModelsHandler(session);
+        graphicalModelingHandler.createControl(modelSectionClient);
+        getSite().setSelectionProvider(graphicalModelingHandler.getTreeViewer());
+
     }
 
     /**
@@ -208,16 +171,18 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
     protected void createRepresentationsControl(FormToolkit toolkit, Composite rightComposite) {
         Section representationSection = toolkit.createSection(rightComposite, Section.DESCRIPTION | Section.TITLE_BAR);
         representationSection.setLayout(GridLayoutFactory.swtDefaults().create());
-        representationSection.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
-        representationSection.setText("Representations"); //$NON-NLS-1$
-        representationSection.setDescription("Representation Block description"); //$NON-NLS-1$
+        representationSection.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+        representationSection.setText(MessageFormat.format(Messages.UI_SessionEditor_representation_title, new Object[0])); // $NON-NLS-1$
+        representationSection.setDescription(MessageFormat.format(Messages.UI_SessionEditor_representation_description, new Object[0])); // $NON-NLS-1$
 
         Composite representationSectionClient = toolkit.createComposite(representationSection, SWT.NONE);
-        representationSectionClient.setLayout(GridLayoutFactory.swtDefaults().create());
-        representationSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.NONE, false, false));
+        representationSectionClient.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).create());
+        representationSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         representationSection.setClient(representationSectionClient);
 
-        toolkit.createLabel(representationSectionClient, "Root element stub"); //$NON-NLS-1$
+        graphicalRepresentationHandler = new GraphicalRepresentationHandler(session);
+        graphicalRepresentationHandler.createControl(representationSectionClient);
+
     }
 
     /**
@@ -228,56 +193,90 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
      *            the tool allowing to create form UI component.
      * @param rightComposite
      *            the composite containing the viewpoint selection control.
+     * @param scrolledForm
+     *            dd.
      */
-    protected void createViewpointSelectionControl(FormToolkit toolkit, Composite rightComposite) {
-        final Section viewpointSection = toolkit.createSection(rightComposite,
+    protected void createViewpointSelectionControl(FormToolkit toolkit, Composite rightComposite, ScrolledForm scrolledForm) {
+        Composite bottomComposite = toolkit.createComposite(rightComposite);
+        bottomComposite.setLayout(GridLayoutFactory.fillDefaults().create());
+        bottomComposite.setLayoutData(new GridData(SWT.FILL, SWT.BOTTOM, true, false));
+        final Section viewpointSection = toolkit.createSection(bottomComposite,
                 Section.DESCRIPTION | Section.TITLE_BAR | ExpandableComposite.COMPACT | ExpandableComposite.EXPANDED | ExpandableComposite.TWISTIE);
         viewpointSection.setLayout(GridLayoutFactory.fillDefaults().create());
         viewpointSection.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-        viewpointSection.setText("Viewpoints"); //$NON-NLS-1$
-        viewpointSection.setDescription("Viewpoint Block description"); //$NON-NLS-1$
+        viewpointSection.setText(Messages.UI_SessionEditor_viewpoints_title);
+        viewpointSection.setDescription(Messages.UI_SessionEditor_viewpoints_description);
 
         Composite viewpointSectionClient = toolkit.createComposite(viewpointSection, SWT.NONE);
         GridLayout newLayout = GridLayoutFactory.fillDefaults().create();
         viewpointSectionClient.setLayout(newLayout);
         viewpointSection.setClient(viewpointSectionClient);
 
-        List<String> viewpointsName = new ArrayList<String>();
-        for (Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
-            viewpointsName.add(viewpoint.getName());
-        }
-        viewpointsSelectionWizardPage = new ViewpointsSelectionWizardPage(session, viewpointsName);
-        viewpointStateListener = new DefaultViewpointStateListener();
-        viewpointsSelectionWizardPage.createControl(viewpointSectionClient);
-        viewpointsSelectionWizardPage.addViewpointStateListeners(viewpointStateListener);
-        allViewpoints = new HashSet<>(viewpointsSelectionWizardPage.getAvailableViewpoints());
-        lastSelectedViewpoints = new HashSet<>(viewpointsSelectionWizardPage.getViewpoints());
-        viewpointsSelectionWizardPage.setColumnWidthEquality(false);
-        viewpointsSelectionWizardPage.setBrowserMinWidth(210);
+        dynamicViewpointsSelectionComponent = new DynamicViewpointsSelectionComponent(session);
+        dynamicViewpointsSelectionComponent.createControl(viewpointSectionClient);
     }
 
     @Override
     public void doSave(IProgressMonitor monitor) {
+        if (session != null) {
+            session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+                @Override
+                protected void doExecute() {
+                    session.save(monitor);
+                }
+            });
+        }
     }
 
     @Override
     public boolean isDirty() {
-        return false;
+        return session != null && session.getStatus() == SessionStatus.DIRTY;
     }
 
     @Override
     public void notify(int changeKind) {
+        switch (changeKind) {
+        case SessionListener.SYNC:
+            PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+                @Override
+                public void run() {
+                    getManagedForm().commit(true);
+                    getManagedForm().dirtyStateChanged();
+                }
+            });
+            break;
+        case SessionListener.DIRTY:
+            PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+                @Override
+                public void run() {
+                    getManagedForm().dirtyStateChanged();
+                }
+            });
+            break;
+        default:
+            break;
+        }
     }
 
     @Override
     public void dispose() {
         super.dispose();
-        session.removeListener(this);
-        session = null;
-        viewpointsSelectionWizardPage.removeViewpointStateListeners(viewpointStateListener);
-        viewpointsSelectionWizardPage = null;
-        lastSelectedViewpoints.clear();
-        allViewpoints.clear();
+        if (session != null) {
+            session.removeListener(this);
+            session = null;
+        }
+        if (dynamicViewpointsSelectionComponent != null) {
+            dynamicViewpointsSelectionComponent.dispose();
+            dynamicViewpointsSelectionComponent = null;
+        }
+        if (graphicalModelingHandler != null) {
+            graphicalModelingHandler.dispose();
+            graphicalModelingHandler = null;
+        }
+        if (graphicalRepresentationHandler != null) {
+            graphicalRepresentationHandler.dispose();
+            graphicalRepresentationHandler = null;
+        }
     }
 
 }

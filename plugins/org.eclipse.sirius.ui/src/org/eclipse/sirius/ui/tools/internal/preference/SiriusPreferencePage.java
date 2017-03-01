@@ -51,6 +51,8 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
 
     private BooleanFieldEditor groupEnable;
 
+    private BooleanFieldEditor autoSessionEditorOpening;
+
     private IntegerFieldEditor groupTrigger;
 
     private IntegerFieldEditor groupSize;
@@ -69,7 +71,7 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
         addFilesFields(parent);
         addProfilingField(parent);
         addGroupTreeItemsField(parent);
-
+        addSessionEditorFields(parent);
     }
 
     private void addFilesFields(Composite parent) {
@@ -79,9 +81,18 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
                 Messages.SiriusPreferencePage_emptyAirdOnControl_help, new Composite(fileComposite, SWT.NONE));
         addField(emptyAirdFragmentOnControl);
 
-        defensiveFileEdit = new BooleanFieldEditor(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, Messages.SiriusPreferencePage_defensiveEditValidation, new Composite(fileComposite,
-                SWT.NONE));
+        defensiveFileEdit = new BooleanFieldEditor(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, Messages.SiriusPreferencePage_defensiveEditValidation,
+                new Composite(fileComposite, SWT.NONE));
         addField(defensiveFileEdit);
+
+    }
+
+    private void addSessionEditorFields(Composite parent) {
+        Composite refreshComposite = createGroup(parent, Messages.SiriusPreferencePage_sessionEditorGroup);
+
+        autoSessionEditorOpening = new BooleanFieldEditor(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_AT_MODELING_PROJECT_EXPANSION.name(),
+                Messages.SiriusPreferencePage_autoSessionEditorOpening, new Composite(refreshComposite, SWT.NONE));
+        addField(autoSessionEditorOpening);
 
     }
 
@@ -99,8 +110,8 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
     private void addProfilingField(Composite parent) {
         Composite profilerComposite = createGroup(parent, Messages.SiriusPreferencePage_profilerGroup);
 
-        traceMode = new BooleanFieldEditorWithHelp(CommonPreferencesConstants.PREF_TRACE_ON, Messages.SiriusPreferencePage_profiling, Messages.SiriusPreferencePage_profiling_help, new Composite(
-                profilerComposite, SWT.NONE));
+        traceMode = new BooleanFieldEditorWithHelp(CommonPreferencesConstants.PREF_TRACE_ON, Messages.SiriusPreferencePage_profiling, Messages.SiriusPreferencePage_profiling_help,
+                new Composite(profilerComposite, SWT.NONE));
         addField(traceMode);
     }
 

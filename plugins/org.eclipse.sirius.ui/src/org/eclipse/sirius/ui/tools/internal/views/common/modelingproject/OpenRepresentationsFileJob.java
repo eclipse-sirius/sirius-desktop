@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
+import java.util.Set;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
@@ -40,6 +41,8 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionHelper;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
+import org.eclipse.sirius.ui.tools.internal.preference.SessionEditorUIPreferencesKeys;
+import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.resourcelistener.ISessionFileLoadingListener;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -47,10 +50,8 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * A job to load one representations files (load the aird file and all the
- * referenced resource). Warning before calling this job you must call
- * waitOtherJobs methods to ensure that there is no job of this kind currently
- * running.<BR>
+ * A job to load one representations files (load the aird file and all the referenced resource). Warning before calling
+ * this job you must call waitOtherJobs methods to ensure that there is no job of this kind currently running.<BR>
  *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
@@ -89,8 +90,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
      * @param representationsFileURI
      *            The URI of the representations file to open.
      * @param user
-     *            <code>true</code> if this job is a user-initiated job, and
-     *            <code>false</code> otherwise.
+     *            <code>true</code> if this job is a user-initiated job, and <code>false</code> otherwise.
      */
     public static void scheduleNewWhenPossible(URI representationsFileURI, boolean user) {
         // Schedule a new job for this representations file.
@@ -156,6 +156,12 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
                 subMonitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_loadReferencedModelsTask, representationsFileURI.lastSegment()));
                 session = SessionManager.INSTANCE.openSession(representationsFileURI, subMonitor.newChild(14), SiriusEditPlugin.getPlugin().getUiCallback());
                 if (session != null) {
+                    if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_AT_MODELING_PROJECT_EXPANSION.name())) {
+                        Set<ISessionFileLoadingListener> sessionFileLoadingListeners = SiriusEditPlugin.getPlugin().getSessionFileLoadingListeners();
+                        for (ISessionFileLoadingListener sessionFileLoadingListener : sessionFileLoadingListeners) {
+                            sessionFileLoadingListener.notifySessionLoadedFromModelingProjectExpansion(session);
+                        }
+                    }
                     IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
                     if (!editingSession.isOpen()) {
                         editingSession.open();
@@ -170,21 +176,18 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
     }
 
     /**
-     * Marks the {@link ModelingProject} associated to the specified
-     * <code>project</code> as invalid :
+     * Marks the {@link ModelingProject} associated to the specified <code>project</code> as invalid :
      * 
      * <ul>
      * <li>add a error marker to the project</li>
      * <li>mark the associated {@link IProject} as invalid</li>
-     * <li>clear the cache of {@link ModelingProjectManager} about this
-     * {@link ModelingProject}</li>
+     * <li>clear the cache of {@link ModelingProjectManager} about this {@link ModelingProject}</li>
      * </ul>
      *
      * @param project
      *            the project associated to the {@link ModelingProject}.
      * @param exception
-     *            the {@link RuntimeException} origin of the failing session
-     *            opening
+     *            the {@link RuntimeException} origin of the failing session opening
      * @return the error message to dispatch.
      */
     private String markeModelingProjectAsInvalid(IProject project, RuntimeException exception) {
@@ -219,8 +222,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
     }
 
     /**
-     * Check if other jobs of this kind are running. This method must be called
-     * from UI Thread.
+     * Check if other jobs of this kind are running. This method must be called from UI Thread.
      *
      * @return true if other jobs of this kind are running.
      */
@@ -230,9 +232,8 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
     }
 
     /**
-     * Returns a localized message describing the given exception. If the given
-     * exception does not have a localized message, this returns the string
-     * "An error occurred".
+     * Returns a localized message describing the given exception. If the given exception does not have a localized
+     * message, this returns the string "An error occurred".
      *
      * @param exception
      *            The exception to deal with

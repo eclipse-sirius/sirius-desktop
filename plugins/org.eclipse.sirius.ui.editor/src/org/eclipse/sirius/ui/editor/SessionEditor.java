@@ -17,17 +17,25 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.ErrorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ui.editor.internal.pages.DefaultSessionEditorPage;
+import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.forms.editor.IFormPage;
 import org.eclipse.ui.forms.editor.SharedHeaderFormEditor;
 import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.views.properties.IPropertySheetPage;
+import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
+import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
  * Editor use to open Session file (.aird files) available from everywhere. This
@@ -42,20 +50,24 @@ import org.eclipse.ui.part.FileEditorInput;
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
  */
-public class SessionEditor extends SharedHeaderFormEditor {
+public class SessionEditor extends SharedHeaderFormEditor implements ITabbedPropertySheetPageContributor, IModelExplorerView, SessionListener {
+    /**
+     * The editor's id.
+     */
+    public static final String EDITOR_ID = "org.eclipse.sirius.ui.editor.session"; //$NON-NLS-1$
 
     /**
      * Session opened with editor.
      */
     private Session session;
 
+    private DefaultSessionEditorPage defaultPage;
+
     @Override
     protected void addPages() {
         try {
-            IEditorInput editorInput = this.getEditorInput();
-            if (editorInput instanceof FileEditorInput) {
-                addPage(0, new DefaultSessionEditorPage(this, session));
-            }
+            defaultPage = new DefaultSessionEditorPage(this, session);
+            addPage(0, defaultPage);
         } catch (PartInitException e) {
             ErrorDialog.openError(getSite().getShell(), MessageFormat.format(Messages.UI_SessionEditor_page_loading_error_message, new Object[0]), e.getMessage(), e.getStatus()); // $NON-NLS-1$
         }
@@ -66,26 +78,36 @@ public class SessionEditor extends SharedHeaderFormEditor {
         super.init(site, input);
 
         IEditorInput editorInput = this.getEditorInput();
-        IFile sessionResourceFile = ((FileEditorInput) editorInput).getFile();
-        final URI sessionResourceURI = URI.createPlatformResourceURI(sessionResourceFile.getFullPath().toOSString(), true);
-        try {
-            // until we find a way to load session independently from the
-            // editor, session loading blocks the editor opening with a progress
-            // monitor.
-            PlatformUI.getWorkbench().getProgressService().busyCursorWhile(new IRunnableWithProgress() {
+        URI sessionResourceURI = null;
+        if (editorInput instanceof FileEditorInput) {
+            IFile sessionResourceFile = ((FileEditorInput) editorInput).getFile();
+            sessionResourceURI = URI.createPlatformResourceURI(sessionResourceFile.getFullPath().toOSString(), true);
+        } else if (editorInput instanceof URIEditorInput) {
+            sessionResourceURI = ((URIEditorInput) editorInput).getURI();
+        } else {
+            ErrorDialog.openError(getSite().getShell(), MessageFormat.format(Messages.UI_SessionEditor_session_loading_error_message, new Object[0]),
+                    MessageFormat.format(Messages.UI_SessionEditor_inputNotHandled_error_message, editorInput.getClass().getSimpleName()), Status.CANCEL_STATUS);
+        }
 
-                @Override
-                public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+        try {
+            if (sessionResourceURI != null) {
+                final URI sessionResourceURIFinal = sessionResourceURI;
+                // until we find a way to load session independently from the
+                // editor, session loading blocks the editor opening with a
+                // progress monitor.
+                PlatformUI.getWorkbench().getProgressService().busyCursorWhile((monitor) -> {
+
                     SubMonitor subMonitor = SubMonitor.convert(monitor, 1);
                     subMonitor.beginTask(MessageFormat.format(Messages.UI_SessionEditor_session_loading_task_title, new Object[0]), 1);
-                    session = SessionManager.INSTANCE.getSession(sessionResourceURI, subMonitor);
+                    session = SessionManager.INSTANCE.getSession(sessionResourceURIFinal, subMonitor);
                     if (!session.isOpen()) {
                         session.open(monitor);
                     }
+                    session.addListener(this);
                     subMonitor.worked(1);
                     subMonitor.done();
-                }
-            });
+                });
+            }
         } catch (InvocationTargetException | InterruptedException e) {
             ErrorDialog.openError(getSite().getShell(), MessageFormat.format(Messages.UI_SessionEditor_session_loading_error_message, new Object[0]), e.getMessage(), Status.CANCEL_STATUS); // $NON-NLS-1$
         }
@@ -99,20 +121,59 @@ public class SessionEditor extends SharedHeaderFormEditor {
 
     @Override
     public void doSave(IProgressMonitor monitor) {
-        // TODO Auto-generated method stub
+        if (pages != null) {
+            for (int i = 0; i < pages.size(); i++) {
+                Object page = pages.get(i);
+                if (page instanceof IFormPage) {
+                    ((IFormPage) page).doSave(monitor);
+                }
+            }
+        }
+    }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Object getAdapter(Class type) {
+        Object result = null;
+        if (type == IPropertySheetPage.class) {
+            IPropertySheetPage contributedPage = SiriusEditPlugin.getPlugin().getPropertySheetPage(this, getContributorId());
+            if (contributedPage != null) {
+                result = contributedPage;
+            } else {
+                result = new TabbedPropertySheetPage(this);
+            }
+        }
+        if (result == null) {
+            result = super.getAdapter(type);
+        }
+        return result;
     }
 
     @Override
     public void doSaveAs() {
-        // TODO Auto-generated method stub
-
+        // not used
     }
 
     @Override
     public boolean isSaveAsAllowed() {
-        // TODO Auto-generated method stub
         return false;
     }
 
+    @Override
+    public String getContributorId() {
+        return ID;
+    }
+
+    @Override
+    public void notify(int changeKind) {
+        switch (changeKind) {
+        case SessionListener.CLOSING:
+            this.close(false);
+            break;
+        default:
+            break;
+        }
+    }
 }

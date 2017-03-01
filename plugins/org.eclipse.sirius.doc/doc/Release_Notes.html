@@ -136,12 +136,13 @@
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
-			<li><span class="label label-success">Added</span> The method 
-				<code>org.eclipse.sirius.ui.tools.api.wizards.page.ViewpointsSelectionWizardPage.setBrowserMinWidth(int)</code> has been added to allow modification of the minimum width (with default value &#8220;0&#8221;) of the browser part of the viewpoint selection wizard.
+			<li><span class="label label-info">Modified</span> The method 
+				<code>org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.createLocalRepresentationsFile(IProject, IProgressMonitor)</code> has its return type changed from 
+				<code>void</code> to 
+				<code>Session</code> to allow callers to have access to the newly created session directly.
 			</li>
-			<li><span class="label label-success">Added</span> The method 
-				<code>org.eclipse.sirius.ui.tools.api.wizards.page.ViewpointsSelectionWizardPage.setColumnWidthEquality(boolean)</code> has been added to allow modification of column width equality (with default value &#8220;false&#8221;) of the root composite of the viewpoint selection wizard.
-			</li>
+		</ul>
+		<ul>
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getDefaultFontWithRuntimeSizeAndFromLabelFormat(List&lt;FontFormat&gt;)</code> has been added to allow to retrieve a font using the given format and the default Sirius font (arial) and the runtime height.
 			</li>

@@ -23,4 +23,10 @@
             name="%UI_SessionEditor_label">
       </editor>
    </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipse.sirius.ui.editor.internal.preferences.SessionEditorPreferencesInitializer">
+      </initializer>
+   </extension>
 </plugin>

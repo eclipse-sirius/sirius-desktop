@@ -35,6 +35,11 @@ public class GenericPreferencesInitializer extends AbstractPreferenceInitializer
     public void initializeDefaultPreferences() {
         final IPreferenceStore uiPreferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
         final IEclipsePreferences defaultCorePreferences = DefaultScope.INSTANCE.getNode(SiriusPlugin.ID);
+        // Initialize the session editor plugin if it is present in runtime to be able to launch session editor when
+        // expanding a modeling project.
+        // TODO replace it by usage of an extension point or put the session editor in org.eclipse.sirius.ui plugin to
+        // avoid this trick.
+        DefaultScope.INSTANCE.getNode("org.eclipse.sirius.ui.editor"); //$NON-NLS-1$
 
         uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), getValue("_Pref_RefreshOnRepresentationOpening")); //$NON-NLS-1$
         uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), getValue("_Pref_ReloadOnLastEditorClose")); //$NON-NLS-1$

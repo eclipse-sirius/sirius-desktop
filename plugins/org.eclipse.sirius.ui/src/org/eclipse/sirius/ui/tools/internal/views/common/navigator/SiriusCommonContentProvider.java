@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -82,10 +82,8 @@ import com.google.common.collect.Sets;
 /**
  * Sirius content provider for common navigator.
  * 
- * Some methods have been copied from
- * org.eclipse.jdt.internal.ui.packageview.PackageExplorerContentProvider to
- * handle runnable execution and be able to postpone them when the viewer is
- * busy.
+ * Some methods have been copied from org.eclipse.jdt.internal.ui.packageview.PackageExplorerContentProvider to handle
+ * runnable execution and be able to postpone them when the viewer is busy.
  * 
  * @author mporhel
  */
@@ -142,7 +140,13 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         }
     }
 
-    private void addRefreshViewerTrigger(final Session openedSession) {
+    /**
+     * Adds a {@link RefreshViewerTrigger} associated to the session.
+     * 
+     * @param openedSession
+     *            the session to associate to.
+     */
+    public void addRefreshViewerTrigger(final Session openedSession) {
         if (openedSession != null) {
             RefreshViewerTrigger viewerRefreshTrigger = new RefreshViewerTrigger(openedSession);
             openedSession.getTransactionalEditingDomain().addResourceSetListener(viewerRefreshTrigger);
@@ -150,7 +154,13 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         }
     }
 
-    private void removeRefreshViewerTriggers(Session removedSession) {
+    /**
+     * Remove the {@link RefreshViewerTrigger} associated to the session.
+     * 
+     * @param removedSession
+     *            the session associated to the trigger to remove.
+     */
+    public void removeRefreshViewerTriggers(Session removedSession) {
         if (removedSession != null && removedSession.getTransactionalEditingDomain() != null) {
             for (RefreshViewerTrigger trigger : Lists.newArrayList(viewerRefreshTriggers)) {
                 if (removedSession.equals(trigger.getSession())) {
@@ -168,7 +178,6 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     @Override
     public Object[] getChildren(Object parentElement) {
         Collection<Object> allChildren = Lists.newArrayList();
-
         // Init view extension getChildren call detection.
         shouldAskExtension = true;
 
@@ -445,8 +454,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     }
 
     /**
-     * Creates and initializes the
-     * {@link SiriusDialectLinkWithEditorSelectionListener}.
+     * Creates and initializes the {@link SiriusDialectLinkWithEditorSelectionListener}.
      */
     private void createLWESelectionListener() {
         if (myViewer instanceof CommonViewer) {
@@ -518,15 +526,14 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     }
 
     /**
-     * Refresh the current view to make sure that changes in element's
-     * permissions causes the refresh of expected decorations.
+     * Refresh the current view to make sure that changes in element's permissions causes the refresh of expected
+     * decorations.
      * 
-     * Try to refresh only the impacted projects : look for projects containing
-     * at least one file linked to a resource handled by the session (aird,
-     * semantics).
+     * Try to refresh only the impacted projects : look for projects containing at least one file linked to a resource
+     * handled by the session (aird, semantics).
      * 
-     * If the list of element to refresh is null or empty or if the viewer is
-     * not capable to update a collection of object : refresh all the viewer.
+     * If the list of element to refresh is null or empty or if the viewer is not capable to update a collection of
+     * object : refresh all the viewer.
      * 
      * @param session
      *            session to refresh
@@ -536,15 +543,14 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     }
 
     /**
-     * Update the current view to make sure that changes in element's
-     * permissions causes the update of expected decorations.
+     * Update the current view to make sure that changes in element's permissions causes the update of expected
+     * decorations.
      * 
-     * Try to Update only the impacted projects : look for projects containing
-     * at least one file linked to a resource handled by the session (aird,
-     * semantics).
+     * Try to Update only the impacted projects : look for projects containing at least one file linked to a resource
+     * handled by the session (aird, semantics).
      * 
-     * If the list of element to refresh is null or empty or if the viewer is
-     * not capable to update a collection of object : refresh all the viewer.
+     * If the list of element to refresh is null or empty or if the viewer is not capable to update a collection of
+     * object : refresh all the viewer.
      * 
      * @see StructuredViewer#update(Object, String[])
      * 
@@ -575,11 +581,11 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     }
 
     /**
-     * Update the current view to make sure that changes in element's
-     * permissions causes the refresh of expected decorations.
+     * Update the current view to make sure that changes in element's permissions causes the refresh of expected
+     * decorations.
      * 
-     * If the list of element to refresh is null or empty or if the viewer is
-     * not capable to update a collection of object : refresh all the viewer.
+     * If the list of element to refresh is null or empty or if the viewer is not capable to update a collection of
+     * object : refresh all the viewer.
      * 
      * @param elementsToRefresh
      *            the list of elements to refresh
@@ -599,11 +605,11 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     }
 
     /**
-     * Refresh the current view to make sure that changes in element's
-     * permissions causes the refresh of expected decorations.
+     * Refresh the current view to make sure that changes in element's permissions causes the refresh of expected
+     * decorations.
      * 
-     * If the list of element to refresh is null or empty or if the viewer is
-     * not capable to update a collection of object : refresh all the viewer.
+     * If the list of element to refresh is null or empty or if the viewer is not capable to update a collection of
+     * object : refresh all the viewer.
      * 
      * @param toRefresh
      *            the list of elements to refresh
@@ -762,8 +768,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     }
 
     /**
-     * Run all of the runnables that are the widget updates. Must be called in
-     * the display thread.
+     * Run all of the runnables that are the widget updates. Must be called in the display thread.
      */
     private void runPendingUpdates() {
         Collection<Runnable> updates;
@@ -918,8 +923,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     }
 
     /**
-     * Post commit listener to trigger viewer update/refresh after semantic
-     * changes or representation renaming.
+     * Post commit listener to trigger viewer update/refresh after semantic changes or representation renaming.
      */
     private class RefreshViewerTrigger extends ResourceSetListenerImpl {
         private final Session session;
@@ -988,8 +992,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     }
 
     /**
-     * Scope to trigger viewer update/refresh after semantic changes or
-     * representation renaming.
+     * Scope to trigger viewer update/refresh after semantic changes or representation renaming.
      */
     private class RefreshViewerTriggerScope implements Predicate<Notification> {
         private final Session session;

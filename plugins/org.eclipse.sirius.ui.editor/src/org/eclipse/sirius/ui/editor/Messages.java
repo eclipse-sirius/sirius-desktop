@@ -40,6 +40,39 @@ public final class Messages {
     @TranslatableMessage
     public static String UI_SessionEditor_default_page_tab_label;
 
+    @TranslatableMessage
+    public static String UI_SessionEditor_models_description;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_models_title;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_models_button_removeSemanticModel;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_models_button_newSemanticModel;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_viewpoints_description;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_viewpoints_title;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_representation_description;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_representation_title;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_representation_button_removeRepresentation;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_representation_button_newRepresentation;
+
+    @TranslatableMessage
+    public static String UI_SessionEditor_inputNotHandled_error_message;
+
     // CHECKSTYLE:ON
 
     private Messages() {

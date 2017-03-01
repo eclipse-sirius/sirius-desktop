@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.ContextMenuFiller;
@@ -39,7 +40,17 @@ public class ManageSessionActionProvider extends CommonActionProvider {
     @Override
     public void init(final ICommonActionExtensionSite aSite) {
         super.init(aSite);
-        contextMenuFiller = new ContextMenuFiller(aSite.getStructuredViewer(), new SessionLabelProvider(ViewHelper.INSTANCE.createAdapterFactory()));
+        initFromViewer(aSite.getStructuredViewer());
+    }
+
+    /**
+     * Initialize the {@link ContextMenuFiller} directly on the given {@link StructuredViewer}.
+     * 
+     * @param structuredViewer
+     *            the viewer target of the {@link ContextMenuFiller} initialization.
+     */
+    public void initFromViewer(final StructuredViewer structuredViewer) {
+        contextMenuFiller = new ContextMenuFiller(structuredViewer, new SessionLabelProvider(ViewHelper.INSTANCE.createAdapterFactory()));
     }
 
     /**
