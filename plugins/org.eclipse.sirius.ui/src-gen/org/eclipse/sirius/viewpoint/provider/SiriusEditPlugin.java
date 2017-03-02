@@ -49,6 +49,7 @@ import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.preferences.DCorePreferences;
 import org.eclipse.sirius.ui.business.internal.dialect.LogThroughActiveDialectEditorLogListener;
+import org.eclipse.sirius.ui.business.internal.session.GenericSWTCallBack;
 import org.eclipse.sirius.ui.business.internal.session.factory.UISessionFactoryDescriptorRegistryListener;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
@@ -167,7 +168,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
-         * @generated
+         * @generated NOT
          */
         public Implementation() {
             super();
@@ -175,6 +176,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
             // Remember the static instance.
             //
             SiriusEditPlugin.plugin = this;
+            SiriusPlugin.getDefault().setUiCallback(new GenericSWTCallBack());
         }
 
         /**
