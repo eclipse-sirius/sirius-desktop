@@ -185,7 +185,7 @@
           auditExpression="aql:false"/>
       <fixes
           name="Fix length"
-          fixExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@pages.0/@validationSet/@semanticValidationRules.0/@fixes.0/@initialOperation')"/>
+          fixExpression="aql:input.executeOperation(self, '/data/sirius.odesign#/0/@pages.0/@validationSet/@semanticValidationRules[name='Name%20length%20validation%20rule']/@fixes.0/@initialOperation')"/>
     </semanticValidationRules>
   </pages>
   <pages identifier="properties"
