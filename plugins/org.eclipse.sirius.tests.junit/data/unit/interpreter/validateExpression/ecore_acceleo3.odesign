@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_4="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="Ecore Editing Workbench V4.6" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_4="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="Ecore Editing Workbench V4.6" version="11.1.1.201610211630">
   <ownedViewpoints endUserDocumentation="Provides graphical and tabular modelers to design an Ecore model." name="Design" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@toolSections.0/@ownedTools[name='External%20EClass%20from%20treeview'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20external%20package']" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="Entities Acceleo2" titleExpression="aql:self.name + ' package entities'" domainClass="ecore.EPackage" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
@@ -18,8 +18,8 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide operations">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']" semanticConditionExpression=""/>
       </filters>
-      <validationSet>
-        <ownedRules xsi:type="validation:ViewValidationRule" message="something" targets="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+      <validationSet name="Validation">
+        <ownedRules xsi:type="validation:ViewValidationRule" name="R1" message="something" targets="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass']">
           <audits auditExpression="aql:(((Sequence{self.target} + target.eAllSuperTypes).eInverse()->filter(ecore::EClass) + (Sequence{target} + target.eAllSuperTypes).eInverse()->filter(ecore::EReference) ) - Sequence{target.eAllStructuralFeatures})->size() &lt;> 0"/>
           <fixes name="Remove Element">
             <initialOperation>
@@ -29,7 +29,7 @@
             </initialOperation>
           </fixes>
         </ownedRules>
-        <ownedRules xsi:type="validation:ViewValidationRule" level="ERROR" message="aql:'The ' + self.target.name + ' class has more than 3 super types'" targets="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+        <ownedRules xsi:type="validation:ViewValidationRule" name="R2" level="ERROR" message="aql:'The ' + self.target.name + ' class has more than 3 super types'" targets="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo2']/@defaultLayer/@containerMappings[name='EC%20EClass']">
           <audits auditExpression="aql:self.target.eAllSuperTypes->size() &lt; 4"/>
         </ownedRules>
       </validationSet>
@@ -555,8 +555,8 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide operations">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']" semanticConditionExpression=""/>
       </filters>
-      <validationSet>
-        <ownedRules xsi:type="validation:ViewValidationRule" message="something" targets="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+      <validationSet name="Validation">
+        <ownedRules xsi:type="validation:ViewValidationRule" name="R1" message="something" targets="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass']">
           <audits auditExpression="aql:(((Sequence{self.target} + target.eAllSuperTypes).eInverse()->filter(ecore::EClass) + (Sequence{target} + target.eAllSuperTypes).eInverse()->filter(ecore::EReference) ) - Sequence{target.eAllStructuralFeatures})->size() &lt;> 0"/>
           <fixes name="Remove Element">
             <initialOperation>
@@ -566,10 +566,10 @@
             </initialOperation>
           </fixes>
         </ownedRules>
-        <ownedRules xsi:type="validation:ViewValidationRule" level="ERROR" message="aql:'The ' + self.target.name + ' class has more than 3 super types'" targets="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+        <ownedRules xsi:type="validation:ViewValidationRule" name="R2" level="ERROR" message="aql:'The ' + self.target.name + ' class has more than 3 super types'" targets="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities%20Acceleo3']/@defaultLayer/@containerMappings[name='EC%20EClass']">
           <audits auditExpression="aql:self.target.eAllSuperTypes->size() &lt; 4"/>
         </ownedRules>
-        <ownedRules xsi:type="validation:SemanticValidationRule" targetClass="EClass">
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="R3" targetClass="EClass">
           <audits auditExpression="[eAttributes->size()>0/]"/>
         </ownedRules>
       </validationSet>
@@ -1097,7 +1097,7 @@
           <ownedSubLines name="Feature" domainClass="EStructuralFeature" semanticCandidatesExpression="[eStructuralFeatures/]"/>
         </ownedSubLines>
       </ownedLineMappings>
-      <ownedCreateLine name="Create Class" forceRefresh="true" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes%20Acceleo3']/@ownedLineMappings[name='Classes%20lines']" elementsToSelect="service:stdEmptyCollection">
+      <ownedCreateLine name="Create Class" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes%20Acceleo3']/@ownedLineMappings[name='Classes%20lines']">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
