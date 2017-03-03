@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,7 @@ public class SessionSaveable extends Saveable {
     public void doSave(IProgressMonitor monitor) {
         new SaveSessionRunnable(session).run(monitor);
     }
-    
+
     @Override
     public IJobRunnable doSave(IProgressMonitor monitor, IShellProvider shellProvider) throws CoreException {
         return new SaveSessionRunnable(session);
@@ -135,7 +135,7 @@ public class SessionSaveable extends Saveable {
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (!(obj instanceof SessionSaveable)) {
             return false;
         }
         final SessionSaveable other = (SessionSaveable) obj;
