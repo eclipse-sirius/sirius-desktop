@@ -579,6 +579,24 @@ public class PropertiesItemProviderAdapterFactorySpec extends PropertiesItemProv
     }
 
     @Override
+    public Adapter createDialogModelOperationAdapter() {
+        if (dialogModelOperationItemProvider == null) {
+            dialogModelOperationItemProvider = new DialogModelOperationItemProviderSpec(this);
+        }
+
+        return dialogModelOperationItemProvider;
+    }
+
+    @Override
+    public Adapter createDialogButtonAdapter() {
+        if (dialogButtonItemProvider == null) {
+            dialogButtonItemProvider = new DialogButtonItemProviderSpec(this);
+        }
+
+        return dialogButtonItemProvider;
+    }
+
+    @Override
     public Adapter createEditSupportAdapter() {
         if (editSupportItemProvider == null) {
             editSupportItemProvider = new EditSupportItemProviderSpec(this);

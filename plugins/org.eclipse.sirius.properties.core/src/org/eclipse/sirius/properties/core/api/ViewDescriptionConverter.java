@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.core.internal.converter;
+package org.eclipse.sirius.properties.core.api;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -26,10 +26,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
-import org.eclipse.sirius.properties.core.api.IDescriptionConverter;
-import org.eclipse.sirius.properties.core.api.IDescriptionLinkResolver;
-import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
-import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 
 /**

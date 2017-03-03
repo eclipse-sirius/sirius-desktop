@@ -45,11 +45,6 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, IItemStyledLabelProvider {
     /**
-     * The default expression to use as semanticCandidatesExpression for newly created elements.
-     */
-    public static final String DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION = "var:self"; //$NON-NLS-1$
-
-    /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated

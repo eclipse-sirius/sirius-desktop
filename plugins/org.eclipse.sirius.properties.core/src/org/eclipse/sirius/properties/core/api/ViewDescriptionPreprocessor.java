@@ -8,16 +8,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.core.internal.preprocessor;
+package org.eclipse.sirius.properties.core.api;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
-import org.eclipse.sirius.properties.core.api.IDescriptionLinkResolver;
-import org.eclipse.sirius.properties.core.api.IDescriptionPreprocessor;
-import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 
 /**

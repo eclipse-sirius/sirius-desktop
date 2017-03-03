@@ -25,6 +25,10 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * @author sbegaudeau
  */
 public class ViewExtensionDescriptionItemProviderSpec extends ViewExtensionDescriptionItemProvider {
+    /**
+     * The default expression to use as semanticCandidatesExpression for newly created elements.
+     */
+    public static final String DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION = "var:self"; //$NON-NLS-1$
 
     /**
      * The constructor.

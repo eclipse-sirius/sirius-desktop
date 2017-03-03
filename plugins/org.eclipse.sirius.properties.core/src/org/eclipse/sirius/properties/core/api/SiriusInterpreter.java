@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.core.internal;
+package org.eclipse.sirius.properties.core.api;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -22,12 +22,14 @@ import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
+import org.eclipse.sirius.properties.core.internal.SiriusToolServices;
 
 import com.google.common.base.Preconditions;
 
 /**
- * Provides an implementation of {@link IInterpreter} backed by an old-style
- * {@link IInterpreterWithDiagnostic}.
+ * Provides an implementation of {@link IInterpreter} backed by an old-style {@link IInterpreterWithDiagnostic}.
+ * 
+ * @author pcdavid
  */
 public class SiriusInterpreter implements IInterpreter {
 

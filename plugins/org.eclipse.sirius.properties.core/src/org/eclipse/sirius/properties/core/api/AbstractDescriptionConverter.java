@@ -17,11 +17,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
 import org.eclipse.sirius.properties.core.internal.Messages;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
+import org.eclipse.sirius.properties.core.internal.converter.SiriusInitialOperationAdapter;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
@@ -93,17 +95,25 @@ public abstract class AbstractDescriptionConverter implements IDescriptionConver
     }
 
     /**
-     * Creates the AQL based expression used to execute the given initial
-     * operation.
+     * Creates the AQL based expression used to execute the given initial operation.
      * 
      * @param initialOperation
      *            The initial operation
-     * @return The AQL based expression used to execute the given initial
-     *         operation
+     * @return The AQL based expression used to execute the given initial operation
      */
     protected String getExpressionForOperation(InitialOperation initialOperation) {
         if (initialOperation != null) {
-            return MessageFormat.format("aql:input.executeOperation(self, ''{0}'')", EcoreUtil.getURI(initialOperation).toString()); //$NON-NLS-1$
+            String expression = ""; //$NON-NLS-1$
+
+            Adapter adapter = EcoreUtil.getExistingAdapter(initialOperation, SiriusInitialOperationAdapter.class);
+            if (adapter instanceof SiriusInitialOperationAdapter) {
+                expression = ((SiriusInitialOperationAdapter) adapter).getInitialOperationURI().toString();
+            } else {
+                expression = EcoreUtil.getURI(initialOperation).toString();
+            }
+
+            expression = expression.replace("'", "\\'"); //$NON-NLS-1$ //$NON-NLS-2$
+            return MessageFormat.format("aql:input.executeOperation(self, ''{0}'')", expression); //$NON-NLS-1$
         }
         return null;
     }

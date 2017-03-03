@@ -79,4 +79,10 @@
            name="%preference.page.title.org.eclipse.sirius.ui.properties.general">
      </page>
   </extension>
+  <extension
+        point="org.eclipse.sirius.modelOperationManager">
+     <modelOperationManager
+           class="org.eclipse.sirius.ui.properties.internal.dialog.DialogModelOperationManager">
+     </modelOperationManager>
+  </extension>
 </plugin>

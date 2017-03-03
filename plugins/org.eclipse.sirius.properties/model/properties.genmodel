@@ -367,6 +367,19 @@
     <genClasses ecoreClass="properties.ecore#//GroupConditionalStyle">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupConditionalStyle/style"/>
     </genClasses>
+    <genClasses ecoreClass="properties.ecore#//DialogModelOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DialogModelOperation/titleExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//DialogModelOperation/buttons"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//DialogModelOperation/page"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//DialogModelOperation/groups"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//DialogButton">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DialogButton/labelExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//DialogButton/initialOperation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DialogButton/default"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DialogButton/closeDialogOnClick"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DialogButton/rollbackChangesOnClose"/>
+    </genClasses>
     <genClasses ecoreClass="properties.ecore#//EditSupport">
       <genOperations ecoreOperation="properties.ecore#//EditSupport/getImage"/>
       <genOperations ecoreOperation="properties.ecore#//EditSupport/getText"/>

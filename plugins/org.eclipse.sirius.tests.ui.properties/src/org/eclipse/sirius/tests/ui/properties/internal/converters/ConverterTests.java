@@ -44,7 +44,7 @@ import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
-import org.eclipse.sirius.properties.core.internal.converter.ViewDescriptionConverter;
+import org.eclipse.sirius.properties.core.api.ViewDescriptionConverter;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;

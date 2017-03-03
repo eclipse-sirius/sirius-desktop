@@ -55,6 +55,8 @@ import org.eclipse.sirius.properties.CustomOperation;
 import org.eclipse.sirius.properties.CustomOverrideDescription;
 import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CustomWidgetStyle;
+import org.eclipse.sirius.properties.DialogButton;
+import org.eclipse.sirius.properties.DialogModelOperation;
 import org.eclipse.sirius.properties.DynamicMappingForDescription;
 import org.eclipse.sirius.properties.DynamicMappingForOverrideDescription;
 import org.eclipse.sirius.properties.DynamicMappingIfDescription;
@@ -706,6 +708,20 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     private EClass groupConditionalStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass dialogModelOperationEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass dialogButtonEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3636,6 +3652,116 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EClass getDialogModelOperation() {
+        return dialogModelOperationEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getDialogModelOperation_TitleExpression() {
+        return (EAttribute) dialogModelOperationEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDialogModelOperation_Buttons() {
+        return (EReference) dialogModelOperationEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDialogModelOperation_Page() {
+        return (EReference) dialogModelOperationEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDialogModelOperation_Groups() {
+        return (EReference) dialogModelOperationEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getDialogButton() {
+        return dialogButtonEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getDialogButton_LabelExpression() {
+        return (EAttribute) dialogButtonEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDialogButton_InitialOperation() {
+        return (EReference) dialogButtonEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getDialogButton_Default() {
+        return (EAttribute) dialogButtonEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getDialogButton_CloseDialogOnClick() {
+        return (EAttribute) dialogButtonEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getDialogButton_RollbackChangesOnClose() {
+        return (EAttribute) dialogButtonEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getEditSupport() {
         return editSupportEClass;
     }
@@ -4067,6 +4193,19 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         groupConditionalStyleEClass = createEClass(PropertiesPackage.GROUP_CONDITIONAL_STYLE);
         createEReference(groupConditionalStyleEClass, PropertiesPackage.GROUP_CONDITIONAL_STYLE__STYLE);
 
+        dialogModelOperationEClass = createEClass(PropertiesPackage.DIALOG_MODEL_OPERATION);
+        createEAttribute(dialogModelOperationEClass, PropertiesPackage.DIALOG_MODEL_OPERATION__TITLE_EXPRESSION);
+        createEReference(dialogModelOperationEClass, PropertiesPackage.DIALOG_MODEL_OPERATION__BUTTONS);
+        createEReference(dialogModelOperationEClass, PropertiesPackage.DIALOG_MODEL_OPERATION__PAGE);
+        createEReference(dialogModelOperationEClass, PropertiesPackage.DIALOG_MODEL_OPERATION__GROUPS);
+
+        dialogButtonEClass = createEClass(PropertiesPackage.DIALOG_BUTTON);
+        createEAttribute(dialogButtonEClass, PropertiesPackage.DIALOG_BUTTON__LABEL_EXPRESSION);
+        createEReference(dialogButtonEClass, PropertiesPackage.DIALOG_BUTTON__INITIAL_OPERATION);
+        createEAttribute(dialogButtonEClass, PropertiesPackage.DIALOG_BUTTON__DEFAULT);
+        createEAttribute(dialogButtonEClass, PropertiesPackage.DIALOG_BUTTON__CLOSE_DIALOG_ON_CLICK);
+        createEAttribute(dialogButtonEClass, PropertiesPackage.DIALOG_BUTTON__ROLLBACK_CHANGES_ON_CLOSE);
+
         editSupportEClass = createEClass(PropertiesPackage.EDIT_SUPPORT);
 
         // Create enums
@@ -4214,6 +4353,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         listWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         hyperlinkWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         groupConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
+        dialogModelOperationEClass.getESuperTypes().add(theToolPackage.getModelOperation());
 
         // Initialize classes and features; add operations and parameters
         initEClass(viewExtensionDescriptionEClass, ViewExtensionDescription.class, "ViewExtensionDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
@@ -5006,6 +5146,33 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getGroupConditionalStyle_Style(), this.getGroupStyle(), null, "style", null, 0, 1, GroupConditionalStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
+
+        initEClass(dialogModelOperationEClass, DialogModelOperation.class, "DialogModelOperation", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getDialogModelOperation_TitleExpression(), theDescriptionPackage.getInterpretedExpression(), "titleExpression", null, 0, 1, DialogModelOperation.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDialogModelOperation_Buttons(), this.getDialogButton(), null, "buttons", null, 0, -1, DialogModelOperation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDialogModelOperation_Page(), this.getPageDescription(), null, "page", null, 1, 1, DialogModelOperation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDialogModelOperation_Groups(), this.getGroupDescription(), null, "groups", null, 0, -1, DialogModelOperation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+
+        initEClass(dialogButtonEClass, DialogButton.class, "DialogButton", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getDialogButton_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, DialogButton.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDialogButton_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, DialogButton.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDialogButton_Default(), theEcorePackage.getEBoolean(), "default", null, 0, 1, DialogButton.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDialogButton_CloseDialogOnClick(), theEcorePackage.getEBoolean(), "closeDialogOnClick", null, 0, 1, DialogButton.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDialogButton_RollbackChangesOnClose(), theEcorePackage.getEBoolean(), "rollbackChangesOnClose", null, 0, 1, DialogButton.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(editSupportEClass, EditSupport.class, "EditSupport", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 

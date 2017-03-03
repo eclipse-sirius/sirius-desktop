@@ -64,13 +64,13 @@ public class DescriptionChildCreationExtenderSpec extends DescriptionChildCreati
             PageDescription page = PropertiesFactory.eINSTANCE.createPageDescription();
             page.setName(Messages.PageDescription__name);
             page.setLabelExpression("Page"); //$NON-NLS-1$
-            page.setSemanticCandidateExpression(ViewExtensionDescriptionItemProvider.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
+            page.setSemanticCandidateExpression(ViewExtensionDescriptionItemProviderSpec.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
             category.getPages().add(page);
 
             GroupDescription group = PropertiesFactory.eINSTANCE.createGroupDescription();
             group.setName(Messages.GroupDescription__name);
             group.setLabelExpression("Group"); //$NON-NLS-1$
-            group.setSemanticCandidateExpression(ViewExtensionDescriptionItemProvider.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
+            group.setSemanticCandidateExpression(ViewExtensionDescriptionItemProviderSpec.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
             category.getGroups().add(group);
 
             page.getGroups().add(group);

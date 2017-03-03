@@ -216,6 +216,7 @@
       <topic href="doc/developer/extensions-provide_repair_contribution.html" label="Provide custom repair participant" />
       <topic href="doc/developer/extensions-provide_celleditor.html" label="Provide custom cell editor" />
       <topic href="doc/developer/extensions-provide_custom_bundled_image_shape.html" label="Provide custom bundled image shape" />
+      <topic href="doc/developer/extensions-provide_custom_model_operation.html" label="Provide custom model operation" />
       <topic href="doc/developer/extensions-properties_provide_custom_widget.html" label="Provide a custom widget in the Properties view">
         <topic href="doc/developer/extensions-properties_provide_custom_widget_basic.html" label="Basic approach" />
         <topic href="doc/developer/extensions-properties_provide_custom_widget_advanced.html" label="Advanced approach" />

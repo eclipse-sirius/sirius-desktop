@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
 /**
@@ -7467,6 +7468,124 @@ public interface PropertiesPackage extends EPackage {
     int GROUP_CONDITIONAL_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 1;
 
     /**
+     * The meta object id for the '{@link org.eclipse.sirius.properties.impl.DialogModelOperationImpl
+     * <em>Dialog Model Operation</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.DialogModelOperationImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDialogModelOperation()
+     * @generated
+     */
+    int DIALOG_MODEL_OPERATION = 84;
+
+    /**
+     * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DIALOG_MODEL_OPERATION__TITLE_EXPRESSION = ToolPackage.MODEL_OPERATION_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Buttons</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DIALOG_MODEL_OPERATION__BUTTONS = ToolPackage.MODEL_OPERATION_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Page</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DIALOG_MODEL_OPERATION__PAGE = ToolPackage.MODEL_OPERATION_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Groups</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DIALOG_MODEL_OPERATION__GROUPS = ToolPackage.MODEL_OPERATION_FEATURE_COUNT + 3;
+
+    /**
+     * The number of structural features of the '<em>Dialog Model Operation</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DIALOG_MODEL_OPERATION_FEATURE_COUNT = ToolPackage.MODEL_OPERATION_FEATURE_COUNT + 4;
+
+    /**
+     * The meta object id for the '{@link org.eclipse.sirius.properties.impl.DialogButtonImpl <em>Dialog Button</em>}'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.DialogButtonImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDialogButton()
+     * @generated
+     */
+    int DIALOG_BUTTON = 85;
+
+    /**
+     * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DIALOG_BUTTON__LABEL_EXPRESSION = 0;
+
+    /**
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DIALOG_BUTTON__INITIAL_OPERATION = 1;
+
+    /**
+     * The feature id for the '<em><b>Default</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DIALOG_BUTTON__DEFAULT = 2;
+
+    /**
+     * The feature id for the '<em><b>Close Dialog On Click</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DIALOG_BUTTON__CLOSE_DIALOG_ON_CLICK = 3;
+
+    /**
+     * The feature id for the '<em><b>Rollback Changes On Close</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DIALOG_BUTTON__ROLLBACK_CHANGES_ON_CLOSE = 4;
+
+    /**
+     * The number of structural features of the '<em>Dialog Button</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DIALOG_BUTTON_FEATURE_COUNT = 5;
+
+    /**
      * The meta object id for the '{@link org.eclipse.sirius.properties.impl.EditSupportImpl <em>Edit Support</em>}'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -7474,7 +7593,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getEditSupport()
      * @generated
      */
-    int EDIT_SUPPORT = 84;
+    int EDIT_SUPPORT = 86;
 
     /**
      * The number of structural features of the '<em>Edit Support</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
@@ -7493,7 +7612,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getFILL_LAYOUT_ORIENTATION()
      * @generated
      */
-    int FILL_LAYOUT_ORIENTATION = 85;
+    int FILL_LAYOUT_ORIENTATION = 87;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.properties.ToggleStyle <em>Toggle Style</em>}' enum. <!--
@@ -7503,7 +7622,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getToggleStyle()
      * @generated
      */
-    int TOGGLE_STYLE = 86;
+    int TOGGLE_STYLE = 88;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.properties.TitleBarStyle <em>Title Bar Style</em>}' enum.
@@ -7513,7 +7632,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTitleBarStyle()
      * @generated
      */
-    int TITLE_BAR_STYLE = 87;
+    int TITLE_BAR_STYLE = 89;
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.properties.ViewExtensionDescription
@@ -10763,6 +10882,131 @@ public interface PropertiesPackage extends EPackage {
     EReference getGroupConditionalStyle_Style();
 
     /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.properties.DialogModelOperation
+     * <em>Dialog Model Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Dialog Model Operation</em>'.
+     * @see org.eclipse.sirius.properties.DialogModelOperation
+     * @generated
+     */
+    EClass getDialogModelOperation();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.DialogModelOperation#getTitleExpression <em>Title Expression</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Title Expression</em>'.
+     * @see org.eclipse.sirius.properties.DialogModelOperation#getTitleExpression()
+     * @see #getDialogModelOperation()
+     * @generated
+     */
+    EAttribute getDialogModelOperation_TitleExpression();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.DialogModelOperation#getButtons <em>Buttons</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Buttons</em>'.
+     * @see org.eclipse.sirius.properties.DialogModelOperation#getButtons()
+     * @see #getDialogModelOperation()
+     * @generated
+     */
+    EReference getDialogModelOperation_Buttons();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.DialogModelOperation#getPage <em>Page</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Page</em>'.
+     * @see org.eclipse.sirius.properties.DialogModelOperation#getPage()
+     * @see #getDialogModelOperation()
+     * @generated
+     */
+    EReference getDialogModelOperation_Page();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.DialogModelOperation#getGroups <em>Groups</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Groups</em>'.
+     * @see org.eclipse.sirius.properties.DialogModelOperation#getGroups()
+     * @see #getDialogModelOperation()
+     * @generated
+     */
+    EReference getDialogModelOperation_Groups();
+
+    /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.properties.DialogButton <em>Dialog Button</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Dialog Button</em>'.
+     * @see org.eclipse.sirius.properties.DialogButton
+     * @generated
+     */
+    EClass getDialogButton();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.properties.DialogButton#getLabelExpression
+     * <em>Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Label Expression</em>'.
+     * @see org.eclipse.sirius.properties.DialogButton#getLabelExpression()
+     * @see #getDialogButton()
+     * @generated
+     */
+    EAttribute getDialogButton_LabelExpression();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.DialogButton#getInitialOperation <em>Initial Operation</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Initial Operation</em>'.
+     * @see org.eclipse.sirius.properties.DialogButton#getInitialOperation()
+     * @see #getDialogButton()
+     * @generated
+     */
+    EReference getDialogButton_InitialOperation();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.properties.DialogButton#isDefault
+     * <em>Default</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Default</em>'.
+     * @see org.eclipse.sirius.properties.DialogButton#isDefault()
+     * @see #getDialogButton()
+     * @generated
+     */
+    EAttribute getDialogButton_Default();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.properties.DialogButton#isCloseDialogOnClick
+     * <em>Close Dialog On Click</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Close Dialog On Click</em>'.
+     * @see org.eclipse.sirius.properties.DialogButton#isCloseDialogOnClick()
+     * @see #getDialogButton()
+     * @generated
+     */
+    EAttribute getDialogButton_CloseDialogOnClick();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.DialogButton#isRollbackChangesOnClose <em>Rollback Changes On Close</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Rollback Changes On Close</em>'.
+     * @see org.eclipse.sirius.properties.DialogButton#isRollbackChangesOnClose()
+     * @see #getDialogButton()
+     * @generated
+     */
+    EAttribute getDialogButton_RollbackChangesOnClose();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.properties.EditSupport <em>Edit Support</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -13294,6 +13538,98 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference GROUP_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getGroupConditionalStyle_Style();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.properties.impl.DialogModelOperationImpl
+         * <em>Dialog Model Operation</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.DialogModelOperationImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDialogModelOperation()
+         * @generated
+         */
+        EClass DIALOG_MODEL_OPERATION = PropertiesPackage.eINSTANCE.getDialogModelOperation();
+
+        /**
+         * The meta object literal for the '<em><b>Title Expression</b></em>' attribute feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute DIALOG_MODEL_OPERATION__TITLE_EXPRESSION = PropertiesPackage.eINSTANCE.getDialogModelOperation_TitleExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Buttons</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference DIALOG_MODEL_OPERATION__BUTTONS = PropertiesPackage.eINSTANCE.getDialogModelOperation_Buttons();
+
+        /**
+         * The meta object literal for the '<em><b>Page</b></em>' containment reference feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference DIALOG_MODEL_OPERATION__PAGE = PropertiesPackage.eINSTANCE.getDialogModelOperation_Page();
+
+        /**
+         * The meta object literal for the '<em><b>Groups</b></em>' containment reference list feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference DIALOG_MODEL_OPERATION__GROUPS = PropertiesPackage.eINSTANCE.getDialogModelOperation_Groups();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.properties.impl.DialogButtonImpl
+         * <em>Dialog Button</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.DialogButtonImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDialogButton()
+         * @generated
+         */
+        EClass DIALOG_BUTTON = PropertiesPackage.eINSTANCE.getDialogButton();
+
+        /**
+         * The meta object literal for the '<em><b>Label Expression</b></em>' attribute feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute DIALOG_BUTTON__LABEL_EXPRESSION = PropertiesPackage.eINSTANCE.getDialogButton_LabelExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Initial Operation</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference DIALOG_BUTTON__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getDialogButton_InitialOperation();
+
+        /**
+         * The meta object literal for the '<em><b>Default</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute DIALOG_BUTTON__DEFAULT = PropertiesPackage.eINSTANCE.getDialogButton_Default();
+
+        /**
+         * The meta object literal for the '<em><b>Close Dialog On Click</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute DIALOG_BUTTON__CLOSE_DIALOG_ON_CLICK = PropertiesPackage.eINSTANCE.getDialogButton_CloseDialogOnClick();
+
+        /**
+         * The meta object literal for the '<em><b>Rollback Changes On Close</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute DIALOG_BUTTON__ROLLBACK_CHANGES_ON_CLOSE = PropertiesPackage.eINSTANCE.getDialogButton_RollbackChangesOnClose();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.properties.impl.EditSupportImpl

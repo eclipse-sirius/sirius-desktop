@@ -62,6 +62,15 @@ h4. Changes in @org.eclipse.sirius.editor.properties@
 
 * <span class="label label-info">Modified</span> In the package @org.eclipse.sirius.editor.properties.sections.description.representationdescription@ the class @RepresentationDescriptionMetamodelsUpdater@ has been replaced by @DescriptionMetamodelsUpdater@ which can now be used with any EObject with a many-valued EReference to EPackages. The behavior of the class @RepresentationDescriptionMetamodelPropertySectionSpec@ has been transfered to an abstract class independent of @RepresentationDescription@ named @AbstractMetamodelPropertySectionSpec@. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
 
+h4. Changes in @org.eclipse.sirius.properties.core@
+
+* <span class="label label-success">Added</span> The class @org.eclipse.sirius.properties.core.internal.converter.ViewDescriptionConverter@ has been moved as an API to @org.eclipse.sirius.properties.core.api.ViewDescriptionConverter@.
+* <span class="label label-success">Added</span> The classes necessary to support the preprocessing of the odesign for the inheritance in its Properties parts are available in the API package @org.eclipse.sirius.properties.core.api@.
+* <span class="label label-success">Added</span> The class @org.eclipse.sirius.properties.core.internal.SiriusInterpreter@ has been moved as an API to @org.eclipse.sirius.properties.core.api.SiriusInterpreter@. This class could be used by those who want to create custom model operations using the Properties framework.
+* <span class="label label-success">Added</span> The class @org.eclipse.sirius.properties.core.api.SiriusDomainClassTester@ has been added as an API for those who want to create custom model operations using the Properties framework.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ext.emf.edit.EditingDomainServices.createInstance(EClass)@ has been added to allow the creation of a new instance from an EClass in the interpreters. 
+ 
+
 h4. Changes in @org.eclipse.sirius.ui.properties@
 
 * <span class="label label-info">Modified</span> All the content related to the IDescriptionConverter and ILinkResolver has been moved from the plugin org.eclipse.sirius.ui.properties to the newly created plugin org.eclipse.sirius.properties.core. It includes all the APIs and both extension points.

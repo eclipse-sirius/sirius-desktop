@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
-import org.eclipse.sirius.properties.core.internal.preprocessor.ViewDescriptionPreprocessor;
+import org.eclipse.sirius.properties.core.api.ViewDescriptionPreprocessor;
 import org.junit.Test;
 
 /**

@@ -18,13 +18,13 @@ import java.util.stream.StreamSupport;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.properties.core.internal.converter.SiriusInitialOperationAdapter;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * {@link IDescriptionPreprocessor} implementation that supports ignoring some
- * features and copying the value of some other features. This means that in the
- * models resulting from the preprocessing, the ignored values are not copied or
- * inherited. Features that must be copied are copied using
- * {@link org.eclipse.emf.ecore.util.EcoreUtil#copy(EObject)}.
+ * {@link IDescriptionPreprocessor} implementation that supports ignoring some features and copying the value of some
+ * other features. This means that in the models resulting from the preprocessing, the ignored values are not copied or
+ * inherited. Features that must be copied are copied using {@link org.eclipse.emf.ecore.util.EcoreUtil#copy(EObject)}.
  * 
  * @author flatombe
  * @author mbats
@@ -50,11 +50,9 @@ public class DefaultDescriptionPreprocessorWithFiltering<SIRIUS extends EObject>
      * @param descriptionClass
      *            the SIRIUS_DESCRIPTION class.
      * @param featuresToFilter
-     *            the collection of features of {@code descriptionClass} that
-     *            must be ignored during the preprocessing.
+     *            the collection of features of {@code descriptionClass} that must be ignored during the preprocessing.
      * @param featuresToCopy
-     *            the collection of features of {@code descriptionClass} that
-     *            must be copied during the preprocessing.
+     *            the collection of features of {@code descriptionClass} that must be copied during the preprocessing.
      */
     public DefaultDescriptionPreprocessorWithFiltering(Class<SIRIUS> descriptionClass, Collection<EStructuralFeature> featuresToFilter, Collection<EStructuralFeature> featuresToCopy) {
         super(descriptionClass);
@@ -63,16 +61,15 @@ public class DefaultDescriptionPreprocessorWithFiltering<SIRIUS extends EObject>
     }
 
     /**
-     * Processes the given feature if it is not to be ignored. If the feature is
-     * to be copied, then re-directs to the methods that do the copying.
+     * Processes the given feature if it is not to be ignored. If the feature is to be copied, then re-directs to the
+     * methods that do the copying.
      * 
      * @param feature
      *            the {@link EStructuralFeature} to process.
      * @param processedDescription
      *            the resulting description.
      * @param currentDescription
-     *            the original description or one of its ancestors, from which
-     *            properties are inherited.
+     *            the original description or one of its ancestors, from which properties are inherited.
      * @param cache
      *            the processing cache.
      */
@@ -92,8 +89,7 @@ public class DefaultDescriptionPreprocessorWithFiltering<SIRIUS extends EObject>
     }
 
     /**
-     * Processes the given {@link EStructuralFeature} by copying the value of
-     * the current description.
+     * Processes the given {@link EStructuralFeature} by copying the value of the current description.
      * 
      * @param monoValuedfeature
      *            the mono-valued feature being processed.
@@ -109,14 +105,17 @@ public class DefaultDescriptionPreprocessorWithFiltering<SIRIUS extends EObject>
                 EObject newValue = EcoreUtil.copy((EObject) existingValue);
                 cache.put(existingValue, newValue);
                 processedDescription.eSet(monoValuedfeature, newValue);
+
+                if (existingValue instanceof InitialOperation) {
+                    newValue.eAdapters().add(new SiriusInitialOperationAdapter(EcoreUtil.getURI((InitialOperation) existingValue)));
+                }
             }
         }
     }
 
     /**
-     * Processes the given {@link EStructuralFeature} by adding to the processed
-     * description's feature value a copy of the values held by the current
-     * description.
+     * Processes the given {@link EStructuralFeature} by adding to the processed description's feature value a copy of
+     * the values held by the current description.
      * 
      * @param manyValuedFeature
      *            the many-valued feature being processed.
@@ -140,6 +139,10 @@ public class DefaultDescriptionPreprocessorWithFiltering<SIRIUS extends EObject>
                 EObject newEObject = EcoreUtil.copy(object);
                 cache.put(object, newEObject);
                 newValue.add(newEObject);
+
+                if (object instanceof InitialOperation) {
+                    newEObject.eAdapters().add(new SiriusInitialOperationAdapter(EcoreUtil.getURI(object)));
+                }
             });
 
             // Get all the already processed values

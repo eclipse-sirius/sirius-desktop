@@ -41,6 +41,14 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.util.PropertiesAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
+import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
+import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
+import org.eclipse.sirius.viewpoint.description.tool.InitialNodeCreationOperation;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.tool.SwitchChild;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
@@ -1544,6 +1552,52 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.DialogModelOperation}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected DialogModelOperationItemProvider dialogModelOperationItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.properties.DialogModelOperation}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createDialogModelOperationAdapter() {
+        if (dialogModelOperationItemProvider == null) {
+            dialogModelOperationItemProvider = new DialogModelOperationItemProvider(this);
+        }
+
+        return dialogModelOperationItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.DialogButton} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected DialogButtonItemProvider dialogButtonItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.properties.DialogButton}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createDialogButtonAdapter() {
+        if (dialogButtonItemProvider == null) {
+            dialogButtonItemProvider = new DialogButtonItemProvider(this);
+        }
+
+        return dialogButtonItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.EditSupport} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1881,6 +1935,12 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (groupConditionalStyleItemProvider != null) {
             groupConditionalStyleItemProvider.dispose();
         }
+        if (dialogModelOperationItemProvider != null) {
+            dialogModelOperationItemProvider.dispose();
+        }
+        if (dialogButtonItemProvider != null) {
+            dialogButtonItemProvider.dispose();
+        }
         if (editSupportItemProvider != null) {
             editSupportItemProvider.dispose();
         }
@@ -1962,6 +2022,150 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
+         * @generated
+         */
+        @Override
+        public ResourceLocator getResourceLocator() {
+            return PropertiesEditPlugin.INSTANCE;
+        }
+    }
+
+    /**
+     * A child creation extender for the {@link ToolPackage}. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static class ToolChildCreationExtender implements IChildCreationExtender {
+        /**
+         * The switch for creating child descriptors specific to each extended class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        protected static class CreationSwitch extends ToolSwitch<Object> {
+            /**
+             * The child descriptors being populated. <!-- begin-user-doc --> <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            protected List<Object> newChildDescriptors;
+
+            /**
+             * The domain in which to create the children. <!-- begin-user-doc --> <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            protected EditingDomain editingDomain;
+
+            /**
+             * Creates the a switch for populating child descriptors in the given domain. <!-- begin-user-doc --> <!--
+             * end-user-doc -->
+             *
+             * @generated
+             */
+            CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
+                this.newChildDescriptors = newChildDescriptors;
+                this.editingDomain = editingDomain;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            @Override
+            public Object caseContainerModelOperation(ContainerModelOperation object) {
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, PropertiesFactory.eINSTANCE.createDialogModelOperation()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            @Override
+            public Object caseInitialNodeCreationOperation(InitialNodeCreationOperation object) {
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, PropertiesFactory.eINSTANCE.createDialogModelOperation()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            @Override
+            public Object caseInitialOperation(InitialOperation object) {
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_OPERATION__FIRST_MODEL_OPERATIONS, PropertiesFactory.eINSTANCE.createDialogModelOperation()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            @Override
+            public Object caseInitEdgeCreationOperation(InitEdgeCreationOperation object) {
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, PropertiesFactory.eINSTANCE.createDialogModelOperation()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            @Override
+            public Object caseInitialContainerDropOperation(InitialContainerDropOperation object) {
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_CONTAINER_DROP_OPERATION__FIRST_MODEL_OPERATIONS, PropertiesFactory.eINSTANCE.createDialogModelOperation()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            @Override
+            public Object caseSwitchChild(SwitchChild object) {
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, PropertiesFactory.eINSTANCE.createDialogModelOperation()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            protected CommandParameter createChildParameter(Object feature, Object child) {
+                return new CommandParameter(null, feature, child);
+            }
+
+        }
+
+        /**
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        @Override
+        public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+            ArrayList<Object> result = new ArrayList<Object>();
+            new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
+            return result;
+        }
+
+        /**
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         @Override

@@ -18,6 +18,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
@@ -201,6 +202,10 @@ public class EditingDomainServices {
             }
         }
         return null;
+    }
+
+    public EObject createInstance(EClass eClass) {
+        return eClass.getEPackage().getEFactoryInstance().create(eClass);
     }
 
     // Services from IItemLabelProvider

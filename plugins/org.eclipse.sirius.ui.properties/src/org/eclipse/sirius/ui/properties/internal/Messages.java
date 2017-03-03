@@ -37,6 +37,9 @@ public final class Messages {
     @TranslatableMessage
     public static String TransactionalEditingDomainContextAdapter_errorDuringCommand;
 
+    @TranslatableMessage
+    public static String DialogTask_label;
+
     // CHECKSTYLE:ON
 
     private Messages() {

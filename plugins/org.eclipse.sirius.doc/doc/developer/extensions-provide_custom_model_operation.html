@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>extensions-provide_custom_model_operation</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusProvidecustommodeloperation">Sirius &#8211; Provide custom model operation</h1>
+		<h2 id="Goals">Goals</h2>
+		<p>Sirius provides various model operations (change context, if, for, create instance, etc). This extension point allows the contribution of additional model operations.</p>
+		<h2 id="Defineamodeloperationextension">Define a model operation extension</h2>
+		<p>This extension point is identified as 
+			<code>org.eclipse.sirius.diagram.bundledImageShape</code>. In this extension, there are three required fields:
+		</p>
+		<ul>
+			<li>id &#8211; The identifier of the contribution</li>
+			<li>name &#8211; The human readable name of the contribution</li>
+			<li>modelOperationManager &#8211; The Java class used to handle the model operation</li>
+		</ul>
+		<p>The model operation manager will have to create a Sirius task from the given description of the model operation. An example is available in the plugin 
+			<code>org.eclipse.sirius.ui.properties</code> with the class 
+			<code>org.eclipse.sirius.ui.properties.internal.dialog.DialogModelOperationManager</code>.
+		</p>
+		<pre>public class DialogModelOperationManager implements IModelOperationManager {
+
+    @Override
+    public Optional&lt;ICommandTask&gt; createTask(ModelOperation modelOperation, ModelAccessor modelAccessor, UICallBack uiCallback,
+             Session session, IInterpreter interpreter, CommandContext context) {
+        if (modelOperation instanceof DialogModelOperation) {
+            DialogModelOperation dialogModelOperation = (DialogModelOperation) modelOperation;
+            return Optional.of(new DialogTask(context, modelAccessor, interpreter, session, dialogModelOperation));
+        }
+        return Optional.empty();
+    }
+
+}
+
+</pre>
+		<p>In this example, we will only consider the DialogModelOperation and we will return a new DialogTask used to open a dialog.</p>
+	</body>
+</html>

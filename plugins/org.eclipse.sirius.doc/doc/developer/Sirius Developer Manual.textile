@@ -15,5 +15,6 @@ This document gives an overview of the internals of the _Sirius_ platform, and d
 ** "*Provide custom repair participant*":extensions-provide_repair_contribution.html
 ** "*Provide custom cell editor*":extensions-provide_celleditor.html
 ** "*Provide custom bundled image shape*":extensions-provide_custom_bundled_image_shape.html
+** "*Provide custom model operation*":extensions-provide_custom_model_operation.html
 * The Sirius platform publishs a set of API, and the next sections describe some which require particular attention:
 ** "*SiriusCrossReferenceAdapter*":siriusCrossReferenceAdapter.html

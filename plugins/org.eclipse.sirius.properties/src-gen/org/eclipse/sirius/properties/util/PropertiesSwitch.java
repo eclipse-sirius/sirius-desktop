@@ -51,6 +51,8 @@ import org.eclipse.sirius.properties.CustomOperation;
 import org.eclipse.sirius.properties.CustomOverrideDescription;
 import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CustomWidgetStyle;
+import org.eclipse.sirius.properties.DialogButton;
+import org.eclipse.sirius.properties.DialogModelOperation;
 import org.eclipse.sirius.properties.DynamicMappingForDescription;
 import org.eclipse.sirius.properties.DynamicMappingForOverrideDescription;
 import org.eclipse.sirius.properties.DynamicMappingIfDescription;
@@ -103,6 +105,7 @@ import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
 import org.eclipse.sirius.viewpoint.description.Extension;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
@@ -1483,6 +1486,25 @@ public class PropertiesSwitch<T> {
             }
             return result;
         }
+        case PropertiesPackage.DIALOG_MODEL_OPERATION: {
+            DialogModelOperation dialogModelOperation = (DialogModelOperation) theEObject;
+            T result = caseDialogModelOperation(dialogModelOperation);
+            if (result == null) {
+                result = caseModelOperation(dialogModelOperation);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.DIALOG_BUTTON: {
+            DialogButton dialogButton = (DialogButton) theEObject;
+            T result = caseDialogButton(dialogButton);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         case PropertiesPackage.EDIT_SUPPORT: {
             EditSupport editSupport = (EditSupport) theEObject;
             T result = caseEditSupport(editSupport);
@@ -2757,6 +2779,35 @@ public class PropertiesSwitch<T> {
     }
 
     /**
+     * Returns the result of interpreting the object as an instance of '<em>Dialog Model Operation</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Dialog Model Operation</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDialogModelOperation(DialogModelOperation object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Dialog Button</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Dialog Button</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDialogButton(DialogButton object) {
+        return null;
+    }
+
+    /**
      * Returns the result of interpreting the object as an instance of '<em>Edit Support</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
      *
@@ -2810,6 +2861,21 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseValidationRule(ValidationRule object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Model Operation</em>'. <!-- begin-user-doc
+     * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc
+     * -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Model Operation</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseModelOperation(ModelOperation object) {
         return null;
     }
 

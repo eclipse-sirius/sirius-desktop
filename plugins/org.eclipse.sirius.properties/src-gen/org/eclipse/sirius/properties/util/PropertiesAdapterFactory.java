@@ -51,6 +51,8 @@ import org.eclipse.sirius.properties.CustomOperation;
 import org.eclipse.sirius.properties.CustomOverrideDescription;
 import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CustomWidgetStyle;
+import org.eclipse.sirius.properties.DialogButton;
+import org.eclipse.sirius.properties.DialogModelOperation;
 import org.eclipse.sirius.properties.DynamicMappingForDescription;
 import org.eclipse.sirius.properties.DynamicMappingForOverrideDescription;
 import org.eclipse.sirius.properties.DynamicMappingIfDescription;
@@ -103,6 +105,7 @@ import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
 import org.eclipse.sirius.viewpoint.description.Extension;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
@@ -577,6 +580,16 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
+        public Adapter caseDialogModelOperation(DialogModelOperation object) {
+            return createDialogModelOperationAdapter();
+        }
+
+        @Override
+        public Adapter caseDialogButton(DialogButton object) {
+            return createDialogButtonAdapter();
+        }
+
+        @Override
         public Adapter caseEditSupport(EditSupport object) {
             return createEditSupportAdapter();
         }
@@ -594,6 +607,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseValidationRule(ValidationRule object) {
             return createValidationRuleAdapter();
+        }
+
+        @Override
+        public Adapter caseModelOperation(ModelOperation object) {
+            return createModelOperationAdapter();
         }
 
         @Override
@@ -1795,6 +1813,34 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.DialogModelOperation
+     * <em>Dialog Model Operation</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.DialogModelOperation
+     * @generated
+     */
+    public Adapter createDialogModelOperationAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.DialogButton
+     * <em>Dialog Button</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.DialogButton
+     * @generated
+     */
+    public Adapter createDialogButtonAdapter() {
+        return null;
+    }
+
+    /**
      * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.EditSupport
      * <em>Edit Support</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
      * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
@@ -1847,6 +1893,20 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createValidationRuleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.description.tool.ModelOperation
+     * <em>Model Operation</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.tool.ModelOperation
+     * @generated
+     */
+    public Adapter createModelOperationAdapter() {
         return null;
     }
 

@@ -17,13 +17,11 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.eef.EEFViewDescription;
-import org.eclipse.eef.common.api.utils.Util;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.eef.core.api.EEFPage;
 import org.eclipse.eef.core.api.EEFView;
 import org.eclipse.eef.core.api.EEFViewFactory;
 import org.eclipse.eef.core.api.EditingContextAdapter;
-import org.eclipse.eef.core.api.IEEFDomainClassTester;
 import org.eclipse.eef.ide.ui.properties.api.EEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptorProvider;
@@ -39,10 +37,11 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.core.api.DefaultRulesProvider;
+import org.eclipse.sirius.properties.core.api.SiriusDomainClassTester;
 import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
-import org.eclipse.sirius.properties.core.internal.SiriusInterpreter;
-import org.eclipse.sirius.properties.core.internal.converter.ViewDescriptionConverter;
-import org.eclipse.sirius.properties.core.internal.preprocessor.ViewDescriptionPreprocessor;
+import org.eclipse.sirius.properties.core.api.SiriusInterpreter;
+import org.eclipse.sirius.properties.core.api.ViewDescriptionConverter;
+import org.eclipse.sirius.properties.core.api.ViewDescriptionPreprocessor;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -108,19 +107,8 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
         IVariableManager variableManager = new VariableManagerFactory().createVariableManager();
         variableManager.put(EEFExpressionUtils.SELF, input.getSemanticElement());
         variableManager.put(EEFExpressionUtils.INPUT, input);
-        EditingContextAdapter eca = SiriusUIPropertiesPlugin.getPlugin().getEditingContextAdapter(session);
-        EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, new SiriusInterpreter(session), eca, new IEEFDomainClassTester() {
-            @Override
-            public boolean eInstanceOf(EObject eObject, String domainClass) {
-                /*
-                 * The EEF runtime interprets a blank domainClass as a wildcard,
-                 * and expects eInstance(anything, null) to return 'true', but
-                 * the Sirius ModelAcessor returns 'false' when no domainClass
-                 * is specified.
-                 */
-                return Util.isBlank(domainClass) || session.getModelAccessor().eInstanceOf(eObject, domainClass);
-            }
-        }, input);
+        EditingContextAdapter editingContextAdapter = SiriusUIPropertiesPlugin.getPlugin().getEditingContextAdapter(session);
+        EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, new SiriusInterpreter(session), editingContextAdapter, new SiriusDomainClassTester(session), input);
         return eefView;
     }
 

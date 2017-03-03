@@ -34,6 +34,8 @@ import org.eclipse.sirius.properties.CustomOperation;
 import org.eclipse.sirius.properties.CustomOverrideDescription;
 import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CustomWidgetStyle;
+import org.eclipse.sirius.properties.DialogButton;
+import org.eclipse.sirius.properties.DialogModelOperation;
 import org.eclipse.sirius.properties.DynamicMappingForDescription;
 import org.eclipse.sirius.properties.DynamicMappingForOverrideDescription;
 import org.eclipse.sirius.properties.DynamicMappingIfDescription;
@@ -250,6 +252,10 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createHyperlinkWidgetConditionalStyle();
         case PropertiesPackage.GROUP_CONDITIONAL_STYLE:
             return createGroupConditionalStyle();
+        case PropertiesPackage.DIALOG_MODEL_OPERATION:
+            return createDialogModelOperation();
+        case PropertiesPackage.DIALOG_BUTTON:
+            return createDialogButton();
         case PropertiesPackage.EDIT_SUPPORT:
             return createEditSupport();
         default:
@@ -975,6 +981,28 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public GroupConditionalStyle createGroupConditionalStyle() {
         GroupConditionalStyleImpl groupConditionalStyle = new GroupConditionalStyleImpl();
         return groupConditionalStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public DialogModelOperation createDialogModelOperation() {
+        DialogModelOperationImpl dialogModelOperation = new DialogModelOperationImpl();
+        return dialogModelOperation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public DialogButton createDialogButton() {
+        DialogButtonImpl dialogButton = new DialogButtonImpl();
+        return dialogButton;
     }
 
     /**

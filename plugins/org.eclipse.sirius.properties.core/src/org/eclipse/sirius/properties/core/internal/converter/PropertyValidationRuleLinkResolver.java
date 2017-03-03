@@ -24,8 +24,7 @@ import org.eclipse.sirius.properties.core.api.IDescriptionLinkResolver;
 import org.eclipse.sirius.properties.core.api.TransformationCache;
 
 /**
- * This class is used to resolve the links between the property validation rules
- * and the widgets.
+ * This class is used to resolve the links between the property validation rules and the widgets.
  * 
  * @author sbegaudeau
  */
@@ -50,9 +49,8 @@ public class PropertyValidationRuleLinkResolver implements IDescriptionLinkResol
      *            The cache
      */
     private void resolve(EEFPropertyValidationRuleDescription eefPropertyValidationRule, TransformationCache cache) {
-        Object siriusDescription = cache.getInput(eefPropertyValidationRule);
-        if (siriusDescription instanceof PropertyValidationRule) {
-            PropertyValidationRule siriusPropertyValidationRule = (PropertyValidationRule) siriusDescription;
+        Optional<Object> optionalSiriusDescription = cache.getInput(eefPropertyValidationRule);
+        optionalSiriusDescription.filter(PropertyValidationRule.class::isInstance).map(PropertyValidationRule.class::cast).ifPresent(siriusPropertyValidationRule -> {
             List<WidgetDescription> widgets = siriusPropertyValidationRule.getTargets();
             for (WidgetDescription siriusWidget : widgets) {
                 Optional<Object> eefDescriptionOptional = cache.getOutput(siriusWidget);
@@ -61,7 +59,7 @@ public class PropertyValidationRuleLinkResolver implements IDescriptionLinkResol
                     eefPropertyValidationRule.getTargets().add((EEFWidgetDescription) eefDescription);
                 }
             }
-        }
+        });
     }
 
 }

@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.task;
 
+import java.util.Iterator;
+import java.util.Optional;
+
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
@@ -143,6 +146,21 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
         } else if (op instanceof Let) {
             task = new LetTask(context, extPackage, (Let) op, interpreter);
         }
+
+        if (task == null) {
+            Optional<ICommandTask> optionalTask = Optional.empty();
+
+            Iterator<ModelOperationManagerDescriptor> iterator = ModelOperationManagerRegistry.getRegisteredExtensions().iterator();
+            while (iterator.hasNext() && !optionalTask.isPresent()) {
+                ModelOperationManagerDescriptor descriptor = iterator.next();
+                optionalTask = descriptor.getModelOperationManager().createTask(op, extPackage, uiCallback, session, interpreter, context);
+            }
+
+            if (optionalTask.isPresent() && optionalTask.get() instanceof AbstractOperationTask) {
+                task = (AbstractOperationTask) optionalTask.get();
+            }
+        }
+
         return task;
     }
 

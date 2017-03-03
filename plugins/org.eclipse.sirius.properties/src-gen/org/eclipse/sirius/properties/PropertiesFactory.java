@@ -551,6 +551,22 @@ public interface PropertiesFactory extends EFactory {
     GroupConditionalStyle createGroupConditionalStyle();
 
     /**
+     * Returns a new object of class '<em>Dialog Model Operation</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Dialog Model Operation</em>'.
+     * @generated
+     */
+    DialogModelOperation createDialogModelOperation();
+
+    /**
+     * Returns a new object of class '<em>Dialog Button</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Dialog Button</em>'.
+     * @generated
+     */
+    DialogButton createDialogButton();
+
+    /**
      * Returns a new object of class '<em>Edit Support</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return a new object of class '<em>Edit Support</em>'.

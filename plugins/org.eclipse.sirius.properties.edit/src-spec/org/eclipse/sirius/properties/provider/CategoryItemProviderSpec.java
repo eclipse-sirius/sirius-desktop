@@ -55,12 +55,12 @@ public class CategoryItemProviderSpec extends CategoryItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         PageDescription page = PropertiesFactory.eINSTANCE.createPageDescription();
         page.setLabelExpression("Page"); //$NON-NLS-1$
-        page.setSemanticCandidateExpression(ViewExtensionDescriptionItemProvider.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
+        page.setSemanticCandidateExpression(ViewExtensionDescriptionItemProviderSpec.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CATEGORY__PAGES, page));
 
         GroupDescription group = PropertiesFactory.eINSTANCE.createGroupDescription();
         group.setLabelExpression("Group"); //$NON-NLS-1$
-        group.setSemanticCandidateExpression(ViewExtensionDescriptionItemProvider.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
+        group.setSemanticCandidateExpression(ViewExtensionDescriptionItemProviderSpec.DEFAULT_SEMANTIC_CANDIDATES_EXPRESSION);
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CATEGORY__GROUPS, group));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CATEGORY__OVERRIDES, PropertiesFactory.eINSTANCE.createPageOverrideDescription()));

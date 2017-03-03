@@ -275,6 +275,28 @@
 				<code>AbstractMetamodelPropertySectionSpec</code>. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.properties.core">Changes in 
+			<code>org.eclipse.sirius.properties.core</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The class 
+				<code>org.eclipse.sirius.properties.core.internal.converter.ViewDescriptionConverter</code> has been moved as an API to 
+				<code>org.eclipse.sirius.properties.core.api.ViewDescriptionConverter</code>.
+			</li>
+			<li><span class="label label-success">Added</span> The classes necessary to support the preprocessing of the odesign for the inheritance in its Properties parts are available in the API package 
+				<code>org.eclipse.sirius.properties.core.api</code>.
+			</li>
+			<li><span class="label label-success">Added</span> The class 
+				<code>org.eclipse.sirius.properties.core.internal.SiriusInterpreter</code> has been moved as an API to 
+				<code>org.eclipse.sirius.properties.core.api.SiriusInterpreter</code>. This class could be used by those who want to create custom model operations using the Properties framework.
+			</li>
+			<li><span class="label label-success">Added</span> The class 
+				<code>org.eclipse.sirius.properties.core.api.SiriusDomainClassTester</code> has been added as an API for those who want to create custom model operations using the Properties framework.
+			</li>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.ext.emf.edit.EditingDomainServices.createInstance(EClass)</code> has been added to allow the creation of a new instance from an EClass in the interpreters. 
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui.properties">Changes in 
 			<code>org.eclipse.sirius.ui.properties</code>
 		</h4>
