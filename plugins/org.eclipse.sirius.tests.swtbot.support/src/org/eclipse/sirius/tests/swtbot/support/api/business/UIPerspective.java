@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -192,8 +192,7 @@ public class UIPerspective {
     }
 
     /**
-     * Opens the "New Representation Files" wizard through the File > New >
-     * Other... menu.
+     * Opens the "New Representation Files" wizard through the File > New > Other... menu.
      */
     private void openRepresentationsFileWizard() {
         bot.menu("File").menu(UIPerspective.WIZARDS_LIST_TITLE).menu("Other...").click();
@@ -219,6 +218,7 @@ public class UIPerspective {
         }
         viewpointCategory.expand();
 
+        bot.waitUntil(new TreeItemAvailableCondition(viewpointCategory, UIPerspective.REPRESENTATIONS_FILE_LABEL, true));
         SWTBotTreeItem representationsFileNode = viewpointCategory.getNode(UIPerspective.REPRESENTATIONS_FILE_LABEL);
 
         representationsFileNode.select();
@@ -245,8 +245,7 @@ public class UIPerspective {
      * @param uiLocalSessionResource
      *            <code>.aird</code> file to use to open the local session.
      * @param useMoreThanOneSemanticFiles
-     *            true if the session uses more than one semantic files
-     *            (fragmented file, more complex use case, ...).
+     *            true if the session uses more than one semantic files (fragmented file, more complex use case, ...).
      * @return UI local session.
      */
     public UILocalSession openSessionFromFile(final UIResource uiLocalSessionResource, final boolean useMoreThanOneSemanticFiles) {
