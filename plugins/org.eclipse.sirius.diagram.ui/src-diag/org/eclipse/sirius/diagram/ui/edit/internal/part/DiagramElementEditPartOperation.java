@@ -365,37 +365,44 @@ public final class DiagramElementEditPartOperation {
     public static void deactivate(final IDiagramElementEditPart self) {
         if (self.isActive()) {
             final DiagramEventBroker broker = DiagramElementEditPartOperation.getDiagramEventBroker(self);
-            List<EObject> resolveAllSemanticElements = self.resolveAllSemanticElements();
-            if (resolveAllSemanticElements != null) {
-                final Iterator<EObject> iterSemanticElements = resolveAllSemanticElements.iterator();
-                removeNavigateDecoratorRefresher(self, broker);
-                while (iterSemanticElements.hasNext()) {
-                    final EObject semantic = iterSemanticElements.next();
-                    DiagramElementEditPartOperation.removeListener(broker, semantic, self.getEditModeListener());
-                    // remove this try/catch once the offline mode
-                    // will be supported
-                    try {
-                        if (semantic.eContainer() != null) {
-                            // Remove listener for container to do some specific
-                            // things on remove
-                            DiagramElementEditPartOperation.removeListener(broker, semantic.eContainer(), self.getEditModeListener());
-                        }
-                    } catch (IllegalStateException e) {
-                        // An issue has been encountered while connecting to
-                        // remote
-                        if (DiagramUIPlugin.getPlugin().isDebugging()) {
-                            DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, Messages.DiagramElementEditPartOperation_partDeactivationError));
+
+            try {
+                List<EObject> resolveAllSemanticElements = self.resolveAllSemanticElements();
+                if (resolveAllSemanticElements != null) {
+                    removeNavigateDecoratorRefresher(self, broker);
+                    for (EObject semantic : resolveAllSemanticElements) {
+                        DiagramElementEditPartOperation.removeListener(broker, semantic, self.getEditModeListener());
+                        // remove this try/catch once the offline mode
+                        // will be supported
+                        try {
+                            if (semantic.eContainer() != null) {
+                                // Remove listener for container to do some specific
+                                // things on remove
+                                DiagramElementEditPartOperation.removeListener(broker, semantic.eContainer(), self.getEditModeListener());
+                            }
+                        } catch (IllegalStateException e) {
+                            reportIllegalStateException(e);
                         }
                     }
+                    final DStylizable stylizable = self.resolveDiagramElement();
+                    if (stylizable != null && stylizable.getStyle() != null && self instanceof NotificationListener) {
+                        DiagramElementEditPartOperation.removeListener(broker, stylizable.getStyle(), (NotificationListener) self);
+                    }
+                    if (stylizable != null) {
+                        DiagramElementEditPartOperation.removeListener(broker, stylizable, self.getEAdapterDiagramElement());
+                    }
                 }
-                final DStylizable stylizable = self.resolveDiagramElement();
-                if (stylizable != null && stylizable.getStyle() != null && self instanceof NotificationListener) {
-                    DiagramElementEditPartOperation.removeListener(broker, stylizable.getStyle(), (NotificationListener) self);
-                }
-                if (stylizable != null) {
-                    DiagramElementEditPartOperation.removeListener(broker, stylizable, self.getEAdapterDiagramElement());
-                }
+            } catch (IllegalStateException e) {
+                reportIllegalStateException(e);
             }
+        }
+    }
+
+    private static void reportIllegalStateException(IllegalStateException e) {
+        // An issue has been encountered while connecting to
+        // remote
+        if (DiagramUIPlugin.getPlugin().isDebugging()) {
+            DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, Messages.DiagramElementEditPartOperation_partDeactivationError, e));
         }
     }
 
