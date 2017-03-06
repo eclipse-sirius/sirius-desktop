@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,23 +84,20 @@ import org.eclipse.swt.widgets.Display;
 public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart implements IDiagramEdgeEditPart {
 
     /**
-     * The minimum length(width or height) the edge box must have to be
-     * considered as selectable.
+     * The minimum length(width or height) the edge box must have to be considered as selectable.
      */
     private static final int EDGE_MINIMUM_LENGTH = 20;
 
     /**
-     * The minimum thickness the edge box at top, bottom, left or right position
-     * of the union of the nodes boxes must have to be considered as selectable
-     * zone.
+     * The minimum thickness the edge box at top, bottom, left or right position of the union of the nodes boxes must
+     * have to be considered as selectable zone.
      */
     private static final int EDGE_MINIMUM_THICKNESS = 20;
 
     /**
-     * Define the minimum selection box size for the source and target of the
-     * edge (if source or target is bordered node), to fix the horizontal and
-     * vertical increment around which the selection of this edge select the
-     * source or the target and not the edge.
+     * Define the minimum selection box size for the source and target of the edge (if source or target is bordered
+     * node), to fix the horizontal and vertical increment around which the selection of this edge select the source or
+     * the target and not the edge.
      */
     private static final int SOURCE_TARGET_MINIMUM_SIZE_SELECTION = 20;
 
@@ -181,8 +178,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
      * <p>
      * {@inheritDoc}
      * </p>
-     * Tests that the semantic model is an Edge. Refresh the edit part if the
-     * event is :
+     * Tests that the semantic model is an Edge. Refresh the edit part if the event is :
      * <ul>
      * <li><code>Notification.SET</code></li>
      * <li><code>Notification.UNSET</code></li>
@@ -193,18 +189,9 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
      */
     @Override
     protected void handleNotificationEvent(final Notification notification) {
-        final EditPart styleEditPart = getStyleEditPart();
-        // Refreshes edit part.
-        if (styleEditPart != null) {
-            final EObject element = ((IGraphicalEditPart) styleEditPart).resolveSemanticElement();
-            if (element != null && element.eResource() != null) {
-                styleEditPart.refresh();
-            }
-        }
+        DiagramElementEditPartOperation.handleNotificationEvent(this, notification);
+
         final EObject element = resolveSemanticElement();
-        if (element != null && element.eResource() != null && getParent() != null) {
-            refresh();
-        }
         if (element instanceof DEdge) {
             updateCenteringProperty((DEdge) element, notification);
             super.handleNotificationEvent(notification);
@@ -245,8 +232,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
     }
 
     /**
-     * {@inheritDoc} Replace the original refreshBendpoints to compute the
-     * bendpoints of the edge with path.
+     * {@inheritDoc} Replace the original refreshBendpoints to compute the bendpoints of the edge with path.
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart#refreshBendpoints()
      */
@@ -383,8 +369,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
     @Override
     public void enableEditMode() {
         /*
-         * We want to be sure nobody is enabling the edit mode if the element is
-         * locked.
+         * We want to be sure nobody is enabling the edit mode if the element is locked.
          */
         if (!authListener.isLocked()) {
             super.enableEditMode();
@@ -499,8 +484,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         /**
          * Returns whether the connection is centered on its source or not.
          * 
-         * @return true if the connection is centered on its source or both.
-         *         False otherwise.
+         * @return true if the connection is centered on its source or both. False otherwise.
          */
         public boolean isSourceCentered() {
             return CenteringStyle.BOTH == getCenteringStyle() || CenteringStyle.SOURCE == getCenteringStyle();
@@ -509,8 +493,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         /**
          * Returns whether the connection is centered on its target or not.
          * 
-         * @return true if the connection is centered on its target or both.
-         *         False otherwise.
+         * @return true if the connection is centered on its target or both. False otherwise.
          */
         public boolean isTargetCentered() {
             return CenteringStyle.BOTH == getCenteringStyle() || CenteringStyle.TARGET == getCenteringStyle();
@@ -559,8 +542,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         }
 
         /**
-         * Create a new attachment figure, add it to the current figure and
-         * return it.
+         * Create a new attachment figure, add it to the current figure and return it.
          * 
          * @return the new attachment figure.
          */
@@ -756,14 +738,12 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
 
     /**
      * {@inheritDoc} <BR>
-     * Return the current edit part for CreateRequest with RequestDescription,
-     * SelectionWizardDescription or PaneBasedSelectionWizardDescription as new
-     * object.<BR>
-     * CreateUnspecifiedTypeConnectionRequest is used to create a NoteAtachment
-     * directly from the Note.
+     * Return the current edit part for CreateRequest with RequestDescription, SelectionWizardDescription or
+     * PaneBasedSelectionWizardDescription as new object.<BR>
+     * CreateUnspecifiedTypeConnectionRequest is used to create a NoteAtachment directly from the Note.
      * 
-     * The returned edit part can be this edge one or the target or source's one
-     * if this edge part is over the nodes ones.
+     * The returned edit part can be this edge one or the target or source's one if this edge part is over the nodes
+     * ones.
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart#getTargetEditPart(org.eclipse.gef.Request)
      * 
@@ -865,37 +845,29 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
     }
 
     /**
-     * Returns true if the edge represented by the given bounds has a zone with
-     * the minimum width or height allowing its selection.
+     * Returns true if the edge represented by the given bounds has a zone with the minimum width or height allowing its
+     * selection.
      * 
-     * Either the edge has a box outside the one formed by the union of the
-     * nodes boxes that meets the minimum requirement that is a thickness of
-     * {@link AbstractDiagramEdgeEditPart#EDGE_MINIMUM_THICKNESS}.
+     * Either the edge has a box outside the one formed by the union of the nodes boxes that meets the minimum
+     * requirement that is a thickness of {@link AbstractDiagramEdgeEditPart#EDGE_MINIMUM_THICKNESS}.
      * 
-     * Or it does not. In this case we compute the edge length from its box by
-     * taking in consideration the margin expansions of the nodes boxes. The
-     * computing is done based on the worst scenario of nodes occupation over
-     * the edge. The computing depends on the existence of source and target
-     * bounds. If both exist, then the worst scenario is the boxes of the two
-     * nodes are upon the edge's one. In this case, the edge's box is considered
-     * as selectable if its bound width or height is greater than the minimum
-     * considered when removed from the width or height of the margined nodes.
-     * If only one node exists, then the worst scenario is one node is
-     * completely over the edge. In this case, the edge's box is considered as
-     * selectable if its width or height is greater than the minimum considered
-     * when removed from the minimum width or height of the unique margined
-     * node.
+     * Or it does not. In this case we compute the edge length from its box by taking in consideration the margin
+     * expansions of the nodes boxes. The computing is done based on the worst scenario of nodes occupation over the
+     * edge. The computing depends on the existence of source and target bounds. If both exist, then the worst scenario
+     * is the boxes of the two nodes are upon the edge's one. In this case, the edge's box is considered as selectable
+     * if its bound width or height is greater than the minimum considered when removed from the width or height of the
+     * margined nodes. If only one node exists, then the worst scenario is one node is completely over the edge. In this
+     * case, the edge's box is considered as selectable if its width or height is greater than the minimum considered
+     * when removed from the minimum width or height of the unique margined node.
      * 
      * @param edgeBounds
      *            the {@link Rectangle} encapsulating the selected edge.
      * @param sourceBoundsWithMargins
-     *            the {@link Rectangle} encapsulating the source part of the
-     *            selected edge.
+     *            the {@link Rectangle} encapsulating the source part of the selected edge.
      * @param targetBoundsWithMargins
-     *            the {@link Rectangle} encapsulating the target part of the
-     *            selected edge.
-     * @return true if the edge represented by the given bounds has the minimum
-     *         width or height allowing its selection. False otherwise.
+     *            the {@link Rectangle} encapsulating the target part of the selected edge.
+     * @return true if the edge represented by the given bounds has the minimum width or height allowing its selection.
+     *         False otherwise.
      */
     private boolean isEdgeSelectableZonePresent(Rectangle edgeBounds, Rectangle sourceBoundsWithMargins, Rectangle targetBoundsWithMargins) {
         if (sourceBoundsWithMargins == null && targetBoundsWithMargins == null) {

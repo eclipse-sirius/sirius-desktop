@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
@@ -78,22 +80,27 @@ public final class AbstractDiagramNodeEditPartOperation {
      *            the notification.
      */
     public static void handleNotificationEvent(final IAbstractDiagramNodeEditPart self, final Notification notification) {
+        Set<EditPart> toRefresh = new LinkedHashSet<>();
         if (notification.getEventType() == Notification.SET || notification.getEventType() == Notification.UNSET || notification.getEventType() == Notification.ADD) {
-            AbstractDiagramNodeEditPartOperation.safeRefresh(self);
+            toRefresh.add(self);
         }
         // To handle REMOVE type as above might have side-effect. Handle it only
         // for DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS feature
         if (notification.getEventType() == Notification.REMOVE && DiagramPackage.Literals.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS.equals(notification.getFeature())) {
-            AbstractDiagramNodeEditPartOperation.safeRefresh(self);
+            toRefresh.add(self);
         }
         if (notification.getEventType() == Notification.SET && notification.getFeature() instanceof EAttribute) {
             final EAttribute feature = (EAttribute) notification.getFeature();
             if ("visible".equals(feature.getName())) { //$NON-NLS-1$
                 final EditPart parent = self.getParent();
                 if (parent != null) {
-                    AbstractDiagramNodeEditPartOperation.safeRefresh(parent);
+                    toRefresh.add(parent);
                 }
             }
+        }
+
+        for (EditPart part : toRefresh) {
+            AbstractDiagramNodeEditPartOperation.safeRefresh(part);
         }
     }
 
@@ -202,8 +209,7 @@ public final class AbstractDiagramNodeEditPartOperation {
      * 
      * @param editPart
      *            the editPart to test
-     * @return <code>true</code> if the editPart is a bordered Edit part,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the editPart is a bordered Edit part, <code>false</code> otherwise
      */
     public static boolean isBordered(final EditPart editPart) {
         return editPart instanceof IDiagramBorderNodeEditPart;
@@ -231,8 +237,7 @@ public final class AbstractDiagramNodeEditPartOperation {
     }
 
     /**
-     * Sets the tooltip of an {@link IAbstractDiagramNodeEditPart} to the
-     * specified text.
+     * Sets the tooltip of an {@link IAbstractDiagramNodeEditPart} to the specified text.
      * 
      * @param self
      *            the IAbstractDiagramNodeEditPart

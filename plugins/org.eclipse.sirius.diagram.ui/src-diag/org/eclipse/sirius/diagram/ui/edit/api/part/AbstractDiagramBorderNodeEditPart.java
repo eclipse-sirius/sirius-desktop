@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -82,8 +82,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Basic implementation of top level edit part for nodes that on the border of
- * another node.
+ * Basic implementation of top level edit part for nodes that on the border of another node.
  * 
  * @author ymortier
  */
@@ -130,18 +129,7 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
 
     @Override
     protected void handleNotificationEvent(final Notification notification) {
-        EditPart styleEditPart = getStyleEditPart();
-        // Refreshes edit part.
-        if (styleEditPart != null) {
-            final EObject element = ((IGraphicalEditPart) styleEditPart).resolveSemanticElement();
-            if (element != null && element.eResource() != null) {
-                styleEditPart.refresh();
-            }
-        }
-        final EObject element = resolveSemanticElement();
-        if (element != null && element.eResource() != null && getParent() != null) {
-            refresh();
-        }
+        DiagramElementEditPartOperation.handleNotificationEvent(this, notification);
         super.handleNotificationEvent(notification);
         AbstractDiagramNodeEditPartOperation.handleNotificationEvent(this, notification);
         DiagramBorderNodeEditPartOperation.handleNotificationEvent(this, notification);
@@ -208,8 +196,7 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
     @Override
     public void enableEditMode() {
         /*
-         * We want to be sure nobody is enabling the edit mode if the element is
-         * locked.
+         * We want to be sure nobody is enabling the edit mode if the element is locked.
          */
         if (!this.getEditPartAuthorityListener().isLocked()) {
             super.enableEditMode();
@@ -240,9 +227,8 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
     protected void refreshChildren() {
         super.refreshChildren();
         /*
-         * We need to call this method back as it's setting things on the
-         * children and as such we want to be sure it's going to be called
-         * *after* the children are created.
+         * We need to call this method back as it's setting things on the children and as such we want to be sure it's
+         * going to be called *after* the children are created.
          */
         refreshVisuals();
     }
@@ -391,8 +377,7 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
     }
 
     /**
-     * Sets the tooltip of this {@link org.eclipse.gef.EditPart} to the
-     * specified text.
+     * Sets the tooltip of this {@link org.eclipse.gef.EditPart} to the specified text.
      * 
      * @param text
      *            the tooltip's text.
@@ -420,8 +405,7 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
     }
 
     /**
-     * See comments in
-     * {@link AbstractDiagramListEditPart#getSourceConnectionAnchor(Request)}.
+     * See comments in {@link AbstractDiagramListEditPart#getSourceConnectionAnchor(Request)}.
      * 
      * {@inheritDoc}
      * 
@@ -442,8 +426,7 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
     }
 
     /**
-     * See comments in
-     * {@link AbstractDiagramListEditPart#getSourceConnectionAnchor(Request)}.
+     * See comments in {@link AbstractDiagramListEditPart#getSourceConnectionAnchor(Request)}.
      * 
      * {@inheritDoc}
      * 

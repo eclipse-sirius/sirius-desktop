@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -103,19 +103,7 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
 
     @Override
     protected void handleNotificationEvent(final Notification notification) {
-        final EditPart styleEditPart = getStyleEditPart();
-        // Refreshes edit part.
-        if (styleEditPart != null) {
-            final EObject element = ((IGraphicalEditPart) styleEditPart).resolveSemanticElement();
-            if (element != null && element.eResource() != null) {
-                styleEditPart.refresh();
-            }
-        }
-        final EObject element = resolveSemanticElement();
-        if (element != null && element.eResource() != null && getParent() != null) {
-            refresh();
-        }
-
+        DiagramElementEditPartOperation.handleNotificationEvent(this, notification);
         super.handleNotificationEvent(notification);
         AbstractDiagramNodeEditPartOperation.handleNotificationEvent(this, notification);
     }
@@ -327,8 +315,7 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
         }
         if (result == null && request instanceof DropRequest) {
             /*
-             * See comments in {@link
-             * AbstractDiagramListEditPart#getSourceConnectionAnchor(Request)}.
+             * See comments in {@link AbstractDiagramListEditPart#getSourceConnectionAnchor(Request)}.
              */
             final DropRequest dr = (DropRequest) request;
             if (dr.getLocation() != null) {
@@ -361,8 +348,7 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
         }
         if (result == null && request instanceof DropRequest) {
             /*
-             * See comments in {@link
-             * AbstractDiagramListEditPart#getSourceConnectionAnchor(Request)}.
+             * See comments in {@link AbstractDiagramListEditPart#getSourceConnectionAnchor(Request)}.
              */
             final DropRequest dr = (DropRequest) request;
             if (dr.getLocation() != null) {

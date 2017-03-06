@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,9 @@ package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -27,6 +29,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -144,13 +147,12 @@ public final class DiagramElementEditPartOperation {
     }
 
     /**
-     * Returns the target value of the {@link DSemanticDecorator} that is
-     * represented by the <code>self</code> edit part.
+     * Returns the target value of the {@link DSemanticDecorator} that is represented by the <code>self</code> edit
+     * part.
      * 
      * @param self
      *            the edit part.
-     * @return the target value of the {@link DSemanticDecorator} that is
-     *         represented by this edit part.
+     * @return the target value of the {@link DSemanticDecorator} that is represented by this edit part.
      */
     public static EObject resolveTargetSemanticElement(final IDiagramElementEditPart self) {
         final EObject semanticHost = self.resolveSemanticElement();
@@ -179,8 +181,7 @@ public final class DiagramElementEditPartOperation {
     }
 
     /**
-     * This method is invoked when the diagram element of the specified edit
-     * part is modified.
+     * This method is invoked when the diagram element of the specified edit part is modified.
      * 
      * @param self
      *            the edit part.
@@ -240,13 +241,11 @@ public final class DiagramElementEditPartOperation {
     }
 
     /**
-     * Resolves all semantic elements that are represented by this diagram
-     * element.
+     * Resolves all semantic elements that are represented by this diagram element.
      * 
      * @param self
      *            the edit part.
-     * @return all semantic elements that are represented by this diagram
-     *         element.
+     * @return all semantic elements that are represented by this diagram element.
      */
     public static List<EObject> resolveAllSemanticElements(final IDiagramElementEditPart self) {
         final DDiagramElement diagramElement = self.resolveDiagramElement();
@@ -257,15 +256,13 @@ public final class DiagramElementEditPartOperation {
     }
 
     /**
-     * Returns the edit part that represents the style of the diagram element
-     * that is represented by <code>self</code> or <code>null</code> if no edit
-     * part can be found.
+     * Returns the edit part that represents the style of the diagram element that is represented by <code>self</code>
+     * or <code>null</code> if no edit part can be found.
      * 
      * @param self
      *            the edit part of the diagram element.
-     * @return the edit part that represents the style of the diagram element
-     *         that is represented by <code>self</code> or <code>null</code> if
-     *         no edit part can be found.
+     * @return the edit part that represents the style of the diagram element that is represented by <code>self</code>
+     *         or <code>null</code> if no edit part can be found.
      */
     public static IStyleEditPart getStyleEditPart(final IDiagramElementEditPart self) {
         IStyleEditPart result = null;
@@ -441,8 +438,7 @@ public final class DiagramElementEditPartOperation {
     private static boolean isHidden(DDiagramElement diagramElement, DDiagram parentDiagram) {
         final EObject diagramElementContainer = diagramElement.eContainer();
         /*
-         * if direct container is null we could in a rollback, so we should not
-         * delete the child
+         * if direct container is null we could in a rollback, so we should not delete the child
          */
         if (diagramElementContainer != null) {
             if (!DisplayServiceManager.INSTANCE.getDisplayService().isDisplayed(parentDiagram, diagramElement)) {
@@ -474,8 +470,7 @@ public final class DiagramElementEditPartOperation {
      * 
      * @param figure
      *            any Figure.
-     * @return a figure corresponding to a {@link Style} element in the
-     *         metamodel.
+     * @return a figure corresponding to a {@link Style} element in the metamodel.
      */
     public static StyledFigure getStyledFigure(final IFigure figure) {
         StyledFigure styledFigure = null;
@@ -548,16 +543,15 @@ public final class DiagramElementEditPartOperation {
     }
 
     /**
-     * Sets the SWT line style of the given figure. The SWT line style is
-     * computed from the Sirius VSM defined line style.
+     * Sets the SWT line style of the given figure. The SWT line style is computed from the Sirius VSM defined line
+     * style.
      * 
      * @param figure
      *            the figure to update
      * @param lineStyle
      *            the {@link LineStyle} to set.
      * @param useCustomDashStyle
-     *            true to use the custom dash style (history behavior for
-     *            edges).
+     *            true to use the custom dash style (history behavior for edges).
      */
     public static void setLineStyle(Shape figure, LineStyle lineStyle, boolean useCustomDashStyle) {
         figure.setLineStyle(getSwtLineStyle(lineStyle, useCustomDashStyle));
@@ -567,8 +561,8 @@ public final class DiagramElementEditPartOperation {
     }
 
     /**
-     * Sets the SWT line style of the given figure. The SWT line style is
-     * computed from the Sirius VSM defined line style.
+     * Sets the SWT line style of the given figure. The SWT line style is computed from the Sirius VSM defined line
+     * style.
      * 
      * @param figure
      *            the figure to update
@@ -580,8 +574,8 @@ public final class DiagramElementEditPartOperation {
     }
 
     /**
-     * Sets the SWT line style of the given border. The SWT line style is
-     * computed from the Sirius VSM defined line style.
+     * Sets the SWT line style of the given border. The SWT line style is computed from the Sirius VSM defined line
+     * style.
      * 
      * @param border
      *            the border to update
@@ -672,6 +666,45 @@ public final class DiagramElementEditPartOperation {
             if (dDiagramElement instanceof DNode) {
                 styleConfiguration.adaptNodeLabel((DNode) dDiagramElement, siriusWrapLabel);
             }
+        }
+    }
+
+    /**
+     * Handles the property changed event. Clients should override to respond to the specific notification events they
+     * are interested.
+     * 
+     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart.handleNotificationEvent(Notification)
+     * 
+     * @param diagramElementEditPart
+     *            the part which received the notification.
+     * @param notification
+     *            the <code>Notification</code> object that is the property changed event
+     */
+
+    public static void handleNotificationEvent(IDiagramElementEditPart diagramElementEditPart, Notification notification) {
+        Set<EditPart> toRefresh = new LinkedHashSet<>();
+
+        final EditPart styleEditPart = getStyleEditPart(diagramElementEditPart);
+        EObject styleEditPartSemanticElement = null;
+        // Refreshes edit part.
+        if (styleEditPart != null) {
+            styleEditPartSemanticElement = ((IGraphicalEditPart) styleEditPart).resolveSemanticElement();
+            if (styleEditPartSemanticElement != null && styleEditPartSemanticElement.eResource() != null) {
+                toRefresh.add(styleEditPart);
+            }
+        }
+
+        final EObject element = diagramElementEditPart.resolveSemanticElement();
+        if (element != null && diagramElementEditPart.getParent() != null) {
+            // Avoid to re-check eResource() != null if the semantic element is the same than the style edit part one's
+            // (should be the case in major cases).
+            if (element.equals(styleEditPartSemanticElement) && toRefresh.contains(styleEditPart) || element.eResource() != null) {
+                toRefresh.add(diagramElementEditPart);
+            }
+        }
+
+        for (EditPart part : toRefresh) {
+            part.refresh();
         }
     }
 }

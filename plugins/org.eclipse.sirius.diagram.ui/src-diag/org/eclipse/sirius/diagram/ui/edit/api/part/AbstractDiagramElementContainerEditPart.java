@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -103,8 +103,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     /**
      * Default spacing used for the layout manager of the content pane.
      * 
-     * Will be used to locate the compartment edit part (for region container,
-     * list) after the label.
+     * Will be used to locate the compartment edit part (for region container, list) after the label.
      */
     public static final int DEFAULT_SPACING = 5;
 
@@ -131,18 +130,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
 
     @Override
     protected void handleNotificationEvent(final Notification notification) {
-        final EditPart styleEditPart = getStyleEditPart();
-        // Refreshes edit part.
-        if (styleEditPart != null) {
-            final EObject element = ((IGraphicalEditPart) styleEditPart).resolveSemanticElement();
-            if (element != null && element.eResource() != null) {
-                styleEditPart.refresh();
-            }
-        }
-        final EObject element = resolveSemanticElement();
-        if (element != null && element.eResource() != null && getParent() != null) {
-            refresh();
-        }
+        DiagramElementEditPartOperation.handleNotificationEvent(this, notification);
+
         super.handleNotificationEvent(notification);
         AbstractDiagramNodeEditPartOperation.handleNotificationEvent(this, notification);
 
@@ -215,8 +204,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     }
 
     /**
-     * Default implementation treats passed figure as content pane. Respects
-     * layout one may have set for generated figure.
+     * Default implementation treats passed figure as content pane. Respects layout one may have set for generated
+     * figure.
      * 
      * @param nodeShape
      *            instance of generated figure class
@@ -268,8 +257,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      * 
      * Creates figure for this edit part.
      * 
-     * Body of this method does not depend on settings in generation model so
-     * you may safely remove <i>generated</i> tag and modify it.
+     * Body of this method does not depend on settings in generation model so you may safely remove <i>generated</i> tag
+     * and modify it.
      * 
      * @was-generated
      */
@@ -343,12 +332,9 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      * 
      * The method will return:
      * <ul>
-     * <li> {@link PositionConstants.None} if the parent is not a Region
-     * Container.</li>
-     * <li> {@link PositionConstants.NORTH_SOUTH} if the parent is a vertical
-     * stack Region Container.</li>
-     * <li> {@link PositionConstants.EAST_WEST} if the parent is a horizontal
-     * stack Region Container.</li>
+     * <li>{@link PositionConstants.None} if the parent is not a Region Container.</li>
+     * <li>{@link PositionConstants.NORTH_SOUTH} if the parent is a vertical stack Region Container.</li>
+     * <li>{@link PositionConstants.EAST_WEST} if the parent is a horizontal stack Region Container.</li>
      * </ul>
      * 
      * @return the direction of the parent stack.
@@ -457,8 +443,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     }
 
     /**
-     * Creates the shape figure for this edit part, depending on the style :
-     * shape, list.
+     * Creates the shape figure for this edit part, depending on the style : shape, list.
      * 
      * @return a shape figure for this edit part.
      */
@@ -507,9 +492,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     }
 
     /**
-     * Add a semi-transparent drop-shadow to the container, except for regions
-     * or workspac eimage styles. These can have a non-rectangular contour and
-     * transparent zones which should be kept as is.
+     * Add a semi-transparent drop-shadow to the container, except for regions or workspac eimage styles. These can have
+     * a non-rectangular contour and transparent zones which should be kept as is.
      * 
      * @param figure
      *            the current figure which needs a border.
@@ -542,27 +526,21 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
             final DropRequest dr = (DropRequest) request;
             if (dr.getLocation() != null) {
                 /*
-                 * We pass here during the feedback phase of the edge creation.
-                 * This phase is handled by GMF alone, and we have access to the
-                 * real expected location. We store that location in a globally
-                 * accessible place where we can get it back during the actual
-                 * creation phase.
+                 * We pass here during the feedback phase of the edge creation. This phase is handled by GMF alone, and
+                 * we have access to the real expected location. We store that location in a globally accessible place
+                 * where we can get it back during the actual creation phase.
                  */
                 ViewLocationHint.getInstance().putData(ViewLocationHint.SOURCE_ANCHOR_LOCATION, dr.getLocation());
             } else {
                 /*
-                 * We pass here during the actual edge creation, triggered from
-                 * the canonical refresh. At this point the request we get is
-                 * the one created by
-                 * DDiagramCanonicalEditPolicy#createConnections(), which does
-                 * not have a location. We use the latest one saved during the
-                 * feedback phase instead.
+                 * We pass here during the actual edge creation, triggered from the canonical refresh. At this point the
+                 * request we get is the one created by DDiagramCanonicalEditPolicy#createConnections(), which does not
+                 * have a location. We use the latest one saved during the feedback phase instead.
                  */
                 final Point realLocation = (Point) ViewLocationHint.getInstance().getData(ViewLocationHint.SOURCE_ANCHOR_LOCATION);
                 /*
-                 * WARNING: we can not set the location of the request (and then
-                 * simply call "super"), so the line below is is directly copied
-                 * from ShapeNodeEditPart#getSourceConnectionAnchor().
+                 * WARNING: we can not set the location of the request (and then simply call "super"), so the line below
+                 * is is directly copied from ShapeNodeEditPart#getSourceConnectionAnchor().
                  */
                 return getNodeFigure().getSourceConnectionAnchorAt(realLocation);
             }
@@ -810,8 +788,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
                                 break;
                             }
                         }
-                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), Messages.IAbstractDiagramNodeEditPart_resizeCommandLabel, new EObjectAdapter(
-                                graphicalEditPart.getNotationView()), new Rectangle(position, dimension));
+                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), Messages.IAbstractDiagramNodeEditPart_resizeCommandLabel,
+                                new EObjectAdapter(graphicalEditPart.getNotationView()), new Rectangle(position, dimension));
                         cmd = new ICommandProxy(setBoundsCommand);
                     }
                 }
@@ -834,9 +812,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     }
 
     /**
-     * Reinit the figure. It removes the current children of the main figure
-     * (created with a previous style) and replace them with those created with
-     * the current style.
+     * Reinit the figure. It removes the current children of the main figure (created with a previous style) and replace
+     * them with those created with the current style.
      */
     public void reInitFigure() {
         final IFigure mainFigure = ((BorderedNodeFigure) getFigure()).getMainFigure();
