@@ -183,7 +183,11 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
 
     @Override
     public LockStatus getLockStatus(EObject obj) {
-        return convertLockStatus(this.auth.getLockStatus(obj));
+        LockStatus result = convertLockStatus(this.auth.getLockStatus(obj));
+        if (result == LockStatus.UNLOCKED && !this.auth.canEditInstance(obj)) {
+            result = LockStatus.LOCKED_PERMISSION;
+        }
+        return result;
     }
 
     /**
