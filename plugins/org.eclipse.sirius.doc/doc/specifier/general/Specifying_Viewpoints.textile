@@ -91,7 +91,11 @@ h3(#type_names). Type Names
 Some _VSM_ elements will need you to specify one or more _Type Names_ to configure them, usually types from the semantic domain model being represented (for example the _Domain Class_ for mapping definitions). You can easily identify _Type Name_ fields by their green background in the _Properties_ sheet of an element.
 
 !images/domain_class.png!
-The syntax for type names can be the basic name, like @Class@, a qualified name using name of the EMF EPackage which defines the type, like @uml.Class@, or a fully qualified URI like @http://www.eclipse.org/uml2/3.0.0/UML#//Class@.
+The syntax for type names are the following:
+* *minimal syntax:* it is the basic name, like @Class@,
+* *AQL/OCL syntax:* a qualified name using name of the EMF EPackage which defines the type with the separator @::@ like  @uml::Class@. It is the default and *recommended* syntax, consistent with how qualified type names are written in AQL
+* *legacy qualified name like syntax:* it is a qualified name using name of the EMF EPackage which defines the type, like @uml.Class@.
+* *fully qualified URI*: like @http://www.eclipse.org/uml2/3.0.0/UML#//Class@.
 
 Auto-completion is available in these fields using the _Ctrl+Space_ shortcut. It is recommended to explicitly associate a meta-model (or more) to your representations definitions to allow for smarter completion. Otherwise by default it will include all types from any EMF meta-model available.
 

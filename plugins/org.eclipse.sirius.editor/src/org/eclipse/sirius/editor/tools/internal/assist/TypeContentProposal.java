@@ -43,6 +43,7 @@ public class TypeContentProposal implements IContentProposal {
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getContent() {
         final String content = getLabel().substring(incomplete.length());
         return content;
@@ -51,6 +52,7 @@ public class TypeContentProposal implements IContentProposal {
     /**
      * {@inheritDoc}
      */
+    @Override
     public int getCursorPosition() {
         return getLabel().length() + 1;
     }
@@ -58,6 +60,7 @@ public class TypeContentProposal implements IContentProposal {
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getDescription() {
         String description = getLabel();
         final String doc = EcoreUtil.getDocumentation(proposal);
@@ -82,14 +85,17 @@ public class TypeContentProposal implements IContentProposal {
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getLabel() {
         String label = proposal.getName();
         String pkgName = proposal.getEPackage().getName();
         if (pkgName != null) {
-            // Propose "." by default, unless the user already started using "::"
-            String separator = ".";
+            // Propose "::" by default, unless the user already started using "."
+            String separator = "::";
             if (incomplete.startsWith(pkgName + ":")) {
                 separator = "::";
+            } else if (incomplete.startsWith(pkgName + ".")) {
+                separator = ".";
             }
             String fullyQualifiedProposal = pkgName + separator + proposal.getName();
             if (fullyQualifiedProposal.startsWith(incomplete)) {

@@ -282,11 +282,28 @@
 		</p>
 		<p>
 			<img border="0" src="images/domain_class.png"/>
-			<br/>The syntax for type names can be the basic name, like 
-			<code>Class</code>, a qualified name using name of the EMF EPackage which defines the type, like 
-			<code>uml.Class</code>, or a fully qualified URI like 
-			<code>http://www.eclipse.org/uml2/3.0.0/UML#//Class</code>.
+			<br/>The syntax for type names are the following:
 		</p>
+		<ul>
+			<li>
+				<strong>minimal syntax:</strong> it is the basic name, like 
+				<code>Class</code>,
+			</li>
+			<li>
+				<strong>AQL/OCL syntax:</strong> a qualified name using name of the EMF EPackage which defines the type with the separator 
+				<code>::</code> like  
+				<code>uml::Class</code>. It is the default and 
+				<strong>recommended</strong> syntax, consistent with how qualified type names are written in AQL
+			</li>
+			<li>
+				<strong>legacy qualified name like syntax:</strong> it is a qualified name using name of the EMF EPackage which defines the type, like 
+				<code>uml.Class</code>.
+			</li>
+			<li>
+				<strong>fully qualified URI</strong>: like 
+				<code>http://www.eclipse.org/uml2/3.0.0/UML#//Class</code>.
+			</li>
+		</ul>
 		<p>Auto-completion is available in these fields using the 
 			<em>Ctrl+Space</em> shortcut. It is recommended to explicitly associate a meta-model (or more) to your representations definitions to allow for smarter completion. Otherwise by default it will include all types from any EMF meta-model available.
 		</p>
