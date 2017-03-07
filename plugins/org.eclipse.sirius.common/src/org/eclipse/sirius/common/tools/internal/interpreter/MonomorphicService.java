@@ -69,11 +69,7 @@ class MonomorphicService implements IMonomorphicService {
         Object result = null;
         try {
             result = serviceMethod.invoke(serviceInstance, target);
-        } catch (IllegalArgumentException e) {
-            fail(e);
-        } catch (IllegalAccessException e) {
-            fail(e);
-        } catch (InvocationTargetException e) {
+        } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
             fail(e);
         }
         return result;
