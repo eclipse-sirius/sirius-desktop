@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.Consumer;
 
 import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
@@ -24,7 +25,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.eef.core.api.EditingContextAdapter;
 import org.eclipse.eef.core.api.LockStatusChangeEvent;
 import org.eclipse.eef.core.api.LockStatusChangeEvent.LockStatus;
-import org.eclipse.eef.core.api.controllers.IConsumer;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -68,7 +68,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     /**
      * The callback to invoke to notify the EEF side when the model has changed.
      */
-    protected IConsumer<List<Notification>> onModelChanged;
+    protected Consumer<List<Notification>> onModelChanged;
 
     /**
      * The editing domain to integrate with.
@@ -100,7 +100,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     /**
      * The EEF-side listeners to notify when lock status change.
      */
-    private List<IConsumer<Collection<LockStatusChangeEvent>>> lockStatusListeners = new CopyOnWriteArrayList<>();
+    private List<Consumer<Collection<LockStatusChangeEvent>>> lockStatusListeners = new CopyOnWriteArrayList<>();
 
     /**
      * Create a new detector.
@@ -147,7 +147,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     }
 
     @Override
-    public void registerModelChangeListener(IConsumer<List<Notification>> listener) {
+    public void registerModelChangeListener(Consumer<List<Notification>> listener) {
         if (this.onModelChanged == null) {
             ted.addResourceSetListener(postCommitListener);
         }
@@ -166,7 +166,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     }
 
     @Override
-    public void addLockStatusChangedListener(IConsumer<Collection<LockStatusChangeEvent>> listener) {
+    public void addLockStatusChangedListener(Consumer<Collection<LockStatusChangeEvent>> listener) {
         if (this.lockStatusListeners.isEmpty()) {
             auth.addAuthorityListener(authListener);
         }
@@ -174,7 +174,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     }
 
     @Override
-    public void removeLockStatusChangedListener(IConsumer<Collection<LockStatusChangeEvent>> listener) {
+    public void removeLockStatusChangedListener(Consumer<Collection<LockStatusChangeEvent>> listener) {
         this.lockStatusListeners.remove(listener);
         if (this.lockStatusListeners.isEmpty()) {
             auth.removeAuthorityListener(authListener);
@@ -232,7 +232,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
         @Override
         public void resourceSetChanged(final ResourceSetChangeEvent event) {
             if (onModelChanged != null && (forceRefreshOnRepresentationChanges() || RefreshHelper.isImpactingNotification(event.getNotifications()))) {
-                onModelChanged.apply(Lists.newArrayList(event.getNotifications()));
+                onModelChanged.accept(Lists.newArrayList(event.getNotifications()));
             }
         }
     }
@@ -275,8 +275,8 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
         }
 
         private void notifyListeners(Collection<LockStatusChangeEvent> events) {
-            for (IConsumer<Collection<LockStatusChangeEvent>> l : lockStatusListeners) {
-                l.apply(events);
+            for (Consumer<Collection<LockStatusChangeEvent>> l : lockStatusListeners) {
+                l.accept(events);
             }
         }
 
