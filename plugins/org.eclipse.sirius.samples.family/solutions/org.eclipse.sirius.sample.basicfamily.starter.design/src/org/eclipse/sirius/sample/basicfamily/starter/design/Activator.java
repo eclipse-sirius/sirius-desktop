@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014, 2017 Obeo
+ * Copyright (c) 2017 Obeo
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *  Obeo - initial API and implementation
  */
-package org.eclipse.sirius.sample.basicfamily.design;
+package org.eclipse.sirius.sample.basicfamily.starter.design;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,7 +23,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
     // The plug-in ID
-    public static final String PLUGIN_ID = "org.eclipse.sirius.sample.basicfamily.design";
+    public static final String PLUGIN_ID = "org.eclipse.sirius.sample.basicfamily.starter.design";
 
     // The shared instance
     private static Activator plugin;
