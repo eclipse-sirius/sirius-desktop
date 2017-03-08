@@ -24,7 +24,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.dialog.ExportAsImageHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
@@ -126,7 +125,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
             final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, BIG_SESSION);
             localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
             exportBigAsImageFromProjectExplorerView("JPG");
-            valideBigExportResult("jpg", REPRESENTATION_INSTANCE_BIG);
+            valideExportResult("jpg", REPRESENTATION_INSTANCE_BIG);
         } finally {
             setErrorCatchActive(true);
         }
@@ -198,7 +197,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
             // UIDiagramRepresentation.class).open();
             openDiagramEditor();
             exportAsImageFromEditorTabBar("JPG");
-            valideBigExportResult("jpg", REPRESENTATION_INSTANCE_BIG);
+            valideExportResult("jpg", REPRESENTATION_INSTANCE_BIG);
         } finally {
             setErrorCatchActive(true);
         }
@@ -595,13 +594,6 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
             assertTrue("The project " + designerProject.getName() + " does not contain " + filename + "." + imageExtension + " in treeViewer : " + nodes,
                     nodes.contains(filename + "." + imageExtension));
         }
-    }
-
-    private void valideBigExportResult(String imageExtension, final String... expectedFileNames) throws Exception {
-        bot.waitUntil(Conditions.shellIsActive("Image export impossible"));
-        SWTBotShell shell = bot.activeShell();
-        bot.button("OK").click();
-        bot.waitUntil(Conditions.shellCloses(shell));
     }
 
     /**

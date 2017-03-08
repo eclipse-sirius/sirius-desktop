@@ -308,10 +308,16 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         }
 
         if (!found) {
-            Image image = gen.createSWTImageDescriptorForParts(editParts, imageRect).createImage();
-            monitor.worked(1);
-            saveToFile(destination, image, format, monitor);
-            image.dispose();
+            Image image = null;
+            try {
+                image = gen.createSWTImageDescriptorForParts(editParts, imageRect).createImage();
+                monitor.worked(1);
+                saveToFile(destination, image, format, monitor);
+            } finally {
+                if (image != null) {
+                    image.dispose();
+                }
+            }
         }
     }
 
