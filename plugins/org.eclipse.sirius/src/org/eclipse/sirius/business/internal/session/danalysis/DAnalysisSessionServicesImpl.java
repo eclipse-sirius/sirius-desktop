@@ -314,7 +314,16 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
 
     private Collection<EObject> getFeatureExtensionsData(final EObject associatedInstance, Collection<Resource> resources) {
         final Collection<EObject> datas = Lists.newArrayList();
-        for (final Resource res : resources) {
+        Collection<Resource> allResources = Lists.newArrayList();
+        allResources.addAll(resources);
+        // We also need to looking for the data in the given associatedInstance resource. (srm file for instance)
+        if (associatedInstance != null) {
+            Resource associatedInstanceResource = associatedInstance.eResource();
+            if (associatedInstanceResource != null) {
+                allResources.add(associatedInstanceResource);
+            }
+        }
+        for (final Resource res : allResources) {
             for (final EObject object : res.getContents()) {
                 if (object instanceof DFeatureExtension) {
                     datas.add(object);
