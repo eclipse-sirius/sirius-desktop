@@ -26,19 +26,19 @@ import org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl;
  * Reference Widget Conditional Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetConditionalStyleImpl#getStyle
  * <em>Style</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class ExtReferenceWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl implements ExtReferenceWidgetConditionalStyle {
     /**
-     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getStyle()
      * @generated

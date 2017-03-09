@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
@@ -25,12 +26,18 @@ import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsr
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
  *
  * @generated
  */
 public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl implements PropertiesExtWidgetsReferencePackage {
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass abstractExtReferenceDescriptionEClass = null;
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -53,13 +60,11 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
     private EClass extReferenceWidgetConditionalStyleEClass = null;
 
     /**
-     * Creates an instance of the model <b>Package</b>, registered with
-     * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
-     * package package URI value.
+     * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
+     * EPackage.Registry} by the package package URI value.
      * <p>
-     * Note: the correct way to create the package is via the static factory
-     * method {@link #init init()}, which also performs initialization of the
-     * package, or returns the registered package, if one already exists. <!--
+     * Note: the correct way to create the package is via the static factory method {@link #init init()}, which also
+     * performs initialization of the package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see org.eclipse.emf.ecore.EPackage.Registry
@@ -79,15 +84,12 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
     private static boolean isInited = false;
 
     /**
-     * Creates, registers, and initializes the <b>Package</b> for this model,
-     * and for any others upon which it depends.
+     * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
      *
      * <p>
-     * This method is used to initialize
-     * {@link PropertiesExtWidgetsReferencePackage#eINSTANCE} when that field is
-     * accessed. Clients should not invoke it directly. Instead, they should
-     * simply access that field to obtain the package. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This method is used to initialize {@link PropertiesExtWidgetsReferencePackage#eINSTANCE} when that field is
+     * accessed. Clients should not invoke it directly. Instead, they should simply access that field to obtain the
+     * package. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #eNS_URI
      * @see #createPackageContents()
@@ -129,48 +131,58 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
      * @generated
      */
     @Override
+    public EClass getAbstractExtReferenceDescription() {
+        return abstractExtReferenceDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getAbstractExtReferenceDescription_ReferenceNameExpression() {
+        return (EAttribute) abstractExtReferenceDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getAbstractExtReferenceDescription_ReferenceOwnerExpression() {
+        return (EAttribute) abstractExtReferenceDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getAbstractExtReferenceDescription_Style() {
+        return (EReference) abstractExtReferenceDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getAbstractExtReferenceDescription_ConditionalStyles() {
+        return (EReference) abstractExtReferenceDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getExtReferenceDescription() {
         return extReferenceDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EAttribute getExtReferenceDescription_ReferenceNameExpression() {
-        return (EAttribute) extReferenceDescriptionEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EAttribute getExtReferenceDescription_ReferenceOwnerExpression() {
-        return (EAttribute) extReferenceDescriptionEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getExtReferenceDescription_Style() {
-        return (EReference) extReferenceDescriptionEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getExtReferenceDescription_ConditionalStyles() {
-        return (EReference) extReferenceDescriptionEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -221,9 +233,8 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
     private boolean isCreated = false;
 
     /**
-     * Creates the meta-model objects for the package. This method is guarded to
-     * have no affect on any invocation but its first. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but
+     * its first. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -234,11 +245,13 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
         isCreated = true;
 
         // Create classes and their features
+        abstractExtReferenceDescriptionEClass = createEClass(PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION);
+        createEAttribute(abstractExtReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_NAME_EXPRESSION);
+        createEAttribute(abstractExtReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION);
+        createEReference(abstractExtReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE);
+        createEReference(abstractExtReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES);
+
         extReferenceDescriptionEClass = createEClass(PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_DESCRIPTION);
-        createEAttribute(extReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_DESCRIPTION__REFERENCE_NAME_EXPRESSION);
-        createEAttribute(extReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION);
-        createEReference(extReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_DESCRIPTION__STYLE);
-        createEReference(extReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES);
 
         extReferenceWidgetStyleEClass = createEClass(PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_WIDGET_STYLE);
 
@@ -254,9 +267,8 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
     private boolean isInitialized = false;
 
     /**
-     * Complete the initialization of the package and its meta-model. This
-     * method is guarded to have no affect on any invocation but its first. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
+     * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -280,25 +292,30 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
         // Set bounds for type parameters
 
         // Add supertypes to classes
+        abstractExtReferenceDescriptionEClass.getESuperTypes().add(thePropertiesPackage.getAbstractWidgetDescription());
+        extReferenceDescriptionEClass.getESuperTypes().add(this.getAbstractExtReferenceDescription());
         extReferenceDescriptionEClass.getESuperTypes().add(thePropertiesPackage.getWidgetDescription());
         extReferenceWidgetStyleEClass.getESuperTypes().add(thePropertiesPackage.getWidgetStyle());
         extReferenceWidgetConditionalStyleEClass.getESuperTypes().add(thePropertiesPackage.getWidgetConditionalStyle());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(extReferenceDescriptionEClass, ExtReferenceDescription.class, "ExtReferenceDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+        initEClass(abstractExtReferenceDescriptionEClass, AbstractExtReferenceDescription.class, "AbstractExtReferenceDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getExtReferenceDescription_ReferenceNameExpression(), theDescriptionPackage.getInterpretedExpression(), "referenceNameExpression", null, 1, 1, ExtReferenceDescription.class, //$NON-NLS-1$
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
-        initEAttribute(getExtReferenceDescription_ReferenceOwnerExpression(), theDescriptionPackage.getInterpretedExpression(), "referenceOwnerExpression", null, 0, 1, ExtReferenceDescription.class, //$NON-NLS-1$
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
-        initEReference(getExtReferenceDescription_Style(), this.getExtReferenceWidgetStyle(), null, "style", null, 0, 1, ExtReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+        initEAttribute(getAbstractExtReferenceDescription_ReferenceNameExpression(), theDescriptionPackage.getInterpretedExpression(), "referenceNameExpression", null, 1, 1, //$NON-NLS-1$
+                AbstractExtReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getAbstractExtReferenceDescription_ReferenceOwnerExpression(), theDescriptionPackage.getInterpretedExpression(), "referenceOwnerExpression", null, 0, 1, //$NON-NLS-1$
+                AbstractExtReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getAbstractExtReferenceDescription_Style(), this.getExtReferenceWidgetStyle(), null, "style", null, 0, 1, AbstractExtReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getExtReferenceDescription_ConditionalStyles(), this.getExtReferenceWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, ExtReferenceDescription.class, //$NON-NLS-1$
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
-                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getAbstractExtReferenceDescription_ConditionalStyles(), this.getExtReferenceWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, //$NON-NLS-1$
+                AbstractExtReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES,
+                !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(extReferenceDescriptionEClass, ExtReferenceDescription.class, "ExtReferenceDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(extReferenceWidgetStyleEClass, ExtReferenceWidgetStyle.class, "ExtReferenceWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);

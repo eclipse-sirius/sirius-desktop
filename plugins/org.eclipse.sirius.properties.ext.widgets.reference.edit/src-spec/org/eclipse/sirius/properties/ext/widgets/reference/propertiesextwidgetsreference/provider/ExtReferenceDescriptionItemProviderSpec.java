@@ -53,12 +53,12 @@ public class ExtReferenceDescriptionItemProviderSpec extends ExtReferenceDescrip
 
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-        newChildDescriptors.add(
-                createChildParameter(PropertiesExtWidgetsReferencePackage.Literals.EXT_REFERENCE_DESCRIPTION__STYLE, PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceWidgetStyle()));
+        newChildDescriptors.add(createChildParameter(PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE,
+                PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceWidgetStyle()));
 
         ExtReferenceWidgetConditionalStyle conditionalStyle = PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceWidgetConditionalStyle();
         conditionalStyle.setStyle(PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceWidgetStyle());
-        newChildDescriptors.add(createChildParameter(PropertiesExtWidgetsReferencePackage.Literals.EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+        newChildDescriptors.add(createChildParameter(PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
     }
 
 }

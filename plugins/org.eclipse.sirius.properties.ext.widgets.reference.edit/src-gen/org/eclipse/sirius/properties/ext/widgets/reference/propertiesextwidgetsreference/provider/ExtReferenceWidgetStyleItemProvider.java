@@ -17,7 +17,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemStyledLabelProvider;
 import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
 import org.eclipse.sirius.properties.provider.WidgetStyleItemProvider;
@@ -29,10 +28,9 @@ import org.eclipse.sirius.properties.provider.WidgetStyleItemProvider;
  * 
  * @generated
  */
-public class ExtReferenceWidgetStyleItemProvider extends WidgetStyleItemProvider implements IItemStyledLabelProvider {
+public class ExtReferenceWidgetStyleItemProvider extends WidgetStyleItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -41,8 +39,7 @@ public class ExtReferenceWidgetStyleItemProvider extends WidgetStyleItemProvider
     }
 
     /**
-     * This returns the property descriptors for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -56,8 +53,7 @@ public class ExtReferenceWidgetStyleItemProvider extends WidgetStyleItemProvider
     }
 
     /**
-     * This returns ExtReferenceWidgetStyle.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This returns ExtReferenceWidgetStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -67,8 +63,7 @@ public class ExtReferenceWidgetStyleItemProvider extends WidgetStyleItemProvider
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -78,8 +73,7 @@ public class ExtReferenceWidgetStyleItemProvider extends WidgetStyleItemProvider
     }
 
     /**
-     * This returns the label styled text for the adapted class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -96,10 +90,9 @@ public class ExtReferenceWidgetStyleItemProvider extends WidgetStyleItemProvider
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
+     * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      * 
      * @generated
      */
@@ -110,9 +103,8 @@ public class ExtReferenceWidgetStyleItemProvider extends WidgetStyleItemProvider
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
+     * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */

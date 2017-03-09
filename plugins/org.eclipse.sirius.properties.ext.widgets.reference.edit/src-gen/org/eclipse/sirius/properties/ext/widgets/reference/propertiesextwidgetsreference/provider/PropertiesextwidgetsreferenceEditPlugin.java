@@ -18,23 +18,21 @@ import org.eclipse.sirius.properties.provider.PropertiesEditPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
- * This is the central singleton for the Properties-ext-widgets-reference edit
- * plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * This is the central singleton for the Properties-ext-widgets-reference edit plugin. <!-- begin-user-doc --> <!--
+ * end-user-doc -->
  * 
  * @generated
  */
 public final class PropertiesextwidgetsreferenceEditPlugin extends EMFPlugin {
     /**
-     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     public static final PropertiesextwidgetsreferenceEditPlugin INSTANCE = new PropertiesextwidgetsreferenceEditPlugin();
 
     /**
-     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -50,8 +48,7 @@ public final class PropertiesextwidgetsreferenceEditPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the singleton instance.
      * @generated
@@ -62,8 +59,7 @@ public final class PropertiesextwidgetsreferenceEditPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the singleton instance.
      * @generated
@@ -73,8 +69,7 @@ public final class PropertiesextwidgetsreferenceEditPlugin extends EMFPlugin {
     }
 
     /**
-     * The actual implementation of the Eclipse <b>Plugin</b>. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The actual implementation of the Eclipse <b>Plugin</b>. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */

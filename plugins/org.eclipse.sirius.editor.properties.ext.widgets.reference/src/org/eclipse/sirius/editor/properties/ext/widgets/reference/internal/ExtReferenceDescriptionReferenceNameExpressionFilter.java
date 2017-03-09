@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,8 +14,7 @@ import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilt
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
 
 /**
- * The filter used for the property section for the expression used to compute
- * the name of the reference.
+ * The filter used for the property section for the expression used to compute the name of the reference.
  * 
  * @author sbegaudeau
  */
@@ -23,7 +22,7 @@ public class ExtReferenceDescriptionReferenceNameExpressionFilter extends Viewpo
 
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesExtWidgetsReferencePackage.eINSTANCE.getExtReferenceDescription_ReferenceNameExpression();
+        return PropertiesExtWidgetsReferencePackage.eINSTANCE.getAbstractExtReferenceDescription_ReferenceNameExpression();
     }
 
     @Override

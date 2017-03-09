@@ -16,10 +16,12 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.AbstractControlDescription;
+import org.eclipse.sirius.properties.AbstractWidgetDescription;
 import org.eclipse.sirius.properties.ControlDescription;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
@@ -27,11 +29,11 @@ import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsr
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
- * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
- * an adapter <code>createXXX</code> method for each class of the model. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter <code>createXXX</code>
+ * method for each class of the model. <!-- end-user-doc -->
  *
- * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage
+ * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.
+ *      PropertiesExtWidgetsReferencePackage
  * @generated
  */
 public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryImpl {
@@ -43,8 +45,7 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     protected static PropertiesExtWidgetsReferencePackage modelPackage;
 
     /**
-     * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -55,10 +56,9 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     }
 
     /**
-     * Returns whether this factory is applicable for the type of the object.
-     * <!-- begin-user-doc --> This implementation returns <code>true</code> if
-     * the object is either the model's package or is an instance object of the
-     * model. <!-- end-user-doc -->
+     * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc --> This
+     * implementation returns <code>true</code> if the object is either the model's package or is an instance object of
+     * the model. <!-- end-user-doc -->
      *
      * @return whether this factory is applicable for the type of the object.
      * @generated
@@ -75,12 +75,16 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     }
 
     /**
-     * The switch that delegates to the <code>createXXX</code> methods. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     protected PropertiesExtWidgetsReferenceSwitch<Adapter> modelSwitch = new PropertiesExtWidgetsReferenceSwitch<Adapter>() {
+        @Override
+        public Adapter caseAbstractExtReferenceDescription(AbstractExtReferenceDescription object) {
+            return createAbstractExtReferenceDescriptionAdapter();
+        }
+
         @Override
         public Adapter caseExtReferenceDescription(ExtReferenceDescription object) {
             return createExtReferenceDescriptionAdapter();
@@ -104,6 +108,11 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
         @Override
         public Adapter caseAbstractControlDescription(AbstractControlDescription object) {
             return createAbstractControlDescriptionAdapter();
+        }
+
+        @Override
+        public Adapter caseAbstractWidgetDescription(AbstractWidgetDescription object) {
+            return createAbstractWidgetDescriptionAdapter();
         }
 
         @Override
@@ -133,8 +142,7 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     };
 
     /**
-     * Creates an adapter for the <code>target</code>. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param target
      *            the object to adapt.
@@ -147,12 +155,27 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     }
 
     /**
-     * Creates a new adapter for an object of class
-     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription
-     * <em>Ext Reference Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription
+     * <em>Abstract Ext Reference Description</em>}'. <!-- begin-user-doc --> This default implementation returns null
+     * so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.
+     *      AbstractExtReferenceDescription
+     * @generated
+     */
+    public Adapter createAbstractExtReferenceDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription
+     * <em>Ext Reference Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription
@@ -163,12 +186,11 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     }
 
     /**
-     * Creates a new adapter for an object of class
-     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle
-     * <em>Ext Reference Widget Style</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle
+     * <em>Ext Reference Widget Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle
@@ -179,15 +201,15 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     }
 
     /**
-     * Creates a new adapter for an object of class
-     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle
-     * <em>Ext Reference Widget Conditional Style</em>}'. <!-- begin-user-doc
-     * --> This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle
+     * <em>Ext Reference Widget Conditional Style</em>}'. <!-- begin-user-doc --> This default implementation returns
+     * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
-     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.
+     *      ExtReferenceWidgetConditionalStyle
      * @generated
      */
     public Adapter createExtReferenceWidgetConditionalStyleAdapter() {
@@ -195,12 +217,10 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     }
 
     /**
-     * Creates a new adapter for an object of class
-     * '{@link org.eclipse.sirius.viewpoint.description.IdentifiedElement
-     * <em>Identified Element</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.description.IdentifiedElement
+     * <em>Identified Element</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.IdentifiedElement
@@ -211,12 +231,10 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     }
 
     /**
-     * Creates a new adapter for an object of class
-     * '{@link org.eclipse.sirius.properties.AbstractControlDescription
-     * <em>Abstract Control Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.AbstractControlDescription
+     * <em>Abstract Control Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.properties.AbstractControlDescription
@@ -227,12 +245,23 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     }
 
     /**
-     * Creates a new adapter for an object of class
-     * '{@link org.eclipse.sirius.properties.ControlDescription <em>Control
-     * Description</em>}'. <!-- begin-user-doc --> This default implementation
-     * returns null so that we can easily ignore cases; it's useful to ignore a
-     * case when inheritance will catch all the cases anyway. <!-- end-user-doc
-     * -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.AbstractWidgetDescription
+     * <em>Abstract Widget Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.AbstractWidgetDescription
+     * @generated
+     */
+    public Adapter createAbstractWidgetDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.ControlDescription <em>Control
+     * Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.properties.ControlDescription
@@ -243,12 +272,9 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     }
 
     /**
-     * Creates a new adapter for an object of class
-     * '{@link org.eclipse.sirius.properties.WidgetDescription <em>Widget
-     * Description</em>}'. <!-- begin-user-doc --> This default implementation
-     * returns null so that we can easily ignore cases; it's useful to ignore a
-     * case when inheritance will catch all the cases anyway. <!-- end-user-doc
-     * -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.WidgetDescription <em>Widget
+     * Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.properties.WidgetDescription
@@ -259,11 +285,10 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     }
 
     /**
-     * Creates a new adapter for an object of class
-     * '{@link org.eclipse.sirius.properties.WidgetStyle <em>Widget
-     * Style</em>}'. <!-- begin-user-doc --> This default implementation returns
-     * null so that we can easily ignore cases; it's useful to ignore a case
-     * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.WidgetStyle
+     * <em>Widget Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.properties.WidgetStyle
@@ -274,12 +299,10 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     }
 
     /**
-     * Creates a new adapter for an object of class
-     * '{@link org.eclipse.sirius.properties.WidgetConditionalStyle <em>Widget
-     * Conditional Style</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.WidgetConditionalStyle
+     * <em>Widget Conditional Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.properties.WidgetConditionalStyle
@@ -290,8 +313,8 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
     }
 
     /**
-     * Creates a new adapter for the default case. <!-- begin-user-doc --> This
-     * default implementation returns null. <!-- end-user-doc -->
+     * Creates a new adapter for the default case. <!-- begin-user-doc --> This default implementation returns null.
+     * <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @generated

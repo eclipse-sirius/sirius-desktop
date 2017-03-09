@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,9 +25,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
- * A section for the expression used to compute the name of the reference of a
- * ExtReferenceDescription object. In order to support the button used to open
- * the dialog for the edition of an expression, this code depends on an internal
+ * A section for the expression used to compute the name of the reference of a ExtReferenceDescription object. In order
+ * to support the button used to open the dialog for the edition of an expression, this code depends on an internal
  * class from Eclipse Sirius, {@link TextWithContentProposalDialog}.
  * 
  * @author sbegaudeau
@@ -49,7 +48,7 @@ public class ExtReferenceDescriptionReferenceNameExpressionPropertySection exten
 
     @Override
     public EAttribute getFeature() {
-        return PropertiesExtWidgetsReferencePackage.eINSTANCE.getExtReferenceDescription_ReferenceNameExpression();
+        return PropertiesExtWidgetsReferencePackage.eINSTANCE.getAbstractExtReferenceDescription_ReferenceNameExpression();
     }
 
     @Override

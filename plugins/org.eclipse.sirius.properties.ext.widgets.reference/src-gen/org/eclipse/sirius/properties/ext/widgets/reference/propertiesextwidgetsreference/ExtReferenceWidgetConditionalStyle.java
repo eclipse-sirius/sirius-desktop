@@ -19,12 +19,12 @@ import org.eclipse.sirius.properties.WidgetConditionalStyle;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle#getStyle
  * <em>Style</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage#getExtReferenceWidgetConditionalStyle()
  * @model
@@ -32,11 +32,10 @@ import org.eclipse.sirius.properties.WidgetConditionalStyle;
  */
 public interface ExtReferenceWidgetConditionalStyle extends WidgetConditionalStyle {
     /**
-     * Returns the value of the '<em><b>Style</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Style</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -49,10 +48,9 @@ public interface ExtReferenceWidgetConditionalStyle extends WidgetConditionalSty
     ExtReferenceWidgetStyle getStyle();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle#getStyle
-     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle#getStyle
+     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.

@@ -17,34 +17,36 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferenceFactory;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
-import org.eclipse.sirius.properties.provider.WidgetConditionalStyleItemProvider;
+import org.eclipse.sirius.properties.provider.AbstractWidgetDescriptionItemProvider;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle}
+ * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetConditionalStyleItemProvider {
+public class AbstractExtReferenceDescriptionItemProvider extends AbstractWidgetDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
-    public ExtReferenceWidgetConditionalStyleItemProvider(AdapterFactory adapterFactory) {
+    public AbstractExtReferenceDescriptionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -52,8 +54,38 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            addReferenceNameExpressionPropertyDescriptor(object);
+            addReferenceOwnerExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
+    }
+
+    /**
+     * This adds a property descriptor for the Reference Name Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addReferenceNameExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractExtReferenceDescription_referenceNameExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractExtReferenceDescription_referenceNameExpression_feature", "_UI_AbstractExtReferenceDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_NAME_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+                null));
+    }
+
+    /**
+     * This adds a property descriptor for the Reference Owner Expression feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addReferenceOwnerExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractExtReferenceDescription_referenceOwnerExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractExtReferenceDescription_referenceOwnerExpression_feature", "_UI_AbstractExtReferenceDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+                null));
     }
 
     /**
@@ -68,7 +100,8 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(PropertiesExtWidgetsReferencePackage.Literals.EXT_REFERENCE_WIDGET_CONDITIONAL_STYLE__STYLE);
+            childrenFeatures.add(PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE);
+            childrenFeatures.add(PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES);
         }
         return childrenFeatures;
     }
@@ -87,16 +120,6 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
     }
 
     /**
-     * This returns ExtReferenceWidgetConditionalStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ExtReferenceWidgetConditionalStyle")); //$NON-NLS-1$
-    }
-
-    /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -108,17 +131,17 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getStyledText(Object object) {
-        String label = ((ExtReferenceWidgetConditionalStyle) object).getPreconditionExpression();
+        String label = ((AbstractExtReferenceDescription) object).getName();
         StyledString styledLabel = new StyledString();
         if (label == null || label.length() == 0) {
-            styledLabel.append(getString("_UI_ExtReferenceWidgetConditionalStyle_type"), StyledString.Style.QUALIFIER_STYLER); //$NON-NLS-1$
+            styledLabel.append(getString("_UI_AbstractExtReferenceDescription_type"), StyledString.Style.QUALIFIER_STYLER); //$NON-NLS-1$
         } else {
-            styledLabel.append(getString("_UI_ExtReferenceWidgetConditionalStyle_type"), StyledString.Style.QUALIFIER_STYLER).append(" " + label); //$NON-NLS-1$ //$NON-NLS-2$
+            styledLabel.append(getString("_UI_AbstractExtReferenceDescription_type"), StyledString.Style.QUALIFIER_STYLER).append(" " + label); //$NON-NLS-1$ //$NON-NLS-2$
         }
         return styledLabel;
     }
@@ -134,8 +157,13 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(ExtReferenceWidgetConditionalStyle.class)) {
-        case PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_WIDGET_CONDITIONAL_STYLE__STYLE:
+        switch (notification.getFeatureID(AbstractExtReferenceDescription.class)) {
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_NAME_EXPRESSION:
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE:
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -145,15 +173,18 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(PropertiesExtWidgetsReferencePackage.Literals.EXT_REFERENCE_WIDGET_CONDITIONAL_STYLE__STYLE,
+        newChildDescriptors.add(createChildParameter(PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE,
                 PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceWidgetStyle()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES,
+                PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceWidgetConditionalStyle()));
     }
 
 }
