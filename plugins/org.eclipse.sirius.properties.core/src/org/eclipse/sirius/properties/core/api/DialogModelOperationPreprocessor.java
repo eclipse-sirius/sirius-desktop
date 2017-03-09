@@ -46,6 +46,11 @@ public class DialogModelOperationPreprocessor {
     private IVariableManager variableManager;
 
     /**
+     * The overrides provider.
+     */
+    private OverridesProvider overridesProvider;
+
+    /**
      * The constructor.
      * 
      * @param dialogModelOperation
@@ -54,11 +59,14 @@ public class DialogModelOperationPreprocessor {
      *            The interpreter
      * @param variableManager
      *            The variable manager
+     * @param overridesProvider
+     *            The overrides provider
      */
-    public DialogModelOperationPreprocessor(DialogModelOperation dialogModelOperation, IInterpreter interpreter, IVariableManager variableManager) {
+    public DialogModelOperationPreprocessor(DialogModelOperation dialogModelOperation, IInterpreter interpreter, IVariableManager variableManager, OverridesProvider overridesProvider) {
         this.dialogModelOperation = dialogModelOperation;
         this.interpreter = interpreter;
         this.variableManager = variableManager;
+        this.overridesProvider = overridesProvider;
     }
 
     /**
@@ -121,7 +129,7 @@ public class DialogModelOperationPreprocessor {
         Optional.ofNullable(this.dialogModelOperation.getPage()).ifPresent(pageDescription -> {
             Optional<IDescriptionPreprocessor> optionalPreprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(pageDescription);
             optionalPreprocessor.ifPresent(preprocessor -> {
-                EObject convertedEObject = preprocessor.convert(pageDescription, cache, interpreter, variableManager);
+                EObject convertedEObject = preprocessor.convert(pageDescription, cache, interpreter, variableManager, overridesProvider);
                 if (convertedEObject instanceof PageDescription) {
                     convertedDialogModelOperation.setPage((PageDescription) convertedEObject);
                 }
@@ -141,7 +149,7 @@ public class DialogModelOperationPreprocessor {
         this.dialogModelOperation.getGroups().forEach(groupDescription -> {
             Optional<IDescriptionPreprocessor> optionalPreprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(groupDescription);
             optionalPreprocessor.ifPresent(preprocessor -> {
-                EObject convertedEObject = preprocessor.convert(groupDescription, cache, interpreter, variableManager);
+                EObject convertedEObject = preprocessor.convert(groupDescription, cache, interpreter, variableManager, overridesProvider);
                 if (convertedEObject instanceof GroupDescription) {
                     convertedDialogModelOperation.getGroups().add((GroupDescription) convertedEObject);
                 }

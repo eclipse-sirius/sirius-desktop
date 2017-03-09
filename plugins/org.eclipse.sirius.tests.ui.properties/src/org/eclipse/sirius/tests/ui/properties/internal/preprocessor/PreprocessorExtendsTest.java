@@ -42,6 +42,7 @@ import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.sirius.common.interpreter.api.VariableManagerFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.core.api.OverridesProvider;
 import org.eclipse.sirius.properties.core.api.ViewDescriptionPreprocessor;
 import org.junit.Test;
 
@@ -52,12 +53,11 @@ import org.junit.Test;
  * @author flatombe
  * @author mbats
  */
-@SuppressWarnings("restriction")
-public final class PreprocessorTest {
+public final class PreprocessorExtendsTest {
     /**
      * The path of the input model in the bundle.
      */
-    private static final String INPUT_MODEL_PATH = "/data/preprocessor/input.odesign";
+    private static final String INPUT_MODEL_PATH = "/data/preprocessor/extends/input.odesign";
 
     /**
      * This test is used to ensure the proper transformation of a Sirius
@@ -67,7 +67,7 @@ public final class PreprocessorTest {
     @Test
     public void testPreprocessorTest() {
         EObject processedEObject = this.preprocess(this.load(INPUT_MODEL_PATH).getContents().get(0).eContents().get(0));
-        EObject expectedEObject = this.load("/data/preprocessor/expected.odesign").getContents().get(0);
+        EObject expectedEObject = this.load("/data/preprocessor/extends/expected.odesign").getContents().get(0);
 
         // For debug purpose only
         print(processedEObject);
@@ -114,7 +114,7 @@ public final class PreprocessorTest {
             ViewDescriptionPreprocessor preprocessor = new ViewDescriptionPreprocessor(viewExtensionDescription);
             IVariableManager variableManager = new VariableManagerFactory().createVariableManager();
             variableManager.put("self", viewExtensionDescription);
-            Optional<ViewExtensionDescription> processedOptional = preprocessor.convert(new AQLInterpreter(), variableManager);
+            Optional<ViewExtensionDescription> processedOptional = preprocessor.convert(new AQLInterpreter(), variableManager, new OverridesProvider(null));
             if (processedOptional.isPresent()) {
                 EObject processed = processedOptional.get();
                 ResourceSet resourceSet = new ResourceSetImpl();
@@ -123,6 +123,7 @@ public final class PreprocessorTest {
                 resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", //$NON-NLS-1$
                         new XMIResourceFactoryImpl());
                 Resource resource = resourceSet.createResource(URI.createURI(INPUT_MODEL_PATH));
+                resource.getContents().clear();
                 resource.getContents().add(processed);
 
                 return processed;

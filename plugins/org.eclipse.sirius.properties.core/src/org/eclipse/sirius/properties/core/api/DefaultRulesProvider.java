@@ -72,14 +72,18 @@ public final class DefaultRulesProvider {
 
         if (!optionalResource.isPresent()) {
             SiriusPropertiesCorePlugin.getPlugin().error(Messages.DefaultRulesProvider_DefaultPropertiesNotFound);
-        } else {
-            Resource resource = optionalResource.get();
-            Optional<Group> optionalGroup = resource.getContents().stream().filter(Group.class::isInstance).map(Group.class::cast).findFirst();
-            Optional<ViewExtensionDescription> optionalViewExtensionDescription = optionalGroup.flatMap(group -> {
-                return group.getExtensions().stream().filter(ViewExtensionDescription.class::isInstance).map(ViewExtensionDescription.class::cast).findFirst();
-            });
-            return optionalViewExtensionDescription.get();
         }
-        return null;
+
+        // @formatter:off
+        return optionalResource.flatMap(resource -> {
+            return resource.getContents().stream()
+                    .filter(Group.class::isInstance)
+                    .map(Group.class::cast)
+                    .flatMap(group -> group.getExtensions().stream())
+                    .filter(ViewExtensionDescription.class::isInstance)
+                    .map(ViewExtensionDescription.class::cast)
+                    .findFirst();
+        }).orElse(null);
+        // @formatter:on
     }
 }

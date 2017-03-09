@@ -50,11 +50,11 @@ public class DefaultDescriptionPreprocessorWithFiltering<SIRIUS extends EObject>
      * The constructor.
      * 
      * @param descriptionClass
-     *            the SIRIUS_DESCRIPTION class.
+     *            the SIRIUS class
      * @param featuresToFilter
      *            the collection of features of {@code descriptionClass} that must be ignored during the preprocessing.
      * @param featuresToCopy
-     *            the collection of features of {@code descriptionClass} that must be copied during the preprocessing.
+     *            the collection of features of {@code descriptionClass} that must be copied during the preprocessing
      */
     public DefaultDescriptionPreprocessorWithFiltering(Class<SIRIUS> descriptionClass, Collection<EStructuralFeature> featuresToFilter, Collection<EStructuralFeature> featuresToCopy) {
         super(descriptionClass);
@@ -67,30 +67,32 @@ public class DefaultDescriptionPreprocessorWithFiltering<SIRIUS extends EObject>
      * methods that do the copying.
      * 
      * @param feature
-     *            the {@link EStructuralFeature} to process.
+     *            the {@link EStructuralFeature} to process
      * @param processedDescription
-     *            the resulting description.
+     *            the resulting description
      * @param currentDescription
-     *            the original description or one of its ancestors, from which properties are inherited.
+     *            the original description or one of its ancestors, from which properties are inherited
      * @param cache
-     *            the processing cache.
+     *            the processing cache
      * @param interpreter
-     *            the interpreter.
+     *            the interpreter
      * @param variableManager
-     *            the variable manager.
+     *            the variable manager
+     * @param overridesProvider
+     *            Utility class used to provide the override descriptions
      */
     @Override
     protected void processDescriptionFeature(EStructuralFeature feature, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache, IInterpreter interpreter,
-            IVariableManager variableManager) {
+            IVariableManager variableManager, OverridesProvider overridesProvider) {
         if (!featuresToFilter.contains(feature)) {
             if (featuresToCopy.contains(feature)) {
                 if (!feature.isMany()) {
                     processMonoValuedFeatureByCopying(feature, processedDescription, currentDescription, cache);
                 } else {
-                    processManyValuedFeatureByCopying(feature, processedDescription, currentDescription, cache, interpreter, variableManager);
+                    processManyValuedFeatureByCopying(feature, processedDescription, currentDescription, cache, interpreter, variableManager, overridesProvider);
                 }
             } else {
-                super.processDescriptionFeature(feature, processedDescription, currentDescription, cache, interpreter, variableManager);
+                super.processDescriptionFeature(feature, processedDescription, currentDescription, cache, interpreter, variableManager, overridesProvider);
             }
         }
     }
@@ -136,9 +138,11 @@ public class DefaultDescriptionPreprocessorWithFiltering<SIRIUS extends EObject>
      *            The interpreter
      * @param variableManager
      *            The variable manager
+     * @param overridesProvider
+     *            Utility class used to provide the override descriptions
      */
     protected void processManyValuedFeatureByCopying(EStructuralFeature manyValuedFeature, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache, IInterpreter interpreter,
-            IVariableManager variableManager) {
+            IVariableManager variableManager, OverridesProvider overridesProvider) {
         Object processedValue = processedDescription.eGet(manyValuedFeature);
         Object currentValue = currentDescription.eGet(manyValuedFeature);
         if (currentValue instanceof Iterable<?> && processedValue instanceof Iterable<?>) {
@@ -149,7 +153,7 @@ public class DefaultDescriptionPreprocessorWithFiltering<SIRIUS extends EObject>
             // For each current description create a copy and set it in the new
             // values
             StreamSupport.stream(currentIterable.spliterator(), false).filter(EObject.class::isInstance).map(EObject.class::cast).forEach(object -> {
-                if (!this.isFiltered(manyValuedFeature, processedDescription, object, interpreter, variableManager)) {
+                if (!this.isFiltered(manyValuedFeature, processedDescription, object, cache, interpreter, variableManager, overridesProvider)) {
                     EObject newEObject = EcoreUtil.copy(object);
                     cache.put(object, newEObject);
                     newValue.add(newEObject);

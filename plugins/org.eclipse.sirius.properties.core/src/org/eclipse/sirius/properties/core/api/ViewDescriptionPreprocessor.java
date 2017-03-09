@@ -50,14 +50,16 @@ public class ViewDescriptionPreprocessor {
      *            The interpreter
      * @param variableManager
      *            The variable manager
+     * @param overridesProvider
+     *            Utility class used to provide the override descriptions
      * @return The {@link ViewExtensionDescription} computed
      */
-    public Optional<ViewExtensionDescription> convert(IInterpreter interpreter, IVariableManager variableManager) {
+    public Optional<ViewExtensionDescription> convert(IInterpreter interpreter, IVariableManager variableManager, OverridesProvider overridesProvider) {
         TransformationCache cache = new TransformationCache();
 
         // Starts the conversion
         return SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(originalDescription).flatMap(preprocessor -> {
-            EObject viewExtensionDescription = preprocessor.convert(originalDescription, cache, interpreter, variableManager);
+            EObject viewExtensionDescription = preprocessor.convert(originalDescription, cache, interpreter, variableManager, overridesProvider);
 
             // Starts the resolution of the links
             List<IDescriptionLinkResolver> linkResolvers = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessorLinkResolvers();

@@ -36,6 +36,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.core.api.DefaultRulesProvider;
+import org.eclipse.sirius.properties.core.api.OverridesProvider;
 import org.eclipse.sirius.properties.core.api.SiriusDomainClassTester;
 import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
 import org.eclipse.sirius.properties.core.api.SiriusInterpreter;
@@ -130,7 +131,8 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
             IVariableManager variableManager = new VariableManagerFactory().createVariableManager();
             variableManager.put(EEFExpressionUtils.SELF, viewExtensionDescription);
 
-            new ViewDescriptionPreprocessor(viewExtensionDescription).convert(new SiriusInterpreter(session), variableManager).ifPresent(processedViewExtensionDescription -> {
+            new ViewDescriptionPreprocessor(viewExtensionDescription).convert(new SiriusInterpreter(session), variableManager, new OverridesProvider(session))
+                    .ifPresent(processedViewExtensionDescription -> {
                 processedViewExtensionDescription.getCategories().forEach(category -> effectivePages.addAll(category.getPages()));
             });
         });

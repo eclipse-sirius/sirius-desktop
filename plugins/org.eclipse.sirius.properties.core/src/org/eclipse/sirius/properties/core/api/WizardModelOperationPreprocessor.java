@@ -45,6 +45,11 @@ public class WizardModelOperationPreprocessor {
     private IVariableManager variableManager;
 
     /**
+     * The overrides provider.
+     */
+    private OverridesProvider overridesProvider;
+
+    /**
      * The constructor.
      * 
      * @param wizardModelOperation
@@ -53,11 +58,14 @@ public class WizardModelOperationPreprocessor {
      *            The interpreter
      * @param variableManager
      *            The variable manager
+     * @param overridesProvider
+     *            The overrides provider
      */
-    public WizardModelOperationPreprocessor(WizardModelOperation wizardModelOperation, IInterpreter interpreter, IVariableManager variableManager) {
+    public WizardModelOperationPreprocessor(WizardModelOperation wizardModelOperation, IInterpreter interpreter, IVariableManager variableManager, OverridesProvider overridesProvider) {
         this.wizardModelOperation = wizardModelOperation;
         this.interpreter = interpreter;
         this.variableManager = variableManager;
+        this.overridesProvider = overridesProvider;
     }
 
     /**
@@ -108,7 +116,7 @@ public class WizardModelOperationPreprocessor {
         this.wizardModelOperation.getPages().forEach(pageDescription -> {
             Optional<IDescriptionPreprocessor> optionalPreprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(pageDescription);
             optionalPreprocessor.ifPresent(preprocessor -> {
-                EObject convertedEObject = preprocessor.convert(pageDescription, cache, this.interpreter, this.variableManager);
+                EObject convertedEObject = preprocessor.convert(pageDescription, cache, this.interpreter, this.variableManager, this.overridesProvider);
                 if (convertedEObject instanceof PageDescription) {
                     convertedWizardModelOperation.getPages().add((PageDescription) convertedEObject);
                 }
@@ -128,7 +136,7 @@ public class WizardModelOperationPreprocessor {
         this.wizardModelOperation.getGroups().forEach(groupDescription -> {
             Optional<IDescriptionPreprocessor> optionalPreprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(groupDescription);
             optionalPreprocessor.ifPresent(preprocessor -> {
-                EObject convertedEObject = preprocessor.convert(groupDescription, cache, this.interpreter, this.variableManager);
+                EObject convertedEObject = preprocessor.convert(groupDescription, cache, this.interpreter, this.variableManager, this.overridesProvider);
                 if (convertedEObject instanceof GroupDescription) {
                     convertedWizardModelOperation.getGroups().add((GroupDescription) convertedEObject);
                 }

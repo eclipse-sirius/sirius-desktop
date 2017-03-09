@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ASCII"?>
+<properties:ViewExtensionDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0">
+  <categories name="Default">
+    <pages name="OverridesDefaultRulesPage" labelExpression="OverridesDefaultRulesPage"/>
+    <pages name="OverridesDefaultPageAndExtendsAnotherDefaultPage" labelExpression="OverridesDefaultPage" domainClass="" semanticCandidateExpression="var:self" preconditionExpression="" groups="//@categories.0/@groups.0" filterGroupsFromExtendedPageExpression="aql:group.name.contains('FilterExtended')" filterValidationRulesFromExtendedPageExpression="aql:validationRule.name.contains('FilterExtended')">
+      <validationSet>
+        <semanticValidationRules name="DefaultSemanticValidationRule" level="ERROR" targetClass="ecore.EClass">
+          <audits auditExpression="aql:false"/>
+        </semanticValidationRules>
+        <semanticValidationRules name="AnotherDefaultSemanticValidationRule" level="ERROR" targetClass="ecore.EClass">
+          <audits auditExpression="aql:false"/>
+        </semanticValidationRules>
+      </validationSet>
+    </pages>
+    <pages name="AnotherPageWithDefaultGroup" labelExpression="Another Page" domainClass="ecore.EClass" semanticCandidateExpression="var:self" groups="//@categories.0/@groups.0"/>
+    <pages name="AnotherDefaultPage" labelExpression="Another Default Page" domainClass="ecore.EClass" semanticCandidateExpression="var:self" groups="//@categories.0/@groups.2" filterValidationRulesFromExtendedPageExpression="">
+      <validationSet>
+        <semanticValidationRules name="AnotherDefaultSemanticValidationRule" level="ERROR" targetClass="ecore.EClass">
+          <audits auditExpression="aql:false"/>
+        </semanticValidationRules>
+        <semanticValidationRules name="FilterExtendedDefaultSemanticValidationRule" level="ERROR" targetClass="ecore.EClass">
+          <audits auditExpression="aql:false"/>
+        </semanticValidationRules>
+      </validationSet>
+    </pages>
+    <groups name="OverridesDefaultGroup" label="" labelExpression="OverridesDefaultGroup" semanticCandidateExpression="var:self" filterControlsFromExtendedGroupExpression="">
+      <controls xsi:type="properties:TextDescription" name="OverridesDefaultText" labelExpression="OverridesDefaultText" isEnabledExpression="" valueExpression="aql:self.name"/>
+      <controls xsi:type="properties:LabelDescription" name="OverridesDefaultLabel" label="" labelExpression="OverridesDefaultLabel" valueExpression="aql:self.name"/>
+      <controls xsi:type="properties:ButtonDescription" name="OverridesDefaultButton" labelExpression="OverridesDefaultButton"/>
+      <controls xsi:type="properties:CheckboxDescription" name="OverridesDefaultCheckbox" labelExpression="OverridesDefaultCheckbox"/>
+      <controls xsi:type="properties:SelectDescription" name="OverridesDefaultSelect" labelExpression="OverridesDefaultSelect" valueExpression="aql:self.name" candidatesExpression="aql:self" candidateDisplayExpression="aql:candidate.name"/>
+      <controls xsi:type="properties:TextAreaDescription" name="OverridesDefaultTextArea" labelExpression="OverridesDefaultTextArea" valueExpression="aql:self.name"/>
+      <controls xsi:type="properties:ListDescription" name="OverridesDefaultList" label="" labelExpression="OverridesDefaultList" valueExpression="" displayExpression="" filterConditionalStylesFromExtendedListExpression=""/>
+      <controls xsi:type="properties:HyperlinkDescription" name="OverridesDefaultHyperlink" label="" labelExpression="OverridesDefaultHyperlink" valueExpression="aql:self" displayExpression="aql:value.name" filterConditionalStylesFromExtendedHyperlinkExpression="" filterActionsFromExtendedHyperlinkExpression=""/>
+      <controls xsi:type="properties:RadioDescription" name="OverridesDefaultRadio" label="" labelExpression="OverridesDefaultRadio" candidatesExpression="aql:Sequence{'Radio1','Radio2','Radio3'}" candidateDisplayExpression="aql:candidate"/>
+    </groups>
+    <groups name="FilterOverriddenGroup" label="" labelExpression="FilterOverriddenGroup" domainClass="" semanticCandidateExpression="var:self"/>
+    <groups name="FilterExtendedGroup" label="" labelExpression="FilterOverridenGroup" semanticCandidateExpression="var:self"/>
+  </categories>
+  <categories name="Overrides">
+    <overrides xsi:type="properties:GroupOverrideDescription" name="OverridesDefaultGroup" labelExpression="OverridesDefaultGroup" filterControlsFromExtendedGroupExpression="" filterControlsFromOverriddenGroupExpression="aql:control.name.contains('Filter')"/>
+    <overrides xsi:type="properties:PageOverrideDescription" name="OverridesDefaultRulesPage" labelExpression="OverridesDefaultRulesPage"/>
+    <overrides xsi:type="properties:GroupOverrideDescription" name="OverridesDefaultRulesGroup" labelExpression="OverridesDefaultRulesGroup"/>
+    <overrides xsi:type="properties:TextOverrideDescription" name="OverridesDefaultText" labelExpression="OverridesDefaultText"/>
+    <overrides xsi:type="properties:LabelOverrideDescription" name="OverridesDefaultLabel" labelExpression="OverridesDefaultLabel"/>
+    <overrides xsi:type="properties:ButtonOverrideDescription" name="OverridesDefaultButton" labelExpression="OverridesDefaultButton"/>
+    <overrides xsi:type="properties:CheckboxOverrideDescription" name="OverridesDefaultCheckbox" labelExpression="OverridesDefaultCheckbox"/>
+    <overrides xsi:type="properties:SelectOverrideDescription" name="OverridesDefaultSelect" labelExpression="OverridesDefaultSelect" candidatesExpression="aql:self" candidateDisplayExpression="aql:candidate.name"/>
+    <overrides xsi:type="properties:TextAreaOverrideDescription" name="OverridesDefaultTextArea" labelExpression="OverridesDefaultTextArea"/>
+    <overrides xsi:type="properties:ListOverrideDescription" name="OverridesDefaultList" labelExpression="OverridesDefaultList"/>
+    <overrides xsi:type="properties:HyperlinkOverrideDescription" name="OverridesDefaultHyperlink" label="" labelExpression="OverridesDefaultHyperlink" filterActionsFromExtendedHyperlinkExpression=""/>
+    <overrides xsi:type="properties:RadioOverrideDescription" name="OverridesDefaultRadio" label="" labelExpression="OverridesDefaultRadio"/>
+    <overrides xsi:type="properties:PageOverrideDescription" name="OverridesDefaultPageAndExtendsAnotherDefaultPage" labelExpression="OverridesDefaultPage" domainClass="" semanticCandidateExpression="var:self" preconditionExpression="" filterGroupsFromExtendedPageExpression="aql:group.name.contains('FilterExtended')" filterValidationRulesFromExtendedPageExpression="aql:validationRule.name.contains('FilterExtended')" filterGroupsFromOverriddenPageExpression="aql:group.name.contains('FilterOverridden')" filterValidationRulesFromOverriddenPageExpression="aql:validationRule.name.contains('FilterOverridden')">
+      <validationSet>
+        <semanticValidationRules name="AnotherDefaultSemanticValidationRule" level="ERROR" targetClass="ecore.EClass">
+          <audits auditExpression="aql:false"/>
+        </semanticValidationRules>
+      </validationSet>
+    </overrides>
+  </categories>
+</properties:ViewExtensionDescription>

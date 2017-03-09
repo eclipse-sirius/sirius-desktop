@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:description="http://www.eclipse.org/sirius/description/1.1.0"
+    xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0"
+    name="My"
+    version="12.0.0.201702091400">
+  <ownedViewpoints
+      name="Overrides"/>
+  <extensions
+      xsi:type="properties:ViewExtensionDescription">
+    <categories
+        name="Default">
+      <pages
+          labelExpression="Pikachu">
+        <extends
+            href="../../../../plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@pages.0"/>
+      </pages>
+    </categories>
+    <categories
+        name="Overrides">
+      <overrides
+          xsi:type="properties:GroupOverrideDescription"
+          name="OverridesDefaultRulesGroup"
+          labelExpression="OverridesDefaultRulesGroup">
+        <overrides
+            href="../../../../plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@groups.0"/>
+      </overrides>
+      <overrides
+          xsi:type="properties:TextOverrideDescription"
+          labelExpression="Carapuce">
+        <overrides
+            href="../../../../plugin/org.eclipse.sirius.properties.core/model/properties.odesign#//@extensions.0/@categories.0/@groups.0/@controls.0/@ifs.0/@widget"/>
+      </overrides>
+    </categories>
+  </extensions>
+</description:Group>

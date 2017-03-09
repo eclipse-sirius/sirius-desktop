@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
+import org.eclipse.sirius.properties.AbstractPageDescription;
 import org.eclipse.sirius.properties.DialogModelOperation;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
@@ -29,6 +30,7 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WizardModelOperation;
 import org.eclipse.sirius.properties.core.api.DefaultDescriptionPreprocessorWithFiltering;
 import org.eclipse.sirius.properties.core.api.IDescriptionPreprocessor;
+import org.eclipse.sirius.properties.core.api.OverridesProvider;
 import org.eclipse.sirius.properties.core.api.PreconfiguredPreprocessorUtils;
 import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
@@ -47,7 +49,7 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
  * @author flatombe
  * @author mbats
  */
-public class PageDescriptionPreprocessor extends DefaultDescriptionPreprocessorWithFiltering<PageDescription> {
+public class PageDescriptionPreprocessor extends DefaultDescriptionPreprocessorWithFiltering<AbstractPageDescription> {
     /**
      * This feature is handled separately.
      */
@@ -57,17 +59,17 @@ public class PageDescriptionPreprocessor extends DefaultDescriptionPreprocessorW
      * The constructor.
      */
     public PageDescriptionPreprocessor() {
-        super(PageDescription.class, PreconfiguredPreprocessorUtils.getFeaturesToFilter(PropertiesPackage.Literals.PAGE_DESCRIPTION),
+        super(AbstractPageDescription.class, PreconfiguredPreprocessorUtils.getFeaturesToFilter(PropertiesPackage.Literals.PAGE_DESCRIPTION),
                 PreconfiguredPreprocessorUtils.getFeaturesToCopy(PropertiesPackage.Literals.PAGE_DESCRIPTION));
     }
 
     @Override
-    protected void processMonoValuedEReference(EReference eReference, PageDescription processedDescription, PageDescription currentDescription, TransformationCache cache, IInterpreter interpreter,
-            IVariableManager variableManager) {
+    protected void processMonoValuedEReference(EReference eReference, AbstractPageDescription processedDescription, AbstractPageDescription currentDescription, TransformationCache cache,
+            IInterpreter interpreter, IVariableManager variableManager, OverridesProvider overridesProvider) {
         if (!eReference.equals(VALIDATIONSET_FEATURE)) {
-            super.processMonoValuedEReference(eReference, processedDescription, currentDescription, cache, interpreter, variableManager);
+            super.processMonoValuedEReference(eReference, processedDescription, currentDescription, cache, interpreter, variableManager, overridesProvider);
         } else {
-            processValidationSet(processedDescription, currentDescription, cache, interpreter, variableManager);
+            processValidationSet(processedDescription, currentDescription, cache, interpreter, variableManager, overridesProvider);
         }
     }
 
@@ -85,8 +87,11 @@ public class PageDescriptionPreprocessor extends DefaultDescriptionPreprocessorW
      *            the interpreter.
      * @param variableManager
      *            the variable manager.
+     * @param overridesProvider
+     *            Utility class used to provide the override descriptions
      */
-    private void processValidationSet(PageDescription processedDescription, PageDescription currentDescription, TransformationCache cache, IInterpreter interpreter, IVariableManager variableManager) {
+    private void processValidationSet(AbstractPageDescription processedDescription, AbstractPageDescription currentDescription, TransformationCache cache, IInterpreter interpreter,
+            IVariableManager variableManager, OverridesProvider overridesProvider) {
         if (currentDescription.eIsSet(VALIDATIONSET_FEATURE)) {
             PageValidationSetDescription validationSet = Optional.ofNullable(processedDescription.getValidationSet()).orElse(PropertiesFactory.eINSTANCE.createPageValidationSetDescription());
             processedDescription.setValidationSet(validationSet);
@@ -95,7 +100,8 @@ public class PageDescriptionPreprocessor extends DefaultDescriptionPreprocessorW
             // then those contributed by the current description.
             List<SemanticValidationRule> newValue = new ArrayList<>();
             currentDescription.getValidationSet().getSemanticValidationRules().forEach(rule -> {
-                if (!this.isFiltered(PropertiesPackage.eINSTANCE.getPageValidationSetDescription_SemanticValidationRules(), processedDescription, rule, interpreter, variableManager)) {
+                if (!this.isFiltered(PropertiesPackage.eINSTANCE.getPageValidationSetDescription_SemanticValidationRules(), processedDescription, rule, cache, interpreter, variableManager,
+                        overridesProvider)) {
                     newValue.add(EcoreUtil.copy(rule));
                 }
             });
@@ -107,12 +113,12 @@ public class PageDescriptionPreprocessor extends DefaultDescriptionPreprocessorW
     }
 
     @Override
-    protected void processMultiValuedEReference(EReference eReference, PageDescription processedDescription, PageDescription currentDescription, TransformationCache cache, IInterpreter interpreter,
-            IVariableManager variableManager) {
+    protected void processMultiValuedEReference(EReference eReference, AbstractPageDescription processedDescription, AbstractPageDescription currentDescription, TransformationCache cache,
+            IInterpreter interpreter, IVariableManager variableManager, OverridesProvider overridesProvider) {
         if (!eReference.equals(PropertiesPackage.Literals.ABSTRACT_PAGE_DESCRIPTION__GROUPS)) {
-            super.processMultiValuedEReference(eReference, processedDescription, currentDescription, cache, interpreter, variableManager);
+            super.processMultiValuedEReference(eReference, processedDescription, currentDescription, cache, interpreter, variableManager, overridesProvider);
         } else {
-            processGroups(processedDescription, currentDescription, cache, interpreter, variableManager);
+            processGroups(processedDescription, currentDescription, cache, interpreter, variableManager, overridesProvider);
         }
     }
 
@@ -130,17 +136,20 @@ public class PageDescriptionPreprocessor extends DefaultDescriptionPreprocessorW
      *            the interpreter.
      * @param variableManager
      *            the variable manager.
+     * @param overridesProvider
+     *            Utility class used to provide the override descriptions
      */
-    private void processGroups(PageDescription processedDescription, PageDescription currentDescription, TransformationCache cache, IInterpreter interpreter, IVariableManager variableManager) {
+    private void processGroups(AbstractPageDescription processedDescription, AbstractPageDescription currentDescription, TransformationCache cache, IInterpreter interpreter,
+            IVariableManager variableManager, OverridesProvider overridesProvider) {
         currentDescription.getGroups().forEach(groupDescription -> {
             Optional<Object> inputDescription = cache.getInput(processedDescription);
             Optional<PageDescription> optionalInputPageDescription = inputDescription.filter(PageDescription.class::isInstance).map(PageDescription.class::cast);
             Optional<IDescriptionPreprocessor> optionalDescriptionPreprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(groupDescription);
 
-            if (!this.isFiltered(PropertiesPackage.eINSTANCE.getAbstractPageDescription_Groups(), processedDescription, groupDescription, interpreter, variableManager)
+            if (!this.isFiltered(PropertiesPackage.eINSTANCE.getAbstractPageDescription_Groups(), processedDescription, groupDescription, cache, interpreter, variableManager, overridesProvider)
                     && optionalInputPageDescription.isPresent() && this.shouldProcessGroup(optionalInputPageDescription.get(), groupDescription)) {
                 // @formatter:off
-                optionalDescriptionPreprocessor.map(descriptionPreprocessor -> descriptionPreprocessor.convert(groupDescription, cache, interpreter, variableManager))
+                optionalDescriptionPreprocessor.map(descriptionPreprocessor -> descriptionPreprocessor.convert(groupDescription, cache, interpreter, variableManager, overridesProvider))
                     .filter(GroupDescription.class::isInstance)
                     .map(GroupDescription.class::cast)
                     .map(processedDescription.getGroups()::add);

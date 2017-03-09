@@ -33,6 +33,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaCla
 import org.eclipse.sirius.properties.DialogModelOperation;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.core.api.DialogModelOperationPreprocessor;
+import org.eclipse.sirius.properties.core.api.OverridesProvider;
 import org.eclipse.sirius.properties.core.api.SiriusDomainClassTester;
 import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
 import org.eclipse.sirius.properties.core.api.SiriusInterpreter;
@@ -96,7 +97,7 @@ public class DialogTask extends AbstractOperationTask {
         variableManager.put(EEFExpressionUtils.INPUT, input);
         SiriusInterpreter siriusInterpreter = new SiriusInterpreter(this.session);
 
-        DialogModelOperationPreprocessor preprocessor = new DialogModelOperationPreprocessor(this.dialogModelOperation, siriusInterpreter, variableManager);
+        DialogModelOperationPreprocessor preprocessor = new DialogModelOperationPreprocessor(this.dialogModelOperation, siriusInterpreter, variableManager, new OverridesProvider(this.session));
 
         Optional<DialogModelOperation> optionalDialogModelOperation = preprocessor.convert();
         optionalDialogModelOperation.ifPresent(convertedDialogModelOperation -> {

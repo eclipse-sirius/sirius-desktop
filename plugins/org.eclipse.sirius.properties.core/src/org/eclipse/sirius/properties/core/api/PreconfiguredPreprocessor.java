@@ -58,9 +58,9 @@ public class PreconfiguredPreprocessor<SIRIUS extends EObject> extends DefaultDe
 
     @Override
     protected void processManyValuedFeatureByCopying(EStructuralFeature manyValuedFeature, SIRIUS processedDescription, SIRIUS currentDescription, TransformationCache cache, IInterpreter interpreter,
-            IVariableManager variableManager) {
+            IVariableManager variableManager, OverridesProvider overridesProvider) {
         if (!PropertiesPackage.Literals.WIDGET_ACTION.equals(manyValuedFeature.getEType())) {
-            super.processManyValuedFeatureByCopying(manyValuedFeature, processedDescription, currentDescription, cache, interpreter, variableManager);
+            super.processManyValuedFeatureByCopying(manyValuedFeature, processedDescription, currentDescription, cache, interpreter, variableManager, overridesProvider);
         }
 
         Object processedValue = processedDescription.eGet(manyValuedFeature);
@@ -74,7 +74,7 @@ public class PreconfiguredPreprocessor<SIRIUS extends EObject> extends DefaultDe
             StreamSupport.stream(currentIterable.spliterator(), false).filter(EObject.class::isInstance).map(EObject.class::cast).forEach(object -> {
                 Optional<IDescriptionPreprocessor> preprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(object);
                 if (preprocessor.isPresent()) {
-                    Object processedWidgetAction = preprocessor.get().convert(object, cache, interpreter, variableManager);
+                    Object processedWidgetAction = preprocessor.get().convert(object, cache, interpreter, variableManager, overridesProvider);
                     newValue.add(processedWidgetAction);
                 }
             });

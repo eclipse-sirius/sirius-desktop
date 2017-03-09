@@ -29,6 +29,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.properties.WizardModelOperation;
+import org.eclipse.sirius.properties.core.api.OverridesProvider;
 import org.eclipse.sirius.properties.core.api.SiriusDomainClassTester;
 import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
 import org.eclipse.sirius.properties.core.api.SiriusInterpreter;
@@ -93,7 +94,7 @@ public class WizardTask extends AbstractOperationTask {
 
         SiriusInterpreter siriusInterpreter = new SiriusInterpreter(this.session);
 
-        WizardModelOperationPreprocessor preprocessor = new WizardModelOperationPreprocessor(this.wizardModelOperation, siriusInterpreter, variableManager);
+        WizardModelOperationPreprocessor preprocessor = new WizardModelOperationPreprocessor(this.wizardModelOperation, siriusInterpreter, variableManager, new OverridesProvider(this.session));
         Optional<WizardModelOperation> optionalWizardModelOperation = preprocessor.convert();
         optionalWizardModelOperation.ifPresent(convertedWizardModelOperation -> {
             ViewDescriptionConverter viewDescriptionConverter = new ViewDescriptionConverter(convertedWizardModelOperation.getPages());

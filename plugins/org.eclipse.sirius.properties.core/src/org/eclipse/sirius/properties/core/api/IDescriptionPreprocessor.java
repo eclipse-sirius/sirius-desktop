@@ -45,9 +45,11 @@ public interface IDescriptionPreprocessor {
      *            the interpreter
      * @param variableManager
      *            the variable manager
+     * @param overridesProvider
+     *            Utility class used to provide the override descriptions
      * @return a semantically equivalent description to
      *         {@code originalDescription}, but with inheritance and extension
      *         relations unfolded.
      */
-    EObject convert(EObject description, TransformationCache cache, IInterpreter interpreter, IVariableManager variableManager);
+    EObject convert(EObject description, TransformationCache cache, IInterpreter interpreter, IVariableManager variableManager, OverridesProvider overridesProvider);
 }
