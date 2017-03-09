@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.sirius.editor.properties" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.sirius.editor.properties" id="siriusPropertiesDefaultWidgetDescriptionFactory" name="Sirius Properties Default Widget Description Factory"/>
+      </appInfo>
+      <documentation>
+         This extension point allows the contribution of an &lt;code&gt;org.eclipse.sirius.editor.properties.api.IDefaultWidgetDescriptionFactory&lt;/code&gt; which can be used to create an instance of &lt;code&gt;org.eclipse.sirius.editor.properties.api.DefaultWidgetDescription&lt;/code&gt; used to create a new widget description in an odesign with a predefined behavior. With this mechanism, you can let the user create a preconfigured version of a widget description computed thanks to the data available in the odesign.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="descriptor"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="descriptor">
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The identifier of the contribution.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="label" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The label of the provider, this information may be used in the user interface and as such it may be visible by the end user. It should be internationalized if possible.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The description of the provider, this information may be used in the user interface and as such it may be visible by the end user. It should be internationalized if possible.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The implementation of the IDefaultWidgetDescriptionFactory.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.editor.properties.api.IDefaultWidgetDescriptionFactory"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         This extension point has been available since Eclipse Sirius 5.0.0 (Eclipse Oxygen release in June 2017).
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;pre&gt;
+&lt;extension
+     point=&quot;org.eclipse.sirius.editor.properties.siriusPropertiesDefaultWidgetDescriptionFactory&quot;&gt;
+  &lt;descriptor
+        class=&quot;org.eclipse.sirius.editor.properties.ext.widgets.reference.internal.DefaultReferenceWidgetDescriptionFactory&quot;
+        description=&quot;%defaultReferenceWidgetDescriptionFactory.description&quot;
+        id=&quot;org.eclipse.sirius.editor.properties.ext.widgets.reference.defaultReferenceWidgetDescriptionFactory&quot;
+        label=&quot;%defaultReferenceWidgetDescriptionFactory.label&quot;&gt;
+  &lt;/descriptor&gt;
+&lt;/extension&gt;
+&lt;/pre&gt;
+Example of IDefaultWidgetDescriptionFactory used to create a preconfigured definition of the reference widget in an odesign.
+&lt;pre&gt;
+package org.eclipse.sirius.editor.properties.ext.widgets.reference.internal;
+
+import java.text.MessageFormat;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.editor.properties.api.DefaultWidgetDescription;
+import org.eclipse.sirius.editor.properties.api.IDefaultWidgetDescriptionFactory;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferenceFactory;
+
+public class DefaultReferenceWidgetDescriptionFactory implements IDefaultWidgetDescriptionFactory {
+
+    @Override
+    public boolean canCreate(EClass domainClass, EStructuralFeature eStructuralFeature) {
+        return eStructuralFeature instanceof EReference;
+    }
+
+    @Override
+    public DefaultWidgetDescription create(EClass domainClass, EStructuralFeature eStructuralFeature) {
+        if (eStructuralFeature instanceof EReference) {
+            EReference eReference = (EReference) eStructuralFeature;
+
+            ExtReferenceDescription description = PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceDescription();
+            description.setName(MessageFormat.format(Messages.DefaultReferenceDescriptionFactory_widgetLabel, eStructuralFeature.eClass().getName(), eStructuralFeature.getName()));
+            description.setReferenceNameExpression(&quot;aql:&apos;&quot; + eReference.getName() + &quot;&apos;&quot;); //$NON-NLS-1$ //$NON-NLS-2$
+
+            String label = MessageFormat.format(Messages.DefaultReferenceDescriptionFactory_name, eStructuralFeature.eClass().getName(), eStructuralFeature.getName());
+            return new DefaultWidgetDescription(label, description);
+        }
+        return null;
+    }
+
+}
+&lt;/pre&gt;
+This example can be found in the project org.eclipse.sirius.editor.properties.ext.widgets.reference.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiinfo"/>
+      </appInfo>
+      <documentation>
+         The IDefaultWidgetDescriptionFactory allows the contribution of a DefaultWidgetDescription for a custom widget or for any standard widget.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         The plugin &lt;code&gt;org.eclipse.sirius.editor.properties.ext.widgets.reference&lt;/code&gt; provides an implementation in order to support this feature for the reference widget.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2017 Obeo&lt;br/&gt;
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+&lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
+      </documentation>
+   </annotation>
+
+</schema>

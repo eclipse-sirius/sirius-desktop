@@ -27,5 +27,14 @@
          </propertySection>
       </propertySections>
    </extension>
+   <extension
+         point="org.eclipse.sirius.editor.properties.siriusPropertiesDefaultWidgetDescriptionFactory">
+      <descriptor
+            class="org.eclipse.sirius.editor.properties.ext.widgets.reference.internal.DefaultReferenceWidgetDescriptionFactory"
+            description="%defaultReferenceWidgetDescriptionFactory.description"
+            id="org.eclipse.sirius.editor.properties.ext.widgets.reference.defaultReferenceWidgetDescriptionFactory"
+            label="%defaultReferenceWidgetDescriptionFactory.label">
+      </descriptor>
+   </extension>
 
 </plugin>

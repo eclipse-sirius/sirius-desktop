@@ -41,8 +41,8 @@ public class DefaultMultivaluedEAttributeDescriptionFactory implements IDefaultW
     public DefaultWidgetDescription create(EClass domainClass, EStructuralFeature eStructuralFeature) {
         ListDescription description = PropertiesFactory.eINSTANCE.createListDescription();
 
-        description
-                .setName(MessageFormat.format(Messages.DefaultMultivaluedEAttributeDescriptionFactory_name, domainClass.getEPackage().getName(), domainClass.getName(), eStructuralFeature.getName()));
+        description.setName(
+                MessageFormat.format(Messages.DefaultMultivaluedEAttributeDescriptionFactory_widgetLabel, domainClass.getEPackage().getName(), domainClass.getName(), eStructuralFeature.getName()));
         description.setIsEnabledExpression("aql:self.eClass().getEStructuralFeature('" + eStructuralFeature.getName() + "').changeable");
         description.setHelpExpression("aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('" + eStructuralFeature.getName() + "'))");
         description.setLabelExpression("aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('" + eStructuralFeature.getName() + "')) + ':'");
@@ -58,7 +58,7 @@ public class DefaultMultivaluedEAttributeDescriptionFactory implements IDefaultW
             description.getConditionalStyles().add(conditionalStyle);
         }
 
-        String label = MessageFormat.format(Messages.DefaultMultivaluedEAttributeDescriptionFactory_widgetLabel, eStructuralFeature.eClass().getName(), eStructuralFeature.getName());
+        String label = MessageFormat.format(Messages.DefaultMultivaluedEAttributeDescriptionFactory_name, eStructuralFeature.eClass().getName(), eStructuralFeature.getName());
         return new DefaultWidgetDescription(label, description);
     }
 

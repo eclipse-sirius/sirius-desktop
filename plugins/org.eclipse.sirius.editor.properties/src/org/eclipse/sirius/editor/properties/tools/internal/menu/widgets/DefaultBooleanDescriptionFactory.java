@@ -13,7 +13,6 @@ package org.eclipse.sirius.editor.properties.tools.internal.menu.widgets;
 import java.text.MessageFormat;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.editor.properties.api.DefaultWidgetDescription;
 import org.eclipse.sirius.editor.properties.api.IDefaultWidgetDescriptionFactory;
@@ -38,16 +37,14 @@ public class DefaultBooleanDescriptionFactory implements IDefaultWidgetDescripti
 
     @Override
     public boolean canCreate(EClass domainClass, EStructuralFeature eStructuralFeature) {
-        EObject eObject = domainClass.getEPackage().getEFactoryInstance().create(domainClass);
-        EditSupportSpec editSupportSpec = new EditSupportSpec(null, eObject);
-        return editSupportSpec.needsCheckboxWidget(eStructuralFeature);
+        return new EditSupportSpec(null, null).needsCheckboxWidget(eStructuralFeature);
     }
 
     @Override
     public DefaultWidgetDescription create(EClass domainClass, EStructuralFeature eStructuralFeature) {
         CheckboxDescription description = PropertiesFactory.eINSTANCE.createCheckboxDescription();
 
-        description.setName(MessageFormat.format(Messages.DefaultBooleanDescriptionFactory_name, domainClass.getEPackage().getName(), domainClass.getName(), eStructuralFeature.getName()));
+        description.setName(MessageFormat.format(Messages.DefaultBooleanDescriptionFactory_widgetLabel, domainClass.getEPackage().getName(), domainClass.getName(), eStructuralFeature.getName()));
         description.setIsEnabledExpression("aql:self.eClass().getEStructuralFeature('" + eStructuralFeature.getName() + "').changeable");
         description.setHelpExpression("aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('" + eStructuralFeature.getName() + "'))");
         description.setLabelExpression("aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('" + eStructuralFeature.getName() + "'))");
@@ -69,7 +66,7 @@ public class DefaultBooleanDescriptionFactory implements IDefaultWidgetDescripti
             description.getConditionalStyles().add(conditionalStyle);
         }
 
-        String label = MessageFormat.format(Messages.DefaultBooleanDescriptionFactory_widgetLabel, eStructuralFeature.eClass().getName(), eStructuralFeature.getName());
+        String label = MessageFormat.format(Messages.DefaultBooleanDescriptionFactory_name, eStructuralFeature.eClass().getName(), eStructuralFeature.getName());
         return new DefaultWidgetDescription(label, description);
     }
 

@@ -12,6 +12,7 @@
       Obeo - initial API and implementation
 -->
 <plugin>
+   <extension-point id="siriusPropertiesDefaultWidgetDescriptionFactory" name="%siriusPropertiesDefaultWidgetDescriptionFactory.name" schema="schema/siriusPropertiesDefaultWidgetDescriptionFactory.exsd"/>
  <!-- End of user code plugin.xml start specifics  -->
   
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">

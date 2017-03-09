@@ -44,7 +44,7 @@ public class DefaultEnumerationDescriptionFactory implements IDefaultWidgetDescr
     public DefaultWidgetDescription create(EClass domainClass, EStructuralFeature eStructuralFeature) {
         RadioDescription description = PropertiesFactory.eINSTANCE.createRadioDescription();
 
-        description.setName(MessageFormat.format(Messages.DefaultEnumerationDescriptionFactory_name, domainClass.getEPackage().getName(), domainClass.getName(), eStructuralFeature.getName()));
+        description.setName(MessageFormat.format(Messages.DefaultEnumerationDescriptionFactory_widgetLabel, domainClass.getEPackage().getName(), domainClass.getName(), eStructuralFeature.getName()));
         description.setIsEnabledExpression("aql:self.eClass().getEStructuralFeature('" + eStructuralFeature.getName() + "').changeable");
         description.setHelpExpression("aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('" + eStructuralFeature.getName() + "'))");
         description.setLabelExpression("aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('" + eStructuralFeature.getName() + "')) + ':'");
@@ -70,7 +70,7 @@ public class DefaultEnumerationDescriptionFactory implements IDefaultWidgetDescr
             description.getConditionalStyles().add(conditionalStyle);
         }
 
-        String label = MessageFormat.format(Messages.DefaultEnumerationDescriptionFactory_widgetLabel, eStructuralFeature.eClass().getName(), eStructuralFeature.getName());
+        String label = MessageFormat.format(Messages.DefaultEnumerationDescriptionFactory_name, eStructuralFeature.eClass().getName(), eStructuralFeature.getName());
         return new DefaultWidgetDescription(label, description);
     }
 

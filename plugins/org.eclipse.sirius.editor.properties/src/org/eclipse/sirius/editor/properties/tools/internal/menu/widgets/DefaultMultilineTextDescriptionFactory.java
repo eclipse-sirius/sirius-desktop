@@ -38,7 +38,10 @@ public class DefaultMultilineTextDescriptionFactory implements IDefaultWidgetDes
 
     @Override
     public boolean canCreate(EClass domainClass, EStructuralFeature eStructuralFeature) {
-        EObject eObject = domainClass.getEPackage().getEFactoryInstance().create(domainClass);
+        EObject eObject = null;
+        if (!domainClass.isAbstract() && !domainClass.isInterface()) {
+            eObject = domainClass.getEPackage().getEFactoryInstance().create(domainClass);
+        }
         EditSupportSpec editSupportSpec = new EditSupportSpec(null, eObject);
         return editSupportSpec.needsTextWidget(eStructuralFeature) && editSupportSpec.isMultiline(eStructuralFeature);
     }
@@ -47,7 +50,8 @@ public class DefaultMultilineTextDescriptionFactory implements IDefaultWidgetDes
     public DefaultWidgetDescription create(EClass domainClass, EStructuralFeature eStructuralFeature) {
         TextAreaDescription description = PropertiesFactory.eINSTANCE.createTextAreaDescription();
 
-        description.setName(MessageFormat.format(Messages.DefaultMultilineTextDescriptionFactory_name, domainClass.getEPackage().getName(), domainClass.getName(), eStructuralFeature.getName()));
+        description
+                .setName(MessageFormat.format(Messages.DefaultMultilineTextDescriptionFactory_widgetLabel, domainClass.getEPackage().getName(), domainClass.getName(), eStructuralFeature.getName()));
         description.setIsEnabledExpression("aql:self.eClass().getEStructuralFeature('" + eStructuralFeature.getName() + "').changeable");
         description.setHelpExpression("aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('" + eStructuralFeature.getName() + "'))");
         description.setLabelExpression("aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('" + eStructuralFeature.getName() + "')) + ':'");
@@ -69,7 +73,7 @@ public class DefaultMultilineTextDescriptionFactory implements IDefaultWidgetDes
             description.getConditionalStyles().add(conditionalStyle);
         }
 
-        String label = MessageFormat.format(Messages.DefaultMultilineTextDescriptionFactory_widgetLabel, eStructuralFeature.eClass().getName(), eStructuralFeature.getName());
+        String label = MessageFormat.format(Messages.DefaultMultilineTextDescriptionFactory_name, eStructuralFeature.eClass().getName(), eStructuralFeature.getName());
         return new DefaultWidgetDescription(label, description);
     }
 

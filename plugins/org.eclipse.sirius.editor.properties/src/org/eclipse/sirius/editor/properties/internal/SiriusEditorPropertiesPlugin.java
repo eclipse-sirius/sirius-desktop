@@ -13,6 +13,13 @@ package org.eclipse.sirius.editor.properties.internal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.eef.ide.api.extensions.AbstractRegistryEventListener;
+import org.eclipse.eef.ide.api.extensions.IItemDescriptor;
+import org.eclipse.eef.ide.api.extensions.IItemRegistry;
+import org.eclipse.eef.ide.api.extensions.impl.DescriptorRegistryEventListener;
+import org.eclipse.eef.ide.api.extensions.impl.ItemRegistry;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -24,6 +31,7 @@ import org.eclipse.sirius.editor.properties.tools.internal.menu.widgets.DefaultE
 import org.eclipse.sirius.editor.properties.tools.internal.menu.widgets.DefaultMonolineTextDescriptionFactory;
 import org.eclipse.sirius.editor.properties.tools.internal.menu.widgets.DefaultMultilineTextDescriptionFactory;
 import org.eclipse.sirius.editor.properties.tools.internal.menu.widgets.DefaultMultivaluedEAttributeDescriptionFactory;
+import org.osgi.framework.BundleContext;
 
 /**
  * This is the central singleton for the SiriusEditorProperties edit plugin.
@@ -69,10 +77,29 @@ public final class SiriusEditorPropertiesPlugin extends EMFPlugin {
      */
     public static class Implementation extends EclipseUIPlugin {
         /**
-         * The path of the icon used for the command creating a widget for all
-         * the features.
+         * The path of the icon used for the command creating a widget for all the features.
          */
         public static final String CREATE_WIDGET_FOR_ALL_FEATURES_ICON_PATH = "icons/full16/CreateWidgetForAllFeatures.gif"; //$NON-NLS-1$
+
+        /**
+         * The name of the extension point for the {@link IDefaultWidgetDescriptionFactory}.
+         */
+        private static final String DEFAULT_WIDGET_DESCRIPTION_FACTORY_EXTENSION_POINT = "siriusPropertiesDefaultWidgetDescriptionFactory"; //$NON-NLS-1$
+
+        /**
+         * The {@link IItemRegistry} used to retrieve the {@link IDefaultWidgetDescriptionFactory}.
+         */
+        private IItemRegistry<IDefaultWidgetDescriptionFactory> defaultWidgetDescriptionFactoryRegistry;
+
+        /**
+         * The extension registry listener for the {@link IDefaultWidgetDescriptionFactory}.
+         */
+        private AbstractRegistryEventListener defaultWidgetDescriptionFactoryListener;
+
+        /**
+         * Indicates if the registry has been read.
+         */
+        private boolean hasReadDefaultWidgetDescriptionFactoryRegistry;
 
         /**
          * Creates an instance.
@@ -81,10 +108,31 @@ public final class SiriusEditorPropertiesPlugin extends EMFPlugin {
             plugin = this;
         }
 
+        @Override
+        public void start(BundleContext context) throws Exception {
+            super.start(context);
+
+            IExtensionRegistry registry = Platform.getExtensionRegistry();
+            this.defaultWidgetDescriptionFactoryRegistry = new ItemRegistry<>();
+            this.defaultWidgetDescriptionFactoryListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, DEFAULT_WIDGET_DESCRIPTION_FACTORY_EXTENSION_POINT,
+                    this.defaultWidgetDescriptionFactoryRegistry);
+            registry.addListener(this.defaultWidgetDescriptionFactoryListener, PLUGIN_ID + '.' + DEFAULT_WIDGET_DESCRIPTION_FACTORY_EXTENSION_POINT);
+        }
+
+        @Override
+        public void stop(BundleContext context) throws Exception {
+            IExtensionRegistry registry = Platform.getExtensionRegistry();
+            registry.removeListener(this.defaultWidgetDescriptionFactoryListener);
+
+            this.defaultWidgetDescriptionFactoryListener = null;
+            this.defaultWidgetDescriptionFactoryRegistry = null;
+
+            super.stop(context);
+        }
+
         /**
-         * Returns a list of all the default widget description factory which
-         * can create a default widget description for the given domain class
-         * and structural feature.
+         * Returns a list of all the default widget description factory which can create a default widget description
+         * for the given domain class and structural feature.
          * 
          * @param domainClass
          *            The domain class
@@ -93,6 +141,11 @@ public final class SiriusEditorPropertiesPlugin extends EMFPlugin {
          * @return A list of default widget description factory
          */
         public List<IDefaultWidgetDescriptionFactory> getDefaultWidgetDescriptionFactory(EClass domainClass, EStructuralFeature eStructuralFeature) {
+            if (!this.hasReadDefaultWidgetDescriptionFactoryRegistry) {
+                this.defaultWidgetDescriptionFactoryListener.readRegistry(Platform.getExtensionRegistry());
+                this.hasReadDefaultWidgetDescriptionFactoryRegistry = true;
+            }
+
             List<IDefaultWidgetDescriptionFactory> defaultFactories = new ArrayList<>();
 
             defaultFactories.add(new DefaultMonolineTextDescriptionFactory());
@@ -100,6 +153,8 @@ public final class SiriusEditorPropertiesPlugin extends EMFPlugin {
             defaultFactories.add(new DefaultBooleanDescriptionFactory());
             defaultFactories.add(new DefaultEnumerationDescriptionFactory());
             defaultFactories.add(new DefaultMultivaluedEAttributeDescriptionFactory());
+
+            this.defaultWidgetDescriptionFactoryRegistry.getItemDescriptors().stream().map(IItemDescriptor::getItem).forEach(defaultFactories::add);
 
             List<IDefaultWidgetDescriptionFactory> factories = new ArrayList<>();
             for (IDefaultWidgetDescriptionFactory factory : defaultFactories) {
