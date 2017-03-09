@@ -12,6 +12,7 @@
 package org.eclipse.sirius.properties;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
@@ -30,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * @model
  * @generated
  */
-public interface Category extends IdentifiedElement {
+public interface Category extends IdentifiedElement, DocumentedElement {
     /**
      * Returns the value of the '<em><b>Pages</b></em>' containment reference list. The list contents are of type
      * {@link org.eclipse.sirius.properties.PageDescription}. <!-- begin-user-doc -->
@@ -39,7 +40,7 @@ public interface Category extends IdentifiedElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Pages</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCategory_Pages()
      * @model containment="true"
@@ -55,7 +56,7 @@ public interface Category extends IdentifiedElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Groups</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCategory_Groups()
      * @model containment="true"
@@ -71,7 +72,7 @@ public interface Category extends IdentifiedElement {
      * a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Overrides</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCategory_Overrides()
      * @model containment="true"

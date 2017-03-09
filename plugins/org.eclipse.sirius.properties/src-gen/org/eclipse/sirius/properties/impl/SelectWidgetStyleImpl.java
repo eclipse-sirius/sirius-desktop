@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.SelectWidgetStyle;
 public class SelectWidgetStyleImpl extends WidgetStyleImpl implements SelectWidgetStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SelectWidgetStyleImpl() {
@@ -33,7 +33,7 @@ public class SelectWidgetStyleImpl extends WidgetStyleImpl implements SelectWidg
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

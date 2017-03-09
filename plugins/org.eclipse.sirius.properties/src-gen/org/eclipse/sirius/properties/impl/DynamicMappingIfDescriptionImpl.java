@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 public class DynamicMappingIfDescriptionImpl extends AbstractDynamicMappingIfDescriptionImpl implements DynamicMappingIfDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DynamicMappingIfDescriptionImpl() {
@@ -33,7 +33,7 @@ public class DynamicMappingIfDescriptionImpl extends AbstractDynamicMappingIfDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

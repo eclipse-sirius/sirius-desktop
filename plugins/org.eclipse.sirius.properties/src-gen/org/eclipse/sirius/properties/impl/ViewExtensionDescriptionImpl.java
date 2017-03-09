@@ -28,6 +28,7 @@ import org.eclipse.sirius.properties.Category;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
@@ -39,6 +40,8 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getDocumentation
+ * <em>Documentation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getMetamodels <em>Metamodels</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getCategories <em>Categories</em>}</li>
  * </ul>
@@ -69,7 +72,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -87,9 +90,29 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected String label = ViewExtensionDescriptionImpl.LABEL_EDEFAULT;
 
     /**
+     * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #getDocumentation()
+     * @generated
+     * @ordered
+     */
+    protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
+
+    /**
+     * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #getDocumentation()
+     * @generated
+     * @ordered
+     */
+    protected String documentation = ViewExtensionDescriptionImpl.DOCUMENTATION_EDEFAULT;
+
+    /**
      * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getMetamodels()
      * @generated
      * @ordered
@@ -108,7 +131,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ViewExtensionDescriptionImpl() {
@@ -117,7 +140,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +150,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +160,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +174,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +184,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +198,31 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public String getDocumentation() {
+        return documentation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setDocumentation(String newDocumentation) {
+        String oldDocumentation = documentation;
+        documentation = newDocumentation;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DOCUMENTATION, oldDocumentation, documentation));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -188,7 +235,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,7 +248,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -215,7 +262,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -225,6 +272,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
             return getName();
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL:
             return getLabel();
+        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DOCUMENTATION:
+            return getDocumentation();
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
             return getMetamodels();
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__CATEGORIES:
@@ -235,7 +284,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -247,6 +296,9 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
             return;
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL:
             setLabel((String) newValue);
+            return;
+        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DOCUMENTATION:
+            setDocumentation((String) newValue);
             return;
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
             getMetamodels().clear();
@@ -262,7 +314,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,6 +325,9 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
             return;
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL:
             setLabel(ViewExtensionDescriptionImpl.LABEL_EDEFAULT);
+            return;
+        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DOCUMENTATION:
+            setDocumentation(ViewExtensionDescriptionImpl.DOCUMENTATION_EDEFAULT);
             return;
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
             getMetamodels().clear();
@@ -286,7 +341,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -296,6 +351,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
             return ViewExtensionDescriptionImpl.NAME_EDEFAULT == null ? name != null : !ViewExtensionDescriptionImpl.NAME_EDEFAULT.equals(name);
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL:
             return ViewExtensionDescriptionImpl.LABEL_EDEFAULT == null ? label != null : !ViewExtensionDescriptionImpl.LABEL_EDEFAULT.equals(label);
+        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DOCUMENTATION:
+            return ViewExtensionDescriptionImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !ViewExtensionDescriptionImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
             return metamodels != null && !metamodels.isEmpty();
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__CATEGORIES:
@@ -306,7 +363,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -321,12 +378,20 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
                 return -1;
             }
         }
+        if (baseClass == DocumentedElement.class) {
+            switch (derivedFeatureID) {
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DOCUMENTATION:
+                return DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
+            default:
+                return -1;
+            }
+        }
         return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -341,12 +406,20 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
                 return -1;
             }
         }
+        if (baseClass == DocumentedElement.class) {
+            switch (baseFeatureID) {
+            case DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+                return PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DOCUMENTATION;
+            default:
+                return -1;
+            }
+        }
         return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -360,6 +433,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
         result.append(name);
         result.append(", label: "); //$NON-NLS-1$
         result.append(label);
+        result.append(", documentation: "); //$NON-NLS-1$
+        result.append(documentation);
         result.append(')');
         return result.toString();
     }

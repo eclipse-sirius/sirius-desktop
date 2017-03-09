@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 public class ListWidgetStyleImpl extends WidgetStyleImpl implements ListWidgetStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ListWidgetStyleImpl() {
@@ -33,7 +33,7 @@ public class ListWidgetStyleImpl extends WidgetStyleImpl implements ListWidgetSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

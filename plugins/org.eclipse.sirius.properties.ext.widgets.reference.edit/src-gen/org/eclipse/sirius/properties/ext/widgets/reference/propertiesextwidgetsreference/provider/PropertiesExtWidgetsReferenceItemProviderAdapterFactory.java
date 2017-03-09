@@ -50,7 +50,7 @@ import org.eclipse.sirius.properties.util.PropertiesSwitch;
  * factory convert EMF adapter notifications into calls to {@link #fireNotifyChanged fireNotifyChanged}. The adapters
  * also support Eclipse property sheets. Note that most of the adapters are shared among multiple instances. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends PropertiesExtWidgetsReferenceAdapterFactory
@@ -66,7 +66,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
     /**
      * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -82,14 +82,14 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
     /**
      * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public PropertiesExtWidgetsReferenceItemProviderAdapterFactory() {
@@ -178,7 +178,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -188,7 +188,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -286,7 +286,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
     /**
      * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -300,7 +300,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -318,7 +318,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * A child creation extender for the {@link PropertiesPackage}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static class PropertiesChildCreationExtender implements IChildCreationExtender {

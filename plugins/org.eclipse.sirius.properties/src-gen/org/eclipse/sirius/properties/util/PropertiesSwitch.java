@@ -103,6 +103,7 @@ import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.Extension;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
@@ -113,21 +114,21 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object and proceeding up the inheritance hierarchy until a non-null result is
  * returned, which is the result of the switch. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.properties.PropertiesPackage
  * @generated
  */
 public class PropertiesSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static PropertiesPackage modelPackage;
 
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public PropertiesSwitch() {
@@ -139,7 +140,7 @@ public class PropertiesSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -150,7 +151,7 @@ public class PropertiesSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -166,7 +167,7 @@ public class PropertiesSwitch<T> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
      * result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -182,6 +183,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(viewExtensionDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(viewExtensionDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -191,6 +195,9 @@ public class PropertiesSwitch<T> {
             T result = caseCategory(category);
             if (result == null) {
                 result = caseIdentifiedElement(category);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(category);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -212,6 +219,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(abstractPageDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(abstractPageDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -224,6 +234,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(pageDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(pageDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -241,6 +254,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(pageOverrideDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(pageOverrideDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -276,6 +292,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(abstractGroupDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(abstractGroupDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -288,6 +307,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(groupDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(groupDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -305,6 +327,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(groupOverrideDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(groupOverrideDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -326,6 +351,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(abstractControlDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(abstractControlDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -340,6 +368,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(controlDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(controlDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -352,6 +383,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(abstractContainerDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(abstractContainerDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -374,6 +408,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(containerDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(containerDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -392,6 +429,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(containerOverrideDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(containerOverrideDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -438,6 +478,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(abstractWidgetDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(abstractWidgetDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -455,6 +498,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(widgetDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(widgetDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -470,6 +516,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(abstractTextDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(abstractTextDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -498,6 +547,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(textDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(textDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -521,6 +573,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(textOverrideDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(textOverrideDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -536,6 +591,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(abstractButtonDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(abstractButtonDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -564,6 +622,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(buttonDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(buttonDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -587,6 +648,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(buttonOverrideDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(buttonOverrideDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -602,6 +666,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(abstractLabelDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(abstractLabelDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -630,6 +697,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(labelDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(labelDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -653,6 +723,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(labelOverrideDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(labelOverrideDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -668,6 +741,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(abstractCheckboxDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(abstractCheckboxDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -696,6 +772,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(checkboxDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(checkboxDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -719,6 +798,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(checkboxOverrideDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(checkboxOverrideDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -734,6 +816,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(abstractSelectDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(abstractSelectDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -762,6 +847,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(selectDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(selectDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -785,6 +873,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(selectOverrideDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(selectOverrideDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -797,6 +888,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(abstractDynamicMappingForDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(abstractDynamicMappingForDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -819,6 +913,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(dynamicMappingForDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(dynamicMappingForDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -837,6 +934,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(dynamicMappingForOverrideDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(dynamicMappingForOverrideDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -898,6 +998,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(abstractTextAreaDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(abstractTextAreaDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -924,6 +1027,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(textAreaDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(textAreaDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -947,6 +1053,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(textAreaOverrideDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(textAreaOverrideDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -962,6 +1071,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(abstractRadioDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(abstractRadioDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -990,6 +1102,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(radioDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(radioDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -1013,6 +1128,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(radioOverrideDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(radioOverrideDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -1028,6 +1146,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(abstractListDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(abstractListDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1056,6 +1177,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(listDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(listDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -1077,6 +1201,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(listOverrideDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(listOverrideDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1102,6 +1229,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(abstractCustomDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(abstractCustomDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1130,6 +1260,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(customDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(customDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -1153,6 +1286,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(customOverrideDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(customOverrideDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -1164,6 +1300,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(customExpression);
             }
             if (result == null) {
+                result = caseDocumentedElement(customExpression);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -1173,6 +1312,9 @@ public class PropertiesSwitch<T> {
             T result = caseCustomOperation(customOperation);
             if (result == null) {
                 result = caseIdentifiedElement(customOperation);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(customOperation);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1190,6 +1332,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(abstractHyperlinkDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(abstractHyperlinkDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1218,6 +1363,9 @@ public class PropertiesSwitch<T> {
                 result = caseIdentifiedElement(hyperlinkDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(hyperlinkDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -1239,6 +1387,9 @@ public class PropertiesSwitch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(hyperlinkOverrideDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(hyperlinkOverrideDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1536,7 +1687,7 @@ public class PropertiesSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Category</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Category</em>'.
@@ -2076,7 +2227,7 @@ public class PropertiesSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Abstract Dynamic Mapping For
      * Description</em>'. <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Abstract Dynamic Mapping For
@@ -2107,7 +2258,7 @@ public class PropertiesSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Dynamic Mapping For Override
      * Description</em>'. <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Dynamic Mapping For Override
@@ -2123,7 +2274,7 @@ public class PropertiesSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Abstract Dynamic Mapping If
      * Description</em>'. <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Abstract Dynamic Mapping If
@@ -2154,7 +2305,7 @@ public class PropertiesSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Dynamic Mapping If Override
      * Description</em>'. <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Dynamic Mapping If Override
@@ -2439,7 +2590,7 @@ public class PropertiesSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Widget Style</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Widget Style</em>'.
@@ -2588,7 +2739,7 @@ public class PropertiesSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Group Style</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Group Style</em>'.
@@ -2648,7 +2799,7 @@ public class PropertiesSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Checkbox Widget Conditional Style</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Checkbox Widget Conditional Style</em>'.
@@ -2737,7 +2888,7 @@ public class PropertiesSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Widget Action</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Widget Action</em>'.
@@ -2752,7 +2903,7 @@ public class PropertiesSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Hyperlink Widget Conditional Style</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Hyperlink Widget Conditional Style</em>'.
@@ -2796,7 +2947,7 @@ public class PropertiesSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Dialog Button</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Dialog Button</em>'.
@@ -2810,7 +2961,7 @@ public class PropertiesSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Edit Support</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Edit Support</em>'.
@@ -2824,7 +2975,7 @@ public class PropertiesSwitch<T> {
     /**
      * Returns the result of interpreting the object as an instance of '<em>Extension</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Extension</em>'.
@@ -2851,9 +3002,24 @@ public class PropertiesSwitch<T> {
     }
 
     /**
+     * Returns the result of interpreting the object as an instance of '<em>Documented Element</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Documented Element</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDocumentedElement(DocumentedElement object) {
+        return null;
+    }
+
+    /**
      * Returns the result of interpreting the object as an instance of '<em>Rule</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Rule</em>'.
@@ -2883,7 +3049,7 @@ public class PropertiesSwitch<T> {
      * Returns the result of interpreting the object as an instance of '<em>EObject</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch, but this is the last case
      * anyway. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>EObject</em>'.

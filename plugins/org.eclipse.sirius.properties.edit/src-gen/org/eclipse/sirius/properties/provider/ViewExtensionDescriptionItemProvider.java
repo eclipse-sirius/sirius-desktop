@@ -65,6 +65,7 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
 
             addNamePropertyDescriptor(object);
             addLabelPropertyDescriptor(object);
+            addDocumentationPropertyDescriptor(object);
             addMetamodelsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
@@ -93,6 +94,19 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_IdentifiedElement_label_feature"), //$NON-NLS-1$
                         getString("_UI_IdentifiedElement_label_description"), //$NON-NLS-1$
                         DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
+    }
+
+    /**
+     * This adds a property descriptor for the Documentation feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addDocumentationPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
+                        getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
                         null));
     }
 
@@ -189,6 +203,7 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
         switch (notification.getFeatureID(ViewExtensionDescription.class)) {
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__NAME:
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL:
+        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DOCUMENTATION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__CATEGORIES:

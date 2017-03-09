@@ -36,7 +36,7 @@ public interface DynamicMappingForOverrideDescription extends AbstractDynamicMap
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(DynamicMappingForDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingForOverrideDescription_Overrides()
@@ -48,7 +48,7 @@ public interface DynamicMappingForOverrideDescription extends AbstractDynamicMap
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.DynamicMappingForOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -64,7 +64,7 @@ public interface DynamicMappingForOverrideDescription extends AbstractDynamicMap
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Ifs From Overridden Dynamic Mapping For Expression</em>' attribute.
      * @see #setFilterIfsFromOverriddenDynamicMappingForExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingForOverrideDescription_FilterIfsFromOverriddenDynamicMappingForExpression()
@@ -78,7 +78,7 @@ public interface DynamicMappingForOverrideDescription extends AbstractDynamicMap
      * '{@link org.eclipse.sirius.properties.DynamicMappingForOverrideDescription#getFilterIfsFromOverriddenDynamicMappingForExpression
      * <em>Filter Ifs From Overridden Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Ifs From Overridden Dynamic Mapping For Expression</em>' attribute.
      * @see #getFilterIfsFromOverriddenDynamicMappingForExpression()

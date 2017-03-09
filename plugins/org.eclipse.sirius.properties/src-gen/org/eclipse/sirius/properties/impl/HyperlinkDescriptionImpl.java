@@ -66,7 +66,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
     /**
      * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
     /**
      * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -86,7 +86,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
     /**
      * The default value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHelpExpression()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
     /**
      * The cached value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHelpExpression()
      * @generated
      * @ordered
@@ -126,7 +126,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
     /**
      * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -136,7 +136,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
     /**
      * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -176,7 +176,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -186,7 +186,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -196,7 +196,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
     /**
      * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getActions()
      * @generated
      * @ordered
@@ -206,7 +206,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getExtends()
      * @generated
      * @ordered
@@ -217,7 +217,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
      * The default value of the '{@link #getFilterConditionalStylesFromExtendedHyperlinkExpression() <em>Filter
      * Conditional Styles From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromExtendedHyperlinkExpression()
      * @generated
      * @ordered
@@ -228,7 +228,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
      * The cached value of the '{@link #getFilterConditionalStylesFromExtendedHyperlinkExpression() <em>Filter
      * Conditional Styles From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromExtendedHyperlinkExpression()
      * @generated
      * @ordered
@@ -257,7 +257,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected HyperlinkDescriptionImpl() {
@@ -266,7 +266,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -276,7 +276,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -286,7 +286,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -300,7 +300,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -310,7 +310,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -324,7 +324,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -334,7 +334,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -348,7 +348,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -358,7 +358,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -372,7 +372,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -382,7 +382,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -396,7 +396,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -406,7 +406,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -425,7 +425,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -449,7 +449,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -459,7 +459,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(HyperlinkWidgetStyle newStyle, NotificationChain msgs) {
@@ -478,7 +478,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -502,7 +502,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -515,7 +515,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -528,7 +528,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -547,7 +547,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public HyperlinkDescription basicGetExtends() {
@@ -556,7 +556,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -570,7 +570,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -580,7 +580,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -595,7 +595,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -605,7 +605,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -620,7 +620,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -640,7 +640,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -679,7 +679,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -730,7 +730,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -778,7 +778,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -816,7 +816,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -862,7 +862,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -908,7 +908,7 @@ public class HyperlinkDescriptionImpl extends WidgetDescriptionImpl implements H
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

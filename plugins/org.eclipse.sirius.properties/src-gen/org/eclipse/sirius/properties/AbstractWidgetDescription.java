@@ -37,7 +37,7 @@ public interface AbstractWidgetDescription extends AbstractControlDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractWidgetDescription_LabelExpression()
@@ -49,7 +49,7 @@ public interface AbstractWidgetDescription extends AbstractControlDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractWidgetDescription#getLabelExpression
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
@@ -64,7 +64,7 @@ public interface AbstractWidgetDescription extends AbstractControlDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Help Expression</em>' attribute.
      * @see #setHelpExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractWidgetDescription_HelpExpression()
@@ -76,7 +76,7 @@ public interface AbstractWidgetDescription extends AbstractControlDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractWidgetDescription#getHelpExpression <em>Help
      * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Help Expression</em>' attribute.
      * @see #getHelpExpression()
@@ -91,7 +91,7 @@ public interface AbstractWidgetDescription extends AbstractControlDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Is Enabled Expression</em>' attribute.
      * @see #setIsEnabledExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractWidgetDescription_IsEnabledExpression()
@@ -103,7 +103,7 @@ public interface AbstractWidgetDescription extends AbstractControlDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractWidgetDescription#getIsEnabledExpression
      * <em>Is Enabled Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Is Enabled Expression</em>' attribute.
      * @see #getIsEnabledExpression()

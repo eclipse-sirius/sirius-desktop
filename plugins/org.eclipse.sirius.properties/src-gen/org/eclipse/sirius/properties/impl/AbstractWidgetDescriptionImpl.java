@@ -38,7 +38,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
     /**
      * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
     /**
      * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -58,7 +58,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
     /**
      * The default value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHelpExpression()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
     /**
      * The cached value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHelpExpression()
      * @generated
      * @ordered
@@ -97,7 +97,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbstractWidgetDescriptionImpl() {
@@ -106,7 +106,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -164,7 +164,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +174,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -188,7 +188,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -227,7 +227,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -248,7 +248,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -267,7 +267,7 @@ public abstract class AbstractWidgetDescriptionImpl extends AbstractControlDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

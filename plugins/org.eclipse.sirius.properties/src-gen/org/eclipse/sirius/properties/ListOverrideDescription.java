@@ -38,7 +38,7 @@ public interface ListOverrideDescription extends AbstractListDescription, Abstra
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(ListDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getListOverrideDescription_Overrides()
@@ -50,7 +50,7 @@ public interface ListOverrideDescription extends AbstractListDescription, Abstra
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.ListOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -66,7 +66,7 @@ public interface ListOverrideDescription extends AbstractListDescription, Abstra
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Conditional Styles From Overridden List Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromOverriddenListExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getListOverrideDescription_FilterConditionalStylesFromOverriddenListExpression()
@@ -80,7 +80,7 @@ public interface ListOverrideDescription extends AbstractListDescription, Abstra
      * '{@link org.eclipse.sirius.properties.ListOverrideDescription#getFilterConditionalStylesFromOverriddenListExpression
      * <em>Filter Conditional Styles From Overridden List Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Overridden List Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromOverriddenListExpression()

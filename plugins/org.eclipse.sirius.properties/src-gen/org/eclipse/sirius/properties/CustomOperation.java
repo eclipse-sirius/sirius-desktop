@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.properties;
 
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
@@ -29,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * @model
  * @generated
  */
-public interface CustomOperation extends IdentifiedElement {
+public interface CustomOperation extends IdentifiedElement, DocumentedElement {
     /**
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
@@ -37,7 +38,7 @@ public interface CustomOperation extends IdentifiedElement {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCustomOperation_InitialOperation()
@@ -49,7 +50,7 @@ public interface CustomOperation extends IdentifiedElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.CustomOperation#getInitialOperation <em>Initial
      * Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()

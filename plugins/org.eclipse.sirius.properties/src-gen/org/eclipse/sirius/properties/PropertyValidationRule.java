@@ -38,7 +38,7 @@ public interface PropertyValidationRule extends ValidationRule {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Targets</em>' reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getPropertyValidationRule_Targets()
      * @model keys="name"

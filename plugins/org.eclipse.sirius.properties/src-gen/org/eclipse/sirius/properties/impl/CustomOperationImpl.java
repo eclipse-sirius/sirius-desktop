@@ -18,6 +18,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.properties.CustomOperation;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
@@ -36,6 +38,26 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  */
 public class CustomOperationImpl extends IdentifiedElementImpl implements CustomOperation {
     /**
+     * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #getDocumentation()
+     * @generated
+     * @ordered
+     */
+    protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
+
+    /**
+     * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #getDocumentation()
+     * @generated
+     * @ordered
+     */
+    protected String documentation = CustomOperationImpl.DOCUMENTATION_EDEFAULT;
+
+    /**
      * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -47,7 +69,7 @@ public class CustomOperationImpl extends IdentifiedElementImpl implements Custom
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CustomOperationImpl() {
@@ -56,7 +78,7 @@ public class CustomOperationImpl extends IdentifiedElementImpl implements Custom
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +88,31 @@ public class CustomOperationImpl extends IdentifiedElementImpl implements Custom
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public String getDocumentation() {
+        return documentation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setDocumentation(String newDocumentation) {
+        String oldDocumentation = documentation;
+        documentation = newDocumentation;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.CUSTOM_OPERATION__DOCUMENTATION, oldDocumentation, documentation));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -76,7 +122,7 @@ public class CustomOperationImpl extends IdentifiedElementImpl implements Custom
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -95,7 +141,7 @@ public class CustomOperationImpl extends IdentifiedElementImpl implements Custom
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +165,7 @@ public class CustomOperationImpl extends IdentifiedElementImpl implements Custom
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,12 +179,14 @@ public class CustomOperationImpl extends IdentifiedElementImpl implements Custom
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
+        case PropertiesPackage.CUSTOM_OPERATION__DOCUMENTATION:
+            return getDocumentation();
         case PropertiesPackage.CUSTOM_OPERATION__INITIAL_OPERATION:
             return getInitialOperation();
         }
@@ -147,12 +195,15 @@ public class CustomOperationImpl extends IdentifiedElementImpl implements Custom
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
+        case PropertiesPackage.CUSTOM_OPERATION__DOCUMENTATION:
+            setDocumentation((String) newValue);
+            return;
         case PropertiesPackage.CUSTOM_OPERATION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) newValue);
             return;
@@ -162,12 +213,15 @@ public class CustomOperationImpl extends IdentifiedElementImpl implements Custom
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
+        case PropertiesPackage.CUSTOM_OPERATION__DOCUMENTATION:
+            setDocumentation(CustomOperationImpl.DOCUMENTATION_EDEFAULT);
+            return;
         case PropertiesPackage.CUSTOM_OPERATION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) null);
             return;
@@ -177,16 +231,72 @@ public class CustomOperationImpl extends IdentifiedElementImpl implements Custom
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
+        case PropertiesPackage.CUSTOM_OPERATION__DOCUMENTATION:
+            return CustomOperationImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !CustomOperationImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         case PropertiesPackage.CUSTOM_OPERATION__INITIAL_OPERATION:
             return initialOperation != null;
         }
         return super.eIsSet(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == DocumentedElement.class) {
+            switch (derivedFeatureID) {
+            case PropertiesPackage.CUSTOM_OPERATION__DOCUMENTATION:
+                return DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
+            default:
+                return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+        if (baseClass == DocumentedElement.class) {
+            switch (baseFeatureID) {
+            case DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+                return PropertiesPackage.CUSTOM_OPERATION__DOCUMENTATION;
+            default:
+                return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String toString() {
+        if (eIsProxy()) {
+            return super.toString();
+        }
+
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (documentation: "); //$NON-NLS-1$
+        result.append(documentation);
+        result.append(')');
+        return result.toString();
     }
 
 } // CustomOperationImpl

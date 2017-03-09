@@ -26,14 +26,14 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 public final class PropertiesextwidgetsreferenceEditPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static final PropertiesextwidgetsreferenceEditPlugin INSTANCE = new PropertiesextwidgetsreferenceEditPlugin();
 
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private static Implementation plugin;
@@ -70,7 +70,7 @@ public final class PropertiesextwidgetsreferenceEditPlugin extends EMFPlugin {
 
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static class Implementation extends EclipsePlugin {

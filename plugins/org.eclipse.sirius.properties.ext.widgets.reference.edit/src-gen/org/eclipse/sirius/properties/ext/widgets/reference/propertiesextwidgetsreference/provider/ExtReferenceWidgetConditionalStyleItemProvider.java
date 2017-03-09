@@ -35,7 +35,7 @@ import org.eclipse.sirius.properties.provider.WidgetConditionalStyleItemProvider
 public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetConditionalStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ExtReferenceWidgetConditionalStyleItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +44,7 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class ExtReferenceWidgetConditionalStyleItemProvider extends WidgetCondit
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

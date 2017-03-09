@@ -41,7 +41,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
     /**
      * The cached value of the '{@link #getOverrides() <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getOverrides()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
     /**
      * The default value of the '{@link #getFilterValidationRulesFromOverriddenGroupExpression() <em>Filter Validation
      * Rules From Overridden Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterValidationRulesFromOverriddenGroupExpression()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
     /**
      * The cached value of the '{@link #getFilterValidationRulesFromOverriddenGroupExpression() <em>Filter Validation
      * Rules From Overridden Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterValidationRulesFromOverriddenGroupExpression()
      * @generated
      * @ordered
@@ -92,7 +92,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
      * The default value of the '{@link #getFilterConditionalStylesFromOverriddenGroupExpression() <em>Filter
      * Conditional Styles From Overridden Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenGroupExpression()
      * @generated
      * @ordered
@@ -102,7 +102,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
     /**
      * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenGroupExpression() <em>Filter Conditional
      * Styles From Overridden Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenGroupExpression()
      * @generated
      * @ordered
@@ -111,7 +111,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GroupOverrideDescriptionImpl() {
@@ -120,7 +120,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public GroupDescription basicGetOverrides() {
@@ -158,7 +158,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +207,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -232,7 +232,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +247,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -270,7 +270,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -294,7 +294,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -318,7 +318,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -341,7 +341,7 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

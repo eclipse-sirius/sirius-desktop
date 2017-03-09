@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.TextAreaDescription;
 public class TextAreaDescriptionImpl extends AbstractTextAreaDescriptionImpl implements TextAreaDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TextAreaDescriptionImpl() {
@@ -33,7 +33,7 @@ public class TextAreaDescriptionImpl extends AbstractTextAreaDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

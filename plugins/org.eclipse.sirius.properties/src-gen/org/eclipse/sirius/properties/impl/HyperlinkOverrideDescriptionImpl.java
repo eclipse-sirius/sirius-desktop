@@ -39,7 +39,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
     /**
      * The cached value of the '{@link #getOverrides() <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getOverrides()
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
      * The default value of the '{@link #getFilterConditionalStylesFromOverriddenHyperlinkExpression() <em>Filter
      * Conditional Styles From Overridden Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenHyperlinkExpression()
      * @generated
      * @ordered
@@ -61,7 +61,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
      * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenHyperlinkExpression() <em>Filter
      * Conditional Styles From Overridden Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenHyperlinkExpression()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
     /**
      * The default value of the '{@link #getFilterActionsFromOverriddenHyperlinkExpression() <em>Filter Actions From
      * Overridden Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterActionsFromOverriddenHyperlinkExpression()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
     /**
      * The cached value of the '{@link #getFilterActionsFromOverriddenHyperlinkExpression() <em>Filter Actions From
      * Overridden Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterActionsFromOverriddenHyperlinkExpression()
      * @generated
      * @ordered
@@ -90,7 +90,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected HyperlinkOverrideDescriptionImpl() {
@@ -99,7 +99,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public HyperlinkDescription basicGetOverrides() {
@@ -137,7 +137,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +186,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,7 +201,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +243,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -264,7 +264,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +284,7 @@ public class HyperlinkOverrideDescriptionImpl extends AbstractHyperlinkDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -86,7 +86,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
     /**
      * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
     /**
      * The cached value of the '{@link #getFontFormat() <em>Font Format</em>}' attribute list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getFontFormat()
      * @generated
      * @ordered
@@ -105,7 +105,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected HyperlinkWidgetStyleImpl() {
@@ -114,7 +114,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -191,7 +191,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetBackgroundColor() {
@@ -200,7 +200,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -227,7 +227,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +250,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -276,7 +276,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -300,7 +300,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -320,7 +320,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

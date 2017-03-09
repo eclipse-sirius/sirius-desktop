@@ -36,7 +36,7 @@ public interface ContainerOverrideDescription extends AbstractContainerDescripti
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(ContainerDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getContainerOverrideDescription_Overrides()
@@ -48,7 +48,7 @@ public interface ContainerOverrideDescription extends AbstractContainerDescripti
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.ContainerOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -78,7 +78,7 @@ public interface ContainerOverrideDescription extends AbstractContainerDescripti
      * '{@link org.eclipse.sirius.properties.ContainerOverrideDescription#getFilterControlsFromOverriddenContainerExpression
      * <em>Filter Controls From Overridden Container Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Controls From Overridden Container Expression</em>' attribute.
      * @see #getFilterControlsFromOverriddenContainerExpression()

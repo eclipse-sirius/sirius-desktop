@@ -36,7 +36,7 @@ public interface CustomOverrideDescription extends AbstractCustomDescription, Ab
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(CustomDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCustomOverrideDescription_Overrides()
@@ -48,7 +48,7 @@ public interface CustomOverrideDescription extends AbstractCustomDescription, Ab
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.CustomOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -64,7 +64,7 @@ public interface CustomOverrideDescription extends AbstractCustomDescription, Ab
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Conditional Styles From Overridden Custom Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromOverriddenCustomExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCustomOverrideDescription_FilterConditionalStylesFromOverriddenCustomExpression()
@@ -78,7 +78,7 @@ public interface CustomOverrideDescription extends AbstractCustomDescription, Ab
      * '{@link org.eclipse.sirius.properties.CustomOverrideDescription#getFilterConditionalStylesFromOverriddenCustomExpression
      * <em>Filter Conditional Styles From Overridden Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Overridden Custom Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromOverriddenCustomExpression()

@@ -36,7 +36,7 @@ public interface TextOverrideDescription extends AbstractTextDescription, Abstra
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(TextDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextOverrideDescription_Overrides()
@@ -48,7 +48,7 @@ public interface TextOverrideDescription extends AbstractTextDescription, Abstra
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.TextOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -64,7 +64,7 @@ public interface TextOverrideDescription extends AbstractTextDescription, Abstra
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Conditional Styles From Overridden Text Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromOverriddenTextExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextOverrideDescription_FilterConditionalStylesFromOverriddenTextExpression()
@@ -78,7 +78,7 @@ public interface TextOverrideDescription extends AbstractTextDescription, Abstra
      * '{@link org.eclipse.sirius.properties.TextOverrideDescription#getFilterConditionalStylesFromOverriddenTextExpression
      * <em>Filter Conditional Styles From Overridden Text Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Overridden Text Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromOverriddenTextExpression()

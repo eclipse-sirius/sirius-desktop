@@ -61,7 +61,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
     /**
      * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
     /**
      * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
     /**
      * The default value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHelpExpression()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
     /**
      * The cached value of the '{@link #getHelpExpression() <em>Help Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHelpExpression()
      * @generated
      * @ordered
@@ -121,7 +121,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
     /**
      * The cached value of the '{@link #getCustomExpressions() <em>Custom Expressions</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCustomExpressions()
      * @generated
      * @ordered
@@ -131,7 +131,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
     /**
      * The cached value of the '{@link #getCustomOperations() <em>Custom Operations</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCustomOperations()
      * @generated
      * @ordered
@@ -141,7 +141,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -151,7 +151,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -161,7 +161,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getExtends()
      * @generated
      * @ordered
@@ -171,7 +171,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
     /**
      * The default value of the '{@link #getFilterConditionalStylesFromExtendedCustomExpression() <em>Filter Conditional
      * Styles From Extended Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromExtendedCustomExpression()
      * @generated
      * @ordered
@@ -181,7 +181,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
     /**
      * The cached value of the '{@link #getFilterConditionalStylesFromExtendedCustomExpression() <em>Filter Conditional
      * Styles From Extended Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromExtendedCustomExpression()
      * @generated
      * @ordered
@@ -190,7 +190,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CustomDescriptionImpl() {
@@ -199,7 +199,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -219,7 +219,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -233,7 +233,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +243,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -257,7 +257,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -267,7 +267,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -281,7 +281,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -294,7 +294,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -307,7 +307,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -317,7 +317,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(CustomWidgetStyle newStyle, NotificationChain msgs) {
@@ -336,7 +336,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -360,7 +360,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -373,7 +373,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -392,7 +392,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CustomDescription basicGetExtends() {
@@ -401,7 +401,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -415,7 +415,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -425,7 +425,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -440,7 +440,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -460,7 +460,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -493,7 +493,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -536,7 +536,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -575,7 +575,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -606,7 +606,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -646,7 +646,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -686,7 +686,7 @@ public class CustomDescriptionImpl extends WidgetDescriptionImpl implements Cust
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

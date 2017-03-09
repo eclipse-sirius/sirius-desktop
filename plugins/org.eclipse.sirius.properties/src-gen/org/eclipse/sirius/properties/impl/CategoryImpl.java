@@ -13,10 +13,12 @@ package org.eclipse.sirius.properties.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.properties.AbstractOverrideDescription;
@@ -24,6 +26,8 @@ import org.eclipse.sirius.properties.Category;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
 
 /**
@@ -32,6 +36,7 @@ import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ * <li>{@link org.eclipse.sirius.properties.impl.CategoryImpl#getDocumentation <em>Documentation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.CategoryImpl#getPages <em>Pages</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.CategoryImpl#getGroups <em>Groups</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.CategoryImpl#getOverrides <em>Overrides</em>}</li>
@@ -41,9 +46,29 @@ import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
  */
 public class CategoryImpl extends IdentifiedElementImpl implements Category {
     /**
+     * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #getDocumentation()
+     * @generated
+     * @ordered
+     */
+    protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
+
+    /**
+     * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #getDocumentation()
+     * @generated
+     * @ordered
+     */
+    protected String documentation = CategoryImpl.DOCUMENTATION_EDEFAULT;
+
+    /**
      * The cached value of the '{@link #getPages() <em>Pages</em>}' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getPages()
      * @generated
      * @ordered
@@ -53,7 +78,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
     /**
      * The cached value of the '{@link #getGroups() <em>Groups</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGroups()
      * @generated
      * @ordered
@@ -72,7 +97,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CategoryImpl() {
@@ -81,7 +106,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +116,31 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public String getDocumentation() {
+        return documentation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setDocumentation(String newDocumentation) {
+        String oldDocumentation = documentation;
+        documentation = newDocumentation;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.CATEGORY__DOCUMENTATION, oldDocumentation, documentation));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -104,7 +153,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +166,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +179,7 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,12 +197,14 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
+        case PropertiesPackage.CATEGORY__DOCUMENTATION:
+            return getDocumentation();
         case PropertiesPackage.CATEGORY__PAGES:
             return getPages();
         case PropertiesPackage.CATEGORY__GROUPS:
@@ -166,13 +217,16 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
+        case PropertiesPackage.CATEGORY__DOCUMENTATION:
+            setDocumentation((String) newValue);
+            return;
         case PropertiesPackage.CATEGORY__PAGES:
             getPages().clear();
             getPages().addAll((Collection<? extends PageDescription>) newValue);
@@ -191,12 +245,15 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
+        case PropertiesPackage.CATEGORY__DOCUMENTATION:
+            setDocumentation(CategoryImpl.DOCUMENTATION_EDEFAULT);
+            return;
         case PropertiesPackage.CATEGORY__PAGES:
             getPages().clear();
             return;
@@ -212,12 +269,14 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
+        case PropertiesPackage.CATEGORY__DOCUMENTATION:
+            return CategoryImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !CategoryImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         case PropertiesPackage.CATEGORY__PAGES:
             return pages != null && !pages.isEmpty();
         case PropertiesPackage.CATEGORY__GROUPS:
@@ -226,6 +285,60 @@ public class CategoryImpl extends IdentifiedElementImpl implements Category {
             return overrides != null && !overrides.isEmpty();
         }
         return super.eIsSet(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == DocumentedElement.class) {
+            switch (derivedFeatureID) {
+            case PropertiesPackage.CATEGORY__DOCUMENTATION:
+                return DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
+            default:
+                return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+        if (baseClass == DocumentedElement.class) {
+            switch (baseFeatureID) {
+            case DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+                return PropertiesPackage.CATEGORY__DOCUMENTATION;
+            default:
+                return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String toString() {
+        if (eIsProxy()) {
+            return super.toString();
+        }
+
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (documentation: "); //$NON-NLS-1$
+        result.append(documentation);
+        result.append(')');
+        return result.toString();
     }
 
 } // CategoryImpl

@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.AbstractPageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.provider.IdentifiedElementItemProvider;
 
 /**
@@ -54,6 +55,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            addDocumentationPropertyDescriptor(object);
             addLabelExpressionPropertyDescriptor(object);
             addDomainClassPropertyDescriptor(object);
             addSemanticCandidateExpressionPropertyDescriptor(object);
@@ -64,6 +66,19 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
             addFilterValidationRulesFromExtendedPageExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
+    }
+
+    /**
+     * This adds a property descriptor for the Documentation feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addDocumentationPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
+                        getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -236,6 +251,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
         updateChildren(notification);
 
         switch (notification.getFeatureID(AbstractPageDescription.class)) {
+        case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__DOCUMENTATION:
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__LABEL_EXPRESSION:
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__DOMAIN_CLASS:
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:

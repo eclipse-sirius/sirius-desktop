@@ -40,7 +40,7 @@ public interface DialogModelOperation extends ModelOperation {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Title Expression</em>' attribute.
      * @see #setTitleExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDialogModelOperation_TitleExpression()
@@ -52,7 +52,7 @@ public interface DialogModelOperation extends ModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.DialogModelOperation#getTitleExpression <em>Title
      * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Title Expression</em>' attribute.
      * @see #getTitleExpression()
@@ -68,7 +68,7 @@ public interface DialogModelOperation extends ModelOperation {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Buttons</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDialogModelOperation_Buttons()
      * @model containment="true"
@@ -83,7 +83,7 @@ public interface DialogModelOperation extends ModelOperation {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Page</em>' containment reference.
      * @see #setPage(PageDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDialogModelOperation_Page()
@@ -95,7 +95,7 @@ public interface DialogModelOperation extends ModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.DialogModelOperation#getPage <em>Page</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Page</em>' containment reference.
      * @see #getPage()
@@ -111,7 +111,7 @@ public interface DialogModelOperation extends ModelOperation {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Groups</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDialogModelOperation_Groups()
      * @model containment="true"

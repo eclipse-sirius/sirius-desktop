@@ -34,7 +34,7 @@ public interface DynamicMappingIfOverrideDescription extends AbstractDynamicMapp
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(DynamicMappingIfDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingIfOverrideDescription_Overrides()
@@ -46,7 +46,7 @@ public interface DynamicMappingIfOverrideDescription extends AbstractDynamicMapp
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.DynamicMappingIfOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()

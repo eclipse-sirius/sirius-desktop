@@ -13,6 +13,7 @@ package org.eclipse.sirius.properties;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.Extension;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
@@ -32,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * @model
  * @generated
  */
-public interface ViewExtensionDescription extends Extension, IdentifiedElement {
+public interface ViewExtensionDescription extends Extension, IdentifiedElement, DocumentedElement {
     /**
      * Returns the value of the '<em><b>Metamodels</b></em>' reference list. The list contents are of type
      * {@link org.eclipse.emf.ecore.EPackage}. <!-- begin-user-doc -->
@@ -41,7 +42,7 @@ public interface ViewExtensionDescription extends Extension, IdentifiedElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Metamodels</em>' reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getViewExtensionDescription_Metamodels()
      * @model
@@ -57,7 +58,7 @@ public interface ViewExtensionDescription extends Extension, IdentifiedElement {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Categories</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getViewExtensionDescription_Categories()
      * @model containment="true"

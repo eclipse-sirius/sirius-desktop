@@ -42,7 +42,7 @@ public interface TextWidgetStyle extends WidgetStyle {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Font Name Expression</em>' attribute.
      * @see #setFontNameExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextWidgetStyle_FontNameExpression()
@@ -54,7 +54,7 @@ public interface TextWidgetStyle extends WidgetStyle {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.TextWidgetStyle#getFontNameExpression <em>Font Name
      * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Font Name Expression</em>' attribute.
      * @see #getFontNameExpression()
@@ -69,7 +69,7 @@ public interface TextWidgetStyle extends WidgetStyle {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Font Size Expression</em>' attribute.
      * @see #setFontSizeExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextWidgetStyle_FontSizeExpression()
@@ -81,7 +81,7 @@ public interface TextWidgetStyle extends WidgetStyle {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.TextWidgetStyle#getFontSizeExpression <em>Font Size
      * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Font Size Expression</em>' attribute.
      * @see #getFontSizeExpression()
@@ -96,7 +96,7 @@ public interface TextWidgetStyle extends WidgetStyle {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextWidgetStyle_BackgroundColor()
@@ -108,7 +108,7 @@ public interface TextWidgetStyle extends WidgetStyle {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.TextWidgetStyle#getBackgroundColor <em>Background
      * Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()
@@ -123,7 +123,7 @@ public interface TextWidgetStyle extends WidgetStyle {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreground Color</em>' reference.
      * @see #setForegroundColor(ColorDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextWidgetStyle_ForegroundColor()
@@ -135,7 +135,7 @@ public interface TextWidgetStyle extends WidgetStyle {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.TextWidgetStyle#getForegroundColor <em>Foreground
      * Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Foreground Color</em>' reference.
      * @see #getForegroundColor()
@@ -152,7 +152,7 @@ public interface TextWidgetStyle extends WidgetStyle {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Font Format</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.FontFormat
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextWidgetStyle_FontFormat()

@@ -37,7 +37,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
     /**
      * The cached value of the '{@link #getOverrides() <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getOverrides()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
     /**
      * The default value of the '{@link #getFilterControlsFromOverriddenContainerExpression() <em>Filter Controls From
      * Overridden Container Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterControlsFromOverriddenContainerExpression()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
     /**
      * The cached value of the '{@link #getFilterControlsFromOverriddenContainerExpression() <em>Filter Controls From
      * Overridden Container Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilterControlsFromOverriddenContainerExpression()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContainerOverrideDescriptionImpl() {
@@ -75,7 +75,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerDescription basicGetOverrides() {
@@ -113,7 +113,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +137,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +171,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +207,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +224,7 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

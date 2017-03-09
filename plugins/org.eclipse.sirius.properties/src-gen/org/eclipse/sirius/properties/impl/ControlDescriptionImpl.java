@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 public abstract class ControlDescriptionImpl extends AbstractControlDescriptionImpl implements ControlDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ControlDescriptionImpl() {
@@ -33,7 +33,7 @@ public abstract class ControlDescriptionImpl extends AbstractControlDescriptionI
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

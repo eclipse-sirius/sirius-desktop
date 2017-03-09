@@ -59,7 +59,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     /**
      * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     /**
      * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -109,7 +109,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -119,7 +119,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -129,7 +129,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     /**
      * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getActions()
      * @generated
      * @ordered
@@ -139,7 +139,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getExtends()
      * @generated
      * @ordered
@@ -150,7 +150,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
      * The default value of the '{@link #getFilterConditionalStylesFromExtendedHyperlinkExpression() <em>Filter
      * Conditional Styles From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromExtendedHyperlinkExpression()
      * @generated
      * @ordered
@@ -161,7 +161,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
      * The cached value of the '{@link #getFilterConditionalStylesFromExtendedHyperlinkExpression() <em>Filter
      * Conditional Styles From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromExtendedHyperlinkExpression()
      * @generated
      * @ordered
@@ -190,7 +190,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbstractHyperlinkDescriptionImpl() {
@@ -199,7 +199,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -219,7 +219,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -233,7 +233,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +243,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -257,7 +257,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -267,7 +267,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -287,7 +287,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -313,7 +313,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -323,7 +323,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(HyperlinkWidgetStyle newStyle, NotificationChain msgs) {
@@ -342,7 +342,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -366,7 +366,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -380,7 +380,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -393,7 +393,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -412,7 +412,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public HyperlinkDescription basicGetExtends() {
@@ -421,7 +421,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -435,7 +435,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -445,7 +445,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -460,7 +460,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -470,7 +470,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -485,7 +485,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -505,7 +505,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -538,7 +538,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -580,7 +580,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -619,7 +619,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -652,7 +652,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -37,7 +37,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
     /**
      * The cached value of the '{@link #getOverrides() <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getOverrides()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
      * The default value of the '{@link #getFilterConditionalStylesFromOverriddenSelectExpression() <em>Filter
      * Conditional Styles From Overridden Select Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenSelectExpression()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
      * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenSelectExpression() <em>Filter
      * Conditional Styles From Overridden Select Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getFilterConditionalStylesFromOverriddenSelectExpression()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SelectOverrideDescriptionImpl() {
@@ -77,7 +77,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +87,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SelectDescription basicGetOverrides() {
@@ -115,7 +115,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,7 +173,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -191,7 +191,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

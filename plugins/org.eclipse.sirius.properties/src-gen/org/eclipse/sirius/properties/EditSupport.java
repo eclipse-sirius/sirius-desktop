@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 public interface EditSupport extends EObject {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */
@@ -34,7 +34,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */
@@ -42,7 +42,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model featureRequired="true"
      * @generated
      */
@@ -50,7 +50,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */
@@ -58,7 +58,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model featureRequired="true"
      * @generated
      */
@@ -66,7 +66,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model required="true" eStructuralFeatureRequired="true"
      * @generated
      */
@@ -74,7 +74,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model required="true" eStructuralFeatureRequired="true"
      * @generated
      */
@@ -82,7 +82,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */
@@ -90,7 +90,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model featureRequired="true" newValueRequired="true"
      * @generated
      */
@@ -98,7 +98,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model eStructuralFeatureRequired="true"
      * @generated
      */
@@ -106,7 +106,7 @@ public interface EditSupport extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model eStructuralFeatureRequired="true"
      * @generated
      */

@@ -36,7 +36,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ButtonWidgetConditionalStyleImpl() {
@@ -54,7 +54,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(ButtonWidgetStyle newStyle, NotificationChain msgs) {
@@ -93,7 +93,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class ButtonWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

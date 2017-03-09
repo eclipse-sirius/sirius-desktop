@@ -30,7 +30,7 @@ import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsr
 public class ExtReferenceDescriptionItemProvider extends AbstractExtReferenceDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ExtReferenceDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -39,7 +39,7 @@ public class ExtReferenceDescriptionItemProvider extends AbstractExtReferenceDes
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public class ExtReferenceDescriptionItemProvider extends AbstractExtReferenceDes
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class ExtReferenceDescriptionItemProvider extends AbstractExtReferenceDes
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

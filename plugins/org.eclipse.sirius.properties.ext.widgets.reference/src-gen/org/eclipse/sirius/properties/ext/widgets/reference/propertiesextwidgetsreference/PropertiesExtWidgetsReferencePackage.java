@@ -91,6 +91,14 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     int ABSTRACT_EXT_REFERENCE_DESCRIPTION__LABEL = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__LABEL;
 
     /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_EXT_REFERENCE_DESCRIPTION__DOCUMENTATION = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION__DOCUMENTATION;
+
+    /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
@@ -188,6 +196,14 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
      * @ordered
      */
     int EXT_REFERENCE_DESCRIPTION__LABEL = PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__LABEL;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int EXT_REFERENCE_DESCRIPTION__DOCUMENTATION = PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -357,8 +373,8 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     int EXT_REFERENCE_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the ' <em>Ext Reference Widget
-     * Conditional Style</em>' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The number of structural features of the '<em>Ext Reference Widget Conditional Style</em>' class. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered

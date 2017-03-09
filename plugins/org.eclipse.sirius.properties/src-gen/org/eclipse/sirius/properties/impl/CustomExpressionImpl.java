@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.properties.CustomExpression;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
 
 /**
@@ -32,6 +34,26 @@ import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
  * @generated
  */
 public class CustomExpressionImpl extends IdentifiedElementImpl implements CustomExpression {
+    /**
+     * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #getDocumentation()
+     * @generated
+     * @ordered
+     */
+    protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
+
+    /**
+     * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #getDocumentation()
+     * @generated
+     * @ordered
+     */
+    protected String documentation = CustomExpressionImpl.DOCUMENTATION_EDEFAULT;
+
     /**
      * The default value of the '{@link #getCustomExpression() <em>Custom Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -54,7 +76,7 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CustomExpressionImpl() {
@@ -63,7 +85,7 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +95,31 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public String getDocumentation() {
+        return documentation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setDocumentation(String newDocumentation) {
+        String oldDocumentation = documentation;
+        documentation = newDocumentation;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.CUSTOM_EXPRESSION__DOCUMENTATION, oldDocumentation, documentation));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -83,7 +129,7 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,12 +143,14 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
+        case PropertiesPackage.CUSTOM_EXPRESSION__DOCUMENTATION:
+            return getDocumentation();
         case PropertiesPackage.CUSTOM_EXPRESSION__CUSTOM_EXPRESSION:
             return getCustomExpression();
         }
@@ -111,12 +159,15 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
+        case PropertiesPackage.CUSTOM_EXPRESSION__DOCUMENTATION:
+            setDocumentation((String) newValue);
+            return;
         case PropertiesPackage.CUSTOM_EXPRESSION__CUSTOM_EXPRESSION:
             setCustomExpression((String) newValue);
             return;
@@ -126,12 +177,15 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
+        case PropertiesPackage.CUSTOM_EXPRESSION__DOCUMENTATION:
+            setDocumentation(CustomExpressionImpl.DOCUMENTATION_EDEFAULT);
+            return;
         case PropertiesPackage.CUSTOM_EXPRESSION__CUSTOM_EXPRESSION:
             setCustomExpression(CustomExpressionImpl.CUSTOM_EXPRESSION_EDEFAULT);
             return;
@@ -141,12 +195,14 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
+        case PropertiesPackage.CUSTOM_EXPRESSION__DOCUMENTATION:
+            return CustomExpressionImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !CustomExpressionImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         case PropertiesPackage.CUSTOM_EXPRESSION__CUSTOM_EXPRESSION:
             return CustomExpressionImpl.CUSTOM_EXPRESSION_EDEFAULT == null ? customExpression != null : !CustomExpressionImpl.CUSTOM_EXPRESSION_EDEFAULT.equals(customExpression);
         }
@@ -155,7 +211,43 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == DocumentedElement.class) {
+            switch (derivedFeatureID) {
+            case PropertiesPackage.CUSTOM_EXPRESSION__DOCUMENTATION:
+                return DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
+            default:
+                return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+        if (baseClass == DocumentedElement.class) {
+            switch (baseFeatureID) {
+            case DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+                return PropertiesPackage.CUSTOM_EXPRESSION__DOCUMENTATION;
+            default:
+                return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -165,7 +257,9 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (customExpression: "); //$NON-NLS-1$
+        result.append(" (documentation: "); //$NON-NLS-1$
+        result.append(documentation);
+        result.append(", customExpression: "); //$NON-NLS-1$
         result.append(customExpression);
         result.append(')');
         return result.toString();

@@ -38,7 +38,7 @@ public interface LabelOverrideDescription extends AbstractLabelDescription, Abst
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(LabelDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelOverrideDescription_Overrides()
@@ -50,7 +50,7 @@ public interface LabelOverrideDescription extends AbstractLabelDescription, Abst
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.LabelOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -66,7 +66,7 @@ public interface LabelOverrideDescription extends AbstractLabelDescription, Abst
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Conditional Styles From Overridden Label Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromOverriddenLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelOverrideDescription_FilterConditionalStylesFromOverriddenLabelExpression()
@@ -80,7 +80,7 @@ public interface LabelOverrideDescription extends AbstractLabelDescription, Abst
      * '{@link org.eclipse.sirius.properties.LabelOverrideDescription#getFilterConditionalStylesFromOverriddenLabelExpression
      * <em>Filter Conditional Styles From Overridden Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Overridden Label Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromOverriddenLabelExpression()

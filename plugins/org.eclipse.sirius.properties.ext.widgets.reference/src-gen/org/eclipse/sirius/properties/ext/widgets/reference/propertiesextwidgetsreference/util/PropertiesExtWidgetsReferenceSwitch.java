@@ -25,6 +25,7 @@ import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsr
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
@@ -59,7 +60,8 @@ public class PropertiesExtWidgetsReferenceSwitch<T> extends Switch<T> {
     /**
      * Checks whether this is a switch for the given package. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @parameter ePackage the package in question.
+     * @param ePackage
+     *            the package in question.
      * @return whether this is a switch for the given package.
      * @generated
      */
@@ -91,6 +93,9 @@ public class PropertiesExtWidgetsReferenceSwitch<T> extends Switch<T> {
                 result = caseIdentifiedElement(abstractExtReferenceDescription);
             }
             if (result == null) {
+                result = caseDocumentedElement(abstractExtReferenceDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -115,6 +120,9 @@ public class PropertiesExtWidgetsReferenceSwitch<T> extends Switch<T> {
             }
             if (result == null) {
                 result = caseIdentifiedElement(extReferenceDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(extReferenceDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -221,6 +229,21 @@ public class PropertiesExtWidgetsReferenceSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseIdentifiedElement(IdentifiedElement object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Documented Element</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Documented Element</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDocumentedElement(DocumentedElement object) {
         return null;
     }
 

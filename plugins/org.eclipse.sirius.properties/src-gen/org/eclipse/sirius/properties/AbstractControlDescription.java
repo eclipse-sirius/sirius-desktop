@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.properties;
 
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
@@ -22,5 +23,5 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * @model abstract="true"
  * @generated
  */
-public interface AbstractControlDescription extends IdentifiedElement {
+public interface AbstractControlDescription extends IdentifiedElement, DocumentedElement {
 } // AbstractControlDescription

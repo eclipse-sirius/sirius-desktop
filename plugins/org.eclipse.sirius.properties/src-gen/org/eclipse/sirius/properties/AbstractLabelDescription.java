@@ -47,7 +47,7 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractLabelDescription_ValueExpression()
@@ -59,7 +59,7 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractLabelDescription#getValueExpression <em>Value
      * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -74,7 +74,7 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Display Expression</em>' attribute.
      * @see #setDisplayExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractLabelDescription_DisplayExpression()
@@ -86,7 +86,7 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractLabelDescription#getDisplayExpression
      * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Display Expression</em>' attribute.
      * @see #getDisplayExpression()
@@ -101,7 +101,7 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(LabelWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractLabelDescription_Style()
@@ -113,7 +113,7 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractLabelDescription#getStyle <em>Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
@@ -129,7 +129,7 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditional Styles</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractLabelDescription_ConditionalStyles()
      * @model containment="true"
@@ -145,7 +145,7 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Actions</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractLabelDescription_Actions()
      * @model containment="true"
@@ -160,7 +160,7 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Extends</em>' reference.
      * @see #setExtends(LabelDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractLabelDescription_Extends()
@@ -172,7 +172,7 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractLabelDescription#getExtends
      * <em>Extends</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
      * @see #getExtends()
@@ -188,7 +188,7 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Conditional Styles From Extended Label Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromExtendedLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractLabelDescription_FilterConditionalStylesFromExtendedLabelExpression()
@@ -202,7 +202,7 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
      * '{@link org.eclipse.sirius.properties.AbstractLabelDescription#getFilterConditionalStylesFromExtendedLabelExpression
      * <em>Filter Conditional Styles From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Extended Label Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromExtendedLabelExpression()
@@ -231,7 +231,7 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
      * Sets the value of the
      * '{@link org.eclipse.sirius.properties.AbstractLabelDescription#getFilterActionsFromExtendedLabelExpression
      * <em>Filter Actions From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Actions From Extended Label Expression</em>' attribute.
      * @see #getFilterActionsFromExtendedLabelExpression()

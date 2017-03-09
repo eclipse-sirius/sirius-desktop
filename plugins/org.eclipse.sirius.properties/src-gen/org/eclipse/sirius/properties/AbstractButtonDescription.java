@@ -46,7 +46,7 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Button Label Expression</em>' attribute.
      * @see #setButtonLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractButtonDescription_ButtonLabelExpression()
@@ -58,7 +58,7 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractButtonDescription#getButtonLabelExpression
      * <em>Button Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Button Label Expression</em>' attribute.
      * @see #getButtonLabelExpression()
@@ -73,7 +73,7 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractButtonDescription_InitialOperation()
@@ -85,7 +85,7 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractButtonDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()
@@ -100,7 +100,7 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(ButtonWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractButtonDescription_Style()
@@ -112,7 +112,7 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractButtonDescription#getStyle <em>Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
@@ -128,7 +128,7 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditional Styles</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractButtonDescription_ConditionalStyles()
      * @model containment="true"
@@ -143,7 +143,7 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Extends</em>' reference.
      * @see #setExtends(ButtonDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractButtonDescription_Extends()
@@ -155,7 +155,7 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractButtonDescription#getExtends
      * <em>Extends</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
      * @see #getExtends()
@@ -171,7 +171,7 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Conditional Styles From Extended Button Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromExtendedButtonExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractButtonDescription_FilterConditionalStylesFromExtendedButtonExpression()
@@ -185,7 +185,7 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
      * '{@link org.eclipse.sirius.properties.AbstractButtonDescription#getFilterConditionalStylesFromExtendedButtonExpression
      * <em>Filter Conditional Styles From Extended Button Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Extended Button Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromExtendedButtonExpression()
