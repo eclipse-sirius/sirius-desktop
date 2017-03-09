@@ -34,8 +34,7 @@ public final class DefaultRulesProvider {
     public static final DefaultRulesProvider INSTANCE = new DefaultRulesProvider();
 
     /**
-     * The URI of the model containing the default value of the properties page
-     * to create.
+     * The URI of the model containing the default value of the properties page to create.
      */
     private static final URI DEFAULT_RULES_RESOURCE_URI = URI.createURI("platform:/plugin/org.eclipse.sirius.properties.core/model/properties.odesign", true); //$NON-NLS-1$
 
@@ -61,8 +60,7 @@ public final class DefaultRulesProvider {
     }
 
     /**
-     * Loads the default rules in the given resource set and returns the root
-     * element of the default rules.
+     * Loads the default rules in the given resource set and returns the root element of the default rules.
      * 
      * @param resourceSet
      *            The resource set in which the default rules should be loaded
@@ -70,13 +68,18 @@ public final class DefaultRulesProvider {
      * @return The root element of the default rules
      */
     public ViewExtensionDescription getDefaultRules(ResourceSet resourceSet) {
-        Optional<Resource> resource = Optional.ofNullable(resourceSet.getResource(DEFAULT_RULES_RESOURCE_URI, true));
+        Optional<Resource> optionalResource = Optional.ofNullable(resourceSet.getResource(DEFAULT_RULES_RESOURCE_URI, true));
 
-        if (!resource.isPresent()) {
+        if (!optionalResource.isPresent()) {
             SiriusPropertiesCorePlugin.getPlugin().error(Messages.DefaultRulesProvider_DefaultPropertiesNotFound);
+        } else {
+            Resource resource = optionalResource.get();
+            Optional<Group> optionalGroup = resource.getContents().stream().filter(Group.class::isInstance).map(Group.class::cast).findFirst();
+            Optional<ViewExtensionDescription> optionalViewExtensionDescription = optionalGroup.flatMap(group -> {
+                return group.getExtensions().stream().filter(ViewExtensionDescription.class::isInstance).map(ViewExtensionDescription.class::cast).findFirst();
+            });
+            return optionalViewExtensionDescription.get();
         }
-
-        return resource.map(r -> r.getContents()).filter(Group.class::isInstance).map(Group.class::cast).map(group -> group.getExtensions()).filter(ViewExtensionDescription.class::isInstance)
-                .map(ViewExtensionDescription.class::cast).orElse(null);
+        return null;
     }
 }
