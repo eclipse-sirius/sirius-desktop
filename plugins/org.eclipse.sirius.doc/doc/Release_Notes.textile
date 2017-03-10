@@ -14,6 +14,7 @@ h3. User-Visible Changes
 h3. Specifier-Visible Changes
 
 * <span class="label label-success">Added</span> It is now possible to create one or multiple pre-configured widget(s) in a group if its domain class and if the meta-models of the properties view containing it have been specified.
+* <span class="label label-success">Added</span> Property Views definitions now support extending and overriding Properties View Descriptions without modifying the original. See "the documentation":specifier/properties/Properties_View_Description.html#extensibility_features for details.
 * <span class="label label-info">Modified</span> The tab used to configure the metamodels used by the Properties view description is now using the same interface as the metamodels tab used to configure the representations.
 * <span class="label label-info">Modified</span> The @package::Class@ syntax for domain classes and type names in the VSM is now fully supported and the new default. It means this syntax is interpreted by Sirius and completion is provided for it when the first @:@ character is entered. The legacy syntax @package.Class@ is still supported for compatibility.
 

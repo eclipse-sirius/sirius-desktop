@@ -110,6 +110,14 @@
 						</ol>
 					</li>
 					<li>
+						<a href="#extensibility_features">Extensibility Features</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#extends">Extends</a>
+							</li>
+						</ol>
+					</li>
+					<li>
 						<a href="#extension_points">Extension Points</a>
 						<ol style="list-style: disc;">
 							<li>
@@ -1280,6 +1288,82 @@
 		<p>The group semantic validation rule is used to define a validation rule linked to a group.</p>
 		<h3 id="group_property_validation_rule">Group property validation rule</h3>
 		<p>The group property validation rule is used to define a validation rule linked to a specific widget.</p>
+		<h2 id="extensibility_features">Extensibility Features</h2>
+		<p>Sirius has specific support for extending and overriding Properties View Descriptions without modifying the original.</p>
+		<h3 id="extends">Extends</h3>
+		<p>A Page can extend another Page defined somewhere else (in another Category or in another Properties View Description). This mechanism is used to 
+			<em>specialize</em> (modify or re-use) an existing Page. This feature is available for the Pages, the Groups, the Containers, the Dynamic Mappings and the Widgets.
+		</p>
+		<p>The 
+			<code>Extend</code> tab is used to specify:
+		</p>
+		<p id="extends">
+			<strong>Extends.</strong> Is used to specify the inherited element. In the tree editor, the inheritance is visible as the element is named as following : 
+			<em>Page A</em> 
+			<strong>extends</strong> 
+			<em>Page B</em>.
+			<br/>By default, the values of the 
+			<code>General</code> tab fields are set with the values coming from the extended element. If one of these attributes is edited in the extending element, then it 
+			<strong>overrides</strong> the inherited value. The same behavior is applied for mono valued containment elements. For example, if a 
+			<em>Group A</em> defines a 
+			<em>Style A</em> and extends a 
+			<em>Group B</em> wit ha 
+			<em>Style B</em>, the style used to render the 
+			<em>Group A</em> is the one defined under the 
+			<em>Group A</em>, i.e 
+			<em>Style A</em> and not the one of the 
+			<em>Group B</em>.
+			<br/>If the specifier defines in the extending 
+			<code>Page</code>:
+		</p>
+		<ul>
+			<li>
+				<code>Label Expression</code>, 
+				<code>Domain Class</code>, 
+				<code>Semantic Candidate Expression</code> or 
+				<code>Precondition Expression</code>, these values will 
+				<strong>override</strong> the values defined in the referenced imported description. 
+			</li>
+			<li>
+				<code>Groups</code> will 
+				<strong>be aggregated</strong> to the groups defined by the referenced 
+				<code>Page</code>. 
+			</li>
+			<li>
+				<code>Page Validations</code>  will 
+				<strong>be aggregated</strong> to the validations defined by the referenced 
+				<code>Page Description</code>.
+			</li>
+			<li>In the case of a containment, such as a 
+				<code>Text</code> contained by a 
+				<code>Group</code>, the contained elements are inherited by the extending description.
+			</li>
+		</ul>
+		<p id="filters">
+			<strong>Filter Expressions.</strong> Different filters exist depending on the element kind. These filters are used to 
+			<strong>filter</strong> which inherited elements are visible. The expression returns a 
+			<code>Boolean</code>: true, the inherited element is visible, false it is filtered.
+			<br/>For each 
+			<em>Filter Expression</em>, a variable is available which represents the element which could be filtered. It is possible to filter all the inherited elements by just returning 
+			<code>false</code> all the time. In this case, the elements defined under the current description 
+			<strong>overrides</strong> the elements defined in the extended description.
+			<br/>For example if a 
+			<em>Page A</em> extends another 
+			<em>Page B</em>, the 
+			<code>Extends</code> tab allows to define:
+		</p>
+		<ul>
+			<li>The 
+				<code>Filter Groups Expression</code> is used to 
+				<strong>filter</strong> which inherited groups are visible under the page. The 
+				<code>group</code> variable can be used to check if a group must be filtered or not. 
+			</li>
+			<li>The 
+				<code>Filter Validation Rules Expression</code> is used to 
+				<strong>filter</strong> which inherited validation rules are used under the page. The 
+				<code>validationRule</code> variable can be used to check if a rule must be filtered or not.
+			</li>
+		</ul>
 		<h2 id="extension_points">Extension Points</h2>
 		<h3 id="advanced_custom_widgets_extension_points">Extension Points for Advanced Custom Widgets</h3>
 		<p>Integrating and advanced custom widget implementation requires extending several extension points:</p>

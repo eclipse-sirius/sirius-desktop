@@ -516,6 +516,30 @@ h3(#group_property_validation_rule). Group property validation rule
 
 The group property validation rule is used to define a validation rule linked to a specific widget.
 
+h2(#extensibility_features). Extensibility Features
+
+Sirius has specific support for extending and overriding Properties View Descriptions without modifying the original.
+
+h3(#extends). Extends
+
+A Page can extend another Page defined somewhere else (in another Category or in another Properties View Description). This mechanism is used to _specialize_ (modify or re-use) an existing Page. This feature is available for the Pages, the Groups, the Containers, the Dynamic Mappings and the Widgets.
+
+The @Extend@ tab is used to specify:
+
+p(#extends). *Extends.* Is used to specify the inherited element. In the tree editor, the inheritance is visible as the element is named as following : _Page A_ *extends* _Page B_.
+By default, the values of the @General@ tab fields are set with the values coming from the extended element. If one of these attributes is edited in the extending element, then it *overrides* the inherited value. The same behavior is applied for mono valued containment elements. For example, if a _Group A_ defines a _Style A_ and extends a _Group B_ wit ha _Style B_, the style used to render the _Group A_ is the one defined under the _Group A_, i.e _Style A_ and not the one of the _Group B_.
+If the specifier defines in the extending @Page@:
+* @Label Expression@, @Domain Class@, @Semantic Candidate Expression@ or @Precondition Expression@, these values will *override* the values defined in the referenced imported description. 
+* @Groups@ will *be aggregated* to the groups defined by the referenced @Page@. 
+* @Page Validations@  will *be aggregated* to the validations defined by the referenced @Page Description@.
+* In the case of a containment, such as a @Text@ contained by a @Group@, the contained elements are inherited by the extending description.
+
+p(#filters). *Filter Expressions.* Different filters exist depending on the element kind. These filters are used to *filter* which inherited elements are visible. The expression returns a @Boolean@: true, the inherited element is visible, false it is filtered.
+For each _Filter Expression_, a variable is available which represents the element which could be filtered. It is possible to filter all the inherited elements by just returning @false@ all the time. In this case, the elements defined under the current description *overrides* the elements defined in the extended description.
+For example if a _Page A_ extends another _Page B_, the @Extends@ tab allows to define:
+* The @Filter Groups Expression@ is used to *filter* which inherited groups are visible under the page. The @group@ variable can be used to check if a group must be filtered or not. 
+* The @Filter Validation Rules Expression@ is used to *filter* which inherited validation rules are used under the page. The @validationRule@ variable can be used to check if a rule must be filtered or not.
+
 h2(#extension_points). Extension Points
 
 h3(#advanced_custom_widgets_extension_points). Extension Points for Advanced Custom Widgets
