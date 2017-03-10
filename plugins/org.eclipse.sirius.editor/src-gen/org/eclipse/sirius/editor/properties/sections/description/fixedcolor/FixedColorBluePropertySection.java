@@ -78,8 +78,7 @@ public class FixedColorBluePropertySection extends AbstractSpinnerPropertySectio
     /**
      * Converts the given text to the integer it represents if applicable.
      * 
-     * @return The integer the given text represents if applicable,
-     *         <code>null</code> otherwise.
+     * @return The integer the given text represents if applicable, <code>null</code> otherwise.
      */
     private Integer toInteger(String text) {
         Integer integerValue = null;

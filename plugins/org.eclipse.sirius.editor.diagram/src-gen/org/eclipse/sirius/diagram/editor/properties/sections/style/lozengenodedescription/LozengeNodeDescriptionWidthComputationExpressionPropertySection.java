@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the widthComputationExpression property of a
- * LozengeNodeDescription object.
+ * A section for the widthComputationExpression property of a LozengeNodeDescription object.
  */
 public class LozengeNodeDescriptionWidthComputationExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

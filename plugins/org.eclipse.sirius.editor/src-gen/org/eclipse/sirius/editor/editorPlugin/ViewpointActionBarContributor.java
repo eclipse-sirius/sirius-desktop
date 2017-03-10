@@ -76,8 +76,8 @@ public class ViewpointActionBarContributor extends EditingDomainActionBarContrib
     };
 
     /**
-     * This action refreshes the viewer of the current editor if the editor
-     * implements {@link org.eclipse.emf.common.ui.viewer.IViewerProvider}.
+     * This action refreshes the viewer of the current editor if the editor implements
+     * {@link org.eclipse.emf.common.ui.viewer.IViewerProvider}.
      */
     protected IAction refreshViewerAction = new Action(SiriusEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
         public boolean isEnabled() {
@@ -95,29 +95,24 @@ public class ViewpointActionBarContributor extends EditingDomainActionBarContrib
     };
 
     /**
-     * This will contain one
-     * {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to
-     * each descriptor generated for the current selection by the item provider.
+     * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
+     * generated for the current selection by the item provider.
      */
     protected Collection<IAction> createChildActions;
 
     /**
-     * This is the menu manager into which menu contribution items should be
-     * added for CreateChild actions.
+     * This is the menu manager into which menu contribution items should be added for CreateChild actions.
      */
     protected IMenuManager createChildMenuManager;
 
     /**
-     * This will contain one
-     * {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding
-     * to each descriptor generated for the current selection by the item
-     * provider.
+     * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding to each descriptor
+     * generated for the current selection by the item provider.
      */
     protected Collection<IAction> createSiblingActions;
 
     /**
-     * This is the menu manager into which menu contribution items should be
-     * added for CreateSibling actions.
+     * This is the menu manager into which menu contribution items should be added for CreateSibling actions.
      */
     protected IMenuManager createSiblingMenuManager;
 
@@ -140,8 +135,8 @@ public class ViewpointActionBarContributor extends EditingDomainActionBarContrib
     }
 
     /**
-     * This adds to the menu bar a menu and some separators for editor
-     * additions, as well as the sub-menus for object creation items.
+     * This adds to the menu bar a menu and some separators for editor additions, as well as the sub-menus for object
+     * creation items.
      */
     public void contributeToMenu(IMenuManager menuManager) {
         super.contributeToMenu(menuManager);
@@ -175,8 +170,7 @@ public class ViewpointActionBarContributor extends EditingDomainActionBarContrib
     }
 
     /**
-     * When the active editor changes, this remembers the change and registers
-     * with it as a selection provider.
+     * When the active editor changes, this remembers the change and registers with it as a selection provider.
      */
     public void setActiveEditor(IEditorPart part) {
         super.setActiveEditor(part);
@@ -202,11 +196,9 @@ public class ViewpointActionBarContributor extends EditingDomainActionBarContrib
     }
 
     /**
-     * This implements
-     * {@link org.eclipse.jface.viewers.ISelectionChangedListener}, handling
-     * {@link org.eclipse.jface.viewers.SelectionChangedEvent}s by querying for
-     * the children and siblings that can be added to the selected object and
-     * updating the menus accordingly.
+     * This implements {@link org.eclipse.jface.viewers.ISelectionChangedListener}, handling
+     * {@link org.eclipse.jface.viewers.SelectionChangedEvent}s by querying for the children and siblings that can be
+     * added to the selected object and updating the menus accordingly.
      */
     public void selectionChanged(SelectionChangedEvent event) {
         // Remove any menu items for old selection.
@@ -249,9 +241,8 @@ public class ViewpointActionBarContributor extends EditingDomainActionBarContrib
     }
 
     /**
-     * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction}
-     * for each object in <code>descriptors</code>, and returns the collection
-     * of these actions.
+     * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction} for each object in
+     * <code>descriptors</code>, and returns the collection of these actions.
      */
     protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection) {
         Collection<IAction> actions = new ArrayList<IAction>();
@@ -264,10 +255,8 @@ public class ViewpointActionBarContributor extends EditingDomainActionBarContrib
     }
 
     /**
-     * This generates a
-     * {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each
-     * object in <code>descriptors</code>, and returns the collection of these
-     * actions.
+     * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in
+     * <code>descriptors</code>, and returns the collection of these actions.
      */
     protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors, ISelection selection) {
         Collection<IAction> actions = new ArrayList<IAction>();
@@ -280,11 +269,9 @@ public class ViewpointActionBarContributor extends EditingDomainActionBarContrib
     }
 
     /**
-     * This populates the specified <code>manager</code> with
-     * {@link org.eclipse.jface.action.ActionContributionItem}s based on the
-     * {@link org.eclipse.jface.action.IAction}s contained in the
-     * <code>actions</code> collection, by inserting them before the specified
-     * contribution item <code>contributionID</code>. If <code>ID</code> is
+     * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.ActionContributionItem}s
+     * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection, by
+     * inserting them before the specified contribution item <code>contributionID</code>. If <code>ID</code> is
      * <code>null</code>, they are simply added.
      */
     protected void populateManager(IContributionManager manager, Collection<IAction> actions, String contributionID) {
@@ -301,10 +288,8 @@ public class ViewpointActionBarContributor extends EditingDomainActionBarContrib
     }
 
     /**
-     * This removes from the specified <code>manager</code> all
-     * {@link org.eclipse.jface.action.ActionContributionItem}s based on the
-     * {@link org.eclipse.jface.action.IAction}s contained in the
-     * <code>actions</code> collection.
+     * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.ActionContributionItem}s
+     * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection.
      */
     protected void depopulateManager(IContributionManager manager, Collection<IAction> actions) {
         if (actions != null) {
@@ -359,8 +344,7 @@ public class ViewpointActionBarContributor extends EditingDomainActionBarContrib
     }
 
     /**
-     * This ensures that a delete action will clean up all references to deleted
-     * objects.
+     * This ensures that a delete action will clean up all references to deleted objects.
      */
     protected boolean removeAllReferencesOnDelete() {
         return true;

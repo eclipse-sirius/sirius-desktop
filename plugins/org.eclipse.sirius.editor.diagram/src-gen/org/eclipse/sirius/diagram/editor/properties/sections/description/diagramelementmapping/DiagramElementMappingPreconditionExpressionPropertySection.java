@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the preconditionExpression property of a DiagramElementMapping
- * object.
+ * A section for the preconditionExpression property of a DiagramElementMapping object.
  */
 public class DiagramElementMappingPreconditionExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

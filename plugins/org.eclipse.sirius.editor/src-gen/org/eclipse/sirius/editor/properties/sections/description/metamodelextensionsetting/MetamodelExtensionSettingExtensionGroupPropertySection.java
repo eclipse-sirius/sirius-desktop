@@ -27,8 +27,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the extensionGroup property of a MetamodelExtensionSetting
- * object.
+ * A section for the extensionGroup property of a MetamodelExtensionSetting object.
  */
 public class MetamodelExtensionSettingExtensionGroupPropertySection extends AbstractComboPropertySection {
     /**
@@ -77,8 +76,7 @@ public class MetamodelExtensionSettingExtensionGroupPropertySection extends Abst
     }
 
     /**
-     * Returns the value at the specified index in the choice of values for the
-     * feature.
+     * Returns the value at the specified index in the choice of values for the feature.
      * 
      * @param index
      *            Index of the value.

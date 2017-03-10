@@ -36,7 +36,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
     /**
      * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
     /**
      * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
     /**
      * The cached value of the '{@link #getObject() <em>Object</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getObject()
      * @generated
      * @ordered
@@ -65,7 +65,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SetObjectImpl() {
@@ -74,7 +74,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public EObject basicGetObject() {
@@ -136,7 +136,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -187,7 +187,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -205,7 +205,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -221,7 +221,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

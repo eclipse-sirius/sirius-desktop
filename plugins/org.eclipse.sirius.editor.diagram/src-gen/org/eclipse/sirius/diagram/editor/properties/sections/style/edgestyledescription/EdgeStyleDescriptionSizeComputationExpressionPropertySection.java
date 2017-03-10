@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the sizeComputationExpression property of a
- * EdgeStyleDescription object.
+ * A section for the sizeComputationExpression property of a EdgeStyleDescription object.
  */
 public class EdgeStyleDescriptionSizeComputationExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

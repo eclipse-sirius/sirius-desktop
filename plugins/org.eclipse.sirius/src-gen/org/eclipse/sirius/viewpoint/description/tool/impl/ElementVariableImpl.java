@@ -51,7 +51,7 @@ public class ElementVariableImpl extends AbstractVariableImpl implements Element
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ElementVariableImpl() {
@@ -60,7 +60,7 @@ public class ElementVariableImpl extends AbstractVariableImpl implements Element
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -70,7 +70,7 @@ public class ElementVariableImpl extends AbstractVariableImpl implements Element
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class ElementVariableImpl extends AbstractVariableImpl implements Element
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class ElementVariableImpl extends AbstractVariableImpl implements Element
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class ElementVariableImpl extends AbstractVariableImpl implements Element
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -128,7 +128,7 @@ public class ElementVariableImpl extends AbstractVariableImpl implements Element
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class ElementVariableImpl extends AbstractVariableImpl implements Element
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class ElementVariableImpl extends AbstractVariableImpl implements Element
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class ElementVariableImpl extends AbstractVariableImpl implements Element
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

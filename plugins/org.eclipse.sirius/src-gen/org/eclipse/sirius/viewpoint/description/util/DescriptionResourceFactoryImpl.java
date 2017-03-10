@@ -26,7 +26,7 @@ import org.osgi.framework.Version;
 
 /**
  * <!-- begin-user-doc --> The <b>Resource Factory</b> associated with the package. <!-- end-user-doc -->
- *
+ * 
  * @see org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl
  * @generated
  */
@@ -34,7 +34,7 @@ public class DescriptionResourceFactoryImpl extends ResourceFactoryImpl {
 
     /**
      * Creates an instance of the resource factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public DescriptionResourceFactoryImpl() {

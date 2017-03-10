@@ -29,13 +29,13 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractControlDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AbstractDynamicMappingForDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +44,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
 
     /**
      * This adds a property descriptor for the Iterator feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIteratorPropertyDescriptor(Object object) {
@@ -75,7 +75,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
     /**
      * This adds a property descriptor for the Iterable Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     protected void addIterableExpressionPropertyDescriptor(Object object) {
@@ -87,7 +87,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
 
     /**
      * This adds a property descriptor for the Extends feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addExtendsPropertyDescriptor(Object object) {
@@ -100,7 +100,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
     /**
      * This adds a property descriptor for the Filter Ifs From Extended Dynamic Mapping For Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterIfsFromExtendedDynamicMappingForExpressionPropertyDescriptor(Object object) {
@@ -117,7 +117,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,7 +173,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public class AbstractDynamicMappingForDescriptionItemProvider extends AbstractCo
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

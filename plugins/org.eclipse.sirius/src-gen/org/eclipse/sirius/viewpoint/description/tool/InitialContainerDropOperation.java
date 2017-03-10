@@ -37,7 +37,7 @@ public interface InitialContainerDropOperation extends EObject {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>First Model Operations</em>' containment reference.
      * @see #setFirstModelOperations(ModelOperation)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getInitialContainerDropOperation_FirstModelOperations()
@@ -50,7 +50,7 @@ public interface InitialContainerDropOperation extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation#getFirstModelOperations
      * <em>First Model Operations</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>First Model Operations</em>' containment reference.
      * @see #getFirstModelOperations()

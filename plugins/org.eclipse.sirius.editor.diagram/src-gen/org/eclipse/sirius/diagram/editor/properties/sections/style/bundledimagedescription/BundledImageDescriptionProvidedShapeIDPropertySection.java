@@ -20,8 +20,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the providedShapeID property of a BundledImageDescription
- * object.
+ * A section for the providedShapeID property of a BundledImageDescription object.
  */
 public class BundledImageDescriptionProvidedShapeIDPropertySection extends AbstractTextPropertySection {
 

@@ -41,7 +41,7 @@ public interface Switch extends ModelOperation {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Cases</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSwitch_Cases()
      * @model containment="true" resolveProxies="true" required="true"
@@ -56,7 +56,7 @@ public interface Switch extends ModelOperation {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Default</em>' containment reference.
      * @see #setDefault(Default)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSwitch_Default()
@@ -68,7 +68,7 @@ public interface Switch extends ModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.Switch#getDefault <em>Default</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Default</em>' containment reference.
      * @see #getDefault()

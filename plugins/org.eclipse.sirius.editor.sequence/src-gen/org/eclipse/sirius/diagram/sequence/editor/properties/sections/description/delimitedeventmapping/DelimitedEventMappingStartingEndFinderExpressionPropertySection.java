@@ -32,8 +32,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the startingEndFinderExpression property of a
- * DelimitedEventMapping object.
+ * A section for the startingEndFinderExpression property of a DelimitedEventMapping object.
  */
 public class DelimitedEventMappingStartingEndFinderExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

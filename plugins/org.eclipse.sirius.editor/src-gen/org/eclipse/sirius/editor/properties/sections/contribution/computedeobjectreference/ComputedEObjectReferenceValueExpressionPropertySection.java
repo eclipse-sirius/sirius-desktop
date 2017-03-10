@@ -21,8 +21,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the valueExpression property of a ComputedEObjectReference
- * object.
+ * A section for the valueExpression property of a ComputedEObjectReference object.
  */
 public class ComputedEObjectReferenceValueExpressionPropertySection extends AbstractTextPropertySection {
 

@@ -76,7 +76,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getLabel()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     /**
      * The default value of the '{@link #getPrecondition() <em>Precondition</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getPrecondition()
      * @generated
      * @ordered
@@ -106,7 +106,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     /**
      * The cached value of the '{@link #getPrecondition() <em>Precondition</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getPrecondition()
      * @generated
      * @ordered
@@ -116,7 +116,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     /**
      * The default value of the '{@link #isForceRefresh() <em>Force Refresh</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #isForceRefresh()
      * @generated
      * @ordered
@@ -126,7 +126,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     /**
      * The cached value of the '{@link #isForceRefresh() <em>Force Refresh</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #isForceRefresh()
      * @generated
      * @ordered
@@ -136,7 +136,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     /**
      * The cached value of the '{@link #getFilters() <em>Filters</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getFilters()
      * @generated
      * @ordered
@@ -185,7 +185,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AbstractToolDescriptionImpl() {
@@ -194,7 +194,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -204,7 +204,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -228,7 +228,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -238,7 +238,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -252,7 +252,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -262,7 +262,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -276,7 +276,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -286,7 +286,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -300,7 +300,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -313,7 +313,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -323,7 +323,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -337,7 +337,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -347,7 +347,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -361,7 +361,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -375,7 +375,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -401,7 +401,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -436,7 +436,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -469,7 +469,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -495,7 +495,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -515,7 +515,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -535,7 +535,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

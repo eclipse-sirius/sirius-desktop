@@ -189,6 +189,8 @@ public class DeleteToolItemProvider extends AbstractToolDescriptionItemProvider 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TABLE_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createDeleteView()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TABLE_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createSwitch()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TABLE_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createLet()));
     }
 
     /**

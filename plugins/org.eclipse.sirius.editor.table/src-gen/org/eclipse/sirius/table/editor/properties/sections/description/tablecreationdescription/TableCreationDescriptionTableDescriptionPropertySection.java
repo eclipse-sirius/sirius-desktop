@@ -28,8 +28,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the tableDescription property of a TableCreationDescription
- * object.
+ * A section for the tableDescription property of a TableCreationDescription object.
  */
 public class TableCreationDescriptionTableDescriptionPropertySection extends AbstractComboPropertySection {
     /**
@@ -78,8 +77,7 @@ public class TableCreationDescriptionTableDescriptionPropertySection extends Abs
     }
 
     /**
-     * Returns the value at the specified index in the choice of values for the
-     * feature.
+     * Returns the value at the specified index in the choice of values for the feature.
      * 
      * @param index
      *            Index of the value.

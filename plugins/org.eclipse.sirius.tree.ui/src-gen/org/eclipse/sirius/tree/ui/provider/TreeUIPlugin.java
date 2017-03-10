@@ -208,8 +208,8 @@ public final class TreeUIPlugin extends EMFPlugin {
             super();
 
             // Remember the static instance.
+            //
             TreeUIPlugin.plugin = this;
-            preferencesConfiguration = new Configuration(getPreferenceStore());
         }
 
         /**
@@ -270,7 +270,7 @@ public final class TreeUIPlugin extends EMFPlugin {
         /**
          * Returns true if the font size of the Sirius tree editor's items will always be the one specified by your
          * Eclipse environment.
-         * 
+         *
          * @return true if the font size of the Sirius tree editor's items will always be the one specified by your
          *         Eclipse environment. False if the font size that should be used to display Sirius tree editor's items
          *         must be the one specified by the editor.

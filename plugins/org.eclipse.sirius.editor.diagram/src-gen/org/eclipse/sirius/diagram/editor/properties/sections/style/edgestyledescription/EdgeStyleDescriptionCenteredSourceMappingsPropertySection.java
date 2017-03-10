@@ -39,8 +39,7 @@ import com.google.common.collect.Collections2;
 // End of user code imports
 
 /**
- * A section for the centeredSourceMappings property of a EdgeStyleDescription
- * object.
+ * A section for the centeredSourceMappings property of a EdgeStyleDescription object.
  */
 public class EdgeStyleDescriptionCenteredSourceMappingsPropertySection extends AbstractEditorDialogPropertySection {
     /**

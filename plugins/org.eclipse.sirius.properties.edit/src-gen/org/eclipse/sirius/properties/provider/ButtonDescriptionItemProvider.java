@@ -30,13 +30,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.ButtonDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ButtonDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This adds a property descriptor for the Label Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
@@ -77,7 +77,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This adds a property descriptor for the Help Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHelpExpressionPropertyDescriptor(Object object) {
@@ -90,7 +90,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This adds a property descriptor for the Is Enabled Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     protected void addIsEnabledExpressionPropertyDescriptor(Object object) {
@@ -103,7 +103,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This adds a property descriptor for the Button Label Expression feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addButtonLabelExpressionPropertyDescriptor(Object object) {
@@ -115,7 +115,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This adds a property descriptor for the Extends feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addExtendsPropertyDescriptor(Object object) {
@@ -128,7 +128,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Extended Button Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromExtendedButtonExpressionPropertyDescriptor(Object object) {
@@ -144,7 +144,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,7 +173,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This returns ButtonDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

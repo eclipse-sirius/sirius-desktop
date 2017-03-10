@@ -29,8 +29,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the workspacePath property of a WorkspaceImageDescription
- * object.
+ * A section for the workspacePath property of a WorkspaceImageDescription object.
  */
 public class WorkspaceImageDescriptionWorkspacePathPropertySection extends AbstractTextWithButtonPropertySection {
 

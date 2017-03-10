@@ -21,8 +21,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the name property of a RepresentationExtensionDescription
- * object.
+ * A section for the name property of a RepresentationExtensionDescription object.
  */
 public class RepresentationExtensionDescriptionNamePropertySection extends AbstractTextPropertySection {
 

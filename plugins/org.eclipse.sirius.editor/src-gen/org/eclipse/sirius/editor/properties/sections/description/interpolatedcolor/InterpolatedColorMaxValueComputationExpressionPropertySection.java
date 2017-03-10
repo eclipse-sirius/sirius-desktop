@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the maxValueComputationExpression property of a
- * InterpolatedColor object.
+ * A section for the maxValueComputationExpression property of a InterpolatedColor object.
  */
 public class InterpolatedColorMaxValueComputationExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

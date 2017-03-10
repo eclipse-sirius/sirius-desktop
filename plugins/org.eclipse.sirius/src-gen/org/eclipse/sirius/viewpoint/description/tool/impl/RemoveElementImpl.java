@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 public class RemoveElementImpl extends ContainerModelOperationImpl implements RemoveElement {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RemoveElementImpl() {
@@ -33,7 +33,7 @@ public class RemoveElementImpl extends ContainerModelOperationImpl implements Re
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

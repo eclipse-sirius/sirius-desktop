@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the invocationMessageFinderExpression property of a
- * ReturnMessageMapping object.
+ * A section for the invocationMessageFinderExpression property of a ReturnMessageMapping object.
  */
 public class ReturnMessageMappingInvocationMessageFinderExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

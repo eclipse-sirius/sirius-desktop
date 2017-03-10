@@ -214,13 +214,12 @@ public abstract class AbstractTextWithButtonPropertySection extends AbstractView
     }
 
     /**
-     * Determine if the provided string value is an equal representation of the
-     * current setting of the text property.
+     * Determine if the provided string value is an equal representation of the current setting of the text property.
      * 
      * @param newText
      *            the new string value.
-     * @return <code>True</code> if the new string value is equal to the current
-     *         property setting, <code>False</code> otherwise.
+     * @return <code>True</code> if the new string value is equal to the current property setting, <code>False</code>
+     *         otherwise.
      */
     protected abstract boolean isEqual(String newText);
 

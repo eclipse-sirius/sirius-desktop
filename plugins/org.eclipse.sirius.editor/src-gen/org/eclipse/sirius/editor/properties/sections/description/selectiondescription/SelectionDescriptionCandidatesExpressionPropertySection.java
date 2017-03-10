@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the candidatesExpression property of a SelectionDescription
- * object.
+ * A section for the candidatesExpression property of a SelectionDescription object.
  */
 public class SelectionDescriptionCandidatesExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

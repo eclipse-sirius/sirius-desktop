@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the featureParentExpression property of a FeatureColumnMapping
- * object.
+ * A section for the featureParentExpression property of a FeatureColumnMapping object.
  */
 public class FeatureColumnMappingFeatureParentExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

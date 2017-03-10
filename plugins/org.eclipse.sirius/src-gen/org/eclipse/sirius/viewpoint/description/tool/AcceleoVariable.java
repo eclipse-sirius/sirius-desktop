@@ -37,7 +37,7 @@ public interface AcceleoVariable extends VariableContainer, SubVariable {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Computation Expression</em>' attribute.
      * @see #setComputationExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAcceleoVariable_ComputationExpression()
@@ -51,7 +51,7 @@ public interface AcceleoVariable extends VariableContainer, SubVariable {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable#getComputationExpression
      * <em>Computation Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Computation Expression</em>' attribute.
      * @see #getComputationExpression()

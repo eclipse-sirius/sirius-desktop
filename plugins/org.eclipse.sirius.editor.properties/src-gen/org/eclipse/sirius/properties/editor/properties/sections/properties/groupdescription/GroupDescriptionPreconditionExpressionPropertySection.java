@@ -25,8 +25,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the preconditionExpression property of a GroupDescription
- * object.
+ * A section for the preconditionExpression property of a GroupDescription object.
  */
 public class GroupDescriptionPreconditionExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

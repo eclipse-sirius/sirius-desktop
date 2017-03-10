@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the startingEndFinderExpression property of a TExecutionMapping
- * object.
+ * A section for the startingEndFinderExpression property of a TExecutionMapping object.
  */
 public class TExecutionMappingStartingEndFinderExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

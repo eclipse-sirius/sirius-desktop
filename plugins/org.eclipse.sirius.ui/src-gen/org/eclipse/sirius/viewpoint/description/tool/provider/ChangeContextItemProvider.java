@@ -85,8 +85,8 @@ public class ChangeContextItemProvider extends ContainerModelOperationItemProvid
     @Override
     public String getText(Object object) {
         String label = ((ChangeContext) object).getBrowseExpression();
-        return label == null || label.length() == 0 ? getString("_UI_ChangeContext_type") //$NON-NLS-1$
-                : getString("_UI_ChangeContext_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        return label == null || label.length() == 0 ? getString("_UI_ChangeContext_type") : //$NON-NLS-1$
+                getString("_UI_ChangeContext_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

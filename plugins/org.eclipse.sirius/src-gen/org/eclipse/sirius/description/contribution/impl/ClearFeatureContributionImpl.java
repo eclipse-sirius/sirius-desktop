@@ -16,8 +16,8 @@ import org.eclipse.sirius.description.contribution.ClearFeatureContribution;
 import org.eclipse.sirius.description.contribution.ContributionPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Clear Feature Contribution</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Clear Feature Contribution</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */

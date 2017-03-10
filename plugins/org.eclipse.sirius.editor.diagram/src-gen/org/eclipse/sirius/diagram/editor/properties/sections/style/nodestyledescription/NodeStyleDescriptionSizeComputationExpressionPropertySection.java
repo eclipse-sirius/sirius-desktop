@@ -36,8 +36,7 @@ import com.google.common.collect.Iterables;
 // End of user code imports
 
 /**
- * A section for the sizeComputationExpression property of a
- * NodeStyleDescription object.
+ * A section for the sizeComputationExpression property of a NodeStyleDescription object.
  */
 public class NodeStyleDescriptionSizeComputationExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

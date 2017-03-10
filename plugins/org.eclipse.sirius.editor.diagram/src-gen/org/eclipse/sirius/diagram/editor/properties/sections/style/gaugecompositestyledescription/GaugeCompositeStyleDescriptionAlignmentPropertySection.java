@@ -27,8 +27,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the alignment property of a GaugeCompositeStyleDescription
- * object.
+ * A section for the alignment property of a GaugeCompositeStyleDescription object.
  */
 public class GaugeCompositeStyleDescriptionAlignmentPropertySection extends AbstractRadioButtonPropertySection {
     /**

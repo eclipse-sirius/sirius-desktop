@@ -12,8 +12,7 @@
 package org.eclipse.sirius.viewpoint.description;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Sub Variable</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Sub Variable</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSubVariable()

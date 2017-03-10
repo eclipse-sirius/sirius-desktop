@@ -40,8 +40,7 @@ public class EdgeStyleDescriptionRoutingStyleFilter extends ViewpointPropertyFil
     // Start of user code user methods
 
     /**
-     * Overridden to not show routing style section for
-     * {@link BracketEdgeStyleDescription}.
+     * Overridden to not show routing style section for {@link BracketEdgeStyleDescription}.
      * 
      * {@inheritDoc}
      */

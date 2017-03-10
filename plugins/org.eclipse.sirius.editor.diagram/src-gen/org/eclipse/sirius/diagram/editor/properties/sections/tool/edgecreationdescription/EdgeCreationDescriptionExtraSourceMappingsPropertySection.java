@@ -28,8 +28,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the extraSourceMappings property of a EdgeCreationDescription
- * object.
+ * A section for the extraSourceMappings property of a EdgeCreationDescription object.
  */
 public class EdgeCreationDescriptionExtraSourceMappingsPropertySection extends AbstractEditorDialogPropertySection {
     /**

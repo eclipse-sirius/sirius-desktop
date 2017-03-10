@@ -95,8 +95,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
     protected DescriptionModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
     /**
-     * Remember the selection during initialization for populating the default
-     * container.
+     * Remember the selection during initialization for populating the default container.
      */
     protected IStructuredSelection selection;
 
@@ -436,8 +435,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
                 .setFileName(SiriusEditorPlugin.INSTANCE.getString("_UI_SiriusEditorFilenameDefaultBase") + "." + SiriusEditorPlugin.INSTANCE.getString("_UI_SiriusEditorFilenameExtension"));
         addPage(newFileCreationPage);
 
-        // Try and get the resource selection to determine a current directory
-        // for the file dialog.
+        // Try and get the resource selection to determine a current directory for the file dialog.
         //
         if (selection != null && !selection.isEmpty()) {
             // Get the resource...

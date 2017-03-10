@@ -37,8 +37,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the appliedOn property of a VSMElementCustomizationReuse
- * object.
+ * A section for the appliedOn property of a VSMElementCustomizationReuse object.
  */
 public class VSMElementCustomizationReuseAppliedOnPropertySection extends AbstractEditorDialogPropertySection {
     /**
@@ -116,10 +115,8 @@ public class VSMElementCustomizationReuseAppliedOnPropertySection extends Abstra
 
     // Start of user code user operations
     /**
-     * Overridden to limit the choice to {@link StyleDescription}s and its
-     * content, owned or referenced by the current
-     * {@link org.eclipse.sirius.viewpoint.description.RepresentationDescription}
-     * .
+     * Overridden to limit the choice to {@link StyleDescription}s and its content, owned or referenced by the current
+     * {@link org.eclipse.sirius.viewpoint.description.RepresentationDescription} .
      * 
      * {@inheritDoc}
      */

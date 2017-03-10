@@ -19,8 +19,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the roundedCorner property of a ContainerStyleDescription
- * object.
+ * A section for the roundedCorner property of a ContainerStyleDescription object.
  */
 public class ContainerStyleDescriptionRoundedCornerPropertySection extends AbstractCheckBoxPropertySection {
     /**
@@ -81,8 +80,7 @@ public class ContainerStyleDescriptionRoundedCornerPropertySection extends Abstr
     /**
      * Converts the given text to the boolean it represents if applicable.
      * 
-     * @return The boolean the given text represents if applicable,
-     *         <code>null</code> otherwise.
+     * @return The boolean the given text represents if applicable, <code>null</code> otherwise.
      */
     private Boolean toBoolean(String text) {
         Boolean booleanValue = null;

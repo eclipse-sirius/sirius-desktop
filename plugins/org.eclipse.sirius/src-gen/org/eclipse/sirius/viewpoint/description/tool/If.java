@@ -48,7 +48,7 @@ public interface If extends ContainerModelOperation {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.If#getConditionExpression
      * <em>Condition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Condition Expression</em>' attribute.
      * @see #getConditionExpression()

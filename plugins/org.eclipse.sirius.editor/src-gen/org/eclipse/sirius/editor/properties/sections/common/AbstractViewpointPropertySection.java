@@ -50,20 +50,13 @@ public abstract class AbstractViewpointPropertySection extends AbstractPropertyS
     /** The property sheet page for this section. */
     protected ViewpointPropertySheetPage propertySheetPage;
 
-    /**
-     * Current selected object or first object in the selection when multiple
-     * objects are selected.
-     */
+    /** Current selected object or first object in the selection when multiple objects are selected. */
     protected EObject eObject;
 
     /** The list of currently selected objects. */
     protected List<EObject> eObjectList;
 
-    /**
-     * Plugin's
-     * {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
-     * AdapterFactoryLabelProvider}.
-     */
+    /** Plugin's {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider AdapterFactoryLabelProvider}. */
     protected AdapterFactoryLabelProvider adapterFactoryLabelProvider;
 
     /** is true if the feature is required **/
@@ -151,13 +144,11 @@ public abstract class AbstractViewpointPropertySection extends AbstractPropertyS
     protected abstract EStructuralFeature getFeature();
 
     /**
-     * Fetches the
-     * {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
-     * AdapterFactoryLabelProvider} adapted to the given object.
+     * Fetches the {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider AdapterFactoryLabelProvider}
+     * adapted to the given object.
      * 
-     * @return The plugin's
-     *         {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
-     *         AdapterFactoryLabelProvider} .
+     * @return The plugin's {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
+     *         AdapterFactoryLabelProvider}}.
      */
     protected AdapterFactoryLabelProvider getAdapterFactoryLabelProvider(EObject eObj) {
         if (adapterFactoryLabelProvider == null) {
@@ -177,13 +168,11 @@ public abstract class AbstractViewpointPropertySection extends AbstractPropertyS
     }
 
     /**
-     * Fetches the plugin's
-     * {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
+     * Fetches the plugin's {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
      * AdapterFactoryLabelProvider}.
      * 
-     * @return The plugin's
-     *         {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
-     *         AdapterFactoryLabelProvider} .
+     * @return The plugin's {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
+     *         AdapterFactoryLabelProvider}}.
      */
     protected AdapterFactoryLabelProvider getAdapterFactoryLabelProvider() {
         return getAdapterFactoryLabelProvider(null);
@@ -201,8 +190,7 @@ public abstract class AbstractViewpointPropertySection extends AbstractPropertyS
     }
 
     /**
-     * Get the property descriptor associated with the current semantic object
-     * for the feature given as parameter.
+     * Get the property descriptor associated with the current semantic object for the feature given as parameter.
      * 
      * @param eFeature
      *            the feature for which to retrieve the descriptor

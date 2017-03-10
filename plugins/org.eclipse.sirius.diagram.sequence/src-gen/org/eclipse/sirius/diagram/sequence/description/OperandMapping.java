@@ -13,8 +13,8 @@ package org.eclipse.sirius.diagram.sequence.description;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Operand Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Operand Mapping</b></em>'. <!-- end-user-doc
+ * -->
  *
  *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getOperandMapping()

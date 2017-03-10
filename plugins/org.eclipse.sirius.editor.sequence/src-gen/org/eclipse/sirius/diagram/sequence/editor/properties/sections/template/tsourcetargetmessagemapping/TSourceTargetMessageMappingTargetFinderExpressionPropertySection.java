@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the targetFinderExpression property of a
- * TSourceTargetMessageMapping object.
+ * A section for the targetFinderExpression property of a TSourceTargetMessageMapping object.
  */
 public class TSourceTargetMessageMappingTargetFinderExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

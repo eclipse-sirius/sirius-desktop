@@ -78,7 +78,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
     /**
      * The default value of the '{@link #getNavigationNameExpression() <em>Navigation Name Expression</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getNavigationNameExpression()
      * @generated
      * @ordered
@@ -88,7 +88,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
     /**
      * The cached value of the '{@link #getNavigationNameExpression() <em>Navigation Name Expression</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getNavigationNameExpression()
      * @generated
      * @ordered
@@ -98,7 +98,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
     /**
      * The cached value of the '{@link #getContainerViewVariable() <em>Container View Variable</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getContainerViewVariable()
      * @generated
      * @ordered
@@ -118,7 +118,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
     /**
      * The cached value of the '{@link #getRepresentationNameVariable() <em>Representation Name Variable</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getRepresentationNameVariable()
      * @generated
      * @ordered
@@ -127,7 +127,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RepresentationNavigationDescriptionImpl() {
@@ -136,7 +136,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -207,7 +207,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public RepresentationDescription basicGetRepresentationDescription() {
@@ -219,7 +219,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -248,7 +248,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ContainerViewVariable basicGetContainerViewVariable() {
@@ -257,7 +257,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetContainerViewVariable(ContainerViewVariable newContainerViewVariable, NotificationChain msgs) {
@@ -277,7 +277,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -303,7 +303,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -331,7 +331,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ElementSelectVariable basicGetContainerVariable() {
@@ -340,7 +340,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetContainerVariable(ElementSelectVariable newContainerVariable, NotificationChain msgs) {
@@ -360,7 +360,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -386,7 +386,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -416,7 +416,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NameVariable basicGetRepresentationNameVariable() {
@@ -425,7 +425,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetRepresentationNameVariable(NameVariable newRepresentationNameVariable, NotificationChain msgs) {
@@ -445,7 +445,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -472,7 +472,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -484,7 +484,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -502,7 +502,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -538,7 +538,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -565,7 +565,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -592,7 +592,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -618,7 +618,7 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

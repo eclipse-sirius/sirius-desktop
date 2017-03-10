@@ -84,8 +84,7 @@ public class EdgeMappingUseDomainElementPropertySection extends AbstractCheckBox
     /**
      * Converts the given text to the boolean it represents if applicable.
      * 
-     * @return The boolean the given text represents if applicable,
-     *         <code>null</code> otherwise.
+     * @return The boolean the given text represents if applicable, <code>null</code> otherwise.
      */
     private Boolean toBoolean(String text) {
         Boolean booleanValue = null;
@@ -99,7 +98,8 @@ public class EdgeMappingUseDomainElementPropertySection extends AbstractCheckBox
      */
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
-        checkbox.setToolTipText("Trigger usage of a domain class representing an Edge or just a reference. If you set it to true, the Edge research will start from the domain instances of the given type and look for target/source nodes accordingly, if you set to false, the research will start from the source nodes and look for corresponding target nodes.");
+        checkbox.setToolTipText(
+                "Trigger usage of a domain class representing an Edge or just a reference. If you set it to true, the Edge research will start from the domain instances of the given type and look for target/source nodes accordingly, if you set to false, the research will start from the source nodes and look for corresponding target nodes.");
 
         CLabel help = getWidgetFactory().createCLabel(composite, "");
         FormData data = new FormData();
@@ -107,6 +107,7 @@ public class EdgeMappingUseDomainElementPropertySection extends AbstractCheckBox
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
         help.setImage(getHelpIcon());
-        help.setToolTipText("Trigger usage of a domain class representing an Edge or just a reference. If you set it to true, the Edge research will start from the domain instances of the given type and look for target/source nodes accordingly, if you set to false, the research will start from the source nodes and look for corresponding target nodes.");
+        help.setToolTipText(
+                "Trigger usage of a domain class representing an Edge or just a reference. If you set it to true, the Edge research will start from the domain instances of the given type and look for target/source nodes accordingly, if you set to false, the research will start from the source nodes and look for corresponding target nodes.");
     }
 }

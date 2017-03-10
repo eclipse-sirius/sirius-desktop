@@ -25,8 +25,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the preconditionExpression property of a WidgetConditionalStyle
- * object.
+ * A section for the preconditionExpression property of a WidgetConditionalStyle object.
  */
 public class WidgetConditionalStylePreconditionExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

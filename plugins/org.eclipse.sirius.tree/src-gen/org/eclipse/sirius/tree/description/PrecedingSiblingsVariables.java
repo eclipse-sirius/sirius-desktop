@@ -11,8 +11,8 @@
 package org.eclipse.sirius.tree.description;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Preceding Siblings Variables</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Preceding Siblings Variables</b></em>'. <!--
+ * end-user-doc -->
  *
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getPrecedingSiblingsVariables()

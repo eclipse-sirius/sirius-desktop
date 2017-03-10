@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the lifelineWidthComputationExpression property of a
- * TLifelineStyle object.
+ * A section for the lifelineWidthComputationExpression property of a TLifelineStyle object.
  */
 public class TLifelineStyleLifelineWidthComputationExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

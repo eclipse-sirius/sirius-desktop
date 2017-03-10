@@ -90,8 +90,7 @@ public class ContributionModelWizard extends Wizard implements INewWizard {
     protected ContributionModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
     /**
-     * Remember the selection during initialization for populating the default
-     * container.
+     * Remember the selection during initialization for populating the default container.
      */
     protected IStructuredSelection selection;
 

@@ -88,8 +88,7 @@ public class GroupStyleExpandedByDefaultPropertySection extends AbstractCheckBox
     /**
      * Converts the given text to the boolean it represents if applicable.
      *
-     * @return The boolean the given text represents if applicable,
-     *         <code>null</code> otherwise.
+     * @return The boolean the given text represents if applicable, <code>null</code> otherwise.
      */
     private Boolean toBoolean(String text) {
         Boolean booleanValue = null;

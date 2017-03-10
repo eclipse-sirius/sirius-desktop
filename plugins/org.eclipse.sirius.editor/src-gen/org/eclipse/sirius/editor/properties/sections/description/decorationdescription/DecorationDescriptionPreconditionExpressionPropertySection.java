@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the preconditionExpression property of a DecorationDescription
- * object.
+ * A section for the preconditionExpression property of a DecorationDescription object.
  */
 public class DecorationDescriptionPreconditionExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

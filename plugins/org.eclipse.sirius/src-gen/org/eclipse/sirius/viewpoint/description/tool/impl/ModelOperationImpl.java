@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 public abstract class ModelOperationImpl extends MinimalEObjectImpl.Container implements ModelOperation {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ModelOperationImpl() {
@@ -34,7 +34,7 @@ public abstract class ModelOperationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -25,14 +25,12 @@ import org.eclipse.sirius.description.contribution.ContributionPackage;
 import org.eclipse.sirius.description.contribution.ContributionProvider;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Provider</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Provider</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.impl.ContributionProviderImpl#getContributions
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.ContributionProviderImpl#getContributions
  * <em>Contributions</em>}</li>
  * </ul>
  *
@@ -40,9 +38,8 @@ import org.eclipse.sirius.description.contribution.ContributionProvider;
  */
 public abstract class ContributionProviderImpl extends EObjectImpl implements ContributionProvider {
     /**
-     * The cached value of the '{@link #getContributions()
-     * <em>Contributions</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getContributions() <em>Contributions</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getContributions()
      * @generated

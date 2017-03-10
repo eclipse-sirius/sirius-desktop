@@ -13,8 +13,7 @@ package org.eclipse.sirius.table.metamodel.table;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DTarget Column</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DTarget Column</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTargetColumn()

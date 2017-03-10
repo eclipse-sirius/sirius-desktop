@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the strokeSizeComputationExpression property of a
- * DotDescription object.
+ * A section for the strokeSizeComputationExpression property of a DotDescription object.
  */
 public class DotDescriptionStrokeSizeComputationExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

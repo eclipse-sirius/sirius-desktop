@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the predicateExpression property of a
- * TConditionalExecutionStyle object.
+ * A section for the predicateExpression property of a TConditionalExecutionStyle object.
  */
 public class TConditionalExecutionStylePredicateExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

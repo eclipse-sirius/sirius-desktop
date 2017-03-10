@@ -28,8 +28,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the foregroundColor property of a GaugeSectionDescription
- * object.
+ * A section for the foregroundColor property of a GaugeSectionDescription object.
  */
 public class GaugeSectionDescriptionForegroundColorPropertySection extends AbstractComboPropertySection {
     /**
@@ -78,8 +77,7 @@ public class GaugeSectionDescriptionForegroundColorPropertySection extends Abstr
     }
 
     /**
-     * Returns the value at the specified index in the choice of values for the
-     * feature.
+     * Returns the value at the specified index in the choice of values for the feature.
      * 
      * @param index
      *            Index of the value.

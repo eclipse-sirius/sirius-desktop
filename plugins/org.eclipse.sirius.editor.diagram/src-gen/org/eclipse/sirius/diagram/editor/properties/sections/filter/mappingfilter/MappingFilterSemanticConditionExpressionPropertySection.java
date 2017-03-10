@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the semanticConditionExpression property of a MappingFilter
- * object.
+ * A section for the semanticConditionExpression property of a MappingFilter object.
  */
 public class MappingFilterSemanticConditionExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

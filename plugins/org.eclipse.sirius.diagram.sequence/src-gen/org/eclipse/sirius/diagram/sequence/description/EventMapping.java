@@ -13,8 +13,7 @@ package org.eclipse.sirius.diagram.sequence.description;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Event Mapping</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Event Mapping</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getEventMapping()

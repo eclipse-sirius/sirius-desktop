@@ -24,8 +24,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the reconnectionKind property of a ReconnectEdgeDescription
- * object.
+ * A section for the reconnectionKind property of a ReconnectEdgeDescription object.
  */
 public class ReconnectEdgeDescriptionReconnectionKindPropertySection extends AbstractRadioButtonPropertySection {
     /**

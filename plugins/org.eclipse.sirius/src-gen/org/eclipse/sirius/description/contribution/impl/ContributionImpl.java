@@ -28,35 +28,27 @@ import org.eclipse.sirius.description.contribution.EObjectReference;
 import org.eclipse.sirius.description.contribution.FeatureContribution;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Contribution</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Contribution</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getSource
- * <em>Source</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getTarget
- * <em>Target</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getFeatureMask
- * <em>Feature Mask</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getSubContributions
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getSource <em>Source</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getTarget <em>Target</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getFeatureMask <em>Feature Mask</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getSubContributions
  * <em>Sub Contributions</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getDescription
- * <em>Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.ContributionImpl#getDescription <em>Description</em>}
+ * </li>
  * </ul>
  *
  * @generated
  */
 public class ContributionImpl extends EObjectImpl implements Contribution {
     /**
-     * The cached value of the '{@link #getSource() <em>Source</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @see #getSource()
      * @generated
@@ -65,8 +57,8 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
     protected EObjectReference source;
 
     /**
-     * The cached value of the '{@link #getTarget() <em>Target</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @see #getTarget()
      * @generated
@@ -75,8 +67,8 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
     protected EObjectReference target;
 
     /**
-     * The cached value of the '{@link #getFeatureMask() <em>Feature Mask</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFeatureMask() <em>Feature Mask</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getFeatureMask()
      * @generated
@@ -85,9 +77,8 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
     protected EList<FeatureContribution> featureMask;
 
     /**
-     * The cached value of the '{@link #getSubContributions()
-     * <em>Sub Contributions</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getSubContributions() <em>Sub Contributions</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getSubContributions()
      * @generated
@@ -96,8 +87,8 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
     protected EList<Contribution> subContributions;
 
     /**
-     * The default value of the '{@link #getDescription() <em>Description</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getDescription() <em>Description</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getDescription()
      * @generated
@@ -106,8 +97,8 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
     protected static final String DESCRIPTION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getDescription() <em>Description</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getDescription()
      * @generated

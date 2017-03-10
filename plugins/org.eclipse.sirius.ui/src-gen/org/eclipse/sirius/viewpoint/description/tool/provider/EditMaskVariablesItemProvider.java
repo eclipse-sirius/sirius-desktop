@@ -94,8 +94,8 @@ public class EditMaskVariablesItemProvider extends ItemProviderAdapter
     @Override
     public String getText(Object object) {
         String label = ((EditMaskVariables) object).getMask();
-        return label == null || label.length() == 0 ? getString("_UI_EditMaskVariables_type") //$NON-NLS-1$
-                : getString("_UI_EditMaskVariables_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        return label == null || label.length() == 0 ? getString("_UI_EditMaskVariables_type") : //$NON-NLS-1$
+                getString("_UI_EditMaskVariables_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

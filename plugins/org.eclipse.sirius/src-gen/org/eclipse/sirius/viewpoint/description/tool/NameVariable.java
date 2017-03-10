@@ -14,8 +14,7 @@ package org.eclipse.sirius.viewpoint.description.tool;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Name Variable</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Name Variable</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getNameVariable()

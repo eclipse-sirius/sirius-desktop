@@ -38,7 +38,7 @@ public interface ContainerModelOperation extends ModelOperation {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Sub Model Operations</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerModelOperation_SubModelOperations()
      * @model containment="true" resolveProxies="true"

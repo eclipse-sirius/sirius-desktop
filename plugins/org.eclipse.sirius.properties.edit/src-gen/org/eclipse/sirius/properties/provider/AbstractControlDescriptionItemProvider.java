@@ -25,13 +25,13 @@ import org.eclipse.sirius.viewpoint.description.provider.IdentifiedElementItemPr
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.AbstractControlDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AbstractControlDescriptionItemProvider extends IdentifiedElementItemProvider implements IItemStyledLabelProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AbstractControlDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -40,7 +40,7 @@ public class AbstractControlDescriptionItemProvider extends IdentifiedElementIte
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -54,7 +54,7 @@ public class AbstractControlDescriptionItemProvider extends IdentifiedElementIte
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class AbstractControlDescriptionItemProvider extends IdentifiedElementIte
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class AbstractControlDescriptionItemProvider extends IdentifiedElementIte
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class AbstractControlDescriptionItemProvider extends IdentifiedElementIte
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

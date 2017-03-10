@@ -54,11 +54,10 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
     /**
      * <ul>
      * Set this boolean to select the widgets to display.
-     * <li><code>True</code> for a {@link org.eclipse.swt.widgets.Group group}
-     * displaying {@link org.eclipse.swt.widgets.Button button}s</li>
-     * <li><code>False</code> to display a {@link org.eclipse.swt.custom.CLabel
-     * label} followed by the {@link org.eclipse.swt.widgets.Button button}s in
-     * a single row</li>
+     * <li><code>True</code> for a {@link org.eclipse.swt.widgets.Group group} displaying
+     * {@link org.eclipse.swt.widgets.Button button}s</li>
+     * <li><code>False</code> to display a {@link org.eclipse.swt.custom.CLabel label} followed by the
+     * {@link org.eclipse.swt.widgets.Button button}s in a single row</li>
      * </ul>
      */
     protected boolean buttonGroup = true;
@@ -180,8 +179,7 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
     /**
      * Get the list of values corresponding to the currently checked buttons.
      * 
-     * @return The list of values corresponding to the currently checked
-     *         buttons.
+     * @return The list of values corresponding to the currently checked buttons.
      */
     protected List<?> getSelectedValues() {
         List<?> possibleValues = getChoiceOfValues();
@@ -210,13 +208,12 @@ public abstract class AbstractCheckBoxGroupPropertySection extends AbstractViewp
     }
 
     /**
-     * Determine if the new list of values is equal to the current property
-     * setting.
+     * Determine if the new list of values is equal to the current property setting.
      * 
      * @param newList
      *            The new list of values for the property.
-     * @return <code>True</code> if the new list of values is equal to the
-     *         current property setting, <code>False</code> otherwise.
+     * @return <code>True</code> if the new list of values is equal to the current property setting, <code>False</code>
+     *         otherwise.
      */
     protected abstract boolean isEqual(List<?> newList);
 

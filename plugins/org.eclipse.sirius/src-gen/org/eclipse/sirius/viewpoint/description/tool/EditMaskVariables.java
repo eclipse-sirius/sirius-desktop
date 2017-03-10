@@ -44,7 +44,7 @@ public interface EditMaskVariables extends EObject {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables#getMask
      * <em>Mask</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Mask</em>' attribute.
      * @see #getMask()

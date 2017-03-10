@@ -24,8 +24,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the backgroundStyle property of a FlatContainerStyleDescription
- * object.
+ * A section for the backgroundStyle property of a FlatContainerStyleDescription object.
  */
 public class FlatContainerStyleDescriptionBackgroundStylePropertySection extends AbstractComboPropertySection {
     /**

@@ -30,8 +30,7 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
 /**
- * Allows the edition of the {@link org.eclipse.swt.widgets.TreeItem TreeItem}
- * double-clicked by the user.
+ * Allows the edition of the {@link org.eclipse.swt.widgets.TreeItem TreeItem} double-clicked by the user.
  */
 public class SelectionTreeTextEditor extends AdapterFactoryTreeEditor {
     protected EditingDomain editingDomain;
@@ -99,11 +98,9 @@ public class SelectionTreeTextEditor extends AdapterFactoryTreeEditor {
      * Reflects the text's modification upon the attribute's value in the model.
      * 
      * @param textOwner
-     *            Data object of the {@link org.eclipse.swt.widgets.TreeItem
-     *            TreeItem}.
+     *            Data object of the {@link org.eclipse.swt.widgets.TreeItem TreeItem}.
      * @param text
-     *            {@link org.eclipse.swt.widgets.Text Text} composite allowing
-     *            the feature's edition.
+     *            {@link org.eclipse.swt.widgets.Text Text} composite allowing the feature's edition.
      */
     private void updateText(Object textOwner, Text text) {
         EAttribute updateableField = null;

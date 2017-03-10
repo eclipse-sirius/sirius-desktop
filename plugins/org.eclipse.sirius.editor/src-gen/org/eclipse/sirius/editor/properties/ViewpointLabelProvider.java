@@ -26,11 +26,7 @@ import org.eclipse.ui.PlatformUI;
  * Label provider of the tabbed property sheet page.
  */
 public class ViewpointLabelProvider extends LabelProvider {
-    /**
-     * Plugin's
-     * {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
-     * AdapterFactoryLabelProvider}.
-     */
+    /** Plugin's {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider AdapterFactoryLabelProvider}. */
     private AdapterFactoryLabelProvider adapterFactoryLabelProvider;
 
     /**
@@ -89,13 +85,11 @@ public class ViewpointLabelProvider extends LabelProvider {
     }
 
     /**
-     * Fetches the plugin's
-     * {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
-     * AdapterFactoryLabelProvider} .
+     * Fetches the plugin's {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
+     * AdapterFactoryLabelProvider}}.
      * 
-     * @return The plugin's
-     *         {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
-     *         AdapterFactoryLabelProvider} .
+     * @return The plugin's {@link org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
+     *         AdapterFactoryLabelProvider}}.
      */
     private AdapterFactoryLabelProvider getAdapterFactoryLabelProvider() {
         if (adapterFactoryLabelProvider == null) {
@@ -105,14 +99,13 @@ public class ViewpointLabelProvider extends LabelProvider {
     }
 
     /**
-     * Determines if the objects contained by a given
-     * {@link org.eclipse.jface.viewers.IStructuredSelection structured
+     * Determines if the objects contained by a given {@link org.eclipse.jface.viewers.IStructuredSelection structured
      * selection} are of different types.
      * 
      * @param structuredSelection
      *            The structured selection.
-     * @return <code>True</code> if there are objects of different types in the
-     *         structured selection, <code>false</code> otherwise.
+     * @return <code>True</code> if there are objects of different types in the structured selection, <code>false</code>
+     *         otherwise.
      */
     private boolean containsDifferentTypes(IStructuredSelection structuredSelection) {
         boolean areDistinct = false;

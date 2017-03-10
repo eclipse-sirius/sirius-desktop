@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the columnFinderExpression property of a IntersectionMapping
- * object.
+ * A section for the columnFinderExpression property of a IntersectionMapping object.
  */
 public class IntersectionMappingColumnFinderExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

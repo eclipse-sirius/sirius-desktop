@@ -13,8 +13,8 @@ package org.eclipse.sirius.diagram.sequence.description.tool;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Obervation Point Creation Tool</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Obervation Point Creation Tool</b></em>'. <!--
+ * end-user-doc -->
  *
  *
  * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getObservationPointCreationTool()

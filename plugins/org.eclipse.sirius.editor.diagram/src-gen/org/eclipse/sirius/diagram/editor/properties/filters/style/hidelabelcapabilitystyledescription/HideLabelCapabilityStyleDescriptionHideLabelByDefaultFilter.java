@@ -57,8 +57,7 @@ public class HideLabelCapabilityStyleDescriptionHideLabelByDefaultFilter extends
      * 
      * @param styleDescription
      *            Style description
-     * @return <code>true</code> if the style is contained in a node mapping,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the style is contained in a node mapping, <code>false</code> otherwise
      */
     private boolean isStyleInNodeMapping(org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription styleDescription) {
         EObject container = styleDescription.eContainer();

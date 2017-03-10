@@ -24,8 +24,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the reusedBorderedNodeMappings property of a
- * AbstractNodeMapping object.
+ * A section for the reusedBorderedNodeMappings property of a AbstractNodeMapping object.
  */
 public class AbstractNodeMappingReusedBorderedNodeMappingsPropertySection extends AbstractEditorDialogPropertySection {
     /**

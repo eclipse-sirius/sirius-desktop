@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the childrenExpression property of a
- * PaneBasedSelectionWizardDescription object.
+ * A section for the childrenExpression property of a PaneBasedSelectionWizardDescription object.
  */
 public class PaneBasedSelectionWizardDescriptionChildrenExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

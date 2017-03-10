@@ -28,8 +28,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the pasteDescriptions property of a PasteTargetDescription
- * object.
+ * A section for the pasteDescriptions property of a PasteTargetDescription object.
  */
 public class PasteTargetDescriptionPasteDescriptionsPropertySection extends AbstractEditorDialogPropertySection {
     /**

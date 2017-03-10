@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the predicateExpression property of a
- * ForegroundConditionalStyle object.
+ * A section for the predicateExpression property of a ForegroundConditionalStyle object.
  */
 public class ForegroundConditionalStylePredicateExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

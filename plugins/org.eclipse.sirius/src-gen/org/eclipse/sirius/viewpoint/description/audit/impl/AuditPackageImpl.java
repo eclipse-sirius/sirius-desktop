@@ -248,8 +248,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
         initEClass(templateInformationSectionEClass, TemplateInformationSection.class, "TemplateInformationSection", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getTemplateInformationSection_TemplatePath(), theEcorePackage.getEString(), "templatePath", null, 0, 1, TemplateInformationSection.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
-                !EPackageImpl.IS_VOLATILE,
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
     }
 
 } // AuditPackageImpl

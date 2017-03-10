@@ -20,8 +20,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
- * A section for the labelFormat property of a BasicLabelStyleDescription
- * object.
+ * A section for the labelFormat property of a BasicLabelStyleDescription object.
  */
 public class BasicLabelStyleDescriptionLabelFormatPropertySection extends AbstractEditorDialogPropertySection {
     /**

@@ -23,7 +23,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 public class DeleteViewImpl extends ContainerModelOperationImpl implements DeleteView {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DeleteViewImpl() {
@@ -32,7 +32,7 @@ public class DeleteViewImpl extends ContainerModelOperationImpl implements Delet
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

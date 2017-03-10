@@ -27,13 +27,13 @@ import org.eclipse.sirius.properties.TextOverrideDescription;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.TextOverrideDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TextOverrideDescriptionItemProvider extends AbstractTextDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TextOverrideDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
 
     /**
      * This adds a property descriptor for the Overrides feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOverridesPropertyDescriptor(Object object) {
@@ -71,7 +71,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Overridden Text Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromOverriddenTextExpressionPropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
 
     /**
      * This returns TextOverrideDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class TextOverrideDescriptionItemProvider extends AbstractTextDescription
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

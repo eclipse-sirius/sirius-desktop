@@ -32,8 +32,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the backgroundColor property of a TreeItemStyleDescription
- * object.
+ * A section for the backgroundColor property of a TreeItemStyleDescription object.
  */
 public class TreeItemStyleDescriptionBackgroundColorPropertySection extends AbstractComboPropertySection {
     /**
@@ -82,8 +81,7 @@ public class TreeItemStyleDescriptionBackgroundColorPropertySection extends Abst
     }
 
     /**
-     * Returns the value at the specified index in the choice of values for the
-     * feature.
+     * Returns the value at the specified index in the choice of values for the feature.
      * 
      * @param index
      *            Index of the value.

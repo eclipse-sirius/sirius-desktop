@@ -106,8 +106,7 @@ public class DirectEObjectReferenceValuePropertySection extends AbstractComboPro
     }
 
     /**
-     * Returns the value at the specified index in the choice of values for the
-     * feature.
+     * Returns the value at the specified index in the choice of values for the feature.
      * 
      * @param index
      *            Index of the value.
@@ -161,8 +160,7 @@ public class DirectEObjectReferenceValuePropertySection extends AbstractComboPro
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
         // Start of user code create controls
         /*
-         * We want to add a "Select" button on the right of the text field, but
-         * the layout data
+         * We want to add a "Select" button on the right of the text field, but the layout data
          */
         FormData data = new FormData();
         data.left = new FormAttachment(0, LABEL_WIDTH);

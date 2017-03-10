@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the coveredLifelinesExpression property of a FrameMapping
- * object.
+ * A section for the coveredLifelinesExpression property of a FrameMapping object.
  */
 public class FrameMappingCoveredLifelinesExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

@@ -23,7 +23,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 public class DefaultImpl extends SwitchChildImpl implements Default {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DefaultImpl() {
@@ -32,7 +32,7 @@ public class DefaultImpl extends SwitchChildImpl implements Default {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

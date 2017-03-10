@@ -12,8 +12,7 @@ package org.eclipse.sirius.editor.editorPlugin;
 import org.eclipse.emf.common.notify.AdapterFactory;
 
 /**
- * This interface helps defining common behavior for the Viewpoint model
- * editors.
+ * This interface helps defining common behavior for the Viewpoint model editors.
  */
 public interface IAdapterFactoryProvider {
     /**

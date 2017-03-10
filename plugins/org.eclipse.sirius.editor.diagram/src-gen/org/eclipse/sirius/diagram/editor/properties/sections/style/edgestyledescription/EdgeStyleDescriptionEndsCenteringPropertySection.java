@@ -83,8 +83,8 @@ public class EdgeStyleDescriptionEndsCenteringPropertySection extends AbstractRa
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 
-        nameLabel
-                .setToolTipText("Use this feature to generalize the ends centering behavior to all source mappings, all target mappings or both. If \"None\", you have to select the source and target mappings manually.");
+        nameLabel.setToolTipText(
+                "Use this feature to generalize the ends centering behavior to all source mappings, all target mappings or both. If \"None\", you have to select the source and target mappings manually.");
 
         CLabel help = getWidgetFactory().createCLabel(composite, "");
         FormData data = new FormData();
@@ -92,7 +92,8 @@ public class EdgeStyleDescriptionEndsCenteringPropertySection extends AbstractRa
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
         help.setImage(getHelpIcon());
-        help.setToolTipText("Use this feature to generalize the ends centering behavior to all source mappings, all target mappings or both. If \"None\", you have to select the source and target mappings manually.");
+        help.setToolTipText(
+                "Use this feature to generalize the ends centering behavior to all source mappings, all target mappings or both. If \"None\", you have to select the source and target mappings manually.");
 
     }
 }

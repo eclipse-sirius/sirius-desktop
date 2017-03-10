@@ -23,8 +23,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the useDomainElement property of a TSourceTargetMessageMapping
- * object.
+ * A section for the useDomainElement property of a TSourceTargetMessageMapping object.
  */
 public class TSourceTargetMessageMappingUseDomainElementPropertySection extends AbstractCheckBoxPropertySection {
     /**
@@ -85,8 +84,7 @@ public class TSourceTargetMessageMappingUseDomainElementPropertySection extends 
     /**
      * Converts the given text to the boolean it represents if applicable.
      * 
-     * @return The boolean the given text represents if applicable,
-     *         <code>null</code> otherwise.
+     * @return The boolean the given text represents if applicable, <code>null</code> otherwise.
      */
     private Boolean toBoolean(String text) {
         Boolean booleanValue = null;
@@ -100,7 +98,8 @@ public class TSourceTargetMessageMappingUseDomainElementPropertySection extends 
      */
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
-        checkbox.setToolTipText("If set to true the creation of the elements will depend on the existence of a domain element and not on the graphical one. You should then define the souce finder expression.");
+        checkbox.setToolTipText(
+                "If set to true the creation of the elements will depend on the existence of a domain element and not on the graphical one. You should then define the souce finder expression.");
 
         CLabel help = getWidgetFactory().createCLabel(composite, "");
         FormData data = new FormData();
@@ -108,6 +107,7 @@ public class TSourceTargetMessageMappingUseDomainElementPropertySection extends 
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
         help.setImage(getHelpIcon());
-        help.setToolTipText("If set to true the creation of the elements will depend on the existence of a domain element and not on the graphical one. You should then define the souce finder expression.");
+        help.setToolTipText(
+                "If set to true the creation of the elements will depend on the existence of a domain element and not on the graphical one. You should then define the souce finder expression.");
     }
 }

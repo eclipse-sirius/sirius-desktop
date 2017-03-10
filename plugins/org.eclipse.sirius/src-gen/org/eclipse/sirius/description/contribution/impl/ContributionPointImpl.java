@@ -21,26 +21,22 @@ import org.eclipse.sirius.description.contribution.ContributionPackage;
 import org.eclipse.sirius.description.contribution.ContributionPoint;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Point</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Point</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.impl.ContributionPointImpl#getOrigin
- * <em>Origin</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.impl.ContributionPointImpl#getContributed
- * <em>Contributed</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.ContributionPointImpl#getOrigin <em>Origin</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.ContributionPointImpl#getContributed <em>Contributed</em>
+ * }</li>
  * </ul>
  *
  * @generated
  */
 public class ContributionPointImpl extends EObjectImpl implements ContributionPoint {
     /**
-     * The default value of the '{@link #getOrigin() <em>Origin</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getOrigin() <em>Origin</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getOrigin()
      * @generated
@@ -49,8 +45,8 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
     protected static final String ORIGIN_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getOrigin() <em>Origin</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getOrigin() <em>Origin</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getOrigin()
      * @generated
@@ -59,8 +55,8 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
     protected String origin = ContributionPointImpl.ORIGIN_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getContributed() <em>Contributed</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getContributed() <em>Contributed</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getContributed()
      * @generated

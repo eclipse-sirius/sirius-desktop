@@ -40,7 +40,7 @@ public interface VariableContainer extends EObject {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Sub Variables</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getVariableContainer_SubVariables()
      * @model containment="true" resolveProxies="true"

@@ -76,8 +76,8 @@ public class DialogVariableItemProvider extends AbstractVariableItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((DialogVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DialogVariable_type") //$NON-NLS-1$
-                : getString("_UI_DialogVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        return label == null || label.length() == 0 ? getString("_UI_DialogVariable_type") : //$NON-NLS-1$
+                getString("_UI_DialogVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

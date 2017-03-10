@@ -115,8 +115,7 @@ public class VSMElementCustomizationReuseReusePropertySection extends AbstractEd
 
     // Start of user code user operations
     /**
-     * Overridden to limit the choice to {@link EStructuralFeatureCustomization}
-     * s.
+     * Overridden to limit the choice to {@link EStructuralFeatureCustomization} s.
      * 
      * {@inheritDoc}
      */

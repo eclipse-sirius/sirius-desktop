@@ -14,16 +14,14 @@ package org.eclipse.sirius.description.contribution;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Direct EObject Reference</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Direct EObject Reference</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.DirectEObjectReference#getValue
- * <em>Value</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.DirectEObjectReference#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getDirectEObjectReference()
@@ -32,11 +30,10 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface DirectEObjectReference extends EObjectReference {
     /**
-     * Returns the value of the '<em><b>Value</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Value</b></em>' reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Value</em>' reference isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Value</em>' reference isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -49,8 +46,7 @@ public interface DirectEObjectReference extends EObjectReference {
     EObject getValue();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.description.contribution.DirectEObjectReference#getValue
+     * Sets the value of the ' {@link org.eclipse.sirius.description.contribution.DirectEObjectReference#getValue
      * <em>Value</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value

@@ -28,8 +28,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the extraMappings property of a ContainerCreationDescription
- * object.
+ * A section for the extraMappings property of a ContainerCreationDescription object.
  */
 public class ContainerCreationDescriptionExtraMappingsPropertySection extends AbstractEditorDialogPropertySection {
     /**

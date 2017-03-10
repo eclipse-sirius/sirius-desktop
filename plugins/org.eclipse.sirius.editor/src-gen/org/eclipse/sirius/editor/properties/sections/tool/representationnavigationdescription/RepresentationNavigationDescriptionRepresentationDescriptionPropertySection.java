@@ -28,8 +28,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the representationDescription property of a
- * RepresentationNavigationDescription object.
+ * A section for the representationDescription property of a RepresentationNavigationDescription object.
  */
 public class RepresentationNavigationDescriptionRepresentationDescriptionPropertySection extends AbstractComboPropertySection {
     /**
@@ -78,8 +77,7 @@ public class RepresentationNavigationDescriptionRepresentationDescriptionPropert
     }
 
     /**
-     * Returns the value at the specified index in the choice of values for the
-     * feature.
+     * Returns the value at the specified index in the choice of values for the feature.
      * 
      * @param index
      *            Index of the value.

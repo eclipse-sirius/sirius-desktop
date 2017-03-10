@@ -12,8 +12,7 @@
 package org.eclipse.sirius.viewpoint;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DFolder</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>DFolder</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDFolder()

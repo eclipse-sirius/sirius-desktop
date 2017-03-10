@@ -23,8 +23,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the applyOnAll property of a EStructuralFeatureCustomization
- * object.
+ * A section for the applyOnAll property of a EStructuralFeatureCustomization object.
  */
 public class EStructuralFeatureCustomizationApplyOnAllPropertySection extends AbstractCheckBoxPropertySection {
     /**
@@ -85,8 +84,7 @@ public class EStructuralFeatureCustomizationApplyOnAllPropertySection extends Ab
     /**
      * Converts the given text to the boolean it represents if applicable.
      * 
-     * @return The boolean the given text represents if applicable,
-     *         <code>null</code> otherwise.
+     * @return The boolean the given text represents if applicable, <code>null</code> otherwise.
      */
     private Boolean toBoolean(String text) {
         Boolean booleanValue = null;

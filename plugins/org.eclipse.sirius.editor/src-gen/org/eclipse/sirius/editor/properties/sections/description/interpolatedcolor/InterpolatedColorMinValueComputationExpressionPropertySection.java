@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the minValueComputationExpression property of a
- * InterpolatedColor object.
+ * A section for the minValueComputationExpression property of a InterpolatedColor object.
  */
 public class InterpolatedColorMinValueComputationExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

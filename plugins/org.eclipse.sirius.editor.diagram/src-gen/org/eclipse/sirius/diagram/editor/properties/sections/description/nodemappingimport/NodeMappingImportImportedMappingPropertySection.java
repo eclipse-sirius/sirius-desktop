@@ -98,8 +98,7 @@ public class NodeMappingImportImportedMappingPropertySection extends AbstractCom
     }
 
     /**
-     * Returns the value at the specified index in the choice of values for the
-     * feature.
+     * Returns the value at the specified index in the choice of values for the feature.
      * 
      * @param index
      *            Index of the value.
@@ -173,20 +172,21 @@ public class NodeMappingImportImportedMappingPropertySection extends AbstractCom
             @Override
             public void widgetSelected(final SelectionEvent e) {
 
-                final NodeMappingImportSelectionWizardItemsBuilder builder = new NodeMappingImportSelectionWizardItemsBuilder((NodeMapping) eObject, new EObjectQuery(eObject)
-                        .getAvailableViewpointsInResourceSet());
+                final NodeMappingImportSelectionWizardItemsBuilder builder = new NodeMappingImportSelectionWizardItemsBuilder((NodeMapping) eObject,
+                        new EObjectQuery(eObject).getAvailableViewpointsInResourceSet());
                 final TreeItemWrapper input = builder.buildMappingInput();
 
                 final Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
                 if (propertySheetPage != null) {
                     final AdapterFactory factory = propertySheetPage.getAdapterFactory();
-                    final EObjectSelectionWizard wizard = new EObjectSelectionWizard(EObjectSelectionWizard.WIZARD_GENERIC_DIALOG_TITLE, "Please select a node mapping to import", null, input, factory);
+                    final EObjectSelectionWizard wizard = new EObjectSelectionWizard(EObjectSelectionWizard.WIZARD_GENERIC_DIALOG_TITLE, "Please select a node mapping to import", null, input,
+                            factory);
                     wizard.setMany(Boolean.FALSE);
                     final WizardDialog dlg = new WizardDialog(shell, wizard);
                     if (dlg.open() == Window.OK) {
                         final EditingDomain editingDomain = ((IEditingDomainProvider) getPart()).getEditingDomain();
-                        editingDomain.getCommandStack().execute(
-                                SetCommand.create(editingDomain, eObject, DescriptionPackage.eINSTANCE.getNodeMappingImport_ImportedMapping(), wizard.getSelectedEObject()));
+                        editingDomain.getCommandStack()
+                                .execute(SetCommand.create(editingDomain, eObject, DescriptionPackage.eINSTANCE.getNodeMappingImport_ImportedMapping(), wizard.getSelectedEObject()));
                     }
                 }
 

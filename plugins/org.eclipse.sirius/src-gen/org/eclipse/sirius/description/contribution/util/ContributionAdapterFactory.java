@@ -31,9 +31,8 @@ import org.eclipse.sirius.description.contribution.ResetFeatureContribution;
 import org.eclipse.sirius.description.contribution.SetFeatureContribution;
 
 /**
- * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
- * an adapter <code>createXXX</code> method for each class of the model. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter <code>createXXX</code>
+ * method for each class of the model. <!-- end-user-doc -->
  *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage
  * @generated
@@ -47,8 +46,7 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
     protected static ContributionPackage modelPackage;
 
     /**
-     * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -59,10 +57,9 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Returns whether this factory is applicable for the type of the object.
-     * <!-- begin-user-doc --> This implementation returns <code>true</code> if
-     * the object is either the model's package or is an instance object of the
-     * model. <!-- end-user-doc -->
+     * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc --> This
+     * implementation returns <code>true</code> if the object is either the model's package or is an instance object of
+     * the model. <!-- end-user-doc -->
      *
      * @return whether this factory is applicable for the type of the object.
      * @generated
@@ -79,8 +76,7 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * The switch that delegates to the <code>createXXX</code> methods. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
@@ -157,8 +153,7 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
     };
 
     /**
-     * Creates an adapter for the <code>target</code>. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param target
      *            the object to adapt.
@@ -172,11 +167,9 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.FeatureContribution
-     * <em>Feature Contribution</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.FeatureContribution <em>Feature Contribution</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+     * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.description.contribution.FeatureContribution
@@ -188,11 +181,9 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.IgnoreFeatureContribution
-     * <em>Ignore Feature Contribution</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.IgnoreFeatureContribution <em>Ignore Feature Contribution</em>
+     * }'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.description.contribution.IgnoreFeatureContribution
@@ -204,11 +195,9 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.SetFeatureContribution
-     * <em>Set Feature Contribution</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.SetFeatureContribution <em>Set Feature Contribution</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.description.contribution.SetFeatureContribution
@@ -220,11 +209,9 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.AddFeatureContribution
-     * <em>Add Feature Contribution</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.AddFeatureContribution <em>Add Feature Contribution</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.description.contribution.AddFeatureContribution
@@ -236,11 +223,9 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.RemoveFeatureContribution
-     * <em>Remove Feature Contribution</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.RemoveFeatureContribution <em>Remove Feature Contribution</em>
+     * }'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.description.contribution.RemoveFeatureContribution
@@ -252,11 +237,9 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.ClearFeatureContribution
-     * <em>Clear Feature Contribution</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.ClearFeatureContribution <em>Clear Feature Contribution</em>}
+     * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.description.contribution.ClearFeatureContribution
@@ -268,11 +251,9 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.ResetFeatureContribution
-     * <em>Reset Feature Contribution</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.ResetFeatureContribution <em>Reset Feature Contribution</em>}
+     * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.description.contribution.ResetFeatureContribution
@@ -284,11 +265,9 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.EObjectReference
-     * <em>EObject Reference</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.EObjectReference <em>EObject Reference</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+     * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.description.contribution.EObjectReference
@@ -300,11 +279,9 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.DirectEObjectReference
-     * <em>Direct EObject Reference</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.DirectEObjectReference <em>Direct EObject Reference</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.description.contribution.DirectEObjectReference
@@ -316,11 +293,9 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference
-     * <em>Computed EObject Reference</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference <em>Computed EObject Reference</em>}
+     * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.description.contribution.ComputedEObjectReference
@@ -331,12 +306,10 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.Contribution
-     * <em>Contribution</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class ' {@link org.eclipse.sirius.description.contribution.Contribution
+     * <em>Contribution</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.description.contribution.Contribution
@@ -348,11 +321,9 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.ContributionProvider
-     * <em>Provider</em>}'. <!-- begin-user-doc --> This default implementation
-     * returns null so that we can easily ignore cases; it's useful to ignore a
-     * case when inheritance will catch all the cases anyway. <!-- end-user-doc
-     * -->
+     * {@link org.eclipse.sirius.description.contribution.ContributionProvider <em>Provider</em>}'. <!-- begin-user-doc
+     * --> This default implementation returns null so that we can easily ignore cases; it's useful to ignore a case
+     * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.description.contribution.ContributionProvider
@@ -364,11 +335,9 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.ContributionPoint
-     * <em>Point</em>}'. <!-- begin-user-doc --> This default implementation
-     * returns null so that we can easily ignore cases; it's useful to ignore a
-     * case when inheritance will catch all the cases anyway. <!-- end-user-doc
-     * -->
+     * {@link org.eclipse.sirius.description.contribution.ContributionPoint <em>Point</em>}'. <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases; it's useful to ignore a case when
+     * inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.description.contribution.ContributionPoint
@@ -379,8 +348,8 @@ public class ContributionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for the default case. <!-- begin-user-doc --> This
-     * default implementation returns null. <!-- end-user-doc -->
+     * Creates a new adapter for the default case. <!-- begin-user-doc --> This default implementation returns null.
+     * <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @generated

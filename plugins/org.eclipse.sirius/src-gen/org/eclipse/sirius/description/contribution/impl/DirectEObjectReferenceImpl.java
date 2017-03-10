@@ -21,23 +21,21 @@ import org.eclipse.sirius.description.contribution.ContributionPackage;
 import org.eclipse.sirius.description.contribution.DirectEObjectReference;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Direct EObject Reference</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Direct EObject Reference</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.impl.DirectEObjectReferenceImpl#getValue
- * <em>Value</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.DirectEObjectReferenceImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DirectEObjectReferenceImpl extends EObjectImpl implements DirectEObjectReference {
     /**
-     * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getValue() <em>Value</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getValue()
      * @generated

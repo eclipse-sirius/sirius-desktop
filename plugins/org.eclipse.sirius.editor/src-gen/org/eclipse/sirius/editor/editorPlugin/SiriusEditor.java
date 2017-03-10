@@ -166,8 +166,7 @@ public class SiriusEditor extends MultiPageEditorPart
     private static ImageRegistry imageRegistry;
 
     /**
-     * This keeps track of the editing domain that is used to track all changes
-     * to the model.
+     * This keeps track of the editing domain that is used to track all changes to the model.
      */
     protected AdapterFactoryEditingDomain editingDomain;
 
@@ -197,8 +196,8 @@ public class SiriusEditor extends MultiPageEditorPart
     protected ViewpointPropertySheetPage propertySheetPage;
 
     /**
-     * This is the viewer that shadows the selection in the content outline. The
-     * parent relation must be correctly defined for this to work.
+     * This is the viewer that shadows the selection in the content outline. The parent relation must be correctly
+     * defined for this to work.
      */
     protected TreeViewer selectionViewer;
 
@@ -208,8 +207,8 @@ public class SiriusEditor extends MultiPageEditorPart
     protected ViewerPane currentViewerPane;
 
     /**
-     * This keeps track of the active content viewer, which may be either one of
-     * the viewers in the pages or the content outline viewer.
+     * This keeps track of the active content viewer, which may be either one of the viewers in the pages or the content
+     * outline viewer.
      */
     protected Viewer currentViewer;
 
@@ -219,9 +218,8 @@ public class SiriusEditor extends MultiPageEditorPart
     protected ISelectionChangedListener selectionChangedListener;
 
     /**
-     * This keeps track of all the
-     * {@link org.eclipse.jface.viewers.ISelectionChangedListener}s that are
-     * listening to this editor.
+     * This keeps track of all the {@link org.eclipse.jface.viewers.ISelectionChangedListener}s that are listening to
+     * this editor.
      */
     protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
 
@@ -231,8 +229,7 @@ public class SiriusEditor extends MultiPageEditorPart
     protected ISelection editorSelection = StructuredSelection.EMPTY;
 
     /**
-     * The MarkerHelper is responsible for creating workspace resource markers
-     * presented in Eclipse's Problems View.
+     * The MarkerHelper is responsible for creating workspace resource markers presented in Eclipse's Problems View.
      */
     protected MarkerHelper markerHelper = new EditUIMarkerHelper();
 
@@ -306,8 +303,7 @@ public class SiriusEditor extends MultiPageEditorPart
     protected boolean updateProblemIndication = true;
 
     /**
-     * Adapter used to update the problem indication when resources are demanded
-     * loaded.
+     * Adapter used to update the problem indication when resources are demanded loaded.
      */
     protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
         public void notifyChanged(Notification notification) {
@@ -526,9 +522,8 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * The changed resource has just been unloaded and will be loaded after this
-     * call. This method allows to analyze and update the resource (default
-     * load/save options for example) before the reload.
+     * The changed resource has just been unloaded and will be loaded after this call. This method allows to analyze and
+     * update the resource (default load/save options for example) before the reload.
      * 
      * @param changedResource
      *            the changed resource.
@@ -538,8 +533,7 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * Updates the problems indication with the information described in the
-     * specified diagnostic.
+     * Updates the problems indication with the information described in the specified diagnostic.
      */
     protected void updateProblemIndication() {
         if (updateProblemIndication) {
@@ -616,13 +610,12 @@ public class SiriusEditor extends MultiPageEditorPart
 
         adapterFactory = new ComposedAdapterFactory(factories);
 
-        // Create the command stack that will notify this editor as commands are
-        // executed.
+        // Create the command stack that will notify this editor as commands are executed.
         //
         BasicCommandStack commandStack = new BasicCommandStack();
 
-        // Add a listener to set the most recent command's affected objects to
-        // be the selection of the viewer with focus.
+        // Add a listener to set the most recent command's affected objects to be the selection of the viewer with
+        // focus.
         //
         commandStack.addCommandStackListener(new CommandStackListener() {
             public void commandStackChanged(final EventObject event) {
@@ -665,15 +658,13 @@ public class SiriusEditor extends MultiPageEditorPart
         //
         if (theSelection != null && !theSelection.isEmpty()) {
             // I don't know if this should be run this deferred
-            // because we might have to give the editor a chance to process the
-            // viewer update events
+            // because we might have to give the editor a chance to process the viewer update events
             // and hence to update the views first.
             //
             //
             Runnable runnable = new Runnable() {
                 public void run() {
-                    // Try to select the items in the current content viewer of
-                    // the editor.
+                    // Try to select the items in the current content viewer of the editor.
                     //
                     if (currentViewer != null) {
                         currentViewer.setSelection(new StructuredSelection(theSelection.toArray()), true);
@@ -685,10 +676,9 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * This returns the editing domain as required by the
-     * {@link IEditingDomainProvider} interface. This is important for
-     * implementing the static methods of {@link AdapterFactoryEditingDomain}
-     * and for supporting {@link org.eclipse.emf.edit.ui.action.CommandAction}.
+     * This returns the editing domain as required by the {@link IEditingDomainProvider} interface. This is important
+     * for implementing the static methods of {@link AdapterFactoryEditingDomain} and for supporting
+     * {@link org.eclipse.emf.edit.ui.action.CommandAction}.
      */
     public EditingDomain getEditingDomain() {
         return editingDomain;
@@ -705,8 +695,8 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * This makes sure that one content viewer, either for the current page or
-     * the outline view, if it has focus, is the current one.
+     * This makes sure that one content viewer, either for the current page or the outline view, if it has focus, is the
+     * current one.
      */
     public void setCurrentViewer(Viewer viewer) {
         // If it is changing...
@@ -716,8 +706,7 @@ public class SiriusEditor extends MultiPageEditorPart
                 // Create the listener on demand.
                 //
                 selectionChangedListener = new ISelectionChangedListener() {
-                    // This just notifies those things that are affected by the
-                    // section.
+                    // This just notifies those things that are affected by the section.
                     //
                     public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
                         setSelection(selectionChangedEvent.getSelection());
@@ -741,24 +730,21 @@ public class SiriusEditor extends MultiPageEditorPart
             //
             currentViewer = viewer;
 
-            // Set the editors selection based on the current viewer's
-            // selection.
+            // Set the editors selection based on the current viewer's selection.
             //
             setSelection(currentViewer == null ? StructuredSelection.EMPTY : currentViewer.getSelection());
         }
     }
 
     /**
-     * This returns the viewer as required by the {@link IViewerProvider}
-     * interface.
+     * This returns the viewer as required by the {@link IViewerProvider} interface.
      */
     public Viewer getViewer() {
         return currentViewer;
     }
 
     /**
-     * This creates a context menu for the viewer and adds a listener as well
-     * registering the menu for extension.
+     * This creates a context menu for the viewer and adds a listener as well registering the menu for extension.
      */
     protected void createContextMenuFor(StructuredViewer viewer) {
         MenuManager contextMenu = new MenuManager("#PopUp");
@@ -776,8 +762,7 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * This is the method called to load a resource into the editing domain's
-     * resource set based on the editor's input.
+     * This is the method called to load a resource into the editing domain's resource set based on the editor's input.
      */
     public void createModel() {
         // Assumes that the input is a file object.
@@ -803,8 +788,8 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * Returns a diagnostic describing the errors and warnings listed in the
-     * resource and the specified exception (if any).
+     * Returns a diagnostic describing the errors and warnings listed in the resource and the specified exception (if
+     * any).
      */
     public Diagnostic analyzeResourceProblems(Resource resource, Exception exception) {
         if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
@@ -886,8 +871,7 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * If there is just one page in the multi-page editor part, this hides the
-     * single tab at the bottom.
+     * If there is just one page in the multi-page editor part, this hides the single tab at the bottom.
      */
     protected void hideTabs() {
         if (getPageCount() <= 1) {
@@ -901,8 +885,7 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * If there is more than one page in the multi-page editor part, this shows
-     * the tabs at the bottom.
+     * If there is more than one page in the multi-page editor part, this shows the tabs at the bottom.
      */
     protected void showTabs() {
         if (getPageCount() > 1) {
@@ -1012,8 +995,7 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * This deals with how we want selection in the outliner to affect the other
-     * views.
+     * This deals with how we want selection in the outliner to affect the other views.
      */
     public void handleContentOutlineSelection(ISelection selection) {
         if (currentViewerPane != null && !selection.isEmpty() && selection instanceof IStructuredSelection) {
@@ -1023,8 +1005,7 @@ public class SiriusEditor extends MultiPageEditorPart
                 //
                 Object selectedElement = selectedElements.next();
 
-                // If it's the selection viewer, then we want it to select the
-                // same selection as this selection.
+                // If it's the selection viewer, then we want it to select the same selection as this selection.
                 //
                 if (currentViewerPane.getViewer() == selectionViewer) {
                     ArrayList<Object> selectionList = new ArrayList<Object>();
@@ -1049,20 +1030,17 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * This is for implementing {@link IEditorPart} and simply tests the command
-     * stack.
+     * This is for implementing {@link IEditorPart} and simply tests the command stack.
      */
     public boolean isDirty() {
         return ((BasicCommandStack) editingDomain.getCommandStack()).isSaveNeeded();
     }
 
     /**
-     * This is for implementing {@link IEditorPart} and simply saves the model
-     * file.
+     * This is for implementing {@link IEditorPart} and simply saves the model file.
      */
     public void doSave(IProgressMonitor progressMonitor) {
-        // Do the work within an operation because this is a long running
-        // activity that modifies the workbench.
+        // Do the work within an operation because this is a long running activity that modifies the workbench.
         //
         WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
             // This is the method that gets invoked when the operation runs.
@@ -1106,9 +1084,8 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * This returns wether something has been persisted to the URI of the
-     * specified resource. The implementation uses the URI converter from the
-     * editor's resource set to try to open an input stream.
+     * This returns wether something has been persisted to the URI of the specified resource. The implementation uses
+     * the URI converter from the editor's resource set to try to open an input stream.
      */
     protected boolean isPersisted(Resource resource) {
         boolean result = false;
@@ -1205,17 +1182,15 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to
-     * return this editor's overall selection.
+     * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to return this editor's overall selection.
      */
     public ISelection getSelection() {
         return editorSelection;
     }
 
     /**
-     * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to
-     * set this editor's overall selection. Calling this result will notify the
-     * listeners.
+     * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to set this editor's overall selection.
+     * Calling this result will notify the listeners.
      */
     public void setSelection(ISelection selection) {
         editorSelection = selection;
@@ -1277,8 +1252,8 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * This implements {@link org.eclipse.jface.action.IMenuListener} to help
-     * fill the context menus with contributions from the Edit menu.
+     * This implements {@link org.eclipse.jface.action.IMenuListener} to help fill the context menus with contributions
+     * from the Edit menu.
      */
     public void menuAboutToShow(IMenuManager menuManager) {
         ((IMenuListener) getEditorSite().getActionBarContributor()).menuAboutToShow(menuManager);
@@ -1408,11 +1383,11 @@ public class SiriusEditor extends MultiPageEditorPart
     }
 
     /**
-     * Returns a new image registry for this plug-in. The registry will be used
-     * to manage images which are frequently used by the plug-in.
+     * Returns a new image registry for this plug-in. The registry will be used to manage images which are frequently
+     * used by the plug-in.
      * <p>
-     * The default implementation of this method creates an empty registry.
-     * Subclasses may override this method if needed.
+     * The default implementation of this method creates an empty registry. Subclasses may override this method if
+     * needed.
      * </p>
      * 
      * @return ImageRegistry the resulting registry.

@@ -12,8 +12,8 @@
 package org.eclipse.sirius.diagram;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Bracket Edge Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Bracket Edge Style</b></em>'. <!-- end-user-doc
+ * -->
  *
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getBracketEdgeStyle()

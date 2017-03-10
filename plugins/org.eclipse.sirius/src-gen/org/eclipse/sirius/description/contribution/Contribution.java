@@ -15,26 +15,18 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Contribution</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Contribution</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.description.contribution.Contribution#getSource
- * <em>Source</em>}</li>
- * <li>{@link org.eclipse.sirius.description.contribution.Contribution#getTarget
- * <em>Target</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.Contribution#getFeatureMask
- * <em>Feature Mask</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.Contribution#getSubContributions
- * <em>Sub Contributions</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.Contribution#getDescription
- * <em>Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.Contribution#getSource <em>Source</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.Contribution#getTarget <em>Target</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.Contribution#getFeatureMask <em>Feature Mask</em>}</li>
+ * <li>{@link org.eclipse.sirius.description.contribution.Contribution#getSubContributions <em>Sub Contributions</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.description.contribution.Contribution#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContribution()
@@ -43,11 +35,10 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Contribution extends EObject {
     /**
-     * Returns the value of the '<em><b>Source</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Source</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Source</em>' containment reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Source</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -60,10 +51,8 @@ public interface Contribution extends EObject {
     EObjectReference getSource();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.description.contribution.Contribution#getSource
-     * <em>Source</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Sets the value of the ' {@link org.eclipse.sirius.description.contribution.Contribution#getSource <em>Source</em>
+     * }' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Source</em>' containment reference.
@@ -73,11 +62,10 @@ public interface Contribution extends EObject {
     void setSource(EObjectReference value);
 
     /**
-     * Returns the value of the '<em><b>Target</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Target</b></em>' containment reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Target</em>' containment reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Target</em>' containment reference isn't clear, there really should be more of a
+     * description here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -90,10 +78,8 @@ public interface Contribution extends EObject {
     EObjectReference getTarget();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.description.contribution.Contribution#getTarget
-     * <em>Target</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Sets the value of the ' {@link org.eclipse.sirius.description.contribution.Contribution#getTarget <em>Target</em>
+     * }' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Target</em>' containment reference.
@@ -103,38 +89,31 @@ public interface Contribution extends EObject {
     void setTarget(EObjectReference value);
 
     /**
-     * Returns the value of the '<em><b>Feature Mask</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.description.contribution.FeatureContribution}.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Feature Mask</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.description.contribution.FeatureContribution}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Feature Mask</em>' containment reference list
-     * isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Feature Mask</em>' containment reference list isn't clear, there really should be more
+     * of a description here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Feature Mask</em>' containment reference
-     *         list.
+     * @return the value of the '<em>Feature Mask</em>' containment reference list.
      * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContribution_FeatureMask()
-     * @model containment="true" resolveProxies="true" required="true"
-     *        ordered="false"
+     * @model containment="true" resolveProxies="true" required="true" ordered="false"
      * @generated
      */
     EList<FeatureContribution> getFeatureMask();
 
     /**
-     * Returns the value of the '<em><b>Sub Contributions</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.description.contribution.Contribution}. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Sub Contributions</b></em>' containment reference list. The list contents are of
+     * type {@link org.eclipse.sirius.description.contribution.Contribution}. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Sub Contributions</em>' containment reference
-     * list isn't clear, there really should be more of a description here...
+     * If the meaning of the '<em>Sub Contributions</em>' containment reference list isn't clear, there really should be
+     * more of a description here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Sub Contributions</em>' containment
-     *         reference list.
+     * @return the value of the '<em>Sub Contributions</em>' containment reference list.
      * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContribution_SubContributions()
      * @model containment="true" resolveProxies="true"
      * @generated
@@ -142,11 +121,10 @@ public interface Contribution extends EObject {
     EList<Contribution> getSubContributions();
 
     /**
-     * Returns the value of the '<em><b>Description</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Description</b></em>' attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Description</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Description</em>' attribute isn't clear, there really should be more of a description
+     * here...
      * </p>
      * <!-- end-user-doc -->
      *
@@ -159,10 +137,8 @@ public interface Contribution extends EObject {
     String getDescription();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.description.contribution.Contribution#getDescription
-     * <em>Description</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Sets the value of the ' {@link org.eclipse.sirius.description.contribution.Contribution#getDescription
+     * <em>Description</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Description</em>' attribute.

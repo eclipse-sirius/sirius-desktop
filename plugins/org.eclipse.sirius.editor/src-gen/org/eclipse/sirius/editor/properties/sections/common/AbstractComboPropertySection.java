@@ -1,14 +1,15 @@
+
 /*******************************************************************************
- * Copyright (c) 2006, 2008 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- * IBM Corporation - initial API and implementation
- * Obeo - Combo box adaptation
- *******************************************************************************/
+  * Copyright (c) 2006, 2008 IBM Corporation and others.
+  * All rights reserved. This program and the accompanying materials
+  * are made available under the terms of the Eclipse Public License v1.0
+  * which accompanies this distribution, and is available at
+  * http://www.eclipse.org/legal/epl-v10.html
+  *
+  * Contributors:
+  * IBM Corporation - initial API and implementation
+  * Obeo - Combo box adaptation
+  *******************************************************************************/
 
 package org.eclipse.sirius.editor.properties.sections.common;
 
@@ -198,13 +199,12 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
     }
 
     /**
-     * Determine if the provided index in the choice of values is equal to the
-     * current setting of the property.
+     * Determine if the provided index in the choice of values is equal to the current setting of the property.
      * 
      * @param index
      *            The new index in the choice of values.
-     * @return <code>True</code> if the new index value is equal to the current
-     *         property setting, <code>False</code> otherwise.
+     * @return <code>True</code> if the new index value is equal to the current property setting, <code>False</code>
+     *         otherwise.
      */
     protected abstract boolean isEqual(int index);
 
@@ -216,8 +216,7 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
     protected abstract EStructuralFeature getFeature();
 
     /**
-     * Get the choice of values for the feature for the combo field of the
-     * section.
+     * Get the choice of values for the feature for the combo field of the section.
      * 
      * @return The list of values of the feature as text.
      */

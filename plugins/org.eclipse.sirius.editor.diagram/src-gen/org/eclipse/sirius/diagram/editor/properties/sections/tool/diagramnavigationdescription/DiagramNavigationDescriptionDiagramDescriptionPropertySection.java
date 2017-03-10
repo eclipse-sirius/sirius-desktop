@@ -28,8 +28,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the diagramDescription property of a
- * DiagramNavigationDescription object.
+ * A section for the diagramDescription property of a DiagramNavigationDescription object.
  */
 public class DiagramNavigationDescriptionDiagramDescriptionPropertySection extends AbstractComboPropertySection {
     /**
@@ -78,8 +77,7 @@ public class DiagramNavigationDescriptionDiagramDescriptionPropertySection exten
     }
 
     /**
-     * Returns the value at the specified index in the choice of values for the
-     * feature.
+     * Returns the value at the specified index in the choice of values for the feature.
      * 
      * @param index
      *            Index of the value.

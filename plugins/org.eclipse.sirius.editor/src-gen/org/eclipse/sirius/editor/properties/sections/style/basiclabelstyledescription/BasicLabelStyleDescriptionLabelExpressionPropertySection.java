@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the labelExpression property of a BasicLabelStyleDescription
- * object.
+ * A section for the labelExpression property of a BasicLabelStyleDescription object.
  */
 public class BasicLabelStyleDescriptionLabelExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

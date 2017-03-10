@@ -16,8 +16,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
- * A section for the arcHeight property of a RoundedCornerStyleDescription
- * object.
+ * A section for the arcHeight property of a RoundedCornerStyleDescription object.
  */
 public class RoundedCornerStyleDescriptionArcHeightPropertySection extends AbstractSpinnerPropertySection {
     /**
@@ -78,8 +77,7 @@ public class RoundedCornerStyleDescriptionArcHeightPropertySection extends Abstr
     /**
      * Converts the given text to the integer it represents if applicable.
      * 
-     * @return The integer the given text represents if applicable,
-     *         <code>null</code> otherwise.
+     * @return The integer the given text represents if applicable, <code>null</code> otherwise.
      */
     private Integer toInteger(String text) {
         Integer integerValue = null;

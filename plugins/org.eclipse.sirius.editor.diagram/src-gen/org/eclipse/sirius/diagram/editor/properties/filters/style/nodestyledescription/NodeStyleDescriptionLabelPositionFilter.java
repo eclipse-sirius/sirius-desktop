@@ -59,8 +59,7 @@ public class NodeStyleDescriptionLabelPositionFilter extends ViewpointPropertyFi
      * 
      * @param styleDescription
      *            Node Style description
-     * @return <code>true</code> if the style is contained in a node mapping,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the style is contained in a node mapping, <code>false</code> otherwise
      */
     private boolean isStyleInNodeMapping(org.eclipse.sirius.diagram.description.style.NodeStyleDescription styleDescription) {
         EObject container = styleDescription.eContainer();

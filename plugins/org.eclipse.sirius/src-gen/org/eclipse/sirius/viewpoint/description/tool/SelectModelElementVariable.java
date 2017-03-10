@@ -16,8 +16,8 @@ import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 import org.eclipse.sirius.viewpoint.description.SubVariable;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Select Model Element Variable</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Select Model Element Variable</b></em>'. <!--
+ * end-user-doc -->
  *
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSelectModelElementVariable()

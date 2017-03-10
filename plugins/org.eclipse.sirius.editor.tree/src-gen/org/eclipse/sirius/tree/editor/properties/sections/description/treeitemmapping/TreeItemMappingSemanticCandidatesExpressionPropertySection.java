@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the semanticCandidatesExpression property of a TreeItemMapping
- * object.
+ * A section for the semanticCandidatesExpression property of a TreeItemMapping object.
  */
 public class TreeItemMappingSemanticCandidatesExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

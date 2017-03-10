@@ -14,8 +14,8 @@ package org.eclipse.sirius.description.contribution;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>EObject Reference</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>EObject Reference</b></em>'. <!-- end-user-doc
+ * -->
  *
  *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getEObjectReference()

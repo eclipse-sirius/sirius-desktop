@@ -19,14 +19,13 @@ import org.eclipse.sirius.description.contribution.ComputedEObjectReference;
 import org.eclipse.sirius.description.contribution.ContributionPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Computed EObject Reference</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Computed EObject Reference</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.impl.ComputedEObjectReferenceImpl#getValueExpression
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.ComputedEObjectReferenceImpl#getValueExpression
  * <em>Value Expression</em>}</li>
  * </ul>
  *
@@ -34,9 +33,8 @@ import org.eclipse.sirius.description.contribution.ContributionPackage;
  */
 public class ComputedEObjectReferenceImpl extends EObjectImpl implements ComputedEObjectReference {
     /**
-     * The default value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @see #getValueExpression()
      * @generated
@@ -45,9 +43,8 @@ public class ComputedEObjectReferenceImpl extends EObjectImpl implements Compute
     protected static final String VALUE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getValueExpression()
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      *
      * @see #getValueExpression()
      * @generated

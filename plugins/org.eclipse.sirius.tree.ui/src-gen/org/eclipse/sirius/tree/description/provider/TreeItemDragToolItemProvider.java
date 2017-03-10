@@ -228,6 +228,8 @@ public class TreeItemDragToolItemProvider extends MappingBasedToolDescriptionIte
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createSwitch()));
 
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createLet()));
+
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_DRAG_TOOL__OLD_CONTAINER, ToolFactory.eINSTANCE.createDropContainerVariable()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_DRAG_TOOL__NEW_CONTAINER, ToolFactory.eINSTANCE.createDropContainerVariable()));

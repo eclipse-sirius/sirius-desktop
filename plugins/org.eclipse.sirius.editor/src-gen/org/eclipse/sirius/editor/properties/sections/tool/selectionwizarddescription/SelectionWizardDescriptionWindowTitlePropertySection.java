@@ -25,8 +25,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the windowTitle property of a SelectionWizardDescription
- * object.
+ * A section for the windowTitle property of a SelectionWizardDescription object.
  */
 public class SelectionWizardDescriptionWindowTitlePropertySection extends AbstractTextPropertySection {
 

@@ -24,8 +24,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the templatePath property of a TemplateInformationSection
- * object.
+ * A section for the templatePath property of a TemplateInformationSection object.
  */
 public class TemplateInformationSectionTemplatePathPropertySection extends AbstractTextPropertySection {
 

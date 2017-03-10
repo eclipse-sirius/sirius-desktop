@@ -25,8 +25,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the iconPath property of a PaneBasedSelectionWizardDescription
- * object.
+ * A section for the iconPath property of a PaneBasedSelectionWizardDescription object.
  */
 public class PaneBasedSelectionWizardDescriptionIconPathPropertySection extends AbstractTextWithButtonPropertySection {
 

@@ -41,8 +41,7 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
- * An abstract implementation of a section displaying a spinner for an integer
- * property.
+ * An abstract implementation of a section displaying a spinner for an integer property.
  */
 public abstract class AbstractSpinnerPropertySection extends AbstractViewpointPropertySection {
     /** Spinner control of the section. */
@@ -197,13 +196,12 @@ public abstract class AbstractSpinnerPropertySection extends AbstractViewpointPr
     }
 
     /**
-     * Determine if the provided integer value is an equal representation of the
-     * current setting of the text property.
+     * Determine if the provided integer value is an equal representation of the current setting of the text property.
      * 
      * @param newText
      *            The new text displayed by the field.
-     * @return <code>True</code> if the new text value is equal to the current
-     *         property setting, <code>False</code> otherwise.
+     * @return <code>True</code> if the new text value is equal to the current property setting, <code>False</code>
+     *         otherwise.
      */
     protected abstract boolean isEqual(String newText);
 

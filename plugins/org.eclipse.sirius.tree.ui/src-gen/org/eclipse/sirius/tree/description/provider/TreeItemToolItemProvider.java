@@ -173,6 +173,8 @@ public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvide
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createDeleteView()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createSwitch()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createLet()));
     }
 
     /**

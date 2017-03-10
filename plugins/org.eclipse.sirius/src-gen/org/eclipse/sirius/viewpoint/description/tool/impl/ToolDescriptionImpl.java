@@ -43,7 +43,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
     /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
     /**
      * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getElement()
      * @generated
      * @ordered
@@ -92,7 +92,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ToolDescriptionImpl() {
@@ -101,7 +101,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ElementVariable basicGetElement() {
@@ -171,7 +171,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetElement(ElementVariable newElement, NotificationChain msgs) {
@@ -190,7 +190,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -241,7 +241,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ElementViewVariable basicGetElementView() {
@@ -250,7 +250,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetElementView(ElementViewVariable newElementView, NotificationChain msgs) {
@@ -269,7 +269,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -293,7 +293,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -320,7 +320,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -329,7 +329,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -348,7 +348,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -372,7 +372,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -390,7 +390,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -419,7 +419,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -443,7 +443,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -467,7 +467,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -487,7 +487,7 @@ public class ToolDescriptionImpl extends MappingBasedToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

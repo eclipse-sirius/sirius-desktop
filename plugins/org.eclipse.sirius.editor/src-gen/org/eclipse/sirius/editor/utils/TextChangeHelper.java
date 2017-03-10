@@ -15,8 +15,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Text;
 
 /**
- * TextChangeHelper notifies the listener of text lifecycle events on behalf of
- * the widget(s) it listens to.
+ * TextChangeHelper notifies the listener of text lifecycle events on behalf of the widget(s) it listens to.
  */
 public abstract class TextChangeHelper implements TextChangeListener {
 
@@ -55,8 +54,8 @@ public abstract class TextChangeHelper implements TextChangeListener {
     public abstract void textChanged(Text control);
 
     /**
-     * Registers this helper with the given control to listen for events which
-     * indicate that a change is in progress (or done).
+     * Registers this helper with the given control to listen for events which indicate that a change is in progress (or
+     * done).
      * 
      * @param control
      *            the given control.
@@ -67,9 +66,8 @@ public abstract class TextChangeHelper implements TextChangeListener {
     }
 
     /**
-     * Registers this helper with the given control to listen for the Enter key.
-     * When Enter is pressed, the change is considered done (this is only
-     * appropriate for single-line Text widgets).
+     * Registers this helper with the given control to listen for the Enter key. When Enter is pressed, the change is
+     * considered done (this is only appropriate for single-line Text widgets).
      * 
      * @param control
      *            the given control.
@@ -80,8 +78,7 @@ public abstract class TextChangeHelper implements TextChangeListener {
     }
 
     /**
-     * Unregisters this helper from a control previously passed to
-     * startListeningTo() and/or startListeningForEnter().
+     * Unregisters this helper from a control previously passed to startListeningTo() and/or startListeningForEnter().
      * 
      * @param control
      *            the given control.

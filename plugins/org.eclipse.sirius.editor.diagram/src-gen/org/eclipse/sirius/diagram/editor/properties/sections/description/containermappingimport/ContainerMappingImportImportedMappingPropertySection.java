@@ -49,8 +49,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the importedMapping property of a ContainerMappingImport
- * object.
+ * A section for the importedMapping property of a ContainerMappingImport object.
  */
 public class ContainerMappingImportImportedMappingPropertySection extends AbstractComboPropertySection {
     /**
@@ -99,8 +98,7 @@ public class ContainerMappingImportImportedMappingPropertySection extends Abstra
     }
 
     /**
-     * Returns the value at the specified index in the choice of values for the
-     * feature.
+     * Returns the value at the specified index in the choice of values for the feature.
      * 
      * @param index
      *            Index of the value.
@@ -172,8 +170,8 @@ public class ContainerMappingImportImportedMappingPropertySection extends Abstra
         button.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(final SelectionEvent e) {
-                final ContainerMappingImportSelectionWizardItemsBuilder builder = new ContainerMappingImportSelectionWizardItemsBuilder((ContainerMapping) eObject, new EObjectQuery(eObject)
-                        .getAvailableViewpointsInResourceSet());
+                final ContainerMappingImportSelectionWizardItemsBuilder builder = new ContainerMappingImportSelectionWizardItemsBuilder((ContainerMapping) eObject,
+                        new EObjectQuery(eObject).getAvailableViewpointsInResourceSet());
                 final TreeItemWrapper input = builder.buildMappingInput();
 
                 final Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
@@ -185,8 +183,8 @@ public class ContainerMappingImportImportedMappingPropertySection extends Abstra
                     final WizardDialog dlg = new WizardDialog(shell, wizard);
                     if (dlg.open() == Window.OK) {
                         final EditingDomain editingDomain = ((IEditingDomainProvider) getPart()).getEditingDomain();
-                        editingDomain.getCommandStack().execute(
-                                SetCommand.create(editingDomain, eObject, DescriptionPackage.eINSTANCE.getContainerMappingImport_ImportedMapping(), wizard.getSelectedEObject()));
+                        editingDomain.getCommandStack()
+                                .execute(SetCommand.create(editingDomain, eObject, DescriptionPackage.eINSTANCE.getContainerMappingImport_ImportedMapping(), wizard.getSelectedEObject()));
                     }
                 }
 

@@ -16,8 +16,8 @@ import org.eclipse.sirius.description.contribution.ContributionPackage;
 import org.eclipse.sirius.description.contribution.RemoveFeatureContribution;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Remove Feature Contribution</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Remove Feature Contribution</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */

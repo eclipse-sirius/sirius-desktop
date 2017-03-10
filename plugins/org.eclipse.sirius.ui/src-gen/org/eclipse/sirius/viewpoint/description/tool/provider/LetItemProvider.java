@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 public class LetItemProvider extends ContainerModelOperationItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public LetItemProvider(AdapterFactory adapterFactory) {
@@ -41,7 +41,7 @@ public class LetItemProvider extends ContainerModelOperationItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -57,7 +57,7 @@ public class LetItemProvider extends ContainerModelOperationItemProvider {
 
     /**
      * This adds a property descriptor for the Variable Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addVariableNamePropertyDescriptor(Object object) {
@@ -68,7 +68,7 @@ public class LetItemProvider extends ContainerModelOperationItemProvider {
 
     /**
      * This adds a property descriptor for the Value Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
@@ -96,15 +96,15 @@ public class LetItemProvider extends ContainerModelOperationItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((Let) object).getVariableName();
-        return label == null || label.length() == 0 ? getString("_UI_Let_type") //$NON-NLS-1$
-                : getString("_UI_Let_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        return label == null || label.length() == 0 ? getString("_UI_Let_type") : //$NON-NLS-1$
+                getString("_UI_Let_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class LetItemProvider extends ContainerModelOperationItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

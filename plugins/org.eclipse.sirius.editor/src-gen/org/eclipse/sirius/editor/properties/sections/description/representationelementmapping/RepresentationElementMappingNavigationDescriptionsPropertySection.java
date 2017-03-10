@@ -28,8 +28,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the navigationDescriptions property of a
- * RepresentationElementMapping object.
+ * A section for the navigationDescriptions property of a RepresentationElementMapping object.
  */
 public class RepresentationElementMappingNavigationDescriptionsPropertySection extends AbstractEditorDialogPropertySection {
     /**

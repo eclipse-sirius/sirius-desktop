@@ -28,8 +28,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the reusedContainerMappings property of a ContainerMapping
- * object.
+ * A section for the reusedContainerMappings property of a ContainerMapping object.
  */
 public class ContainerMappingReusedContainerMappingsPropertySection extends AbstractEditorDialogPropertySection {
     /**

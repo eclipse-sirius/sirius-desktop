@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the titleExpression property of a
- * RepresentationCreationDescription object.
+ * A section for the titleExpression property of a RepresentationCreationDescription object.
  */
 public class RepresentationCreationDescriptionTitleExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

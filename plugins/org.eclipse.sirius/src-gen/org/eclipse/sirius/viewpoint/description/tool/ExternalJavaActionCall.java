@@ -45,7 +45,7 @@ public interface ExternalJavaActionCall extends MenuItemDescription, ContainerMo
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall#getAction
      * <em>Action</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Action</em>' reference.
      * @see #getAction()

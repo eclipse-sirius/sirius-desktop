@@ -23,13 +23,13 @@ import org.eclipse.sirius.properties.SelectWidgetStyle;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.SelectWidgetStyle} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class SelectWidgetStyleItemProvider extends WidgetStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SelectWidgetStyleItemProvider(AdapterFactory adapterFactory) {
@@ -38,7 +38,7 @@ public class SelectWidgetStyleItemProvider extends WidgetStyleItemProvider {
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -52,7 +52,7 @@ public class SelectWidgetStyleItemProvider extends WidgetStyleItemProvider {
 
     /**
      * This returns SelectWidgetStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -62,7 +62,7 @@ public class SelectWidgetStyleItemProvider extends WidgetStyleItemProvider {
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public class SelectWidgetStyleItemProvider extends WidgetStyleItemProvider {
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class SelectWidgetStyleItemProvider extends WidgetStyleItemProvider {
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class SelectWidgetStyleItemProvider extends WidgetStyleItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

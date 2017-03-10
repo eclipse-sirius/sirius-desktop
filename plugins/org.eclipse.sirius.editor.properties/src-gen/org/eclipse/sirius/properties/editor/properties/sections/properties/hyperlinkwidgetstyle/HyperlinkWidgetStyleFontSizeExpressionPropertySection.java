@@ -25,8 +25,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the fontSizeExpression property of a HyperlinkWidgetStyle
- * object.
+ * A section for the fontSizeExpression property of a HyperlinkWidgetStyle object.
  */
 public class HyperlinkWidgetStyleFontSizeExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

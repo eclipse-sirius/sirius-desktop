@@ -30,7 +30,6 @@ public class NodeStyleDescriptionForbiddenSidesFilter extends ViewpointPropertyF
     /**
      * {@inheritDoc}
      */
-    @Override
     protected EStructuralFeature getFeature() {
         return StylePackage.eINSTANCE.getNodeStyleDescription_ForbiddenSides();
     }
@@ -38,7 +37,6 @@ public class NodeStyleDescriptionForbiddenSidesFilter extends ViewpointPropertyF
     /**
      * {@inheritDoc}
      */
-    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
     }

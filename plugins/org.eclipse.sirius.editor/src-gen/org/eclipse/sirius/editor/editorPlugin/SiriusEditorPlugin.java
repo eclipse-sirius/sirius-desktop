@@ -50,8 +50,7 @@ public final class SiriusEditorPlugin extends EMFPlugin {
     public static final String ICONS_PREFERENCES_HELP = "icons/full/help.gif"; //$NON-NLS-1$
 
     /**
-     * The registry for all graphic images; <code>null</code> if not yet
-     * initialized.
+     * The registry for all graphic images; <code>null</code> if not yet initialized.
      */
     private ImageRegistry imageRegistry = null;
 
@@ -96,14 +95,11 @@ public final class SiriusEditorPlugin extends EMFPlugin {
     /**
      * Returns the image registry for this UI plug-in.
      * <p>
-     * The image registry contains the images used by this plug-in that are very
-     * frequently used and so need to be globally shared within the plug-in.
-     * Since many OSs have a severe limit on the number of images that can be in
-     * memory at any given time, a plug-in should only keep a small number of
-     * images in their registry.
+     * The image registry contains the images used by this plug-in that are very frequently used and so need to be
+     * globally shared within the plug-in. Since many OSs have a severe limit on the number of images that can be in
+     * memory at any given time, a plug-in should only keep a small number of images in their registry.
      * <p>
-     * Subclasses should reimplement <code>initializeImageRegistry</code> if
-     * they have custom graphic images to load.
+     * Subclasses should reimplement <code>initializeImageRegistry</code> if they have custom graphic images to load.
      * </p>
      * <p>
      * Subclasses may override this method but are not expected to.
@@ -119,11 +115,11 @@ public final class SiriusEditorPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns a new image registry for this plugin-in. The registry will be
-     * used to manage images which are frequently used by the plugin-in.
+     * Returns a new image registry for this plugin-in. The registry will be used to manage images which are frequently
+     * used by the plugin-in.
      * <p>
-     * The default implementation of this method creates an empty registry.
-     * Subclasses may override this method if needed.
+     * The default implementation of this method creates an empty registry. Subclasses may override this method if
+     * needed.
      * </p>
      * 
      * @return ImageRegistry the resulting registry.
@@ -146,9 +142,8 @@ public final class SiriusEditorPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns an image for the image file at the given plug-in relative path.
-     * Client do not need to dispose this image. Images will be disposed
-     * automatically.
+     * Returns an image for the image file at the given plug-in relative path. Client do not need to dispose this image.
+     * Images will be disposed automatically.
      * 
      * @param path
      *            the path
@@ -164,8 +159,7 @@ public final class SiriusEditorPlugin extends EMFPlugin {
     }
 
     /**
-     * Returns an image descriptor for the image file at the given plug-in
-     * relative path.
+     * Returns an image descriptor for the image file at the given plug-in relative path.
      * 
      * @param path
      *            the path
@@ -176,12 +170,11 @@ public final class SiriusEditorPlugin extends EMFPlugin {
     }
 
     /**
-     * return a set containing all the symbolic names of bundles which are part
-     * of the Sirius runtime and are currently installed in the platform.
+     * return a set containing all the symbolic names of bundles which are part of the Sirius runtime and are currently
+     * installed in the platform.
      * 
-     * @return a set containing all the symbolic names of bundles which are part
-     *         of the Sirius runtime and are currently installed in the
-     *         platform.
+     * @return a set containing all the symbolic names of bundles which are part of the Sirius runtime and are currently
+     *         installed in the platform.
      */
     public static Set<String> getSiriusRuntimeBundles() {
         return siriusRuntimeBundles;
@@ -227,11 +220,9 @@ public final class SiriusEditorPlugin extends EMFPlugin {
         }
 
         /**
-         * Get a {@link Registry} which aggregate EPackage from EMF registry and
-         * EPackage from workspace.
+         * Get a {@link Registry} which aggregate EPackage from EMF registry and EPackage from workspace.
          * 
-         * @return a {@link Registry} which aggregate EPackage from EMF registry
-         *         and EPackage from workspace
+         * @return a {@link Registry} which aggregate EPackage from EMF registry and EPackage from workspace
          */
         public Registry getWorkspaceEPackageRegistry() {
             if (!workspaceEPackageRegistry.isListeningWorkspace() && EMFPlugin.IS_ECLIPSE_RUNNING) {

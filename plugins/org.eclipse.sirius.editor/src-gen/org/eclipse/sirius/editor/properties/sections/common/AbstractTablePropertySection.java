@@ -42,8 +42,7 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
- * An abstract implementation of a section with a table of one column (image +
- * text).
+ * An abstract implementation of a section with a table of one column (image + text).
  */
 public abstract class AbstractTablePropertySection extends AbstractViewpointPropertySection {
     protected class ImageItem {
@@ -258,13 +257,12 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
     }
 
     /**
-     * Determine if the provided index in the choice of values is equal to the
-     * current setting of the property.
+     * Determine if the provided index in the choice of values is equal to the current setting of the property.
      * 
      * @param index
      *            The new index in the choice of values.
-     * @return <code>True</code> if the new index value is equal to the current
-     *         property setting, <code>False</code> otherwise.
+     * @return <code>True</code> if the new index value is equal to the current property setting, <code>False</code>
+     *         otherwise.
      */
     protected abstract boolean isEqual(int index);
 
@@ -276,8 +274,7 @@ public abstract class AbstractTablePropertySection extends AbstractViewpointProp
     protected abstract EStructuralFeature getFeature();
 
     /**
-     * Get the choice of values for the feature for the table field of the
-     * section.
+     * Get the choice of values for the feature for the table field of the section.
      * 
      * @return The list of values of the feature as text.
      */

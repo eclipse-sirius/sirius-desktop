@@ -93,8 +93,7 @@ public class ViewpointConflictsPropertySection extends AbstractTextPropertySecti
 
         // Start of user code create controls
         /*
-         * We want to add a "Select" button on the right of the text field, but
-         * the layout data
+         * We want to add a "Select" button on the right of the text field, but the layout data
          */
         FormData data = new FormData();
         data.left = new FormAttachment(0, LABEL_WIDTH);

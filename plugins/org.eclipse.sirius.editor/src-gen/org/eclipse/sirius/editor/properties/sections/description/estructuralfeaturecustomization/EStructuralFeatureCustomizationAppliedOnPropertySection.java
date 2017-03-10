@@ -41,8 +41,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the appliedOn property of a EStructuralFeatureCustomization
- * object.
+ * A section for the appliedOn property of a EStructuralFeatureCustomization object.
  */
 public class EStructuralFeatureCustomizationAppliedOnPropertySection extends AbstractEditorDialogPropertySection {
     /**
@@ -119,9 +118,8 @@ public class EStructuralFeatureCustomizationAppliedOnPropertySection extends Abs
 
     // Start of user code user operations
     /**
-     * Overridden to limit the choice to {@link StyleDescription}s,
-     * {@link BasicLabelStyleDescription}s, {@link LabelBorderStyleDescription}s
-     * and {@link GaugeSectionDescription} owned by the current
+     * Overridden to limit the choice to {@link StyleDescription}s, {@link BasicLabelStyleDescription}s,
+     * {@link LabelBorderStyleDescription}s and {@link GaugeSectionDescription} owned by the current
      * {@link DiagramDescription}.
      * 
      * {@inheritDoc}

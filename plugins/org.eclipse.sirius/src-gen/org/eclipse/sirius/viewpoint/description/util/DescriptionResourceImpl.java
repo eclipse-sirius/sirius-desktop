@@ -34,28 +34,23 @@ import org.eclipse.sirius.ext.base.Option;
 import org.osgi.framework.Version;
 
 /**
- * <!-- begin-user-doc --> The <b>Resource </b> associated with the package.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Resource </b> associated with the package. <!-- end-user-doc -->
  *
- * @see org.eclipse.sirius.viewpoint.description.util.
- *      DescriptionResourceFactoryImpl
+ * @see org.eclipse.sirius.viewpoint.description.util. DescriptionResourceFactoryImpl
  * @not-generated
  */
 public class DescriptionResourceImpl extends XMIResourceImpl {
 
     /**
-     * Option to specify if we use uri fragment as id in
-     * {@link XMLResourceImpl#getIDToEObjectMap()} map to enhance inter
-     * resources proxy resolution. Default is false. This option is considered
-     * only for odesign in plugin.
+     * Option to specify if we use uri fragment as id in {@link XMLResourceImpl#getIDToEObjectMap()} map to enhance
+     * inter resources proxy resolution. Default is false. This option is considered only for odesign in plugin.
      */
     public static final String OPTION_USE_URI_FRAGMENT_AS_ID = "SIRIUS_USE_URI_FRAGMENT_AS_ID"; //$NON-NLS-1$
 
     private boolean useURIFragmentAsId;
 
     /**
-     * Creates an instance of the resource. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Creates an instance of the resource. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param uri
      *            the URI of the new resource.
@@ -105,8 +100,7 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
     }
 
     /**
-     * Handle migration options and return an error diagnostic in case of
-     * migration version mismatch
+     * Handle migration options and return an error diagnostic in case of migration version mismatch
      */
     private Diagnostic handleMigrationOptions() {
         Diagnostic migrationMismatchDiagnostic = null;
@@ -164,8 +158,8 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
         loadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
         loadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
         /**
-         * This option is passed so that the resource can decide to adapt the
-         * load mechanism depending on the loaded version.
+         * This option is passed so that the resource can decide to adapt the load mechanism depending on the loaded
+         * version.
          */
         loadOptions.put(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION, loadedVersion);
 
@@ -174,8 +168,7 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
     }
 
     /**
-     * Override to migrate fragment if necessary (when a reference has been
-     * renamed) before getting the EObject.
+     * Override to migrate fragment if necessary (when a reference has been renamed) before getting the EObject.
      */
     @Override
     public EObject getEObject(String uriFragment) {

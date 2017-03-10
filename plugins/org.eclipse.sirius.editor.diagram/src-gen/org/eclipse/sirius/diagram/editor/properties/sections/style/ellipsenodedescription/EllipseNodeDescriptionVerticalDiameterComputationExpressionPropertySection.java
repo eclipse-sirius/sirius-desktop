@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the verticalDiameterComputationExpression property of a
- * EllipseNodeDescription object.
+ * A section for the verticalDiameterComputationExpression property of a EllipseNodeDescription object.
  */
 public class EllipseNodeDescriptionVerticalDiameterComputationExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

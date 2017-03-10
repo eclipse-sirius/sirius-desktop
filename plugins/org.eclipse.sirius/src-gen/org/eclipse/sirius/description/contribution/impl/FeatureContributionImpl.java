@@ -21,17 +21,15 @@ import org.eclipse.sirius.description.contribution.ContributionPackage;
 import org.eclipse.sirius.description.contribution.FeatureContribution;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Feature Contribution</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Feature Contribution</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.impl.FeatureContributionImpl#getSourceFeature
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.FeatureContributionImpl#getSourceFeature
  * <em>Source Feature</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.impl.FeatureContributionImpl#getTargetFeature
+ * <li>{@link org.eclipse.sirius.description.contribution.impl.FeatureContributionImpl#getTargetFeature
  * <em>Target Feature</em>}</li>
  * </ul>
  *
@@ -39,9 +37,8 @@ import org.eclipse.sirius.description.contribution.FeatureContribution;
  */
 public abstract class FeatureContributionImpl extends EObjectImpl implements FeatureContribution {
     /**
-     * The cached value of the '{@link #getSourceFeature()
-     * <em>Source Feature</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getSourceFeature() <em>Source Feature</em>}' reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @see #getSourceFeature()
      * @generated
@@ -50,9 +47,8 @@ public abstract class FeatureContributionImpl extends EObjectImpl implements Fea
     protected EStructuralFeature sourceFeature;
 
     /**
-     * The cached value of the '{@link #getTargetFeature()
-     * <em>Target Feature</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getTargetFeature() <em>Target Feature</em>}' reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @see #getTargetFeature()
      * @generated

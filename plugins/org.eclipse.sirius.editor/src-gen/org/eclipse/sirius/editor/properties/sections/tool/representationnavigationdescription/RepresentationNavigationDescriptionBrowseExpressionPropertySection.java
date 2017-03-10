@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the browseExpression property of a
- * RepresentationNavigationDescription object.
+ * A section for the browseExpression property of a RepresentationNavigationDescription object.
  */
 public class RepresentationNavigationDescriptionBrowseExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

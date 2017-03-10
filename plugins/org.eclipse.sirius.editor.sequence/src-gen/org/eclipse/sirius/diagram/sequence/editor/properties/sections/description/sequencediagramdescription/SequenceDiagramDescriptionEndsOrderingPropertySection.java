@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the endsOrdering property of a SequenceDiagramDescription
- * object.
+ * A section for the endsOrdering property of a SequenceDiagramDescription object.
  */
 public class SequenceDiagramDescriptionEndsOrderingPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

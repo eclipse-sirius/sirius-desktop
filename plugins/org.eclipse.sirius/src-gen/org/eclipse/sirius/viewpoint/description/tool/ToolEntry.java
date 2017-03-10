@@ -15,8 +15,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Entry</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Entry</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getToolEntry()

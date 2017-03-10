@@ -81,8 +81,7 @@ public class TypedVariableValueTypePropertySection extends AbstractComboProperty
     }
 
     /**
-     * Returns the value at the specified index in the choice of values for the
-     * feature.
+     * Returns the value at the specified index in the choice of values for the feature.
      * 
      * @param index
      *            Index of the value.

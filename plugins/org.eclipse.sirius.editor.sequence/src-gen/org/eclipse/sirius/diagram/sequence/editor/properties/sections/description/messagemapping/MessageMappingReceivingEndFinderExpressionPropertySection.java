@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the receivingEndFinderExpression property of a MessageMapping
- * object.
+ * A section for the receivingEndFinderExpression property of a MessageMapping object.
  */
 public class MessageMappingReceivingEndFinderExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

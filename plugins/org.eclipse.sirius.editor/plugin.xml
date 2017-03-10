@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 
 <!--
-   Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+   Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
    All rights reserved. This program and the accompanying materials
    are made available under the terms of the Eclipse Public License v1.0
    which accompanies this distribution, and is available at
@@ -59,19 +59,18 @@
   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
     <propertyTabs contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
       <propertyTab category="default" id="viewpoint.tab.default" label="default"/>
-    <propertyTab category="default" id="viewpoint.tab.label" label="Label" afterTab="viewpoint.tab.general"/>
-    <propertyTab category="default" id="viewpoint.tab.import" label="Import" afterTab="viewpoint.tab.path"/>
+      <propertyTab category="default" id="viewpoint.tab.label" label="Label" afterTab="viewpoint.tab.general"/>
+      <propertyTab category="default" id="viewpoint.tab.import" label="Import" afterTab="viewpoint.tab.path"/>
       <propertyTab category="default" id="viewpoint.tab.corner" label="Corner" afterTab="viewpoint.tab.border"/>
       <propertyTab category="default" id="viewpoint.tab.general" label="General"/>
       <propertyTab category="default" id="viewpoint.tab.documentation" label="Documentation" afterTab="viewpoint.tab.import"/>
-    <propertyTab category="default" id="viewpoint.tab.color" label="Color" afterTab="viewpoint.tab.label"/>
-    <propertyTab category="default" id="viewpoint.tab.behavior" label="Behavior" afterTab="viewpoint.tab.label "/>
+      <propertyTab category="default" id="viewpoint.tab.color" label="Color" afterTab="viewpoint.tab.label"/>
+      <propertyTab category="default" id="viewpoint.tab.behavior" label="Behavior" afterTab="viewpoint.tab.label "/>
       <propertyTab category="default" id="viewpoint.tab.metamodels" label="Metamodels" afterTab="viewpoint.tab.behavior"/>
       <propertyTab category="default" id="viewpoint.tab.border" label="Border" afterTab="viewpoint.tab.color"/>
       <propertyTab category="default" id="viewpoint.tab.advanced" label="Advanced" afterTab="viewpoint.tab.border"/>
     </propertyTabs>
   </extension>
-  
   
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
@@ -139,6 +138,21 @@
                id="validation.section.validationSet.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.viewpoint.description.validation.ValidationSet"/>        
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.tool.let.LetValueExpressionPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.tool.let.LetValueExpressionFilter"
+               id="tool.section.let.ValueExpression"
+               afterSection="tool.section.let.VariableName"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.viewpoint.description.tool.Let"/>        
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.tool.let.LetVariableNamePropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.tool.let.LetVariableNameFilter"
+               id="tool.section.let.VariableName"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.viewpoint.description.tool.Let"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.case_.CaseConditionExpressionPropertySection"
@@ -596,7 +610,7 @@
                class="org.eclipse.sirius.editor.properties.sections.style.basiclabelstyledescription.BasicLabelStyleDescriptionIconPathPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.style.basiclabelstyledescription.BasicLabelStyleDescriptionIconPathFilter"
                id="style.section.basicLabelStyleDescription.IconPath"
-                 tab="viewpoint.tab.advanced">
+                tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription"/>        
       </propertySection>
   	  <propertySection

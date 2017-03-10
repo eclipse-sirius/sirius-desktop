@@ -77,7 +77,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AcceleoVariableImpl() {
@@ -86,7 +86,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -178,7 +178,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -236,7 +236,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -260,7 +260,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

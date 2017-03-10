@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the elementsToListen property of a ToolFilterDescription
- * object.
+ * A section for the elementsToListen property of a ToolFilterDescription object.
  */
 public class ToolFilterDescriptionElementsToListenPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

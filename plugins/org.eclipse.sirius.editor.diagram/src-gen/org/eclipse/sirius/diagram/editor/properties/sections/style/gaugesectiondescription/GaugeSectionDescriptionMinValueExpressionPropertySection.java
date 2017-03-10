@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the minValueExpression property of a GaugeSectionDescription
- * object.
+ * A section for the minValueExpression property of a GaugeSectionDescription object.
  */
 public class GaugeSectionDescriptionMinValueExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 

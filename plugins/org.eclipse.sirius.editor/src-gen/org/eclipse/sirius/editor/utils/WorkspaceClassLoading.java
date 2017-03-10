@@ -74,9 +74,8 @@ import com.google.common.collect.Sets;
 /**
  * Limitations :
  * <ul>
- * <li>if you have in your workspace some projects which are actually used by
- * Sirius and which might pass instances to the query implementation, things
- * *will* go wrong as this utility will search first in the workspace.</li>
+ * <li>if you have in your workspace some projects which are actually used by Sirius and which might pass instances to
+ * the query implementation, things *will* go wrong as this utility will search first in the workspace.</li>
  * <li>you can't use the generated model interfaces</li>
  * </ul>
  * 
@@ -89,8 +88,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
         @Override
         public void resourceChanged(IResourceChangeEvent event) {
             /*
-             * we are only interested in change which have been completed on the
-             * workspace.
+             * we are only interested in change which have been completed on the workspace.
              */
             if (event.getType() != IResourceChangeEvent.POST_CHANGE)
                 return;
@@ -121,8 +119,8 @@ public class WorkspaceClassLoading extends BundleClassLoading {
                 event.getDelta().accept(projectClassesInvalidator);
             } catch (CoreException e) {
                 /*
-                 * We can get errors when inspecting the changes if, for
-                 * instance, the workspace was not completely refreshed.
+                 * We can get errors when inspecting the changes if, for instance, the workspace was not completely
+                 * refreshed.
                  */
                 SiriusEditorPlugin.INSTANCE.log(e);
             }
@@ -166,8 +164,8 @@ public class WorkspaceClassLoading extends BundleClassLoading {
             if (host instanceof BundleDescription) {
                 BundleDescription hostDesc = (BundleDescription) host;
                 /*
-                 * check to see if the host is already included as a dependency.
-                 * If so, we don't need to include the host manually.
+                 * check to see if the host is already included as a dependency. If so, we don't need to include the
+                 * host manually.
                  */
                 for (Object object : fragmentDependencies) {
                     BundleDescription dependency = null;
@@ -193,12 +191,10 @@ public class WorkspaceClassLoading extends BundleClassLoading {
 
     private Collection<Object> getDependencies(BundleDescription desc, BundleDescription fFragmentDescription) {
         /*
-         * use map to store dependencies so if Import-Package is supplied by
-         * same BundleDescription as supplier of Require-Bundle, it only shows
-         * up once Also, have to use BundleSpecficiation instead of
-         * BundleDescroption to show re-exported icon on re-exported
-         * Required-Bundles Have to use ImportPackageSpecification to determine
-         * if an import is optional and should be filtered.
+         * use map to store dependencies so if Import-Package is supplied by same BundleDescription as supplier of
+         * Require-Bundle, it only shows up once Also, have to use BundleSpecficiation instead of BundleDescroption to
+         * show re-exported icon on re-exported Required-Bundles Have to use ImportPackageSpecification to determine if
+         * an import is optional and should be filtered.
          */
         HashMap<Object, Object> dependencies = new HashMap<Object, Object>();
         BundleSpecification[] requiredBundles = desc.getRequiredBundles();
@@ -221,11 +217,9 @@ public class WorkspaceClassLoading extends BundleClassLoading {
                     } else if (!Constants.RESOLUTION_OPTIONAL.equals(importedPkgs[i].getDirective(Constants.RESOLUTION_DIRECTIVE)) && obj instanceof ImportPackageSpecification
                             && Constants.RESOLUTION_OPTIONAL.equals(((ImportPackageSpecification) obj).getDirective(Constants.RESOLUTION_DIRECTIVE))) {
                         /*
-                         * if we have a non-optional Import-Package dependency
-                         * on a bundle which we already depend on, check to make
-                         * sure our current dependency is not optional. If it
-                         * is, replace the optional dependency with the
-                         * non-optional one
+                         * if we have a non-optional Import-Package dependency on a bundle which we already depend on,
+                         * check to make sure our current dependency is not optional. If it is, replace the optional
+                         * dependency with the non-optional one
                          */
                         dependencies.put(exporter, importedPkgs[i]);
                     }
@@ -261,8 +255,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
                                 uRLs.add(url);
                             } catch (MalformedURLException e) {
                                 /*
-                                 * We don't know how to handle this class path
-                                 * entry.
+                                 * We don't know how to handle this class path entry.
                                  */
                             }
                         }
@@ -271,8 +264,8 @@ public class WorkspaceClassLoading extends BundleClassLoading {
                 }
             }
             /*
-             * Add the default output location to the classpath anyway since
-             * source folders are not required to have their own
+             * Add the default output location to the classpath anyway since source folders are not required to have
+             * their own
              */
             final IPath output = javaProject.getOutputLocation();
             if (output != null) {
@@ -287,8 +280,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
                         }
                     } catch (MalformedURLException e) {
                         /*
-                         * the given path does not map to a file which can
-                         * actually be mapped to an url, ignore it.
+                         * the given path does not map to a file which can actually be mapped to an url, ignore it.
                          */
                     }
                 }
@@ -547,8 +539,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
 
     private void closeClassLoader(URLClassLoader old) {
         /*
-         * we invoke the "URLClassLoader.close()" method reflectively as it has
-         * only been introduced with Java 7.
+         * we invoke the "URLClassLoader.close()" method reflectively as it has only been introduced with Java 7.
          */
         try {
             Method closeMethod = URLClassLoader.class.getMethod("close", new Class<?>[0]);

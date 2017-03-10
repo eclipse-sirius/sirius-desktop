@@ -27,13 +27,13 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.GroupOverrideDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public GroupOverrideDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
 
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -60,7 +60,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
 
     /**
      * This adds a property descriptor for the Overrides feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOverridesPropertyDescriptor(Object object) {
@@ -73,7 +73,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
     /**
      * This adds a property descriptor for the Filter Controls From Overridden Group Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterControlsFromOverriddenGroupExpressionPropertyDescriptor(Object object) {
@@ -86,7 +86,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
     /**
      * This adds a property descriptor for the Filter Validation Rules From Overridden Group Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterValidationRulesFromOverriddenGroupExpressionPropertyDescriptor(Object object) {
@@ -100,7 +100,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Overridden Group Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromOverriddenGroupExpressionPropertyDescriptor(Object object) {
@@ -113,7 +113,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
 
     /**
      * This returns GroupOverrideDescription.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created
      * under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

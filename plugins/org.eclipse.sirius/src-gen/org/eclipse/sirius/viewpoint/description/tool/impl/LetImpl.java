@@ -34,7 +34,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
     /**
      * The default value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getVariableName()
      * @generated
      * @ordered
@@ -44,7 +44,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
     /**
      * The cached value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getVariableName()
      * @generated
      * @ordered
@@ -52,9 +52,9 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
     protected String variableName = LetImpl.VARIABLE_NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getValueExpression() <em>Value
-     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -62,9 +62,9 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
     protected static final String VALUE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getValueExpression() <em>Value
-     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -73,7 +73,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected LetImpl() {
@@ -82,7 +82,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -174,7 +174,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -192,7 +192,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -208,7 +208,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

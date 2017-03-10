@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,10 +50,8 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code for imports
 
 /**
- * An abstract implementation of a section with a non-editable Text and a button
- * allowing to open a
- * {@link org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog
- * FeatureEditorDialog}.
+ * An abstract implementation of a section with a non-editable Text and a button allowing to open a
+ * {@link org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog FeatureEditorDialog}.
  */
 public abstract class AbstractEditorDialogPropertySection extends AbstractViewpointPropertySection {
     /** The text control for the section. */
@@ -163,8 +161,7 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
 
     /**
      * Handle the modification event given the result of the section's
-     * {@link org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog
-     * FeatureEditorDialog}.
+     * {@link org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog FeatureEditorDialog}.
      */
     protected void handleFeatureModified(List result) {
         boolean equals = isEqual(result);
@@ -197,11 +194,10 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
     }
 
     /**
-     * Get the {@link org.eclipse.emf.edit.provider.IItemPropertyDescriptor
-     * IItemPropertyDescriptor} for this feature.
+     * Get the {@link org.eclipse.emf.edit.provider.IItemPropertyDescriptor IItemPropertyDescriptor} for this feature.
      * 
-     * @return The {@link org.eclipse.emf.edit.provider.IItemPropertyDescriptor
-     *         IItemPropertyDescriptor} for this feature.
+     * @return The {@link org.eclipse.emf.edit.provider.IItemPropertyDescriptor IItemPropertyDescriptor} for this
+     *         feature.
      */
     protected IItemPropertyDescriptor getIItemPropertyDescriptor() {
         IItemPropertyDescriptor itemPropertyDescriptor = null;
@@ -239,8 +235,7 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
      * Fetches the list of available values for the feature.
      * 
      * @param currentValues
-     *            the list of current values to remove from available choice of
-     *            values.
+     *            the list of current values to remove from available choice of values.
      * 
      * @return The list of available values for the feature.
      */
@@ -255,13 +250,12 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
     }
 
     /**
-     * Determine if the new list of values is equal to the current property
-     * setting.
+     * Determine if the new list of values is equal to the current property setting.
      * 
      * @param newList
      *            The new list of values for the property.
-     * @return <code>True</code> if the new list of values is equal to the
-     *         current property setting, <code>False</code> otherwise.
+     * @return <code>True</code> if the new list of values is equal to the current property setting, <code>False</code>
+     *         otherwise.
      */
     protected abstract boolean isEqual(List<?> newList);
 

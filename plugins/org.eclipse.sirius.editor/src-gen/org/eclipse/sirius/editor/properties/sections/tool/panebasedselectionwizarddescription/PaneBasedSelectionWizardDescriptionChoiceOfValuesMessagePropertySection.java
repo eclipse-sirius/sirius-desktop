@@ -21,8 +21,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the choiceOfValuesMessage property of a
- * PaneBasedSelectionWizardDescription object.
+ * A section for the choiceOfValuesMessage property of a PaneBasedSelectionWizardDescription object.
  */
 public class PaneBasedSelectionWizardDescriptionChoiceOfValuesMessagePropertySection extends AbstractTextPropertySection {
 

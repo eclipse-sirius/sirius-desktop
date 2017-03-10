@@ -31,8 +31,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the deletionDescription property of a DiagramElementMapping
- * object.
+ * A section for the deletionDescription property of a DiagramElementMapping object.
  */
 public class DiagramElementMappingDeletionDescriptionPropertySection extends AbstractComboPropertySection {
     /**
@@ -81,8 +80,7 @@ public class DiagramElementMappingDeletionDescriptionPropertySection extends Abs
     }
 
     /**
-     * Returns the value at the specified index in the choice of values for the
-     * feature.
+     * Returns the value at the specified index in the choice of values for the feature.
      * 
      * @param index
      *            Index of the value.

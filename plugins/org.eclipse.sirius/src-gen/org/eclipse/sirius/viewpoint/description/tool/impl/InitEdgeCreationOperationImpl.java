@@ -38,7 +38,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
     /**
      * The cached value of the '{@link #getFirstModelOperations() <em>First Model Operations</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getFirstModelOperations()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected InitEdgeCreationOperationImpl() {
@@ -56,7 +56,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ModelOperation basicGetFirstModelOperations() {
@@ -103,7 +103,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetFirstModelOperations(ModelOperation newFirstModelOperations, NotificationChain msgs) {
@@ -123,7 +123,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -163,7 +163,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -210,7 +210,7 @@ public class InitEdgeCreationOperationImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

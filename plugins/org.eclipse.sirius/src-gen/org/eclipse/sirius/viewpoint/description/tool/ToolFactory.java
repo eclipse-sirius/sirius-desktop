@@ -16,21 +16,21 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a create method for each non-abstract class of
  * the model. <!-- end-user-doc -->
- *
+ * 
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage
  * @generated
  */
 public interface ToolFactory extends EFactory {
     /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     ToolFactory eINSTANCE = org.eclipse.sirius.viewpoint.description.tool.impl.ToolFactoryImpl.init();
 
     /**
      * Returns a new object of class '<em>Description</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Description</em>'.
      * @generated
      */
@@ -38,7 +38,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Paste Description</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Paste Description</em>'.
      * @generated
      */
@@ -56,7 +56,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Pane Based Selection Wizard Description</em>'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Pane Based Selection Wizard Description</em>'.
      * @generated
      */
@@ -65,7 +65,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Menu Item Description Reference</em>'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Menu Item Description Reference</em>'.
      * @generated
      */
@@ -73,7 +73,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Operation Action</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Operation Action</em>'.
      * @generated
      */
@@ -81,7 +81,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>External Java Action</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>External Java Action</em>'.
      * @generated
      */
@@ -89,7 +89,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>External Java Action Call</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>External Java Action Call</em>'.
      * @generated
      */
@@ -97,7 +97,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Popup Menu</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Popup Menu</em>'.
      * @generated
      */
@@ -105,7 +105,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Acceleo Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Acceleo Variable</em>'.
      * @generated
      */
@@ -113,7 +113,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Element Drop Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Element Drop Variable</em>'.
      * @generated
      */
@@ -121,7 +121,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Element Select Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Element Select Variable</em>'.
      * @generated
      */
@@ -129,7 +129,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Element Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Element Variable</em>'.
      * @generated
      */
@@ -137,7 +137,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Element View Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Element View Variable</em>'.
      * @generated
      */
@@ -145,7 +145,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Element Delete Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Element Delete Variable</em>'.
      * @generated
      */
@@ -153,7 +153,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Drop Container Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Drop Container Variable</em>'.
      * @generated
      */
@@ -161,7 +161,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Select Container Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Select Container Variable</em>'.
      * @generated
      */
@@ -169,7 +169,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Container View Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Container View Variable</em>'.
      * @generated
      */
@@ -186,7 +186,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Edit Mask Variables</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Edit Mask Variables</em>'.
      * @generated
      */
@@ -195,7 +195,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Initial Node Creation Operation</em>'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Initial Node Creation Operation</em>'.
      * @generated
      */
@@ -203,7 +203,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Initial Operation</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Initial Operation</em>'.
      * @generated
      */
@@ -221,7 +221,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Initial Container Drop Operation</em>'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Initial Container Drop Operation</em>'.
      * @generated
      */
@@ -229,7 +229,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Create Instance</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Create Instance</em>'.
      * @generated
      */
@@ -237,7 +237,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Change Context</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Change Context</em>'.
      * @generated
      */
@@ -245,7 +245,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Set Value</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Set Value</em>'.
      * @generated
      */
@@ -253,7 +253,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Set Object</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Set Object</em>'.
      * @generated
      */
@@ -261,7 +261,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Unset</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Unset</em>'.
      * @generated
      */
@@ -269,7 +269,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Move Element</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Move Element</em>'.
      * @generated
      */
@@ -277,7 +277,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Remove Element</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Remove Element</em>'.
      * @generated
      */
@@ -285,7 +285,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>For</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>For</em>'.
      * @generated
      */
@@ -293,7 +293,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>If</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>If</em>'.
      * @generated
      */
@@ -301,7 +301,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Delete View</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Delete View</em>'.
      * @generated
      */
@@ -309,7 +309,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Name Variable</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Name Variable</em>'.
      * @generated
      */
@@ -318,7 +318,7 @@ public interface ToolFactory extends EFactory {
     /**
      * Returns a new object of class '<em>External Java Action Parameter</em>'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>External Java Action Parameter</em>'.
      * @generated
      */
@@ -326,7 +326,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Filter Description</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Filter Description</em>'.
      * @generated
      */
@@ -334,7 +334,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Feature Change Listener</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Feature Change Listener</em>'.
      * @generated
      */
@@ -342,7 +342,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Case</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Case</em>'.
      * @generated
      */
@@ -350,7 +350,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Default</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Default</em>'.
      * @generated
      */
@@ -358,7 +358,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Switch</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Switch</em>'.
      * @generated
      */
@@ -366,7 +366,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns a new object of class '<em>Let</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return a new object of class '<em>Let</em>'.
      * @generated
      */
@@ -374,7 +374,7 @@ public interface ToolFactory extends EFactory {
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the package supported by this factory.
      * @generated
      */
