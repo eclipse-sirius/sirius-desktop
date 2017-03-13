@@ -122,8 +122,8 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         rightComposite.setLayout(GridLayoutFactory.swtDefaults().margins(5, 0).create());
         rightComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-        createRepresentationsControl(toolkit, rightComposite);
         createViewpointSelectionControl(toolkit, rightComposite, scrolledForm);
+        createRepresentationsControl(toolkit, rightComposite);
 
         session.addListener(this);
 

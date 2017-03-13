@@ -99,6 +99,11 @@ public class ViewpointsSelectionGraphicalHandler {
     private CheckboxTableViewer viewer;
 
     /**
+     * The layout data of the root component.
+     */
+    private GridData rootLayoutData;
+
+    /**
      * Return the composite enclosing all graphical parts of this component.
      * 
      * @return the composite enclosing all graphical parts of this component.
@@ -174,7 +179,8 @@ public class ViewpointsSelectionGraphicalHandler {
         rootComposite = new Composite(parent, SWT.NONE);
         rootGridLayout = GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(makeColumnsEqual).create();
         rootComposite.setLayout(rootGridLayout);
-        rootComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+        rootLayoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
+        rootComposite.setLayoutData(rootLayoutData);
 
         createTableViewer(rootComposite);
 
@@ -475,5 +481,16 @@ public class ViewpointsSelectionGraphicalHandler {
             }
             return image;
         }
+    }
+
+    /**
+     * Sets the height the enclosing root composite of the viewpoints block must have.
+     * 
+     * @param height
+     *            the height to set.
+     */
+    public void setHeight(int height) {
+        rootLayoutData.grabExcessVerticalSpace = false;
+        rootLayoutData.heightHint = height;
     }
 }

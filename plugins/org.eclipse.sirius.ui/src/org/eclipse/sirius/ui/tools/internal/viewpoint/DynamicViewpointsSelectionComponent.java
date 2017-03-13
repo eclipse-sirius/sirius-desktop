@@ -219,6 +219,7 @@ public class DynamicViewpointsSelectionComponent {
     public void createControl(final Composite parent) {
         viewpointsSelectionGraphicalHandler.createControl(parent, false);
         viewpointsSelectionGraphicalHandler.setBrowserMinWidth(200);
+        viewpointsSelectionGraphicalHandler.setHeight(404);
         checkStateListener = new ICheckStateListener() {
             @Override
             public void checkStateChanged(final CheckStateChangedEvent event) {
