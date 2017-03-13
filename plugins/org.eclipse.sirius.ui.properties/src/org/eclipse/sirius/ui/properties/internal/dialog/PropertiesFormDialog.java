@@ -82,6 +82,11 @@ public class PropertiesFormDialog extends FormDialog {
     private DialogModelOperation dialogModelOperation;
 
     /**
+     * The EEF Tab.
+     */
+    private EEFTab eefTab;
+
+    /**
      * The constructor.
      * 
      * @param shell
@@ -134,7 +139,7 @@ public class PropertiesFormDialog extends FormDialog {
 
         managedForm.getMessageManager().setDecorationPosition(SWT.TOP | SWT.LEFT);
 
-        EEFTab eefTab = new EEFTab(this.eefPage);
+        this.eefTab = new EEFTab(this.eefPage);
         IEEFFormContainer container = new DialogFormContainer(this.getShell(), managedForm.getForm().getForm());
         Composite composite = managedForm.getForm().getForm().getBody();
         composite.setLayout(new FillLayout());
@@ -210,5 +215,15 @@ public class PropertiesFormDialog extends FormDialog {
                 this.close();
             }
         }
+    }
+
+    @Override
+    public boolean close() {
+        boolean result = super.close();
+
+        this.eefTab.aboutToBeHidden();
+        this.eefTab.dispose();
+
+        return result;
     }
 }
