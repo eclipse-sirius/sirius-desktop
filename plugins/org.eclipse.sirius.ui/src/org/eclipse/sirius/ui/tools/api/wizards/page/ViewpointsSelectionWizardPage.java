@@ -14,9 +14,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
+import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
+import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
@@ -24,7 +25,6 @@ import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointsSelectionGraphicalHandler;
-import org.eclipse.sirius.ui.tools.internal.wizards.pages.IViewpointStateListener;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Composite;
@@ -54,12 +54,6 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     private ViewpointsSelectionGraphicalHandler viewpointsSelectionGraphicalHandler;
 
     private Session session;
-
-    /**
-     * The listeners that should be warn when a user tick or untick a viewpoint meaning it should be
-     * activated/deactivated of the session.
-     */
-    private Set<IViewpointStateListener> viewpointStateListeners;
 
     /**
      * Create a new <code>RepresentationSelectionWizardPage</code>.
@@ -145,6 +139,18 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
                 tableViewer.setSelection(new StructuredSelection(viewpoints.get(0)));
             }
         }
+
+        tableViewer.addCheckStateListener(new ICheckStateListener() {
+            @Override
+            public void checkStateChanged(final CheckStateChangedEvent event) {
+                if (event.getChecked()) {
+                    viewpoints.add((Viewpoint) event.getElement());
+                } else {
+                    viewpoints.remove(event.getElement());
+                }
+                setPageComplete(isPageComplete());
+            }
+        });
 
         setControl(viewpointsSelectionGraphicalHandler.getRootComposite());
     }
