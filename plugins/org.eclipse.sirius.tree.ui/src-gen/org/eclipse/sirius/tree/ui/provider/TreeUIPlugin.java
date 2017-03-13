@@ -202,7 +202,7 @@ public final class TreeUIPlugin extends EMFPlugin {
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
-         * @generated
+         * @generated NOT
          */
         public Implementation() {
             super();
@@ -210,6 +210,7 @@ public final class TreeUIPlugin extends EMFPlugin {
             // Remember the static instance.
             //
             TreeUIPlugin.plugin = this;
+            preferencesConfiguration = new Configuration(getPreferenceStore());
         }
 
         /**
