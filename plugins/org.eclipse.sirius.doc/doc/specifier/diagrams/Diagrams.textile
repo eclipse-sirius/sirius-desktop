@@ -62,6 +62,11 @@ Layers are defined directly inside the _Diagram Description_ element. You must h
 
 The _Label_ (or _Id_ if not label is set) of an optional layer is used in the drop-down menu available to users in the diagram's tabbar, from which they can enable or disable them. Mandatory layers are not visible in this menu. The _Layers_ can _contain_ graphical elements and tools definitions (as described below), but they can also _reuse_ tools and mappings (graphical elements definitions) which are defined in other layers using the _Reused Tools_ and _Reused Mappings_ in the _Advanced_ category. If a layer _L1_ reuses elements defined in another layer _L2_, these elements will be enabled whenever _L1_ is enabled, even if _L2_ is not. However if both _L1_ and _L2_ are enabled, the elements are enabled only once (i.e. graphical elements do not appear once for _L1_ and once for _L2_).
 
+h4. Transient layer
+
+A transient layer is a layer that contains only _Decoration Description_ and/or tools.
+When applying a transient layer, the diagram is *never* modified. Tools are displayed in the palette and decorations are refreshed in opened editors.
+
 h3(#graphical_elements). Graphical Elements and Mappings
 
 This section describes the different kinds of graphical elements supported on Sirius diagrams and the general principle of how they are specified inside the VSM, through the notion of _mapping_.
@@ -405,12 +410,55 @@ For the semantic, we will consider that we represent "Box" and the link means "i
 
 h3(#decorations). Decorations
 
-Decorations can be used to add small graphical annotations to the elements of a diagram. They are defined directly inside a layer, and they can be either _Mapping Based Decorations_ or _Semantic Based Decorations_. Both have a name, a _Position_ which indicate where the decorator should be place relative to its target element, and a _Decorator Path_, which should point to a small icon to use as decorator.
+Decorations can be used to add small graphical annotations to the elements of a diagram. They are defined directly inside a layer, and they can be either _Mapping Based Decorations_, _Semantic Based Decorations_ or _Generic Decorations_.
 
-_Mapping Based Decorations_ have a list of _Mappings_ to which they may apply, while _Semantic Based Decoration_ have a _Domain Class_ and will apply to all graphical elements which have an instance of this class as their semantic element, whatever are the mapping(s) used to represent them.
+*Mapping Based Decorations* have a list of _Mappings_ to which they may apply.
+ !./images/mappingBasedDecoration.png!
+ 
+*Semantic Based Decoration* have a _Domain Class_ and will apply to all graphical elements which have an instance of this class as their semantic element, whatever are the mapping(s) used to represent them.
+ !./images/semanticBasedDecoration.png!
+ 
+*Generic Decoration* is only based on the _Precondition Expression_ to know if it applies on the current graphical Element.
+ 
+The _Precondition Expression_ is evaluated in the context of a candidate semantic element which is the semantic element of the current graphical element (that is _DSemanticDecorator.target_). If the expression returns true, the decorator will be shown.
 
-The _Precondition Expression_ is evaluated in the context of a candidate semantic element (as selected by either the _Mappings_ or _Domain Class_ property, and if the expression returns true, the decorator will be shown as the specified location on top of the graphical element's shape.
+h4. Decoration display
 
+The _Decoration Description_ has a _Position_ which indicates where the decorator should be placed. The position can be chosen among the four corners (NORTH_WEST, NORTH_EAST, SOUTH_WEST and SOUTH_EAST), the middle of each bounding box sides (NORTH, SOUTH, WEST and EAST) and the CENTER positions. 
+
+ !=./images/decoration_positions.png!
+ 
+Many decorations can be specified at the same _Position_. To manage that, the decorations are displayed from their defined position along the border of the bounding box according to the _Distribution Direction_.
+* For corner decorations, it is possible to choose between vertical or horizontal direction.
+* For NORTH, SOUTH and CENTER positions, the direction is only horizontal from the left to right.
+* For WEST and EAST positions, the direction is only vertical from top to bottom.
+
+Decorations example: !=./images/decoration_example.png!
+
+By default the margin between the decoration and the border of the figure is 2 pixels.
+When a node contains border nodes, the node decorations are shifted from the border to avoid overlap with border node
+Decorations example with border nodes: !=./images/decoration_borderNode.png!
+
+The decoration icon is defined with _Image Expression_ which is an InterpretedExpression. _Image Expression_ may be:
+* a path to an image which can be absolute or relative to the workspace. A workspace path example: _/org.eclipse.sirius.tests.sample.component.design/images/square16x16.png_
+* an expression that gives a path to an image
+* an expression that provides an instance of @org.eclipse.swt.graphics.Image@. Provider will have to define a cache of image to optimize memory consumption and performance. For now, there is no mechanism to release the cache.
+* an expression that provides an instance of @org.eclipse.draw2d.IFigure@. The figure life cycle is managed by Sirius.
+
+The _Decoration Description_ has a _TooltipExpression_ which may be:
+* a fixed tooltip string
+* an expression that provides a tooltip String
+* an expression that provides an instance of @org.eclipse.draw2d.IFigure@. The figure life cycle is managed by Sirius.
+
+Decoration tooltip example: !=./images/decoration_tooltip_example.png!
+
+Sometimes, according to the graphical element size, the decorations are represented with a _list decoration_ which is a 16x16 pixels frame containing three dots. The tooltip of a _list decoration_ displays as lines, the contained decorations with its tooltip. 
+Sometimes, the graphical element size can be too small to display all decorations without overlapping. In this condition, decorations will be gathered into one decoration called _list decoration_. This _list decoration_ is represented with a 16x16 pixels frame containing three dots. The tooltip of a _list decoration_ displays, as lines, the contained decorations with its tooltip.
+
+List decoration example: !=./images/decoration_group_example.png!
+
+Tooltip example on list decoration: !=./images/decoration_group_tooltip_example.png!
+ 
 h2(#styling). Styling
 
 Styles define the graphical appearance of diagram elements. Sirius supports a rich set of possible styles, including conditional styles which can dynamically change depending on the current state of the underlying model elements. Each mapping must define at least one style do be visible on the diagram.

@@ -949,11 +949,15 @@ The _Appearance_ preferences page (see below) gives you two preferences to contr
 
   !images/preferences_sirius_diagram_appearance.png!
 
+The _Authorize decoration overlapping_ preference lets, if checked, the decorations of different positions overlapping each other or displaying outside the diagram element bounding. If unchecked, decorations may be grouped in a _list decorator_ to avoid overlapping.
+
 h3. Printing
 
 The _Printing_ page (see below) gives you various preferences related to page layout for layout printing.
 
   !images/preferences_sirius_diagram_printing.png!
+  
+The _Print decoration_ preference allows to print decorations displayed on diagram graphical elements.
 
 h3. Rulers And Grid
 

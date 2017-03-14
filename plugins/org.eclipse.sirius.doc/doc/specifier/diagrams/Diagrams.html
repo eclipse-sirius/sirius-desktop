@@ -264,6 +264,12 @@
 			<em>L1</em> and once for 
 			<em>L2</em>).
 		</p>
+		<h4 id="Transientlayer">Transient layer</h4>
+		<p>A transient layer is a layer that contains only 
+			<em>Decoration Description</em> and/or tools.
+			<br/>When applying a transient layer, the diagram is 
+			<strong>never</strong> modified. Tools are displayed in the palette and decorations are refreshed in opened editors.
+		</p>
 		<h3 id="graphical_elements">Graphical Elements and Mappings</h3>
 		<p>This section describes the different kinds of graphical elements supported on Sirius diagrams and the general principle of how they are specified inside the VSM, through the notion of 
 			<em>mapping</em>.
@@ -1191,21 +1197,96 @@
 		</ul>
 		<h3 id="decorations">Decorations</h3>
 		<p>Decorations can be used to add small graphical annotations to the elements of a diagram. They are defined directly inside a layer, and they can be either 
-			<em>Mapping Based Decorations</em> or 
-			<em>Semantic Based Decorations</em>. Both have a name, a 
-			<em>Position</em> which indicate where the decorator should be place relative to its target element, and a 
-			<em>Decorator Path</em>, which should point to a small icon to use as decorator.
+			<em>Mapping Based Decorations</em>, 
+			<em>Semantic Based Decorations</em> or 
+			<em>Generic Decorations</em>.
 		</p>
 		<p>
-			<em>Mapping Based Decorations</em> have a list of 
-			<em>Mappings</em> to which they may apply, while 
-			<em>Semantic Based Decoration</em> have a 
+			<strong>Mapping Based Decorations</strong> have a list of 
+			<em>Mappings</em> to which they may apply.
+			<br/> 
+			<img border="0" src="./images/mappingBasedDecoration.png"/>
+		</p>
+		<p>
+			<strong>Semantic Based Decoration</strong> have a 
 			<em>Domain Class</em> and will apply to all graphical elements which have an instance of this class as their semantic element, whatever are the mapping(s) used to represent them.
+			<br/> 
+			<img border="0" src="./images/semanticBasedDecoration.png"/>
+		</p>
+		<p>
+			<strong>Generic Decoration</strong> is only based on the 
+			<em>Precondition Expression</em> to know if it applies on the current graphical Element.
 		</p>
 		<p>The 
-			<em>Precondition Expression</em> is evaluated in the context of a candidate semantic element (as selected by either the 
-			<em>Mappings</em> or 
-			<em>Domain Class</em> property, and if the expression returns true, the decorator will be shown as the specified location on top of the graphical element&#8217;s shape.
+			<em>Precondition Expression</em> is evaluated in the context of a candidate semantic element which is the semantic element of the current graphical element (that is 
+			<em>DSemanticDecorator.target</em>). If the expression returns true, the decorator will be shown.
+		</p>
+		<h4 id="Decorationdisplay">Decoration display</h4>
+		<p>The 
+			<em>Decoration Description</em> has a 
+			<em>Position</em> which indicates where the decorator should be placed. The position can be chosen among the four corners (NORTH_WEST, NORTH_EAST, SOUTH_WEST and SOUTH_EAST), the middle of each bounding box sides (NORTH, SOUTH, WEST and EAST) and the CENTER positions. 
+		</p>
+		<img align="center" border="0" src="./images/decoration_positions.png"/>
+		<p>Many decorations can be specified at the same 
+			<em>Position</em>. To manage that, the decorations are displayed from their defined position along the border of the bounding box according to the 
+			<em>Distribution Direction</em>.
+		</p>
+		<ul>
+			<li>For corner decorations, it is possible to choose between vertical or horizontal direction.</li>
+			<li>For NORTH, SOUTH and CENTER positions, the direction is only horizontal from the left to right.</li>
+			<li>For WEST and EAST positions, the direction is only vertical from top to bottom.</li>
+		</ul>
+		<p>Decorations example: 
+			<img align="center" border="0" src="./images/decoration_example.png"/>
+		</p>
+		<p>By default the margin between the decoration and the border of the figure is 2 pixels.
+			<br/>When a node contains border nodes, the node decorations are shifted from the border to avoid overlap with border node
+			<br/>Decorations example with border nodes: 
+			<img align="center" border="0" src="./images/decoration_borderNode.png"/>
+		</p>
+		<p>The decoration icon is defined with 
+			<em>Image Expression</em> which is an InterpretedExpression. 
+			<em>Image Expression</em> may be:
+		</p>
+		<ul>
+			<li>a path to an image which can be absolute or relative to the workspace. A workspace path example: 
+				<em>/org.eclipse.sirius.tests.sample.component.design/images/square16x16.png</em>
+			</li>
+			<li>an expression that gives a path to an image</li>
+			<li>an expression that provides an instance of 
+				<code>org.eclipse.swt.graphics.Image</code>. Provider will have to define a cache of image to optimize memory consumption and performance. For now, there is no mechanism to release the cache.
+			</li>
+			<li>an expression that provides an instance of 
+				<code>org.eclipse.draw2d.IFigure</code>. The figure life cycle is managed by Sirius.
+			</li>
+		</ul>
+		<p>The 
+			<em>Decoration Description</em> has a 
+			<em>TooltipExpression</em> which may be:
+		</p>
+		<ul>
+			<li>a fixed tooltip string</li>
+			<li>an expression that provides a tooltip String</li>
+			<li>an expression that provides an instance of 
+				<code>org.eclipse.draw2d.IFigure</code>. The figure life cycle is managed by Sirius.
+			</li>
+		</ul>
+		<p>Decoration tooltip example: 
+			<img align="center" border="0" src="./images/decoration_tooltip_example.png"/>
+		</p>
+		<p>Sometimes, according to the graphical element size, the decorations are represented with a 
+			<em>list decoration</em> which is a 16x16 pixels frame containing three dots. The tooltip of a 
+			<em>list decoration</em> displays as lines, the contained decorations with its tooltip. 
+			<br/>Sometimes, the graphical element size can be too small to display all decorations without overlapping. In this condition, decorations will be gathered into one decoration called 
+			<em>list decoration</em>. This 
+			<em>list decoration</em> is represented with a 16x16 pixels frame containing three dots. The tooltip of a 
+			<em>list decoration</em> displays, as lines, the contained decorations with its tooltip.
+		</p>
+		<p>List decoration example: 
+			<img align="center" border="0" src="./images/decoration_group_example.png"/>
+		</p>
+		<p>Tooltip example on list decoration: 
+			<img align="center" border="0" src="./images/decoration_group_tooltip_example.png"/>
 		</p>
 		<h2 id="styling">Styling</h2>
 		<p>Styles define the graphical appearance of diagram elements. Sirius supports a rich set of possible styles, including conditional styles which can dynamically change depending on the current state of the underlying model elements. Each mapping must define at least one style do be visible on the diagram.</p>
