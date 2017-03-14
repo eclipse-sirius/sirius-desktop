@@ -12,6 +12,7 @@
 package org.eclipse.sirius.properties.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.sirius.properties.DialogModelOperation;
 
@@ -49,4 +50,9 @@ public class DialogModelOperationItemProviderSpec extends DialogModelOperationIt
         return styledLabel;
     }
 
+    @Override
+    protected CommandParameter createChildParameter(Object feature, Object child) {
+        Utils.addNoopNavigationOperations(child);
+        return super.createChildParameter(feature, child);
+    }
 }

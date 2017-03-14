@@ -29,4 +29,20 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactorySpec extends
         return extReferenceDescriptionItemProvider;
     }
 
+    @Override
+    public Adapter createExtReferenceWidgetStyleAdapter() {
+        if (extReferenceWidgetStyleItemProvider == null) {
+            extReferenceWidgetStyleItemProvider = new ExtReferenceWidgetStyleItemProviderSpec(this);
+        }
+        return extReferenceWidgetStyleItemProvider;
+    }
+
+    @Override
+    public Adapter createExtReferenceWidgetConditionalStyleAdapter() {
+        if (extReferenceWidgetConditionalStyleItemProvider == null) {
+            extReferenceWidgetConditionalStyleItemProvider = new ExtReferenceWidgetConditionalStyleItemProviderSpec(this);
+        }
+        return extReferenceWidgetConditionalStyleItemProvider;
+    }
+
 }

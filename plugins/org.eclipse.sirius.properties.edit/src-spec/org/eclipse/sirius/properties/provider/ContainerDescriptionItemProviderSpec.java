@@ -14,6 +14,7 @@ package org.eclipse.sirius.properties.provider;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.sirius.properties.DynamicMappingForDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
@@ -81,5 +82,11 @@ public class ContainerDescriptionItemProviderSpec extends ContainerDescriptionIt
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_CONTAINER_DESCRIPTION__LAYOUT, PropertiesFactory.eINSTANCE.createFillLayoutDescription()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_CONTAINER_DESCRIPTION__LAYOUT, PropertiesFactory.eINSTANCE.createGridLayoutDescription()));
+    }
+
+    @Override
+    protected CommandParameter createChildParameter(Object feature, Object child) {
+        Utils.addNoopNavigationOperations(child);
+        return super.createChildParameter(feature, child);
     }
 }

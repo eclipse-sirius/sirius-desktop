@@ -11,8 +11,11 @@
  */
 package org.eclipse.sirius.properties.provider;
 
+import java.util.Optional;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.sirius.properties.WidgetAction;
 
 /**
@@ -34,9 +37,21 @@ public class WidgetActionItemProviderSpec extends WidgetActionItemProvider {
 
     @Override
     public String getText(Object object) {
-        String label = ((WidgetAction) object).getLabelExpression();
-        return label == null || label.length() == 0 ? getString("_UI_WidgetAction_type") : //$NON-NLS-1$
-                label;
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
+        WidgetAction widgetAction = (WidgetAction) object;
+        String label = Optional.ofNullable(widgetAction.getLabelExpression()).orElse(""); //$NON-NLS-1$
+        if (label.isEmpty()) {
+            label = this.getString("_UI_WidgetAction_type"); //$NON-NLS-1$
+        }
+        return new StyledString(label);
     }
 
     @Override

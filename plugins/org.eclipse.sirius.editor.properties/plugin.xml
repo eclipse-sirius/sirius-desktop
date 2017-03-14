@@ -18,7 +18,7 @@
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.dialogbutton.DialogButtonRollbackChangesOnClosePropertySection"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.dialogbutton.DialogButtonRollbackChangesOnClosePropertySectionSpec"
                id="properties.section.dialogButton.RollbackChangesOnClose"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dialogbutton.DialogButtonRollbackChangesOnCloseFilter"
                afterSection="properties.section.dialogButton.CloseDialogOnClick"
@@ -26,7 +26,7 @@
         <input type="org.eclipse.sirius.properties.DialogButton"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.dialogbutton.DialogButtonCloseDialogOnClickPropertySection"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.dialogbutton.DialogButtonCloseDialogOnClickPropertySectionSpec"
                id="properties.section.dialogButton.CloseDialogOnClick"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dialogbutton.DialogButtonCloseDialogOnClickFilter"
                afterSection="properties.section.dialogButton.Default"
@@ -34,7 +34,7 @@
         <input type="org.eclipse.sirius.properties.DialogButton"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.dialogbutton.DialogButtonDefaultPropertySection"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.dialogbutton.DialogButtonDefaultPropertySectionSpec"
                id="properties.section.dialogButton.Default"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dialogbutton.DialogButtonDefaultFilter"
                afterSection="properties.section.dialogButton.LabelExpression"
@@ -277,7 +277,7 @@
                id="properties.section.hyperlinkOverrideDescription.FilterActionsFromOverriddenHyperlinkExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkoverridedescription.HyperlinkOverrideDescriptionFilterActionsFromOverriddenHyperlinkExpressionFilter"
                afterSection="properties.section.hyperlinkOverrideDescription.FilterConditionalStylesFromOverriddenHyperlinkExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.HyperlinkOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -285,14 +285,14 @@
                id="properties.section.hyperlinkOverrideDescription.FilterConditionalStylesFromOverriddenHyperlinkExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkoverridedescription.HyperlinkOverrideDescriptionFilterConditionalStylesFromOverriddenHyperlinkExpressionFilter"
                afterSection="properties.section.hyperlinkOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.HyperlinkOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkoverridedescription.HyperlinkOverrideDescriptionOverridesPropertySection"
                id="properties.section.hyperlinkOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkoverridedescription.HyperlinkOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.HyperlinkOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -300,7 +300,7 @@
                id="properties.section.abstractHyperlinkDescription.FilterActionsFromExtendedHyperlinkExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstracthyperlinkdescription.AbstractHyperlinkDescriptionFilterActionsFromExtendedHyperlinkExpressionFilter"
                afterSection="properties.section.abstractHyperlinkDescription.FilterConditionalStylesFromExtendedHyperlinkExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractHyperlinkDescription"/>
       </propertySection>
   	  <propertySection
@@ -308,15 +308,14 @@
                id="properties.section.abstractHyperlinkDescription.FilterConditionalStylesFromExtendedHyperlinkExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstracthyperlinkdescription.AbstractHyperlinkDescriptionFilterConditionalStylesFromExtendedHyperlinkExpressionFilter"
                afterSection="properties.section.abstractHyperlinkDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractHyperlinkDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstracthyperlinkdescription.AbstractHyperlinkDescriptionExtendsPropertySection"
                id="properties.section.abstractHyperlinkDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstracthyperlinkdescription.AbstractHyperlinkDescriptionExtendsFilter"
-               afterSection="properties.section.abstractHyperlinkDescription.DisplayExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractHyperlinkDescription"/>
       </propertySection>
   	  <propertySection
@@ -331,6 +330,7 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstracthyperlinkdescription.AbstractHyperlinkDescriptionValueExpressionPropertySection"
                id="properties.section.abstractHyperlinkDescription.ValueExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstracthyperlinkdescription.AbstractHyperlinkDescriptionValueExpressionFilter"
+               afterSection="properties.section.abstractWidgetDescription.IsEnabledExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractHyperlinkDescription"/>
       </propertySection>
@@ -338,6 +338,7 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.customexpression.CustomExpressionCustomExpressionPropertySection"
                id="properties.section.customExpression.CustomExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.customexpression.CustomExpressionCustomExpressionFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.CustomExpression"/>
       </propertySection>
@@ -346,14 +347,14 @@
                id="properties.section.customOverrideDescription.FilterConditionalStylesFromOverriddenCustomExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.customoverridedescription.CustomOverrideDescriptionFilterConditionalStylesFromOverriddenCustomExpressionFilter"
                afterSection="properties.section.customOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.CustomOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.customoverridedescription.CustomOverrideDescriptionOverridesPropertySection"
                id="properties.section.customOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.customoverridedescription.CustomOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.CustomOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -361,14 +362,14 @@
                id="properties.section.abstractCustomDescription.FilterConditionalStylesFromExtendedCustomExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractcustomdescription.AbstractCustomDescriptionFilterConditionalStylesFromExtendedCustomExpressionFilter"
                afterSection="properties.section.abstractCustomDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractCustomDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractcustomdescription.AbstractCustomDescriptionExtendsPropertySection"
                id="properties.section.abstractCustomDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractcustomdescription.AbstractCustomDescriptionExtendsFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractCustomDescription"/>
       </propertySection>
   	  <propertySection
@@ -376,7 +377,7 @@
                id="properties.section.listOverrideDescription.FilterActionsFromOverriddenListExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.listoverridedescription.ListOverrideDescriptionFilterActionsFromOverriddenListExpressionFilter"
                afterSection="properties.section.listOverrideDescription.FilterConditionalStylesFromOverriddenListExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.ListOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -384,14 +385,14 @@
                id="properties.section.listOverrideDescription.FilterConditionalStylesFromOverriddenListExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.listoverridedescription.ListOverrideDescriptionFilterConditionalStylesFromOverriddenListExpressionFilter"
                afterSection="properties.section.listOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.ListOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.listoverridedescription.ListOverrideDescriptionOverridesPropertySection"
                id="properties.section.listOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.listoverridedescription.ListOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.ListOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -399,7 +400,7 @@
                id="properties.section.abstractListDescription.FilterActionsFromExtendedListExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractlistdescription.AbstractListDescriptionFilterActionsFromExtendedListExpressionFilter"
                afterSection="properties.section.abstractListDescription.FilterConditionalStylesFromExtendedListExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractListDescription"/>
       </propertySection>
   	  <propertySection
@@ -407,15 +408,14 @@
                id="properties.section.abstractListDescription.FilterConditionalStylesFromExtendedListExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractlistdescription.AbstractListDescriptionFilterConditionalStylesFromExtendedListExpressionFilter"
                afterSection="properties.section.abstractListDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractListDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractlistdescription.AbstractListDescriptionExtendsPropertySection"
                id="properties.section.abstractListDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractlistdescription.AbstractListDescriptionExtendsFilter"
-               afterSection="properties.section.abstractListDescription.DisplayExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractListDescription"/>
       </propertySection>
   	  <propertySection
@@ -430,6 +430,7 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractlistdescription.AbstractListDescriptionValueExpressionPropertySection"
                id="properties.section.abstractListDescription.ValueExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractlistdescription.AbstractListDescriptionValueExpressionFilter"
+               afterSection="properties.section.abstractWidgetDescription.IsEnabledExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractListDescription"/>
       </propertySection>
@@ -438,14 +439,14 @@
                id="properties.section.radioOverrideDescription.FilterConditionalStylesFromOverriddenRadioExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.radiooverridedescription.RadioOverrideDescriptionFilterConditionalStylesFromOverriddenRadioExpressionFilter"
                afterSection="properties.section.radioOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.RadioOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.radiooverridedescription.RadioOverrideDescriptionOverridesPropertySection"
                id="properties.section.radioOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.radiooverridedescription.RadioOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.RadioOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -453,15 +454,14 @@
                id="properties.section.abstractRadioDescription.FilterConditionalStylesFromExtendedRadioExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractradiodescription.AbstractRadioDescriptionFilterConditionalStylesFromExtendedRadioExpressionFilter"
                afterSection="properties.section.abstractRadioDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractRadioDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractradiodescription.AbstractRadioDescriptionExtendsPropertySection"
                id="properties.section.abstractRadioDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractradiodescription.AbstractRadioDescriptionExtendsFilter"
-               afterSection="properties.section.abstractRadioDescription.NumberOfColumns"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractRadioDescription"/>
       </propertySection>
   	  <propertySection
@@ -492,6 +492,7 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractradiodescription.AbstractRadioDescriptionValueExpressionPropertySection"
                id="properties.section.abstractRadioDescription.ValueExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractradiodescription.AbstractRadioDescriptionValueExpressionFilter"
+               afterSection="properties.section.abstractWidgetDescription.IsEnabledExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractRadioDescription"/>
       </propertySection>
@@ -500,14 +501,14 @@
                id="properties.section.textAreaOverrideDescription.FilterConditionalStylesFromOverriddenTextAreaExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textareaoverridedescription.TextAreaOverrideDescriptionFilterConditionalStylesFromOverriddenTextAreaExpressionFilter"
                afterSection="properties.section.textAreaOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.TextAreaOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.textareaoverridedescription.TextAreaOverrideDescriptionOverridesPropertySection"
                id="properties.section.textAreaOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textareaoverridedescription.TextAreaOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.TextAreaOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -515,13 +516,20 @@
                id="properties.section.abstractTextAreaDescription.FilterConditionalStylesFromExtendedTextAreaExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstracttextareadescription.AbstractTextAreaDescriptionFilterConditionalStylesFromExtendedTextAreaExpressionFilter"
                afterSection="properties.section.abstractTextAreaDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractTextAreaDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstracttextareadescription.AbstractTextAreaDescriptionExtendsPropertySection"
                id="properties.section.abstractTextAreaDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstracttextareadescription.AbstractTextAreaDescriptionExtendsFilter"
+                tab="viewpoint.tab.extends">
+        <input type="org.eclipse.sirius.properties.AbstractTextAreaDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstracttextareadescription.AbstractTextAreaDescriptionLineCountPropertySection"
+               id="properties.section.abstractTextAreaDescription.LineCount"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstracttextareadescription.AbstractTextAreaDescriptionLineCountFilter"
                afterSection="properties.section.abstractTextAreaDescription.ValueExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractTextAreaDescription"/>
@@ -530,14 +538,7 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstracttextareadescription.AbstractTextAreaDescriptionValueExpressionPropertySection"
                id="properties.section.abstractTextAreaDescription.ValueExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstracttextareadescription.AbstractTextAreaDescriptionValueExpressionFilter"
-               afterSection="properties.section.abstractTextAreaDescription.LineCount"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.AbstractTextAreaDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstracttextareadescription.AbstractTextAreaDescriptionLineCountPropertySection"
-               id="properties.section.abstractTextAreaDescription.LineCount"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstracttextareadescription.AbstractTextAreaDescriptionLineCountFilter"
+               afterSection="properties.section.abstractWidgetDescription.IsEnabledExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractTextAreaDescription"/>
       </propertySection>
@@ -545,21 +546,21 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.dynamicmappingifoverridedescription.DynamicMappingIfOverrideDescriptionOverridesPropertySection"
                id="properties.section.dynamicMappingIfOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dynamicmappingifoverridedescription.DynamicMappingIfOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.DynamicMappingIfOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractdynamicmappingifdescription.AbstractDynamicMappingIfDescriptionExtendsPropertySection"
                id="properties.section.abstractDynamicMappingIfDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractdynamicmappingifdescription.AbstractDynamicMappingIfDescriptionExtendsFilter"
-               afterSection="properties.section.abstractDynamicMappingIfDescription.PredicateExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractDynamicMappingIfDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractdynamicmappingifdescription.AbstractDynamicMappingIfDescriptionPredicateExpressionPropertySection"
                id="properties.section.abstractDynamicMappingIfDescription.PredicateExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractdynamicmappingifdescription.AbstractDynamicMappingIfDescriptionPredicateExpressionFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractDynamicMappingIfDescription"/>
       </propertySection>
@@ -568,14 +569,14 @@
                id="properties.section.dynamicMappingForOverrideDescription.FilterIfsFromOverriddenDynamicMappingForExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dynamicmappingforoverridedescription.DynamicMappingForOverrideDescriptionFilterIfsFromOverriddenDynamicMappingForExpressionFilter"
                afterSection="properties.section.dynamicMappingForOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.DynamicMappingForOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.dynamicmappingforoverridedescription.DynamicMappingForOverrideDescriptionOverridesPropertySection"
                id="properties.section.dynamicMappingForOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dynamicmappingforoverridedescription.DynamicMappingForOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.DynamicMappingForOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -583,15 +584,14 @@
                id="properties.section.abstractDynamicMappingForDescription.FilterIfsFromExtendedDynamicMappingForExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractdynamicmappingfordescription.AbstractDynamicMappingForDescriptionFilterIfsFromExtendedDynamicMappingForExpressionFilter"
                afterSection="properties.section.abstractDynamicMappingForDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractDynamicMappingForDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractdynamicmappingfordescription.AbstractDynamicMappingForDescriptionExtendsPropertySection"
                id="properties.section.abstractDynamicMappingForDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractdynamicmappingfordescription.AbstractDynamicMappingForDescriptionExtendsFilter"
-               afterSection="properties.section.abstractDynamicMappingForDescription.IterableExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractDynamicMappingForDescription"/>
       </propertySection>
   	  <propertySection
@@ -606,6 +606,7 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractdynamicmappingfordescription.AbstractDynamicMappingForDescriptionIteratorPropertySection"
                id="properties.section.abstractDynamicMappingForDescription.Iterator"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractdynamicmappingfordescription.AbstractDynamicMappingForDescriptionIteratorFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractDynamicMappingForDescription"/>
       </propertySection>
@@ -614,14 +615,14 @@
                id="properties.section.selectOverrideDescription.FilterConditionalStylesFromOverriddenSelectExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.selectoverridedescription.SelectOverrideDescriptionFilterConditionalStylesFromOverriddenSelectExpressionFilter"
                afterSection="properties.section.selectOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.SelectOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.selectoverridedescription.SelectOverrideDescriptionOverridesPropertySection"
                id="properties.section.selectOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.selectoverridedescription.SelectOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.SelectOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -629,15 +630,14 @@
                id="properties.section.abstractSelectDescription.FilterConditionalStylesFromExtendedSelectExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractselectdescription.AbstractSelectDescriptionFilterConditionalStylesFromExtendedSelectExpressionFilter"
                afterSection="properties.section.abstractSelectDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractSelectDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractselectdescription.AbstractSelectDescriptionExtendsPropertySection"
                id="properties.section.abstractSelectDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractselectdescription.AbstractSelectDescriptionExtendsFilter"
-               afterSection="properties.section.abstractSelectDescription.CandidateDisplayExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractSelectDescription"/>
       </propertySection>
   	  <propertySection
@@ -660,6 +660,7 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractselectdescription.AbstractSelectDescriptionValueExpressionPropertySection"
                id="properties.section.abstractSelectDescription.ValueExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractselectdescription.AbstractSelectDescriptionValueExpressionFilter"
+               afterSection="properties.section.abstractWidgetDescription.IsEnabledExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractSelectDescription"/>
       </propertySection>
@@ -668,14 +669,14 @@
                id="properties.section.checkboxOverrideDescription.FilterConditionalStylesFromOverriddenCheckboxExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.checkboxoverridedescription.CheckboxOverrideDescriptionFilterConditionalStylesFromOverriddenCheckboxExpressionFilter"
                afterSection="properties.section.checkboxOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.CheckboxOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.checkboxoverridedescription.CheckboxOverrideDescriptionOverridesPropertySection"
                id="properties.section.checkboxOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.checkboxoverridedescription.CheckboxOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.CheckboxOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -683,21 +684,21 @@
                id="properties.section.abstractCheckboxDescription.FilterConditionalStylesFromExtendedCheckboxExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractcheckboxdescription.AbstractCheckboxDescriptionFilterConditionalStylesFromExtendedCheckboxExpressionFilter"
                afterSection="properties.section.abstractCheckboxDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractCheckboxDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractcheckboxdescription.AbstractCheckboxDescriptionExtendsPropertySection"
                id="properties.section.abstractCheckboxDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractcheckboxdescription.AbstractCheckboxDescriptionExtendsFilter"
-               afterSection="properties.section.abstractCheckboxDescription.ValueExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractCheckboxDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractcheckboxdescription.AbstractCheckboxDescriptionValueExpressionPropertySection"
                id="properties.section.abstractCheckboxDescription.ValueExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractcheckboxdescription.AbstractCheckboxDescriptionValueExpressionFilter"
+               afterSection="properties.section.abstractWidgetDescription.IsEnabledExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractCheckboxDescription"/>
       </propertySection>
@@ -706,7 +707,7 @@
                id="properties.section.labelOverrideDescription.FilterActionsFromOverriddenLabelExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labeloverridedescription.LabelOverrideDescriptionFilterActionsFromOverriddenLabelExpressionFilter"
                afterSection="properties.section.labelOverrideDescription.FilterConditionalStylesFromOverriddenLabelExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.LabelOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -714,14 +715,14 @@
                id="properties.section.labelOverrideDescription.FilterConditionalStylesFromOverriddenLabelExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labeloverridedescription.LabelOverrideDescriptionFilterConditionalStylesFromOverriddenLabelExpressionFilter"
                afterSection="properties.section.labelOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.LabelOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.labeloverridedescription.LabelOverrideDescriptionOverridesPropertySection"
                id="properties.section.labelOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labeloverridedescription.LabelOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.LabelOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -729,7 +730,7 @@
                id="properties.section.abstractLabelDescription.FilterActionsFromExtendedLabelExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractlabeldescription.AbstractLabelDescriptionFilterActionsFromExtendedLabelExpressionFilter"
                afterSection="properties.section.abstractLabelDescription.FilterConditionalStylesFromExtendedLabelExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractLabelDescription"/>
       </propertySection>
   	  <propertySection
@@ -737,15 +738,14 @@
                id="properties.section.abstractLabelDescription.FilterConditionalStylesFromExtendedLabelExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractlabeldescription.AbstractLabelDescriptionFilterConditionalStylesFromExtendedLabelExpressionFilter"
                afterSection="properties.section.abstractLabelDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractLabelDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractlabeldescription.AbstractLabelDescriptionExtendsPropertySection"
                id="properties.section.abstractLabelDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractlabeldescription.AbstractLabelDescriptionExtendsFilter"
-               afterSection="properties.section.abstractLabelDescription.DisplayExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractLabelDescription"/>
       </propertySection>
   	  <propertySection
@@ -760,6 +760,7 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractlabeldescription.AbstractLabelDescriptionValueExpressionPropertySection"
                id="properties.section.abstractLabelDescription.ValueExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractlabeldescription.AbstractLabelDescriptionValueExpressionFilter"
+               afterSection="properties.section.abstractWidgetDescription.IsEnabledExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractLabelDescription"/>
       </propertySection>
@@ -768,14 +769,14 @@
                id="properties.section.buttonOverrideDescription.FilterConditionalStylesFromOverriddenButtonExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.buttonoverridedescription.ButtonOverrideDescriptionFilterConditionalStylesFromOverriddenButtonExpressionFilter"
                afterSection="properties.section.buttonOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.ButtonOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.buttonoverridedescription.ButtonOverrideDescriptionOverridesPropertySection"
                id="properties.section.buttonOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.buttonoverridedescription.ButtonOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.ButtonOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -783,21 +784,21 @@
                id="properties.section.abstractButtonDescription.FilterConditionalStylesFromExtendedButtonExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractbuttondescription.AbstractButtonDescriptionFilterConditionalStylesFromExtendedButtonExpressionFilter"
                afterSection="properties.section.abstractButtonDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractButtonDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractbuttondescription.AbstractButtonDescriptionExtendsPropertySection"
                id="properties.section.abstractButtonDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractbuttondescription.AbstractButtonDescriptionExtendsFilter"
-               afterSection="properties.section.abstractButtonDescription.ButtonLabelExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractButtonDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractbuttondescription.AbstractButtonDescriptionButtonLabelExpressionPropertySection"
                id="properties.section.abstractButtonDescription.ButtonLabelExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractbuttondescription.AbstractButtonDescriptionButtonLabelExpressionFilter"
+               afterSection="properties.section.abstractWidgetDescription.IsEnabledExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractButtonDescription"/>
       </propertySection>
@@ -806,14 +807,14 @@
                id="properties.section.textOverrideDescription.FilterConditionalStylesFromOverriddenTextExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textoverridedescription.TextOverrideDescriptionFilterConditionalStylesFromOverriddenTextExpressionFilter"
                afterSection="properties.section.textOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.TextOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.textoverridedescription.TextOverrideDescriptionOverridesPropertySection"
                id="properties.section.textOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textoverridedescription.TextOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.TextOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -821,29 +822,29 @@
                id="properties.section.abstractTextDescription.FilterConditionalStylesFromExtendedTextExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstracttextdescription.AbstractTextDescriptionFilterConditionalStylesFromExtendedTextExpressionFilter"
                afterSection="properties.section.abstractTextDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractTextDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstracttextdescription.AbstractTextDescriptionExtendsPropertySection"
                id="properties.section.abstractTextDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstracttextdescription.AbstractTextDescriptionExtendsFilter"
-               afterSection="properties.section.abstractTextDescription.ValueExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractTextDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstracttextdescription.AbstractTextDescriptionValueExpressionPropertySection"
                id="properties.section.abstractTextDescription.ValueExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstracttextdescription.AbstractTextDescriptionValueExpressionFilter"
+               afterSection="properties.section.abstractWidgetDescription.IsEnabledExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractTextDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractwidgetdescription.AbstractWidgetDescriptionIsEnabledExpressionPropertySection"
-               id="properties.section.abstractWidgetDescription.IsEnabledExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractwidgetdescription.AbstractWidgetDescriptionIsEnabledExpressionFilter"
-               afterSection="properties.section.abstractWidgetDescription.HelpExpression"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractwidgetdescription.AbstractWidgetDescriptionLabelExpressionPropertySection"
+               id="properties.section.abstractWidgetDescription.LabelExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractwidgetdescription.AbstractWidgetDescriptionLabelExpressionFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractWidgetDescription"/>
       </propertySection>
@@ -856,9 +857,10 @@
         <input type="org.eclipse.sirius.properties.AbstractWidgetDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractwidgetdescription.AbstractWidgetDescriptionLabelExpressionPropertySection"
-               id="properties.section.abstractWidgetDescription.LabelExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractwidgetdescription.AbstractWidgetDescriptionLabelExpressionFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractwidgetdescription.AbstractWidgetDescriptionIsEnabledExpressionPropertySection"
+               id="properties.section.abstractWidgetDescription.IsEnabledExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractwidgetdescription.AbstractWidgetDescriptionIsEnabledExpressionFilter"
+               afterSection="properties.section.abstractWidgetDescription.HelpExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractWidgetDescription"/>
       </propertySection>
@@ -889,14 +891,14 @@
                id="properties.section.containerOverrideDescription.FilterControlsFromOverriddenContainerExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.containeroverridedescription.ContainerOverrideDescriptionFilterControlsFromOverriddenContainerExpressionFilter"
                afterSection="properties.section.containerOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.ContainerOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.containeroverridedescription.ContainerOverrideDescriptionOverridesPropertySection"
                id="properties.section.containerOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.containeroverridedescription.ContainerOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.ContainerOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -904,14 +906,14 @@
                id="properties.section.abstractContainerDescription.FilterControlsFromExtendedContainerExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractcontainerdescription.AbstractContainerDescriptionFilterControlsFromExtendedContainerExpressionFilter"
                afterSection="properties.section.abstractContainerDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractContainerDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractcontainerdescription.AbstractContainerDescriptionExtendsPropertySection"
                id="properties.section.abstractContainerDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractcontainerdescription.AbstractContainerDescriptionExtendsFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractContainerDescription"/>
       </propertySection>
   	  <propertySection
@@ -919,7 +921,7 @@
                id="properties.section.groupOverrideDescription.FilterConditionalStylesFromOverriddenGroupExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupoverridedescription.GroupOverrideDescriptionFilterConditionalStylesFromOverriddenGroupExpressionFilter"
                afterSection="properties.section.groupOverrideDescription.FilterValidationRulesFromOverriddenGroupExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.GroupOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -927,7 +929,7 @@
                id="properties.section.groupOverrideDescription.FilterValidationRulesFromOverriddenGroupExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupoverridedescription.GroupOverrideDescriptionFilterValidationRulesFromOverriddenGroupExpressionFilter"
                afterSection="properties.section.groupOverrideDescription.FilterControlsFromOverriddenGroupExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.GroupOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -935,14 +937,14 @@
                id="properties.section.groupOverrideDescription.FilterControlsFromOverriddenGroupExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupoverridedescription.GroupOverrideDescriptionFilterControlsFromOverriddenGroupExpressionFilter"
                afterSection="properties.section.groupOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.GroupOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupoverridedescription.GroupOverrideDescriptionOverridesPropertySection"
                id="properties.section.groupOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupoverridedescription.GroupOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.GroupOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -950,7 +952,7 @@
                id="properties.section.abstractGroupDescription.FilterConditionalStylesFromExtendedGroupExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractgroupdescription.AbstractGroupDescriptionFilterConditionalStylesFromExtendedGroupExpressionFilter"
                afterSection="properties.section.abstractGroupDescription.FilterValidationRulesFromExtendedGroupExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractGroupDescription"/>
       </propertySection>
   	  <propertySection
@@ -958,7 +960,7 @@
                id="properties.section.abstractGroupDescription.FilterValidationRulesFromExtendedGroupExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractgroupdescription.AbstractGroupDescriptionFilterValidationRulesFromExtendedGroupExpressionFilter"
                afterSection="properties.section.abstractGroupDescription.FilterControlsFromExtendedGroupExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractGroupDescription"/>
       </propertySection>
   	  <propertySection
@@ -966,22 +968,21 @@
                id="properties.section.abstractGroupDescription.FilterControlsFromExtendedGroupExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractgroupdescription.AbstractGroupDescriptionFilterControlsFromExtendedGroupExpressionFilter"
                afterSection="properties.section.abstractGroupDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractGroupDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractgroupdescription.AbstractGroupDescriptionExtendsPropertySection"
                id="properties.section.abstractGroupDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractgroupdescription.AbstractGroupDescriptionExtendsFilter"
-               afterSection="properties.section.abstractGroupDescription.PreconditionExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractGroupDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractgroupdescription.AbstractGroupDescriptionPreconditionExpressionPropertySection"
-               id="properties.section.abstractGroupDescription.PreconditionExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractgroupdescription.AbstractGroupDescriptionPreconditionExpressionFilter"
-               afterSection="properties.section.abstractGroupDescription.SemanticCandidateExpression"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractgroupdescription.AbstractGroupDescriptionDomainClassPropertySection"
+               id="properties.section.abstractGroupDescription.DomainClass"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractgroupdescription.AbstractGroupDescriptionDomainClassFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractGroupDescription"/>
       </propertySection>
@@ -994,10 +995,10 @@
         <input type="org.eclipse.sirius.properties.AbstractGroupDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractgroupdescription.AbstractGroupDescriptionDomainClassPropertySection"
-               id="properties.section.abstractGroupDescription.DomainClass"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractgroupdescription.AbstractGroupDescriptionDomainClassFilter"
-               afterSection="properties.section.abstractGroupDescription.LabelExpression"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractgroupdescription.AbstractGroupDescriptionPreconditionExpressionPropertySection"
+               id="properties.section.abstractGroupDescription.PreconditionExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractgroupdescription.AbstractGroupDescriptionPreconditionExpressionFilter"
+               afterSection="properties.section.abstractGroupDescription.SemanticCandidateExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractGroupDescription"/>
       </propertySection>
@@ -1005,6 +1006,7 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractgroupdescription.AbstractGroupDescriptionLabelExpressionPropertySection"
                id="properties.section.abstractGroupDescription.LabelExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractgroupdescription.AbstractGroupDescriptionLabelExpressionFilter"
+               afterSection="properties.section.abstractGroupDescription.PreconditionExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractGroupDescription"/>
       </propertySection>
@@ -1020,7 +1022,7 @@
                id="properties.section.pageOverrideDescription.FilterValidationRulesFromOverriddenPageExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pageoverridedescription.PageOverrideDescriptionFilterValidationRulesFromOverriddenPageExpressionFilter"
                afterSection="properties.section.pageOverrideDescription.FilterGroupsFromOverriddenPageExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.PageOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -1028,14 +1030,14 @@
                id="properties.section.pageOverrideDescription.FilterGroupsFromOverriddenPageExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pageoverridedescription.PageOverrideDescriptionFilterGroupsFromOverriddenPageExpressionFilter"
                afterSection="properties.section.pageOverrideDescription.Overrides"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.PageOverrideDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.pageoverridedescription.PageOverrideDescriptionOverridesPropertySection"
                id="properties.section.pageOverrideDescription.Overrides"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pageoverridedescription.PageOverrideDescriptionOverridesFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.overrides">
         <input type="org.eclipse.sirius.properties.PageOverrideDescription"/>
       </propertySection>
   	  <propertySection
@@ -1043,7 +1045,7 @@
                id="properties.section.abstractPageDescription.FilterValidationRulesFromExtendedPageExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractpagedescription.AbstractPageDescriptionFilterValidationRulesFromExtendedPageExpressionFilter"
                afterSection="properties.section.abstractPageDescription.FilterGroupsFromExtendedPageExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractPageDescription"/>
       </propertySection>
   	  <propertySection
@@ -1051,30 +1053,21 @@
                id="properties.section.abstractPageDescription.FilterGroupsFromExtendedPageExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractpagedescription.AbstractPageDescriptionFilterGroupsFromExtendedPageExpressionFilter"
                afterSection="properties.section.abstractPageDescription.Extends"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractPageDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractpagedescription.AbstractPageDescriptionExtendsPropertySection"
                id="properties.section.abstractPageDescription.Extends"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractpagedescription.AbstractPageDescriptionExtendsFilter"
-               afterSection="properties.section.abstractPageDescription.Groups"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.extends">
         <input type="org.eclipse.sirius.properties.AbstractPageDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractpagedescription.AbstractPageDescriptionGroupsPropertySection"
-               id="properties.section.abstractPageDescription.Groups"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractpagedescription.AbstractPageDescriptionGroupsFilter"
-               afterSection="properties.section.abstractPageDescription.PreconditionExpression"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.AbstractPageDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractpagedescription.AbstractPageDescriptionPreconditionExpressionPropertySection"
-               id="properties.section.abstractPageDescription.PreconditionExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractpagedescription.AbstractPageDescriptionPreconditionExpressionFilter"
-               afterSection="properties.section.abstractPageDescription.SemanticCandidateExpression"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractpagedescription.AbstractPageDescriptionDomainClassPropertySection"
+               id="properties.section.abstractPageDescription.DomainClass"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractpagedescription.AbstractPageDescriptionDomainClassFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractPageDescription"/>
       </propertySection>
@@ -1087,10 +1080,10 @@
         <input type="org.eclipse.sirius.properties.AbstractPageDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractpagedescription.AbstractPageDescriptionDomainClassPropertySection"
-               id="properties.section.abstractPageDescription.DomainClass"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractpagedescription.AbstractPageDescriptionDomainClassFilter"
-               afterSection="properties.section.abstractPageDescription.LabelExpression"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractpagedescription.AbstractPageDescriptionPreconditionExpressionPropertySection"
+               id="properties.section.abstractPageDescription.PreconditionExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractpagedescription.AbstractPageDescriptionPreconditionExpressionFilter"
+               afterSection="properties.section.abstractPageDescription.SemanticCandidateExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractPageDescription"/>
       </propertySection>
@@ -1098,15 +1091,23 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractpagedescription.AbstractPageDescriptionLabelExpressionPropertySection"
                id="properties.section.abstractPageDescription.LabelExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractpagedescription.AbstractPageDescriptionLabelExpressionFilter"
+               afterSection="properties.section.abstractPageDescription.PreconditionExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractPageDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.viewextensiondescription.ViewExtensionDescriptionMetamodelsPropertySection"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractpagedescription.AbstractPageDescriptionGroupsPropertySection"
+               id="properties.section.abstractPageDescription.Groups"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractpagedescription.AbstractPageDescriptionGroupsFilter"
+               afterSection="properties.section.abstractPageDescription.LabelExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.AbstractPageDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.viewextensiondescription.ViewExtensionDescriptionMetamodelsPropertySectionSpec"
                id="properties.section.viewExtensionDescription.Metamodels"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.viewextensiondescription.ViewExtensionDescriptionMetamodelsFilter"
-               afterSection="description.section.identifiedElement.Label"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.metamodels">
         <input type="org.eclipse.sirius.properties.ViewExtensionDescription"/>
       </propertySection>
   	<!-- Start of user code propertySections of org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor  -->
@@ -1120,6 +1121,8 @@
     <propertyTabs contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
       <propertyTab category="default" id="viewpoint.tab.label" label="%viewpoint.tab.label.name" afterTab="viewpoint.tab.general"/>
       <propertyTab category="default" id="viewpoint.tab.widget" label="%viewpoint.tab.widget.name" afterTab="viewpoint.tab.label"/>
+      <propertyTab category="default" id="viewpoint.tab.extends" label="%viewpoint.tab.extends.name" afterTab="viewpoint.tab.documentation"/>
+      <propertyTab category="default" id="viewpoint.tab.overrides" label="%viewpoint.tab.overrides.name" afterTab="viewpoint.tab.extends"/>
     </propertyTabs>
   </extension>
   <extension point="org.eclipse.sirius.editor.menuBuilder">
@@ -1139,6 +1142,7 @@
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.CustomOperationMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.CustomExpressionMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.WidgetActionMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.DialogButtonMenuBuilder" />
   </extension>
 </plugin>    
 <!-- End of user code plugin.xml end specifics  -->

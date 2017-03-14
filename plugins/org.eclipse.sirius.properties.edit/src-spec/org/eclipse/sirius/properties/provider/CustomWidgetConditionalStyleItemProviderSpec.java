@@ -12,7 +12,7 @@
 package org.eclipse.sirius.properties.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
+import org.eclipse.emf.edit.provider.StyledString;
 
 /**
  * Subclass used to not have to modify the generated code.
@@ -33,9 +33,16 @@ public class CustomWidgetConditionalStyleItemProviderSpec extends CustomWidgetCo
 
     @Override
     public String getText(Object object) {
-        String label = ((CustomWidgetConditionalStyle) object).getPreconditionExpression();
-        return label == null || label.length() == 0 ? getString("_UI_CustomWidgetConditionalStyle_type") : //$NON-NLS-1$
-                label;
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
+        return Utils.computeLabel(this, object, "_UI_CustomWidgetConditionalStyle_type"); //$NON-NLS-1$
     }
 
 }

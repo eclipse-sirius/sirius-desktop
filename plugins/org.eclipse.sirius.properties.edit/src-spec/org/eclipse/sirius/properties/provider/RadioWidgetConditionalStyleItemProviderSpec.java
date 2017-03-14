@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
 package org.eclipse.sirius.properties.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
+import org.eclipse.emf.edit.provider.StyledString;
 
 /**
  * Subclass used to not have to modify the generated code.
@@ -33,9 +33,16 @@ public class RadioWidgetConditionalStyleItemProviderSpec extends RadioWidgetCond
 
     @Override
     public String getText(Object object) {
-        String label = ((RadioWidgetConditionalStyle) object).getPreconditionExpression();
-        return label == null || label.length() == 0 ? getString("_UI_RadioWidgetConditionalStyle_type") : //$NON-NLS-1$
-                label;
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
+        return Utils.computeLabel(this, object, "_UI_RadioWidgetConditionalStyle_type"); //$NON-NLS-1$
     }
 
 }

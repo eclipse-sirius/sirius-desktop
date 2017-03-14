@@ -97,6 +97,11 @@ public final class PropertiesMenuBuilderConstants {
     public static final int CUSTOM_OPERATION;
 
     /**
+     * The priority of the dualog buttons.
+     */
+    public static final int DIALOG_BUTTON;
+
+    /**
      * The default priority.
      */
     public static final int DEFAULT_PRIORITY = 100000;
@@ -125,6 +130,7 @@ public final class PropertiesMenuBuilderConstants {
         WIDGET_ACTION = getPriority(rl, "WidgetActionMenuPriority");
         CUSTOM_EXPRESSION = getPriority(rl, "CustomExpressionMenuPriority");
         CUSTOM_OPERATION = getPriority(rl, "CustomOperationMenuPriority");
+        DIALOG_BUTTON = getPriority(rl, "DialogButtonMenuPriority");
     }
 
     /**
@@ -134,8 +140,7 @@ public final class PropertiesMenuBuilderConstants {
      *            The resource locator
      * @param id
      *            The identifier of the property
-     * @return The priority of the property or the DEFAULT_PRIORITY in case of
-     *         error.
+     * @return The priority of the property or the DEFAULT_PRIORITY in case of error.
      */
     private static int getPriority(ResourceLocator rl, String id) {
         try {

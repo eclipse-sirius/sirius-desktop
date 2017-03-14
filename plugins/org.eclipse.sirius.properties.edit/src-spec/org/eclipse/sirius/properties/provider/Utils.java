@@ -21,6 +21,8 @@ import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.emf.edit.provider.StyledString.Style;
+import org.eclipse.sirius.properties.WidgetConditionalStyle;
+import org.eclipse.sirius.properties.WidgetStyle;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
@@ -58,25 +60,84 @@ public final class Utils {
      * @return The label or <code>null</code> if it is undefined
      */
     public static StyledString computeLabel(ItemProviderAdapter itemProviderAdapter, Object object, String defaultLabelKey) {
+        StyledString styledString = new StyledString();
         if (object instanceof IdentifiedElement) {
             IdentifiedElement identifiedElement = (IdentifiedElement) object;
-
-            String label = Optional.ofNullable(identifiedElement.getLabel()).orElse(""); //$NON-NLS-1$
-            if (label.isEmpty()) {
-                label = Optional.ofNullable(identifiedElement.getName()).filter(id -> !id.isEmpty()).orElse(itemProviderAdapter.getString(defaultLabelKey));
-            }
-            StyledString styledString = new StyledString(label);
-
-            EStructuralFeature eStructuralFeature = identifiedElement.eClass().getEStructuralFeature("extends"); //$NON-NLS-1$
-            if (eStructuralFeature instanceof EReference && identifiedElement.eIsSet(eStructuralFeature)) {
-                Object extendsValue = identifiedElement.eGet(eStructuralFeature);
-                styledString.append(" extends ", KEYWORD_STYLE); //$NON-NLS-1$
-                styledString.append(Utils.computeSimpleLabel(itemProviderAdapter, extendsValue));
-            }
-
-            return styledString;
+            styledString = Utils.computeIdentifiedElementLabel(itemProviderAdapter, identifiedElement, defaultLabelKey);
+        } else if (object instanceof WidgetConditionalStyle) {
+            WidgetConditionalStyle widgetConditionalStyle = (WidgetConditionalStyle) object;
+            styledString = Utils.computeWidgetConditionalStyleLabel(itemProviderAdapter, widgetConditionalStyle, defaultLabelKey);
+        } else if (object instanceof WidgetStyle) {
+            WidgetStyle widgetStyle = (WidgetStyle) object;
+            styledString = Utils.computeWidgetStyleLabel(itemProviderAdapter, widgetStyle, defaultLabelKey);
         }
-        return new StyledString();
+        return styledString;
+    }
+
+    /**
+     * Computes the label of the given identified element.
+     * 
+     * @param itemProviderAdapter
+     *            The {@link ItemProviderAdapter}
+     * @param identifiedElement
+     *            The Identified Element
+     * @param defaultLabelKey
+     *            The default label key
+     * @return The label of the element
+     */
+    private static StyledString computeIdentifiedElementLabel(ItemProviderAdapter itemProviderAdapter, IdentifiedElement identifiedElement, String defaultLabelKey) {
+        String label = Optional.ofNullable(identifiedElement.getLabel()).orElse(""); //$NON-NLS-1$
+        if (label.isEmpty()) {
+            label = Optional.ofNullable(identifiedElement.getName()).filter(id -> !id.isEmpty()).orElse(itemProviderAdapter.getString(defaultLabelKey));
+        }
+        StyledString styledString = new StyledString(label);
+
+        EStructuralFeature eStructuralFeature = identifiedElement.eClass().getEStructuralFeature("extends"); //$NON-NLS-1$
+        if (eStructuralFeature instanceof EReference && identifiedElement.eIsSet(eStructuralFeature)) {
+            Object extendsValue = identifiedElement.eGet(eStructuralFeature);
+            styledString.append(" extends ", KEYWORD_STYLE); //$NON-NLS-1$
+            styledString.append(Utils.computeSimpleLabel(itemProviderAdapter, extendsValue));
+        }
+
+        return styledString;
+    }
+
+    /**
+     * Computes the label of the given identified element.
+     * 
+     * @param itemProviderAdapter
+     *            The {@link ItemProviderAdapter}
+     * @param widgetConditionalStyle
+     *            The widget conditional style
+     * @param defaultLabelKey
+     *            The default label key
+     * @return The label of the element
+     */
+    private static StyledString computeWidgetConditionalStyleLabel(ItemProviderAdapter itemProviderAdapter, WidgetConditionalStyle widgetConditionalStyle, String defaultLabelKey) {
+        String label = Optional.ofNullable(widgetConditionalStyle.getPreconditionExpression()).orElse(""); //$NON-NLS-1$
+        if (label.isEmpty()) {
+            label = itemProviderAdapter.getString(defaultLabelKey);
+        }
+        return new StyledString(label);
+    }
+
+    /**
+     * Computes the label of the given identified element.
+     * 
+     * @param itemProviderAdapter
+     *            The {@link ItemProviderAdapter}
+     * @param widgetStyle
+     *            The widget style
+     * @param defaultLabelKey
+     *            The default label key
+     * @return The label of the element
+     */
+    private static StyledString computeWidgetStyleLabel(ItemProviderAdapter itemProviderAdapter, WidgetStyle widgetStyle, String defaultLabelKey) {
+        String label = Optional.ofNullable(widgetStyle.getLabelFontNameExpression()).orElse(""); //$NON-NLS-1$
+        if (label.isEmpty()) {
+            label = itemProviderAdapter.getString(defaultLabelKey);
+        }
+        return new StyledString(label);
     }
 
     /**
@@ -101,8 +162,7 @@ public final class Utils {
     }
 
     /**
-     * Add default "Begin" operations with a no-op navigation to the specific
-     * element.
+     * Add default "Begin" operations with a no-op navigation to the specific element.
      *
      * @param child
      *            a newly created child.

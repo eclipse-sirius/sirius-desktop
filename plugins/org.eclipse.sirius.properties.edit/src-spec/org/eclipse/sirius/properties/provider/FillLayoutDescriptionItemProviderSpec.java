@@ -11,7 +11,10 @@
  */
 package org.eclipse.sirius.properties.provider;
 
+import java.util.Optional;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION;
 import org.eclipse.sirius.properties.FillLayoutDescription;
 
@@ -44,10 +47,21 @@ public class FillLayoutDescriptionItemProviderSpec extends FillLayoutDescription
 
     @Override
     public String getText(Object object) {
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
         FILL_LAYOUT_ORIENTATION labelValue = ((FillLayoutDescription) object).getOrientation();
-        String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_FillLayoutDescription_type") : //$NON-NLS-1$
-                label;
+        String label = Optional.ofNullable(labelValue).map(Object::toString).orElse(""); //$NON-NLS-1$
+        if (!label.isEmpty()) {
+            label = this.getString("_UI_FillLayoutDescription_type"); //$NON-NLS-1$
+        }
+        return new StyledString(label);
     }
 
 }

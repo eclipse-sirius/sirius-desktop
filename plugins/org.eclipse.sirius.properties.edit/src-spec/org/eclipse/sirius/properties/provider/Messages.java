@@ -36,6 +36,9 @@ public final class Messages {
     @TranslatableMessage
     public static String GroupDescription__name;
 
+    @TranslatableMessage
+    public static String GridLayoutDescription__label;
+
     // CHECKSTYLE:ON
 
     private Messages() {

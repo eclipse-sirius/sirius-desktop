@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,10 @@
  */
 package org.eclipse.sirius.properties.provider;
 
+import java.util.Optional;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 
 /**
@@ -33,8 +36,20 @@ public class PropertyValidationRuleItemProviderSpec extends PropertyValidationRu
 
     @Override
     public String getText(Object object) {
-        String label = ((PropertyValidationRule) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_PropertyValidationRule_type") : //$NON-NLS-1$
-                label;
+        Object styledText = this.getStyledText(object);
+        if (styledText instanceof StyledString) {
+            return ((StyledString) styledText).getString();
+        }
+        return super.getText(object);
+    }
+
+    @Override
+    public Object getStyledText(Object object) {
+        PropertyValidationRule propertyValidationRule = (PropertyValidationRule) object;
+        String label = Optional.ofNullable(propertyValidationRule.getName()).orElse(""); //$NON-NLS-1$
+        if (label.isEmpty()) {
+            label = this.getString("_UI_PropertyValidationRule_type"); //$NON-NLS-1$
+        }
+        return new StyledString(label);
     }
 }

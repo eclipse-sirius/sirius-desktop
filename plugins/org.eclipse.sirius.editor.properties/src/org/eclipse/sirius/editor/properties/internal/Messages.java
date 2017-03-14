@@ -115,6 +115,9 @@ public final class Messages {
     @TranslatableMessage
     public static String CustomExpressionMenuBuilder_label;
 
+    @TranslatableMessage
+    public static String DialogButtonMenuBuilder_label;
+
     // CHECKSTYLE:ON
 
     private Messages() {

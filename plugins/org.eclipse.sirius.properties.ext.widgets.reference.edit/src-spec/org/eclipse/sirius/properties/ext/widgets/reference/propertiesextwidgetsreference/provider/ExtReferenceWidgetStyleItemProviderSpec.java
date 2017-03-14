@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016, 2017 Obeo.
+ * Copyright (c) 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,25 +9,26 @@
  *    Obeo - initial API and implementation
  *
  */
-package org.eclipse.sirius.properties.provider;
+package org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.StyledString;
+import org.eclipse.sirius.properties.provider.Utils;
 
 /**
- * Subclass used to not have to modify the generated code.
- *
+ * This class has been created to modify the generated code.
+ * 
  * @author sbegaudeau
  */
-public class ButtonWidgetStyleItemProviderSpec extends ButtonWidgetStyleItemProvider {
+public class ExtReferenceWidgetStyleItemProviderSpec extends ExtReferenceWidgetStyleItemProvider {
 
     /**
      * The constructor.
-     *
+     * 
      * @param adapterFactory
-     *            The adapter factory
+     *            Adapter factory
      */
-    public ButtonWidgetStyleItemProviderSpec(AdapterFactory adapterFactory) {
+    public ExtReferenceWidgetStyleItemProviderSpec(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -42,6 +43,6 @@ public class ButtonWidgetStyleItemProviderSpec extends ButtonWidgetStyleItemProv
 
     @Override
     public Object getStyledText(Object object) {
-        return Utils.computeLabel(this, object, "_UI_ButtonWidgetStyle_type"); //$NON-NLS-1$
+        return Utils.computeLabel(this, object, "_UI_ExtReferenceWidgetStyle_type"); //$NON-NLS-1$
     }
 }

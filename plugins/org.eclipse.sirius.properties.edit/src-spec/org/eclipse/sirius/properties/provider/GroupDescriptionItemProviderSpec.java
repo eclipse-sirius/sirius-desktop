@@ -14,6 +14,7 @@ package org.eclipse.sirius.properties.provider;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.sirius.properties.DynamicMappingForDescription;
 import org.eclipse.sirius.properties.GroupConditionalStyle;
@@ -86,6 +87,12 @@ public class GroupDescriptionItemProviderSpec extends GroupDescriptionItemProvid
         GroupConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createGroupConditionalStyle();
         conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createGroupStyle());
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_GROUP_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
+    }
+
+    @Override
+    protected CommandParameter createChildParameter(Object feature, Object child) {
+        Utils.addNoopNavigationOperations(child);
+        return super.createChildParameter(feature, child);
     }
 
 }
