@@ -123,6 +123,13 @@ Install this if you need to use Sirius-based modelers or create new ones.
          version="0.0.0"
          unpack="false"/>
          
+    <plugin
+         id="org.eclipse.sirius.ui.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+                 
    <plugin
          id="org.eclipse.sirius.ui.ext"
          download-size="0"
