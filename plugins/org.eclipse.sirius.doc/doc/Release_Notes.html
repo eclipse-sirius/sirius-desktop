@@ -13,7 +13,7 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="#sirius5.0.0">Changes in Sirius 5.0.0</a>
+						<a href="#sirius5.0.0M6">Changes in Sirius 5.0.0M6</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges">User-Visible Changes</a>
@@ -110,9 +110,15 @@
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
-		<h2 id="sirius5.0.0">Changes in Sirius 5.0.0</h2>
+		<h2 id="sirius5.0.0M6">Changes in Sirius 5.0.0M6</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
+			<li><span class="label label-success">Added</span> An new 
+				<em>session editor</em> is available on 
+				<em>.aird</em> files. It provides an alternative, form-based GUI to visualize and manipulate sirius sessions which is not tied to the Modeling perspective or Model Explorer view. Sirius 5.0M6 includes a work-in-progress version of this new feature to encourage early community 
+				<a href="https://wiki.eclipse.org/Sirius/SessionEditor">feedback</a>. That version should be considered in alpha state in terms of stability an UI polish. By default, the new editor will automatically open when a session is opened, but this behavior can be disabled via a new preference in the 
+				<em>Sirius</em> category.
+			</li>
 			<li><span class="label label-info">Modified</span> The export diagram as images actions are now adapting the output resolution based on the diagram size, this leads to better resolution for small to medium diagrams (and also bigger file) and to an operation which is no longer failing with out of memory errors in case of very big diagrams.</li>
 			<li><span class="label label-info">Modified</span>The &#8220;straighten to&#8221; actions previously had a limitation concerning overlap detection. This is no longer the case. The previous known limitation was removed from the documentation (
 				<i>In case of multi-selection, the overlap check is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.</i>).
@@ -132,40 +138,6 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
-			<code>org.eclipse.sirius.ui</code>
-		</h4>
-		<ul>
-			<li><span class="label label-info">Modified</span> The method 
-				<code>org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.createLocalRepresentationsFile(IProject, IProgressMonitor)</code> has its return type changed from 
-				<code>void</code> to 
-				<code>Session</code> to allow callers to have access to the newly created session directly.
-			</li>
-		</ul>
-		<ul>
-			<li><span class="label label-success">Added</span> The method 
-				<code>org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getDefaultFontWithRuntimeSizeAndFromLabelFormat(List&lt;FontFormat&gt;)</code> has been added to allow to retrieve a font using the given format and the default Sirius font (arial) and the runtime height.
-			</li>
-			<li><span class="label label-success">Added</span> The method 
-				<code>org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getFontFromNameAndLabelFormatAndWithDefaultSize(List&lt;FontFormat&gt;, String)</code> has been added to allow to retrieve a font using the given format and the given font name and the runtime height.
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
-			<code>org.eclipse.sirius.diagram</code>
-		</h4>
-		<ul>
-			<li><span class="label label-info">Moved</span> The method 
-				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride.aroundRefresh(DDiagram)</code> has been moved to 
-				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension</code> to unify methods handling refresh extension under one interface. 
-			</li>
-			<li><span class="label label-info">Modified</span> The method 
-				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension.aroundRefresh(DDiagram)</code> has been modified with a default behavior that is the one before introduction of the method to avoid breaking compatibility.
-			</li>
-			<li><span class="label label-danger">Removed</span> The interface 
-				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride</code> has been removed because its only method has been moved into 
-				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension</code> interface
-			</li>
-		</ul>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -231,10 +203,37 @@
 				<code>RepresentationElementIdentifier</code>) have been removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+			<code>org.eclipse.sirius.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getDefaultFontWithRuntimeSizeAndFromLabelFormat(List&lt;FontFormat&gt;)</code> has been added to allow to retrieve a font using the given format and the default Sirius font (arial) and the runtime height.
+			</li>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getFontFromNameAndLabelFormatAndWithDefaultSize(List&lt;FontFormat&gt;, String)</code> has been added to allow to retrieve a font using the given format and the given font name and the runtime height.
+			</li>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.createLocalRepresentationsFile(IProject, IProgressMonitor)</code> has its return type changed from 
+				<code>void</code> to 
+				<code>Session</code> to allow callers to have access to the newly created session directly.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
+			<li><span class="label label-info">Moved</span> The method 
+				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride.aroundRefresh(DDiagram)</code> has been moved to 
+				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension</code> to unify methods handling refresh extension under one interface. 
+			</li>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension.aroundRefresh(DDiagram)</code> has been modified with a default behavior that is the one before introduction of the method to avoid breaking compatibility.
+			</li>
+			<li><span class="label label-danger">Removed</span> The interface 
+				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride</code> has been removed because its only method has been moved into 
+				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension</code> interface
+			</li>
 			<li><span class="label label-danger">Removed</span> The 
 				<code>org.eclipse.sirius.diagram.business.internal.dialect.identifier</code> package and all its content (
 				<code>DiagramIdenttifier</code>, 
@@ -242,15 +241,6 @@
 				<code>EdgeIdentifier</code>, 
 				<code>NodeContainerIdentifier</code>, and 
 				<code>NodeStyleIdentifier</code>) have been removed.
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tree.ui">Changes in 
-			<code>org.eclipse.sirius.tree.ui</code>
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> The enum class for Sirius tree preferences 
-				<code>org.eclipse.sirius.tree.ui.tools.api.preferences.SiriusTreeUiPreferencesKeys</code> has been added with the enum value 
-				<code>SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE</code>. This enum value is the preference when true allowing to use runtime font height when displaying Sirius tree editor&#8217;s items instead of the one specified in the VSM.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
@@ -266,17 +256,13 @@
 				<code>1.0</code> to get back to the previous behavior.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.editor.properties">Changes in 
-			<code>org.eclipse.sirius.editor.properties</code>
+		<h4 id="Changesinorg.eclipse.sirius.tree.ui">Changes in 
+			<code>org.eclipse.sirius.tree.ui</code>
 		</h4>
 		<ul>
-			<li><span class="label label-info">Modified</span> In the package 
-				<code>org.eclipse.sirius.editor.properties.sections.description.representationdescription</code> the class 
-				<code>RepresentationDescriptionMetamodelsUpdater</code> has been replaced by 
-				<code>DescriptionMetamodelsUpdater</code> which can now be used with any EObject with a many-valued EReference to EPackages. The behavior of the class 
-				<code>RepresentationDescriptionMetamodelPropertySectionSpec</code> has been transfered to an abstract class independent of 
-				<code>RepresentationDescription</code> named 
-				<code>AbstractMetamodelPropertySectionSpec</code>. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
+			<li><span class="label label-success">Added</span> The enum class for Sirius tree preferences 
+				<code>org.eclipse.sirius.tree.ui.tools.api.preferences.SiriusTreeUiPreferencesKeys</code> has been added with the enum value 
+				<code>SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE</code>. This enum value is the preference when true allowing to use runtime font height when displaying Sirius tree editor&#8217;s items instead of the one specified in the VSM.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.properties.core">Changes in 
@@ -306,6 +292,19 @@
 		</h4>
 		<ul>
 			<li><span class="label label-info">Modified</span> All the content related to the IDescriptionConverter and ILinkResolver has been moved from the plugin org.eclipse.sirius.ui.properties to the newly created plugin org.eclipse.sirius.properties.core. It includes all the APIs and both extension points.</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.editor.properties">Changes in 
+			<code>org.eclipse.sirius.editor.properties</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> In the package 
+				<code>org.eclipse.sirius.editor.properties.sections.description.representationdescription</code> the class 
+				<code>RepresentationDescriptionMetamodelsUpdater</code> has been replaced by 
+				<code>DescriptionMetamodelsUpdater</code> which can now be used with any EObject with a many-valued EReference to EPackages. The behavior of the class 
+				<code>RepresentationDescriptionMetamodelPropertySectionSpec</code> has been transfered to an abstract class independent of 
+				<code>RepresentationDescription</code> named 
+				<code>AbstractMetamodelPropertySectionSpec</code>. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
@@ -712,7 +711,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>HierarchyLabelProvider</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1138,7 +1137,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus</code> to reflect all kind of language validation severity (of AQL for example).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -2441,7 +2440,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider.bindCompletionProcessor(AbstractPropertySection, Text)</code>, the difference is that it binds the completion processors available in plugins to the text.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>

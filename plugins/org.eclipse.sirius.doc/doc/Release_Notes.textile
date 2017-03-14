@@ -4,10 +4,11 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
-h2(#sirius5.0.0). Changes in Sirius 5.0.0
+h2(#sirius5.0.0M6). Changes in Sirius 5.0.0M6
 
 h3. User-Visible Changes
 
+* <span class="label label-success">Added</span> An new _session editor_ is available on _.aird_ files. It provides an alternative, form-based GUI to visualize and manipulate sirius sessions which is not tied to the Modeling perspective or Model Explorer view. Sirius 5.0M6 includes a work-in-progress version of this new feature to encourage early community "feedback":https://wiki.eclipse.org/Sirius/SessionEditor. That version should be considered in alpha state in terms of stability an UI polish. By default, the new editor will automatically open when a session is opened, but this behavior can be disabled via a new preference in the _Sirius_ category.
 * <span class="label label-info">Modified</span> The export diagram as images actions are now adapting the output resolution based on the diagram size, this leads to better resolution for small to medium diagrams (and also bigger file) and to an operation which is no longer failing with out of memory errors in case of very big diagrams.
 * <span class="label label-info">Modified</span>The "straighten to" actions previously had a limitation concerning overlap detection. This is no longer the case. The previous known limitation was removed from the documentation (__In case of multi-selection, the overlap check is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.__).
 
@@ -19,18 +20,6 @@ h3. Specifier-Visible Changes
 * <span class="label label-info">Modified</span> The @package::Class@ syntax for domain classes and type names in the VSM is now fully supported and the new default. It means this syntax is interpreted by Sirius and completion is provided for it when the first @:@ character is entered. The legacy syntax @package.Class@ is still supported for compatibility.
 
 h3. Developer-Visible Changes
-
-h4. Changes in @org.eclipse.sirius.ui@
-
-* <span class="label label-info">Modified</span> The method @org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.createLocalRepresentationsFile(IProject, IProgressMonitor)@ has its return type changed from @void@ to @Session@ to allow callers to have access to the newly created session directly.
-
-* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getDefaultFontWithRuntimeSizeAndFromLabelFormat(List<FontFormat>)@ has been added to allow to retrieve a font using the given format and the default Sirius font (arial) and the runtime height.
-* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getFontFromNameAndLabelFormatAndWithDefaultSize(List<FontFormat>, String)@ has been added to allow to retrieve a font using the given format and the given font name and the runtime height.
-h4. Changes in @org.eclipse.sirius.diagram@
-
-* <span class="label label-info">Moved</span> The method @org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride.aroundRefresh(DDiagram)@ has been moved to @org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension@ to unify methods handling refresh extension under one interface. 
-* <span class="label label-info">Modified</span> The method @org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension.aroundRefresh(DDiagram)@ has been modified with a default behavior that is the one before introduction of the method to avoid breaking compatibility.
-* <span class="label label-danger">Removed</span> The interface @org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride@ has been removed because its only method has been moved into @org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension@ interface
 
 h4. Changes in @org.eclipse.sirius@
 
@@ -46,21 +35,26 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-danger">Removed</span> In @org.eclipse.sirius.business.api.dialect.DialectServices@, methods @canCreateIdentifier@ and @createIdentifier@ have been removed.
 * <span class="label label-danger">Removed</span> The @org.eclipse.sirius.business.api.dialect.identifier@ package and all its content (@AbstractRepresentationElementIdentifier@ and @RepresentationElementIdentifier@) have been removed.
 
+h4. Changes in @org.eclipse.sirius.ui@
+
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getDefaultFontWithRuntimeSizeAndFromLabelFormat(List<FontFormat>)@ has been added to allow to retrieve a font using the given format and the default Sirius font (arial) and the runtime height.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getFontFromNameAndLabelFormatAndWithDefaultSize(List<FontFormat>, String)@ has been added to allow to retrieve a font using the given format and the given font name and the runtime height.
+* <span class="label label-info">Modified</span> The method @org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.createLocalRepresentationsFile(IProject, IProgressMonitor)@ has its return type changed from @void@ to @Session@ to allow callers to have access to the newly created session directly.
+
 h4. Changes in @org.eclipse.sirius.diagram@
 
+* <span class="label label-info">Moved</span> The method @org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride.aroundRefresh(DDiagram)@ has been moved to @org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension@ to unify methods handling refresh extension under one interface. 
+* <span class="label label-info">Modified</span> The method @org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension.aroundRefresh(DDiagram)@ has been modified with a default behavior that is the one before introduction of the method to avoid breaking compatibility.
+* <span class="label label-danger">Removed</span> The interface @org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride@ has been removed because its only method has been moved into @org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension@ interface
 * <span class="label label-danger">Removed</span> The @org.eclipse.sirius.diagram.business.internal.dialect.identifier@ package and all its content (@DiagramIdenttifier@, @NodeIdentifier@, @EdgeIdentifier@, @NodeContainerIdentifier@, and @NodeStyleIdentifier@) have been removed.
-
-h4. Changes in @org.eclipse.sirius.tree.ui@
-
-* <span class="label label-success">Added</span> The enum class for Sirius tree preferences @org.eclipse.sirius.tree.ui.tools.api.preferences.SiriusTreeUiPreferencesKeys@ has been added with the enum value @SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE@. This enum value is the preference when true allowing to use runtime font height when displaying Sirius tree editor's items instead of the one specified in the VSM.
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-info">Modified</span> The  @org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.DiagramEditPartService@ class which can be used to export diagrams as images is now automatically adapting the output resolution for raster image based on maximum buffer size specified through the @plugin.propeties@ file of the @org.eclipse.sirius.diagram.ui@ plugin. This leads to a noticeable increase of the export image size (you can expect a 10 factor on small diagrams) and the method will no longer fail with OutOfMemory errors as bigger diagrams will lead to a lower output resolution. Implementers using this class can override the @DiagramEditPartService.getMaximumTotalSize()@ method to return their own limit or @DiagramEditPartService.getExportResolutionFactor(DiagramEditPart, SiriusDiagramImageGenerator)@  and return @1.0@ to get back to the previous behavior.
 
-h4. Changes in @org.eclipse.sirius.editor.properties@
+h4. Changes in @org.eclipse.sirius.tree.ui@
 
-* <span class="label label-info">Modified</span> In the package @org.eclipse.sirius.editor.properties.sections.description.representationdescription@ the class @RepresentationDescriptionMetamodelsUpdater@ has been replaced by @DescriptionMetamodelsUpdater@ which can now be used with any EObject with a many-valued EReference to EPackages. The behavior of the class @RepresentationDescriptionMetamodelPropertySectionSpec@ has been transfered to an abstract class independent of @RepresentationDescription@ named @AbstractMetamodelPropertySectionSpec@. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
+* <span class="label label-success">Added</span> The enum class for Sirius tree preferences @org.eclipse.sirius.tree.ui.tools.api.preferences.SiriusTreeUiPreferencesKeys@ has been added with the enum value @SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE@. This enum value is the preference when true allowing to use runtime font height when displaying Sirius tree editor's items instead of the one specified in the VSM.
 
 h4. Changes in @org.eclipse.sirius.properties.core@
 
@@ -69,11 +63,15 @@ h4. Changes in @org.eclipse.sirius.properties.core@
 * <span class="label label-success">Added</span> The class @org.eclipse.sirius.properties.core.internal.SiriusInterpreter@ has been moved as an API to @org.eclipse.sirius.properties.core.api.SiriusInterpreter@. This class could be used by those who want to create custom model operations using the Properties framework.
 * <span class="label label-success">Added</span> The class @org.eclipse.sirius.properties.core.api.SiriusDomainClassTester@ has been added as an API for those who want to create custom model operations using the Properties framework.
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ext.emf.edit.EditingDomainServices.createInstance(EClass)@ has been added to allow the creation of a new instance from an EClass in the interpreters. 
- 
 
 h4. Changes in @org.eclipse.sirius.ui.properties@
 
 * <span class="label label-info">Modified</span> All the content related to the IDescriptionConverter and ILinkResolver has been moved from the plugin org.eclipse.sirius.ui.properties to the newly created plugin org.eclipse.sirius.properties.core. It includes all the APIs and both extension points.
+
+h4. Changes in @org.eclipse.sirius.editor.properties@
+
+* <span class="label label-info">Modified</span> In the package @org.eclipse.sirius.editor.properties.sections.description.representationdescription@ the class @RepresentationDescriptionMetamodelsUpdater@ has been replaced by @DescriptionMetamodelsUpdater@ which can now be used with any EObject with a many-valued EReference to EPackages. The behavior of the class @RepresentationDescriptionMetamodelPropertySectionSpec@ has been transfered to an abstract class independent of @RepresentationDescription@ named @AbstractMetamodelPropertySectionSpec@. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
+ 
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
