@@ -266,7 +266,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         modelTree = SWTUtil.createFilteredTree(parent, SWT.BORDER, new org.eclipse.ui.dialogs.PatternFilter());
         TreeViewer theTreeViewer = modelTree.getViewer();
         final GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
-        gridData.widthHint = 250;
+        gridData.widthHint = 450;
         theTreeViewer.getControl().setLayoutData(gridData);
         theTreeViewer.getTree().setHeaderVisible(false);
         theTreeViewer.getTree().setLinesVisible(false);

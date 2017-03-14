@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.editor.internal.pages;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.MessageFormat;
 import java.util.stream.Collectors;
 
@@ -21,6 +23,7 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.editor.SessionEditor;
+import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalRepresentationHandler;
 import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalSemanticModelsHandler;
 import org.eclipse.sirius.ui.tools.internal.viewpoint.DynamicViewpointsSelectionComponent;
@@ -28,11 +31,14 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormPage;
+import org.eclipse.ui.forms.events.HyperlinkEvent;
+import org.eclipse.ui.forms.events.IHyperlinkListener;
 import org.eclipse.ui.forms.widgets.ExpandableComposite;
+import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
@@ -67,7 +73,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
     /**
      * Label used to provides information regarding editor's context.
      */
-    private Label informativeLabel;
+    private FormText informativeLabel;
 
     /**
      * This graphical component provides a viewer showing all semantic models
@@ -109,7 +115,27 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         Composite body = managedForm.getForm().getBody();
         body.setLayout(GridLayoutFactory.swtDefaults().create());
 
-        informativeLabel = toolkit.createLabel(body, "This editor is a work in progress, currently in alpha state."); //$NON-NLS-1$
+        informativeLabel = toolkit.createFormText(body, false);
+        informativeLabel.setText("<form><p>This editor is a work in progress, currently in alpha state. See <a href='https://wiki.eclipse.org/Sirius/SessionEditor'>the wiki</a> for more details and how to provide feedback.</p></form>", true, true); //$NON-NLS-1$
+        informativeLabel.addHyperlinkListener(new IHyperlinkListener() {
+            
+            @Override
+            public void linkExited(HyperlinkEvent e) {
+            }
+            
+            @Override
+            public void linkEntered(HyperlinkEvent e) {
+            }
+            
+            @Override
+            public void linkActivated(HyperlinkEvent e) {
+                try {
+                    PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser().openURL(new URL(e.getHref().toString()));
+                } catch (PartInitException | MalformedURLException ex) {
+                    SessionEditorPlugin.getPlugin().error("An error occured while opening the external web browser.", ex); //$NON-NLS-1$
+                }
+            }
+        });
         informativeLabel.setForeground(body.getDisplay().getSystemColor(SWT.COLOR_RED));
 
         Composite subBody = toolkit.createComposite(body);
@@ -150,7 +176,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
 
         Composite modelSectionClient = toolkit.createComposite(modelSection, SWT.NONE);
         modelSectionClient.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).create());
-        modelSectionClient.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false));
+        modelSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         modelSection.setClient(modelSectionClient);
 
         graphicalModelingHandler = new GraphicalSemanticModelsHandler(session);
