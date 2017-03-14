@@ -13,12 +13,12 @@ package org.eclipse.sirius.editor.properties.tools.internal.menu;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -40,6 +40,7 @@ import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.core.internal.EditSupportSpec;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Strings;
@@ -91,20 +92,18 @@ public class CreateWidgetFromDomainClassMenuBuilder extends AbstractMenuBuilder 
     private Collection<CreateChildAction> generateDomainClassWidgetsActions(ISelection selection, IEditorPart editor) {
         final Collection<CreateChildAction> actions = new ArrayList<>();
 
-        GroupDescription groupDescription = this.getGroupDescription(selection);
-        if (groupDescription != null) {
-            ViewExtensionDescription viewExtensionDescription = this.getViewExtensionDescription(groupDescription);
-            if (viewExtensionDescription != null) {
-                EList<EPackage> metamodels = viewExtensionDescription.getMetamodels();
-                String domainClassQualifiedName = groupDescription.getDomainClass();
-                EClass domainClass = this.getDomainClass(metamodels, domainClassQualifiedName);
-                if (domainClass != null) {
-                    actions.add(new CreateWidgetForAllFeaturesAction(editor, selection, new CreateWidgetForAllFeaturesDescriptor(groupDescription, domainClass)));
+        Optional<GroupDescription> optionalGroupDescription = this.getGroupDescription(selection);
+        optionalGroupDescription.ifPresent(groupDescription -> {
+            List<EPackage> ePackages = this.getEPackages(groupDescription);
+            String domainClassQualifiedName = groupDescription.getDomainClass();
+            EClass domainClass = this.getDomainClass(ePackages, domainClassQualifiedName);
+            if (domainClass != null) {
+                actions.add(new CreateWidgetForAllFeaturesAction(editor, selection, new CreateWidgetForAllFeaturesDescriptor(groupDescription, domainClass)));
 
-                    actions.addAll(this.addActionsForStructuralFeatures(selection, editor, groupDescription, domainClass));
-                }
+                actions.addAll(this.addActionsForStructuralFeatures(selection, editor, groupDescription, domainClass));
             }
-        }
+        });
+
         return actions;
     }
 
@@ -163,41 +162,48 @@ public class CreateWidgetFromDomainClassMenuBuilder extends AbstractMenuBuilder 
     }
 
     /**
-     * Returns the view extension description containing the given group.
-     * 
-     * @param groupDescription
-     *            The group description
-     * @return The view extension description containing the given group or <code>null</code> otherwise
-     */
-    private ViewExtensionDescription getViewExtensionDescription(GroupDescription groupDescription) {
-        EObject eContainer = groupDescription.eContainer();
-        while (eContainer != null && !(eContainer instanceof ViewExtensionDescription)) {
-            eContainer = eContainer.eContainer();
-        }
-        if (eContainer instanceof ViewExtensionDescription) {
-            return (ViewExtensionDescription) eContainer;
-        }
-        return null;
-    }
-
-    /**
      * Returns the first group description selected.
      * 
      * @param selection
      *            the current selection.
-     * @return the first group description selected, <code>null</code> otherwise.
+     * @return An optional containing the first group description selected, an empty optional otherwise.
      */
-    private GroupDescription getGroupDescription(ISelection selection) {
+    private Optional<GroupDescription> getGroupDescription(ISelection selection) {
         if (selection instanceof IStructuredSelection) {
             IStructuredSelection structuredSelection = (IStructuredSelection) selection;
             Object[] objectSelected = structuredSelection.toArray();
             for (Object object : objectSelected) {
                 if (object instanceof GroupDescription) {
-                    return (GroupDescription) object;
+                    return Optional.of((GroupDescription) object);
                 }
             }
         }
-        return null;
+        return Optional.empty();
+    }
+
+    /**
+     * Returns the list of all the accessible EPackages of the given group description. A group description will have
+     * access to the metamodels of its parent {@link ViewExtensionDescription} or {@link RepresentationDescription}.
+     * 
+     * @param groupDescription
+     *            The group description
+     * @return The list of all the accessible EPackages of the given group description
+     */
+    private List<EPackage> getEPackages(GroupDescription groupDescription) {
+        List<EPackage> ePackages = new ArrayList<>();
+
+        EObject eContainer = groupDescription.eContainer();
+        while (eContainer != null && !(eContainer instanceof ViewExtensionDescription || eContainer instanceof RepresentationDescription)) {
+            eContainer = eContainer.eContainer();
+        }
+
+        if (eContainer instanceof ViewExtensionDescription) {
+            ePackages.addAll(((ViewExtensionDescription) eContainer).getMetamodels());
+        } else if (eContainer instanceof RepresentationDescription) {
+            ePackages.addAll(((RepresentationDescription) eContainer).getMetamodel());
+        }
+
+        return ePackages;
     }
 
     /**
@@ -209,7 +215,7 @@ public class CreateWidgetFromDomainClassMenuBuilder extends AbstractMenuBuilder 
      *            the qualified name of the domain class to search.
      * @return the {@link EClass} from its qualified name, <code>null</code> if not found.
      */
-    private EClass getDomainClass(EList<EPackage> metamodels, String domainClassQualifiedName) {
+    private EClass getDomainClass(List<EPackage> metamodels, String domainClassQualifiedName) {
         EClass domainClass = null;
         String packageName = null;
         String className = null;
