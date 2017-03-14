@@ -103,6 +103,8 @@ public class ViewpointsSelectionGraphicalHandler {
      */
     private GridData rootLayoutData;
 
+    private GridData viewerGridData;
+
     /**
      * Return the composite enclosing all graphical parts of this component.
      * 
@@ -249,8 +251,8 @@ public class ViewpointsSelectionGraphicalHandler {
 
         viewer = CheckboxTableViewer.newCheckList(parent, style);
         Table table = viewer.getTable();
-        final GridData gridData = new GridData(SWT.FILL, SWT.FILL, false, false);
-        viewer.getControl().setLayoutData(gridData);
+        viewerGridData = new GridData(SWT.FILL, SWT.FILL, false, false);
+        viewer.getControl().setLayoutData(viewerGridData);
 
         TableLayout layout = new TableLayout();
         table.setLayout(layout);
@@ -490,7 +492,7 @@ public class ViewpointsSelectionGraphicalHandler {
      *            the height to set.
      */
     public void setHeight(int height) {
-        rootLayoutData.grabExcessVerticalSpace = false;
-        rootLayoutData.heightHint = height;
+        viewerGridData.grabExcessVerticalSpace = false;
+        viewerGridData.heightHint = height;
     }
 }
