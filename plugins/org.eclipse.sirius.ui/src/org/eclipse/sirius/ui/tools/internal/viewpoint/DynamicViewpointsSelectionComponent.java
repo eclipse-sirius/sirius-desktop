@@ -10,27 +10,34 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.viewpoint;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
 
-import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ICheckStateListener;
+import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.business.internal.metamodel.description.spec.ViewpointSpec;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.IViewpointStateListener;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.ViewpointStateChangeEvent;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 /**
  * Component providing dynamic activation/deactivation behavior for the graphic component
@@ -50,7 +57,7 @@ public class DynamicViewpointsSelectionComponent {
     private Session session;
 
     /**
-     * Contains all viewpoint available in the current runtime registry.
+     * Contains all viewpoints available in the current runtime registry.
      */
     private Collection<Viewpoint> availableViewpoints;
 
@@ -84,6 +91,17 @@ public class DynamicViewpointsSelectionComponent {
     private ICheckStateListener checkStateListener;
 
     /**
+     * Check if selected viewpoint is missing dependencies to be activated. If so it show an error message above the
+     * viewpoint description browser.
+     */
+    private ISelectionChangedListener selectionListener;
+
+    /**
+     * This listener allows viewpoint activation/deactivation by a double click.
+     */
+    private IDoubleClickListener doubleClickListener;
+
+    /**
      * Listener updating the session accordingly to changes triggered by user when checking /unchecking viewpoint from
      * graphical component {@link ViewpointsSelectionGraphicalHandler}.
      * 
@@ -106,18 +124,63 @@ public class DynamicViewpointsSelectionComponent {
                 }
                 originalViewpointsMap.put(viewpoint, Boolean.valueOf(selected));
             }
-            SortedMap<Viewpoint, Boolean> newViewpointSelectedMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
-            newViewpointSelectedMap.putAll(originalViewpointsMap);
-            newViewpointSelectedMap.put(viewpointStateChangeEvent.getViewpoint(), viewpointStateChangeEvent.shouldBeActivated());
-            // We init the listener that will check back the viewpoint if we do a deselection that is canceled by user.
-            // The following calls are synchronous.
-            ViewpointHelper.applyNewViewpointSelection(originalViewpointsMap, newViewpointSelectedMap, session, true);
+            SortedMap<Viewpoint, Boolean> newViewpointToSelectionStateMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
+            newViewpointToSelectionStateMap.putAll(originalViewpointsMap);
+            newViewpointToSelectionStateMap.put(viewpointStateChangeEvent.getViewpoint(), viewpointStateChangeEvent.shouldBeActivated());
 
+            // we also deselect viewpoint that will be missing a dependency if such element exists.
+            Set<Viewpoint> viewpointsMissingDependencies = ViewpointHelper.getViewpointsMissingDependencies(
+                    newViewpointToSelectionStateMap.keySet().stream().filter(viewpoint -> newViewpointToSelectionStateMap.get(viewpoint)).collect(Collectors.toSet()));
+            for (Viewpoint viewpointsMissingDependency : viewpointsMissingDependencies) {
+                newViewpointToSelectionStateMap.put(viewpointsMissingDependency, false);
+            }
+
+            ViewpointHelper.applyNewViewpointSelection(originalViewpointsMap, newViewpointToSelectionStateMap, session, true);
+
+            // If deselection has been cancelled we update the last selected viewpoints set to reflect this deselection
+            // in the cache.
             boolean viewpointSelected = session.getSelectedViewpoints(true).stream().anyMatch(viewpoint -> EqualityHelper.areEquals(viewpointStateChangeEvent.getViewpoint(), viewpoint));
-            newViewpointSelectedMap.put(viewpointStateChangeEvent.getViewpoint(), viewpointSelected);
-            lastSelectedViewpoints = new HashSet<Viewpoint>(newViewpointSelectedMap.keySet().stream().filter(viewpoint -> newViewpointSelectedMap.get(viewpoint)).collect(Collectors.toSet()));
+            newViewpointToSelectionStateMap.put(viewpointStateChangeEvent.getViewpoint(), viewpointSelected);
+            for (Viewpoint viewpointsMissingDependency : viewpointsMissingDependencies) {
+                viewpointSelected = session.getSelectedViewpoints(true).stream().anyMatch(viewpoint -> EqualityHelper.areEquals(viewpointsMissingDependency, viewpoint));
+                newViewpointToSelectionStateMap.put(viewpointsMissingDependency, viewpointSelected);
+            }
+
+            lastSelectedViewpoints = new HashSet<Viewpoint>(
+                    newViewpointToSelectionStateMap.keySet().stream().filter(viewpoint -> newViewpointToSelectionStateMap.get(viewpoint)).collect(Collectors.toSet()));
             viewpointsSelectionGraphicalHandler.getViewer().setCheckedElements(lastSelectedViewpoints.toArray(new Object[0]));
+            viewpointsSelectionGraphicalHandler.getViewer().setSelection(new StructuredSelection(viewpointStateChangeEvent.getViewpoint()));
+
+            updateGrayedOutElement();
+            viewpointsSelectionGraphicalHandler.getViewer().refresh();
         }
+
+    }
+
+    /**
+     * Create an instance of a graphic component allowing to activate/deactivate viewpoint from a session.
+     *
+     * @param theSession
+     *            the session from which viewpoint will be available for activation/deactivation.
+     */
+    public DynamicViewpointsSelectionComponent(final Session theSession) {
+        this.session = theSession;
+        viewpointsSelectionGraphicalHandler = new ViewpointsSelectionGraphicalHandler();
+        availableViewpoints = viewpointsSelectionGraphicalHandler.getAvailableViewpoints(theSession);
+        viewpointStateListener = new DefaultViewpointStateListener();
+        lastSelectedViewpoints = new HashSet<Viewpoint>();
+    }
+
+    private void updateGrayedOutElement() {
+        for (Viewpoint viewpoint : availableViewpoints) {
+            String missingDependencyErrorMessage = getMissingDependencyErrorMessage(viewpoint, lastSelectedViewpoints);
+            if (missingDependencyErrorMessage != null) {
+                viewpointsSelectionGraphicalHandler.getViewer().setGrayed(viewpoint, true);
+            } else {
+                viewpointsSelectionGraphicalHandler.getViewer().setGrayed(viewpoint, false);
+            }
+        }
+
     }
 
     /**
@@ -146,20 +209,6 @@ public class DynamicViewpointsSelectionComponent {
     }
 
     /**
-     * Create an instance of a graphic component allowing to activate/deactivate viewpoint from a session.
-     *
-     * @param theSession
-     *            the session from which viewpoint will be available for activation/deactivation.
-     */
-    public DynamicViewpointsSelectionComponent(final Session theSession) {
-        this.session = theSession;
-        viewpointsSelectionGraphicalHandler = new ViewpointsSelectionGraphicalHandler();
-        availableViewpoints = viewpointsSelectionGraphicalHandler.getAvailableViewpoints(theSession);
-        viewpointStateListener = new DefaultViewpointStateListener();
-        lastSelectedViewpoints = new HashSet<Viewpoint>();
-    }
-
-    /**
      * Reinitialize the viewer containing all the checkbox for available viewpoints for the session with their check
      * status.
      * 
@@ -168,36 +217,48 @@ public class DynamicViewpointsSelectionComponent {
      *            to the user in the graphic component.
      */
     private void setViewpoints(Collection<Viewpoint> theAvailableViewpoints) {
-        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-            @Override
-            public void run() {
-                lastSelectedViewpoints.clear();
-                CheckboxTableViewer viewer = viewpointsSelectionGraphicalHandler.getViewer();
-                viewer.setInput(theAvailableViewpoints);
-                // case were activated viewpoint are the one corresponding to the session.
-                Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
-                for (int i = 0; i < viewer.getTable().getItemCount(); i++) {
-                    Object object = viewer.getElementAt(i);
-                    if (object instanceof Viewpoint) {
-                        Viewpoint viewerViewpoint = (Viewpoint) object;
-                        for (Viewpoint selectedViewpoint : selectedViewpoints) {
-                            if (EqualityHelper.areEquals(viewerViewpoint, selectedViewpoint)) {
-                                lastSelectedViewpoints.add(viewerViewpoint);
-                            }
+        PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+            lastSelectedViewpoints.clear();
+            CheckboxTableViewer viewer = viewpointsSelectionGraphicalHandler.getViewer();
+            viewer.setInput(theAvailableViewpoints);
+            // case were activated viewpoint are the one corresponding to the session.
+            Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
+            for (int i = 0; i < viewer.getTable().getItemCount(); i++) {
+                Object object = viewer.getElementAt(i);
+                if (object instanceof Viewpoint) {
+                    Viewpoint viewerViewpoint = (Viewpoint) object;
+                    for (Viewpoint selectedViewpoint : selectedViewpoints) {
+                        if (EqualityHelper.areEquals(viewerViewpoint, selectedViewpoint)) {
+                            lastSelectedViewpoints.add(viewerViewpoint);
                         }
                     }
                 }
-                if (!lastSelectedViewpoints.isEmpty()) {
-                    // Check all the default viewpoints
-                    viewer.setCheckedElements(lastSelectedViewpoints.toArray(new Object[0]));
-                    // Set the focus on the first one
-                    viewer.setSelection(new StructuredSelection(lastSelectedViewpoints.stream().findFirst().get()));
-                } else {
-                    viewpointsSelectionGraphicalHandler.getBrowser().setText(""); //$NON-NLS-1$
-                }
-                viewpointsSelectionGraphicalHandler.getRootComposite().layout();
             }
+            if (!lastSelectedViewpoints.isEmpty()) {
+                // Check all the default viewpoints
+                viewer.setCheckedElements(lastSelectedViewpoints.toArray(new Object[0]));
+                // Set the focus on the first one
+                viewer.setSelection(new StructuredSelection(lastSelectedViewpoints.stream().findFirst().get()));
+            } else {
+                viewpointsSelectionGraphicalHandler.getBrowser().setText(""); //$NON-NLS-1$
+            }
+
+            // For all no selected viewpoints we check if they have missing dependencies among activated ones and if
+            // they do we gray out
+            // those.
+            for (Viewpoint viewpoint : availableViewpoints) {
+                Set<Viewpoint> viewpoints = new HashSet<Viewpoint>(lastSelectedViewpoints);
+                viewpoints.add(viewpoint);
+                Set<Viewpoint> viewpointsMissingDependencies = ViewpointHelper.getViewpointsMissingDependencies(viewpoints);
+                if (viewpointsMissingDependencies.contains(viewpoint)) {
+                    viewer.setGrayed(viewpoint, true);
+                } else {
+                    viewer.setGrayed(viewpoint, false);
+                }
+            }
+            viewpointsSelectionGraphicalHandler.getRootComposite().layout();
         });
+
     }
 
     /**
@@ -220,17 +281,63 @@ public class DynamicViewpointsSelectionComponent {
         viewpointsSelectionGraphicalHandler.createControl(parent, false);
         viewpointsSelectionGraphicalHandler.setBrowserMinWidth(200);
         viewpointsSelectionGraphicalHandler.setHeight(304);
-        checkStateListener = new ICheckStateListener() {
-            @Override
-            public void checkStateChanged(final CheckStateChangedEvent event) {
-                if (event.getChecked() && event.getElement() instanceof Viewpoint) {
-                    viewpointStateListener.viewpointStateChange(new ViewpointStateChangeEvent((Viewpoint) event.getElement(), true));
+        checkStateListener = event -> {
+            String errorMessage = null;
+
+            if (event.getElement() instanceof Viewpoint) {
+                Viewpoint viewpointChecked = (Viewpoint) event.getElement();
+                viewpointsSelectionGraphicalHandler.getViewer().setSelection(new StructuredSelection(viewpointChecked));
+                if (!lastSelectedViewpoints.isEmpty()) {
+                    errorMessage = getMissingDependencyErrorMessage(viewpointChecked, lastSelectedViewpoints);
+                }
+                if (errorMessage == null) {
+                    viewpointsSelectionGraphicalHandler.clearBrowserErrorMessageText();
+                    if (!viewpointsSelectionGraphicalHandler.getViewer().getGrayed(viewpointChecked)) {
+                        if (event.getChecked()) {
+                            viewpointStateListener.viewpointStateChange(new ViewpointStateChangeEvent(viewpointChecked, true));
+                        } else {
+                            viewpointStateListener.viewpointStateChange(new ViewpointStateChangeEvent(viewpointChecked, false));
+                        }
+                    }
                 } else {
-                    viewpointStateListener.viewpointStateChange(new ViewpointStateChangeEvent((Viewpoint) event.getElement(), false));
+                    viewpointsSelectionGraphicalHandler.setBrowserErrorMessageText(errorMessage);
                 }
             }
         };
         viewpointsSelectionGraphicalHandler.getViewer().addCheckStateListener(checkStateListener);
+
+        selectionListener = event -> {
+            if (event.getSelection() instanceof StructuredSelection) {
+                StructuredSelection selection = (StructuredSelection) event.getSelection();
+                if (selection.getFirstElement() instanceof Viewpoint) {
+                    Viewpoint viewpoint = (Viewpoint) selection.getFirstElement();
+                    String errorMessage = getMissingDependencyErrorMessage(viewpoint, lastSelectedViewpoints);
+                    if (errorMessage != null) {
+                        viewpointsSelectionGraphicalHandler.setBrowserErrorMessageText(errorMessage);
+                    } else {
+                        viewpointsSelectionGraphicalHandler.clearBrowserErrorMessageText();
+                    }
+                }
+            }
+        };
+        viewpointsSelectionGraphicalHandler.getViewer().addSelectionChangedListener(selectionListener);
+
+        doubleClickListener = (event) -> {
+            event.getSelection();
+            if (event.getSelection() instanceof StructuredSelection) {
+                StructuredSelection selection = (StructuredSelection) event.getSelection();
+                if (selection.getFirstElement() instanceof ViewpointSpec) {
+                    ViewpointSpec viewpoint = (ViewpointSpec) selection.getFirstElement();
+                    if (!viewpointsSelectionGraphicalHandler.getViewer().getGrayed(viewpoint)) {
+                        viewpointStateListener.viewpointStateChange(new ViewpointStateChangeEvent(viewpoint, !viewpointsSelectionGraphicalHandler.getViewer().getChecked(viewpoint)));
+                    } else {
+                        viewpointsSelectionGraphicalHandler.getViewer().setChecked(viewpoint, !viewpointsSelectionGraphicalHandler.getViewer().getChecked(viewpoint));
+                    }
+
+                }
+            }
+        };
+        viewpointsSelectionGraphicalHandler.getViewer().addDoubleClickListener(doubleClickListener);
 
         setViewpoints(availableViewpoints);
         sessionChangelistener = new SessionChangeListener();
@@ -238,11 +345,48 @@ public class DynamicViewpointsSelectionComponent {
     }
 
     /**
+     * Return an error message referencing all missing dependencies for the given viewpoint or null if no missing
+     * dependencies exists.
+     * 
+     * @param viewpoint
+     *            the viewpoint from which we check if it has missing dependencies among activated viewpoints.
+     * @param selectedViewpoints
+     *            the current activated viewpoints.
+     * @return an error message referencing all missing dependencies for the given viewpoint or null if no missing
+     *         dependencies exists.
+     */
+    protected String getMissingDependencyErrorMessage(Viewpoint viewpoint, Set<Viewpoint> selectedViewpoints) {
+        Set<Viewpoint> viewpoints = Sets.newHashSet(selectedViewpoints);
+        viewpoints.add(viewpoint);
+        Map<String, Collection<String>> missingDependencies = ViewpointSelection.getMissingDependencies(viewpoints);
+        if (missingDependencies != null && missingDependencies.get(viewpoint.getName()) != null) {
+            return MessageFormat.format(Messages.DynamicViewpointsSelectionComponent_missingDependencies_requirements, viewpoint.getName(),
+                    missingDependencies.get(viewpoint.getName()).stream().collect(Collectors.joining(", "))); //$NON-NLS-1$
+        }
+        return null;
+    }
+
+    /**
      * Dispose any listeners added by this instance.
      */
     public void dispose() {
-        session.removeListener(sessionChangelistener);
-        viewpointsSelectionGraphicalHandler.getViewer().removeCheckStateListener(checkStateListener);
+        if (session != null && sessionChangelistener != null) {
+            session.removeListener(sessionChangelistener);
+        }
+        if (viewpointsSelectionGraphicalHandler != null) {
+            if (selectionListener != null) {
+                viewpointsSelectionGraphicalHandler.getViewer().removeSelectionChangedListener(selectionListener);
+            }
+            if (checkStateListener != null) {
+                viewpointsSelectionGraphicalHandler.getViewer().removeCheckStateListener(checkStateListener);
+            }
+            if (doubleClickListener != null) {
+                viewpointsSelectionGraphicalHandler.getViewer().removeDoubleClickListener(doubleClickListener);
+            }
+        }
         viewpointStateListener = null;
+        selectionListener = null;
+        sessionChangelistener = null;
+        session = null;
     }
 }

@@ -61,6 +61,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.Text;
 import org.osgi.framework.Bundle;
 
 import com.google.common.base.Predicate;
@@ -104,6 +105,21 @@ public class ViewpointsSelectionGraphicalHandler {
     private GridData rootLayoutData;
 
     private GridData viewerGridData;
+
+    /**
+     * LayoutData of the error message top part of the browser component.
+     */
+    private GridData browserErrorMessageLayoutData;
+
+    /**
+     * The Text containing error message in the top part of the browser component.
+     */
+    private Text browserErrorMessageText;
+
+    /**
+     * The composite containing the text containing error message in the top part of the browser component.
+     */
+    private Composite browserErrorMessageComposite;
 
     /**
      * Return the composite enclosing all graphical parts of this component.
@@ -177,7 +193,6 @@ public class ViewpointsSelectionGraphicalHandler {
      *            columns not equals at layout level. Refresh the layout if a modification is done.
      */
     public void createControl(final Composite parent, boolean makeColumnsEqual) {
-
         rootComposite = new Composite(parent, SWT.NONE);
         rootGridLayout = GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(makeColumnsEqual).create();
         rootComposite.setLayout(rootGridLayout);
@@ -201,8 +216,26 @@ public class ViewpointsSelectionGraphicalHandler {
      */
     private Browser createBrowser(final Composite parent) {
 
+        Composite browserRootComposite = new Composite(parent, SWT.None);
+        browserRootComposite.setLayout(GridLayoutFactory.fillDefaults().create());
+        browserRootComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+
+        browserErrorMessageComposite = new Composite(browserRootComposite, SWT.None);
+        browserErrorMessageComposite.setLayout(GridLayoutFactory.fillDefaults().create());
+        browserErrorMessageLayoutData = new GridData(SWT.FILL, SWT.FILL, true, false);
+        browserErrorMessageComposite.setLayoutData(browserErrorMessageLayoutData);
+        browserErrorMessageLayoutData.exclude = true;
+
+        Composite browserComposite = new Composite(browserRootComposite, SWT.None);
+        browserComposite.setLayout(GridLayoutFactory.fillDefaults().create());
+        browserComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+
+        browserErrorMessageText = new Text(browserErrorMessageComposite, SWT.MULTI | SWT.WRAP);
+        browserErrorMessageText.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, true, false));
+        browserErrorMessageText.setText(""); //$NON-NLS-1$
+        browserErrorMessageText.setForeground(browserRootComposite.getDisplay().getSystemColor(SWT.COLOR_RED));
         try {
-            Browser aBrowser = new Browser(parent, SWT.FILL);
+            Browser aBrowser = new Browser(browserComposite, SWT.FILL);
             browserGridData = new GridData(SWT.FILL, SWT.FILL, true, true);
             // necessary to avoid bad interaction with expandable toolkit sections
             browserGridData.widthHint = 0;
@@ -216,6 +249,29 @@ public class ViewpointsSelectionGraphicalHandler {
             return null;
         }
 
+    }
+
+    /**
+     * Set an error message above the viewpoint browser.
+     * 
+     * @param errorMessage
+     *            the error message to set.
+     */
+    public void setBrowserErrorMessageText(String errorMessage) {
+        browserErrorMessageLayoutData.exclude = false;
+        browserErrorMessageText.setText(errorMessage);
+        browserErrorMessageComposite.setVisible(true);
+        rootComposite.layout(true, true);
+    }
+
+    /**
+     * Clear the error message above the viewpoint browser.
+     */
+    public void clearBrowserErrorMessageText() {
+        browserErrorMessageLayoutData.exclude = true;
+        browserErrorMessageText.setText(""); //$NON-NLS-1$
+        browserErrorMessageComposite.setVisible(false);
+        rootComposite.getParent().layout(true, true);
     }
 
     /**

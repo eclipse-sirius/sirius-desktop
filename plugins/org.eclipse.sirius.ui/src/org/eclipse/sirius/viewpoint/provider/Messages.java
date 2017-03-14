@@ -985,6 +985,9 @@ public final class Messages {
     public static String ViewpointSelection_missingDependencies_requirements;
 
     @TranslatableMessage
+    public static String DynamicViewpointsSelectionComponent_missingDependencies_requirements;
+
+    @TranslatableMessage
     public static String ViewpointSelection_viewpointColumn;
 
     @TranslatableMessage

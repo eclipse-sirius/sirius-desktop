@@ -21,7 +21,6 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
@@ -410,22 +409,12 @@ public final class ViewpointSelection {
             for (RepresentationExtensionDescription extension : new ViewpointQuery(viewpoint).getAllRepresentationExtensionDescriptions()) {
                 String extended = extension.getViewpointURI();
                 Pattern pattern = Pattern.compile(extended);
-                if (!ViewpointSelection.atLeastOneUriMatchesPattern(selectedURIs, pattern)) {
+                if (!ViewpointHelper.atLeastOneUriMatchesPattern(selectedURIs, pattern)) {
                     result.put(viewpoint.getName(), extended.trim().replaceFirst("^viewpoint:/[^/]+/", "")); //$NON-NLS-1$ //$NON-NLS-2$
                 }
             }
         }
         return result.asMap();
-    }
-
-    private static boolean atLeastOneUriMatchesPattern(Set<String> selectedURIs, Pattern pattern) {
-        for (String uriToMatch : selectedURIs) {
-            Matcher matcher = pattern.matcher(uriToMatch);
-            if (matcher.matches()) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private static SortedMap<Viewpoint, Boolean> getViewpointsWithMonitor(final Session session) {

@@ -11,25 +11,32 @@
 package org.eclipse.sirius.ui.tools.internal.viewpoint;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallbackWithConfimation;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Sets;
 
 /**
  * Utility class containing method to handle viewpoints.
@@ -43,6 +50,56 @@ public final class ViewpointHelper {
      * Private constructor for utility class.
      */
     private ViewpointHelper() {
+    }
+
+    /**
+     * Returns a set of all given viewpoints that are missing dependencies to be activated.
+     * 
+     * @param viewpoints
+     *            the viewpoints from which we want to know if they are missing some dependencies to be activated.
+     * @return a set of all given viewpoints that are missing dependencies to be activated. An empty set if no such
+     *         element exists.
+     */
+    public static Set<Viewpoint> getViewpointsMissingDependencies(Collection<Viewpoint> viewpoints) {
+        Set<String> selectedURIs = viewpoints.stream().map(viewpoint -> {
+            Option<URI> uri = new ViewpointQuery(viewpoint).getViewpointURI();
+            String result = null;
+            if (uri.some()) {
+                result = uri.get().toString();
+            }
+            return result;
+        }).filter(viewpoint -> viewpoint != null).collect(Collectors.toSet());
+
+        Set<Viewpoint> viewpointsMissingDependencies = new HashSet<Viewpoint>();
+        for (Viewpoint viewpoint : viewpoints) {
+            for (RepresentationExtensionDescription extension : new ViewpointQuery(viewpoint).getAllRepresentationExtensionDescriptions()) {
+                String extended = extension.getViewpointURI();
+                Pattern pattern = Pattern.compile(extended);
+                if (!ViewpointHelper.atLeastOneUriMatchesPattern(selectedURIs, pattern)) {
+                    viewpointsMissingDependencies.add(viewpoint);
+                }
+            }
+        }
+        return viewpointsMissingDependencies;
+    }
+
+    /**
+     * Returns true if one of the given URI respects the given pattern. False otherwise.
+     * 
+     * @param selectedURIs
+     *            URIs from which we want to know if one of these respects the given pattern.
+     * @param pattern
+     *            the pattern one of the URIs should respects.
+     * @return true if one of the given URI respects the given pattern. False otherwise.
+     */
+    public static boolean atLeastOneUriMatchesPattern(Set<String> selectedURIs, Pattern pattern) {
+        for (String uriToMatch : selectedURIs) {
+            Matcher matcher = pattern.matcher(uriToMatch);
+            if (matcher.matches()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -66,8 +123,8 @@ public final class ViewpointHelper {
             throw new IllegalArgumentException(Messages.ViewpointSelection_viewpointsMapNotReused);
         }
 
-        final Set<Viewpoint> newSelectedViewpoints = Sets.newHashSet();
-        final Set<Viewpoint> newDeselectedViewpoints = Sets.newHashSet();
+        final Set<Viewpoint> newSelectedViewpoints = new HashSet<Viewpoint>();
+        final Set<Viewpoint> newDeselectedViewpoints = new HashSet<Viewpoint>();
 
         /*
          * newMap and originalMap are sorted with the same comparator and keys haven't changed. We can iterate on the 2
