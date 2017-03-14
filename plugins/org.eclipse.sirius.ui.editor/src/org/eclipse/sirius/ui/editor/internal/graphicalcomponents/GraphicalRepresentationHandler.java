@@ -59,6 +59,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionContext;
 import org.eclipse.ui.dialogs.FilteredTree;
+import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
  * This graphical component provides a {@link TreeViewer} showing all
@@ -76,6 +77,11 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      * Session from which representations are handled.
      */
     private Session session;
+
+    /**
+     * The Form Toolkit to use to create & configure the controls.
+     */
+    private FormToolkit toolkit;
 
     /**
      * Sirius content provider providing expandable viewpoints showing
@@ -127,10 +133,12 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      * @param theSession
      *            the session used by the component to handle semantic models
      *            lifecycle.
+     * @param toolkit
+     *            the toolkit to use to create & configure the controls.
      */
-    public GraphicalRepresentationHandler(Session theSession) {
-        super();
+    public GraphicalRepresentationHandler(Session theSession, FormToolkit toolkit) {
         this.session = theSession;
+        this.toolkit = toolkit;
     }
 
     /**
@@ -201,7 +209,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      * @return the {@link TreeViewer} allowing the navigation.
      */
     private TreeViewer createRepresentationExplorerNavigator(Composite parent) {
-        Composite subComposite = new Composite(parent, SWT.NONE);
+        Composite subComposite = toolkit.createComposite(parent, SWT.NONE);
         subComposite.setLayout(GridLayoutFactory.fillDefaults().create());
         subComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         representationTree = SWTUtil.createFilteredTree(subComposite, SWT.BORDER, new org.eclipse.ui.dialogs.PatternFilter());
@@ -277,11 +285,13 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      *            the parent composite.
      */
     private void createRepresentationExplorerButton(Composite parent, final TreeViewer theTreeViewer) {
-        Composite subComposite = new Composite(parent, SWT.NONE);
-        subComposite.setLayout(GridLayoutFactory.fillDefaults().margins(0, 24).create());
+        Composite subComposite = toolkit.createComposite(parent, SWT.NONE);
+        subComposite.setLayout(GridLayoutFactory.fillDefaults().margins(0, 0).create());
         subComposite.setLayoutData(new GridData(SWT.LEFT, SWT.TOP, false, false));
-        Composite buttonsComposite = new Composite(subComposite, SWT.NONE);
-        buttonsComposite.setLayout(new FillLayout(SWT.BEGINNING));
+        Composite buttonsComposite = toolkit.createComposite(subComposite, SWT.NONE);
+        FillLayout buttonsLayout = new FillLayout(SWT.BEGINNING);
+        buttonsLayout.spacing = 5;
+        buttonsComposite.setLayout(buttonsLayout);
         addButton(buttonsComposite, Messages.UI_SessionEditor_representation_button_newRepresentation, () -> {
             CreateRepresentationWizard wizard = new CreateRepresentationWizard(session);
             wizard.init();
@@ -320,8 +330,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      * @return the newly created button.
      */
     protected Button addButton(Composite parent, final String name, final Runnable body) {
-        Button button = new Button(parent, SWT.PUSH);
-        button.setText(name);
+        Button button = toolkit.createButton(parent, name, SWT.PUSH);
         button.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
@@ -343,6 +352,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         manageSessionActionProvider = null;
         siriusCommonContentProvider = null;
         menuManager = null;
+        toolkit = null;
     }
 
     @Override
@@ -371,47 +381,33 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
             case SessionListener.SELECTED_VIEWS_CHANGE_KIND:
             case SessionListener.VSM_UPDATED:
             case SessionListener.REPLACED:
-                PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        if (!representationTree.isDisposed()) {
-                            updateViewerInput(treeViewer);
-                            // we reset the selection to update the button
-                            // activated
-                            // state if needed.
-                            ISelection selection = treeViewer.getSelection();
-                            treeViewer.setSelection(selection);
-                        }
+                PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+                    if (!representationTree.isDisposed()) {
+                        updateViewerInput(treeViewer);
+                        // we reset the selection to update the button
+                        // activated
+                        // state if needed.
+                        ISelection selection = treeViewer.getSelection();
+                        treeViewer.setSelection(selection);
                     }
-
                 });
 
                 break;
 
             case SessionListener.SYNC:
             case SessionListener.DIRTY:
-                PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        if (!representationTree.isDisposed()) {
-                            treeViewer.refresh();
-                        }
+                PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+                    if (!representationTree.isDisposed()) {
+                        treeViewer.refresh();
                     }
-
                 });
                 break;
 
             case SessionListener.OPENED:
-                PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        if (!representationTree.isDisposed()) {
-                            treeViewer.refresh();
-                            siriusCommonContentProvider.addRefreshViewerTrigger(updated);
-                        }
+                PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+                    if (!representationTree.isDisposed()) {
+                        treeViewer.refresh();
+                        siriusCommonContentProvider.addRefreshViewerTrigger(updated);
                     }
                 });
 

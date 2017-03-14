@@ -67,7 +67,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionContext;
+import org.eclipse.ui.actions.NewWizardAction;
 import org.eclipse.ui.dialogs.FilteredTree;
+import org.eclipse.ui.forms.widgets.FormToolkit;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -87,6 +89,11 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      * Session from which semantic models are handled.
      */
     private Session session;
+
+    /**
+     * The Form Toolkit to use to create & configure the controls.
+     */
+    private FormToolkit toolkit;
 
     /**
      * Sirius content provider providing expandable models loaded by the session
@@ -137,10 +144,12 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      * @param theSession
      *            the session used by the component to handle semantic models
      *            lifecycle.
+     * @param toolkit
+     *            the toolkit to use to create & configure the controls.
      */
-    public GraphicalSemanticModelsHandler(Session theSession) {
-        super();
+    public GraphicalSemanticModelsHandler(Session theSession, FormToolkit toolkit) {
         this.session = theSession;
+        this.toolkit = toolkit;
     }
 
     /**
@@ -198,11 +207,16 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      *            the model Explorer Composite
      */
     private void createModelExplorerButton(Composite parent, final TreeViewer theTreeViewer) {
-        Composite subComposite = new Composite(parent, SWT.NONE);
-        subComposite.setLayout(GridLayoutFactory.fillDefaults().margins(0, 24).create());
+        Composite subComposite = toolkit.createComposite(parent, SWT.NONE);
+        subComposite.setLayout(GridLayoutFactory.fillDefaults().margins(0, 0).create());
         subComposite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-        Composite buttonsComposite = new Composite(subComposite, SWT.NONE);
-        buttonsComposite.setLayout(new FillLayout(SWT.BEGINNING));
+        Composite buttonsComposite = toolkit.createComposite(subComposite, SWT.NONE);
+        FillLayout buttonsLayout = new FillLayout(SWT.BEGINNING);
+        buttonsLayout.spacing = 5;
+        buttonsComposite.setLayout(buttonsLayout);
+        addButton(buttonsComposite, Messages.UI_SessionEditor_new_semantic_model_action_label, () -> {
+            new NewWizardAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow()).run();
+        });
         addButton(buttonsComposite, Messages.UI_SessionEditor_models_button_newSemanticModel, () -> {
             AddModelDependencyAction addModelDependencyAction = new AddModelDependencyAction(session);
             addModelDependencyAction.run();
@@ -421,8 +435,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      * @return the newly created button.
      */
     protected Button addButton(Composite parent, final String name, final Runnable body) {
-        Button button = new Button(parent, SWT.PUSH);
-        button.setText(name);
+        Button button = toolkit.createButton(parent, name, SWT.PUSH);
         button.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
@@ -459,6 +472,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         manageSessionActionProvider = null;
         siriusCommonContentModelProvider = null;
         menuManager = null;
+        toolkit = null;
     }
 
     @Override

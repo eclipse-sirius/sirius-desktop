@@ -179,7 +179,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         modelSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         modelSection.setClient(modelSectionClient);
 
-        graphicalModelingHandler = new GraphicalSemanticModelsHandler(session);
+        graphicalModelingHandler = new GraphicalSemanticModelsHandler(session, toolkit);
         graphicalModelingHandler.createControl(modelSectionClient);
         getSite().setSelectionProvider(graphicalModelingHandler.getTreeViewer());
 
@@ -206,7 +206,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         representationSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         representationSection.setClient(representationSectionClient);
 
-        graphicalRepresentationHandler = new GraphicalRepresentationHandler(session);
+        graphicalRepresentationHandler = new GraphicalRepresentationHandler(session, toolkit);
         graphicalRepresentationHandler.createControl(representationSectionClient);
 
     }
