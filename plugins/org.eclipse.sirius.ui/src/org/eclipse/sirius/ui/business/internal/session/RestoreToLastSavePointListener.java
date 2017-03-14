@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -95,6 +95,11 @@ public class RestoreToLastSavePointListener implements ResourceSyncClient, IOper
     private Collection<Resource> getModifiedResources() {
         List<Resource> changed = new ArrayList<Resource>();
         for (Resource currentResource : session.getAllSessionResources()) {
+            if (currentResource.isModified()) {
+                changed.add(currentResource);
+            }
+        }
+        for (Resource currentResource : session.getSrmResources()) {
             if (currentResource.isModified()) {
                 changed.add(currentResource);
             }
@@ -199,9 +204,8 @@ public class RestoreToLastSavePointListener implements ResourceSyncClient, IOper
     }
 
     /**
-     * Returns whether we can perform the entire revert by undoing all
-     * operations. In other words, if the undo history is strictly lower to the
-     * max limit.
+     * Returns whether we can perform the entire revert by undoing all operations. In other words, if the undo history
+     * is strictly lower to the max limit.
      *
      * @return true if we can perform the undo, false otherwise.
      */
@@ -213,8 +217,7 @@ public class RestoreToLastSavePointListener implements ResourceSyncClient, IOper
     }
 
     /**
-     * Check the DesignerUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE
-     * preference state.
+     * Check the DesignerUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE preference state.
      *
      * @return the preference value.
      */
