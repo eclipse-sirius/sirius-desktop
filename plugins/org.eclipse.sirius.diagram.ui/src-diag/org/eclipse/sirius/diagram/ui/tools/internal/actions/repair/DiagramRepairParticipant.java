@@ -64,7 +64,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
-import com.google.common.base.Predicates;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.ListMultimap;
@@ -129,7 +128,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
         // GMF Nodes)
         Resource viewResource = view.eResource();
         DiagramCrossReferencer crossReferencer = new DiagramCrossReferencer(viewResource);
-        Iterator<EObject> analysisIterator = new DViewQuery(view).getAllContentInRepresentations(Predicates.instanceOf(DDiagramElement.class));
+        Iterator<EObject> analysisIterator = new DViewQuery(view).getAllContentInRepresentations(DDiagramElement.class::isInstance);
 
         Map<IDiagramElementState<DDiagramElement>, DDiagramElement> states = new LinkedHashMap<IDiagramElementState<DDiagramElement>, DDiagramElement>();
         while (analysisIterator.hasNext()) {
@@ -217,7 +216,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
         DiagramCrossReferencer crossReferencer = new DiagramCrossReferencer(view.eResource());
 
         // Work only with DDiagramElement
-        final Iterator<EObject> analysisIterator = new DViewQuery(view).getAllContentInRepresentations(Predicates.instanceOf(DDiagramElement.class));
+        final Iterator<EObject> analysisIterator = new DViewQuery(view).getAllContentInRepresentations(DDiagramElement.class::isInstance);
 
         final List<EObject> elementsToRemove = Lists.newArrayList();
 
@@ -342,7 +341,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
         // But an element with isCreated sets to false won't be recreated by
         // refresh. Another process will recreate them after.
 
-        final Iterator<EObject> viewIterator = new DViewQuery(view).getAllContentInRepresentations(Predicates.instanceOf(DDiagramElement.class));
+        final Iterator<EObject> viewIterator = new DViewQuery(view).getAllContentInRepresentations(DDiagramElement.class::isInstance);
 
         while (viewIterator.hasNext()) {
             final DDiagramElement diagElement = (DDiagramElement) viewIterator.next();

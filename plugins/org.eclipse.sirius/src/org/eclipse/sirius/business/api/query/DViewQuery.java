@@ -13,13 +13,13 @@ package org.eclipse.sirius.business.api.query;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.UnmodifiableIterator;
@@ -81,7 +81,7 @@ public final class DViewQuery {
         Iterator<EObject> iterator = Collections.emptyIterator();
         List<DRepresentation> allRepresentations = this.getLoadedRepresentations();
         for (DRepresentation dRepresentation : allRepresentations) {
-            UnmodifiableIterator<EObject> currentIterator = Iterators.filter(dRepresentation.eAllContents(), predicate);
+            UnmodifiableIterator<EObject> currentIterator = Iterators.filter(dRepresentation.eAllContents(), (t) -> predicate.test(t));
             iterator = Iterators.concat(iterator, currentIterator);
         }
         return iterator;

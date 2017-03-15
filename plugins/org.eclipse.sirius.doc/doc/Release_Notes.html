@@ -128,6 +128,11 @@
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
+			<li><span class="label label-info">Modified</span> The 
+				<code>org.eclipse.sirius.business.api.query.DViewQuery.getAllContentInRepresentations(Predicate&lt;? super EObject&gt;)</code> now takes a 
+				<code>java.util.Predicate</code> (from Java 8) as argument instead of a 
+				<code>com.google.common.base.Predicate</code>.
+			</li>
 			<li><span class="label label-info">Modified</span> The extension point 
 				<code>org.eclipse.sirius.ui.modelingprojectresourcelistener</code> is no longer expected to be used. It is an internal extension point. Clients using this extension point to ignore some files as potential semantic models must now use the extension point 
 				<code>org.eclipse.sirius.resourceStrategy</code>. This extension point existed before Sirius 5.0.0 but was not API. It becomes API with Sirius 5.0.0, see the 

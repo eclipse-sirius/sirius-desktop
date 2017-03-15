@@ -14,6 +14,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Predicate;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.ecore.EObject;
@@ -44,7 +45,6 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.osgi.framework.Version;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
@@ -72,7 +72,7 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
      */
     private Predicate<EObject> nonResizableNodeWithDifferentSizePredicate = new Predicate<EObject>() {
         @Override
-        public boolean apply(EObject input) {
+        public boolean test(EObject input) {
             boolean apply = false;
             if (input instanceof Node) {
                 Node node = (Node) input;
@@ -104,7 +104,7 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
      */
     private Predicate<EObject> edgeWithTreeRoutingPredicate = new Predicate<EObject>() {
         @Override
-        public boolean apply(EObject input) {
+        public boolean test(EObject input) {
             boolean apply = false;
             if (input instanceof Edge) {
                 apply = new EdgeQuery((Edge) input).isEdgeWithTreeRoutingStyle();

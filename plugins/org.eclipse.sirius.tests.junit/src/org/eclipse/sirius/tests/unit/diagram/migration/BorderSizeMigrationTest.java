@@ -39,7 +39,6 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.osgi.framework.Version;
 
-import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
 
@@ -309,7 +308,7 @@ public class BorderSizeMigrationTest extends SiriusTestCase {
         Collection<DRepresentation> allRepresentations = new DViewQuery(view).getLoadedRepresentations();
         assertEquals(2, allRepresentations.size());
 
-        Iterator<EObject> dNodeContIt = new DViewQuery(view).getAllContentInRepresentations(Predicates.instanceOf(DNodeContainer.class));
+        Iterator<EObject> dNodeContIt = new DViewQuery(view).getAllContentInRepresentations(DNodeContainer.class::isInstance);
 
         assertEquals(24, Iterators.size(dNodeContIt));
 
