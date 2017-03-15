@@ -12,7 +12,7 @@
 package org.eclipse.sirius.editor.properties.tools.internal.menu;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * The descriptor used to create a widget for all the features.
@@ -22,9 +22,9 @@ import org.eclipse.sirius.properties.GroupDescription;
 public class CreateWidgetForAllFeaturesDescriptor {
 
     /**
-     * The description of the group.
+     * The description of the container of the controls.
      */
-    private GroupDescription groupDescription;
+    private EObject controlsContainerDescription;
 
     /**
      * The domain class.
@@ -34,23 +34,23 @@ public class CreateWidgetForAllFeaturesDescriptor {
     /**
      * The constructor.
      * 
-     * @param groupDescription
-     *            The description of the group
+     * @param controlsContainerDescription
+     *            The description of the container of the controls
      * @param domainClass
      *            The domain class
      */
-    public CreateWidgetForAllFeaturesDescriptor(GroupDescription groupDescription, EClass domainClass) {
-        this.groupDescription = groupDescription;
+    public CreateWidgetForAllFeaturesDescriptor(EObject controlsContainerDescription, EClass domainClass) {
+        this.controlsContainerDescription = controlsContainerDescription;
         this.domainClass = domainClass;
     }
 
     /**
-     * Returns the description of the group.
+     * Returns the description of the container of the controls.
      * 
-     * @return The description of the group
+     * @return The description of the container of the controls
      */
-    public GroupDescription getGroupDescription() {
-        return this.groupDescription;
+    public EObject getControlsContainerDescription() {
+        return this.controlsContainerDescription;
     }
 
     /**

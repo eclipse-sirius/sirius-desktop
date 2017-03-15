@@ -13,6 +13,7 @@ package org.eclipse.sirius.editor.properties.tools.internal.menu;
 import java.text.MessageFormat;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.editor.properties.api.DefaultWidgetDescription;
 import org.eclipse.sirius.editor.properties.api.IDefaultWidgetDescriptionFactory;
@@ -20,6 +21,8 @@ import org.eclipse.sirius.editor.properties.internal.Messages;
 import org.eclipse.sirius.editor.properties.internal.SiriusEditorPropertiesPlugin;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractUndoRecordingCommand;
 import org.eclipse.sirius.properties.core.internal.EditSupportSpec;
+import org.eclipse.sirius.properties.ContainerDescription;
+import org.eclipse.sirius.properties.GroupDescription;
 
 /**
  * Creates all the widget descriptions with values for each structural feature of the selected domain class.
@@ -54,7 +57,13 @@ public class CreateWidgetForAllFeaturesCommand extends AbstractUndoRecordingComm
             if (factories.size() >= 1) {
                 IDefaultWidgetDescriptionFactory factory = factories.get(0);
                 DefaultWidgetDescription defaultWidgetDescription = factory.create(this.descriptor.getDomainClass(), eStructuralFeature);
-                this.descriptor.getGroupDescription().getControls().add(defaultWidgetDescription.getWidgetDescription());
+
+                EObject controlsContainerDescription = this.descriptor.getControlsContainerDescription();
+                if (controlsContainerDescription instanceof GroupDescription) {
+                    ((GroupDescription) controlsContainerDescription).getControls().add(defaultWidgetDescription.getWidgetDescription());
+                } else if (controlsContainerDescription instanceof ContainerDescription) {
+                    ((ContainerDescription) controlsContainerDescription).getControls().add(defaultWidgetDescription.getWidgetDescription());
+                }
             }
         });
     }

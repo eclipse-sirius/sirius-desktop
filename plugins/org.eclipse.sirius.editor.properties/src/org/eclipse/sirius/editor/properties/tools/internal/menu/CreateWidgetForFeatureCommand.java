@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.properties.tools.internal.menu;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractUndoRecordingCommand;
+import org.eclipse.sirius.properties.ContainerDescription;
+import org.eclipse.sirius.properties.GroupDescription;
 
 /**
  * Creates a widget description with values from a specific structural feature..
@@ -40,7 +43,12 @@ public class CreateWidgetForFeatureCommand extends AbstractUndoRecordingCommand 
 
     @Override
     protected void doExecute() {
-        this.descriptor.getGroupDescription().getControls().add(this.descriptor.getDefaultWidgetDescription().getWidgetDescription());
+        EObject controlsContainerDescription = this.descriptor.getControlsContainerDescription();
+        if (controlsContainerDescription instanceof GroupDescription) {
+            ((GroupDescription) controlsContainerDescription).getControls().add(this.descriptor.getDefaultWidgetDescription().getWidgetDescription());
+        } else if (controlsContainerDescription instanceof ContainerDescription) {
+            ((ContainerDescription) controlsContainerDescription).getControls().add(this.descriptor.getDefaultWidgetDescription().getWidgetDescription());
+        }
     }
 
     @Override

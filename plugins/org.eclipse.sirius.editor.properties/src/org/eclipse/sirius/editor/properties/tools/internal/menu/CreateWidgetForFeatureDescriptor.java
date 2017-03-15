@@ -11,22 +11,21 @@
 package org.eclipse.sirius.editor.properties.tools.internal.menu;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.editor.properties.api.DefaultWidgetDescription;
-import org.eclipse.sirius.properties.GroupDescription;
 
 /**
- * The descriptor used to hold the parameter of the command creating a widget
- * from a structural feature.
+ * The descriptor used to hold the parameter of the command creating a widget from a structural feature.
  * 
  * @author sbegaudeau
  */
 public class CreateWidgetForFeatureDescriptor {
 
     /**
-     * The description of the group.
+     * The description of the container of the controls.
      */
-    private GroupDescription groupDescription;
+    private EObject controlsContainerDescription;
 
     /**
      * The domain class.
@@ -46,8 +45,8 @@ public class CreateWidgetForFeatureDescriptor {
     /**
      * The constructor.
      * 
-     * @param groupDescription
-     *            The description of the group
+     * @param controlsContainerDescription
+     *            The description of the container of the controls
      * @param domainClass
      *            The domain class
      * @param imageDescriptor
@@ -55,20 +54,20 @@ public class CreateWidgetForFeatureDescriptor {
      * @param defaultWidgetDescription
      *            The description of the default widget
      */
-    public CreateWidgetForFeatureDescriptor(GroupDescription groupDescription, EClass domainClass, ImageDescriptor imageDescriptor, DefaultWidgetDescription defaultWidgetDescription) {
-        this.groupDescription = groupDescription;
+    public CreateWidgetForFeatureDescriptor(EObject controlsContainerDescription, EClass domainClass, ImageDescriptor imageDescriptor, DefaultWidgetDescription defaultWidgetDescription) {
+        this.controlsContainerDescription = controlsContainerDescription;
         this.domainClass = domainClass;
         this.imageDescriptor = imageDescriptor;
         this.defaultWidgetDescription = defaultWidgetDescription;
     }
 
     /**
-     * Returns the description of the group.
+     * Returns the description of the container of the controls.
      * 
-     * @return The description of the group
+     * @return The description of the container of the controls
      */
-    public GroupDescription getGroupDescription() {
-        return this.groupDescription;
+    public EObject getControlsContainerDescription() {
+        return this.controlsContainerDescription;
     }
 
     /**
