@@ -53,7 +53,7 @@ public final class Messages {
     public static String UI_SessionEditor_models_button_newSemanticModel;
 
     @TranslatableMessage
-    public static String UI_SessionEditor_new_semantic_model_action_label = null;
+    public static String UI_SessionEditor_new_semantic_model_action_label;
     
     @TranslatableMessage
     public static String UI_SessionEditor_viewpoints_description;
