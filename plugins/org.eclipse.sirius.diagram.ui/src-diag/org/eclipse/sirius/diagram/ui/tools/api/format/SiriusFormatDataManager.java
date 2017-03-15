@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,10 +13,11 @@ package org.eclipse.sirius.diagram.ui.tools.api.format;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.formatdata.AbstractFormatData;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
- * An interface for all the SiriusFormatDataManager for mapping key (
- * {@link FormatDataKey}) and formatData ({@link AbstractFormatData}).
+ * An interface for all the SiriusFormatDataManager for mapping key ( {@link FormatDataKey}) and formatData (
+ * {@link AbstractFormatData}).
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
@@ -24,40 +25,36 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 public interface SiriusFormatDataManager {
 
     /**
-     * Get the format data corresponding to the key.
+     * Get the format data with the best corresponding to the key.
      * 
      * @param key
      *            The key
+     * @param mapping
+     *            the mapping used to discriminate returned {@link AbstractFormatData} when the key is attached to more
+     *            than one format.
      * @return the format data corresponding to the key or null if not found.
-     * @deprecated Replaced by
-     *             {@link SiriusFormatDataManagerWithMapping#getFormatData(FormatDataKey, org.eclipse.sirius.viewpoint.description.RepresentationElementMapping)}
-     *             handling more copy/paste cases by using mapping information.
      */
-    @Deprecated
-    AbstractFormatData getFormatData(FormatDataKey key);
+    AbstractFormatData getFormatData(FormatDataKey key, RepresentationElementMapping mapping);
 
     /**
-     * Add a format data according to the key.
+     * Add a format data according to the key and the mapping information.
      * 
      * @param key
      *            The key
+     * @param mapping
+     *            the mapping used to discriminate returned {@link AbstractFormatData} when the key is attached to more
+     *            than one format.
      * @param formatData
-     *            The format data
-     * @deprecated Replaced by
-     *             {@link SiriusFormatDataManagerWithMapping#addFormatData(FormatDataKey, org.eclipse.sirius.viewpoint.description.RepresentationElementMapping, AbstractFormatData)}
-     *             handling more copy/paste cases by using mapping information.
+     *            The format data associated to the key and mapping.
      */
-    @Deprecated
-    void addFormatData(FormatDataKey key, AbstractFormatData formatData);
+    void addFormatData(FormatDataKey key, RepresentationElementMapping mapping, AbstractFormatData formatData);
 
     /**
-     * Create a key corresponding to the semanticDecorator and available for
-     * this manager.
+     * Create a key corresponding to the semanticDecorator and available for this manager.
      * 
      * @param semanticDecorator
      *            the semantic decorator
-     * @return a new key corresponding to the semanticDecorator and available
-     *         for this manager.
+     * @return a new key corresponding to the semanticDecorator and available for this manager.
      */
     FormatDataKey createKey(DSemanticDecorator semanticDecorator);
 
@@ -73,8 +70,7 @@ public interface SiriusFormatDataManager {
      * Apply the current format data to the rootEditPart.
      * 
      * @param rootEditPart
-     *            the root edit from which we would try to apply the current
-     *            stored format
+     *            the root edit from which we would try to apply the current stored format
      */
     void applyFormat(IGraphicalEditPart rootEditPart);
 
@@ -82,8 +78,7 @@ public interface SiriusFormatDataManager {
      * Apply the current layout data to the rootEditPart.
      * 
      * @param rootEditPart
-     *            the root edit from which we would try to apply the current
-     *            stored format
+     *            the root edit from which we would try to apply the current stored format
      */
     void applyLayout(IGraphicalEditPart rootEditPart);
 
@@ -91,8 +86,7 @@ public interface SiriusFormatDataManager {
      * Apply the current style data to the rootEditPart.
      * 
      * @param rootEditPart
-     *            the root edit from which we would try to apply the current
-     *            stored style
+     *            the root edit from which we would try to apply the current stored style
      */
     void applyStyle(IGraphicalEditPart rootEditPart);
 

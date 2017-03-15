@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,8 +35,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
 
 /**
- * SiriusFormatDataManager drives by the semantic elements (EObject). Use for
- * format duplication.
+ * SiriusFormatDataManager drives by the semantic elements (EObject). Use for format duplication.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
@@ -44,17 +43,14 @@ import com.google.common.collect.Maps;
 public class SiriusFormatDataManagerForSemanticElements extends AbstractSiriusFormatDataManager implements AdvancedSiriusFormatDataManager {
 
     /**
-     * Error message used when this manager is added an
-     * {@link AbstractFormatData} which specific type is not supported.
+     * Error message used when this manager is added an {@link AbstractFormatData} which specific type is not supported.
      */
     private static final String ERROR_MESSAGE_UNSUPPORTED_FORMAT_DATA_TYPE = "The default format data manager SiriusFormatDataManagerForSemanticElements does not support AbstractDataFormat of the type :"; //$NON-NLS-1$
 
     /**
-     * Error message used when this format data manager is called by the
-     * obsolete method
+     * Error message used when this format data manager is called by the obsolete method
      * org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.
-     * SiriusFormatDataManagerForSemanticElements.addFormatData(FormatDataKey,
-     * AbstractFormatData) or
+     * SiriusFormatDataManagerForSemanticElements.addFormatData(FormatDataKey, AbstractFormatData) or
      * org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.
      * SiriusFormatDataManagerForSemanticElements.getFormatData(FormatDataKey).
      */
@@ -74,14 +70,14 @@ public class SiriusFormatDataManagerForSemanticElements extends AbstractSiriusFo
     };
 
     /**
-     * The map containing node formats associated to its mapping id and indexed
-     * by the key as {@link SemanticNodeFormatDataKey}.
+     * The map containing node formats associated to its mapping id and indexed by the key as
+     * {@link SemanticNodeFormatDataKey}.
      */
     private final Map<SemanticNodeFormatDataKey, Map<String, NodeFormatData>> nodeFormatDataMap = new HashMap<SemanticNodeFormatDataKey, Map<String, NodeFormatData>>();
 
     /**
-     * The map containing edge formats associated to its mapping id and indexed
-     * by the key as {@link SemanticEdgeFormatDataKey}.
+     * The map containing edge formats associated to its mapping id and indexed by the key as
+     * {@link SemanticEdgeFormatDataKey}.
      */
     private final Map<SemanticEdgeFormatDataKey, Map<String, EdgeFormatData>> edgeFormatDataMap = new HashMap<SemanticEdgeFormatDataKey, Map<String, EdgeFormatData>>();
 
@@ -90,18 +86,6 @@ public class SiriusFormatDataManagerForSemanticElements extends AbstractSiriusFo
      */
     public SiriusFormatDataManagerForSemanticElements() {
         // Nothing.
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager#addFormatData(org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey,
-     *      org.eclipse.sirius.diagram.formatdata.AbstractFormatData)
-     */
-    @Override
-    public void addFormatData(final FormatDataKey key, final AbstractFormatData formatData) {
-        clearFormatData();
-        throw new UnsupportedOperationException(ERROR_MESSAGE_UNSUPPORTED_METHOD_CALL);
     }
 
     @Override
@@ -140,17 +124,6 @@ public class SiriusFormatDataManagerForSemanticElements extends AbstractSiriusFo
             }
         }
 
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager#getFormatData(org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey)
-     */
-    @Override
-    public AbstractFormatData getFormatData(final FormatDataKey key) {
-        clearFormatData();
-        throw new UnsupportedOperationException(ERROR_MESSAGE_UNSUPPORTED_METHOD_CALL);
     }
 
     @Override

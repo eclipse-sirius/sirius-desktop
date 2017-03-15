@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,12 +93,10 @@ import com.google.common.collect.Sets;
 
 /**
  * An abstract implementation for {@link SiriusFormatDataManager}. <BR>
- * Provide a method to store a format from a graphicalEditPart and iterates on
- * it's children and apply a format.
+ * Provide a method to store a format from a graphicalEditPart and iterates on it's children and apply a format.
  * 
- * Regarding the store/apply format functionality, the subclass of this should
- * implements {@link SiriusFormatDataManagerWithMapping} that handles more cases
- * thanks to mapping information.
+ * Regarding the store/apply format functionality, the subclass of this should implements
+ * {@link SiriusFormatDataManagerWithMapping} that handles more cases thanks to mapping information.
  *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  *
@@ -166,8 +164,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * Apply the format to the <code>rootEditPart</code>.
      * 
      * @param rootEditPart
-     *            The root edit from which we would try to apply the current
-     *            stored format
+     *            The root edit from which we would try to apply the current stored format
      * @param applyFormat
      *            true if the format must be applied, false otherwise
      * @param applyStyle
@@ -241,11 +238,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      */
     private void applyFormat(final DEdge edge, final Edge gmfEdge, final EditPartViewer editPartViewer, boolean applyFormat, boolean applyStyle) {
         final EdgeFormatData formatData;
-        if (this instanceof SiriusFormatDataManagerWithMapping) {
-            formatData = (EdgeFormatData) ((SiriusFormatDataManagerWithMapping) this).getFormatData(createKey(edge), edge.getMapping());
-        } else {
-            formatData = (EdgeFormatData) getFormatData(createKey(edge));
-        }
+        formatData = (EdgeFormatData) this.getFormatData(createKey(edge), edge.getMapping());
 
         if (formatData != null) {
             if (applyFormat) {
@@ -352,8 +345,8 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
     }
 
     /**
-     * Search a format corresponding to the semantic decorator and applies it to
-     * the node. Then it applies to it's children and outgoing edges.
+     * Search a format corresponding to the semantic decorator and applies it to the node. Then it applies to it's
+     * children and outgoing edges.
      *
      * @param semanticDecorator
      *            The semantic decorator to search the corresponding format
@@ -367,11 +360,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
             boolean applyStyle) {
         FormatDataKey key = createKey(semanticDecorator);
         NodeFormatData formatData;
-        if (this instanceof SiriusFormatDataManagerWithMapping) {
-            formatData = (NodeFormatData) ((SiriusFormatDataManagerWithMapping) this).getFormatData(key, semanticDecorator.getMapping());
-        } else {
-            formatData = (NodeFormatData) getFormatData(key);
-        }
+        formatData = (NodeFormatData) this.getFormatData(key, semanticDecorator.getMapping());
         // If a direct child have the same format data and key than its parents,
         // look in the parent format data 's children for a child format data
         // with the expected id.
@@ -466,8 +455,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
     }
 
     /**
-     * Apply the Sirius style contained in <code>formatData</code> on the
-     * <code>semanticDecorator</code>.
+     * Apply the Sirius style contained in <code>formatData</code> on the <code>semanticDecorator</code>.
      * 
      * @param semanticDecorator
      *            The {@link DSemanticDecorator} on which to apply the style.
@@ -496,15 +484,13 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
     }
 
     /**
-     * Copies the appearance of the old view to the new view. Typically this
-     * means copying the visibility and the styles of the root and it's
-     * children.
+     * Copies the appearance of the old view to the new view. Typically this means copying the visibility and the styles
+     * of the root and it's children.
      * 
      * @param newView
      *            The new view to copy style features to
      * @param formatData
-     *            The format data containing the old view to copy style features
-     *            from
+     *            The format data containing the old view to copy style features from
      */
     @SuppressWarnings("unchecked")
     protected void applyGMFStyle(View newView, AbstractFormatData formatData) {
@@ -599,11 +585,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
             if (gmfNode != null) {
                 FormatDataKey key = createKey(child);
                 NodeFormatData formatData;
-                if (this instanceof SiriusFormatDataManagerWithMapping) {
-                    formatData = (NodeFormatData) ((SiriusFormatDataManagerWithMapping) this).getFormatData(key, child.getMapping());
-                } else {
-                    formatData = (NodeFormatData) getFormatData(key);
-                }
+                formatData = (NodeFormatData) this.getFormatData(key, child.getMapping());
 
                 // If a direct child have the same format data and key than its
                 // parents, look in the parent format data 's children for a
@@ -788,8 +770,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * @param gmfView
      *            GMF view
      * @param discoveredKeys
-     *            The {@link FormatDataKey} discovered during the current store
-     *            action.
+     *            The {@link FormatDataKey} discovered during the current store action.
      */
     protected void addNodeChildren(final DNode parentNode, final NodeFormatData parentFormatData, final IGraphicalEditPart parentEditPart, final View gmfView,
             Collection<FormatDataKey> discoveredKeys) {
@@ -810,8 +791,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * @param parentSavedEditPart
      *            The previous saved editPart (corresponds to parentFormatData)
      * @param discoveredKeys
-     *            The {@link FormatDataKey} discovered during the current store
-     *            action.
+     *            The {@link FormatDataKey} discovered during the current store action.
      */
     protected void checkDataAndAddChildFormat(final NodeFormatData parentFormatData, final AbstractDNode child, final IGraphicalEditPart parentSavedEditPart,
             Collection<FormatDataKey> discoveredKeys) {
@@ -835,8 +815,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * @param parentEditPart
      *            The editPart corresponding to the parent FormatData
      * @param discoveredKeys
-     *            The {@link FormatDataKey} discovered during the current store
-     *            action.
+     *            The {@link FormatDataKey} discovered during the current store action.
      */
     protected void addNodeContainerChildren(final DNodeContainer container, final NodeFormatData parentFormatData, final IGraphicalEditPart parentEditPart, Collection<FormatDataKey> discoveredKeys) {
         for (final DDiagramElement child : container.getOwnedDiagramElements()) {
@@ -859,8 +838,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * @param parentEditPart
      *            The editPart corresponding to the parent FormatData
      * @param discoveredKeys
-     *            The {@link FormatDataKey} discovered during the current store
-     *            action.
+     *            The {@link FormatDataKey} discovered during the current store action.
      */
     protected void addNodeListChildren(final DNodeList nodeList, final NodeFormatData parentFormatData, final IGraphicalEditPart parentEditPart, Collection<FormatDataKey> discoveredKeys) {
         for (final DNode child : nodeList.getOwnedBorderedNodes()) {
@@ -916,21 +894,13 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         // inspected node, the previously computed data might be replaced. It
         // could so replaced one of the initially selected parts.
         if (!discoveredKeys.contains(childKey)) {
-            if (this instanceof SiriusFormatDataManagerWithMapping) {
-                ((SiriusFormatDataManagerWithMapping) this).addFormatData(childKey, child.getMapping(), childFormatData);
-            } else {
-                addFormatData(childKey, childFormatData);
-            }
+            this.addFormatData(childKey, child.getMapping(), childFormatData);
             discoveredKeys.add(childKey);
         } else if (parentFormatData == null) {
             // In this case, the same key is used for a root format data and for
             // an other view (child or border of an other view), the root data
             // should be stored.
-            if (this instanceof SiriusFormatDataManagerWithMapping) {
-                ((SiriusFormatDataManagerWithMapping) this).addFormatData(childKey, child.getMapping(), childFormatData);
-            } else {
-                addFormatData(childKey, childFormatData);
-            }
+            this.addFormatData(childKey, child.getMapping(), childFormatData);
         }
 
         if (child instanceof DNode) {
@@ -986,20 +956,15 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
             edgeFormatData.setId(edgeKey.getId());
 
             // Add the edge format data.
-            if (this instanceof SiriusFormatDataManagerWithMapping) {
-                ((SiriusFormatDataManagerWithMapping) this).addFormatData(edgeKey, edge.getMapping(), edgeFormatData);
-            } else {
-                addFormatData(edgeKey, edgeFormatData);
-            }
+            this.addFormatData(edgeKey, edge.getMapping(), edgeFormatData);
             // Add the label format data (if exists).
             addLabelFormatData(edgeFormatData, gmfEdge);
         }
     }
 
     /**
-     * Add the format data of the label of the edge. This format data sets the
-     * <code>edgeLabelFormatData</code> of the {@link EdgeFormatData}. It's not
-     * added to the format data with a key in the manager.
+     * Add the format data of the label of the edge. This format data sets the <code>edgeLabelFormatData</code> of the
+     * {@link EdgeFormatData}. It's not added to the format data with a key in the manager.
      *
      * @param parentFormatData
      *            The edge format data
@@ -1020,9 +985,8 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
     }
 
     /**
-     * Check for each attribute of newStyle if it is the same in oldStyle. On
-     * the other hand, this attribute is added to the custom features of the
-     * newStyle.
+     * Check for each attribute of newStyle if it is the same in oldStyle. On the other hand, this attribute is added to
+     * the custom features of the newStyle.
      * 
      * @param oldStyle
      *            The old style to compare with

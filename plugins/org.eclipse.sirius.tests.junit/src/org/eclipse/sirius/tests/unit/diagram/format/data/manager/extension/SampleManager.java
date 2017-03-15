@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.keys.
 import org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.keys.SampleEdgeFormatDataKey;
 import org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.keys.SampleNodeFormatDataKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Lists;
@@ -63,15 +64,11 @@ public class SampleManager extends AbstractSiriusFormatDataManager implements Si
         SessionManager.INSTANCE.addSessionsListener(sessionMgrListener);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public AbstractFormatData getFormatData(FormatDataKey key) {
+    public AbstractFormatData getFormatData(FormatDataKey key, RepresentationElementMapping mapping) {
         if (key instanceof AbstractSampleFormatDataKey && validateKey((AbstractSampleFormatDataKey) key)) {
             return getLinkedFormatData((AbstractSampleFormatDataKey) key);
         }
-
         return null;
     }
 
@@ -122,11 +119,8 @@ public class SampleManager extends AbstractSiriusFormatDataManager implements Si
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public void addFormatData(FormatDataKey key, AbstractFormatData formatData) {
+    public void addFormatData(FormatDataKey key, RepresentationElementMapping mapping, AbstractFormatData formatData) {
         if (key instanceof AbstractSampleFormatDataKey && validateKey((AbstractSampleFormatDataKey) key)) {
             formatDataMap.put((AbstractSampleFormatDataKey) key, formatData);
         }
