@@ -37,7 +37,6 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
-import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Test;
@@ -161,35 +160,16 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
      */
     private Color labelColor;
 
-    /**
-     * The original value of the preference
-     * {@link SiriusTreeUiPreferencesKeys#PREF_ALWAYS_USE_STANDARD_FONT_SIZE} to
-     * restore after test execution.
-     */
-    private boolean originalStandardFontSizePrefValue;
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, VSM, SESSION_FILE, ECORE_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-    }
-
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
-        originalStandardFontSizePrefValue = TreeUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE.name());
     }
 
     /**
@@ -349,31 +329,31 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
      */
     @Test
     public void testTreeItemStyleWithStandardFontSizeOptionActivated() {
-        TreeUIPlugin.getPlugin().getPreferenceStore().setValue(SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE.name(), true);
+        boolean originalStandardFontSizePrefValue = TreeUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE.name());
+        try {
+            TreeUIPlugin.getPlugin().getPreferenceStore().setValue(SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE.name(), true);
 
-        // Open editor
-        editor = openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DTree.class);
+            // Open editor
+            editor = openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DTree.class);
+            editor.save();
+            SWTBotUtils.waitProgressMonitorClose("Progress Information");
 
-        editor.save();
-        SWTBotUtils.waitProgressMonitorClose("Progress Information");
+            TreeItem widgetNewEclass1 = null;
 
-        TreeItem widgetNewEclass1 = null;
+            if (editor.bot().tree().getTreeItem(NEWECLASS1).widget instanceof TreeItem) {
+                widgetNewEclass1 = editor.bot().tree().getTreeItem(NEWECLASS1).widget;
+            }
 
-        if (editor.bot().tree().getTreeItem(NEWECLASS1).widget instanceof TreeItem) {
-            widgetNewEclass1 = editor.bot().tree().getTreeItem(NEWECLASS1).widget;
-        }
+            assertNotNull("The tree item for the class is null", widgetNewEclass1);
 
-        assertNotNull("The tree item for the class is null", widgetNewEclass1);
-
-        checkTreeItemStyle(widgetNewEclass1, false, syncExec(new Result<Integer>() {
-            @Override
-            public Integer run() {
+            checkTreeItemStyle(widgetNewEclass1, false, syncExec(() -> {
                 Font defaultFont = PlatformUI.getWorkbench().getDisplay().getSystemFont();
                 FontData fontData = defaultFont.getFontData()[0];
                 return fontData.getHeight();
-            }
-        }), NEWECLASS1, lightGreen, lightYellow, true, "bold");
-
+            }), NEWECLASS1, lightGreen, lightYellow, true, "bold");
+        } finally {
+            TreeUIPlugin.getPlugin().getPreferenceStore().setValue(SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE.name(), originalStandardFontSizePrefValue);
+        }
     }
 
     /**
@@ -604,10 +584,4 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
         String newLabelColor = bot.viewByTitle(PROPERTIES).bot().ccomboBox(0).selection();
         assertThat(newLabelColor, equalTo(MAPCOLORVALUE.get(newLabelColorValue)));
     }
-
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
-    }
-
 }
