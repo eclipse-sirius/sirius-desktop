@@ -401,12 +401,12 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         // Get proposals
         Collection<String> contentAssistProposal = getContentAssistProposal(domainClass, 0);
 
-        assertTrue("Type proposal should contain types from registered meta models.", contentAssistProposal.contains("ecore.EClass"));
-        assertTrue("Type proposal should contain types from registered meta models.", contentAssistProposal.contains("docbook.Book"));
-        assertTrue("Type proposal should contain types from registered meta models.", contentAssistProposal.contains("description.DiagramDescription"));
-        assertTrue("Type proposal should contain types from registered meta models.", contentAssistProposal.contains("diagram.DNode"));
-        assertFalse("Proposal should not contain viewpoint.DNode a it has been moved to the diagram package.", contentAssistProposal.contains("viewpoint.DNode"));
-        assertTrue("Type proposal should contain types from meta models in workspace.", contentAssistProposal.contains("test.Test"));
+        assertTrue("Type proposal should contain types from registered meta models.", contentAssistProposal.contains("ecore::EClass"));
+        assertTrue("Type proposal should contain types from registered meta models.", contentAssistProposal.contains("docbook::Book"));
+        assertTrue("Type proposal should contain types from registered meta models.", contentAssistProposal.contains("description::DiagramDescription"));
+        assertTrue("Type proposal should contain types from registered meta models.", contentAssistProposal.contains("diagram::DNode"));
+        assertFalse("Proposal should not contain viewpoint.DNode a it has been moved to the diagram package.", contentAssistProposal.contains("viewpoint::DNode"));
+        assertTrue("Type proposal should contain types from meta models in workspace.", contentAssistProposal.contains("test::Test"));
 
     }
 
@@ -432,13 +432,13 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         // Get proposals
         Collection<String> contentAssistProposal = getContentAssistProposal(domainClass, 0);
 
-        assertFalse("Proposal should only contain types from selected meta models: ecore.EClass found", contentAssistProposal.contains("ecore.EClass"));
-        assertFalse("Proposal should only contain types from selected meta models: docBook.Book found", contentAssistProposal.contains("docBook.Book"));
-        assertFalse("Proposal should only contain types from selected meta models: test.Test found", contentAssistProposal.contains("test.Test"));
+        assertFalse("Proposal should only contain types from selected meta models: ecore::EClass found", contentAssistProposal.contains("ecore::EClass"));
+        assertFalse("Proposal should only contain types from selected meta models: docBook::Book found", contentAssistProposal.contains("docBook::Book"));
+        assertFalse("Proposal should only contain types from selected meta models: test::Test found", contentAssistProposal.contains("test::Test"));
 
-        assertTrue("Proposal should contain types from selected meta models. DiagramDescription not found", contentAssistProposal.contains("description.DiagramDescription"));
-        assertTrue("Proposal should contain types from selected meta models. DNode not found", contentAssistProposal.contains("diagram.DNode"));
-        assertFalse("Proposal should not contain viewpoint.DNode a it has been moved to the diagram package.", contentAssistProposal.contains("viewpoint.DNode"));
+        assertTrue("Proposal should contain types from selected meta models. DiagramDescription not found", contentAssistProposal.contains("description::DiagramDescription"));
+        assertTrue("Proposal should contain types from selected meta models. DNode not found", contentAssistProposal.contains("diagram::DNode"));
+        assertFalse("Proposal should not contain viewpoint.DNode a it has been moved to the diagram package.", contentAssistProposal.contains("viewpoint::DNode"));
     }
 
     private void selectSiriusMetaModels(final Collection<String> expectedNsURIs) throws InterruptedException {
