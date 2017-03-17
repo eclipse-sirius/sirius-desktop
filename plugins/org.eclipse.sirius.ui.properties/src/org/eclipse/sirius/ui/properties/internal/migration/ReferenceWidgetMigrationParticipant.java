@@ -238,11 +238,13 @@ public class ReferenceWidgetMigrationParticipant extends AbstractVSMMigrationPar
      */
     private HyperlinkWidgetStyle handleHyperlinkStyle(ListWidgetStyle listWidgetStyle) {
         HyperlinkWidgetStyle hyperlinkWidgetStyle = PropertiesFactory.eINSTANCE.createHyperlinkWidgetStyle();
-        hyperlinkWidgetStyle.setLabelBackgroundColor(listWidgetStyle.getLabelBackgroundColor());
-        hyperlinkWidgetStyle.setLabelForegroundColor(listWidgetStyle.getLabelForegroundColor());
-        hyperlinkWidgetStyle.setLabelFontNameExpression(listWidgetStyle.getLabelFontNameExpression());
-        hyperlinkWidgetStyle.setLabelFontSizeExpression(listWidgetStyle.getLabelFontSizeExpression());
-        hyperlinkWidgetStyle.getLabelFontFormat().addAll(listWidgetStyle.getLabelFontFormat());
+        if (listWidgetStyle != null) {
+            hyperlinkWidgetStyle.setLabelBackgroundColor(listWidgetStyle.getLabelBackgroundColor());
+            hyperlinkWidgetStyle.setLabelForegroundColor(listWidgetStyle.getLabelForegroundColor());
+            hyperlinkWidgetStyle.setLabelFontNameExpression(listWidgetStyle.getLabelFontNameExpression());
+            hyperlinkWidgetStyle.setLabelFontSizeExpression(listWidgetStyle.getLabelFontSizeExpression());
+            hyperlinkWidgetStyle.getLabelFontFormat().addAll(listWidgetStyle.getLabelFontFormat());
+        }
         return hyperlinkWidgetStyle;
     }
 
@@ -285,11 +287,13 @@ public class ReferenceWidgetMigrationParticipant extends AbstractVSMMigrationPar
      */
     private LabelWidgetStyle handleLabelStyle(ListWidgetStyle listWidgetStyle) {
         LabelWidgetStyle labelWidgetStyle = PropertiesFactory.eINSTANCE.createLabelWidgetStyle();
-        labelWidgetStyle.setLabelBackgroundColor(listWidgetStyle.getLabelBackgroundColor());
-        labelWidgetStyle.setLabelForegroundColor(listWidgetStyle.getLabelForegroundColor());
-        labelWidgetStyle.setLabelFontNameExpression(listWidgetStyle.getLabelFontNameExpression());
-        labelWidgetStyle.setLabelFontSizeExpression(listWidgetStyle.getLabelFontSizeExpression());
-        labelWidgetStyle.getLabelFontFormat().addAll(listWidgetStyle.getLabelFontFormat());
+        if (listWidgetStyle != null) {
+            labelWidgetStyle.setLabelBackgroundColor(listWidgetStyle.getLabelBackgroundColor());
+            labelWidgetStyle.setLabelForegroundColor(listWidgetStyle.getLabelForegroundColor());
+            labelWidgetStyle.setLabelFontNameExpression(listWidgetStyle.getLabelFontNameExpression());
+            labelWidgetStyle.setLabelFontSizeExpression(listWidgetStyle.getLabelFontSizeExpression());
+            labelWidgetStyle.getLabelFontFormat().addAll(listWidgetStyle.getLabelFontFormat());
+        }
         return labelWidgetStyle;
     }
 }
