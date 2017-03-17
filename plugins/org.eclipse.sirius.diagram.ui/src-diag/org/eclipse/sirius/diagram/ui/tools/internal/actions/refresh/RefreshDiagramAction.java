@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,19 +19,14 @@ import java.util.List;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
-import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.internal.refresh.DiagramRefresherHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramHelper;
-import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.RetargetAction;
 
@@ -83,24 +77,12 @@ public class RefreshDiagramAction extends RetargetAction {
         if (selection instanceof IStructuredSelection) {
             IStructuredSelection structuredSelection = (IStructuredSelection) selection;
             final Collection<EditPart> minimizedSelection = RefreshDiagramAction.minimizeSelection(Arrays.asList(structuredSelection.toArray()));
-
+            DDiagram diagram = null;
             if (!minimizedSelection.isEmpty()) {
-                DDiagram diagram = DDiagramHelper.findParentDDiagram(Iterables.filter(minimizedSelection, IGraphicalEditPart.class).iterator().next());
-                if (diagram != null) {
-                    RefreshActionListenerRegistry.INSTANCE.notifyRepresentationIsAboutToBeRefreshed(diagram);
-                }
+                diagram = DDiagramHelper.findParentDDiagram(Iterables.filter(minimizedSelection, IGraphicalEditPart.class).iterator().next());
             }
 
-            final Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-            final ProgressMonitorDialog monitorDialog = new ProgressMonitorDialog(activeShell);
-            try {
-                monitorDialog.run(true, false, new RefreshRunnableWithProgress(minimizedSelection));
-            } catch (final InvocationTargetException e) {
-                MessageDialog.openError(activeShell, Messages.RefreshDiagramAction_error, e.getTargetException().getMessage());
-                SiriusPlugin.getDefault().error(Messages.RefreshDiagramAction_refreshDiagramError, e);
-            } catch (final InterruptedException e) {
-                MessageDialog.openInformation(activeShell, Messages.RefreshDiagramAction_cancelled, e.getMessage());
-            }
+            DiagramRefresherHelper.refreshEditParts(diagram, minimizedSelection);
 
         }
     }

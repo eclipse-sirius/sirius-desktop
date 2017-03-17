@@ -66,13 +66,13 @@ public final class Messages {
     public static String EditorCreateTreeItemMenuAction_name;
 
     @TranslatableMessage
-    public static String EditorRefreshAction_error;
+    public static String EditorRefresh_error;
 
     @TranslatableMessage
-    public static String EditorRefreshAction_refreshCancelled;
+    public static String EditorRefresh_refreshCancelled;
 
     @TranslatableMessage
-    public static String EditorRefreshAction_treeRefreshError;
+    public static String EditorRefresh_treeRefreshError;
 
     @TranslatableMessage
     public static String ExpandDTreeItemRunnableWithProgress_expandTreeItem;

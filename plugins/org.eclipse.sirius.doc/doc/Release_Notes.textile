@@ -54,6 +54,7 @@ h4. Changes in @org.eclipse.sirius@
 
 h4. Changes in @org.eclipse.sirius.ui@
 
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.refreshEditor(DialectEditor, IProgressMonitor)@ has been added to allow specifiers to do a full refresh of its dialect editor easily.
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getDefaultFontWithRuntimeSizeAndFromLabelFormat(List<FontFormat>)@ has been added to allow to retrieve a font using the given format and the default Sirius font (arial) and the runtime height.
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getFontFromNameAndLabelFormatAndWithDefaultSize(List<FontFormat>, String)@ has been added to allow to retrieve a font using the given format and the given font name and the runtime height.
 * <span class="label label-info">Modified</span> The method @org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.createLocalRepresentationsFile(IProject, IProgressMonitor)@ has its return type changed from @void@ to @Session@ to allow callers to have access to the newly created session directly.

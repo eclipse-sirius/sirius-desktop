@@ -103,6 +103,7 @@ import org.eclipse.sirius.tests.unit.diagram.copier.RepresentationCopierTest;
 import org.eclipse.sirius.tests.unit.diagram.decorators.DecoratorsTest;
 import org.eclipse.sirius.tests.unit.diagram.decorators.TransientLayerAndDecoratorTest;
 import org.eclipse.sirius.tests.unit.diagram.dialect.DiagramDialectServicesTests;
+import org.eclipse.sirius.tests.unit.diagram.dialect.DiagramUIDialectServicesTests;
 import org.eclipse.sirius.tests.unit.diagram.dragndrop.DraggedObjectTesterTests;
 import org.eclipse.sirius.tests.unit.diagram.dragndrop.LabelVisibilityOnCreationTest;
 import org.eclipse.sirius.tests.unit.diagram.dragndrop.LabelVisibilityOnDragAndDropTests;
@@ -284,6 +285,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(DynamicInstanceTests.class);
         suite.addTestSuite(CanonicalDBorderItemLocatorTest.class);
         suite.addTestSuite(DiagramDialectServicesTests.class);
+        suite.addTestSuite(DiagramUIDialectServicesTests.class);
         suite.addTestSuite(TypeContentProposalTests.class);
         suite.addTestSuite(TypeNameTest.class);
 

@@ -46,24 +46,20 @@ public interface DialectUIServices {
     Collection<CommandParameter> provideNewChildDescriptors();
 
     /**
-     * Return the list of creation tool descriptors provided for a given parent
-     * feature.
+     * Return the list of creation tool descriptors provided for a given parent feature.
      * 
      * @param feature
      *            the feature containing the creation tools.
-     * @return the list of creation tool descriptors provided on creation tool
-     *         container.
+     * @return the list of creation tool descriptors provided on creation tool container.
      */
     Collection<CommandParameter> provideRepresentationCreationToolDescriptors(Object feature);
 
     /**
-     * Return the list of navigation tool descriptors provided for a given
-     * parent feature.
+     * Return the list of navigation tool descriptors provided for a given parent feature.
      * 
      * @param feature
      *            the feature containing the navigation tools.
-     * @return the list of navigation tool descriptors provided on navigation
-     *         tool container.
+     * @return the list of navigation tool descriptors provided on navigation tool container.
      */
     Collection<CommandParameter> provideRepresentationNavigationToolDescriptors(Object feature);
 
@@ -78,8 +74,8 @@ public interface DialectUIServices {
     Collection<CommandParameter> provideTools(EObject object);
 
     /**
-     * Return the list of additional mapping descriptors to appear inside a
-     * layer, which can depend on the representation type.
+     * Return the list of additional mapping descriptors to appear inside a layer, which can depend on the
+     * representation type.
      * 
      * @param object
      *            the context of the child creation.
@@ -89,8 +85,7 @@ public interface DialectUIServices {
     Collection<CommandParameter> provideAdditionalMappings(EObject object);
 
     /**
-     * Open an editor for the given representation (if only you know about this
-     * kind of representation).
+     * Open an editor for the given representation (if only you know about this kind of representation).
      * 
      * @param dRepresentation
      *            {@link DRepresentation} to open.
@@ -103,8 +98,17 @@ public interface DialectUIServices {
     IEditorPart openEditor(Session session, DRepresentation dRepresentation, IProgressMonitor monitor);
 
     /**
-     * Sets the given {@link DRepresentationElement}s as current selection for
-     * the editor.
+     * Execute a full refresh of the given editor.
+     * 
+     * @param dialectEditor
+     *            the editor to refresh.
+     * @param monitor
+     *            the monitor to use for refreshing.
+     */
+    void refreshEditor(DialectEditor dialectEditor, IProgressMonitor monitor);
+
+    /**
+     * Sets the given {@link DRepresentationElement}s as current selection for the editor.
      * 
      * @param dialectEditor
      *            the editor which needs a selection update.
@@ -114,8 +118,8 @@ public interface DialectUIServices {
     void setSelection(DialectEditor dialectEditor, List<DRepresentationElement> selection);
 
     /**
-     * Sets the given {@link DRepresentationElement}s as current selection for
-     * the editor and reveal the selection if needed.
+     * Sets the given {@link DRepresentationElement}s as current selection for the editor and reveal the selection if
+     * needed.
      * 
      * @param dialectEditor
      *            the editor which needs a selection update.
@@ -143,11 +147,9 @@ public interface DialectUIServices {
     String getEditorName(DRepresentation representation);
 
     /**
-     * Creates a new {@link AdapterFactory} used in the description editor for
-     * the provided types.
+     * Creates a new {@link AdapterFactory} used in the description editor for the provided types.
      * 
-     * @return a new {@link AdapterFactory} used in the description editor for
-     *         the provided types.
+     * @return a new {@link AdapterFactory} used in the description editor for the provided types.
      */
     AdapterFactory createAdapterFactory();
 
@@ -156,23 +158,21 @@ public interface DialectUIServices {
      * 
      * @param editorPart
      *            the editor to close.
-     * @return true if the dialect manage such {@link IEditorPart}, false
-     *         otherwise.
+     * @return true if the dialect manage such {@link IEditorPart}, false otherwise.
      */
     boolean canHandleEditor(IEditorPart editorPart);
 
     /**
-     * Close an editor (if only you know about this kind of {@link IEditorPart})
-     * and execute the specification operations.
+     * Close an editor (if only you know about this kind of {@link IEditorPart}) and execute the specification
+     * operations.
      * 
      * @param editor
      *            the editor to close
      * @param save
-     *            <code>true</code> to save the editor contents if required
-     *            (recommended), and <code>false</code> to discard any unsaved
-     *            changes
-     * @return <code>true</code> if the editor was successfully closed, and
-     *         <code>false</code> if the editor is still open
+     *            <code>true</code> to save the editor contents if required (recommended), and <code>false</code> to
+     *            discard any unsaved changes
+     * @return <code>true</code> if the editor was successfully closed, and <code>false</code> if the editor is still
+     *         open
      */
     boolean closeEditor(IEditorPart editor, boolean save);
 
@@ -234,42 +234,35 @@ public interface DialectUIServices {
      * 
      * @param representation
      *            representation to test.
-     * @return true if the dialect can handle the representation, false
-     *         otherwise.
+     * @return true if the dialect can handle the representation, false otherwise.
      */
     boolean canHandle(DRepresentation representation);
 
     /**
-     * Tell whether the dialect is able to handle the representationDescriptor
-     * associated representation.
+     * Tell whether the dialect is able to handle the representationDescriptor associated representation.
      * 
      * @param representationDescriptor
      *            Represents the representation to test.
-     * @return true if the dialect can handle the representation, false
-     *         otherwise.
+     * @return true if the dialect can handle the representation, false otherwise.
      */
     boolean canHandle(DRepresentationDescriptor representationDescriptor);
 
     /**
-     * Tell whether the dialect is able to handle the given representation
-     * description.
+     * Tell whether the dialect is able to handle the given representation description.
      * 
      * @param description
      *            the representation description to test.
-     * @return true if the dialect can handle the representation description,
-     *         false otherwise.
+     * @return true if the dialect can handle the representation description, false otherwise.
      * @since 1.0.0 M6
      */
     boolean canHandle(RepresentationDescription description);
 
     /**
-     * Tell whether the dialect is able to handle the given representation
-     * extension description.
+     * Tell whether the dialect is able to handle the given representation extension description.
      * 
      * @param description
      *            the representation extension description to test.
-     * @return true if the dialect can handle the representation extension
-     *         description, false otherwise.
+     * @return true if the dialect can handle the representation extension description, false otherwise.
      * @since 1.0.0 M6
      */
     boolean canHandle(RepresentationExtensionDescription description);
@@ -278,8 +271,7 @@ public interface DialectUIServices {
      * Return Hierachical LabelProvider.
      * 
      * @param currentLabelProvider
-     *            the current label provider. If the current label is null, the
-     *            result can be null
+     *            the current label provider. If the current label is null, the result can be null
      * @return a LabelProvider
      * @deprecated use directly a {@link HierarchyLabelProvider}.
      */
@@ -287,8 +279,7 @@ public interface DialectUIServices {
     ILabelProvider getHierarchyLabelProvider(ILabelProvider currentLabelProvider);
 
     /**
-     * Allows the {@link DialectUIServices} to customize the tooltip displayed
-     * in the VSM editor.
+     * Allows the {@link DialectUIServices} to customize the tooltip displayed in the VSM editor.
      * 
      * @param toolTipText
      *            the initial tool tip
@@ -303,8 +294,7 @@ public interface DialectUIServices {
     String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature);
 
     /**
-     * Allows the {@link DialectUIServices} to customize the tooltip displayed
-     * in the VSM editor.
+     * Allows the {@link DialectUIServices} to customize the tooltip displayed in the VSM editor.
      * 
      * @param toolTipText
      *            the initial tool tip
@@ -313,9 +303,8 @@ public interface DialectUIServices {
      * 
      * @return a customized tooltip if needed, the initial tooltip otherwise.
      * @since 1.0.0 M6
-     * @deprecated this method has not access to the feature of eObject. This is
-     *             supported in org.eclipse.sirius.ui.business.api.dialect.
-     *             DialectUIServices.completeToolTipText(String, EObject,
+     * @deprecated this method has not access to the feature of eObject. This is supported in
+     *             org.eclipse.sirius.ui.business.api.dialect. DialectUIServices.completeToolTipText(String, EObject,
      *             EStructuralFeature)
      */
     @Deprecated

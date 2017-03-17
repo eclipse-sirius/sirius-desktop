@@ -51,6 +51,7 @@ import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.metamodel.table.provider.TableItemProviderAdapterFactory;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.table.tools.api.export.TableExportHelper;
+import org.eclipse.sirius.table.ui.business.internal.refresh.TableRefresherHelper;
 import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableCrossEditor;
@@ -314,17 +315,22 @@ public class TableDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
-     *      EObject)
-     * @deprecated this method has not access to the feature of eObject. This is
-     *             supported in
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String, EObject)
+     * @deprecated this method has not access to the feature of eObject. This is supported in
      *             org.eclipse.sirius.table.ui.business.internal.dialect
-     *             .TableDialectUIServices.completeToolTipText(String, EObject,
-     *             EStructuralFeature)
+     *             .TableDialectUIServices.completeToolTipText(String, EObject, EStructuralFeature)
      */
     @Deprecated
     @Override
     public String completeToolTipText(String toolTipText, EObject eObject) {
         return toolTipText;
+    }
+
+    @Override
+    public void refreshEditor(DialectEditor dialectEditor, IProgressMonitor monitor) {
+        if (dialectEditor instanceof AbstractDTableEditor) {
+            final AbstractDTableEditor tableEditor = (AbstractDTableEditor) dialectEditor;
+            TableRefresherHelper.refreshEditor(tableEditor, monitor);
+        }
     }
 }

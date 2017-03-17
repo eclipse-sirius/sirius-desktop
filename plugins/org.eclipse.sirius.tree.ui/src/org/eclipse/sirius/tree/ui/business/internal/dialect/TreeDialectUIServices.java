@@ -45,6 +45,7 @@ import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeNavigationDescription;
 import org.eclipse.sirius.tree.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.tree.provider.TreeItemProviderAdapterFactory;
+import org.eclipse.sirius.tree.ui.business.internal.refresh.TreeRefresherHelper;
 import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
@@ -282,18 +283,23 @@ public class TreeDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
-     *      EObject)
-     * @deprecated this method has not access to the feature of eObject. This is
-     *             supported in
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String, EObject)
+     * @deprecated this method has not access to the feature of eObject. This is supported in
      *             org.eclipse.sirius.tree.ui.business.internal.dialect
-     *             .TreeDialectUIServices.completeToolTipText(String, EObject,
-     *             EStructuralFeature)
+     *             .TreeDialectUIServices.completeToolTipText(String, EObject, EStructuralFeature)
      */
     @Deprecated
     @Override
     public String completeToolTipText(String toolTipText, EObject eObject) {
         return toolTipText;
+    }
+
+    @Override
+    public void refreshEditor(DialectEditor dialectEditor, IProgressMonitor monitor) {
+        if (dialectEditor instanceof DTreeEditor) {
+            final DTreeEditor treeEditor = (DTreeEditor) dialectEditor;
+            TreeRefresherHelper.refreshEditor(treeEditor, new StructuredSelection(), monitor);
+        }
     }
 
 }

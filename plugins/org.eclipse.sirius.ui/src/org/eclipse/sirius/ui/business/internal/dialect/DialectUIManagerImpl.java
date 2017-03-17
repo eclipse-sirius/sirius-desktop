@@ -54,8 +54,7 @@ import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory
 import org.eclipse.ui.IEditorPart;
 
 /**
- * Class able to manage a set of dialects to provides the usual dialect services
- * using the Eclipse environment.
+ * Class able to manage a set of dialects to provides the usual dialect services using the Eclipse environment.
  * 
  * @author cbrun
  */
@@ -306,9 +305,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
     /**
      * {@inheritDoc}
      * 
-     * @deprecated use directly a
-     *             {@link org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider}
-     *             .
+     * @deprecated use directly a {@link org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider} .
      */
     @Deprecated
     @Override
@@ -374,6 +371,15 @@ public class DialectUIManagerImpl implements DialectUIManager {
     @Override
     public boolean isRefreshActivatedOnRepresentationOpening() {
         return SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
+    }
+
+    @Override
+    public void refreshEditor(DialectEditor dialectEditor, IProgressMonitor monitor) {
+        for (final DialectUI dialect : dialects.values()) {
+            if (dialect.getServices().canHandleEditor(dialectEditor)) {
+                dialect.getServices().refreshEditor(dialectEditor, monitor);
+            }
+        }
     }
 
 }

@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.tree;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.api.tools.RefreshWhenSeveralEditorsOpenTest;
 import org.eclipse.sirius.tests.api.tools.TreeItemCreationToolsTest;
 import org.eclipse.sirius.tests.api.tools.TreeItemDeletionToolsTest;
@@ -22,12 +17,18 @@ import org.eclipse.sirius.tests.api.tools.TreeItemDragAndDropToolTest;
 import org.eclipse.sirius.tests.api.tools.TreeItemDragAndDropToolUsingRecordingCommandCompositionTest;
 import org.eclipse.sirius.tests.api.tools.TreeItemEditionToolTest;
 import org.eclipse.sirius.tests.api.tools.TreeItemRefreshWithToolsTest;
+import org.eclipse.sirius.tests.unit.dialect.TreeUIDialectServicesTests;
 import org.eclipse.sirius.tests.unit.migration.InitializeElementsToSelectExpressionForTreeMigrationTest;
 import org.eclipse.sirius.tests.unit.tree.MappingHierarchyTableTest;
 import org.eclipse.sirius.tests.unit.tree.TreeItemOrderTests;
 import org.eclipse.sirius.tests.unit.tree.TreeRefreshTests;
 import org.eclipse.sirius.tests.unit.tree.TreeVariablesTest;
 import org.eclipse.sirius.tests.unit.tree.tools.SelectionInTreeAfterToolExecutionTest;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * The designer main test suite for the tree component.
@@ -47,8 +48,7 @@ public class AllTreePluginTests extends TestCase {
     }
 
     /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the tests
-     * of the table component.
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the tests of the table component.
      * 
      * @return The testsuite containing all the tests of the tree component
      */
@@ -71,6 +71,7 @@ public class AllTreePluginTests extends TestCase {
         suite.addTestSuite(TreeItemRefreshWithToolsTest.class);
         suite.addTestSuite(SelectionInTreeAfterToolExecutionTest.class);
         suite.addTestSuite(InitializeElementsToSelectExpressionForTreeMigrationTest.class);
+        suite.addTestSuite(TreeUIDialectServicesTests.class);
         return suite;
     }
 
