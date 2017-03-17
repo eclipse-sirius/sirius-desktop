@@ -197,8 +197,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      * @param monitor
      *            The progress monitor
      * @param mappingToElements
-     *            A map that list the DTableElement (line or column) for each
-     *            mapping
+     *            A map that list the DTableElement (line or column) for each mapping
      * @param xref
      *            the cross referencer to use
      */
@@ -223,8 +222,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     /**
      * Refresh all the cells of a crossTable :
      * <UL>
-     * <LI>Remove the cells that have no corresponding intersection mapping,
-     * </LI>
+     * <LI>Remove the cells that have no corresponding intersection mapping,</LI>
      * <LI>Refresh the existing one</LI>
      * <LI>Create the new one</LI>
      * <UL>
@@ -232,8 +230,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      * @param monitor
      *            The progress monitor
      * @param mappingToElements
-     *            A map that list the DTableElement (line or column) for each
-     *            mapping
+     *            A map that list the DTableElement (line or column) for each mapping
      * @param xref
      *            the cross reference to use
      */
@@ -317,8 +314,8 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             final DCell cell = toRemove.getOriginalElement();
             if (cell != null) {
                 /*
-                 * we should never reach a case were cells are deleted without
-                 * having been deleted by their line or column. !
+                 * we should never reach a case were cells are deleted without having been deleted by their line or
+                 * column. !
                  */
                 final DLine parentLine = cell.getLine();
                 final DColumn parentColumn = cell.getColumn();
@@ -364,9 +361,11 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
                 if (line != null) {
                     this.interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, line.getTarget());
+                    this.interpreter.setVariable(IInterpreterSiriusTableVariables.LINE, line);
                 }
                 if (table != null) {
                     this.interpreter.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
+                    this.interpreter.setVariable(IInterpreterSiriusTableVariables.TABLE, table);
                 }
 
                 featureParent = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateEObject(line.getTarget(), cMapping,
@@ -374,11 +373,12 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
                 if (line != null) {
                     this.interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
+                    this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.LINE);
                 }
                 if (table != null) {
                     this.interpreter.unSetVariable(IInterpreterSiriusVariables.ROOT);
+                    this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.TABLE);
                 }
-
             }
             newCell.setTarget(featureParent);
             String featureName = cMapping.getFeatureName();
@@ -672,11 +672,9 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      * Refresh all cells corresponding to the <code>iMapping</code>.
      *
      * @param iMapping
-     *            The intersection mapping for which we want to refresh the
-     *            corresponding cells.
+     *            The intersection mapping for which we want to refresh the corresponding cells.
      * @param mappingToElements
-     *            A map that list the DTableElement (line or column) for each
-     *            mapping
+     *            A map that list the DTableElement (line or column) for each mapping
      * @param xref
      *            the cross referencer to use
      */
@@ -692,11 +690,9 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      * Refresh all cells corresponding to the <code>iMapping</code>.
      *
      * @param iMapping
-     *            The intersection mapping with domain class for which we want
-     *            to refresh the corresponding cells.
+     *            The intersection mapping with domain class for which we want to refresh the corresponding cells.
      * @param mappingToElements
-     *            A map that list the DTableElement (line or column) for each
-     *            mapping
+     *            A map that list the DTableElement (line or column) for each mapping
      * @param xref
      *            the cross referencer to use
      */
@@ -791,8 +787,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      * @param iMapping
      *            the intersection mapping that is being refreshed
      * @param cellsToUpdate
-     *            the {@link SetIntersection} containing new, kept and deleted
-     *            elements
+     *            the {@link SetIntersection} containing new, kept and deleted elements
      * @param xref
      *            the cross referencer to use
      */
@@ -855,11 +850,9 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      * Refresh all cells corresponding to the <code>iMapping</code>.
      *
      * @param iMapping
-     *            The intersection mapping without domain class for which we
-     *            want to refresh the corresponding cells.
+     *            The intersection mapping without domain class for which we want to refresh the corresponding cells.
      * @param mappingToElements
-     *            A map that list the DTableElement (line or column) for each
-     *            mapping
+     *            A map that list the DTableElement (line or column) for each mapping
      * @param xref
      *            the cross reference to use
      */
@@ -981,14 +974,13 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     }
 
     /**
-     * Deletes the given lines, the contained subLines and cells and removes all
-     * references to deleted elements.
+     * Deletes the given lines, the contained subLines and cells and removes all references to deleted elements.
      *
      * @param lineToDelete
      *            the line to delete
      * @param xref
-     *            the cross reference to use to get the elements referencing the
-     *            deleted line (or its sublines and cells)
+     *            the cross reference to use to get the elements referencing the deleted line (or its sublines and
+     *            cells)
      */
     private void doDeleteLine(DLine lineToDelete, ECrossReferenceAdapter xref) {
         // Step 1: delete all sublines (and all references to these sublines)
@@ -1008,14 +1000,12 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     }
 
     /**
-     * Deletes the given column, and the contained cells and removes all
-     * references to deleted elements.
+     * Deletes the given column, and the contained cells and removes all references to deleted elements.
      *
      * @param columnToDelete
      *            the column to delete
      * @param xref
-     *            the cross reference to use to get the elements referencing the
-     *            deleted column (or its cells)
+     *            the cross reference to use to get the elements referencing the deleted column (or its cells)
      */
     private void doDeleteColumn(DColumn columnToDelete, ECrossReferenceAdapter xref) {
         // Step 1: delete all cells contained in this column (and all references
@@ -1036,8 +1026,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      * @param cell
      *            the cell to delete
      * @param xref
-     *            the cross reference to use to get the elements referencing the
-     *            deleted cell
+     *            the cross reference to use to get the elements referencing the deleted cell
      */
     private void doDeleteCell(DCell cell, ECrossReferenceAdapter xref) {
         // Delegate to the DTable elements synchronize,
@@ -1046,8 +1035,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     }
 
     /**
-     * Compute the current status of a given line container for a given
-     * LineMapping.
+     * Compute the current status of a given line container for a given LineMapping.
      *
      * @param container
      *            current line container.

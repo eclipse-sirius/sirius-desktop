@@ -91,6 +91,12 @@ public final class Messages {
     @TranslatableMessage
     public static String Table_WrongStyleAttribute;
 
+    @TranslatableMessage
+    public static String TableToolVariables_TableElement;
+
+    @TranslatableMessage
+    public static String TableToolVariables_LineElement;
+
     // CHECKSTYLE:ON
 
     private Messages() {

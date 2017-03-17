@@ -115,8 +115,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * Returns a command that can delete the specified element.
      *
      * @param element
-     *            the element to delete (a {@link DLine} or a
-     *            {@link DTargetColumn}).
+     *            the element to delete (a {@link DLine} or a {@link DTargetColumn}).
      * @return a command that can delete the specified element.
      */
     @Override
@@ -156,14 +155,13 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * Create a command that creates a line.
      *
      * @param lineContainer
-     *            container element in which the command should put the created
-     *            line.
+     *            container element in which the command should put the created line.
      * @param semanticCurrentElement
      *            the semantic current element
      * @param tool
      *            {@link CreateTool} used to build the command.
-     * @return a command able to create the line and putting it in the
-     *         container, corresponding to the {@link CreateTool}.
+     * @return a command able to create the line and putting it in the container, corresponding to the
+     *         {@link CreateTool}.
      */
     @Override
     public Command buildCreateLineCommandFromTool(final LineContainer lineContainer, final EObject semanticCurrentElement, final CreateTool tool) {
@@ -186,14 +184,13 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * Create a command that creates a column.
      *
      * @param containerView
-     *            container element in which the command should put the created
-     *            line.
+     *            container element in which the command should put the created line.
      * @param semanticCurrentElement
      *            the semantic current element
      * @param tool
      *            {@link CreateTool} used to build the command.
-     * @return a command able to create the line and putting it in the
-     *         container, corresponding to the {@link CreateTool}.
+     * @return a command able to create the line and putting it in the container, corresponding to the
+     *         {@link CreateTool}.
      */
     @Override
     public Command buildCreateColumnCommandFromTool(final DTable containerView, final EObject semanticCurrentElement, final CreateTool tool) {
@@ -229,8 +226,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
     }
 
     /**
-     * Check the delete availability from tool, based on its condition
-     * expression.
+     * Check the delete availability from tool, based on its condition expression.
      * 
      * @param element
      *            the DTableElement
@@ -286,16 +282,13 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
     }
 
     /**
-     * Build a command that covers all the model operations corresponding to a
-     * the semantic container and a
+     * Build a command that covers all the model operations corresponding to a the semantic container and a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription}.
      *
      * @param semanticCurrentElement
      *            the semantic current Element.
      * @param tool
-     *            the
-     *            {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription}
-     *            .
+     *            the {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription} .
      * @param containerView
      *            the container View
      * @return a command able to execute the tool.
@@ -349,12 +342,9 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
     }
 
     /**
-     * Build a command that covers all the model operations corresponding to a
-     * the {@link DCell currentCell} and the corresponding
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool
-     * directEdit tool} or
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool
-     * createCell tool}.
+     * Build a command that covers all the model operations corresponding to a the {@link DCell currentCell} and the
+     * corresponding {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool directEdit tool} or
+     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool createCell tool}.
      *
      * @param currentCell
      *            the current edited cell.
@@ -377,6 +367,8 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
             final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
             variables.put(TableHelper.getVariable(tool, IInterpreterSiriusVariables.ROOT), TableHelper.getTable(currentCell).getTarget());
             variables.put(TableHelper.getVariable(tool, IInterpreterSiriusTableVariables.LINE_SEMANTIC), currentCell.getLine().getTarget());
+            variables.put(TableHelper.getVariable(tool, IInterpreterSiriusTableVariables.LINE), currentCell.getLine());
+            variables.put(TableHelper.getVariable(tool, IInterpreterSiriusTableVariables.TABLE), TableHelper.getTable(currentCell));
             if (currentCell.getColumn() instanceof DTargetColumn) {
                 variables.put(TableHelper.getVariable(tool, IInterpreterSiriusTableVariables.COLUMN_SEMANTIC), ((DTargetColumn) currentCell.getColumn()).getTarget());
             }
@@ -413,16 +405,13 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * Build a command that covers all the model operations corresponding to a
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool
-     * createCell tool} for the current {@link DLine line} and
-     * {@link org.eclipse.sirius.table.metamodel.table.DColumn column}.
+     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool createCell tool} for the current
+     * {@link DLine line} and {@link org.eclipse.sirius.table.metamodel.table.DColumn column}.
      *
      * @param currentLine
-     *            the line corresponding to the intersection that need a
-     *            creation of a new cell.
+     *            the line corresponding to the intersection that need a creation of a new cell.
      * @param currentColumn
-     *            the column corresponding to the intersection that need a
-     *            creation of a new cell.
+     *            the column corresponding to the intersection that need a creation of a new cell.
      * @param tool
      *            The create tool
      * @param newValue
@@ -496,10 +485,8 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @param newValue
      *            the new value for this cell
      * @return a command able to set the content of a cell, corresponding to the
-     *         {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool
-     *         LabelEditTool} or
-     *         {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool
-     *         CreateCellTool}.
+     *         {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool LabelEditTool} or
+     *         {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool CreateCellTool}.
      */
     @Override
     public Command buildSetCellValueFromTool(final DCell editedCell, final Object newValue) {
@@ -522,8 +509,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * {@inheritDoc}
      *
      * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildCreateCellFromTool(org.eclipse.sirius.table.metamodel.table.DLine,
-     *      org.eclipse.sirius.table.metamodel.table.DTargetColumn,
-     *      java.lang.Object)
+     *      org.eclipse.sirius.table.metamodel.table.DTargetColumn, java.lang.Object)
      */
     @Override
     public Command buildCreateCellFromTool(DLine line, DTargetColumn column, Object newValue) {
@@ -555,8 +541,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @param semanticElement
      *            the element from which the table will be created.
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of
-     *            {@link DTable} creation
+     *            a {@link IProgressMonitor} to show progression of {@link DTable} creation
      * @return a command that is able to create a table.
      */
     public DCommand buildCreateTableFromDescription(final TableDescription description, final EObject semanticElement, IProgressMonitor monitor) {
@@ -688,8 +673,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * {@inheritDoc}
      *
      * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildDoExecuteDetailsOperation(org.eclipse.sirius.viewpoint.DSemanticDecorator,
-     *      org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription,
-     *      java.lang.String)
+     *      org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription, java.lang.String)
      */
     @Override
     public AbstractCommand buildDoExecuteDetailsOperation(final DSemanticDecorator target, final RepresentationCreationDescription desc, final String newRepresentationName) {

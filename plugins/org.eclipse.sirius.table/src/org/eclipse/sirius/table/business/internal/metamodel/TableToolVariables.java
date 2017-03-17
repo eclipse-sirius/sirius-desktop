@@ -32,8 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.NameVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
- * This processing switch will add the needed variable description in the table
- * tools.
+ * This processing switch will add the needed variable description in the table tools.
  *
  * @author cbrun
  */
@@ -66,6 +65,8 @@ public class TableToolVariables extends DescriptionSwitch<Object> {
     @Override
     public Object caseLabelEditTool(LabelEditTool object) {
         addVariableDescriptor(object, IInterpreterSiriusVariables.ELEMENT, Messages.TableToolVariables_CurrentSemanticElement);
+        addVariableDescriptor(object, IInterpreterSiriusTableVariables.TABLE, Messages.TableToolVariables_TableElement);
+        addVariableDescriptor(object, IInterpreterSiriusTableVariables.LINE, Messages.TableToolVariables_LineElement);
         addVariableDescriptor(object, IInterpreterSiriusTableVariables.LINE_SEMANTIC, Messages.TableToolVariables_SemanticLineElement);
         addVariableDescriptor(object, IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, Messages.TableToolVariables_SemanticColumnElement);
         addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, Messages.TableToolVariables_SemanticRootElement);

@@ -48,7 +48,7 @@ public class DTableSynchronizerWithEditorTest extends SiriusDiagramTestCase impl
     private static final String THE_TABLE_HAVE_CHANGED_EVEN_IF_NOTHING_HAS_BEEN_MODIFIED_IN_THE_SEMANTIC_MODEL = "the table have changed even if nothing has been modified in the semantic model";
 
     private static final String THE_EDITOR_HAS_NOT_THE_CORRECT_TYPE = "The editor has not the correct type";
-    
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -125,6 +125,7 @@ public class DTableSynchronizerWithEditorTest extends SiriusDiagramTestCase impl
          * not.
          */
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
             protected void doExecute() {
                 final org.eclipse.uml2.uml.Class claz = (Class) umlModel.getPackagedElement("Class1");
                 assertNotNull("Unit test data is not correct", claz);
@@ -743,7 +744,8 @@ public class DTableSynchronizerWithEditorTest extends SiriusDiagramTestCase impl
         TableUIHelper.addLineToTable(expectedWithTwoClassLess, new String[] { "Class3", "_", "_", "_", "_", "_", });
         String expectedWithTwoClassLessHtml = TableUIHelper.toHTML(expectedWithTwoClassLess);
 
-        assertEquals("A refresh after semantic change (remove elements) in another representation (diagram) don't modified the table.", expectedWithTwoClassLessHtml, TableUIHelper.toContentHTMl(tree));
+        assertEquals("A refresh after semantic change (remove elements) in another representation (diagram) don't modified the table.", expectedWithTwoClassLessHtml,
+                TableUIHelper.toContentHTMl(tree));
 
         // Close of the editor
         DialectUIManager.INSTANCE.closeEditor(diagramEditor, false);
@@ -793,5 +795,32 @@ public class DTableSynchronizerWithEditorTest extends SiriusDiagramTestCase impl
         DialectUIManager.INSTANCE.closeEditor(openedEditor, false);
         TestsUtil.synchronizationWithUIThread();
 
+    }
+
+    /**
+     * Tests that the variables line(DLine) and table(DTable) are handled
+     * correctly in the Feature Parent Expression (DescriptionPackage.eINSTANCE.
+     * getFeatureColumnMapping_FeatureParentExpression()). The tested expression
+     * is : aql:if table<>null then line.target else line.target endif
+     * 
+     */
+    public void testVariablesForFeatureParentExpressionInSimpleTable() {
+        DTable dTable = (DTable) createRepresentation("SimpleTableVariables", semanticModel);
+        IEditorPart openedEditor = DialectUIManager.INSTANCE.openEditor(session, dTable, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+
+        assertTrue(THE_EDITOR_HAS_NOT_THE_CORRECT_TYPE, openedEditor instanceof AbstractDTableEditor);
+        AbstractDTableEditor tableEditor = (AbstractDTableEditor) openedEditor;
+        Tree tree = tableEditor.getTableViewer().getTreeViewer().getTree();
+
+        final List<List<String>> expected = new ArrayList<List<String>>();
+        TableUIHelper.addLineToTable(expected, new String[] { "______________", "Name__" });
+        TableUIHelper.addLineToTable(expected, new String[] { "<Class> Class3", "Class3" });
+
+        assertEquals("Variables table and line seem to not be interpreted correctly.", TableUIHelper.toHTML(expected), TableUIHelper.toContentHTMl(tree));
+
+        // Close of the editor
+        DialectUIManager.INSTANCE.closeEditor(openedEditor, false);
+        TestsUtil.synchronizationWithUIThread();
     }
 }

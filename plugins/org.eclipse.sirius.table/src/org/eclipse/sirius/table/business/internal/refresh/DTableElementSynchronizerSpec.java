@@ -84,8 +84,7 @@ import com.google.common.collect.Lists;
 public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl {
 
     /**
-     * '*' as feature name allows to skip the feature name validation for cell
-     * creation.
+     * '*' as feature name allows to skip the feature name validation for cell creation.
      */
     protected static final String SKIP_FEATURENAME_VALIDATION = "*"; //$NON-NLS-1$
 
@@ -235,17 +234,14 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     }
 
     /**
-     * Refresh the target of the cell (only for the FeatureColumn). The target
-     * can be change if the featureParentExpression is changed in the odesign
-     * file.<BR>
-     * If this cell now corresponds to an invalid feature, it is removed from
-     * its line.
+     * Refresh the target of the cell (only for the FeatureColumn). The target can be change if the
+     * featureParentExpression is changed in the odesign file.<BR>
+     * If this cell now corresponds to an invalid feature, it is removed from its line.
      * 
      * @param cell
      *            cell to refresh.
-     * @return true if the cell still exists after this refresh, false otherwise
-     *         (if the cell is deleted because of an invalid featureName for
-     *         featureParent).
+     * @return true if the cell still exists after this refresh, false otherwise (if the cell is deleted because of an
+     *         invalid featureName for featureParent).
      */
     public boolean refreshTarget(final DCell cell) {
         boolean deletedCell = false;
@@ -258,6 +254,8 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                     final DTable table = TableHelper.getTable(cell);
 
                     this.interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, cell.getLine().getTarget());
+                    this.interpreter.setVariable(IInterpreterSiriusTableVariables.LINE, cell.getLine());
+                    this.interpreter.setVariable(IInterpreterSiriusTableVariables.TABLE, table);
                     if (table != null) {
                         this.interpreter.setVariable(IInterpreterSiriusVariables.ROOT, table.getTarget());
                     }
@@ -272,6 +270,8 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                         }
                     }
                     this.interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
+                    this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.LINE);
+                    this.interpreter.unSetVariable(IInterpreterSiriusTableVariables.TABLE);
                     if (table != null) {
                         this.interpreter.unSetVariable(IInterpreterSiriusVariables.ROOT);
                     }
@@ -299,8 +299,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * 
      * @param cell
      *            cell to refresh.
-     * @return true if the cell still exists after this refresh, false
-     *         otherwise.
+     * @return true if the cell still exists after this refresh, false otherwise.
      */
     public boolean refreshLabel(final DCell cell) {
         boolean cellStillExists = false;
@@ -385,16 +384,13 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     }
 
     /**
-     * Search the column candidates for this line semantic element and this
-     * intersection mapping.
+     * Search the column candidates for this line semantic element and this intersection mapping.
      * 
      * @param cell
      *            the cell
      * @param iMapping
-     *            The intersection mapping that contains the expression to
-     *            evaluate
-     * @return List of column candidates for this cell and this intersection
-     *         mapping.
+     *            The intersection mapping that contains the expression to evaluate
+     * @return List of column candidates for this cell and this intersection mapping.
      */
     private Collection<EObject> evaluateColumnFinderExpression(DCell cell, IntersectionMapping iMapping) {
         EObject preconditionContext;
@@ -658,10 +654,10 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     /**
      * Compute the best styles for this line. This rules are applied :
      * <UL>
-     * <LI>the first conditional foreground style (with predicate expression
-     * that returns true), otherwise the default foreground style</LI>
-     * <LI>the first conditional background style (with predicate expression
-     * that returns true), otherwise the default background style</LI>
+     * <LI>the first conditional foreground style (with predicate expression that returns true), otherwise the default
+     * foreground style</LI>
+     * <LI>the first conditional background style (with predicate expression that returns true), otherwise the default
+     * background style</LI>
      * <UL>
      * 
      * @param line
@@ -731,10 +727,10 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     /**
      * Compute the best styles for this column. This rules are applied :
      * <UL>
-     * <LI>the default foreground style (and only if the color use for it is not
-     * with variable parts: ComputedColor or InterpolatedColor)</LI>
-     * <LI>the default background style (and only if the color use for it is not
-     * with variable parts: ComputedColor or InterpolatedColor)</LI>
+     * <LI>the default foreground style (and only if the color use for it is not with variable parts: ComputedColor or
+     * InterpolatedColor)</LI>
+     * <LI>the default background style (and only if the color use for it is not with variable parts: ComputedColor or
+     * InterpolatedColor)</LI>
      * <UL>
      * 
      * @param column
@@ -797,21 +793,14 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
 
     /**
      * TODO : TBD <BR>
-     * The first conditional background style of the cell (with predicate
-     * expression that returns true). In this case the backgroundStyleOrigin
-     * references the intersection mapping and the defaultStyle is equal false.
-     * <BR>
-     * Otherwise the first conditional background style of the column (with
-     * predicate expression that returns true). In this case the
-     * backgroundStyleOrigin references the column mapping and the defaultStyle
-     * is equal false. <BR>
-     * Otherwise, if it exists, the default background style of the cell. In
-     * this case the backgroundStyleOrigin references the intersection mapping
-     * and the defaultStyle is equal true. <BR>
-     * Otherwise, if the default background style of the column uses variable
-     * color, the default background style of the column. In this case the
-     * backgroundStyleOrigin references the column mapping and the defaultStyle
-     * is equal true.
+     * The first conditional background style of the cell (with predicate expression that returns true). In this case
+     * the backgroundStyleOrigin references the intersection mapping and the defaultStyle is equal false. <BR>
+     * Otherwise the first conditional background style of the column (with predicate expression that returns true). In
+     * this case the backgroundStyleOrigin references the column mapping and the defaultStyle is equal false. <BR>
+     * Otherwise, if it exists, the default background style of the cell. In this case the backgroundStyleOrigin
+     * references the intersection mapping and the defaultStyle is equal true. <BR>
+     * Otherwise, if the default background style of the column uses variable color, the default background style of the
+     * column. In this case the backgroundStyleOrigin references the column mapping and the defaultStyle is equal true.
      * 
      * @param cell
      *            The current Cell
@@ -878,8 +867,8 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     }
 
     /**
-     * Return a value only if the current background color is the default
-     * background color or one of the conditional background colors.
+     * Return a value only if the current background color is the default background color or one of the conditional
+     * background colors.
      * 
      * @param line
      *            The current DLine
@@ -908,13 +897,11 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     }
 
     /**
-     * The best background color is the default background color if it uses a
-     * FixedColor.
+     * The best background color is the default background color if it uses a FixedColor.
      * 
      * @param column
      *            The current DLine
-     * @return The default background color if it uses a FixedColor for this
-     *         column, or null otherwise
+     * @return The default background color if it uses a FixedColor for this column, or null otherwise
      */
     private ColorDescription getBestBackgroundColor(final DColumn column, final StyleUpdater styleUpdater) {
         ColorDescription bestBackgroundColor = null;
@@ -925,8 +912,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     }
 
     /**
-     * TODO : TBD The priority of the StyleUpdater is (the highest priority to
-     * lowest priority) :
+     * TODO : TBD The priority of the StyleUpdater is (the highest priority to lowest priority) :
      * <UL>
      * <LI>Intersection mapping (conditional style)</LI>
      * <LI>Line mapping (conditional style)</LI>
@@ -938,8 +924,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * 
      * @param cell
      *            The current Cell
-     * @return The best ForegroundStyleDescription for this cell, or null
-     *         otherwise
+     * @return The best ForegroundStyleDescription for this cell, or null otherwise
      */
     private StyleWithDefaultStatus getBestForegroundStyle(final DCell cell, final StyleUpdater cellStyleUpdater, final StyleUpdater columnStyleUpdater) {
         ForegroundStyleDescription bestForegroundStyleDesc = null;
@@ -1000,8 +985,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     /**
      * TODO: Doc to review.
      * 
-     * The priority of the StyleUpdater is (the highest priority to lowest
-     * priority) :
+     * The priority of the StyleUpdater is (the highest priority to lowest priority) :
      * <UL>
      * <LI>Intersection mapping (conditional style)</LI>
      * <LI>Line mapping (conditional style)</LI>
@@ -1013,8 +997,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * 
      * @param line
      *            The current DLine
-     * @return The best ForegroundStyleDescription for this cell, or null
-     *         otherwise
+     * @return The best ForegroundStyleDescription for this cell, or null otherwise
      */
     private ForegroundStyleDescription getBestForegroundStyle(final DLine line, final StyleUpdater styleUpdater) {
         ForegroundStyleDescription bestForegroundStyleDescription = null;
@@ -1039,13 +1022,11 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     }
 
     /**
-     * The best foreground style is the default foreground style if it uses a
-     * FixedColor.
+     * The best foreground style is the default foreground style if it uses a FixedColor.
      * 
      * @param column
      *            The current DLine
-     * @return The default foreground style if it uses a FixedColor for this
-     *         column, or null otherwise
+     * @return The default foreground style if it uses a FixedColor for this column, or null otherwise
      */
     private ForegroundStyleDescription getBestForegroundStyle(final DColumn column, final StyleUpdater styleUpdater) {
         ForegroundStyleDescription bestForegroundStyleDescription = null;
@@ -1103,8 +1084,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     }
 
     /**
-     * Evaluate the semantic elements feature of the mapping and affect them to
-     * the given table element.
+     * Evaluate the semantic elements feature of the mapping and affect them to the given table element.
      * 
      * @param tableElement
      *            table element to affect.

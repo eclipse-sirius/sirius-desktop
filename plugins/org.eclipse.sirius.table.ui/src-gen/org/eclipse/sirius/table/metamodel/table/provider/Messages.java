@@ -246,6 +246,12 @@ public final class Messages {
     @TranslatableMessage
     public static String TableUIHelper_unsupportedColor;
 
+    @TranslatableMessage
+    public static String Table_TableElement;
+
+    @TranslatableMessage
+    public static String Table_LineElement;
+
     // CHECKSTYLE:ON
 
     private Messages() {

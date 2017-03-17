@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.table.unit.tools;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
@@ -24,6 +22,8 @@ import org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
+
+import junit.framework.TestCase;
 
 /**
  * Test copy paste tool not duplicates variables
@@ -218,9 +218,10 @@ public class NoVariableDuplicationTest extends TestCase {
 
         // Add variables.
         new TableToolVariables().doSwitch(createLabelEditTool);
-        assertEquals("The number of variable of createLabelEditTool must be 4", 4, createLabelEditTool.getVariables().size());
+        assertEquals("The number of variable of createLabelEditTool must be 6", 6, createLabelEditTool.getVariables().size());
         for (TableVariable variable : createLabelEditTool.getVariables()) {
-            if (!"root".equals(variable.getName()) && !"lineSemantic".equals(variable.getName()) && !"columnSemantic".equals(variable.getName()) && !"element".equals(variable.getName())) {
+            if (!"root".equals(variable.getName()) && !"lineSemantic".equals(variable.getName()) && !"columnSemantic".equals(variable.getName()) && !"element".equals(variable.getName())
+                    && !"line".equals(variable.getName()) && !"table".equals(variable.getName())) {
                 fail("The createLabelEditTool variables' must be naming root, element, lineSemantic and columnSemantic not " + variable.getName());
             }
         }
@@ -228,7 +229,8 @@ public class NoVariableDuplicationTest extends TestCase {
         // Name customization.
         for (TableVariable variable : createLabelEditTool.getVariables()) {
             variable.setName(variable.getName() + "1");
-            if (!"root1".equals(variable.getName()) && !"lineSemantic1".equals(variable.getName()) && !"columnSemantic1".equals(variable.getName()) && !"element1".equals(variable.getName())) {
+            if (!"root1".equals(variable.getName()) && !"lineSemantic1".equals(variable.getName()) && !"columnSemantic1".equals(variable.getName()) && !"line1".equals(variable.getName())
+                    && !"table1".equals(variable.getName()) && !"element1".equals(variable.getName())) {
                 fail("The createLineTool variables' must be naming root1, element1, lineSemantic1 and columnSemantic1 not " + variable.getName());
             }
         }

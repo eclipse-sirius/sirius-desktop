@@ -375,6 +375,8 @@
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
           <details key="root" value="ecore.EObject | semantic target of the current DTable."/>
           <details key="container" value="ecore.EObject | semantic target of the current DLine."/>
+          <details key="line" value="table.DLine | DLine of the current DCell."/>
+          <details key="table" value="table.DTable | current DTable."/>
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>

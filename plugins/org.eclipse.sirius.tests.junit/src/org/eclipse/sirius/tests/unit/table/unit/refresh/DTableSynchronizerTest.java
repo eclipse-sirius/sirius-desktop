@@ -79,7 +79,7 @@ public class DTableSynchronizerTest extends TableTestCase {
             assertEquals("A refresh without semantic changes modified the table.", expectedInverseHtml, newInverseHTML);
         }
     }
-    
+
     public void testVirtualFeatureColumns() throws Exception {
         final TableDescription desc = find("Virtual columns");
         assertNotNull("Unit test data is not correct", desc);
@@ -101,7 +101,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         TableUIHelper.addLineToTable(expected, new String[] { "AbstractClass2", "AbstractClass2", "ComputedLabel", "_" });
         TableUIHelper.addLineToTable(expected, new String[] { "Class4", "Class4", "ComputedLabel", "_" });
         String expectedHtml = TableUIHelper.toHTML(expected);
-        
+
         for (int i = 0; i < 10; i++) {
             sync.refresh(new NullProgressMonitor());
             assertEquals("We have 6 classes so we should get 6 lines", 6, newTable.getLines().size());
@@ -146,6 +146,7 @@ public class DTableSynchronizerTest extends TableTestCase {
          */
         final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         domain.getCommandStack().execute(new RecordingCommand(domain) {
+            @Override
             protected void doExecute() {
                 final org.eclipse.uml2.uml.Class claz = (Class) ((Model) semanticModel).getPackagedElement("Class1");
                 assertNotNull("Unit test data is not correct", claz);
@@ -573,7 +574,7 @@ public class DTableSynchronizerTest extends TableTestCase {
     @SuppressWarnings("rawtypes")
     private void checkStyle(DTableElementStyle style, boolean isStyle, int labelSize, List fontFormat) {
         if (!isStyle)
-            assertEquals(RGBValues.create(0,0,0), style.getForegroundColor());
+            assertEquals(RGBValues.create(0, 0, 0), style.getForegroundColor());
         assertEquals(labelSize, style.getLabelSize());
         assertEquals(fontFormat, style.getLabelFormat());
     }
@@ -592,4 +593,30 @@ public class DTableSynchronizerTest extends TableTestCase {
         }
     }
 
+    /**
+     * Tests that the variables line(DLine) and table(DTable) are handled
+     * correctly in the Feature Parent Expression (DescriptionPackage.eINSTANCE.
+     * getFeatureColumnMapping_FeatureParentExpression()). The tested expression
+     * is : aql:if table<>null then line.target else line.target endif
+     * 
+     */
+    public void testVariablesForCellInSimpleTable() {
+        final TableDescription desc = find("SimpleTableVariables");
+        assertNotNull("Unit test data is not correct", desc);
+
+        final DTableSynchronizer sync = new DTableSynchronizerImpl(desc, accessor, interpreter);
+
+        final DTable newTable = TableFactory.eINSTANCE.createDTable();
+        newTable.setDescription(desc);
+        newTable.setTarget(semanticModel);
+        sync.setTable(newTable);
+
+        final List<List<String>> expected = new ArrayList<List<String>>();
+        TableUIHelper.addLineToTable(expected, new String[] { "______________", "Name__" });
+        TableUIHelper.addLineToTable(expected, new String[] { "<Class> Class3", "Class3" });
+        for (int i = 0; i < 10; i++) {
+            sync.refresh(new NullProgressMonitor());
+            assertEquals("Variables table and line seem to not be interpreted correctly.", TableUIHelper.toHTML(expected), TableUIHelper.toContentHTMl(newTable, false));
+        }
+    }
 }

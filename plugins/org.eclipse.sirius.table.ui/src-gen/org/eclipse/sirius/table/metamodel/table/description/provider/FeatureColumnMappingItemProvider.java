@@ -244,6 +244,8 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
         LabelEditTool labelEditTool = DescriptionFactory.eINSTANCE.createLabelEditTool();
         labelEditTool.setMask(ToolFactory.eINSTANCE.createEditMaskVariables());
         addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ELEMENT, Messages.Table_CurrentSemanticElement);
+        addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.TABLE, Messages.Table_TableElement);
+        addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE, Messages.Table_LineElement);
         addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE_SEMANTIC, Messages.Table_SemanticLineElement);
         addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ROOT, Messages.Table_SemanticRootElement);
 

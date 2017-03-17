@@ -354,6 +354,8 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
         LabelEditTool labelEditTool = DescriptionFactory.eINSTANCE.createLabelEditTool();
         labelEditTool.setMask(ToolFactory.eINSTANCE.createEditMaskVariables());
         addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ELEMENT, Messages.Table_CurrentSemanticElement);
+        addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.TABLE, Messages.Table_TableElement);
+        addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE, Messages.Table_LineElement);
         addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE_SEMANTIC, Messages.Table_SemanticLineElement);
         addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, Messages.Table_SemanticColumnElement);
         addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ROOT, Messages.Table_SemanticRootElement);
