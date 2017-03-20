@@ -22,6 +22,7 @@ Export-Package: org.eclipse.sirius.table.metamodel.table.description.provider;ve
  org.eclipse.sirius.table.ui.tools.internal.editor.provider;version="2.2.0";x-internal:=true,
  org.eclipse.sirius.table.ui.tools.internal.editor.utils;version="2.0.2";x-internal:=true,
  org.eclipse.sirius.table.ui.tools.internal.export;version="2.0.2";x-internal:=true,
+ org.eclipse.sirius.table.ui.tools.internal.migration;version="5.0.0";x-internal:=true,
  org.eclipse.sirius.table.ui.tools.internal.properties.propertysource;version="2.0.2";x-internal:=true,
  org.eclipse.sirius.table.ui.tools.internal.properties.section.common;version="2.0.2";x-internal:=true,
  org.eclipse.sirius.table.ui.tools.internal.properties.section.core;version="2.0.2";x-internal:=true,

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -104,6 +104,7 @@ import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampai
 import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampaign09;
 import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampaign10;
 import org.eclipse.sirius.tests.unit.common.migration.GeneralMigrationMechanismTest;
+import org.eclipse.sirius.tests.unit.common.migration.LabelEditToolVariableMigrationTest;
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius0_9Test;
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius1_0_0_M5Test;
 import org.eclipse.sirius.tests.unit.common.migration.ModelsToSemanticResourcesMigrationTest;
@@ -222,6 +223,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(FontFormatMigrationTest.class);
         suite.addTestSuite(BorderSizeMigrationTest.class);
         suite.addTestSuite(VariableMigrationTest.class);
+        suite.addTestSuite(LabelEditToolVariableMigrationTest.class);
         suite.addTestSuite(DRepresentationContainerRemovalMigrationTest.class);
         suite.addTestSuite(DRepDescriptorCreationMigrationTest.class);
         suite.addTestSuite(NoteAttachmentMigrationTest.class);

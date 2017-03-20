@@ -276,5 +276,12 @@
             sequence="M1+O">
       </key>
    </extension>
+   <extension
+         point="org.eclipse.sirius.migrationParticipant">
+      <participant
+            class="org.eclipse.sirius.table.ui.tools.internal.migration.LabelEditToolVariableMigrationParticipant"
+            kind="VSM">
+      </participant>
+   </extension>
    
 </plugin>

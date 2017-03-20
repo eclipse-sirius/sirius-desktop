@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="UML2 Tables tests" version="12.0.0.201702091400">
+  <ownedViewpoints documentation="Sample of some UML tables " name="UML2 tables for tests" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="SimpleTableVariables" domainClass="Model">
+      <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <ownedLineMappings name="Class lines" domainClass="Class" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name='Class3')->first()" headerLabelExpression=""/>
+      <ownedColumnMappings name="Class name" headerLabelExpression="Name" initialWidth="200" featureName="name" labelExpression="aql:self.name" featureParentExpression="aql:if table&lt;>null then line.target else line.target endif">
+        <directEdit>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:if table&lt;>null then line.target.name+'working' else line.target.name+'working' endif"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="CrossTableVariables" domainClass="Model">
+      <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <ownedLineMappings name="CTV_LineClasses" domainClass="Class" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name='Class3')->first()" headerLabelExpression="aql:self.name"/>
+      <ownedColumnMappings name="CTV_ColumnClasses" headerLabelExpression="aql:self.name" domainClass="Class" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name='Class3')->first()"/>
+      <intersection name="Generalization" lineMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='CrossTableVariables']/@ownedLineMappings[name='CTV_LineClasses']" columnMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='CrossTableVariables']/@ownedColumnMappings.0" labelExpression="aql:line.target.name" columnFinderExpression="aql:self">
+        <directEdit>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:if table&lt;>null then line.target.name+'working' else line.target.name+'working' endif"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </intersection>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
+  </ownedViewpoints>
+</description:Group>
