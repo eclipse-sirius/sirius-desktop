@@ -1,11 +1,11 @@
-target "sirius_neon"
+target "sirius_oxygen"
 
 include "modules/orbit.tpd"
 include "modules/swtbot-2.1.tpd"
 include "modules/shared-license.tpd"
-include "modules/aql-3.7.tpd"
-include "modules/acceleo-3.7.tpd"
-include "modules/eef-2.0.tpd"
+include "modules/aql-nightly.tpd"
+include "modules/acceleo-nightly.tpd"
+include "modules/eef-nightly.tpd"
 
 with source, requirements
 

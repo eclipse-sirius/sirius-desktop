@@ -2,10 +2,10 @@ target "orbit"
 
 with source, requirements
 
-location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository" {
-        org.apache.log4j [1.2.0,1.3.0)
-        org.easymock
-        org.hamcrest.core [1.3.0,2.0.0)
-        org.hamcrest.library [1.3.0,2.0.0)
+location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/R20170307180635/repository" {
+        org.apache.log4j lazy
+        org.easymock lazy
+        org.hamcrest.core lazy
+        org.hamcrest.library lazy
         org.junit [4.11.0,5.0.0)
 }

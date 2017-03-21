@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_canary" sequenceNumber="1487864814">
+<target name="sirius_canary" sequenceNumber="1489670805">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -9,12 +9,14 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.eef.sdk.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.eef.sdk.feature.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.eef.ext.widgets.reference.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.eef.ext.widgets.reference.feature.source.feature.group" version="0.0.0"/>
       <repository id="EEF-Latest" location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
-      <repository id="Sirius-Interpreter-Nightly-Neo" location="http://download.eclipse.org/sirius/updates/nightly/latest/neon/"/>
+      <repository id="Sirius-Interpreter-Nightly-Neon" location="http://download.eclipse.org/sirius/updates/nightly/latest/neon/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.ide" version="0.0.0"/>
@@ -64,16 +66,16 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.validation.sdk.feature.group" version="0.0.0"/>
-      <repository id="EMF-Validation-LastSuccessful" location="https://hudson.eclipse.org/validation/job/emf-validation-master/lastSuccessfulBuild/artifact/update-site/"/>
+      <repository id="EMF-Validation-LastSuccessful" location="https://ci.eclipse.org/emfservices/job/emf-validation-master/lastSuccessfulBuild/artifact/update-site/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.query.sdk.feature.group" version="0.0.0"/>
-      <repository id="EMF-Query-LastSuccessful" location="https://hudson.eclipse.org/query/job/emf-query-master/lastSuccessfulBuild/artifact/update-site/"/>
+      <repository id="EMF-Query-LastSuccessful" location="https://ci.eclipse.org/emfservices/job/emf-query-master/lastSuccessfulBuild/artifact/update-site/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.workspace.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="0.0.0"/>
-      <repository id="EMF-Transaction-LastSuccessful" location="https://hudson.eclipse.org/transaction/job/emf-transaction-master/lastSuccessfulBuild/artifact/update-site/"/>
+      <repository id="EMF-Transaction-LastSuccessful" location="https://ci.eclipse.org/emfservices/job/emf-transaction-master/lastSuccessfulBuild/artifact/update-site/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.eef.runtime" version="0.0.0"/>
@@ -92,7 +94,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="0.0.0"/>
-      <repository id="GMF-Notation-LastSuccessful" location="https://hudson.eclipse.org/gmf-notation/job/gmf-notation-master/lastSuccessfulBuild/artifact/update-site/"/>
+      <repository id="GMF-Notation-LastSuccessful" location="https://ci.eclipse.org/gmf-runtime/job/gmf-notation-master/lastSuccessfulBuild/artifact/update-site/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="0.0.0"/>
