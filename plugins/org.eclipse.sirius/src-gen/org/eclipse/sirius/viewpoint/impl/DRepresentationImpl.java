@@ -25,6 +25,7 @@ import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.UIState;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
@@ -40,13 +41,13 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getEAnnotations <em>EAnnotations</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getOwnedRepresentationElements
- * <em>Owned Representation Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getRepresentationElements
- * <em>Representation Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getOwnedRepresentationElements <em>Owned
+ * Representation Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getRepresentationElements <em>Representation
+ * Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getOwnedAnnotationEntries
- * <em>Owned Annotation Entries</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getOwnedAnnotationEntries <em>Owned Annotation
+ * Entries</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getUiState <em>Ui State</em>}</li>
  * </ul>
  *
@@ -106,10 +107,11 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @generated NOT
      */
     protected DRepresentationImpl() {
         super();
+        setUiState(ViewpointFactory.eINSTANCE.createUIState());
     }
 
     /**

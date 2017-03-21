@@ -78,18 +78,19 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
      * --> <!-- end-user-doc -->
      *
      * @see #getDecorationImage()
-     * @generated NOT
+     * @generated
      * @ordered
      */
-    protected Map<Decoration, Object> decorationImage = Maps.newHashMap();
+    protected Map<Decoration, Object> decorationImage;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @generated NOT
      */
     protected UIStateImpl() {
         super();
+        setDecorationImage(Maps.newHashMap());
     }
 
     /**
