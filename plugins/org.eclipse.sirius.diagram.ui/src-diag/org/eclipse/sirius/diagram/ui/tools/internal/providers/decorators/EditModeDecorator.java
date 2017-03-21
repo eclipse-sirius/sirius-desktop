@@ -100,9 +100,15 @@ public class EditModeDecorator extends AbstractSiriusDecorator {
         if (editPart instanceof IDiagramElementEditPart) {
             IDiagramElementEditPart part = (IDiagramElementEditPart) editPart;
 
-            // Case 1 : permission authority forbids the edition of the semantic
+            // Case 1 : edit part is broken
+            if (isBroken(editPart)) {
+                // If the edit part is broken, we return a "deleted" image (red cross)
+                decorationImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
+            }
+
+            // Case 2 : permission authority forbids the edition of the semantic
             // element associated to this edit part
-            if (isDecorableEditPart(part)) {
+            if (decorationImage == null && isDecorableEditPart(part)) {
                 IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(part.getEditingDomain().getResourceSet());
                 if (auth != null) {
                     EObject representedObject = part.resolveTargetSemanticElement();
@@ -112,11 +118,6 @@ public class EditModeDecorator extends AbstractSiriusDecorator {
                 }
             }
 
-            // Case 2 : edit part is broken
-            if (decorationImage == null && isBroken(editPart)) {
-                // If the edit part is broken, we return a "deleted" image (red cross)
-                decorationImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
-            }
         }
         return decorationImage;
     }
