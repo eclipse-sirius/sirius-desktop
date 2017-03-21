@@ -17,8 +17,8 @@
     label="Sirius">
   <setupTask
       xsi:type="jdt:JRETask"
-      version="JavaSE-1.7"
-      location="${jre.location-1.7}">
+      version="JavaSE-1.8"
+      location="${jre.location-1.8}">
     <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label}</description>
   </setupTask>
   <setupTask
@@ -31,7 +31,7 @@
   <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Dosgi.requiredJavaVersion"
-      value="1.7"
+      value="1.8"
       vm="true"/>
   <setupTask
       xsi:type="setup:ResourceCreationTask"
@@ -61,32 +61,17 @@
       xsi:type="setup:VariableTask"
       id="sirius.target.platform"
       name="sirius.target.platform"
-      defaultValue="sirius_tests_luna"
+      defaultValue="sirius_neon"
       label="Target Platform - Sirius">
-    <choice
-        value="sirius_juno"
-        label="Eclipse Juno - 3.8"/>
-    <choice
-        value="sirius_tests_juno"
-        label="Eclipse Juno - 3.8 (with tests dependencies)"/>
-    <choice
-        value="sirius_kepler"
-        label="Eclipse Kepler - 4.3"/>
-    <choice
-        value="sirius_tests_kepler"
-        label="Eclipse Kepler - 4.3 (with tests dependencies)"/>
-    <choice
-        value="sirius_luna"
-        label="Eclipse Luna - 4.4"/>
-    <choice
-        value="sirius_tests_luna"
-        label="Eclipse Luna - 4.4 (with tests dependencies)"/>
     <choice
         value="sirius_mars"
         label="Eclipse Mars - 4.5"/>
     <choice
-        value="sirius_tests_mars"
-        label="Eclipse Mars - 4.5 (with tests dependencies)"/>
+        value="sirius_neon"
+        label="Eclipse Neon - 4.6"/>
+    <choice
+        value="sirius_oxygen"
+        label="Eclipse Oxygen - 4.7"/>
     <choice
         value="No"
         label="No target plaform"/>
@@ -110,9 +95,7 @@
     <repository
         url="http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/"/>
     <repository
-        url="http://sourceforge.net/projects/eclipse-cs/files/updatesite/6.5.0/"/>
-    <repository
-        url="http://download.eclipse.org/mylyn/releases/3.13"/>
+        url="https://sourceforge.net/projects/eclipse-cs/files/updatesite/7.3.0/"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
   </setupTask>
   <setupTask
@@ -286,6 +269,8 @@
       key="/instance/org.eclipse.jdt.ui/sp_cleanup.remove_unnecessary_casts"
       value="true"/>
   <stream name="master"/>
+  <stream name="v4.1.x"/>
+  <stream name="v4.0.x"/>
   <stream name="v3.1.x"/>
   <stream name="v3.0.x"/>
   <stream name="v2.0.x"/>
