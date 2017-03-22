@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="component" version="10.0.0.201411061000">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="component" version="11.1.1.201612201200">
   <ownedViewpoints name="Component" modelFileExtension="component">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component']" name="Diagram" domainClass="component.Component">
       <defaultLayer name="Default">
@@ -31,14 +31,14 @@
           </style>
         </edgeMappings>
         <containerMappings name="Component" deletionDescription="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Component']" labelDirectEdit="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[self.children->select(not payload)/]" domainClass="component.Component" dropDescriptions="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component']" reusedContainerMappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Component']">
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="[self.children->exists(c | c.payload)/]">
-            <style xsi:type="style:FlatContainerStyleDescription">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -330,7 +330,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
         </backgroundConditionalStyle>
-        <create name="Create Child Component" mapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='References']/@ownedLineMappings[name='References%20Component%20Lines']">
+        <create name="Create Child Component" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='References']/@ownedLineMappings[name='References%20Component%20Lines']">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -339,7 +339,7 @@
           </firstModelOperation>
         </create>
       </ownedLineMappings>
-      <ownedCreateLine name="Create Global Component" mapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='References']/@ownedLineMappings[name='References%20Component%20Lines']">
+      <ownedCreateLine name="Create Global Component" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='References']/@ownedLineMappings[name='References%20Component%20Lines']">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -360,7 +360,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
         </backgroundConditionalStyle>
-        <create name="Create Child Component" mapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Statistics']/@ownedLineMappings[name='Statistics%20Component%20Lines']">
+        <create name="Create Child Component" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Statistics']/@ownedLineMappings[name='Statistics%20Component%20Lines']">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -369,7 +369,7 @@
           </firstModelOperation>
         </create>
       </ownedLineMappings>
-      <ownedCreateLine name="Create Global Component" mapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Statistics']/@ownedLineMappings[name='Statistics%20Component%20Lines']">
+      <ownedCreateLine name="Create Global Component" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Statistics']/@ownedLineMappings[name='Statistics%20Component%20Lines']">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -394,7 +394,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
         </conditionalStyles>
-        <create name="Create Child Component" mapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Component']">
+        <create name="Create Child Component" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Component']">
           <firstModelOperation xsi:type="tool_1:CreateInstance" typeName="component.Component" referenceName="children" variableName="">
             <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[eContainer(component::Component).name + '.' + eContainer(component::Component).children->size()/]"/>
           </firstModelOperation>
@@ -403,7 +403,7 @@
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
         </create>
       </subItemMappings>
-      <createTreeItem name="Create Global Component" mapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Component']">
+      <createTreeItem name="Create Global Component" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Component']">
         <firstModelOperation xsi:type="tool_1:CreateInstance" typeName="component.Component" referenceName="children" variableName="">
           <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[eContainer(component::Component).name + '.' + eContainer(component::Component).children->size()/]"/>
         </firstModelOperation>
@@ -417,6 +417,337 @@
       <ownedColumnMappings name="Aliases_Component_Name" headerLabelExpression="Name" featureName="name"/>
       <ownedColumnMappings name="Aliases_Component_Description" headerLabelExpression="Aliases" featureName="aliases"/>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component']" name="DiagramWithDecoration" domainClass="component.Component">
+      <metamodel href="http://www.eclipse.org/sirius/sample/component#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="SelfNode" semanticCandidatesExpression="aql:self" domainClass="component.Component">
+          <style xsi:type="style:DotDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Single Reference" deletionDescription="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Single%20Reference']" sourceMapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@containerMappings[name='Component']" targetMapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@containerMappings[name='Component']" targetFinderExpression="[reference/]" reconnections="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20Single%20Reference']">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <endLabelStyleDescription showIcon="false" labelExpression="r">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Reference" deletionDescription="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Reference']" sourceMapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Component']" targetMapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Component']" targetFinderExpression="[references2/]" reconnections="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20%20Reference']">
+          <style lineStyle="dot" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <endLabelStyleDescription showIcon="false" labelExpression="R2">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Component" deletionDescription="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Component']" labelDirectEdit="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[self.children->select(not payload)/]" domainClass="component.Component" dropDescriptions="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component']" reusedContainerMappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@containerMappings[name='Component']">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="[self.children->exists(c | c.payload)/]">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="ComponentCreation" label="Component" containerMappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@containerMappings[name='Component']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="component.Component" referenceName="children" variableName="">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="[eContainer(component::Component).name + '.' + eContainer(component::Component).children->size()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Single Reference" label="Single Reference" edgeMappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@edgeMappings[name='Single%20Reference']">
+            <sourceVariable name="sourceObj"/>
+            <targetVariable name="targetObj"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:sourceObj">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="reference" valueExpression="var:targetObj"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Bi-Directional Reference" label="Bi-Directional Reference">
+            <sourceVariable name="sourceObj"/>
+            <targetVariable name="targetObj"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:sourceObj">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="var:targetObj"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Reference" label="Reference">
+            <sourceVariable name="sourceObj"/>
+            <targetVariable name="targetObj"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:sourceObj">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="references2" valueExpression="var:targetObj"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Single Reference">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[elementView.sourceNode.oclAsType(viewpoint::DSemanticDecorator).target/]">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="reference" elementExpression="[elementView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Bi-Directional Reference">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[elementView.sourceNode.oclAsType(viewpoint::DSemanticDecorator).target/]">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="[elementView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Reference">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[elementView.sourceNode.oclAsType(viewpoint::DSemanticDecorator).target/]">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="references2" elementExpression="[elementView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Component">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:PopupMenu" name="Component Actions" precondition="[self.oclIsKindOf(component::Component)/]">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Enable All Content Payload" precondition="[self.eAllContents()->filter(component::Component)->exists(c | not c.payload)/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:For" expression="[self.eAllContents()->filter(component::Component)/]">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="payload" valueExpression="true"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Disable All Content Payload" precondition="[self.eAllContents()->filter(component::Component)->exists(c | c.payload)/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:For" expression="[self.eAllContents()->filter(component::Component)/]">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="payload" valueExpression="false"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Enable Children Payload" precondition="[self.oclIsKindOf(component::Component) and self.oclAsType(component::Component).children->exists(c | not c.payload)/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:For" expression="feature:children">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="payload" valueExpression="true"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Disable Children Payload" label="Disable Children Payload" precondition="[self.oclIsKindOf(component::Component) and self.oclAsType(component::Component).children->exists(c | c.payload)/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:For" expression="feature:children">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="payload" valueExpression="false"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Enable Payload" precondition="[self.oclIsKindOf(component::Component) and not self.oclAsType(component::Component).payload/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:SetValue" featureName="payload" valueExpression="true"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect Single Reference" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[source &lt;> element/]">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="reference" valueExpression="var:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[source = element/]">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = sourceView/]">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = edgeView.targetNode/]">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="reference" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                          <subModelOperations xsi:type="tool_1:Unset" featureName="reference" elementExpression="var:element"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd &lt;> edgeView.targetNode/]">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="reference" valueExpression="var:target"/>
+                        <subModelOperations xsi:type="tool_1:Unset" featureName="reference" elementExpression="var:source"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd &lt;> sourceView/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="reference" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="reference" elementExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect Bi-Directional Reference" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[source &lt;> element/]">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="var:target"/>
+                    <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="var:source"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[source = element/]">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = sourceView/]">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = edgeView.targetNode/]">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                          <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="var:element"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd &lt;> edgeView.targetNode/]">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="var:target"/>
+                        <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="var:source"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd &lt;> sourceView/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect  Reference" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[source &lt;> element/]">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="references2" valueExpression="var:target"/>
+                    <subModelOperations xsi:type="tool_1:Unset" featureName="references2" elementExpression="var:source"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[source = element/]">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = sourceView/]">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd = edgeView.targetNode/]">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="references2" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                          <subModelOperations xsi:type="tool_1:Unset" featureName="references2" elementExpression="var:element"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd &lt;> edgeView.targetNode/]">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="references2" valueExpression="var:target"/>
+                        <subModelOperations xsi:type="tool_1:Unset" featureName="references2" elementExpression="var:source"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[otherEnd &lt;> sourceView/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="references2" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="references2" elementExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop Component" precondition="[self.oclIsKindOf(component::Component)/]" forceRefresh="true" mappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@containerMappings[name='Component']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="children" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description:GenericDecorationDescription" name="SW_BeginsWithUpperCase" preconditionExpression="aql:self.name.toUpperFirst().equals(self.name)" imageExpression="/org.eclipse.sirius.tests.sample.component.design/images/square16x16.png" tooltipExpression="aql:'BeginsWithUpperCase'"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="NW_1" position="NORTH_WEST" distributionDirection="HORIZONTAL" imageExpression="/org.eclipse.sirius.tests.sample.component.design/images/square16x16.png" tooltipExpression="NW_1" mappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@edgeMappings[name='Single%20Reference'] //@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@containerMappings[name='Component']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="NW_2" position="NORTH_WEST" distributionDirection="HORIZONTAL" preconditionExpression="aql:true" imageExpression="/org.eclipse.sirius.tests.sample.component.design/images/square32x32.png" mappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@edgeMappings[name='Single%20Reference'] //@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@containerMappings[name='Component']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="NW_3" position="NORTH_WEST" preconditionExpression="aql:true" imageExpression="/org.eclipse.sirius.tests.sample.component.design/images/square32x32.png" mappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@edgeMappings[name='Single%20Reference'] //@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@containerMappings[name='Component']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="SE_1" position="SOUTH_EAST" distributionDirection="HORIZONTAL" imageExpression="/org.eclipse.sirius.tests.sample.component.design/images/square10x10.png" mappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@containerMappings[name='Component']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="SE_2" position="SOUTH_EAST" distributionDirection="HORIZONTAL" imageExpression="/org.eclipse.sirius.tests.sample.component.design/images/rectangle16x60.png" mappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@containerMappings[name='Component']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="SE_3" position="SOUTH_EAST" imageExpression="/org.eclipse.sirius.tests.sample.component.design/images/rectangle60x16.png" mappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@containerMappings[name='Component']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="SE_4" position="SOUTH_EAST" distributionDirection="HORIZONTAL" imageExpression="/org.eclipse.sirius.tests.sample.component.design/images/square16x16.png" mappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@containerMappings[name='Component']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="E_1" position="EAST" imageExpression="/org.eclipse.sirius.tests.sample.component.design/images/square10x10.png" mappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@containerMappings[name='Component']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="N_1" position="NORTH" distributionDirection="HORIZONTAL" imageExpression="aql:self.getDecorationFigure()" tooltipExpression="aql:self.getDecorationTooltipFigure()" mappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@nodeMappings[name='SelfNode']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="C_1" position="CENTER" distributionDirection="HORIZONTAL" imageExpression="aql:self.getDecorationImage()" tooltipExpression="aql:self.getDecorationTooltipFigure()" mappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer/@nodeMappings[name='SelfNode']"/>
+        </decorationDescriptionsSet>
+      </defaultLayer>
+    </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.tests.sample.component.service.ComponentServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.tests.sample.component.service.DecorationServices"/>
   </ownedViewpoints>
 </description:Group>
