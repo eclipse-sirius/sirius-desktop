@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.swtbot.support.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.gef.GraphicalEditPart;
@@ -51,8 +52,6 @@ import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 
-import com.google.common.collect.Lists;
-
 /**
  * Some utilities.
  * 
@@ -78,8 +77,7 @@ public final class SWTBotUtils {
         }
 
         /**
-         * Explore the children element of the {@link Composite} looking for the
-         * expected label.
+         * Explore the children element of the {@link Composite} looking for the expected label.
          * 
          * @param composite
          *            parent {@link Composite}
@@ -221,9 +219,8 @@ public final class SWTBotUtils {
     }
 
     /**
-     * WARNING this class should move in SWTBot one day. WARNING if the text is
-     * not found it will not failed this method to get disposed elements with
-     * the current click on context menu SWTBot method
+     * WARNING this class should move in SWTBot one day. WARNING if the text is not found it will not failed this method
+     * to get disposed elements with the current click on context menu SWTBot method
      * 
      * @param treeItem
      *            the current item
@@ -242,9 +239,8 @@ public final class SWTBotUtils {
     }
 
     /**
-     * WARNING this class should move in SWTBot one day. WARNING if the text is
-     * not found it will not failed this method to get disposed elements with
-     * the current click on context menu SWTBot method
+     * WARNING this class should move in SWTBot one day. WARNING if the text is not found it will not failed this method
+     * to get disposed elements with the current click on context menu SWTBot method
      * 
      * @param treeItem
      *            the current item
@@ -265,9 +261,8 @@ public final class SWTBotUtils {
     }
 
     /**
-     * WARNING this class should move in SWTBot one day. WARNING if the text is
-     * not found it will not failed this method to get disposed elements with
-     * the current click on context menu SWTBot method
+     * WARNING this class should move in SWTBot one day. WARNING if the text is not found it will not failed this method
+     * to get disposed elements with the current click on context menu SWTBot method
      * 
      * @param treeItem
      *            the current item
@@ -289,9 +284,8 @@ public final class SWTBotUtils {
     }
 
     /**
-     * WARNING this class should move in SWTBot one day. WARNING if the text is
-     * not found it will not failed this method to get disposed elements with
-     * the current click on context menu SWTBot method
+     * WARNING this class should move in SWTBot one day. WARNING if the text is not found it will not failed this method
+     * to get disposed elements with the current click on context menu SWTBot method
      * 
      * @param tree
      *            the tree
@@ -323,9 +317,8 @@ public final class SWTBotUtils {
     }
 
     /**
-     * This method is designed to wait close of progress monitor dialog if it
-     * opens. The dialog may not be opening if underlying process is shorter
-     * than 800ms. This method is able to manage this case.
+     * This method is designed to wait close of progress monitor dialog if it opens. The dialog may not be opening if
+     * underlying process is shorter than 800ms. This method is able to manage this case.
      * 
      * @param dialogTaskLabel
      *            A convenient name for the dialog to display errors
@@ -338,9 +331,8 @@ public final class SWTBotUtils {
     }
 
     /**
-     * This method is designed to wait close of progress monitor dialog if it
-     * opens. The dialog may not be opening if underlying process is shorter
-     * than 800ms. This method is able to mange this case.
+     * This method is designed to wait close of progress monitor dialog if it opens. The dialog may not be opening if
+     * underlying process is shorter than 800ms. This method is able to mange this case.
      * 
      * @param dialogTitle
      *            The real name of progress monitor dialog to look for
@@ -358,9 +350,8 @@ public final class SWTBotUtils {
     }
 
     /**
-     * This method is designed to wait close of progress monitor dialog if it
-     * opens. The dialog may not be opening if underlying process is shorter
-     * than 800ms. This method is able to mange this case.
+     * This method is designed to wait close of progress monitor dialog if it opens. The dialog may not be opening if
+     * underlying process is shorter than 800ms. This method is able to mange this case.
      * 
      * @param dialogTitle
      *            The real name of progress monitor dialog to look for
@@ -371,8 +362,7 @@ public final class SWTBotUtils {
      * @param unit
      *            Unit of timeout.
      * @param wholeTitle
-     *            false if the <code>dialogTitle</code> corresponds only to a
-     *            part of the title, true otherwise
+     *            false if the <code>dialogTitle</code> corresponds only to a part of the title, true otherwise
      * @throws TimeoutException
      *             If dialog didn't close before timeout
      */
@@ -482,8 +472,7 @@ public final class SWTBotUtils {
     }
 
     /**
-     * Clicks on the column at the given index inside the given
-     * {@link SWTBotTree}.
+     * Clicks on the column at the given index inside the given {@link SWTBotTree}.
      * 
      * @param tree
      *            the {@link SWTBotTree} to click on
@@ -514,8 +503,7 @@ public final class SWTBotUtils {
          * @param w
          *            the widget.
          * @throws WidgetNotFoundException
-         *             if the widget is <code>null</code> or widget has been
-         *             disposed.
+         *             if the widget is <code>null</code> or widget has been disposed.
          */
         public SWTBotTreeColumn(TreeColumn w) throws WidgetNotFoundException {
             super(w);
@@ -532,8 +520,12 @@ public final class SWTBotUtils {
     }
 
     /**
-     * Find a {@link SWTBotTreetem} with its name in a {@link SWTBotTreetem}
-     * list and its children recursively.
+     * Find a {@link SWTBotTreetem} with its name in a {@link SWTBotTreetem} list and its children recursively.It will
+     * return the first found matching the given label.
+     * 
+     * This method checks enabled and disabled items and does consider only visible items, it will expand the tree to
+     * find a matching item in the non displayed elements. If those features are required, see
+     * {@link SWTBotUtils.getTreeItem(SWTBotTreeItem[], String, boolean, boolean)}.
      * 
      * @param treeElements
      *            the {@link SWTBotTreetem} list to search in
@@ -542,25 +534,59 @@ public final class SWTBotUtils {
      * @return the tree item
      */
     public static SWTBotTreeItem getTreeItem(final SWTBotTreeItem[] treeElements, final String name) {
-        SWTBotTreeItem foundTreeItem = null;
+        return getTreeItem(treeElements, name, false, false);
+    }
+
+    /**
+     * Find a {@link SWTBotTreeItem} with its name in a {@link SWTBotTreetem} list and its children recursively. It will
+     * return the first found matching the given label.
+     * 
+     * If checkEnabled=true, it will only consider enabled items. If espance
+     * 
+     * @param treeElements
+     *            the {@link SWTBotTreetem} list to search in
+     * @param searchedLabel
+     *            the searched label
+     * @param enabledItemsOnly
+     *            if true, consider only enabled items
+     * @param expandItems
+     *            if true, expand tree to check non displayed tree items (and re-collapse expanded items if no matching
+     *            element has been found).
+     * @return the first {@link SWTBotTreeItem} matching the given label (or null if none found)
+     */
+    public static SWTBotTreeItem getTreeItem(SWTBotTreeItem[] treeElements, String searchedLabel, boolean enabledItemsOnly, boolean expandItems) {
+        SWTBotTreeItem treeItem = null;
         if (treeElements != null) {
-            for (SWTBotTreeItem swtBotTreeItem : treeElements) {
-                if (swtBotTreeItem.getText().equals(name)) {
-                    foundTreeItem = swtBotTreeItem;
-                    break;
+            for (SWTBotTreeItem item : treeElements) {
+                String text = item.getText();
+                // Check isEnabled if required before checking the label.
+                if ((!enabledItemsOnly || item.isEnabled()) && Objects.equals(searchedLabel, text)) {
+                    treeItem = item;
+                } else {
+
+                    // Expand tree if required
+                    boolean oldExpanded = item.isExpanded();
+                    if (expandItems) {
+                        item.expand();
+                    }
+
+                    treeItem = getTreeItem(item.getItems(), searchedLabel, enabledItemsOnly, expandItems);
+
+                    // Collapse tree if it has been expanded.
+                    if (treeItem == null && expandItems && !oldExpanded) {
+                        item.collapse();
+                    }
                 }
-                foundTreeItem = getTreeItem(swtBotTreeItem.getItems(), name);
-                if (foundTreeItem != null) {
+                if (treeItem != null) {
                     break;
                 }
             }
         }
-        return foundTreeItem;
+        return treeItem;
     }
 
     /**
-     * Validate that there is a Label having a specific text in a
-     * {@link SWTBotShell}.
+     * Validate that there is a Label having a specific text in a {@link SWTBotShell}.
      * 
      * @param labelToLookFor
      *            text to look for
@@ -592,8 +618,7 @@ public final class SWTBotUtils {
     }
 
     /**
-     * Checks that the tools section label and tools label are displayed as
-     * expected.
+     * Checks that the tools section label and tools label are displayed as expected.
      * 
      * @param editor
      *            the current {@link SWTBotSiriusDiagramEditor}
@@ -627,8 +652,7 @@ public final class SWTBotUtils {
     }
 
     /**
-     * Validate that each of the given label are available among contextual
-     * menus.
+     * Validate that each of the given label are available among contextual menus.
      * 
      * @param display
      *            current {@link Display}
@@ -639,7 +663,7 @@ public final class SWTBotUtils {
      * @return the parent menu containing the contextual menus
      */
     public static Menu checkContextualMenus(final Display display, final Control control, List<String> labelsToCheck) {
-        final List<String> labelToFind = Lists.newArrayList(labelsToCheck);
+        final List<String> labelToFind = new ArrayList<>(labelsToCheck);
         return UIThreadRunnable.syncExec(display, new WidgetResult<Menu>() {
             @Override
             public Menu run() {
