@@ -153,7 +153,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
      * 
      * Problem for action on column header
      * 
-     * @param composite
+     * @param theComposite
      *            the Container of the TreeViewer to create
      */
     @Override

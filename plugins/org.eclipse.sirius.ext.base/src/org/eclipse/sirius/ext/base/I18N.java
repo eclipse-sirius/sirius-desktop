@@ -22,18 +22,15 @@ import java.security.PrivilegedAction;
 import org.eclipse.emf.common.EMFPlugin;
 
 /**
- * Helper class with bundle-independent code, that can be reused by other I18N
- * classes local to each plug-in.
+ * Helper class with bundle-independent code, that can be reused by other I18N classes local to each plug-in.
  * 
  * @author pcdavid
  */
 public final class I18N {
     /**
-     * Used to mark a {@code public static String} field of a class as an
-     * externalized string, whose actual value will depend on the locale used at
-     * runtime. The optional value corresponds to the key in the
-     * {@code ResourceLocator}; if absent, the name of the field itself is used
-     * as key.
+     * Used to mark a {@code public static String} field of a class as an externalized string, whose actual value will
+     * depend on the locale used at runtime. The optional value corresponds to the key in the {@code ResourceLocator};
+     * if absent, the name of the field itself is used as key.
      * 
      * @author pcdavid
      */
@@ -41,8 +38,10 @@ public final class I18N {
     @Target(ElementType.FIELD)
     public @interface TranslatableMessage {
         /**
-         * The (optional) value of the message key. If absent, the key is
-         * assumed to be the same as the Java field's name.
+         * The (optional) value of the message key. If absent, the key is assumed to be the same as the Java field's
+         * name.
+         * 
+         * @return the message key, if different from the field name.
          */
         String[] value() default {};
     }
@@ -52,14 +51,13 @@ public final class I18N {
     }
 
     /**
-     * Initializes the value of a class's {@code TranslatableMessage}s using the
-     * specified plugin as {@code ResourceLocator}.
+     * Initializes the value of a class's {@code TranslatableMessage}s using the specified plugin as
+     * {@code ResourceLocator}.
      * 
      * @param messagesClass
      *            the class which defines the fields to initialize.
      * @param plugin
-     *            the plugin from which to obtain the localized value of the
-     *            fields.
+     *            the plugin from which to obtain the localized value of the fields.
      */
     public static void initializeMessages(final Class<?> messagesClass, final EMFPlugin plugin) {
         if (System.getSecurityManager() == null) {
