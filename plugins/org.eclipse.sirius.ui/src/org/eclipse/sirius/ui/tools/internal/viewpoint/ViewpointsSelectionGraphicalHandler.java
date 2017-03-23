@@ -499,7 +499,7 @@ public class ViewpointsSelectionGraphicalHandler {
 
     private class ViewpointsTableLabelProvider extends AdapterFactoryLabelProvider implements ITableLabelProvider {
 
-        public ViewpointsTableLabelProvider() {
+        ViewpointsTableLabelProvider() {
             super(ViewHelper.INSTANCE.createAdapterFactory());
         }
 

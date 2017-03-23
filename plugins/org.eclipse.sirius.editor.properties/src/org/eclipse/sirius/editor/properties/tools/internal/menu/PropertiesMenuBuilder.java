@@ -147,7 +147,7 @@ public class PropertiesMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
          * @param commandParameter
          *            The command parameter
          */
-        public ExtendsPropertyViewCreateChildAction(IEditorPart editorPart, ISelection selection, CommandParameter commandParameter) {
+        ExtendsPropertyViewCreateChildAction(IEditorPart editorPart, ISelection selection, CommandParameter commandParameter) {
             super(editorPart, selection, commandParameter, Messages.PropertiesMenuBuilder_ExtendPropertiesView_label, 3000);
         }
 

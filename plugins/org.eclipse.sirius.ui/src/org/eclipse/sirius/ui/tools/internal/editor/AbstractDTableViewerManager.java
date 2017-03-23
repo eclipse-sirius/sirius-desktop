@@ -238,6 +238,6 @@ public abstract class AbstractDTableViewerManager {
      * @param newDRepresentation
      *            the representation that will replace the current one used.
      */
-    public abstract void updateDRepresentation(final DRepresentation newDRepresentation);
+    public abstract void updateDRepresentation(DRepresentation newDRepresentation);
 
 }
