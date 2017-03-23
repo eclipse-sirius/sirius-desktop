@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -86,7 +86,7 @@ public final class PermissionService {
         while (it.hasNext() && !foundSpecific) {
             PermissionProviderDescriptor permissionProviderDescriptor = it.next();
             IPermissionProvider permissionProvider = permissionProviderDescriptor.getPermissionProvider();
-            if (permissionProvider.provides(resourceSet)) {
+            if (permissionProvider != null && permissionProvider.provides(resourceSet)) {
                 result = PermissionService.wrapPermissionAuthority(permissionProvider.getAuthority(resourceSet));
                 foundSpecific = true;
             }

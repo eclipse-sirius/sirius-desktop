@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,10 +10,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.ecore.extender.business.internal.permission.descriptors;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-
+import org.eclipse.core.runtime.IContributor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionProvider;
+import org.eclipse.sirius.ecore.extender.business.internal.ExtenderPlugin;
+import org.eclipse.sirius.ecore.extender.business.internal.Messages;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.PermissionProviderDescriptor;
 
 /**
@@ -22,6 +28,8 @@ import org.eclipse.sirius.ecore.extender.business.internal.permission.Permission
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class EclipsePermissionProviderDescriptor extends AbstractPermissionProviderDescriptor implements PermissionProviderDescriptor {
+
+    private static final String PROVIDER_CLASS_ATTR = "providerClass"; //$NON-NLS-1$
 
     private IConfigurationElement configurationElement;
 
@@ -50,9 +58,13 @@ public class EclipsePermissionProviderDescriptor extends AbstractPermissionProvi
     public IPermissionProvider getPermissionProvider() {
         if (permissionProvider == null) {
             try {
-                permissionProvider = (IPermissionProvider) configurationElement.createExecutableExtension("providerClass"); //$NON-NLS-1$
+                permissionProvider = (IPermissionProvider) configurationElement.createExecutableExtension(EclipsePermissionProviderDescriptor.PROVIDER_CLASS_ATTR);
             } catch (final CoreException e) {
-                // silent catch.
+                String providerClassName = configurationElement.getAttribute(EclipsePermissionProviderDescriptor.PROVIDER_CLASS_ATTR);
+                IContributor contributor = configurationElement.getDeclaringExtension().getContributor();
+                IStatus status = new Status(IStatus.ERROR, ExtenderPlugin.ID,
+                        MessageFormat.format(Messages.PermissionService_permissionProviderInstantiationError, providerClassName, contributor.getName()), e);
+                ExtenderPlugin.getPlugin().getLog().log(status);
             }
         }
         return permissionProvider;
