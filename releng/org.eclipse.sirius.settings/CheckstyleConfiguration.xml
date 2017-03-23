@@ -5,7 +5,7 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: Sirius Checks
+    Checkstyle-Configuration: Sirius
     Description: none
 -->
 <module name="Checker">
@@ -227,6 +227,7 @@
     </module>
     <module name="ReturnCount">
       <property name="severity" value="error"/>
+      <property name="maxForVoid" value="2"/>
       <property name="format" value="^insertionIndexFor$"/>
     </module>
     <module name="SimplifyBooleanExpression">
@@ -314,7 +315,6 @@
     </module>
     <module name="StrictDuplicateCode">
       <property name="severity" value="ignore"/>
-      <property name="min" value="20"/>
       <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity" value="error"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
