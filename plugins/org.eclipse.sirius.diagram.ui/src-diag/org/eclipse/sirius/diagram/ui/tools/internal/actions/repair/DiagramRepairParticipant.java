@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -30,8 +32,10 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.repair.IRepairParticipant;
+import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
 import org.eclipse.sirius.business.internal.repair.commands.RemoveDiagramElementsCommand;
@@ -60,12 +64,12 @@ import org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.repair.commands.RemoveInvalidViewsCommand;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -126,8 +130,8 @@ public class DiagramRepairParticipant implements IRepairParticipant {
         // Creates a new CrossReferencer before restoring the model state (This
         // cross referencer will return all the references named "element" on
         // GMF Nodes)
-        Resource viewResource = view.eResource();
-        DiagramCrossReferencer crossReferencer = new DiagramCrossReferencer(viewResource);
+        Collection<Resource> resources = getAllDiagramResources(view);
+        DiagramCrossReferencer crossReferencer = new DiagramCrossReferencer(resources);
         Iterator<EObject> analysisIterator = new DViewQuery(view).getAllContentInRepresentations(DDiagramElement.class::isInstance);
 
         Map<IDiagramElementState<DDiagramElement>, DDiagramElement> states = new LinkedHashMap<IDiagramElementState<DDiagramElement>, DDiagramElement>();
@@ -161,8 +165,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
         }
         // Synchronize the GMF views to remove orphan and create new after
         // migration
-        List<Diagram> diagrams = Lists.newArrayList();
-        Iterators.addAll(diagrams, Iterators.filter(viewResource.getAllContents(), Diagram.class));
+        List<Diagram> diagrams = getGMFDiagrams(resources);
         for (Diagram currentDiagram : diagrams) {
             if (ViewUtil.resolveSemanticElement(currentDiagram) != null) {
                 CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(currentDiagram);
@@ -170,6 +173,21 @@ public class DiagramRepairParticipant implements IRepairParticipant {
                 canonicalSynchronizer.synchronize();
             }
         }
+
+    }
+
+    private List<Diagram> getGMFDiagrams(Collection<Resource> resources) {
+        List<Diagram> diagrams = new ArrayList<>();
+
+        resources.stream().flatMap(res -> res.getContents().stream()).filter(DDiagram.class::isInstance).map(DDiagram.class::cast).forEach(dDiagram -> {
+            new DRepresentationQuery(dDiagram).getAnnotation(CustomDataConstants.GMF_DIAGRAMS).forEach(annotation -> {
+                EObject data = annotation.getData();
+                if (data instanceof Diagram) {
+                    diagrams.add((Diagram) data);
+                }
+            });
+        });
+        return diagrams;
 
     }
 
@@ -213,7 +231,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
         // Creates a new CrossReferencer before saving the model state (This
         // cross referencer will return all the references named "element" on
         // GMF Nodes)
-        DiagramCrossReferencer crossReferencer = new DiagramCrossReferencer(view.eResource());
+        DiagramCrossReferencer crossReferencer = new DiagramCrossReferencer(getAllDiagramResources(view));
 
         // Work only with DDiagramElement
         final Iterator<EObject> analysisIterator = new DViewQuery(view).getAllContentInRepresentations(DDiagramElement.class::isInstance);
@@ -254,6 +272,17 @@ public class DiagramRepairParticipant implements IRepairParticipant {
 
     }
 
+    private Collection<Resource> getAllDiagramResources(DView view) {
+        // @formatter:off
+        Collection<Resource> resources = view.getOwnedRepresentationDescriptors().stream()
+        .map(DRepresentationDescriptor::getRepresentation).filter(Objects::nonNull)
+        .map(EObject::eResource).filter(Objects::nonNull)
+        .collect(Collectors.toSet());
+        // @formatter:on
+
+        return resources;
+    }
+
     private void setDefaultConcern(final DView view) {
         for (final DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
             if (representation instanceof DDiagram) {
@@ -276,8 +305,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
      * 
      * @param element
      *            the diagram element.
-     * @return The state of the DDiagramElement or <code>null</code> if none can
-     *         be found.
+     * @return The state of the DDiagramElement or <code>null</code> if none can be found.
      */
     private IDiagramElementState<DDiagramElement> getElementState(final DDiagramElement element) {
         IDiagramElementState<DDiagramElement> result = null;
@@ -324,8 +352,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
     }
 
     /**
-     * Remove elements with isCreatedElement sets to true. Store data about the
-     * other.
+     * Remove elements with isCreatedElement sets to true. Store data about the other.
      * 
      * @param view
      * @return the list of elements that can be safety removed.
@@ -411,11 +438,10 @@ public class DiagramRepairParticipant implements IRepairParticipant {
     }
 
     /**
-     * Clean the references which could be problematic for the migration ((proxy
-     * not resolved or element not in a eResource):
+     * Clean the references which could be problematic for the migration ((proxy not resolved or element not in a
+     * eResource):
      * <UL>
-     * <LI>Remove the filter variables cache if the element points by this
-     * variable is no longer exists</LI>
+     * <LI>Remove the filter variables cache if the element points by this variable is no longer exists</LI>
      * <LI>Disables the behaviors that were activated but no longer exists,</LI>
      * <LI>Disables the filters that were activated but no longer exists,</LI>
      * <LI>Disables the rules that were activated but no longer exists.</LI>
