@@ -77,26 +77,25 @@ public class CreateInstanceTask extends AbstractOperationTask implements ICreati
         if (instance == null) {
             // the creation failed
             SiriusPlugin.getDefault().error(MessageFormat.format(Messages.CreateInstanceTask_creationErrorMsg, typeName), new RuntimeException());
-            return;
-        }
-        if (!StringUtil.isEmpty(createOp.getVariableName())) {
-            ICommandTask childTask;
-            childTask = new InterpretedExpressionVariableTask(context, extPackage, InterpretedExpressionVariableTask.KIND_SET, createOp.getVariableName(), instance, interpreter);
-            childTask.execute();
-        }
-        referenceName = getFeatureName(target, createOp, createOp.getReferenceName());
-        if (!extPackage.eIsMany(target, referenceName)) {
-            // The reference upper bound is 1. try to see if a value is
-            // already specified.
-            final Object value = extPackage.eGet(target, referenceName);
-            if (value != null) {
-                SiriusPlugin.getDefault().error(MessageFormat.format(Messages.CreateInstanceTask_addToRefErrorMsg, referenceName, target), new RuntimeException());
-                return;
+        } else {
+            if (!StringUtil.isEmpty(createOp.getVariableName())) {
+                ICommandTask childTask;
+                childTask = new InterpretedExpressionVariableTask(context, extPackage, InterpretedExpressionVariableTask.KIND_SET, createOp.getVariableName(), instance, interpreter);
+                childTask.execute();
             }
+            referenceName = getFeatureName(target, createOp, createOp.getReferenceName());
+            if (!extPackage.eIsMany(target, referenceName)) {
+                // The reference upper bound is 1. try to see if a value is
+                // already specified.
+                final Object value = extPackage.eGet(target, referenceName);
+                if (value != null) {
+                    SiriusPlugin.getDefault().error(MessageFormat.format(Messages.CreateInstanceTask_addToRefErrorMsg, referenceName, target), new RuntimeException());
+                    return;
+                }
+            }
+            extPackage.eAdd(target, referenceName, instance);
+            context.setNextPushEObject(instance);
         }
-        extPackage.eAdd(target, referenceName, instance);
-        context.setNextPushEObject(instance);
-
     }
 
     /**

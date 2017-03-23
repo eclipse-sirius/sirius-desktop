@@ -159,27 +159,22 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             }
         } else {
             final IPath filePath = dialog.getResult();
-            if (filePath == null) {
-                if (progressMonitor != null) {
-                    progressMonitor.setCanceled(true);
-                }
-                return;
-            }
-            final IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-            final IFile file = workspaceRoot.getFile(filePath);
-            final IEditorInput newInput = new FileEditorInput(file);
-            // Check if the editor is already open
-            final IEditorMatchingStrategy matchingStrategy = getEditorDescriptor().getEditorMatchingStrategy();
-            final IEditorReference[] editorRefs = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getEditorReferences();
-            for (IEditorReference editorRef : editorRefs) {
-                if (matchingStrategy.matches(editorRef, newInput)) {
-                    MessageDialog.openWarning(shell, Messages.dTableEditor_SaveAsErrorTitle, Messages.dTableEditor_SaveAsErrorMessage);
-                    return;
+            if (filePath != null) {
+                final IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+                final IFile file = workspaceRoot.getFile(filePath);
+                final IEditorInput newInput = new FileEditorInput(file);
+                // Check if the editor is already open
+                final IEditorMatchingStrategy matchingStrategy = getEditorDescriptor().getEditorMatchingStrategy();
+                final IEditorReference[] editorRefs = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getEditorReferences();
+                for (IEditorReference editorRef : editorRefs) {
+                    if (matchingStrategy.matches(editorRef, newInput)) {
+                        MessageDialog.openWarning(shell, Messages.dTableEditor_SaveAsErrorTitle, Messages.dTableEditor_SaveAsErrorMessage);
+                        return;
+                    }
                 }
             }
-            final boolean success = false;
             if (progressMonitor != null) {
-                progressMonitor.setCanceled(!success);
+                progressMonitor.setCanceled(true);
             }
         }
     }
@@ -266,22 +261,22 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             /* eclipse was closed with an editor opened and not saved */
             final Label errorLabel = new Label(parent, SWT.CENTER);
             errorLabel.setText(org.eclipse.sirius.table.metamodel.table.provider.Messages.AbstractDTableEditor_tableNotSaved);
-            return;
+        } else {
+            treeViewerManager = new DTableViewerManager(parent, getTableModel(), getEditingDomain(), accessor, (ITableCommandFactory) emfCommandFactory, this);
+            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CREATE_TABLE_KEY);
+            getSite().setSelectionProvider(treeViewerManager.getTreeViewer());
+            /* initialize interpreter. */
+            if (session != null) {
+                InterpreterRegistry.prepareImportsFromSession(session.getInterpreter(), session);
+            }
+    
+            refreshAtOpeningActivator = new RefreshAtOpeningActivator(session, this);
+            getSite().getPage().addPartListener(refreshAtOpeningActivator);
+    
+            // Activate the context for this site.
+            IContextService contextService = getSite().getService(IContextService.class);
+            contextService.activateContext(CONTEXT_ID);
         }
-        treeViewerManager = new DTableViewerManager(parent, getTableModel(), getEditingDomain(), accessor, (ITableCommandFactory) emfCommandFactory, this);
-        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CREATE_TABLE_KEY);
-        getSite().setSelectionProvider(treeViewerManager.getTreeViewer());
-        /* initialize interpreter. */
-        if (session != null) {
-            InterpreterRegistry.prepareImportsFromSession(session.getInterpreter(), session);
-        }
-
-        refreshAtOpeningActivator = new RefreshAtOpeningActivator(session, this);
-        getSite().getPage().addPartListener(refreshAtOpeningActivator);
-
-        // Activate the context for this site.
-        IContextService contextService = getSite().getService(IContextService.class);
-        contextService.activateContext(CONTEXT_ID);
     }
 
     /**

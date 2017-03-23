@@ -78,9 +78,6 @@ public class SubDiagramDecorator extends AbstractDecorator {
         this.session = SessionManager.INSTANCE.getSession(model.getTarget());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void activate() {
         // Nothing to do.
@@ -92,11 +89,6 @@ public class SubDiagramDecorator extends AbstractDecorator {
         session = null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator#refresh()
-     */
     @Override
     public void refresh() {
         DslCommonPlugin.PROFILER.startWork(DECORATOR_REFRESH);
@@ -104,18 +96,8 @@ public class SubDiagramDecorator extends AbstractDecorator {
         View view = (View) getDecoratorTarget().getAdapter(View.class);
         if (view != null && view.eResource() != null) {
             EditPart editPart = (EditPart) getDecoratorTarget().getAdapter(EditPart.class);
-            if (editPart == null || editPart.getParent() == null || editPart.getViewer() == null) {
-                return;
-            }
-            if (editPart instanceof org.eclipse.gef.GraphicalEditPart) {
-                IFigure figure = ((org.eclipse.gef.GraphicalEditPart) editPart).getFigure();
-                Dimension size = figure.getSize();
-                if (size.width <= 30 && size.width > 0 && size.height <= 30 && size.height > 0) {
-                    return;
-                }
-            }
             EObject model = view.getElement();
-            if (model instanceof DRepresentationElement) {
+            if (isEditPartDecorable(editPart) && model instanceof DRepresentationElement) {
                 DRepresentationElement node = (DRepresentationElement) model;
                 if (shouldHaveSubDiagDecoration(node)) {
 
@@ -131,6 +113,22 @@ public class SubDiagramDecorator extends AbstractDecorator {
             }
         }
         DslCommonPlugin.PROFILER.stopWork(DECORATOR_REFRESH);
+    }
+    
+    private boolean isEditPartDecorable(EditPart editPart) {
+        boolean result = true;
+        if (editPart == null || editPart.getParent() == null || editPart.getViewer() == null) {
+            // Invalid/obsolete part
+            result = false;
+        } else if (editPart instanceof org.eclipse.gef.GraphicalEditPart) {
+            IFigure figure = ((org.eclipse.gef.GraphicalEditPart) editPart).getFigure();
+            Dimension size = figure.getSize();
+            if (size.width <= 30 && size.width > 0 && size.height <= 30 && size.height > 0) {
+                // To small to contain a decorator
+                result = false;
+            }
+        }
+        return result;
     }
 
     private Image getSubDiagramImage() {

@@ -83,16 +83,12 @@ public class TabbarToolBarManager extends ToolBarManager {
     @Override
     public void update(boolean force) {
         IWorkbenchPage activePage = getSafeActivePage();
-        if (activePage == null) {
-            // No active page -> return.
-            return;
-        } else if (tabbarPart instanceof DDiagramEditor && activePage.getActivePart() != tabbarPart) {
+        if (activePage != null && tabbarPart instanceof DDiagramEditor && activePage.getActivePart() != tabbarPart) {
             if (getControl().getItems().length > 0) {
                 // part is not focused -> return.
                 return;
             }
         }
-
         super.update(force);
         updateGradientBackground();
     }

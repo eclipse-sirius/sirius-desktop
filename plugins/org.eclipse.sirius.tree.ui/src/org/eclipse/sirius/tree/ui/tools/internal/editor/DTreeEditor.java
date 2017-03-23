@@ -134,29 +134,24 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
             }
         } else {
             final IPath filePath = dialog.getResult();
-            if (filePath == null) {
-                if (progressMonitor != null) {
-                    progressMonitor.setCanceled(true);
-                }
-                return;
-            }
-            final IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-            final IFile file = workspaceRoot.getFile(filePath);
-            final IEditorInput newInput = new FileEditorInput(file);
-            // Check if the editor is already open
-            final IEditorMatchingStrategy matchingStrategy = getEditorDescriptor().getEditorMatchingStrategy();
-            final IEditorReference[] editorRefs = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getEditorReferences();
-            for (IEditorReference editorRef : editorRefs) {
-                if (matchingStrategy.matches(editorRef, newInput)) {
-                    // MessageDialog.openWarning(shell,
-                    // Messages.dTableEditor_SaveAsErrorTitle,
-                    // Messages.dTableEditor_SaveAsErrorMessage);
-                    return;
+            if (filePath != null) {
+                final IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+                final IFile file = workspaceRoot.getFile(filePath);
+                final IEditorInput newInput = new FileEditorInput(file);
+                // Check if the editor is already open
+                final IEditorMatchingStrategy matchingStrategy = getEditorDescriptor().getEditorMatchingStrategy();
+                final IEditorReference[] editorRefs = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getEditorReferences();
+                for (IEditorReference editorRef : editorRefs) {
+                    if (matchingStrategy.matches(editorRef, newInput)) {
+                        // MessageDialog.openWarning(shell,
+                        // Messages.dTableEditor_SaveAsErrorTitle,
+                        // Messages.dTableEditor_SaveAsErrorMessage);
+                        return;
+                    }
                 }
             }
-            final boolean success = false;
             if (progressMonitor != null) {
-                progressMonitor.setCanceled(!success);
+                progressMonitor.setCanceled(true);
             }
         }
     }
@@ -226,25 +221,25 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
             /* eclipse was closed with an editor opened and not saved */
             final Label errorLabel = new Label(parent, SWT.CENTER);
             errorLabel.setText(Messages.DTreeEditor_treeModelUnsaved);
-            return;
+        } else {
+            treeViewerManager = new DTreeViewerManager(parent, getTreeModel(), getEditingDomain(), accessor, emfCommandFactory, this);
+            // DslCommonPlugin.PROFILER.stopWork(SiriusTasks.CREATE_TREE);
+            getSite().setSelectionProvider(treeViewerManager.getTreeViewer());
+    
+            /* initialize interpreter. */
+            if (session != null) {
+                InterpreterRegistry.prepareImportsFromSession(session.getInterpreter(), session);
+            }
+            // Add the CreateTreeItem menu of the toolbar
+            ((DTreeActionBarContributor) getEditorSite().getActionBarContributor()).addCreateTreeItemMenu(((DTreeViewerManager) this.getTableViewer()).getCreateTreeItemMenu());
+    
+            refreshAtOpeningActivator = new RefreshAtOpeningActivator(this);
+            getSite().getPage().addPartListener(refreshAtOpeningActivator);
+    
+            // Activate context
+            IContextService contextService = getSite().getService(IContextService.class);
+            contextService.activateContext(CONTEXT_ID);
         }
-        treeViewerManager = new DTreeViewerManager(parent, getTreeModel(), getEditingDomain(), accessor, emfCommandFactory, this);
-        // DslCommonPlugin.PROFILER.stopWork(SiriusTasks.CREATE_TREE);
-        getSite().setSelectionProvider(treeViewerManager.getTreeViewer());
-
-        /* initialize interpreter. */
-        if (session != null) {
-            InterpreterRegistry.prepareImportsFromSession(session.getInterpreter(), session);
-        }
-        // Add the CreateTreeItem menu of the toolbar
-        ((DTreeActionBarContributor) getEditorSite().getActionBarContributor()).addCreateTreeItemMenu(((DTreeViewerManager) this.getTableViewer()).getCreateTreeItemMenu());
-
-        refreshAtOpeningActivator = new RefreshAtOpeningActivator(this);
-        getSite().getPage().addPartListener(refreshAtOpeningActivator);
-
-        // Activate context
-        IContextService contextService = getSite().getService(IContextService.class);
-        contextService.activateContext(CONTEXT_ID);
     }
 
     /**

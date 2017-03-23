@@ -281,27 +281,25 @@ public class SiriusInformationPresenter extends AbstractInformationControlManage
 
         IInformationProvider provider = null;
         provider = getInformationProvider(IDocument.DEFAULT_CONTENT_TYPE);
-        if (provider == null) {
-            return;
-        }
-
-        IRegion subject = provider.getSubject(null, offset);
-        if (subject == null) {
-            return;
-        }
-
-        if (provider instanceof IInformationProviderExtension2) {
-            setCustomInformationControlCreator(((IInformationProviderExtension2) provider).getInformationPresenterControlCreator());
-        } else {
-            setCustomInformationControlCreator(null);
-        }
-
-        if (provider instanceof IInformationProviderExtension) {
-            IInformationProviderExtension extension = (IInformationProviderExtension) provider;
-            setInformation(extension.getInformation2(null, subject), computeArea(subject));
-        } else {
-            // backward compatibility code
-            setInformation(provider.getInformation(null, subject), computeArea(subject));
+        if (provider != null) {
+            IRegion subject = provider.getSubject(null, offset);
+            if (subject == null) {
+                return;
+            }
+    
+            if (provider instanceof IInformationProviderExtension2) {
+                setCustomInformationControlCreator(((IInformationProviderExtension2) provider).getInformationPresenterControlCreator());
+            } else {
+                setCustomInformationControlCreator(null);
+            }
+    
+            if (provider instanceof IInformationProviderExtension) {
+                IInformationProviderExtension extension = (IInformationProviderExtension) provider;
+                setInformation(extension.getInformation2(null, subject), computeArea(subject));
+            } else {
+                // backward compatibility code
+                setInformation(provider.getInformation(null, subject), computeArea(subject));
+            }
         }
     }
 

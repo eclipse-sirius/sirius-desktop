@@ -209,7 +209,6 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                 } else {
                     DiagramUIPlugin.getPlugin().getResourceMissingDocumentProvider().setDocumentContent(document, element);
                 }
-                return;
             } else {
                 for (final EObject rootElement : resource.getContents()) {
                     if (rootElement instanceof Diagram) {

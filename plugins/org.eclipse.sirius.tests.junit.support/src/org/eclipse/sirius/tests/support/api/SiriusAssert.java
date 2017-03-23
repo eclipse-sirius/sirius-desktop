@@ -21,6 +21,8 @@ import org.eclipse.sirius.viewpoint.RGBValues;
 import org.junit.Assert;
 import org.junit.ComparisonFailure;
 
+import com.google.common.base.Objects;
+
 /**
  * Designer assertions for Junit.
  * 
@@ -39,13 +41,9 @@ public class SiriusAssert extends Assert {
      *            Actual objet
      */
     public static void assertNotEquals(final String message, final Object expected, final Object actual) {
-        if (expected == null && actual == null) {
-            return;
+        if (Objects.equal(expected, actual)) {
+            SiriusAssert.failEquals(message, expected, actual);
         }
-        if (expected != null && !expected.equals(actual)) {
-            return;
-        }
-        SiriusAssert.failEquals(message, expected, actual);
     }
 
     /**

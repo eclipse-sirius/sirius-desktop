@@ -51,11 +51,7 @@ public class CloseUISessionCommand extends WorkspaceModifyOperation {
     @Override
     protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
         monitor.beginTask(Messages.CloseUISessionCommand_closeRepresentationFileTask, IProgressMonitor.UNKNOWN);
-        if (session == null) {
-            return;
-        }
-
-        if (session.isOpen()) {
+        if (session != null && session.isOpen()) {
             boolean saveSession = false;
             // TODO remove this try/catch once the offline mode will
             // be supported
