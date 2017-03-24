@@ -69,8 +69,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
- * Query allowing to get the target domain classes and available packages for a
- * given Interpreted expression.
+ * Query allowing to get the target domain classes and available packages for a given Interpreted expression.
  * 
  * @since 0.9.0
  * @author alagarde
@@ -88,28 +87,27 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     protected static final String SELF = "self"; //$NON-NLS-1$
 
     /**
-     * The source tag used in the meta-model for all EAnnotations concerning the
-     * variables available to interpreted expressions.
+     * The source tag used in the meta-model for all EAnnotations concerning the variables available to interpreted
+     * expressions.
      */
     protected static final String VARIABLES_ANNOTATION_SOURCE = "http://www.eclipse.org/sirius/interpreted/expression/variables"; //$NON-NLS-1$
 
     /**
-     * The character used in the documentation annotation of variables to
-     * separate the optional type name from the actual documentation.
+     * The character used in the documentation annotation of variables to separate the optional type name from the
+     * actual documentation.
      * 
      * @see AbstractInterpretedExpressionQuery#collectLocalVariablesDefinitions()
      */
     protected static final char TYPE_DEFINTION_SEPARATOR = '|';
 
     /**
-     * The key used in {@link #VARIABLES_ANNOTATION_SOURCE} annotations of
-     * variable to specify the type of that variable.
+     * The key used in {@link #VARIABLES_ANNOTATION_SOURCE} annotations of variable to specify the type of that
+     * variable.
      */
     protected static final String VARIABLE_TYPE_KEY = "type"; //$NON-NLS-1$
 
     /**
-     * The target containing the InterpretedExpression (NodeMapping,
-     * ModelOperation...).
+     * The target containing the InterpretedExpression (NodeMapping, ModelOperation...).
      */
     protected EObject target;
 
@@ -125,20 +123,18 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     protected Option<Collection<String>> targetDomainClass;
 
     /**
-     * The list of EPackages to import to be able to interpret the given
-     * expression.
+     * The list of EPackages to import to be able to interpret the given expression.
      */
     protected Collection<EPackage> packagesToImport;
 
     /**
-     * The list of dependencies to import to be able to interpret the given
-     * expression.
+     * The list of dependencies to import to be able to interpret the given expression.
      */
     protected Collection<String> dependencies;
 
     /**
-     * A map representing all available variables. Keys of the map are the
-     * variable names, and values of the map their type.
+     * A map representing all available variables. Keys of the map are the variable names, and values of the map their
+     * type.
      */
     protected Map<String, VariableType> availableVariables;
 
@@ -148,8 +144,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     protected VariableType selfType;
 
     /**
-     * The available {@link IInterpretedExpressionTargetSwitch} that will be
-     * used to calculate target types.
+     * The available {@link IInterpretedExpressionTargetSwitch} that will be used to calculate target types.
      */
     protected IInterpretedExpressionTargetSwitch targetSwitch;
 
@@ -157,12 +152,10 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * Default constructor.
      * 
      * @param target
-     *            the target containing the InterpretedExpression (NodeMapping,
-     *            ModelOperation...)
+     *            the target containing the InterpretedExpression (NodeMapping, ModelOperation...)
      * @param feature
-     *            the feature corresponding to the InterpretedExpression to
-     *            evaluate ( NodeMapping.semanticCandidatesExpression...), can
-     *            be null.
+     *            the feature corresponding to the InterpretedExpression to evaluate (
+     *            NodeMapping.semanticCandidatesExpression...), can be null.
      */
     public AbstractInterpretedExpressionQuery(EObject target, EStructuralFeature feature) {
         this.target = target;
@@ -185,10 +178,9 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     public Option<Collection<String>> getTargetDomainClasses() {
         if (targetDomainClass == null) {
             /*
-             * the "self" variable might be redefined by a containing
-             * ModelOperation (CreateInstance, ChangeContext by example). We
-             * have to trigger the computation of the available variables as
-             * this will update the "self" type computation at the same time.
+             * the "self" variable might be redefined by a containing ModelOperation (CreateInstance, ChangeContext by
+             * example). We have to trigger the computation of the available variables as this will update the "self"
+             * type computation at the same time.
              */
             getAvailableVariables();
 
@@ -232,9 +224,8 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                             // CHECKSTYLE:OFF
                         } catch (Throwable e) {
                             /*
-                             * anything might happen here depending on the other
-                             * Eclipse tools, and we've seen many time tools
-                             * breaking all the others.
+                             * anything might happen here depending on the other Eclipse tools, and we've seen many time
+                             * tools breaking all the others.
                              */
                             // CHECKSTYLE:ON
                         }
@@ -299,8 +290,8 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
             collectContextualVariableDefinitions(operationContext, target);
             if (operationContext instanceof ToolDescription) {
                 /*
-                 * the containerView variable is accessible in any Model
-                 * operation which is a child of the ToolDescription.
+                 * the containerView variable is accessible in any Model operation which is a child of the
+                 * ToolDescription.
                  */
                 availableVariables.put("containerView", DSEMANTIC_DECORATOR); //$NON-NLS-1$
 
@@ -344,9 +335,8 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         collectLocalVariablesDefinitions();
         if (this.target instanceof ToolDescription && feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION) {
             /*
-             * the containerView, element and elementView variables are
-             * accessible in the "precondition" feature of the ToolDescription.
-             * See GenericToolCommandBuilder.
+             * the containerView, element and elementView variables are accessible in the "precondition" feature of the
+             * ToolDescription. See GenericToolCommandBuilder.
              */
             availableVariables.put("containerView", DSEMANTIC_DECORATOR); //$NON-NLS-1$
             availableVariables.put(((ToolDescription) this.target).getElement().getName(), VariableType.ANY_EOBJECT);
@@ -427,29 +417,25 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     protected Option<EObject> getToolContext() {
         Option<EObject> found = Options.newNone();
         /*
-         * ValidationFix can contains operations and is not a subclas of a tool.
-         * We need to return it as the "tool context" or the logic will find the
-         * global diagram definition instead.
+         * ValidationFix can contains operations and is not a subclas of a tool. We need to return it as the
+         * "tool context" or the logic will find the global diagram definition instead.
          */
         found = new EObjectQuery(target).getFirstAncestorOfType(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eINSTANCE.getValidationRule());
         if (!found.some()) {
             if (this.target instanceof OperationAction || this.target instanceof RepresentationNavigationDescription || this.target instanceof RepresentationCreationDescription) {
                 /*
-                 * OperationAction and RepresentationNavigationDescription are
-                 * representing their own context for their interpreted
-                 * expression attributes, the variables which are child of the
-                 * OperationAction and RepresentationNavigationDescription
-                 * instance (like 'views', 'container') are also available in
-                 * the precondition and elements to select expressions.
+                 * OperationAction and RepresentationNavigationDescription are representing their own context for their
+                 * interpreted expression attributes, the variables which are child of the OperationAction and
+                 * RepresentationNavigationDescription instance (like 'views', 'container') are also available in the
+                 * precondition and elements to select expressions.
                  */
                 found = Options.fromNullable(this.target);
             } else {
                 found = new EObjectQuery(target).getFirstAncestorOfType(ToolPackage.eINSTANCE.getAbstractToolDescription());
                 if (found.some() && found.get() instanceof ExternalJavaAction) {
                     /*
-                     * an ExternalJavaAction is a special case as it can also be
-                     * embedded as an Operation. We need to make sure it is not
-                     * the case.
+                     * an ExternalJavaAction is a special case as it can also be embedded as an Operation. We need to
+                     * make sure it is not the case.
                      */
                     EObject container = found.get().eContainer();
                     if (container instanceof ModelOperation || container instanceof InitialOperation) {
@@ -462,26 +448,21 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     }
 
     /**
-     * Add all the variables defined locally to the expression, as specified in
-     * the meta-model annotations. The type of each variable is encoded in the
-     * documentation string associated to each variable.
+     * Add all the variables defined locally to the expression, as specified in the meta-model annotations. The type of
+     * each variable is encoded in the documentation string associated to each variable.
      * <p>
-     * For example, on <code>BasicLabelStyleDescription.labelExpression</code>,
-     * an annotation using {@link #VARIABLES_ANNOTATION_SOURCE} has the
-     * following entry:
+     * For example, on <code>BasicLabelStyleDescription.labelExpression</code>, an annotation using
+     * {@link #VARIABLES_ANNOTATION_SOURCE} has the following entry:
      * <p>
      * <code>
      * diagram -> diagram.DDiagram | the current DSemanticDiagram.
      * </code>
      * <p>
-     * where <code>"diagram"</code> is the annotation key, representing the
-     * variable's name, and
-     * <code>"diagram.DDiagram | the current DSemanticDiagram"</code> is the
-     * value, indicating that the type of the variable is
-     * <code>diagram.DDiagram</code>.
+     * where <code>"diagram"</code> is the annotation key, representing the variable's name, and
+     * <code>"diagram.DDiagram | the current DSemanticDiagram"</code> is the value, indicating that the type of the
+     * variable is <code>diagram.DDiagram</code>.
      * <p>
-     * If no type is specified in the documentation,
-     * {@link #DEFAULT_VARIABLE_TYPE} is assumed.
+     * If no type is specified in the documentation, {@link #DEFAULT_VARIABLE_TYPE} is assumed.
      * 
      * @see #TYPE_DEFINTION_SEPARATOR
      */
@@ -504,11 +485,9 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     }
 
     /**
-     * Collect and merge all the variables definition in the scope between
-     * <code>top</code> and <code>bottom</code> (<code>top</code> <em>must</em>
-     * be an ancestor of <code>bottom</code>) and merges them. In case of name
-     * shadowing, priority is given to the the value defined closest to
-     * <code>bottom</code> (lexical scoping).
+     * Collect and merge all the variables definition in the scope between <code>top</code> and <code>bottom</code>
+     * (<code>top</code> <em>must</em> be an ancestor of <code>bottom</code>) and merges them. In case of name
+     * shadowing, priority is given to the the value defined closest to <code>bottom</code> (lexical scoping).
      */
     private void collectContextualVariableDefinitions(EObject top, EObject bottom) {
         // A map with multiple values is not strictly required as we only use
@@ -521,9 +500,8 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         while (context != null && context != top.eContainer()) {
             appendAllLocalVariableDefinitions(definitions, context);
             /*
-             * Any ModelOperation which require to call IInterpreter to get more
-             * typing information should not create a new context at the
-             * ModelOperation leaf or we'll end up with an inifite loop.
+             * Any ModelOperation which require to call IInterpreter to get more typing information should not create a
+             * new context at the ModelOperation leaf or we'll end up with an inifite loop.
              */
             collectContextualVariableForOperation(context, definitions, bottom);
             if (context != top) {
@@ -548,11 +526,9 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * Collect the contextual variable for a given operation.
      * 
      * @param current
-     *            the current model operation while going from the leaf to the
-     *            top.
+     *            the current model operation while going from the leaf to the top.
      * @param definitions
-     *            the current state of variable definitions to be updated when
-     *            needed.
+     *            the current state of variable definitions to be updated when needed.
      * @param leaf
      *            the leaf operation.
      */
@@ -624,25 +600,27 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
             }
         }
         if (current instanceof CreateInstance) {
-            CreateInstance f = (CreateInstance) current;
-            changeSelfType(VariableType.fromString(f.getTypeName()));
+            // If the current context is the feature "Reference Name", the self type is not the type created by the
+            // CreateInstance tool.
+            if (feature != ToolPackage.eINSTANCE.getCreateInstance_ReferenceName()) {
+                CreateInstance f = (CreateInstance) current;
+                changeSelfType(VariableType.fromString(f.getTypeName()));
+            }
         }
     }
 
     /**
-     * Change the type of the "self" context. This method should be called while
-     * the model operation structure is being browsed from the leaf to the top.
-     * Only the most specific definition of the type of "self" will be kept,
-     * further assignations should not be considered.
+     * Change the type of the "self" context. This method should be called while the model operation structure is being
+     * browsed from the leaf to the top. Only the most specific definition of the type of "self" will be kept, further
+     * assignations should not be considered.
      * 
      * @param newSelfType
      *            the new type definition for the current "self" context.
      */
     protected void changeSelfType(VariableType newSelfType) {
         /*
-         * We only set the self type once as we are browsing the model from most
-         * to less specific. The first assignation will be the most specific,
-         * further assignations should not be considered.
+         * We only set the self type once as we are browsing the model from most to less specific. The first assignation
+         * will be the most specific, further assignations should not be considered.
          */
         if (selfType == null) {
             selfType = newSelfType;
@@ -662,8 +640,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                 int contextPositionInContainingList = childs.indexOf(context);
                 if (contextPositionInContainingList > 0) {
                     /*
-                     * we have at least one sibling, we return the closest one
-                     * to our position going upward.
+                     * we have at least one sibling, we return the closest one to our position going upward.
                      */
                     Object sibling = childs.get(contextPositionInContainingList - 1);
                     if (sibling instanceof EObject) {
@@ -676,13 +653,11 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     }
 
     /**
-     * Returns the name of the type of the given variable, as defined in the
-     * meta-model annotations.
+     * Returns the name of the type of the given variable, as defined in the meta-model annotations.
      * 
      * @param var
      *            the variable definition inside a VSM.
-     * @return the name of the type for this variables, or
-     *         {@link #DEFAULT_VARIABLE_TYPE} if nothing more specified was
+     * @return the name of the type for this variables, or {@link #DEFAULT_VARIABLE_TYPE} if nothing more specified was
      *         specified in the meta-model.
      */
     protected VariableType getVariableTypeName(AbstractVariable var) {
@@ -708,14 +683,12 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     }
 
     /**
-     * Append all the variable definitions defined locally by
-     * <code>context</code> to the specified map. Sub-classes should override
-     * this method (and call <code>super()</code>) to add any variable
-     * definitions specific to their languages/tasks/tools.
+     * Append all the variable definitions defined locally by <code>context</code> to the specified map. Sub-classes
+     * should override this method (and call <code>super()</code>) to add any variable definitions specific to their
+     * languages/tasks/tools.
      * 
      * @param definitions
-     *            the map in which to append all the variable definitions (
-     *            <code>name -> type</code>).
+     *            the map in which to append all the variable definitions ( <code>name -> type</code>).
      * @param context
      *            the element which may define new variables.
      */
@@ -752,11 +725,9 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
     }
 
     /**
-     * Appends to the specified definition list all the implicit variables which
-     * will/may be defined at runtime according to the specified edit mask. For
-     * example, an exit mask of <code>{0}:{1}</code> implies the existence of
-     * two String variables at execution time, <code>arg0</code> and
-     * <code>arg1</code>.
+     * Appends to the specified definition list all the implicit variables which will/may be defined at runtime
+     * according to the specified edit mask. For example, an exit mask of <code>{0}:{1}</code> implies the existence of
+     * two String variables at execution time, <code>arg0</code> and <code>arg1</code>.
      * 
      * @param mask
      *            the edit mask which defines the format string.

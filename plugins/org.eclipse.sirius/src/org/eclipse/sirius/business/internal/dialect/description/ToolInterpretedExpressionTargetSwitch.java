@@ -34,6 +34,7 @@ import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
+import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.Let;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
@@ -55,28 +56,23 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 import com.google.common.collect.Sets;
 
 /**
- * A switch that will return the Target Types associated to a given element
- * (part of the {@link ToolPackage}) and feature corresponding to an Interpreted
- * Expression. For example, for a NodeMapping :
+ * A switch that will return the Target Types associated to a given element (part of the {@link ToolPackage}) and
+ * feature corresponding to an Interpreted Expression. For example, for a NodeMapping :
  * <p>
- * <li>if the feature is semantic candidate expression, we return the domain
- * class of the first valid container (representation element mapping or
- * representation description).</li>
- * <li>if the feature is any other interpreted expression, we return the domain
- * class associated to this mapping</li>
+ * <li>if the feature is semantic candidate expression, we return the domain class of the first valid container
+ * (representation element mapping or representation description).</li>
+ * <li>if the feature is any other interpreted expression, we return the domain class associated to this mapping</li>
  * </p>
  * 
- * Can return {@link Options#newNone()} if the given expression does not require
- * any target type (for example, a Popup menu contribution only uses variables
- * in its expressions).
+ * Can return {@link Options#newNone()} if the given expression does not require any target type (for example, a Popup
+ * menu contribution only uses variables in its expressions).
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
 public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Collection<String>>> {
 
     /**
-     * Constant used in switches on feature id to consider the case when the
-     * feature must not be considered.
+     * Constant used in switches on feature id to consider the case when the feature must not be considered.
      */
     private static final int DO_NOT_CONSIDER_FEATURE = -1;
 
@@ -143,9 +139,8 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
     }
 
     /**
-     * Changes the behavior of this switch : if true, then the feature will be
-     * considered to calculate target types ; if false, then the feature will be
-     * ignored.
+     * Changes the behavior of this switch : if true, then the feature will be considered to calculate target types ; if
+     * false, then the feature will be ignored.
      * 
      * @param considerFeature
      *            true if the feature should be considered, false otherwise
@@ -163,14 +158,13 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
     }
 
     /**
-     * Returns the first element that changes the context of expressions. For
-     * example : for a given operation, will return the first ChangeContext or
-     * AbstractTool that contains it.
+     * Returns the first element that changes the context of expressions. For example : for a given operation, will
+     * return the first ChangeContext or AbstractTool that contains it.
      * 
      * @param element
      *            the element to get the container from
-     * @return the first relevant for the given EObject, i.e. the first
-     *         container from which a domain class can be determined
+     * @return the first relevant for the given EObject, i.e. the first container from which a domain class can be
+     *         determined
      */
     protected EObject getFirstContextChangingContainer(EObject element) {
         EObject container = element.eContainer();
@@ -518,7 +512,21 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         }
         return result;
     }
-    
+
+    @Override
+    public Option<Collection<String>> caseFeatureChangeListener(FeatureChangeListener object) {
+        Option<Collection<String>> result = null;
+        switch (getFeatureId(object.eClass())) {
+        case DO_NOT_CONSIDER_FEATURE:
+            Collection<String> target = Collections.singleton(object.getDomainClass());
+            result = Options.newSome(target);
+            break;
+        default:
+            break;
+        }
+        return result;
+    }
+
     @Override
     public Option<Collection<String>> caseLet(Let object) {
         Option<Collection<String>> result = null;

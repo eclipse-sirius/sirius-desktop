@@ -31,7 +31,7 @@
             interpreter="org.eclipse.sirius.common.variableInterpreter">
       </proposalProvider>
       <proposalProvider
-            class="org.eclipse.sirius.common.ui.tools.internal.interpreter.FeatureProposalProvider"
+            class="org.eclipse.sirius.common.ui.tools.internal.interpreter.FeatureAndPseudoFeatureProposalProvider"
             interpreter="org.eclipse.sirius.common.featureInterpreter">
       </proposalProvider>
       <proposalProvider

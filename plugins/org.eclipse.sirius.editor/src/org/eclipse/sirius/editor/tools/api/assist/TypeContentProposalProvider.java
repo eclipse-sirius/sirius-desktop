@@ -11,6 +11,7 @@
 package org.eclipse.sirius.editor.tools.api.assist;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.jface.bindings.Trigger;
@@ -73,9 +74,8 @@ public class TypeContentProposalProvider implements IContentProposalProvider {
      * Bind a completion processor to a given text element.
      * 
      * @param section
-     *            section to give, if it implements {@link ModelViewBinding}
-     *            then the section update will be disabled during proposal
-     *            settings.
+     *            section to give, if it implements {@link ModelViewBinding} then the section update will be disabled
+     *            during proposal settings.
      * @param text
      *            text to bind a completion processor to.
      */
@@ -111,18 +111,18 @@ public class TypeContentProposalProvider implements IContentProposalProvider {
     }
 
     /**
-     * Bind the completion processors available in plugins to a given text
-     * element.
+     * Bind the completion processor computed from the given {@link IAssistContentProvider} to a given text element.
      * 
      * @param section
      *            the property section where the text element come from.
+     * @param assistContentProvider
+     *            the content assist provider to use for completion.
      * @param text
      *            text to bind a completion processors to.
      */
-    public static void bindPluginsCompletionProcessors(final AbstractPropertySection section, final Text text) {
-        List<IAssistContentProvider> extension = EclipseUtil.getExtensionPlugins(IAssistContentProvider.class, IAssistContentProvider.ID, IAssistContentProvider.CLASS_ATTRIBUTE);
-        if (!(extension.size() == 0)) {
-            IAssistContentProvider contentProposalAdapter = extension.get(0);
+    public static void bindCompletionProcessor(final AbstractPropertySection section, IAssistContentProvider assistContentProvider, final Text text) {
+        IAssistContentProvider contentProposalAdapter = Optional.ofNullable(assistContentProvider).orElseGet(TypeContentProposalProvider::getIAssistContentProvider);
+        if (contentProposalAdapter != null) {
             contentProposalAdapter.setView(section);
             IBindingService bindingService = PlatformUI.getWorkbench().getService(IBindingService.class); // gives
                                                                                                           // the
@@ -144,6 +144,26 @@ public class TypeContentProposalProvider implements IContentProposalProvider {
                                                                             // popup
             }
         }
+    }
+
+    private static IAssistContentProvider getIAssistContentProvider() {
+        List<IAssistContentProvider> extension = EclipseUtil.getExtensionPlugins(IAssistContentProvider.class, IAssistContentProvider.ID, IAssistContentProvider.CLASS_ATTRIBUTE);
+        if (!(extension.size() == 0)) {
+            return extension.get(0);
+        }
+        return null;
+    }
+
+    /**
+     * Bind the completion processors available in plugins to a given text element.
+     * 
+     * @param section
+     *            the property section where the text element come from.
+     * @param text
+     *            text to bind a completion processors to.
+     */
+    public static void bindPluginsCompletionProcessors(final AbstractPropertySection section, final Text text) {
+        bindCompletionProcessor(section, null, text);
     }
 
     private static KeyStroke getKeyStroke(TriggerSequence sequence) {

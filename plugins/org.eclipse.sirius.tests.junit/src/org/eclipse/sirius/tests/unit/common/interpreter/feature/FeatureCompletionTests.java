@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.internal.interpreter.FeatureInterpreter;
-import org.eclipse.sirius.common.ui.tools.internal.interpreter.FeatureProposalProvider;
+import org.eclipse.sirius.common.ui.tools.internal.interpreter.FeatureAndPseudoFeatureProposalProvider;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
@@ -40,7 +40,7 @@ public class FeatureCompletionTests extends AbstractCompletionTestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        setInterpreterAndProposalProvider(new FeatureInterpreter(), new FeatureProposalProvider());
+        setInterpreterAndProposalProvider(new FeatureInterpreter(), new FeatureAndPseudoFeatureProposalProvider());
     };
 
     /**
@@ -106,6 +106,7 @@ public class FeatureCompletionTests extends AbstractCompletionTestCase {
         c.setName("c1");
 
         Function<Integer, ContentContext> createEmptyExpressionContextWithCursor = new Function<Integer, ContentContext>() {
+            @Override
             public ContentContext apply(Integer input) {
                 return createContentContext("feature:", input, "EClass");
             }
@@ -121,6 +122,7 @@ public class FeatureCompletionTests extends AbstractCompletionTestCase {
         c.setName("c1");
 
         Function<Integer, ContentInstanceContext> createEmptyExpressionContextWithCursor = new Function<Integer, ContentInstanceContext>() {
+            @Override
             public ContentInstanceContext apply(Integer input) {
                 return new ContentInstanceContext(c, "feature:", input);
             }
@@ -197,6 +199,7 @@ public class FeatureCompletionTests extends AbstractCompletionTestCase {
         StringBuilder errorMsg = new StringBuilder();
 
         Predicate<String> concerned = new Predicate<String>() {
+            @Override
             public boolean apply(String input) {
                 return true;
             }

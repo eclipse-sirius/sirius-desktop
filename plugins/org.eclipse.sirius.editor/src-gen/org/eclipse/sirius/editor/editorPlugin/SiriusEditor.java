@@ -1411,7 +1411,7 @@ public class SiriusEditor extends MultiPageEditorPart
             colorRegistry.put("gray", new RGB(209, 210, 208));
             colorRegistry.put("light_blue", new RGB(212, 229, 247));
             // Start of user code put your own colors here
-
+            colorRegistry.put("lightgreen", new RGB(227, 249, 204));
             // End of user code put your own colors here
 
         }

@@ -86,7 +86,7 @@ import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.IInterpreter
 import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.InterpretedExpressionTargetSwitchTest;
 import org.eclipse.sirius.tests.unit.common.interpreter.feature.FeatureCompletionTests;
 import org.eclipse.sirius.tests.unit.common.interpreter.feature.FeatureInterpreterTests;
-import org.eclipse.sirius.tests.unit.common.interpreter.feature.FeatureProposalProviderTests;
+import org.eclipse.sirius.tests.unit.common.interpreter.feature.FeatureProposalProviderWithPseudoFeatureTests;
 import org.eclipse.sirius.tests.unit.common.interpreter.ocl.OCLCompletionTest;
 import org.eclipse.sirius.tests.unit.common.interpreter.service.ServiceCompletionTests;
 import org.eclipse.sirius.tests.unit.common.interpreter.service.ServiceInterpreterTests;
@@ -299,7 +299,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(ServiceCompletionTests.class);
         suite.addTestSuite(VariableInterpreterTests.class);
         suite.addTestSuite(VariableCompletionTests.class);
-        suite.addTestSuite(FeatureProposalProviderTests.class);
+        suite.addTestSuite(FeatureProposalProviderWithPseudoFeatureTests.class);
         suite.addTestSuite(ServiceProposalProviderTests.class);
         suite.addTestSuite(VariableProposalProviderTests.class);
         suite.addTestSuite(InterpretedExpressionTargetSwitchTest.class);

@@ -436,6 +436,12 @@
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.refreshEditor(DialectEditor, IProgressMonitor)</code> has been added to allow specifiers to do a full refresh of its dialect editor easily.
 			</li>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>org.eclipse.sirius.ui.tools.api.assist.TextContentProposalProvider.getContentContext(String, int)</code> has been made protected instead of private to allow to use it for sub types.
+			</li>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>org.eclipse.sirius.ui.tools.api.assist.TextContentProposalProvider.removeDuplicatedProposals(List&lt;ContentProposal&gt;)</code> has been made protected instead of private to allow to use it in sub types.
+			</li>
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getDefaultFontWithRuntimeSizeAndFromLabelFormat(List&lt;FontFormat&gt;)</code> has been added to allow to retrieve a font using the given format and the default Sirius font (arial) and the runtime height.
 			</li>
@@ -1726,6 +1732,15 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.common.xtext</code> to the JDT plug-in 
 				<code>org.eclipse.jdt.core</code> is now optional. If you need the JDT Core in your environment, you will need to add the dependency explicitly. The Sirius specification environment (
 				<code>org.eclipse.sirius.editor</code>) still depends on PDE (and thus indirectly the JDT too).
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.editor">Changes in 
+			<code>org.eclipse.sirius.editor</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The method 
+				<code>bindCompletionProcessor(AbstractPropertySection, IAssistContentProvider, Text)</code> has been added to the class 
+				<code>org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider</code> to allow to bind a specific IAssistContentProvider to the text.
 			</li>
 		</ul>
 		<h2 id="sirius3.1.0">Changes in Sirius 3.1.0</h2>

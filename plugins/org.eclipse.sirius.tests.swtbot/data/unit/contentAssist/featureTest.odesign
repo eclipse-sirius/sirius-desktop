@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" documentation="&lt;html>&#xD;&#xA;&lt;head>&#xD;&#xA;&lt;/head>&#xD;&#xA;&lt;body>&#xD;&#xA;&lt;h1>POUET POUET&lt;h1/>&#xD;&#xA;&lt;/body>&#xD;&#xA;&lt;/html>" name="featureTest" version="11.1.1.201610211630">
+  <ownedViewpoints documentation="&lt;html>&#xD;&#xA;&lt;head>&#xD;&#xA;&lt;/head>&#xD;&#xA;&lt;body>&#xD;&#xA;&lt;h1>POUET POUET&lt;h1/>&#xD;&#xA;&lt;/body>&#xD;&#xA;&lt;/html>" name="featureTest" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="featureTestTable" domainClass="EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <ownedLineMappings name="Classes" domainClass="EClass" semanticCandidatesExpression="feature:eClassifiers"/>
+      <ownedColumnMappings name="IsAbstractColumn" headerLabelExpression="Is Abstract?" featureName="abstract" labelExpression="feature:abstract"/>
+      <ownedColumnMappings name="stubLooseFocus" headerLabelExpression="Label" featureName="stub" labelExpression="aql:'D'+self.name">
+        <directEdit>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:self">
+            <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore::EPackage" referenceName="stub" variableName="stubLooseFocus"/>
+            <subModelOperations xsi:type="tool:SetValue" featureName="stub" valueExpression="stubLooseFocus"/>
+            <subModelOperations xsi:type="tool:Unset" featureName="stub" elementExpression="stubLooseFocus"/>
+            <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="stubLooseFocus" featureName="stub"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:TreeDescription" name="featureTestTree" domainClass="EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <subItemMappings name="eclass2" domainClass="ecore.EClass" semanticCandidatesExpression="feature:eAllContents">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <directEdit name="directEdit" mapping="//@ownedViewpoints[name='featureTest']/@ownedRepresentations[name='featureTestTree']/@subItemMappings[name='eclass2']">
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+          <element name="element"/>
+          <root name="root"/>
+        </directEdit>
+      </subItemMappings>
+      <dropTools forceRefresh="true">
+        <filters>
+          <listeners domainClass="stubLooseFocus" featureName="stub"/>
+        </filters>
+        <firstModelOperation xsi:type="tool:ChangeContext"/>
+        <oldContainer name="oldContainer"/>
+        <newContainer name="newContainer"/>
+        <element name="element"/>
+        <newViewContainer name="newViewContainer"/>
+        <precedingSiblings name="precedingSiblings" documentation="The list of all the preceding siblings in a Drag and Drop operation"/>
+      </dropTools>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:DiagramDescription" name="featureTestDiagram" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="EPackageContainer"/>
+        <toolSections>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" containerMappings="//@ownedViewpoints[name='featureTest']/@ownedRepresentations[name='featureTestDiagram']/@defaultLayer/@containerMappings[name='EPackageContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
+                <subModelOperations xsi:type="tool:CreateInstance"/>
+                <subModelOperations xsi:type="tool:SetValue" valueExpression="feature:"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

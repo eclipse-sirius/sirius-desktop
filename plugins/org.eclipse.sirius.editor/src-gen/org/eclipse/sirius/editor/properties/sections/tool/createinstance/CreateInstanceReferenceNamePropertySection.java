@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,9 @@ package org.eclipse.sirius.editor.properties.sections.tool.createinstance;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
+import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
+import org.eclipse.sirius.editor.tools.internal.assist.SiriusFeatureContentProposalProvider;
+import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -27,7 +30,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * A section for the referenceName property of a CreateInstance object.
  */
-public class CreateInstanceReferenceNamePropertySection extends AbstractTextPropertySection {
+public class CreateInstanceReferenceNamePropertySection extends AbstractTextPropertySection implements ContentProposalClient {
 
     /** Help control of the section. */
     protected CLabel help;
@@ -35,6 +38,7 @@ public class CreateInstanceReferenceNamePropertySection extends AbstractTextProp
     /**
      * @see org.eclipse.ui.views.properties.tabbed.view.ITabbedPropertySection#refresh()
      */
+    @Override
     public void refresh() {
         super.refresh();
 
@@ -47,6 +51,7 @@ public class CreateInstanceReferenceNamePropertySection extends AbstractTextProp
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "ReferenceName"; //$NON-NLS-1$
     }
@@ -54,6 +59,7 @@ public class CreateInstanceReferenceNamePropertySection extends AbstractTextProp
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
@@ -66,6 +72,7 @@ public class CreateInstanceReferenceNamePropertySection extends AbstractTextProp
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return ToolPackage.eINSTANCE.getCreateInstance_ReferenceName();
     }
@@ -73,6 +80,7 @@ public class CreateInstanceReferenceNamePropertySection extends AbstractTextProp
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -80,6 +88,7 @@ public class CreateInstanceReferenceNamePropertySection extends AbstractTextProp
     /**
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -87,6 +96,7 @@ public class CreateInstanceReferenceNamePropertySection extends AbstractTextProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 
@@ -102,7 +112,8 @@ public class CreateInstanceReferenceNamePropertySection extends AbstractTextProp
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
 
         // Start of user code create controls
-
+        text.setBackground(SiriusEditor.getColorRegistry().get("lightgreen"));
+        TypeContentProposalProvider.bindCompletionProcessor(this, new SiriusFeatureContentProposalProvider(), text);
         // End of user code create controls
 
     }
@@ -110,6 +121,7 @@ public class CreateInstanceReferenceNamePropertySection extends AbstractTextProp
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "Reference name in which the new instance will be stored. This reference should be part of the container element.";
     }

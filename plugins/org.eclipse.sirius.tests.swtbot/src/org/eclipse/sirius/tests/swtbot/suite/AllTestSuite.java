@@ -31,6 +31,7 @@ import org.eclipse.sirius.tests.swtbot.editor.vsm.ContainerDropPropertySectionsT
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ContentAssistTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.CreateMandatoryElementsTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.CustomizationPropertySectionsTests;
+import org.eclipse.sirius.tests.swtbot.editor.vsm.FeatureAssistTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.MetamodelPropertyTabTests;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.MigrationOnVsmEditorReloadTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.OpeningContextTest;
@@ -124,6 +125,7 @@ public class AllTestSuite extends TestCase {
     public static void addGerritPart1(TestSuite suite) {
         suite.addTest(new JUnit4TestAdapter(SWTBotBundlesReport.class));
         suite.addTestSuite(ContentAssistTest.class);
+        suite.addTestSuite(FeatureAssistTest.class);
         suite.addTestSuite(ResizeKindEditorTest.class);
         suite.addTestSuite(CascadingSiriusURITest.class);
         suite.addTestSuite(AssociatedElementsOnPropertyViewTest.class);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,7 +93,16 @@ public class TextContentProposalProvider implements IAssistContentProvider {
 
     }
 
-    private ContentContext getContentContext(final String text, final int position) {
+    /**
+     * Returns the content context from which proposal providers will make their completion proposals.
+     * 
+     * @param text
+     *            user input.
+     * @param position
+     *            cursor position.
+     * @return the content context.
+     */
+    protected ContentContext getContentContext(final String text, final int position) {
         final Object selectedElement = getSelectedElement();
         final EStructuralFeature f = getEStructuralFeature();
         IInterpreterContext interContext = SiriusInterpreterContextFactory.createInterpreterContext((EObject) selectedElement, f);
@@ -112,11 +121,11 @@ public class TextContentProposalProvider implements IAssistContentProvider {
     /**
      * Removes the duplicated proposals.
      * 
-     * @param matches
+     * @param contents
      *            are the initial proposals
      * @return the valid proposals
      */
-    private static List<ContentProposal> removeDuplicatedProposals(final List<ContentProposal> contents) {
+    protected static List<ContentProposal> removeDuplicatedProposals(final List<ContentProposal> contents) {
 
         final List<ContentProposal> resultProposals = new ArrayList<ContentProposal>();
         final Iterator<ContentProposal> it = contents.iterator();

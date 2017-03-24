@@ -121,6 +121,8 @@ h4. Changes in @org.eclipse.sirius@
 h4. Changes in @org.eclipse.sirius.ui@
 
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.refreshEditor(DialectEditor, IProgressMonitor)@ has been added to allow specifiers to do a full refresh of its dialect editor easily.
+* <span class="label label-info">Modified</span> The method @org.eclipse.sirius.ui.tools.api.assist.TextContentProposalProvider.getContentContext(String, int)@ has been made protected instead of private to allow to use it for sub types.
+* <span class="label label-info">Modified</span> The method @org.eclipse.sirius.ui.tools.api.assist.TextContentProposalProvider.removeDuplicatedProposals(List<ContentProposal>)@ has been made protected instead of private to allow to use it in sub types.
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getDefaultFontWithRuntimeSizeAndFromLabelFormat(List<FontFormat>)@ has been added to allow to retrieve a font using the given format and the default Sirius font (arial) and the runtime height.
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getFontFromNameAndLabelFormatAndWithDefaultSize(List<FontFormat>, String)@ has been added to allow to retrieve a font using the given format and the given font name and the runtime height.
 * <span class="label label-info">Modified</span> The method @org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.createLocalRepresentationsFile(IProject, IProgressMonitor)@ has its return type changed from @void@ to @Session@ to allow callers to have access to the newly created session directly.
@@ -535,6 +537,9 @@ h4. Changes in @org.eclipse.sirius.common.xtext@
 
 * <span class="label label-info">Modified</span> The dependency from @org.eclipse.sirius.common.xtext@ to the JDT plug-in @org.eclipse.jdt.core@ is now optional. If you need the JDT Core in your environment, you will need to add the dependency explicitly. The Sirius specification environment (@org.eclipse.sirius.editor@) still depends on PDE (and thus indirectly the JDT too).
 
+h4. Changes in @org.eclipse.sirius.editor@
+
+* <span class="label label-success">Added</span> The method @bindCompletionProcessor(AbstractPropertySection, IAssistContentProvider, Text)@ has been added to the class @org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider@ to allow to bind a specific IAssistContentProvider to the text.
 
 h2(#sirius3.1.0). Changes in Sirius 3.1.0
 
