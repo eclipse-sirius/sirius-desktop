@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -40,13 +39,13 @@ import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
+import org.eclipse.sirius.properties.core.internal.EditSupportSpec;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Strings;
 
 /**
- * Generates the appropriate widgets menu entries for the domain class of a
- * group, based on its structural features.
+ * Generates the appropriate widgets menu entries for the domain class of a group, based on its structural features.
  * 
  * @author sbegaudeau
  * @author arichard
@@ -81,15 +80,13 @@ public class CreateWidgetFromDomainClassMenuBuilder extends AbstractMenuBuilder 
     }
 
     /**
-     * Generate the {@link CreateWidgetForFeatureAction} for the selected
-     * {@link GroupDescription}.
+     * Generate the {@link CreateWidgetForFeatureAction} for the selected {@link GroupDescription}.
      * 
      * @param selection
      *            the current selection.
      * @param editor
      *            the current editor.
-     * @return a list of the {@link CreateWidgetForFeatureAction} (can be
-     *         empty).
+     * @return a list of the {@link CreateWidgetForFeatureAction} (can be empty).
      */
     private Collection<CreateChildAction> generateDomainClassWidgetsActions(ISelection selection, IEditorPart editor) {
         final Collection<CreateChildAction> actions = new ArrayList<>();
@@ -112,8 +109,7 @@ public class CreateWidgetFromDomainClassMenuBuilder extends AbstractMenuBuilder 
     }
 
     /**
-     * Adds all the actions used to create specific widgets for each structural
-     * features.
+     * Adds all the actions used to create specific widgets for each structural features.
      * 
      * @param selection
      *            The current selection
@@ -132,8 +128,7 @@ public class CreateWidgetFromDomainClassMenuBuilder extends AbstractMenuBuilder 
 
         ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
-        EList<EStructuralFeature> structuralFeatures = domainClass.getEAllStructuralFeatures();
-        for (EStructuralFeature eStructuralFeature : structuralFeatures) {
+        domainClass.getEAllStructuralFeatures().stream().filter(EditSupportSpec::shouldAppearInPropertySheet).forEach(eStructuralFeature -> {
             List<IDefaultWidgetDescriptionFactory> factories = SiriusEditorPropertiesPlugin.getPlugin().getDefaultWidgetDescriptionFactory(domainClass, eStructuralFeature);
             for (IDefaultWidgetDescriptionFactory factory : factories) {
                 DefaultWidgetDescription defaultWidgetDescription = factory.create(domainClass, eStructuralFeature);
@@ -143,7 +138,7 @@ public class CreateWidgetFromDomainClassMenuBuilder extends AbstractMenuBuilder 
                 CreateWidgetForFeatureAction action = new CreateWidgetForFeatureAction(editor, selection, descriptor);
                 actions.add(action);
             }
-        }
+        });
 
         adapterFactory.dispose();
         return actions;
@@ -172,8 +167,7 @@ public class CreateWidgetFromDomainClassMenuBuilder extends AbstractMenuBuilder 
      * 
      * @param groupDescription
      *            The group description
-     * @return The view extension description containing the given group or
-     *         <code>null</code> otherwise
+     * @return The view extension description containing the given group or <code>null</code> otherwise
      */
     private ViewExtensionDescription getViewExtensionDescription(GroupDescription groupDescription) {
         EObject eContainer = groupDescription.eContainer();
@@ -191,8 +185,7 @@ public class CreateWidgetFromDomainClassMenuBuilder extends AbstractMenuBuilder 
      * 
      * @param selection
      *            the current selection.
-     * @return the first group description selected, <code>null</code>
-     *         otherwise.
+     * @return the first group description selected, <code>null</code> otherwise.
      */
     private GroupDescription getGroupDescription(ISelection selection) {
         if (selection instanceof IStructuredSelection) {
@@ -214,8 +207,7 @@ public class CreateWidgetFromDomainClassMenuBuilder extends AbstractMenuBuilder 
      *            the list of {@link EPackage}.
      * @param domainClassQualifiedName
      *            the qualified name of the domain class to search.
-     * @return the {@link EClass} from its qualified name, <code>null</code> if
-     *         not found.
+     * @return the {@link EClass} from its qualified name, <code>null</code> if not found.
      */
     private EClass getDomainClass(EList<EPackage> metamodels, String domainClassQualifiedName) {
         EClass domainClass = null;

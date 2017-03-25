@@ -69,8 +69,7 @@ public class EditSupportSpec extends EditSupportImpl {
     private final Object self;
 
     /**
-     * Creates an instance configured to work on the specified target element as
-     * implicit "self" for all operations.
+     * Creates an instance configured to work on the specified target element as implicit "self" for all operations.
      * 
      * @param ctx
      *            the context
@@ -83,11 +82,9 @@ public class EditSupportSpec extends EditSupportImpl {
     }
 
     /**
-     * Returns the actual target model element, unwrapping the
-     * {@link EEFViewCategory} if needed.
+     * Returns the actual target model element, unwrapping the {@link EEFViewCategory} if needed.
      * 
-     * @return the actual target model element, or <code>null</code> if self is
-     *         not an {@link EObject}.
+     * @return the actual target model element, or <code>null</code> if self is not an {@link EObject}.
      */
     private EObject getTargetEObject() {
         EObject result = null;
@@ -227,11 +224,22 @@ public class EditSupportSpec extends EditSupportImpl {
     public EList<EStructuralFeature> getEStructuralFeatures() {
         EList<EStructuralFeature> visibleFeatures = new BasicEList<>();
         for (EStructuralFeature eStructuralFeature : this.getTargetEObject().eClass().getEAllStructuralFeatures()) {
-            if (!eStructuralFeature.isDerived() && !eStructuralFeature.isTransient() && !(eStructuralFeature instanceof EReference && ((EReference) eStructuralFeature).isContainment())) {
+            if (shouldAppearInPropertySheet(eStructuralFeature)) {
                 visibleFeatures.add(eStructuralFeature);
             }
         }
         return visibleFeatures;
+    }
+
+    /**
+     * Helper to check if a given feature should (by default) appear in the property sheet of an element.
+     * 
+     * @param eStructuralFeature
+     *            the feature to test.
+     * @return <code>true</code> if the feature should appear in the property sheet by default.
+     */
+    public static boolean shouldAppearInPropertySheet(EStructuralFeature eStructuralFeature) {
+        return !eStructuralFeature.isDerived() && !eStructuralFeature.isTransient() && !(eStructuralFeature instanceof EReference && ((EReference) eStructuralFeature).isContainment());
     }
 
     @Override
