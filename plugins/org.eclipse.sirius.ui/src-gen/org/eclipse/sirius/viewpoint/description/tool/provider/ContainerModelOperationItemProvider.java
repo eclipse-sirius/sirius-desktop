@@ -156,6 +156,8 @@ public class ContainerModelOperationItemProvider extends ModelOperationItemProvi
         switchCase.setDefault(defaultCase);
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, switchCase));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createLet()));
     }
 
     /**
