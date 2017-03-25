@@ -740,7 +740,7 @@ public class VisualBindingManager {
         FontData fontData = defaultFont.getFontData()[0];
         fontHeight = fontData.getHeight();
 
-        return createFont(labelFormats, fontName, fontHeight);
+        return createFont(labelFormats, fontData.getName(), fontHeight);
     }
 
     /**

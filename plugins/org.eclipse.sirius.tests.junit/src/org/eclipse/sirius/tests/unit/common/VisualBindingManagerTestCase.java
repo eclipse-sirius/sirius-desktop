@@ -147,8 +147,9 @@ public class VisualBindingManagerTestCase extends TestCase {
         labelFormat.add(FontFormat.get(FontFormat.BOLD));
         Font fontFromLabelFormatAndSize = visualManager.getDefaultFontWithWorkbenchDefaultSizeAndFromLabelFormat(labelFormat);
         FontData fontData = fontFromLabelFormatAndSize.getFontData()[0];
-        assertEquals("the font height is not the runtime one.", Display.getDefault().getSystemFont().getFontData()[0].getHeight(), fontData.getHeight());
+        FontData[] systemFontData = Display.getDefault().getSystemFont().getFontData();
+        assertEquals("the font height is not the runtime one.", systemFontData[0].getHeight(), fontData.getHeight());
         assertEquals("the font style is not the specified one.", FontFormat.BOLD, fontData.getStyle());
-        assertEquals("the font name is not the default one.", "ARIAL", fontData.getName());
+        assertEquals("the font name is not the default one.", systemFontData[0].getName(), fontData.getName());
     }
 }
