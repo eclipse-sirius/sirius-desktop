@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.properties.core.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -29,14 +30,17 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 
 /**
- * Interprets the high-level property views description defined in a Sirius VSM
- * into a lower-level EEFViewDescription suitable for the EEF runtime.
+ * Interprets the high-level property views description defined in a Sirius VSM into a lower-level EEFViewDescription
+ * suitable for the EEF runtime.
  * 
  * @author pcdavid
  */
 public class ViewDescriptionConverter {
 
-    private final List<PageDescription> pageDescriptions;
+    /**
+     * The description of the pages to convert.
+     */
+    private final List<PageDescription> pageDescriptions = new ArrayList<>();
 
     /**
      * The constructor.
@@ -45,12 +49,11 @@ public class ViewDescriptionConverter {
      *            The description of the pages to convert
      */
     public ViewDescriptionConverter(List<PageDescription> pageDescriptions) {
-        this.pageDescriptions = pageDescriptions;
+        this.pageDescriptions.addAll(pageDescriptions);
     }
 
     /**
-     * Use the description of the pages provided in order to create an
-     * {@link EEFViewDescription}.
+     * Use the description of the pages provided in order to create an {@link EEFViewDescription}.
      * 
      * @param input
      *            Semantic element
@@ -76,9 +79,8 @@ public class ViewDescriptionConverter {
     }
 
     private void convertPage(SiriusInputDescriptor input, EEFViewDescription view, TransformationCache cache, PageDescription pageDescription, Map<String, Object> parameters) {
-        Optional<IDescriptionConverter> converter = SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverter(pageDescription);
-        if (converter.isPresent()) {
-            EObject eObject = converter.get().convert(pageDescription, parameters, cache);
+        SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverter(pageDescription).ifPresent(converter -> {
+            EObject eObject = converter.convert(pageDescription, parameters, cache);
             if (eObject instanceof EEFPageDescription) {
                 EEFPageDescription convertedPageDescription = (EEFPageDescription) eObject;
                 view.getPages().add(convertedPageDescription);
@@ -87,19 +89,18 @@ public class ViewDescriptionConverter {
                     convertGroup(view, cache, parameters, convertedPageDescription, groupDescription);
                 }
             }
-        }
+        });
     }
 
     private void convertGroup(EEFViewDescription view, TransformationCache cache, Map<String, Object> parameters, EEFPageDescription convertedPageDescription, GroupDescription groupDescription) {
         if (!cache.getAllInputs().contains(groupDescription)) {
-            Optional<IDescriptionConverter> groupConverter = SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverter(groupDescription);
-            if (groupConverter.isPresent()) {
-                EObject group = groupConverter.get().convert(groupDescription, parameters, cache);
+            SiriusPropertiesCorePlugin.getPlugin().getDescriptionConverter(groupDescription).ifPresent(converter -> {
+                EObject group = converter.convert(groupDescription, parameters, cache);
                 if (group instanceof EEFGroupDescription) {
                     view.getGroups().add((EEFGroupDescription) group);
                     convertedPageDescription.getGroups().add((EEFGroupDescription) group);
                 }
-            }
+            });
         } else {
             Optional<Object> output = cache.getOutput(groupDescription);
             output.filter(EEFGroupDescription.class::isInstance).map(EEFGroupDescription.class::cast).ifPresent(eefGroupDescription -> {
@@ -120,13 +121,12 @@ public class ViewDescriptionConverter {
         view.setImageExpression("aql:input.emfEditServices(self).getImage()"); //$NON-NLS-1$
 
         Set<EPackage> ePackages = new LinkedHashSet<>();
-        for (PageDescription pageDescription : pageDescriptions) {
-            EObject eContainer = pageDescription.eContainer();
+        this.pageDescriptions.stream().map(EObject::eContainer).forEach(eContainer -> {
             if (eContainer instanceof ViewExtensionDescription) {
                 ViewExtensionDescription viewExtensionDescription = (ViewExtensionDescription) eContainer;
                 ePackages.addAll(viewExtensionDescription.getMetamodels());
             }
-        }
+        });
 
         view.getEPackages().addAll(ePackages);
         return view;

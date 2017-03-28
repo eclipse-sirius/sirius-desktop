@@ -24,8 +24,7 @@ import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 /**
  * Default {@link IDescriptionPreprocessor} implementation.
  * 
- * @author Florent Latombe
- *         <a href= "mailto:florent.latombe@obeo.fr">florent.latombe@obeo.fr</a>
+ * @author Florent Latombe <a href= "mailto:florent.latombe@obeo.fr">florent.latombe@obeo.fr</a>
  *
  * @param <SIRIUS>
  *            the type of description supported by this preprocessor.
@@ -33,14 +32,12 @@ import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements IDescriptionPreprocessor {
 
     /**
-     * The name of the {@link EStructuralFeature} based on which the notion of
-     * inheritance is defined by default.
+     * The name of the {@link EStructuralFeature} based on which the notion of inheritance is defined by default.
      */
     protected static final String EXTENDS_FEATURE_NAME = "extends"; //$NON-NLS-1$
 
     /**
-     * The type of Sirius description for which this default preprocessor is
-     * configured.
+     * The type of Sirius description for which this default preprocessor is configured.
      */
     protected Class<SIRIUS> descriptionClass;
 
@@ -71,8 +68,7 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
     }
 
     /**
-     * Processes all the properties of a description by resolving the
-     * inheritance relations.
+     * Processes all the properties of a description by resolving the inheritance relations.
      * 
      * @param processedDescription
      *            the resulting description.
@@ -92,9 +88,8 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
     }
 
     /**
-     * Provides the next parent description to consider. In this default
-     * implementation, we navigate through the "extends" mono-valued EReference
-     * of the same type as the child description.
+     * Provides the next parent description to consider. In this default implementation, we navigate through the
+     * "extends" mono-valued EReference of the same type as the child description.
      * 
      * @param description
      *            any properties description.
@@ -122,8 +117,7 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
      * @param processedDescription
      *            the resulting description.
      * @param currentDescription
-     *            the original description or one of its ancestors, from which
-     *            properties are inherited.
+     *            the original description or one of its ancestors, from which properties are inherited.
      * @param cache
      *            the processing cache.
      */
@@ -202,11 +196,10 @@ public class DefaultDescriptionPreprocessor<SIRIUS extends EObject> implements I
         if (!processedDescription.eIsSet(eReference)) {
             Object currentValue = currentDescription.eGet(eReference);
             if (currentValue instanceof EObject) {
-                Optional<IDescriptionPreprocessor> preprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor((EObject) currentValue);
-                if (preprocessor.isPresent()) {
-                    Object processedValue = preprocessor.get().convert((EObject) currentValue, cache);
+                SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor((EObject) currentValue).ifPresent(preprocessor -> {
+                    Object processedValue = preprocessor.convert((EObject) currentValue, cache);
                     processedDescription.eSet(eReference, processedValue);
-                }
+                });
             }
         }
     }

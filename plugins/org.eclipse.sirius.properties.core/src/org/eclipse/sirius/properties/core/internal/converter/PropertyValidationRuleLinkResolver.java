@@ -19,7 +19,6 @@ import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.PropertyValidationRule;
-import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.core.api.IDescriptionLinkResolver;
 import org.eclipse.sirius.properties.core.api.TransformationCache;
 
@@ -51,14 +50,11 @@ public class PropertyValidationRuleLinkResolver implements IDescriptionLinkResol
     private void resolve(EEFPropertyValidationRuleDescription eefPropertyValidationRule, TransformationCache cache) {
         Optional<Object> optionalSiriusDescription = cache.getInput(eefPropertyValidationRule);
         optionalSiriusDescription.filter(PropertyValidationRule.class::isInstance).map(PropertyValidationRule.class::cast).ifPresent(siriusPropertyValidationRule -> {
-            List<WidgetDescription> widgets = siriusPropertyValidationRule.getTargets();
-            for (WidgetDescription siriusWidget : widgets) {
-                Optional<Object> eefDescriptionOptional = cache.getOutput(siriusWidget);
-                Object eefDescription = eefDescriptionOptional.get();
-                if (eefDescription instanceof EEFWidgetDescription) {
-                    eefPropertyValidationRule.getTargets().add((EEFWidgetDescription) eefDescription);
-                }
-            }
+            siriusPropertyValidationRule.getTargets().forEach(siriusWidget -> {
+                cache.getOutput(siriusWidget).filter(EEFWidgetDescription.class::isInstance).map(EEFWidgetDescription.class::cast).ifPresent(eefWidgetDescription -> {
+                    eefPropertyValidationRule.getTargets().add(eefWidgetDescription);
+                });
+            });
         });
     }
 

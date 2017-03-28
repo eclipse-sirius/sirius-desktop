@@ -18,9 +18,8 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 
 /**
- * Preprocesses the property views description defined in a Sirius VSM which can
- * contain extends and overrides into a "flat" resolved Sirius property views
- * description.
+ * Preprocesses the property views description defined in a Sirius VSM which can contain extends and overrides into a
+ * "flat" resolved Sirius property views description.
  * 
  * @author flatombe
  * @author mbats
@@ -43,8 +42,7 @@ public class ViewDescriptionPreprocessor {
     }
 
     /**
-     * Use the description provided in order to unfold the extends and overrides
-     * relations.
+     * Use the description provided in order to unfold the extends and overrides relations.
      * 
      * @return The {@link ViewExtensionDescription} computed
      */
@@ -52,16 +50,14 @@ public class ViewDescriptionPreprocessor {
         TransformationCache cache = new TransformationCache();
 
         // Starts the conversion
-        Optional<IDescriptionPreprocessor> vedPreprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(originalDescription);
-        if (vedPreprocessor.isPresent()) {
-            EObject viewExtensionDescription = vedPreprocessor.get().convert(originalDescription, cache);
+        return SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(originalDescription).flatMap(preprocessor -> {
+            EObject viewExtensionDescription = preprocessor.convert(originalDescription, cache);
 
             // Starts the resolution of the links
             List<IDescriptionLinkResolver> linkResolvers = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessorLinkResolvers();
             linkResolvers.forEach(linkResolver -> linkResolver.resolve(viewExtensionDescription, cache));
 
-            return Optional.ofNullable((ViewExtensionDescription) viewExtensionDescription);
-        }
-        return Optional.empty();
+            return Optional.of((ViewExtensionDescription) viewExtensionDescription);
+        });
     }
 }

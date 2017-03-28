@@ -13,12 +13,11 @@ package org.eclipse.sirius.ui.properties.internal.tabprovider;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
-import org.eclipse.eef.core.api.EEFPage;
 import org.eclipse.eef.core.api.EEFView;
 import org.eclipse.eef.core.api.EEFViewFactory;
 import org.eclipse.eef.core.api.EditingContextAdapter;
@@ -95,12 +94,7 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
         EEFViewDescription viewDescription = new ViewDescriptionConverter(effectivePageDescriptions).convert(input);
         EEFView eefView = createEEFView(session, input, viewDescription);
 
-        List<IEEFTabDescriptor> descriptors = new ArrayList<IEEFTabDescriptor>();
-        List<EEFPage> eefPages = eefView.getPages();
-        for (EEFPage eefPage : eefPages) {
-            descriptors.add(new EEFTabDescriptor(eefPage));
-        }
-        return descriptors;
+        return eefView.getPages().stream().map(EEFTabDescriptor::new).collect(Collectors.toList());
     }
 
     private EEFView createEEFView(final Session session, SiriusInputDescriptor input, EEFViewDescription viewDescription) {
@@ -122,22 +116,21 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
     private List<PageDescription> computeEffectiveDescription(SiriusInputDescriptor input, Session session) {
         Preconditions.checkNotNull(session);
 
-        Set<ViewExtensionDescription> viewDescriptions = Sets.newLinkedHashSet();
+        Set<ViewExtensionDescription> viewExtensionDescriptions = Sets.newLinkedHashSet();
         for (Viewpoint viewpoint : session.getSelectedViewpoints(true)) {
             Option<EObject> parent = new EObjectQuery(viewpoint).getFirstAncestorOfType(DescriptionPackage.Literals.GROUP);
             if (parent.some()) {
                 Group group = (Group) parent.get();
-                Iterables.addAll(viewDescriptions, Iterables.filter(group.getExtensions(), ViewExtensionDescription.class));
+                Iterables.addAll(viewExtensionDescriptions, Iterables.filter(group.getExtensions(), ViewExtensionDescription.class));
             }
         }
 
         List<PageDescription> effectivePages = Lists.newArrayList();
-        for (ViewExtensionDescription ved : viewDescriptions) {
-            Optional<ViewExtensionDescription> processedVed = new ViewDescriptionPreprocessor(ved).convert();
-            if (processedVed.isPresent()) {
-                processedVed.get().getCategories().forEach(category -> effectivePages.addAll(category.getPages()));
-            }
-        }
+        viewExtensionDescriptions.forEach(viewExtensionDescription -> {
+            new ViewDescriptionPreprocessor(viewExtensionDescription).convert().ifPresent(processedViewExtensionDescription -> {
+                processedViewExtensionDescription.getCategories().forEach(category -> effectivePages.addAll(category.getPages()));
+            });
+        });
 
         if (effectivePages.size() == 0) {
             ViewExtensionDescription viewExtensionDescription = DefaultRulesProvider.INSTANCE.getDefaultRules();
