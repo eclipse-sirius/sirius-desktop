@@ -41,13 +41,6 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
         this.interpreter = interpreter;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter#evaluate(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EStructuralFeature)
-     */
     @Override
     public Object evaluate(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
         final String expression = (String) descriptionObject.eGet(descriptionFeature);
@@ -60,27 +53,11 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
         return null;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter#evaluateBoolean(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EStructuralFeature)
-     */
     @Override
     public boolean evaluateBoolean(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
         return evaluateBoolean(context, descriptionObject, descriptionFeature, false);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter#evaluateBoolean(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EStructuralFeature, boolean)
-     */
     @Override
     public boolean evaluateBoolean(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature, final boolean flagCondition) {
         final String expression = (String) descriptionObject.eGet(descriptionFeature);
@@ -96,13 +73,6 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter#evaluateInteger(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EStructuralFeature)
-     */
     @Override
     public Integer evaluateInteger(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
         final String expression = (String) descriptionObject.eGet(descriptionFeature);
@@ -115,13 +85,6 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter#evaluateString(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EStructuralFeature)
-     */
     @Override
     public String evaluateString(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
         final String expression = (String) descriptionObject.eGet(descriptionFeature);
@@ -134,13 +97,6 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter#evaluateEObject(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EStructuralFeature)
-     */
     @Override
     public EObject evaluateEObject(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
         final String expression = (String) descriptionObject.eGet(descriptionFeature);
@@ -153,13 +109,6 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter#evaluateCollection(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EStructuralFeature)
-     */
     @Override
     public Collection<EObject> evaluateCollection(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
         final String expression = (String) descriptionObject.eGet(descriptionFeature);
