@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,6 +52,18 @@ import org.eclipse.swt.graphics.RGB;
  * @author lredor
  */
 public class ViewQuery {
+
+    /**
+     * custom data key for note shapes specific styles. This key should be used combined {@link #VERTICAL_ALIGNMENT}
+     * key.
+     */
+    public static final String SPECIFIC_STYLES = "specificStyles"; //$NON-NLS-1$
+
+    /**
+     * custom data key for note shapes vertical alignment. This key should be used combined {@link #SPECIFIC_STYLES}
+     * key.
+     */
+    public static final String VERTICAL_ALIGNMENT = "verticalAlignment"; //$NON-NLS-1$
 
     /**
      * The set of GMF style attributes customizable for which not corresponding
