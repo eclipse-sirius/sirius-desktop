@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,23 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.List;
+
+import org.eclipse.draw2d.Border;
+import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.draw2d.text.FlowPage;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.figures.NoteFigure;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusDescriptionCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
@@ -23,6 +35,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
  * Test class for double click tool and navigation operation.
@@ -265,6 +278,49 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
         editor.directEditType(newLabel);
         // Check the location of the note (with the absolute coordinate)
         assertNoteAtLocation(newLabel, p2AbsoluteLocation.getTranslated(delta));
+        // Check note's label alignment
+        checkNoteLabelAlignment(editor.getEditPart(newLabel));
+    }
+
+    /**
+     * 
+     */
+    private void checkNoteLabelAlignment(SWTBotGefEditPart editPart) {
+        assertNotNull("The edit part shouldn't be null for the note label", editPart);
+        EditPart part = editPart.part();
+        assertTrue("The edit part of the note label should an instance of SiriusDescriptionCompartmentEditPart", part instanceof SiriusDescriptionCompartmentEditPart);
+        // Retrieve the bounds of the Note
+        EditPart parentPart = part.getParent();
+        assertTrue("The edit part of the note should an instance of SiriusNoteEditPart", parentPart instanceof SiriusNoteEditPart);
+        IFigure noteFigure = ((SiriusNoteEditPart) parentPart).getFigure();
+        assertTrue("The figure of the note should an instance of NoteFigure", noteFigure instanceof NoteFigure);
+        Rectangle noteFigureBounds = noteFigure.getBounds();
+        Border noteFigureBorder = noteFigure.getBorder();
+        Insets noteFigureInsets = noteFigureBorder.getInsets(noteFigure);
+        // Retrieve the bounds of the label of the Note
+        IFigure wrapLabelFigure = ((SiriusDescriptionCompartmentEditPart) part).getFigure();
+        assertTrue("The figure of the note label should an instance of WrappingLabel", wrapLabelFigure instanceof WrappingLabel);
+        List<?> childrenFigure = wrapLabelFigure.getChildren();
+        assertSame("The figure of the note label should have only one child", 1, childrenFigure.size());
+        Object flowPageFigure = childrenFigure.get(0);
+        assertTrue("The figure of the note label child should be an instance of FlowPage", flowPageFigure instanceof FlowPage);
+        Rectangle flowPageBounds = ((FlowPage) flowPageFigure).getBounds();
+        // The label should be TOP & CENTER aligned.
+        int middleOfTheNoteX = noteFigureBounds.x + ((noteFigureBounds.width + noteFigureInsets.left - noteFigureInsets.right) / 2);
+        int middleOfTheLabelX = flowPageBounds.getCenter().x;
+        assertEquals("The label should be centered in the note", middleOfTheNoteX, middleOfTheLabelX, 2);
+        int middleOfTheNoteY = noteFigureBounds.getCenter().y;
+        int beginingOfTheLabelY = flowPageBounds.y;
+        int endOfTheLabelY = flowPageBounds.y + flowPageBounds.height;
+        assertTrue("The label should be at the top of the note", beginingOfTheLabelY < middleOfTheNoteY);
+        assertTrue("The label should be at the top of the note", endOfTheLabelY < middleOfTheNoteY);
+        // We do all of this because the following commented lines don't works
+        // assertSame("The note label should be centered",
+        // PositionConstants.CENTER, ((SiriusDescriptionCompartmentEditPart)
+        // part).getLabelDelegate().getTextJustification());
+        // assertSame("The note label should be on top", PositionConstants.TOP,
+        // ((SiriusDescriptionCompartmentEditPart)
+        // part).getLabelDelegate().getAlignment());
     }
 
     /**

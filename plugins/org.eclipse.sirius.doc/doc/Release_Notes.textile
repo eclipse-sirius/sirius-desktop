@@ -8,12 +8,15 @@ h2(#sirius5.0.0M7). Changes in Sirius 5.0.0M7
 
 h3. User-Visible Changes
 
+* <span class="label label-info">Modified</span> The label alignment of Notes from the Palette has been modified from Juno to Luna or newer versions of Eclipse. The label alignment changed from TOP & CENTER to MIDDLE & LEFT. The initial alignment (TOP & CENTER) has been restored.
+
 h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
+* <span class="label label-success">Added</span> Constants @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.SPECIFIC_STYLES@ & @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.VERTICAL_ALIGNMENT@ have been added to retrieve the initial label alignment of Notes from the Palette (see "user-visible changes":Release_Notes.html#UserVisibleChanges ). Currently the vertical alignment can not be changed (potential new feature later).
 * <span class="label label-info">Moved</span> The methods of interface @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping@ that are @getFormatData(FormatDataKey, RepresentationElementMapping)@ and @addFormatData(FormatDataKey, RepresentationElementMapping, AbstractFormatData)@ have been moved into the interface @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager@ to reduce interface numbers for less complexity.
 * <span class="label label-danger">Removed</span> The methods @getFormatData(FormatDataKey key)@ and @addFormatData(FormatDataKey key, AbstractFormatData formatData)@ have been removed from interface @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager@ because they were deprecated.
 * <span class="label label-danger">Removed</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping@ has been removed because all its methods have been moved into interface @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager@

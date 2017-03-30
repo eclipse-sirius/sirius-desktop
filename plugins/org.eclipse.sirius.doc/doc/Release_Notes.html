@@ -112,12 +112,20 @@
 		</p>
 		<h2 id="sirius5.0.0M7">Changes in Sirius 5.0.0M7</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> The label alignment of Notes from the Palette has been modified from Juno to Luna or newer versions of Eclipse. The label alignment changed from TOP &amp; CENTER to MIDDLE &amp; LEFT. The initial alignment (TOP &amp; CENTER) has been restored.</li>
+		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> Constants 
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.SPECIFIC_STYLES</code> &amp; 
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.VERTICAL_ALIGNMENT</code> have been added to retrieve the initial label alignment of Notes from the Palette (see 
+				<a href="Release_Notes.html#UserVisibleChanges">user-visible changes</a> ). Currently the vertical alignment can not be changed (potential new feature later).
+			</li>
 			<li><span class="label label-info">Moved</span> The methods of interface 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping</code> that are 
 				<code>getFormatData(FormatDataKey, RepresentationElementMapping)</code> and 
