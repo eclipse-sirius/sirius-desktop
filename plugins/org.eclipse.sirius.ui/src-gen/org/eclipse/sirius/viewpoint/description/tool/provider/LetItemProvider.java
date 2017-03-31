@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.description.tool.Let;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -91,13 +92,20 @@ public class LetItemProvider extends ContainerModelOperationItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
-        String label = ((Let) object).getVariableName();
-        return label == null || label.length() == 0 ? getString("_UI_Let_type") : //$NON-NLS-1$
-                getString("_UI_Let_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        String typeName = getString("_UI_Let_type"); //$NON-NLS-1$
+        String varName = ((Let) object).getVariableName();
+        String varValue = ((Let) object).getValueExpression();
+        if (StringUtil.isEmpty(varName)) {
+            return typeName;
+        } else if (StringUtil.isEmpty(varValue)) {
+            return typeName + " " + varName; //$NON-NLS-1$
+        } else {
+            return typeName + " " + varName + " \u2190 " + varValue; //$NON-NLS-1$ //$NON-NLS-2$
+        }
     }
 
     /**
