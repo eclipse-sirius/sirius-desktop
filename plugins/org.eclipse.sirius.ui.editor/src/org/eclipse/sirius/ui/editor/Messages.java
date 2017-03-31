@@ -41,9 +41,6 @@ public final class Messages {
     public static String UI_SessionEditor_default_page_tab_label;
 
     @TranslatableMessage
-    public static String UI_SessionEditor_models_description;
-
-    @TranslatableMessage
     public static String UI_SessionEditor_models_title;
 
     @TranslatableMessage
@@ -54,15 +51,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String UI_SessionEditor_new_semantic_model_action_label;
-    
-    @TranslatableMessage
-    public static String UI_SessionEditor_viewpoints_description;
 
     @TranslatableMessage
     public static String UI_SessionEditor_viewpoints_title;
-
-    @TranslatableMessage
-    public static String UI_SessionEditor_representation_description;
 
     @TranslatableMessage
     public static String UI_SessionEditor_representation_title;

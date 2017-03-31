@@ -82,6 +82,7 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
         if (editorInput instanceof FileEditorInput) {
             IFile sessionResourceFile = ((FileEditorInput) editorInput).getFile();
             sessionResourceURI = URI.createPlatformResourceURI(sessionResourceFile.getFullPath().toOSString(), true);
+            setPartName(sessionResourceFile.getName());
         } else if (editorInput instanceof URIEditorInput) {
             sessionResourceURI = ((URIEditorInput) editorInput).getURI();
         } else {

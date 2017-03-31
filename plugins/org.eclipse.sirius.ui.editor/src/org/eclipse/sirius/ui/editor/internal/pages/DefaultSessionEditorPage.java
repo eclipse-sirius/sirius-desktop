@@ -172,7 +172,6 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         modelSection.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
 
         modelSection.setText(Messages.UI_SessionEditor_models_title);
-        modelSection.setDescription(Messages.UI_SessionEditor_models_description);
 
         Composite modelSectionClient = toolkit.createComposite(modelSection, SWT.NONE);
         modelSectionClient.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).create());
@@ -199,7 +198,6 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         representationSection.setLayout(GridLayoutFactory.swtDefaults().create());
         representationSection.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         representationSection.setText(MessageFormat.format(Messages.UI_SessionEditor_representation_title, new Object[0])); // $NON-NLS-1$
-        representationSection.setDescription(MessageFormat.format(Messages.UI_SessionEditor_representation_description, new Object[0])); // $NON-NLS-1$
 
         Composite representationSectionClient = toolkit.createComposite(representationSection, SWT.NONE);
         representationSectionClient.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).create());
@@ -231,7 +229,6 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         viewpointSection.setLayout(GridLayoutFactory.fillDefaults().create());
         viewpointSection.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         viewpointSection.setText(Messages.UI_SessionEditor_viewpoints_title);
-        viewpointSection.setDescription(Messages.UI_SessionEditor_viewpoints_description);
 
         Composite viewpointSectionClient = toolkit.createComposite(viewpointSection, SWT.NONE);
         GridLayout newLayout = GridLayoutFactory.fillDefaults().create();
