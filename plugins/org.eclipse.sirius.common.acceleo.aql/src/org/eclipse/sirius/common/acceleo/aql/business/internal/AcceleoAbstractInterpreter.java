@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,12 +13,9 @@
 package org.eclipse.sirius.common.acceleo.aql.business.internal;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
 import org.eclipse.sirius.common.tools.internal.interpreter.AbstractInterpreter;
@@ -44,9 +41,6 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
      */
     private VariableManager variables;
 
-    /** This will contain the listeners interested in our variables' status. */
-    private final Set<IVariableStatusListener> variableStatusListeners = new HashSet<>();
-
     /**
      * Create a new Interpreter.
      */
@@ -56,20 +50,13 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
     }
 
     @Override
-    public void addVariableStatusListener(IVariableStatusListener newListener) {
-        variableStatusListeners.add(newListener);
-    }
-
-    @Override
     public void clearVariables() {
         variables.clearVariables();
-        notifyVariableListeners();
     }
 
     @Override
     public void dispose() {
         variables.clearVariables();
-        variableStatusListeners.clear();
         this.javaExtensions.dispose();
     }
 
@@ -81,22 +68,6 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
     @Override
     public Map<String, Object> getVariables() {
         return variables.getVariables();
-    }
-
-    /**
-     * Notifies all of the registered variable status listener of our current
-     * variable status. This will be called internally whenever we change the
-     * variable map.
-     */
-    private void notifyVariableListeners() {
-        for (IVariableStatusListener variableStatusListener : variableStatusListeners) {
-            variableStatusListener.notifyChanged(getVariables());
-        }
-    }
-
-    @Override
-    public void removeVariableStatusListener(IVariableStatusListener listener) {
-        variableStatusListeners.remove(listener);
     }
 
     @Override
@@ -118,7 +89,6 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
     @Override
     public void unSetVariable(String name) {
         variables.unSetVariable(name);
-        notifyVariableListeners();
     }
 
     @Override

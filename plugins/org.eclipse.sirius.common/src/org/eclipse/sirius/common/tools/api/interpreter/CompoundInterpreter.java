@@ -92,9 +92,6 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
     /** The model accessor. */
     private ModelAccessor modelAccessor;
 
-    /** The Variable status listener. */
-    private final List<IVariableStatusListener> listeners;
-
     /** The cross referencer. */
     private ECrossReferenceAdapter crossReferencer;
 
@@ -114,7 +111,6 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         this.providers = new HashMap<IInterpreterProvider, IInterpreter>();
         this.variableManager = new VariableManager();
         this.dependencies = new LinkedList<String>();
-        this.listeners = new ArrayList<IVariableStatusListener>();
         this.interpreterIdentifiers = new HashMap<>();
         this.properties = new HashMap<>();
         this.fallbackInterpreter = new DefaultInterpreterProvider();
@@ -269,9 +265,6 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
                     result.addImport(dependency);
                 }
                 result.setModelAccessor(this.modelAccessor);
-                for (final IVariableStatusListener listener : this.listeners) {
-                    result.addVariableStatusListener(listener);
-                }
                 if (this.crossReferencer != null) {
                     result.setCrossReferencer(this.crossReferencer);
                 }
@@ -452,16 +445,6 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
     }
 
     @Override
-    public void addVariableStatusListener(final IVariableStatusListener newListener) {
-        this.listeners.add(newListener);
-        for (final IInterpreter interpreter : this.providers.values()) {
-            if (interpreter != null) {
-                interpreter.addVariableStatusListener(newListener);
-            }
-        }
-    }
-
-    @Override
     public Map<String, ?> getVariables() {
         final Map<String, Object> result = this.variableManager.getVariables();
         for (final IInterpreter interpreter : this.providers.values()) {
@@ -472,16 +455,6 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
             }
         }
         return result;
-    }
-
-    @Override
-    public void removeVariableStatusListener(final IVariableStatusListener listener) {
-        this.listeners.remove(listener);
-        for (final IInterpreter interpreter : this.providers.values()) {
-            if (interpreter != null) {
-                interpreter.removeVariableStatusListener(listener);
-            }
-        }
     }
 
     @Override

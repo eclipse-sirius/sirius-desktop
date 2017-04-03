@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,13 +31,11 @@ import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.Accel
 import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.AcceleoMTLInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
-import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.sample.interactions.InteractionsFactory;
 import org.eclipse.sirius.sample.interactions.Participant;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 import junit.framework.TestCase;
 
@@ -661,29 +659,6 @@ public class AcceleoMTLInterpreterTests extends TestCase {
 
         final String varName = "c";
         final List<Object> varVals = new ArrayList<>();
-
-        IVariableStatusListener listener = new IVariableStatusListener() {
-
-            @Override
-            public void notifyChanged(Map<?, ?> variables) {
-                if (!varVals.isEmpty()) {
-                    assertEquals(1, variables.size());
-                    assertTrue(variables.containsKey(varName));
-
-                    Object var = variables.get(varName);
-                    assertTrue(var instanceof Collection<?>);
-                    List<Object> varStack = (List<Object>) var;
-                    assertEquals(varVals.size(), varStack.size());
-                    Iterables.elementsEqual(varVals, Lists.reverse(varStack));
-                } else {
-                    assertTrue(variables.isEmpty());
-                }
-            }
-
-        };
-
-        interpreter.addVariableStatusListener(listener);
-
         varVals.add(eClass);
         interpreter.setVariable(varName, eClass);
         assertEquals(eClass, interpreter.getVariable(varName));
@@ -707,9 +682,6 @@ public class AcceleoMTLInterpreterTests extends TestCase {
         varVals.clear();
         interpreter.clearVariables();
         assertNull(interpreter.getVariable(varName));
-
-        // Remove status listener
-        interpreter.removeVariableStatusListener(listener);
 
         interpreter.setVariable(varName, eClass);
         // test will fail if listener was not removed : valVals is not sync with

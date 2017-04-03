@@ -168,6 +168,14 @@
 			<code>getFieldValueWithoutException(Class&lt;? extends Object&gt;, String)</code>, and 
 			<code>getFieldValueWithoutException(Object, String, Class&lt;? extends Object&gt;)</code>.
 		</p>
+		<ul>
+			<li><span class="label label-danger">Removed</span> In interface 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreter</code> (and all its implementations shipped with Sirius), the methods 
+				<code>addVariableStatusListener()</code> and 
+				<code>removeVariableStatusListener()</code> have been removed, along with the corresponding type 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener</code>. These correspond to obsolete and unused mechanisms.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common.ui">Changes in 
 			<code>org.eclipse.sirius.common.ui</code>
 		</h4>
@@ -968,7 +976,7 @@
 			<li><span class="label label-danger">Removed</span> The interface 
 				<code>org.eclipse.sirius.common.tools.api.interpreter.IExpressionProposal</code> and its only implementation 
 				<code>DefaultExpressionProposal</code> (in the same package) have been removed. They were not used anywhere, expression completion API is actually defined in package 
-				<code>org.eclipse.sirius.common.tools.api.contentassist</code> which has its own types.  
+				<code>org.eclipse.sirius.common.tools.api.contentassist</code> which has its own types.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius3">Changes in 

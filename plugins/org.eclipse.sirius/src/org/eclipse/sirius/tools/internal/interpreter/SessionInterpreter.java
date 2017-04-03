@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ package org.eclipse.sirius.tools.internal.interpreter;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +37,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
-import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
 import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
@@ -74,9 +72,6 @@ public class SessionInterpreter implements IInterpreter, IProposalProvider, IInt
 
     /** The optional model accessor. */
     private ModelAccessor modelAccessor;
-
-    /** The variable status listener. */
-    private final Collection<IVariableStatusListener> listeners = new HashSet<IVariableStatusListener>();
 
     /** The cross referencer. */
     private ECrossReferenceAdapter crossReferencer;
@@ -340,9 +335,6 @@ public class SessionInterpreter implements IInterpreter, IProposalProvider, IInt
             result.activateMetamodels(additionalMetamodels);
             this.variables.setVariables(result);
             result.setModelAccessor(this.modelAccessor);
-            for (final IVariableStatusListener variableStatusListener : this.listeners) {
-                result.addVariableStatusListener(variableStatusListener);
-            }
         }
         result.setCrossReferencer(crossReferencer);
         return result;
@@ -411,14 +403,6 @@ public class SessionInterpreter implements IInterpreter, IProposalProvider, IInt
     }
 
     @Override
-    public void addVariableStatusListener(final IVariableStatusListener newListener) {
-        this.listeners.add(newListener);
-        for (final IInterpreter interpreter : this.loadedInterpreters.values()) {
-            interpreter.addVariableStatusListener(newListener);
-        }
-    }
-
-    @Override
     public Map<String, Object> getVariables() {
         final Map<String, Object> result = new HashMap<String, Object>();
         for (final IInterpreter interpreter : this.loadedInterpreters.values()) {
@@ -427,14 +411,6 @@ public class SessionInterpreter implements IInterpreter, IProposalProvider, IInt
             }
         }
         return result;
-    }
-
-    @Override
-    public void removeVariableStatusListener(final IVariableStatusListener listener) {
-        this.listeners.remove(listener);
-        for (final IInterpreter interpreter : this.loadedInterpreters.values()) {
-            interpreter.removeVariableStatusListener(listener);
-        }
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -48,7 +47,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
-import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -72,128 +70,61 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /** The variables. */
     private final VariableManager variables = new VariableManager();
 
-    /** The variables listener. */
-    private final List<IVariableStatusListener> variablesListeners = new LinkedList<IVariableStatusListener>();
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void activateMetamodels(Collection<MetamodelDescriptor> metamodels) {
         // Nothing to do
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void addImport(final String dependency) {
         // ignore
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void clearImports() {
         // ignore
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void addVariableStatusListener(final IVariableStatusListener newListener) {
-        this.variablesListeners.add(newListener);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void removeVariableStatusListener(final IVariableStatusListener listener) {
-        this.variablesListeners.remove(listener);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setVariable(final String name, final Object value) {
         this.variables.setVariable(name, value);
-        this.fireVariablesChanged();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void unSetVariable(final String name) {
         this.variables.unSetVariable(name);
-        this.fireVariablesChanged();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void clearVariables() {
         this.variables.clearVariables();
-        this.fireVariablesChanged();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Object getVariable(final String name) {
         return this.variables.getVariable(name);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Map<String, Object> getVariables() {
         return this.variables.getVariables();
     }
 
-    /**
-     * Notifies all variables listeners that variables are modified.
-     */
-    protected void fireVariablesChanged() {
-        for (final IVariableStatusListener listener : this.variablesListeners) {
-            listener.notifyChanged(getVariables());
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean provides(final String expression) {
         return expression != null && expression.startsWith(OclInterpreter.OCL_DISCRIMINANT);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setProperty(final Object key, final Object value) {
         // ignore.
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Object evaluate(final EObject target, final String expression) throws EvaluationException {
         return internalEvaluate(target, expression);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean evaluateBoolean(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
@@ -206,9 +137,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<EObject> evaluateCollection(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
@@ -234,9 +162,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public EObject evaluateEObject(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
@@ -246,9 +171,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Integer evaluateInteger(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
@@ -265,9 +187,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String evaluateString(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
@@ -345,21 +264,14 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
         return ocl;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public IInterpreter createInterpreter() {
         return new OclInterpreter();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void dispose() {
         this.variables.clearVariables();
-        this.variablesListeners.clear();
     }
 
     /**
@@ -370,50 +282,32 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
         // ignore
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentContext context) {
         List<ContentProposal> computeCompletionEntry = OclCompletionEntry.computeCompletionEntry(context);
         return computeCompletionEntry;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getPrefix() {
         return OclInterpreter.OCL_DISCRIMINANT;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public ContentProposal getNewEmtpyExpression() {
         return new ContentProposal(OclInterpreter.OCL_DISCRIMINANT, OclInterpreter.OCL_DISCRIMINANT, Messages.OclInterpreter_NewOclExpression);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getVariablePrefix() {
         return null; // no prefix for variables
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setCrossReferencer(final ECrossReferenceAdapter crossReferencer) {
         // no handling (AFAIK) of cross references for OCL
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentInstanceContext context) {
         // Make sure that context and cursor position are valid
@@ -441,33 +335,21 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
         return Collections.emptyList();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<String> getImports() {
         return Collections.<String> emptyList();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void removeImport(String dependency) {
         // empty
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
         return new LinkedHashSet<IInterpreterStatus>();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean supportsValidation() {
         return false;

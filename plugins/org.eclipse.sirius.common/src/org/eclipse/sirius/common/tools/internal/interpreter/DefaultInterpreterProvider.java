@@ -21,7 +21,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
-import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.interpreter.TypedValidation;
 import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
@@ -65,11 +64,6 @@ public class DefaultInterpreterProvider implements IInterpreterProvider, IInterp
 
     @Override
     public void addImport(final String dependency) {
-        // empty.
-    }
-
-    @Override
-    public void addVariableStatusListener(final IVariableStatusListener newListener) {
         // empty.
     }
 
@@ -130,11 +124,6 @@ public class DefaultInterpreterProvider implements IInterpreterProvider, IInterp
     @Override
     public Map<String, Object> getVariables() {
         return Collections.<String, Object> emptyMap();
-    }
-
-    @Override
-    public void removeVariableStatusListener(final IVariableStatusListener listener) {
-        // empty
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -78,7 +77,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
-import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.interpreter.InterpreterStatusFactory;
 import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.api.interpreter.TypedValidation;
@@ -159,9 +157,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     private final Map<String, String> compilationVariables = new LinkedHashMap<>();
 
     private final Set<String> variableNsURIs = new LinkedHashSet<>();
-
-    /** This will contain the listeners interested in our variables' status. */
-    private final Set<IVariableStatusListener> variableStatusListeners = new HashSet<>();
 
     /**
      * This will be updated with the list of accessible viewpoint plugins, if
@@ -459,16 +454,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#addVariableStatusListener(org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener)
-     */
-    @Override
-    public void addVariableStatusListener(IVariableStatusListener newListener) {
-        variableStatusListeners.add(newListener);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#clearImports()
      */
     @Override
@@ -489,7 +474,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         variables.clear();
         variableNsURIs.clear();
         compilationVariables.clear();
-        notifyVariableListeners();
     }
 
     /**
@@ -583,7 +567,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         variables.clear();
         variableNsURIs.clear();
         compilationVariables.clear();
-        variableStatusListeners.clear();
         viewpointPlugins.clear();
         viewpointProjects.clear();
         if (adapterFactory != null) {
@@ -815,16 +798,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#removeVariableStatusListener(org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener)
-     */
-    @Override
-    public void removeVariableStatusListener(IVariableStatusListener listener) {
-        variableStatusListeners.remove(listener);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setCrossReferencer(org.eclipse.emf.ecore.util.ECrossReferenceAdapter)
      */
     @Override
@@ -911,7 +884,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
                 final ListIterator<?> iterator = values.listIterator(values.size());
                 iterator.previous();
                 iterator.remove();
-                notifyVariableListeners();
             }
             variableNsURIs.clear();
             compilationVariables.clear();
@@ -1161,17 +1133,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
             return module.evaluate(evaluationContext);
         }
         return new EvaluationResult(null, compilationResult.getStatus());
-    }
-
-    /**
-     * Notifies all of the registered variable status listener of our current
-     * variable status. This will be called internally whenever we change the
-     * variable map.
-     */
-    private void notifyVariableListeners() {
-        for (IVariableStatusListener variableStatusListener : variableStatusListeners) {
-            variableStatusListener.notifyChanged(getVariables());
-        }
     }
 
     /**
