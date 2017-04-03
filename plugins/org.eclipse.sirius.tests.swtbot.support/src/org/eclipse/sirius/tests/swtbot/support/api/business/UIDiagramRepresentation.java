@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *      Obeo - Initial API and implementation
  */
 package org.eclipse.sirius.tests.swtbot.support.api.business;
+
+import java.util.Optional;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
@@ -25,8 +27,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.hamcrest.Matcher;
-
-import com.google.common.base.Objects;
 
 /**
  * Object to manage diagram representations.
@@ -250,7 +250,7 @@ public class UIDiagramRepresentation extends AbstractUIRepresentation<SWTBotSiri
     public SWTBotSiriusDiagramEditor getEditor() {
         String expectedTitle = getRepresentationName();
         if (TestsUtil.isLunaPlatform()) {
-            expectedTitle = Objects.firstNonNull(getRepresentationName(), "").trim();
+            expectedTitle = Optional.ofNullable(getRepresentationName()).orElse("").trim();
         }
         return SWTBotSiriusHelper.getDesignerEditorContainingName(expectedTitle);
     }

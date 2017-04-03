@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -22,8 +23,6 @@ import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
-
-import com.google.common.base.Objects;
 
 /**
  * Custom refresh context for tree refresh, which caches costly information
@@ -68,6 +67,6 @@ public class TreeRefreshContext extends GlobalContext {
                 createdObjects = changeDescription.getObjectsToDetach();
             }
         }
-        return Objects.firstNonNull(createdObjects, Collections.<EObject> emptySet());
+        return Optional.ofNullable(createdObjects).orElse(Collections.<EObject> emptySet());
     }
 }

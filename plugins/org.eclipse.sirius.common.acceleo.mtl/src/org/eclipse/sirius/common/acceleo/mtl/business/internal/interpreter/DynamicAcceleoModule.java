@@ -1,5 +1,5 @@
 /*****************************************************************************************
- * Copyright (c) 2010, 2012 Obeo and others.
+ * Copyright (c) 2010, 2017 Obeo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.regex.Matcher;
@@ -59,7 +60,6 @@ import org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreterPlugin;
 import org.eclipse.sirius.common.acceleo.mtl.Messages;
 import org.eclipse.sirius.ext.base.cache.LRUCache;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
@@ -1018,7 +1018,7 @@ public class DynamicAcceleoModule {
          *            The body of our query.
          */
         public QueryIdentifier(String target, Map<String, String> queryVariables, String expression) {
-            this.targetType = Objects.firstNonNull(target, QueryIdentifier.DEFAULT_TARGET_TYPE);
+            this.targetType = Optional.ofNullable(target).orElse(QueryIdentifier.DEFAULT_TARGET_TYPE);
             this.queryVariables = queryVariables;
             this.body = expression;
         }

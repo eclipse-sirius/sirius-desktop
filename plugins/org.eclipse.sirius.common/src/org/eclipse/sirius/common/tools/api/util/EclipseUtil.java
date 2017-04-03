@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -31,7 +32,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.Messages;
 
-import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
@@ -189,7 +189,7 @@ public final class EclipseUtil {
                                 if (keyAttributeName != null) {
                                     key = element.getAttribute(keyAttributeName);
                                 }
-                                key = Objects.firstNonNull(key, ""); //$NON-NLS-1$
+                                key = Optional.ofNullable(key).orElse(""); //$NON-NLS-1$
                                 Collection<T> val = contributors.get(key);
                                 if (val == null) {
                                     val = Lists.newArrayList();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.commands.operations.IOperationHistory;
@@ -126,7 +127,6 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.team.internal.core.streams.ProgressMonitorInputStream;
 
 import com.google.common.base.Functions;
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -698,7 +698,7 @@ public class SiriusDebugView extends AbstractDebugView {
                             EClass klass = obj.eClass();
                             for (EAttribute attr : klass.getEAllAttributes()) {
                                 if (attr.getEType() == DescriptionPackage.Literals.INTERPRETED_EXPRESSION) {
-                                    String value = Objects.firstNonNull((String) obj.eGet(attr), "").trim();
+                                    String value = Optional.ofNullable((String) obj.eGet(attr)).orElse("").trim();
                                     if (value.length() > 100) {
                                         value = value.substring(0, 97) + "...";
                                     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.MissingResourceException;
+import java.util.Optional;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -43,7 +44,6 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.ui.IEditorPart;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -526,7 +526,7 @@ public abstract class AbstractMenuBuilder {
             }
             priorityMap.put(key, priority);
         }
-        return Objects.firstNonNull(priorityMap.get(key), DEFAULT_PRIORITY);
+        return Optional.ofNullable(priorityMap.get(key)).orElse(DEFAULT_PRIORITY);
     }
 
     /**

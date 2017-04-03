@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2008, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.refresh;
 
+import java.util.Optional;
+
 import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
-
-import com.google.common.base.Objects;
 
 /**
  * This class represents a candidate for a DColumn, a candidate is a "possible"
@@ -104,7 +104,7 @@ public class DFeatureColumnCandidate {
     private int computeHashCode() {
         final int[] parts = new int[2];
         parts[0] = (mapping == null) ? 0 : getMappingID();
-        parts[1] = Objects.firstNonNull(featureName, "").hashCode(); //$NON-NLS-1$
+        parts[1] = Optional.ofNullable(featureName).orElse("").hashCode(); //$NON-NLS-1$
         final String sep = "/"; //$NON-NLS-1$
         return KeyCache.DEFAULT.getKey(parts[0] + sep + parts[1]);
     }

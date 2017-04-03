@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.api.dialect.description;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -24,7 +25,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Sets;
 
 /**
@@ -54,7 +54,7 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
      *            the global switch to use
      */
     public DefaultInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch globalSwitch) {
-        IInterpretedExpressionTargetSwitch theGlobalSwitch = Objects.firstNonNull(globalSwitch, this);
+        IInterpretedExpressionTargetSwitch theGlobalSwitch = Optional.ofNullable(globalSwitch).orElse(this);
         this.descriptionSwitch = new DescriptionInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.styleSwitch = new StyleInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.toolSwitch = new ToolInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2008, 2016 Borland Software Corporation and others.
+ * Copyright (c) 2008, 2017 Borland Software Corporation and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.figure;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.Optional;
 import java.util.WeakHashMap;
 
 import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
@@ -34,7 +35,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.w3c.dom.Document;
 
-import com.google.common.base.Objects;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.RemovalListener;
@@ -259,7 +259,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     }
 
     private Document createDocument() {
-        String parser = Objects.firstNonNull(XMLResourceDescriptor.getXMLParserClassName(), "org.apache.xerces.parsers.SAXParser"); //$NON-NLS-1$
+        String parser = Optional.ofNullable(XMLResourceDescriptor.getXMLParserClassName()).orElse("org.apache.xerces.parsers.SAXParser"); //$NON-NLS-1$
         SAXSVGDocumentFactory factory = new SAXSVGDocumentFactory(parser);
         return createDocument(factory, false);
     }

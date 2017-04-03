@@ -21,6 +21,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -121,7 +122,6 @@ import org.hamcrest.Matcher;
 import org.junit.Assert;
 
 import com.google.common.base.Function;
-import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
@@ -1150,7 +1150,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         // looking for.
         String expectedTitle = editorPart.getTitle();
         if (TestsUtil.isLunaPlatform()) {
-            expectedTitle = Objects.firstNonNull(expectedTitle, "").trim();
+            expectedTitle = Optional.ofNullable(expectedTitle).orElse("").trim();
         }
         if (DDiagram.class.isAssignableFrom(expectedRepresentationClass)) {
             swtBotEditor = SWTBotSiriusHelper.getSiriusDiagramEditor(expectedTitle);
