@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
 public abstract class AbstractControlDescriptionImpl extends IdentifiedElementImpl implements AbstractControlDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AbstractControlDescriptionImpl() {
@@ -34,7 +34,7 @@ public abstract class AbstractControlDescriptionImpl extends IdentifiedElementIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

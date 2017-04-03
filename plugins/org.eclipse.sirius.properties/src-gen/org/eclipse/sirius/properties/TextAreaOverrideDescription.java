@@ -20,8 +20,7 @@ package org.eclipse.sirius.properties;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.TextAreaOverrideDescription#getOverrides <em>Overrides</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.TextAreaOverrideDescription#getFilterConditionalStylesFromOverriddenTextAreaExpression
+ * <li>{@link org.eclipse.sirius.properties.TextAreaOverrideDescription#getFilterConditionalStylesFromOverriddenTextAreaExpression
  * <em>Filter Conditional Styles From Overridden Text Area Expression</em>}</li>
  * </ul>
  *
@@ -37,11 +36,11 @@ public interface TextAreaOverrideDescription extends AbstractTextAreaDescription
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(TextAreaDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextAreaOverrideDescription_Overrides()
-     * @model
+     * @model keys="name"
      * @generated
      */
     TextAreaDescription getOverrides();
@@ -49,7 +48,7 @@ public interface TextAreaOverrideDescription extends AbstractTextAreaDescription
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.TextAreaOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -65,7 +64,7 @@ public interface TextAreaOverrideDescription extends AbstractTextAreaDescription
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Filter Conditional Styles From Overridden Text Area Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromOverriddenTextAreaExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextAreaOverrideDescription_FilterConditionalStylesFromOverriddenTextAreaExpression()
@@ -75,11 +74,11 @@ public interface TextAreaOverrideDescription extends AbstractTextAreaDescription
     String getFilterConditionalStylesFromOverriddenTextAreaExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.TextAreaOverrideDescription#getFilterConditionalStylesFromOverriddenTextAreaExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.properties.TextAreaOverrideDescription#getFilterConditionalStylesFromOverriddenTextAreaExpression
      * <em>Filter Conditional Styles From Overridden Text Area Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Overridden Text Area Expression</em>'
      *            attribute.

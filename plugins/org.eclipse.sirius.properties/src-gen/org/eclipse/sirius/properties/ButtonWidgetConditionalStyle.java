@@ -34,7 +34,7 @@ public interface ButtonWidgetConditionalStyle extends WidgetConditionalStyle {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(ButtonWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getButtonWidgetConditionalStyle_Style()
@@ -44,9 +44,9 @@ public interface ButtonWidgetConditionalStyle extends WidgetConditionalStyle {
     ButtonWidgetStyle getStyle();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.ButtonWidgetConditionalStyle#getStyle <em>Style</em>}
-     * ' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.ButtonWidgetConditionalStyle#getStyle
+     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

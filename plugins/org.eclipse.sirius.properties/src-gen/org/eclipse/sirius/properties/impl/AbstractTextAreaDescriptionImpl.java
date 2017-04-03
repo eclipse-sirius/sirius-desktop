@@ -36,16 +36,15 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getLineCount <em>Line Count</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getValueExpression
- * <em>Value Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getInitialOperation
- * <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getValueExpression <em>Value
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getInitialOperation <em>Initial
+ * Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getConditionalStyles
- * <em>Conditional Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getConditionalStyles <em>Conditional
+ * Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getFilterConditionalStylesFromExtendedTextAreaExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getFilterConditionalStylesFromExtendedTextAreaExpression
  * <em>Filter Conditional Styles From Extended Text Area Expression</em>}</li>
  * </ul>
  *
@@ -55,7 +54,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
     /**
      * The default value of the '{@link #getLineCount() <em>Line Count</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getLineCount()
      * @generated
      * @ordered
@@ -65,7 +64,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
     /**
      * The cached value of the '{@link #getLineCount() <em>Line Count</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getLineCount()
      * @generated
      * @ordered
@@ -75,7 +74,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
     /**
      * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -85,7 +84,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
     /**
      * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -105,7 +104,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -115,7 +114,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -125,7 +124,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getExtends()
      * @generated
      * @ordered
@@ -133,10 +132,10 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
     protected TextAreaDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedTextAreaExpression()
-     * <em>Filter Conditional Styles From Extended Text Area Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedTextAreaExpression() <em>Filter
+     * Conditional Styles From Extended Text Area Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedTextAreaExpression()
      * @generated
      * @ordered
@@ -144,10 +143,10 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_TEXT_AREA_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedTextAreaExpression()
-     * <em>Filter Conditional Styles From Extended Text Area Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedTextAreaExpression() <em>Filter
+     * Conditional Styles From Extended Text Area Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedTextAreaExpression()
      * @generated
      * @ordered
@@ -156,7 +155,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AbstractTextAreaDescriptionImpl() {
@@ -165,7 +164,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -175,7 +174,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -185,7 +184,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -199,7 +198,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -209,7 +208,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -223,7 +222,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -233,7 +232,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -253,7 +252,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -279,7 +278,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -289,7 +288,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(TextWidgetStyle newStyle, NotificationChain msgs) {
@@ -308,7 +307,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -332,7 +331,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -345,7 +344,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -364,7 +363,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public TextAreaDescription basicGetExtends() {
@@ -373,7 +372,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -387,7 +386,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -397,7 +396,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -412,7 +411,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -430,7 +429,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -459,7 +458,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -494,7 +493,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -527,7 +526,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -554,7 +553,7 @@ public abstract class AbstractTextAreaDescriptionImpl extends AbstractWidgetDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -22,11 +22,9 @@ package org.eclipse.sirius.properties;
  * <li>{@link org.eclipse.sirius.properties.GroupOverrideDescription#getOverrides <em>Overrides</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.GroupOverrideDescription#getFilterControlsFromOverriddenGroupExpression
  * <em>Filter Controls From Overridden Group Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.GroupOverrideDescription#getFilterValidationRulesFromOverriddenGroupExpression
+ * <li>{@link org.eclipse.sirius.properties.GroupOverrideDescription#getFilterValidationRulesFromOverriddenGroupExpression
  * <em>Filter Validation Rules From Overridden Group Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.GroupOverrideDescription#getFilterConditionalStylesFromOverriddenGroupExpression
+ * <li>{@link org.eclipse.sirius.properties.GroupOverrideDescription#getFilterConditionalStylesFromOverriddenGroupExpression
  * <em>Filter Conditional Styles From Overridden Group Expression</em>}</li>
  * </ul>
  *
@@ -42,7 +40,7 @@ public interface GroupOverrideDescription extends AbstractGroupDescription, Abst
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(GroupDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupOverrideDescription_Overrides()
@@ -54,7 +52,7 @@ public interface GroupOverrideDescription extends AbstractGroupDescription, Abst
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.GroupOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -100,7 +98,7 @@ public interface GroupOverrideDescription extends AbstractGroupDescription, Abst
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Filter Validation Rules From Overridden Group Expression</em>' attribute.
      * @see #setFilterValidationRulesFromOverriddenGroupExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupOverrideDescription_FilterValidationRulesFromOverriddenGroupExpression()
@@ -110,11 +108,11 @@ public interface GroupOverrideDescription extends AbstractGroupDescription, Abst
     String getFilterValidationRulesFromOverriddenGroupExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.GroupOverrideDescription#getFilterValidationRulesFromOverriddenGroupExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.properties.GroupOverrideDescription#getFilterValidationRulesFromOverriddenGroupExpression
      * <em>Filter Validation Rules From Overridden Group Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Filter Validation Rules From Overridden Group Expression</em>' attribute.
      * @see #getFilterValidationRulesFromOverriddenGroupExpression()
@@ -130,7 +128,7 @@ public interface GroupOverrideDescription extends AbstractGroupDescription, Abst
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Filter Conditional Styles From Overridden Group Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromOverriddenGroupExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupOverrideDescription_FilterConditionalStylesFromOverriddenGroupExpression()
@@ -140,11 +138,11 @@ public interface GroupOverrideDescription extends AbstractGroupDescription, Abst
     String getFilterConditionalStylesFromOverriddenGroupExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.GroupOverrideDescription#getFilterConditionalStylesFromOverriddenGroupExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.properties.GroupOverrideDescription#getFilterConditionalStylesFromOverriddenGroupExpression
      * <em>Filter Conditional Styles From Overridden Group Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Overridden Group Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromOverriddenGroupExpression()

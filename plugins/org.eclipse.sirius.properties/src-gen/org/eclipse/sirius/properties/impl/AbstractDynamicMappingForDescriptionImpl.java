@@ -27,21 +27,20 @@ import org.eclipse.sirius.properties.DynamicMappingIfDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Abstract Dynamic Mapping For Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Abstract Dynamic Mapping For
+ * Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingForDescriptionImpl#getIterator <em>Iterator</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingForDescriptionImpl#getIterator
+ * <em>Iterator</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingForDescriptionImpl#getIterableExpression
  * <em>Iterable Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingForDescriptionImpl#getIfs <em>Ifs</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingForDescriptionImpl#getExtends <em>Extends</em>}
- * </li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingForDescriptionImpl#getFilterIfsFromExtendedDynamicMappingForExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingForDescriptionImpl#getExtends
+ * <em>Extends</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingForDescriptionImpl#getFilterIfsFromExtendedDynamicMappingForExpression
  * <em>Filter Ifs From Extended Dynamic Mapping For Expression</em>}</li>
  * </ul>
  *
@@ -51,7 +50,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
     /**
      * The default value of the '{@link #getIterator() <em>Iterator</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getIterator()
      * @generated
      * @ordered
@@ -61,7 +60,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
     /**
      * The cached value of the '{@link #getIterator() <em>Iterator</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getIterator()
      * @generated
      * @ordered
@@ -91,7 +90,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
     /**
      * The cached value of the '{@link #getIfs() <em>Ifs</em>}' containment reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getIfs()
      * @generated
      * @ordered
@@ -101,7 +100,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getExtends()
      * @generated
      * @ordered
@@ -109,10 +108,9 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
     protected DynamicMappingForDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterIfsFromExtendedDynamicMappingForExpression()
-     * <em>Filter Ifs From Extended Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterIfsFromExtendedDynamicMappingForExpression() <em>Filter Ifs From
+     * Extended Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterIfsFromExtendedDynamicMappingForExpression()
      * @generated
      * @ordered
@@ -120,10 +118,9 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
     protected static final String FILTER_IFS_FROM_EXTENDED_DYNAMIC_MAPPING_FOR_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterIfsFromExtendedDynamicMappingForExpression()
-     * <em>Filter Ifs From Extended Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterIfsFromExtendedDynamicMappingForExpression() <em>Filter Ifs From
+     * Extended Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterIfsFromExtendedDynamicMappingForExpression()
      * @generated
      * @ordered
@@ -132,7 +129,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AbstractDynamicMappingForDescriptionImpl() {
@@ -141,7 +138,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,7 +148,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -161,7 +158,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -175,7 +172,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -185,7 +182,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -199,7 +196,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +209,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -231,7 +228,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public DynamicMappingForDescription basicGetExtends() {
@@ -240,7 +237,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -254,7 +251,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -264,7 +261,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -279,7 +276,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -293,7 +290,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -318,7 +315,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -347,7 +344,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -374,7 +371,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -398,7 +395,7 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

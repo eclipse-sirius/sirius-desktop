@@ -20,16 +20,15 @@ import org.eclipse.sirius.properties.DynamicMappingForOverrideDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Dynamic Mapping For Override Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Dynamic Mapping For Override
+ * Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForOverrideDescriptionImpl#getOverrides
  * <em>Overrides</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.DynamicMappingForOverrideDescriptionImpl#getFilterIfsFromOverriddenDynamicMappingForExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForOverrideDescriptionImpl#getFilterIfsFromOverriddenDynamicMappingForExpression
  * <em>Filter Ifs From Overridden Dynamic Mapping For Expression</em>}</li>
  * </ul>
  *
@@ -39,7 +38,7 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
     /**
      * The cached value of the '{@link #getOverrides() <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getOverrides()
      * @generated
      * @ordered
@@ -47,10 +46,9 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
     protected DynamicMappingForDescription overrides;
 
     /**
-     * The default value of the '{@link #getFilterIfsFromOverriddenDynamicMappingForExpression()
-     * <em>Filter Ifs From Overridden Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterIfsFromOverriddenDynamicMappingForExpression() <em>Filter Ifs From
+     * Overridden Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterIfsFromOverriddenDynamicMappingForExpression()
      * @generated
      * @ordered
@@ -58,10 +56,9 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
     protected static final String FILTER_IFS_FROM_OVERRIDDEN_DYNAMIC_MAPPING_FOR_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterIfsFromOverriddenDynamicMappingForExpression()
-     * <em>Filter Ifs From Overridden Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterIfsFromOverriddenDynamicMappingForExpression() <em>Filter Ifs From
+     * Overridden Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterIfsFromOverriddenDynamicMappingForExpression()
      * @generated
      * @ordered
@@ -70,7 +67,7 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DynamicMappingForOverrideDescriptionImpl() {
@@ -79,7 +76,7 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -89,7 +86,7 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +105,7 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public DynamicMappingForDescription basicGetOverrides() {
@@ -117,7 +114,7 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -131,7 +128,7 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +138,7 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +153,7 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -175,7 +172,7 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +190,7 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -211,7 +208,7 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -228,7 +225,7 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

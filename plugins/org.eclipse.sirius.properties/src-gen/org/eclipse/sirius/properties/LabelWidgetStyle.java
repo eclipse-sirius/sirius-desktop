@@ -42,7 +42,7 @@ public interface LabelWidgetStyle extends WidgetStyle {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Font Name Expression</em>' attribute.
      * @see #setFontNameExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelWidgetStyle_FontNameExpression()
@@ -52,9 +52,9 @@ public interface LabelWidgetStyle extends WidgetStyle {
     String getFontNameExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.LabelWidgetStyle#getFontNameExpression
-     * <em>Font Name Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.LabelWidgetStyle#getFontNameExpression <em>Font Name
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Font Name Expression</em>' attribute.
      * @see #getFontNameExpression()
@@ -69,7 +69,7 @@ public interface LabelWidgetStyle extends WidgetStyle {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Font Size Expression</em>' attribute.
      * @see #setFontSizeExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelWidgetStyle_FontSizeExpression()
@@ -79,9 +79,9 @@ public interface LabelWidgetStyle extends WidgetStyle {
     String getFontSizeExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.LabelWidgetStyle#getFontSizeExpression
-     * <em>Font Size Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.LabelWidgetStyle#getFontSizeExpression <em>Font Size
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Font Size Expression</em>' attribute.
      * @see #getFontSizeExpression()
@@ -96,7 +96,7 @@ public interface LabelWidgetStyle extends WidgetStyle {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelWidgetStyle_BackgroundColor()
@@ -106,9 +106,9 @@ public interface LabelWidgetStyle extends WidgetStyle {
     ColorDescription getBackgroundColor();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.LabelWidgetStyle#getBackgroundColor
-     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.LabelWidgetStyle#getBackgroundColor <em>Background
+     * Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()
@@ -123,7 +123,7 @@ public interface LabelWidgetStyle extends WidgetStyle {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Foreground Color</em>' reference.
      * @see #setForegroundColor(ColorDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelWidgetStyle_ForegroundColor()
@@ -133,9 +133,9 @@ public interface LabelWidgetStyle extends WidgetStyle {
     ColorDescription getForegroundColor();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.LabelWidgetStyle#getForegroundColor
-     * <em>Foreground Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.LabelWidgetStyle#getForegroundColor <em>Foreground
+     * Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Foreground Color</em>' reference.
      * @see #getForegroundColor()
@@ -152,7 +152,7 @@ public interface LabelWidgetStyle extends WidgetStyle {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Font Format</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.FontFormat
      * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelWidgetStyle_FontFormat()

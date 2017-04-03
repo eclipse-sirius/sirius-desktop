@@ -39,7 +39,7 @@ public interface Category extends IdentifiedElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Pages</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCategory_Pages()
      * @model containment="true"
@@ -55,7 +55,7 @@ public interface Category extends IdentifiedElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Groups</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCategory_Groups()
      * @model containment="true"
@@ -71,7 +71,7 @@ public interface Category extends IdentifiedElement {
      * a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Overrides</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCategory_Overrides()
      * @model containment="true"

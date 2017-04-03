@@ -21,8 +21,8 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingIfDescription#getPredicateExpression
- * <em>Predicate Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingIfDescription#getPredicateExpression <em>Predicate
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingIfDescription#getWidget <em>Widget</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingIfDescription#getExtends <em>Extends</em>}</li>
  * </ul>
@@ -39,7 +39,7 @@ public interface AbstractDynamicMappingIfDescription extends IdentifiedElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Predicate Expression</em>' attribute.
      * @see #setPredicateExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractDynamicMappingIfDescription_PredicateExpression()
@@ -49,10 +49,10 @@ public interface AbstractDynamicMappingIfDescription extends IdentifiedElement {
     String getPredicateExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.AbstractDynamicMappingIfDescription#getPredicateExpression
-     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.properties.AbstractDynamicMappingIfDescription#getPredicateExpression <em>Predicate
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Predicate Expression</em>' attribute.
      * @see #getPredicateExpression()
@@ -67,7 +67,7 @@ public interface AbstractDynamicMappingIfDescription extends IdentifiedElement {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Widget</em>' containment reference.
      * @see #setWidget(WidgetDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractDynamicMappingIfDescription_Widget()
@@ -79,7 +79,7 @@ public interface AbstractDynamicMappingIfDescription extends IdentifiedElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractDynamicMappingIfDescription#getWidget
      * <em>Widget</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Widget</em>' containment reference.
      * @see #getWidget()
@@ -94,11 +94,11 @@ public interface AbstractDynamicMappingIfDescription extends IdentifiedElement {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Extends</em>' reference.
      * @see #setExtends(DynamicMappingIfDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractDynamicMappingIfDescription_Extends()
-     * @model
+     * @model keys="name"
      * @generated
      */
     DynamicMappingIfDescription getExtends();
@@ -106,7 +106,7 @@ public interface AbstractDynamicMappingIfDescription extends IdentifiedElement {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractDynamicMappingIfDescription#getExtends
      * <em>Extends</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
      * @see #getExtends()

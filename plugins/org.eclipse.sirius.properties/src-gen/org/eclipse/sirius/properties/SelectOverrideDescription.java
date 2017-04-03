@@ -20,8 +20,7 @@ package org.eclipse.sirius.properties;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.SelectOverrideDescription#getOverrides <em>Overrides</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.SelectOverrideDescription#getFilterConditionalStylesFromOverriddenSelectExpression
+ * <li>{@link org.eclipse.sirius.properties.SelectOverrideDescription#getFilterConditionalStylesFromOverriddenSelectExpression
  * <em>Filter Conditional Styles From Overridden Select Expression</em>}</li>
  * </ul>
  *
@@ -37,11 +36,11 @@ public interface SelectOverrideDescription extends AbstractSelectDescription, Ab
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Overrides</em>' reference.
      * @see #setOverrides(SelectDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getSelectOverrideDescription_Overrides()
-     * @model
+     * @model keys="name"
      * @generated
      */
     SelectDescription getOverrides();
@@ -49,7 +48,7 @@ public interface SelectOverrideDescription extends AbstractSelectDescription, Ab
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.SelectOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Overrides</em>' reference.
      * @see #getOverrides()
@@ -65,7 +64,7 @@ public interface SelectOverrideDescription extends AbstractSelectDescription, Ab
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Filter Conditional Styles From Overridden Select Expression</em>' attribute.
      * @see #setFilterConditionalStylesFromOverriddenSelectExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getSelectOverrideDescription_FilterConditionalStylesFromOverriddenSelectExpression()
@@ -75,11 +74,11 @@ public interface SelectOverrideDescription extends AbstractSelectDescription, Ab
     String getFilterConditionalStylesFromOverriddenSelectExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.SelectOverrideDescription#getFilterConditionalStylesFromOverriddenSelectExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.properties.SelectOverrideDescription#getFilterConditionalStylesFromOverriddenSelectExpression
      * <em>Filter Conditional Styles From Overridden Select Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Filter Conditional Styles From Overridden Select Expression</em>' attribute.
      * @see #getFilterConditionalStylesFromOverriddenSelectExpression()

@@ -54,7 +54,7 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CustomExpressionImpl() {
@@ -63,7 +63,7 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class CustomExpressionImpl extends IdentifiedElementImpl implements Custo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

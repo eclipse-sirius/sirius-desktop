@@ -36,22 +36,20 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getValueExpression
- * <em>Value Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getDisplayExpression
- * <em>Display Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getInitialOperation
- * <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getValueExpression <em>Value
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getDisplayExpression <em>Display
+ * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getInitialOperation <em>Initial
+ * Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getConditionalStyles
- * <em>Conditional Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getConditionalStyles <em>Conditional
+ * Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getActions <em>Actions</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getFilterConditionalStylesFromExtendedHyperlinkExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getFilterConditionalStylesFromExtendedHyperlinkExpression
  * <em>Filter Conditional Styles From Extended Hyperlink Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getFilterActionsFromExtendedHyperlinkExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractHyperlinkDescriptionImpl#getFilterActionsFromExtendedHyperlinkExpression
  * <em>Filter Actions From Extended Hyperlink Expression</em>}</li>
  * </ul>
  *
@@ -61,7 +59,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     /**
      * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -71,7 +69,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     /**
      * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -111,7 +109,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -121,7 +119,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     /**
      * The cached value of the '{@link #getConditionalStyles() <em>Conditional Styles</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getConditionalStyles()
      * @generated
      * @ordered
@@ -131,7 +129,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     /**
      * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getActions()
      * @generated
      * @ordered
@@ -141,7 +139,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getExtends()
      * @generated
      * @ordered
@@ -149,10 +147,10 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     protected HyperlinkDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedHyperlinkExpression()
-     * <em>Filter Conditional Styles From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedHyperlinkExpression() <em>Filter
+     * Conditional Styles From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedHyperlinkExpression()
      * @generated
      * @ordered
@@ -160,10 +158,10 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_HYPERLINK_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedHyperlinkExpression()
-     * <em>Filter Conditional Styles From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedHyperlinkExpression() <em>Filter
+     * Conditional Styles From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
      * @see #getFilterConditionalStylesFromExtendedHyperlinkExpression()
      * @generated
      * @ordered
@@ -171,9 +169,8 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     protected String filterConditionalStylesFromExtendedHyperlinkExpression = AbstractHyperlinkDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_HYPERLINK_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFilterActionsFromExtendedHyperlinkExpression()
-     * <em>Filter Actions From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The default value of the '{@link #getFilterActionsFromExtendedHyperlinkExpression() <em>Filter Actions From
+     * Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getFilterActionsFromExtendedHyperlinkExpression()
      * @generated
@@ -182,9 +179,8 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     protected static final String FILTER_ACTIONS_FROM_EXTENDED_HYPERLINK_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterActionsFromExtendedHyperlinkExpression()
-     * <em>Filter Actions From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The cached value of the '{@link #getFilterActionsFromExtendedHyperlinkExpression() <em>Filter Actions From
+     * Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getFilterActionsFromExtendedHyperlinkExpression()
      * @generated
@@ -194,7 +190,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected AbstractHyperlinkDescriptionImpl() {
@@ -203,7 +199,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -213,7 +209,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -223,7 +219,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -237,7 +233,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -247,7 +243,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -261,7 +257,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -271,7 +267,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -291,7 +287,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -317,7 +313,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -327,7 +323,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(HyperlinkWidgetStyle newStyle, NotificationChain msgs) {
@@ -346,7 +342,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -370,7 +366,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -384,7 +380,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -397,7 +393,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -416,7 +412,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public HyperlinkDescription basicGetExtends() {
@@ -425,7 +421,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -439,7 +435,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -449,7 +445,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -464,7 +460,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -474,7 +470,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -489,7 +485,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -509,7 +505,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -542,7 +538,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -584,7 +580,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -623,7 +619,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -656,7 +652,7 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

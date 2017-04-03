@@ -69,7 +69,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getLabel()
      * @generated
      * @ordered
@@ -89,7 +89,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     /**
      * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getMetamodels()
      * @generated
      * @ordered
@@ -108,7 +108,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ViewExtensionDescriptionImpl() {
@@ -117,7 +117,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -137,7 +137,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -188,7 +188,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -201,7 +201,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -215,7 +215,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -235,7 +235,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -262,7 +262,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -286,7 +286,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -306,7 +306,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -326,7 +326,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -346,7 +346,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -27,11 +27,9 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.ListOverrideDescriptionImpl#getOverrides <em>Overrides</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ListOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenListExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.ListOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenListExpression
  * <em>Filter Conditional Styles From Overridden List Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ListOverrideDescriptionImpl#getFilterActionsFromOverriddenListExpression
+ * <li>{@link org.eclipse.sirius.properties.impl.ListOverrideDescriptionImpl#getFilterActionsFromOverriddenListExpression
  * <em>Filter Actions From Overridden List Expression</em>}</li>
  * </ul>
  *
@@ -41,7 +39,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
     /**
      * The cached value of the '{@link #getOverrides() <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getOverrides()
      * @generated
      * @ordered
@@ -49,10 +47,9 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
     protected ListDescription overrides;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenListExpression()
-     * <em>Filter Conditional Styles From Overridden List Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenListExpression() <em>Filter Conditional
+     * Styles From Overridden List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterConditionalStylesFromOverriddenListExpression()
      * @generated
      * @ordered
@@ -60,10 +57,9 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_OVERRIDDEN_LIST_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenListExpression()
-     * <em>Filter Conditional Styles From Overridden List Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
+     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenListExpression() <em>Filter Conditional
+     * Styles From Overridden List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getFilterConditionalStylesFromOverriddenListExpression()
      * @generated
      * @ordered
@@ -71,9 +67,8 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
     protected String filterConditionalStylesFromOverriddenListExpression = ListOverrideDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_OVERRIDDEN_LIST_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFilterActionsFromOverriddenListExpression()
-     * <em>Filter Actions From Overridden List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The default value of the '{@link #getFilterActionsFromOverriddenListExpression() <em>Filter Actions From
+     * Overridden List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getFilterActionsFromOverriddenListExpression()
      * @generated
@@ -82,9 +77,8 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
     protected static final String FILTER_ACTIONS_FROM_OVERRIDDEN_LIST_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterActionsFromOverriddenListExpression()
-     * <em>Filter Actions From Overridden List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The cached value of the '{@link #getFilterActionsFromOverriddenListExpression() <em>Filter Actions From
+     * Overridden List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getFilterActionsFromOverriddenListExpression()
      * @generated
@@ -94,7 +88,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ListOverrideDescriptionImpl() {
@@ -103,7 +97,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -113,7 +107,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +126,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ListDescription basicGetOverrides() {
@@ -141,7 +135,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -155,7 +149,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -165,7 +159,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -180,7 +174,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -190,7 +184,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -205,7 +199,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -226,7 +220,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -247,7 +241,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -268,7 +262,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -288,7 +282,7 @@ public class ListOverrideDescriptionImpl extends AbstractListDescriptionImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

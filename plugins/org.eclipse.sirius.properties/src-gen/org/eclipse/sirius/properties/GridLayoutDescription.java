@@ -20,8 +20,8 @@ package org.eclipse.sirius.properties;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.GridLayoutDescription#getNumberOfColumns <em>Number Of Columns</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.GridLayoutDescription#isMakeColumnsWithEqualWidth
- * <em>Make Columns With Equal Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.GridLayoutDescription#isMakeColumnsWithEqualWidth <em>Make Columns With
+ * Equal Width</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getGridLayoutDescription()
@@ -37,7 +37,7 @@ public interface GridLayoutDescription extends LayoutDescription {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Number Of Columns</em>' attribute.
      * @see #setNumberOfColumns(int)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGridLayoutDescription_NumberOfColumns()
@@ -47,9 +47,9 @@ public interface GridLayoutDescription extends LayoutDescription {
     int getNumberOfColumns();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.GridLayoutDescription#getNumberOfColumns
-     * <em>Number Of Columns</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.GridLayoutDescription#getNumberOfColumns <em>Number
+     * Of Columns</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Number Of Columns</em>' attribute.
      * @see #getNumberOfColumns()
@@ -64,7 +64,7 @@ public interface GridLayoutDescription extends LayoutDescription {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Make Columns With Equal Width</em>' attribute.
      * @see #setMakeColumnsWithEqualWidth(boolean)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGridLayoutDescription_MakeColumnsWithEqualWidth()
@@ -76,7 +76,7 @@ public interface GridLayoutDescription extends LayoutDescription {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.GridLayoutDescription#isMakeColumnsWithEqualWidth
      * <em>Make Columns With Equal Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Make Columns With Equal Width</em>' attribute.
      * @see #isMakeColumnsWithEqualWidth()

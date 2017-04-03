@@ -37,7 +37,7 @@ public interface CustomOperation extends IdentifiedElement {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Initial Operation</em>' containment reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCustomOperation_InitialOperation()
@@ -47,9 +47,9 @@ public interface CustomOperation extends IdentifiedElement {
     InitialOperation getInitialOperation();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.CustomOperation#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * Sets the value of the '{@link org.eclipse.sirius.properties.CustomOperation#getInitialOperation <em>Initial
+     * Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()

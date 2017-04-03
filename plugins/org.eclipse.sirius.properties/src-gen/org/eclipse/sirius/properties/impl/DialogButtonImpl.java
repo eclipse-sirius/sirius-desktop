@@ -30,10 +30,10 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#getLabelExpression <em>Label Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#getInitialOperation <em>Initial Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#isDefault <em>Default</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#isCloseDialogOnClick <em>Close Dialog On Click</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#isRollbackChangesOnClose
- * <em>Rollback Changes On Close</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#isCloseDialogOnClick <em>Close Dialog On
+ * Click</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#isRollbackChangesOnClose <em>Rollback Changes On
+ * Close</em>}</li>
  * </ul>
  *
  * @generated
@@ -42,7 +42,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
     /**
      * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -52,7 +52,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
     /**
      * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
     /**
      * The default value of the '{@link #isDefault() <em>Default</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #isDefault()
      * @generated
      * @ordered
@@ -82,7 +82,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
     /**
      * The cached value of the '{@link #isDefault() <em>Default</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #isDefault()
      * @generated
      * @ordered
@@ -131,7 +131,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected DialogButtonImpl() {
@@ -140,7 +140,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -174,7 +174,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -203,7 +203,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -227,7 +227,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -237,7 +237,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -251,7 +251,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -261,7 +261,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -275,7 +275,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -285,7 +285,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -299,7 +299,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -313,7 +313,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -335,7 +335,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -362,7 +362,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -389,7 +389,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -411,7 +411,7 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
