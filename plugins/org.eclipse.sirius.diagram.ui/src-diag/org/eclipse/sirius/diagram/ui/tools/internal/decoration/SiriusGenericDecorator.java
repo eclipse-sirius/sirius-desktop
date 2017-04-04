@@ -31,6 +31,7 @@ import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
@@ -130,8 +131,11 @@ public class SiriusGenericDecorator extends AbstractDecorator {
         this.decorationDescriptorProviders = decorationDescriptorProviders;
         editPart = (GraphicalEditPart) getDecoratorTarget().getAdapter(GraphicalEditPart.class);
         View view = (View) getDecoratorTarget().getAdapter(View.class);
-        DRepresentationElement model = (DRepresentationElement) view.getElement();
-        this.session = SessionManager.INSTANCE.getSession(model.getTarget());
+        EObject model = view.getElement();
+        if (model instanceof DRepresentationElement) {
+            DRepresentationElement repElement = (DRepresentationElement) model;
+            this.session = SessionManager.INSTANCE.getSession(repElement.getTarget());
+        }
     }
 
     @Override

@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -30,7 +29,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.DisplayPriority;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationDescriptorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
-import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Decoration;
@@ -56,17 +54,19 @@ public class DescribedDecorationDescriptorProvider extends AbstractSiriusDecorat
     @Override
     public List<DecorationDescriptor> createDecorationDescriptors(IDiagramElementEditPart editPart, Session session) {
         List<DecorationDescriptor> decorationDescriptors = Lists.newArrayList();
-        DDiagramElement element = editPart.resolveDiagramElement();
-        if (element != null) {
-            DRepresentation parentRepresentation = new DRepresentationElementQuery(element).getParentRepresentation();
-            if (parentRepresentation != null) {
-                UIState uiState = parentRepresentation.getUiState();
-                List<Decoration> decorations = Lists.newArrayList(element.getDecorations());
-                decorations.addAll(element.getTransientDecorations());
-                for (Decoration decoration : decorations) {
-                    DecorationDescriptor decorationDescriptor = initializeDecorationDescriptor(decoration, element, uiState, parentRepresentation, session);
-                    if (decorationDescriptor != null) {
-                        decorationDescriptors.add(decorationDescriptor);
+        if (session != null && editPart != null) {
+            DDiagramElement element = editPart.resolveDiagramElement();
+            if (element != null) {
+                DRepresentation parentRepresentation = new DRepresentationElementQuery(element).getParentRepresentation();
+                if (parentRepresentation != null) {
+                    UIState uiState = parentRepresentation.getUiState();
+                    List<Decoration> decorations = Lists.newArrayList(element.getDecorations());
+                    decorations.addAll(element.getTransientDecorations());
+                    for (Decoration decoration : decorations) {
+                        DecorationDescriptor decorationDescriptor = initializeDecorationDescriptor(decoration, element, uiState, parentRepresentation, session);
+                        if (decorationDescriptor != null) {
+                            decorationDescriptors.add(decorationDescriptor);
+                        }
                     }
                 }
             }
@@ -114,8 +114,6 @@ public class DescribedDecorationDescriptorProvider extends AbstractSiriusDecorat
     }
 
     private Object evaluateDecoration(DecorationDescription decorationDescription, final DDiagramElement element, final String expression, DRepresentation parentRepresentation, Session session) {
-        DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHECK_PRECONDITION_KEY);
-
         Object result = null;
         EObject semantic = ((DSemanticDecorator) element).getTarget();
         DSemanticDecorator container = (org.eclipse.sirius.viewpoint.DSemanticDecorator) element.eContainer();
@@ -138,7 +136,6 @@ public class DescribedDecorationDescriptorProvider extends AbstractSiriusDecorat
                 interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
             }
         }
-        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CHECK_PRECONDITION_KEY);
         return result;
     }
 
