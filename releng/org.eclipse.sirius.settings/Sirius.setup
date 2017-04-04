@@ -83,7 +83,8 @@
         name="org.eclipse.swtbot.ide.source.feature.group"
         versionRange="2.1.1.201307101628"/>
     <requirement
-        name="net.sf.eclipsecs.feature.group"/>
+        name="net.sf.eclipsecs.feature.group"
+        versionRange="7.6.0"/>
     <requirement
         name="fr.obeo.releng.targetplatform-feature.feature.group"/>
     <requirement
@@ -95,7 +96,7 @@
     <repository
         url="http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/"/>
     <repository
-        url="https://sourceforge.net/projects/eclipse-cs/files/updatesite/7.3.0/"/>
+        url="https://dl.bintray.com/eclipse-cs/eclipse-cs/7.6.0/"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
   </setupTask>
   <setupTask
