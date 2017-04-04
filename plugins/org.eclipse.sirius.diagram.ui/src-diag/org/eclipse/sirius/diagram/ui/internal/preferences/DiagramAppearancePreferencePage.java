@@ -206,6 +206,6 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
         store.setDefault(SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), false);
         store.setDefault(SiriusDiagramUiPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_SHAPES.name(), false);
         store.setDefault(SiriusDiagramUiPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_CONNECTORS.name(), false);
-        store.setDefault(SiriusDiagramUiPreferencesKeys.PREF_AUTHORIZE_DECORATION_OVERLAP.name(), true);
+        store.setDefault(SiriusDiagramUiPreferencesKeys.PREF_AUTHORIZE_DECORATION_OVERLAP.name(), false);
     }
 }

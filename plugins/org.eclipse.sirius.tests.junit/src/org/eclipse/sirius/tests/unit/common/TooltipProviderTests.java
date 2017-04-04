@@ -35,6 +35,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.ext.jface.viewers.IToolTipProvider;
 import org.eclipse.sirius.table.metamodel.table.DTable;
@@ -85,6 +86,9 @@ public class TooltipProviderTests extends SiriusTestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
+
+        changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PRINT_DECORATION.name(), true);
+
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + MODELER_RESOURCE_NAME, TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + SEMANTIC_RESOURCE_NAME, TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + REPRESENTATIONS_RESOURCE_NAME, TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_RESOURCE_NAME);

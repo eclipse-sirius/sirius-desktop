@@ -10,11 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.preferences;
 
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.PrintingPreferencePage;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
@@ -24,7 +22,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
 /**
  * @was-generated
@@ -90,16 +87,6 @@ public class DiagramPrintingPreferencePage extends PrintingPreferencePage {
         addField(printDecorationsField);
     }
 
-    @Override
-    protected void initialize() {
-        super.initialize();
-
-        // Set preference store to Diagram core plugin
-        IPreferenceStore diagramCorePreferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, DiagramPlugin.ID);
-        printDecorationsField.setPreferenceStore(diagramCorePreferenceStore);
-        printDecorationsField.load();
-    }
-
     /**
      * Initializes the default preference values for this preference store.
      * 
@@ -108,7 +95,7 @@ public class DiagramPrintingPreferencePage extends PrintingPreferencePage {
      */
     public static void initDefaults(IPreferenceStore store) {
         PrintingPreferencePage.initDefaults(store);
-        store.setDefault(SiriusDiagramUiPreferencesKeys.PREF_PRINT_DECORATION.name(), true);
+        store.setDefault(SiriusDiagramUiPreferencesKeys.PREF_PRINT_DECORATION.name(), false);
     }
 
 }
