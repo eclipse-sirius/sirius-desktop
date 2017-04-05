@@ -432,6 +432,13 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             }
         }
         disposeGraphicalListeners();
+
+        // remove all temporary information used in the context of the editor
+        DRepresentation representation = getRepresentation();
+        if (representation != null) {
+            getRepresentation().getUiState().getDecorationImage().clear();
+        }
+
         super.close(save);
     }
 
