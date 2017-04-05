@@ -33,6 +33,7 @@ import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.core.api.DefaultDescriptionPreprocessor;
 import org.eclipse.sirius.properties.core.api.DefaultDescriptionPreprocessorWithFiltering;
 import org.eclipse.sirius.properties.core.api.IDescriptionPreprocessor;
@@ -118,6 +119,11 @@ public class PropertiesDescriptionPreprocessorSwitch extends PropertiesSwitch<Op
     @Override
     public Optional<IDescriptionPreprocessor> caseAbstractDynamicMappingForDescription(AbstractDynamicMappingForDescription object) {
         return Optional.of(new PreconfiguredPreprocessor<DynamicMappingForDescription>(DynamicMappingForDescription.class, PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR_DESCRIPTION));
+    }
+    
+    @Override
+    public Optional<IDescriptionPreprocessor> caseWidgetAction(WidgetAction object) {
+        return Optional.of(new PreconfiguredPreprocessor<WidgetAction>(WidgetAction.class, PropertiesPackage.Literals.WIDGET_ACTION));
     }
 
     @Override
