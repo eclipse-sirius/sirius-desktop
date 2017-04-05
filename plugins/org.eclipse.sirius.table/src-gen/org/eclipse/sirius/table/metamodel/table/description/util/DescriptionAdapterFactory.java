@@ -335,11 +335,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription
-     * <em>Edition Table Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription <em>Edition Table
+     * Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription
@@ -350,11 +349,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription
-     * <em>Cross Table Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription <em>Cross Table
+     * Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription
@@ -407,10 +405,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping <em>Element Column Mapping</em>}
-     * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping <em>Element Column
+     * Mapping</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping
@@ -421,10 +419,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping <em>Feature Column Mapping</em>}
-     * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping <em>Feature Column
+     * Mapping</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping
@@ -463,8 +461,8 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping <em>Intersection Mapping</em>}'.
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping <em>Intersection Mapping</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
      * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
@@ -477,8 +475,8 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableTool <em>Table Tool</em>}'. <!-- begin-user-doc
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableTool <em>Table Tool</em>}'. <!-- begin-user-doc
      * --> This default implementation returns null so that we can easily ignore cases; it's useful to ignore a case
      * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
@@ -533,11 +531,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool
-     * <em>Create Cross Column Tool</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool <em>Create Cross Column
+     * Tool</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool
@@ -618,11 +615,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription
-     * <em>Foreground Style Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription <em>Foreground Style
+     * Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription
@@ -633,11 +629,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription
-     * <em>Background Style Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription <em>Background Style
+     * Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription
@@ -648,11 +643,11 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle
-     * <em>Foreground Conditional Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle <em>Foreground
+     * Conditional Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle
@@ -663,11 +658,11 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle
-     * <em>Background Conditional Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle <em>Background
+     * Conditional Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle
@@ -692,11 +687,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription
-     * <em>Table Creation Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription <em>Table Creation
+     * Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription
@@ -707,11 +701,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription
-     * <em>Table Navigation Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription <em>Table Navigation
+     * Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription
@@ -722,8 +715,8 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.RepresentationDescription <em>Representation Description</em>}'.
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.viewpoint.description.RepresentationDescription <em>Representation Description</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
      * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
@@ -736,11 +729,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.RepresentationElementMapping
-     * <em>Representation Element Mapping</em>}'. <!-- begin-user-doc --> This default implementation returns null so
-     * that we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.viewpoint.description.RepresentationElementMapping <em>Representation Element
+     * Mapping</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.RepresentationElementMapping
@@ -765,8 +757,8 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement <em>End User Documented Element</em>}'.
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement <em>End User Documented Element</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
      * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
@@ -806,10 +798,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription <em>Abstract Tool Description</em>}
-     * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription <em>Abstract Tool
+     * Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription
@@ -848,11 +840,11 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription
-     * <em>Representation Creation Description</em>}'. <!-- begin-user-doc --> This default implementation returns null
-     * so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription <em>Representation
+     * Creation Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription
@@ -863,11 +855,11 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription
-     * <em>Representation Navigation Description</em>}'. <!-- begin-user-doc --> This default implementation returns
-     * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class
+     * '{@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription <em>Representation
+     * Navigation Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
      * 
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription

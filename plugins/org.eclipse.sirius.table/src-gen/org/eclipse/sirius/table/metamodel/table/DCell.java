@@ -62,8 +62,8 @@ public interface DCell extends DSemanticDecorator, DTableElement {
     void setLabel(String value);
 
     /**
-     * Returns the value of the '<em><b>Line</b></em>' container reference. It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.DLine#getCells <em>Cells</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Line</b></em>' container reference. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.table.metamodel.table.DLine#getCells <em>Cells</em>}'. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Line</em>' container reference isn't clear, there really should be more of a
      * description here...
@@ -91,8 +91,8 @@ public interface DCell extends DSemanticDecorator, DTableElement {
     void setLine(DLine value);
 
     /**
-     * Returns the value of the '<em><b>Column</b></em>' reference. It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getCells <em>Cells</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Column</b></em>' reference. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.table.metamodel.table.DColumn#getCells <em>Cells</em>}'. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Column</em>' reference isn't clear, there really should be more of a description
      * here...
@@ -153,8 +153,8 @@ public interface DCell extends DSemanticDecorator, DTableElement {
     DCellStyle getCurrentStyle();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DCell#getCurrentStyle
-     * <em>Current Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DCell#getCurrentStyle <em>Current
+     * Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Current Style</em>' containment reference.

@@ -20,8 +20,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDomainClass
- * <em>Domain Class</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDomainClass <em>Domain
+ * Class</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getSemanticCandidatesExpression
  * <em>Semantic Candidates Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getCreate <em>Create</em>}</li>
@@ -50,9 +50,9 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
     String getDomainClass();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDomainClass
-     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDomainClass <em>Domain
+     * Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
@@ -72,17 +72,19 @@ public interface ElementColumnMapping extends ColumnMapping, StyleUpdater {
      * @return the value of the '<em>Semantic Candidates Expression</em>' attribute.
      * @see #setSemanticCandidatesExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getElementColumnMapping_SemanticCandidatesExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
-     *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables viewpoint='table.DTable | (deprecated) current DTable.' table='table.DTable | current DTable.' containerView='table.DTable | current DTable.' container='ecore.EObject | semantic element targeted by the current DTable.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
+     *        Collection<EObject> or an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables viewpoint='table.DTable |
+     *        (deprecated) current DTable.' table='table.DTable | current DTable.' containerView='table.DTable | current
+     *        DTable.' container='ecore.EObject | semantic element targeted by the current DTable.'"
      * @generated
      */
     String getSemanticCandidatesExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getSemanticCandidatesExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getSemanticCandidatesExpression
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value

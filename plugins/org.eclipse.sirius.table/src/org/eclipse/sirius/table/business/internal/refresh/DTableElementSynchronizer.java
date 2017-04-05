@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,7 +65,6 @@ import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
-import org.eclipse.sirius.table.metamodel.table.impl.DTableElementSynchronizerImpl;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -81,7 +80,7 @@ import com.google.common.collect.Lists;
  * @author cbrun
  * 
  */
-public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl {
+public class DTableElementSynchronizer {
 
     /**
      * '*' as feature name allows to skip the feature name validation for cell creation.
@@ -100,7 +99,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * @param interpreter
      *            current interpreter.
      */
-    public DTableElementSynchronizerSpec(final ModelAccessor accessor, final IInterpreter interpreter) {
+    public DTableElementSynchronizer(final ModelAccessor accessor, final IInterpreter interpreter) {
         this.interpreter = interpreter;
         this.accessor = accessor;
     }
@@ -111,7 +110,6 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * @param line
      *            line to refresh.
      */
-    @Override
     public void refresh(final DLine line) {
         if (accessor.getPermissionAuthority().canEditInstance(line)) {
             final LineMapping mapping = line.getOriginMapping();
@@ -150,7 +148,6 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * @param cell
      *            cell to refresh.
      */
-    @Override
     public void refresh(final DCell cell) {
         if (accessor.getPermissionAuthority().canEditInstance(cell)) {
             if (refreshTarget(cell)) {
@@ -168,13 +165,10 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * @param column
      *            column to refresh.
      */
-    @Override
     public void refresh(final DColumn column) {
         if (accessor.getPermissionAuthority().canEditInstance(column)) {
             if (column instanceof DTargetColumn) {
                 refresh((DTargetColumn) column);
-            } else {
-                super.refresh(column);
             }
         }
     }

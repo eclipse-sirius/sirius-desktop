@@ -24,8 +24,8 @@ import org.eclipse.emf.common.util.EList;
  * <em>Owned Column Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getIntersection
  * <em>Intersection</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getCreateColumn
- * <em>Create Column</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getCreateColumn <em>Create
+ * Column</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCrossTableDescription()

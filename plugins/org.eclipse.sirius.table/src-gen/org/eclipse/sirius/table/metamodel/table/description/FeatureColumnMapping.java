@@ -18,10 +18,10 @@ package org.eclipse.sirius.table.metamodel.table.description;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureName
- * <em>Feature Name</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getLabelExpression
- * <em>Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureName <em>Feature
+ * Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getLabelExpression <em>Label
+ * Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureParentExpression
  * <em>Feature Parent Expression</em>}</li>
  * </ul>
@@ -48,9 +48,9 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
     String getFeatureName();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureName
-     * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureName <em>Feature
+     * Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
@@ -70,17 +70,21 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getFeatureColumnMapping_LabelExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables root='ecore.EObject | semantic target of the current DTable.' line='table.DLine | DLine of the current DCell.' lineSemantic='ecore.EObject | semantic target of $line' container='ecore.EObject | semantic target of $line.' column='table.DColumn | DColumn of the current DCell.' columnSemantic='ecore.EObject | semantic target of $column'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables root='ecore.EObject | semantic
+     *        target of the current DTable.' line='table.DLine | DLine of the current DCell.'
+     *        lineSemantic='ecore.EObject | semantic target of $line' container='ecore.EObject | semantic target of
+     *        $line.' column='table.DColumn | DColumn of the current DCell.' columnSemantic='ecore.EObject | semantic
+     *        target of $column'"
      * @generated
      */
     String getLabelExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getLabelExpression
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getLabelExpression <em>Label
+     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
@@ -103,8 +107,8 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
     String getFeatureParentExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureParentExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureParentExpression
      * <em>Feature Parent Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value

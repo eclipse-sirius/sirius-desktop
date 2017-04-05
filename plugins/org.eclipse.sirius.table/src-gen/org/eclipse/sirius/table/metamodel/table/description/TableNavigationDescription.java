@@ -46,8 +46,8 @@ public interface TableNavigationDescription extends RepresentationNavigationDesc
     TableDescription getTableDescription();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription#getTableDescription
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription#getTableDescription
      * <em>Table Description</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value

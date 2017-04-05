@@ -22,8 +22,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableTool#getVariables <em>Variables</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableTool#getFirstModelOperation
- * <em>First Model Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableTool#getFirstModelOperation <em>First Model
+ * Operation</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableTool()
@@ -64,9 +64,9 @@ public interface TableTool extends EObject {
     ModelOperation getFirstModelOperation();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableTool#getFirstModelOperation
-     * <em>First Model Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableTool#getFirstModelOperation <em>First Model
+     * Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>First Model Operation</em>' containment reference.

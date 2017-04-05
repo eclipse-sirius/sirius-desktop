@@ -17,10 +17,10 @@ package org.eclipse.sirius.table.metamodel.table.description;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getHeaderLabelExpression
- * <em>Header Label Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getInitialWidth <em>Initial Width</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getHeaderLabelExpression <em>Header
+ * Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getInitialWidth <em>Initial
+ * Width</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getColumnMapping()
@@ -40,16 +40,16 @@ public interface ColumnMapping extends TableMapping {
      * @return the value of the '<em>Header Label Expression</em>' attribute.
      * @see #setHeaderLabelExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getColumnMapping_HeaderLabelExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
      * @generated
      */
     String getHeaderLabelExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getHeaderLabelExpression
-     * <em>Header Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getHeaderLabelExpression <em>Header
+     * Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Header Label Expression</em>' attribute.

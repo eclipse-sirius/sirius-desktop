@@ -19,8 +19,8 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableMapping#getSemanticElements
- * <em>Semantic Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableMapping#getSemanticElements <em>Semantic
+ * Elements</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableMapping()
@@ -42,9 +42,9 @@ public interface TableMapping extends RepresentationElementMapping {
     String getSemanticElements();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableMapping#getSemanticElements
-     * <em>Semantic Elements</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableMapping#getSemanticElements <em>Semantic
+     * Elements</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Semantic Elements</em>' attribute.

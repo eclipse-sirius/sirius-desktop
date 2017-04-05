@@ -34,8 +34,8 @@ public interface DTable extends DRepresentation, LineContainer {
 
     /**
      * Returns the value of the '<em><b>Columns</b></em>' containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.DColumn}. It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getTable <em>Table</em>}'. <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.table.metamodel.table.DColumn}. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.table.metamodel.table.DColumn#getTable <em>Table</em>}'. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Columns</em>' containment reference list isn't clear, there really should be more of a
      * description here...
@@ -67,8 +67,8 @@ public interface DTable extends DRepresentation, LineContainer {
     TableDescription getDescription();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DTable#getDescription <em>Description</em>
-     * }' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DTable#getDescription
+     * <em>Description</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Description</em>' reference.
@@ -94,8 +94,8 @@ public interface DTable extends DRepresentation, LineContainer {
     int getHeaderColumnWidth();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DTable#getHeaderColumnWidth
-     * <em>Header Column Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DTable#getHeaderColumnWidth <em>Header
+     * Column Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Header Column Width</em>' attribute.

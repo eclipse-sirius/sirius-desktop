@@ -18,8 +18,8 @@ package org.eclipse.sirius.table.metamodel.table.description;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool#getMapping <em>Mapping</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool#getMapping
+ * <em>Mapping</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCreateCrossColumnTool()
@@ -44,8 +44,8 @@ public interface CreateCrossColumnTool extends CreateTool {
     ElementColumnMapping getMapping();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool#getMapping <em>Mapping</em>}'
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool#getMapping <em>Mapping</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value

@@ -30,8 +30,8 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 public interface LineContainer extends DSemanticDecorator {
     /**
      * Returns the value of the '<em><b>Lines</b></em>' containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.DLine}. It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.DLine#getContainer <em>Container</em>}'. <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.table.metamodel.table.DLine}. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.table.metamodel.table.DLine#getContainer <em>Container</em>}'. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Lines</em>' containment reference list isn't clear, there really should be more of a
      * description here...

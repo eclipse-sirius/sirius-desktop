@@ -27,8 +27,8 @@ package org.eclipse.sirius.table.metamodel.table.description;
  */
 public interface CreateColumnTool extends CreateTool {
     /**
-     * Returns the value of the '<em><b>Mapping</b></em>' container reference. It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getCreate <em>Create</em>}'.
+     * Returns the value of the '<em><b>Mapping</b></em>' container reference. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getCreate <em>Create</em>}'.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Mapping</em>' container reference isn't clear, there really should be more of a

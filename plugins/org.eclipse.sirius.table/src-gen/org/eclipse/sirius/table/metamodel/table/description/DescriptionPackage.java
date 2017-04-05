@@ -288,9 +288,9 @@ public interface DescriptionPackage extends EPackage {
     int TABLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 16;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl
-     * <em>Edition Table Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl <em>Edition Table
+     * Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getEditionTableDescription()
@@ -544,9 +544,9 @@ public interface DescriptionPackage extends EPackage {
     int EDITION_TABLE_DESCRIPTION_FEATURE_COUNT = DescriptionPackage.TABLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl
-     * <em>Cross Table Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl <em>Cross Table
+     * Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCrossTableDescription()
@@ -1119,9 +1119,9 @@ public interface DescriptionPackage extends EPackage {
     int COLUMN_MAPPING_FEATURE_COUNT = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 2;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl
-     * <em>Element Column Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl <em>Element Column
+     * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getElementColumnMapping()
@@ -1270,9 +1270,9 @@ public interface DescriptionPackage extends EPackage {
     int ELEMENT_COLUMN_MAPPING_FEATURE_COUNT = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 8;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl
-     * <em>Feature Column Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl <em>Feature Column
+     * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getFeatureColumnMapping()
@@ -1520,9 +1520,9 @@ public interface DescriptionPackage extends EPackage {
     int STYLE_UPDATER_FEATURE_COUNT = 4;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl
-     * <em>Intersection Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl <em>Intersection
+     * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getIntersectionMapping()
@@ -2024,9 +2024,9 @@ public interface DescriptionPackage extends EPackage {
     int CREATE_COLUMN_TOOL_FEATURE_COUNT = DescriptionPackage.CREATE_TOOL_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCrossColumnToolImpl
-     * <em>Create Cross Column Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCrossColumnToolImpl <em>Create Cross
+     * Column Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.CreateCrossColumnToolImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateCrossColumnTool()
@@ -2701,9 +2701,9 @@ public interface DescriptionPackage extends EPackage {
     int DELETE_LINE_TOOL_FEATURE_COUNT = DescriptionPackage.DELETE_TOOL_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl
-     * <em>Foreground Style Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl <em>Foreground
+     * Style Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getForegroundStyleDescription()
@@ -2747,9 +2747,9 @@ public interface DescriptionPackage extends EPackage {
     int FOREGROUND_STYLE_DESCRIPTION_FEATURE_COUNT = 3;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundStyleDescriptionImpl
-     * <em>Background Style Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundStyleDescriptionImpl <em>Background
+     * Style Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundStyleDescriptionImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getBackgroundStyleDescription()
@@ -2776,9 +2776,9 @@ public interface DescriptionPackage extends EPackage {
     int BACKGROUND_STYLE_DESCRIPTION_FEATURE_COUNT = 1;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundConditionalStyleImpl
-     * <em>Foreground Conditional Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundConditionalStyleImpl <em>Foreground
+     * Conditional Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundConditionalStyleImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getForegroundConditionalStyle()
@@ -2814,9 +2814,9 @@ public interface DescriptionPackage extends EPackage {
     int FOREGROUND_CONDITIONAL_STYLE_FEATURE_COUNT = 2;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundConditionalStyleImpl
-     * <em>Background Conditional Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundConditionalStyleImpl <em>Background
+     * Conditional Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundConditionalStyleImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getBackgroundConditionalStyle()
@@ -2896,9 +2896,9 @@ public interface DescriptionPackage extends EPackage {
     int TABLE_VARIABLE_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 2;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableCreationDescriptionImpl
-     * <em>Table Creation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableCreationDescriptionImpl <em>Table Creation
+     * Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.TableCreationDescriptionImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableCreationDescription()
@@ -3046,9 +3046,9 @@ public interface DescriptionPackage extends EPackage {
     int TABLE_CREATION_DESCRIPTION_FEATURE_COUNT = ToolPackage.REPRESENTATION_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableNavigationDescriptionImpl
-     * <em>Table Navigation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableNavigationDescriptionImpl <em>Table
+     * Navigation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.TableNavigationDescriptionImpl
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableNavigationDescription()
@@ -3206,8 +3206,8 @@ public interface DescriptionPackage extends EPackage {
     EClass getTableDescription();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getPreconditionExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getPreconditionExpression
      * <em>Precondition Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Precondition Expression</em>'.
@@ -3218,9 +3218,9 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getTableDescription_PreconditionExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getDomainClass <em>Domain Class</em>
-     * }'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getDomainClass <em>Domain
+     * Class</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Domain Class</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getDomainClass()
@@ -3230,8 +3230,8 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getTableDescription_DomainClass();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedRepresentationCreationDescriptions
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedRepresentationCreationDescriptions
      * <em>Owned Representation Creation Descriptions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Representation Creation Descriptions</em>'.
@@ -3242,8 +3242,8 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableDescription_OwnedRepresentationCreationDescriptions();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedRepresentationCreationDescriptions
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedRepresentationCreationDescriptions
      * <em>Reused Representation Creation Descriptions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Reused Representation Creation Descriptions</em>'.
@@ -3254,8 +3254,8 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableDescription_ReusedRepresentationCreationDescriptions();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllRepresentationCreationDescriptions
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllRepresentationCreationDescriptions
      * <em>All Representation Creation Descriptions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>All Representation Creation Descriptions</em>'.
@@ -3266,12 +3266,12 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableDescription_AllRepresentationCreationDescriptions();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedRepresentationNavigationDescriptions
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedRepresentationNavigationDescriptions
      * <em>Owned Representation Navigation Descriptions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @return the meta object for the containment reference list '<em>Owned Representation Navigation Descriptions</em>
-     *         '.
+     * @return the meta object for the containment reference list '<em>Owned Representation Navigation
+     *         Descriptions</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedRepresentationNavigationDescriptions()
      * @see #getTableDescription()
      * @generated
@@ -3279,8 +3279,8 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableDescription_OwnedRepresentationNavigationDescriptions();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedRepresentationNavigationDescriptions
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedRepresentationNavigationDescriptions
      * <em>Reused Representation Navigation Descriptions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Reused Representation Navigation Descriptions</em>'.
@@ -3291,8 +3291,8 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableDescription_ReusedRepresentationNavigationDescriptions();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllRepresentationNavigationDescriptions
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllRepresentationNavigationDescriptions
      * <em>All Representation Navigation Descriptions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>All Representation Navigation Descriptions</em>'.
@@ -3303,9 +3303,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableDescription_AllRepresentationNavigationDescriptions();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedLineMappings
-     * <em>Owned Line Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedLineMappings <em>Owned Line
+     * Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Line Mappings</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedLineMappings()
@@ -3315,9 +3315,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableDescription_OwnedLineMappings();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedLineMappings
-     * <em>Reused Line Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedLineMappings <em>Reused
+     * Line Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Reused Line Mappings</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedLineMappings()
@@ -3327,9 +3327,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableDescription_ReusedLineMappings();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllLineMappings
-     * <em>All Line Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllLineMappings <em>All Line
+     * Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>All Line Mappings</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllLineMappings()
@@ -3339,9 +3339,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableDescription_AllLineMappings();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedCreateLine
-     * <em>Owned Create Line</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedCreateLine <em>Owned Create
+     * Line</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Create Line</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedCreateLine()
@@ -3351,9 +3351,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableDescription_OwnedCreateLine();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedCreateLine
-     * <em>Reused Create Line</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedCreateLine <em>Reused
+     * Create Line</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Reused Create Line</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedCreateLine()
@@ -3363,9 +3363,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableDescription_ReusedCreateLine();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllCreateLine
-     * <em>All Create Line</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllCreateLine <em>All Create
+     * Line</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>All Create Line</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllCreateLine()
@@ -3375,8 +3375,8 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableDescription_AllCreateLine();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getInitialHeaderColumnWidth
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getInitialHeaderColumnWidth
      * <em>Initial Header Column Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Initial Header Column Width</em>'.
@@ -3387,9 +3387,9 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getTableDescription_InitialHeaderColumnWidth();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getImportedElements
-     * <em>Imported Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getImportedElements <em>Imported
+     * Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Imported Elements</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableDescription#getImportedElements()
@@ -3399,9 +3399,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableDescription_ImportedElements();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription
-     * <em>Edition Table Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription <em>Edition Table
+     * Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Edition Table Description</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription
@@ -3410,8 +3410,8 @@ public interface DescriptionPackage extends EPackage {
     EClass getEditionTableDescription();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getOwnedColumnMappings
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getOwnedColumnMappings
      * <em>Owned Column Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Column Mappings</em>'.
@@ -3422,8 +3422,8 @@ public interface DescriptionPackage extends EPackage {
     EReference getEditionTableDescription_OwnedColumnMappings();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getReusedColumnMappings
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getReusedColumnMappings
      * <em>Reused Column Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Reused Column Mappings</em>'.
@@ -3434,9 +3434,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getEditionTableDescription_ReusedColumnMappings();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getAllColumnMappings
-     * <em>All Column Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getAllColumnMappings <em>All
+     * Column Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>All Column Mappings</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getAllColumnMappings()
@@ -3446,9 +3446,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getEditionTableDescription_AllColumnMappings();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription
-     * <em>Cross Table Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription <em>Cross Table
+     * Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Cross Table Description</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription
@@ -3457,8 +3457,8 @@ public interface DescriptionPackage extends EPackage {
     EClass getCrossTableDescription();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getOwnedColumnMappings
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getOwnedColumnMappings
      * <em>Owned Column Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Column Mappings</em>'.
@@ -3469,8 +3469,8 @@ public interface DescriptionPackage extends EPackage {
     EReference getCrossTableDescription_OwnedColumnMappings();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getIntersection
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getIntersection
      * <em>Intersection</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Intersection</em>'.
@@ -3481,9 +3481,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getCrossTableDescription_Intersection();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getCreateColumn
-     * <em>Create Column</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getCreateColumn <em>Create
+     * Column</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Create Column</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getCreateColumn()
@@ -3503,9 +3503,9 @@ public interface DescriptionPackage extends EPackage {
     EClass getTableMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableMapping#getSemanticElements
-     * <em>Semantic Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableMapping#getSemanticElements <em>Semantic
+     * Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Semantic Elements</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableMapping#getSemanticElements()
@@ -3525,9 +3525,9 @@ public interface DescriptionPackage extends EPackage {
     EClass getLineMapping();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getOwnedSubLines <em>Owned Sub Lines</em>
-     * }'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getOwnedSubLines <em>Owned Sub
+     * Lines</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Sub Lines</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.LineMapping#getOwnedSubLines()
@@ -3537,9 +3537,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getLineMapping_OwnedSubLines();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedSubLines
-     * <em>Reused Sub Lines</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedSubLines <em>Reused Sub
+     * Lines</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Reused Sub Lines</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedSubLines()
@@ -3549,8 +3549,8 @@ public interface DescriptionPackage extends EPackage {
     EReference getLineMapping_ReusedSubLines();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getDomainClass <em>Domain Class</em>}'.
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getDomainClass <em>Domain Class</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Domain Class</em>'.
@@ -3585,8 +3585,8 @@ public interface DescriptionPackage extends EPackage {
     EReference getLineMapping_Delete();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getSemanticCandidatesExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getSemanticCandidatesExpression
      * <em>Semantic Candidates Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Semantic Candidates Expression</em>'.
@@ -3597,9 +3597,9 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getLineMapping_SemanticCandidatesExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getHeaderLabelExpression
-     * <em>Header Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getHeaderLabelExpression <em>Header
+     * Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Header Label Expression</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.LineMapping#getHeaderLabelExpression()
@@ -3609,8 +3609,8 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getLineMapping_HeaderLabelExpression();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getAllSubLines <em>All Sub Lines</em>}'.
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getAllSubLines <em>All Sub Lines</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>All Sub Lines</em>'.
@@ -3621,9 +3621,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getLineMapping_AllSubLines();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedInMappings
-     * <em>Reused In Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedInMappings <em>Reused In
+     * Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Reused In Mappings</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedInMappings()
@@ -3643,9 +3643,9 @@ public interface DescriptionPackage extends EPackage {
     EClass getColumnMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getHeaderLabelExpression
-     * <em>Header Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getHeaderLabelExpression <em>Header
+     * Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Header Label Expression</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getHeaderLabelExpression()
@@ -3655,9 +3655,9 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getColumnMapping_HeaderLabelExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getInitialWidth <em>Initial Width</em>}
-     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getInitialWidth <em>Initial
+     * Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Initial Width</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getInitialWidth()
@@ -3667,9 +3667,9 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getColumnMapping_InitialWidth();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping <em>Element Column Mapping</em>}
-     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping <em>Element Column
+     * Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Element Column Mapping</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping
@@ -3678,9 +3678,9 @@ public interface DescriptionPackage extends EPackage {
     EClass getElementColumnMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDomainClass
-     * <em>Domain Class</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDomainClass <em>Domain
+     * Class</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Domain Class</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDomainClass()
@@ -3690,8 +3690,8 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getElementColumnMapping_DomainClass();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getSemanticCandidatesExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getSemanticCandidatesExpression
      * <em>Semantic Candidates Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Semantic Candidates Expression</em>'.
@@ -3702,8 +3702,8 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getElementColumnMapping_SemanticCandidatesExpression();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getCreate <em>Create</em>}'.
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getCreate <em>Create</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Create</em>'.
@@ -3714,8 +3714,8 @@ public interface DescriptionPackage extends EPackage {
     EReference getElementColumnMapping_Create();
 
     /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDelete <em>Delete</em>}'.
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping#getDelete <em>Delete</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference '<em>Delete</em>'.
@@ -3726,9 +3726,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getElementColumnMapping_Delete();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping <em>Feature Column Mapping</em>}
-     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping <em>Feature Column
+     * Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Feature Column Mapping</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping
@@ -3737,9 +3737,9 @@ public interface DescriptionPackage extends EPackage {
     EClass getFeatureColumnMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureName
-     * <em>Feature Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureName <em>Feature
+     * Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Feature Name</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureName()
@@ -3749,9 +3749,9 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getFeatureColumnMapping_FeatureName();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getLabelExpression
-     * <em>Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getLabelExpression <em>Label
+     * Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Label Expression</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getLabelExpression()
@@ -3761,8 +3761,8 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getFeatureColumnMapping_LabelExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureParentExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureParentExpression
      * <em>Feature Parent Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Feature Parent Expression</em>'.
@@ -3783,8 +3783,8 @@ public interface DescriptionPackage extends EPackage {
     EClass getCellUpdater();
 
     /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CellUpdater#getDirectEdit <em>Direct Edit</em>}'.
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.CellUpdater#getDirectEdit <em>Direct Edit</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference '<em>Direct Edit</em>'.
@@ -3817,9 +3817,9 @@ public interface DescriptionPackage extends EPackage {
     EClass getStyleUpdater();
 
     /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultForeground
-     * <em>Default Foreground</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultForeground <em>Default
+     * Foreground</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference '<em>Default Foreground</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultForeground()
@@ -3829,8 +3829,8 @@ public interface DescriptionPackage extends EPackage {
     EReference getStyleUpdater_DefaultForeground();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getForegroundConditionalStyle
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getForegroundConditionalStyle
      * <em>Foreground Conditional Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Foreground Conditional Style</em>'.
@@ -3841,9 +3841,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getStyleUpdater_ForegroundConditionalStyle();
 
     /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultBackground
-     * <em>Default Background</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultBackground <em>Default
+     * Background</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference '<em>Default Background</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultBackground()
@@ -3853,8 +3853,8 @@ public interface DescriptionPackage extends EPackage {
     EReference getStyleUpdater_DefaultBackground();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getBackgroundConditionalStyle
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getBackgroundConditionalStyle
      * <em>Background Conditional Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Background Conditional Style</em>'.
@@ -3865,8 +3865,8 @@ public interface DescriptionPackage extends EPackage {
     EReference getStyleUpdater_BackgroundConditionalStyle();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping <em>Intersection Mapping</em>}'.
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping <em>Intersection Mapping</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Intersection Mapping</em>'.
@@ -3876,9 +3876,9 @@ public interface DescriptionPackage extends EPackage {
     EClass getIntersectionMapping();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLineMapping
-     * <em>Line Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the reference list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLineMapping <em>Line
+     * Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Line Mapping</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLineMapping()
@@ -3888,9 +3888,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getIntersectionMapping_LineMapping();
 
     /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getColumnMapping
-     * <em>Column Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getColumnMapping <em>Column
+     * Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Column Mapping</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getColumnMapping()
@@ -3900,9 +3900,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getIntersectionMapping_ColumnMapping();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLabelExpression
-     * <em>Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLabelExpression <em>Label
+     * Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Label Expression</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLabelExpression()
@@ -3912,9 +3912,9 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getIntersectionMapping_LabelExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#isUseDomainClass
-     * <em>Use Domain Class</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#isUseDomainClass <em>Use Domain
+     * Class</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Use Domain Class</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#isUseDomainClass()
@@ -3924,8 +3924,8 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getIntersectionMapping_UseDomainClass();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getColumnFinderExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getColumnFinderExpression
      * <em>Column Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Column Finder Expression</em>'.
@@ -3936,9 +3936,9 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getIntersectionMapping_ColumnFinderExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLineFinderExpression
-     * <em>Line Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLineFinderExpression <em>Line
+     * Finder Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Line Finder Expression</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLineFinderExpression()
@@ -3948,8 +3948,8 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getIntersectionMapping_LineFinderExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getSemanticCandidatesExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getSemanticCandidatesExpression
      * <em>Semantic Candidates Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Semantic Candidates Expression</em>'.
@@ -3960,9 +3960,9 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getIntersectionMapping_SemanticCandidatesExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getDomainClass
-     * <em>Domain Class</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getDomainClass <em>Domain
+     * Class</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Domain Class</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getDomainClass()
@@ -3972,8 +3972,8 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getIntersectionMapping_DomainClass();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getPreconditionExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getPreconditionExpression
      * <em>Precondition Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Precondition Expression</em>'.
@@ -4018,9 +4018,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableTool_Variables();
 
     /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableTool#getFirstModelOperation
-     * <em>First Model Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableTool#getFirstModelOperation <em>First Model
+     * Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference '<em>First Model Operation</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableTool#getFirstModelOperation()
@@ -4084,9 +4084,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getCreateColumnTool_Mapping();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool
-     * <em>Create Cross Column Tool</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool <em>Create Cross Column
+     * Tool</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Create Cross Column Tool</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool
@@ -4095,8 +4095,8 @@ public interface DescriptionPackage extends EPackage {
     EClass getCreateCrossColumnTool();
 
     /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool#getMapping <em>Mapping</em>}'.
+     * Returns the meta object for the reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool#getMapping <em>Mapping</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Mapping</em>'.
@@ -4217,9 +4217,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getDeleteLineTool_Mapping();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription
-     * <em>Foreground Style Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription <em>Foreground Style
+     * Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Foreground Style Description</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription
@@ -4228,9 +4228,9 @@ public interface DescriptionPackage extends EPackage {
     EClass getForegroundStyleDescription();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelSize
-     * <em>Label Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelSize <em>Label
+     * Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Label Size</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelSize()
@@ -4240,9 +4240,9 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getForegroundStyleDescription_LabelSize();
 
     /**
-     * Returns the meta object for the attribute list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelFormat
-     * <em>Label Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute list
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelFormat <em>Label
+     * Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute list '<em>Label Format</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelFormat()
@@ -4252,8 +4252,8 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getForegroundStyleDescription_LabelFormat();
 
     /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getForeGroundColor
+     * Returns the meta object for the reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getForeGroundColor
      * <em>Fore Ground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Fore Ground Color</em>'.
@@ -4264,9 +4264,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getForegroundStyleDescription_ForeGroundColor();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription
-     * <em>Background Style Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription <em>Background Style
+     * Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Background Style Description</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription
@@ -4275,8 +4275,8 @@ public interface DescriptionPackage extends EPackage {
     EClass getBackgroundStyleDescription();
 
     /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription#getBackgroundColor
+     * Returns the meta object for the reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Background Color</em>'.
@@ -4287,9 +4287,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getBackgroundStyleDescription_BackgroundColor();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle
-     * <em>Foreground Conditional Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle <em>Foreground
+     * Conditional Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Foreground Conditional Style</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle
@@ -4298,8 +4298,8 @@ public interface DescriptionPackage extends EPackage {
     EClass getForegroundConditionalStyle();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getPredicateExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getPredicateExpression
      * <em>Predicate Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Predicate Expression</em>'.
@@ -4310,9 +4310,9 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getForegroundConditionalStyle_PredicateExpression();
 
     /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getStyle <em>Style</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getStyle()
@@ -4322,9 +4322,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getForegroundConditionalStyle_Style();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle
-     * <em>Background Conditional Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle <em>Background
+     * Conditional Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Background Conditional Style</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle
@@ -4333,8 +4333,8 @@ public interface DescriptionPackage extends EPackage {
     EClass getBackgroundConditionalStyle();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle#getPredicateExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle#getPredicateExpression
      * <em>Predicate Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Predicate Expression</em>'.
@@ -4345,9 +4345,9 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getBackgroundConditionalStyle_PredicateExpression();
 
     /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle#getStyle <em>Style</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle#getStyle()
@@ -4367,9 +4367,9 @@ public interface DescriptionPackage extends EPackage {
     EClass getTableVariable();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableVariable#getDocumentation <em>Documentation</em>
-     * }'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableVariable#getDocumentation
+     * <em>Documentation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Documentation</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableVariable#getDocumentation()
@@ -4379,9 +4379,9 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getTableVariable_Documentation();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription
-     * <em>Table Creation Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription <em>Table Creation
+     * Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Table Creation Description</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription
@@ -4390,8 +4390,8 @@ public interface DescriptionPackage extends EPackage {
     EClass getTableCreationDescription();
 
     /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription#getTableDescription
+     * Returns the meta object for the reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription#getTableDescription
      * <em>Table Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Table Description</em>'.
@@ -4402,9 +4402,9 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableCreationDescription_TableDescription();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription
-     * <em>Table Navigation Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription <em>Table Navigation
+     * Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Table Navigation Description</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription
@@ -4413,8 +4413,8 @@ public interface DescriptionPackage extends EPackage {
     EClass getTableNavigationDescription();
 
     /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription#getTableDescription
+     * Returns the meta object for the reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription#getTableDescription
      * <em>Table Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Table Description</em>'.
@@ -4446,9 +4446,9 @@ public interface DescriptionPackage extends EPackage {
      */
     interface Literals {
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl
-         * <em>Table Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl <em>Table
+         * Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableDescription()
@@ -4585,9 +4585,9 @@ public interface DescriptionPackage extends EPackage {
         EReference TABLE_DESCRIPTION__IMPORTED_ELEMENTS = DescriptionPackage.eINSTANCE.getTableDescription_ImportedElements();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl
-         * <em>Edition Table Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl <em>Edition
+         * Table Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getEditionTableDescription()
@@ -4620,9 +4620,9 @@ public interface DescriptionPackage extends EPackage {
         EReference EDITION_TABLE_DESCRIPTION__ALL_COLUMN_MAPPINGS = DescriptionPackage.eINSTANCE.getEditionTableDescription_AllColumnMappings();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl
-         * <em>Cross Table Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl <em>Cross Table
+         * Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCrossTableDescription()
@@ -4655,8 +4655,8 @@ public interface DescriptionPackage extends EPackage {
         EReference CROSS_TABLE_DESCRIPTION__CREATE_COLUMN = DescriptionPackage.eINSTANCE.getCrossTableDescription_CreateColumn();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableMappingImpl <em>Table Mapping</em>}'
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableMappingImpl <em>Table Mapping</em>}'
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.TableMappingImpl
@@ -4674,8 +4674,8 @@ public interface DescriptionPackage extends EPackage {
         EAttribute TABLE_MAPPING__SEMANTIC_ELEMENTS = DescriptionPackage.eINSTANCE.getTableMapping_SemanticElements();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl <em>Line Mapping</em>}'
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl <em>Line Mapping</em>}'
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl
@@ -4757,8 +4757,8 @@ public interface DescriptionPackage extends EPackage {
         EReference LINE_MAPPING__REUSED_IN_MAPPINGS = DescriptionPackage.eINSTANCE.getLineMapping_ReusedInMappings();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ColumnMappingImpl <em>Column Mapping</em>}'
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.ColumnMappingImpl <em>Column Mapping</em>}'
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.ColumnMappingImpl
@@ -4784,9 +4784,9 @@ public interface DescriptionPackage extends EPackage {
         EAttribute COLUMN_MAPPING__INITIAL_WIDTH = DescriptionPackage.eINSTANCE.getColumnMapping_InitialWidth();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl
-         * <em>Element Column Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl <em>Element Column
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getElementColumnMapping()
@@ -4827,9 +4827,9 @@ public interface DescriptionPackage extends EPackage {
         EReference ELEMENT_COLUMN_MAPPING__DELETE = DescriptionPackage.eINSTANCE.getElementColumnMapping_Delete();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl
-         * <em>Feature Column Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl <em>Feature Column
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getFeatureColumnMapping()
@@ -4862,8 +4862,8 @@ public interface DescriptionPackage extends EPackage {
         EAttribute FEATURE_COLUMN_MAPPING__FEATURE_PARENT_EXPRESSION = DescriptionPackage.eINSTANCE.getFeatureColumnMapping_FeatureParentExpression();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl <em>Cell Updater</em>}'
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl <em>Cell Updater</em>}'
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl
@@ -4889,8 +4889,8 @@ public interface DescriptionPackage extends EPackage {
         EAttribute CELL_UPDATER__CAN_EDIT = DescriptionPackage.eINSTANCE.getCellUpdater_CanEdit();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.StyleUpdaterImpl <em>Style Updater</em>}'
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.StyleUpdaterImpl <em>Style Updater</em>}'
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.StyleUpdaterImpl
@@ -4932,9 +4932,9 @@ public interface DescriptionPackage extends EPackage {
         EReference STYLE_UPDATER__BACKGROUND_CONDITIONAL_STYLE = DescriptionPackage.eINSTANCE.getStyleUpdater_BackgroundConditionalStyle();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl
-         * <em>Intersection Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl <em>Intersection
+         * Mapping</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getIntersectionMapping()
@@ -5023,8 +5023,8 @@ public interface DescriptionPackage extends EPackage {
         EReference INTERSECTION_MAPPING__CREATE = DescriptionPackage.eINSTANCE.getIntersectionMapping_Create();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableToolImpl <em>Table Tool</em>}' class.
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableToolImpl <em>Table Tool</em>}' class.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.TableToolImpl
@@ -5050,9 +5050,9 @@ public interface DescriptionPackage extends EPackage {
         EReference TABLE_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.eINSTANCE.getTableTool_FirstModelOperation();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.LabelEditToolImpl <em>Label Edit Tool</em>}'
-         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.LabelEditToolImpl <em>Label Edit
+         * Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.LabelEditToolImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getLabelEditTool()
@@ -5069,9 +5069,9 @@ public interface DescriptionPackage extends EPackage {
         EReference LABEL_EDIT_TOOL__MASK = DescriptionPackage.eINSTANCE.getLabelEditTool_Mask();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateToolImpl <em>Create Tool</em>}' class.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateToolImpl <em>Create Tool</em>}'
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.CreateToolImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateTool()
@@ -5080,9 +5080,9 @@ public interface DescriptionPackage extends EPackage {
         EClass CREATE_TOOL = DescriptionPackage.eINSTANCE.getCreateTool();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateColumnToolImpl
-         * <em>Create Column Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateColumnToolImpl <em>Create Column
+         * Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.CreateColumnToolImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateColumnTool()
@@ -5099,9 +5099,9 @@ public interface DescriptionPackage extends EPackage {
         EReference CREATE_COLUMN_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getCreateColumnTool_Mapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCrossColumnToolImpl
-         * <em>Create Cross Column Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCrossColumnToolImpl <em>Create Cross
+         * Column Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.CreateCrossColumnToolImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateCrossColumnTool()
@@ -5118,9 +5118,9 @@ public interface DescriptionPackage extends EPackage {
         EReference CREATE_CROSS_COLUMN_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getCreateCrossColumnTool_Mapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateLineToolImpl <em>Create Line Tool</em>
-         * }' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateLineToolImpl <em>Create Line
+         * Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.CreateLineToolImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateLineTool()
@@ -5137,9 +5137,9 @@ public interface DescriptionPackage extends EPackage {
         EReference CREATE_LINE_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getCreateLineTool_Mapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl <em>Create Cell Tool</em>
-         * }' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl <em>Create Cell
+         * Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateCellTool()
@@ -5164,9 +5164,9 @@ public interface DescriptionPackage extends EPackage {
         EReference CREATE_CELL_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getCreateCellTool_Mapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteToolImpl <em>Delete Tool</em>}' class.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteToolImpl <em>Delete Tool</em>}'
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DeleteToolImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getDeleteTool()
@@ -5175,9 +5175,9 @@ public interface DescriptionPackage extends EPackage {
         EClass DELETE_TOOL = DescriptionPackage.eINSTANCE.getDeleteTool();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteColumnToolImpl
-         * <em>Delete Column Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteColumnToolImpl <em>Delete Column
+         * Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DeleteColumnToolImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getDeleteColumnTool()
@@ -5194,9 +5194,9 @@ public interface DescriptionPackage extends EPackage {
         EReference DELETE_COLUMN_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getDeleteColumnTool_Mapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteLineToolImpl <em>Delete Line Tool</em>
-         * }' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteLineToolImpl <em>Delete Line
+         * Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DeleteLineToolImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getDeleteLineTool()
@@ -5213,8 +5213,8 @@ public interface DescriptionPackage extends EPackage {
         EReference DELETE_LINE_TOOL__MAPPING = DescriptionPackage.eINSTANCE.getDeleteLineTool_Mapping();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl
          * <em>Foreground Style Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl
@@ -5248,8 +5248,8 @@ public interface DescriptionPackage extends EPackage {
         EReference FOREGROUND_STYLE_DESCRIPTION__FORE_GROUND_COLOR = DescriptionPackage.eINSTANCE.getForegroundStyleDescription_ForeGroundColor();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundStyleDescriptionImpl
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundStyleDescriptionImpl
          * <em>Background Style Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundStyleDescriptionImpl
@@ -5267,8 +5267,8 @@ public interface DescriptionPackage extends EPackage {
         EReference BACKGROUND_STYLE_DESCRIPTION__BACKGROUND_COLOR = DescriptionPackage.eINSTANCE.getBackgroundStyleDescription_BackgroundColor();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundConditionalStyleImpl
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundConditionalStyleImpl
          * <em>Foreground Conditional Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundConditionalStyleImpl
@@ -5294,8 +5294,8 @@ public interface DescriptionPackage extends EPackage {
         EReference FOREGROUND_CONDITIONAL_STYLE__STYLE = DescriptionPackage.eINSTANCE.getForegroundConditionalStyle_Style();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundConditionalStyleImpl
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundConditionalStyleImpl
          * <em>Background Conditional Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundConditionalStyleImpl
@@ -5321,8 +5321,8 @@ public interface DescriptionPackage extends EPackage {
         EReference BACKGROUND_CONDITIONAL_STYLE__STYLE = DescriptionPackage.eINSTANCE.getBackgroundConditionalStyle_Style();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableVariableImpl <em>Table Variable</em>}'
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableVariableImpl <em>Table Variable</em>}'
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.TableVariableImpl
@@ -5340,9 +5340,9 @@ public interface DescriptionPackage extends EPackage {
         EAttribute TABLE_VARIABLE__DOCUMENTATION = DescriptionPackage.eINSTANCE.getTableVariable_Documentation();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableCreationDescriptionImpl
-         * <em>Table Creation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableCreationDescriptionImpl <em>Table
+         * Creation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.TableCreationDescriptionImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableCreationDescription()
@@ -5359,9 +5359,9 @@ public interface DescriptionPackage extends EPackage {
         EReference TABLE_CREATION_DESCRIPTION__TABLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getTableCreationDescription_TableDescription();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableNavigationDescriptionImpl
-         * <em>Table Navigation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableNavigationDescriptionImpl <em>Table
+         * Navigation Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.TableNavigationDescriptionImpl
          * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableNavigationDescription()

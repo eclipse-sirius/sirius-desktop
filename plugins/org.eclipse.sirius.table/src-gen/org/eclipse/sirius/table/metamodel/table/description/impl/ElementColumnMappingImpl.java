@@ -40,18 +40,15 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * <ul>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl#getDefaultForeground
  * <em>Default Foreground</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl#getForegroundConditionalStyle
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl#getForegroundConditionalStyle
  * <em>Foreground Conditional Style</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl#getDefaultBackground
  * <em>Default Background</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl#getBackgroundConditionalStyle
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl#getBackgroundConditionalStyle
  * <em>Background Conditional Style</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl#getDomainClass
  * <em>Domain Class</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl#getSemanticCandidatesExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl#getSemanticCandidatesExpression
  * <em>Semantic Candidates Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl#getCreate
  * <em>Create</em>}</li>

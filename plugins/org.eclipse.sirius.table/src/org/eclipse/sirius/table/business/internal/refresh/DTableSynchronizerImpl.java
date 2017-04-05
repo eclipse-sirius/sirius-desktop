@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     private DTable table;
 
-    private final DTableElementSynchronizerSpec sync;
+    private final DTableElementSynchronizer sync;
 
     private RefreshIdsHolder ids;
 
@@ -105,7 +105,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         this.description = description;
         this.interpreter = interpreter;
         this.safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
-        this.sync = new DTableElementSynchronizerSpec(accessor, interpreter);
+        this.sync = new DTableElementSynchronizer(accessor, interpreter);
     }
 
     /**
@@ -382,7 +382,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             }
             newCell.setTarget(featureParent);
             String featureName = cMapping.getFeatureName();
-            if (newCell.getTarget() == null || !(DTableElementSynchronizerSpec.SKIP_FEATURENAME_VALIDATION.equals(featureName) || accessor.eValid(newCell.getTarget(), featureName))) {
+            if (newCell.getTarget() == null || !(DTableElementSynchronizer.SKIP_FEATURENAME_VALIDATION.equals(featureName) || accessor.eValid(newCell.getTarget(), featureName))) {
                 // We don't create a cell in this case.
                 newCell = null;
             }

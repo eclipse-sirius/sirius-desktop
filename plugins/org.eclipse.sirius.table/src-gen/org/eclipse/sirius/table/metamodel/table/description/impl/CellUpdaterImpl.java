@@ -27,10 +27,10 @@ import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl#getDirectEdit
- * <em>Direct Edit</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl#getCanEdit <em>Can Edit</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl#getDirectEdit <em>Direct
+ * Edit</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl#getCanEdit <em>Can
+ * Edit</em>}</li>
  * </ul>
  *
  * @generated

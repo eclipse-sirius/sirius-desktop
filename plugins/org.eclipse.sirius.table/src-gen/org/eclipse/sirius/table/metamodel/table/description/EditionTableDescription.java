@@ -24,8 +24,8 @@ import org.eclipse.emf.common.util.EList;
  * <em>Owned Column Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getReusedColumnMappings
  * <em>Reused Column Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getAllColumnMappings
- * <em>All Column Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getAllColumnMappings <em>All
+ * Column Mappings</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getEditionTableDescription()

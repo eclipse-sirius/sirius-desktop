@@ -20,8 +20,8 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableVariable#getDocumentation <em>Documentation</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableVariable#getDocumentation
+ * <em>Documentation</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableVariable()

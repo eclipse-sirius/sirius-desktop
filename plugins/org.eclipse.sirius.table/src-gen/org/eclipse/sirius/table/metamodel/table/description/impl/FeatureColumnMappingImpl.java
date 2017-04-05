@@ -40,24 +40,21 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * <ul>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getDirectEdit
  * <em>Direct Edit</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getCanEdit
- * <em>Can Edit</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getCanEdit <em>Can
+ * Edit</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getDefaultForeground
  * <em>Default Foreground</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getForegroundConditionalStyle
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getForegroundConditionalStyle
  * <em>Foreground Conditional Style</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getDefaultBackground
  * <em>Default Background</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getBackgroundConditionalStyle
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getBackgroundConditionalStyle
  * <em>Background Conditional Style</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getFeatureName
  * <em>Feature Name</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getLabelExpression
  * <em>Label Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getFeatureParentExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getFeatureParentExpression
  * <em>Feature Parent Expression</em>}</li>
  * </ul>
  *

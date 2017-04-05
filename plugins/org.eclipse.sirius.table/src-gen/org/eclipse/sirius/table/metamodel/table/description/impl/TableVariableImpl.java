@@ -34,8 +34,8 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableVariableImpl#getSubVariables
- * <em>Sub Variables</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableVariableImpl#getSubVariables <em>Sub
+ * Variables</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableVariableImpl#getDocumentation
  * <em>Documentation</em>}</li>
  * </ul>

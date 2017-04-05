@@ -19,10 +19,10 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DCellStyle#getForegroundStyleOrigin
- * <em>Foreground Style Origin</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DCellStyle#getBackgroundStyleOrigin
- * <em>Background Style Origin</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DCellStyle#getForegroundStyleOrigin <em>Foreground Style
+ * Origin</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DCellStyle#getBackgroundStyleOrigin <em>Background Style
+ * Origin</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDCellStyle()

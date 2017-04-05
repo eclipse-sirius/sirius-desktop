@@ -66,15 +66,15 @@ public interface CellUpdater extends EObject {
      * @return the value of the '<em>Can Edit</em>' attribute.
      * @see #setCanEdit(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCellUpdater_CanEdit()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      * @generated
      */
     String getCanEdit();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.CellUpdater#getCanEdit
-     * <em>Can Edit</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.description.CellUpdater#getCanEdit <em>Can
+     * Edit</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Can Edit</em>' attribute.

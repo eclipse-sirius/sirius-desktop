@@ -12,7 +12,6 @@ package org.eclipse.sirius.table.metamodel.table.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -25,7 +24,6 @@ import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
-import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
@@ -103,13 +101,6 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * @generated
      */
     private EClass dFeatureColumnEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass dTableElementSynchronizerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -585,16 +576,6 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * @generated
      */
     @Override
-    public EClass getDTableElementSynchronizer() {
-        return dTableElementSynchronizerEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public EClass getDTableElementStyle() {
         return dTableElementStyleEClass;
     }
@@ -736,8 +717,6 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
 
         dFeatureColumnEClass = createEClass(TablePackage.DFEATURE_COLUMN);
         createEAttribute(dFeatureColumnEClass, TablePackage.DFEATURE_COLUMN__FEATURE_NAME);
-
-        dTableElementSynchronizerEClass = createEClass(TablePackage.DTABLE_ELEMENT_SYNCHRONIZER);
 
         dTableElementStyleEClass = createEClass(TablePackage.DTABLE_ELEMENT_STYLE);
         createEAttribute(dTableElementStyleEClass, TablePackage.DTABLE_ELEMENT_STYLE__LABEL_SIZE);
@@ -910,18 +889,6 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
         initEAttribute(getDFeatureColumn_FeatureName(), theEcorePackage.getEString(), "featureName", null, 1, 1, DFeatureColumn.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE,
                 !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-
-        initEClass(dTableElementSynchronizerEClass, DTableElementSynchronizer.class, "DTableElementSynchronizer", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
-                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-
-        EOperation op = addEOperation(dTableElementSynchronizerEClass, null, "refresh", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, this.getDCell(), "cell", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(dTableElementSynchronizerEClass, null, "refresh", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, this.getDColumn(), "column", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        op = addEOperation(dTableElementSynchronizerEClass, null, "refresh", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        addEParameter(op, this.getDLine(), "line", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         initEClass(dTableElementStyleEClass, DTableElementStyle.class, "DTableElementStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getDTableElementStyle_LabelSize(), theEcorePackage.getEInt(), "labelSize", "8", 0, 1, DTableElementStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$

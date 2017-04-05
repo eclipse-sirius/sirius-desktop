@@ -66,17 +66,6 @@
     <genClasses ecoreClass="table.ecore#//DFeatureColumn">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DFeatureColumn/featureName"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="table.ecore#//DTableElementSynchronizer">
-      <genOperations ecoreOperation="table.ecore#//DTableElementSynchronizer/refresh">
-        <genParameters ecoreParameter="table.ecore#//DTableElementSynchronizer/refresh/cell"/>
-      </genOperations>
-      <genOperations ecoreOperation="table.ecore#//DTableElementSynchronizer/refresh.1">
-        <genParameters ecoreParameter="table.ecore#//DTableElementSynchronizer/refresh.1/column"/>
-      </genOperations>
-      <genOperations ecoreOperation="table.ecore#//DTableElementSynchronizer/refresh.2">
-        <genParameters ecoreParameter="table.ecore#//DTableElementSynchronizer/refresh.2/line"/>
-      </genOperations>
-    </genClasses>
     <genClasses ecoreClass="table.ecore#//DTableElementStyle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/labelSize"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/labelFormat"/>

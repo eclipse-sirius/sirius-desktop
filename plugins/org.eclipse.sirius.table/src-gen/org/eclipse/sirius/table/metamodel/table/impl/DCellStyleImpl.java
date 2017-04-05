@@ -24,10 +24,10 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellStyleImpl#getForegroundStyleOrigin
- * <em>Foreground Style Origin</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellStyleImpl#getBackgroundStyleOrigin
- * <em>Background Style Origin</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellStyleImpl#getForegroundStyleOrigin <em>Foreground Style
+ * Origin</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellStyleImpl#getBackgroundStyleOrigin <em>Background Style
+ * Origin</em>}</li>
  * </ul>
  *
  * @generated

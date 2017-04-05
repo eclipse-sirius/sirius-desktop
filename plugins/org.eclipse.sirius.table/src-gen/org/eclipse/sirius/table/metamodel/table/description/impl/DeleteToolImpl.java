@@ -33,10 +33,10 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteToolImpl#getVariables <em>Variables</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteToolImpl#getFirstModelOperation
- * <em>First Model Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteToolImpl#getVariables
+ * <em>Variables</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteToolImpl#getFirstModelOperation <em>First
+ * Model Operation</em>}</li>
  * </ul>
  *
  * @generated

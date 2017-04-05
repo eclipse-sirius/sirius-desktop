@@ -20,8 +20,8 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElement#getTableElementMapping
- * <em>Table Element Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElement#getTableElementMapping <em>Table Element
+ * Mapping</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElement()

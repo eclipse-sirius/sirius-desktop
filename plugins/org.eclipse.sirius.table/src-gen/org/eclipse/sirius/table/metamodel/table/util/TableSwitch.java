@@ -22,7 +22,6 @@ import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
-import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
@@ -309,14 +308,6 @@ public class TableSwitch<T> {
             }
             return result;
         }
-        case TablePackage.DTABLE_ELEMENT_SYNCHRONIZER: {
-            DTableElementSynchronizer dTableElementSynchronizer = (DTableElementSynchronizer) theEObject;
-            T result = caseDTableElementSynchronizer(dTableElementSynchronizer);
-            if (result == null) {
-                result = defaultCase(theEObject);
-            }
-            return result;
-        }
         case TablePackage.DTABLE_ELEMENT_STYLE: {
             DTableElementStyle dTableElementStyle = (DTableElementStyle) theEObject;
             T result = caseDTableElementStyle(dTableElementStyle);
@@ -457,21 +448,6 @@ public class TableSwitch<T> {
      * @generated
      */
     public T caseDFeatureColumn(DFeatureColumn object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '<em>DTable Element Synchronizer</em>'. <!--
-     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>DTable Element Synchronizer</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDTableElementSynchronizer(DTableElementSynchronizer object) {
         return null;
     }
 

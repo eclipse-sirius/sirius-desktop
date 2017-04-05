@@ -98,8 +98,8 @@ public interface DColumn extends DTableElement {
     ColumnMapping getOriginMapping();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DColumn#getOriginMapping
-     * <em>Origin Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DColumn#getOriginMapping <em>Origin
+     * Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Origin Mapping</em>' reference.
@@ -109,8 +109,8 @@ public interface DColumn extends DTableElement {
     void setOriginMapping(ColumnMapping value);
 
     /**
-     * Returns the value of the '<em><b>Table</b></em>' container reference. It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.table.metamodel.table.DTable#getColumns <em>Columns</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Table</b></em>' container reference. It is bidirectional and its opposite is
+     * '{@link org.eclipse.sirius.table.metamodel.table.DTable#getColumns <em>Columns</em>}'. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Table</em>' container reference isn't clear, there really should be more of a
      * description here...
@@ -226,8 +226,8 @@ public interface DColumn extends DTableElement {
     DTableElementStyle getCurrentStyle();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DColumn#getCurrentStyle
-     * <em>Current Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DColumn#getCurrentStyle <em>Current
+     * Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Current Style</em>' containment reference.

@@ -51,12 +51,12 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * <em>Initialisation</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getMetamodel
  * <em>Metamodel</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#isShowOnStartup
- * <em>Show On Startup</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#isShowOnStartup <em>Show On
+ * Startup</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getPreconditionExpression
  * <em>Precondition Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getDomainClass
- * <em>Domain Class</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getDomainClass <em>Domain
+ * Class</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getOwnedRepresentationCreationDescriptions
  * <em>Owned Representation Creation Descriptions</em>}</li>
@@ -79,14 +79,14 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * <em>Owned Line Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getReusedLineMappings
  * <em>Reused Line Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getAllLineMappings
- * <em>All Line Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getAllLineMappings <em>All
+ * Line Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getOwnedCreateLine
  * <em>Owned Create Line</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getReusedCreateLine
  * <em>Reused Create Line</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getAllCreateLine
- * <em>All Create Line</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getAllCreateLine <em>All
+ * Create Line</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getInitialHeaderColumnWidth
  * <em>Initial Header Column Width</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableDescriptionImpl#getImportedElements
@@ -267,9 +267,8 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected String domainClass = TableDescriptionImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getOwnedRepresentationCreationDescriptions()
-     * <em>Owned Representation Creation Descriptions</em>}' containment reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getOwnedRepresentationCreationDescriptions() <em>Owned Representation Creation
+     * Descriptions</em>}' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #getOwnedRepresentationCreationDescriptions()
      * @generated
@@ -278,9 +277,8 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected EList<RepresentationCreationDescription> ownedRepresentationCreationDescriptions;
 
     /**
-     * The cached value of the '{@link #getReusedRepresentationCreationDescriptions()
-     * <em>Reused Representation Creation Descriptions</em>}' reference list. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The cached value of the '{@link #getReusedRepresentationCreationDescriptions() <em>Reused Representation Creation
+     * Descriptions</em>}' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getReusedRepresentationCreationDescriptions()
      * @generated
@@ -289,9 +287,8 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected EList<RepresentationCreationDescription> reusedRepresentationCreationDescriptions;
 
     /**
-     * The cached value of the '{@link #getOwnedRepresentationNavigationDescriptions()
-     * <em>Owned Representation Navigation Descriptions</em>}' containment reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getOwnedRepresentationNavigationDescriptions() <em>Owned Representation
+     * Navigation Descriptions</em>}' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #getOwnedRepresentationNavigationDescriptions()
      * @generated
@@ -300,9 +297,8 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     protected EList<RepresentationNavigationDescription> ownedRepresentationNavigationDescriptions;
 
     /**
-     * The cached value of the '{@link #getReusedRepresentationNavigationDescriptions()
-     * <em>Reused Representation Navigation Descriptions</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getReusedRepresentationNavigationDescriptions() <em>Reused Representation
+     * Navigation Descriptions</em>}' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #getReusedRepresentationNavigationDescriptions()
      * @generated

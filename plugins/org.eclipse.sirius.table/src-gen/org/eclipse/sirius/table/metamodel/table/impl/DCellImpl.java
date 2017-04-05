@@ -46,17 +46,17 @@ import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getSemanticElements <em>Semantic Elements</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getTableElementMapping
- * <em>Table Element Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getSemanticElements <em>Semantic
+ * Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getTableElementMapping <em>Table Element
+ * Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getLabel <em>Label</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getLine <em>Line</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getColumn <em>Column</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getCurrentStyle <em>Current Style</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getUpdater <em>Updater</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getIntersectionMapping
- * <em>Intersection Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getIntersectionMapping <em>Intersection
+ * Mapping</em>}</li>
  * </ul>
  *
  * @generated

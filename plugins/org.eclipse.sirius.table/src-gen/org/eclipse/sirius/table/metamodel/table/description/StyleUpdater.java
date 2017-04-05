@@ -20,12 +20,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultForeground
- * <em>Default Foreground</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultForeground <em>Default
+ * Foreground</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getForegroundConditionalStyle
  * <em>Foreground Conditional Style</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultBackground
- * <em>Default Background</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultBackground <em>Default
+ * Background</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getBackgroundConditionalStyle
  * <em>Background Conditional Style</em>}</li>
  * </ul>
@@ -52,9 +52,9 @@ public interface StyleUpdater extends EObject {
     ForegroundStyleDescription getDefaultForeground();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultForeground
-     * <em>Default Foreground</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultForeground <em>Default
+     * Foreground</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Default Foreground</em>' containment reference.
@@ -97,9 +97,9 @@ public interface StyleUpdater extends EObject {
     BackgroundStyleDescription getDefaultBackground();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultBackground
-     * <em>Default Background</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultBackground <em>Default
+     * Background</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Default Background</em>' containment reference.

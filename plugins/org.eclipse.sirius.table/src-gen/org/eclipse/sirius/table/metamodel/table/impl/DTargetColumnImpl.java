@@ -49,10 +49,10 @@ import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl#getSemanticElements
- * <em>Semantic Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl#getTableElementMapping
- * <em>Table Element Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl#getSemanticElements <em>Semantic
+ * Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl#getTableElementMapping <em>Table Element
+ * Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl#getLabel <em>Label</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl#getCells <em>Cells</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl#getOriginMapping <em>Origin Mapping</em>}

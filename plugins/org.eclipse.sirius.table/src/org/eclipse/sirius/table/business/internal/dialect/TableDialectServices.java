@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
 import org.eclipse.sirius.table.business.internal.dialect.description.TableInterpretedExpressionQuery;
-import org.eclipse.sirius.table.business.internal.refresh.DTableElementSynchronizerSpec;
+import org.eclipse.sirius.table.business.internal.refresh.DTableElementSynchronizer;
 import org.eclipse.sirius.table.business.internal.refresh.DTableSynchronizerImpl;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
@@ -291,7 +291,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
 
             Set<DTableElement> dTableElements = getTableElementsToRefresh(notifications, table);
             monitor.worked(2);
-            DTableElementSynchronizerSpec synchronizer = new DTableElementSynchronizerSpec(accessor, interpreter);
+            DTableElementSynchronizer synchronizer = new DTableElementSynchronizer(accessor, interpreter);
             IProgressMonitor subMonitor = new SubProgressMonitor(monitor, 8);
             try {
                 subMonitor.beginTask(Messages.TableDialectServices_RefreshImpactedElements, dTableElements.size());

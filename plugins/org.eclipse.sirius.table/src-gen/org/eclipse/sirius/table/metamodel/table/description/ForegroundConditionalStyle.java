@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getPredicateExpression
  * <em>Predicate Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getStyle <em>Style</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getStyle
+ * <em>Style</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getForegroundConditionalStyle()
@@ -42,15 +42,15 @@ public interface ForegroundConditionalStyle extends EObject {
      * @return the value of the '<em>Predicate Expression</em>' attribute.
      * @see #setPredicateExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getForegroundConditionalStyle_PredicateExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true" annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      * @generated
      */
     String getPredicateExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getPredicateExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getPredicateExpression
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
@@ -77,8 +77,8 @@ public interface ForegroundConditionalStyle extends EObject {
     ForegroundStyleDescription getStyle();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getStyle <em>Style</em>}'
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getStyle <em>Style</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value

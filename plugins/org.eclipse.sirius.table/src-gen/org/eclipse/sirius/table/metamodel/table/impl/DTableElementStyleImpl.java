@@ -32,18 +32,18 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getLabelSize <em>Label Size</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getLabelFormat <em>Label Format</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#isDefaultForegroundStyle
- * <em>Default Foreground Style</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#isDefaultBackgroundStyle
- * <em>Default Background Style</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getForegroundColor
- * <em>Foreground Color</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getBackgroundColor
- * <em>Background Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getLabelSize <em>Label
+ * Size</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getLabelFormat <em>Label
+ * Format</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#isDefaultForegroundStyle <em>Default
+ * Foreground Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#isDefaultBackgroundStyle <em>Default
+ * Background Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getForegroundColor <em>Foreground
+ * Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getBackgroundColor <em>Background
+ * Color</em>}</li>
  * </ul>
  *
  * @generated

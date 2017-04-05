@@ -30,11 +30,9 @@ import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl#getOwnedColumnMappings
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl#getOwnedColumnMappings
  * <em>Owned Column Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl#getReusedColumnMappings
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl#getReusedColumnMappings
  * <em>Reused Column Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl#getAllColumnMappings
  * <em>All Column Mappings</em>}</li>

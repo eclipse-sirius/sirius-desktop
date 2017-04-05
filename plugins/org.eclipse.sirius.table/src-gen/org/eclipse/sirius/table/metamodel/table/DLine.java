@@ -79,8 +79,8 @@ public interface DLine extends LineContainer, DTableElement {
     LineMapping getOriginMapping();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#getOriginMapping
-     * <em>Origin Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#getOriginMapping <em>Origin
+     * Mapping</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Origin Mapping</em>' reference.
@@ -226,8 +226,8 @@ public interface DLine extends LineContainer, DTableElement {
     DTableElementStyle getCurrentStyle();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#getCurrentStyle
-     * <em>Current Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DLine#getCurrentStyle <em>Current
+     * Style</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Current Style</em>' containment reference.

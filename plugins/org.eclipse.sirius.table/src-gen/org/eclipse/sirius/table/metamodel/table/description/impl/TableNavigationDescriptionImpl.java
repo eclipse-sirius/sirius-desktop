@@ -26,8 +26,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigati
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableNavigationDescriptionImpl#getTableDescription
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableNavigationDescriptionImpl#getTableDescription
  * <em>Table Description</em>}</li>
  * </ul>
  *

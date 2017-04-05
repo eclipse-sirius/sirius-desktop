@@ -45,8 +45,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl#getLabel <em>Label</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl#getPrecondition
  * <em>Precondition</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl#isForceRefresh
- * <em>Force Refresh</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl#isForceRefresh <em>Force
+ * Refresh</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl#getFilters <em>Filters</em>}
  * </li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl#getElementsToSelect

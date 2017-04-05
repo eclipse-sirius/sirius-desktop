@@ -27,8 +27,8 @@ import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteColumnToolImpl#getMapping <em>Mapping</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteColumnToolImpl#getMapping
+ * <em>Mapping</em>}</li>
  * </ul>
  *
  * @generated

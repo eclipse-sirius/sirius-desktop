@@ -25,8 +25,8 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
  * <ul>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ColumnMappingImpl#getHeaderLabelExpression
  * <em>Header Label Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ColumnMappingImpl#getInitialWidth
- * <em>Initial Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ColumnMappingImpl#getInitialWidth <em>Initial
+ * Width</em>}</li>
  * </ul>
  *
  * @generated

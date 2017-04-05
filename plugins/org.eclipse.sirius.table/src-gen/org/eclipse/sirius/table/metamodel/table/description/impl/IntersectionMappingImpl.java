@@ -41,40 +41,35 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDirectEdit
- * <em>Direct Edit</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getCanEdit
- * <em>Can Edit</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDirectEdit <em>Direct
+ * Edit</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getCanEdit <em>Can
+ * Edit</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDefaultForeground
  * <em>Default Foreground</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getForegroundConditionalStyle
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getForegroundConditionalStyle
  * <em>Foreground Conditional Style</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDefaultBackground
  * <em>Default Background</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getBackgroundConditionalStyle
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getBackgroundConditionalStyle
  * <em>Background Conditional Style</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getLineMapping
- * <em>Line Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getLineMapping <em>Line
+ * Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getColumnMapping
  * <em>Column Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getLabelExpression
  * <em>Label Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#isUseDomainClass
- * <em>Use Domain Class</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getColumnFinderExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#isUseDomainClass <em>Use
+ * Domain Class</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getColumnFinderExpression
  * <em>Column Finder Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getLineFinderExpression
  * <em>Line Finder Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getSemanticCandidatesExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getSemanticCandidatesExpression
  * <em>Semantic Candidates Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDomainClass
  * <em>Domain Class</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getPreconditionExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getPreconditionExpression
  * <em>Precondition Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getCreate
  * <em>Create</em>}</li>

@@ -40,8 +40,8 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl#getTarget <em>Target</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl#getLines <em>Lines</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl#getColumns <em>Columns</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl#getHeaderColumnWidth <em>Header Column Width</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl#getHeaderColumnWidth <em>Header Column
+ * Width</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *

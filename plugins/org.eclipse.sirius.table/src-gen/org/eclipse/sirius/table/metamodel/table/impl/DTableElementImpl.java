@@ -24,8 +24,8 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementImpl#getTableElementMapping
- * <em>Table Element Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementImpl#getTableElementMapping <em>Table Element
+ * Mapping</em>}</li>
  * </ul>
  *
  * @generated

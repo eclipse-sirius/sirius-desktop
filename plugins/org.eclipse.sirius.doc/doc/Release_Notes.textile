@@ -21,6 +21,10 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * <span class="label label-danger">Removed</span> The methods @getFormatData(FormatDataKey key)@ and @addFormatData(FormatDataKey key, AbstractFormatData formatData)@ have been removed from interface @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager@ because they were deprecated.
 * <span class="label label-danger">Removed</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping@ has been removed because all its methods have been moved into interface @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager@
 
+h4. Changes in @org.eclipse.sirius.table@
+
+* <span class="label label-danger">Removed</span> The @DTableElementSynchronizer@ _EClass_ has been removed from the table meta-model. It only defined _EOperations_ and has been replaced with an equivalent (internal) plain Java class.
+
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> The method @getTreeItem(SWTBotTreeItem[], String, boolean, boolean)@ has been added in @org.eclipse.sirius.tests.swtbot.support.utils@ to retrieve recursively a @SWTBotTreeItem@ in a @SWTBotTreeItem@ array. Compared to @getTreeItem(SWTBotTreeItem[], String)@, it adds the capability to control if the search must be done on enabled items or enabled and disabled items and if the tree must be expanded during the search to check non displayed items.

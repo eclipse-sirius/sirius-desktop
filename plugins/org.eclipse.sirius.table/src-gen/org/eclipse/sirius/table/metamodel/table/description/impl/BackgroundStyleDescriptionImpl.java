@@ -26,8 +26,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundStyleDescriptionImpl#getBackgroundColor
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundStyleDescriptionImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
  * </ul>
  *

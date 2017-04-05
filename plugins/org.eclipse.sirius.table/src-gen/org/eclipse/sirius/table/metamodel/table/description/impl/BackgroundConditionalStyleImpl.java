@@ -27,8 +27,7 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundConditionalStyleImpl#getPredicateExpression
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundConditionalStyleImpl#getPredicateExpression
  * <em>Predicate Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundConditionalStyleImpl#getStyle
  * <em>Style</em>}</li>

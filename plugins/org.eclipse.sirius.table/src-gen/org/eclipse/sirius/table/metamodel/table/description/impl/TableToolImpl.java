@@ -32,10 +32,10 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableToolImpl#getVariables <em>Variables</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableToolImpl#getFirstModelOperation
- * <em>First Model Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableToolImpl#getVariables
+ * <em>Variables</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableToolImpl#getFirstModelOperation <em>First
+ * Model Operation</em>}</li>
  * </ul>
  *
  * @generated

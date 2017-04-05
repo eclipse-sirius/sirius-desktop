@@ -35,8 +35,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Label Size</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl#getLabelFormat
  * <em>Label Format</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl#getForeGroundColor
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.ForegroundStyleDescriptionImpl#getForeGroundColor
  * <em>Fore Ground Color</em>}</li>
  * </ul>
  *

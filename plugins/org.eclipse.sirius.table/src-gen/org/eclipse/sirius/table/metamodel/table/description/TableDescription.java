@@ -48,22 +48,22 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllRepresentationNavigationDescriptions
  * <em>All Representation Navigation Descriptions</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedLineMappings
- * <em>Owned Line Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedLineMappings
- * <em>Reused Line Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllLineMappings
- * <em>All Line Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedCreateLine
- * <em>Owned Create Line</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedCreateLine
- * <em>Reused Create Line</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllCreateLine
- * <em>All Create Line</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedLineMappings <em>Owned Line
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedLineMappings <em>Reused
+ * Line Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllLineMappings <em>All Line
+ * Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getOwnedCreateLine <em>Owned Create
+ * Line</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getReusedCreateLine <em>Reused
+ * Create Line</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getAllCreateLine <em>All Create
+ * Line</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getInitialHeaderColumnWidth
  * <em>Initial Header Column Width</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getImportedElements
- * <em>Imported Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getImportedElements <em>Imported
+ * Elements</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableDescription()
@@ -86,8 +86,8 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
     String getPreconditionExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getPreconditionExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getPreconditionExpression
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
@@ -114,9 +114,9 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
     String getDomainClass();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getDomainClass <em>Domain Class</em>
-     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getDomainClass <em>Domain
+     * Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
@@ -313,8 +313,8 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
     int getInitialHeaderColumnWidth();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getInitialHeaderColumnWidth
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription#getInitialHeaderColumnWidth
      * <em>Initial Header Column Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value

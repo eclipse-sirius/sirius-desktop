@@ -37,24 +37,24 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getDefaultForeground
- * <em>Default Foreground</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getDefaultForeground <em>Default
+ * Foreground</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getForegroundConditionalStyle
  * <em>Foreground Conditional Style</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getDefaultBackground
- * <em>Default Background</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getDefaultBackground <em>Default
+ * Background</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getBackgroundConditionalStyle
  * <em>Background Conditional Style</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getOwnedSubLines
- * <em>Owned Sub Lines</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getReusedSubLines
- * <em>Reused Sub Lines</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getAllSubLines
- * <em>All Sub Lines</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getReusedInMappings
- * <em>Reused In Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getDomainClass
- * <em>Domain Class</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getOwnedSubLines <em>Owned Sub
+ * Lines</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getReusedSubLines <em>Reused Sub
+ * Lines</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getAllSubLines <em>All Sub
+ * Lines</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getReusedInMappings <em>Reused
+ * In Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getDomainClass <em>Domain
+ * Class</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getCreate <em>Create</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getDelete <em>Delete</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getSemanticCandidatesExpression

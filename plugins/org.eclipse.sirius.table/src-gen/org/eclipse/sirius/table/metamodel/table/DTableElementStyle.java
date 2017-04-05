@@ -25,14 +25,14 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <ul>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelSize <em>Label Size</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelFormat <em>Label Format</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultForegroundStyle
- * <em>Default Foreground Style</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultBackgroundStyle
- * <em>Default Background Style</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getForegroundColor <em>Foreground Color</em>}
- * </li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getBackgroundColor <em>Background Color</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultForegroundStyle <em>Default
+ * Foreground Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultBackgroundStyle <em>Default
+ * Background Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getForegroundColor <em>Foreground
+ * Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getBackgroundColor <em>Background
+ * Color</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementStyle()
@@ -53,8 +53,8 @@ public interface DTableElementStyle extends EObject {
     int getLabelSize();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelSize
-     * <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelSize <em>Label
+     * Size</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
@@ -147,9 +147,9 @@ public interface DTableElementStyle extends EObject {
     boolean isDefaultForegroundStyle();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultForegroundStyle
-     * <em>Default Foreground Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultForegroundStyle <em>Default
+     * Foreground Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Default Foreground Style</em>' attribute.
@@ -172,9 +172,9 @@ public interface DTableElementStyle extends EObject {
     boolean isDefaultBackgroundStyle();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultBackgroundStyle
-     * <em>Default Background Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultBackgroundStyle <em>Default
+     * Background Style</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Default Background Style</em>' attribute.

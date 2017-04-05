@@ -22,7 +22,6 @@ import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
-import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
@@ -129,11 +128,6 @@ public class TableAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDFeatureColumn(DFeatureColumn object) {
             return createDFeatureColumnAdapter();
-        }
-
-        @Override
-        public Adapter caseDTableElementSynchronizer(DTableElementSynchronizer object) {
-            return createDTableElementSynchronizerAdapter();
         }
 
         @Override
@@ -323,20 +317,6 @@ public class TableAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer <em>DTable Element Synchronizer</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
-     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer
-     * @generated
-     */
-    public Adapter createDTableElementSynchronizerAdapter() {
-        return null;
-    }
-
-    /**
      * Creates a new adapter for an object of class '{@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle
      * <em>DTable Element Style</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
      * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
@@ -421,10 +401,9 @@ public class TableAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DMappingBased
-     * <em>DMapping Based</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
-     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
-     * -->
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DMappingBased <em>DMapping
+     * Based</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.DMappingBased

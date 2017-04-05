@@ -23,10 +23,10 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelSize
- * <em>Label Size</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelFormat
- * <em>Label Format</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelSize <em>Label
+ * Size</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelFormat <em>Label
+ * Format</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getForeGroundColor
  * <em>Fore Ground Color</em>}</li>
  * </ul>
@@ -49,9 +49,9 @@ public interface ForegroundStyleDescription extends EObject {
     int getLabelSize();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelSize
-     * <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelSize <em>Label
+     * Size</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
@@ -91,8 +91,8 @@ public interface ForegroundStyleDescription extends EObject {
     ColorDescription getForeGroundColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getForeGroundColor
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getForeGroundColor
      * <em>Fore Ground Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
