@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.swtbot;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.stream.Stream;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
@@ -27,7 +28,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -35,8 +35,6 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-
-import com.google.common.collect.Iterables;
 
 /**
  * This class aims to test the behavior of additional layers. A mandatory
@@ -146,9 +144,11 @@ public class AdditionalLayerTest extends AbstractSiriusSwtBotGefTestCase {
 
         session = localSession.getOpenedSession();
         DAnalysis analysis = (DAnalysis) session.getSessionResource().getContents().get(0);
-        EList<Layer> activatedLayers = ((DDiagram) new DViewQuery(analysis.getOwnedViews().get(0)).getLoadedRepresentations().iterator().next()).getActivatedLayers();
-        Iterable<AdditionalLayer> additionalLayers = Iterables.filter(activatedLayers, AdditionalLayer.class);
-        assertEquals("There should be " + expectedNumber + " activated additional layers.", expectedNumber, Iterables.size(additionalLayers));
+        DDiagram dDiagram = (DDiagram) new DViewQuery(analysis.getOwnedViews().get(0)).getLoadedRepresentations().iterator().next();
+        long nbAdditionalLayers = Stream.concat(dDiagram.getActivatedLayers().stream(), dDiagram.getActivatedTransientLayers().stream())//
+                .filter(AdditionalLayer.class::isInstance)//
+                .count();
+        assertEquals("There should be " + expectedNumber + " activated additional layers.", expectedNumber, nbAdditionalLayers);
 
     }
 }
