@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.internal.dialect;
 
+import java.lang.ref.SoftReference;
 import java.text.MessageFormat;
 
 import org.eclipse.core.runtime.ILogListener;
@@ -56,14 +57,30 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
      */
     private ICommonLabelProvider labelProvider;
 
+    /**
+     * Remembers the last error logged to avoid repeated notifications. Use a
+     * soft reference to avoid leaks as the log listener is a global singleton,
+     * and some exceptions may have references to large application-level
+     * objects.
+     */
+    private SoftReference<Throwable> previousError;
+
     private LogThroughActiveDialectEditorLogListener() {
     }
 
     @Override
     public void logging(IStatus status, String plugin) {
-        boolean hasBeenLoggedThroughDialect = false;
         // Always consider final cause of exception
         final Throwable exception = getFinalCause(status);
+        synchronized (this) {
+            if (previousError != null && previousError.get() == exception) {
+                // Ignore direct repetitions of the exact same exception, which can
+                // happen when multiple code paths log the same cause.
+                return;
+            }
+            previousError = new SoftReference<>(exception);
+        }
+        boolean hasBeenLoggedThroughDialect = false;
         // Step 1: check preferences (should indicate that errors should be
         // logged through a pop-up)
         if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REACT_TO_PERMISSION_ISSUES_BY_GRAPHICAL_DISPLAY.name())) {
