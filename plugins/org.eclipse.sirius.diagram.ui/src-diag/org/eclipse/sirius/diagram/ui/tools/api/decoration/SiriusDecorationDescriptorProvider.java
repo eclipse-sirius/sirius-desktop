@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.ui.tools.api.decoration;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator;
@@ -27,7 +26,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 public interface SiriusDecorationDescriptorProvider {
 
     /**
-     * Return decoration descriptions of a given {@link IDiagramElementEditPart} .
+     * Return a non null list of {@link DecorationDescriptor} of a given {@link IDiagramElementEditPart} .
      * 
      * @param diagramEditPart
      *            EditPart of the diagram element
@@ -35,7 +34,7 @@ public interface SiriusDecorationDescriptorProvider {
      *            the current Sirius session is provided because it is costly to get it.
      * @return the decoration descriptions
      */
-    Optional<List<DecorationDescriptor>> getDecorationDescriptors(IDiagramElementEditPart diagramEditPart, Session session);
+    List<DecorationDescriptor> getDecorationDescriptors(IDiagramElementEditPart diagramEditPart, Session session);
 
     /**
      * Tell if the provider can provide {@link DecorationDescriptor}s for the given editPart.

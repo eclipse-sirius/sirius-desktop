@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.decoration;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -20,6 +22,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.AbstractSiriusDecorationDescriptorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor;
 import org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.DisplayPriority;
+import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationDescriptorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
@@ -28,8 +31,6 @@ import org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection;
 import org.eclipse.sirius.viewpoint.description.Position;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
-
-import com.google.common.collect.Lists;
 
 /**
  * This {@link SiriusDecorationDescriptorProvider} provides a decoration on the bottom left corner when the element is
@@ -48,11 +49,8 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
 
     @Override
     public List<DecorationDescriptor> createDecorationDescriptors(IDiagramElementEditPart editPart, Session session) {
-        List<DecorationDescriptor> decorationDescriptors = null;
         Image decorationImage = getDecorationImage(editPart);
         if (decorationImage != null) {
-            decorationDescriptors = Lists.newArrayList();
-
             DecorationDescriptor decoDesc = new DecorationDescriptor();
             decoDesc.setName(NAME);
             decoDesc.setPosition(Position.SOUTH_WEST_LITERAL);
@@ -60,10 +58,10 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
             decoDesc.setDisplayPriority(DisplayPriority.HIGH_PRIORITY.getValue());
             decoDesc.setDecorationAsImage(decorationImage);
 
-            decorationDescriptors.add(decoDesc);
+            return Arrays.asList(decoDesc);
         }
 
-        return decorationDescriptors;
+        return new ArrayList<>();
     }
 
     /**

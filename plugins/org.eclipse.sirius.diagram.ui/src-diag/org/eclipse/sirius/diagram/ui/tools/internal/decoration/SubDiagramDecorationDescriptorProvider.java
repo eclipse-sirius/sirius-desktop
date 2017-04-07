@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.decoration;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -54,7 +55,6 @@ import org.eclipse.swt.graphics.Image;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * This {@link SiriusDecorationDescriptorProvider} provides a decoration on the bottom right corner when the element
@@ -76,7 +76,7 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
     }
 
     @Override
-    public Optional<List<DecorationDescriptor>> getDecorationDescriptors(IDiagramElementEditPart editPart, Session session) {
+    public List<DecorationDescriptor> getDecorationDescriptors(IDiagramElementEditPart editPart, Session session) {
         EObject model = ((View) editPart.getModel()).getElement();
         if (model instanceof DRepresentationElement) {
             DRepresentationElement node = (DRepresentationElement) model;
@@ -89,12 +89,11 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
                 decoDesc.setDisplayPriority(DisplayPriority.HIGH_PRIORITY.getValue());
                 decoDesc.setDecorationAsImage(getSubDiagramImage());
 
-                List<DecorationDescriptor> decorationDescriptors = Lists.newArrayList(decoDesc);
-                return Optional.of(decorationDescriptors);
+                return Arrays.asList(decoDesc);
             }
         }
 
-        return Optional.empty();
+        return new ArrayList<>();
     }
 
     private Image getSubDiagramImage() {

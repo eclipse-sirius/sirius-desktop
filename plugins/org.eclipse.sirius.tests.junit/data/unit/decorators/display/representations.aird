@@ -8,6 +8,10 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']"/>
         <target xmi:type="component:Component" href="decorationsTest.component#/"/>
       </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_16g7MB3MEeeBFcZXMrYe7g" name="new Diagram" representation="_16r6UB3MEeeBFcZXMrYe7g">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']"/>
+        <target xmi:type="component:Component" href="decorationsTest.component#/"/>
+      </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram xmi:id="_CtA1wM0aEeab-v3nvO92qw" name="new DiagramWithDecoration">
@@ -315,6 +319,153 @@
     <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_CtA17M0aEeab-v3nvO92qw"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithDecoration']/@defaultLayer"/>
+    <target xmi:type="component:Component" href="decorationsTest.component#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram xmi:id="_16r6UB3MEeeBFcZXMrYe7g" name="new Diagram">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_16r6UR3MEeeBFcZXMrYe7g" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_16r6Uh3MEeeBFcZXMrYe7g"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_17H_MB3MEeeBFcZXMrYe7g" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_17H_MR3MEeeBFcZXMrYe7g" type="Sirius" element="_16r6UB3MEeeBFcZXMrYe7g" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_17TlYB3MEeeBFcZXMrYe7g" type="2002" element="_16r6VB3MEeeBFcZXMrYe7g">
+          <children xmi:type="notation:Node" xmi:id="_17gZsB3MEeeBFcZXMrYe7g" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_17jdAB3MEeeBFcZXMrYe7g" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_17jdAR3MEeeBFcZXMrYe7g"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_17jdAh3MEeeBFcZXMrYe7g"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_17TlYR3MEeeBFcZXMrYe7g" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_17TlYh3MEeeBFcZXMrYe7g" x="528" y="132"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_17krIB3MEeeBFcZXMrYe7g" type="2002" element="_16r6Vh3MEeeBFcZXMrYe7g">
+          <children xmi:type="notation:Node" xmi:id="_17lSMB3MEeeBFcZXMrYe7g" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_17lSMR3MEeeBFcZXMrYe7g" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_17lSMh3MEeeBFcZXMrYe7g"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_17lSMx3MEeeBFcZXMrYe7g"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_17krIR3MEeeBFcZXMrYe7g" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_17krIh3MEeeBFcZXMrYe7g"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_17l5QB3MEeeBFcZXMrYe7g" type="2002" element="_16r6WB3MEeeBFcZXMrYe7g">
+          <children xmi:type="notation:Node" xmi:id="_17l5Qx3MEeeBFcZXMrYe7g" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_17mgUB3MEeeBFcZXMrYe7g" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_17mgUR3MEeeBFcZXMrYe7g"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_17mgUh3MEeeBFcZXMrYe7g"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_17l5QR3MEeeBFcZXMrYe7g" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_17l5Qh3MEeeBFcZXMrYe7g" x="390"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_17mgUx3MEeeBFcZXMrYe7g" type="2002" element="_16r6Wh3MEeeBFcZXMrYe7g">
+          <children xmi:type="notation:Node" xmi:id="_17nHYB3MEeeBFcZXMrYe7g" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_17nHYR3MEeeBFcZXMrYe7g" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_17nHYh3MEeeBFcZXMrYe7g"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_17nHYx3MEeeBFcZXMrYe7g"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_17mgVB3MEeeBFcZXMrYe7g" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_17mgVR3MEeeBFcZXMrYe7g" x="210"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_17nHZB3MEeeBFcZXMrYe7g" type="2002" element="_16r6XB3MEeeBFcZXMrYe7g">
+          <children xmi:type="notation:Node" xmi:id="_17nucB3MEeeBFcZXMrYe7g" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_17nucR3MEeeBFcZXMrYe7g" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_17nuch3MEeeBFcZXMrYe7g"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_17nucx3MEeeBFcZXMrYe7g"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_17nHZR3MEeeBFcZXMrYe7g" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_17nHZh3MEeeBFcZXMrYe7g" x="630"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_17H_Mh3MEeeBFcZXMrYe7g"/>
+        <edges xmi:type="notation:Edge" xmi:id="_17ucIB3MEeeBFcZXMrYe7g" type="4001" element="_16r6Xh3MEeeBFcZXMrYe7g" source="_17TlYB3MEeeBFcZXMrYe7g" target="_17l5QB3MEeeBFcZXMrYe7g">
+          <children xmi:type="notation:Node" xmi:id="_17yGgB3MEeeBFcZXMrYe7g" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_17yGgR3MEeeBFcZXMrYe7g" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_172X8B3MEeeBFcZXMrYe7g" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_172X8R3MEeeBFcZXMrYe7g" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_175bQB3MEeeBFcZXMrYe7g" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_175bQR3MEeeBFcZXMrYe7g" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_17ucIR3MEeeBFcZXMrYe7g"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_17ucIh3MEeeBFcZXMrYe7g" fontName="Segoe UI" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_17ucIx3MEeeBFcZXMrYe7g" points="[0, 0, 105, 60]$[-105, -60, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_18JS4B3MEeeBFcZXMrYe7g" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_18J58B3MEeeBFcZXMrYe7g" id="(0.5,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_18J58R3MEeeBFcZXMrYe7g" type="4001" element="_16r6YR3MEeeBFcZXMrYe7g" source="_17TlYB3MEeeBFcZXMrYe7g" target="_17nHZB3MEeeBFcZXMrYe7g">
+          <children xmi:type="notation:Node" xmi:id="_18KhAB3MEeeBFcZXMrYe7g" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_18KhAR3MEeeBFcZXMrYe7g" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_18KhAh3MEeeBFcZXMrYe7g" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_18KhAx3MEeeBFcZXMrYe7g" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_18KhBB3MEeeBFcZXMrYe7g" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_18KhBR3MEeeBFcZXMrYe7g" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_18J58h3MEeeBFcZXMrYe7g"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_18J58x3MEeeBFcZXMrYe7g" fontName="Segoe UI" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_18J59B3MEeeBFcZXMrYe7g" points="[0, 0, -105, 60]$[105, -60, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_18LIEB3MEeeBFcZXMrYe7g" id="(0.5,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_18LIER3MEeeBFcZXMrYe7g" id="(0.5,1.0)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_16r6VB3MEeeBFcZXMrYe7g" name="decoDisplay" outgoingEdges="_16r6Xh3MEeeBFcZXMrYe7g _16r6YR3MEeeBFcZXMrYe7g">
+      <target xmi:type="component:Component" href="decorationsTest.component#//@children.0"/>
+      <semanticElements xmi:type="component:Component" href="decorationsTest.component#//@children.0"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_16r6VR3MEeeBFcZXMrYe7g" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Component']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Component']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_16r6Vh3MEeeBFcZXMrYe7g" name="groupDecoMerge2">
+      <target xmi:type="component:Component" href="decorationsTest.component#//@children.1"/>
+      <semanticElements xmi:type="component:Component" href="decorationsTest.component#//@children.1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_16r6Vx3MEeeBFcZXMrYe7g" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Component']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Component']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_16r6WB3MEeeBFcZXMrYe7g" name="listDecoMerge1" incomingEdges="_16r6Xh3MEeeBFcZXMrYe7g">
+      <target xmi:type="component:Component" href="decorationsTest.component#//@children.2"/>
+      <semanticElements xmi:type="component:Component" href="decorationsTest.component#//@children.2"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_16r6WR3MEeeBFcZXMrYe7g" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Component']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Component']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_16r6Wh3MEeeBFcZXMrYe7g" name="listDecoMerge2">
+      <target xmi:type="component:Component" href="decorationsTest.component#//@children.3"/>
+      <semanticElements xmi:type="component:Component" href="decorationsTest.component#//@children.3"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_16r6Wx3MEeeBFcZXMrYe7g" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Component']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Component']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_16r6XB3MEeeBFcZXMrYe7g" name="groupDecoMerge1" incomingEdges="_16r6YR3MEeeBFcZXMrYe7g">
+      <target xmi:type="component:Component" href="decorationsTest.component#//@children.4"/>
+      <semanticElements xmi:type="component:Component" href="decorationsTest.component#//@children.4"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_16r6XR3MEeeBFcZXMrYe7g" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Component']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Component']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_16r6Xh3MEeeBFcZXMrYe7g" sourceNode="_16r6VB3MEeeBFcZXMrYe7g" targetNode="_16r6WB3MEeeBFcZXMrYe7g" endLabel="r">
+      <target xmi:type="component:Component" href="decorationsTest.component#//@children.0"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_16r6Xx3MEeeBFcZXMrYe7g" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='Single%20Reference']/@style"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_16r6YB3MEeeBFcZXMrYe7g" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='Single%20Reference']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_16r6YR3MEeeBFcZXMrYe7g" sourceNode="_16r6VB3MEeeBFcZXMrYe7g" targetNode="_16r6XB3MEeeBFcZXMrYe7g" endLabel="R2">
+      <target xmi:type="component:Component" href="decorationsTest.component#//@children.0"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_16r6Yh3MEeeBFcZXMrYe7g" lineStyle="dot" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='Reference']/@style"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_16r6Yx3MEeeBFcZXMrYe7g" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='Reference']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_16r6ZB3MEeeBFcZXMrYe7g"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer"/>
     <target xmi:type="component:Component" href="decorationsTest.component#/"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

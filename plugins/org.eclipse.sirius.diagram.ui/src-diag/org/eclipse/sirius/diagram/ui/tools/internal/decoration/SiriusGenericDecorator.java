@@ -14,11 +14,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.BorderLayout;
 import org.eclipse.draw2d.ColorConstants;
@@ -163,51 +164,51 @@ public class SiriusGenericDecorator extends AbstractDecorator {
             return;
         }
         if (editPart instanceof IDiagramElementEditPart) {
-            Map<Position, List<DecorationDescriptor>> positionToDecorators = Maps.newHashMap();
+            IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) editPart;
+            Map<Position, List<DecorationDescriptor>> positionToDecorators = new HashMap<>();
 
-            List<DecorationDescriptor> decorationDescriptors = Lists.newArrayList();
-            for (SiriusDecorationDescriptorProvider decorationDescriptorProvider : decorationDescriptorProviders) {
-                if (decorationDescriptorProvider.provides((IDiagramElementEditPart) editPart)) {
-                    Optional<List<DecorationDescriptor>> decorationDescriptorsOptional = decorationDescriptorProvider.getDecorationDescriptors((IDiagramElementEditPart) editPart, session);
-                    if (decorationDescriptorsOptional.isPresent()) {
-                        decorationDescriptors.addAll(decorationDescriptorsOptional.get());
+            // @formatter:off
+            List<DecorationDescriptor> decorationDescriptors = decorationDescriptorProviders.stream()
+                    .filter(provider -> provider.provides(diagramElementEditPart))
+                    .flatMap(provider -> provider.getDecorationDescriptors(diagramElementEditPart, session).stream())
+                    .collect(Collectors.toList());
+            // @formatter:on
+
+            if (!decorationDescriptors.isEmpty()) {
+                // compute the margin
+                int margin = editPart.getChildren().stream().filter(IBorderedShapeEditPart.class::isInstance).findFirst().isPresent() ? MARGIN_FOR_BORDERNODE : DEFAULT_MARGIN;
+
+                if (editPart instanceof AbstractConnectionEditPart) {
+                    // put all decorations at the same central position
+                    positionToDecorators.put(Position.CENTER_LITERAL, decorationDescriptors);
+                    for (DecorationDescriptor decoDesc : decorationDescriptors) {
+                        decoDesc.setDistributionDirection(DecorationDistributionDirection.HORIZONTAL);
+                    }
+
+                    Map<Position, IFigure> figureAtPosition = computeGroupDecorationsFigure(positionToDecorators, margin);
+                    if (figureAtPosition != null) {
+                        addDecoration(getDecoratorTarget().addConnectionDecoration(figureAtPosition.get(Position.CENTER_LITERAL), 50, !printDecoration));
+                    }
+                } else {
+                    for (DecorationDescriptor decorationDescriptor : decorationDescriptors) {
+                        Position position = decorationDescriptor.getPosition();
+                        List<DecorationDescriptor> list = positionToDecorators.get(position);
+                        if (list == null) {
+                            list = Lists.newArrayList(decorationDescriptor);
+                            positionToDecorators.put(position, list);
+                        } else {
+                            list.add(decorationDescriptor);
+                        }
+                    }
+
+                    Map<Position, IFigure> figureAtPosition = computeGroupDecorationsFigure(positionToDecorators, margin);
+                    if (figureAtPosition != null) {
+                        for (Position position : figureAtPosition.keySet()) {
+                            addDecoration(getDecoratorTarget().addShapeDecoration(figureAtPosition.get(position), getGMFPosition(position), -margin, !printDecoration));
+                        }
                     }
                 }
             }
-            // compute the margin
-            int margin = editPart.getChildren().stream().filter(IBorderedShapeEditPart.class::isInstance).findFirst().isPresent() ? MARGIN_FOR_BORDERNODE : DEFAULT_MARGIN;
-
-            if (editPart instanceof AbstractConnectionEditPart) {
-                // put all decorations at the same central position
-                positionToDecorators.put(Position.CENTER_LITERAL, decorationDescriptors);
-                for (DecorationDescriptor decoDesc : decorationDescriptors) {
-                    decoDesc.setDistributionDirection(DecorationDistributionDirection.HORIZONTAL);
-                }
-
-                Map<Position, IFigure> figureAtPosition = computeGroupDecorationsFigure(positionToDecorators, margin);
-                if (figureAtPosition != null) {
-                    addDecoration(getDecoratorTarget().addConnectionDecoration(figureAtPosition.get(Position.CENTER_LITERAL), 50, !printDecoration));
-                }
-            } else {
-                for (DecorationDescriptor decorationDescriptor : decorationDescriptors) {
-                    Position position = decorationDescriptor.getPosition();
-                    List<DecorationDescriptor> list = positionToDecorators.get(position);
-                    if (list == null) {
-                        list = Lists.newArrayList(decorationDescriptor);
-                        positionToDecorators.put(position, list);
-                    } else {
-                        list.add(decorationDescriptor);
-                    }
-                }
-
-                Map<Position, IFigure> figureAtPosition = computeGroupDecorationsFigure(positionToDecorators, margin);
-                if (figureAtPosition != null) {
-                    for (Position position : figureAtPosition.keySet()) {
-                        addDecoration(getDecoratorTarget().addShapeDecoration(figureAtPosition.get(position), getGMFPosition(position), -margin, !printDecoration));
-                    }
-                }
-            }
-
         }
         DslCommonPlugin.PROFILER.stopWork(DECORATOR_REFRESH);
 
@@ -424,16 +425,12 @@ public class SiriusGenericDecorator extends AbstractDecorator {
     private Map<Position, Rectangle> initializeDisplayedDecoratorsGroup(Map<Position, List<DecorationDescriptor>> positionToDecorators, Dimension figureDimension) {
         Map<Position, Rectangle> groupBoundsAtPosition = Maps.newHashMap();
         List<Position> positions = Lists.newArrayList(positionToDecorators.keySet());
-        Collections.sort(positions, new Comparator<Position>() {
-            @Override
-            public int compare(Position p1, Position p2) {
-                // We display group starting from south west, turning clock_wise
-                // to north west and ending with center
-                int p1Priority = getPositionPriority(p1);
-                int p2Priority = getPositionPriority(p2);
+        Collections.sort(positions, (p1, p2) -> {
+            // We display group starting from center, then west, turning clock_wise ending with south west
+            int p1Priority = getPositionPriority(p1);
+            int p2Priority = getPositionPriority(p2);
 
-                return p1Priority - p2Priority;
-            }
+            return p2Priority - p1Priority;
         });
         // initialize group bounding box at location
         for (Position position : positions) {

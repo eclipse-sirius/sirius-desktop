@@ -81,7 +81,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span> The class @org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusDecoratorEditPolicy@ has been added to improve the behavior of decorator selection.
 * <span class="label label-success">Added</span> A new decoration mechanism has been implemented. Now, Sirius uses a single @IDecorator@ to decorate EditPart in diagram. That allows Sirius to manage the relative positioning between decorations.
-** <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationDescriptorProvider@ represents a provider able to give the decoration descriptors.
+** <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationDescriptorProvider@ represents a provider able to give the decoration descriptors. @org.eclipse.sirius.diagram.ui.tools.api.decoration.AbstractSiriusDecorationDescriptorProvider@ is an abstract class that can be inherited to implement @SiriusDecorationDescriptorProvider@.
 ** <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor@ is a simple POJO that contains information needed to display decoration.
 ** <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationProviderRegistry@ allows to register and get @SiriusDecorationDescriptorProvider@.
 ** <span class="label label-danger">Removed</span> @org.eclipse.sirius.diagram.ui.tools.api.decoration.AbstractSiriusDecorator@ is removed because now useless.

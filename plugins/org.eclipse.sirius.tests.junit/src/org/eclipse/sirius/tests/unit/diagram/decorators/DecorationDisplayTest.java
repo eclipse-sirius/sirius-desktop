@@ -25,7 +25,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DecorationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -59,7 +58,9 @@ public class DecorationDisplayTest extends GenericTestCase {
 
     private DDiagramEditor editor;
 
-    private static final String TEST_CLASS_DIAGRAM = "DiagramWithDecoration";
+    private static final String CLASS_DIAGRAM_WITH_DECORAIONS = "DiagramWithDecoration";
+
+    private static final String CLASS_DIAGRAM = "Diagram";
 
     private static Method getDecorators;
 
@@ -69,7 +70,7 @@ public class DecorationDisplayTest extends GenericTestCase {
         TestsUtil.emptyEventsFromUIThread();
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SEMANTIC_NAME, AIRD_NAME);
         genericSetUp(Collections.<String> singleton(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_NAME), Collections.<String> emptyList(), TEMPORARY_PROJECT_NAME + "/" + AIRD_NAME);
-        diagram = (DDiagram) getRepresentations(TEST_CLASS_DIAGRAM, semanticModel).iterator().next();
+        diagram = (DDiagram) getRepresentations(CLASS_DIAGRAM_WITH_DECORAIONS, semanticModel).iterator().next();
 
         changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_AUTHORIZE_DECORATION_OVERLAP.name(), false);
         editor = (DDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
@@ -87,7 +88,7 @@ public class DecorationDisplayTest extends GenericTestCase {
         DDiagramElement decoDisplayDiagElem = getDiagElement(ownedDiagramElements, "decoDisplay");
 
         // test display in group
-        List<Figure> dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem);
+        List<Figure> dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem, editor);
         assertEquals("There should be 3 decoration groups", 3, dDiagramElementDecorationFigures.size());
 
         checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.NORTH_WEST_LITERAL, new Rectangle(326, 206, 49, 49),
@@ -100,6 +101,26 @@ public class DecorationDisplayTest extends GenericTestCase {
 
         // test decoration tooltip
         checkDecorationStringTooltip(dDiagramElementDecorationFigures, Position.NORTH_WEST_LITERAL, new Rectangle(326, 206, 49, 49), "NW_1");
+    }
+
+    /**
+     * Check that no decoration figure is created when there is no decoration.
+     */
+    public void testNoDecoration() {
+        DDiagram diagram = (DDiagram) getRepresentations(CLASS_DIAGRAM, semanticModel).iterator().next();
+
+        changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_AUTHORIZE_DECORATION_OVERLAP.name(), false);
+        DDiagramEditor editor = (DDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+
+        List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();
+        DDiagramElement decoDisplayDiagElem = getDiagElement(ownedDiagramElements, "decoDisplay");
+
+        // check
+        assertTrue("There should be no decoration figure because there is no decoration", getDDiagramElementDecorationFigures(decoDisplayDiagElem, editor).isEmpty());
+
+        DialectUIManager.INSTANCE.closeEditor(editor, false);
+        TestsUtil.synchronizationWithUIThread();
     }
 
     /**
@@ -194,7 +215,7 @@ public class DecorationDisplayTest extends GenericTestCase {
         DDiagramElement decoDisplayDiagElem = getDiagElement(ownedDiagramElements, "groupDecoMerge1");
 
         // test display in group
-        List<Figure> dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem);
+        List<Figure> dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem, editor);
         assertEquals("There should be 3 decoration groups", 3, dDiagramElementDecorationFigures.size());
 
         // NORTH_WEST decorations are normally displayed
@@ -227,7 +248,7 @@ public class DecorationDisplayTest extends GenericTestCase {
         DDiagramElement decoDisplayDiagElem = getDiagElement(ownedDiagramElements, "groupDecoMerge2");
 
         // test display in group
-        List<Figure> dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem);
+        List<Figure> dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem, editor);
         assertEquals("There should be 3 decoration groups", 3, dDiagramElementDecorationFigures.size());
 
         // check that decoration don't overlap the diagram element
@@ -251,7 +272,7 @@ public class DecorationDisplayTest extends GenericTestCase {
         DDiagramElement decoDisplayDiagElem = getDiagElement(ownedDiagramElements, "listDecoMerge1");
 
         // test display in group
-        List<Figure> dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem);
+        List<Figure> dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem, editor);
         assertEquals("There should be 2 decoration groups", 2, dDiagramElementDecorationFigures.size());
 
         // NORTH_WEST should be a list decorator
@@ -266,7 +287,7 @@ public class DecorationDisplayTest extends GenericTestCase {
         decoDisplayDiagElem = getDiagElement(ownedDiagramElements, "listDecoMerge2");
 
         // test display in group
-        dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem);
+        dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem, editor);
         assertEquals("There should be 1 decoration group", 1, dDiagramElementDecorationFigures.size());
 
         // All decorators should be merged in SOUTH_EAST list decorator
@@ -282,7 +303,7 @@ public class DecorationDisplayTest extends GenericTestCase {
         List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();
         DDiagramElement decoDisplayDiagElem = getDiagElement(ownedDiagramElements, "Root");
 
-        List<Figure> dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem);
+        List<Figure> dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem, editor);
 
         // There should be a single composite decoration at NORTH
         // NORTH should display the composite figure created in
@@ -309,7 +330,7 @@ public class DecorationDisplayTest extends GenericTestCase {
         // After update NORTH decoration should be "Tooltip_Root_2" with the
         // image and tooltip should be updated with the name
         ownedDiagramElements = diagram.getOwnedDiagramElements();
-        dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(getDiagElement(ownedDiagramElements, "Root_2"));
+        dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(getDiagElement(ownedDiagramElements, "Root_2"), editor);
         checkGroupBoundingBox(dDiagramElementDecorationFigures, Position.NORTH_LITERAL, new Rectangle(0, 0, 44, 20), Lists.newArrayList(new Rectangle(0, 0, 44, 20)), false);
         checkDecorationStringTooltip(dDiagramElementDecorationFigures, Position.NORTH_LITERAL, new Rectangle(0, 0, 44, 20), "Tooltip_Root_2");
     }
@@ -322,7 +343,7 @@ public class DecorationDisplayTest extends GenericTestCase {
         DDiagramElement decoDisplayDiagElem = ownedDiagramElements.stream().filter(v -> v instanceof DEdge).iterator().next();
 
         // test display in group
-        List<Figure> dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem);
+        List<Figure> dDiagramElementDecorationFigures = getDDiagramElementDecorationFigures(decoDisplayDiagElem, editor);
         assertEquals("There should be 1 decoration group", 1, dDiagramElementDecorationFigures.size());
 
         // decorations are normally displayed at CENTER
@@ -330,9 +351,8 @@ public class DecorationDisplayTest extends GenericTestCase {
                 Lists.newArrayList(new Rectangle(350, 97, 16, 16), new Rectangle(367, 97, 32, 32), new Rectangle(400, 97, 32, 32)), false);
     }
 
-    private List<Figure> getDDiagramElementDecorationFigures(DDiagramElement diagElement) {
+    private List<Figure> getDDiagramElementDecorationFigures(DDiagramElement diagElement, DDiagramEditor editor) {
         List<Figure> decorationFigures = Lists.newArrayList();
-        Map<?, ?> editPartRegistry = ((DiagramEditor) editor).getDiagramGraphicalViewer().getEditPartRegistry();
         IGraphicalEditPart editPart = getEditPart(diagElement, editor);
         final DecorationEditPolicy policy = (DecorationEditPolicy) editPart.getEditPolicy(EditPolicyRoles.DECORATION_ROLE);
         final Map<Object, IDecorator> decorators = getDecorators(policy);

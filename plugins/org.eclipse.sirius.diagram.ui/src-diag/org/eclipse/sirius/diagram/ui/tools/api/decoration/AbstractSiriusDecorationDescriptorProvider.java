@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.decoration;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
@@ -51,21 +51,19 @@ public abstract class AbstractSiriusDecorationDescriptorProvider implements Siri
     }
 
     @Override
-    public Optional<List<DecorationDescriptor>> getDecorationDescriptors(IDiagramElementEditPart diagramEditPart, Session session) {
-        Optional<List<DecorationDescriptor>> decorationDescriptors = Optional.empty();
-
+    public List<DecorationDescriptor> getDecorationDescriptors(IDiagramElementEditPart diagramEditPart, Session session) {
         final View view = (View) diagramEditPart.getModel();
         if (view != null && (shouldConsiderDetachedViews() || view.eResource() != null)) {
             if (shouldBeDecorated(diagramEditPart)) {
-                decorationDescriptors = Optional.ofNullable(createDecorationDescriptors(diagramEditPart, session));
+                return createDecorationDescriptors(diagramEditPart, session);
             }
         }
 
-        return decorationDescriptors;
+        return new ArrayList<>();
     }
 
     /**
-     * Create {@link DecorationDescriptor}.
+     * Create a non null list of {@link DecorationDescriptor}.
      * 
      * @param diagramEditPart
      *            the edit part

@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.decoration;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.ecore.EObject;
@@ -36,8 +39,6 @@ import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 import org.eclipse.swt.graphics.Image;
 
-import com.google.common.collect.Lists;
-
 /**
  * A {@link SiriusDecorationDescriptorProvider} that provides {@link DecorationDescriptor}s from
  * {@link DecorationDescription}s defined in the VSM.
@@ -53,15 +54,14 @@ public class DescribedDecorationDescriptorProvider extends AbstractSiriusDecorat
 
     @Override
     public List<DecorationDescriptor> createDecorationDescriptors(IDiagramElementEditPart editPart, Session session) {
-        List<DecorationDescriptor> decorationDescriptors = Lists.newArrayList();
+        List<DecorationDescriptor> decorationDescriptors = new ArrayList<>();
         if (session != null && editPart != null) {
             DDiagramElement element = editPart.resolveDiagramElement();
             if (element != null) {
                 DRepresentation parentRepresentation = new DRepresentationElementQuery(element).getParentRepresentation();
                 if (parentRepresentation != null) {
                     UIState uiState = parentRepresentation.getUiState();
-                    List<Decoration> decorations = Lists.newArrayList(element.getDecorations());
-                    decorations.addAll(element.getTransientDecorations());
+                    List<Decoration> decorations = Stream.concat(element.getDecorations().stream(), element.getTransientDecorations().stream()).collect(Collectors.toList());
                     for (Decoration decoration : decorations) {
                         DecorationDescriptor decorationDescriptor = initializeDecorationDescriptor(decoration, element, uiState, parentRepresentation, session);
                         if (decorationDescriptor != null) {

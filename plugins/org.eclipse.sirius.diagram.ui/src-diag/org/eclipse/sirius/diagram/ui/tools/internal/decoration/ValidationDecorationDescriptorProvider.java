@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.decoration;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,8 +53,6 @@ import org.eclipse.sirius.viewpoint.description.Position;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Lists;
 
 /**
  * A {@link SiriusDecorationDescriptorProvider} that corresponds to EMF validation decorations.
@@ -117,8 +116,7 @@ public class ValidationDecorationDescriptorProvider extends AbstractSiriusDecora
             }
         }
 
-        return null;
-
+        return new ArrayList<>();
     }
 
     private List<DecorationDescriptor> doCreateDecorationDescriptors(IMarker[] markers, String elementId) {
@@ -151,7 +149,7 @@ public class ValidationDecorationDescriptorProvider extends AbstractSiriusDecora
             }
         }
         if (foundMarker == null) {
-            return null;
+            return new ArrayList<>();
         }
 
         // add decoration
@@ -163,7 +161,7 @@ public class ValidationDecorationDescriptorProvider extends AbstractSiriusDecora
         decoDesc.setDecorationAsImage(getImage(severity));
         decoDesc.setTooltipAsFigure(toolTip);
 
-        return Lists.newArrayList(decoDesc);
+        return Arrays.asList(decoDesc);
     }
 
     private Image getImage(int severity) {
