@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<properties:ViewExtensionDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0">
+<properties:ViewExtensionDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference">
   <categories name="Default">
     <pages name="OverridesDefaultRulesPage" labelExpression="OverridesDefaultRulesPage"/>
     <pages name="OverridesDefaultPageAndExtendsAnotherDefaultPage" labelExpression="OverridesDefaultPage" domainClass="" semanticCandidateExpression="var:self" preconditionExpression="" groups="//@categories.0/@groups.0" filterGroupsFromExtendedPageExpression="aql:group.name.contains('FilterExtended')" filterValidationRulesFromExtendedPageExpression="aql:validationRule.name.contains('FilterExtended')">
@@ -33,6 +33,7 @@
       <controls xsi:type="properties:ListDescription" name="OverridesDefaultList" label="" labelExpression="OverridesDefaultList" valueExpression="" displayExpression="" filterConditionalStylesFromExtendedListExpression=""/>
       <controls xsi:type="properties:HyperlinkDescription" name="OverridesDefaultHyperlink" label="" labelExpression="OverridesDefaultHyperlink" valueExpression="aql:self" displayExpression="aql:value.name" filterConditionalStylesFromExtendedHyperlinkExpression="" filterActionsFromExtendedHyperlinkExpression=""/>
       <controls xsi:type="properties:RadioDescription" name="OverridesDefaultRadio" label="" labelExpression="OverridesDefaultRadio" candidatesExpression="aql:Sequence{'Radio1','Radio2','Radio3'}" candidateDisplayExpression="aql:candidate"/>
+      <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="OverridesDefaultExtReference" labelExpression="OverridesDefaultExtReference" isEnabledExpression="" referenceNameExpression="DefaultReferenceNameExpression" referenceOwnerExpression=""/>
     </groups>
     <groups name="FilterOverriddenGroup" label="" labelExpression="FilterOverriddenGroup" domainClass="" semanticCandidateExpression="var:self"/>
     <groups name="FilterExtendedGroup" label="" labelExpression="FilterOverridenGroup" semanticCandidateExpression="var:self"/>
@@ -57,5 +58,6 @@
         </semanticValidationRules>
       </validationSet>
     </overrides>
+    <overrides xsi:type="properties-ext-widgets-reference:ExtReferenceOverrideDescription" name="OverridesDefaultExtReference" labelExpression="OverridesDefaultExtReference" referenceOwnerExpression=""/>
   </categories>
 </properties:ViewExtensionDescription>

@@ -51,6 +51,12 @@
             id="org.eclipse.sirius.ui.properties.ext.widgets.reference.descriptionConditionalStylePreprocessor"
             label="%referenceDescriptionConditionalStylePreprocessor.Label">
       </descriptor>
+      <descriptor
+            class="org.eclipse.sirius.ui.properties.ext.widgets.reference.internal.ExtReferenceOverrideDescriptionPreprocessor"
+            description="%referenceOverrideDescriptionPreprocessor.Description"
+            id="org.eclipse.sirius.ui.properties.ext.widgets.reference.overrideDescriptionPreprocessor"
+            label="%referenceOverrideDescriptionPreprocessor.Label">
+      </descriptor>
    </extension>
 
 </plugin>

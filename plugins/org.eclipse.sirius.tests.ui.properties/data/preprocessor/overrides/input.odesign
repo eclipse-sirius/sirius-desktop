@@ -5,6 +5,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:description="http://www.eclipse.org/sirius/description/1.1.0"
     xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0"
+    xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference"
     name="My"
     version="12.0.0.201702091400">
   <ownedViewpoints
@@ -133,6 +134,13 @@
             label=""
             labelExpression="FilterText"
             valueExpression="aql:self.name"/>
+        <controls
+            xsi:type="properties-ext-widgets-reference:ExtReferenceDescription"
+            name="DefaultReference"
+            labelExpression="DefaultReference"
+            isEnabledExpression=""
+            referenceNameExpression="DefaultReferenceNameExpression"
+            referenceOwnerExpression="DefaultReferenceOwnerExpression"/>
       </groups>
       <groups
           name="FilterOverriddenGroup"
@@ -229,6 +237,12 @@
           overrides="//@extensions.0/@categories.0/@pages.1"
           filterGroupsFromOverriddenPageExpression="aql:group.name.contains('FilterOverridden')"
           filterValidationRulesFromOverriddenPageExpression="aql:validationRule.name.contains('FilterOverridden')"/>
+      <overrides
+          xsi:type="properties-ext-widgets-reference:ExtReferenceOverrideDescription"
+          name="OverridesDefaultExtReference"
+          labelExpression="OverridesDefaultExtReference"
+          referenceOwnerExpression=""
+          overrides="//@extensions.0/@categories.0/@groups.0/@controls.10"/>
     </categories>
   </extensions>
 </description:Group>

@@ -52,6 +52,7 @@ import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.core.api.DefaultDescriptionPreprocessor;
 import org.eclipse.sirius.properties.core.api.DefaultDescriptionPreprocessorWithFiltering;
 import org.eclipse.sirius.properties.core.api.IDescriptionPreprocessor;
+import org.eclipse.sirius.properties.core.api.OverrideDescriptionPreprocessor;
 import org.eclipse.sirius.properties.core.api.PreconfiguredPreprocessor;
 import org.eclipse.sirius.properties.util.PropertiesSwitch;
 

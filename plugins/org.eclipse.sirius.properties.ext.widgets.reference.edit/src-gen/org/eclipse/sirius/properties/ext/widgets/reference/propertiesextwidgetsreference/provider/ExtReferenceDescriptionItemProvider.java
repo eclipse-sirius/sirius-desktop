@@ -73,17 +73,17 @@ public class ExtReferenceDescriptionItemProvider extends AbstractExtReferenceDes
 
     /**
      * This returns the label styled text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated NOT
+     * 
+     * @generated
      */
     @Override
     public Object getStyledText(Object object) {
-        String label = ((ExtReferenceDescription) object).getReferenceNameExpression();
+        String label = ((ExtReferenceDescription) object).getName();
         StyledString styledLabel = new StyledString();
         if (label == null || label.length() == 0) {
             styledLabel.append(getString("_UI_ExtReferenceDescription_type"), StyledString.Style.QUALIFIER_STYLER); //$NON-NLS-1$
         } else {
-            styledLabel.append(label);
+            styledLabel.append(getString("_UI_ExtReferenceDescription_type"), StyledString.Style.QUALIFIER_STYLER).append(" " + label); //$NON-NLS-1$ //$NON-NLS-2$
         }
         return styledLabel;
     }
@@ -92,7 +92,7 @@ public class ExtReferenceDescriptionItemProvider extends AbstractExtReferenceDes
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

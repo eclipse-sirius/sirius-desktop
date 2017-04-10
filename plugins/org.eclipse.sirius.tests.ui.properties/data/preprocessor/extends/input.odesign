@@ -1149,5 +1149,23 @@
         </validationSet>
       </groups>
     </categories>
+    <categories
+        name="CustomWidgets">
+      <pages
+          name="CustomWidgetPage"
+          labelExpression="CustomWidgetPage"
+          semanticCandidateExpression="var:self"
+          groups="//@extensions.0/@categories.4/@groups.0"/>
+      <groups
+          name="CustomWidgetGroup"
+          labelExpression="CustomWidgetGroup"
+          semanticCandidateExpression="var:self">
+        <controls
+            xsi:type="properties-ext-widgets-reference:ExtReferenceDescription"
+            name="CustomWidget"
+            referenceNameExpression="CustomWidgetReferenceNameExpression"
+            referenceOwnerExpression="CustomWidgetReferenceOwnerExpression"/>
+      </groups>
+    </categories>
   </extensions>
 </description:Group>

@@ -16,8 +16,8 @@ import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsr
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Ext
- * Reference Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Ext Reference Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * @generated
  */

@@ -56,6 +56,15 @@ public interface PropertiesExtWidgetsReferenceFactory extends EFactory {
     ExtReferenceWidgetConditionalStyle createExtReferenceWidgetConditionalStyle();
 
     /**
+     * Returns a new object of class '<em>Ext Reference Override Description</em>'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return a new object of class '<em>Ext Reference Override Description</em>'.
+     * @generated
+     */
+    ExtReferenceOverrideDescription createExtReferenceOverrideDescription();
+
+    /**
      * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the package supported by this factory.

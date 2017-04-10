@@ -39,6 +39,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.sirius.properties.AbstractContainerDescription;
 import org.eclipse.sirius.properties.AbstractDynamicMappingIfDescription;
 import org.eclipse.sirius.properties.AbstractGroupDescription;
+import org.eclipse.sirius.properties.Category;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferenceFactory;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
@@ -50,7 +51,7 @@ import org.eclipse.sirius.properties.util.PropertiesSwitch;
  * factory convert EMF adapter notifications into calls to {@link #fireNotifyChanged fireNotifyChanged}. The adapters
  * also support Eclipse property sheets. Note that most of the adapters are shared among multiple instances. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends PropertiesExtWidgetsReferenceAdapterFactory
@@ -82,7 +83,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
     /**
      * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -174,6 +175,31 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
         }
 
         return extReferenceWidgetConditionalStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected ExtReferenceOverrideDescriptionItemProvider extReferenceOverrideDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription}
+     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createExtReferenceOverrideDescriptionAdapter() {
+        if (extReferenceOverrideDescriptionItemProvider == null) {
+            extReferenceOverrideDescriptionItemProvider = new ExtReferenceOverrideDescriptionItemProvider(this);
+        }
+
+        return extReferenceOverrideDescriptionItemProvider;
     }
 
     /**
@@ -314,6 +340,9 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
         if (extReferenceWidgetConditionalStyleItemProvider != null) {
             extReferenceWidgetConditionalStyleItemProvider.dispose();
         }
+        if (extReferenceOverrideDescriptionItemProvider != null) {
+            extReferenceOverrideDescriptionItemProvider.dispose();
+        }
     }
 
     /**
@@ -352,6 +381,18 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
             CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
                 this.newChildDescriptors = newChildDescriptors;
                 this.editingDomain = editingDomain;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            @Override
+            public Object caseCategory(Category object) {
+                newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CATEGORY__OVERRIDES, PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceOverrideDescription()));
+
+                return null;
             }
 
             /**

@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
@@ -46,6 +47,9 @@ import org.eclipse.sirius.properties.impl.AbstractWidgetDescriptionImpl;
  * <li>
  * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl#getConditionalStyles
  * <em>Conditional Styles</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl#getExtends
+ * <em>Extends</em>}</li>
  * </ul>
  *
  * @generated
@@ -110,6 +114,16 @@ public abstract class AbstractExtReferenceDescriptionImpl extends AbstractWidget
      * @ordered
      */
     protected EList<ExtReferenceWidgetConditionalStyle> conditionalStyles;
+
+    /**
+     * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getExtends()
+     * @generated
+     * @ordered
+     */
+    protected ExtReferenceDescription extends_;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -255,6 +269,48 @@ public abstract class AbstractExtReferenceDescriptionImpl extends AbstractWidget
      * @generated
      */
     @Override
+    public ExtReferenceDescription getExtends() {
+        if (extends_ != null && extends_.eIsProxy()) {
+            InternalEObject oldExtends = (InternalEObject) extends_;
+            extends_ = (ExtReferenceDescription) eResolveProxy(oldExtends);
+            if (extends_ != oldExtends) {
+                if (eNotificationRequired()) {
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__EXTENDS, oldExtends, extends_));
+                }
+            }
+        }
+        return extends_;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public ExtReferenceDescription basicGetExtends() {
+        return extends_;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setExtends(ExtReferenceDescription newExtends) {
+        ExtReferenceDescription oldExtends = extends_;
+        extends_ = newExtends;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__EXTENDS, oldExtends, extends_));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE:
@@ -281,6 +337,11 @@ public abstract class AbstractExtReferenceDescriptionImpl extends AbstractWidget
             return getStyle();
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES:
             return getConditionalStyles();
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__EXTENDS:
+            if (resolve) {
+                return getExtends();
+            }
+            return basicGetExtends();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -307,6 +368,9 @@ public abstract class AbstractExtReferenceDescriptionImpl extends AbstractWidget
             getConditionalStyles().clear();
             getConditionalStyles().addAll((Collection<? extends ExtReferenceWidgetConditionalStyle>) newValue);
             return;
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__EXTENDS:
+            setExtends((ExtReferenceDescription) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -331,6 +395,9 @@ public abstract class AbstractExtReferenceDescriptionImpl extends AbstractWidget
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES:
             getConditionalStyles().clear();
             return;
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__EXTENDS:
+            setExtends((ExtReferenceDescription) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -353,6 +420,8 @@ public abstract class AbstractExtReferenceDescriptionImpl extends AbstractWidget
             return style != null;
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES:
             return conditionalStyles != null && !conditionalStyles.isEmpty();
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__EXTENDS:
+            return extends_ != null;
         }
         return super.eIsSet(featureID);
     }

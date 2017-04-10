@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.AbstractControlDescription;
+import org.eclipse.sirius.properties.AbstractOverrideDescription;
 import org.eclipse.sirius.properties.AbstractWidgetDescription;
 import org.eclipse.sirius.properties.ControlDescription;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
@@ -23,6 +24,7 @@ import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
@@ -102,6 +104,11 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
         }
 
         @Override
+        public Adapter caseExtReferenceOverrideDescription(ExtReferenceOverrideDescription object) {
+            return createExtReferenceOverrideDescriptionAdapter();
+        }
+
+        @Override
         public Adapter caseIdentifiedElement(IdentifiedElement object) {
             return createIdentifiedElementAdapter();
         }
@@ -139,6 +146,11 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
         @Override
         public Adapter caseWidgetConditionalStyle(WidgetConditionalStyle object) {
             return createWidgetConditionalStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseAbstractOverrideDescription(AbstractOverrideDescription object) {
+            return createAbstractOverrideDescriptionAdapter();
         }
 
         @Override
@@ -219,6 +231,22 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
      * @generated
      */
     public Adapter createExtReferenceWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription
+     * <em>Ext Reference Override Description</em>}'. <!-- begin-user-doc --> This default implementation returns null
+     * so that we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.
+     *      ExtReferenceOverrideDescription
+     * @generated
+     */
+    public Adapter createExtReferenceOverrideDescriptionAdapter() {
         return null;
     }
 
@@ -331,6 +359,20 @@ public class PropertiesExtWidgetsReferenceAdapterFactory extends AdapterFactoryI
      * @generated
      */
     public Adapter createWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.AbstractOverrideDescription
+     * <em>Abstract Override Description</em>}'. <!-- begin-user-doc --> This default implementation returns null so
+     * that we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.AbstractOverrideDescription
+     * @generated
+     */
+    public Adapter createAbstractOverrideDescriptionAdapter() {
         return null;
     }
 

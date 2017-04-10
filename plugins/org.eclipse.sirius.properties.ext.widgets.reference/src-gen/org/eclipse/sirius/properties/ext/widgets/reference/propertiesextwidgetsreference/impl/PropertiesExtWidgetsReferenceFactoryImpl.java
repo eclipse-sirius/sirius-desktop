@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferenceFactory;
@@ -69,6 +70,8 @@ public class PropertiesExtWidgetsReferenceFactoryImpl extends EFactoryImpl imple
             return createExtReferenceWidgetStyle();
         case PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_WIDGET_CONDITIONAL_STYLE:
             return createExtReferenceWidgetConditionalStyle();
+        case PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_OVERRIDE_DESCRIPTION:
+            return createExtReferenceOverrideDescription();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -105,6 +108,17 @@ public class PropertiesExtWidgetsReferenceFactoryImpl extends EFactoryImpl imple
     public ExtReferenceWidgetConditionalStyle createExtReferenceWidgetConditionalStyle() {
         ExtReferenceWidgetConditionalStyleImpl extReferenceWidgetConditionalStyle = new ExtReferenceWidgetConditionalStyleImpl();
         return extReferenceWidgetConditionalStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ExtReferenceOverrideDescription createExtReferenceOverrideDescription() {
+        ExtReferenceOverrideDescriptionImpl extReferenceOverrideDescription = new ExtReferenceOverrideDescriptionImpl();
+        return extReferenceOverrideDescription;
     }
 
     /**

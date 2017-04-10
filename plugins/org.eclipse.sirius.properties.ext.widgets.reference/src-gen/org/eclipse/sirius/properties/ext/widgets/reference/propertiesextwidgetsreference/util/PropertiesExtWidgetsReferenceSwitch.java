@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.eclipse.sirius.properties.AbstractControlDescription;
+import org.eclipse.sirius.properties.AbstractOverrideDescription;
 import org.eclipse.sirius.properties.AbstractWidgetDescription;
 import org.eclipse.sirius.properties.ControlDescription;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
@@ -22,6 +23,7 @@ import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
@@ -151,6 +153,32 @@ public class PropertiesExtWidgetsReferenceSwitch<T> extends Switch<T> {
             }
             return result;
         }
+        case PropertiesExtWidgetsReferencePackage.EXT_REFERENCE_OVERRIDE_DESCRIPTION: {
+            ExtReferenceOverrideDescription extReferenceOverrideDescription = (ExtReferenceOverrideDescription) theEObject;
+            T result = caseExtReferenceOverrideDescription(extReferenceOverrideDescription);
+            if (result == null) {
+                result = caseAbstractExtReferenceDescription(extReferenceOverrideDescription);
+            }
+            if (result == null) {
+                result = caseAbstractOverrideDescription(extReferenceOverrideDescription);
+            }
+            if (result == null) {
+                result = caseAbstractWidgetDescription(extReferenceOverrideDescription);
+            }
+            if (result == null) {
+                result = caseAbstractControlDescription(extReferenceOverrideDescription);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(extReferenceOverrideDescription);
+            }
+            if (result == null) {
+                result = caseDocumentedElement(extReferenceOverrideDescription);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         default:
             return defaultCase(theEObject);
         }
@@ -214,6 +242,21 @@ public class PropertiesExtWidgetsReferenceSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseExtReferenceWidgetConditionalStyle(ExtReferenceWidgetConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Ext Reference Override Description</em>'.
+     * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Ext Reference Override Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseExtReferenceOverrideDescription(ExtReferenceOverrideDescription object) {
         return null;
     }
 
@@ -333,6 +376,21 @@ public class PropertiesExtWidgetsReferenceSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseWidgetConditionalStyle(WidgetConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Abstract Override Description</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Abstract Override Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseAbstractOverrideDescription(AbstractOverrideDescription object) {
         return null;
     }
 

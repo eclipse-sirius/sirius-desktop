@@ -14,8 +14,8 @@ package org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgets
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>Ext
- * Reference Widget Conditional Style</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Ext Reference Widget Conditional Style</b></em>
+ * '. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:

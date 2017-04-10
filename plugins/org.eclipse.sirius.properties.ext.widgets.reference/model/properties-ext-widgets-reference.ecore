@@ -12,6 +12,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
         eType="#//ExtReferenceWidgetConditionalStyle" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//ExtReferenceDescription"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExtReferenceDescription" eSuperTypes="#//AbstractExtReferenceDescription ../../org.eclipse.sirius.properties/model/properties.ecore#//WidgetDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="ExtReferenceWidgetStyle" eSuperTypes="../../org.eclipse.sirius.properties/model/properties.ecore#//WidgetStyle"/>
@@ -19,5 +20,10 @@
       eSuperTypes="../../org.eclipse.sirius.properties/model/properties.ecore#//WidgetConditionalStyle">
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//ExtReferenceWidgetStyle"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExtReferenceOverrideDescription" eSuperTypes="#//AbstractExtReferenceDescription ../../org.eclipse.sirius.properties/model/properties.ecore#//AbstractOverrideDescription">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//ExtReferenceDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromOverriddenExtReferenceExpression"
+        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
 </ecore:EPackage>

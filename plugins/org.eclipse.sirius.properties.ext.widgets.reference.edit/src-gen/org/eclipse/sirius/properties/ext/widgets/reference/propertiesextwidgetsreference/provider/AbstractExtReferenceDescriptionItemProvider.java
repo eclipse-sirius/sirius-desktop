@@ -56,6 +56,7 @@ public class AbstractExtReferenceDescriptionItemProvider extends AbstractWidgetD
 
             addReferenceNameExpressionPropertyDescriptor(object);
             addReferenceOwnerExpressionPropertyDescriptor(object);
+            addExtendsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -86,6 +87,18 @@ public class AbstractExtReferenceDescriptionItemProvider extends AbstractWidgetD
                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractExtReferenceDescription_referenceOwnerExpression_feature", "_UI_AbstractExtReferenceDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Extends feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addExtendsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractExtReferenceDescription_extends_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractExtReferenceDescription_extends_feature", "_UI_AbstractExtReferenceDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__EXTENDS, true, false, true, null, null, null));
     }
 
     /**
@@ -150,7 +163,7 @@ public class AbstractExtReferenceDescriptionItemProvider extends AbstractWidgetD
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override
