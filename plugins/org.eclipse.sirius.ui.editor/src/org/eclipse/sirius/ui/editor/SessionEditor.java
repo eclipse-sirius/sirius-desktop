@@ -14,12 +14,16 @@ import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -80,10 +84,11 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
         IEditorInput editorInput = this.getEditorInput();
         URI sessionResourceURI = null;
         if (editorInput instanceof FileEditorInput) {
+            // provided when opened from a no modeling project.
             IFile sessionResourceFile = ((FileEditorInput) editorInput).getFile();
             sessionResourceURI = URI.createPlatformResourceURI(sessionResourceFile.getFullPath().toOSString(), true);
-            setPartName(sessionResourceFile.getName());
         } else if (editorInput instanceof URIEditorInput) {
+            // provided when opened from a modeling project.
             sessionResourceURI = ((URIEditorInput) editorInput).getURI();
         } else {
             ErrorDialog.openError(getSite().getShell(), MessageFormat.format(Messages.UI_SessionEditor_session_loading_error_message, new Object[0]),
@@ -93,6 +98,19 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
         try {
             if (sessionResourceURI != null) {
                 final URI sessionResourceURIFinal = sessionResourceURI;
+
+                IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(sessionResourceURIFinal.toPlatformString(true)));
+                IProject project = file.getProject();
+                if (ModelingProject.hasModelingProjectNature(project)) {
+                    // we show the modeling project name
+                    setPartName(sessionResourceURIFinal.segments()[1]);
+                } else {
+                    // we show as editor name the aird name and as description
+                    // the aird full path relatively to the project.
+                    setPartName(sessionResourceURIFinal.lastSegment());
+                    setContentDescription(sessionResourceURIFinal.toPlatformString(true));
+                }
+
                 // until we find a way to load session independently from the
                 // editor, session loading blocks the editor opening with a
                 // progress monitor.
@@ -105,6 +123,7 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                         session.open(monitor);
                     }
                     session.addListener(this);
+
                     subMonitor.worked(1);
                     subMonitor.done();
                 });
