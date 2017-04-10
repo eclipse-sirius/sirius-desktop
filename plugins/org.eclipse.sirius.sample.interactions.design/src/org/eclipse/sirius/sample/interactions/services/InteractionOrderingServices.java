@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -103,13 +103,13 @@ public class InteractionOrderingServices {
     }
 
     public Collection<EObject> computeSemanticElements(Execution exec) {
-        return Arrays.asList(exec, exec.getStart(), exec.getEnd(), currentParticipant(exec));
+        return new LinkedHashSet<EObject>(Arrays.asList(exec, exec.getStart(), exec.getEnd(), currentParticipant(exec)));
     }
 
     public Collection<EObject> computeSemanticElements(State state) {
-        return Arrays.asList(state, state.getStart(), state.getEnd(), currentParticipant(state));
+        return new LinkedHashSet<EObject>(Arrays.asList(state, state.getStart(), state.getEnd(), currentParticipant(state)));
     }
-    
+
     public boolean eolPrecondition(Participant p) {
         Interaction i = (Interaction) new EObjectQuery(p).getFirstAncestorOfType(InteractionsPackage.Literals.INTERACTION).get();
         for (Message msg : Iterables.filter(i.getMessages(), Predicates.instanceOf(DestroyParticipantMessage.class))) {
@@ -119,11 +119,11 @@ public class InteractionOrderingServices {
         }
         return false;
     }
-    
+
     public boolean redimEolPrecondition(Participant p) {
         return !eolPrecondition(p);
     }
-    
+
     public Collection<EObject> lostMessageEndSemanticCandidates(Interaction i) {
         Collection<EObject> result = Lists.newArrayList();
         for (Message msg : i.getMessages()) {
@@ -225,7 +225,7 @@ public class InteractionOrderingServices {
                 events.add(ec.getElement());
             }
         }
-        List<EObject> result = new ArrayList<EObject>();
+        Set<EObject> result = new LinkedHashSet<EObject>();
         for (EObject event : events) {
             if (event != parent) {
                 result.add(event);
