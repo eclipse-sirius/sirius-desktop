@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -24,7 +23,6 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
-import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
@@ -210,21 +208,6 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
         return Collections.emptyList();
     }
 
-    private Collection<Resource> filter(final Collection<Resource> resources) {
-        final Collection<Resource> result = new ArrayList<Resource>(resources.size());
-        for (final Resource res : resources) {
-            if (!isFiltered(res)) {
-                result.add(res);
-            }
-
-        }
-        return result;
-    }
-
-    private boolean isFiltered(final Resource resource) {
-        return new ResourceQuery(resource).isRepresentationsResource();
-    }
-
     @Override
     public Object getParent(final Object element) {
         Object parent = getParentFromExtensions(element);
@@ -274,7 +257,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
     public Object[] getElements(final Object inputElement) {
         Object[] result = null;
         if (inputElement instanceof Session) {
-            result = filter(((Session) inputElement).getSemanticResources()).toArray();
+            result = ((Session) inputElement).getSemanticResources().toArray();
         }
         if (inputElement instanceof Collection) {
             result = ((Collection<?>) inputElement).toArray();
@@ -312,8 +295,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
         private final Collection<Viewpoint> scope;
 
         /**
-         * Filter all {@link DRepresentationDescriptor} whose description
-         * belongs to one of the specified viewpoints.
+         * Filter all {@link DRepresentationDescriptor} whose description belongs to one of the specified viewpoints.
          * 
          * @param scope
          *            the viewpoints to test.

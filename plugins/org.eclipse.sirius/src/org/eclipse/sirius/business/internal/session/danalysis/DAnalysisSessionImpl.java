@@ -602,7 +602,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *            the ResourceSet in which it should be added if needed.
      */
     protected void doAddSemanticResource(final Resource newResource, final ResourceSet set) {
-        if (new ResourceQuery(newResource).isRepresentationsResource()) {
+        if (new ResourceQuery(newResource).isAirdOrSrmResource()) {
             throw new IllegalArgumentException(Messages.DAnalysisSessionImpl_addSemanticErrorMsg);
         }
         if (newResource.getResourceSet() != set) {

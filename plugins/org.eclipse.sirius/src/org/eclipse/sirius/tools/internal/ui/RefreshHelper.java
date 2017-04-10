@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,8 +33,7 @@ public final class RefreshHelper {
     }
 
     /**
-     * Checks whether the changes we are notified changes semantic models (i.e.
-     * not just Sirius representations state).
+     * Checks whether the changes we are notified changes semantic models (i.e. not just Sirius representations state).
      *
      * @param notifications
      *            the model changes.
@@ -50,7 +49,7 @@ public final class RefreshHelper {
                 if (!alreadyDoneNotifiers.contains(eObjectNotifier)) {
                     alreadyDoneNotifiers.add(eObjectNotifier);
                     Resource notifierResource = eObjectNotifier.eResource();
-                    if (notifierResource != null && !new ResourceQuery(notifierResource).isRepresentationsResource()) {
+                    if (notifierResource != null && !new ResourceQuery(notifierResource).isAirdOrSrmResource()) {
                         isImpactingNotification = true;
                         break;
                     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,8 +55,8 @@ public interface SessionManager {
 
     /**
      * Add a new session.<BR>
-     * This method should not be called by client. It must be automatically
-     * called by {@link Session#open(IProgressMonitor))}.
+     * This method should not be called by client. It must be automatically called by
+     * {@link Session#open(IProgressMonitor))}.
      * 
      * @param newSession
      *            session to add.
@@ -65,8 +65,8 @@ public interface SessionManager {
 
     /**
      * Remove an existing session.<BR>
-     * This method should not be called by client. It must be automatically
-     * called by {@link Session#close(IProgressMonitor)}.
+     * This method should not be called by client. It must be automatically called by
+     * {@link Session#close(IProgressMonitor)}.
      * 
      * @param removedSession
      *            session to remove.
@@ -99,7 +99,7 @@ public interface SessionManager {
     void notifyRepresentationDeleted(Session session);
 
     /**
-     * Try to return the session corresponding to an {@link EObject}.
+     * Try to return the session corresponding to a semantic {@link EObject}.
      * 
      * @param any
      *            semantic EObject.
@@ -108,7 +108,7 @@ public interface SessionManager {
     Session getSession(EObject any);
 
     /**
-     * Try to return the session corresponding to an {@link EObject}.
+     * Try to return the session corresponding to a semantic {@link Resource}.
      * 
      * @param semanticResource
      *            a semantic Resource.
@@ -117,23 +117,21 @@ public interface SessionManager {
     Session getSession(Resource semanticResource);
 
     /**
-     * Return the {@link Session} whose Resource's URI correspond to
-     * sessionResourceURI. If the Resource has already been loaded returns the
-     * existing Session else try to load it.
+     * Return the {@link Session} whose Resource's URI correspond to sessionResourceURI. If the Resource has already
+     * been loaded returns the existing Session else try to load it.
      * 
      * @param sessionResourceURI
      *            a session Resource {@link URI}
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of Session
-     *            getting, especially if there is a resource loading
+     *            a {@link IProgressMonitor} to show progression of Session getting, especially if there is a resource
+     *            loading
      * @return the corresponding session if exist.
      */
     Session getSession(URI sessionResourceURI, IProgressMonitor monitor);
 
     /**
-     * Return the {@link Session} whose Resource's URI correspond to
-     * sessionResourceURI. If the Resource has already been loaded returns the
-     * existing Session else return null.
+     * Return the {@link Session} whose Resource's URI correspond to sessionResourceURI. If the Resource has already
+     * been loaded returns the existing Session else return null.
      * 
      * @param sessionResourceURI
      *            a session Resource {@link URI}
@@ -144,17 +142,16 @@ public interface SessionManager {
     Session getExistingSession(URI sessionResourceURI);
 
     /**
-     * Try to open a session. If there is a version mismatch, the user may be
-     * asked if he wants to open the session anyway.
+     * Try to open a session. If there is a version mismatch, the user may be asked if he wants to open the session
+     * anyway.
      * 
      * @param sessionResourceURI
      *            a session Resource {@link URI}
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of Session
-     *            getting, especially if there is a resource loading
+     *            a {@link IProgressMonitor} to show progression of Session getting, especially if there is a resource
+     *            loading
      * @param uiCallback
-     *            used to let the user choose if he wants to open the session
-     *            anyway in case of version mismatch
+     *            used to let the user choose if he wants to open the session anyway in case of version mismatch
      * @return the opened session
      */
     Session openSession(URI sessionResourceURI, IProgressMonitor monitor, UICallBack uiCallback);

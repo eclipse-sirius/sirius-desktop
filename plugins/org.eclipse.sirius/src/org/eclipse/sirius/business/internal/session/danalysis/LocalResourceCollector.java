@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,8 +48,7 @@ public class LocalResourceCollector extends SiriusCrossReferenceAdapterImpl impl
      * Default constructor.
      * 
      * @param resourceSet
-     *            the {@link ResourceSet} on which to listens
-     *            {@link ResourceSet#getResources()} changes
+     *            the {@link ResourceSet} on which to listens {@link ResourceSet#getResources()} changes
      */
     public LocalResourceCollector(ResourceSet resourceSet) {
         super();
@@ -72,7 +71,7 @@ public class LocalResourceCollector extends SiriusCrossReferenceAdapterImpl impl
      *            the specified referenced {@link Resource}
      */
     public void addInterResourceResourceReference(Resource referencingResource, Resource referencedResource) {
-        if (!new ResourceQuery(referencingResource).isRepresentationsResource() && !new ResourceQuery(referencedResource).isRepresentationsResource()) {
+        if (!isAnAirdOrSrmResourceConcerned(referencingResource, referencedResource)) {
             // Update referenced resources
             Collection<Resource> allReferencedResourcesByResource = directlyReferencedResources.get(referencingResource);
             if (allReferencedResourcesByResource == null) {
@@ -89,6 +88,10 @@ public class LocalResourceCollector extends SiriusCrossReferenceAdapterImpl impl
             }
             allReferencingResourcesByResource.add(referencingResource);
         }
+    }
+
+    private boolean isAnAirdOrSrmResourceConcerned(Resource referencingResource, Resource referencedResource) {
+        return new ResourceQuery(referencingResource).isAirdOrSrmResource() || new ResourceQuery(referencedResource).isAirdOrSrmResource();
     }
 
     /**
@@ -163,8 +166,8 @@ public class LocalResourceCollector extends SiriusCrossReferenceAdapterImpl impl
         private static final long serialVersionUID = 1L;
 
         /**
-         * A Map for each Resource to have all resource externally referenced
-         * EObjects through resource local EObject through which EReferences .
+         * A Map for each Resource to have all resource externally referenced EObjects through resource local EObject
+         * through which EReferences .
          */
         private Map<Resource, Map<EObject, Map<EObject, EStructuralFeature>>> resourcesRefs = new WeakHashMap<Resource, Map<EObject, Map<EObject, EStructuralFeature>>>();
 
@@ -174,7 +177,7 @@ public class LocalResourceCollector extends SiriusCrossReferenceAdapterImpl impl
             Resource referencingResource = eObject.eResource();
             Resource referencedResource = crossReferencedEObject.eResource();
             if (referencingResource != null && referencedResource != null && referencingResource != referencedResource) {
-                if (!new ResourceQuery(referencingResource).isRepresentationsResource() && !new ResourceQuery(referencedResource).isRepresentationsResource()) {
+                if (!isAnAirdOrSrmResourceConcerned(referencingResource, referencedResource)) {
                     Map<EObject, Map<EObject, EStructuralFeature>> referencedEObjects = resourcesRefs.get(referencingResource);
                     if (referencedEObjects == null) {
                         referencedEObjects = new LinkedHashMap<EObject, Map<EObject, EStructuralFeature>>();
@@ -203,7 +206,7 @@ public class LocalResourceCollector extends SiriusCrossReferenceAdapterImpl impl
             Resource referencingResource = eObject.eResource();
             Resource referencedResource = crossReferencedEObject.eResource();
             if (referencingResource != null && referencedResource != null && referencingResource != referencedResource) {
-                if (!new ResourceQuery(referencingResource).isRepresentationsResource() && !new ResourceQuery(referencedResource).isRepresentationsResource()) {
+                if (!isAnAirdOrSrmResourceConcerned(referencingResource, referencedResource)) {
                     removeInMap(referencedResource, referencingResource, eObject, crossReferencedEObject);
                 }
             }

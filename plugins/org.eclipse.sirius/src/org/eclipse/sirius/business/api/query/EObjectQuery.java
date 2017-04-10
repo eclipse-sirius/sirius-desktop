@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
@@ -51,8 +52,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
- * A class aggregating all the queries (read-only!) having a {@link EObject} as
- * a starting point.
+ * A class aggregating all the queries (read-only!) having a {@link EObject} as a starting point.
  * 
  * @author mporhel
  * 
@@ -63,8 +63,7 @@ public class EObjectQuery {
     protected EObject eObject;
 
     /**
-     * The {@link ECrossReferenceAdapter} to use for all inverse references
-     * queries.
+     * The {@link ECrossReferenceAdapter} to use for all inverse references queries.
      */
     protected ECrossReferenceAdapter xref;
 
@@ -79,15 +78,13 @@ public class EObjectQuery {
     }
 
     /**
-     * Create a new query. Prefer this constructor if in the context of the
-     * call, you already have access to the cross referencer of the session
-     * containing the queried EObject.
+     * Create a new query. Prefer this constructor if in the context of the call, you already have access to the cross
+     * referencer of the session containing the queried EObject.
      * 
      * @param eObject
      *            the element to query.
      * @param xref
-     *            ECrossReferenceAdapter to use for all queries about inverse
-     *            references.
+     *            ECrossReferenceAdapter to use for all queries about inverse references.
      */
     public EObjectQuery(EObject eObject, ECrossReferenceAdapter xref) {
         this.eObject = eObject;
@@ -95,8 +92,7 @@ public class EObjectQuery {
     }
 
     /**
-     * Browse the model upward (from the leaf to the root) and return the first
-     * representation found.
+     * Browse the model upward (from the leaf to the root) and return the first representation found.
      * 
      * @return the representation if found, null otherwise.
      */
@@ -112,8 +108,7 @@ public class EObjectQuery {
     }
 
     /**
-     * Get the resource container i.e the first parent container serialized in
-     * its own resource.
+     * Get the resource container i.e the first parent container serialized in its own resource.
      * 
      * @return should be not <code>null</code>.
      */
@@ -130,8 +125,7 @@ public class EObjectQuery {
     }
 
     /**
-     * Finds the first (closest) ancestor of this element which is of the
-     * specified type (or a sub-type).
+     * Finds the first (closest) ancestor of this element which is of the specified type (or a sub-type).
      * 
      * @param klass
      *            the type of element to look for.
@@ -150,14 +144,13 @@ public class EObjectQuery {
     }
 
     /**
-     * Finds all the objects in the session which point to this EObject through
-     * a reference of the specified name. The queried EObject must be part of an
-     * opened Sirius session.
+     * Finds all the objects in the session which point to this EObject through a reference of the specified name. The
+     * queried EObject must be part of an opened Sirius session.
      * 
      * @param featureName
      *            the name of the pointing reference.
-     * @return all the EObjects in the same session as this EObject which point
-     *         to it through a reference of the specified name.
+     * @return all the EObjects in the same session as this EObject which point to it through a reference of the
+     *         specified name.
      */
     public Collection<EObject> getInverseReferences(final String featureName) {
         Preconditions.checkNotNull(featureName);
@@ -170,14 +163,12 @@ public class EObjectQuery {
     }
 
     /**
-     * Finds all the objects in the session which point to this EObject through
-     * a specific reference type. The queried EObject must be part of an opened
-     * Sirius session.
+     * Finds all the objects in the session which point to this EObject through a specific reference type. The queried
+     * EObject must be part of an opened Sirius session.
      * 
      * @param ref
      *            the pointing reference.
-     * @return all the EObjects in the same session as this EObject which point
-     *         to it through the specified reference.
+     * @return all the EObjects in the same session as this EObject which point to it through the specified reference.
      */
     public Collection<EObject> getInverseReferences(final EReference ref) {
         Preconditions.checkNotNull(ref);
@@ -190,14 +181,13 @@ public class EObjectQuery {
     }
 
     /**
-     * Finds all the objects in the session which point to this EObject through
-     * one of the specific references type. The queried EObject must be part of
-     * an opened Sirius session.
+     * Finds all the objects in the session which point to this EObject through one of the specific references type. The
+     * queried EObject must be part of an opened Sirius session.
      * 
      * @param refs
      *            the pointing references.
-     * @return all the EObjects in the same session as this EObject which point
-     *         to it through one of the specified references.
+     * @return all the EObjects in the same session as this EObject which point to it through one of the specified
+     *         references.
      */
     public Collection<EObject> getInverseReferences(final Set<EReference> refs) {
         Preconditions.checkNotNull(refs);
@@ -210,15 +200,12 @@ public class EObjectQuery {
     }
 
     /**
-     * Finds all the objects in the session which reference this EObject through
-     * a setting matching the specified predicate. The queried EObject must be
-     * part of an opened Sirius session.
+     * Finds all the objects in the session which reference this EObject through a setting matching the specified
+     * predicate. The queried EObject must be part of an opened Sirius session.
      * 
      * @param predicate
-     *            the predicate to use to match incoming references to this
-     *            object.
-     * @return all the EObjects in the same session as this EObject which point
-     *         to it through a matching setting.
+     *            the predicate to use to match incoming references to this object.
+     * @return all the EObjects in the same session as this EObject which point to it through a matching setting.
      */
     private Collection<EObject> getInverseReferences(Predicate<Setting> predicate) {
         Preconditions.checkNotNull(predicate);
@@ -240,9 +227,8 @@ public class EObjectQuery {
     }
 
     /**
-     * Try to return the session corresponding to the current {@link EObject}
-     * (this object can be a semantic EObject or an element of the aird
-     * Resource).
+     * Try to return the session corresponding to the current {@link EObject} (this object can be a semantic EObject or
+     * an element of the aird Resource).
      * 
      * @return the corresponding session.
      */
@@ -252,8 +238,13 @@ public class EObjectQuery {
             try {
                 final EObject root = EcoreUtil.getRootContainer(eObject);
                 final Resource res = root != null ? root.eResource() : null;
-                if (res != null && new ResourceQuery(res).isRepresentationsResource()) {
-                    found = getSession(res);
+                if (res != null) {
+                    ResourceQuery resourceQuery = new ResourceQuery(res);
+                    if (resourceQuery.isRepresentationsResource()) {
+                        found = getSessionFromAirdResource(res);
+                    } else if (resourceQuery.isSrmResource()) {
+                        found = getSessionFromSrmResource(res);
+                    }
                 }
             } catch (IllegalStateException e) {
                 // Silent catch: this can happen when trying to get the session
@@ -263,15 +254,18 @@ public class EObjectQuery {
         return found;
     }
 
+    private Session getSessionFromSrmResource(Resource srmResource) {
+        return Optional.ofNullable(new EObjectQuery(srmResource.getContents().get(0)).getDAnalysis()).map(EObject::eResource).map(res -> getSessionFromAirdResource(res)).orElse(null);
+    }
+
     /**
-     * Try to return the session corresponding to an {@link Resource} of a
-     * session (*.aird).
+     * Try to return the session corresponding to an {@link Resource} of a session (*.aird).
      * 
      * @param airdResource
      *            a {@link Resource} corresponding to an aird resource.
      * @return the corresponding session.
      */
-    private Session getSession(final Resource airdResource) {
+    private Session getSessionFromAirdResource(final Resource airdResource) {
         Session found = null;
         for (Iterator<? extends Session> sessions = SessionManager.INSTANCE.getSessions().iterator(); sessions.hasNext() && found == null; /* */) {
             Session sess = sessions.next();
@@ -283,15 +277,13 @@ public class EObjectQuery {
     }
 
     /**
-     * Returns the URIs of all the resources on which loaded elements of this
-     * object depend and which are loaded/resolved. Calling this method does not
-     * load any new resource of resolve any proxy.
+     * Returns the URIs of all the resources on which loaded elements of this object depend and which are
+     * loaded/resolved. Calling this method does not load any new resource of resolve any proxy.
      * <p>
-     * <em>WARNING:</em> This does not consider dependencies to sub-resources
-     * through containment references.
+     * <em>WARNING:</em> This does not consider dependencies to sub-resources through containment references.
      * 
-     * @return the URIs of all the Resources this element and its proper
-     *         descendants depends on and which are loaded/resolved.
+     * @return the URIs of all the Resources this element and its proper descendants depends on and which are
+     *         loaded/resolved.
      */
     public Collection<URI> getResolvedDependencies() {
         Collection<URI> dependencies = Sets.newHashSet();
@@ -333,15 +325,12 @@ public class EObjectQuery {
     }
 
     /**
-     * Returns the URIs of all the resources on which loaded elements of this
-     * resource depend but which are not yet loaded/resolved. Calling this
-     * method does not load any new resource of resolve any proxy.
+     * Returns the URIs of all the resources on which loaded elements of this resource depend but which are not yet
+     * loaded/resolved. Calling this method does not load any new resource of resolve any proxy.
      * <p>
-     * <em>WARNING:</em> This does not consider dependencies to sub-resources
-     * through containment references.
+     * <em>WARNING:</em> This does not consider dependencies to sub-resources through containment references.
      * 
-     * @return the URIs of all the Resources this one depends on but which is
-     *         not yet loaded/resolved.
+     * @return the URIs of all the Resources this one depends on but which is not yet loaded/resolved.
      */
     public Collection<URI> getUnresolvedDependencies() {
         Collection<URI> dependencies = Sets.newHashSet();
@@ -357,14 +346,12 @@ public class EObjectQuery {
     }
 
     /**
-     * Get all the EOject referenced by this one through the specified
-     * reference.
+     * Get all the EOject referenced by this one through the specified reference.
      * 
      * @param ref
-     *            the reference. Must be a valid reference for the queried
-     *            elements.
-     * @return all the EOject referenced by this one through the specified
-     *         reference. May be a singleton list, or even an empty list.
+     *            the reference. Must be a valid reference for the queried elements.
+     * @return all the EOject referenced by this one through the specified reference. May be a singleton list, or even
+     *         an empty list.
      */
     @SuppressWarnings("unchecked")
     public List<EObject> getValues(EReference ref) {
@@ -406,13 +393,11 @@ public class EObjectQuery {
     }
 
     /**
-     * Check if this EObject has in its hierarchy the <code>parentToCheck</code>
-     * .
+     * Check if this EObject has in its hierarchy the <code>parentToCheck</code> .
      * 
      * @param parentToCheck
      *            The parent to check.
-     * @return true if this EObject is contained in the parentToCheck, false
-     *         otherwise.
+     * @return true if this EObject is contained in the parentToCheck, false otherwise.
      */
     public boolean isContainedIn(EObject parentToCheck) {
         EObject current = eObject;
@@ -426,8 +411,7 @@ public class EObjectQuery {
     }
 
     /**
-     * Get all the available viewpoints contained in the resource set of the
-     * object to query.
+     * Get all the available viewpoints contained in the resource set of the object to query.
      * 
      * @return all the available viewpoints
      */
@@ -448,13 +432,11 @@ public class EObjectQuery {
     }
 
     /**
-     * Allow to retrieve the father {@link DAnalysis} from an element contained
-     * in a {@link DRepresentation} or from a {@link DRepresentation}
-     * itself.</br>
-     * Browse the model upward (from the leaf to the root) to return the
-     * {@link DAnalysis}</br>
-     * This method manages the fact that the DRepresentation is not owned by the
-     * DView using the session crossReferencer.
+     * Allow to retrieve the father {@link DAnalysis} from an element contained in a {@link DRepresentation} or from a
+     * {@link DRepresentation} itself.</br>
+     * Browse the model upward (from the leaf to the root) to return the {@link DAnalysis}</br>
+     * This method manages the fact that the DRepresentation is not owned by the DView using the session
+     * crossReferencer.
      * 
      * @return the DAnalysis if found, null otherwise.
      */

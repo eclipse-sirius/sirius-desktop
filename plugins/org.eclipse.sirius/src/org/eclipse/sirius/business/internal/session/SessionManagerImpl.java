@@ -65,14 +65,12 @@ import com.google.common.collect.Sets;
 public class SessionManagerImpl extends SessionManagerEObjectImpl implements SessionManager {
 
     /**
-     * Listeners provide by the extension point
-     * org.eclipse.sirius.SessionManagerListener.
+     * Listeners provide by the extension point org.eclipse.sirius.SessionManagerListener.
      */
     private Set<SessionManagerListener> extensionPointListeners;
 
     /**
-     * Listeners added programmatically using
-     * SessionManager.addSessionsListener.
+     * Listeners added programmatically using SessionManager.addSessionsListener.
      */
     private Set<SessionManagerListener> programmaticListeners = Sets.newLinkedHashSet();
 
@@ -130,8 +128,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
             sessionsToListeners.put(newSession, sessListener);
 
             /*
-             * Concurrent modification safe iterator => useful if a listener
-             * want to remove from listeners list
+             * Concurrent modification safe iterator => useful if a listener want to remove from listeners list
              */
             final Set<SessionManagerListener> listenersToIterate = Sets.newLinkedHashSet(getAllListeners());
             for (final SessionManagerListener listener : listenersToIterate) {
@@ -170,8 +167,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
             this.fireVPSelectionDeselectionEvents();
 
             /*
-             * no more session, we should dispose all the model accessor
-             * registered
+             * no more session, we should dispose all the model accessor registered
              */
             if (sessionsToListeners.isEmpty()) {
                 SiriusPlugin.getDefault().getModelAccessorRegistry().dispose();
@@ -190,8 +186,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
             found = getSession((Resource) any);
         } else {
             /*
-             * looks like some sequencers think it's a good idea to pass null as
-             * a parameter here.
+             * looks like some sequencers think it's a good idea to pass null as a parameter here.
              */
             if (any != null) {
                 Option<SessionTransientAttachment> attachment = SessionTransientAttachment.getSessionTransientAttachement(any);
@@ -357,20 +352,17 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     }
 
     /**
-     * @return an iterable over the listeners provide by the extension point
-     *         org.eclipse.sirius.SessionManagerListener and the listeners added
-     *         programmatically.
+     * @return an iterable over the listeners provide by the extension point org.eclipse.sirius.SessionManagerListener
+     *         and the listeners added programmatically.
      */
     private synchronized Iterable<SessionManagerListener> getAllListeners() {
         return Iterables.concat(getExtensionPointListeners(), programmaticListeners);
     }
 
     /**
-     * Get the list of listeners provide by the extension point
-     * org.eclipse.sirius.SessionManagerListener2.
+     * Get the list of listeners provide by the extension point org.eclipse.sirius.SessionManagerListener2.
      *
-     * @return the listeners provide by the extension point
-     *         org.eclipse.sirius.SessionManagerListener2
+     * @return the listeners provide by the extension point org.eclipse.sirius.SessionManagerListener2
      */
     private synchronized Set<SessionManagerListener> getExtensionPointListeners() {
         if (extensionPointListeners == null) {
