@@ -219,6 +219,7 @@ public class VSMAndDiagramEditorSynchronisationTest extends AbstractSiriusSwtBot
      * Check that the editor is correctly opened.
      */
     private void checkDiagramIsCorrectlyOpened(String color) {
+        SWTBotUtils.waitAllUiEvents();
         SWTBotGefEditPart editPart = selectAndCheckEditPart(NEW_E_CLASS_1TT, AbstractDiagramListEditPart.class);
         IFigure figure = ((AbstractGraphicalEditPart) editPart.part()).getFigure();
         assertThat(figure.getBackgroundColor(), equalTo(VisualBindingManager.getDefault().getColorFromName(color)));
