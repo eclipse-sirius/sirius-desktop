@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.dialect.description;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -116,6 +117,8 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
                 IntersectionMapping interMapping = (IntersectionMapping) tool.eContainer();
                 declareLineAndColumnSemantic(availableVariables, interMapping);
             }
+            availableVariables.put(IInterpreterSiriusTableVariables.LINE, VariableType.fromEClassifiers(Arrays.asList(TablePackage.Literals.DLINE)));
+            availableVariables.put(IInterpreterSiriusTableVariables.TABLE, VariableType.fromEClassifiers(Arrays.asList(TablePackage.Literals.DTABLE)));
         } else if (toolContext instanceof CreateLineTool) {
             CreateLineTool tool = (CreateLineTool) toolContext;
 
