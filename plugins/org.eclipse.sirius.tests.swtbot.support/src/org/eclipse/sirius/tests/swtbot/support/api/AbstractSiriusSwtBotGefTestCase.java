@@ -1195,10 +1195,10 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Get the widget bot corresponding to the button to
-     * "Reset style properties to default" on a selected node/edge. If tabbar
-     * parameter at true, get the button of the tabbar, else get the button of
-     * the Appearance tab on the properties view.
+     * Get the widget bot corresponding to the button to "Reset style properties
+     * to default" on a selected node/edge. If tabbar parameter at true, get the
+     * button of the tabbar, else get the button of the Appearance tab on the
+     * properties view.
      *
      * @param tabbar
      *            if tabbar parameter at true, get the button of the tabbar,
@@ -1207,8 +1207,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @param enabled
      *            true to check if the button must be enable, false to check if
      *            it shouldn't be enabled
-     * @return the widget bot corresponding to the button to
-     *         "Reset style properties to default" on a selected node/edge
+     * @return the widget bot corresponding to the button to "Reset style
+     *         properties to default" on a selected node/edge
      */
     protected AbstractSWTBot<? extends Widget> getResetStylePropertiesToDefaultValuesButton(boolean tabbar, boolean enabled) {
         AbstractSWTBot<? extends Widget> resetStylePropertiesToDefaultValuesButton = null;
@@ -1884,6 +1884,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         super.tearDown();
         setErrorCatchActive(false);
         setWarningCatchActive(false);
+        // Avoid NPE in org.eclipse.ui.internal.statushandlers.StatusHandlerRegistry.<init> on close.
+        ResourcesPlugin.getWorkspace().save(true, null);
     }
 
     // CHECKSTYLE:OFF
