@@ -1962,6 +1962,7 @@ public abstract class SiriusTestCase extends TestCase {
         new TestCaseCleaner(this).clearAllFields();
 
         super.tearDown();
+        ResourcesPlugin.getWorkspace().save(true, null);
     }
 
     /**
