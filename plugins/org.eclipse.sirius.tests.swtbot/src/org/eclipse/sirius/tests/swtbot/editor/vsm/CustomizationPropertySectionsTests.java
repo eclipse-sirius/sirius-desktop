@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.swtbot.editor.vsm;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -167,6 +168,7 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         // proposed
         attributeNameText.setText("");
         appliedOnButton.setFocus();
+        SWTBotUtils.waitAllUiEvents();
         appliedOnButton.click();
         appliedOnSelectorShell = bot.activeShell();
         appliedOnSelectorShellBot = appliedOnSelectorShell.bot();
@@ -235,6 +237,7 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         // proposed
         referenceNameText.setText("");
         appliedOnButton.setFocus();
+        SWTBotUtils.waitAllUiEvents();
         appliedOnButton.click();
         appliedOnSelectorShell = bot.activeShell();
         appliedOnSelectorShellBot = appliedOnSelectorShell.bot();
@@ -263,6 +266,7 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         // Test referenceName completion
         SWTBotButton reuseButton = propertiesBot.bot().button();
         reuseButton.setFocus();
+        SWTBotUtils.waitAllUiEvents();
         reuseButton.click();
 
         SWTBotShell reuseSelectorShell = bot.activeShell();
@@ -273,6 +277,7 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
 
         SWTBotButton appliedOnButton = propertiesBot.bot().button(1);
         appliedOnButton.setFocus();
+        SWTBotUtils.waitAllUiEvents();
         appliedOnButton.click();
 
         SWTBotShell appliedOnSelectorShell = bot.activeShell();
@@ -281,6 +286,7 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
 
         reuseButton = propertiesBot.bot().button();
         reuseButton.setFocus();
+        SWTBotUtils.waitAllUiEvents();
         reuseButton.click();
 
         reuseSelectorShell = bot.activeShell();
