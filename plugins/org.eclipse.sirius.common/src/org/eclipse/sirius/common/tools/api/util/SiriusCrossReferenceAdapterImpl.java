@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,19 +11,20 @@
 package org.eclipse.sirius.common.tools.api.util;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 
 /**
- * Specific {@link ECrossReferenceAdapter} which resolve proxy ability can be
- * disabled. All {@link ECrossReferenceAdapter} used for Sirius should extend
- * this adapter in place of {@link ECrossReferenceAdapter}
+ * Specific {@link ECrossReferenceAdapter} which resolve proxy ability can be disabled. All
+ * {@link ECrossReferenceAdapter} used for Sirius should extend this adapter in place of {@link ECrossReferenceAdapter}
  * 
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  */
@@ -38,6 +39,11 @@ public class SiriusCrossReferenceAdapterImpl extends ECrossReferenceAdapter impl
      * Tell if the resolution of the proxy is enabled or not.
      */
     private boolean resolveProxyEnabled = true;
+
+    /**
+     * This is a white list of features that must be cross referenced.
+     */
+    private Collection<EReference> featureToBeCrossReferencedWhiteList = new HashSet<EReference>();
 
     /**
      * Disable the resolution of the proxy.
@@ -99,9 +105,7 @@ public class SiriusCrossReferenceAdapterImpl extends ECrossReferenceAdapter impl
         };
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     protected void addAdapter(Notifier notifier) {
         List<Adapter> eAdapters = notifier.eAdapters();
         if (!eAdapters.contains(this)) {
@@ -113,5 +117,23 @@ public class SiriusCrossReferenceAdapterImpl extends ECrossReferenceAdapter impl
                 isSettingTargets = oldSettingTargets;
             }
         }
+    }
+
+    /**
+     * Set a white list of features that must be cross referenced.
+     * 
+     * @param featureToBeCrossReferencedWhiteList
+     *            The feature list that must not be null.
+     */
+    public void setFeatureToBeCrossReferencedWhiteList(Collection<EReference> featureToBeCrossReferencedWhiteList) {
+        this.featureToBeCrossReferencedWhiteList = featureToBeCrossReferencedWhiteList;
+    }
+
+    /**
+     * This override allows to crossReference a white list of EReference.
+     */
+    @Override
+    protected boolean isIncluded(EReference eReference) {
+        return (eReference.getEOpposite() == null && !eReference.isDerived()) || featureToBeCrossReferencedWhiteList.contains(eReference);
     }
 }

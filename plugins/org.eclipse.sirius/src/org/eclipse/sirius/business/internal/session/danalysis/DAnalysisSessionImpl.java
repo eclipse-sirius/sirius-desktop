@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -236,6 +237,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public ECrossReferenceAdapterWithUnproxyCapability getSemanticCrossReferencer() {
         if (crossReferencer == null) {
             crossReferencer = createSemanticCrossReferencer();
+            crossReferencer.setFeatureToBeCrossReferencedWhiteList(Arrays.asList(ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Representation()));
+
             if (interpreter != null) {
                 interpreter.setCrossReferencer(crossReferencer);
             }
