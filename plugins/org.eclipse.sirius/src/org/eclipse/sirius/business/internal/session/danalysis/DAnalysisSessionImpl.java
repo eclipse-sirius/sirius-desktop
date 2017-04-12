@@ -557,7 +557,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     @Override
     public synchronized void addSemanticResource(URI semanticModelURI, IProgressMonitor monitor) {
         if (semanticModelURI != null) {
-            if (new FileQuery(semanticModelURI.fileExtension()).isSessionResourceFile()) {
+            FileQuery fileQuery = new FileQuery(semanticModelURI.fileExtension());
+            if (fileQuery.isSessionResourceFile() || fileQuery.isSrmFile()) {
                 throw new IllegalArgumentException(Messages.DAnalysisSessionImpl_addSemanticErrorMsg);
             }
             ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();

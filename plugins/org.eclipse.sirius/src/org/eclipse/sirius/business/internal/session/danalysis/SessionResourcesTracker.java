@@ -268,6 +268,8 @@ class SessionResourcesTracker {
         Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), session.getSemanticResources());
         // Remove the known referenced representations file resources
         Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), referencedSessionResources);
+        // Remove the known srm resources
+        Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), session.getSrmResources());
 
         final Iterable<Resource> newSemanticResourcesIterator = Iterables.filter(resourcesAfterLoadOfSession, new Predicate<Resource>() {
             public boolean apply(Resource resource) {
