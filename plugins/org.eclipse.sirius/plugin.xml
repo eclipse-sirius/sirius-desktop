@@ -402,16 +402,16 @@
             kind="RepresentationsFile">
       </participant>
       <participant
-            class="org.eclipse.sirius.business.internal.migration.DRepresentationDescriptorCreationMigrationParticipant"
-            kind="RepresentationsFile">
-      </participant>
-      <participant
-            class="org.eclipse.sirius.business.internal.migration.DRepresentationMoveFromDViewToRootObjectsMigrationParticipant"
+            class="org.eclipse.sirius.business.internal.migration.DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
       <participant
             class="org.eclipse.sirius.business.internal.migration.EmptyMigrationForPropertyViewMigrationParticipant"
             kind="VSM">
+      </participant>
+      <participant
+            class="org.eclipse.sirius.business.internal.migration.ReplaceRepresentationByRepPathMigrationParticipant"
+            kind="RepresentationsFile">
       </participant>
    </extension>
    <extension point="org.eclipse.emf.ecore.generated_package">

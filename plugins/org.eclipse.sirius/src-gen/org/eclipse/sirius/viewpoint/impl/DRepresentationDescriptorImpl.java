@@ -12,11 +12,16 @@
 package org.eclipse.sirius.viewpoint.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -32,8 +37,9 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getDescription <em>Description</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getTarget <em>Target</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getRepresentation <em>Representation</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getRepresentation
+ * <em>Representation</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getRepPath <em>Rep Path</em>}</li>
  * </ul>
  *
  * @generated
@@ -62,7 +68,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
     /**
      * The cached value of the '{@link #getDescription() <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDescription()
      * @generated
      * @ordered
@@ -72,7 +78,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTarget()
      * @generated
      * @ordered
@@ -80,18 +86,28 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
     protected EObject target;
 
     /**
-     * The cached value of the '{@link #getRepresentation() <em>Representation</em>}' reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @see #getRepresentation()
+     * The default value of the '{@link #getRepPath() <em>Rep Path</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getRepPath()
      * @generated
      * @ordered
      */
-    protected DRepresentation representation;
+    protected static final ResourceDescriptor REP_PATH_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getRepPath() <em>Rep Path</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getRepPath()
+     * @generated
+     * @ordered
+     */
+    protected ResourceDescriptor repPath = DRepresentationDescriptorImpl.REP_PATH_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DRepresentationDescriptorImpl() {
@@ -100,7 +116,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +126,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +136,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +150,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +169,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public RepresentationDescription basicGetDescription() {
@@ -162,7 +178,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +192,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +211,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetTarget() {
@@ -204,7 +220,7 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -218,49 +234,77 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public DRepresentation getRepresentation() {
-        if (representation != null && representation.eIsProxy()) {
-            InternalEObject oldRepresentation = (InternalEObject) representation;
-            representation = (DRepresentation) eResolveProxy(oldRepresentation);
-            if (representation != oldRepresentation) {
-                if (eNotificationRequired()) {
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REPRESENTATION, oldRepresentation, representation));
-                }
-            }
-        }
-        return representation;
+        DRepresentation representation = basicGetRepresentation();
+        return representation != null && representation.eIsProxy() ? (DRepresentation) eResolveProxy((InternalEObject) representation) : representation;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
+     *
+     * @generated NOT
      */
     public DRepresentation basicGetRepresentation() {
-        return representation;
+        ResourceDescriptor resourceDescriptor = getRepPath();
+        Resource resource = eResource();
+        if (resourceDescriptor != null && resource != null) {
+            ResourceSet resourceSet = resource.getResourceSet();
+            if (resourceSet != null) {
+                EObject eObject = resourceSet.getEObject(resourceDescriptor.getResourceURI(), false);
+                return eObject != null ? (DRepresentation) eObject : null;
+            }
+        }
+        return null;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
+     *
+     * @generated NOT
      */
     @Override
     public void setRepresentation(DRepresentation newRepresentation) {
-        DRepresentation oldRepresentation = representation;
-        representation = newRepresentation;
-        if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REPRESENTATION, oldRepresentation, representation));
+        if (newRepresentation != null) {
+            URI uri = EcoreUtil.getURI(newRepresentation);
+            if (uri != null) {
+                setRepPath(new ResourceDescriptor(uri));
+            }
+        } else {
+            setRepPath(null);
         }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public ResourceDescriptor getRepPath() {
+        return repPath;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setRepPath(ResourceDescriptor newRepPath) {
+        ResourceDescriptor oldRepPath = repPath;
+        repPath = newRepPath;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REP_PATH, oldRepPath, repPath));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -283,13 +327,15 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
                 return getRepresentation();
             }
             return basicGetRepresentation();
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REP_PATH:
+            return getRepPath();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -307,13 +353,16 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REPRESENTATION:
             setRepresentation((DRepresentation) newValue);
             return;
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REP_PATH:
+            setRepPath((ResourceDescriptor) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -331,13 +380,16 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REPRESENTATION:
             setRepresentation((DRepresentation) null);
             return;
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REP_PATH:
+            setRepPath(DRepresentationDescriptorImpl.REP_PATH_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -350,14 +402,16 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__TARGET:
             return target != null;
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REPRESENTATION:
-            return representation != null;
+            return basicGetRepresentation() != null;
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REP_PATH:
+            return DRepresentationDescriptorImpl.REP_PATH_EDEFAULT == null ? repPath != null : !DRepresentationDescriptorImpl.REP_PATH_EDEFAULT.equals(repPath);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -369,6 +423,8 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
+        result.append(", repPath: "); //$NON-NLS-1$
+        result.append(repPath);
         result.append(')');
         return result.toString();
     }

@@ -63,6 +63,7 @@ public class DRepresentationDescriptorItemProvider extends ItemProviderAdapter
             addDescriptionPropertyDescriptor(object);
             addTargetPropertyDescriptor(object);
             addRepresentationPropertyDescriptor(object);
+            addRepPathPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -89,6 +90,18 @@ public class DRepresentationDescriptorItemProvider extends ItemProviderAdapter
                 getString("_UI_DRepresentationDescriptor_representation_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationDescriptor_representation_feature", "_UI_DRepresentationDescriptor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__REPRESENTATION, false, false, true, null, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Rep Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addRepPathPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DRepresentationDescriptor_repPath_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationDescriptor_repPath_feature", "_UI_DRepresentationDescriptor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__REP_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -177,6 +190,7 @@ public class DRepresentationDescriptorItemProvider extends ItemProviderAdapter
 
         switch (notification.getFeatureID(DRepresentationDescriptor.class)) {
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__NAME:
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REP_PATH:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

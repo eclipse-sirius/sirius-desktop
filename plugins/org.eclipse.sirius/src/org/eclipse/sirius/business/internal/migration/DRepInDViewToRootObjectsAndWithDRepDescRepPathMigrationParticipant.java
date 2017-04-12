@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,19 +20,19 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
 /**
- * Migration to handle the creation of {@link DRepresentationDescriptor}.
+ * Migration to handle the move of {@link DRepresentation} from DView.ownedRepresentations to the root objects of the
+ * aird resource.
  * 
- * @author mporhel
+ * @author lfasani
  */
-public class DRepresentationDescriptorCreationMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
+public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
     /**
      * The version for which this migration is added.
      */
-    public static final Version MIGRATION_VERSION = new Version("11.1.0.201608250900"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("11.1.0.201608251200"); //$NON-NLS-1$
 
     /**
-     * The name of the feature DView.ownedRepresentations which has been
-     * deleted.
+     * The name of the feature DView.ownedRepresentations which has been deleted.
      */
     public static final String DVIEW_OWNED_REPRESENTATIONS_UNKNOWN_FEATURE = "ownedRepresentations"; //$NON-NLS-1$
 
@@ -45,6 +45,13 @@ public class DRepresentationDescriptorCreationMigrationParticipant extends Abstr
     protected void handleFeature(EObject owner, EStructuralFeature unkownFeature, Object valueOfUnknownFeature) {
         if (DVIEW_OWNED_REPRESENTATIONS_UNKNOWN_FEATURE.equals(unkownFeature.getName())) {
             if (valueOfUnknownFeature instanceof DRepresentation && owner instanceof DView) {
+                // First, move the DRepresentation as root object of the resource so that its URI can be computed
+                // correctly
+                owner.eResource().getContents().add((EObject) valueOfUnknownFeature);
+
+                // Create DRepresentationDescriptor
+                // The method will call DRepresentationDescriptor.setRepresentation that will, in fact, get the
+                // DRepresentation URI and set it on DRepresentationDescriptor.repPath
                 DRepresentationDescriptor descriptor = DRepresentationDescriptorInternalHelper.createDescriptor((DRepresentation) valueOfUnknownFeature);
                 ((DView) owner).getOwnedRepresentationDescriptors().add(descriptor);
             }

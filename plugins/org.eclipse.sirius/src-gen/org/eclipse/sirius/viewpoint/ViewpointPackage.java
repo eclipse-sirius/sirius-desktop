@@ -30,8 +30,8 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <!-- end-user-doc -->
  * 
  * @see org.eclipse.sirius.viewpoint.ViewpointFactory
- * @model kind="package" annotation=
- *        "Tags deprecated='Anything tagged as deprecated will disappear quite soon.\n\n' to\040be\040renamed='Anything tagged \"to be renamed\" will be renamed, at least in the UI\n'"
+ * @model kind="package" annotation= "Tags deprecated='Anything tagged as deprecated will disappear quite soon.\n\n'
+ *        to\040be\040renamed='Anything tagged \"to be renamed\" will be renamed, at least in the UI\n'"
  * @generated
  */
 public interface ViewpointPackage extends EPackage {
@@ -153,8 +153,8 @@ public interface ViewpointPackage extends EPackage {
     int DANALYSIS_FEATURE_COUNT = 8;
 
     /**
-     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DFeatureExtensionImpl
-     * <em>DFeature Extension</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DFeatureExtensionImpl <em>DFeature
+     * Extension</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.viewpoint.impl.DFeatureExtensionImpl
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDFeatureExtension()
@@ -247,8 +247,8 @@ public interface ViewpointPackage extends EPackage {
     int DVIEW = 9;
 
     /**
-     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl
-     * <em>DSemantic Decorator</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl <em>DSemantic
+     * Decorator</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDSemanticDecorator()
@@ -316,13 +316,21 @@ public interface ViewpointPackage extends EPackage {
     int DREPRESENTATION_DESCRIPTOR__REPRESENTATION = 3;
 
     /**
-     * The number of structural features of the '<em>DRepresentation Descriptor</em>' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
+     * The feature id for the '<em><b>Rep Path</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_DESCRIPTOR_FEATURE_COUNT = 4;
+    int DREPRESENTATION_DESCRIPTOR__REP_PATH = 4;
+
+    /**
+     * The number of structural features of the '<em>DRepresentation Descriptor</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DREPRESENTATION_DESCRIPTOR_FEATURE_COUNT = 5;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl <em>DRepresentation</em>
@@ -491,8 +499,8 @@ public interface ViewpointPackage extends EPackage {
     int DVIEW_FEATURE_COUNT = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 4;
 
     /**
-     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.MetaModelExtensionImpl
-     * <em>Meta Model Extension</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.MetaModelExtensionImpl <em>Meta Model
+     * Extension</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.viewpoint.impl.MetaModelExtensionImpl
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getMetaModelExtension()
@@ -545,8 +553,8 @@ public interface ViewpointPackage extends EPackage {
     int DECORATION_FEATURE_COUNT = 1;
 
     /**
-     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DAnalysisCustomDataImpl
-     * <em>DAnalysis Custom Data</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DAnalysisCustomDataImpl <em>DAnalysis Custom
+     * Data</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.viewpoint.impl.DAnalysisCustomDataImpl
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDAnalysisCustomData()
@@ -609,8 +617,8 @@ public interface ViewpointPackage extends EPackage {
     int CUSTOMIZABLE_FEATURE_COUNT = 1;
 
     /**
-     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl
-     * <em>Basic Label Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl <em>Basic Label
+     * Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getBasicLabelStyle()
@@ -809,8 +817,8 @@ public interface ViewpointPackage extends EPackage {
     int RESOURCE_DESCRIPTOR = 30;
 
     /**
-     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl
-     * <em>DAnalysis Session EObject</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl <em>DAnalysis
+     * Session EObject</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDAnalysisSessionEObject()
@@ -879,8 +887,8 @@ public interface ViewpointPackage extends EPackage {
     int DANALYSIS_SESSION_EOBJECT_FEATURE_COUNT = 6;
 
     /**
-     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.SessionManagerEObjectImpl
-     * <em>Session Manager EObject</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.SessionManagerEObjectImpl <em>Session
+     * Manager EObject</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.viewpoint.impl.SessionManagerEObjectImpl
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getSessionManagerEObject()
@@ -976,8 +984,8 @@ public interface ViewpointPackage extends EPackage {
     int DFILE_FEATURE_COUNT = ViewpointPackage.DRESOURCE_FEATURE_COUNT + 0;
 
     /**
-     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DResourceContainerImpl
-     * <em>DResource Container</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DResourceContainerImpl <em>DResource
+     * Container</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.viewpoint.impl.DResourceContainerImpl
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDResourceContainer()
@@ -1318,8 +1326,8 @@ public interface ViewpointPackage extends EPackage {
     EAttribute getDAnalysis_SemanticResources();
 
     /**
-     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.DFeatureExtension
-     * <em>DFeature Extension</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.DFeatureExtension <em>DFeature
+     * Extension</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>DFeature Extension</em>'.
      * @see org.eclipse.sirius.viewpoint.DFeatureExtension
@@ -1369,8 +1377,8 @@ public interface ViewpointPackage extends EPackage {
     EClass getDMappingBased();
 
     /**
-     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.DSemanticDecorator
-     * <em>DSemantic Decorator</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.DSemanticDecorator <em>DSemantic
+     * Decorator</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>DSemantic Decorator</em>'.
      * @see org.eclipse.sirius.viewpoint.DSemanticDecorator
@@ -1423,6 +1431,18 @@ public interface ViewpointPackage extends EPackage {
     EReference getDRepresentationDescriptor_Representation();
 
     /**
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getRepPath <em>Rep Path</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Rep Path</em>'.
+     * @see org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getRepPath()
+     * @see #getDRepresentationDescriptor()
+     * @generated
+     */
+    EAttribute getDRepresentationDescriptor_RepPath();
+
+    /**
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getDescription <em>Description</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -1458,8 +1478,8 @@ public interface ViewpointPackage extends EPackage {
 
     /**
      * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.viewpoint.DRepresentation#getOwnedRepresentationElements
-     * <em>Owned Representation Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.DRepresentation#getOwnedRepresentationElements <em>Owned Representation
+     * Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Owned Representation Elements</em>'.
      * @see org.eclipse.sirius.viewpoint.DRepresentation#getOwnedRepresentationElements()
@@ -1516,8 +1536,8 @@ public interface ViewpointPackage extends EPackage {
     EReference getDRepresentation_UiState();
 
     /**
-     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.DRepresentationElement
-     * <em>DRepresentation Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.DRepresentationElement <em>DRepresentation
+     * Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>DRepresentation Element</em>'.
      * @see org.eclipse.sirius.viewpoint.DRepresentationElement
@@ -1583,8 +1603,8 @@ public interface ViewpointPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.viewpoint.DView#getOwnedRepresentationDescriptors
-     * <em>Owned Representation Descriptors</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.DView#getOwnedRepresentationDescriptors <em>Owned Representation
+     * Descriptors</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Representation Descriptors</em>'.
      * @see org.eclipse.sirius.viewpoint.DView#getOwnedRepresentationDescriptors()
@@ -1605,8 +1625,8 @@ public interface ViewpointPackage extends EPackage {
     EReference getDView_Models();
 
     /**
-     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.MetaModelExtension
-     * <em>Meta Model Extension</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.MetaModelExtension <em>Meta Model
+     * Extension</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Meta Model Extension</em>'.
      * @see org.eclipse.sirius.viewpoint.MetaModelExtension
@@ -1648,8 +1668,8 @@ public interface ViewpointPackage extends EPackage {
     EReference getDecoration_Description();
 
     /**
-     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.DAnalysisCustomData
-     * <em>DAnalysis Custom Data</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.DAnalysisCustomData <em>DAnalysis Custom
+     * Data</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>DAnalysis Custom Data</em>'.
      * @see org.eclipse.sirius.viewpoint.DAnalysisCustomData
@@ -1744,8 +1764,8 @@ public interface ViewpointPackage extends EPackage {
     EDataType getResourceDescriptor();
 
     /**
-     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject
-     * <em>DAnalysis Session EObject</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject <em>DAnalysis
+     * Session EObject</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>DAnalysis Session EObject</em>'.
      * @see org.eclipse.sirius.viewpoint.DAnalysisSessionEObject
@@ -1814,8 +1834,8 @@ public interface ViewpointPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getSynchronizationStatus
-     * <em>Synchronization Status</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getSynchronizationStatus <em>Synchronization
+     * Status</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Synchronization Status</em>'.
      * @see org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getSynchronizationStatus()
@@ -1825,8 +1845,8 @@ public interface ViewpointPackage extends EPackage {
     EAttribute getDAnalysisSessionEObject_SynchronizationStatus();
 
     /**
-     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.SessionManagerEObject
-     * <em>Session Manager EObject</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.SessionManagerEObject <em>Session Manager
+     * EObject</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Session Manager EObject</em>'.
      * @see org.eclipse.sirius.viewpoint.SessionManagerEObject
@@ -1889,8 +1909,8 @@ public interface ViewpointPackage extends EPackage {
     EClass getDFile();
 
     /**
-     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.DResourceContainer
-     * <em>DResource Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.DResourceContainer <em>DResource
+     * Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>DResource Container</em>'.
      * @see org.eclipse.sirius.viewpoint.DResourceContainer
@@ -2197,8 +2217,8 @@ public interface ViewpointPackage extends EPackage {
         EAttribute DANALYSIS__SEMANTIC_RESOURCES = ViewpointPackage.eINSTANCE.getDAnalysis_SemanticResources();
 
         /**
-         * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.impl.DFeatureExtensionImpl
-         * <em>DFeature Extension</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.impl.DFeatureExtensionImpl <em>DFeature
+         * Extension</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.viewpoint.impl.DFeatureExtensionImpl
          * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDFeatureExtension()
@@ -2287,6 +2307,14 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EReference DREPRESENTATION_DESCRIPTOR__REPRESENTATION = ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Representation();
+
+        /**
+         * The meta object literal for the '<em><b>Rep Path</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute DREPRESENTATION_DESCRIPTOR__REP_PATH = ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_RepPath();
 
         /**
          * The meta object literal for the '<em><b>Description</b></em>' reference feature. <!-- begin-user-doc --> <!--
@@ -2423,8 +2451,8 @@ public interface ViewpointPackage extends EPackage {
         EReference DVIEW__MODELS = ViewpointPackage.eINSTANCE.getDView_Models();
 
         /**
-         * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.impl.MetaModelExtensionImpl
-         * <em>Meta Model Extension</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.impl.MetaModelExtensionImpl <em>Meta
+         * Model Extension</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.viewpoint.impl.MetaModelExtensionImpl
          * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getMetaModelExtension()
@@ -2701,8 +2729,8 @@ public interface ViewpointPackage extends EPackage {
         EClass DMODEL = ViewpointPackage.eINSTANCE.getDModel();
 
         /**
-         * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl
-         * <em>Basic Label Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl <em>Basic Label
+         * Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl
          * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getBasicLabelStyle()

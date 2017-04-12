@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2017 Obeo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
@@ -46,9 +47,8 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
 /**
- * This class is responsible for keeping track of which resources in the
- * ResourceSet correspond to what kind of model (semantic,
- * session/analysis/representation, description...).
+ * This class is responsible for keeping track of which resources in the ResourceSet correspond to what kind of model
+ * (semantic, session/analysis/representation, description...).
  * 
  * @author pcdavid
  */
@@ -156,8 +156,7 @@ class SessionResourcesTracker {
     }
 
     /**
-     * Allow semanticResources to be recomputed when calling
-     * <code>getSemanticResources()</code>.
+     * Allow semanticResources to be recomputed when calling <code>getSemanticResources()</code>.
      */
     void setSemanticResourcesNotUptodate() {
         semanticResources.clear();
@@ -165,30 +164,28 @@ class SessionResourcesTracker {
     }
 
     /**
-     * Resolve all resources of the resource set of this session. Some
-     * references are ignored (derived features, containment/container
-     * references).
+     * Resolve all resources of the resource set of this session. Some references are ignored (derived features,
+     * containment/container references).
      */
     private void forceLoadingOfEveryLinkedResource() {
         ModelUtils.resolveAll(session.getTransactionalEditingDomain().getResourceSet(), new EReferencePredicate() {
             @Override
             public boolean apply(EReference input) {
-                // Do not resolve derived features.
+                // Do not resolve derived features except DRepresentationDescriptor#Representation since we force the
+                // loading of all representation for now.
                 // Do not resolve containment/container references : they are
                 // already resolved by the model structural analysis course.
-                return !input.isDerived() && !input.isContainer() && !input.isContainment();
+                return (!input.isDerived() || ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Representation().equals(input)) && !input.isContainer() && !input.isContainment();
             }
         });
     }
 
     /**
-     * Resolve all VSM resources, and VSM linked resources (as
-     * viewpoint:/environment resource), used through Sirius in
+     * Resolve all VSM resources, and VSM linked resources (as viewpoint:/environment resource), used through Sirius in
      * <code>allAnalysis</code>.
      * 
      * @param allAnalysis
-     *            The analysis of this session (owned analysis or referenced
-     *            analysis by this session).
+     *            The analysis of this session (owned analysis or referenced analysis by this session).
      */
     private void resolveAllVSMResources(Collection<DAnalysis> allAnalysis) {
         List<Resource> resolvedResources = Lists.newArrayList();
@@ -220,28 +217,26 @@ class SessionResourcesTracker {
     }
 
     /**
-     * Check the resources in the resourceSet. Detect new resources and add them
-     * to the session as new semantic resources or referenced session resources.<BR>
+     * Check the resources in the resourceSet. Detect new resources and add them to the session as new semantic
+     * resources or referenced session resources.<BR>
      * <BR>
      * New semantic resources are :
      * <UL>
      * <LI>Resources that are not in the <code>knownResources</code> list</LI>
      * <LI>Resources that are not in the semantic resources of this session</LI>
-     * <LI>Resources that are not in the referenced representations files
-     * resources of this session</LI>
+     * <LI>Resources that are not in the referenced representations files resources of this session</LI>
      * <LI>Resources that are not the Sirius environment resource</LI>
      * </UL>
      * <BR>
      * New referenced session resources are :
      * <UL>
      * <LI>Resources that are not in the <code>knownResources</code> list</LI>
-     * <LI>Resources that are in the referenced representations files resources
-     * of this session (the list is computed from the allAnalyses() result)</LI>
+     * <LI>Resources that are in the referenced representations files resources of this session (the list is computed
+     * from the allAnalyses() result)</LI>
      * </UL>
      * 
      * @param knownResources
-     *            List of resources that is already loaded before the resolveAll
-     *            of the representations file load.
+     *            List of resources that is already loaded before the resolveAll of the representations file load.
      */
     static void manageAutomaticallyLoadedResources(final DAnalysisSessionImpl session, List<Resource> knownResources) {
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
@@ -272,6 +267,7 @@ class SessionResourcesTracker {
         Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), session.getSrmResources());
 
         final Iterable<Resource> newSemanticResourcesIterator = Iterables.filter(resourcesAfterLoadOfSession, new Predicate<Resource>() {
+            @Override
             public boolean apply(Resource resource) {
                 // Remove empty resource and the Sirius environment
                 return !resource.getContents().isEmpty() && !(new URIQuery(resource.getURI()).isEnvironmentURI());

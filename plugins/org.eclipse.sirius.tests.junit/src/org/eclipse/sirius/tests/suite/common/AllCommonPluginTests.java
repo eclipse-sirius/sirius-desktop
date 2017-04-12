@@ -115,9 +115,8 @@ import org.eclipse.sirius.tests.unit.diagram.migration.BorderSizeMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ComputedStyleDescriptionCachePackingFileMigrationParticipantTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.CorruptedViewsMigrationTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.DDiagramSetRemovalMigrationTest;
-import org.eclipse.sirius.tests.unit.diagram.migration.DRepDescriptorCreationMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.DRepresentationContainerRemovalMigrationTest;
-import org.eclipse.sirius.tests.unit.diagram.migration.DRepresentationMoveToRootObjectsMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.DecorationDescriptionImageExpressionMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.DiagramSplitMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.FontFormatMigrationTest;
@@ -225,9 +224,8 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(VariableMigrationTest.class);
         suite.addTestSuite(LabelEditToolVariableMigrationTest.class);
         suite.addTestSuite(DRepresentationContainerRemovalMigrationTest.class);
-        suite.addTestSuite(DRepDescriptorCreationMigrationTest.class);
         suite.addTestSuite(NoteAttachmentMigrationTest.class);
-        suite.addTestSuite(DRepresentationMoveToRootObjectsMigrationTest.class);
+        suite.addTestSuite(DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest.class);
         suite.addTestSuite(DecorationDescriptionImageExpressionMigrationTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));

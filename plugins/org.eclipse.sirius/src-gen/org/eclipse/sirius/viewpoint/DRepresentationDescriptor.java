@@ -12,6 +12,7 @@
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
@@ -26,6 +27,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
  * <li>{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getDescription <em>Description</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getTarget <em>Target</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getRepresentation <em>Representation</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getRepPath <em>Rep Path</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentationDescriptor()
@@ -126,5 +128,32 @@ public interface DRepresentationDescriptor extends EObject {
      * @generated
      */
     void setRepresentation(DRepresentation value);
+
+    /**
+     * Returns the value of the '<em><b>Rep Path</b></em>' attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Rep Path</em>' attribute isn't clear, there really should be more of a description
+     * here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Rep Path</em>' attribute.
+     * @see #setRepPath(ResourceDescriptor)
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentationDescriptor_RepPath()
+     * @model dataType="org.eclipse.sirius.viewpoint.ResourceDescriptor" required="true"
+     * @generated
+     */
+    ResourceDescriptor getRepPath();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getRepPath <em>Rep
+     * Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Rep Path</em>' attribute.
+     * @see #getRepPath()
+     * @generated
+     */
+    void setRepPath(ResourceDescriptor value);
 
 } // DRepresentationDescriptor
