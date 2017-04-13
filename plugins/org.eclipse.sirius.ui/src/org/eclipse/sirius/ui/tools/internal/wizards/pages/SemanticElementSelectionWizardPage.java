@@ -100,10 +100,9 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
         final int style = SWT.SINGLE | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER;
         tree = SWTUtil.createFilteredTree(parent, style, new EObjectFilter());
         /*
-         * If there is a problem accessing/enabling the quick selection mode the
-         * best course of action is to fail silently, this mode only provides a
-         * slightly improved user experience by automatically selecting the
-         * first element which matches the filter and is selectable.
+         * If there is a problem accessing/enabling the quick selection mode the best course of action is to fail
+         * silently, this mode only provides a slightly improved user experience by automatically selecting the first
+         * element which matches the filter and is selectable.
          */
         ReflectionHelper.invokeMethodWithoutException(tree, "setQuickSelectionMode", new Class[] { Boolean.TYPE }, new Object[] { true }); //$NON-NLS-1$
         final TreeViewer viewer = tree.getViewer();
@@ -192,15 +191,16 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
      * Update the page.
      */
     public void update() {
-        treeViewer.refresh();
-        if (tree.getFilterControl() != null) {
-            /*
-             * By setting the text to 'wilcard' ourselves we make sure to
-             * trigger the filtering. As the tree has "QuickSelectionMode"
-             * enabled it also makes the tree pre-select the first matching
-             * node, saving the user a manual selection in many cases.
-             */
-            tree.getFilterControl().setText("*"); //$NON-NLS-1$
+        if (treeViewer != null) {
+            treeViewer.refresh();
+            if (tree.getFilterControl() != null) {
+                /*
+                 * By setting the text to 'wilcard' ourselves we make sure to trigger the filtering. As the tree has
+                 * "QuickSelectionMode" enabled it also makes the tree pre-select the first matching node, saving the
+                 * user a manual selection in many cases.
+                 */
+                tree.getFilterControl().setText("*"); //$NON-NLS-1$
+            }
         }
     }
 

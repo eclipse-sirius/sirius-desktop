@@ -26,10 +26,8 @@ import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalRepresentationHandler;
 import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalSemanticModelsHandler;
-import org.eclipse.sirius.ui.tools.internal.viewpoint.DynamicViewpointsSelectionComponent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
@@ -37,7 +35,6 @@ import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.events.IHyperlinkListener;
-import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -67,8 +64,6 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
      * Session to describe and edit.
      */
     private Session session;
-
-    private DynamicViewpointsSelectionComponent dynamicViewpointsSelectionComponent;
 
     /**
      * Label used to provides information regarding editor's context.
@@ -116,17 +111,19 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         body.setLayout(GridLayoutFactory.swtDefaults().create());
 
         informativeLabel = toolkit.createFormText(body, false);
-        informativeLabel.setText("<form><p>This editor is a work in progress, currently in alpha state. See <a href='https://wiki.eclipse.org/Sirius/SessionEditor'>the wiki</a> for more details and how to provide feedback.</p></form>", true, true); //$NON-NLS-1$
+        informativeLabel.setText(
+                "<form><p>This editor is a work in progress, currently in alpha state. See <a href='https://wiki.eclipse.org/Sirius/SessionEditor'>the wiki</a> for more details and how to provide feedback.</p></form>", //$NON-NLS-1$
+                true, true);
         informativeLabel.addHyperlinkListener(new IHyperlinkListener() {
-            
+
             @Override
             public void linkExited(HyperlinkEvent e) {
             }
-            
+
             @Override
             public void linkEntered(HyperlinkEvent e) {
             }
-            
+
             @Override
             public void linkActivated(HyperlinkEvent e) {
                 try {
@@ -148,7 +145,6 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         rightComposite.setLayout(GridLayoutFactory.swtDefaults().margins(5, 0).create());
         rightComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-        createViewpointSelectionControl(toolkit, rightComposite, scrolledForm);
         createRepresentationsControl(toolkit, rightComposite);
 
         session.addListener(this);
@@ -175,7 +171,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
 
         Composite modelSectionClient = toolkit.createComposite(modelSection, SWT.NONE);
         modelSectionClient.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).create());
-        modelSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+        modelSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
         modelSection.setClient(modelSectionClient);
 
         graphicalModelingHandler = new GraphicalSemanticModelsHandler(session, toolkit);
@@ -207,36 +203,6 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         graphicalRepresentationHandler = new GraphicalRepresentationHandler(session, toolkit);
         graphicalRepresentationHandler.createControl(representationSectionClient);
 
-    }
-
-    /**
-     * Create the control allowing to select/unselect active viewpoints of the
-     * session.
-     * 
-     * @param toolkit
-     *            the tool allowing to create form UI component.
-     * @param rightComposite
-     *            the composite containing the viewpoint selection control.
-     * @param scrolledForm
-     *            dd.
-     */
-    protected void createViewpointSelectionControl(FormToolkit toolkit, Composite rightComposite, ScrolledForm scrolledForm) {
-        Composite bottomComposite = toolkit.createComposite(rightComposite);
-        bottomComposite.setLayout(GridLayoutFactory.fillDefaults().create());
-        bottomComposite.setLayoutData(new GridData(SWT.FILL, SWT.BOTTOM, true, false));
-        final Section viewpointSection = toolkit.createSection(bottomComposite,
-                Section.DESCRIPTION | Section.TITLE_BAR | ExpandableComposite.COMPACT | ExpandableComposite.EXPANDED | ExpandableComposite.TWISTIE);
-        viewpointSection.setLayout(GridLayoutFactory.fillDefaults().create());
-        viewpointSection.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-        viewpointSection.setText(Messages.UI_SessionEditor_viewpoints_title);
-
-        Composite viewpointSectionClient = toolkit.createComposite(viewpointSection, SWT.NONE);
-        GridLayout newLayout = GridLayoutFactory.fillDefaults().create();
-        viewpointSectionClient.setLayout(newLayout);
-        viewpointSection.setClient(viewpointSectionClient);
-
-        dynamicViewpointsSelectionComponent = new DynamicViewpointsSelectionComponent(session);
-        dynamicViewpointsSelectionComponent.createControl(viewpointSectionClient);
     }
 
     @Override
@@ -287,10 +253,6 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         if (session != null) {
             session.removeListener(this);
             session = null;
-        }
-        if (dynamicViewpointsSelectionComponent != null) {
-            dynamicViewpointsSelectionComponent.dispose();
-            dynamicViewpointsSelectionComponent = null;
         }
         if (graphicalModelingHandler != null) {
             graphicalModelingHandler.dispose();

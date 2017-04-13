@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ISelection;
@@ -31,6 +32,7 @@ import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationDescriptionItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -65,6 +67,11 @@ public class RepresentationSelectionWizardPage extends WizardPage {
     private SemanticElementSelectionWizardPage selectionWizard;
 
     /**
+     * The representation descriptor that should be selected by default when opening the page.
+     */
+    private RepresentationDescriptionItemImpl representationDescriptionItem;
+
+    /**
      * Create a new <code>RepresentationSelectionWizardPage</code>.
      *
      * @param root
@@ -75,6 +82,22 @@ public class RepresentationSelectionWizardPage extends WizardPage {
         this.setTitle(Messages.RepresentationSelectionWizardPage_title);
         this.root = root;
         setMessage(Messages.RepresentationSelectionWizardPage_message);
+    }
+
+    /**
+     * Create a new <code>RepresentationSelectionWizardPage</code>.
+     * 
+     * @param theSession
+     *            the session from which representations will be created.
+     * @param theRepresentationDescriptionItem
+     *            The representation descriptor that should be selected by default when opening the page.
+     */
+    public RepresentationSelectionWizardPage(Session theSession, RepresentationDescriptionItemImpl theRepresentationDescriptionItem) {
+        super(Messages.RepresentationSelectionWizardPage_title);
+        this.setTitle(Messages.RepresentationSelectionWizardPage_title);
+        this.root = theSession;
+        setMessage(Messages.RepresentationSelectionWizardPage_message);
+        representationDescriptionItem = theRepresentationDescriptionItem;
     }
 
     @Override
@@ -160,7 +183,25 @@ public class RepresentationSelectionWizardPage extends WizardPage {
                 }
             }
         });
-
+        if (representationDescriptionItem != null) {
+            // we select the representation description item among all other items.
+            treeViewer.expandAll();
+            int itemCount = treeViewer.getTree().getItemCount();
+            for (int i = 0; i < itemCount; i++) {
+                Object item = treeViewer.getTree().getItem(i).getData();
+                if (item instanceof Viewpoint) {
+                    Viewpoint viewpoint = (Viewpoint) item;
+                    Optional<RepresentationDescription> representationOption = Lists.newArrayList(viewpoint.getOwnedRepresentations()).stream()
+                            .filter(rep -> CommonItemSorter.compareRepresentationDescriptions(rep, (RepresentationDescription) representationDescriptionItem.getWrappedObject()) == 0).findFirst();
+                    if (representationOption.isPresent()) {
+                        treeViewer.setSelection(new StructuredSelection(representationOption.get()), true);
+                        representation = representationOption.get();
+                        selectionWizard.setRepresentation(getRepresentation());
+                        selectionWizard.update();
+                    }
+                }
+            }
+        }
         setControl(pageComposite);
     }
 
@@ -214,6 +255,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
                         return CommonItemSorter.compareRepresentationDescriptions(rep1, rep2);
                     };
                 });
+
                 children = reps.toArray();
             }
             return children;

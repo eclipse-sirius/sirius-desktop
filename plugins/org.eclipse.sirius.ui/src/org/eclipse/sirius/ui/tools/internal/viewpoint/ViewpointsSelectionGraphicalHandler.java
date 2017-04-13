@@ -122,6 +122,11 @@ public class ViewpointsSelectionGraphicalHandler {
     private Composite browserErrorMessageComposite;
 
     /**
+     * The root composite of the browser component.
+     */
+    private Composite browserRootComposite;
+
+    /**
      * Return the composite enclosing all graphical parts of this component.
      * 
      * @return the composite enclosing all graphical parts of this component.
@@ -137,6 +142,15 @@ public class ViewpointsSelectionGraphicalHandler {
      */
     public Browser getBrowser() {
         return browser;
+    }
+
+    /**
+     * Returns the root composite of the browser component.
+     * 
+     * @return the root composite of the browser component.
+     */
+    public Composite getBrowserRootComposite() {
+        return browserRootComposite;
     }
 
     /**
@@ -201,7 +215,7 @@ public class ViewpointsSelectionGraphicalHandler {
 
         createTableViewer(rootComposite);
 
-        this.browser = createBrowser(rootComposite);
+        createBrowser(rootComposite);
         setBrowserInput(null);
 
     }
@@ -214,9 +228,9 @@ public class ViewpointsSelectionGraphicalHandler {
      *            the parent composite to be attached to.
      * @return the newly created {@link Browser}.
      */
-    private Browser createBrowser(final Composite parent) {
+    public Browser createBrowser(final Composite parent) {
 
-        Composite browserRootComposite = new Composite(parent, SWT.None);
+        browserRootComposite = new Composite(parent, SWT.BORDER);
         browserRootComposite.setLayout(GridLayoutFactory.fillDefaults().create());
         browserRootComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
@@ -241,6 +255,7 @@ public class ViewpointsSelectionGraphicalHandler {
             browserGridData.widthHint = 0;
             browserGridData.heightHint = 0;
             aBrowser.setLayoutData(browserGridData);
+            this.browser = aBrowser;
             return aBrowser;
         } catch (SWTError error) {
             /*
@@ -261,7 +276,7 @@ public class ViewpointsSelectionGraphicalHandler {
         browserErrorMessageLayoutData.exclude = false;
         browserErrorMessageText.setText(errorMessage);
         browserErrorMessageComposite.setVisible(true);
-        rootComposite.layout(true, true);
+        browserRootComposite.layout(true, true);
     }
 
     /**
@@ -271,7 +286,7 @@ public class ViewpointsSelectionGraphicalHandler {
         browserErrorMessageLayoutData.exclude = true;
         browserErrorMessageText.setText(""); //$NON-NLS-1$
         browserErrorMessageComposite.setVisible(false);
-        rootComposite.getParent().layout(true, true);
+        browserRootComposite.getParent().layout(true, true);
     }
 
     /**

@@ -67,6 +67,15 @@ public final class Messages {
     @TranslatableMessage
     public static String UI_SessionEditor_inputNotHandled_error_message;
 
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_missingDependencies_requirements;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_disabledViewpoint_label;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_representationNumber_label;
+
     // CHECKSTYLE:ON
 
     private Messages() {

@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.sirius.ext.base.Option;
@@ -185,5 +186,27 @@ public class ViewpointItemImpl implements ViewpointItem, Comparable<ViewpointIte
     @Override
     public Image getImage() {
         return SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.getPlugin().getItemImageDescriptor(viewpoint));
+    }
+
+    /**
+     * Returns true if the viewpoint is enabled in the session of this item.
+     * 
+     * @return true if the viewpoint is enabled in the session of this item. False otherwise.
+     */
+    public boolean isViewpointEnabledInSession() {
+        boolean isViewpointEnabledInSession = false;
+        Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
+        for (Viewpoint viewpointTemp : selectedViewpoints) {
+            if (EqualityHelper.areEquals(viewpoint, viewpointTemp)) {
+                isViewpointEnabledInSession = true;
+            }
+
+        }
+        return isViewpointEnabledInSession;
+
+    }
+
+    public Viewpoint getViewpoint() {
+        return viewpoint;
     }
 }
