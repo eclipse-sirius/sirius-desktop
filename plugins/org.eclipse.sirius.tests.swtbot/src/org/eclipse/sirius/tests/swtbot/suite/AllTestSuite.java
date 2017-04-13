@@ -294,6 +294,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ExtensionActivationOrderTest.class);
         suite.addTestSuite(ContainerDropPropertySectionsTests.class);
         suite.addTestSuite(BorderNodeSidePropertySectionTest.class);
+        suite.addTestSuite(EditPartSelectionTest.class);
     }
 
     /**

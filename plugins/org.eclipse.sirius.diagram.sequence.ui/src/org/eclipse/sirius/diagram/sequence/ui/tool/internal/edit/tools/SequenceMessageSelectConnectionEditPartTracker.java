@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,15 +18,14 @@ import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.BendpointRequest;
-import org.eclipse.gmf.runtime.gef.ui.internal.tools.SelectConnectionEditPartTracker;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.diagram.ui.tools.internal.ui.SelectConnectionEditPartTracker;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
- * Specific connection selection tracker to handle move of messageToSelf
- * messages.
+ * Specific connection selection tracker to handle move of messageToSelf messages.
  * 
  * @author mporhel
  * 
@@ -44,8 +43,7 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
      * Method SequenceMessageSelectConnectionEditPartTracker.
      * 
      * @param owner
-     *            ConnectionNodeEditPart that creates and owns the tracker
-     *            object
+     *            ConnectionNodeEditPart that creates and owns the tracker object
      */
     public SequenceMessageSelectConnectionEditPartTracker(ConnectionEditPart owner) {
         super(owner);

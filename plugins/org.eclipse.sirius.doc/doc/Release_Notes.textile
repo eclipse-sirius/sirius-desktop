@@ -8,8 +8,9 @@ h2(#sirius5.1.0). Changes in Sirius 5.1.0
 
 h3. User-Visible Changes
 
-* <span class="label label-info">Added</span> The end user can now "remove all bend-points":user/diagrams/Diagrams.html#RemoveBendpoints on rectilinear edges. It was only possible on oblique edges before. This action is available on edge context menu "Remove Bend-points" or by using the shortcut "Ctrl" + "Shift" + "-". If number of bend-points can not be reduced, remove action will be inefficient.
-* <span class="label label-info">Added</span> The status Synchronized/Unsynchronized of the diagram is now displayed in the status bar when the diagram editor has the focus.
+* <span class="label label-success">Added</span> The end user can now "remove all bend-points":user/diagrams/Diagrams.html#RemoveBendpoints on rectilinear edges. It was only possible on oblique edges before. This action is available on edge context menu "Remove Bend-points" or by using the shortcut "Ctrl" + "Shift" + "-". If number of bend-points can not be reduced, remove action will be inefficient.
+* <span class="label label-success">Added</span> The status Synchronized/Unsynchronized of the diagram is now displayed in the status bar when the diagram editor has the focus.
+* <span class="label label-info">Modified</span> In a diagram, when selecting an edge or a node that are not fully displayed in the editor, now, the reveal is not done anymore, that is, the displayed content of the editor is not moved anymore. If the user want to fully see the selected element, he may drag the editor content using center mouse button. 
 
 h3. Specifier-Visible Changes
 

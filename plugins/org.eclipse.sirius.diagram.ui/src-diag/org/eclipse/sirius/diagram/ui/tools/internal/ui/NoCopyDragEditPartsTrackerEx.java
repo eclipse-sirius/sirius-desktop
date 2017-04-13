@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,9 +20,8 @@ import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
- * A specific dragEditPartTracket that disable the clone feature. Indeed, in
- * Sirius it's not natural to clone a graphical element that will be removed on
- * the next refresh.
+ * A specific dragEditPartTracket that disable the clone feature. Indeed, in Sirius it's not natural to clone a
+ * graphical element that will be removed on the next refresh.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
@@ -40,8 +39,8 @@ public class NoCopyDragEditPartsTrackerEx extends SnapToAllDragEditPartsTracker 
     }
 
     /**
-     * Always disable the clone with Ctrl key in Sirius because it only clone
-     * the graphical element and not the semantic element.
+     * Always disable the clone with Ctrl key in Sirius because it only clone the graphical element and not the semantic
+     * element.
      * 
      * @param cloneActive
      *            true if cloning should be active (never considered here)
@@ -64,8 +63,8 @@ public class NoCopyDragEditPartsTrackerEx extends SnapToAllDragEditPartsTracker 
     }
 
     /**
-     * Overridden to return a command only if we are not in case of a
-     * drag'n'drop of a node/container outside of its current container.
+     * Overridden to return a command only if we are not in case of a drag'n'drop of a node/container outside of its
+     * current container.
      * 
      * @return A command only if authorized
      */
@@ -89,8 +88,7 @@ public class NoCopyDragEditPartsTrackerEx extends SnapToAllDragEditPartsTracker 
     }
 
     /**
-     * @return true if the drag'n'drop is authorized (according to layouting
-     *         mode specificity), false otherwise.
+     * @return true if the drag'n'drop is authorized (according to layouting mode specificity), false otherwise.
      */
     private boolean isAuthorized() {
         boolean isAuthorized = true;
@@ -107,5 +105,32 @@ public class NoCopyDragEditPartsTrackerEx extends SnapToAllDragEditPartsTracker 
             }
         }
         return isAuthorized;
+    }
+
+    @Override
+    protected boolean handleButtonUp(int button) {
+        // The above code is copied from the super classes (SnapToAllDragEditPartsTracker, DragEditPartsTracker and
+        // SelectEditPartTracker) to disable the reveal.
+        boolean result = false;
+        if (stateTransition(STATE_DRAG_IN_PROGRESS, STATE_TERMINAL)) {
+            eraseSourceFeedback();
+            eraseTargetFeedback();
+            performDrag();
+            result = true;
+        } else if (isInState(STATE_DRAG)) {
+            performSelection();
+            if (getFlag(org.eclipse.gef.tools.SelectEditPartTracker.MAX_FLAG))
+                // SelectEditPartTracker.MAX_FLAG is a protected constant equals to
+                // SelectEditPartTracker.FLAG_ENABLE_DIRECT_EDIT (that must be originally used here).
+                performDirectEdit();
+            // The SelectEditPartTracker behavior is overridden here to never reveal the selected element.
+            // if (button == 1 && getSourceEditPart().getSelected() != EditPart.SELECTED_NONE)
+            // getCurrentViewer().reveal(getSourceEditPart());
+            setState(STATE_TERMINAL);
+            result = true;
+        }
+        // Clean up the mode to original state.
+        snapToAllShape = SnapToAllDragEditPartsTracker.DEFAULT_SNAP_TO_SHAPE_MODE;
+        return result;
     }
 }

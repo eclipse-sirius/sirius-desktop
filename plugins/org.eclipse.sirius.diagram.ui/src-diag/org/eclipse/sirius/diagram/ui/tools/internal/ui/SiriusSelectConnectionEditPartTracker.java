@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.SharedCursors;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.BendpointRequest;
-import org.eclipse.gmf.runtime.gef.ui.internal.tools.SelectConnectionEditPartTracker;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.MoveEdgeGroupManager;
 import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.MoveInDiagramDragTracker;
 import org.eclipse.swt.SWT;
@@ -39,8 +38,7 @@ public class SiriusSelectConnectionEditPartTracker extends SelectConnectionEditP
     private boolean moveGroupActivated;
 
     /**
-     * The getSourceRequest method is private so we need to keep the reference
-     * in the createSourceRequest method.
+     * The getSourceRequest method is private so we need to keep the reference in the createSourceRequest method.
      */
     private BendpointRequest bendpointRequest;
 
@@ -50,8 +48,7 @@ public class SiriusSelectConnectionEditPartTracker extends SelectConnectionEditP
      * Method SelectConnectionEditPartTracker.
      * 
      * @param owner
-     *            ConnectionNodeEditPart that creates and owns the tracker
-     *            object
+     *            ConnectionNodeEditPart that creates and owns the tracker object
      */
     public SiriusSelectConnectionEditPartTracker(ConnectionEditPart owner) {
         super(owner);
