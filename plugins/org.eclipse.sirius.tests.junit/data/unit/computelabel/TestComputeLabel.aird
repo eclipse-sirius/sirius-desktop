@@ -3,10 +3,6 @@
   <semanticResources>TestComputeLabel.ecore</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_SshsYMHCEeCenq6NHvggaA">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']"/>
-    <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_uVWysGUnEeaY-7-IqK9LRQ" name="p1 package entities" representation="_aRIGQMHCEeCenq6NHvggaA">
-      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/computelabel/testComputeLabelDiagram.odesign#//@ownedViewpoints[name='ViewpointTestComputeLabel']/@ownedRepresentations[name='DiagramTestComputeLabel']"/>
-      <target xmi:type="ecore:EPackage" href="TestComputeLabel.ecore#/"/>
-    </ownedRepresentationDescriptors>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_aRIGQMHCEeCenq6NHvggaA" name="p1 package entities">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_aRItUMHCEeCenq6NHvggaA" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_aRItUcHCEeCenq6NHvggaA" type="Sirius" element="_aRIGQMHCEeCenq6NHvggaA" measurementUnit="Pixel">
