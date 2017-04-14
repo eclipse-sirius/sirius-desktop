@@ -6,15 +6,15 @@ Bundle-Version: 5.0.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
-Import-Package: org.eclipse.draw2d,
- org.eclipse.draw2d.geometry,
- org.eclipse.draw2d.graph,
- org.eclipse.draw2d.images,
- org.eclipse.draw2d.internal,
- org.eclipse.draw2d.parts,
- org.eclipse.draw2d.text,
- org.eclipse.draw2d.widgets,
- org.eclipse.swt.graphics
+Import-Package: org.eclipse.draw2d;version="0.0.0",
+ org.eclipse.draw2d.geometry;version="0.0.0",
+ org.eclipse.draw2d.graph;version="0.0.0",
+ org.eclipse.draw2d.images;version="0.0.0",
+ org.eclipse.draw2d.internal;version="0.0.0",
+ org.eclipse.draw2d.parts;version="0.0.0",
+ org.eclipse.draw2d.text;version="0.0.0",
+ org.eclipse.draw2d.widgets;version="0.0.0",
+ org.eclipse.swt.graphics;version="0.0.0"
 Export-Package: org.eclipse.sirius.ext.draw2d;version="3.1.0",
  org.eclipse.sirius.ext.draw2d.figure;version="2.0.4"
 Bundle-Activator: org.eclipse.sirius.ext.draw2d.Draw2DExtPlugin$Implementation
