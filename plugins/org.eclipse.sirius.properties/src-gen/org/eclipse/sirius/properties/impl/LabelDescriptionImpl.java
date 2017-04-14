@@ -38,8 +38,8 @@ import org.eclipse.sirius.properties.WidgetAction;
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getLabelExpression <em>Label Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getHelpExpression <em>Help Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getIsEnabledExpression <em>Is Enabled
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getIsEnabledExpression
+ * <em>Is Enabled Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getValueExpression <em>Value Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getDisplayExpression <em>Display Expression</em>}
  * </li>

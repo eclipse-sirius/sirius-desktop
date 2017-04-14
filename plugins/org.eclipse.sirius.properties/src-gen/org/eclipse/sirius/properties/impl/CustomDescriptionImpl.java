@@ -40,8 +40,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <li>{@link org.eclipse.sirius.properties.impl.CustomDescriptionImpl#getLabelExpression <em>Label Expression</em>}
  * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.CustomDescriptionImpl#getHelpExpression <em>Help Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.CustomDescriptionImpl#getIsEnabledExpression <em>Is Enabled
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.CustomDescriptionImpl#getIsEnabledExpression
+ * <em>Is Enabled Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.CustomDescriptionImpl#getCustomExpressions <em>Custom Expressions</em>}
  * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.CustomDescriptionImpl#getCustomOperations <em>Custom Operations</em>}

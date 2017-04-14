@@ -39,8 +39,8 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getLabelExpression <em>Label Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getHelpExpression <em>Help Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getIsEnabledExpression <em>Is Enabled
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getIsEnabledExpression
+ * <em>Is Enabled Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getValueExpression <em>Value Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ListDescriptionImpl#getDisplayExpression <em>Display Expression</em>}
  * </li>

@@ -46,9 +46,9 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
     protected RadioDescription overrides;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenRadioExpression() <em>Filter
-     * Conditional Styles From Overridden Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenRadioExpression()
+     * <em>Filter Conditional Styles From Overridden Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenRadioExpression()
      * @generated

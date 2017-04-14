@@ -59,7 +59,7 @@ import org.eclipse.sirius.viewpoint.description.validation.util.ValidationSwitch
  * factory convert EMF adapter notifications into calls to {@link #fireNotifyChanged fireNotifyChanged}. The adapters
  * also support Eclipse property sheets. Note that most of the adapters are shared among multiple instances. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
@@ -89,7 +89,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -134,7 +134,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.Category} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CategoryItemProvider categoryItemProvider;
@@ -212,7 +212,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.PageValidationSetDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -305,7 +305,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.GroupValidationSetDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -352,7 +352,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.ContainerOverrideDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -490,7 +490,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.ButtonOverrideDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -583,7 +583,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.CheckboxOverrideDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -629,7 +629,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.SelectOverrideDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -653,7 +653,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.DynamicMappingForDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -677,7 +677,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.DynamicMappingForOverrideDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -701,7 +701,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.DynamicMappingIfDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -725,7 +725,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.DynamicMappingIfOverrideDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -772,7 +772,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.TextAreaOverrideDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -933,7 +933,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.CustomOverrideDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1026,7 +1026,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.HyperlinkOverrideDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1271,7 +1271,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.GroupStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected GroupStyleItemProvider groupStyleItemProvider;
@@ -1302,7 +1302,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.TextWidgetConditionalStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1326,7 +1326,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.LabelWidgetConditionalStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1350,7 +1350,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1374,7 +1374,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.RadioWidgetConditionalStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1398,7 +1398,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.ButtonWidgetConditionalStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1422,7 +1422,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.SelectWidgetConditionalStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1446,7 +1446,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.CustomWidgetConditionalStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1469,7 +1469,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.ListWidgetConditionalStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -1516,7 +1516,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This creates an adapter for a {@link org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

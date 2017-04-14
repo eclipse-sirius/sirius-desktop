@@ -46,9 +46,9 @@ public class CustomOverrideDescriptionImpl extends AbstractCustomDescriptionImpl
     protected CustomDescription overrides;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenCustomExpression() <em>Filter
-     * Conditional Styles From Overridden Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenCustomExpression()
+     * <em>Filter Conditional Styles From Overridden Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenCustomExpression()
      * @generated
@@ -57,9 +57,9 @@ public class CustomOverrideDescriptionImpl extends AbstractCustomDescriptionImpl
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_OVERRIDDEN_CUSTOM_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenCustomExpression() <em>Filter
-     * Conditional Styles From Overridden Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenCustomExpression()
+     * <em>Filter Conditional Styles From Overridden Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenCustomExpression()
      * @generated

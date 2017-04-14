@@ -39,16 +39,16 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getLabelExpression <em>Label Expression</em>}
  * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getHelpExpression <em>Help Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getIsEnabledExpression <em>Is Enabled
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getIsEnabledExpression
+ * <em>Is Enabled Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getValueExpression <em>Value Expression</em>}
  * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getInitialOperation <em>Initial Operation</em>}
  * </li>
- * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getCandidatesExpression <em>Candidates
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getCandidateDisplayExpression <em>Candidate
- * Display Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getCandidatesExpression
+ * <em>Candidates Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getCandidateDisplayExpression
+ * <em>Candidate Display Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getStyle <em>Style</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl#getConditionalStyles <em>Conditional Styles</em>}
  * </li>

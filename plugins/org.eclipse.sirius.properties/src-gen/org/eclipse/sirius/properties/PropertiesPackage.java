@@ -324,13 +324,21 @@ public interface PropertiesPackage extends EPackage {
     int ABSTRACT_PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION = DescriptionPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 9;
 
     /**
+     * The feature id for the '<em><b>Indented</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_PAGE_DESCRIPTION__INDENTED = DescriptionPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 10;
+
+    /**
      * The number of structural features of the '<em>Abstract Page Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int ABSTRACT_PAGE_DESCRIPTION_FEATURE_COUNT = DescriptionPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 10;
+    int ABSTRACT_PAGE_DESCRIPTION_FEATURE_COUNT = DescriptionPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 11;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.properties.impl.PageDescriptionImpl
@@ -443,6 +451,14 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION = PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Indented</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int PAGE_DESCRIPTION__INDENTED = PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__INDENTED;
 
     /**
      * The number of structural features of the '<em>Page Description</em>' class. <!-- begin-user-doc --> <!--
@@ -564,6 +580,14 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int PAGE_OVERRIDE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION = PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Indented</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int PAGE_OVERRIDE_DESCRIPTION__INDENTED = PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__INDENTED;
 
     /**
      * The feature id for the '<em><b>Overrides</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -8358,6 +8382,18 @@ public interface PropertiesPackage extends EPackage {
     EAttribute getAbstractPageDescription_FilterValidationRulesFromExtendedPageExpression();
 
     /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.AbstractPageDescription#isIndented <em>Indented</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Indented</em>'.
+     * @see org.eclipse.sirius.properties.AbstractPageDescription#isIndented()
+     * @see #getAbstractPageDescription()
+     * @generated
+     */
+    EAttribute getAbstractPageDescription_Indented();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.properties.PageDescription <em>Page Description</em>
      * }'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -11852,6 +11888,14 @@ public interface PropertiesPackage extends EPackage {
          */
         EAttribute ABSTRACT_PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION = PropertiesPackage.eINSTANCE
                 .getAbstractPageDescription_FilterValidationRulesFromExtendedPageExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Indented</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute ABSTRACT_PAGE_DESCRIPTION__INDENTED = PropertiesPackage.eINSTANCE.getAbstractPageDescription_Indented();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.properties.impl.PageDescriptionImpl

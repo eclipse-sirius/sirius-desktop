@@ -31,10 +31,10 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getFontNameExpression <em>Font Name
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getFontSizeExpression <em>Font Size
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getFontNameExpression
+ * <em>Font Name Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getFontSizeExpression
+ * <em>Font Size Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getBackgroundColor <em>Background Color</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getForegroundColor <em>Foreground Color</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getFontFormat <em>Font Format</em>}</li>

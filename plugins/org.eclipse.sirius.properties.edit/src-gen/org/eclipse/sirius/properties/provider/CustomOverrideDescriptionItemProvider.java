@@ -27,7 +27,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.CustomOverrideDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class CustomOverrideDescriptionItemProvider extends AbstractCustomDescriptionItemProvider {
@@ -71,7 +71,7 @@ public class CustomOverrideDescriptionItemProvider extends AbstractCustomDescrip
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Overridden Custom Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterConditionalStylesFromOverriddenCustomExpressionPropertyDescriptor(Object object) {
@@ -123,7 +123,7 @@ public class CustomOverrideDescriptionItemProvider extends AbstractCustomDescrip
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

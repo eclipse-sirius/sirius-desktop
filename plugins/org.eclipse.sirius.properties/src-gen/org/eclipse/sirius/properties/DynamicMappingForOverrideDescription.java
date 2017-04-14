@@ -12,8 +12,8 @@
 package org.eclipse.sirius.properties;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>Dynamic Mapping For Override
- * Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Dynamic Mapping For Override Description</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:

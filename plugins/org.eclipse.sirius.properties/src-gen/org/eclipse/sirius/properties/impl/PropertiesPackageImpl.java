@@ -1010,6 +1010,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EAttribute getAbstractPageDescription_Indented() {
+        return (EAttribute) abstractPageDescriptionEClass.getEStructuralFeatures().get(9);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getPageDescription() {
         return pageDescriptionEClass;
     }
@@ -3955,6 +3965,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEReference(abstractPageDescriptionEClass, PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__EXTENDS);
         createEAttribute(abstractPageDescriptionEClass, PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_GROUPS_FROM_EXTENDED_PAGE_EXPRESSION);
         createEAttribute(abstractPageDescriptionEClass, PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION);
+        createEAttribute(abstractPageDescriptionEClass, PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__INDENTED);
 
         pageDescriptionEClass = createEClass(PropertiesPackage.PAGE_DESCRIPTION);
 
@@ -4534,6 +4545,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEAttribute(getAbstractPageDescription_FilterValidationRulesFromExtendedPageExpression(), theDescriptionPackage.getInterpretedExpression(),
                 "filterValidationRulesFromExtendedPageExpression", null, 0, 1, AbstractPageDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
                 !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getAbstractPageDescription_Indented(), theEcorePackage.getEBoolean(), "indented", "false", 0, 1, AbstractPageDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(pageDescriptionEClass, PageDescription.class, "PageDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 

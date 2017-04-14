@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.provider.IdentifiedElementItemPr
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.AbstractPageDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemProvider implements IItemStyledLabelProvider {
@@ -64,6 +64,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
             addExtendsPropertyDescriptor(object);
             addFilterGroupsFromExtendedPageExpressionPropertyDescriptor(object);
             addFilterValidationRulesFromExtendedPageExpressionPropertyDescriptor(object);
+            addIndentedPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -171,7 +172,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
     /**
      * This adds a property descriptor for the Filter Validation Rules From Extended Page Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterValidationRulesFromExtendedPageExpressionPropertyDescriptor(Object object) {
@@ -180,6 +181,18 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractPageDescription_filterValidationRulesFromExtendedPageExpression_feature", "_UI_AbstractPageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 PropertiesPackage.Literals.ABSTRACT_PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Indented feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addIndentedPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractPageDescription_indented_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_AbstractPageDescription_indented_feature", "_UI_AbstractPageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.ABSTRACT_PAGE_DESCRIPTION__INDENTED, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -243,7 +256,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -258,6 +271,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__PRECONDITION_EXPRESSION:
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_GROUPS_FROM_EXTENDED_PAGE_EXPRESSION:
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION:
+        case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__INDENTED:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__VALIDATION_SET:

@@ -49,9 +49,9 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
     protected LabelDescription overrides;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenLabelExpression() <em>Filter
-     * Conditional Styles From Overridden Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenLabelExpression()
+     * <em>Filter Conditional Styles From Overridden Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenLabelExpression()
      * @generated

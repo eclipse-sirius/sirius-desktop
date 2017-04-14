@@ -39,10 +39,10 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getLabelExpression <em>Label Expression</em>}
  * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getHelpExpression <em>Help Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getIsEnabledExpression <em>Is Enabled
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getButtonLabelExpression <em>Button Label
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getIsEnabledExpression
+ * <em>Is Enabled Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getButtonLabelExpression
+ * <em>Button Label Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getInitialOperation <em>Initial Operation</em>}
  * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getStyle <em>Style</em>}</li>

@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.ButtonDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider {
@@ -90,7 +90,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This adds a property descriptor for the Is Enabled Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     protected void addIsEnabledExpressionPropertyDescriptor(Object object) {
@@ -128,7 +128,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Extended Button Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterConditionalStylesFromExtendedButtonExpressionPropertyDescriptor(Object object) {
@@ -212,7 +212,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -27,6 +27,7 @@ import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ * <li>{@link org.eclipse.sirius.properties.impl.CustomExpressionImpl#getDocumentation <em>Documentation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.CustomExpressionImpl#getCustomExpression <em>Custom Expression</em>}
  * </li>
  * </ul>

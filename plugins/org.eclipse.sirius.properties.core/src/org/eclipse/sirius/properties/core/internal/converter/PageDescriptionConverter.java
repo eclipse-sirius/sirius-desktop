@@ -48,6 +48,7 @@ public class PageDescriptionConverter extends AbstractDescriptionConverter {
             page.setDomainClass(pageDescription.getDomainClass());
             page.setSemanticCandidateExpression(pageDescription.getSemanticCandidateExpression());
             page.setPreconditionExpression(pageDescription.getPreconditionExpression());
+            page.setIndented(pageDescription.isIndented());
 
             if (page.getIdentifier() == null || page.getIdentifier().trim().length() == 0) {
                 page.setIdentifier(EcoreUtil.getURI(pageDescription).toString());

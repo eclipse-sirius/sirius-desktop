@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.DialogButton} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class DialogButtonItemProvider extends ItemProviderAdapter
@@ -86,7 +86,7 @@ public class DialogButtonItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Is Enabled Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     protected void addIsEnabledExpressionPropertyDescriptor(Object object) {
@@ -111,7 +111,7 @@ public class DialogButtonItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Close Dialog On Click feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     protected void addCloseDialogOnClickPropertyDescriptor(Object object) {
@@ -205,7 +205,7 @@ public class DialogButtonItemProvider extends ItemProviderAdapter
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

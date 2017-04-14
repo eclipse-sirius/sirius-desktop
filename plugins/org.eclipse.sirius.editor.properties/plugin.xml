@@ -1150,6 +1150,14 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractPageDescription"/>
       </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractpagedescription.AbstractPageDescriptionIndentedPropertySectionSpec"
+               id="properties.section.abstractPageDescription.Indented"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractpagedescription.AbstractPageDescriptionIndentedFilterSpec"
+               afterSection="properties.section.abstractPageDescription.Groups"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.AbstractPageDescription"/>
+      </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.viewextensiondescription.ViewExtensionDescriptionMetamodelsPropertySectionSpec"
                id="properties.section.viewExtensionDescription.Metamodels"

@@ -23,8 +23,8 @@ import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Abstract Dynamic Mapping If
- * Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Abstract Dynamic Mapping If Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>

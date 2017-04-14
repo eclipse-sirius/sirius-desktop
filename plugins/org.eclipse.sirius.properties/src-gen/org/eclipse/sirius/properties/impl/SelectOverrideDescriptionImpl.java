@@ -46,9 +46,9 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
     protected SelectDescription overrides;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenSelectExpression() <em>Filter
-     * Conditional Styles From Overridden Select Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenSelectExpression()
+     * <em>Filter Conditional Styles From Overridden Select Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenSelectExpression()
      * @generated
@@ -57,9 +57,9 @@ public class SelectOverrideDescriptionImpl extends AbstractSelectDescriptionImpl
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_OVERRIDDEN_SELECT_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenSelectExpression() <em>Filter
-     * Conditional Styles From Overridden Select Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenSelectExpression()
+     * <em>Filter Conditional Styles From Overridden Select Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenSelectExpression()
      * @generated

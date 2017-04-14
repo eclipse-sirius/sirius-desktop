@@ -96,9 +96,9 @@ public class GroupOverrideDescriptionImpl extends AbstractGroupDescriptionImpl i
     protected String filterValidationRulesFromOverriddenGroupExpression = GroupOverrideDescriptionImpl.FILTER_VALIDATION_RULES_FROM_OVERRIDDEN_GROUP_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenGroupExpression() <em>Filter
-     * Conditional Styles From Overridden Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenGroupExpression()
+     * <em>Filter Conditional Styles From Overridden Group Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenGroupExpression()
      * @generated

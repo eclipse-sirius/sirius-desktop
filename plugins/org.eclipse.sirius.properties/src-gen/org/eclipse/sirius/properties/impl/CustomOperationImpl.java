@@ -30,6 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * The following features are implemented:
  * </p>
  * <ul>
+ * <li>{@link org.eclipse.sirius.properties.impl.CustomOperationImpl#getDocumentation <em>Documentation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.CustomOperationImpl#getInitialOperation <em>Initial Operation</em>}
  * </li>
  * </ul>

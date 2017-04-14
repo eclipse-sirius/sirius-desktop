@@ -36,6 +36,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * <em>Filter Groups From Extended Page Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getFilterValidationRulesFromExtendedPageExpression
  * <em>Filter Validation Rules From Extended Page Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#isIndented <em>Indented</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractPageDescription()
@@ -280,5 +281,33 @@ public interface AbstractPageDescription extends IdentifiedElement, DocumentedEl
      * @generated
      */
     void setFilterValidationRulesFromExtendedPageExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Indented</b></em>' attribute. The default value is <code>"false"</code>. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Indented</em>' attribute isn't clear, there really should be more of a description
+     * here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Indented</em>' attribute.
+     * @see #setIndented(boolean)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractPageDescription_Indented()
+     * @model default="false"
+     * @generated
+     */
+    boolean isIndented();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractPageDescription#isIndented <em>Indented</em>}
+     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Indented</em>' attribute.
+     * @see #isIndented()
+     * @generated
+     */
+    void setIndented(boolean value);
 
 } // AbstractPageDescription

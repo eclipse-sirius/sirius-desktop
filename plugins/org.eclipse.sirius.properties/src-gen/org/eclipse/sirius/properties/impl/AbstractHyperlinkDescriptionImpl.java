@@ -149,9 +149,9 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     protected HyperlinkDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedHyperlinkExpression() <em>Filter
-     * Conditional Styles From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedHyperlinkExpression()
+     * <em>Filter Conditional Styles From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedHyperlinkExpression()
      * @generated
@@ -160,9 +160,9 @@ public abstract class AbstractHyperlinkDescriptionImpl extends AbstractWidgetDes
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_HYPERLINK_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedHyperlinkExpression() <em>Filter
-     * Conditional Styles From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedHyperlinkExpression()
+     * <em>Filter Conditional Styles From Extended Hyperlink Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedHyperlinkExpression()
      * @generated

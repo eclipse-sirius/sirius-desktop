@@ -27,7 +27,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.GroupOverrideDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescriptionItemProvider {
@@ -73,7 +73,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
     /**
      * This adds a property descriptor for the Filter Controls From Overridden Group Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterControlsFromOverriddenGroupExpressionPropertyDescriptor(Object object) {
@@ -86,7 +86,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
     /**
      * This adds a property descriptor for the Filter Validation Rules From Overridden Group Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterValidationRulesFromOverriddenGroupExpressionPropertyDescriptor(Object object) {
@@ -100,7 +100,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Overridden Group Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterConditionalStylesFromOverriddenGroupExpressionPropertyDescriptor(Object object) {
@@ -152,7 +152,7 @@ public class GroupOverrideDescriptionItemProvider extends AbstractGroupDescripti
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

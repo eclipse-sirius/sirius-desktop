@@ -38,15 +38,15 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getLabelExpression <em>Label Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getHelpExpression <em>Help Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getIsEnabledExpression <em>Is Enabled
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getIsEnabledExpression
+ * <em>Is Enabled Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getValueExpression <em>Value Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getInitialOperation <em>Initial Operation</em>}
  * </li>
- * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getCandidatesExpression <em>Candidates
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getCandidateDisplayExpression <em>Candidate
- * Display Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getCandidatesExpression
+ * <em>Candidates Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getCandidateDisplayExpression
+ * <em>Candidate Display Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getStyle <em>Style</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getNumberOfColumns <em>Number Of Columns</em>}
  * </li>

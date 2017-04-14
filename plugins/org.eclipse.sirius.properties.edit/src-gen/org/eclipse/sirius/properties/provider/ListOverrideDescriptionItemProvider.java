@@ -27,7 +27,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.ListOverrideDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class ListOverrideDescriptionItemProvider extends AbstractListDescriptionItemProvider {
@@ -72,7 +72,7 @@ public class ListOverrideDescriptionItemProvider extends AbstractListDescription
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Overridden List Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterConditionalStylesFromOverriddenListExpressionPropertyDescriptor(Object object) {
@@ -86,7 +86,7 @@ public class ListOverrideDescriptionItemProvider extends AbstractListDescription
     /**
      * This adds a property descriptor for the Filter Actions From Overridden List Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterActionsFromOverriddenListExpressionPropertyDescriptor(Object object) {
@@ -137,7 +137,7 @@ public class ListOverrideDescriptionItemProvider extends AbstractListDescription
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

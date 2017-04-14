@@ -54,6 +54,7 @@ import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
  * <li>
  * {@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getFilterValidationRulesFromExtendedPageExpression
  * <em>Filter Validation Rules From Extended Page Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#isIndented <em>Indented</em>}</li>
  * </ul>
  *
  * @generated
@@ -230,6 +231,26 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
      * @ordered
      */
     protected String filterValidationRulesFromExtendedPageExpression = AbstractPageDescriptionImpl.FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isIndented() <em>Indented</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #isIndented()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean INDENTED_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isIndented() <em>Indented</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #isIndented()
+     * @generated
+     * @ordered
+     */
+    protected boolean indented = AbstractPageDescriptionImpl.INDENTED_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -535,6 +556,30 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
      * @generated
      */
     @Override
+    public boolean isIndented() {
+        return indented;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setIndented(boolean newIndented) {
+        boolean oldIndented = indented;
+        indented = newIndented;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__INDENTED, oldIndented, indented));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__VALIDATION_SET:
@@ -574,6 +619,8 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
             return getFilterGroupsFromExtendedPageExpression();
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION:
             return getFilterValidationRulesFromExtendedPageExpression();
+        case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__INDENTED:
+            return isIndented();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -618,6 +665,9 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION:
             setFilterValidationRulesFromExtendedPageExpression((String) newValue);
             return;
+        case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__INDENTED:
+            setIndented((Boolean) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -660,6 +710,9 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION:
             setFilterValidationRulesFromExtendedPageExpression(AbstractPageDescriptionImpl.FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__INDENTED:
+            setIndented(AbstractPageDescriptionImpl.INDENTED_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -696,6 +749,8 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION:
             return AbstractPageDescriptionImpl.FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION_EDEFAULT == null ? filterValidationRulesFromExtendedPageExpression != null
                     : !AbstractPageDescriptionImpl.FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION_EDEFAULT.equals(filterValidationRulesFromExtendedPageExpression);
+        case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__INDENTED:
+            return indented != AbstractPageDescriptionImpl.INDENTED_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -762,6 +817,8 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
         result.append(filterGroupsFromExtendedPageExpression);
         result.append(", filterValidationRulesFromExtendedPageExpression: "); //$NON-NLS-1$
         result.append(filterValidationRulesFromExtendedPageExpression);
+        result.append(", indented: "); //$NON-NLS-1$
+        result.append(indented);
         result.append(')');
         return result.toString();
     }
