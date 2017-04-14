@@ -111,9 +111,6 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         body.setLayout(GridLayoutFactory.swtDefaults().create());
 
         informativeLabel = toolkit.createFormText(body, false);
-        informativeLabel.setText(
-                "<form><p>This editor is a work in progress, currently in alpha state. See <a href='https://wiki.eclipse.org/Sirius/SessionEditor'>the wiki</a> for more details and how to provide feedback.</p></form>", //$NON-NLS-1$
-                true, true);
         informativeLabel.addHyperlinkListener(new IHyperlinkListener() {
 
             @Override
