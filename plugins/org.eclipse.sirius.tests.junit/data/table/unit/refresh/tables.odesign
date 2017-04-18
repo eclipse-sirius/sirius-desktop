@@ -516,7 +516,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="SimpleTableVariables" domainClass="Model">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
-      <ownedLineMappings name="Class lines" domainClass="Class" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name='Class3')->first()" headerLabelExpression=""/>
+        <ownedLineMappings name="Class lines" domainClass="Class" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name='Class3')->first()" headerLabelExpression="aql:'&lt;Class> '+self.name"/>
       <ownedColumnMappings name="Class name" headerLabelExpression="Name" initialWidth="200" featureName="name" labelExpression="aql:self.name" featureParentExpression="aql:if table&lt;>null then line.target else line.target endif">
         <directEdit>
           <variables name="element" documentation="The semantic currently edited element."/>
