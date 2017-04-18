@@ -498,8 +498,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         final IPermissionAuthority receiverAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(receiverDView);
         if (receiverAuthority.canCreateIn(receiverDView)) {
+            DRepresentation dRepresentation = repDescriptor.getRepresentation();
+            receiverDView.eResource().getContents().add(dRepresentation);
             receiverDView.getOwnedRepresentationDescriptors().add(repDescriptor);
-            receiverDView.eResource().getContents().add(repDescriptor.getRepresentation());
+            // We set the representation again to update the new path.
+            repDescriptor.setRepresentation(dRepresentation);
             // Add all semantic root elements pointed by the target of all
             // DSemanticDecorator of this representation (except of this root is
             // a root of a referencedAnalysis)
