@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,8 +13,11 @@ package org.eclipse.sirius.ui.tools.internal.views.modelexplorer;
 import java.util.Collection;
 import java.util.Map;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.Action;
@@ -23,6 +26,7 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.common.ui.tools.api.view.IExpandSelectionTarget;
@@ -53,12 +57,16 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IViewSite;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.navigator.CommonViewer;
+import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
@@ -73,6 +81,11 @@ import com.google.common.collect.Sets;
  */
 public class ModelExplorerView extends CommonNavigator implements IModelExplorerView, IExpandSelectionTarget, ITabbedPropertySheetPageContributor {
 
+    /**
+     * The session editor's id used to open automatically this editor when double clicking on an aird file.
+     */
+    private static final String SESSION_EDITOR_ID = "org.eclipse.sirius.ui.editor.session"; //$NON-NLS-1$
+
     private CTabFolder tabFolder;
 
     private String initialSelection = ""; //$NON-NLS-1$
@@ -84,10 +97,8 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
     private Action renameActionHandler;
 
     /**
-     * The updater in charge of refresh this view according to lock
-     * notifications send to
-     * {@link org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener}
-     * .
+     * The updater in charge of refresh this view according to lock notifications send to
+     * {@link org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener} .
      */
     private LockDecorationUpdater lockDecorationUpdater = new LockDecorationUpdater();
 
@@ -338,14 +349,31 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
 
     @Override
     protected void handleDoubleClick(DoubleClickEvent anEvent) {
-        super.handleDoubleClick(anEvent);
+        IStructuredSelection selection = (IStructuredSelection) anEvent.getSelection();
+        Object element = selection.getFirstElement();
+
+        if (element instanceof IFile && new FileQuery((IFile) element).isSessionResourceFile()) {
+            IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+            FileEditorInput fileEditorInput = new FileEditorInput((IFile) element);
+            IEditorReference[] airdEditorReferences = activePage.findEditors(fileEditorInput, SESSION_EDITOR_ID, IWorkbenchPage.MATCH_ID);
+            if (airdEditorReferences.length > 0) {
+                try {
+                    activePage.openEditor(fileEditorInput, SESSION_EDITOR_ID);
+                } catch (PartInitException e) {
+                    SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
+                }
+            } else {
+                super.handleDoubleClick(anEvent);
+            }
+        } else {
+            super.handleDoubleClick(anEvent);
+        }
         // Just after the restart of Eclipse, the listener of the
         // SiriusCommonContentProvider is not enabled so if the user
         // double-click on a ModelingProject, it is expanded but not loaded. So
         // we must load (if it's not already loaded) the main representation
         // file here.
-        IStructuredSelection selection = (IStructuredSelection) anEvent.getSelection();
-        Object element = selection.getFirstElement();
+
         if (element instanceof IProject) {
             Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject((IProject) element);
             if (optionalModelingProject.some()) {
