@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.WidgetAction} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class WidgetActionItemProvider extends ItemProviderAdapter
@@ -63,6 +63,7 @@ public class WidgetActionItemProvider extends ItemProviderAdapter
             super.getPropertyDescriptors(object);
 
             addLabelExpressionPropertyDescriptor(object);
+            addImageExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -77,6 +78,18 @@ public class WidgetActionItemProvider extends ItemProviderAdapter
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetAction_labelExpression_feature"), //$NON-NLS-1$
                         getString("_UI_PropertyDescriptor_description", "_UI_WidgetAction_labelExpression_feature", "_UI_WidgetAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.WIDGET_ACTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Image Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addImageExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetAction_imageExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetAction_imageExpression_feature", "_UI_WidgetAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.WIDGET_ACTION__IMAGE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -150,7 +163,7 @@ public class WidgetActionItemProvider extends ItemProviderAdapter
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,6 +172,7 @@ public class WidgetActionItemProvider extends ItemProviderAdapter
 
         switch (notification.getFeatureID(WidgetAction.class)) {
         case PropertiesPackage.WIDGET_ACTION__LABEL_EXPRESSION:
+        case PropertiesPackage.WIDGET_ACTION__IMAGE_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.WIDGET_ACTION__INITIAL_OPERATION:

@@ -2233,13 +2233,22 @@ public interface PropertiesPackage extends EPackage {
     int ABSTRACT_BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
+     * The feature id for the '<em><b>Image Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_BUTTON_DESCRIPTION__IMAGE_EXPRESSION = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int ABSTRACT_BUTTON_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+    int ABSTRACT_BUTTON_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2248,7 +2257,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_BUTTON_DESCRIPTION__STYLE = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int ABSTRACT_BUTTON_DESCRIPTION__STYLE = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment reference list. <!-- begin-user-doc -->
@@ -2257,7 +2266,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_BUTTON_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+    int ABSTRACT_BUTTON_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Extends</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2265,7 +2274,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_BUTTON_DESCRIPTION__EXTENDS = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+    int ABSTRACT_BUTTON_DESCRIPTION__EXTENDS = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Filter Conditional Styles From Extended Button Expression</b></em>' attribute.
@@ -2274,7 +2283,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 5;
+    int ABSTRACT_BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The number of structural features of the '<em>Abstract Button Description</em>' class. <!-- begin-user-doc -->
@@ -2283,7 +2292,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_BUTTON_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 6;
+    int ABSTRACT_BUTTON_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl
@@ -2355,13 +2364,22 @@ public interface PropertiesPackage extends EPackage {
     int BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
+     * The feature id for the '<em><b>Image Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_DESCRIPTION__IMAGE_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+
+    /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int BUTTON_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+    int BUTTON_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2370,7 +2388,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUTTON_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 5;
+    int BUTTON_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment reference list. <!-- begin-user-doc -->
@@ -2379,7 +2397,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUTTON_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 6;
+    int BUTTON_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Extends</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2387,7 +2405,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUTTON_DESCRIPTION__EXTENDS = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 7;
+    int BUTTON_DESCRIPTION__EXTENDS = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Filter Conditional Styles From Extended Button Expression</b></em>' attribute.
@@ -2396,7 +2414,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 8;
+    int BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
      * The number of structural features of the '<em>Button Description</em>' class. <!-- begin-user-doc --> <!--
@@ -2405,7 +2423,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUTTON_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 9;
+    int BUTTON_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 10;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.properties.impl.ButtonOverrideDescriptionImpl
@@ -2475,6 +2493,15 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int BUTTON_OVERRIDE_DESCRIPTION__BUTTON_LABEL_EXPRESSION = PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Image Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_OVERRIDE_DESCRIPTION__IMAGE_EXPRESSION = PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__IMAGE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
@@ -7824,13 +7851,22 @@ public interface PropertiesPackage extends EPackage {
     int WIDGET_ACTION__LABEL_EXPRESSION = 0;
 
     /**
+     * The feature id for the '<em><b>Image Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int WIDGET_ACTION__IMAGE_EXPRESSION = 1;
+
+    /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int WIDGET_ACTION__INITIAL_OPERATION = 1;
+    int WIDGET_ACTION__INITIAL_OPERATION = 2;
 
     /**
      * The number of structural features of the '<em>Widget Action</em>' class. <!-- begin-user-doc --> <!--
@@ -7839,7 +7875,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int WIDGET_ACTION_FEATURE_COUNT = 2;
+    int WIDGET_ACTION_FEATURE_COUNT = 3;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.properties.impl.HyperlinkWidgetConditionalStyleImpl
@@ -9144,6 +9180,18 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EAttribute getAbstractButtonDescription_ButtonLabelExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.AbstractButtonDescription#getImageExpression <em>Image Expression</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Image Expression</em>'.
+     * @see org.eclipse.sirius.properties.AbstractButtonDescription#getImageExpression()
+     * @see #getAbstractButtonDescription()
+     * @generated
+     */
+    EAttribute getAbstractButtonDescription_ImageExpression();
 
     /**
      * Returns the meta object for the containment reference '
@@ -11389,6 +11437,17 @@ public interface PropertiesPackage extends EPackage {
     EAttribute getWidgetAction_LabelExpression();
 
     /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.properties.WidgetAction#getImageExpression
+     * <em>Image Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Image Expression</em>'.
+     * @see org.eclipse.sirius.properties.WidgetAction#getImageExpression()
+     * @see #getWidgetAction()
+     * @generated
+     */
+    EAttribute getWidgetAction_ImageExpression();
+
+    /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.WidgetAction#getInitialOperation <em>Initial Operation</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -12477,6 +12536,14 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EAttribute ABSTRACT_BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION = PropertiesPackage.eINSTANCE.getAbstractButtonDescription_ButtonLabelExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Image Expression</b></em>' attribute feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute ABSTRACT_BUTTON_DESCRIPTION__IMAGE_EXPRESSION = PropertiesPackage.eINSTANCE.getAbstractButtonDescription_ImageExpression();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>' containment reference feature. <!--
@@ -14178,6 +14245,14 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EAttribute WIDGET_ACTION__LABEL_EXPRESSION = PropertiesPackage.eINSTANCE.getWidgetAction_LabelExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Image Expression</b></em>' attribute feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute WIDGET_ACTION__IMAGE_EXPRESSION = PropertiesPackage.eINSTANCE.getWidgetAction_ImageExpression();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>' containment reference feature. <!--

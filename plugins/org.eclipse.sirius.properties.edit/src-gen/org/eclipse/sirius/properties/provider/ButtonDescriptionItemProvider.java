@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.ButtonDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider {
@@ -57,6 +57,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
             addHelpExpressionPropertyDescriptor(object);
             addIsEnabledExpressionPropertyDescriptor(object);
             addButtonLabelExpressionPropertyDescriptor(object);
+            addImageExpressionPropertyDescriptor(object);
             addExtendsPropertyDescriptor(object);
             addFilterConditionalStylesFromExtendedButtonExpressionPropertyDescriptor(object);
         }
@@ -90,7 +91,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This adds a property descriptor for the Is Enabled Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     protected void addIsEnabledExpressionPropertyDescriptor(Object object) {
@@ -114,6 +115,18 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
     }
 
     /**
+     * This adds a property descriptor for the Image Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addImageExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractButtonDescription_imageExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractButtonDescription_imageExpression_feature", "_UI_AbstractButtonDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesPackage.Literals.ABSTRACT_BUTTON_DESCRIPTION__IMAGE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This adds a property descriptor for the Extends feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -128,7 +141,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Extended Button Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromExtendedButtonExpressionPropertyDescriptor(Object object) {
@@ -212,7 +225,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,6 +237,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
         case PropertiesPackage.BUTTON_DESCRIPTION__HELP_EXPRESSION:
         case PropertiesPackage.BUTTON_DESCRIPTION__IS_ENABLED_EXPRESSION:
         case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
+        case PropertiesPackage.BUTTON_DESCRIPTION__IMAGE_EXPRESSION:
         case PropertiesPackage.BUTTON_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

@@ -27,7 +27,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.PageOverrideDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PageOverrideDescriptionItemProvider extends AbstractPageDescriptionItemProvider {
@@ -72,7 +72,7 @@ public class PageOverrideDescriptionItemProvider extends AbstractPageDescription
     /**
      * This adds a property descriptor for the Filter Groups From Overridden Page Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterGroupsFromOverriddenPageExpressionPropertyDescriptor(Object object) {
@@ -85,7 +85,7 @@ public class PageOverrideDescriptionItemProvider extends AbstractPageDescription
     /**
      * This adds a property descriptor for the Filter Validation Rules From Overridden Page Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterValidationRulesFromOverriddenPageExpressionPropertyDescriptor(Object object) {
@@ -137,7 +137,7 @@ public class PageOverrideDescriptionItemProvider extends AbstractPageDescription
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override

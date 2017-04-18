@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.CustomOperation} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CustomOperationItemProvider extends IdentifiedElementItemProvider implements IItemStyledLabelProvider {
@@ -144,7 +144,7 @@ public class CustomOperationItemProvider extends IdentifiedElementItemProvider i
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override

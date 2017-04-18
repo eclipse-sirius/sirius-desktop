@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.ListDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ListDescriptionItemProvider extends WidgetDescriptionItemProvider {
@@ -92,7 +92,7 @@ public class ListDescriptionItemProvider extends WidgetDescriptionItemProvider {
     /**
      * This adds a property descriptor for the Is Enabled Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     protected void addIsEnabledExpressionPropertyDescriptor(Object object) {
@@ -141,7 +141,7 @@ public class ListDescriptionItemProvider extends WidgetDescriptionItemProvider {
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Extended List Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromExtendedListExpressionPropertyDescriptor(Object object) {
@@ -239,7 +239,7 @@ public class ListDescriptionItemProvider extends WidgetDescriptionItemProvider {
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override

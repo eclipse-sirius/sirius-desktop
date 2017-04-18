@@ -24,6 +24,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.AbstractButtonDescription#getButtonLabelExpression
  * <em>Button Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractButtonDescription#getImageExpression <em>Image Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractButtonDescription#getInitialOperation <em>Initial Operation</em>}
  * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractButtonDescription#getStyle <em>Style</em>}</li>
@@ -66,6 +67,33 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
      * @generated
      */
     void setButtonLabelExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Image Expression</b></em>' attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Image Expression</em>' attribute isn't clear, there really should be more of a
+     * description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Image Expression</em>' attribute.
+     * @see #setImageExpression(String)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractButtonDescription_ImageExpression()
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     * @generated
+     */
+    String getImageExpression();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractButtonDescription#getImageExpression
+     * <em>Image Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Image Expression</em>' attribute.
+     * @see #getImageExpression()
+     * @generated
+     */
+    void setImageExpression(String value);
 
     /**
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment reference. <!-- begin-user-doc -->

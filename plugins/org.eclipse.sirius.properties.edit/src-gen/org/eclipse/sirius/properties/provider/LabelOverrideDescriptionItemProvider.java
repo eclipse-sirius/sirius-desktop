@@ -27,7 +27,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.LabelOverrideDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class LabelOverrideDescriptionItemProvider extends AbstractLabelDescriptionItemProvider {
@@ -72,7 +72,7 @@ public class LabelOverrideDescriptionItemProvider extends AbstractLabelDescripti
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Overridden Label Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromOverriddenLabelExpressionPropertyDescriptor(Object object) {
@@ -86,7 +86,7 @@ public class LabelOverrideDescriptionItemProvider extends AbstractLabelDescripti
     /**
      * This adds a property descriptor for the Filter Actions From Overridden Label Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterActionsFromOverriddenLabelExpressionPropertyDescriptor(Object object) {
@@ -137,7 +137,7 @@ public class LabelOverrideDescriptionItemProvider extends AbstractLabelDescripti
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override

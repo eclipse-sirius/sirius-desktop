@@ -29,7 +29,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.LabelDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider {
@@ -91,7 +91,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Is Enabled Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     protected void addIsEnabledExpressionPropertyDescriptor(Object object) {
@@ -140,7 +140,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Extended Label Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromExtendedLabelExpressionPropertyDescriptor(Object object) {
@@ -154,7 +154,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Filter Actions From Extended Label Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterActionsFromExtendedLabelExpressionPropertyDescriptor(Object object) {
@@ -237,7 +237,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override

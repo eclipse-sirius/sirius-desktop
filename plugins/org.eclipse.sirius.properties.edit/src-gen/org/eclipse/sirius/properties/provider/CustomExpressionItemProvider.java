@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.provider.IdentifiedElementItemPr
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.CustomExpression} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CustomExpressionItemProvider extends IdentifiedElementItemProvider implements IItemStyledLabelProvider {
@@ -125,7 +125,7 @@ public class CustomExpressionItemProvider extends IdentifiedElementItemProvider 
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override

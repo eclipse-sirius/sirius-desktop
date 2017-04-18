@@ -28,6 +28,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.WidgetActionImpl#getLabelExpression <em>Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.WidgetActionImpl#getImageExpression <em>Image Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.WidgetActionImpl#getInitialOperation <em>Initial Operation</em>}</li>
  * </ul>
  *
@@ -53,6 +54,26 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
      * @ordered
      */
     protected String labelExpression = WidgetActionImpl.LABEL_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getImageExpression() <em>Image Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getImageExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String IMAGE_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getImageExpression() <em>Image Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getImageExpression()
+     * @generated
+     * @ordered
+     */
+    protected String imageExpression = WidgetActionImpl.IMAGE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference. <!--
@@ -104,6 +125,30 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
         labelExpression = newLabelExpression;
         if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.WIDGET_ACTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getImageExpression() {
+        return imageExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setImageExpression(String newImageExpression) {
+        String oldImageExpression = imageExpression;
+        imageExpression = newImageExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.WIDGET_ACTION__IMAGE_EXPRESSION, oldImageExpression, imageExpression));
         }
     }
 
@@ -184,6 +229,8 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
         switch (featureID) {
         case PropertiesPackage.WIDGET_ACTION__LABEL_EXPRESSION:
             return getLabelExpression();
+        case PropertiesPackage.WIDGET_ACTION__IMAGE_EXPRESSION:
+            return getImageExpression();
         case PropertiesPackage.WIDGET_ACTION__INITIAL_OPERATION:
             return getInitialOperation();
         }
@@ -200,6 +247,9 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
         switch (featureID) {
         case PropertiesPackage.WIDGET_ACTION__LABEL_EXPRESSION:
             setLabelExpression((String) newValue);
+            return;
+        case PropertiesPackage.WIDGET_ACTION__IMAGE_EXPRESSION:
+            setImageExpression((String) newValue);
             return;
         case PropertiesPackage.WIDGET_ACTION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) newValue);
@@ -219,6 +269,9 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
         case PropertiesPackage.WIDGET_ACTION__LABEL_EXPRESSION:
             setLabelExpression(WidgetActionImpl.LABEL_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesPackage.WIDGET_ACTION__IMAGE_EXPRESSION:
+            setImageExpression(WidgetActionImpl.IMAGE_EXPRESSION_EDEFAULT);
+            return;
         case PropertiesPackage.WIDGET_ACTION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) null);
             return;
@@ -236,6 +289,8 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
         switch (featureID) {
         case PropertiesPackage.WIDGET_ACTION__LABEL_EXPRESSION:
             return WidgetActionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !WidgetActionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+        case PropertiesPackage.WIDGET_ACTION__IMAGE_EXPRESSION:
+            return WidgetActionImpl.IMAGE_EXPRESSION_EDEFAULT == null ? imageExpression != null : !WidgetActionImpl.IMAGE_EXPRESSION_EDEFAULT.equals(imageExpression);
         case PropertiesPackage.WIDGET_ACTION__INITIAL_OPERATION:
             return initialOperation != null;
         }
@@ -256,6 +311,8 @@ public class WidgetActionImpl extends MinimalEObjectImpl.Container implements Wi
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (labelExpression: "); //$NON-NLS-1$
         result.append(labelExpression);
+        result.append(", imageExpression: "); //$NON-NLS-1$
+        result.append(imageExpression);
         result.append(')');
         return result.toString();
     }

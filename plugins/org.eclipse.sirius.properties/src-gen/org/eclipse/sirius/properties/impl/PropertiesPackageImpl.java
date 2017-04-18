@@ -1680,8 +1680,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getAbstractButtonDescription_InitialOperation() {
-        return (EReference) abstractButtonDescriptionEClass.getEStructuralFeatures().get(1);
+    public EAttribute getAbstractButtonDescription_ImageExpression() {
+        return (EAttribute) abstractButtonDescriptionEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -1690,7 +1690,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getAbstractButtonDescription_Style() {
+    public EReference getAbstractButtonDescription_InitialOperation() {
         return (EReference) abstractButtonDescriptionEClass.getEStructuralFeatures().get(2);
     }
 
@@ -1700,7 +1700,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getAbstractButtonDescription_ConditionalStyles() {
+    public EReference getAbstractButtonDescription_Style() {
         return (EReference) abstractButtonDescriptionEClass.getEStructuralFeatures().get(3);
     }
 
@@ -1710,7 +1710,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getAbstractButtonDescription_Extends() {
+    public EReference getAbstractButtonDescription_ConditionalStyles() {
         return (EReference) abstractButtonDescriptionEClass.getEStructuralFeatures().get(4);
     }
 
@@ -1720,8 +1720,18 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EReference getAbstractButtonDescription_Extends() {
+        return (EReference) abstractButtonDescriptionEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EAttribute getAbstractButtonDescription_FilterConditionalStylesFromExtendedButtonExpression() {
-        return (EAttribute) abstractButtonDescriptionEClass.getEStructuralFeatures().get(5);
+        return (EAttribute) abstractButtonDescriptionEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -3630,8 +3640,18 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EAttribute getWidgetAction_ImageExpression() {
+        return (EAttribute) widgetActionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EReference getWidgetAction_InitialOperation() {
-        return (EReference) widgetActionEClass.getEStructuralFeatures().get(1);
+        return (EReference) widgetActionEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -4054,6 +4074,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         abstractButtonDescriptionEClass = createEClass(PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION);
         createEAttribute(abstractButtonDescriptionEClass, PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION);
+        createEAttribute(abstractButtonDescriptionEClass, PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__IMAGE_EXPRESSION);
         createEReference(abstractButtonDescriptionEClass, PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__INITIAL_OPERATION);
         createEReference(abstractButtonDescriptionEClass, PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__STYLE);
         createEReference(abstractButtonDescriptionEClass, PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__CONDITIONAL_STYLES);
@@ -4305,6 +4326,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         widgetActionEClass = createEClass(PropertiesPackage.WIDGET_ACTION);
         createEAttribute(widgetActionEClass, PropertiesPackage.WIDGET_ACTION__LABEL_EXPRESSION);
+        createEAttribute(widgetActionEClass, PropertiesPackage.WIDGET_ACTION__IMAGE_EXPRESSION);
         createEReference(widgetActionEClass, PropertiesPackage.WIDGET_ACTION__INITIAL_OPERATION);
 
         hyperlinkWidgetConditionalStyleEClass = createEClass(PropertiesPackage.HYPERLINK_WIDGET_CONDITIONAL_STYLE);
@@ -4738,6 +4760,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(abstractButtonDescriptionEClass, AbstractButtonDescription.class, "AbstractButtonDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getAbstractButtonDescription_ButtonLabelExpression(), theDescriptionPackage.getInterpretedExpression(), "buttonLabelExpression", null, 0, 1, AbstractButtonDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getAbstractButtonDescription_ImageExpression(), theDescriptionPackage.getInterpretedExpression(), "imageExpression", null, 0, 1, AbstractButtonDescription.class, //$NON-NLS-1$
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
         initEReference(getAbstractButtonDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, AbstractButtonDescription.class, //$NON-NLS-1$
@@ -5297,6 +5322,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         initEClass(widgetActionEClass, WidgetAction.class, "WidgetAction", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getWidgetAction_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, WidgetAction.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getWidgetAction_ImageExpression(), theDescriptionPackage.getInterpretedExpression(), "imageExpression", null, 0, 1, WidgetAction.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getWidgetAction_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, WidgetAction.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,

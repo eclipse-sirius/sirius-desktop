@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.AbstractListDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AbstractListDescriptionItemProvider extends AbstractWidgetDescriptionItemProvider {
@@ -101,7 +101,7 @@ public class AbstractListDescriptionItemProvider extends AbstractWidgetDescripti
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Extended List Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFilterConditionalStylesFromExtendedListExpressionPropertyDescriptor(Object object) {
@@ -189,7 +189,7 @@ public class AbstractListDescriptionItemProvider extends AbstractWidgetDescripti
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override

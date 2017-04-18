@@ -138,6 +138,26 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
     protected String buttonLabelExpression = ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT;
 
     /**
+     * The default value of the '{@link #getImageExpression() <em>Image Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getImageExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String IMAGE_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getImageExpression() <em>Image Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getImageExpression()
+     * @generated
+     * @ordered
+     */
+    protected String imageExpression = ButtonDescriptionImpl.IMAGE_EXPRESSION_EDEFAULT;
+
+    /**
      * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -311,6 +331,30 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
         buttonLabelExpression = newButtonLabelExpression;
         if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION, oldButtonLabelExpression, buttonLabelExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getImageExpression() {
+        return imageExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setImageExpression(String newImageExpression) {
+        String oldImageExpression = imageExpression;
+        imageExpression = newImageExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.BUTTON_DESCRIPTION__IMAGE_EXPRESSION, oldImageExpression, imageExpression));
         }
     }
 
@@ -534,6 +578,8 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
             return getIsEnabledExpression();
         case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
             return getButtonLabelExpression();
+        case PropertiesPackage.BUTTON_DESCRIPTION__IMAGE_EXPRESSION:
+            return getImageExpression();
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
             return getInitialOperation();
         case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
@@ -571,6 +617,9 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
             return;
         case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
             setButtonLabelExpression((String) newValue);
+            return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__IMAGE_EXPRESSION:
+            setImageExpression((String) newValue);
             return;
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) newValue);
@@ -612,6 +661,9 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
         case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
             setButtonLabelExpression(ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__IMAGE_EXPRESSION:
+            setImageExpression(ButtonDescriptionImpl.IMAGE_EXPRESSION_EDEFAULT);
+            return;
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) null);
             return;
@@ -648,6 +700,8 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
         case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
             return ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT == null ? buttonLabelExpression != null
                     : !ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT.equals(buttonLabelExpression);
+        case PropertiesPackage.BUTTON_DESCRIPTION__IMAGE_EXPRESSION:
+            return ButtonDescriptionImpl.IMAGE_EXPRESSION_EDEFAULT == null ? imageExpression != null : !ButtonDescriptionImpl.IMAGE_EXPRESSION_EDEFAULT.equals(imageExpression);
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
             return initialOperation != null;
         case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
@@ -686,6 +740,8 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
             switch (derivedFeatureID) {
             case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
                 return PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION;
+            case PropertiesPackage.BUTTON_DESCRIPTION__IMAGE_EXPRESSION:
+                return PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__IMAGE_EXPRESSION;
             case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
                 return PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__INITIAL_OPERATION;
             case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
@@ -726,6 +782,8 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
             switch (baseFeatureID) {
             case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
                 return PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__IMAGE_EXPRESSION:
+                return PropertiesPackage.BUTTON_DESCRIPTION__IMAGE_EXPRESSION;
             case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__INITIAL_OPERATION:
                 return PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION;
             case PropertiesPackage.ABSTRACT_BUTTON_DESCRIPTION__STYLE:
@@ -763,6 +821,8 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
         result.append(isEnabledExpression);
         result.append(", buttonLabelExpression: "); //$NON-NLS-1$
         result.append(buttonLabelExpression);
+        result.append(", imageExpression: "); //$NON-NLS-1$
+        result.append(imageExpression);
         result.append(", filterConditionalStylesFromExtendedButtonExpression: "); //$NON-NLS-1$
         result.append(filterConditionalStylesFromExtendedButtonExpression);
         result.append(')');

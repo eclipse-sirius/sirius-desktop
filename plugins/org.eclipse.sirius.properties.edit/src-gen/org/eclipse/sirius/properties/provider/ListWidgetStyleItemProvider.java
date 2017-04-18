@@ -23,7 +23,7 @@ import org.eclipse.sirius.properties.ListWidgetStyle;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.ListWidgetStyle} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ListWidgetStyleItemProvider extends WidgetStyleItemProvider {
@@ -91,7 +91,7 @@ public class ListWidgetStyleItemProvider extends WidgetStyleItemProvider {
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override

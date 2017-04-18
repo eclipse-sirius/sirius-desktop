@@ -101,6 +101,14 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.WidgetAction"/>
       </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetaction.WidgetActionImageExpressionPropertySectionSpec"
+               id="properties.section.widgetAction.ImageExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetaction.WidgetActionImageExpressionFilterSpec"
+               afterSection="properties.section.widgetAction.LabelExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.WidgetAction"/>
+      </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetconditionalstyle.WidgetConditionalStylePreconditionExpressionPropertySection"
                id="properties.section.widgetConditionalStyle.PreconditionExpression"
@@ -846,6 +854,14 @@
                id="properties.section.abstractButtonDescription.ButtonLabelExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractbuttondescription.AbstractButtonDescriptionButtonLabelExpressionFilter"
                afterSection="properties.section.abstractWidgetDescription.IsEnabledExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.AbstractButtonDescription"/>
+      </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractbuttondescription.AbstractButtonDescriptionImageExpressionPropertySectionSpec"
+               id="properties.section.abstractButtonDescription.ImageExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractbuttondescription.AbstractButtonDescriptionImageExpressionFilterSpec"
+               afterSection="properties.section.abstractButtonDescription.ButtonLabelExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractButtonDescription"/>
       </propertySection>
