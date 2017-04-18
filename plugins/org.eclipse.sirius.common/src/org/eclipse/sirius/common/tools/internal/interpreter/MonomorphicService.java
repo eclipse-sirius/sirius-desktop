@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,14 +69,26 @@ class MonomorphicService implements IMonomorphicService {
         Object result = null;
         try {
             result = serviceMethod.invoke(serviceInstance, target);
-        } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
+        } catch (IllegalArgumentException | IllegalAccessException e) {
+            /*
+             * These exceptions indicate problems in the method invocation
+             * itself, i.e. our service invocation logic is broken and tries to
+             * call inaccesible or incompatible methods.
+             */
             fail(e);
+        } catch (InvocationTargetException e) {
+            /*
+             * These exceptions on the other hand represent problems thrown from
+             * inside the service method
+             */
+            Throwable cause = e.getTargetException();
+            fail(cause);
         }
         return result;
     }
 
-    private void fail(Exception e) throws EvaluationException {
-        throw new EvaluationException(MessageFormat.format(Messages.MonomorphicService_serviceError, this), e);
+    private void fail(Throwable th) throws EvaluationException {
+        throw new EvaluationException(MessageFormat.format(Messages.MonomorphicService_serviceError, this), th);
     }
 
     @Override
