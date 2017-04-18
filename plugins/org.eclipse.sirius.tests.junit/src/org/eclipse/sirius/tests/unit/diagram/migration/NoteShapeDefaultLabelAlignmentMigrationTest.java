@@ -50,6 +50,8 @@ public class NoteShapeDefaultLabelAlignmentMigrationTest extends SiriusTestCase 
 
     private static final String SEMANTIC_RESOURCE_NAME = "noteAttachmentAlignment.ecore";
 
+    private static final String VSM_RESOURCE_NAME = "noteAttachmentAlignment.odesign";
+
     private Resource sessionResource;
 
     @Override
@@ -61,8 +63,8 @@ public class NoteShapeDefaultLabelAlignmentMigrationTest extends SiriusTestCase 
     protected void setUp() throws Exception {
         super.setUp();
         genericSetUp();
-        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SESSION_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME);
-        URI sessionResourceURI = URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + "/" + PATH + SESSION_RESOURCE_NAME, true);
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SESSION_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, VSM_RESOURCE_NAME);
+        URI sessionResourceURI = URI.createPlatformResourceURI(SiriusTestCase.TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_NAME, true);
         ResourceSet resourceSet = new ResourceSetImpl();
         sessionResource = resourceSet.getResource(sessionResourceURI, true);
 
@@ -76,7 +78,7 @@ public class NoteShapeDefaultLabelAlignmentMigrationTest extends SiriusTestCase 
         Version migrationVersion = new NoteShapeDefaultLabelAlignmentMigrationParticipant().getMigrationVersion();
 
         // Check that the migration of the session resource is needed.
-        Version loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + "/" + PATH + SESSION_RESOURCE_NAME, true), true);
+        Version loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformResourceURI(SiriusTestCase.TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_NAME, true), true);
         assertTrue("The migration must be required on test data.", loadedVersion == null || migrationVersion.compareTo(loadedVersion) > 0);
     }
 

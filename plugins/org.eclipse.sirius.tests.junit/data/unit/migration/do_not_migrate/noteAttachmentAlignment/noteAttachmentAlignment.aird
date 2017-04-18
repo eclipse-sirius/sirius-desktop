@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
   <viewpoint:DAnalysis xmi:id="_k7WwEebREeaOa_5yitWewA" selectedViews="_jkvtAObSEeaOa_5yitWewA" version="11.1.0.201608251200">
-    <semanticResources>My.ecore</semanticResources>
+    <semanticResources>noteAttachmentAlignment.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_jkvtAObSEeaOa_5yitWewA">
       <viewpoint xmi:type="description:Viewpoint" href="noteAttachmentAlignment.odesign#//@ownedViewpoints[name='MyViewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_1md08BVUEeeX-9J1yKditQ" name="new ClassDiag" representation="_1mecABVUEeeX-9J1yKditQ">
-        <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ClassDiag']"/>
-        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+        <description xmi:type="description_1:DiagramDescription" href="noteAttachmentAlignment.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ClassDiag']"/>
+        <target xmi:type="ecore:EPackage" href="noteAttachmentAlignment.ecore#/"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
@@ -33,7 +33,7 @@
     </ownedAnnotationEntries>
     <description xmi:type="description_1:DiagramDescription" href="noteAttachmentAlignment.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ClassDiag']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_1mecAxVUEeeX-9J1yKditQ"/>
-    <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ClassDiag']/@defaultLayer"/>
-    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    <activatedLayers xmi:type="description_1:Layer" href="noteAttachmentAlignment.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ClassDiag']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="noteAttachmentAlignment.ecore#/"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>
