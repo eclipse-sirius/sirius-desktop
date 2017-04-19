@@ -31,7 +31,7 @@ public class ReplaceRepresentationByRepPathMigrationParticipant extends Abstract
     /**
      * The aird version for which this migration is added.
      */
-    public static final Version MIGRATION_VERSION = new Version("12.0.0.201704131300"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("12.0.0.201704191300"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {

@@ -31,6 +31,7 @@
    <extension-point id="interpretedExpressionQueryProvider" name="%extension-point.interpretedExpressionQueryProvider.name" schema="schema/interpretedExpressionQueryProvider.exsd"/>
    <extension-point id="modelOperationManager" name="%extension-point.modelOperationManager.name" schema="schema/modelOperationManager.exsd"/>
    <extension-point id="dRepresentationLocationRule" name="%extension-point.dRepresentationLocationRule.name" schema="schema/dRepresentationLocationRule.exsd"/>
+   <extension-point id="dRepresentationURIFragmentStrategy" name="%extension-point.dRepresentationURIFragmentStrategy.name" schema="schema/dRepresentationURIFragmentStrategy.exsd"/>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated viewpoint -->

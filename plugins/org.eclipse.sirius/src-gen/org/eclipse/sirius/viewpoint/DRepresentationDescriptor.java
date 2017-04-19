@@ -120,7 +120,8 @@ public interface DRepresentationDescriptor extends EObject {
 
     /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getRepresentation
-     * <em>Representation</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <em>Representation</em>}' reference. <!-- begin-user-doc -->If the newRepresentation value is not null, the
+     * newRepresentation.eResource must not be null.<!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Representation</em>' reference.

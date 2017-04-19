@@ -11,17 +11,17 @@
  */
 package org.eclipse.sirius.viewpoint.impl;
 
+import java.util.Optional;
+
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
+import org.eclipse.sirius.business.internal.representation.DRepresentationDescriptorToDRepresentationLinkManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -249,33 +249,21 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
      * @generated NOT
      */
     public DRepresentation basicGetRepresentation() {
-        ResourceDescriptor resourceDescriptor = getRepPath();
-        Resource resource = eResource();
-        if (resourceDescriptor != null && resource != null) {
-            ResourceSet resourceSet = resource.getResourceSet();
-            if (resourceSet != null) {
-                EObject eObject = resourceSet.getEObject(resourceDescriptor.getResourceURI(), false);
-                return eObject != null ? (DRepresentation) eObject : null;
-            }
-        }
-        return null;
+        DRepresentationDescriptorToDRepresentationLinkManager pathManager = new DRepresentationDescriptorToDRepresentationLinkManager(this);
+        Optional<DRepresentation> representation = pathManager.getRepresentation(false);
+        return representation.orElse(null);
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --><!-- end-user-doc -->
      *
      * @generated NOT
      */
     @Override
     public void setRepresentation(DRepresentation newRepresentation) {
-        if (newRepresentation != null) {
-            URI uri = EcoreUtil.getURI(newRepresentation);
-            if (uri != null) {
-                setRepPath(new ResourceDescriptor(uri));
-            }
-        } else {
-            setRepPath(null);
-        }
+        Optional.ofNullable(newRepresentation).ifPresent(rep -> Assert.isNotNull(rep.eResource()));
+        DRepresentationDescriptorToDRepresentationLinkManager pathManager = new DRepresentationDescriptorToDRepresentationLinkManager(this);
+        pathManager.setRepresentation(newRepresentation);
     }
 
     /**
