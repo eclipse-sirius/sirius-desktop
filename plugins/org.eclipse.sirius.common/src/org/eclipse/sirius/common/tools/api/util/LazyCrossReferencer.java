@@ -21,7 +21,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import com.google.common.collect.Iterables;
 
 /**
- * A lazy cross referencer which does nothing until one of its method is called. <BR>
+ * A lazy cross referencer which does nothing until one of its method is called.
+ * <BR>
  * <BR>
  * This cross referencer also reacts to {@link EObject} removal from their
  * containing reference : it removes itself automatically from their adapters
@@ -192,7 +193,11 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
 
     /**
      * This method does not remove the adapter from the notification old value
-     * if its new container is already set and also has the adapter.
+     * in two cases:
+     * <ul>
+     * <li>if its new container is already set and also has the adapter</li>
+     * <li>if the element is now a root of a resource which has the adapter</li>
+     * </ul>
      * 
      * @param notification
      *            a containment notification
@@ -203,7 +208,12 @@ public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapabi
         boolean toRemove = true;
 
         if (oldValue instanceof EObject) {
-            EObject currentContainer = ((EObject) oldValue).eContainer();
+            EObject removedEObject = (EObject) oldValue;
+
+            Notifier currentContainer = removedEObject.eContainer();
+            if (currentContainer == null) {
+                currentContainer = removedEObject.eResource();
+            }
 
             if (currentContainer != null && currentContainer != notification.getNotifier() && currentContainer.eAdapters().contains(this)) {
                 toRemove = false;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,8 +16,14 @@ import java.util.Iterator;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -28,14 +34,14 @@ import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
 import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.eclipse.sirius.tests.sample.component.Component;
 import org.eclipse.sirius.tests.sample.component.ComponentFactory;
+import org.eclipse.sirius.tests.sample.component.ComponentPackage;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 
 /**
- * Class containing tests to update of {@link SiriusCrossReferenceAdapter} after
- * CRUD action on resources through DAnalysisSessionImpl such
- * unload/reload/remove resource, close session.
+ * Class containing tests to update of {@link SiriusCrossReferenceAdapter} after CRUD action on resources through
+ * DAnalysisSessionImpl such unload/reload/remove resource, close session.
  * 
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  */
@@ -50,18 +56,19 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
         super.setUp();
         setWarningCatchActive(true);
 
+        // create session with empty aird
+        genericSetUp();
+
+        // add semantic resources
+        initSemanticResource();
     }
 
     /**
-     * Check that fragmented resource is not reloaded during its unload when it
-     * has been externally modified.
+     * Check that fragmented resource is not reloaded during its unload when it has been externally modified.
      * 
      * @throws Exception
      */
     public void testDisablingCrossReferencerWhileReloadingResource() throws Exception {
-        genericSetUp();
-
-        initSemanticResource();
 
         // check that semantic crossRefAdapter is set on fragmented resource
         Resource fragmentedResource = ((DAnalysisSessionEObject) session).getControlledResources().get(0);
@@ -93,18 +100,11 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
     }
 
     /**
-     * Check that fragmented resource is not reloaded during its unload when it
-     * has been externally deleted.
+     * Check that fragmented resource is not reloaded during its unload when it has been externally deleted.
      * 
      * @throws Exception
      */
     public void testDisablingCrossReferencerWhileDeletingResource() throws Exception {
-
-        // create session with empty aird
-        genericSetUp();
-
-        // add semantic resources
-        initSemanticResource();
 
         // simulation of DELETION of fragmentResource
         File fragFile = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME).getFile(FRAGMENT_FILE_NAME).getLocation().toFile();
@@ -125,6 +125,59 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
             if (status.getCode() == EMFTransactionStatusCodes.RELOAD_DURING_UNLOAD) {
                 fail("Resource is being reloaded during its unload.");
             }
+        }
+    }
+
+    /**
+     * Check that if that the session cross referencer is not removed if a REMOVE notification is handled after the add,
+     * ie the old value is already added to a resource with the same cross reference adapter.
+     * 
+     * @throws Exception
+     */
+    public void testNoAdapterRemovalAfterLateRemoveNotificationReception() throws Exception {
+        // Check the initial check.
+        checkCrossReferenceIsInstalledOnAllSemanticElements();
+
+        final Component compoRoot = (Component) session.getSemanticResources().iterator().next().getContents().get(0);
+        final Component compo1 = compoRoot.getChildren().get(0);
+        final Component compo2 = compo1.getChildren().get(0);
+
+        // DND compo2 as second root of the semantic resource
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+
+            @Override
+            protected void doExecute() {
+                compo1.getChildren().remove(compo2);
+                session.getSemanticResources().iterator().next().getContents().add(compo2);
+            }
+        });
+
+        // Check the lazy cross referencer installation
+        checkCrossReferenceIsInstalledOnAllSemanticElements();
+
+        // Simulate the reception of a late reception of the REMOVE notification
+        session.getTransactionalEditingDomain().getCommandStack().execute(new IdentityCommand() {
+            @Override
+            public void execute() {
+                Notification removeNotification = new ENotificationImpl((InternalEObject) compo1, Notification.REMOVE, ComponentPackage.Literals.COMPONENT__CHILDREN, compo2, null);
+                compo1.eNotify(removeNotification);
+            }
+        });
+
+        // Check the lazy cross referencer installation
+        checkCrossReferenceIsInstalledOnAllSemanticElements();
+    }
+
+    private void checkCrossReferenceIsInstalledOnAllSemanticElements() {
+        for (Resource res : session.getSemanticResources()) {
+            assertTrue("The semantic cross referencer is not installed on the resource " + res.getURI(), res.eAdapters().contains(session.getSemanticCrossReferencer()));
+
+            TreeIterator<EObject> eAllContents = res.getAllContents();
+            while (eAllContents.hasNext()) {
+                EObject obj = eAllContents.next();
+                assertTrue("The semantic cross referencer is not installed on " + obj, obj.eAdapters().contains(session.getSemanticCrossReferencer()));
+            }
+
         }
     }
 
