@@ -21,6 +21,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
@@ -87,7 +88,8 @@ public class FiltersContributionItem extends AbstractMenuContributionItem {
 
     private void addFilterMenuItem(IMenuManager manager, final FilterDescription filter) {
         final boolean isActive = isActive(filter);
-        IAction action = new Action(new IdentifiedElementQuery(filter).getLabel(), IAction.AS_CHECK_BOX) {
+        final String nameEntry = MessageTranslator.INSTANCE.getMessage(filter, new IdentifiedElementQuery(filter).getLabel());
+        IAction action = new Action(nameEntry, IAction.AS_CHECK_BOX) {
             @Override
             public void run() {
                 final Runnable change = new ChangeFilterActivation(part, diagram, filter, !isActive);

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="bugzilla459993" version="11.0.0.201601261200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="bugzilla459993" version="12.0.0.2017041100">
   <ownedViewpoints name="bugzilla459993" label="%bugzillaId" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="bugzilla459993Diag" label="%bugzillaDiag" domainClass="EPackage" enablePopupBars="true">
+      <filters xsi:type="filter:CompositeFilterDescription" name="filterPackage" label="%filterLabel">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993Diag']/@defaultLayer/@containerMappings[name='EPackage']"/>
+      </filters>
       <defaultLayer name="Default">
         <nodeMappings/>
         <containerMappings name="EPackage" detailDescriptions="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993Diag']/@defaultLayer/@toolSections.0/@ownedTools[name='CreateDiag']" semanticCandidatesExpression="feature:eSubpackages" domainClass="EPackage">
@@ -53,6 +56,16 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
+      <additionalLayers name="layerTest" label="%layerLabel">
+        <containerMappings name="EPackage" detailDescriptions="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993Diag']/@defaultLayer/@toolSections.0/@ownedTools[name='CreateDiag']" semanticCandidatesExpression="feature:eSubpackages" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:TreeDescription" name="bugzilla459993Tree" label="%bugzillaTree" domainClass="EPackage">
       <subItemMappings name="EPackageTree" domainClass="EPackage" semanticCandidatesExpression="feature:eSubpackages" reusedTreeItemMappings="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993Tree']/@subItemMappings[name='EPackageTree']">

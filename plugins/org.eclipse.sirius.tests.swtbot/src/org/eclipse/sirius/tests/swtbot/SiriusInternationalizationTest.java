@@ -84,6 +84,10 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
 
     private static final String OPERATION_ACTION2_LABEL_ENG = "Bugzilla 459993 Operation 2";
 
+    private static final String TOOL_FILTERS_LABEL_ENG = "This is a filter";
+
+    private static final String TOOL_LAYERS_LABEL_ENG = "This is a layer";
+
     // Labels coming from the plugin_fr.properties file
     private static final String TOOL_SELECTED_VALUES_LABEL_FR = "Voici le choix des valeurs!";
 
@@ -117,6 +121,10 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
 
     private static final String VIEWPOINT_ID = "bugzilla459993";
 
+    private static final String TOOL_FILTERS_LABEL_FR = "Voici un filtre";
+
+    private static final String TOOL_LAYERS_LABEL_FR = "Voici un layer";
+
     // Id of tools as set in the odesign
     private static final String TOOL2_LABEL = "%SelectionWizard";
 
@@ -130,6 +138,10 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
     private static final String DATA_UNIT_DIR = "data/unit/internationalization/";
 
     private static final String FILE_DIR = "/";
+
+    private static final String FILTERS = "Filters";
+
+    private static final String LAYERS = "Layers";
 
     private UIResource sessionAirdResource;
 
@@ -285,6 +297,12 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
         labelsToCheck.add(TOOL2_LABEL);
         labelsToCheck.add(TOOL3_LABEL);
         SWTBotUtils.checkLabelsInPalette(editor, labelsToCheck);
+        
+        // Check that labels in the filters tool are properly displayed and internationalized
+        editor.click(100, 100);
+        labelsToCheck = Lists.newArrayList();
+        labelsToCheck.add(getToolFilterLabel());
+        SWTBotUtils.checkLabelsInDiagramToolBar(editor, FILTERS, labelsToCheck);
 
         // Check SelectionWizard label and use tool
         editor.activateTool(TOOL2_LABEL);
@@ -326,6 +344,12 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
         SWTBotUtils.checkContextualMenus(bot.getDisplay(), editor.getDiagramEditPart().getViewer().getControl(), contextMenusToCheck);
 
         checkLabelsInModelExplorerView(getDiagramDescriptionLabel());
+
+        // Check that labels in the layers tool are properly displayed and internationalized
+        editor.click(100, 100);
+        labelsToCheck = Lists.newArrayList();
+        labelsToCheck.add(getToolLayerLabel());
+        SWTBotUtils.checkLabelsInDiagramToolBar(editor, LAYERS, labelsToCheck);
     }
 
     /**
@@ -550,6 +574,20 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
         Assert.assertEquals("There should be no activated viewpoint", 0, localSession.getOpenedSession().getSelectedViewpoints(false).size());
         localSession.changeViewpointSelection(Collections.singleton(getViewpointLabel()), Sets.<String> newLinkedHashSet());
         Assert.assertEquals("There should be 1 activated viewpoint", 1, localSession.getOpenedSession().getSelectedViewpoints(false).size());
+    }
+
+    private String getToolFilterLabel() {
+        if ("en".equals(selected_language)) {
+            return TOOL_FILTERS_LABEL_ENG;
+        }
+        return TOOL_FILTERS_LABEL_FR;
+    }
+
+    private String getToolLayerLabel() {
+        if ("en".equals(selected_language)) {
+            return TOOL_LAYERS_LABEL_ENG;
+        }
+        return TOOL_LAYERS_LABEL_FR;
     }
 
     private String getToolSelectedValuesLabel() {

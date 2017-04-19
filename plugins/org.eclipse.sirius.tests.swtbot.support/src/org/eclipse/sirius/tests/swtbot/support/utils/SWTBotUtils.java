@@ -17,6 +17,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.palette.PaletteEntry;
+import org.eclipse.jface.bindings.keys.KeyStroke;
+import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.menu.SWTBotContextMenu;
@@ -44,7 +46,9 @@ import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.results.WidgetResult;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
@@ -648,6 +652,37 @@ public final class SWTBotUtils {
             }
             child.part();
             checkLabelsInPalette(child, labelsToCheck);
+        }
+    }
+
+    /**
+     * Checks that the tools bar contribution items label are displayed as expected.
+     * The toolBar contribution is identified by its toolTip given in parameter.
+     * 
+     * @param editor
+     *            the current {@link SWTBotSiriusDiagramEditor}
+     * @param toolTip
+     *            toolTip of the toolBar contribution to check
+     * @param labelsToCheck
+     *            the label to check in the toolBar
+     */
+    public static void checkLabelsInDiagramToolBar(SWTBotSiriusDiagramEditor editor, String toolTip, List<String> labelsToCheck) {
+        if (labelsToCheck.isEmpty()) {
+            return;
+        }
+        final SWTBotToolbarDropDownButton toolMenuButton = editor.bot().toolbarDropDownButtonWithTooltip(toolTip);
+        List<? extends SWTBotMenu> menuItems = toolMenuButton.menuItems(WidgetMatcherFactory.widgetOfType(MenuItem.class));
+        for (SWTBotMenu menuItem : menuItems) {
+            if (labelsToCheck.contains(menuItem.getText())) {
+                labelsToCheck.remove(menuItem.getText());
+            }
+        }
+        Assert.assertTrue("The following menu items have not been found in the " + toolTip + " toolBars contribution : "
+            + labelsToCheck, labelsToCheck.isEmpty());
+        try {  
+            toolMenuButton.pressShortcut(KeyStroke.getInstance("ESC"));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
     }
 

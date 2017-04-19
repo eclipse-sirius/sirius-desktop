@@ -22,6 +22,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.ImageProvider;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -147,7 +148,8 @@ public class LayersContribution extends AbstractMenuContributionItem {
     }
 
     private void addLayerMenuItem(IMenuManager manager, final Layer layer) {
-        IAction action = new LayersActivationAction(new IdentifiedElementQuery(layer).getLabel(), IAction.AS_CHECK_BOX, diagram, layer);
+        final String nameEntry = MessageTranslator.INSTANCE.getMessage(layer, new IdentifiedElementQuery(layer).getLabel());
+        IAction action = new LayersActivationAction(nameEntry, IAction.AS_CHECK_BOX, diagram, layer);
         // Warning : doesn't work in gtk
         if (!StringUtil.isEmpty(layer.getIcon())) {
             action.setImageDescriptor(ImageProvider.getImageDescriptor(layer.getIcon()));
@@ -168,7 +170,8 @@ public class LayersContribution extends AbstractMenuContributionItem {
         if (endUserDoc != null && endUserDoc.trim().length() > 0) {
             return endUserDoc;
         }
-        return new IdentifiedElementQuery(layer).getLabel();
+        final String nameEntry = MessageTranslator.INSTANCE.getMessage(layer, new IdentifiedElementQuery(layer).getLabel());
+        return nameEntry;
     }
 
     /**
