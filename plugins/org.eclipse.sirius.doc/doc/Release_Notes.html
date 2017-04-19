@@ -130,6 +130,14 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Addorg.eclipse.sirius.ui.editor">Add 
+			<code>org.eclipse.sirius.ui.editor</code>
+		</h4>
+		<p>This plugin provides a session editor showing loaded models, representations and viewpoint activation status of the session. It has functionalities allowing to change the viewpoint activation status, to create/remove representations or to load unload external models. The graphical block showing loaded models is integrated with CNF. You can provide content extension to its viewer by using an id matching the pattern 
+			<code>org.eclipse.sirius.ui.editor.graphicalcomponents.semanticModelsViewer.contentExtension.*</code>. You also can provide action extension by using an id matching the pattern 
+			<code>org.eclipse.sirius.ui.editor.graphicalcomponents.semanticModelsViewer.actionExtension.*</code>. The extension will be selectable/unselectable by using a 
+			<code>Customize View</code> button on the models block header.
+		</p>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>

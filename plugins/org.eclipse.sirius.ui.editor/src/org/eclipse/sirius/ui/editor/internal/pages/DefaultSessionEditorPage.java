@@ -17,7 +17,11 @@ import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.layout.GridLayoutFactory;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -31,8 +35,11 @@ import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalReprese
 import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalRepresentationHandler.GraphicalRepresentationHandlerBuilder;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.IManagedForm;
@@ -43,6 +50,13 @@ import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.ui.handlers.CollapseAllHandler;
+import org.eclipse.ui.internal.navigator.NavigatorPlugin;
+import org.eclipse.ui.internal.navigator.actions.CollapseAllAction;
+import org.eclipse.ui.internal.navigator.filters.FilterActionGroup;
+import org.eclipse.ui.internal.navigator.filters.SelectFiltersAction;
+import org.eclipse.ui.navigator.CommonViewer;
+import org.eclipse.ui.navigator.INavigatorViewerDescriptor;
 
 /**
  * Class used to create the main page of the session editor which describe
@@ -85,6 +99,16 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
      * belonging to the given session under corresponding viewpoints objects
      */
     private GraphicalRepresentationHandler graphicalRepresentationHandler;
+
+    /**
+     * Allow to collapse tree item of the models block viewer.
+     */
+    private CollapseAllHandler collapseAllHandler;
+
+    /**
+     * Filter group for CNF filtering functionality on models block viewer.
+     */
+    private FilterActionGroup filterActionGroup;
 
     /**
      * Constructor.
@@ -165,7 +189,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
      *            the composite containing the viewpoint selection control.
      */
     protected void createModelsControl(FormToolkit toolkit, Composite subBody) {
-        Section modelSection = toolkit.createSection(subBody, Section.DESCRIPTION | Section.TITLE_BAR);
+        Section modelSection = toolkit.createSection(subBody, Section.TITLE_BAR);
         modelSection.setLayout(GridLayoutFactory.swtDefaults().create());
         modelSection.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
 
@@ -175,11 +199,63 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         modelSectionClient.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).create());
         modelSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
         modelSection.setClient(modelSectionClient);
-
         graphicalModelingHandler = new GraphicalSemanticModelsHandler(session, toolkit);
         graphicalModelingHandler.createControl(modelSectionClient);
         getSite().setSelectionProvider(graphicalModelingHandler.getTreeViewer());
 
+        initSectionToolbar(modelSection, graphicalModelingHandler.getTreeViewer());
+    }
+
+    /**
+     * Init the collapse all and customize view(CNF filter and content provider)
+     * buttons in the section toolbar.
+     * 
+     * @param section
+     *            the section that will have the buttons initialized.
+     * @param treeViewer
+     *            {@link TreeViewer} impacted by collapsing and CNF buttons.
+     */
+    private void initSectionToolbar(Section section, CommonViewer treeViewer) {
+        ToolBarManager toolBarManager = new ToolBarManager(SWT.FLAT);
+        ToolBar toolbar = toolBarManager.createControl(section);
+        final Cursor handCursor = Display.getCurrent().getSystemCursor(SWT.CURSOR_HAND);
+        toolbar.setCursor(handCursor);
+
+        INavigatorViewerDescriptor viewerDescriptor = treeViewer.getNavigatorContentService().getViewerDescriptor();
+
+        boolean hideCollapseAllAction = viewerDescriptor.getBooleanConfigProperty(INavigatorViewerDescriptor.PROP_HIDE_COLLAPSE_ALL_ACTION);
+        if (!hideCollapseAllAction) {
+            Action collapseAllAction = new CollapseAllAction(treeViewer);
+            collapseAllAction.setToolTipText(Messages.DefaultSessionEditorPage_collapseAllAction_tooltip);
+            ImageDescriptor collapseAllIcon = getImageDescriptor("elcl16/collapseall.gif"); //$NON-NLS-1$
+            collapseAllAction.setImageDescriptor(collapseAllIcon);
+            collapseAllAction.setHoverImageDescriptor(collapseAllIcon);
+            collapseAllHandler = new CollapseAllHandler(treeViewer);
+
+            toolBarManager.add(collapseAllAction);
+        }
+
+        filterActionGroup = new FilterActionGroup(treeViewer);
+        Action selectFiltersAction = new SelectFiltersAction(treeViewer, filterActionGroup);
+        selectFiltersAction.setToolTipText(Messages.DefaultSessionEditorPage_selectFilterAction_tooltip);
+        ImageDescriptor selectFiltersIcon = NavigatorPlugin.getImageDescriptor("icons/full/elcl16/filter_ps.gif"); //$NON-NLS-1$
+        selectFiltersAction.setImageDescriptor(selectFiltersIcon);
+        selectFiltersAction.setHoverImageDescriptor(selectFiltersIcon);
+        toolBarManager.add(selectFiltersAction);
+
+        toolBarManager.update(true);
+        section.setTextClient(toolbar);
+    }
+
+    /**
+     * Returns the image descriptor with the given relative path.
+     * 
+     * @param relativePath
+     *            the path to the icon.
+     * @return the image descriptor with the given relative path.
+     */
+    protected final ImageDescriptor getImageDescriptor(String relativePath) {
+        return NavigatorPlugin.getImageDescriptor("icons/full/" + relativePath); //$NON-NLS-1$
     }
 
     /**
@@ -192,7 +268,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
      *            the composite containing the viewpoint selection control.
      */
     protected void createRepresentationsControl(FormToolkit toolkit, Composite rightComposite) {
-        Section representationSection = toolkit.createSection(rightComposite, Section.DESCRIPTION | Section.TITLE_BAR);
+        Section representationSection = toolkit.createSection(rightComposite, Section.TITLE_BAR);
         representationSection.setLayout(GridLayoutFactory.swtDefaults().create());
         representationSection.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         representationSection.setText(MessageFormat.format(Messages.UI_SessionEditor_representation_title, new Object[0])); // $NON-NLS-1$
@@ -266,6 +342,14 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         if (graphicalRepresentationHandler != null) {
             graphicalRepresentationHandler.dispose();
             graphicalRepresentationHandler = null;
+        }
+        if (collapseAllHandler != null) {
+            collapseAllHandler.dispose();
+            collapseAllHandler = null;
+        }
+        if (filterActionGroup != null) {
+            filterActionGroup.dispose();
+            filterActionGroup = null;
         }
         SessionManager.INSTANCE.removeSessionsListener(this);
     }

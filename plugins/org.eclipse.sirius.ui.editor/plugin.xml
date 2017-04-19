@@ -29,4 +29,48 @@
             class="org.eclipse.sirius.ui.editor.internal.preferences.SessionEditorPreferencesInitializer">
       </initializer>
    </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewer
+            viewerId="org.eclipse.sirius.ui.editor.internal.graphicalcomponents.semanticModelsViewer">
+      </viewer>
+      <viewerContentBinding
+            viewerId="org.eclipse.sirius.ui.editor.internal.graphicalcomponents.semanticModelsViewer">
+         <includes>
+            <contentExtension
+                  isRoot="true"
+                  pattern="org.eclipse.sirius.ui.commonFilter.*">
+            </contentExtension>
+            <contentExtension
+                  isRoot="true"
+                  pattern="org.eclipse.sirius.ui.editor.graphicalcomponents.semanticModelsViewer.contentExtension.*">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.sirius.ui.linkHelper.modeling.explorer.*">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+      <viewerActionBinding
+            viewerId="org.eclipse.sirius.ui.editor.internal.graphicalcomponents.semanticModelsViewer">
+         <includes>
+            <actionExtension
+                  pattern="org.eclipse.sirius.ui.editor.graphicalcomponents.semanticModelsViewer.actionExtension.*">
+            </actionExtension>
+         </includes>
+      </viewerActionBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider"
+            icon="icons/SessionResourceFile.gif"
+            id="org.eclipse.sirius.ui.editor.graphicalcomponents.semanticModelsViewer.contentExtension.defaultContentProvider"
+            labelProvider="org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider"
+            name="%UI_sessionEditor_modelsBlock_defaultContentProvider_name"
+            priority="high">
+         <triggerPoints>
+        </triggerPoints>
+      </navigatorContent>
+   </extension>
 </plugin>

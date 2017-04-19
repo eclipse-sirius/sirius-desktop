@@ -76,6 +76,12 @@ public final class Messages {
     @TranslatableMessage
     public static String GraphicalRepresentationHandler_representationNumber_label;
 
+    @TranslatableMessage
+    public static String DefaultSessionEditorPage_selectFilterAction_tooltip;
+
+    @TranslatableMessage
+    public static String DefaultSessionEditorPage_collapseAllAction_tooltip;
+
     // CHECKSTYLE:ON
 
     private Messages() {

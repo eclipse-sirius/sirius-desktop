@@ -29,12 +29,12 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
-import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ProjectDependenciesItem;
 import org.eclipse.sirius.ui.tools.internal.actions.analysis.AddModelDependencyAction;
@@ -43,7 +43,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.NoDynamicProjectDe
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointsFolderItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.ManageSessionActionProvider;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider;
-import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
+import org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.FilteredCommonTree;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.DeleteActionHandler;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.RenameActionHandler;
@@ -62,26 +62,41 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionContext;
 import org.eclipse.ui.actions.NewWizardAction;
-import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.eclipse.ui.navigator.CommonViewer;
+import org.eclipse.ui.navigator.INavigatorContentService;
+import org.eclipse.ui.navigator.INavigatorFilterService;
+import org.eclipse.ui.navigator.NavigatorContentServiceFactory;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * This graphical component provides a {@link TreeViewer} showing all semantic
- * models loaded in the given session. It also provides button to add or remove
- * external semantic model dependency to the session. This component also reacts
- * to external session changes regarding loading semantic models to update the
- * viewer list.
+ * This graphical component provides a {@link CommonViewer} from CNF showing all
+ * semantic models loaded in the given session and that can be associated to a
+ * component allowing to select filters and content providers for this viewer
+ * via CNF.
+ * 
+ * It also provides button to add or remove external semantic model dependency
+ * to the session.
+ * 
+ * This component also reacts to external session changes regarding loading
+ * semantic models to update the viewer list.
  * 
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
  */
 public class GraphicalSemanticModelsHandler implements SessionListener, SessionManagerListener {
+    /**
+     * The common viewer id allowing to provide additional filters and content
+     * providers by using CNF extension point.
+     */
+    public static final String SEMANTIC_MODELS_VIEWER_ID = "org.eclipse.sirius.ui.editor.internal.graphicalcomponents.semanticModelsViewer"; //$NON-NLS-1$
+
     /**
      * Session from which semantic models are handled.
      */
@@ -107,7 +122,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     /**
      * The viewer showing all semantic models loaded from the given session.
      */
-    private TreeViewer treeViewer;
+    private CommonViewer treeViewer;
 
     /**
      * The {@link MenuManager} for this component.
@@ -123,7 +138,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     /**
      * The Tree showing semantic models and representations.
      */
-    private FilteredTree modelTree;
+    private Tree modelTree;
 
     /**
      * Handler allowing to delete a representation.
@@ -142,7 +157,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      *            the session used by the component to handle semantic models
      *            lifecycle.
      * @param toolkit
-     *            the toolkit to use to create & configure the controls.
+     *            The Form Toolkit to use to create & configure the controls.
      */
     public GraphicalSemanticModelsHandler(Session theSession, FormToolkit toolkit) {
         this.session = theSession;
@@ -154,7 +169,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      * 
      * @return the {@link TreeViewer} showing all semantic models.
      */
-    public TreeViewer getTreeViewer() {
+    public CommonViewer getTreeViewer() {
         return treeViewer;
     }
 
@@ -194,6 +209,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         session.addListener(this);
         SessionManager.INSTANCE.addSessionsListener(this);
         siriusCommonContentModelProvider.addRefreshViewerTrigger(session);
+
         treeViewer.getTree().getHorizontalBar().setSelection(0);
     }
 
@@ -273,20 +289,29 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      * @param parent
      *            the model Explorer Composite
      */
-    private TreeViewer createModelExplorerNavigator(Composite parent) {
-        modelTree = SWTUtil.createFilteredTree(parent, SWT.BORDER, new org.eclipse.ui.dialogs.PatternFilter());
-        TreeViewer theTreeViewer = modelTree.getViewer();
+    private CommonViewer createModelExplorerNavigator(Composite parent) {
+        final FilteredCommonTree commonTree = new FilteredCommonTree(SEMANTIC_MODELS_VIEWER_ID, parent, SWT.MULTI, false);
+        INavigatorContentService contentService = NavigatorContentServiceFactory.INSTANCE.createContentService(SEMANTIC_MODELS_VIEWER_ID, treeViewer);
+        CommonViewer theTreeViewer = commonTree.getViewer();
+        contentService.createCommonContentProvider();
+        contentService.createCommonLabelProvider();
+        modelTree = theTreeViewer.getTree();
         final GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
         gridData.widthHint = 300;
         theTreeViewer.getControl().setLayoutData(gridData);
         theTreeViewer.getTree().setHeaderVisible(false);
         theTreeViewer.getTree().setLinesVisible(false);
         siriusCommonContentModelProvider = new SiriusCommonContentProvider();
-        theTreeViewer.setContentProvider(siriusCommonContentModelProvider);
-        theTreeViewer.setLabelProvider(new SiriusCommonLabelProvider());
 
         updateViewerInput(theTreeViewer);
 
+        INavigatorFilterService filterService = contentService.getFilterService();
+        ViewerFilter[] visibleFilters = filterService.getVisibleFilters(true);
+        for (int i = 0; i < visibleFilters.length; i++) {
+            theTreeViewer.addFilter(visibleFilters[i]);
+        }
+
+        contentService.update();
         deleteActionHandler = new DeleteActionHandler(theTreeViewer);
         renameActionHandler = new RenameActionHandler(theTreeViewer);
 
@@ -328,6 +353,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         manageSessionActionProvider = new ManageSessionActionProvider();
         manageSessionActionProvider.initFromViewer(theTreeViewer);
         theTreeViewer.getControl().setMenu(menu);
+
         theTreeViewer.getControl().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent event) {

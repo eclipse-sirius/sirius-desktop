@@ -47,15 +47,13 @@ import org.eclipse.ui.navigator.CommonNavigator;
 import com.google.common.collect.Lists;
 
 /**
- * This listener provides the synchronized behavior between the dialect selected
- * element(s) and the given CommonNavigator. As a {@link IPropertyListener}, it
- * will listen to the property <code>IS_LINKING_ENABLED_PROPERTY</code>. If the
- * "link with editor" is activated, it will register itself as a
- * {@link IPartListener2}. If a new {@link DialectEditor} is opened (or closed),
- * it will register (or remove) itself as a {@link ISelectionChangedListener} to
- * update the {@link CommonNavigator} according to the selection.</br>
- * When the "link with editor" is deactivated, it will remove itself from all
- * {@link DialectEditor} selectionListeners and from IPartListeners.
+ * This listener provides the synchronized behavior between the dialect selected element(s) and the given
+ * CommonNavigator. As a {@link IPropertyListener}, it will listen to the property
+ * <code>IS_LINKING_ENABLED_PROPERTY</code>. If the "link with editor" is activated, it will register itself as a
+ * {@link IPartListener2}. If a new {@link DialectEditor} is opened (or closed), it will register (or remove) itself as
+ * a {@link ISelectionChangedListener} to update the {@link CommonNavigator} according to the selection.</br>
+ * When the "link with editor" is deactivated, it will remove itself from all {@link DialectEditor} selectionListeners
+ * and from IPartListeners.
  * 
  * @author Florian Barbin
  *
@@ -84,20 +82,21 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
      * Initialize the Selection Listener.
      */
     public void init() {
-        this.navigator.addPropertyListener(this);
-        partService = getPartService();
+        if (this.navigator != null) {
+            this.navigator.addPropertyListener(this);
+            partService = getPartService();
 
-        // If the linking is already activated at the initialization, we
-        // register the IPartListener2 and the ISelectionChangedListener on each
-        // opened DialectEditor.
-        if (this.navigator.isLinkingEnabled()) {
-            enableSelectionListener();
+            // If the linking is already activated at the initialization, we
+            // register the IPartListener2 and the ISelectionChangedListener on each
+            // opened DialectEditor.
+            if (this.navigator.isLinkingEnabled()) {
+                enableSelectionListener();
+            }
         }
     }
 
     /**
-     * Removes this listener from IPartService and all editors where it is
-     * registered.
+     * Removes this listener from IPartService and all editors where it is registered.
      */
     public void dispose() {
         disableSelectionListener();
@@ -164,8 +163,7 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
     }
 
     /**
-     * When the IS_LINKING_ENABLED_PROPERTY changes, we activate or deactivate
-     * this listener.
+     * When the IS_LINKING_ENABLED_PROPERTY changes, we activate or deactivate this listener.
      */
     @Override
     public void propertyChanged(Object source, int propId) {
@@ -189,8 +187,7 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
     }
 
     /**
-     * When a {@link DialectEditor} is closed, we remove this instance from
-     * {@link ISelectionChangedListener}s.
+     * When a {@link DialectEditor} is closed, we remove this instance from {@link ISelectionChangedListener}s.
      */
     @Override
     public void partClosed(IWorkbenchPartReference partRef) {
@@ -206,8 +203,7 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
     }
 
     /**
-     * When a {@link DialectEditor} is opened, we register this instance as a
-     * {@link ISelectionChangedListener}.
+     * When a {@link DialectEditor} is opened, we register this instance as a {@link ISelectionChangedListener}.
      */
     @Override
     public void partOpened(IWorkbenchPartReference partRef) {
@@ -257,8 +253,7 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
     }
 
     /**
-     * Adds this instance as a {@link ISelectionChangedListener} on the given
-     * editor.
+     * Adds this instance as a {@link ISelectionChangedListener} on the given editor.
      * 
      * @param editor
      *            the {@link DialectEditor}.
@@ -281,8 +276,8 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
     }
 
     /**
-     * Registers this instance as a {@link IPartListener2} and as a
-     * {@link ISelectionChangedListener} on each opened {@link DialectEditor}.
+     * Registers this instance as a {@link IPartListener2} and as a {@link ISelectionChangedListener} on each opened
+     * {@link DialectEditor}.
      */
     private void enableSelectionListener() {
         if (partService != null) {
@@ -302,8 +297,7 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
     }
 
     /**
-     * Removes this instance from the {@link IPartListener2}s and from all
-     * {@link DialectEditor} selectionListeners.
+     * Removes this instance from the {@link IPartListener2}s and from all {@link DialectEditor} selectionListeners.
      */
     private void disableSelectionListener() {
         if (partService != null) {

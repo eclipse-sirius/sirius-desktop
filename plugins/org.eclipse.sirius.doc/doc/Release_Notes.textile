@@ -19,6 +19,10 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+h4. Add @org.eclipse.sirius.ui.editor@
+
+This plugin provides a session editor showing loaded models, representations and viewpoint activation status of the session. It has functionalities allowing to change the viewpoint activation status, to create/remove representations or to load unload external models. The graphical block showing loaded models is integrated with CNF. You can provide content extension to its viewer by using an id matching the pattern @org.eclipse.sirius.ui.editor.graphicalcomponents.semanticModelsViewer.contentExtension.*@. You also can provide action extension by using an id matching the pattern @org.eclipse.sirius.ui.editor.graphicalcomponents.semanticModelsViewer.actionExtension.*@. The extension will be selectable/unselectable by using a @Customize View@ button on the models block header.
+
 h4. Changes in @org.eclipse.sirius.ui@
 
 * <span class="label label-success">Added</span> Two new methods have been added to the interface @org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback@: @selectViewpoint(Viewpoint, Session, boolean, Set<Viewpoint>, IProgressMonitor)@ and @deselectViewpoint(Viewpoint, Session, Set<Viewpoint>, IProgressMonitor)@. These methods add a new parameter that is a set of viewpoints compared to the same methods without these parameters. These set contains all viewpoints that will be deactivated/activated in addition of the one that is asked to be deactivated/activated. It allows the callback implementation to better handle viewpoint dependencies interaction by being able to know if missing dependencies will be activated or deactivated.
