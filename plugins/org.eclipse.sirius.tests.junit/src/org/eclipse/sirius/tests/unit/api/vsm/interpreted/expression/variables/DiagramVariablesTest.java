@@ -23,6 +23,7 @@ import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.tool.CreateEdgeView;
 import org.eclipse.sirius.diagram.description.tool.CreateView;
@@ -51,6 +52,34 @@ public class DiagramVariablesTest extends AbstractInterpretedExpressionTestCase 
     protected void setUp() throws Exception {
         setBasePackage(DiagramPackage.eINSTANCE);
         super.setUp();
+    }
+
+    /**
+     * Test that an interpreterContext for an edgeMapping referencing itself in its source variable is well build.
+     */
+    public void testIterpreterContextForEdgeDescriptionReferencingItSelf() {
+        // Setup
+        DiagramDescription diagramDescription = DescriptionFactory.eINSTANCE.createDiagramDescription();
+        diagramDescription.setDefaultLayer(DescriptionFactory.eINSTANCE.createLayer());
+
+        NodeMapping createNodeMapping = org.eclipse.sirius.diagram.description.DescriptionFactory.eINSTANCE
+                .createNodeMapping();
+        diagramDescription.getDefaultLayer().getNodeMappings().add(createNodeMapping);
+        createNodeMapping.setDomainClass("ecore.EClass");
+
+        EdgeMapping createEdgeMapping = org.eclipse.sirius.diagram.description.DescriptionFactory.eINSTANCE
+                .createEdgeMapping();
+        diagramDescription.getDefaultLayer().getEdgeMappings().add(createEdgeMapping);
+        createEdgeMapping.getSourceMapping().add(createNodeMapping);
+        createEdgeMapping.getSourceMapping().add(createEdgeMapping);
+
+        // Test
+        IInterpreterContext context = SiriusInterpreterContextFactory.createInterpreterContext(createEdgeMapping,
+                ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION);
+
+        Set<String> variables = context.getVariables().keySet();
+        assertTrue("The interpreter context for " + createEdgeMapping.getName()
+            + " should contains the variable container", variables.contains("container"));
     }
 
     public void testInterpreterContextForAbstractToolPreconditionVariables() {

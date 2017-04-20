@@ -284,9 +284,11 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
             case DescriptionPackage.EDGE_MAPPING__SEMANTIC_ELEMENTS:
             case DO_NOT_CONSIDER_FEATURE:
                 for (DiagramElementMapping mapping : edgeMapping.getSourceMapping()) {
-                    Option<Collection<String>> sourceMappingTarget = globalSwitch.doSwitch(mapping, false);
-                    if (sourceMappingTarget.some()) {
-                        target.addAll(sourceMappingTarget.get());
+                    if (!(mapping.equals(edgeMapping))) {
+                        Option<Collection<String>> sourceMappingTarget = globalSwitch.doSwitch(mapping, false);
+                        if (sourceMappingTarget.some()) {
+                            target.addAll(sourceMappingTarget.get());
+                        }
                     }
                 }
                 result = Options.newSome(target);
