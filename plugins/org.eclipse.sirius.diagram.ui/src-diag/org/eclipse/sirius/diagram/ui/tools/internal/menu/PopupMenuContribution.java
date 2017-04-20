@@ -13,8 +13,8 @@ package org.eclipse.sirius.diagram.ui.tools.internal.menu;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
@@ -83,8 +83,6 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
-;
-
 /**
  * This menu contribution add a menu in the DDiagram diagram editor for each
  * PopupMenu elements.
@@ -94,24 +92,12 @@ import org.eclipse.ui.PlatformUI;
  */
 public class PopupMenuContribution implements IContributionItemProvider {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider#contributeToActionBars(org.eclipse.ui.IActionBars,
-     *      org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor)
-     */
     @Override
     public void contributeToActionBars(final IActionBars arg0, final IWorkbenchPartDescriptor arg1) {
         // Nothing to contribute
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider#contributeToPopupMenu(org.eclipse.jface.action.IMenuManager,
-     *      org.eclipse.ui.IWorkbenchPart)
-     */
     @Override
     public void contributeToPopupMenu(final IMenuManager menu, final IWorkbenchPart part) {
         if (part instanceof SiriusDiagramEditor) {
@@ -180,25 +166,24 @@ public class PopupMenuContribution implements IContributionItemProvider {
                     primarySelection = diagrampart.getDiagramEditPart();
                 }
 
-                // TODOCBR check cardinality
                 if (domain != null && selectedViews.size() > 0) {
 
                     Point relativeCursorLocationToPrimarySelection = getCurrentLocation(primarySelection);
 
-                    for (final PopupMenu popMenu : new HashSet<PopupMenu>(activatedPopupMenus)) {
+                    for (final PopupMenu popMenu : new LinkedHashSet<>(activatedPopupMenus)) {
                         Option<? extends IContributionItem> contributionItem = buildContributionItemToAdd(domain, selectedViews, popMenu, emfCommandFactory, primarySelection,
                                 relativeCursorLocationToPrimarySelection);
                         if (contributionItem.some()) {
                             menu.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, contributionItem.get());
                         }
                     }
-                    for (final OperationAction operationAction : new HashSet<OperationAction>(activatedOperationActionMenus)) {
+                    for (final OperationAction operationAction : new LinkedHashSet<>(activatedOperationActionMenus)) {
                         Option<IAction> action = buildActionToAdd(domain, selectedViews, operationAction, emfCommandFactory, primarySelection, relativeCursorLocationToPrimarySelection);
                         if (action.some()) {
                             menu.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, action.get());
                         }
                     }
-                    for (final ExternalJavaAction externalJavaAction : new HashSet<ExternalJavaAction>(activatedExternalJavaActionMenus)) {
+                    for (final ExternalJavaAction externalJavaAction : new LinkedHashSet<>(activatedExternalJavaActionMenus)) {
                         Option<IAction> action = buildActionToAdd(domain, selectedViews, externalJavaAction, emfCommandFactory, primarySelection, relativeCursorLocationToPrimarySelection);
                         if (action.some()) {
                             menu.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, action.get());
@@ -212,8 +197,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
     }
 
     /**
-     * Computes the location where the element must be created: a location
-     * relative to the primary edit part.
+     * Computes the location where the element must be created: a location relative to the primary edit part.
      * 
      * @param primarySelection
      *            The first selected edit part
@@ -474,55 +458,29 @@ public class PopupMenuContribution implements IContributionItemProvider {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider#disposeContributions(org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor)
-     */
     @Override
     public void disposeContributions(final IWorkbenchPartDescriptor arg0) {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider#updateActionBars(org.eclipse.ui.IActionBars,
-     *      org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor)
-     */
     @Override
     public void updateActionBars(final IActionBars arg0, final IWorkbenchPartDescriptor arg1) {
         // Nothing to contribute
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.common.core.service.IProvider#addProviderChangeListener(org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener)
-     */
     @Override
     public void addProviderChangeListener(final IProviderChangeListener arg0) {
         // Nothing to contribute
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.common.core.service.IProvider#provides(org.eclipse.gmf.runtime.common.core.service.IOperation)
-     */
     @Override
     public boolean provides(final IOperation arg0) {
         // Always provide
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.common.core.service.IProvider#removeProviderChangeListener(org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener)
-     */
     @Override
     public void removeProviderChangeListener(final IProviderChangeListener arg0) {
         // Nothing to contribute
