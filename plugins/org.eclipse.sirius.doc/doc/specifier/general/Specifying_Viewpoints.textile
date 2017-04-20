@@ -71,6 +71,8 @@ Inside a _Viewpoint_ element, you can create:
 * "_Validation Rules_":../diagrams/Diagrams.html#validation, which will apply to all representations defined inside this viewpoint.
 * And finally _Java Extensions_. These refer (through its fully qualified name), to a Java class defined in the _Viewpoint Specification Project_ which defines "service methods":Writing_Queries.html#service_methods and make these services available inside all the representations defined in the viewpoint. If you "use Acceleo 3 to write your expressions":Writing_Queries.html#acceleo, you can also use these elements to declare Acceleo modules in the project that define MTL queries you want to use in your expressions.
 
+To discover all elements in the _VSM_, it is possible to use the button <img src="images/specifier-guide/expandall.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/>, at the top right corner of the editor to expand the _VSM_ tree. Obviously, it is possible to collapse this tree by using the button <img src="images/specifier-guide/collapseall.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/>, at the top right corner of the editor.
+
 h3(#common_attributes). Common attributes
 
 Many of the elements used to specify viewpoint share some common configuration attributes. They are described in general terms in this section, and referenced from the specific element's sections which used them (sometimes with additional details only relevant for this element).

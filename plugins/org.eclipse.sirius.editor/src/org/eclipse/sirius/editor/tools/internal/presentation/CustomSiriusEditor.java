@@ -35,12 +35,15 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
@@ -80,6 +83,7 @@ import org.eclipse.ui.IPathEditorInput;
 import org.eclipse.ui.IURIEditorInput;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.contexts.IContextService;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Version;
 
 import com.google.common.base.Predicate;
@@ -97,6 +101,10 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
      * ID of the context.
      */
     public static final String CONTEXT_ID = "org.eclipse.sirius.editor.siriusEditorContext"; //$NON-NLS-1$
+
+    private static final ImageDescriptor EXPAND_IMAGE_DESCRIPTOR = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditorPlugin.PLUGIN_ID, "icons/full/expandall.gif");
+
+    private static final ImageDescriptor COLLAPSE_IMAGE_DESCRIPTOR = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditorPlugin.PLUGIN_ID, "icons/full/collapseall.gif");
 
     private final RepresentationTemplateUpdateTrigger templateUpdateTrigger = new RepresentationTemplateUpdateTrigger();
 
@@ -273,10 +281,61 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             revealRepresentationDescriptions();
 
             final ToolBarManager tbm = getToolBarManager();
-            tbm.add(new ValidateAction(selectionViewer, this));
+            addTooBarActions(tbm);
             tbm.update(true);
         }
         editingDomain.getResourceSet().eAdapters().add(templateUpdateTrigger);
+    }
+
+    private void addTooBarActions(final ToolBarManager tbm) {
+        // Expand All
+        tbm.add(new Action() {
+            @Override
+            public ImageDescriptor getImageDescriptor() {
+                return EXPAND_IMAGE_DESCRIPTOR;
+            }
+
+            @Override
+            public String getToolTipText() {
+                return "Expand All";
+            }
+
+            @Override
+            public void run() {
+                try {
+                    selectionViewer.getControl().setRedraw(false);
+                    selectionViewer.expandAll();
+                } finally {
+                    selectionViewer.getControl().setRedraw(true);
+                }
+
+            }
+        });
+        // Collapse All
+        tbm.add(new Action() {
+            @Override
+            public ImageDescriptor getImageDescriptor() {
+                return COLLAPSE_IMAGE_DESCRIPTOR;
+            }
+
+            @Override
+            public String getToolTipText() {
+                return "Collapse All";
+            }
+
+            @Override
+            public void run() {
+                try {
+                    selectionViewer.getControl().setRedraw(false);
+                    selectionViewer.collapseToLevel(selectionViewer.getInput(), AbstractTreeViewer.ALL_LEVELS);
+                } finally {
+                    selectionViewer.getControl().setRedraw(true);
+                }
+
+            }
+        });
+        // Validate
+        tbm.add(new ValidateAction(selectionViewer, this));
     }
 
     /**
