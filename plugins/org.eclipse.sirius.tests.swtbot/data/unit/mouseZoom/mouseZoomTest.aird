@@ -3,10 +3,6 @@
   <semanticResources>mouseZoomTest.ecore</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_S90zwFiYEea85cvr5QCr2w">
     <viewpoint xmi:type="description:Viewpoint" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']"/>
-    <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_T8GZ4FiYEea85cvr5QCr2w" name="zoomMouseDiagram" representation="_T8GZ4ViYEea85cvr5QCr2w">
-      <description xmi:type="description_1:DiagramDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']"/>
-      <target xmi:type="ecore:EPackage" href="mouseZoomTest.ecore#/"/>
-    </ownedRepresentationDescriptors>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_T8GZ4ViYEea85cvr5QCr2w" name="zoomMouseDiagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_T8GZ4liYEea85cvr5QCr2w" source="DANNOTATION_CUSTOMIZATION_KEY">
         <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_T8GZ41iYEea85cvr5QCr2w"/>

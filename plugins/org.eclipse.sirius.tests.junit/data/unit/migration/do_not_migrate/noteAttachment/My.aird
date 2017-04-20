@@ -3,10 +3,6 @@
   <semanticResources>My.ecore</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_ELbz4dGlEeGg6au6fuZmFQ">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-    <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_ogl6wF4AEeakBf-zqWEaPg" name="diagram" representation="_8oYQING6EeG5WY45fOqwqQ">
-      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
-      <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
-    </ownedRepresentationDescriptors>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_8oYQING6EeG5WY45fOqwqQ" name="diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_8ohaENG6EeG5WY45fOqwqQ" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_8ohaEdG6EeG5WY45fOqwqQ" type="Sirius" element="_8oYQING6EeG5WY45fOqwqQ" measurementUnit="Pixel">

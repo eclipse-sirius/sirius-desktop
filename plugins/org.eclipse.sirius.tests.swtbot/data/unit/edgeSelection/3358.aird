@@ -3,10 +3,6 @@
   <semanticResources>3358.ecore</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_rJzXcE2TEeakleECKSbEyQ">
     <viewpoint xmi:type="description:Viewpoint" href="3358.odesign#//@ownedViewpoints[name='3358']"/>
-    <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_rKod4E2TEeakleECKSbEyQ" name="diagram_3358" representation="_rKpE8E2TEeakleECKSbEyQ">
-      <description xmi:type="description_1:DiagramDescription" href="3358.odesign#//@ownedViewpoints[name='3358']/@ownedRepresentations[name='diagram_3358']"/>
-      <target xmi:type="ecore:EPackage" href="3358.ecore#/"/>
-    </ownedRepresentationDescriptors>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_rKpE8E2TEeakleECKSbEyQ" name="diagram_3358">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_rKpE8U2TEeakleECKSbEyQ" source="DANNOTATION_CUSTOMIZATION_KEY">
         <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_rKpE8k2TEeakleECKSbEyQ"/>

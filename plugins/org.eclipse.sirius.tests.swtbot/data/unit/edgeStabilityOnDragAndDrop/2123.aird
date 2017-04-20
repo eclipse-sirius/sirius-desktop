@@ -3,10 +3,6 @@
   <semanticResources>2123.ecore</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_kDpvMGpUEd-Zl5rhQsLI4w">
     <viewpoint xmi:type="description:Viewpoint" href="2123.odesign#//@ownedViewpoints[name='2123Viewpoint']"/>
-    <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_jJmNkF7UEeaCH6J8zQ_q6A" name="new 2123Diag" representation="_k2XlkWpUEd-Zl5rhQsLI4w">
-      <description xmi:type="description_1:DiagramDescription" href="2123.odesign#//@ownedViewpoints[name='2123Viewpoint']/@ownedRepresentations[name='2123Diag']"/>
-      <target xmi:type="ecore:EPackage" href="2123.ecore#/"/>
-    </ownedRepresentationDescriptors>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_k2XlkWpUEd-Zl5rhQsLI4w" name="new 2123Diag">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_f1kmUBHoEeK-xJ8W7doAqA" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_k3CT8GpUEd-Zl5rhQsLI4w" type="Sirius" element="_k2XlkWpUEd-Zl5rhQsLI4w" measurementUnit="Pixel">

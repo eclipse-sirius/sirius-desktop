@@ -4,10 +4,6 @@
   <semanticResources>moveEdgeGroup.migrationmodeler</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_uYpNMPfKEeOewbIoSlcvjw">
     <viewpoint xmi:type="description:Viewpoint" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']"/>
-    <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_PwppQFTLEeasaLTJO4uWBw" name="diagram1" representation="_S9cCQEW0EeWzE_Xsv11e2Q">
-      <description xmi:type="description_1:DiagramDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']"/>
-      <target xmi:type="migrationmodeler:Diagram" href="moveEdgeGroup.migrationmodeler#//@representations.0"/>
-    </ownedRepresentationDescriptors>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_S9cCQEW0EeWzE_Xsv11e2Q" name="diagram1">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_S9cCQUW0EeWzE_Xsv11e2Q" source="DANNOTATION_CUSTOMIZATION_KEY">
         <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_S9cCQkW0EeWzE_Xsv11e2Q"/>

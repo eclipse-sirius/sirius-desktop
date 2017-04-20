@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
@@ -46,6 +47,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -61,8 +63,8 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import com.google.common.collect.Lists;
 
 /**
- * Test that if deleted target element present in other representation opened,
- * the other representation is closed. Testing VP-1853 and VP-1854.
+ * Test that if deleted target element present in other representation opened, the other representation is closed.
+ * Testing VP-1853 and VP-1854.
  * 
  * @author jdupont
  */
@@ -126,8 +128,7 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * Test the deleted no-target element on representation, not closed other
-     * editor.
+     * Test the deleted no-target element on representation, not closed other editor.
      */
     public void testSpecificNotCloseEditor() {
         // Open the 2 representations
@@ -149,8 +150,7 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * Test the deleted target element on representation, not closed other
-     * editor.
+     * Test the deleted target element on representation, not closed other editor.
      */
     public void testSpecificCloseEditor() {
         // Open the 2 representations
@@ -175,29 +175,25 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * Test the deleted target element on representation, not closed other
-     * editor.
+     * Test the deleted target element on representation, not closed other editor.
      */
     public void testSpecificCloseEditorsFromSemanticDeleteAfterReload() throws Exception {
         doTestSpecificCloseEditorsAfterReload(true);
     }
 
     /**
-     * Test the deleted target element on representation, not closed other
-     * editor.
+     * Test the deleted target element on representation, not closed other editor.
      */
     public void testSpecificCloseEditorsFromRepresentationDeleteAfterReload() throws Exception {
         doTestSpecificCloseEditorsAfterReload(false);
     }
 
     /**
-     * Open several representations, reload the aird and then delete them
-     * programmatically or delete their common semantic target to test the
-     * dialect editor closer.
+     * Open several representations, reload the aird and then delete them programmatically or delete their common
+     * semantic target to test the dialect editor closer.
      * 
      * @param deleteSemantic
-     *            true to delete the semantic element, false to delete each
-     *            representation.
+     *            true to delete the semantic element, false to delete each representation.
      */
     private void doTestSpecificCloseEditorsAfterReload(boolean deleteSemantic) throws Exception {
         boolean oldPref = ResourcesPlugin.getPlugin().getPluginPreferences().getBoolean(ResourcesPlugin.PREF_LIGHTWEIGHT_AUTO_REFRESH);
@@ -260,7 +256,11 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
                     @Override
                     protected void doExecute() {
                         for (DRepresentation rep : openedRepresentations) {
+                            DRepresentationDescriptor descriptor = new DRepresentationQuery(rep).getRepresentationDescriptor();
                             modelAccessor.eDelete(rep, null);
+                            if (descriptor != null) {
+                                modelAccessor.eDelete(descriptor, null);
+                            }
                         }
                     }
                 });
@@ -339,8 +339,8 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * Test that UnGroup packages working properly and that the second editor is
-     * closed because the package p1 was deleted.
+     * Test that UnGroup packages working properly and that the second editor is closed because the package p1 was
+     * deleted.
      */
     public void testUnGroupPackages() {
         localSession.close(false);
