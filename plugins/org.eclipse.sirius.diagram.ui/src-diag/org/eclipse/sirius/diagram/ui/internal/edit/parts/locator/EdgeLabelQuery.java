@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -411,7 +411,11 @@ public class EdgeLabelQuery {
             if (oldNearestSeg.isHorizontal() == newNearestSegment.isHorizontal()) {
                 Vector oldVector = new Vector(oldNearestSeg.getTerminus().x - oldNearestSeg.getOrigin().x, oldNearestSeg.getTerminus().y - oldNearestSeg.getOrigin().y);
                 Vector newVector = new Vector(newNearestSegment.getTerminus().x - newNearestSegment.getOrigin().x, newNearestSegment.getTerminus().y - newNearestSegment.getOrigin().y);
-                fromOldToNewCenterVector = applyOldRatioOnNewSegment(oldNearestSeg, oldNearestPoint, oldCenterLabel, newNearestSegment, oldVector.getAngle(newVector) == 180, false);
+                boolean oppositeDirection = false;
+                if (oldVector.getLength() != 0 && newVector.getLength() != 0) {
+                    oppositeDirection = oldVector.getAngle(newVector) == 180;
+                }
+                fromOldToNewCenterVector = applyOldRatioOnNewSegment(oldNearestSeg, oldNearestPoint, oldCenterLabel, newNearestSegment, oppositeDirection, false);
             }
         }
         return fromOldToNewCenterVector;
