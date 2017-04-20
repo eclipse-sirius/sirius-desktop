@@ -616,11 +616,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (newResource.getResourceSet() != set) {
             set.getResources().add(newResource);
         }
-        if (newResource.getContents().size() > 0) {
-            notifyNewMetamodels(newResource);
-            for (final DAnalysis analysis : this.allAnalyses()) {
-                analysis.getSemanticResources().add(new ResourceDescriptor(newResource.getURI()));
-            }
+        notifyNewMetamodels(newResource);
+        for (final DAnalysis analysis : this.allAnalyses()) {
+            analysis.getSemanticResources().add(new ResourceDescriptor(newResource.getURI()));
         }
 
         ControlledResourcesDetector.refreshControlledResources(this);
