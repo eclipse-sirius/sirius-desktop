@@ -98,6 +98,7 @@ import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.TextOverrideDescription;
 import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
+import org.eclipse.sirius.properties.ToolbarAction;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
@@ -204,6 +205,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseAbstractGroupDescription(AbstractGroupDescription object) {
             return createAbstractGroupDescriptionAdapter();
+        }
+
+        @Override
+        public Adapter caseToolbarAction(ToolbarAction object) {
+            return createToolbarActionAdapter();
         }
 
         @Override
@@ -767,6 +773,20 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createAbstractGroupDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.ToolbarAction
+     * <em>Toolbar Action</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.ToolbarAction
+     * @generated
+     */
+    public Adapter createToolbarActionAdapter() {
         return null;
     }
 

@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.provider.IdentifiedElementItemPr
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.AbstractGroupDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class AbstractGroupDescriptionItemProvider extends IdentifiedElementItemProvider implements IItemStyledLabelProvider {
@@ -146,7 +146,7 @@ public class AbstractGroupDescriptionItemProvider extends IdentifiedElementItemP
     /**
      * This adds a property descriptor for the Filter Controls From Extended Group Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterControlsFromExtendedGroupExpressionPropertyDescriptor(Object object) {
@@ -159,7 +159,7 @@ public class AbstractGroupDescriptionItemProvider extends IdentifiedElementItemP
     /**
      * This adds a property descriptor for the Filter Validation Rules From Extended Group Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterValidationRulesFromExtendedGroupExpressionPropertyDescriptor(Object object) {
@@ -173,7 +173,7 @@ public class AbstractGroupDescriptionItemProvider extends IdentifiedElementItemP
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Extended Group Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterConditionalStylesFromExtendedGroupExpressionPropertyDescriptor(Object object) {
@@ -200,6 +200,7 @@ public class AbstractGroupDescriptionItemProvider extends IdentifiedElementItemP
             childrenFeatures.add(PropertiesPackage.Literals.ABSTRACT_GROUP_DESCRIPTION__VALIDATION_SET);
             childrenFeatures.add(PropertiesPackage.Literals.ABSTRACT_GROUP_DESCRIPTION__STYLE);
             childrenFeatures.add(PropertiesPackage.Literals.ABSTRACT_GROUP_DESCRIPTION__CONDITIONAL_STYLES);
+            childrenFeatures.add(PropertiesPackage.Literals.ABSTRACT_GROUP_DESCRIPTION__ACTIONS);
         }
         return childrenFeatures;
     }
@@ -248,7 +249,7 @@ public class AbstractGroupDescriptionItemProvider extends IdentifiedElementItemP
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -270,6 +271,7 @@ public class AbstractGroupDescriptionItemProvider extends IdentifiedElementItemP
         case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__VALIDATION_SET:
         case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__STYLE:
         case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__CONDITIONAL_STYLES:
+        case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__ACTIONS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -315,6 +317,8 @@ public class AbstractGroupDescriptionItemProvider extends IdentifiedElementItemP
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_GROUP_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createGroupStyle()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_GROUP_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createGroupConditionalStyle()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_GROUP_DESCRIPTION__ACTIONS, PropertiesFactory.eINSTANCE.createToolbarAction()));
     }
 
 }

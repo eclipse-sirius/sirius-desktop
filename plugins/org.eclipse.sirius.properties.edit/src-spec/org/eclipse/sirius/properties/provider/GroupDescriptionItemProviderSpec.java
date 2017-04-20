@@ -82,6 +82,8 @@ public class GroupDescriptionItemProviderSpec extends GroupDescriptionItemProvid
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_GROUP_DESCRIPTION__VALIDATION_SET, PropertiesFactory.eINSTANCE.createGroupValidationSetDescription()));
 
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_GROUP_DESCRIPTION__ACTIONS, PropertiesFactory.eINSTANCE.createToolbarAction()));
+
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_GROUP_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createGroupStyle()));
 
         GroupConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createGroupConditionalStyle();

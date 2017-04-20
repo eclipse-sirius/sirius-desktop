@@ -73,7 +73,7 @@ public class AbstractContainerDescriptionItemProvider extends AbstractControlDes
     /**
      * This adds a property descriptor for the Filter Controls From Extended Container Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterControlsFromExtendedContainerExpressionPropertyDescriptor(Object object) {
@@ -146,7 +146,7 @@ public class AbstractContainerDescriptionItemProvider extends AbstractControlDes
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

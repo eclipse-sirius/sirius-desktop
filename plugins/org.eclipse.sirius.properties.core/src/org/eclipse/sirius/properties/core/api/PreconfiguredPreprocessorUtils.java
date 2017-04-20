@@ -45,7 +45,7 @@ public final class PreconfiguredPreprocessorUtils {
      *         </ul>
      */
     public static List<EStructuralFeature> getFeaturesToFilter(EClass eClass) {
-        List<EStructuralFeature> featuresToFilter = new ArrayList<EStructuralFeature>();
+        List<EStructuralFeature> featuresToFilter = new ArrayList<>();
         eClass.getEAllStructuralFeatures().stream().filter(feature -> feature.getName().equals("extends")).forEach(featuresToFilter::add); //$NON-NLS-1$
         return featuresToFilter;
     }
@@ -64,10 +64,10 @@ public final class PreconfiguredPreprocessorUtils {
      *         </ul>
      */
     public static List<EStructuralFeature> getFeaturesToCopy(EClass eClass) {
-        List<EStructuralFeature> featuresToCopy = new ArrayList<EStructuralFeature>();
+        List<EStructuralFeature> featuresToCopy = new ArrayList<>();
         eClass.getEAllStructuralFeatures().stream().filter(EReference.class::isInstance).map(EReference.class::cast).forEach(eReference -> {
             EClass featureType = eReference.getEReferenceType();
-            if (isWidgetAction(featureType) || isStyle(featureType) || isInitialOperation(featureType)) {
+            if (shouldCopy(featureType)) {
                 featuresToCopy.add(eReference);
             }
         });
@@ -75,20 +75,28 @@ public final class PreconfiguredPreprocessorUtils {
     }
 
     /**
-     * Checks if an EClass is an
-     * {@link org.eclipse.sirius.viewpoint.description.tool.InitialOperation}.
+     * Checks if an eClass should be copied by the preprocessor.
+     * 
+     * @param featureType
+     * @return True if the EClass should be copied
+     */
+    private static boolean shouldCopy(EClass eClass) {
+        return isWidgetAction(eClass) || isStyle(eClass) || isInitialOperation(eClass);
+    }
+
+    /**
+     * Checks if an EClass is an {@link org.eclipse.sirius.viewpoint.description.tool.InitialOperation}.
      * 
      * @param eClass
      *            The eClass to test
      * @return True if the EClass is a InitialOperation otherwise false
      */
-    private static boolean isInitialOperation(EClass featureType) {
-        return ToolPackage.Literals.INITIAL_OPERATION.equals(featureType);
+    private static boolean isInitialOperation(EClass eClass) {
+        return ToolPackage.Literals.INITIAL_OPERATION.equals(eClass);
     }
 
     /**
-     * Checks if an EClass is a
-     * {@link org.eclipse.sirius.properties.WidgetAction}.
+     * Checks if an EClass is a {@link org.eclipse.sirius.properties.WidgetAction}.
      * 
      * @param eClass
      *            The eClass to test

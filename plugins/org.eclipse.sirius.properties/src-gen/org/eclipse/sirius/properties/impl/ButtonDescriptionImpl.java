@@ -43,6 +43,8 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em>Is Enabled Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getButtonLabelExpression
  * <em>Button Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getImageExpression <em>Image Expression</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getInitialOperation <em>Initial Operation</em>}
  * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getStyle <em>Style</em>}</li>

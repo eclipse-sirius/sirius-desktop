@@ -23,7 +23,7 @@ import org.eclipse.sirius.properties.PageDescription;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.PageDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class PageDescriptionItemProvider extends AbstractPageDescriptionItemProvider {
@@ -91,7 +91,7 @@ public class PageDescriptionItemProvider extends AbstractPageDescriptionItemProv
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

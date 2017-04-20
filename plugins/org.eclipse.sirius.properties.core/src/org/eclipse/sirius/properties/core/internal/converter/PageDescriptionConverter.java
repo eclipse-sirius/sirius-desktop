@@ -16,6 +16,7 @@ import java.util.Map;
 
 import org.eclipse.eef.EEFPageDescription;
 import org.eclipse.eef.EEFSemanticValidationRuleDescription;
+import org.eclipse.eef.EEFToolbarAction;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -60,6 +61,8 @@ public class PageDescriptionConverter extends AbstractDescriptionConverter {
                 List<SemanticValidationRule> semanticValidationRules = pageDescription.getValidationSet().getSemanticValidationRules();
                 page.getSemanticValidationRules().addAll(this.convertCollection(semanticValidationRules, parameters, cache, EEFSemanticValidationRuleDescription.class));
             }
+
+            page.getActions().addAll(this.convertCollection(pageDescription.getActions(), parameters, cache, EEFToolbarAction.class));
 
             return page;
         } else {

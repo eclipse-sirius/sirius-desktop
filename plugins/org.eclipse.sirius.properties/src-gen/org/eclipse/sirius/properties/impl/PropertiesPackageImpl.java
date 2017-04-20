@@ -105,6 +105,7 @@ import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.TitleBarStyle;
 import org.eclipse.sirius.properties.ToggleStyle;
+import org.eclipse.sirius.properties.ToolbarAction;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
@@ -184,6 +185,13 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     private EClass abstractGroupDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass toolbarActionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -980,7 +988,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getAbstractPageDescription_Extends() {
+    public EReference getAbstractPageDescription_Actions() {
         return (EReference) abstractPageDescriptionEClass.getEStructuralFeatures().get(6);
     }
 
@@ -990,8 +998,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getAbstractPageDescription_FilterGroupsFromExtendedPageExpression() {
-        return (EAttribute) abstractPageDescriptionEClass.getEStructuralFeatures().get(7);
+    public EReference getAbstractPageDescription_Extends() {
+        return (EReference) abstractPageDescriptionEClass.getEStructuralFeatures().get(7);
     }
 
     /**
@@ -1000,7 +1008,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getAbstractPageDescription_FilterValidationRulesFromExtendedPageExpression() {
+    public EAttribute getAbstractPageDescription_FilterGroupsFromExtendedPageExpression() {
         return (EAttribute) abstractPageDescriptionEClass.getEStructuralFeatures().get(8);
     }
 
@@ -1010,8 +1018,18 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getAbstractPageDescription_Indented() {
+    public EAttribute getAbstractPageDescription_FilterValidationRulesFromExtendedPageExpression() {
         return (EAttribute) abstractPageDescriptionEClass.getEStructuralFeatures().get(9);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getAbstractPageDescription_Indented() {
+        return (EAttribute) abstractPageDescriptionEClass.getEStructuralFeatures().get(10);
     }
 
     /**
@@ -1232,6 +1250,56 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     @Override
     public EAttribute getAbstractGroupDescription_FilterConditionalStylesFromExtendedGroupExpression() {
         return (EAttribute) abstractGroupDescriptionEClass.getEStructuralFeatures().get(11);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getAbstractGroupDescription_Actions() {
+        return (EReference) abstractGroupDescriptionEClass.getEStructuralFeatures().get(12);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getToolbarAction() {
+        return toolbarActionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getToolbarAction_TooltipExpression() {
+        return (EAttribute) toolbarActionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getToolbarAction_ImageExpression() {
+        return (EAttribute) toolbarActionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getToolbarAction_InitialOperation() {
+        return (EReference) toolbarActionEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -3982,6 +4050,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEAttribute(abstractPageDescriptionEClass, PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__PRECONDITION_EXPRESSION);
         createEReference(abstractPageDescriptionEClass, PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__GROUPS);
         createEReference(abstractPageDescriptionEClass, PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__VALIDATION_SET);
+        createEReference(abstractPageDescriptionEClass, PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__ACTIONS);
         createEReference(abstractPageDescriptionEClass, PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__EXTENDS);
         createEAttribute(abstractPageDescriptionEClass, PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_GROUPS_FROM_EXTENDED_PAGE_EXPRESSION);
         createEAttribute(abstractPageDescriptionEClass, PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION);
@@ -4013,6 +4082,12 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEAttribute(abstractGroupDescriptionEClass, PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__FILTER_CONTROLS_FROM_EXTENDED_GROUP_EXPRESSION);
         createEAttribute(abstractGroupDescriptionEClass, PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__FILTER_VALIDATION_RULES_FROM_EXTENDED_GROUP_EXPRESSION);
         createEAttribute(abstractGroupDescriptionEClass, PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_GROUP_EXPRESSION);
+        createEReference(abstractGroupDescriptionEClass, PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__ACTIONS);
+
+        toolbarActionEClass = createEClass(PropertiesPackage.TOOLBAR_ACTION);
+        createEAttribute(toolbarActionEClass, PropertiesPackage.TOOLBAR_ACTION__TOOLTIP_EXPRESSION);
+        createEAttribute(toolbarActionEClass, PropertiesPackage.TOOLBAR_ACTION__IMAGE_EXPRESSION);
+        createEReference(toolbarActionEClass, PropertiesPackage.TOOLBAR_ACTION__INITIAL_OPERATION);
 
         groupDescriptionEClass = createEClass(PropertiesPackage.GROUP_DESCRIPTION);
 
@@ -4557,6 +4632,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getAbstractPageDescription_ValidationSet(), this.getPageValidationSetDescription(), null, "validationSet", null, 0, 1, AbstractPageDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getAbstractPageDescription_Actions(), this.getToolbarAction(), null, "actions", null, 0, -1, AbstractPageDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getAbstractPageDescription_Extends(), this.getPageDescription(), null, "extends", null, 0, 1, AbstractPageDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -4636,6 +4714,18 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEAttribute(getAbstractGroupDescription_FilterConditionalStylesFromExtendedGroupExpression(), theDescriptionPackage.getInterpretedExpression(),
                 "filterConditionalStylesFromExtendedGroupExpression", null, 0, 1, AbstractGroupDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
                 !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getAbstractGroupDescription_Actions(), this.getToolbarAction(), null, "actions", null, 0, -1, AbstractGroupDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(toolbarActionEClass, ToolbarAction.class, "ToolbarAction", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getToolbarAction_TooltipExpression(), theDescriptionPackage.getInterpretedExpression(), "tooltipExpression", null, 0, 1, ToolbarAction.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getToolbarAction_ImageExpression(), theDescriptionPackage.getInterpretedExpression(), "imageExpression", null, 0, 1, ToolbarAction.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getToolbarAction_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, ToolbarAction.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(groupDescriptionEClass, GroupDescription.class, "GroupDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 

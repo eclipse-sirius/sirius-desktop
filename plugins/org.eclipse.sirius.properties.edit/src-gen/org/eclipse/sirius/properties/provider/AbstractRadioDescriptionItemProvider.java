@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.AbstractRadioDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescriptionItemProvider {
@@ -78,7 +78,7 @@ public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescript
     /**
      * This adds a property descriptor for the Candidates Expression feature. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     protected void addCandidatesExpressionPropertyDescriptor(Object object) {
@@ -128,7 +128,7 @@ public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescript
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Extended Radio Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterConditionalStylesFromExtendedRadioExpressionPropertyDescriptor(Object object) {
@@ -202,7 +202,7 @@ public class AbstractRadioDescriptionItemProvider extends AbstractWidgetDescript
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

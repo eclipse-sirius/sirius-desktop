@@ -98,6 +98,7 @@ import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.TextOverrideDescription;
 import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
+import org.eclipse.sirius.properties.ToolbarAction;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
@@ -295,6 +296,14 @@ public class PropertiesSwitch<T> {
             if (result == null) {
                 result = caseDocumentedElement(abstractGroupDescription);
             }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.TOOLBAR_ACTION: {
+            ToolbarAction toolbarAction = (ToolbarAction) theEObject;
+            T result = caseToolbarAction(toolbarAction);
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -1812,6 +1821,21 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseAbstractGroupDescription(AbstractGroupDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Toolbar Action</em>'. <!-- begin-user-doc
+     * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc
+     * -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Toolbar Action</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseToolbarAction(ToolbarAction object) {
         return null;
     }
 

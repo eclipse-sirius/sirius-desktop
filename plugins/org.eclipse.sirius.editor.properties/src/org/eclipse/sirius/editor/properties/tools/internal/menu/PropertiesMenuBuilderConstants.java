@@ -97,9 +97,14 @@ public final class PropertiesMenuBuilderConstants {
     public static final int CUSTOM_OPERATION;
 
     /**
-     * The priority of the dualog buttons.
+     * The priority of the dialog buttons.
      */
     public static final int DIALOG_BUTTON;
+
+    /**
+     * The priority of the toolbar action.
+     */
+    public static final int TOOLBAR_ACTION;
 
     /**
      * The default priority.
@@ -131,6 +136,7 @@ public final class PropertiesMenuBuilderConstants {
         CUSTOM_EXPRESSION = getPriority(rl, "CustomExpressionMenuPriority");
         CUSTOM_OPERATION = getPriority(rl, "CustomOperationMenuPriority");
         DIALOG_BUTTON = getPriority(rl, "DialogButtonMenuPriority");
+        TOOLBAR_ACTION = getPriority(rl, "ToolbarActionMenuPriority");
     }
 
     /**

@@ -42,6 +42,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * <li>
  * {@link org.eclipse.sirius.properties.AbstractGroupDescription#getFilterConditionalStylesFromExtendedGroupExpression
  * <em>Filter Conditional Styles From Extended Group Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractGroupDescription#getActions <em>Actions</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractGroupDescription()
@@ -360,5 +361,21 @@ public interface AbstractGroupDescription extends IdentifiedElement, DocumentedE
      * @generated
      */
     void setFilterConditionalStylesFromExtendedGroupExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Actions</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.properties.ToolbarAction}. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Actions</em>' containment reference list isn't clear, there really should be more of a
+     * description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Actions</em>' containment reference list.
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractGroupDescription_Actions()
+     * @model containment="true"
+     * @generated
+     */
+    EList<ToolbarAction> getActions();
 
 } // AbstractGroupDescription

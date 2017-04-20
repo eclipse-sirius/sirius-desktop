@@ -1181,6 +1181,21 @@
                 tab="viewpoint.tab.metamodels">
         <input type="org.eclipse.sirius.properties.ViewExtensionDescription"/>
       </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.toolbaraction.ToolbarActionImageExpressionPropertySectionSpec"
+               id="properties.section.toolbarAction.ImageExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.toolbaraction.ToolbarActionImageExpressionFilterSpec"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.ToolbarAction"/>
+      </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.toolbaraction.ToolbarActionTooltipExpressionPropertySectionSpec"
+               id="properties.section.toolbarAction.TooltipExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.toolbaraction.ToolbarActionTooltipExpressionFilterSpec"
+               afterSection="properties.section.toolbarAction.ImageExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.ToolbarAction"/>
+      </propertySection>
   	<!-- Start of user code propertySections of org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor  -->
   	
   	<!-- End of user code propertySections of org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor  -->
@@ -1214,6 +1229,7 @@
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.CustomExpressionMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.WidgetActionMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.DialogButtonMenuBuilder" />
+     <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.ToolbarActionMenuBuilder" />
   </extension>
 </plugin>    
 <!-- End of user code plugin.xml end specifics  -->

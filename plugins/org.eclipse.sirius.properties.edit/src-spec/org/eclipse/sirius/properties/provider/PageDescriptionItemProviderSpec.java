@@ -12,6 +12,7 @@
 package org.eclipse.sirius.properties.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.StyledString;
 
 /**
@@ -43,5 +44,11 @@ public class PageDescriptionItemProviderSpec extends PageDescriptionItemProvider
     @Override
     public Object getStyledText(Object object) {
         return Utils.computeLabel(this, object, "_UI_PageDescription_type"); //$NON-NLS-1$
+    }
+
+    @Override
+    protected CommandParameter createChildParameter(Object feature, Object child) {
+        Utils.addNoopNavigationOperations(child);
+        return super.createChildParameter(feature, child);
     }
 }

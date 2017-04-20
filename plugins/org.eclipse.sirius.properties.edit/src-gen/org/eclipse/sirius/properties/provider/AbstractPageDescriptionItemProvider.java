@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.provider.IdentifiedElementItemPr
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.AbstractPageDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemProvider implements IItemStyledLabelProvider {
@@ -172,7 +172,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
     /**
      * This adds a property descriptor for the Filter Validation Rules From Extended Page Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterValidationRulesFromExtendedPageExpressionPropertyDescriptor(Object object) {
@@ -208,6 +208,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.ABSTRACT_PAGE_DESCRIPTION__VALIDATION_SET);
+            childrenFeatures.add(PropertiesPackage.Literals.ABSTRACT_PAGE_DESCRIPTION__ACTIONS);
         }
         return childrenFeatures;
     }
@@ -256,7 +257,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -275,6 +276,7 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__VALIDATION_SET:
+        case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__ACTIONS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -292,6 +294,8 @@ public class AbstractPageDescriptionItemProvider extends IdentifiedElementItemPr
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_PAGE_DESCRIPTION__VALIDATION_SET, PropertiesFactory.eINSTANCE.createPageValidationSetDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.ABSTRACT_PAGE_DESCRIPTION__ACTIONS, PropertiesFactory.eINSTANCE.createToolbarAction()));
     }
 
 }

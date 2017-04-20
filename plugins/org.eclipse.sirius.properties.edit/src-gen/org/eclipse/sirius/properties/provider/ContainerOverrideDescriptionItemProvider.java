@@ -71,7 +71,7 @@ public class ContainerOverrideDescriptionItemProvider extends AbstractContainerD
     /**
      * This adds a property descriptor for the Filter Controls From Overridden Container Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterControlsFromOverriddenContainerExpressionPropertyDescriptor(Object object) {
@@ -123,7 +123,7 @@ public class ContainerOverrideDescriptionItemProvider extends AbstractContainerD
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

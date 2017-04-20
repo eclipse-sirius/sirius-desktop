@@ -29,6 +29,8 @@
         eType="#//GroupDescription" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="validationSet" eType="#//PageValidationSetDescription"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//ToolbarAction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//PageDescription"
         eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterGroupsFromExtendedPageExpression"
@@ -79,6 +81,15 @@
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromExtendedGroupExpression"
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//ToolbarAction" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ToolbarAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tooltipExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GroupDescription" eSuperTypes="#//AbstractGroupDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="GroupOverrideDescription" eSuperTypes="#//AbstractGroupDescription #//AbstractOverrideDescription">

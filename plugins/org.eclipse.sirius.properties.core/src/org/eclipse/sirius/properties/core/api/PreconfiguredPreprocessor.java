@@ -70,7 +70,7 @@ public class PreconfiguredPreprocessor<SIRIUS extends EObject> extends DefaultDe
             Iterable<?> currentIterable = (Iterable<?>) currentValue;
             Iterable<?> processedIterable = (Iterable<?>) processedValue;
 
-            // For each widget action create a copy and set it in the new values
+            // For each widget action and toolbar action create a copy and set it in the new values
             StreamSupport.stream(currentIterable.spliterator(), false).filter(EObject.class::isInstance).map(EObject.class::cast).forEach(object -> {
                 Optional<IDescriptionPreprocessor> preprocessor = SiriusPropertiesCorePlugin.getPlugin().getDescriptionPreprocessor(object);
                 if (preprocessor.isPresent()) {

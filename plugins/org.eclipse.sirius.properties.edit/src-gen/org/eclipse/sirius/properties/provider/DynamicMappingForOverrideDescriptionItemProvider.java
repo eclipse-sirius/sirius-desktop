@@ -71,7 +71,7 @@ public class DynamicMappingForOverrideDescriptionItemProvider extends AbstractDy
     /**
      * This adds a property descriptor for the Filter Ifs From Overridden Dynamic Mapping For Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterIfsFromOverriddenDynamicMappingForExpressionPropertyDescriptor(Object object) {
@@ -124,7 +124,7 @@ public class DynamicMappingForOverrideDescriptionItemProvider extends AbstractDy
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

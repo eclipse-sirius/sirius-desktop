@@ -19,12 +19,15 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.properties.AbstractPageDescription;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PageValidationSetDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.ToolbarAction;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
@@ -48,6 +51,7 @@ import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getGroups <em>Groups</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getValidationSet <em>Validation Set</em>}
  * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getActions <em>Actions</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getExtends <em>Extends</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getFilterGroupsFromExtendedPageExpression
  * <em>Filter Groups From Extended Page Expression</em>}</li>
@@ -179,6 +183,16 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
      * @ordered
      */
     protected PageValidationSetDescription validationSet;
+
+    /**
+     * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getActions()
+     * @generated
+     * @ordered
+     */
+    protected EList<ToolbarAction> actions;
 
     /**
      * The cached value of the '{@link #getExtends() <em>Extends</em>}' reference. <!-- begin-user-doc --> <!--
@@ -464,6 +478,19 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
      * @generated
      */
     @Override
+    public EList<ToolbarAction> getActions() {
+        if (actions == null) {
+            actions = new EObjectContainmentEList<ToolbarAction>(ToolbarAction.class, this, PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__ACTIONS);
+        }
+        return actions;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public PageDescription getExtends() {
         if (extends_ != null && extends_.eIsProxy()) {
             InternalEObject oldExtends = (InternalEObject) extends_;
@@ -584,6 +611,8 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
         switch (featureID) {
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__VALIDATION_SET:
             return basicSetValidationSet(null, msgs);
+        case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__ACTIONS:
+            return ((InternalEList<?>) getActions()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -610,6 +639,8 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
             return getGroups();
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__VALIDATION_SET:
             return getValidationSet();
+        case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__ACTIONS:
+            return getActions();
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__EXTENDS:
             if (resolve) {
                 return getExtends();
@@ -656,6 +687,10 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__VALIDATION_SET:
             setValidationSet((PageValidationSetDescription) newValue);
             return;
+        case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__ACTIONS:
+            getActions().clear();
+            getActions().addAll((Collection<? extends ToolbarAction>) newValue);
+            return;
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__EXTENDS:
             setExtends((PageDescription) newValue);
             return;
@@ -701,6 +736,9 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__VALIDATION_SET:
             setValidationSet((PageValidationSetDescription) null);
             return;
+        case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__ACTIONS:
+            getActions().clear();
+            return;
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__EXTENDS:
             setExtends((PageDescription) null);
             return;
@@ -741,6 +779,8 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
             return groups != null && !groups.isEmpty();
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__VALIDATION_SET:
             return validationSet != null;
+        case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__ACTIONS:
+            return actions != null && !actions.isEmpty();
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__EXTENDS:
             return extends_ != null;
         case PropertiesPackage.ABSTRACT_PAGE_DESCRIPTION__FILTER_GROUPS_FROM_EXTENDED_PAGE_EXPRESSION:

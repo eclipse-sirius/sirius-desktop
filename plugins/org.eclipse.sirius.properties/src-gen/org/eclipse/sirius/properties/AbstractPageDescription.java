@@ -31,6 +31,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * <em>Precondition Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getGroups <em>Groups</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getValidationSet <em>Validation Set</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getActions <em>Actions</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getExtends <em>Extends</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getFilterGroupsFromExtendedPageExpression
  * <em>Filter Groups From Extended Page Expression</em>}</li>
@@ -195,6 +196,22 @@ public interface AbstractPageDescription extends IdentifiedElement, DocumentedEl
      * @generated
      */
     void setValidationSet(PageValidationSetDescription value);
+
+    /**
+     * Returns the value of the '<em><b>Actions</b></em>' containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.properties.ToolbarAction}. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Actions</em>' containment reference list isn't clear, there really should be more of a
+     * description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Actions</em>' containment reference list.
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractPageDescription_Actions()
+     * @model containment="true"
+     * @generated
+     */
+    EList<ToolbarAction> getActions();
 
     /**
      * Returns the value of the '<em><b>Extends</b></em>' reference. <!-- begin-user-doc -->

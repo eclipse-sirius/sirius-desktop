@@ -27,7 +27,7 @@ import org.eclipse.sirius.properties.RadioOverrideDescription;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.properties.RadioOverrideDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class RadioOverrideDescriptionItemProvider extends AbstractRadioDescriptionItemProvider {
@@ -71,7 +71,7 @@ public class RadioOverrideDescriptionItemProvider extends AbstractRadioDescripti
     /**
      * This adds a property descriptor for the Filter Conditional Styles From Overridden Radio Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFilterConditionalStylesFromOverriddenRadioExpressionPropertyDescriptor(Object object) {
@@ -123,7 +123,7 @@ public class RadioOverrideDescriptionItemProvider extends AbstractRadioDescripti
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     *
+     * 
      * @generated
      */
     @Override

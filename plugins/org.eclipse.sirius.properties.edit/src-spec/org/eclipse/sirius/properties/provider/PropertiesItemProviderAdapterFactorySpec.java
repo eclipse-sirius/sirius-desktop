@@ -75,6 +75,15 @@ public class PropertiesItemProviderAdapterFactorySpec extends PropertiesItemProv
     }
 
     @Override
+    public Adapter createToolbarActionAdapter() {
+        if (toolbarActionItemProvider == null) {
+            toolbarActionItemProvider = new ToolbarActionItemProviderSpec(this);
+        }
+
+        return toolbarActionItemProvider;
+    }
+
+    @Override
     public Adapter createGroupDescriptionAdapter() {
         if (groupDescriptionItemProvider == null) {
             groupDescriptionItemProvider = new GroupDescriptionItemProviderSpec(this);

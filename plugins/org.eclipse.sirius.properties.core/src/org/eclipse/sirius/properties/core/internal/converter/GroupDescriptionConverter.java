@@ -19,6 +19,7 @@ import org.eclipse.eef.EEFGroupDescription;
 import org.eclipse.eef.EEFGroupStyle;
 import org.eclipse.eef.EEFPropertyValidationRuleDescription;
 import org.eclipse.eef.EEFSemanticValidationRuleDescription;
+import org.eclipse.eef.EEFToolbarAction;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.eef.common.api.utils.Util;
 import org.eclipse.emf.ecore.EObject;
@@ -30,8 +31,7 @@ import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.internal.Messages;
 
 /**
- * This class is used to convert the description of a Sirius group to an EEF
- * one.
+ * This class is used to convert the description of a Sirius group to an EEF one.
  * 
  * @author sbegaudeau
  */
@@ -68,6 +68,8 @@ public class GroupDescriptionConverter extends AbstractDescriptionConverter {
                 eefGroup.getSemanticValidationRules().addAll(this.convertCollection(validationSet.getSemanticValidationRules(), parameters, cache, EEFSemanticValidationRuleDescription.class));
                 eefGroup.getPropertyValidationRules().addAll(this.convertCollection(validationSet.getPropertyValidationRules(), parameters, cache, EEFPropertyValidationRuleDescription.class));
             }
+
+            eefGroup.getActions().addAll(this.convertCollection(groupDescription.getActions(), parameters, cache, EEFToolbarAction.class));
 
             return eefGroup;
         } else {

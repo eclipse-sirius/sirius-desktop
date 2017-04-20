@@ -79,6 +79,14 @@ public interface PropertiesFactory extends EFactory {
     PropertyValidationRule createPropertyValidationRule();
 
     /**
+     * Returns a new object of class '<em>Toolbar Action</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Toolbar Action</em>'.
+     * @generated
+     */
+    ToolbarAction createToolbarAction();
+
+    /**
      * Returns a new object of class '<em>Group Description</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return a new object of class '<em>Group Description</em>'.

@@ -53,6 +53,7 @@ import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
+import org.eclipse.sirius.properties.ToolbarAction;
 import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.core.api.DefaultDescriptionConverter;
 import org.eclipse.sirius.properties.core.api.DefaultDescriptionWithInitialOperationConverter;
@@ -61,8 +62,7 @@ import org.eclipse.sirius.properties.core.api.IDescriptionConverter;
 import org.eclipse.sirius.properties.util.PropertiesSwitch;
 
 /**
- * This switch is used to retrieve the proper {@link IDescriptionConverter} for
- * each class of the properties meta-model.
+ * This switch is used to retrieve the proper {@link IDescriptionConverter} for each class of the properties meta-model.
  * 
  * @author sbegaudeau
  */
@@ -278,5 +278,11 @@ public class PropertiesDescriptionConverterSwitch extends PropertiesSwitch<Optio
     @Override
     public Optional<IDescriptionConverter> caseCustomWidgetConditionalStyle(CustomWidgetConditionalStyle object) {
         return Optional.of(new DefaultDescriptionConverter<>(CustomWidgetConditionalStyle.class, EefPackage.Literals.EEF_CUSTOM_WIDGET_CONDITIONAL_STYLE));
+    }
+
+    @Override
+    public Optional<IDescriptionConverter> caseToolbarAction(ToolbarAction object) {
+        return Optional
+                .of(new DefaultDescriptionWithInitialOperationConverter<>(ToolbarAction.class, EefPackage.Literals.EEF_TOOLBAR_ACTION, EefPackage.Literals.EEF_TOOLBAR_ACTION__ACTION_EXPRESSION));
     }
 }

@@ -28,6 +28,7 @@ import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupStyle;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.ToolbarAction;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
@@ -64,6 +65,7 @@ import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
  * <li>
  * {@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getFilterConditionalStylesFromExtendedGroupExpression
  * <em>Filter Conditional Styles From Extended Group Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getActions <em>Actions</em>}</li>
  * </ul>
  *
  * @generated
@@ -284,6 +286,16 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
      * @ordered
      */
     protected String filterConditionalStylesFromExtendedGroupExpression = AbstractGroupDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_GROUP_EXPRESSION_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see #getActions()
+     * @generated
+     * @ordered
+     */
+    protected EList<ToolbarAction> actions;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -680,6 +692,19 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
      * @generated
      */
     @Override
+    public EList<ToolbarAction> getActions() {
+        if (actions == null) {
+            actions = new EObjectContainmentEList<ToolbarAction>(ToolbarAction.class, this, PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__ACTIONS);
+        }
+        return actions;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__CONTROLS:
@@ -690,6 +715,8 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
             return basicSetStyle(null, msgs);
         case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__CONDITIONAL_STYLES:
             return ((InternalEList<?>) getConditionalStyles()).basicRemove(otherEnd, msgs);
+        case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__ACTIONS:
+            return ((InternalEList<?>) getActions()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -731,6 +758,8 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
             return getFilterValidationRulesFromExtendedGroupExpression();
         case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_GROUP_EXPRESSION:
             return getFilterConditionalStylesFromExtendedGroupExpression();
+        case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__ACTIONS:
+            return getActions();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -785,6 +814,10 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
         case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_GROUP_EXPRESSION:
             setFilterConditionalStylesFromExtendedGroupExpression((String) newValue);
             return;
+        case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__ACTIONS:
+            getActions().clear();
+            getActions().addAll((Collection<? extends ToolbarAction>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -836,6 +869,9 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
         case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_GROUP_EXPRESSION:
             setFilterConditionalStylesFromExtendedGroupExpression(AbstractGroupDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_GROUP_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__ACTIONS:
+            getActions().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -879,6 +915,8 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
         case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_GROUP_EXPRESSION:
             return AbstractGroupDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_GROUP_EXPRESSION_EDEFAULT == null ? filterConditionalStylesFromExtendedGroupExpression != null
                     : !AbstractGroupDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_GROUP_EXPRESSION_EDEFAULT.equals(filterConditionalStylesFromExtendedGroupExpression);
+        case PropertiesPackage.ABSTRACT_GROUP_DESCRIPTION__ACTIONS:
+            return actions != null && !actions.isEmpty();
         }
         return super.eIsSet(featureID);
     }

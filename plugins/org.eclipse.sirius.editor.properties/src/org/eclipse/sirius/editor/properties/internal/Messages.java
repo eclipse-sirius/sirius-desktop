@@ -118,6 +118,9 @@ public final class Messages {
     @TranslatableMessage
     public static String DialogButtonMenuBuilder_label;
 
+    @TranslatableMessage
+    public static String ToolbarActionMenuBuilder_label;
+
     // CHECKSTYLE:ON
 
     private Messages() {
