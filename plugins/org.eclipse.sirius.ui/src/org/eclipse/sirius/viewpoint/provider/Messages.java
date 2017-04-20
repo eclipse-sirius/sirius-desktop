@@ -475,6 +475,24 @@ public final class Messages {
     public static String GenericModelCreationPage_fileExtensionError;
 
     @TranslatableMessage
+    public static String GraphicalRepresentationHandler_button_removeRepresentation;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_button_newRepresentation;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_missingDependencies_requirements;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_disabledViewpoint_label;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_representationNumber_label;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_CreateRepresentationWizard_title;
+
+    @TranslatableMessage
     public static String HierarchyLabelProvider_elementWihtoutNameLabel;
 
     @TranslatableMessage
@@ -1046,6 +1064,15 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SiriusPreferencePage_sessionEditorGroup;
+
+    @TranslatableMessage
+    public static String OtherRepresentationAction_tooltip;
+
+    @TranslatableMessage
+    public static String OtherRepresentationAction_label;
+
+    @TranslatableMessage
+    public static String OtherRepresentationAction_noRepresentation_label;
 
     // CHECKSTYLE:ON
 

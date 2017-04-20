@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -24,16 +22,20 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
-import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
-import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
+import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
+import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalRepresentationHandler;
+import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalRepresentationHandler.GraphicalRepresentationHandlerBuilder;
+import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationDescriptionItemImpl;
-import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -42,13 +44,12 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.dialogs.FilteredTree;
-import org.eclipse.ui.dialogs.PatternFilter;
+import org.eclipse.swt.widgets.TreeItem;
 
 import com.google.common.collect.Lists;
 
 /**
- * Page to select representations from an Aird.
+ * This page allows selection of a representation descriptor from which a representation instance will be created.
  *
  * @author nlepine
  */
@@ -58,18 +59,31 @@ public class RepresentationSelectionWizardPage extends WizardPage {
     private TreeViewer treeViewer;
 
     /** The filter. */
-    private final Session root;
+    private final Session session;
 
     private Composite pageComposite;
 
+    /**
+     * The representation description to select by default in this page.
+     */
     private RepresentationDescription representation;
 
-    private SemanticElementSelectionWizardPage selectionWizard;
+    /**
+     * The {@link ViewpointItem} containing the viewpoint parent of the selected representation description.
+     */
+    private ViewpointItemImpl viewpointItem;
+
+    private SemanticElementSelectionWizardPage semanticSelectionWizard;
 
     /**
      * The representation descriptor that should be selected by default when opening the page.
      */
     private RepresentationDescriptionItemImpl representationDescriptionItem;
+
+    /**
+     * The semantic root element of the representation description that must be chosen from user.
+     */
+    private EObject semanticElement;
 
     /**
      * Create a new <code>RepresentationSelectionWizardPage</code>.
@@ -80,12 +94,13 @@ public class RepresentationSelectionWizardPage extends WizardPage {
     public RepresentationSelectionWizardPage(final Session root) {
         super(Messages.RepresentationSelectionWizardPage_title);
         this.setTitle(Messages.RepresentationSelectionWizardPage_title);
-        this.root = root;
+        this.session = root;
         setMessage(Messages.RepresentationSelectionWizardPage_message);
     }
 
     /**
-     * Create a new <code>RepresentationSelectionWizardPage</code>.
+     * Create a new <code>RepresentationSelectionWizardPage</code> with the given representation description selected
+     * during creation.
      * 
      * @param theSession
      *            the session from which representations will be created.
@@ -95,9 +110,47 @@ public class RepresentationSelectionWizardPage extends WizardPage {
     public RepresentationSelectionWizardPage(Session theSession, RepresentationDescriptionItemImpl theRepresentationDescriptionItem) {
         super(Messages.RepresentationSelectionWizardPage_title);
         this.setTitle(Messages.RepresentationSelectionWizardPage_title);
-        this.root = theSession;
+        this.session = theSession;
         setMessage(Messages.RepresentationSelectionWizardPage_message);
         representationDescriptionItem = theRepresentationDescriptionItem;
+    }
+
+    /**
+     * Create a new <code>RepresentationSelectionWizardPage</code> providing representation descriptions compatible with
+     * the given semantic element.
+     * 
+     * @param theSession
+     *            the session from which representations will be created.
+     * @param theSemanticSelection
+     *            A semantic element that should be compatible with the representation description selected on this
+     *            page.
+     */
+    public RepresentationSelectionWizardPage(Session theSession, EObject theSemanticSelection) {
+        super(Messages.RepresentationSelectionWizardPage_title);
+        this.session = theSession;
+        this.semanticElement = theSemanticSelection;
+    }
+
+    public ViewpointItemImpl getViewpointItem() {
+        return viewpointItem;
+    }
+
+    @Override
+    public boolean isPageComplete() {
+        boolean result = false;
+        ISelection selection = treeViewer.getSelection();
+        if (semanticElement != null && selection instanceof StructuredSelection && ((StructuredSelection) selection).getFirstElement() instanceof RepresentationDescriptionItemImpl) {
+            RepresentationDescriptionItem selectedRepresentationDescriptionItem = (RepresentationDescriptionItemImpl) ((StructuredSelection) selection).getFirstElement();
+            if (selectedRepresentationDescriptionItem.getWrappedObject() != null) {
+                RepresentationDescription representationDescription = (RepresentationDescription) selectedRepresentationDescriptionItem.getWrappedObject();
+                viewpointItem = (ViewpointItemImpl) selectedRepresentationDescriptionItem.getParent();
+                representation = representationDescription;
+                result = true;
+            }
+        } else if (semanticElement == null) {
+            result = true;
+        }
+        return result;
     }
 
     @Override
@@ -106,12 +159,13 @@ public class RepresentationSelectionWizardPage extends WizardPage {
 
         setErrorMessage(null); // clear previous error if exists
         ISelection selection = treeViewer.getSelection();
-        if (selection instanceof StructuredSelection && ((StructuredSelection) selection).getFirstElement() instanceof RepresentationDescription) {
-            RepresentationDescription representationDescription = (RepresentationDescription) ((StructuredSelection) selection).getFirstElement();
+        if (selection instanceof StructuredSelection && ((StructuredSelection) selection).getFirstElement() instanceof RepresentationDescriptionItemImpl) {
+            RepresentationDescription representationDescription = (RepresentationDescription) ((RepresentationDescriptionItemImpl) ((StructuredSelection) selection).getFirstElement())
+                    .getWrappedObject();
             result = true; // set to true before permission authority check
 
-            if (root instanceof DAnalysisSessionImpl) {
-                Collection<DView> containers = ((DAnalysisSessionImpl) root).getAvailableRepresentationContainers(representationDescription);
+            if (session instanceof DAnalysisSessionImpl) {
+                Collection<DView> containers = ((DAnalysisSessionImpl) session).getAvailableRepresentationContainers(representationDescription);
 
                 // If containers is empty, a new one will be created, so the
                 // wizard is available
@@ -127,19 +181,14 @@ public class RepresentationSelectionWizardPage extends WizardPage {
                     } // for
                 }
             }
-
             if (result) {
-                setRepresentation(representationDescription);
+                representation = representationDescription;
+                viewpointItem = (ViewpointItemImpl) ((RepresentationDescriptionItemImpl) ((StructuredSelection) selection).getFirstElement()).getParent();
             } else {
                 setErrorMessage(Messages.RepresentationSelectionWizardPage_errorReadonlyContainer);
             }
         }
-
         return result;
-    }
-
-    private void setRepresentation(RepresentationDescription firstElement) {
-        this.representation = firstElement;
     }
 
     public RepresentationDescription getRepresentation() {
@@ -147,7 +196,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
     }
 
     public void setSelectionWizard(SemanticElementSelectionWizardPage selectionWizard) {
-        this.selectionWizard = selectionWizard;
+        this.semanticSelectionWizard = selectionWizard;
     }
 
     @Override
@@ -157,73 +206,51 @@ public class RepresentationSelectionWizardPage extends WizardPage {
         pageComposite = new Composite(parent, SWT.NONE);
         pageComposite.setLayout(new GridLayout());
         pageComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
-
-        this.treeViewer = createTreeViewer(pageComposite);
-        treeViewer.addFilter(new ViewerFilter() {
-
-            @Override
-            public boolean select(Viewer viewer, Object parentElement, Object element) {
-                if (element instanceof Viewpoint && ((Viewpoint) element).getOwnedRepresentations().isEmpty()) {
-                    return false;
-                }
-                return true;
-            }
-        });
-        treeViewer.setInput(root);
-        treeViewer.expandAll();
-        treeViewer.collapseAll();
+        SessionContentProvider theContentProvider = new SessionContentProvider(semanticElement);
+        GraphicalRepresentationHandlerBuilder graphicalRepresentationHandlerBuilder = new GraphicalRepresentationHandler.GraphicalRepresentationHandlerBuilder(session);
+        GraphicalRepresentationHandler graphicalRepresentationHandler = graphicalRepresentationHandlerBuilder.customizeContentAndLabel(theContentProvider, new SiriusRepresentationLabelProvider())
+                .filterEmptyViewpoints().activateBrowserWithViewpointAndRepresentationDescriptionInformation().build();
+        graphicalRepresentationHandler.createControl(pageComposite);
+        treeViewer = graphicalRepresentationHandler.getTreeViewer();
+        Collection<Viewpoint> availableViewpoints = ViewpointHelper.getAvailableViewpoints(session);
+        Collection<ViewpointItem> viewpointItemList = new ArrayList<>();
+        for (Viewpoint viewpoint : availableViewpoints) {
+            viewpointItemList.add(new ViewpointItemImpl(session, viewpoint, this));
+        }
+        graphicalRepresentationHandler.setViewerInput(viewpointItemList);
         treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
             @Override
             public void selectionChanged(SelectionChangedEvent event) {
                 setPageComplete(isPageComplete());
-                if (selectionWizard != null) {
-                    selectionWizard.setRepresentation(getRepresentation());
-                    selectionWizard.update();
+                if (semanticSelectionWizard != null) {
+                    semanticSelectionWizard.setRepresentation(getRepresentation());
+                    semanticSelectionWizard.update();
                 }
             }
         });
         if (representationDescriptionItem != null) {
             // we select the representation description item among all other items.
-            treeViewer.expandAll();
             int itemCount = treeViewer.getTree().getItemCount();
             for (int i = 0; i < itemCount; i++) {
-                Object item = treeViewer.getTree().getItem(i).getData();
-                if (item instanceof Viewpoint) {
-                    Viewpoint viewpoint = (Viewpoint) item;
-                    Optional<RepresentationDescription> representationOption = Lists.newArrayList(viewpoint.getOwnedRepresentations()).stream()
-                            .filter(rep -> CommonItemSorter.compareRepresentationDescriptions(rep, (RepresentationDescription) representationDescriptionItem.getWrappedObject()) == 0).findFirst();
-                    if (representationOption.isPresent()) {
-                        treeViewer.setSelection(new StructuredSelection(representationOption.get()), true);
-                        representation = representationOption.get();
-                        selectionWizard.setRepresentation(getRepresentation());
-                        selectionWizard.update();
+                TreeItem treeItem = treeViewer.getTree().getItem(i);
+                TreeItem[] subItems = treeItem.getItems();
+                for (TreeItem subItem : subItems) {
+                    if (subItem.getData() instanceof RepresentationDescriptionItemImpl) {
+                        RepresentationDescriptionItemImpl representationDescriptionItemTemp = (RepresentationDescriptionItemImpl) subItem.getData();
+                        if (EqualityHelper.areEquals((RepresentationDescription) representationDescriptionItem.getWrappedObject(),
+                                (RepresentationDescription) representationDescriptionItemTemp.getWrappedObject())) {
+                            treeViewer.setSelection(new StructuredSelection(representationDescriptionItemTemp), true);
+                            representation = (RepresentationDescription) representationDescriptionItemTemp.getWrappedObject();
+                            viewpointItem = (ViewpointItemImpl) representationDescriptionItemTemp.getParent();
+                            semanticSelectionWizard.setRepresentation(representation);
+                            semanticSelectionWizard.update();
+                        }
                     }
                 }
             }
         }
         setControl(pageComposite);
-    }
-
-    /**
-     * Create the table viewer.
-     *
-     * @param parent
-     *            the parent composite.
-     * @return the table viewer.
-     */
-    private TreeViewer createTreeViewer(final Composite parent) {
-        final int style = SWT.SINGLE | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER;
-        final FilteredTree tree = SWTUtil.createFilteredTree(parent, style, new PatternFilter());
-        TreeViewer viewer = tree.getViewer();
-
-        final GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
-        viewer.getControl().setLayoutData(gridData);
-        viewer.getTree().setHeaderVisible(false);
-        viewer.getTree().setLinesVisible(false);
-        viewer.setContentProvider(new SessionContentProvider());
-        viewer.setLabelProvider(new AdapterFactoryLabelProvider(ViewHelper.INSTANCE.createAdapterFactory()));
-        return viewer;
     }
 
     /**
@@ -236,27 +263,42 @@ public class RepresentationSelectionWizardPage extends WizardPage {
     }
 
     /**
-     * Session content provider.
+     * Session content provider providing all viewpoints registered with their representation descriptions when no
+     * semantic element is provided.
+     * 
+     * If a semantic element is provided, the provider only shows viewpoints and their descriptions if the descriptions
+     * specify as root element type the type of the semantic element.
      */
     private static final class SessionContentProvider implements ITreeContentProvider {
 
         private static Object[] empty = new Object[0];
 
+        private EObject semanticSelection;
+
+        SessionContentProvider(EObject theSemanticSelection) {
+            this.semanticSelection = theSemanticSelection;
+        }
+
         @Override
         public Object[] getChildren(final Object parentElement) {
             Object[] children = SessionContentProvider.empty;
-            if (parentElement instanceof Session) {
-                children = ((Session) parentElement).getSelectedViewpoints(false).toArray();
-            } else if (parentElement instanceof Viewpoint) {
-                List<RepresentationDescription> reps = Lists.newArrayList(((Viewpoint) parentElement).getOwnedRepresentations());
-                Collections.sort(reps, new Comparator<RepresentationDescription>() {
-                    @Override
-                    public int compare(RepresentationDescription rep1, RepresentationDescription rep2) {
-                        return CommonItemSorter.compareRepresentationDescriptions(rep1, rep2);
-                    };
-                });
+            if (parentElement instanceof ViewpointItemImpl) {
+                if (semanticSelection != null) {
+                    Collection<?> subElement = ((ViewpointItem) parentElement).getChildren();
+                    List<Object> filteredList = new ArrayList<>();
+                    for (Object object : subElement) {
+                        if (object instanceof RepresentationDescriptionItem) {
+                            RepresentationDescriptionItem descriptionItem = (RepresentationDescriptionItem) object;
+                            if (DialectManager.INSTANCE.canCreate(semanticSelection, (RepresentationDescription) descriptionItem.getWrappedObject(), false)) {
+                                filteredList.add(descriptionItem);
+                            }
+                        }
+                    }
+                    children = filteredList.toArray();
+                } else {
+                    children = ((ViewpointItemImpl) parentElement).getChildren().toArray();
+                }
 
-                children = reps.toArray();
             }
             return children;
         }
@@ -273,7 +315,11 @@ public class RepresentationSelectionWizardPage extends WizardPage {
 
         @Override
         public Object[] getElements(final Object inputElement) {
-            return getChildren(inputElement);
+            Collection<Object> allChildren = Lists.newArrayList();
+            if (inputElement instanceof Collection<?>) {
+                allChildren.addAll((Collection<?>) inputElement);
+            }
+            return allChildren.toArray();
         }
 
         @Override

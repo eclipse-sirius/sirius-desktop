@@ -13,6 +13,9 @@ package org.eclipse.sirius.ui.editor.internal.pages;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -20,12 +23,18 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
-import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalRepresentationHandler;
 import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalSemanticModelsHandler;
+import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalRepresentationHandler;
+import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalRepresentationHandler.GraphicalRepresentationHandlerBuilder;
+import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -48,7 +57,7 @@ import org.eclipse.ui.forms.widgets.Section;
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
  */
-public class DefaultSessionEditorPage extends FormPage implements SessionListener {
+public class DefaultSessionEditorPage extends FormPage implements SessionListener, SessionManagerListener {
 
     /**
      * The page's unique id.
@@ -145,6 +154,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         createRepresentationsControl(toolkit, rightComposite);
 
         session.addListener(this);
+        SessionManager.INSTANCE.addSessionsListener(this);
 
         // needed when opening editor from explorer views or scrollbar is not
         // visible if needed.
@@ -197,9 +207,29 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         representationSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         representationSection.setClient(representationSectionClient);
 
-        graphicalRepresentationHandler = new GraphicalRepresentationHandler(session, toolkit);
+        GraphicalRepresentationHandlerBuilder graphicalRepresentationHandlerBuilder = new GraphicalRepresentationHandler.GraphicalRepresentationHandlerBuilder(session);
+        graphicalRepresentationHandler = graphicalRepresentationHandlerBuilder.activateBrowserWithViewpointAndRepresentationDescriptionInformation().activateRepresentationAndViewpointControls()
+                .useToolkitToCreateGraphicComponents(toolkit).build();
         graphicalRepresentationHandler.createControl(representationSectionClient);
+        List<Object> viewpointItemList = getViewpointItems();
+        graphicalRepresentationHandler.setViewerInput(viewpointItemList);
 
+    }
+
+    /**
+     * Returns all viewpoint items corresponding to all available viewpoints
+     * from the runtime.
+     * 
+     * @return all viewpoint items corresponding to all available viewpoints
+     *         from the runtime.
+     */
+    private List<Object> getViewpointItems() {
+        List<Object> viewpointItemList = new ArrayList<>();
+        Collection<Viewpoint> availableViewpoints = ViewpointHelper.getAvailableViewpoints(session);
+        for (Viewpoint viewpoint : availableViewpoints) {
+            viewpointItemList.add(new ViewpointItemImpl(session, viewpoint, this));
+        }
+        return viewpointItemList;
     }
 
     @Override
@@ -258,6 +288,43 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         if (graphicalRepresentationHandler != null) {
             graphicalRepresentationHandler.dispose();
             graphicalRepresentationHandler = null;
+        }
+        SessionManager.INSTANCE.removeSessionsListener(this);
+    }
+
+    @Override
+    public void notifyAddSession(Session newSession) {
+    }
+
+    @Override
+    public void notifyRemoveSession(Session removedSession) {
+    }
+
+    @Override
+    public void viewpointSelected(Viewpoint selectedSirius) {
+    }
+
+    @Override
+    public void viewpointDeselected(Viewpoint deselectedSirius) {
+    }
+
+    @Override
+    public void notify(Session updated, int notification) {
+        if (session.equals(updated)) {
+            switch (notification) {
+            case SessionListener.REPRESENTATION_CHANGE:
+            case SessionListener.VSM_UPDATED:
+            case SessionListener.REPLACED:
+                PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+                    // we refresh the content of the representations block as it
+                    // may have changed regarding the handled notifications.
+                    graphicalRepresentationHandler.setViewerInput(getViewpointItems());
+                });
+
+                break;
+            default:
+                break;
+            }
         }
     }
 

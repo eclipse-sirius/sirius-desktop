@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,8 +56,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import com.google.common.collect.Lists;
 
 /**
- * Class able to manage a set of dialects to provides the usual dialect services
- * using the Eclipse environment.
+ * Class able to manage a set of dialects to provides the usual dialect services using the Eclipse environment.
  * 
  * @author cbrun
  * 
@@ -204,12 +203,17 @@ public class DialectManagerImpl implements DialectManager {
 
     @Override
     public boolean canCreate(final EObject semantic, final RepresentationDescription desc) {
+        return canCreate(semantic, desc, true);
+    }
+
+    @Override
+    public boolean canCreate(EObject semantic, RepresentationDescription desc, boolean checkSelectedViewpoint) {
         boolean canCreate = false;
 
         // Ask the dialect if we can create a representation of the
         // given type on the semantic element
         for (final Dialect dialect : dialects.values()) {
-            if (dialect.getServices().canCreate(semantic, desc)) {
+            if (dialect.getServices().canCreate(semantic, desc, checkSelectedViewpoint)) {
                 canCreate = true;
                 break;
             }
@@ -409,14 +413,12 @@ public class DialectManagerImpl implements DialectManager {
     }
 
     /**
-     * Returns the {@link Dialect} managing the given target, according to its
-     * {@link RepresentationDescription}.
+     * Returns the {@link Dialect} managing the given target, according to its {@link RepresentationDescription}.
      * 
      * @param target
      *            the target to get the {@link Dialect} from
-     * @return the first registered {@link Dialect} that is compatible with the
-     *         {@link RepresentationDescription} containing the given target,
-     *         null if none found
+     * @return the first registered {@link Dialect} that is compatible with the {@link RepresentationDescription}
+     *         containing the given target, null if none found
      */
     private Dialect getDialectFromEObjectAccordingToRepresentationDescription(EObject target) {
         Dialect foundDialect = null;

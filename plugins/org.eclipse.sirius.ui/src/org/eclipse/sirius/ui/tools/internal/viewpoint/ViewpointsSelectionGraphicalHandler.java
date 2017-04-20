@@ -27,12 +27,9 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.layout.GridLayoutFactory;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
-import org.eclipse.jface.viewers.DecorationOverlayIcon;
-import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -50,7 +47,6 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.browser.Browser;
@@ -524,33 +520,10 @@ public class ViewpointsSelectionGraphicalHandler {
             if (columnIndex == 0) {
                 if (element instanceof Viewpoint) {
                     final Viewpoint vp = (Viewpoint) element;
-                    if (vp.getIcon() != null && vp.getIcon().length() > 0) {
-                        final ImageDescriptor desc = SiriusEditPlugin.Implementation.findImageDescriptor(vp.getIcon());
-                        if (desc != null) {
-                            image = SiriusEditPlugin.getPlugin().getImage(desc);
-                            image = getEnhancedImage(image, vp);
-                        }
-                    }
-                    if (image == null) {
-                        image = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.getPlugin().getItemImageDescriptor(vp));
-                        image = getEnhancedImage(image, vp);
-                    }
+                    image = ViewpointHelper.getImage(vp);
                 } else {
                     image = super.getImage(element);
                 }
-            }
-            return image;
-        }
-
-        private ImageDescriptor getOverlayedDescriptor(final Image baseImage, final String decoratorPath) {
-            final ImageDescriptor decoratorDescriptor = SiriusEditPlugin.Implementation.getBundledImageDescriptor(decoratorPath);
-            return new DecorationOverlayIcon(baseImage, decoratorDescriptor, IDecoration.BOTTOM_LEFT);
-        }
-
-        private Image getEnhancedImage(final Image image, final Viewpoint viewpoint) {
-            // Add decorator if the viewpoint comes from workspace
-            if (!ViewpointRegistry.getInstance().isFromPlugin(viewpoint) && image != null) {
-                return SiriusEditPlugin.getPlugin().getImage(getOverlayedDescriptor(image, "icons/full/decorator/folder_close.gif")); //$NON-NLS-1$
             }
             return image;
         }

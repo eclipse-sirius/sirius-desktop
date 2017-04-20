@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,6 +64,7 @@ import org.eclipse.sirius.ui.tools.internal.actions.control.DesignerControlActio
 import org.eclipse.sirius.ui.tools.internal.actions.copy.CopyRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.actions.creation.CreateRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.actions.creation.CreateRepresentationFromSessionAction;
+import org.eclipse.sirius.ui.tools.internal.actions.creation.OtherRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.actions.export.ExportRepresentationsAction;
 import org.eclipse.sirius.ui.tools.internal.actions.session.CloseSessionsAction;
 import org.eclipse.sirius.ui.tools.internal.actions.session.OpenRepresentationsAction;
@@ -287,7 +288,6 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
              * representation menu
              */
             if (!selectedRepDescriptors.isEmpty()) {
-
                 addActionToMenu(menu, GROUP_OPEN, buildOpenRepresentationAction(selectedRepDescriptors));
                 addActionToMenu(menu, GROUP_REORGANIZE, buildRenameRepresentationAction(selectedRepDescriptors));
                 addActionToMenu(menu, GROUP_REORGANIZE, buildCopyRepresentationsAction(selectedRepDescriptors, session));
@@ -343,19 +343,32 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
                 }
 
                 /* New representations menu */
+                final MenuManager addNewRepresentation = new MenuManager(Messages.ContextMenuFiller_newRepresentation, NEW_REPRESENTATION_MENU_ID);
                 final Collection<RepresentationDescription> descriptions = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(false), firstSelected);
                 if (descriptions.size() > 0) {
-                    final MenuManager addNewRepresentation = new MenuManager(Messages.ContextMenuFiller_newRepresentation, NEW_REPRESENTATION_MENU_ID);
                     for (final RepresentationDescription representationDescription : descriptions) {
                         if (DialectManager.INSTANCE.canCreate(firstSelected, representationDescription)) {
                             addNewRepresentation.add(buildCreateRepresentationAction(firstSelected, representationDescription, session));
                         }
-
                     }
-                    addContributionToMenu(menu, GROUP_NEW, addNewRepresentation);
                 }
+                addNewRepresentation.add(buildOtherRepresentationAction(firstSelected, session));
+                addContributionToMenu(menu, GROUP_NEW, addNewRepresentation);
             }
         }
+    }
+
+    /**
+     * Create the {@link OtherRepresentationAction} from given selection and session.
+     * 
+     * @param semanticElement
+     *            the semantic element to take in consideration.
+     * @param session
+     *            the session to take in consideration.
+     * @return the newly created {@link OtherRepresentationAction} from given selection and session.
+     */
+    private Action buildOtherRepresentationAction(final EObject semanticElement, final Session session) {
+        return new OtherRepresentationAction(session, semanticElement);
     }
 
     private boolean hasSharedObjectInSelection(Collection<EObject> selection) {

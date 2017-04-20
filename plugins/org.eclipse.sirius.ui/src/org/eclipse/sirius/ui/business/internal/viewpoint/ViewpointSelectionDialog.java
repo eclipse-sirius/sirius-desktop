@@ -24,14 +24,11 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
-import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.ICheckStateListener;
-import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.window.ToolTip;
@@ -40,10 +37,10 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
@@ -65,8 +62,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 
 /**
- * A dialog box which allow end-users to select which viewpoints are enabled
- * inside a session.
+ * A dialog box which allow end-users to select which viewpoints are enabled inside a session.
  * 
  * @author <a href="mailto:mickael.lanoe@obeo.fr">Mickael LANOE</a>
  */
@@ -187,25 +183,10 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
         @Override
         public Image getImage(final Object element) {
             Item item = (Item) element;
-            
+
             Image viewpointImage = null;
             Viewpoint vp = item.getViewpoint();
-            if (vp.getIcon() != null && vp.getIcon().length() > 0) {
-                final ImageDescriptor desc = SiriusEditPlugin.Implementation.findImageDescriptor(vp.getIcon());
-                if (desc != null) {
-                    viewpointImage = SiriusEditPlugin.getPlugin().getImage(desc);
-                }
-            }
-            // Default image
-            if (viewpointImage == null) {
-                viewpointImage = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.getPlugin().getItemImageDescriptor(vp));
-            }
-            
-            // Add decorator if the viewpoint comes from workspace
-            if (!ViewpointRegistry.getInstance().isFromPlugin(vp)) {
-                final ImageDescriptor decoratorDescriptor = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/folder_close.gif"); //$NON-NLS-1$
-                viewpointImage = SiriusEditPlugin.getPlugin().getImage(new DecorationOverlayIcon(viewpointImage, decoratorDescriptor, IDecoration.BOTTOM_LEFT));
-            }
+            viewpointImage = ViewpointHelper.getImage(vp);
             return viewpointImage;
         }
 

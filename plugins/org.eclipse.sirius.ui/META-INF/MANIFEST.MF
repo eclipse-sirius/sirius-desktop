@@ -63,6 +63,7 @@ Export-Package: org.eclipse.sirius.description.contribution.provider;version="2.
  org.eclipse.sirius.ui.tools.internal.commands;version="2.1.0";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.dialogs;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.editor;version="3.2.0";x-internal:=true,
+ org.eclipse.sirius.ui.tools.internal.graphicalcomponents;version="5.0.0",
  org.eclipse.sirius.ui.tools.internal.operations;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.perspectives;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.preference;version="2.0.5";x-internal:=true,

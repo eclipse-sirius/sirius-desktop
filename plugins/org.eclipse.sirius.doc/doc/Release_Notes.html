@@ -134,6 +134,10 @@
 			<code>org.eclipse.sirius</code> 
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.canCreate(EObject, RepresentationDescription, boolean)</code> has been added to better control the checks done by already existing 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.canCreate(EObject, RepresentationDescription)</code> method. The new boolean allow to deactivate the check verifying that the viewpoint of the given description must be activated so the method can return true.
+			</li>
 			<li><span class="label label-success">Added</span> The 
 				<code>org.eclipse.sirius.viewpoint.description.DAnnotation.references</code> feature has been added. It allows to have some information without having to search them into the entire model of the Sirius session. Ideally only elements from semantic resources of the session should be referenced or else it may broke the session behavior either because resolving too soon EObject in the session or because adding a resource that is not known by Sirius session.
 			</li>

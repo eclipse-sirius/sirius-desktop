@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -33,15 +33,12 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CheckboxCellEditor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
-import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.ICellModifier;
-import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
@@ -362,7 +359,8 @@ public final class ViewpointSelection {
                     public void run(final IProgressMonitor monitor) {
                         try {
                             monitor.beginTask(Messages.ViewpointSelection_applySelectionTask, 1);
-                            Command command = new ChangeViewpointSelectionCommand(session, callback, newSelectedViewpoints, newDeselectedViewpoints, new SubProgressMonitor(monitor, 1));
+                            SubMonitor subMonitor = SubMonitor.convert(monitor, 1);
+                            Command command = new ChangeViewpointSelectionCommand(session, callback, newSelectedViewpoints, newDeselectedViewpoints, subMonitor);
                             TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
                             domain.getCommandStack().execute(command);
                         } finally {
@@ -591,18 +589,6 @@ public final class ViewpointSelection {
             return false;
         }
 
-        private ImageDescriptor getOverlayedDescriptor(final Image baseImage, final String decoratorPath) {
-            final ImageDescriptor decoratorDescriptor = SiriusEditPlugin.Implementation.getBundledImageDescriptor(decoratorPath);
-            return new DecorationOverlayIcon(baseImage, decoratorDescriptor, IDecoration.BOTTOM_LEFT);
-        }
-
-        private Image getEnhancedImage(final Image image, final Viewpoint viewpoint) {
-            if (!ViewpointRegistry.getInstance().isFromPlugin(viewpoint) && image != null) {
-                return SiriusEditPlugin.getPlugin().getImage(getOverlayedDescriptor(image, "icons/full/decorator/folder_close.gif")); //$NON-NLS-1$
-            }
-            return image;
-        }
-
         @Override
         public Image getImage(final Object element) {
             Image image = null;
@@ -620,17 +606,7 @@ public final class ViewpointSelection {
             case 1:
                 if (element instanceof Viewpoint) {
                     final Viewpoint vp = (Viewpoint) element;
-                    if (vp.getIcon() != null && vp.getIcon().length() > 0) {
-                        final ImageDescriptor desc = SiriusEditPlugin.Implementation.findImageDescriptor(vp.getIcon());
-                        if (desc != null) {
-                            image = SiriusEditPlugin.getPlugin().getImage(desc);
-                            image = getEnhancedImage(image, vp);
-                        }
-                    }
-                    if (image == null) {
-                        image = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.getPlugin().getItemImageDescriptor(vp));
-                        image = getEnhancedImage(image, vp);
-                    }
+                    image = ViewpointHelper.getImage(vp);
                 }
                 break;
             case 2:

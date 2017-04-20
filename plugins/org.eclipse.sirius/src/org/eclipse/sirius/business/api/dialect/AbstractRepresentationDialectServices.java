@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
@@ -63,9 +64,8 @@ import com.google.common.collect.Sets;
 public abstract class AbstractRepresentationDialectServices implements DialectServices {
 
     /**
-     * All standard references to find
-     * {@link org.eclipse.sirius.viewpoint.DRepresentationElement} from
-     * corresponding semantic elements by cross reference.
+     * All standard references to find {@link org.eclipse.sirius.viewpoint.DRepresentationElement} from corresponding
+     * semantic elements by cross reference.
      */
     protected static final Set<EReference> REPRESENTATION_ELEMENTS_INVERSE_REFERENCES = Sets.newHashSet();
 
@@ -75,8 +75,8 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     }
 
     /**
-     * Checks whether a specific representation is supported by this dialect,
-     * i.e. it can delete it, copy it, refresh it, etc.
+     * Checks whether a specific representation is supported by this dialect, i.e. it can delete it, copy it, refresh
+     * it, etc.
      * 
      * @param representation
      *            the representation.
@@ -85,8 +85,8 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     protected abstract boolean isSupported(DRepresentation representation);
 
     /**
-     * Checks whether a specific representation is supported by this dialect,
-     * i.e. it can delete it, copy it, refresh it, etc.
+     * Checks whether a specific representation is supported by this dialect, i.e. it can delete it, copy it, refresh
+     * it, etc.
      * 
      * @param representationDescriptor
      *            the descriptor of the representation.
@@ -95,14 +95,12 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     protected abstract boolean isSupported(DRepresentationDescriptor representationDescriptor);
 
     /**
-     * Checks whether a specific representation description is supported by this
-     * dialect, i.e. it can create concrete representations from it, and support
-     * the result.
+     * Checks whether a specific representation description is supported by this dialect, i.e. it can create concrete
+     * representations from it, and support the result.
      * 
      * @param description
      *            the representation description.
-     * @return <code>true</code> if this dialect supports the representation
-     *         description.
+     * @return <code>true</code> if this dialect supports the representation description.
      */
     protected abstract boolean isSupported(RepresentationDescription description);
 
@@ -202,21 +200,19 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     }
 
     /**
-     * Tell if the {@link Viewpoint} owner of the
-     * {@link RepresentationDescription} is enabled on {@link Session}.
+     * Tell if the {@link Viewpoint} owner of the {@link RepresentationDescription} is enabled on {@link Session}.
      * 
      * @param session
      *            the {@link Session}
      * @param representationDescription
-     *            a {@link RepresentationDescription} in the context of the
-     *            {@link Session}
-     * @return true if the {@link Viewpoint} owner of the
-     *         {@link RepresentationDescription} is enabled on {@link Session}
+     *            a {@link RepresentationDescription} in the context of the {@link Session}
+     * @return true if the {@link Viewpoint} owner of the {@link RepresentationDescription} is enabled on
+     *         {@link Session}
      */
     protected boolean isRelatedViewpointSelected(Session session, RepresentationDescription representationDescription) {
         boolean isRelatedViewpointSelected = false;
         Viewpoint parentViewpoint = new RepresentationDescriptionQuery(representationDescription).getParentViewpoint();
-        isRelatedViewpointSelected = session != null && parentViewpoint != null && session.getSelectedViewpoints(false).contains(parentViewpoint);
+        isRelatedViewpointSelected = session != null && parentViewpoint != null && session.getSelectedViewpoints(false).stream().anyMatch(vp -> EqualityHelper.areEquals(vp, parentViewpoint));
         return isRelatedViewpointSelected;
     }
 
@@ -274,9 +270,8 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     }
 
     /**
-     * Create a new representation using the representation description. As no
-     * session is passed to this method the created representation will not be
-     * kept.
+     * Create a new representation using the representation description. As no session is passed to this method the
+     * created representation will not be kept.
      * 
      * @param name
      *            name of the representation to create.
@@ -304,18 +299,17 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     }
 
     /**
-     * Finds all the supported representations in a session which have the
-     * specified key/value pair in their custom data.
+     * Finds all the supported representations in a session which have the specified key/value pair in their custom
+     * data.
      * 
      * @param session
      *            the session in which to look for representations.
      * @param key
      *            the key to look for in the representations' custom data.
      * @param value
-     *            the value associated to the key in the representations' custom
-     *            data.
-     * @return all the supported representations in a session which have the
-     *         specified key/value pair in their custom data.
+     *            the value associated to the key in the representations' custom data.
+     * @return all the supported representations in a session which have the specified key/value pair in their custom
+     *         data.
      */
     protected Collection<DRepresentation> getRepresentations(Session session, String key, EObject value) {
         Collection<DRepresentation> reps = Lists.newArrayList();
@@ -328,19 +322,17 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     }
 
     /**
-     * Finds all the supported representation descriptors in a session which
-     * have the specified key/value pair in their custom data.
+     * Finds all the supported representation descriptors in a session which have the specified key/value pair in their
+     * custom data.
      * 
      * @param session
      *            the session in which to look for representation descriptors.
      * @param key
-     *            the key to look for in the representation descriptors' custom
-     *            data.
+     *            the key to look for in the representation descriptors' custom data.
      * @param value
-     *            the value associated to the key in the representation
-     *            descriptors's custom data.
-     * @return all the supported representation descriptors in a session which
-     *         have the specified key/value pair in their custom data.
+     *            the value associated to the key in the representation descriptors's custom data.
+     * @return all the supported representation descriptors in a session which have the specified key/value pair in
+     *         their custom data.
      */
     protected Collection<DRepresentationDescriptor> getRepresentationDescriptors(Session session, String key, EObject value) {
         Collection<DRepresentationDescriptor> reps = Lists.newArrayList();
@@ -353,17 +345,15 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     }
 
     /**
-     * Return all RepresentationDescription available in the specified viewpoint
-     * the user might use to create a new DRepresentation.
+     * Return all RepresentationDescription available in the specified viewpoint the user might use to create a new
+     * DRepresentation.
      * 
      * @param vp
-     *            the viewpoint to look into for candidate
-     *            {@link RepresentationDescription}.
+     *            the viewpoint to look into for candidate {@link RepresentationDescription}.
      * @param semantic
-     *            the semantic element on which the user wants to create a
-     *            representation.
-     * @return the {@link RepresentationDescription}s defined in the specified
-     *         viewpoint which can apply to the semantic element.
+     *            the semantic element on which the user wants to create a representation.
+     * @return the {@link RepresentationDescription}s defined in the specified viewpoint which can apply to the semantic
+     *         element.
      */
     protected Iterable<RepresentationDescription> getAvailableRepresentationDescriptions(Viewpoint vp, final EObject semantic) {
         Iterable<RepresentationDescription> candidates = new ViewpointQuery(vp).getAllRepresentationDescriptions();
@@ -381,11 +371,9 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      * @param semantic
      *            the evaluation context
      * @param condition
-     *            the precondition to evaluate, may be <code>null</code> or
-     *            empty.
-     * @return <code>true</code> if the semantic element matches the
-     *         precondition or there is no precondition, <code>false</code>
-     *         otherwise.
+     *            the precondition to evaluate, may be <code>null</code> or empty.
+     * @return <code>true</code> if the semantic element matches the precondition or there is no precondition,
+     *         <code>false</code> otherwise.
      */
     protected boolean checkPrecondition(EObject semantic, String condition) {
         boolean canCreate;
@@ -405,8 +393,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     }
 
     /**
-     * Checks that the semantic element is compatible with the specified domain
-     * class.
+     * Checks that the semantic element is compatible with the specified domain class.
      * 
      * @param accessor
      *            the model accessor to use.
@@ -414,37 +401,33 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      *            the semantic element to check.
      * @param domainClass
      *            the name (simple or qualified) of the domain class to check.
-     * @return <code>true</code> if the semantic element is considered an
-     *         instance of of the designated domain class by the accessor.
+     * @return <code>true</code> if the semantic element is considered an instance of of the designated domain class by
+     *         the accessor.
      */
     protected boolean checkDomainClass(ModelAccessor accessor, EObject semantic, String domainClass) {
         return !StringUtil.isEmpty(domainClass) && accessor.eInstanceOf(semantic, domainClass);
     }
 
     /**
-     * Checks that we can create new elements inside the specified semantic
-     * element.
+     * Checks that we can create new elements inside the specified semantic element.
      * <p>
-     * When a representation is created we execute an initial operation if
-     * specified in the VSM. This operation is typically used to initialize the
-     * semantic model, so here we also make sure than "filling" the semantic
-     * model is authorized.
+     * When a representation is created we execute an initial operation if specified in the VSM. This operation is
+     * typically used to initialize the semantic model, so here we also make sure than "filling" the semantic model is
+     * authorized.
      * 
      * @param accessor
      *            the model accessor to use for the checks.
      * @param semantic
      *            the semantic element to check.
-     * @return <code>true</code> if we can create new elements inside the
-     *         specified element.
+     * @return <code>true</code> if we can create new elements inside the specified element.
      */
     protected boolean checkSemanticElementCanBeFilled(ModelAccessor accessor, EObject semantic) {
         return accessor.getPermissionAuthority().canCreateIn(semantic);
     }
 
     /**
-     * Create a new {@link Representation} for the specified semantic element
-     * and all its children for all {@link RepresentationDescription} of the
-     * specified type of the specified {@link Viewpoint}.
+     * Create a new {@link Representation} for the specified semantic element and all its children for all
+     * {@link RepresentationDescription} of the specified type of the specified {@link Viewpoint}.
      * 
      * @param semantic
      *            the specified semantic element
@@ -458,9 +441,8 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     }
 
     /**
-     * Create a new {@link Representation} for the specified semantic element
-     * and all its children for all {@link RepresentationDescription} of the
-     * specified type of the specified {@link Viewpoint}.
+     * Create a new {@link Representation} for the specified semantic element and all its children for all
+     * {@link RepresentationDescription} of the specified type of the specified {@link Viewpoint}.
      * 
      * @param semantic
      *            the specified semantic element
@@ -469,8 +451,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      * @param representationDescriptionType
      *            the specified {@link RepresentationDescription} type
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of
-     *            representations initialization
+     *            a {@link IProgressMonitor} to show progression of representations initialization
      */
     protected void initRepresentations(EObject semantic, Viewpoint vp, Class<? extends RepresentationDescription> representationDescriptionType, IProgressMonitor monitor) {
         Collection<? extends RepresentationDescription> descriptions = collectRepresentationDescriptions(vp, representationDescriptionType);
@@ -478,21 +459,17 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     }
 
     /**
-     * Returns all the {@link RepresentationDescription} contained in the given
-     * viewpoint of the given Representation Description type (e.g.
-     * DiagramDescription.class).
+     * Returns all the {@link RepresentationDescription} contained in the given viewpoint of the given Representation
+     * Description type (e.g. DiagramDescription.class).
      * 
      * @param <T>
      *            the expected representation type (e.g. DiagramDescription)
      * @param viewpoint
-     *            the viewpoint in which representation descriptions should be
-     *            collected
+     *            the viewpoint in which representation descriptions should be collected
      * @param expectedRepresentationDescriptionType
-     *            the expected representation type (e.g.
-     *            DiagramDescription.class)
-     * @return all the {@link RepresentationDescription} contained in the given
-     *         viewpoint of the given Representation Description type (e.g.
-     *         DiagramDescription.class)
+     *            the expected representation type (e.g. DiagramDescription.class)
+     * @return all the {@link RepresentationDescription} contained in the given viewpoint of the given Representation
+     *         Description type (e.g. DiagramDescription.class)
      */
     private <T extends RepresentationDescription> Collection<T> collectRepresentationDescriptions(final Viewpoint viewpoint, Class<T> expectedRepresentationDescriptionType) {
         final Collection<T> descriptions = new ArrayList<T>();
@@ -538,45 +515,38 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     }
 
     /**
-     * Initialize a new {@link Representation} from a specified
-     * {@link RepresentationDescription} on a specified semantic element.
+     * Initialize a new {@link Representation} from a specified {@link RepresentationDescription} on a specified
+     * semantic element.
      * 
      * @param representationDescription
      *            the specified {@link RepresentationDescription}
      * @param semanticElement
      *            the specified semantic element
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of
-     *            representations initialization
+     *            a {@link IProgressMonitor} to show progression of representations initialization
      * @param <T>
      *            the real sub type of {@link RepresentationDescription}
      */
     protected abstract <T extends RepresentationDescription> void initRepresentationForElement(T representationDescription, EObject semanticElement, IProgressMonitor monitor);
 
     /**
-     * Indicates whether a representation should be initialized on the given
-     * semantic element, according to the given
+     * Indicates whether a representation should be initialized on the given semantic element, according to the given
      * {@link RepresentationDescription}.
      * 
      * @param semanticElement
-     *            the semantic element on which representations should be
-     *            initialized
+     *            the semantic element on which representations should be initialized
      * @param description
-     *            the description of the candidate representation for an
-     *            initialization
+     *            the description of the candidate representation for an initialization
      * @param domainClass
-     *            the expected domain class for this
-     *            {@link RepresentationDescription}
-     * @return true if a representation should be initialized on the given
-     *         semantic element, false if :
+     *            the expected domain class for this {@link RepresentationDescription}
+     * @return true if a representation should be initialized on the given semantic element, false if :
      *         <ul>
-     *         <li>the {@link RepresentationDescription}'s Domain Class does not
-     *         match the given semantic element's type</li>
-     *         <li>the {@link RepresentationDescription} does not require
-     *         initialization (see
+     *         <li>the {@link RepresentationDescription}'s Domain Class does not match the given semantic element's
+     *         type</li>
+     *         <li>the {@link RepresentationDescription} does not require initialization (see
      *         {@link RepresentationDescription#isInitialisation()})</li>
-     *         <li>a representation with the {@link RepresentationDescription}
-     *         name and on the same semantic element already exists</li>
+     *         <li>a representation with the {@link RepresentationDescription} name and on the same semantic element
+     *         already exists</li>
      *         </ul>
      */
     protected boolean shouldInitializeRepresentation(final EObject semanticElement, RepresentationDescription description, String domainClass) {

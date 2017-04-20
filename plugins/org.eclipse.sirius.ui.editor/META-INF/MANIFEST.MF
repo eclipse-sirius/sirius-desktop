@@ -40,5 +40,4 @@ Bundle-Activator: org.eclipse.sirius.ui.editor.SessionEditorPlugin$Implementatio
 Export-Package: org.eclipse.sirius.ui.editor;version="5.0.0",
  org.eclipse.sirius.ui.editor.internal.graphicalcomponents;version="5.0.0";x-internal:=true,
  org.eclipse.sirius.ui.editor.internal.pages;version="5.0.0";x-internal:=true,
- org.eclipse.sirius.ui.editor.internal.preferences;version="5.0.0";x-internal:=true,
- org.eclipse.sirius.ui.editor.provider;version="5.0.0"
+ org.eclipse.sirius.ui.editor.internal.preferences;version="5.0.0";x-internal:=true

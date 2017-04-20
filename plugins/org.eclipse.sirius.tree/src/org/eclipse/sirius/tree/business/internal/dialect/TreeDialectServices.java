@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,8 +62,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import com.google.common.collect.Sets;
 
 /**
- * The {@link AbstractRepresentationDialectServices} implementation for the Tree
- * dialect.
+ * The {@link AbstractRepresentationDialectServices} implementation for the Tree dialect.
  * 
  * @author pcdavid
  */
@@ -92,13 +91,11 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
             final Session session = SessionManager.INSTANCE.getSession(semantic);
             final EditingDomain domain = session.getTransactionalEditingDomain();
             /*
-             * Let's check if the description resource is in the session
-             * resource set.
+             * Let's check if the description resource is in the session resource set.
              */
             /*
-             * FIXME we should certainly not remove from the previous resource
-             * set. The viewpoint registry for instance has is own resource set
-             * !
+             * FIXME we should certainly not remove from the previous resource set. The viewpoint registry for instance
+             * has is own resource set !
              */
             final Resource descriptionRes = description.eResource();
             if (!domain.getResourceSet().getResources().contains(descriptionRes)) {
@@ -173,12 +170,10 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     }
 
     /**
-     * Initializes the Representation described by the given description,
-     * according the the given target value.
+     * Initializes the Representation described by the given description, according the the given target value.
      * 
      * @param description
-     *            the RepresentationDescription describing the representation to
-     *            initialize
+     *            the RepresentationDescription describing the representation to initialize
      * @param target
      *            the semantic target to use for initialize this representation
      */
@@ -213,19 +208,20 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
         InterpreterRegistry.prepareImportsFromSession(interpreter, session);
         ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(tree.getTarget());
 
-        DTreeUserInteraction interaction = new DTreeUserInteraction(tree, new TreeRefreshContext(accessor, session.getInterpreter(), session.getSemanticResources(), session.getTransactionalEditingDomain()));
+        DTreeUserInteraction interaction = new DTreeUserInteraction(tree,
+                new TreeRefreshContext(accessor, session.getInterpreter(), session.getSemanticResources(), session.getTransactionalEditingDomain()));
         interaction.refreshContent(fullRefresh, new SubProgressMonitor(monitor, 1));
 
     }
 
     @Override
-    public boolean canCreate(EObject semantic, RepresentationDescription desc) {
+    public boolean canCreate(EObject semantic, RepresentationDescription desc, boolean checkSelectedViewpoint) {
         boolean result = false;
         if (semantic != null && isSupported(desc)) {
             Session session = new EObjectQuery(semantic).getSession();
             // If the semantic doesn't belong to a session we don't check
             // viewpoint selection but only others things like domainClass
-            if (session == null || isRelatedViewpointSelected(session, desc)) {
+            if (session == null || (checkSelectedViewpoint && isRelatedViewpointSelected(session, desc)) || !checkSelectedViewpoint) {
                 TreeDescription treeDesc = (TreeDescription) desc;
                 ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semantic);
                 if (accessor != null) {
@@ -317,4 +313,5 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     private boolean isContainedWithinCurrentTree(DTreeElement treeElement, DTree tree) {
         return tree == new DRepresentationElementQuery(treeElement).getParentRepresentation();
     }
+
 }
