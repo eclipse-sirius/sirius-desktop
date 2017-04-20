@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Environment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/tool/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/tool http://www.eclipse.org/sirius/description/tool/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description/tool">
-  <defaultTools xsi:type="tool:ToolGroup" name="Pinning">
-    <tools xsi:type="tool_1:ToolDescription" documentation="Mark element as pinned" name="Pin" iconPath="/org.eclipse.sirius.diagram.ui/icons/pin.gif">
+  <defaultTools xsi:type="tool:ToolGroup" name="Pinning" label="%diagram.toolsection.pinning">
+    <tools xsi:type="tool_1:ToolDescription" documentation="%diagram.tool.pin.documentation" name="Pin" label="%diagram.tool.pin" iconPath="/org.eclipse.sirius.diagram.ui/icons/pin.gif">
       <element name="element"/>
       <elementView name="elementView"/>
       <initialOperation>
@@ -10,7 +10,7 @@
         </firstModelOperations>
       </initialOperation>
     </tools>
-    <tools xsi:type="tool_1:ToolDescription" documentation="Mark element as un-pinned" name="Unpin" iconPath="/org.eclipse.sirius.diagram.ui/icons/unpin.gif">
+    <tools xsi:type="tool_1:ToolDescription" documentation="%diagram.tool.unpin.documentation" name="Unpin" label="%diagram.tool.unpin" iconPath="/org.eclipse.sirius.diagram.ui/icons/unpin.gif">
       <element name="element"/>
       <elementView name="elementView"/>
       <initialOperation>
