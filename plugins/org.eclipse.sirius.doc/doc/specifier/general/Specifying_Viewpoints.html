@@ -2,6 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Specifying_Viewpoints</title>
+		<link type="text/css" rel="stylesheet" href="../../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../../resources/custom.css"/>
 	</head>
 	<body>
 		<h1 id="SpecifyingViewpoints">Specifying Viewpoints</h1>
@@ -157,7 +160,7 @@
 			<code>description</code> folder. If you want to place them in a different location, make sure to add this location into the plug-in&#8217;s 
 			<code>build.properties</code> so that it is included in the deployed version.
 		</p>
-		<p>The VSM name is given according to the project name defined when using the previous wizard. If the project name is suffixed with &#171;design&#187;, the VSM name is provided by the last word before this suffix. Otherwise, the VSM name is given by the last word of the project name.</p>
+		<p>The VSM name is given according to the project name defined when using the previous wizard. If the project name is suffixed with &#8220;design&#8221;, the VSM name is provided by the last word before this suffix. Otherwise, the VSM name is given by the last word of the project name.</p>
 		<p>Other than that, the project is a normal Java plug-in project. You can add 
 			<a href="Writing_Queries.html#service_methods">service classes</a> into it if the query language you use support it, and any other Java code, including Eclipse views, actions, etc. 
 		</p>
@@ -321,7 +324,7 @@
 		<p>
 			<img border="0" src="images/interpreted_expressions.png"/>
 		</p>
-		<p>Also, by clicking on the button next to the text field, you can open a dialog with a bigger text area (providing auto-completion too) to type your expression more comfortably. Note that you can add line feeds or tabulations if you want, since they are removed when clicking on the &#171;OK&#187; button.</p>
+		<p>Also, by clicking on the button next to the text field, you can open a dialog with a bigger text area (providing auto-completion too) to type your expression more comfortably. Note that you can add line feeds or tabulations if you want, since they are removed when clicking on the &#8220;OK&#8221; button.</p>
 		<p>
 			<img border="0" src="images/textAreaDialog.png"/>
 		</p>
@@ -455,7 +458,7 @@
 		<p>To validate your VSM, open your 
 			<code>odesign</code> file, right-click on the top-level 
 			<em>Group</em> element and select 
-			<em>Viewpoint specification Editor &gt; Validate</em>. A dialog Box will appear and indicate if the validation succeeded. If not, it will give you details about the detected problems (click on the &#8249;details&#8250; button of the dialog box). If problems are detected, they will also be added to the Eclipse 
+			<em>Viewpoint specification Editor &gt; Validate</em>. A dialog Box will appear and indicate if the validation succeeded. If not, it will give you details about the detected problems (click on the &#8216;details&#8217; button of the dialog box). If problems are detected, they will also be added to the Eclipse 
 			<em>Problems</em> view. Double-clicking on one of these problems will select the concerned element in the 
 			<a href="../../Glossary.html#VSM">
 				<em>Viewpoint Specification Model</em>
@@ -477,7 +480,7 @@
 		</p>
 		<p>Keep both your representations and the VSM that define them open at the same time. Whenever you change some definition or add new elements into your VSM, simply save it. Sirius will automatically detect the change, reload the new definition and apply it to your existing representations. This way you can develop your representations iteratively, for example starting from an empty diagram and adding more elements, styles and tools while and testing them immediately.</p>
 		<p><div style="display: none">
-			<br/>  TODO Add a screenshot with both a VSM (on the left) and the corresponding diagram (on the right) opened at the same time. Make sure the &#171;Model Explorer&#187; is also visible to show both the VSP and the Modeling project they correspond to.
+			<br/>  TODO Add a screenshot with both a VSM (on the left) and the corresponding diagram (on the right) opened at the same time. Make sure the &#8220;Model Explorer&#8221; is also visible to show both the VSP and the Modeling project they correspond to.
 			<br/></div>
 		</p>
 		<p>Note that Sirius does its best to take into account any change in the VSM, even for existing and opened representations. Sometimes, if the changes are too complex or in some corner cases not yet supported, you may need to close and reopen your representation, or in extreme case delete it and create a new one, in order to take the VSM changes into account properly.</p>

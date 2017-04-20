@@ -14,6 +14,10 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+h4. Changes in @org.eclipse.sirius.common.ui@ 
+
+* <span class="label label-danger">Removed</span>  The @org.eclipse.sirius.common.ui.tools.api.dialog.FeatureEditorDialog@ class has been removed; use the @org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog@ equivalent provided by EMF directly instead.
+
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span> Constants @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.SPECIFIC_STYLES@ & @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.VERTICAL_ALIGNMENT@ have been added to retrieve the initial label alignment of Notes from the Palette (see "user-visible changes":Release_Notes.html#UserVisibleChanges ). Currently the vertical alignment can not be changed (potential new feature later).

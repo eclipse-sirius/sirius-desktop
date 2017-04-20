@@ -25,11 +25,11 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
-import org.eclipse.sirius.common.ui.tools.api.dialog.FeatureEditorDialog;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider;
 import org.eclipse.swt.SWT;
@@ -242,7 +242,6 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
     protected List<?> getChoiceOfValues(List<?> currentValues) {
         List<?> list = Collections.emptyList();
         Collection<?> choiceOfValues = getIItemPropertyDescriptor().getChoiceOfValues(eObject);
-        choiceOfValues.removeAll(currentValues);
         if (choiceOfValues != null) {
             list = new ArrayList<Object>(choiceOfValues);
         }
