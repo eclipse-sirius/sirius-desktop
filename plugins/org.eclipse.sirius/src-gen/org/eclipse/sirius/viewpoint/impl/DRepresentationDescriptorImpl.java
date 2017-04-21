@@ -262,8 +262,12 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
     @Override
     public void setRepresentation(DRepresentation newRepresentation) {
         Optional.ofNullable(newRepresentation).ifPresent(rep -> Assert.isNotNull(rep.eResource()));
+        DRepresentation oldRepresentation = getRepresentation();
         DRepresentationDescriptorToDRepresentationLinkManager pathManager = new DRepresentationDescriptorToDRepresentationLinkManager(this);
         pathManager.setRepresentation(newRepresentation);
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REPRESENTATION, oldRepresentation, newRepresentation));
+        }
     }
 
     /**
