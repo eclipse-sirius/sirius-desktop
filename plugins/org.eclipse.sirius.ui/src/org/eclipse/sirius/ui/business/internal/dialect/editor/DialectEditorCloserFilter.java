@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,9 +11,12 @@
 package org.eclipse.sirius.ui.business.internal.dialect.editor;
 
 import java.util.Collection;
+import java.util.Optional;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -23,8 +26,8 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * A {@link NotificationFilter} to be notifier of deletion of the current
- * {@link DRepresentationDescriptor} target if it is a DSemanticDecorator.
+ * A {@link NotificationFilter} to be notifier of deletion of the current {@link DRepresentationDescriptor} target if it
+ * is a DSemanticDecorator.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -36,16 +39,34 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
      * Default constructor.
      * 
      * @param dRepresentationDescriptor
-     *            the {@link DRepresentationDescriptor} on which to be notifier
-     *            of target deletion
+     *            the {@link DRepresentationDescriptor} on which to be notifier of target deletion
      */
     public DialectEditorCloserFilter(DRepresentationDescriptor dRepresentationDescriptor) {
+        Assert.isNotNull(dRepresentationDescriptor);
         this.dRepDescriptor = dRepresentationDescriptor;
     }
 
     @Override
     public boolean matches(Notification notification) {
         return !notification.isTouch() && (isTargetUnset(notification) || isRepresentationDeletion(notification) || isTargetDetachment(notification));
+    }
+
+    /**
+     * In some cases (external resource modification for instance) the dRepDescriptor can be "proxyfied". This method
+     * try to resolve this proxy using the notifier but without resolving any additional resource. This is necessary
+     * since the {@link DRepresentationDescriptor#repPath} introduction: the {@link DRepresentationDescriptor} needs to
+     * be attached to a resource to resolve the repPath URI.
+     * 
+     * @param notification
+     *            the current {@link Notification}.
+     */
+    private void resolveDRepDescriptorProxy(Notification notification) {
+        if (dRepDescriptor.eIsProxy()) {
+            dRepDescriptor = Optional.ofNullable(notification.getNotifier()).filter(EObject.class::isInstance).map(EObject.class::cast).map(eObject -> eObject.eResource())
+                    .map(eResource -> eResource.getResourceSet()).map(resourceSet -> resourceSet.getEObject(EcoreUtil.getURI(dRepDescriptor), false))
+                    .filter(DRepresentationDescriptor.class::isInstance).map(DRepresentationDescriptor.class::cast).orElse(dRepDescriptor);
+        }
+
     }
 
     private boolean isTargetUnset(Notification notification) {
@@ -55,6 +76,7 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
 
     private boolean isRepresentationDeletion(Notification notification) {
         boolean representationDeleted = false;
+        resolveDRepDescriptorProxy(notification);
         if (notification.getFeature() == ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS && wasInOldValue(notification, dRepDescriptor)) {
             // If the representation descriptor eContainer is still a DView,
             // this remove notification does not indicate a delete but a move.
@@ -90,6 +112,7 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
     private boolean isTargetDetachment(Notification notification) {
         boolean detachedTarget = false;
         if (DanglingRefRemovalTrigger.IS_DETACHMENT.apply(notification)) {
+            resolveDRepDescriptorProxy(notification);
             DRepresentation representation = dRepDescriptor.getRepresentation();
             if (representation instanceof DSemanticDecorator) {
                 EObject target = ((DSemanticDecorator) dRepDescriptor.getRepresentation()).getTarget();
