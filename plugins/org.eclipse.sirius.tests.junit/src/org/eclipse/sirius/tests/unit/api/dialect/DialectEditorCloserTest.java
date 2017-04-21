@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,7 +92,6 @@ public class DialectEditorCloserTest extends SiriusTestCase {
         DRepresentationDescriptor repDesc = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
         repDesc.setTarget(target);
         final DTree dTree = TreeFactory.eINSTANCE.createDTree();
-        repDesc.setRepresentation(dTree);
         dTree.setTarget(target);
         dView.getOwnedRepresentationDescriptors().add(repDesc);
         dView.setViewpoint(viewpoint);
@@ -101,6 +100,7 @@ public class DialectEditorCloserTest extends SiriusTestCase {
             protected void doExecute() {
                 dAnalysis.getOwnedViews().add(dView);
                 dAnalysis.eResource().getContents().add(dTree);
+                repDesc.setRepresentation(dTree);
             }
         };
         commandStack.execute(cmd);
