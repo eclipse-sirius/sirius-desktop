@@ -103,6 +103,7 @@ import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
+import org.eclipse.sirius.properties.WizardModelOperation;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.Extension;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
@@ -1656,6 +1657,17 @@ public class PropertiesSwitch<T> {
             }
             return result;
         }
+        case PropertiesPackage.WIZARD_MODEL_OPERATION: {
+            WizardModelOperation wizardModelOperation = (WizardModelOperation) theEObject;
+            T result = caseWizardModelOperation(wizardModelOperation);
+            if (result == null) {
+                result = caseModelOperation(wizardModelOperation);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         case PropertiesPackage.EDIT_SUPPORT: {
             EditSupport editSupport = (EditSupport) theEObject;
             T result = caseEditSupport(editSupport);
@@ -2224,14 +2236,14 @@ public class PropertiesSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Abstract Dynamic Mapping For
-     * Description</em>'. <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
-     * terminate the switch. <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Abstract Dynamic Mapping For Description</em>'. <!-- begin-user-doc --> This implementation returns null;
+     * returning a non-null result will terminate the switch. <!-- end-user-doc -->
      *
      * @param object
      *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Abstract Dynamic Mapping For
-     *         Description</em>'.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Abstract Dynamic Mapping For Description</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -2255,14 +2267,14 @@ public class PropertiesSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Dynamic Mapping For Override
-     * Description</em>'. <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
-     * terminate the switch. <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Dynamic Mapping For Override Description</em>'. <!-- begin-user-doc --> This implementation returns null;
+     * returning a non-null result will terminate the switch. <!-- end-user-doc -->
      *
      * @param object
      *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Dynamic Mapping For Override
-     *         Description</em>'.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Dynamic Mapping For Override Description</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -2271,14 +2283,14 @@ public class PropertiesSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Abstract Dynamic Mapping If
-     * Description</em>'. <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
-     * terminate the switch. <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Abstract Dynamic Mapping If Description</em>
+     * '. <!-- begin-user-doc --> This implementation returns null; returning a non-null result will terminate the
+     * switch. <!-- end-user-doc -->
      *
      * @param object
      *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Abstract Dynamic Mapping If
-     *         Description</em>'.
+     * @return the result of interpreting the object as an instance of '<em>Abstract Dynamic Mapping If Description</em>
+     *         '.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -2302,14 +2314,14 @@ public class PropertiesSwitch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Dynamic Mapping If Override
-     * Description</em>'. <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
-     * terminate the switch. <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Dynamic Mapping If Override Description</em>
+     * '. <!-- begin-user-doc --> This implementation returns null; returning a non-null result will terminate the
+     * switch. <!-- end-user-doc -->
      *
      * @param object
      *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Dynamic Mapping If Override
-     *         Description</em>'.
+     * @return the result of interpreting the object as an instance of '<em>Dynamic Mapping If Override Description</em>
+     *         '.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -2955,6 +2967,21 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseDialogButton(DialogButton object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Wizard Model Operation</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Wizard Model Operation</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseWizardModelOperation(WizardModelOperation object) {
         return null;
     }
 

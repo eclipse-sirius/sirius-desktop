@@ -24,10 +24,10 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl#getNumberOfColumns <em>Number Of
- * Columns</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl#isMakeColumnsWithEqualWidth <em>Make Columns
- * With Equal Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl#getNumberOfColumns <em>Number Of Columns</em>
+ * }</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl#isMakeColumnsWithEqualWidth
+ * <em>Make Columns With Equal Width</em>}</li>
  * </ul>
  *
  * @generated

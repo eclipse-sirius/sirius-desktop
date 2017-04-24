@@ -20,7 +20,8 @@ package org.eclipse.sirius.properties;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.ContainerOverrideDescription#getOverrides <em>Overrides</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.ContainerOverrideDescription#getFilterControlsFromOverriddenContainerExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.ContainerOverrideDescription#getFilterControlsFromOverriddenContainerExpression
  * <em>Filter Controls From Overridden Container Expression</em>}</li>
  * </ul>
  *
@@ -74,8 +75,8 @@ public interface ContainerOverrideDescription extends AbstractContainerDescripti
     String getFilterControlsFromOverriddenContainerExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.ContainerOverrideDescription#getFilterControlsFromOverriddenContainerExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.ContainerOverrideDescription#getFilterControlsFromOverriddenContainerExpression
      * <em>Filter Controls From Overridden Container Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

@@ -27,7 +27,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.CheckboxOverrideDescriptionImpl#getOverrides <em>Overrides</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.CheckboxOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenCheckboxExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.CheckboxOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenCheckboxExpression
  * <em>Filter Conditional Styles From Overridden Checkbox Expression</em>}</li>
  * </ul>
  *
@@ -45,8 +46,8 @@ public class CheckboxOverrideDescriptionImpl extends AbstractCheckboxDescription
     protected CheckboxDescription overrides;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenCheckboxExpression() <em>Filter
-     * Conditional Styles From Overridden Checkbox Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenCheckboxExpression()
+     * <em>Filter Conditional Styles From Overridden Checkbox Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenCheckboxExpression()
@@ -56,8 +57,8 @@ public class CheckboxOverrideDescriptionImpl extends AbstractCheckboxDescription
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_OVERRIDDEN_CHECKBOX_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenCheckboxExpression() <em>Filter
-     * Conditional Styles From Overridden Checkbox Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenCheckboxExpression()
+     * <em>Filter Conditional Styles From Overridden Checkbox Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenCheckboxExpression()

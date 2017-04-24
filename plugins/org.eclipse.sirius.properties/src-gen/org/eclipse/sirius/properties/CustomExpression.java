@@ -47,8 +47,8 @@ public interface CustomExpression extends IdentifiedElement, DocumentedElement {
     String getCustomExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.CustomExpression#getCustomExpression <em>Custom
-     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.CustomExpression#getCustomExpression
+     * <em>Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Custom Expression</em>' attribute.

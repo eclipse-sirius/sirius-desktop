@@ -597,6 +597,15 @@ public class PropertiesItemProviderAdapterFactorySpec extends PropertiesItemProv
     }
 
     @Override
+    public Adapter createWizardModelOperationAdapter() {
+        if (wizardModelOperationItemProvider == null) {
+            wizardModelOperationItemProvider = new WizardModelOperationItemProviderSpec(this);
+        }
+
+        return wizardModelOperationItemProvider;
+    }
+
+    @Override
     public Adapter createEditSupportAdapter() {
         if (editSupportItemProvider == null) {
             editSupportItemProvider = new EditSupportItemProviderSpec(this);

@@ -27,9 +27,11 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.LabelOverrideDescriptionImpl#getOverrides <em>Overrides</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.LabelOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenLabelExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.LabelOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenLabelExpression
  * <em>Filter Conditional Styles From Overridden Label Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.LabelOverrideDescriptionImpl#getFilterActionsFromOverriddenLabelExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.LabelOverrideDescriptionImpl#getFilterActionsFromOverriddenLabelExpression
  * <em>Filter Actions From Overridden Label Expression</em>}</li>
  * </ul>
  *
@@ -58,8 +60,9 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_OVERRIDDEN_LABEL_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenLabelExpression() <em>Filter Conditional
-     * Styles From Overridden Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenLabelExpression()
+     * <em>Filter Conditional Styles From Overridden Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenLabelExpression()
      * @generated
@@ -68,8 +71,9 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
     protected String filterConditionalStylesFromOverriddenLabelExpression = LabelOverrideDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_OVERRIDDEN_LABEL_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFilterActionsFromOverriddenLabelExpression() <em>Filter Actions From
-     * Overridden Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterActionsFromOverriddenLabelExpression()
+     * <em>Filter Actions From Overridden Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getFilterActionsFromOverriddenLabelExpression()
      * @generated
@@ -78,8 +82,9 @@ public class LabelOverrideDescriptionImpl extends AbstractLabelDescriptionImpl i
     protected static final String FILTER_ACTIONS_FROM_OVERRIDDEN_LABEL_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterActionsFromOverriddenLabelExpression() <em>Filter Actions From
-     * Overridden Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterActionsFromOverriddenLabelExpression()
+     * <em>Filter Actions From Overridden Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getFilterActionsFromOverriddenLabelExpression()
      * @generated

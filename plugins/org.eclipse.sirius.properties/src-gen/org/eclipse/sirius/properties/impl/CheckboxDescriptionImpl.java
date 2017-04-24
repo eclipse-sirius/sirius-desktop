@@ -36,21 +36,22 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getLabelExpression <em>Label
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getHelpExpression <em>Help
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getIsEnabledExpression <em>Is Enabled
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getValueExpression <em>Value
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getInitialOperation <em>Initial
- * Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getLabelExpression <em>Label Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getHelpExpression <em>Help Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getIsEnabledExpression
+ * <em>Is Enabled Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getValueExpression <em>Value Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getInitialOperation <em>Initial Operation</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getFilterConditionalStylesFromExtendedCheckboxExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getFilterConditionalStylesFromExtendedCheckboxExpression
  * <em>Filter Conditional Styles From Extended Checkbox Expression</em>}</li>
  * </ul>
  *

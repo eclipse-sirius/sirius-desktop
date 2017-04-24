@@ -36,15 +36,16 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getCustomExpressions <em>Custom
- * Expressions</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getCustomOperations <em>Custom
- * Operations</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getCustomExpressions
+ * <em>Custom Expressions</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getCustomOperations
+ * <em>Custom Operations</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getFilterConditionalStylesFromExtendedCustomExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.AbstractCustomDescriptionImpl#getFilterConditionalStylesFromExtendedCustomExpression
  * <em>Filter Conditional Styles From Extended Custom Expression</em>}</li>
  * </ul>
  *
@@ -102,8 +103,9 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
     protected CustomDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedCustomExpression() <em>Filter Conditional
-     * Styles From Extended Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedCustomExpression()
+     * <em>Filter Conditional Styles From Extended Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedCustomExpression()
      * @generated
@@ -112,8 +114,9 @@ public abstract class AbstractCustomDescriptionImpl extends AbstractWidgetDescri
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_CUSTOM_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedCustomExpression() <em>Filter Conditional
-     * Styles From Extended Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedCustomExpression()
+     * <em>Filter Conditional Styles From Extended Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedCustomExpression()
      * @generated

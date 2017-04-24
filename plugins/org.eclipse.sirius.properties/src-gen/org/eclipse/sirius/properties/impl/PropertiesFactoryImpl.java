@@ -87,6 +87,7 @@ import org.eclipse.sirius.properties.ToggleStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.WidgetStyle;
+import org.eclipse.sirius.properties.WizardModelOperation;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
@@ -256,6 +257,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createDialogModelOperation();
         case PropertiesPackage.DIALOG_BUTTON:
             return createDialogButton();
+        case PropertiesPackage.WIZARD_MODEL_OPERATION:
+            return createWizardModelOperation();
         case PropertiesPackage.EDIT_SUPPORT:
             return createEditSupport();
         default:
@@ -1003,6 +1006,17 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public DialogButton createDialogButton() {
         DialogButtonImpl dialogButton = new DialogButtonImpl();
         return dialogButton;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public WizardModelOperation createWizardModelOperation() {
+        WizardModelOperationImpl wizardModelOperation = new WizardModelOperationImpl();
+        return wizardModelOperation;
     }
 
     /**

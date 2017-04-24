@@ -23,18 +23,19 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.AbstractRadioDescription#getValueExpression <em>Value Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractRadioDescription#getInitialOperation <em>Initial
- * Operation</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractRadioDescription#getCandidatesExpression <em>Candidates
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractRadioDescription#getCandidateDisplayExpression <em>Candidate Display
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractRadioDescription#getInitialOperation <em>Initial Operation</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractRadioDescription#getCandidatesExpression
+ * <em>Candidates Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractRadioDescription#getCandidateDisplayExpression
+ * <em>Candidate Display Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractRadioDescription#getStyle <em>Style</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractRadioDescription#getNumberOfColumns <em>Number Of Columns</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractRadioDescription#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractRadioDescription#getConditionalStyles <em>Conditional Styles</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractRadioDescription#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractRadioDescription#getFilterConditionalStylesFromExtendedRadioExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.AbstractRadioDescription#getFilterConditionalStylesFromExtendedRadioExpression
  * <em>Filter Conditional Styles From Extended Radio Expression</em>}</li>
  * </ul>
  *
@@ -56,8 +57,8 @@ public interface AbstractRadioDescription extends AbstractWidgetDescription {
     String getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractRadioDescription#getValueExpression <em>Value
-     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractRadioDescription#getValueExpression
+     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
@@ -126,9 +127,9 @@ public interface AbstractRadioDescription extends AbstractWidgetDescription {
     String getCandidateDisplayExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractRadioDescription#getCandidateDisplayExpression <em>Candidate
-     * Display Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractRadioDescription#getCandidateDisplayExpression
+     * <em>Candidate Display Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Candidate Display Expression</em>' attribute.
@@ -221,8 +222,8 @@ public interface AbstractRadioDescription extends AbstractWidgetDescription {
     RadioDescription getExtends();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractRadioDescription#getExtends
-     * <em>Extends</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractRadioDescription#getExtends <em>Extends</em>}
+     * ' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
@@ -249,8 +250,8 @@ public interface AbstractRadioDescription extends AbstractWidgetDescription {
     String getFilterConditionalStylesFromExtendedRadioExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractRadioDescription#getFilterConditionalStylesFromExtendedRadioExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractRadioDescription#getFilterConditionalStylesFromExtendedRadioExpression
      * <em>Filter Conditional Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

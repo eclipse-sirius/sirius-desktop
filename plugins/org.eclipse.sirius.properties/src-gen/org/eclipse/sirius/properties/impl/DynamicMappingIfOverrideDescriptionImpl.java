@@ -26,8 +26,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingIfOverrideDescriptionImpl#getOverrides
- * <em>Overrides</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingIfOverrideDescriptionImpl#getOverrides <em>Overrides</em>
+ * }</li>
  * </ul>
  *
  * @generated

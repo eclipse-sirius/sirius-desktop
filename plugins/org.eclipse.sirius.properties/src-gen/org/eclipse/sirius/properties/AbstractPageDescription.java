@@ -25,15 +25,15 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getLabelExpression <em>Label Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getDomainClass <em>Domain Class</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getSemanticCandidateExpression <em>Semantic
- * Candidate Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getPreconditionExpression <em>Precondition
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getSemanticCandidateExpression
+ * <em>Semantic Candidate Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getPreconditionExpression
+ * <em>Precondition Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getGroups <em>Groups</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getValidationSet <em>Validation Set</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getFilterGroupsFromExtendedPageExpression <em>Filter
- * Groups From Extended Page Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getFilterGroupsFromExtendedPageExpression
+ * <em>Filter Groups From Extended Page Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractPageDescription#getFilterValidationRulesFromExtendedPageExpression
  * <em>Filter Validation Rules From Extended Page Expression</em>}</li>
  * </ul>
@@ -60,8 +60,8 @@ public interface AbstractPageDescription extends IdentifiedElement, DocumentedEl
     String getLabelExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractPageDescription#getLabelExpression <em>Label
-     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractPageDescription#getLabelExpression
+     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
@@ -87,8 +87,8 @@ public interface AbstractPageDescription extends IdentifiedElement, DocumentedEl
     String getDomainClass();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractPageDescription#getDomainClass <em>Domain
-     * Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractPageDescription#getDomainClass
+     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
@@ -114,9 +114,9 @@ public interface AbstractPageDescription extends IdentifiedElement, DocumentedEl
     String getSemanticCandidateExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractPageDescription#getSemanticCandidateExpression <em>Semantic
-     * Candidate Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractPageDescription#getSemanticCandidateExpression
+     * <em>Semantic Candidate Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Semantic Candidate Expression</em>' attribute.
@@ -240,8 +240,8 @@ public interface AbstractPageDescription extends IdentifiedElement, DocumentedEl
     String getFilterGroupsFromExtendedPageExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractPageDescription#getFilterGroupsFromExtendedPageExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractPageDescription#getFilterGroupsFromExtendedPageExpression
      * <em>Filter Groups From Extended Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
@@ -269,8 +269,8 @@ public interface AbstractPageDescription extends IdentifiedElement, DocumentedEl
     String getFilterValidationRulesFromExtendedPageExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractPageDescription#getFilterValidationRulesFromExtendedPageExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractPageDescription#getFilterValidationRulesFromExtendedPageExpression
      * <em>Filter Validation Rules From Extended Page Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

@@ -20,7 +20,8 @@ package org.eclipse.sirius.properties;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.CheckboxOverrideDescription#getOverrides <em>Overrides</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.CheckboxOverrideDescription#getFilterConditionalStylesFromOverriddenCheckboxExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.CheckboxOverrideDescription#getFilterConditionalStylesFromOverriddenCheckboxExpression
  * <em>Filter Conditional Styles From Overridden Checkbox Expression</em>}</li>
  * </ul>
  *
@@ -74,8 +75,8 @@ public interface CheckboxOverrideDescription extends AbstractCheckboxDescription
     String getFilterConditionalStylesFromOverriddenCheckboxExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.CheckboxOverrideDescription#getFilterConditionalStylesFromOverriddenCheckboxExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.CheckboxOverrideDescription#getFilterConditionalStylesFromOverriddenCheckboxExpression
      * <em>Filter Conditional Styles From Overridden Checkbox Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

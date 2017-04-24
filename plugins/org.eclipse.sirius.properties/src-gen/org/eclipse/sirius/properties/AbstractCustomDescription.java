@@ -21,15 +21,16 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.AbstractCustomDescription#getCustomExpressions <em>Custom
- * Expressions</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractCustomDescription#getCustomOperations <em>Custom
- * Operations</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractCustomDescription#getCustomExpressions <em>Custom Expressions</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractCustomDescription#getCustomOperations <em>Custom Operations</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractCustomDescription#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractCustomDescription#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractCustomDescription#getConditionalStyles <em>Conditional Styles</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractCustomDescription#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractCustomDescription#getFilterConditionalStylesFromExtendedCustomExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.AbstractCustomDescription#getFilterConditionalStylesFromExtendedCustomExpression
  * <em>Filter Conditional Styles From Extended Custom Expression</em>}</li>
  * </ul>
  *
@@ -130,8 +131,8 @@ public interface AbstractCustomDescription extends AbstractWidgetDescription {
     CustomDescription getExtends();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractCustomDescription#getExtends
-     * <em>Extends</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractCustomDescription#getExtends <em>Extends</em>
+     * }' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
@@ -158,8 +159,8 @@ public interface AbstractCustomDescription extends AbstractWidgetDescription {
     String getFilterConditionalStylesFromExtendedCustomExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractCustomDescription#getFilterConditionalStylesFromExtendedCustomExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractCustomDescription#getFilterConditionalStylesFromExtendedCustomExpression
      * <em>Filter Conditional Styles From Extended Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

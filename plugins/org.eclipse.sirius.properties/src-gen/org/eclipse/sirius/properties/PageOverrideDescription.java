@@ -76,8 +76,8 @@ public interface PageOverrideDescription extends AbstractPageDescription, Abstra
     String getFilterGroupsFromOverriddenPageExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.PageOverrideDescription#getFilterGroupsFromOverriddenPageExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.PageOverrideDescription#getFilterGroupsFromOverriddenPageExpression
      * <em>Filter Groups From Overridden Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
@@ -105,8 +105,8 @@ public interface PageOverrideDescription extends AbstractPageDescription, Abstra
     String getFilterValidationRulesFromOverriddenPageExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.PageOverrideDescription#getFilterValidationRulesFromOverriddenPageExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.PageOverrideDescription#getFilterValidationRulesFromOverriddenPageExpression
      * <em>Filter Validation Rules From Overridden Page Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

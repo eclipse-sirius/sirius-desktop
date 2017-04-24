@@ -24,7 +24,8 @@ import org.eclipse.emf.common.util.EList;
  * <li>{@link org.eclipse.sirius.properties.AbstractContainerDescription#getControls <em>Controls</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractContainerDescription#getLayout <em>Layout</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractContainerDescription#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractContainerDescription#getFilterControlsFromExtendedContainerExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.AbstractContainerDescription#getFilterControlsFromExtendedContainerExpression
  * <em>Filter Controls From Extended Container Expression</em>}</li>
  * </ul>
  *
@@ -121,8 +122,8 @@ public interface AbstractContainerDescription extends AbstractControlDescription
     String getFilterControlsFromExtendedContainerExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractContainerDescription#getFilterControlsFromExtendedContainerExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractContainerDescription#getFilterControlsFromExtendedContainerExpression
      * <em>Filter Controls From Extended Container Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

@@ -37,7 +37,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractContainerDescriptionImpl#getControls <em>Controls</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractContainerDescriptionImpl#getLayout <em>Layout</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractContainerDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractContainerDescriptionImpl#getFilterControlsFromExtendedContainerExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.AbstractContainerDescriptionImpl#getFilterControlsFromExtendedContainerExpression
  * <em>Filter Controls From Extended Container Expression</em>}</li>
  * </ul>
  *
@@ -75,8 +76,9 @@ public abstract class AbstractContainerDescriptionImpl extends AbstractControlDe
     protected ContainerDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterControlsFromExtendedContainerExpression() <em>Filter Controls From
-     * Extended Container Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterControlsFromExtendedContainerExpression()
+     * <em>Filter Controls From Extended Container Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterControlsFromExtendedContainerExpression()
      * @generated
@@ -85,8 +87,9 @@ public abstract class AbstractContainerDescriptionImpl extends AbstractControlDe
     protected static final String FILTER_CONTROLS_FROM_EXTENDED_CONTAINER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterControlsFromExtendedContainerExpression() <em>Filter Controls From
-     * Extended Container Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterControlsFromExtendedContainerExpression()
+     * <em>Filter Controls From Extended Container Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterControlsFromExtendedContainerExpression()
      * @generated

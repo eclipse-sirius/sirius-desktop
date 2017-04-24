@@ -40,6 +40,9 @@ public final class Messages {
     @TranslatableMessage
     public static String DialogTask_label;
 
+    @TranslatableMessage
+    public static String WizardTask_label;
+
     // CHECKSTYLE:ON
 
     private Messages() {

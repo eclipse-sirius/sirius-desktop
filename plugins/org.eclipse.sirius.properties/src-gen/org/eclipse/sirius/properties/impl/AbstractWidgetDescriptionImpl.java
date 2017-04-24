@@ -24,12 +24,12 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractWidgetDescriptionImpl#getLabelExpression <em>Label
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractWidgetDescriptionImpl#getHelpExpression <em>Help
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractWidgetDescriptionImpl#getIsEnabledExpression <em>Is Enabled
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractWidgetDescriptionImpl#getLabelExpression
+ * <em>Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractWidgetDescriptionImpl#getHelpExpression
+ * <em>Help Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractWidgetDescriptionImpl#getIsEnabledExpression
+ * <em>Is Enabled Expression</em>}</li>
  * </ul>
  *
  * @generated

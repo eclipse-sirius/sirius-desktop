@@ -110,6 +110,7 @@ import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
+import org.eclipse.sirius.properties.WizardModelOperation;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -722,6 +723,13 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     private EClass dialogButtonEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass wizardModelOperationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3722,8 +3730,18 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EAttribute getDialogButton_IsEnabledExpression() {
+        return (EAttribute) dialogButtonEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EReference getDialogButton_InitialOperation() {
-        return (EReference) dialogButtonEClass.getEStructuralFeatures().get(1);
+        return (EReference) dialogButtonEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -3733,16 +3751,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      */
     @Override
     public EAttribute getDialogButton_Default() {
-        return (EAttribute) dialogButtonEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EAttribute getDialogButton_CloseDialogOnClick() {
         return (EAttribute) dialogButtonEClass.getEStructuralFeatures().get(3);
     }
 
@@ -3752,8 +3760,98 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getDialogButton_RollbackChangesOnClose() {
+    public EAttribute getDialogButton_CloseDialogOnClick() {
         return (EAttribute) dialogButtonEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getDialogButton_RollbackChangesOnClose() {
+        return (EAttribute) dialogButtonEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getWizardModelOperation() {
+        return wizardModelOperationEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getWizardModelOperation_WindowTitleExpression() {
+        return (EAttribute) wizardModelOperationEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getWizardModelOperation_TitleExpression() {
+        return (EAttribute) wizardModelOperationEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getWizardModelOperation_DescriptionExpression() {
+        return (EAttribute) wizardModelOperationEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getWizardModelOperation_IsPageCompleteExpression() {
+        return (EAttribute) wizardModelOperationEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getWizardModelOperation_Pages() {
+        return (EReference) wizardModelOperationEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getWizardModelOperation_Groups() {
+        return (EReference) wizardModelOperationEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getWizardModelOperation_InitialOperation() {
+        return (EReference) wizardModelOperationEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -4201,10 +4299,20 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         dialogButtonEClass = createEClass(PropertiesPackage.DIALOG_BUTTON);
         createEAttribute(dialogButtonEClass, PropertiesPackage.DIALOG_BUTTON__LABEL_EXPRESSION);
+        createEAttribute(dialogButtonEClass, PropertiesPackage.DIALOG_BUTTON__IS_ENABLED_EXPRESSION);
         createEReference(dialogButtonEClass, PropertiesPackage.DIALOG_BUTTON__INITIAL_OPERATION);
         createEAttribute(dialogButtonEClass, PropertiesPackage.DIALOG_BUTTON__DEFAULT);
         createEAttribute(dialogButtonEClass, PropertiesPackage.DIALOG_BUTTON__CLOSE_DIALOG_ON_CLICK);
         createEAttribute(dialogButtonEClass, PropertiesPackage.DIALOG_BUTTON__ROLLBACK_CHANGES_ON_CLOSE);
+
+        wizardModelOperationEClass = createEClass(PropertiesPackage.WIZARD_MODEL_OPERATION);
+        createEAttribute(wizardModelOperationEClass, PropertiesPackage.WIZARD_MODEL_OPERATION__WINDOW_TITLE_EXPRESSION);
+        createEAttribute(wizardModelOperationEClass, PropertiesPackage.WIZARD_MODEL_OPERATION__TITLE_EXPRESSION);
+        createEAttribute(wizardModelOperationEClass, PropertiesPackage.WIZARD_MODEL_OPERATION__DESCRIPTION_EXPRESSION);
+        createEAttribute(wizardModelOperationEClass, PropertiesPackage.WIZARD_MODEL_OPERATION__IS_PAGE_COMPLETE_EXPRESSION);
+        createEReference(wizardModelOperationEClass, PropertiesPackage.WIZARD_MODEL_OPERATION__PAGES);
+        createEReference(wizardModelOperationEClass, PropertiesPackage.WIZARD_MODEL_OPERATION__GROUPS);
+        createEReference(wizardModelOperationEClass, PropertiesPackage.WIZARD_MODEL_OPERATION__INITIAL_OPERATION);
 
         editSupportEClass = createEClass(PropertiesPackage.EDIT_SUPPORT);
 
@@ -4361,6 +4469,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         hyperlinkWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         groupConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         dialogModelOperationEClass.getESuperTypes().add(theToolPackage.getModelOperation());
+        wizardModelOperationEClass.getESuperTypes().add(theToolPackage.getModelOperation());
 
         // Initialize classes and features; add operations and parameters
         initEClass(viewExtensionDescriptionEClass, ViewExtensionDescription.class, "ViewExtensionDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
@@ -5194,6 +5303,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(dialogButtonEClass, DialogButton.class, "DialogButton", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getDialogButton_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, DialogButton.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDialogButton_IsEnabledExpression(), theDescriptionPackage.getInterpretedExpression(), "isEnabledExpression", null, 0, 1, DialogButton.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getDialogButton_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, DialogButton.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -5203,6 +5314,29 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getDialogButton_RollbackChangesOnClose(), theEcorePackage.getEBoolean(), "rollbackChangesOnClose", null, 0, 1, DialogButton.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(wizardModelOperationEClass, WizardModelOperation.class, "WizardModelOperation", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getWizardModelOperation_WindowTitleExpression(), theDescriptionPackage.getInterpretedExpression(), "windowTitleExpression", null, 0, 1, WizardModelOperation.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getWizardModelOperation_TitleExpression(), theDescriptionPackage.getInterpretedExpression(), "titleExpression", null, 0, 1, WizardModelOperation.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getWizardModelOperation_DescriptionExpression(), theDescriptionPackage.getInterpretedExpression(), "descriptionExpression", null, 0, 1, WizardModelOperation.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getWizardModelOperation_IsPageCompleteExpression(), theDescriptionPackage.getInterpretedExpression(), "isPageCompleteExpression", null, 0, 1, WizardModelOperation.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getWizardModelOperation_Pages(), this.getPageDescription(), null, "pages", null, 1, -1, WizardModelOperation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getWizardModelOperation_Groups(), this.getGroupDescription(), null, "groups", null, 0, -1, WizardModelOperation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getWizardModelOperation_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, WizardModelOperation.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(editSupportEClass, EditSupport.class, "EditSupport", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 

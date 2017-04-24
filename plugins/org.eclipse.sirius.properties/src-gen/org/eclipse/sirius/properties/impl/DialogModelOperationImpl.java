@@ -35,8 +35,8 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.ModelOperationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.DialogModelOperationImpl#getTitleExpression <em>Title
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DialogModelOperationImpl#getTitleExpression <em>Title Expression</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.DialogModelOperationImpl#getButtons <em>Buttons</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.DialogModelOperationImpl#getPage <em>Page</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.DialogModelOperationImpl#getGroups <em>Groups</em>}</li>

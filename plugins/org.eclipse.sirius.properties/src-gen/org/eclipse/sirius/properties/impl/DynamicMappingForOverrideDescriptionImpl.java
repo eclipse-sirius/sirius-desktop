@@ -28,7 +28,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForOverrideDescriptionImpl#getOverrides
  * <em>Overrides</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForOverrideDescriptionImpl#getFilterIfsFromOverriddenDynamicMappingForExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.DynamicMappingForOverrideDescriptionImpl#getFilterIfsFromOverriddenDynamicMappingForExpression
  * <em>Filter Ifs From Overridden Dynamic Mapping For Expression</em>}</li>
  * </ul>
  *
@@ -46,8 +47,9 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
     protected DynamicMappingForDescription overrides;
 
     /**
-     * The default value of the '{@link #getFilterIfsFromOverriddenDynamicMappingForExpression() <em>Filter Ifs From
-     * Overridden Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterIfsFromOverriddenDynamicMappingForExpression()
+     * <em>Filter Ifs From Overridden Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterIfsFromOverriddenDynamicMappingForExpression()
      * @generated
@@ -56,8 +58,9 @@ public class DynamicMappingForOverrideDescriptionImpl extends AbstractDynamicMap
     protected static final String FILTER_IFS_FROM_OVERRIDDEN_DYNAMIC_MAPPING_FOR_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterIfsFromOverriddenDynamicMappingForExpression() <em>Filter Ifs From
-     * Overridden Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterIfsFromOverriddenDynamicMappingForExpression()
+     * <em>Filter Ifs From Overridden Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterIfsFromOverriddenDynamicMappingForExpression()
      * @generated

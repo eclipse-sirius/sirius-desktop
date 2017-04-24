@@ -35,18 +35,20 @@ import org.eclipse.sirius.properties.WidgetAction;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getValueExpression <em>Value
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getDisplayExpression <em>Display
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getValueExpression
+ * <em>Value Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getDisplayExpression
+ * <em>Display Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getActions <em>Actions</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getFilterConditionalStylesFromExtendedLabelExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getFilterConditionalStylesFromExtendedLabelExpression
  * <em>Filter Conditional Styles From Extended Label Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getFilterActionsFromExtendedLabelExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.AbstractLabelDescriptionImpl#getFilterActionsFromExtendedLabelExpression
  * <em>Filter Actions From Extended Label Expression</em>}</li>
  * </ul>
  *
@@ -134,8 +136,9 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     protected LabelDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedLabelExpression() <em>Filter Conditional
-     * Styles From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedLabelExpression()
+     * <em>Filter Conditional Styles From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedLabelExpression()
      * @generated
@@ -144,8 +147,9 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_LABEL_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedLabelExpression() <em>Filter Conditional
-     * Styles From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedLabelExpression()
+     * <em>Filter Conditional Styles From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedLabelExpression()
      * @generated
@@ -154,8 +158,8 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     protected String filterConditionalStylesFromExtendedLabelExpression = AbstractLabelDescriptionImpl.FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_LABEL_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFilterActionsFromExtendedLabelExpression() <em>Filter Actions From Extended
-     * Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterActionsFromExtendedLabelExpression()
+     * <em>Filter Actions From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getFilterActionsFromExtendedLabelExpression()
      * @generated
@@ -164,8 +168,8 @@ public abstract class AbstractLabelDescriptionImpl extends AbstractWidgetDescrip
     protected static final String FILTER_ACTIONS_FROM_EXTENDED_LABEL_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterActionsFromExtendedLabelExpression() <em>Filter Actions From Extended
-     * Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterActionsFromExtendedLabelExpression()
+     * <em>Filter Actions From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getFilterActionsFromExtendedLabelExpression()
      * @generated

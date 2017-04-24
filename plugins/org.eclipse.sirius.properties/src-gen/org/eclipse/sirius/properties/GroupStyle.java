@@ -52,8 +52,8 @@ public interface GroupStyle extends EObject {
     ColorDescription getBackgroundColor();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupStyle#getBackgroundColor <em>Background
-     * Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupStyle#getBackgroundColor
+     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
@@ -79,8 +79,8 @@ public interface GroupStyle extends EObject {
     ColorDescription getForegroundColor();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupStyle#getForegroundColor <em>Foreground
-     * Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupStyle#getForegroundColor
+     * <em>Foreground Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Foreground Color</em>' reference.
@@ -106,8 +106,8 @@ public interface GroupStyle extends EObject {
     String getFontNameExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupStyle#getFontNameExpression <em>Font Name
-     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupStyle#getFontNameExpression
+     * <em>Font Name Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Font Name Expression</em>' attribute.
@@ -133,8 +133,8 @@ public interface GroupStyle extends EObject {
     String getFontSizeExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupStyle#getFontSizeExpression <em>Font Size
-     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupStyle#getFontSizeExpression
+     * <em>Font Size Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Font Size Expression</em>' attribute.
@@ -220,8 +220,8 @@ public interface GroupStyle extends EObject {
     boolean isExpandedByDefault();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupStyle#isExpandedByDefault <em>Expanded By
-     * Default</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupStyle#isExpandedByDefault
+     * <em>Expanded By Default</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Expanded By Default</em>' attribute.

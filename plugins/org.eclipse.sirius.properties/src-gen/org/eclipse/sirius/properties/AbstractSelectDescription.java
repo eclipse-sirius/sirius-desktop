@@ -23,17 +23,18 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.AbstractSelectDescription#getValueExpression <em>Value Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractSelectDescription#getInitialOperation <em>Initial
- * Operation</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractSelectDescription#getCandidatesExpression <em>Candidates
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractSelectDescription#getCandidateDisplayExpression <em>Candidate
- * Display Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractSelectDescription#getInitialOperation <em>Initial Operation</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractSelectDescription#getCandidatesExpression
+ * <em>Candidates Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractSelectDescription#getCandidateDisplayExpression
+ * <em>Candidate Display Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractSelectDescription#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractSelectDescription#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractSelectDescription#getConditionalStyles <em>Conditional Styles</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractSelectDescription#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractSelectDescription#getFilterConditionalStylesFromExtendedSelectExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.AbstractSelectDescription#getFilterConditionalStylesFromExtendedSelectExpression
  * <em>Filter Conditional Styles From Extended Select Expression</em>}</li>
  * </ul>
  *
@@ -125,9 +126,9 @@ public interface AbstractSelectDescription extends AbstractWidgetDescription {
     String getCandidateDisplayExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractSelectDescription#getCandidateDisplayExpression <em>Candidate
-     * Display Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractSelectDescription#getCandidateDisplayExpression
+     * <em>Candidate Display Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Candidate Display Expression</em>' attribute.
@@ -196,8 +197,8 @@ public interface AbstractSelectDescription extends AbstractWidgetDescription {
     SelectDescription getExtends();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractSelectDescription#getExtends
-     * <em>Extends</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractSelectDescription#getExtends <em>Extends</em>
+     * }' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
@@ -224,8 +225,8 @@ public interface AbstractSelectDescription extends AbstractWidgetDescription {
     String getFilterConditionalStylesFromExtendedSelectExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractSelectDescription#getFilterConditionalStylesFromExtendedSelectExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractSelectDescription#getFilterConditionalStylesFromExtendedSelectExpression
      * <em>Filter Conditional Styles From Extended Select Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

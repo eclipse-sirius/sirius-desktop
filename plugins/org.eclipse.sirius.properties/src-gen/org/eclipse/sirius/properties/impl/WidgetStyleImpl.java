@@ -31,14 +31,14 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.WidgetStyleImpl#getLabelFontNameExpression <em>Label Font Name
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.WidgetStyleImpl#getLabelFontSizeExpression <em>Label Font Size
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.WidgetStyleImpl#getLabelBackgroundColor <em>Label Background
- * Color</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.WidgetStyleImpl#getLabelForegroundColor <em>Label Foreground
- * Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.WidgetStyleImpl#getLabelFontNameExpression
+ * <em>Label Font Name Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.WidgetStyleImpl#getLabelFontSizeExpression
+ * <em>Label Font Size Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.WidgetStyleImpl#getLabelBackgroundColor <em>Label Background Color</em>
+ * }</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.WidgetStyleImpl#getLabelForegroundColor <em>Label Foreground Color</em>
+ * }</li>
  * <li>{@link org.eclipse.sirius.properties.impl.WidgetStyleImpl#getLabelFontFormat <em>Label Font Format</em>}</li>
  * </ul>
  *

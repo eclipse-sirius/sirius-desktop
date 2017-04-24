@@ -32,8 +32,8 @@ import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingIfDescriptionImpl#getPredicateExpression
  * <em>Predicate Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingIfDescriptionImpl#getWidget <em>Widget</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingIfDescriptionImpl#getExtends
- * <em>Extends</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingIfDescriptionImpl#getExtends <em>Extends</em>}
+ * </li>
  * </ul>
  *
  * @generated

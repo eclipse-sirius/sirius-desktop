@@ -12,10 +12,13 @@ package org.eclipse.sirius.ui.properties.internal.dialog;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.stream.IntStream;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.eef.common.ui.api.IEEFFormContainer;
 import org.eclipse.eef.core.api.EEFPage;
+import org.eclipse.eef.core.api.EditingContextAdapter;
 import org.eclipse.eef.ide.ui.api.EEFTab;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
@@ -29,10 +32,12 @@ import org.eclipse.sirius.properties.DialogButton;
 import org.eclipse.sirius.properties.DialogModelOperation;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
+import org.eclipse.sirius.ui.properties.internal.EditingContextAdapterWrapper;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
@@ -85,6 +90,11 @@ public class PropertiesFormDialog extends FormDialog {
      * The EEF Tab.
      */
     private EEFTab eefTab;
+
+    /**
+     * The consumer used to refresh the dialog when a change is performed.
+     */
+    private Consumer<IStatus> consumer;
 
     /**
      * The constructor.
@@ -150,6 +160,49 @@ public class PropertiesFormDialog extends FormDialog {
         eefTab.createControls(composite, container);
         eefTab.aboutToBeShown();
         eefTab.refresh();
+
+        this.configureModelChangeRefresh();
+    }
+
+    /**
+     * Configures a consumer executed when {@link EditingContextAdapter#performModelChange(Runnable)} is called in order
+     * to refresh the dialog.
+     */
+    private void configureModelChangeRefresh() {
+        EditingContextAdapter editingContextAdapter = this.eefPage.getView().getContextAdapter();
+        if (editingContextAdapter instanceof EditingContextAdapterWrapper) {
+            EditingContextAdapterWrapper wrapper = (EditingContextAdapterWrapper) editingContextAdapter;
+            this.consumer = (status) -> this.refreshDialog();
+
+            wrapper.addPerformedModelChangeConsumer(this.consumer);
+        }
+    }
+
+    private void refreshDialog() {
+        this.eefTab.refresh();
+
+        List<DialogButton> buttons = this.dialogModelOperation.getButtons();
+        IntStream.range(0, buttons.size()).forEach(index -> {
+            this.refreshButton(this.getButton(index), buttons.get(index));
+        });
+    }
+
+    /**
+     * Refreshes the given button using its description.
+     * 
+     * @param button
+     *            The button to refresh
+     * @param dialogButton
+     *            The description of the button
+     */
+    private void refreshButton(Button button, DialogButton dialogButton) {
+        String isEnabledExpression = Optional.ofNullable(dialogButton.getIsEnabledExpression()).orElse(""); //$NON-NLS-1$
+        if (!isEnabledExpression.isEmpty()) {
+            IEvaluationResult evaluationResult = this.interpreter.evaluateExpression(this.variableManager.getVariables(), isEnabledExpression);
+            if (Diagnostic.OK == evaluationResult.getDiagnostic().getSeverity() && evaluationResult.getValue() instanceof Boolean) {
+                button.setEnabled(((Boolean) evaluationResult.getValue()).booleanValue());
+            }
+        }
     }
 
     @Override
@@ -159,6 +212,9 @@ public class PropertiesFormDialog extends FormDialog {
             super.createButtonsForButtonBar(parent);
         } else {
             IntStream.range(0, buttons.size()).forEach(index -> this.createButton(parent, buttons.get(index), index));
+
+            // We have finished the creation of the content, we can set the initial state of the buttons
+            this.refreshDialog();
         }
     }
 
@@ -220,6 +276,12 @@ public class PropertiesFormDialog extends FormDialog {
     @Override
     public boolean close() {
         boolean result = super.close();
+
+        EditingContextAdapter editingContextAdapter = this.eefPage.getView().getContextAdapter();
+        if (editingContextAdapter instanceof EditingContextAdapterWrapper) {
+            EditingContextAdapterWrapper wrapper = (EditingContextAdapterWrapper) editingContextAdapter;
+            wrapper.removePerformedModelChangeConsumer(this.consumer);
+        }
 
         this.eefTab.aboutToBeHidden();
         this.eefTab.dispose();

@@ -20,7 +20,8 @@ package org.eclipse.sirius.properties;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.ButtonOverrideDescription#getOverrides <em>Overrides</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.ButtonOverrideDescription#getFilterConditionalStylesFromOverriddenButtonExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.ButtonOverrideDescription#getFilterConditionalStylesFromOverriddenButtonExpression
  * <em>Filter Conditional Styles From Overridden Button Expression</em>}</li>
  * </ul>
  *
@@ -74,8 +75,8 @@ public interface ButtonOverrideDescription extends AbstractButtonDescription, Ab
     String getFilterConditionalStylesFromOverriddenButtonExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.ButtonOverrideDescription#getFilterConditionalStylesFromOverriddenButtonExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.ButtonOverrideDescription#getFilterConditionalStylesFromOverriddenButtonExpression
      * <em>Filter Conditional Styles From Overridden Button Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

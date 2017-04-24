@@ -27,7 +27,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.ContainerOverrideDescriptionImpl#getOverrides <em>Overrides</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.ContainerOverrideDescriptionImpl#getFilterControlsFromOverriddenContainerExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.ContainerOverrideDescriptionImpl#getFilterControlsFromOverriddenContainerExpression
  * <em>Filter Controls From Overridden Container Expression</em>}</li>
  * </ul>
  *
@@ -45,8 +46,9 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
     protected ContainerDescription overrides;
 
     /**
-     * The default value of the '{@link #getFilterControlsFromOverriddenContainerExpression() <em>Filter Controls From
-     * Overridden Container Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterControlsFromOverriddenContainerExpression()
+     * <em>Filter Controls From Overridden Container Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterControlsFromOverriddenContainerExpression()
      * @generated
@@ -55,8 +57,9 @@ public class ContainerOverrideDescriptionImpl extends AbstractContainerDescripti
     protected static final String FILTER_CONTROLS_FROM_OVERRIDDEN_CONTAINER_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterControlsFromOverriddenContainerExpression() <em>Filter Controls From
-     * Overridden Container Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterControlsFromOverriddenContainerExpression()
+     * <em>Filter Controls From Overridden Container Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterControlsFromOverriddenContainerExpression()
      * @generated

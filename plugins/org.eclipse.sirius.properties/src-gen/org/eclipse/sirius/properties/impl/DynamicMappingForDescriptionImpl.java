@@ -34,11 +34,12 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getIterator <em>Iterator</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getIterableExpression <em>Iterable
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getIterableExpression
+ * <em>Iterable Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getIfs <em>Ifs</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getFilterIfsFromExtendedDynamicMappingForExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getFilterIfsFromExtendedDynamicMappingForExpression
  * <em>Filter Ifs From Extended Dynamic Mapping For Expression</em>}</li>
  * </ul>
  *
@@ -106,8 +107,9 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
     protected DynamicMappingForDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterIfsFromExtendedDynamicMappingForExpression() <em>Filter Ifs From
-     * Extended Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterIfsFromExtendedDynamicMappingForExpression()
+     * <em>Filter Ifs From Extended Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterIfsFromExtendedDynamicMappingForExpression()
      * @generated
@@ -116,8 +118,9 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
     protected static final String FILTER_IFS_FROM_EXTENDED_DYNAMIC_MAPPING_FOR_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterIfsFromExtendedDynamicMappingForExpression() <em>Filter Ifs From
-     * Extended Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterIfsFromExtendedDynamicMappingForExpression()
+     * <em>Filter Ifs From Extended Dynamic Mapping For Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterIfsFromExtendedDynamicMappingForExpression()
      * @generated

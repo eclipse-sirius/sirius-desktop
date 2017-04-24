@@ -22,15 +22,16 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.AbstractButtonDescription#getButtonLabelExpression <em>Button Label
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractButtonDescription#getInitialOperation <em>Initial
- * Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractButtonDescription#getButtonLabelExpression
+ * <em>Button Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractButtonDescription#getInitialOperation <em>Initial Operation</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractButtonDescription#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractButtonDescription#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractButtonDescription#getConditionalStyles <em>Conditional Styles</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractButtonDescription#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractButtonDescription#getFilterConditionalStylesFromExtendedButtonExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.AbstractButtonDescription#getFilterConditionalStylesFromExtendedButtonExpression
  * <em>Filter Conditional Styles From Extended Button Expression</em>}</li>
  * </ul>
  *
@@ -153,8 +154,8 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
     ButtonDescription getExtends();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractButtonDescription#getExtends
-     * <em>Extends</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractButtonDescription#getExtends <em>Extends</em>
+     * }' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
@@ -181,8 +182,8 @@ public interface AbstractButtonDescription extends AbstractWidgetDescription {
     String getFilterConditionalStylesFromExtendedButtonExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractButtonDescription#getFilterConditionalStylesFromExtendedButtonExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractButtonDescription#getFilterConditionalStylesFromExtendedButtonExpression
      * <em>Filter Conditional Styles From Extended Button Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

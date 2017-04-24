@@ -48,8 +48,8 @@ public interface CustomOperation extends IdentifiedElement, DocumentedElement {
     InitialOperation getInitialOperation();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.CustomOperation#getInitialOperation <em>Initial
-     * Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.CustomOperation#getInitialOperation
+     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment reference.

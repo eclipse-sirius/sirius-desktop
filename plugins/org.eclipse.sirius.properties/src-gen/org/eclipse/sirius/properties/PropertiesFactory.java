@@ -567,6 +567,14 @@ public interface PropertiesFactory extends EFactory {
     DialogButton createDialogButton();
 
     /**
+     * Returns a new object of class '<em>Wizard Model Operation</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Wizard Model Operation</em>'.
+     * @generated
+     */
+    WizardModelOperation createWizardModelOperation();
+
+    /**
      * Returns a new object of class '<em>Edit Support</em>'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return a new object of class '<em>Edit Support</em>'.

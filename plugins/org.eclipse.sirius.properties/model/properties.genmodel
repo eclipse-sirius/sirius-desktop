@@ -380,6 +380,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DialogButton/closeDialogOnClick"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DialogButton/rollbackChangesOnClose"/>
     </genClasses>
+    <genClasses ecoreClass="properties.ecore#//WizardModelOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WizardModelOperation/windowTitleExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WizardModelOperation/titleExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WizardModelOperation/descriptionExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WizardModelOperation/imageExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//WizardModelOperation/pages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//WizardModelOperation/groups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//WizardModelOperation/initialOperation"/>
+    </genClasses>
     <genClasses ecoreClass="properties.ecore#//EditSupport">
       <genOperations ecoreOperation="properties.ecore#//EditSupport/getImage"/>
       <genOperations ecoreOperation="properties.ecore#//EditSupport/getText"/>

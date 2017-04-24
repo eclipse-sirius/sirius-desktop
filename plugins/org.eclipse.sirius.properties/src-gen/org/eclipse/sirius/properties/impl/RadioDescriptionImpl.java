@@ -242,8 +242,9 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     protected RadioDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression() <em>Filter Conditional
-     * Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression()
+     * <em>Filter Conditional Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedRadioExpression()
      * @generated
@@ -252,8 +253,9 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression() <em>Filter Conditional
-     * Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression()
+     * <em>Filter Conditional Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedRadioExpression()
      * @generated

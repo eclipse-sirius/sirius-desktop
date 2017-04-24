@@ -35,21 +35,22 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getValueExpression <em>Value
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getInitialOperation <em>Initial
- * Operation</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getCandidatesExpression <em>Candidates
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getValueExpression
+ * <em>Value Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getInitialOperation
+ * <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getCandidatesExpression
+ * <em>Candidates Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getCandidateDisplayExpression
  * <em>Candidate Display Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getNumberOfColumns <em>Number Of
- * Columns</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getNumberOfColumns
+ * <em>Number Of Columns</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getFilterConditionalStylesFromExtendedRadioExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.AbstractRadioDescriptionImpl#getFilterConditionalStylesFromExtendedRadioExpression
  * <em>Filter Conditional Styles From Extended Radio Expression</em>}</li>
  * </ul>
  *
@@ -177,8 +178,9 @@ public abstract class AbstractRadioDescriptionImpl extends AbstractWidgetDescrip
     protected RadioDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression() <em>Filter Conditional
-     * Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression()
+     * <em>Filter Conditional Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedRadioExpression()
      * @generated
@@ -187,8 +189,9 @@ public abstract class AbstractRadioDescriptionImpl extends AbstractWidgetDescrip
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_RADIO_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression() <em>Filter Conditional
-     * Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedRadioExpression()
+     * <em>Filter Conditional Styles From Extended Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedRadioExpression()
      * @generated

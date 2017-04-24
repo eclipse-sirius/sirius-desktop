@@ -40,8 +40,8 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getLabel <em>Label</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getDocumentation
- * <em>Documentation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getDocumentation <em>Documentation</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getMetamodels <em>Metamodels</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getCategories <em>Categories</em>}</li>
  * </ul>

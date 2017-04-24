@@ -21,8 +21,8 @@ package org.eclipse.sirius.properties;
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.AbstractWidgetDescription#getLabelExpression <em>Label Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractWidgetDescription#getHelpExpression <em>Help Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractWidgetDescription#getIsEnabledExpression <em>Is Enabled
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractWidgetDescription#getIsEnabledExpression
+ * <em>Is Enabled Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractWidgetDescription()
@@ -74,8 +74,8 @@ public interface AbstractWidgetDescription extends AbstractControlDescription {
     String getHelpExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractWidgetDescription#getHelpExpression <em>Help
-     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractWidgetDescription#getHelpExpression
+     * <em>Help Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Help Expression</em>' attribute.

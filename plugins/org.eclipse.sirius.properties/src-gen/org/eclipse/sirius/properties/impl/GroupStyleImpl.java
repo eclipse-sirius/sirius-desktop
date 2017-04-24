@@ -30,10 +30,10 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.GroupStyleImpl#getBackgroundColor <em>Background Color</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.GroupStyleImpl#getForegroundColor <em>Foreground Color</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.GroupStyleImpl#getFontNameExpression <em>Font Name
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.GroupStyleImpl#getFontSizeExpression <em>Font Size
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.GroupStyleImpl#getFontNameExpression <em>Font Name Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.GroupStyleImpl#getFontSizeExpression <em>Font Size Expression</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.GroupStyleImpl#getBarStyle <em>Bar Style</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.GroupStyleImpl#getToggleStyle <em>Toggle Style</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.GroupStyleImpl#isExpandedByDefault <em>Expanded By Default</em>}</li>

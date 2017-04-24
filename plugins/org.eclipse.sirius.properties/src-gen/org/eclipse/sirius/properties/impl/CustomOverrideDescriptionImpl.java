@@ -27,7 +27,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.CustomOverrideDescriptionImpl#getOverrides <em>Overrides</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.CustomOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenCustomExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.CustomOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenCustomExpression
  * <em>Filter Conditional Styles From Overridden Custom Expression</em>}</li>
  * </ul>
  *

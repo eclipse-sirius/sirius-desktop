@@ -44,4 +44,5 @@ Export-Package: org.eclipse.sirius.ui.properties.api;version="4.1.0",
  org.eclipse.sirius.ui.properties.internal.dialog;version="5.0.0";x-internal:=true,
  org.eclipse.sirius.ui.properties.internal.filter;version="4.1.0";x-internal:=true,
  org.eclipse.sirius.ui.properties.internal.preferences;version="4.1.0";x-internal:=true,
- org.eclipse.sirius.ui.properties.internal.tabprovider;version="4.1.0";x-internal:=true
+ org.eclipse.sirius.ui.properties.internal.tabprovider;version="4.1.0";x-internal:=true,
+ org.eclipse.sirius.ui.properties.internal.wizard;version="5.0.0"

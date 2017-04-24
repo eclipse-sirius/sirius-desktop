@@ -36,15 +36,16 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getLineCount <em>Line Count</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getValueExpression <em>Value
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getInitialOperation <em>Initial
- * Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getValueExpression
+ * <em>Value Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getInitialOperation
+ * <em>Initial Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getFilterConditionalStylesFromExtendedTextAreaExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.AbstractTextAreaDescriptionImpl#getFilterConditionalStylesFromExtendedTextAreaExpression
  * <em>Filter Conditional Styles From Extended Text Area Expression</em>}</li>
  * </ul>
  *

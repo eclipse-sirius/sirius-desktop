@@ -27,7 +27,8 @@ import org.eclipse.sirius.properties.RadioOverrideDescription;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioOverrideDescriptionImpl#getOverrides <em>Overrides</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.RadioOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenRadioExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.RadioOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenRadioExpression
  * <em>Filter Conditional Styles From Overridden Radio Expression</em>}</li>
  * </ul>
  *
@@ -56,8 +57,9 @@ public class RadioOverrideDescriptionImpl extends AbstractRadioDescriptionImpl i
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_OVERRIDDEN_RADIO_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenRadioExpression() <em>Filter Conditional
-     * Styles From Overridden Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenRadioExpression()
+     * <em>Filter Conditional Styles From Overridden Radio Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenRadioExpression()
      * @generated

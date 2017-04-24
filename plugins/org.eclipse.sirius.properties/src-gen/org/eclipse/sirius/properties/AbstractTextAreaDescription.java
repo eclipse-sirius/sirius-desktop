@@ -23,15 +23,16 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getLineCount <em>Line Count</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getValueExpression <em>Value
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getInitialOperation <em>Initial
- * Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getValueExpression <em>Value Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getInitialOperation <em>Initial Operation</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getConditionalStyles <em>Conditional Styles</em>
+ * }</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getFilterConditionalStylesFromExtendedTextAreaExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getFilterConditionalStylesFromExtendedTextAreaExpression
  * <em>Filter Conditional Styles From Extended Text Area Expression</em>}</li>
  * </ul>
  *
@@ -58,8 +59,8 @@ public interface AbstractTextAreaDescription extends AbstractWidgetDescription {
     int getLineCount();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getLineCount <em>Line
-     * Count</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getLineCount
+     * <em>Line Count</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Line Count</em>' attribute.
@@ -210,8 +211,8 @@ public interface AbstractTextAreaDescription extends AbstractWidgetDescription {
     String getFilterConditionalStylesFromExtendedTextAreaExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getFilterConditionalStylesFromExtendedTextAreaExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractTextAreaDescription#getFilterConditionalStylesFromExtendedTextAreaExpression
      * <em>Filter Conditional Styles From Extended Text Area Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

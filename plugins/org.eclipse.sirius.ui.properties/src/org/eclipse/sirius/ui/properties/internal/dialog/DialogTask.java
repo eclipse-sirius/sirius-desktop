@@ -38,6 +38,7 @@ import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
 import org.eclipse.sirius.properties.core.api.SiriusInterpreter;
 import org.eclipse.sirius.properties.core.api.ViewDescriptionConverter;
 import org.eclipse.sirius.tools.api.command.CommandContext;
+import org.eclipse.sirius.ui.properties.internal.EditingContextAdapterWrapper;
 import org.eclipse.sirius.ui.properties.internal.Messages;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
 import org.eclipse.swt.widgets.Display;
@@ -104,10 +105,11 @@ public class DialogTask extends AbstractOperationTask {
             variableManager.put(EEFExpressionUtils.INPUT, input);
 
             EditingContextAdapter editingContextAdapter = SiriusUIPropertiesPlugin.getPlugin().getEditingContextAdapter(session);
+            EditingContextAdapterWrapper wrapper = new EditingContextAdapterWrapper(editingContextAdapter);
             SiriusInterpreter siriusInterpreter = new SiriusInterpreter(this.session);
 
             EEFViewFactory eefViewFactory = new EEFViewFactory();
-            EEFView eefView = eefViewFactory.createEEFView(eefViewDescription, variableManager, siriusInterpreter, editingContextAdapter, new SiriusDomainClassTester(session), input);
+            EEFView eefView = eefViewFactory.createEEFView(eefViewDescription, variableManager, siriusInterpreter, wrapper, new SiriusDomainClassTester(session), input);
 
             if (eefView.getPages().size() == 1) {
                 EEFPage eefPage = eefView.getPages().get(0);

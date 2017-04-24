@@ -31,12 +31,12 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontNameExpression <em>Font Name
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontSizeExpression <em>Font Size
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getBackgroundColor <em>Background
- * Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontNameExpression
+ * <em>Font Name Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontSizeExpression
+ * <em>Font Size Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getBackgroundColor <em>Background Color</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl#getFontFormat <em>Font Format</em>}</li>
  * </ul>
  *

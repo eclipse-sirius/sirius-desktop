@@ -28,8 +28,8 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.OperationDescriptionImpl#getInitialOperation <em>Initial
- * Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.OperationDescriptionImpl#getInitialOperation <em>Initial Operation</em>
+ * }</li>
  * </ul>
  *
  * @generated

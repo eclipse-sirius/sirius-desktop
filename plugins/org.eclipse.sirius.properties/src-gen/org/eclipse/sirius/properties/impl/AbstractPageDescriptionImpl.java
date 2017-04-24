@@ -36,22 +36,23 @@ import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getDocumentation
- * <em>Documentation</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getLabelExpression <em>Label
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getDocumentation <em>Documentation</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getLabelExpression
+ * <em>Label Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getDomainClass <em>Domain Class</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getSemanticCandidateExpression <em>Semantic
- * Candidate Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getPreconditionExpression <em>Precondition
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getSemanticCandidateExpression
+ * <em>Semantic Candidate Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getPreconditionExpression
+ * <em>Precondition Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getGroups <em>Groups</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getValidationSet <em>Validation
- * Set</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getValidationSet <em>Validation Set</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getExtends <em>Extends</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getFilterGroupsFromExtendedPageExpression
  * <em>Filter Groups From Extended Page Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getFilterValidationRulesFromExtendedPageExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.AbstractPageDescriptionImpl#getFilterValidationRulesFromExtendedPageExpression
  * <em>Filter Validation Rules From Extended Page Expression</em>}</li>
  * </ul>
  *
@@ -189,8 +190,8 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     protected PageDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterGroupsFromExtendedPageExpression() <em>Filter Groups From Extended
-     * Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterGroupsFromExtendedPageExpression()
+     * <em>Filter Groups From Extended Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getFilterGroupsFromExtendedPageExpression()
      * @generated
@@ -199,8 +200,8 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     protected static final String FILTER_GROUPS_FROM_EXTENDED_PAGE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterGroupsFromExtendedPageExpression() <em>Filter Groups From Extended Page
-     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterGroupsFromExtendedPageExpression()
+     * <em>Filter Groups From Extended Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getFilterGroupsFromExtendedPageExpression()
      * @generated
@@ -209,8 +210,9 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     protected String filterGroupsFromExtendedPageExpression = AbstractPageDescriptionImpl.FILTER_GROUPS_FROM_EXTENDED_PAGE_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFilterValidationRulesFromExtendedPageExpression() <em>Filter Validation
-     * Rules From Extended Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterValidationRulesFromExtendedPageExpression()
+     * <em>Filter Validation Rules From Extended Page Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterValidationRulesFromExtendedPageExpression()
      * @generated
@@ -219,8 +221,9 @@ public abstract class AbstractPageDescriptionImpl extends IdentifiedElementImpl 
     protected static final String FILTER_VALIDATION_RULES_FROM_EXTENDED_PAGE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterValidationRulesFromExtendedPageExpression() <em>Filter Validation Rules
-     * From Extended Page Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterValidationRulesFromExtendedPageExpression()
+     * <em>Filter Validation Rules From Extended Page Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterValidationRulesFromExtendedPageExpression()
      * @generated

@@ -23,14 +23,14 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.AbstractListDescription#getValueExpression <em>Value Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractListDescription#getDisplayExpression <em>Display
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractListDescription#getOnClickOperation <em>On Click
- * Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractListDescription#getDisplayExpression <em>Display Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractListDescription#getOnClickOperation <em>On Click Operation</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractListDescription#getActions <em>Actions</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractListDescription#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractListDescription#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractListDescription#getConditionalStyles <em>Conditional Styles</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractListDescription#getExtends <em>Extends</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractListDescription#getFilterConditionalStylesFromExtendedListExpression
  * <em>Filter Conditional Styles From Extended List Expression</em>}</li>
@@ -56,8 +56,8 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
     String getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractListDescription#getValueExpression <em>Value
-     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractListDescription#getValueExpression
+     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
@@ -103,8 +103,8 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
     InitialOperation getOnClickOperation();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractListDescription#getOnClickOperation <em>On
-     * Click Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractListDescription#getOnClickOperation
+     * <em>On Click Operation</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>On Click Operation</em>' containment reference.
@@ -217,8 +217,8 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
     String getFilterConditionalStylesFromExtendedListExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractListDescription#getFilterConditionalStylesFromExtendedListExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractListDescription#getFilterConditionalStylesFromExtendedListExpression
      * <em>Filter Conditional Styles From Extended List Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -247,8 +247,8 @@ public interface AbstractListDescription extends AbstractWidgetDescription {
     String getFilterActionsFromExtendedListExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractListDescription#getFilterActionsFromExtendedListExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractListDescription#getFilterActionsFromExtendedListExpression
      * <em>Filter Actions From Extended List Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value

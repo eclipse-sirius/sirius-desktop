@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.WidgetConditionalStyle#getPreconditionExpression <em>Precondition
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.WidgetConditionalStyle#getPreconditionExpression
+ * <em>Precondition Expression</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetConditionalStyle()

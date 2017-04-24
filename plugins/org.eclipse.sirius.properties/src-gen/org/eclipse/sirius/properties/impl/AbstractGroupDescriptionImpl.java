@@ -39,27 +39,30 @@ import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getDocumentation
- * <em>Documentation</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getLabelExpression <em>Label
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getDocumentation <em>Documentation</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getLabelExpression
+ * <em>Label Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getDomainClass <em>Domain Class</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getSemanticCandidateExpression
  * <em>Semantic Candidate Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getPreconditionExpression <em>Precondition
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getPreconditionExpression
+ * <em>Precondition Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getControls <em>Controls</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getValidationSet <em>Validation
- * Set</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getValidationSet <em>Validation Set</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getFilterControlsFromExtendedGroupExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getFilterControlsFromExtendedGroupExpression
  * <em>Filter Controls From Extended Group Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getFilterValidationRulesFromExtendedGroupExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getFilterValidationRulesFromExtendedGroupExpression
  * <em>Filter Validation Rules From Extended Group Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getFilterConditionalStylesFromExtendedGroupExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.AbstractGroupDescriptionImpl#getFilterConditionalStylesFromExtendedGroupExpression
  * <em>Filter Conditional Styles From Extended Group Expression</em>}</li>
  * </ul>
  *
@@ -217,8 +220,9 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     protected GroupDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterControlsFromExtendedGroupExpression() <em>Filter Controls From
-     * Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterControlsFromExtendedGroupExpression()
+     * <em>Filter Controls From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getFilterControlsFromExtendedGroupExpression()
      * @generated
@@ -227,8 +231,9 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     protected static final String FILTER_CONTROLS_FROM_EXTENDED_GROUP_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterControlsFromExtendedGroupExpression() <em>Filter Controls From Extended
-     * Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterControlsFromExtendedGroupExpression()
+     * <em>Filter Controls From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #getFilterControlsFromExtendedGroupExpression()
      * @generated
@@ -237,8 +242,9 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     protected String filterControlsFromExtendedGroupExpression = AbstractGroupDescriptionImpl.FILTER_CONTROLS_FROM_EXTENDED_GROUP_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFilterValidationRulesFromExtendedGroupExpression() <em>Filter Validation
-     * Rules From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterValidationRulesFromExtendedGroupExpression()
+     * <em>Filter Validation Rules From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterValidationRulesFromExtendedGroupExpression()
      * @generated
@@ -247,8 +253,9 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     protected static final String FILTER_VALIDATION_RULES_FROM_EXTENDED_GROUP_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterValidationRulesFromExtendedGroupExpression() <em>Filter Validation
-     * Rules From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterValidationRulesFromExtendedGroupExpression()
+     * <em>Filter Validation Rules From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterValidationRulesFromExtendedGroupExpression()
      * @generated
@@ -257,8 +264,9 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     protected String filterValidationRulesFromExtendedGroupExpression = AbstractGroupDescriptionImpl.FILTER_VALIDATION_RULES_FROM_EXTENDED_GROUP_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedGroupExpression() <em>Filter Conditional
-     * Styles From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedGroupExpression()
+     * <em>Filter Conditional Styles From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedGroupExpression()
      * @generated
@@ -267,8 +275,9 @@ public abstract class AbstractGroupDescriptionImpl extends IdentifiedElementImpl
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_GROUP_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedGroupExpression() <em>Filter Conditional
-     * Styles From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedGroupExpression()
+     * <em>Filter Conditional Styles From Extended Group Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedGroupExpression()
      * @generated

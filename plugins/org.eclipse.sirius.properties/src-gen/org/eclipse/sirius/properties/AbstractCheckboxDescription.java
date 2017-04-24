@@ -22,15 +22,16 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getValueExpression <em>Value
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getInitialOperation <em>Initial
- * Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getValueExpression <em>Value Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getInitialOperation <em>Initial Operation</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getConditionalStyles <em>Conditional Styles</em>
+ * }</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getFilterConditionalStylesFromExtendedCheckboxExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getFilterConditionalStylesFromExtendedCheckboxExpression
  * <em>Filter Conditional Styles From Extended Checkbox Expression</em>}</li>
  * </ul>
  *
@@ -181,8 +182,8 @@ public interface AbstractCheckboxDescription extends AbstractWidgetDescription {
     String getFilterConditionalStylesFromExtendedCheckboxExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getFilterConditionalStylesFromExtendedCheckboxExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractCheckboxDescription#getFilterConditionalStylesFromExtendedCheckboxExpression
      * <em>Filter Conditional Styles From Extended Checkbox Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

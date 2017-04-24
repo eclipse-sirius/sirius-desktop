@@ -22,14 +22,15 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.AbstractLabelDescription#getValueExpression <em>Value Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractLabelDescription#getDisplayExpression <em>Display
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractLabelDescription#getDisplayExpression <em>Display Expression</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractLabelDescription#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractLabelDescription#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractLabelDescription#getConditionalStyles <em>Conditional Styles</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractLabelDescription#getActions <em>Actions</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractLabelDescription#getExtends <em>Extends</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractLabelDescription#getFilterConditionalStylesFromExtendedLabelExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.AbstractLabelDescription#getFilterConditionalStylesFromExtendedLabelExpression
  * <em>Filter Conditional Styles From Extended Label Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractLabelDescription#getFilterActionsFromExtendedLabelExpression
  * <em>Filter Actions From Extended Label Expression</em>}</li>
@@ -57,8 +58,8 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
     String getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractLabelDescription#getValueExpression <em>Value
-     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractLabelDescription#getValueExpression
+     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
@@ -170,8 +171,8 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
     LabelDescription getExtends();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractLabelDescription#getExtends
-     * <em>Extends</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractLabelDescription#getExtends <em>Extends</em>}
+     * ' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Extends</em>' reference.
@@ -198,8 +199,8 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
     String getFilterConditionalStylesFromExtendedLabelExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractLabelDescription#getFilterConditionalStylesFromExtendedLabelExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractLabelDescription#getFilterConditionalStylesFromExtendedLabelExpression
      * <em>Filter Conditional Styles From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -228,8 +229,8 @@ public interface AbstractLabelDescription extends AbstractWidgetDescription {
     String getFilterActionsFromExtendedLabelExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractLabelDescription#getFilterActionsFromExtendedLabelExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractLabelDescription#getFilterActionsFromExtendedLabelExpression
      * <em>Filter Actions From Extended Label Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value

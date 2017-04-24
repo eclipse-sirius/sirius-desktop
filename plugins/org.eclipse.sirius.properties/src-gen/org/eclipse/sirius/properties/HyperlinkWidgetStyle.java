@@ -23,10 +23,10 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontNameExpression <em>Font Name
- * Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontSizeExpression <em>Font Size
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontNameExpression <em>Font Name Expression</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontSizeExpression <em>Font Size Expression</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getBackgroundColor <em>Background Color</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontFormat <em>Font Format</em>}</li>
  * </ul>
@@ -53,8 +53,8 @@ public interface HyperlinkWidgetStyle extends WidgetStyle {
     String getFontNameExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontNameExpression <em>Font
-     * Name Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontNameExpression
+     * <em>Font Name Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Font Name Expression</em>' attribute.
@@ -80,8 +80,8 @@ public interface HyperlinkWidgetStyle extends WidgetStyle {
     String getFontSizeExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontSizeExpression <em>Font
-     * Size Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontSizeExpression
+     * <em>Font Size Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Font Size Expression</em>' attribute.

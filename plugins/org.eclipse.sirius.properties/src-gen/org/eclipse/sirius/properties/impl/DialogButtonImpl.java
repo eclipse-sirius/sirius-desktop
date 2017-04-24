@@ -28,12 +28,14 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#getLabelExpression <em>Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#getIsEnabledExpression <em>Is Enabled Expression</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#getInitialOperation <em>Initial Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#isDefault <em>Default</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#isCloseDialogOnClick <em>Close Dialog On
- * Click</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#isRollbackChangesOnClose <em>Rollback Changes On
- * Close</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#isCloseDialogOnClick <em>Close Dialog On Click</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DialogButtonImpl#isRollbackChangesOnClose
+ * <em>Rollback Changes On Close</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,6 +60,26 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
      * @ordered
      */
     protected String labelExpression = DialogButtonImpl.LABEL_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getIsEnabledExpression() <em>Is Enabled Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getIsEnabledExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String IS_ENABLED_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getIsEnabledExpression() <em>Is Enabled Expression</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getIsEnabledExpression()
+     * @generated
+     * @ordered
+     */
+    protected String isEnabledExpression = DialogButtonImpl.IS_ENABLED_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference. <!--
@@ -169,6 +191,30 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
         labelExpression = newLabelExpression;
         if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DIALOG_BUTTON__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getIsEnabledExpression() {
+        return isEnabledExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setIsEnabledExpression(String newIsEnabledExpression) {
+        String oldIsEnabledExpression = isEnabledExpression;
+        isEnabledExpression = newIsEnabledExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DIALOG_BUTTON__IS_ENABLED_EXPRESSION, oldIsEnabledExpression, isEnabledExpression));
         }
     }
 
@@ -321,6 +367,8 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
         switch (featureID) {
         case PropertiesPackage.DIALOG_BUTTON__LABEL_EXPRESSION:
             return getLabelExpression();
+        case PropertiesPackage.DIALOG_BUTTON__IS_ENABLED_EXPRESSION:
+            return getIsEnabledExpression();
         case PropertiesPackage.DIALOG_BUTTON__INITIAL_OPERATION:
             return getInitialOperation();
         case PropertiesPackage.DIALOG_BUTTON__DEFAULT:
@@ -343,6 +391,9 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
         switch (featureID) {
         case PropertiesPackage.DIALOG_BUTTON__LABEL_EXPRESSION:
             setLabelExpression((String) newValue);
+            return;
+        case PropertiesPackage.DIALOG_BUTTON__IS_ENABLED_EXPRESSION:
+            setIsEnabledExpression((String) newValue);
             return;
         case PropertiesPackage.DIALOG_BUTTON__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) newValue);
@@ -371,6 +422,9 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
         case PropertiesPackage.DIALOG_BUTTON__LABEL_EXPRESSION:
             setLabelExpression(DialogButtonImpl.LABEL_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesPackage.DIALOG_BUTTON__IS_ENABLED_EXPRESSION:
+            setIsEnabledExpression(DialogButtonImpl.IS_ENABLED_EXPRESSION_EDEFAULT);
+            return;
         case PropertiesPackage.DIALOG_BUTTON__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) null);
             return;
@@ -397,6 +451,8 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
         switch (featureID) {
         case PropertiesPackage.DIALOG_BUTTON__LABEL_EXPRESSION:
             return DialogButtonImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !DialogButtonImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+        case PropertiesPackage.DIALOG_BUTTON__IS_ENABLED_EXPRESSION:
+            return DialogButtonImpl.IS_ENABLED_EXPRESSION_EDEFAULT == null ? isEnabledExpression != null : !DialogButtonImpl.IS_ENABLED_EXPRESSION_EDEFAULT.equals(isEnabledExpression);
         case PropertiesPackage.DIALOG_BUTTON__INITIAL_OPERATION:
             return initialOperation != null;
         case PropertiesPackage.DIALOG_BUTTON__DEFAULT:
@@ -423,6 +479,8 @@ public class DialogButtonImpl extends MinimalEObjectImpl.Container implements Di
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (labelExpression: "); //$NON-NLS-1$
         result.append(labelExpression);
+        result.append(", isEnabledExpression: "); //$NON-NLS-1$
+        result.append(isEnabledExpression);
         result.append(", default: "); //$NON-NLS-1$
         result.append(default_);
         result.append(", closeDialogOnClick: "); //$NON-NLS-1$

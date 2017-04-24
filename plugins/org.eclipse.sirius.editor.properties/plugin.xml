@@ -37,7 +37,7 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.dialogbutton.DialogButtonDefaultPropertySectionSpec"
                id="properties.section.dialogButton.Default"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dialogbutton.DialogButtonDefaultFilter"
-               afterSection="properties.section.dialogButton.LabelExpression"
+               afterSection="properties.section.dialogButton.IsEnabledExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.DialogButton"/>
       </propertySection>
@@ -48,6 +48,14 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.DialogButton"/>
       </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.dialogbutton.DialogButtonIsEnabledExpressionPropertySectionSpec"
+               id="properties.section.dialogButton.IsEnabledExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dialogbutton.DialogButtonIsEnabledExpressionFilterSpec"
+               afterSection="properties.section.dialogButton.LabelExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.DialogButton"/>
+      </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.dialogmodeloperation.DialogModelOperationTitleExpressionPropertySection"
                id="properties.section.dialogModelOperation.TitleExpression"
@@ -55,7 +63,38 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.DialogModelOperation"/>
       </propertySection>
-  	  <propertySection
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.wizardmodeloperation.WizardModelOperationWindowTitleExpressionPropertySectionSpec"
+               id="properties.section.wizardModelOperation.WindowTitleExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.wizardmodeloperation.WizardModelOperationWindowTitleExpressionFilterSpec"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.WizardModelOperation"/>
+      </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.wizardmodeloperation.WizardModelOperationTitleExpressionPropertySectionSpec"
+               id="properties.section.wizardModelOperation.TitleExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.wizardmodeloperation.WizardModelOperationTitleExpressionFilterSpec"
+               afterSection="properties.section.wizardModelOperation.WindowTitleExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.WizardModelOperation"/>
+      </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.wizardmodeloperation.WizardModelOperationDescriptionExpressionPropertySectionSpec"
+               id="properties.section.wizardModelOperation.DescriptionExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.wizardmodeloperation.WizardModelOperationDescriptionExpressionFilterSpec"
+               afterSection="properties.section.wizardModelOperation.TitleExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.WizardModelOperation"/>
+      </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.wizardmodeloperation.WizardModelOperationIsPageCompleteExpressionPropertySectionSpec"
+               id="properties.section.wizardModelOperation.IsPageCompleteExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.wizardmodeloperation.WizardModelOperationIsPageCompleteExpressionFilterSpec"
+               afterSection="properties.section.wizardModelOperation.DescriptionExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.WizardModelOperation"/>
+      </propertySection>
+      <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetaction.WidgetActionLabelExpressionPropertySection"
                id="properties.section.widgetAction.LabelExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetaction.WidgetActionLabelExpressionFilter"

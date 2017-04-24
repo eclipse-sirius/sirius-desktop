@@ -27,7 +27,8 @@ import org.eclipse.sirius.properties.TextAreaOverrideDescription;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.impl.TextAreaOverrideDescriptionImpl#getOverrides <em>Overrides</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.TextAreaOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenTextAreaExpression
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.TextAreaOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenTextAreaExpression
  * <em>Filter Conditional Styles From Overridden Text Area Expression</em>}</li>
  * </ul>
  *
@@ -45,8 +46,8 @@ public class TextAreaOverrideDescriptionImpl extends AbstractTextAreaDescription
     protected TextAreaDescription overrides;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenTextAreaExpression() <em>Filter
-     * Conditional Styles From Overridden Text Area Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenTextAreaExpression()
+     * <em>Filter Conditional Styles From Overridden Text Area Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenTextAreaExpression()
@@ -56,8 +57,8 @@ public class TextAreaOverrideDescriptionImpl extends AbstractTextAreaDescription
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_OVERRIDDEN_TEXT_AREA_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenTextAreaExpression() <em>Filter
-     * Conditional Styles From Overridden Text Area Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenTextAreaExpression()
+     * <em>Filter Conditional Styles From Overridden Text Area Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenTextAreaExpression()

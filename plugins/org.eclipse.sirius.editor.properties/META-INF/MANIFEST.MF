@@ -84,6 +84,7 @@ Export-Package: org.eclipse.sirius.editor.properties.api;version="5.0.0",
  org.eclipse.sirius.properties.editor.properties.filters.properties.widgetconditionalstyle;version="4.1.0";x-internal:=true,
  org.eclipse.sirius.properties.editor.properties.filters.properties.widgetdescription;version="4.1.0";x-internal:=true,
  org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle;version="4.1.0";x-internal:=true,
+ org.eclipse.sirius.properties.editor.properties.filters.properties.wizardmodeloperation;version="5.0.0";x-internal:=true,
  org.eclipse.sirius.properties.editor.properties.sections.properties.abstractbuttondescription;version="5.0.0";x-internal:=true,
  org.eclipse.sirius.properties.editor.properties.sections.properties.abstractcheckboxdescription;version="5.0.0";x-internal:=true,
  org.eclipse.sirius.properties.editor.properties.sections.properties.abstractcontainerdescription;version="5.0.0";x-internal:=true,
@@ -142,6 +143,7 @@ Export-Package: org.eclipse.sirius.editor.properties.api;version="5.0.0",
  org.eclipse.sirius.properties.editor.properties.sections.properties.widgetaction;version="4.1.0";x-internal:=true,
  org.eclipse.sirius.properties.editor.properties.sections.properties.widgetconditionalstyle;version="4.1.0";x-internal:=true,
  org.eclipse.sirius.properties.editor.properties.sections.properties.widgetdescription;version="4.1.0";x-internal:=true,
- org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle;version="4.1.0";x-internal:=true
+ org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle;version="4.1.0";x-internal:=true,
+ org.eclipse.sirius.properties.editor.properties.sections.properties.wizardmodeloperation;version="5.0.0";x-internal:=true
 Bundle-Activator: org.eclipse.sirius.editor.properties.internal.SiriusEditorPropertiesPlugin$Implementation
 Bundle-ActivationPolicy: lazy

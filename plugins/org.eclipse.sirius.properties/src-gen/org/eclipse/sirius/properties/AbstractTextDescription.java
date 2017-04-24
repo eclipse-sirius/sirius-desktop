@@ -25,8 +25,8 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>{@link org.eclipse.sirius.properties.AbstractTextDescription#getValueExpression <em>Value Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractTextDescription#getInitialOperation <em>Initial Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractTextDescription#getStyle <em>Style</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.AbstractTextDescription#getConditionalStyles <em>Conditional
- * Styles</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractTextDescription#getConditionalStyles <em>Conditional Styles</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractTextDescription#getExtends <em>Extends</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractTextDescription#getFilterConditionalStylesFromExtendedTextExpression
  * <em>Filter Conditional Styles From Extended Text Expression</em>}</li>
@@ -54,8 +54,8 @@ public interface AbstractTextDescription extends AbstractWidgetDescription {
     String getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractTextDescription#getValueExpression <em>Value
-     * Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractTextDescription#getValueExpression
+     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
@@ -179,8 +179,8 @@ public interface AbstractTextDescription extends AbstractWidgetDescription {
     String getFilterConditionalStylesFromExtendedTextExpression();
 
     /**
-     * Sets the value of the
-     * '{@link org.eclipse.sirius.properties.AbstractTextDescription#getFilterConditionalStylesFromExtendedTextExpression
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.AbstractTextDescription#getFilterConditionalStylesFromExtendedTextExpression
      * <em>Filter Conditional Styles From Extended Text Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *

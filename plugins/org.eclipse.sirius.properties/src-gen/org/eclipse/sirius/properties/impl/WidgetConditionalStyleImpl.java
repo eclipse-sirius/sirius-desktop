@@ -25,8 +25,8 @@ import org.eclipse.sirius.properties.WidgetConditionalStyle;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl#getPreconditionExpression <em>Precondition
- * Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl#getPreconditionExpression
+ * <em>Precondition Expression</em>}</li>
  * </ul>
  *
  * @generated

@@ -178,8 +178,9 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
     protected ButtonDescription extends_;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromExtendedButtonExpression() <em>Filter Conditional
-     * Styles From Extended Button Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterConditionalStylesFromExtendedButtonExpression()
+     * <em>Filter Conditional Styles From Extended Button Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedButtonExpression()
      * @generated
@@ -188,8 +189,9 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_EXTENDED_BUTTON_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedButtonExpression() <em>Filter Conditional
-     * Styles From Extended Button Expression</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterConditionalStylesFromExtendedButtonExpression()
+     * <em>Filter Conditional Styles From Extended Button Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromExtendedButtonExpression()
      * @generated

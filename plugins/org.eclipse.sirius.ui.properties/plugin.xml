@@ -85,4 +85,10 @@
            class="org.eclipse.sirius.ui.properties.internal.dialog.DialogModelOperationManager">
      </modelOperationManager>
   </extension>
+  <extension
+        point="org.eclipse.sirius.modelOperationManager">
+     <modelOperationManager
+           class="org.eclipse.sirius.ui.properties.internal.wizard.WizardModelOperationManager">
+     </modelOperationManager>
+  </extension>
 </plugin>
