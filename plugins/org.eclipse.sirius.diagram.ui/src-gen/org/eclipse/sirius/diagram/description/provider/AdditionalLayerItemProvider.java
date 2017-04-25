@@ -12,6 +12,7 @@
 package org.eclipse.sirius.diagram.description.provider;
 
 import java.net.URL;
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,12 +20,18 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemStyledLabelProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.StyledString;
+import org.eclipse.emf.edit.provider.StyledString.Style;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
@@ -33,9 +40,15 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a {@link org.eclipse.sirius.diagram.description.AdditionalLayer} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
- * @generated
+ * @generated NOT
  */
-public class AdditionalLayerItemProvider extends LayerItemProvider {
+public class AdditionalLayerItemProvider extends LayerItemProvider implements IItemStyledLabelProvider {
+
+    /**
+     * The style used for transient layer.
+     */
+    public static final Style TRANSIENT_LAYER_STYLE = Style.newBuilder().setFont(IItemFontProvider.ITALIC_FONT).toStyle(); // $NON-NLS-1$
+
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -112,6 +125,19 @@ public class AdditionalLayerItemProvider extends LayerItemProvider {
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_AdditionalLayer_type") : label; //$NON-NLS-1$
+    }
+
+    /**
+     * @generated NOT
+     */
+    @Override
+    public Object getStyledText(Object object) {
+        StyledString styledString = new StyledString(getText(object));
+        if (LayerHelper.isTransientLayer((Layer) object)) {
+            styledString.append(MessageFormat.format(" ({0})", getString("AdditionalLayerItemProvider_transientLayer")), TRANSIENT_LAYER_STYLE); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        return styledString;
+
     }
 
     /**
