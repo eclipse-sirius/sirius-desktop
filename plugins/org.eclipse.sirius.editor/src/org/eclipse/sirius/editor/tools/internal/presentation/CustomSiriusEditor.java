@@ -301,6 +301,11 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             }
 
             @Override
+            public String getId() {
+                return "ExpandActionFromEditor";
+            }
+
+            @Override
             public void run() {
                 try {
                     selectionViewer.getControl().setRedraw(false);
@@ -313,6 +318,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         });
         // Collapse All
         tbm.add(new Action() {
+
             @Override
             public ImageDescriptor getImageDescriptor() {
                 return COLLAPSE_IMAGE_DESCRIPTOR;
@@ -324,6 +330,11 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             }
 
             @Override
+            public String getId() {
+                return "CollapseActionFromEditor";
+            }
+
+            @Override
             public void run() {
                 try {
                     selectionViewer.getControl().setRedraw(false);
@@ -331,7 +342,6 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                 } finally {
                     selectionViewer.getControl().setRedraw(true);
                 }
-
             }
         });
         // Validate
