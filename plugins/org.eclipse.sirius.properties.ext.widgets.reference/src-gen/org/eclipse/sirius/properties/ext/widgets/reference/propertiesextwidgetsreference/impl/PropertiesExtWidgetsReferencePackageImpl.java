@@ -25,6 +25,7 @@ import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsr
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferenceFactory;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
@@ -169,7 +170,7 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
      * @generated
      */
     @Override
-    public EReference getAbstractExtReferenceDescription_Style() {
+    public EReference getAbstractExtReferenceDescription_OnClickOperation() {
         return (EReference) abstractExtReferenceDescriptionEClass.getEStructuralFeatures().get(2);
     }
 
@@ -179,7 +180,7 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
      * @generated
      */
     @Override
-    public EReference getAbstractExtReferenceDescription_ConditionalStyles() {
+    public EReference getAbstractExtReferenceDescription_Style() {
         return (EReference) abstractExtReferenceDescriptionEClass.getEStructuralFeatures().get(3);
     }
 
@@ -189,8 +190,18 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
      * @generated
      */
     @Override
-    public EReference getAbstractExtReferenceDescription_Extends() {
+    public EReference getAbstractExtReferenceDescription_ConditionalStyles() {
         return (EReference) abstractExtReferenceDescriptionEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getAbstractExtReferenceDescription_Extends() {
+        return (EReference) abstractExtReferenceDescriptionEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -296,6 +307,7 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
         abstractExtReferenceDescriptionEClass = createEClass(PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION);
         createEAttribute(abstractExtReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_NAME_EXPRESSION);
         createEAttribute(abstractExtReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION);
+        createEReference(abstractExtReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION);
         createEReference(abstractExtReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE);
         createEReference(abstractExtReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES);
         createEReference(abstractExtReferenceDescriptionEClass, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__EXTENDS);
@@ -340,6 +352,7 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
         // Obtain other dependent packages
         PropertiesPackage thePropertiesPackage = (PropertiesPackage) EPackage.Registry.INSTANCE.getEPackage(PropertiesPackage.eNS_URI);
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
+        ToolPackage theToolPackage = (ToolPackage) EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
 
         // Create type parameters
 
@@ -362,6 +375,9 @@ public class PropertiesExtWidgetsReferencePackageImpl extends EPackageImpl imple
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getAbstractExtReferenceDescription_ReferenceOwnerExpression(), theDescriptionPackage.getInterpretedExpression(), "referenceOwnerExpression", null, 0, 1, //$NON-NLS-1$
                 AbstractExtReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getAbstractExtReferenceDescription_OnClickOperation(), theToolPackage.getInitialOperation(), null, "onClickOperation", null, 0, 1, AbstractExtReferenceDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getAbstractExtReferenceDescription_Style(), this.getExtReferenceWidgetStyle(), null, "style", null, 0, 1, AbstractExtReferenceDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,

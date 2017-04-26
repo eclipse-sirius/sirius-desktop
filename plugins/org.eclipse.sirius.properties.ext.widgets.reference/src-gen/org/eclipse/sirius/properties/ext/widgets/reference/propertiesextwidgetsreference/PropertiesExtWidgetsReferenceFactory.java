@@ -17,8 +17,7 @@ import org.eclipse.emf.ecore.EFactory;
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a create method for each non-abstract class of
  * the model. <!-- end-user-doc -->
  *
- * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.
- *      PropertiesExtWidgetsReferencePackage
+ * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage
  * @generated
  */
 public interface PropertiesExtWidgetsReferenceFactory extends EFactory {

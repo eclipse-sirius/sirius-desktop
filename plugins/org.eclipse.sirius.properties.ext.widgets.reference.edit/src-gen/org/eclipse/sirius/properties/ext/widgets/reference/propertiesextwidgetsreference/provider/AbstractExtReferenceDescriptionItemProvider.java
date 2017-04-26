@@ -26,6 +26,7 @@ import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsr
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferenceFactory;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
 import org.eclipse.sirius.properties.provider.AbstractWidgetDescriptionItemProvider;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
  * This is the item provider adapter for a
@@ -113,6 +114,7 @@ public class AbstractExtReferenceDescriptionItemProvider extends AbstractWidgetD
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
+            childrenFeatures.add(PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION);
             childrenFeatures.add(PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE);
             childrenFeatures.add(PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES);
         }
@@ -163,7 +165,7 @@ public class AbstractExtReferenceDescriptionItemProvider extends AbstractWidgetD
      * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,6 +177,7 @@ public class AbstractExtReferenceDescriptionItemProvider extends AbstractWidgetD
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION:
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE:
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -192,6 +195,9 @@ public class AbstractExtReferenceDescriptionItemProvider extends AbstractWidgetD
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors
+                .add(createChildParameter(PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
         newChildDescriptors.add(createChildParameter(PropertiesExtWidgetsReferencePackage.Literals.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE,
                 PropertiesExtWidgetsReferenceFactory.eINSTANCE.createExtReferenceWidgetStyle()));

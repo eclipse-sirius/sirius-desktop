@@ -8,6 +8,8 @@
         lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceOwnerExpression"
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onClickOperation" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//ExtReferenceWidgetStyle"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"

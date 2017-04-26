@@ -36,8 +36,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * starting with the actual class of the object and proceeding up the inheritance hierarchy until a non-null result is
  * returned, which is the result of the switch. <!-- end-user-doc -->
  *
- * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.
- *      PropertiesExtWidgetsReferencePackage
+ * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage
  * @generated
  */
 public class PropertiesExtWidgetsReferenceSwitch<T> extends Switch<T> {
@@ -230,14 +229,14 @@ public class PropertiesExtWidgetsReferenceSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Ext Reference Widget Conditional Style</em>
-     * '. <!-- begin-user-doc --> This implementation returns null; returning a non-null result will terminate the
-     * switch. <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Ext Reference Widget Conditional
+     * Style</em>'. <!-- begin-user-doc --> This implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
      *
      * @param object
      *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Ext Reference Widget Conditional Style</em>
-     *         '.
+     * @return the result of interpreting the object as an instance of '<em>Ext Reference Widget Conditional
+     *         Style</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */

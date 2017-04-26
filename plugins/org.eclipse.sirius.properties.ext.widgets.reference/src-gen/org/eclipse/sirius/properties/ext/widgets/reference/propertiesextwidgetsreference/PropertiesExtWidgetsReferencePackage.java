@@ -27,8 +27,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * </ul>
  * <!-- end-user-doc -->
  *
- * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.
- *      PropertiesExtWidgetsReferenceFactory
+ * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferenceFactory
  * @model kind="package"
  * @generated
  */
@@ -62,12 +61,11 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     PropertiesExtWidgetsReferencePackage eINSTANCE = org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.PropertiesExtWidgetsReferencePackageImpl.init();
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl
      * <em>Abstract Ext Reference Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.
-     *      AbstractExtReferenceDescriptionImpl
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl
      * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.PropertiesExtWidgetsReferencePackageImpl#getAbstractExtReferenceDescription()
      * @generated
      */
@@ -142,13 +140,22 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     int ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>On Click Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
      * The feature id for the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
      * @generated
      * @ordered
      */
-    int ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment reference list. <!-- begin-user-doc -->
@@ -157,7 +164,7 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+    int ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Extends</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -165,7 +172,7 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_EXT_REFERENCE_DESCRIPTION__EXTENDS = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+    int ABSTRACT_EXT_REFERENCE_DESCRIPTION__EXTENDS = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '<em>Abstract Ext Reference Description</em>' class. <!-- begin-user-doc
@@ -174,15 +181,14 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_EXT_REFERENCE_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 5;
+    int ABSTRACT_EXT_REFERENCE_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.ABSTRACT_WIDGET_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl
      * <em>Ext Reference Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.
-     *      ExtReferenceDescriptionImpl
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl
      * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.PropertiesExtWidgetsReferencePackageImpl#getExtReferenceDescription()
      * @generated
      */
@@ -257,6 +263,15 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     int EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION = PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>On Click Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION = PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION;
+
+    /**
      * The feature id for the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
@@ -292,12 +307,11 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     int EXT_REFERENCE_DESCRIPTION_FEATURE_COUNT = PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetStyleImpl
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetStyleImpl
      * <em>Ext Reference Widget Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.
-     *      ExtReferenceWidgetStyleImpl
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetStyleImpl
      * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.PropertiesExtWidgetsReferencePackageImpl#getExtReferenceWidgetStyle()
      * @generated
      */
@@ -358,12 +372,11 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     int EXT_REFERENCE_WIDGET_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetConditionalStyleImpl
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetConditionalStyleImpl
      * <em>Ext Reference Widget Conditional Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.
-     *      ExtReferenceWidgetConditionalStyleImpl
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetConditionalStyleImpl
      * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.PropertiesExtWidgetsReferencePackageImpl#getExtReferenceWidgetConditionalStyle()
      * @generated
      */
@@ -397,12 +410,11 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     int EXT_REFERENCE_WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceOverrideDescriptionImpl
+     * The meta object id for the
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceOverrideDescriptionImpl
      * <em>Ext Reference Override Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.
-     *      ExtReferenceOverrideDescriptionImpl
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceOverrideDescriptionImpl
      * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.PropertiesExtWidgetsReferencePackageImpl#getExtReferenceOverrideDescription()
      * @generated
      */
@@ -477,6 +489,15 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     int EXT_REFERENCE_OVERRIDE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION = PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>On Click Operation</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int EXT_REFERENCE_OVERRIDE_DESCRIPTION__ON_CLICK_OPERATION = PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION;
+
+    /**
      * The feature id for the '<em><b>Style</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
@@ -530,20 +551,19 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     int EXT_REFERENCE_OVERRIDE_DESCRIPTION_FEATURE_COUNT = PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription
      * <em>Abstract Ext Reference Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for class '<em>Abstract Ext Reference Description</em>'.
-     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.
-     *      AbstractExtReferenceDescription
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription
      * @generated
      */
     EClass getAbstractExtReferenceDescription();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription#getReferenceNameExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription#getReferenceNameExpression
      * <em>Reference Name Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the attribute '<em>Reference Name Expression</em>'.
@@ -554,8 +574,8 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     EAttribute getAbstractExtReferenceDescription_ReferenceNameExpression();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription#getReferenceOwnerExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription#getReferenceOwnerExpression
      * <em>Reference Owner Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the attribute '<em>Reference Owner Expression</em>'.
@@ -566,8 +586,20 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     EAttribute getAbstractExtReferenceDescription_ReferenceOwnerExpression();
 
     /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription#getStyle
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription#getOnClickOperation
+     * <em>On Click Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>On Click Operation</em>'.
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription#getOnClickOperation()
+     * @see #getAbstractExtReferenceDescription()
+     * @generated
+     */
+    EReference getAbstractExtReferenceDescription_OnClickOperation();
+
+    /**
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the containment reference '<em>Style</em>'.
@@ -578,8 +610,8 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     EReference getAbstractExtReferenceDescription_Style();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription#getConditionalStyles
+     * Returns the meta object for the containment reference list
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription#getConditionalStyles
      * <em>Conditional Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the containment reference list '<em>Conditional Styles</em>'.
@@ -590,8 +622,8 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     EReference getAbstractExtReferenceDescription_ConditionalStyles();
 
     /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription#getExtends
+     * Returns the meta object for the reference
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.AbstractExtReferenceDescription#getExtends
      * <em>Extends</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the reference '<em>Extends</em>'.
@@ -602,8 +634,8 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     EReference getAbstractExtReferenceDescription_Extends();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription
      * <em>Ext Reference Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for class '<em>Ext Reference Description</em>'.
@@ -613,8 +645,8 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     EClass getExtReferenceDescription();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle
      * <em>Ext Reference Widget Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for class '<em>Ext Reference Widget Style</em>'.
@@ -624,20 +656,19 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     EClass getExtReferenceWidgetStyle();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle
      * <em>Ext Reference Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for class '<em>Ext Reference Widget Conditional Style</em>'.
-     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.
-     *      ExtReferenceWidgetConditionalStyle
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle
      * @generated
      */
     EClass getExtReferenceWidgetConditionalStyle();
 
     /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle#getStyle
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the containment reference '<em>Style</em>'.
@@ -648,20 +679,19 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     EReference getExtReferenceWidgetConditionalStyle_Style();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription
+     * Returns the meta object for class
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription
      * <em>Ext Reference Override Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for class '<em>Ext Reference Override Description</em>'.
-     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.
-     *      ExtReferenceOverrideDescription
+     * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription
      * @generated
      */
     EClass getExtReferenceOverrideDescription();
 
     /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription#getOverrides
+     * Returns the meta object for the reference
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription#getOverrides
      * <em>Overrides</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the reference '<em>Overrides</em>'.
@@ -672,13 +702,13 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
     EReference getExtReferenceOverrideDescription_Overrides();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription#getFilterConditionalStylesFromOverriddenExtReferenceExpression
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription#getFilterConditionalStylesFromOverriddenExtReferenceExpression
      * <em>Filter Conditional Styles From Overridden Ext Reference Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
-     * @return the meta object for the attribute '
-     *         <em>Filter Conditional Styles From Overridden Ext Reference Expression</em>'.
+     * @return the meta object for the attribute '<em>Filter Conditional Styles From Overridden Ext Reference
+     *         Expression</em>'.
      * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription#getFilterConditionalStylesFromOverriddenExtReferenceExpression()
      * @see #getExtReferenceOverrideDescription()
      * @generated
@@ -707,12 +737,11 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
      */
     interface Literals {
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl
          * <em>Abstract Ext Reference Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.
-         *      AbstractExtReferenceDescriptionImpl
+         * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl
          * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.PropertiesExtWidgetsReferencePackageImpl#getAbstractExtReferenceDescription()
          * @generated
          */
@@ -733,6 +762,14 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
          * @generated
          */
         EAttribute ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION = PropertiesExtWidgetsReferencePackage.eINSTANCE.getAbstractExtReferenceDescription_ReferenceOwnerExpression();
+
+        /**
+         * The meta object literal for the '<em><b>On Click Operation</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION = PropertiesExtWidgetsReferencePackage.eINSTANCE.getAbstractExtReferenceDescription_OnClickOperation();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment reference feature. <!-- begin-user-doc
@@ -759,36 +796,33 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
         EReference ABSTRACT_EXT_REFERENCE_DESCRIPTION__EXTENDS = PropertiesExtWidgetsReferencePackage.eINSTANCE.getAbstractExtReferenceDescription_Extends();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl
          * <em>Ext Reference Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.
-         *      ExtReferenceDescriptionImpl
+         * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceDescriptionImpl
          * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.PropertiesExtWidgetsReferencePackageImpl#getExtReferenceDescription()
          * @generated
          */
         EClass EXT_REFERENCE_DESCRIPTION = PropertiesExtWidgetsReferencePackage.eINSTANCE.getExtReferenceDescription();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetStyleImpl
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetStyleImpl
          * <em>Ext Reference Widget Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.
-         *      ExtReferenceWidgetStyleImpl
+         * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetStyleImpl
          * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.PropertiesExtWidgetsReferencePackageImpl#getExtReferenceWidgetStyle()
          * @generated
          */
         EClass EXT_REFERENCE_WIDGET_STYLE = PropertiesExtWidgetsReferencePackage.eINSTANCE.getExtReferenceWidgetStyle();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetConditionalStyleImpl
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetConditionalStyleImpl
          * <em>Ext Reference Widget Conditional Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.
-         *      ExtReferenceWidgetConditionalStyleImpl
+         * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetConditionalStyleImpl
          * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.PropertiesExtWidgetsReferencePackageImpl#getExtReferenceWidgetConditionalStyle()
          * @generated
          */
@@ -803,12 +837,11 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
         EReference EXT_REFERENCE_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesExtWidgetsReferencePackage.eINSTANCE.getExtReferenceWidgetConditionalStyle_Style();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceOverrideDescriptionImpl
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceOverrideDescriptionImpl
          * <em>Ext Reference Override Description</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.
-         *      ExtReferenceOverrideDescriptionImpl
+         * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceOverrideDescriptionImpl
          * @see org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.PropertiesExtWidgetsReferencePackageImpl#getExtReferenceOverrideDescription()
          * @generated
          */
@@ -823,9 +856,8 @@ public interface PropertiesExtWidgetsReferencePackage extends EPackage {
         EReference EXT_REFERENCE_OVERRIDE_DESCRIPTION__OVERRIDES = PropertiesExtWidgetsReferencePackage.eINSTANCE.getExtReferenceOverrideDescription_Overrides();
 
         /**
-         * The meta object literal for the '
-         * <em><b>Filter Conditional Styles From Overridden Ext Reference Expression</b></em>' attribute feature. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Filter Conditional Styles From Overridden Ext Reference
+         * Expression</b></em>' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */

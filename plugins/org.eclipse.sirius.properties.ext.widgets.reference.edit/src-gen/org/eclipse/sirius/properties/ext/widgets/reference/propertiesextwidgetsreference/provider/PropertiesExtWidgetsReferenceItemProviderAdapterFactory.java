@@ -51,7 +51,7 @@ import org.eclipse.sirius.properties.util.PropertiesSwitch;
  * factory convert EMF adapter notifications into calls to {@link #fireNotifyChanged fireNotifyChanged}. The adapters
  * also support Eclipse property sheets. Note that most of the adapters are shared among multiple instances. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends PropertiesExtWidgetsReferenceAdapterFactory
@@ -83,7 +83,7 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
     /**
      * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -113,8 +113,8 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -138,8 +138,8 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -163,8 +163,8 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetConditionalStyle}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -188,8 +188,8 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactory extends Pro
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */

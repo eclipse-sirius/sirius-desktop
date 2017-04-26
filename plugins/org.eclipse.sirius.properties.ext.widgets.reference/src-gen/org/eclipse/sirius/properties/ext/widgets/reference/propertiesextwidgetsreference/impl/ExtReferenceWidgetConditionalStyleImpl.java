@@ -22,14 +22,13 @@ import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsr
 import org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '<em><b>Ext Reference Widget Conditional Style</b></em>
- * '. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Ext Reference Widget Conditional
+ * Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetConditionalStyleImpl#getStyle
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceWidgetConditionalStyleImpl#getStyle
  * <em>Style</em>}</li>
  * </ul>
  *

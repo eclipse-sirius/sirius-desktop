@@ -13,22 +13,22 @@ package org.eclipse.sirius.ui.properties.ext.widgets.reference.internal;
 import org.eclipse.eef.ext.widgets.reference.eefextwidgetsreference.EefExtWidgetsReferenceFactory;
 import org.eclipse.eef.ext.widgets.reference.eefextwidgetsreference.EefExtWidgetsReferencePackage;
 import org.eclipse.emf.ecore.EFactory;
-import org.eclipse.sirius.properties.core.api.DefaultDescriptionConverter;
+import org.eclipse.sirius.properties.core.api.DefaultDescriptionWithInitialOperationConverter;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
 
 /**
- * This class is used to convert the Sirius Extension reference description into
- * the EEF one.
+ * This class is used to convert the Sirius Extension reference description into the EEF one.
  * 
  * @author sbegaudeau
  */
-public class ExtReferenceDescriptionConverter extends DefaultDescriptionConverter<ExtReferenceDescription> {
+public class ExtReferenceDescriptionConverter extends DefaultDescriptionWithInitialOperationConverter<ExtReferenceDescription> {
 
     /**
      * The constructor.
      */
     public ExtReferenceDescriptionConverter() {
-        super(ExtReferenceDescription.class, EefExtWidgetsReferencePackage.Literals.EEF_EXT_REFERENCE_DESCRIPTION);
+        super(ExtReferenceDescription.class, EefExtWidgetsReferencePackage.Literals.EEF_EXT_REFERENCE_DESCRIPTION,
+                EefExtWidgetsReferencePackage.Literals.EEF_EXT_REFERENCE_DESCRIPTION__ON_CLICK_EXPRESSION);
     }
 
     @Override

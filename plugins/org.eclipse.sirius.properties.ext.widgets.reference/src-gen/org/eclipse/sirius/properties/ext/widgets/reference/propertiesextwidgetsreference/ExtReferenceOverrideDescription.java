@@ -21,11 +21,9 @@ import org.eclipse.sirius.properties.AbstractOverrideDescription;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription#getOverrides
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription#getOverrides
  * <em>Overrides</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription#getFilterConditionalStylesFromOverriddenExtReferenceExpression
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription#getFilterConditionalStylesFromOverriddenExtReferenceExpression
  * <em>Filter Conditional Styles From Overridden Ext Reference Expression</em>}</li>
  * </ul>
  *
@@ -51,8 +49,8 @@ public interface ExtReferenceOverrideDescription extends AbstractExtReferenceDes
     ExtReferenceDescription getOverrides();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription#getOverrides
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription#getOverrides
      * <em>Overrides</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
@@ -80,8 +78,8 @@ public interface ExtReferenceOverrideDescription extends AbstractExtReferenceDes
     String getFilterConditionalStylesFromOverriddenExtReferenceExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription#getFilterConditionalStylesFromOverriddenExtReferenceExpression
+     * Sets the value of the
+     * '{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceOverrideDescription#getFilterConditionalStylesFromOverriddenExtReferenceExpression
      * <em>Filter Conditional Styles From Overridden Ext Reference Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      *

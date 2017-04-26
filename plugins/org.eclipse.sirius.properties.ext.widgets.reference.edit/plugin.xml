@@ -28,6 +28,7 @@
                org.eclipse.emf.edit.provider.IItemPropertySource
                org.eclipse.emf.edit.provider.IItemStyledLabelProvider"/>
    </extension>
+
    <extension point="org.eclipse.emf.edit.childCreationExtenders">
       <!-- @generated NOT properties-ext-widgets-reference -->
       <extender

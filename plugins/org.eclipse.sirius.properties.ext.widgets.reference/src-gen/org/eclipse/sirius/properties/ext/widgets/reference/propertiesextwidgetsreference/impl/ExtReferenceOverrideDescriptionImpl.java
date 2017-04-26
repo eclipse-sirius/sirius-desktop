@@ -26,11 +26,9 @@ import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsr
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceOverrideDescriptionImpl#getOverrides
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceOverrideDescriptionImpl#getOverrides
  * <em>Overrides</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenExtReferenceExpression
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.ExtReferenceOverrideDescriptionImpl#getFilterConditionalStylesFromOverriddenExtReferenceExpression
  * <em>Filter Conditional Styles From Overridden Ext Reference Expression</em>}</li>
  * </ul>
  *
@@ -48,9 +46,9 @@ public class ExtReferenceOverrideDescriptionImpl extends AbstractExtReferenceDes
     protected ExtReferenceDescription overrides;
 
     /**
-     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenExtReferenceExpression()
-     * <em>Filter Conditional Styles From Overridden Ext Reference Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getFilterConditionalStylesFromOverriddenExtReferenceExpression() <em>Filter
+     * Conditional Styles From Overridden Ext Reference Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenExtReferenceExpression()
      * @generated
@@ -59,9 +57,9 @@ public class ExtReferenceOverrideDescriptionImpl extends AbstractExtReferenceDes
     protected static final String FILTER_CONDITIONAL_STYLES_FROM_OVERRIDDEN_EXT_REFERENCE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenExtReferenceExpression()
-     * <em>Filter Conditional Styles From Overridden Ext Reference Expression</em>}' attribute. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getFilterConditionalStylesFromOverriddenExtReferenceExpression() <em>Filter
+     * Conditional Styles From Overridden Ext Reference Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @see #getFilterConditionalStylesFromOverriddenExtReferenceExpression()
      * @generated

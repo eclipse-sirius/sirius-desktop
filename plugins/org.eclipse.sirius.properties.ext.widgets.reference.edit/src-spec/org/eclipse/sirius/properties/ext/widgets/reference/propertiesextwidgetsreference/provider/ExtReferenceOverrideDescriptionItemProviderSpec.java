@@ -23,11 +23,11 @@ import org.eclipse.sirius.properties.provider.Utils;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
- * The user modified version of the {@link ExtReferenceDescriptionItemProvider}.
+ * The user modified version of the {@link ExtReferenceOverrideDescriptionItemProvider}.
  * 
  * @author sbegaudeau
  */
-public class ExtReferenceDescriptionItemProviderSpec extends ExtReferenceDescriptionItemProvider {
+public class ExtReferenceOverrideDescriptionItemProviderSpec extends ExtReferenceOverrideDescriptionItemProvider {
 
     /**
      * The constructor.
@@ -35,7 +35,7 @@ public class ExtReferenceDescriptionItemProviderSpec extends ExtReferenceDescrip
      * @param adapterFactory
      *            The adapter factory
      */
-    public ExtReferenceDescriptionItemProviderSpec(AdapterFactory adapterFactory) {
+    public ExtReferenceOverrideDescriptionItemProviderSpec(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -50,7 +50,7 @@ public class ExtReferenceDescriptionItemProviderSpec extends ExtReferenceDescrip
 
     @Override
     public Object getStyledText(Object object) {
-        return Utils.computeLabel(this, object, "_UI_ExtReferenceDescription_type"); //$NON-NLS-1$
+        return Utils.computeLabel(this, object, "_UI_ExtReferenceOverrideDescription_type"); //$NON-NLS-1$
     }
 
     @Override

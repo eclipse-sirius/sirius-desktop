@@ -27,6 +27,7 @@ import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsr
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceWidgetStyle;
 import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.PropertiesExtWidgetsReferencePackage;
 import org.eclipse.sirius.properties.impl.AbstractWidgetDescriptionImpl;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Abstract Ext Reference Description</b></em>'.
@@ -35,20 +36,17 @@ import org.eclipse.sirius.properties.impl.AbstractWidgetDescriptionImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl#getReferenceNameExpression
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl#getReferenceNameExpression
  * <em>Reference Name Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl#getReferenceOwnerExpression
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl#getReferenceOwnerExpression
  * <em>Reference Owner Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl#getStyle
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl#getOnClickOperation
+ * <em>On Click Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl#getStyle
  * <em>Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl#getConditionalStyles
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl#getConditionalStyles
  * <em>Conditional Styles</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl#getExtends
+ * <li>{@link org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.impl.AbstractExtReferenceDescriptionImpl#getExtends
  * <em>Extends</em>}</li>
  * </ul>
  *
@@ -94,6 +92,16 @@ public abstract class AbstractExtReferenceDescriptionImpl extends AbstractWidget
      * @ordered
      */
     protected String referenceOwnerExpression = AbstractExtReferenceDescriptionImpl.REFERENCE_OWNER_EXPRESSION_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getOnClickOperation() <em>On Click Operation</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getOnClickOperation()
+     * @generated
+     * @ordered
+     */
+    protected InitialOperation onClickOperation;
 
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
@@ -191,6 +199,63 @@ public abstract class AbstractExtReferenceDescriptionImpl extends AbstractWidget
         if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION, oldReferenceOwnerExpression,
                     referenceOwnerExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public InitialOperation getOnClickOperation() {
+        return onClickOperation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public NotificationChain basicSetOnClickOperation(InitialOperation newOnClickOperation, NotificationChain msgs) {
+        InitialOperation oldOnClickOperation = onClickOperation;
+        onClickOperation = newOnClickOperation;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION,
+                    oldOnClickOperation, newOnClickOperation);
+            if (msgs == null) {
+                msgs = notification;
+            } else {
+                msgs.add(notification);
+            }
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setOnClickOperation(InitialOperation newOnClickOperation) {
+        if (newOnClickOperation != onClickOperation) {
+            NotificationChain msgs = null;
+            if (onClickOperation != null) {
+                msgs = ((InternalEObject) onClickOperation).eInverseRemove(this,
+                        InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION, null, msgs);
+            }
+            if (newOnClickOperation != null) {
+                msgs = ((InternalEObject) newOnClickOperation).eInverseAdd(this,
+                        InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION, null, msgs);
+            }
+            msgs = basicSetOnClickOperation(newOnClickOperation, msgs);
+            if (msgs != null) {
+                msgs.dispatch();
+            }
+        } else if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION, newOnClickOperation,
+                    newOnClickOperation));
         }
     }
 
@@ -313,6 +378,8 @@ public abstract class AbstractExtReferenceDescriptionImpl extends AbstractWidget
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION:
+            return basicSetOnClickOperation(null, msgs);
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE:
             return basicSetStyle(null, msgs);
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES:
@@ -333,6 +400,8 @@ public abstract class AbstractExtReferenceDescriptionImpl extends AbstractWidget
             return getReferenceNameExpression();
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION:
             return getReferenceOwnerExpression();
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION:
+            return getOnClickOperation();
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE:
             return getStyle();
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES:
@@ -360,6 +429,9 @@ public abstract class AbstractExtReferenceDescriptionImpl extends AbstractWidget
             return;
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION:
             setReferenceOwnerExpression((String) newValue);
+            return;
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION:
+            setOnClickOperation((InitialOperation) newValue);
             return;
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE:
             setStyle((ExtReferenceWidgetStyle) newValue);
@@ -389,6 +461,9 @@ public abstract class AbstractExtReferenceDescriptionImpl extends AbstractWidget
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION:
             setReferenceOwnerExpression(AbstractExtReferenceDescriptionImpl.REFERENCE_OWNER_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION:
+            setOnClickOperation((InitialOperation) null);
+            return;
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE:
             setStyle((ExtReferenceWidgetStyle) null);
             return;
@@ -416,6 +491,8 @@ public abstract class AbstractExtReferenceDescriptionImpl extends AbstractWidget
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__REFERENCE_OWNER_EXPRESSION:
             return AbstractExtReferenceDescriptionImpl.REFERENCE_OWNER_EXPRESSION_EDEFAULT == null ? referenceOwnerExpression != null
                     : !AbstractExtReferenceDescriptionImpl.REFERENCE_OWNER_EXPRESSION_EDEFAULT.equals(referenceOwnerExpression);
+        case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION:
+            return onClickOperation != null;
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__STYLE:
             return style != null;
         case PropertiesExtWidgetsReferencePackage.ABSTRACT_EXT_REFERENCE_DESCRIPTION__CONDITIONAL_STYLES:

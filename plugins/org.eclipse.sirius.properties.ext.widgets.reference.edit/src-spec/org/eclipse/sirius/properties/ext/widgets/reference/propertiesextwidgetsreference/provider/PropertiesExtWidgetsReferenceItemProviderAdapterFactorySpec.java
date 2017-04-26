@@ -45,4 +45,12 @@ public class PropertiesExtWidgetsReferenceItemProviderAdapterFactorySpec extends
         return extReferenceWidgetConditionalStyleItemProvider;
     }
 
+    @Override
+    public Adapter createExtReferenceOverrideDescriptionAdapter() {
+        if (extReferenceOverrideDescriptionItemProvider == null) {
+            extReferenceOverrideDescriptionItemProvider = new ExtReferenceOverrideDescriptionItemProviderSpec(this);
+        }
+
+        return extReferenceOverrideDescriptionItemProvider;
+    }
 }
