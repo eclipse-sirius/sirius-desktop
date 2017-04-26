@@ -10,7 +10,10 @@ h3. User-Visible Changes
 
 * <span class="label label-info">Modified</span> The label alignment of Notes from the Palette has been modified from Juno to Luna or newer versions of Eclipse. The label alignment changed from TOP & CENTER to MIDDLE & LEFT. The initial alignment (TOP & CENTER) has been restored.
 
+
 h3. Specifier-Visible Changes
+
+* <span class="label label-info">Modified</span> The transient layer has been introduced in Sirius 5.0. (Refer to "Sirius Specifier":specifier/diagrams/Diagrams.html#Transientlayer and "Sirius User":user/diagrams/Diagrams.html#transientLayer documentation in Diagram chapter). Transient layer is an additional layer containing only decorations or tools. If you have such layer in your VSM, users may encounter some unexpected behaviors. If the layer is not _active by default_ then it will not be applied when opening your diagram even if it was activated before. If the layer is _active by default_ then it will be automatically applied when opening your diagram. We consider this behavior as a known limitation and an enhancement may be done in a further release. In the meantime, there is a workaround which consists to add a fake mapping (that is any mapping with its fields empty) so that the layer will not be considered as transient.
 
 h3. Developer-Visible Changes
 

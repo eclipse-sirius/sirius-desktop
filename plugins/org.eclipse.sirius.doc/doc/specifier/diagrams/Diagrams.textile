@@ -67,6 +67,8 @@ h4. Transient layer
 A transient layer is a layer that contains only _Decoration Description_ and/or tools.
 When applying a transient layer, the diagram is *never* modified. Tools are displayed in the palette and decorations are refreshed in opened editors.
 
+Note that the _Active by default_ flag have a different meaning for transient layer. If _Active by default_ is set, the transient layer will be automatically enabled when the user *opens* a diagram (and not specially when he creates a new diagram).
+
 h3(#graphical_elements). Graphical Elements and Mappings
 
 This section describes the different kinds of graphical elements supported on Sirius diagrams and the general principle of how they are specified inside the VSM, through the notion of _mapping_.
@@ -459,6 +461,14 @@ List decoration example: !=./images/decoration_group_example.png!
 
 Tooltip example on list decoration: !=./images/decoration_group_tooltip_example.png!
  
+h4. Decoration display update
+
+The decorations can be manually and automatically refreshed.
+* Manually, when the user clicks on the refresh button in the diagram tool bar.
+* Automatically, according to semantic changes when:
+** the _target semantic element_ of the @DDiagramElement@ (@DSemanticDecorator_Target@ feature) is changed,
+** the _semantic elements_ of the @DDiagramElement@ (@DRepresentationElement_SemanticElements@ feature) are changed. They are defined with _Associated Elements Expression_ on the mapping. It means that a specifier that defined decorations can not add new "semantic element", dedicated to decorations, that would be listened to for the automatic refresh.
+
 h2(#styling). Styling
 
 Styles define the graphical appearance of diagram elements. Sirius supports a rich set of possible styles, including conditional styles which can dynamically change depending on the current state of the underlying model elements. Each mapping must define at least one style do be visible on the diagram.

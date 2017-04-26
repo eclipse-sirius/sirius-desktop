@@ -799,6 +799,10 @@ When the diagram itself (and not a specific element) is selected, the tab-bar co
 
 !images/diagram_editor7.png!
 
+
+p(#transientLayer). Transient layers are displayed, in the drop down menu, after the non transients's. They are separated with an horizontal separator. 
+!images/diagram_editor_transient_layer.png!
+
 !images/tabbar_filters_selection.png! _Filters Selection_. Diagram configurations may define _filters_, than you can enable or disable to hide (or show) diagram elements depending on semantic conditions. For example on a UML class diagram, a filter may be defined to hide all abstract classes and interfaces, so that only concrete classes are visible. The set of filters currently enabled can be controlled using the drop-down menu in the tab-bar. Simply click on the button to reveal the menu, and check or un-check the filters you want to have enabled or disabled. A tick-mark is visible on the tab-bar button if at least one filter is currently enabled.
 
 !images/diagram_editor8.png!

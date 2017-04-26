@@ -270,6 +270,11 @@
 			<br/>When applying a transient layer, the diagram is 
 			<strong>never</strong> modified. Tools are displayed in the palette and decorations are refreshed in opened editors.
 		</p>
+		<p>Note that the 
+			<em>Active by default</em> flag have a different meaning for transient layer. If 
+			<em>Active by default</em> is set, the transient layer will be automatically enabled when the user 
+			<strong>opens</strong> a diagram (and not specially when he creates a new diagram).
+		</p>
 		<h3 id="graphical_elements">Graphical Elements and Mappings</h3>
 		<p>This section describes the different kinds of graphical elements supported on Sirius diagrams and the general principle of how they are specified inside the VSM, through the notion of 
 			<em>mapping</em>.
@@ -1288,6 +1293,26 @@
 		<p>Tooltip example on list decoration: 
 			<img align="center" border="0" src="./images/decoration_group_tooltip_example.png"/>
 		</p>
+		<h4 id="Decorationdisplayupdate">Decoration display update</h4>
+		<p>The decorations can be manually and automatically refreshed.</p>
+		<ul>
+			<li>Manually, when the user clicks on the refresh button in the diagram tool bar.</li>
+			<li>Automatically, according to semantic changes when:
+				<ul>
+					<li>the 
+						<em>target semantic element</em> of the 
+						<code>DDiagramElement</code> (
+						<code>DSemanticDecorator_Target</code> feature) is changed,
+					</li>
+					<li>the 
+						<em>semantic elements</em> of the 
+						<code>DDiagramElement</code> (
+						<code>DRepresentationElement_SemanticElements</code> feature) are changed. They are defined with 
+						<em>Associated Elements Expression</em> on the mapping. It means that a specifier that defined decorations can not add new &#8220;semantic element&#8221;, dedicated to decorations, that would be listened to for the automatic refresh.
+					</li>
+				</ul>
+			</li>
+		</ul>
 		<h2 id="styling">Styling</h2>
 		<p>Styles define the graphical appearance of diagram elements. Sirius supports a rich set of possible styles, including conditional styles which can dynamically change depending on the current state of the underlying model elements. Each mapping must define at least one style do be visible on the diagram.</p>
 		<h3 id="conditional_styles">Conditional Styles</h3>
