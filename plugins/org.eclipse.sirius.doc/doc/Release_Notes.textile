@@ -127,7 +127,8 @@ h4. Changes in @org.eclipse.sirius.editor.properties@
 
 h4. Changes in @org.eclipse.sirius.ui@
 
-* <span class="label label-info">Modified</span> The boolean parameter @exportDecorations@ has been added to @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.export(DRepresentation, Session, IPath, ExportFormat, IProgressMonitor, boolean)@ method and in @org.eclipse.sirius.ui.tools.api.actions.export.ExportAction.ExportAction(Session, Collection<DRepresentation>, IPath, ImageFileFormat, boolean, boolean)@ constructor. It allows to choose if the diagram element decorations will be exported or not.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.export(DRepresentation, Session, IPath, ExportFormat, IProgressMonitor, boolean)@ method has been added. Compared to the previous method signature, the boolean parameter @exportDecorations@ has been added to allow to choose if the diagram element decorations will be exported or not.
+* <span class="label label-info">Modified</span> The boolean parameter @exportDecorations@ has been added to @org.eclipse.sirius.ui.tools.api.actions.export.ExportAction.ExportAction(Session, Collection<DRepresentation>, IPath, ImageFileFormat, boolean, boolean)@ constructor. It allows to choose if the diagram element decorations will be exported or not.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 

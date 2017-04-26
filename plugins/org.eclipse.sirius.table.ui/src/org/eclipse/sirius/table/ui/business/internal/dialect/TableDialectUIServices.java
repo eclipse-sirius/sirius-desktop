@@ -64,6 +64,7 @@ import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -238,6 +239,11 @@ public class TableDialectUIServices implements DialectUIServices {
     @Override
     public boolean canExport(ExportFormat format) {
         return format.getDocumentFormat().equals(ExportDocumentFormat.CSV);
+    }
+
+    @Override
+    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
+        export(representation, session, path, format, monitor, true);
     }
 
     @Override

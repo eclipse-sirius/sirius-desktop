@@ -449,9 +449,12 @@
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.export(DRepresentation, Session, IPath, ExportFormat, IProgressMonitor, boolean)</code> method has been added. Compared to the previous method signature, the boolean parameter 
+				<code>exportDecorations</code> has been added to allow to choose if the diagram element decorations will be exported or not.
+			</li>
 			<li><span class="label label-info">Modified</span> The boolean parameter 
 				<code>exportDecorations</code> has been added to 
-				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.export(DRepresentation, Session, IPath, ExportFormat, IProgressMonitor, boolean)</code> method and in 
 				<code>org.eclipse.sirius.ui.tools.api.actions.export.ExportAction.ExportAction(Session, Collection&lt;DRepresentation&gt;, IPath, ImageFileFormat, boolean, boolean)</code> constructor. It allows to choose if the diagram element decorations will be exported or not.
 			</li>
 		</ul>

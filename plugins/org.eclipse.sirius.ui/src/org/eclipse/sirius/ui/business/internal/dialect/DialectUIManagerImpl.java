@@ -253,6 +253,11 @@ public class DialectUIManagerImpl implements DialectUIManager {
     }
 
     @Override
+    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
+        export(representation, session, path, format, monitor, true);
+    }
+
+    @Override
     public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor, boolean exportDecorations)
             throws SizeTooLargeException {
         for (final DialectUI dialect : dialects.values()) {

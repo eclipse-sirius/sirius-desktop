@@ -199,7 +199,7 @@ public class TreeDialectUIServices implements DialectUIServices {
     }
 
     @Override
-    public void export(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor, boolean exportDecorations) {
+    public void export(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) {
         // Nothing to do for trees.
     }
 

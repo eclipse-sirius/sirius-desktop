@@ -463,12 +463,11 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#export(org.eclipse.sirius.viewpoint.DRepresentation,
-     *      org.eclipse.sirius.business.api.session.Session)
-     */
+    @Override
+    public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
+        export(representation, session, path, format, monitor, true);
+    }
+
     @Override
     public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor, boolean exportDecorations)
             throws SizeTooLargeException {
