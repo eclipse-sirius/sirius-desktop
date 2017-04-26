@@ -23,6 +23,8 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -43,8 +45,10 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.ui.tools.internal.actions.export.AbstractExportRepresentationsAction;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 
 /**
@@ -121,8 +125,8 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
     }
 
     /**
-     * Tests the export of diagrams as image after the migration of the session
-     * (but in other session as it can be the case).
+     * Tests the export of diagrams as image after the migration of the session (but in other session as it can be the
+     * case).
      * 
      * @throws Exception
      */
@@ -168,14 +172,16 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
     }
 
     /**
-     * Test that no NPE occurs for InMemory uri with no opaque part and thaht
-     * the returned path corresponds to the Platform location.
+     * Test that no NPE occurs for InMemory uri with no opaque part and thaht the returned path corresponds to the
+     * Platform location.
      * 
      * @throws Exception
      */
     public void testInMemoryResourceExportPathComputation() throws Exception {
         URI uri = URI.createURI(URIQuery.INMEMORY_URI_SCHEME + ":/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME);
         InMemoryResourceImpl res = new InMemoryResourceImpl(uri);
+        ResourceSet resourceSet = new ResourceSetImpl();
+        resourceSet.getResources().add(res);
         DDiagram diag = DiagramFactory.eINSTANCE.createDDiagram();
         res.getContents().add(diag);
 
@@ -188,8 +194,13 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         Object path = null;
         SaveAsImageFileAction saveAsImageFileAction = new SaveAsImageFileAction();
         try {
+            DAnalysis analysis = ViewpointFactory.eINSTANCE.createDAnalysis();
+            DView dView = ViewpointFactory.eINSTANCE.createDView();
+            analysis.getOwnedViews().add(dView);
+            res.getContents().add(0, analysis);
             DRepresentationDescriptor createDRepresentationDescriptor = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
             createDRepresentationDescriptor.setRepresentation(diag);
+            dView.getOwnedRepresentationDescriptors().add(createDRepresentationDescriptor);
             Method method = AbstractExportRepresentationsAction.class.getDeclaredMethod("getExportPath", DRepresentationDescriptor.class, Session.class);
             method.setAccessible(true);
             path = method.invoke(saveAsImageFileAction, createDRepresentationDescriptor, session);
