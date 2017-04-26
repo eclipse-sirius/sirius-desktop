@@ -783,6 +783,10 @@
            kind="VSM">
      </participant>
      <participant
+           class="org.eclipse.sirius.diagram.business.internal.migration.TransientLayerMigrationParticipant"
+           kind="RepresentationsFile">
+     </participant>
+     <participant
            class="org.eclipse.sirius.diagram.business.internal.migration.NoteAttachmentWithoutSourceOrTargetMigrationParticipant"
            kind="RepresentationsFile">
      </participant>

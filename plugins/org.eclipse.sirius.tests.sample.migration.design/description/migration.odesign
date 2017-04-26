@@ -5,7 +5,9 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="Test Filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']"/>
       </filters>
-      <additionalLayers name="Test Layer"/>
+      <additionalLayers name="Test Layer">
+        <nodeMappings name="pipoToKeepLayerNonTransient"/>
+      </additionalLayers>
       <nodeMappings name="node" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Node">
         <borderedNodeMappings name="bordered" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Bordered" reusedBorderedNodeMappings="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']">
           <style xsi:type="style:EllipseNodeDescription" labelExpression="aql:self.id" resizeKind="NSEW">

@@ -33,7 +33,7 @@
               <initialOperation/>
             </ownedTools>
             <ownedTools xsi:type="tool_1:ToolGroup" name="Group1-2-3">
-              <tools xsi:type="tool:ContainerDropDescription" name="CDD1-2-3-1">
+              <tools xsi:type="tool_1:ContainerDropDescription" name="CDD1-2-3-1">
                 <oldContainer name="oldSemanticContainer"/>
                 <newContainer name="newSemanticContainer"/>
                 <element name="element"/>
@@ -76,6 +76,7 @@
         <toolSections name="SectionSharedWithOtherLayersA"/>
       </defaultLayer>
       <additionalLayers name="L2 enabled" activeByDefault="true">
+        <nodeMappings name="pipoToKeepLayerNonTransient"/>
         <toolSections name="SectionSharedWithOtherLayersA">
           <ownedTools xsi:type="tool:ToolDescription" name="ToolL2-A-1">
             <element name="element"/>
@@ -95,6 +96,7 @@
         </toolSections>
       </additionalLayers>
       <additionalLayers name="L3 disabled">
+        <nodeMappings name="pipoToKeepLayerNonTransient"/>
         <toolSections name="SectionSharedWithOtherLayersA">
           <ownedTools xsi:type="tool:ToolDescription" name="ToolL3-A-1">
             <element name="element"/>
