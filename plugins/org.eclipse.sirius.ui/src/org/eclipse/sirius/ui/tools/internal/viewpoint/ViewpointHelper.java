@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.tools.internal.viewpoint;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -36,9 +37,9 @@ import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
-import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallbackWithConfimation;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -77,32 +78,8 @@ public final class ViewpointHelper {
     }
 
     /**
-     * Returns a set of all given viewpoints that are missing dependencies to be activated.
-     * 
-     * @param viewpoints
-     *            the viewpoints from which we want to know if they are missing some dependencies to be activated.
-     * @return a set of all given viewpoints that are missing dependencies to be activated. An empty set if no such
-     *         element exists.
-     */
-    public static Set<Viewpoint> getViewpointsMissingDependencies(Collection<Viewpoint> viewpoints) {
-        Set<String> selectedURIs = viewpoints.stream().map(getURIFromViewpointFunction).filter(viewpoint -> viewpoint != null).collect(Collectors.toSet());
-
-        Set<Viewpoint> viewpointsMissingDependencies = new HashSet<Viewpoint>();
-        for (Viewpoint viewpoint : viewpoints) {
-            for (RepresentationExtensionDescription extension : new ViewpointQuery(viewpoint).getAllRepresentationExtensionDescriptions()) {
-                String extended = extension.getViewpointURI();
-                Pattern pattern = Pattern.compile(extended);
-                if (!ViewpointHelper.atLeastOneUriMatchesPattern(selectedURIs, pattern)) {
-                    viewpointsMissingDependencies.add(viewpoint);
-                }
-            }
-        }
-        return viewpointsMissingDependencies;
-    }
-
-    /**
-     * Returns a set of all viewpoints that are considered as missing dependencies of the given viewpoint and that are
-     * needed to be activated in the session before activating the viewpoint.
+     * Returns a map of viewpoint URI to corresponding {@link Viewpoint} that are needed to be activated in the session
+     * before activating the viewpoint. The viewpoint can be null if not deployed.
      * 
      * @param allViewpoints
      *            all the viewpoint currently registered and available in the runtime.
@@ -113,20 +90,55 @@ public final class ViewpointHelper {
      * @return a set of all viewpoints that are considered as missing dependencies of the given viewpoint and that are
      *         needed to be activated in the session before activating the viewpoint.
      */
-    public static Set<Viewpoint> getMissingViewpointDependenciesFromViewpoint(Collection<Viewpoint> allViewpoints, Collection<Viewpoint> selectedViewpoints, Viewpoint viewpoint) {
+    public static Map<String, Viewpoint> getViewpointDependencies(Collection<Viewpoint> allViewpoints, Collection<Viewpoint> selectedViewpoints, Viewpoint viewpoint) {
         Collector<Viewpoint, ?, Map<String, Viewpoint>> viewpointUriToViewpointMapCollector = Collectors.toMap(getURIFromViewpointFunction, vp -> vp);
         Map<String, Viewpoint> selectedViewpointUriToViewpoint = selectedViewpoints.stream().collect(viewpointUriToViewpointMapCollector);
         Map<String, Viewpoint> allViewpointUriToViewpoint = allViewpoints.stream().collect(viewpointUriToViewpointMapCollector);
         Set<String> viewpointsURI = selectedViewpointUriToViewpoint.keySet();
-        Set<Viewpoint> missingViewpointDependencies = new HashSet<Viewpoint>();
+        Map<String, Viewpoint> missingViewpointDependencies = new HashMap<String, Viewpoint>();
         for (RepresentationExtensionDescription extension : new ViewpointQuery(viewpoint).getAllRepresentationExtensionDescriptions()) {
             String extendedURI = extension.getViewpointURI();
             Pattern pattern = Pattern.compile(extendedURI);
             if (!ViewpointHelper.atLeastOneUriMatchesPattern(viewpointsURI, pattern)) {
-                missingViewpointDependencies.add(allViewpointUriToViewpoint.get(extendedURI));
+                missingViewpointDependencies.put(extendedURI, allViewpointUriToViewpoint.get(extendedURI));
             }
         }
         return missingViewpointDependencies;
+    }
+
+    /**
+     * Returns a set of all viewpoints that should be deactivated in addition of the given viewpoint because they depend
+     * on it.
+     * 
+     * @param viewpoint
+     *            the viewpoint from which we want to retrieve its missing dependencies among selected viewpoints.
+     * @param session
+     *            session from which we check if the given viewpoint is missing dependencies.
+     * @return a set of all viewpoints that are considered as missing dependencies of the given viewpoint and that are
+     *         needed to be activated in the session before activating the viewpoint.
+     */
+    public static Set<Viewpoint> getAdditionalViewpointsToDeactivate(Viewpoint viewpoint, Session session) {
+        Set<Viewpoint> viewpointsWithDependency = new HashSet<>();
+        Set<String> viewpointURISet = new HashSet<>();
+        Option<URI> uri = new ViewpointQuery(viewpoint).getViewpointURI();
+        String viewpointURIString = null;
+        if (uri.some()) {
+            viewpointURIString = uri.get().toString();
+        }
+        viewpointURISet.add(viewpointURIString);
+        Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
+        for (Viewpoint selectedViewpoint : selectedViewpoints) {
+            if (!EqualityHelper.areEquals(selectedViewpoint, viewpoint)) {
+                for (RepresentationExtensionDescription extension : new ViewpointQuery(selectedViewpoint).getAllRepresentationExtensionDescriptions()) {
+                    String extendedURI = extension.getViewpointURI();
+                    Pattern pattern = Pattern.compile(extendedURI);
+                    if (ViewpointHelper.atLeastOneUriMatchesPattern(viewpointURISet, pattern)) {
+                        viewpointsWithDependency.add(selectedViewpoint);
+                    }
+                }
+            }
+        }
+        return viewpointsWithDependency;
     }
 
     /**
@@ -157,11 +169,14 @@ public final class ViewpointHelper {
      *            the map containing viewpoint activation status after the change.
      * @param session
      *            the session to update
+     * @param callback
+     *            the callback handling user interactions needed when activating/deactivating viewpoints.
      * @param createNewRepresentations
      *            true to create new DRepresentation for RepresentationDescription having their initialization attribute
      *            at true for selected viewpoints.
      */
-    public static void applyNewViewpointSelection(final Map<Viewpoint, Boolean> originalMap, final Map<Viewpoint, Boolean> newMap, final Session session, final boolean createNewRepresentations) {
+    public static void applyNewViewpointSelection(final Map<Viewpoint, Boolean> originalMap, final Map<Viewpoint, Boolean> newMap, final Session session, final boolean createNewRepresentations,
+            ViewpointSelection.Callback callback) {
 
         // newMap is a copy of originalMap with modifications on values.
         // No elements should have been added.
@@ -199,8 +214,6 @@ public final class ViewpointHelper {
                 }
             }
         }
-
-        final ViewpointSelection.Callback callback = new ViewpointSelectionCallbackWithConfimation();
 
         // Only if there is something to do
         if (!newSelectedViewpoints.isEmpty() || !newDeselectedViewpoints.isEmpty()) {

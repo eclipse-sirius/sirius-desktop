@@ -19,6 +19,10 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+h4. Changes in @org.eclipse.sirius.ui@
+
+* <span class="label label-success">Added</span> Two new methods have been added to the interface @org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback@: @selectViewpoint(Viewpoint, Session, boolean, Set<Viewpoint>, IProgressMonitor)@ and @deselectViewpoint(Viewpoint, Session, Set<Viewpoint>, IProgressMonitor)@. These methods add a new parameter that is a set of viewpoints compared to the same methods without these parameters. These set contains all viewpoints that will be deactivated/activated in addition of the one that is asked to be deactivated/activated. It allows the callback implementation to better handle viewpoint dependencies interaction by being able to know if missing dependencies will be activated or deactivated.
+
 h4. Changes in @org.eclipse.sirius@ 
 
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.business.api.dialect.DialectServices.canCreate(EObject, RepresentationDescription, boolean)@ has been added to better control the checks done by already existing @org.eclipse.sirius.business.api.dialect.DialectServices.canCreate(EObject, RepresentationDescription)@ method. The new boolean allow to deactivate the check verifying that the viewpoint of the given description must be activated so the method can return true.

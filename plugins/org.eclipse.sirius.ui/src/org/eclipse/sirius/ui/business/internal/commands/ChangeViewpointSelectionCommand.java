@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -82,9 +82,8 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
      * @param newDeselectedViewpoints
      *            the new deselected viewpoints.
      * @param createNewRepresentations
-     *            true to create new DRepresentation for
-     *            RepresentationDescription having their initialization
-     *            attribute at true for selected {@link Viewpoint}s.
+     *            true to create new DRepresentation for RepresentationDescription having their initialization attribute
+     *            at true for selected {@link Viewpoint}s.
      * @param monitor
      *            a {@link IProgressMonitor}
      */
@@ -109,7 +108,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
                 for (final Viewpoint viewpoint : sorted) {
                     monitor.subTask(MessageFormat.format(Messages.ChangeViewpointSelectionCommand_selectViewpointTask, new IdentifiedElementQuery(viewpoint).getLabel()));
                     try {
-                        callback.selectViewpoint(viewpoint, session, createNewRepresentations, new SubProgressMonitor(monitor, 1));
+                        callback.selectViewpoint(viewpoint, session, createNewRepresentations, newSelectedViewpoints, new SubProgressMonitor(monitor, 1));
                     } catch (SecurityException e) {
                         // If permission were not sufficient to select the
                         // viewpoint on the main or one of the referenced
@@ -128,7 +127,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
             if (newDeselectedViewpoints != null) {
                 for (final Viewpoint viewpoint : newDeselectedViewpoints) {
                     monitor.subTask(MessageFormat.format(Messages.ChangeViewpointSelectionCommand_deselectViewpointTask, new IdentifiedElementQuery(viewpoint).getLabel()));
-                    callback.deselectViewpoint(viewpoint, session, new SubProgressMonitor(monitor, 1));
+                    callback.deselectViewpoint(viewpoint, session, newDeselectedViewpoints, new SubProgressMonitor(monitor, 1));
                 }
             }
         } finally {
@@ -137,8 +136,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
     }
 
     /**
-     * Sort the viewpoints in such a way that if Ext depends on Base, Base
-     * appears before Ext in the resulting list.
+     * Sort the viewpoints in such a way that if Ext depends on Base, Base appears before Ext in the resulting list.
      */
     private List<Viewpoint> sortByDependencies(Collection<Viewpoint> viewpoints) {
         // Code taken from

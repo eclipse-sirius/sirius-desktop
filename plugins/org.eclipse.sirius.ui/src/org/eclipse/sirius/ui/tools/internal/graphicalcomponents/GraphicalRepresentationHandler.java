@@ -12,8 +12,8 @@ package org.eclipse.sirius.ui.tools.internal.graphicalcomponents;
 
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
@@ -22,7 +22,9 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.layout.GridLayoutFactory;
+import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -43,7 +45,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
-import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
+import org.eclipse.sirius.ui.business.internal.viewpoint.ViewpointSelectionCallbackWithConfimationAndDependenciesHandling;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
 import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
@@ -80,7 +82,6 @@ import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * This graphical component provides a {@link TreeViewer} showing all representations belonging to the given session
@@ -123,9 +124,9 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
     private SiriusCommonContentProvider siriusCommonContentProvider;
 
     /**
-     * The button used to remove external semantic model reference and representations from the session.
+     * The button used to remove representation instances from the session.
      */
-    private Button removeSemanticModelOrRepresentationButton;
+    private Button removeRepresentationInstanceButton;
 
     /**
      * The viewer showing all viewpoints containing representations loaded from the given session.
@@ -200,6 +201,16 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      * either the default one or a given optional provider.
      */
     private boolean filterEmptyViewpoint;
+
+    /**
+     * The button enabling selected viewpoints.
+     */
+    private Button enableViewpointButton;
+
+    /**
+     * The button disabling selected viewpoints.
+     */
+    private Button disableViewpointButton;
 
     /**
      * This builder allow to build the graphical componant handling viewpoint and representation with wanted optional
@@ -494,8 +505,12 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         final GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
         gridData.minimumHeight = 200;
         treeViewer.getControl().setLayoutData(gridData);
+
         treeViewer.getTree().setHeaderVisible(false);
         treeViewer.getTree().setLinesVisible(false);
+
+        ColumnViewerToolTipSupport.enableFor(treeViewer);
+
         final ITreeContentProvider contentProviderToUse;
         if (contentProvider != null) {
             contentProviderToUse = contentProvider;
@@ -520,8 +535,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
 
         if (showButtons) {
             createRepresentationExplorerButton(subComposite, treeViewer);
-            treeViewer.addSelectionChangedListener(new UpdateButtonsAtSelectionChangeListener());
-            treeViewer.addSelectionChangedListener(new UpdateButtonAtSelectionChangeListener());
+            treeViewer.addSelectionChangedListener(new UpdateRepresentationButtonsAtSelectionChangeListener());
 
         }
 
@@ -583,19 +597,18 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
     /**
      * Activate or deactivate the viewpoint of the given {@link ViewpointItemImpl} regarding the activation parameter.
      * 
-     * @param viewpointItem
+     * @param viewpointsToHandle
      *            the {@link ViewpointItemImpl} from which the viewpoint should be activated or deactivated.
-     * @param changedViewpoint
-     *            the viewpoint that will be deactivated or activated.
      * @param selectedViewpoints
      *            the viewpoint that are currently selected in the session.
      * @param activateViewpoint
      *            true if the viewpoint should be activated. False otherwise.
      */
-    private void handleViewpointActivation(ViewpointItemImpl viewpointItem, Viewpoint changedViewpoint, Collection<Viewpoint> selectedViewpoints, boolean activateViewpoint) {
+    private void handleViewpointActivation(Set<ViewpointItemImpl> viewpointsToHandle, Collection<Viewpoint> selectedViewpoints, boolean activateViewpoint) {
+
         treeViewer.getTree().setRedraw(false);
         final SortedMap<Viewpoint, Boolean> originalViewpointsMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
-        Collection<Viewpoint> availableViewpoints = viewpointsSelectionGraphicalHandler.getAvailableViewpoints(session);
+        Collection<Viewpoint> availableViewpoints = ViewpointHelper.getAvailableViewpoints(session);
         for (final Viewpoint viewpoint : availableViewpoints) {
             boolean selected = false;
 
@@ -609,49 +622,18 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         }
         SortedMap<Viewpoint, Boolean> newViewpointToSelectionStateMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
         newViewpointToSelectionStateMap.putAll(originalViewpointsMap);
-        newViewpointToSelectionStateMap.put(changedViewpoint, !viewpointItem.isViewpointEnabledInSession());
 
-        // we also deselect viewpoint that will be missing a
-        // dependency if such element exists.
-        Set<Viewpoint> viewpointsMissingDependencies = ViewpointHelper
-                .getViewpointsMissingDependencies(newViewpointToSelectionStateMap.keySet().stream().filter(viewpoint -> newViewpointToSelectionStateMap.get(viewpoint)).collect(Collectors.toSet()));
-        for (Viewpoint viewpointsMissingDependency : viewpointsMissingDependencies) {
-            newViewpointToSelectionStateMap.put(viewpointsMissingDependency, false);
+        for (ViewpointItemImpl viewpointItem : viewpointsToHandle) {
+            newViewpointToSelectionStateMap.put(viewpointItem.getViewpoint(), activateViewpoint);
         }
 
-        ViewpointHelper.applyNewViewpointSelection(originalViewpointsMap, newViewpointToSelectionStateMap, session, true);
+        Display.getCurrent().syncExec(() -> {
+            ViewpointHelper.applyNewViewpointSelection(originalViewpointsMap, newViewpointToSelectionStateMap, session, true, new ViewpointSelectionCallbackWithConfimationAndDependenciesHandling());
+        });
 
-        // if deactivation has been cancelled by user because an editor is
-        // currently open with one of the viewpoint representations, then we
-        // rollback all deactivation.
-        if ((activateViewpoint && !viewpointItem.isViewpointEnabledInSession()) || (!activateViewpoint && viewpointItem.isViewpointEnabledInSession())) {
-            ViewpointHelper.applyNewViewpointSelection(newViewpointToSelectionStateMap, originalViewpointsMap, session, false);
-        }
         treeViewer.getTree().setRedraw(true);
         treeViewer.refresh();
-        treeViewer.setSelection(new StructuredSelection(viewpointItem));
-    }
-
-    /**
-     * Return an error message referencing all missing dependencies for the given viewpoint or null if no missing
-     * dependencies exists.
-     * 
-     * @param viewpoint
-     *            the viewpoint from which we check if it has missing dependencies among activated viewpoints.
-     * @param selectedViewpoints
-     *            the current activated viewpoints.
-     * @return an error message referencing all missing dependencies for the given viewpoint or null if no missing
-     *         dependencies exists.
-     */
-    protected String getMissingDependencyErrorMessage(Viewpoint viewpoint, Collection<Viewpoint> selectedViewpoints) {
-        Set<Viewpoint> viewpoints = Sets.newHashSet(selectedViewpoints);
-        viewpoints.add(viewpoint);
-        Map<String, Collection<String>> missingDependencies = ViewpointSelection.getMissingDependencies(viewpoints);
-        if (missingDependencies != null && missingDependencies.get(viewpoint.getName()) != null) {
-            return MessageFormat.format(Messages.GraphicalRepresentationHandler_missingDependencies_requirements, viewpoint.getName(),
-                    missingDependencies.get(viewpoint.getName()).stream().collect(Collectors.joining(", "))); //$NON-NLS-1$
-        }
-        return null;
+        treeViewer.setSelection(new StructuredSelection(viewpointsToHandle.stream().collect(Collectors.toList())));
     }
 
     /**
@@ -661,6 +643,75 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      *            the parent composite.
      */
     private void createRepresentationExplorerButton(Composite parent, final TreeViewer theTreeViewer) {
+        Composite buttonsComposite = createButtonsComposite(parent);
+        addButton(buttonsComposite, Messages.GraphicalRepresentationHandler_button_newRepresentation, () -> {
+            CreateRepresentationWizard wizard = new CreateRepresentationWizard(session);
+            wizard.init();
+            final WizardDialog dialog = new WizardDialog(parent.getShell(), wizard);
+            dialog.setMinimumPageSize(CreateRepresentationWizard.MIN_PAGE_WIDTH, CreateRepresentationWizard.MIN_PAGE_HEIGHT);
+            dialog.create();
+            dialog.getShell().setText(Messages.GraphicalRepresentationHandler_CreateRepresentationWizard_title);
+            dialog.open();
+        });
+        removeRepresentationInstanceButton = addButton(buttonsComposite, Messages.GraphicalRepresentationHandler_button_removeRepresentation, () -> {
+            if (theTreeViewer != null) {
+                final IStructuredSelection selection = (IStructuredSelection) theTreeViewer.getSelection();
+                Collection<?> selectedObjects = selection.toList();
+                if (!selectedObjects.isEmpty()) {
+                    Set<DRepresentationDescriptor> representationDescriptors = selectedObjects.stream().filter(object -> object instanceof RepresentationItemImpl)
+                            .map(object -> ((RepresentationItemImpl) object).getDRepresentationDescriptor()).collect(Collectors.toSet());
+                    DeleteRepresentationAction deleteRepresentationAction = new DeleteRepresentationAction(representationDescriptors);
+                    deleteRepresentationAction.run();
+                }
+                theTreeViewer.refresh();
+            }
+        });
+        enableViewpointButton = addButton(buttonsComposite, Messages.GraphicalRepresentationHandler_button_activateViewpoint, () -> {
+            if (theTreeViewer != null) {
+                toggleViewpointState((IStructuredSelection) theTreeViewer.getSelection(), true);
+            }
+        });
+        disableViewpointButton = addButton(buttonsComposite, Messages.GraphicalRepresentationHandler_button_deactivateViewpoint, () -> {
+            if (theTreeViewer != null) {
+                toggleViewpointState((IStructuredSelection) theTreeViewer.getSelection(), false);
+            }
+        });
+        removeRepresentationInstanceButton.setEnabled(false);
+        deleteActionHandler.setEnabled(false);
+        renameActionHandler.setEnabled(false);
+    }
+
+    private void toggleViewpointState(IStructuredSelection selection, boolean enable) {
+        Collection<?> selectedObjects = selection.toList();
+        if (!selectedObjects.isEmpty()) {
+            boolean canEnableOrDisableViewpoints = selectedObjects.stream().allMatch(object -> object instanceof ViewpointItemImpl);
+            if (canEnableOrDisableViewpoints) {
+                Set<ViewpointItemImpl> viewpointsToActivate = new HashSet<>();
+                for (Object obj : selectedObjects) {
+                    if (obj instanceof ViewpointItemImpl) {
+                        viewpointsToActivate.add((ViewpointItemImpl) obj);
+                    }
+                }
+                Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
+                handleViewpointActivation(viewpointsToActivate, selectedViewpoints, enable);
+            } else {
+                MessageDialog.openError(Display.getCurrent().getActiveShell(),
+                        MessageFormat.format(Messages.GraphicalRepresentationHandler_button_activateDeactivateViewpoint_incorrectSelection_title,
+                                enable ? Messages.GraphicalRepresentationHandler_button_activateDeactivateViewpoint_incorrectSelection_activationLabel
+                                        : Messages.GraphicalRepresentationHandler_button_activateDeactivateViewpoint_incorrectSelection_deactivationLabel),
+                        Messages.GraphicalRepresentationHandler_button_activateDeactivateViewpoint_incorrectSelection_message);
+            }
+        }
+    }
+
+    /**
+     * Initializes the composite that will contains the buttons to handle viewpoints and representations.
+     * 
+     * @param parent
+     *            parent composite.
+     * @return the composite that will contains the buttons to handle viewpoints and representations.
+     */
+    private Composite createButtonsComposite(Composite parent) {
         Composite subComposite = null;
         if (toolkit != null) {
             subComposite = toolkit.createComposite(parent, SWT.NONE);
@@ -680,31 +731,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         FillLayout buttonsLayout = new FillLayout(SWT.BEGINNING);
         buttonsLayout.spacing = 5;
         buttonsComposite.setLayout(buttonsLayout);
-        addButton(buttonsComposite, Messages.GraphicalRepresentationHandler_button_newRepresentation, () -> {
-            CreateRepresentationWizard wizard = new CreateRepresentationWizard(session);
-            wizard.init();
-            final WizardDialog dialog = new WizardDialog(parent.getShell(), wizard);
-            dialog.setMinimumPageSize(CreateRepresentationWizard.MIN_PAGE_WIDTH, CreateRepresentationWizard.MIN_PAGE_HEIGHT);
-            dialog.create();
-            dialog.getShell().setText(Messages.GraphicalRepresentationHandler_CreateRepresentationWizard_title);
-            dialog.open();
-        });
-        removeSemanticModelOrRepresentationButton = addButton(buttonsComposite, Messages.GraphicalRepresentationHandler_button_removeRepresentation, () -> {
-            if (theTreeViewer != null) {
-                final IStructuredSelection selection = (IStructuredSelection) theTreeViewer.getSelection();
-                Collection<?> selectedObjects = selection.toList();
-                if (!selectedObjects.isEmpty()) {
-                    Set<DRepresentationDescriptor> representationDescriptors = selectedObjects.stream().filter(object -> object instanceof RepresentationItemImpl)
-                            .map(object -> ((RepresentationItemImpl) object).getDRepresentationDescriptor()).collect(Collectors.toSet());
-                    DeleteRepresentationAction deleteRepresentationAction = new DeleteRepresentationAction(representationDescriptors);
-                    deleteRepresentationAction.run();
-                }
-                theTreeViewer.refresh();
-            }
-        });
-        removeSemanticModelOrRepresentationButton.setEnabled(false);
-        deleteActionHandler.setEnabled(false);
-        renameActionHandler.setEnabled(false);
+        return buttonsComposite;
     }
 
     /**
@@ -815,26 +842,21 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
 
                 if (selection.getFirstElement() instanceof ViewpointItemImpl) {
                     ViewpointItemImpl viewpointItem = (ViewpointItemImpl) selection.getFirstElement();
-                    Viewpoint changedViewpoint = viewpointItem.getViewpoint();
                     boolean activateViewpoint = !viewpointItem.isViewpointEnabledInSession();
                     Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
                     if (activateViewpoint) {
-                        String errorMessage = null;
 
-                        errorMessage = getMissingDependencyErrorMessage(changedViewpoint, selectedViewpoints);
-                        if (errorMessage == null) {
-                            viewpointsSelectionGraphicalHandler.clearBrowserErrorMessageText();
-                            handleViewpointActivation(viewpointItem, changedViewpoint, selectedViewpoints, activateViewpoint);
-                        } else {
-                            viewpointsSelectionGraphicalHandler.setBrowserErrorMessageText(errorMessage);
-                        }
+                        Set<ViewpointItemImpl> viewpointsToActivate = new HashSet<>();
+                        viewpointsToActivate.add(viewpointItem);
+                        handleViewpointActivation(viewpointsToActivate, selectedViewpoints, activateViewpoint);
                     } else {
-                        handleViewpointActivation(viewpointItem, changedViewpoint, selectedViewpoints, activateViewpoint);
+                        Set<ViewpointItemImpl> viewpointsToActivate = new HashSet<>();
+                        viewpointsToActivate.add(viewpointItem);
+                        handleViewpointActivation(viewpointsToActivate, selectedViewpoints, activateViewpoint);
                     }
 
                 } else if (selection.getFirstElement() instanceof RepresentationDescriptionItemImpl) {
                     RepresentationDescriptionItemImpl representationDescriptionItem = (RepresentationDescriptionItemImpl) selection.getFirstElement();
-                    ViewpointItemImpl viewpointItem = (ViewpointItemImpl) representationDescriptionItem.getParent();
 
                     treeViewer.getTree().setRedraw(false);
                     CreateRepresentationWizard wizard = new CreateRepresentationWizard(session, representationDescriptionItem);
@@ -861,11 +883,11 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
      *
      */
-    private final class UpdateButtonsAtSelectionChangeListener implements ISelectionChangedListener {
+    private final class UpdateRepresentationButtonsAtSelectionChangeListener implements ISelectionChangedListener {
         @Override
         public void selectionChanged(SelectionChangedEvent event) {
             if (event.getSelection().isEmpty()) {
-                removeSemanticModelOrRepresentationButton.setEnabled(false);
+                removeRepresentationInstanceButton.setEnabled(false);
                 deleteActionHandler.setEnabled(false);
                 renameActionHandler.setEnabled(false);
             } else if (event.getSelection() instanceof TreeSelection) {
@@ -881,13 +903,20 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                     }
                 }
                 if (allRepresentationItem) {
-                    removeSemanticModelOrRepresentationButton.setEnabled(true);
+                    removeRepresentationInstanceButton.setEnabled(true);
                     deleteActionHandler.setEnabled(true);
                     renameActionHandler.setEnabled(true);
                 } else {
-                    removeSemanticModelOrRepresentationButton.setEnabled(false);
+                    removeRepresentationInstanceButton.setEnabled(false);
                     deleteActionHandler.setEnabled(false);
                     renameActionHandler.setEnabled(false);
+                }
+                if (!selection.isEmpty()) {
+                    enableViewpointButton.setEnabled(true);
+                    disableViewpointButton.setEnabled(true);
+                } else {
+                    disableViewpointButton.setEnabled(false);
+                    enableViewpointButton.setEnabled(false);
                 }
             }
         }
@@ -907,7 +936,6 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                 TreeSelection selection = (TreeSelection) event.getSelection();
 
                 // update browser
-                viewpointsSelectionGraphicalHandler.clearBrowserErrorMessageText();
                 Object firstElement = ((IStructuredSelection) selection).getFirstElement();
                 if (firstElement instanceof ViewpointItemImpl) {
                     viewpointsSelectionGraphicalHandler.setBrowserInput(((ViewpointItemImpl) firstElement).getViewpoint());
@@ -923,21 +951,4 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         }
     }
 
-    /**
-     * This listener updates enabling status of buttons used to create/remove representation or activate/deactivate
-     * viewpoints regarding the current selection..
-     * 
-     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
-     *
-     */
-    private final class UpdateButtonAtSelectionChangeListener implements ISelectionChangedListener {
-        @Override
-        public void selectionChanged(SelectionChangedEvent event) {
-            if (event.getSelection().isEmpty()) {
-                removeSemanticModelOrRepresentationButton.setEnabled(false);
-                deleteActionHandler.setEnabled(false);
-                renameActionHandler.setEnabled(false);
-            }
-        }
-    }
 }

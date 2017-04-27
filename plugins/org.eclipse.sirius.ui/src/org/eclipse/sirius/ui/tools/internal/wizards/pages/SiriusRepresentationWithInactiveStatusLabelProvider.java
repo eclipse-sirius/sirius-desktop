@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationDescriptionItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.graphics.Color;
@@ -56,4 +57,16 @@ public class SiriusRepresentationWithInactiveStatusLabelProvider extends SiriusR
         }
         return text;
     }
+
+    @Override
+    public String getToolTipText(Object element) {
+        String result = null;
+        if (element instanceof ViewpointItemImpl) {
+            result = Messages.SiriusRepresentationWithInactiveStatusLabelProvider_viewpointItem_tooltip;
+        } else if (element instanceof RepresentationDescriptionItemImpl) {
+            result = Messages.SiriusRepresentationWithInactiveStatusLabelProvider_representationDescriptionItem_tooltip;
+        }
+        return result;
+    }
+
 }

@@ -484,13 +484,31 @@ public final class Messages {
     public static String GraphicalRepresentationHandler_missingDependencies_requirements;
 
     @TranslatableMessage
+    public static String GraphicalRepresentationHandler_button_activateDeactivateViewpoint_incorrectSelection_title;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_button_activateDeactivateViewpoint_incorrectSelection_message;
+
+    @TranslatableMessage
     public static String GraphicalRepresentationHandler_disabledViewpoint_label;
+
+    @TranslatableMessage
+    public static Object GraphicalRepresentationHandler_button_activateDeactivateViewpoint_incorrectSelection_deactivationLabel;
+
+    @TranslatableMessage
+    public static Object GraphicalRepresentationHandler_button_activateDeactivateViewpoint_incorrectSelection_activationLabel;
 
     @TranslatableMessage
     public static String GraphicalRepresentationHandler_representationNumber_label;
 
     @TranslatableMessage
     public static String GraphicalRepresentationHandler_CreateRepresentationWizard_title;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_button_activateViewpoint;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_button_deactivateViewpoint;
 
     @TranslatableMessage
     public static String HierarchyLabelProvider_elementWihtoutNameLabel;
@@ -940,6 +958,12 @@ public final class Messages {
     public static String SiriusPreferencePage_autoSessionEditorOpening;
 
     @TranslatableMessage
+    public static String SiriusRepresentationWithInactiveStatusLabelProvider_viewpointItem_tooltip;
+
+    @TranslatableMessage
+    public static String SiriusRepresentationWithInactiveStatusLabelProvider_representationDescriptionItem_tooltip;
+
+    @TranslatableMessage
     public static String SiriusUncontrolHandler_uncontrolRepresentationsMessage;
 
     @TranslatableMessage
@@ -1028,6 +1052,24 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ViewpointSelectionCallbackWithConfimation_viewpointUsedInOpenEditors_title;
+
+    @TranslatableMessage
+    public static String ViewpointSelectionCallbackWithConfimationAndDependenciesHandling_confirmDependencyActivation_title;
+
+    @TranslatableMessage
+    public static String ViewpointSelectionCallbackWithConfimationAndDependenciesHandling_confirmDependencyActivation_message;
+
+    @TranslatableMessage
+    public static String ViewpointSelectionCallbackWithConfimationAndDependenciesHandling_confirmDependencyActivation_activateLabel;
+
+    @TranslatableMessage
+    public static String ViewpointSelectionCallbackWithConfimationAndDependenciesHandling_confirmDependencyActivation_deactivateLabel;
+
+    @TranslatableMessage
+    public static String ViewpointSelectionCallbackWithConfimationAndDependenciesHandling_missingDependency_message;
+
+    @TranslatableMessage
+    public static String ViewpointSelectionCallbackWithConfimationAndDependenciesHandling_missingDependency_title;
 
     @TranslatableMessage
     public static String ViewpointSelectionDialog_description;

@@ -11,8 +11,9 @@
 package org.eclipse.sirius.ui.tools.internal.wizards;
 
 import java.util.Collection;
-import java.util.Set;
+import java.util.Map;
 import java.util.SortedMap;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.wizard.IWizardPage;
@@ -20,6 +21,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.ui.business.internal.viewpoint.ViewpointSelectionCallbackWithConfimationAndDependenciesHandling;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.actions.creation.CreateRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
@@ -185,11 +187,12 @@ public class CreateRepresentationWizard extends Wizard {
 
                 // we retrieve the viewpoints that are dependencies of the viewpoint to
                 // activate to activate these also.
-                Set<Viewpoint> missingViewpointDependencies = ViewpointHelper.getMissingViewpointDependenciesFromViewpoint(availableViewpoints, selectedViewpoints, viewpointItem.getViewpoint());
-                for (Viewpoint viewpoint : missingViewpointDependencies) {
+                Map<String, Viewpoint> missingViewpointDependencies = ViewpointHelper.getViewpointDependencies(availableViewpoints, selectedViewpoints, viewpointItem.getViewpoint());
+                for (Viewpoint viewpoint : missingViewpointDependencies.values().stream().filter(vp -> vp != null).collect(Collectors.toSet())) {
                     newViewpointToSelectionStateMap.put(viewpoint, true);
                 }
-                ViewpointHelper.applyNewViewpointSelection(originalViewpointsMap, newViewpointToSelectionStateMap, session, true);
+                ViewpointHelper.applyNewViewpointSelection(originalViewpointsMap, newViewpointToSelectionStateMap, session, true,
+                        new ViewpointSelectionCallbackWithConfimationAndDependenciesHandling());
             }
             // we create the new representation
             CreateRepresentationAction action = new CreateRepresentationAction(session, semanticElementSource, representationWizardPage.getRepresentation(),

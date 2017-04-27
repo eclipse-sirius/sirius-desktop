@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,6 @@ import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
@@ -212,7 +211,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     protected boolean isRelatedViewpointSelected(Session session, RepresentationDescription representationDescription) {
         boolean isRelatedViewpointSelected = false;
         Viewpoint parentViewpoint = new RepresentationDescriptionQuery(representationDescription).getParentViewpoint();
-        isRelatedViewpointSelected = session != null && parentViewpoint != null && session.getSelectedViewpoints(false).stream().anyMatch(vp -> EqualityHelper.areEquals(vp, parentViewpoint));
+        isRelatedViewpointSelected = session != null && parentViewpoint != null && session.getSelectedViewpoints(false).contains(parentViewpoint);
         return isRelatedViewpointSelected;
     }
 

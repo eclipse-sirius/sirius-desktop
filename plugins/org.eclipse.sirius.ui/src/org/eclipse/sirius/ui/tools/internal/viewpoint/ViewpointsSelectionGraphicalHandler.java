@@ -39,9 +39,7 @@ import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerComparator;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
@@ -60,8 +58,6 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 import org.osgi.framework.Bundle;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Sets;
 
 /**
@@ -147,30 +143,6 @@ public class ViewpointsSelectionGraphicalHandler {
      */
     public Composite getBrowserRootComposite() {
         return browserRootComposite;
-    }
-
-    /**
-     * Return all registered viewpoints that define editors for metamodel of loaded session's semantic models.
-     * 
-     * @param session
-     *            the session from which we retrieve available viewpoints.
-     * @return all registered viewpoints that define editors for metamodel of loaded session's semantic models.
-     */
-    public Collection<Viewpoint> getAvailableViewpoints(Session session) {
-        ViewpointRegistry registry = ViewpointRegistry.getInstance();
-
-        return Collections2.filter(registry.getViewpoints(), new Predicate<Viewpoint>() {
-
-            @Override
-            public boolean apply(Viewpoint viewpoint) {
-                for (final String ext : computeSemanticFileExtensions(session)) {
-                    if (new ViewpointQuery(viewpoint).handlesSemanticModelExtension(ext)) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        });
     }
 
     /**

@@ -18,6 +18,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.IDecoration;
@@ -64,7 +65,7 @@ import com.google.common.collect.Lists;
  * @author mporhel
  *
  */
-public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorProvider {
+public class SiriusCommonLabelProvider extends ColumnLabelProvider implements ICommonLabelProvider, IColorProvider {
 
     /**
      * Default image descriptor for the "Sirius Modeling" overlay.
@@ -240,9 +241,8 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
     }
 
     /*
-     * Look for opened sessions on parent file : detect main aird for non
-     * modeling projects, all aird for modeling ones, semantic file for
-     * transient sessions.
+     * Look for opened sessions on parent file : detect main aird for non modeling projects, all aird for modeling ones,
+     * semantic file for transient sessions.
      */
     private List<Session> getOpenSessions(IFile file) {
 
@@ -255,9 +255,9 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
     }
 
     /**
-     * Test if the "*" prefix should be displayed : the session should be dirty
-     * and if the preference DesignerUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR
-     * value is true, it should be displayed only when there is no editor.
+     * Test if the "*" prefix should be displayed : the session should be dirty and if the preference
+     * DesignerUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR value is true, it should be displayed only when there is no
+     * editor.
      *
      * @param session
      *            the session to test.

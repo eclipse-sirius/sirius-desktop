@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -109,7 +109,6 @@ public final class ViewpointSelection {
      * Avoid instantiation.
      */
     private ViewpointSelection() {
-
     }
 
     /**
@@ -301,7 +300,7 @@ public final class ViewpointSelection {
             org.eclipse.sirius.ui.business.internal.viewpoint.ViewpointSelectionDialog vsd = new org.eclipse.sirius.ui.business.internal.viewpoint.ViewpointSelectionDialog(
                     PlatformUI.getWorkbench().getDisplay().getActiveShell(), viewpointsMap);
             if (vsd.open() == Window.OK) {
-                ViewpointHelper.applyNewViewpointSelection(viewpointsMap, vsd.getSelection(), session, createNewRepresentations);
+                ViewpointHelper.applyNewViewpointSelection(viewpointsMap, vsd.getSelection(), session, createNewRepresentations, new ViewpointSelectionCallbackWithConfimation());
             }
         }
     }
@@ -545,7 +544,26 @@ public final class ViewpointSelection {
         void selectViewpoint(Viewpoint viewpoint, Session session, boolean createNewRepresentations, IProgressMonitor monitor);
 
         /**
-         * deselect a viewpoint.
+         * Select a {@link Viewpoint}.
+         *
+         * @param viewpoint
+         *            the {@link Viewpoint} to select
+         * @param session
+         *            the current session
+         * @param createNewRepresentations
+         *            true to create new DRepresentation for RepresentationDescription having their initialization
+         *            attribute at true for selected {@link Viewpoint}s.
+         * @param allSelectedViewpoint
+         *            all viewpoints that should be selected .
+         * @param monitor
+         *            a {@link IProgressMonitor} to show progression
+         */
+        default void selectViewpoint(Viewpoint viewpoint, Session session, boolean createNewRepresentations, Set<Viewpoint> allSelectedViewpoint, IProgressMonitor monitor) {
+            selectViewpoint(viewpoint, session, createNewRepresentations, monitor);
+        }
+
+        /**
+         * Deselect a viewpoint.
          *
          * @param deselectedViewpoint
          *            the deselected viewpoint
@@ -555,6 +573,23 @@ public final class ViewpointSelection {
          *            a {@link IProgressMonitor} to show progression
          */
         void deselectViewpoint(Viewpoint deselectedViewpoint, Session session, IProgressMonitor monitor);
+
+        /**
+         * Deselect a viewpoint.
+         *
+         * @param deselectedViewpoint
+         *            the deselected viewpoint
+         * @param session
+         *            the current session
+         * 
+         * @param allDeselectedViewpoint
+         *            all viewpoints that should be unselected in addition to the given one.
+         * @param monitor
+         *            a {@link IProgressMonitor} to show progression
+         */
+        default void deselectViewpoint(Viewpoint deselectedViewpoint, Session session, Set<Viewpoint> allDeselectedViewpoint, IProgressMonitor monitor) {
+            deselectViewpoint(deselectedViewpoint, session, monitor);
+        }
 
     }
 
