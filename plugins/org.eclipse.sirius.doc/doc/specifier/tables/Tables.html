@@ -194,7 +194,7 @@
 		</p>
 		<h4 id="line_style">Line Style</h4>
 		<p>You can create 
-			<em>Style</em> elements inside a line mapping to set the default style of all the cells on this line (note that the actual style can be overridden by the column mappings).
+			<em>Style</em> elements inside a line mapping to set the default style of all the cells on this line (note that this style override the column mappings one).
 		</p>
 		<p>A 
 			<em>Foreground Style</em> element can be used to set the font size, font style (e.g. italic) and text color. A 
@@ -265,7 +265,7 @@
 			<em>Initial width</em>, if set to a non-zero value, is used as the initial width of the column.
 		</p>
 		<h4 id="column_styles">Column Styles</h4>
-		<p>Columns can contain style definition which, if present, override the styles which may be present in the line mappings for the cells of this column. The style definition elements, including support for conditional styles, is the same as for style associated to line mappings. Refer to 
+		<p>Columns can contain style definition to set the style of all the cells on these columns. However, these styles can be overridden by the styles which may be present in the line mappings for the cells of this column. The style definition elements, including support for conditional styles, is the same as for style associated to line mappings. Refer to 
 			<a href="#line_style">the corresponding section</a> for more details.
 		</p>
 		<h4 id="column_tools">Column Tools</h4>
@@ -318,7 +318,7 @@
 			<em>Delete Line</em> 
 			<a href="#line_tools">tools for line mappings</a>.
 		</p>
-		<p>They can also contain style definitions (including conditional style), which apply to all the cells in the column (unless overridden by the intersection mapping). For a given cell, the styles defined on the column mapping overrides the styles which are defined on the line mapping (if any).</p>
+		<p>They can also contain style definitions (including conditional style), which apply to all the cells in the column (unless overridden by the intersection mapping or by the line mapping if any).</p>
 		<h3 id="intersection_mapping">Intersection Mappings</h3>
 		<p>The line and element column mappings in a cross table define which lines and columns will be present in the tables, but not the contents of the cells. This is defined by 
 			<em>Intersection</em> mappings. The 

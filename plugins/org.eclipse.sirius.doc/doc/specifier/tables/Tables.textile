@@ -66,7 +66,7 @@ A _Line_ mapping may _Reuse Sub Lines_ (see the _Import_ category), including it
 
 h4(#line_style). Line Style
 
-You can create _Style_ elements inside a line mapping to set the default style of all the cells on this line (note that the actual style can be overridden by the column mappings).
+You can create _Style_ elements inside a line mapping to set the default style of all the cells on this line (note that this style override the column mappings one).
 
 A _Foreground Style_ element can be used to set the font size, font style (e.g. italic) and text color. A _Background Style_ can be used to set the background color. Both are optional.
 
@@ -94,7 +94,7 @@ Finally, the _Header Label Expression_ is used to compute the header of the colu
 
 h4(#column_styles). Column Styles
 
-Columns can contain style definition which, if present, override the styles which may be present in the line mappings for the cells of this column. The style definition elements, including support for conditional styles, is the same as for style associated to line mappings. Refer to "the corresponding section":#line_style for more details.
+Columns can contain style definition to set the style of all the cells on these columns. However, these styles can be overridden by the styles which may be present in the line mappings for the cells of this column. The style definition elements, including support for conditional styles, is the same as for style associated to line mappings. Refer to "the corresponding section":#line_style for more details.
 
 h4(#column_tools). Column Tools
 
@@ -122,7 +122,7 @@ In cross tables, columns represent elements instead of elements' properties (as 
 
 _Element Column_ mappings can contain a _Create Column Tool_ and a _Delete Column Tool_, which are specified and behave in a similar way than the _Create Line_ and _Delete Line_ "tools for line mappings":#line_tools.
 
-They can also contain style definitions (including conditional style), which apply to all the cells in the column (unless overridden by the intersection mapping). For a given cell, the styles defined on the column mapping overrides the styles which are defined on the line mapping (if any).
+They can also contain style definitions (including conditional style), which apply to all the cells in the column (unless overridden by the intersection mapping or by the line mapping if any).
 
 h3(#intersection_mapping). Intersection Mappings
 
