@@ -479,7 +479,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         // that is removed but merged with another one --> The label is moved
         // with the same delta (to keep the same vector).
         edgeLabelExpectedPosition.clear();
-        edgeLabelExpectedPosition.put("refToBBegin", new Dimension(0, -31));
+        edgeLabelExpectedPosition.put("refToBBegin", new Dimension(0, -30));
         edgeLabelExpectedPosition.put("refToBCenter", new Dimension(0, 0));
         edgeLabelExpectedPosition.put("refToBEnd", new Dimension(0, 0));
         doTestMovePointOnEdge(diagramName, Lists.newArrayList(new Point(-5, -30)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "A", "B", 0);
@@ -487,7 +487,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         edgeLabelExpectedPosition.clear();
         edgeLabelExpectedPosition.put("refToBBegin", new Dimension(0, 0));
         edgeLabelExpectedPosition.put("refToBCenter", new Dimension(0, 0));
-        edgeLabelExpectedPosition.put("refToBEnd", new Dimension(0, 29));
+        edgeLabelExpectedPosition.put("refToBEnd", new Dimension(0, 30));
         doTestMovePointOnEdge(diagramName, Lists.newArrayList(new Point(5, 30)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "A", "B", 3);
 
         edgeLabelExpectedPosition.clear();

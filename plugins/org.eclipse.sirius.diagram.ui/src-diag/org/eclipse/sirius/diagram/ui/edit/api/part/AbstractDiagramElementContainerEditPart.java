@@ -88,6 +88,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFigure;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
@@ -429,7 +430,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         if (getLabelBorderStyle.some()) {
             result = new ContainerWithTitleBlockFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height), dde, getLabelBorderStyle.get());
         } else {
-            result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
+            result = new SiriusDefaultSizeNodeFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
         }
 
         return result;

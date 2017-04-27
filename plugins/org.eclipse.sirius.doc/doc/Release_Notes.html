@@ -136,6 +136,13 @@
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=518870">bugzilla #518870</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
 				<em>12.1.0.201706291600</em>.
 			</li>
+			<li><span class="label label-success">Added</span> A new class 
+				<code>org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFigure</code> has been added in plugin 
+				<code>org.eclipse.sirius.ext.gmf.runtime</code>. The goal of the class is to workaround a 
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=519250">GMF bug</a>. So if you have created class which inherits from 
+				<code>org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure</code>, you must now use the new 
+				<code>SiriusDefaultSizeNodeFigure</code> instead.
+			</li>
 		</ul>
 		<h2 id="sirius5.0.1">Changes in Sirius 5.0.1</h2>
 		<p>Sirius 5.0.1 is a maintenance release with only bugfixes and small tweaks to the UI of 

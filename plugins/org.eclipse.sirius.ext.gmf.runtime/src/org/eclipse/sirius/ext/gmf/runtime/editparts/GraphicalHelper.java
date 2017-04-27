@@ -214,7 +214,7 @@ public final class GraphicalHelper {
      * @param part
      *            a part from the diagram.
      */
-    public static void screen2logical(Point point, IGraphicalEditPart part) {
+    public static void screen2logical(Point point, GraphicalEditPart part) {
         point.translate(GraphicalHelper.getScrollSize(part));
         point.performScale(1.0d / GraphicalHelper.getZoom(part));
     }
@@ -306,8 +306,8 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Return the Point (absolute draw2d coordinates) corresponding to this
-     * Anchor. If anchor is null, the center of <code>parent</code> is returned.
+     * Return the Point (absolute draw2d coordinates) corresponding to this Anchor. If anchor is null, the center of
+     * <code>parent</code> is returned.
      * 
      * @param parent
      *            The parent node
@@ -323,6 +323,7 @@ public final class GraphicalHelper {
             bounds = new PrecisionRectangle(parent.getFigure().getBounds());
         }
         parent.getFigure().translateToAbsolute(bounds);
+        screen2logical(bounds, parent);
 
         PrecisionPoint rel;
         if (anchor != null) {

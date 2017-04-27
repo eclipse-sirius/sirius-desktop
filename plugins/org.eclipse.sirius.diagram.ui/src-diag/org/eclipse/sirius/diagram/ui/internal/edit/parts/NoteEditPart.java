@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOp
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.FixedLayoutEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirNoteFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -115,7 +116,7 @@ public class NoteEditPart extends AbstractNotSelectableShapeNodeEditPart impleme
      * @was-generated
      */
     protected NodeFigure createNodePlate() {
-        DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(40), getMapMode().DPtoLP(40));
+        DefaultSizeNodeFigure result = new SiriusDefaultSizeNodeFigure(getMapMode().DPtoLP(40), getMapMode().DPtoLP(40));
         return result;
     }
 
