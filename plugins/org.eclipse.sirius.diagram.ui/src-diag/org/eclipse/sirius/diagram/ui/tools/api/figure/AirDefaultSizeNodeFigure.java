@@ -17,17 +17,17 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
-import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.ZoomDependantAnchor;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.AlphaBasedSlidableImageAnchor;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFigure;
 
 /**
  * The air default size node figure to add custom anchor.
  * 
  * @author ymortier
  */
-public class AirDefaultSizeNodeFigure extends DefaultSizeNodeFigure {
+public class AirDefaultSizeNodeFigure extends SiriusDefaultSizeNodeFigure {
 
     /** The zoom manager. */
     protected ZoomManager zoomManager;

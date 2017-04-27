@@ -53,6 +53,13 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeCr
     }
 
     @Override
+    protected void openDiagram(String name, ZoomLevel zoomLevel) {
+        super.openDiagram(name);
+        editor.setSnapToGrid(true, gridStep, 2);
+        editor.zoom(zoomLevel);
+    }
+
+    @Override
     protected String getCreateEdgeToolName() {
         return "SuperWithBorderNode";
     }
@@ -162,8 +169,8 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeCr
      * Case of edge created between 2 containers in container with scroll.
      */
     public void testBorderNodesOnContainerInContainerAreAlignedWithScrollOnDiagramAndContainer() {
-        testBorderNodesAreAligned("TC2185 Container in Container", "Container in Container With Scroll", "C", AbstractDiagramContainerEditPart.class, 100, "D", AbstractDiagramContainerEditPart.class,
-                109, false, ZoomLevel.ZOOM_100, Options.newSome("OtherClass"));
+        testBorderNodesAreAligned("TC2185 Container in Container", "Container in Container With Scroll", "C", AbstractDiagramContainerEditPart.class, 99, "D", AbstractDiagramContainerEditPart.class,
+                108, false, ZoomLevel.ZOOM_100, Options.newSome("OtherClass"));
     }
 
     /**

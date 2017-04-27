@@ -40,6 +40,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOpera
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.NonResizableAndNonDuplicableEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.StyleItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.BundledImageFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
 
@@ -147,7 +148,7 @@ public class CustomStyleEditPart extends AbstractNotSelectableShapeNodeEditPart 
      * @was-generated
      */
     protected NodeFigure createNodePlate() {
-        final DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(40), getMapMode().DPtoLP(40));
+        final DefaultSizeNodeFigure result = new SiriusDefaultSizeNodeFigure(getMapMode().DPtoLP(40), getMapMode().DPtoLP(40));
         return result;
     }
 

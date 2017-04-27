@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -84,6 +85,21 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     protected void openDiagram(String name) {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), VIEWPOINT_NAME + " " + name, name, DDiagram.class);
         editor.setSnapToGrid(false);
+        editor.zoom(ZoomLevel.ZOOM_100);
+    }
+
+    /**
+     * Open the diagram with the given <code>name</code>
+     * 
+     * @param name
+     *            The name of the diagram to open.
+     * @param zoomLevel
+     *            the zoom to use
+     */
+    protected void openDiagram(String name, ZoomLevel zoomLevel) {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), VIEWPOINT_NAME + " " + name, name, DDiagram.class);
+        editor.setSnapToGrid(false);
+        editor.zoom(zoomLevel);
     }
 
     /** */
@@ -92,13 +108,41 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /** */
+    public void test_Node_Aligned() {
+        createEdgeAndValidateAnchors("Node", "A", AbstractDiagramNodeEditPart.class, new PrecisionPoint(0.98, 0.2737), "B", AbstractDiagramNodeEditPart.class, new PrecisionPoint(0.02, 0.35));
+    }
+
+    /** */
     public void test_Container() {
         createEdgeAndValidateAnchors("Container", "A", AbstractDiagramContainerEditPart.class, "B", AbstractDiagramContainerEditPart.class);
+    }
+
+    /**
+     * Same as test_Container() but with specific location that reveals a bug
+     * for snapToGrid (see bugzilla xxxxxx).
+     */
+    public void test_Container_Aligned() {
+        createEdgeAndValidateAnchors("Container", "A", AbstractDiagramContainerEditPart.class, new PrecisionPoint(0.98, 0.2737), "B", AbstractDiagramContainerEditPart.class,
+                new PrecisionPoint(0.02, 0.2737));
+    }
+
+    /**
+     * Same as test_Container_Aligned() but with a specific zoom.
+     */
+    public void test_Container_Aligned_WithZoom() {
+        createEdgeAndValidateAnchors("Container", "A", AbstractDiagramContainerEditPart.class, new PrecisionPoint(0.98, 0.2737), "B", AbstractDiagramContainerEditPart.class,
+                new PrecisionPoint(0.02, 0.2737), ZoomLevel.ZOOM_175);
     }
 
     /** */
     public void test_List() {
         createEdgeAndValidateAnchors("List", "A", AbstractDiagramListEditPart.class, "B", AbstractDiagramListEditPart.class);
+    }
+
+    /** */
+    public void test_List_Aligned() {
+        createEdgeAndValidateAnchors("List", "A", AbstractDiagramListEditPart.class, new PrecisionPoint(1.0, 0.638095238095238), "B", AbstractDiagramListEditPart.class,
+                new PrecisionPoint(0.0, 0.4448669201520912));
     }
 
     /** */
@@ -112,6 +156,12 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /** */
+    public void test_Container_in_Container_Aligned() {
+        createEdgeAndValidateAnchors("Container in Container", "C", AbstractDiagramContainerEditPart.class, new PrecisionPoint(1.0, 0.18672199170124482), "D", AbstractDiagramContainerEditPart.class,
+                new PrecisionPoint(0.0, 0.1262135922330097));
+    }
+
+    /** */
     public void test_Bordered_Node_on_Container() {
         createEdgeAndValidateAnchors("Bordered Node on Container", "C", AbstractDiagramBorderNodeEditPart.class, "D", AbstractDiagramBorderNodeEditPart.class);
     }
@@ -119,6 +169,12 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     /** */
     public void test_Bordered_Node_on_Node() {
         createEdgeAndValidateAnchors("Bordered Node on Node", "C", AbstractDiagramBorderNodeEditPart.class, "D", AbstractDiagramBorderNodeEditPart.class);
+    }
+
+    /** */
+    public void test_Bordered_Node_on_Node_Aligned() {
+        createEdgeAndValidateAnchors("Bordered Node on Node", "C", AbstractDiagramBorderNodeEditPart.class, new PrecisionPoint(0.98, 0.7038834951456311), "D", AbstractDiagramBorderNodeEditPart.class,
+                new PrecisionPoint(0.02, 0.4975124378109453));
     }
 
     /**
@@ -138,12 +194,68 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      *            The type of the expected target edit part
      */
     private void createEdgeAndValidateAnchors(String diagramName, String sourceName, Class<? extends EditPart> expectedSourceType, String targetName, Class<? extends EditPart> expectedTargetType) {
-        openDiagram(diagramName);
+        createEdgeAndValidateAnchors(diagramName, sourceName, expectedSourceType, TOP_LEFT_CORNER, targetName, expectedTargetType, BOTTOM_RIGHT_CORNER);
+    }
+
+    /**
+     * Open the diagram <code>diagramName</code>, create an edge between
+     * <code>sourceName</code> and <code>targetName</code> and validate the
+     * source and target anchors.
+     * 
+     * @param diagramName
+     *            The name of the diagram to open
+     * @param sourceName
+     *            The name of the source
+     * @param expectedSourceType
+     *            The type of the expected source edit part
+     * @param sourcePosition
+     *            The position for the first point of the edge (source)
+     * @param targetName
+     *            The name of the target
+     * @param expectedTargetType
+     *            The type of the expected target edit part
+     * @param targetPosition
+     *            The position for the last point of the edge (target)
+     */
+    protected void createEdgeAndValidateAnchors(String diagramName, String sourceName, Class<? extends EditPart> expectedSourceType, PrecisionPoint sourcePosition, String targetName,
+            Class<? extends EditPart> expectedTargetType, PrecisionPoint targetPosition) {
+        createEdgeAndValidateAnchors(diagramName, sourceName, expectedSourceType, sourcePosition, targetName, expectedTargetType, targetPosition, ZoomLevel.ZOOM_100);
+    }
+
+    /**
+     * Open the diagram <code>diagramName</code>, create an edge between
+     * <code>sourceName</code> and <code>targetName</code> and validate the
+     * source and target anchors.
+     * 
+     * @param diagramName
+     *            The name of the diagram to open
+     * @param sourceName
+     *            The name of the source
+     * @param expectedSourceType
+     *            The type of the expected source edit part
+     * @param sourcePosition
+     *            The position for the first point of the edge (source)
+     * @param targetName
+     *            The name of the target
+     * @param expectedTargetType
+     *            The type of the expected target edit part
+     * @param targetPosition
+     *            The position for the last point of the edge (target)
+     * @param zoomLevel
+     *            the zoom to use
+     */
+    protected void createEdgeAndValidateAnchors(String diagramName, String sourceName, Class<? extends EditPart> expectedSourceType, PrecisionPoint sourcePosition, String targetName,
+            Class<? extends EditPart> expectedTargetType, PrecisionPoint targetPosition, ZoomLevel zoomLevel) {
+        openDiagram(diagramName, zoomLevel);
         IGraphicalEditPart sourcePart = (IGraphicalEditPart) editor.getEditPart(sourceName, expectedSourceType).part();
         IGraphicalEditPart targetPart = (IGraphicalEditPart) editor.getEditPart(targetName, expectedTargetType).part();
-        createEdge(sourcePart, TOP_LEFT_CORNER, targetPart, BOTTOM_RIGHT_CORNER);
+        createEdge(sourcePart, sourcePosition, targetPart, targetPosition);
         DEdgeEditPart edge = getSingleDEdgeFrom((NodeEditPart) sourcePart);
         assertAreValidAnchors(sourcePart, targetPart, edge);
+        if (!ZoomLevel.ZOOM_100.equals(zoomLevel)) {
+            // Reset to original zoom to avoid problem in further tests
+            editor.zoom(ZoomLevel.ZOOM_100);
+        }
     }
 
     /** */
@@ -246,8 +358,8 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
 
         ICondition done = new OperationDoneCondition();
         editor.activateTool(getCreateEdgeToolName());
-        editor.click(sourcePoint);
-        editor.click(targetPoint);
+        editor.click(sourcePoint, true);
+        editor.click(targetPoint, true);
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(done);
     }

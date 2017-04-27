@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.gmf.runtime.notation.ConnectorStyle;
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -423,7 +424,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         // In this case, the GMF point is not the same as the draw2d point. This
         // "bug" does not concern the centered edge as the source is not
         // centered.
-        assertEdgeHasExpectedSrcAnchor(swtBotGefEditPart, TOP_LEFT_CORNER, false);
+        PrecisionPoint expectedAnchor = getExpectedAnchor(botGefEditPart, TOP_LEFT_CORNER);
+        assertEdgeHasExpectedSrcAnchor(swtBotGefEditPart, expectedAnchor, false);
         // The target, other side of the move, must be always centered. But
         // there is the same problem about GMF point (TODO compare with node
         // case).
@@ -473,7 +475,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         // In this case, the GMF point is not the same as the draw2d point. This
         // "bug" does not concern the centered edge as the target is not
         // centered.
-        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, TOP_LEFT_CORNER, false);
+        PrecisionPoint expectedAnchor = getExpectedAnchor(botGefEditPart, TOP_LEFT_CORNER);
+        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, expectedAnchor, false);
         // The source, other side of the move, must be always centered. But
         // there is the same problem about GMF point (TODO compare with node
         // case).
@@ -962,8 +965,21 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         PointList pointList = connection.getPoints();
         Point lineOrigin = pointList.getPoint(pointList.size() - 2);
         Point realTargetConnection = pointList.getPoint(pointList.size() - 1);
+        
+        // Get figure bounds
+        PrecisionRectangle figureBounds = null;
+        if (targetSwtBotGefEditPart.part() instanceof DNodeContainerEditPart) {
+            IFigure figure = ((DNodeContainerEditPart) targetSwtBotGefEditPart.part()).getFigure();
+            if (figure instanceof NodeFigure) {
+                Rectangle bounds = ((NodeFigure) figure).getHandleBounds().getCopy();
+                figureBounds = new PrecisionRectangle(bounds);
+            }
+        }
+        if (figureBounds == null) {
+            figureBounds = getAbsoluteBounds((IGraphicalEditPart) targetSwtBotGefEditPart.part());
+        }
 
-        PrecisionPoint expectedLineTerminus = getProportionalPoint(getAbsoluteBounds((IGraphicalEditPart) targetSwtBotGefEditPart.part()), expectedAnchor);
+        PrecisionPoint expectedLineTerminus = getProportionalPoint(figureBounds, expectedAnchor);
         connection.translateToRelative(expectedLineTerminus);
 
         Option<Point> option = GraphicalHelper.getIntersection(lineOrigin, expectedLineTerminus, (IGraphicalEditPart) targetSwtBotGefEditPart.part(), false);
@@ -995,7 +1011,17 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         Point lineOrigin = pointList.getPoint(1);
         Point realSourceConnection = pointList.getPoint(0);
 
-        PrecisionPoint expectedLineTerminus = getProportionalPoint(getAbsoluteBounds((IGraphicalEditPart) sourceEditPart), expectedAnchor);
+        // Get figure bounds
+        PrecisionRectangle figureBounds = null;
+        IFigure figure = sourceEditPart.getFigure();
+        if (figure instanceof NodeFigure) {
+            Rectangle bounds = ((NodeFigure) figure).getHandleBounds().getCopy();
+            figureBounds = new PrecisionRectangle(bounds);
+        } else {
+            figureBounds = getAbsoluteBounds((IGraphicalEditPart) sourceEditPart);
+        }
+        
+        PrecisionPoint expectedLineTerminus = getProportionalPoint(figureBounds, expectedAnchor);
 
         Option<Point> option = GraphicalHelper.getIntersection(lineOrigin, expectedLineTerminus, (IGraphicalEditPart) sourceEditPart, false);
         if (option.some()) {
@@ -1269,6 +1295,24 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
             gmfRoutingStyleName = currentRouting.getLiteral().toLowerCase();
         }
         assertEquals("The GMF routing style is not the right", routingStyle.getLiteral(), gmfRoutingStyleName);
+    }
+    
+    private PrecisionPoint getExpectedAnchor(SWTBotGefEditPart botGefEditPart, PrecisionPoint relativeToBounds) {
+        IFigure figure = ((DNodeContainerEditPart) botGefEditPart.part()).getFigure();
+        Rectangle figureBounds = null;
+        PrecisionPoint relativePoint = new PrecisionPoint();
+        Point anchorPoint = new PrecisionPoint();
+        if (figure instanceof NodeFigure) {
+            figureBounds = ((NodeFigure) figure).getHandleBounds().getCopy();
+            // Compute Anchor position
+            anchorPoint = figureBounds.getTopLeft().getCopy();
+            anchorPoint.setX((int) (anchorPoint.x + Math.round(figureBounds.width * relativeToBounds.preciseX())));
+            anchorPoint.setY((int) (anchorPoint.y + Math.round(figureBounds.height * relativeToBounds.preciseY())));
+            // compute anchor relative position
+            relativePoint.setPreciseX((anchorPoint.preciseX() - figureBounds.x) / figureBounds.width);
+            relativePoint.setPreciseY((anchorPoint.preciseY() - figureBounds.y) / figureBounds.height);
+        }
+        return relativePoint;
     }
 
 }
