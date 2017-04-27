@@ -17,6 +17,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 
 /**
  * Same tests as {@link EdgeCreationPositionTest} but with snapToGrid enabled.
@@ -31,6 +32,13 @@ public class EdgeCreationPositionWithSnapToGridTest extends EdgeCreationPosition
     protected void openDiagram(String name) {
         super.openDiagram(name);
         editor.setSnapToGrid(true, gridStep, 2);
+    }
+
+    @Override
+    protected void openDiagram(String name, ZoomLevel zoomLevel) {
+        super.openDiagram(name);
+        editor.setSnapToGrid(true, gridStep, 2);
+        editor.zoom(zoomLevel);
     }
 
     @Override

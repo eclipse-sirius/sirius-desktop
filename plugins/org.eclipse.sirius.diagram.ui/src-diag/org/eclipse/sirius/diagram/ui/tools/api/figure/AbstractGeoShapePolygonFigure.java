@@ -17,7 +17,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IPolygonAnchorableFigure;
-import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFigure;
 
 /**
  * Base class for polygons in the Geometric shapes palette.
@@ -26,7 +26,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
  * 
  * @author mchauvin
  */
-public abstract class AbstractGeoShapePolygonFigure extends DefaultSizeNodeFigure implements IPolygonAnchorableFigure {
+public abstract class AbstractGeoShapePolygonFigure extends SiriusDefaultSizeNodeFigure implements IPolygonAnchorableFigure {
 
     /**
      * Constructor.
@@ -86,6 +86,7 @@ public abstract class AbstractGeoShapePolygonFigure extends DefaultSizeNodeFigur
      * 
      * @see org.eclipse.gmf.runtime.draw2d.ui.figures.IPolygonAnchorableFigure#getPolygonPoints()
      */
+    @Override
     public PointList getPolygonPoints() {
         return calculatePoints(new Rectangle(getBounds()));
     }

@@ -14,15 +14,15 @@ import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.AlphaBasedSlidableImageAnchor;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFigure;
 
 /**
  * The default size node for styles.
  * 
  * @author ymortier
  */
-public class AirStyleDefaultSizeNodeFigure extends DefaultSizeNodeFigure {
+public class AirStyleDefaultSizeNodeFigure extends SiriusDefaultSizeNodeFigure {
 
     /**
      * Constructor.
