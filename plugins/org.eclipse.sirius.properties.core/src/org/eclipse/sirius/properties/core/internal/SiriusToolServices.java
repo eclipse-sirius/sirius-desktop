@@ -25,8 +25,8 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.properties.EditSupport;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
-import org.eclipse.sirius.properties.core.api.DefaultRulesProvider;
 import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
+import org.eclipse.sirius.properties.defaultrules.api.DefaultRulesProvider;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -36,8 +36,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
 /**
- * This class contains various services provided by the Sirius UI Properties
- * bundle to the interpreter.
+ * This class contains various services provided by the Sirius UI Properties bundle to the interpreter.
  * 
  * @author sbegaudeau
  */
@@ -84,9 +83,8 @@ public class SiriusToolServices {
      *            the URI of the operation to search for.
      * @param session
      *            the Sirius session which determines the scope to search into.
-     * @return the {@link ModelOperation} instance found at the specified URI,
-     *         either in one of the VSMs for which at least one Viewpoint is
-     *         currently enabled in the session, or from the default ruleset, or
+     * @return the {@link ModelOperation} instance found at the specified URI, either in one of the VSMs for which at
+     *         least one Viewpoint is currently enabled in the session, or from the default ruleset, or
      *         <code>null</code> if no matching operation could be located.
      */
     private ModelOperation findModelOperation(String initialCommandUri, Session session) {
@@ -103,13 +101,11 @@ public class SiriusToolServices {
     }
 
     /**
-     * Returns all the (VSM-like) resources in which to search for the
-     * {@link ModelOperation} to execute.
+     * Returns all the (VSM-like) resources in which to search for the {@link ModelOperation} to execute.
      * 
      * @param session
      *            the Sirius session.
-     * @return all the resources in which to look for the ModelOperation, in
-     *         order of preference.
+     * @return all the resources in which to look for the ModelOperation, in order of preference.
      */
     private Set<Resource> getResourcesInScope(Session session) {
         Set<Resource> result = new LinkedHashSet<>();
@@ -128,13 +124,11 @@ public class SiriusToolServices {
     }
 
     /**
-     * Returns the {@link SiriusContext} associated with a
-     * {@link SiriusInputDescriptor} (typically the "input" variable of the
-     * properties view).
+     * Returns the {@link SiriusContext} associated with a {@link SiriusInputDescriptor} (typically the "input" variable
+     * of the properties view).
      * 
      * @param sid
-     *            a {@link SiriusInputDescriptor} (typically the "input"
-     *            variable of the properties view).
+     *            a {@link SiriusInputDescriptor} (typically the "input" variable of the properties view).
      * @return the input's full context.
      */
     public SiriusContext context(SiriusInputDescriptor sid) {
@@ -209,14 +203,12 @@ public class SiriusToolServices {
     }
 
     /**
-     * Returns the Sirius {@link DSemanticDecorator} associated to a given
-     * context.
+     * Returns the Sirius {@link DSemanticDecorator} associated to a given context.
      * 
      * @param ctx
      *            a Sirius context.
      * 
-     * @return the Sirius {@link DSemanticDecorator} associated to a given
-     *         context.
+     * @return the Sirius {@link DSemanticDecorator} associated to a given context.
      */
     public DSemanticDecorator semanticDecorator(SiriusContext ctx) {
         return ctx.getSemanticDecorator();
@@ -260,13 +252,10 @@ public class SiriusToolServices {
      * Returns a helper with EMF Edit-related operations on a given element.
      * 
      * @param input
-     *            a {@link SiriusInputDescriptor} (typically the "input"
-     *            variable of the properties view).
+     *            a {@link SiriusInputDescriptor} (typically the "input" variable of the properties view).
      * @param self
-     *            the target semantic element on which the helper should
-     *            operator.
-     * @return an instance of EditSupport bounnd to the specified semantic
-     *         element.
+     *            the target semantic element on which the helper should operator.
+     * @return an instance of EditSupport bounnd to the specified semantic element.
      */
     public EditSupport emfEditServices(SiriusInputDescriptor input, EObject self) {
         EditSupportSpec ess = new EditSupportSpec(input.getFullContext(), self);

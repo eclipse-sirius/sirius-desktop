@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.core.internal;
+package org.eclipse.sirius.properties.defaultrules.internal;
 
 import org.eclipse.sirius.ext.base.I18N;
 import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;
@@ -21,20 +21,13 @@ import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;
 public final class Messages {
 
     static {
-        I18N.initializeMessages(Messages.class, SiriusPropertiesCorePlugin.INSTANCE);
+        I18N.initializeMessages(Messages.class, SiriusPropertiesDefaultRulesPlugin.INSTANCE);
     }
 
     // CHECKSTYLE:OFF
 
     @TranslatableMessage
-    public static String SiriusToolServices_MainTabLabel;
-
-    @TranslatableMessage
-    public static String AbstractDescriptionConverter_noConverterFound;
-
-    @TranslatableMessage
-    public static String IDescriptionConverter_InvalidDescriptionType;
-
+    public static String DefaultRulesProvider_DefaultPropertiesNotFound;
     // CHECKSTYLE:ON
 
     private Messages() {

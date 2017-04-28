@@ -18,8 +18,16 @@
    <license url="%licenseURL">
       %license
    </license>
+
    <plugin
          id="org.eclipse.sirius.editor.properties"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.properties.defaultrules"
          download-size="0"
          install-size="0"
          version="0.0.0"

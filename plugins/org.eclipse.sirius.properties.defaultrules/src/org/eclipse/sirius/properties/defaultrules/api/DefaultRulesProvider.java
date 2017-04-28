@@ -8,17 +8,19 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.core.api;
+package org.eclipse.sirius.properties.defaultrules.api;
 
 import java.util.Optional;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
-import org.eclipse.sirius.properties.core.internal.Messages;
-import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
+import org.eclipse.sirius.properties.defaultrules.internal.Messages;
+import org.eclipse.sirius.properties.defaultrules.internal.SiriusPropertiesDefaultRulesPlugin;
 import org.eclipse.sirius.viewpoint.description.Group;
 
 /**
@@ -36,7 +38,7 @@ public final class DefaultRulesProvider {
     /**
      * The URI of the model containing the default value of the properties page to create.
      */
-    private static final URI DEFAULT_RULES_RESOURCE_URI = URI.createURI("platform:/plugin/org.eclipse.sirius.properties.core/model/properties.odesign", true); //$NON-NLS-1$
+    private static final URI DEFAULT_RULES_RESOURCE_URI = URI.createURI("platform:/plugin/org.eclipse.sirius.properties.defaultrules/model/properties.odesign", true); //$NON-NLS-1$
 
     /**
      * The resource set used to load the default rules.
@@ -71,7 +73,8 @@ public final class DefaultRulesProvider {
         Optional<Resource> optionalResource = Optional.ofNullable(resourceSet.getResource(DEFAULT_RULES_RESOURCE_URI, true));
 
         if (!optionalResource.isPresent()) {
-            SiriusPropertiesCorePlugin.getPlugin().error(Messages.DefaultRulesProvider_DefaultPropertiesNotFound);
+            IStatus status = new Status(IStatus.ERROR, SiriusPropertiesDefaultRulesPlugin.PLUGIN_ID, Messages.DefaultRulesProvider_DefaultPropertiesNotFound);
+            SiriusPropertiesDefaultRulesPlugin.getPlugin().getLog().log(status);
         }
 
         // @formatter:off

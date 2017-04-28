@@ -29,7 +29,7 @@ import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
-import org.eclipse.sirius.properties.core.api.DefaultRulesProvider;
+import org.eclipse.sirius.properties.defaultrules.api.DefaultRulesProvider;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.ui.IEditorPart;
@@ -129,9 +129,8 @@ public class PropertiesMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
     }
 
     /**
-     * Utility class used to extend the Default Property View description
-     * without loading the default rules in the resource set of the odesign
-     * until the moment when the action will be executed.
+     * Utility class used to extend the Default Property View description without loading the default rules in the
+     * resource set of the odesign until the moment when the action will be executed.
      * 
      * @author sbegaudeau
      */
