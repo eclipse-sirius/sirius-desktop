@@ -435,7 +435,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
     private ValidateAction getValidateAction(ToolBarManager tbm) {
         IContributionItem[] contributions = tbm.getItems();
         for (IContributionItem contribution : contributions) {
-            if (contribution instanceof ActionContributionItem && contribution.getId().equals(ValidateAction.ID)) {
+            if (contribution instanceof ActionContributionItem && ValidateAction.ID.equals(contribution.getId())) {
                 IAction action = ((ActionContributionItem) contribution).getAction();
                 if (action instanceof ValidateAction) {
                     return (ValidateAction) action;
