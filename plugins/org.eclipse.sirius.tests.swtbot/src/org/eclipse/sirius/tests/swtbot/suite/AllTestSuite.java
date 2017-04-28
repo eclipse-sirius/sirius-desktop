@@ -153,7 +153,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(RefreshWithCustomizedStyleTests.class);
         suite.addTestSuite(EdgeReconnectionTests.class);
         suite.addTestSuite(ShowTypeActionButtonTest.class);
-        suite.addTestSuite(SpecificClosedOrNotClosedEditorTest.class);
         suite.addTestSuite(LineStyleTest.class);
         suite.addTestSuite(CompartmentsCreationTest.class);
         suite.addTestSuite(CompartmentsDragAndDropTest.class);
@@ -222,9 +221,8 @@ public class AllTestSuite extends TestCase {
     }
 
     /**
-     * Add the first part of the SWTbot tests to the specified suite. This
-     * corresponds roughly to the first half of the execution time of the
-     * complete suite.
+     * Add the first part of the SWTbot tests to the specified suite. This corresponds roughly to the first half of the
+     * execution time of the complete suite.
      * 
      * @param suite
      *            the suite into which to add the tests.
@@ -293,12 +291,12 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ExtensionActivationOrderTest.class);
         suite.addTestSuite(ContainerDropPropertySectionsTests.class);
         suite.addTestSuite(BorderNodeSidePropertySectionTest.class);
+        suite.addTestSuite(SpecificClosedOrNotClosedEditorTest.class);
     }
 
     /**
-     * Add the second part of the SWTbot tests to the specified suite. This
-     * corresponds roughly to the second half of the execution time of the
-     * complete suite.
+     * Add the second part of the SWTbot tests to the specified suite. This corresponds roughly to the second half of
+     * the execution time of the complete suite.
      * 
      * @param suite
      *            the suite into which to add the tests.
@@ -424,8 +422,7 @@ public class AllTestSuite extends TestCase {
     }
 
     /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the
-     * disabled test.
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the disabled test.
      * 
      * @return The test suite containing all the disabled tests.
      */
