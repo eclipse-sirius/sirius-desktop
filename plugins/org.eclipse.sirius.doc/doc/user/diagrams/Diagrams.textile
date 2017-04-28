@@ -606,7 +606,11 @@ The contextual menu on the background of the diagram provides an action to toggl
 
 !images/synchronized_diagram1.png!
 
-When the action is checked, the mode is __Unsynchronized__. Otherwise, the mode is __Synchronized__. With __Synchronized__ mode, the displayed diagram represents what is provided by the modeler. However, with __Unsynchronized__ mode, the diagram may not display all elements provided by the modeler, but only the elements that the user selected.
+When the action is checked, the mode is __Unsynchronized__. Otherwise, the mode is __Synchronized__. 
+When the editor is activated, the status bar informs if the diagram is __Synchronized__ or __Unsynchronized__.
+!images/synchronized_diagram_statusbar.png!
+
+With __Synchronized__ mode, the displayed diagram represents what is provided by the modeler. However, with __Unsynchronized__ mode, the diagram may not display all elements provided by the modeler, but only the elements that the user selected.
 
 For instance, we will consider having a semantic model with a root element that contains a child element. In the Viewpoint Specification Model, the feature __Synchronization__ (See the Common Attributes section of the specifier guide) of the mapping for the elements is defined as __Not synchronized__ and the edge mapping specifies an __Unsynchronizable__ behavior (default feature). To start we only have the root displayed.
 

@@ -129,6 +129,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.command.RefreshDiagramOnO
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.DiagramHeaderPostCommitListener;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.StatusBarPostCommitListener;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.VisibilityPostCommitListener;
 import org.eclipse.sirius.diagram.ui.internal.refresh.SiriusDiagramSessionEventBroker;
 import org.eclipse.sirius.diagram.ui.internal.refresh.SynchronizeGMFModelCommand;
@@ -374,6 +375,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     private VisibilityPostCommitListener visibilityPostCommitListener;
 
+    private StatusBarPostCommitListener statusBarPostCommitListener;
+
     private GMFDiagramUpdater gmfDiagramUpdater;
 
     private DialectEditorDialogFactory myDialogFactory = new DiagramDialectEditorDialogFactory(this);
@@ -567,6 +570,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (getEditingDomain() != null) {
             tabbarPostCommitListener = new TabbarRefresher(getEditingDomain());
             visibilityPostCommitListener = new VisibilityPostCommitListener(getDiagramEditPart());
+            statusBarPostCommitListener = new StatusBarPostCommitListener(this);
             if (isHeaderSectionEnabled()) {
                 diagramHeaderPostCommitListener = new DiagramHeaderPostCommitListener(getEditingDomain(), getDiagramHeader());
             }
@@ -849,6 +853,10 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (visibilityPostCommitListener != null) {
             visibilityPostCommitListener.dispose();
             visibilityPostCommitListener = null;
+        }
+        if (statusBarPostCommitListener != null) {
+            statusBarPostCommitListener.dispose();
+            statusBarPostCommitListener = null;
         }
         if (diagramHeaderPostCommitListener != null) {
             diagramHeaderPostCommitListener.dispose();
@@ -1820,5 +1828,10 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      */
     public DiagramHeaderComposite getDiagramHeader() {
         return diagramHeaderComposite;
+    }
+
+    @Override
+    public void rebuildStatusLine() {
+        super.rebuildStatusLine();
     }
 }

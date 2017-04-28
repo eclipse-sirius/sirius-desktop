@@ -1920,5 +1920,14 @@
             class="org.eclipse.sirius.diagram.ui.internal.refresh.factory.CanonicalSynchronizerFactoryImpl">
       </factory>
    </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.common.ui.services.statusLineContributionItemProviders">
+      <statusLineContributionItemProvider
+            class="org.eclipse.sirius.diagram.ui.tools.internal.providers.SiriusStatusLineContributionItemProvider">
+         <Priority
+               name="Lowest">
+         </Priority>
+      </statusLineContributionItemProvider>
+   </extension>
 
 </plugin>
