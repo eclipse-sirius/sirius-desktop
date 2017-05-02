@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -106,7 +106,7 @@ public class ViewpointItemImpl implements ViewpointItem, Comparable<ViewpointIte
         } else {
             if (obj instanceof ViewpointItemImpl) {
                 final ViewpointItemImpl objItem = (ViewpointItemImpl) obj;
-                result = compareTo(objItem) == 0 && objItem.parent.equals(parent);
+                result = EqualityHelper.areEquals(this.viewpoint, objItem.viewpoint);
             }
         }
         return result;
@@ -114,7 +114,7 @@ public class ViewpointItemImpl implements ViewpointItem, Comparable<ViewpointIte
 
     @Override
     public int hashCode() {
-        return viewpoint.getName().hashCode() + parent.hashCode();
+        return viewpoint.hashCode() + parent.hashCode();
     }
 
     @Override
@@ -161,7 +161,7 @@ public class ViewpointItemImpl implements ViewpointItem, Comparable<ViewpointIte
                 if (isFilterForResource()) {
                     all.add(new RepresentationDescriptionItemImpl(session, representationDescription, getResource(), this));
                 } else {
-                    all.add(new RepresentationDescriptionItemImpl(session, representationDescription, this));
+                    all.add(new RepresentationDescriptionItemImpl(session, representationDescription, this, viewpoint));
                 }
             }
             Collections.sort(all);
@@ -186,24 +186,6 @@ public class ViewpointItemImpl implements ViewpointItem, Comparable<ViewpointIte
     @Override
     public Image getImage() {
         return SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.getPlugin().getItemImageDescriptor(viewpoint));
-    }
-
-    /**
-     * Returns true if the viewpoint is enabled in the session of this item.
-     * 
-     * @return true if the viewpoint is enabled in the session of this item. False otherwise.
-     */
-    public boolean isViewpointEnabledInSession() {
-        boolean isViewpointEnabledInSession = false;
-        Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
-        for (Viewpoint viewpointTemp : selectedViewpoints) {
-            if (EqualityHelper.areEquals(viewpoint, viewpointTemp)) {
-                isViewpointEnabledInSession = true;
-            }
-
-        }
-        return isViewpointEnabledInSession;
-
     }
 
     public Viewpoint getViewpoint() {

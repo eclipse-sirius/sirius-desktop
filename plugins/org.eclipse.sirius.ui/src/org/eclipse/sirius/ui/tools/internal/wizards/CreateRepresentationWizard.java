@@ -29,7 +29,6 @@ import org.eclipse.sirius.ui.tools.internal.actions.creation.CreateRepresentatio
 import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationDescriptionItemImpl;
-import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.RepresentationSelectionWizardPage;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SemanticElementSelectionWizardPage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -167,32 +166,32 @@ public class CreateRepresentationWizard extends Wizard {
             semanticElementSource = selectSemanticElementPage.getSelectedElement();
         }
         if (semanticElementSource != null) {
-            ViewpointItemImpl viewpointItem = representationWizardPage.getViewpointItem();
-            if (!viewpointItem.isViewpointEnabledInSession()) {
+            Viewpoint viewpoint = representationWizardPage.getViewpoint();
+            if (!ViewpointHelper.isViewpointEnabledInSession(session, viewpoint)) {
                 // if the viewpoint is not enabled in the session we activate it with all its potential dependencies.
                 final SortedMap<Viewpoint, Boolean> originalViewpointsMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
                 Collection<Viewpoint> availableViewpoints = ViewpointHelper.getAvailableViewpoints(session);
                 Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
-                for (final Viewpoint viewpoint : availableViewpoints) {
+                for (final Viewpoint availableViewpoint : availableViewpoints) {
                     boolean selected = false;
 
                     for (Viewpoint selectedViewpoint : selectedViewpoints) {
-                        if (EqualityHelper.areEquals(selectedViewpoint, viewpoint)) {
+                        if (EqualityHelper.areEquals(selectedViewpoint, availableViewpoint)) {
                             selected = true;
                             break;
                         }
                     }
-                    originalViewpointsMap.put(viewpoint, Boolean.valueOf(selected));
+                    originalViewpointsMap.put(availableViewpoint, Boolean.valueOf(selected));
                 }
                 SortedMap<Viewpoint, Boolean> newViewpointToSelectionStateMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
                 newViewpointToSelectionStateMap.putAll(originalViewpointsMap);
-                newViewpointToSelectionStateMap.put(viewpointItem.getViewpoint(), true);
+                newViewpointToSelectionStateMap.put(viewpoint, true);
 
                 // we retrieve the viewpoints that are dependencies of the viewpoint to
                 // activate to activate these also.
-                Map<String, Viewpoint> missingViewpointDependencies = ViewpointHelper.getViewpointDependencies(availableViewpoints, selectedViewpoints, viewpointItem.getViewpoint());
-                for (Viewpoint viewpoint : missingViewpointDependencies.values().stream().filter(vp -> vp != null).collect(Collectors.toSet())) {
-                    newViewpointToSelectionStateMap.put(viewpoint, true);
+                Map<String, Viewpoint> missingViewpointDependencies = ViewpointHelper.getViewpointDependencies(availableViewpoints, selectedViewpoints, viewpoint);
+                for (Viewpoint missingViewpointDependency : missingViewpointDependencies.values().stream().filter(vp -> vp != null).collect(Collectors.toSet())) {
+                    newViewpointToSelectionStateMap.put(missingViewpointDependency, true);
                 }
                 ViewpointHelper.applyNewViewpointSelection(originalViewpointsMap, newViewpointToSelectionStateMap, session, true,
                         new ViewpointSelectionCallbackWithConfimationAndDependenciesHandling());

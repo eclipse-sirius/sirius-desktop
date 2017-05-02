@@ -69,9 +69,9 @@ public class RepresentationSelectionWizardPage extends WizardPage {
     private RepresentationDescription representation;
 
     /**
-     * The {@link ViewpointItem} containing the viewpoint parent of the selected representation description.
+     * The {@link Viewpoint} parent of the selected representation description.
      */
-    private ViewpointItemImpl viewpointItem;
+    private Viewpoint viewpoint;
 
     private SemanticElementSelectionWizardPage semanticSelectionWizard;
 
@@ -131,8 +131,13 @@ public class RepresentationSelectionWizardPage extends WizardPage {
         this.semanticElement = theSemanticSelection;
     }
 
-    public ViewpointItemImpl getViewpointItem() {
-        return viewpointItem;
+    /**
+     * Returns the {@link Viewpoint} parent of the selected representation description.
+     * 
+     * @return the {@link Viewpoint} parent of the selected representation description.
+     */
+    public Viewpoint getViewpoint() {
+        return viewpoint;
     }
 
     @Override
@@ -143,7 +148,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
             RepresentationDescriptionItem selectedRepresentationDescriptionItem = (RepresentationDescriptionItemImpl) ((StructuredSelection) selection).getFirstElement();
             if (selectedRepresentationDescriptionItem.getWrappedObject() != null) {
                 RepresentationDescription representationDescription = (RepresentationDescription) selectedRepresentationDescriptionItem.getWrappedObject();
-                viewpointItem = (ViewpointItemImpl) selectedRepresentationDescriptionItem.getParent();
+                viewpoint = ((RepresentationDescriptionItemImpl) ((StructuredSelection) selection).getFirstElement()).getViewpoint();
                 representation = representationDescription;
                 result = true;
             }
@@ -183,7 +188,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
             }
             if (result) {
                 representation = representationDescription;
-                viewpointItem = (ViewpointItemImpl) ((RepresentationDescriptionItemImpl) ((StructuredSelection) selection).getFirstElement()).getParent();
+                viewpoint = ((RepresentationDescriptionItemImpl) ((StructuredSelection) selection).getFirstElement()).getViewpoint();
             } else {
                 setErrorMessage(Messages.RepresentationSelectionWizardPage_errorReadonlyContainer);
             }
@@ -214,10 +219,10 @@ public class RepresentationSelectionWizardPage extends WizardPage {
         treeViewer = graphicalRepresentationHandler.getTreeViewer();
         Collection<Viewpoint> availableViewpoints = ViewpointHelper.getAvailableViewpoints(session);
         Collection<ViewpointItem> viewpointItemList = new ArrayList<>();
-        for (Viewpoint viewpoint : availableViewpoints) {
-            viewpointItemList.add(new ViewpointItemImpl(session, viewpoint, this));
+        for (Viewpoint availableViewpoint : availableViewpoints) {
+            viewpointItemList.add(new ViewpointItemImpl(session, availableViewpoint, this));
         }
-        graphicalRepresentationHandler.setViewerInput(viewpointItemList);
+        graphicalRepresentationHandler.initInput();
         treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
             @Override
@@ -242,7 +247,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
                                 (RepresentationDescription) representationDescriptionItemTemp.getWrappedObject())) {
                             treeViewer.setSelection(new StructuredSelection(representationDescriptionItemTemp), true);
                             representation = (RepresentationDescription) representationDescriptionItemTemp.getWrappedObject();
-                            viewpointItem = (ViewpointItemImpl) representationDescriptionItemTemp.getParent();
+                            viewpoint = representationDescriptionItemTemp.getViewpoint();
                             semanticSelectionWizard.setRepresentation(representation);
                             semanticSelectionWizard.update();
                         }

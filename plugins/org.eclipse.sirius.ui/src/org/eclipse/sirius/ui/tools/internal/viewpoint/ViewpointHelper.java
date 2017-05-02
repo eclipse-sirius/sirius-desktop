@@ -78,6 +78,28 @@ public final class ViewpointHelper {
     }
 
     /**
+     * Returns true if the viewpoint is enabled in the session of this item.
+     * 
+     * @param session
+     *            the session from which we want to know if the given viewpoint is activated.
+     * @param viewpoint
+     *            the viewpoint to check its activation in the given session.
+     * @return true if the viewpoint is enabled in the session of this item. False otherwise.
+     */
+    public static boolean isViewpointEnabledInSession(Session session, Viewpoint viewpoint) {
+        boolean isViewpointEnabledInSession = false;
+        Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
+        for (Viewpoint viewpointTemp : selectedViewpoints) {
+            if (EqualityHelper.areEquals(viewpoint, viewpointTemp)) {
+                isViewpointEnabledInSession = true;
+            }
+
+        }
+        return isViewpointEnabledInSession;
+
+    }
+
+    /**
      * Returns a map of viewpoint URI to corresponding {@link Viewpoint} that are needed to be activated in the session
      * before activating the viewpoint. The viewpoint can be null if not deployed.
      * 

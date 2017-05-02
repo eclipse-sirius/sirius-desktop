@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,10 +19,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
@@ -44,6 +46,11 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
     private boolean filterForResource;
 
     private final Object parent;
+
+    /**
+     * The viewpoint containing the representation description.
+     */
+    private Viewpoint viewpoint;
 
     /**
      * Create a new {@link RepresentationDescriptionItemImpl}.
@@ -68,6 +75,25 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
      *            the current session.
      * @param representationDescription
      *            the representation description.
+     * @param parent
+     *            Parent tree item.
+     * @param descriptionViewpoint
+     *            the viewpoint containing the given representation description.
+     */
+    public RepresentationDescriptionItemImpl(final Session session, final RepresentationDescription representationDescription, final Object parent, Viewpoint descriptionViewpoint) {
+        this.session = session;
+        this.representationDescription = representationDescription;
+        this.parent = parent;
+        this.viewpoint = descriptionViewpoint;
+    }
+
+    /**
+     * Create a new {@link RepresentationDescriptionItemImpl}.
+     * 
+     * @param session
+     *            the current session.
+     * @param representationDescription
+     *            the representation description.
      * @param resource
      *            the resource.
      * @param parent
@@ -77,6 +103,15 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
         this(session, representationDescription, parent);
         this.resource = resource;
         this.filterForResource = true;
+    }
+
+    /**
+     * Returns the viewpoint containing the given representation description.
+     * 
+     * @return the viewpoint containing the given representation description.
+     */
+    public Viewpoint getViewpoint() {
+        return viewpoint;
     }
 
     @Override
@@ -106,7 +141,7 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
         } else {
             if (obj instanceof RepresentationDescriptionItemImpl) {
                 final RepresentationDescriptionItemImpl rdiObj = (RepresentationDescriptionItemImpl) obj;
-                result = rdiObj.compareTo(this) == 0 && rdiObj.parent.equals(parent);
+                result = EqualityHelper.areEquals(this.representationDescription, rdiObj.representationDescription);
             }
         }
         return result;
@@ -119,7 +154,7 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
      */
     @Override
     public int hashCode() {
-        return representationDescription.getName().hashCode() + parent.hashCode();
+        return representationDescription.hashCode() + parent.hashCode();
     }
 
     @Override

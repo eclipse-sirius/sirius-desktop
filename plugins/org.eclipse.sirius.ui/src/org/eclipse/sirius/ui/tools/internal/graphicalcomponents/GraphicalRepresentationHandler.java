@@ -11,13 +11,16 @@
 package org.eclipse.sirius.ui.tools.internal.graphicalcomponents;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -62,6 +65,7 @@ import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.RenameActionHand
 import org.eclipse.sirius.ui.tools.internal.wizards.CreateRepresentationWizard;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SiriusRepresentationWithInactiveStatusLabelProvider;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
@@ -101,6 +105,9 @@ import com.google.common.collect.Maps;
  * the default one or a given optional provider.
  * 
  * - Use a {@link FormToolkit} to create graphic components.
+ * 
+ * - Add a checkbox allowing to group by viewpoint or not the representation description and representation instance.
+ * When not grouped by viewpoint, viewpoint items are not shown.
  * 
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
@@ -213,6 +220,22 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
     private Button disableViewpointButton;
 
     /**
+     * True if representation descriptions and representations instance should be grouped by viewpoint. False
+     * otherwise(viewpoint items will not be shown).
+     */
+    private boolean groupByViewpoint;
+
+    /**
+     * The checkbox allowing to group by viewpoint the representation descriptions and representations.
+     */
+    private Button groupByViewpointCheckbox;
+
+    /**
+     * True if the checkbox allowing to group by viewpoint or not should be shown to user.
+     */
+    private boolean showGroupinByCheckbox;
+
+    /**
      * This builder allow to build the graphical componant handling viewpoint and representation with wanted optional
      * functionalities available.
      * 
@@ -275,6 +298,11 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         private boolean filterEmptyViewpoint; // optional
 
         /**
+         * True if the checkbox allowing to group by viewpoint or not should be shown to user.
+         */
+        private boolean showGroupinByCheckbox;
+
+        /**
          * Construct a GraphicalRepresentationHandler allowing to visualize and select in a tree viewer all registered
          * viewpoints and their representation descriptions and instance.
          * 
@@ -293,6 +321,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
             linkNavigatorAndBrowser = false;
             addUpdateControls = false;
             filterEmptyViewpoint = false;
+            showGroupinByCheckbox = false;
             labelProvider = null;
             contentProvider = null;
         }
@@ -321,6 +350,18 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         public GraphicalRepresentationHandlerBuilder activateRepresentationAndViewpointControls() {
             addUpdateControls = true;
             showButtons = true;
+            return this;
+        }
+
+        /**
+         * Returns the builder with the functionality "Add addition and removal representations buttons and key shortcut
+         * and viewpoint activation/deactivation mechanism." activated.
+         * 
+         * @return the builder with the functionality "Add addition and removal representations buttons and key shortcut
+         *         and viewpoint activation/deactivation mechanism." activated.
+         */
+        public GraphicalRepresentationHandlerBuilder activateGroupingByCheckbox() {
+            showGroupinByCheckbox = true;
             return this;
         }
 
@@ -402,6 +443,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         this.filterEmptyViewpoint = builder.filterEmptyViewpoint;
         this.contentProvider = builder.contentProvider;
         this.labelProvider = builder.labelProvider;
+        this.showGroupinByCheckbox = builder.showGroupinByCheckbox;
     }
 
     /**
@@ -445,41 +487,108 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
     public void createControl(Composite parentComposite) {
         viewpointsSelectionGraphicalHandler = new ViewpointsSelectionGraphicalHandler();
         Composite rootComposite = new Composite(parentComposite, SWT.NONE);
-        GridLayout rootGridLayout = null;
-        if (showButtons) {
-            rootGridLayout = GridLayoutFactory.swtDefaults().numColumns(3).equalWidth(false).create();
-        } else {
-            rootGridLayout = GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(true).create();
-        }
-
-        rootComposite.setLayout(rootGridLayout);
+        rootComposite.setLayout(GridLayoutFactory.swtDefaults().numColumns(1).create());
         GridData rootLayoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
         rootComposite.setLayoutData(rootLayoutData);
-        treeViewer = createRepresentationExplorerNavigator(rootComposite);
+
+        Composite subComposite1 = new Composite(rootComposite, SWT.NONE);
+        GridLayout subComposite1Layout = null;
+        if (showButtons) {
+            subComposite1Layout = GridLayoutFactory.fillDefaults().numColumns(3).equalWidth(false).create();
+        } else {
+            subComposite1Layout = GridLayoutFactory.fillDefaults().numColumns(2).equalWidth(true).create();
+        }
+
+        subComposite1.setLayout(subComposite1Layout);
+        GridData subComposite1LayoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
+        subComposite1.setLayoutData(subComposite1LayoutData);
+        treeViewer = createRepresentationExplorerNavigator(subComposite1);
+
         GridData layoutData = (GridData) treeViewer.getTree().getLayoutData();
         // setting height hint avoids the composite to grow outside visible
         // port when too much item are present.
         layoutData.heightHint = 50;
-        viewpointsSelectionGraphicalHandler.createBrowser(rootComposite);
+
+        viewpointsSelectionGraphicalHandler.createBrowser(subComposite1);
         viewpointsSelectionGraphicalHandler.setBrowserMinWidth(200);
         SessionManager.INSTANCE.addSessionsListener(this);
 
+        Composite groupByComposite = new Composite(rootComposite, SWT.NONE);
+        groupByComposite.setLayout(GridLayoutFactory.swtDefaults().create());
+        if (showGroupinByCheckbox) {
+            createGroupByCheckbox(groupByComposite);
+        } else {
+            groupByViewpoint = true;
+        }
+
+    }
+
+    private void createGroupByCheckbox(Composite rootComposite) {
+        groupByViewpointCheckbox = new Button(rootComposite, SWT.CHECK);
+        groupByViewpointCheckbox.setText(Messages.GraphicalRepresentationHandler_checkBoxGroupByViewpoint_label); // $NON-NLS-1$
+        groupByViewpointCheckbox.setSelection(true);
+        groupByViewpoint = true;
+        groupByViewpointCheckbox.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent event) {
+                Button button = (Button) event.widget;
+                if (button.getSelection()) {
+                    groupByViewpoint = true;
+                } else {
+                    groupByViewpoint = false;
+                }
+                initInput();
+            };
+        });
+    }
+
+    /**
+     * Returns all viewpoint items corresponding to all available viewpoints from the runtime.
+     * 
+     * @return all viewpoint items corresponding to all available viewpoints from the runtime.
+     */
+    private List<Object> getViewpointItems() {
+        List<Object> viewpointItemList = new ArrayList<>();
+        Collection<Viewpoint> availableViewpoints = ViewpointHelper.getAvailableViewpoints(session);
+        for (Viewpoint viewpoint : availableViewpoints) {
+            viewpointItemList.add(new ViewpointItemImpl(session, viewpoint, this));
+        }
+        return viewpointItemList;
+    }
+
+    /**
+     * Returns all viewpoint items corresponding to all available viewpoints from the runtime.
+     * 
+     * @return all viewpoint items corresponding to all available viewpoints from the runtime.
+     */
+    private List<Object> getRepresentationDescriptionsItems() {
+        List<Object> representationItemList = new ArrayList<>();
+        Collection<Viewpoint> availableViewpoints = ViewpointHelper.getAvailableViewpoints(session);
+        for (Viewpoint viewpoint : availableViewpoints) {
+            EList<RepresentationDescription> ownedRepresentations = viewpoint.getOwnedRepresentations();
+            for (RepresentationDescription representationDescription : ownedRepresentations) {
+                representationItemList.add(new RepresentationDescriptionItemImpl(session, representationDescription, this, viewpoint));
+            }
+        }
+        return representationItemList;
     }
 
     /**
      * Update the representations viewer with the representation currently available in the session and expand items to
      * level 2 and set selection to the first item.
-     * 
-     * @param input
-     *            the input used to update the viewer.
      */
-    public void setViewerInput(Object input) {
-        treeViewer.setInput(input);
+    public void initInput() {
+        if (groupByViewpoint) {
+            treeViewer.setInput(getViewpointItems());
+        } else {
+            treeViewer.setInput(getRepresentationDescriptionsItems());
+        }
+
         treeViewer.expandToLevel(2);
         if (treeViewer.getTree().getItemCount() > 0) {
             treeViewer.setSelection(new StructuredSelection(treeViewer.getTree().getItem(0).getData()));
         }
-
+        treeViewer.refresh(true);
     }
 
     /**
@@ -500,7 +609,9 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         GridData layoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
         layoutData.widthHint = 350;
         subComposite.setLayoutData(layoutData);
-        representationTree = SWTUtil.createFilteredTree(subComposite, SWT.BORDER | SWT.MULTI, new org.eclipse.ui.dialogs.PatternFilter());
+        org.eclipse.ui.dialogs.PatternFilter filter = new org.eclipse.ui.dialogs.PatternFilter();
+        filter.setIncludeLeadingWildcard(true);
+        representationTree = SWTUtil.createFilteredTree(subComposite, SWT.BORDER | SWT.MULTI, filter);
         treeViewer = representationTree.getViewer();
         final GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
         gridData.minimumHeight = 200;
@@ -508,6 +619,8 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
 
         treeViewer.getTree().setHeaderVisible(false);
         treeViewer.getTree().setLinesVisible(false);
+
+        // treeViewer.setComparer(new IElementComparerImplementation());
 
         ColumnViewerToolTipSupport.enableFor(treeViewer);
 
@@ -842,7 +955,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
 
                 if (selection.getFirstElement() instanceof ViewpointItemImpl) {
                     ViewpointItemImpl viewpointItem = (ViewpointItemImpl) selection.getFirstElement();
-                    boolean activateViewpoint = !viewpointItem.isViewpointEnabledInSession();
+                    boolean activateViewpoint = !ViewpointHelper.isViewpointEnabledInSession(session, viewpointItem.getViewpoint());
                     Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
                     if (activateViewpoint) {
 
@@ -941,11 +1054,11 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                     viewpointsSelectionGraphicalHandler.setBrowserInput(((ViewpointItemImpl) firstElement).getViewpoint());
                 } else if (firstElement instanceof RepresentationDescriptionItemImpl) {
                     RepresentationDescriptionItemImpl representationDescriptionItemImpl = (RepresentationDescriptionItemImpl) firstElement;
-                    viewpointsSelectionGraphicalHandler.setBrowserInput(((ViewpointItemImpl) representationDescriptionItemImpl.getParent()).getViewpoint());
+                    viewpointsSelectionGraphicalHandler.setBrowserInput(representationDescriptionItemImpl.getViewpoint());
                 } else if (firstElement instanceof RepresentationItemImpl) {
                     RepresentationItemImpl representationItem = (RepresentationItemImpl) firstElement;
                     RepresentationDescriptionItemImpl representationDescriptionItemImpl = (RepresentationDescriptionItemImpl) representationItem.getParent();
-                    viewpointsSelectionGraphicalHandler.setBrowserInput(((ViewpointItemImpl) representationDescriptionItemImpl.getParent()).getViewpoint());
+                    viewpointsSelectionGraphicalHandler.setBrowserInput(representationDescriptionItemImpl.getViewpoint());
                 }
             }
         }

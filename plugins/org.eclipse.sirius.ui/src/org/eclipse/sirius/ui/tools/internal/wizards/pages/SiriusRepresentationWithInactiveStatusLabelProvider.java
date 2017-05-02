@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationDescriptionItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -33,7 +34,7 @@ public class SiriusRepresentationWithInactiveStatusLabelProvider extends SiriusR
 
             ViewpointItemImpl viewpointItem = (ViewpointItemImpl) element;
 
-            if (!viewpointItem.isViewpointEnabledInSession()) {
+            if (!ViewpointHelper.isViewpointEnabledInSession(viewpointItem.getSession().get(), viewpointItem.getViewpoint())) {
                 result = VisualBindingManager.getDefault().getColorFromName("gray"); //$NON-NLS-1$
             }
         }
@@ -51,7 +52,7 @@ public class SiriusRepresentationWithInactiveStatusLabelProvider extends SiriusR
         if (element instanceof ViewpointItemImpl) {
             ViewpointItemImpl viewpointItem = (ViewpointItemImpl) element;
 
-            if (!viewpointItem.isViewpointEnabledInSession()) {
+            if (!ViewpointHelper.isViewpointEnabledInSession(viewpointItem.getSession().get(), viewpointItem.getViewpoint())) {
                 text += " (" + Messages.GraphicalRepresentationHandler_disabledViewpoint_label + ")"; //$NON-NLS-1$ //$NON-NLS-2$
             }
         }

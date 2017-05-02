@@ -13,9 +13,6 @@ package org.eclipse.sirius.ui.editor.internal.pages;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -32,8 +29,6 @@ import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalSemanticModelsHandler;
 import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalRepresentationHandler;
 import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalRepresentationHandler.GraphicalRepresentationHandlerBuilder;
-import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
-import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -208,28 +203,11 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         representationSection.setClient(representationSectionClient);
 
         GraphicalRepresentationHandlerBuilder graphicalRepresentationHandlerBuilder = new GraphicalRepresentationHandler.GraphicalRepresentationHandlerBuilder(session);
-        graphicalRepresentationHandler = graphicalRepresentationHandlerBuilder.activateBrowserWithViewpointAndRepresentationDescriptionInformation().activateRepresentationAndViewpointControls()
-                .useToolkitToCreateGraphicComponents(toolkit).build();
+        graphicalRepresentationHandler = graphicalRepresentationHandlerBuilder.activateBrowserWithViewpointAndRepresentationDescriptionInformation().activateGroupingByCheckbox()
+                .activateRepresentationAndViewpointControls().useToolkitToCreateGraphicComponents(toolkit).build();
         graphicalRepresentationHandler.createControl(representationSectionClient);
-        List<Object> viewpointItemList = getViewpointItems();
-        graphicalRepresentationHandler.setViewerInput(viewpointItemList);
+        graphicalRepresentationHandler.initInput();
 
-    }
-
-    /**
-     * Returns all viewpoint items corresponding to all available viewpoints
-     * from the runtime.
-     * 
-     * @return all viewpoint items corresponding to all available viewpoints
-     *         from the runtime.
-     */
-    private List<Object> getViewpointItems() {
-        List<Object> viewpointItemList = new ArrayList<>();
-        Collection<Viewpoint> availableViewpoints = ViewpointHelper.getAvailableViewpoints(session);
-        for (Viewpoint viewpoint : availableViewpoints) {
-            viewpointItemList.add(new ViewpointItemImpl(session, viewpoint, this));
-        }
-        return viewpointItemList;
     }
 
     @Override
@@ -318,7 +296,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
                 PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
                     // we refresh the content of the representations block as it
                     // may have changed regarding the handled notifications.
-                    graphicalRepresentationHandler.setViewerInput(getViewpointItems());
+                    graphicalRepresentationHandler.initInput();
                 });
 
                 break;

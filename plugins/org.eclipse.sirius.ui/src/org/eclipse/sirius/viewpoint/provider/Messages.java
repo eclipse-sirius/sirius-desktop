@@ -490,6 +490,12 @@ public final class Messages {
     public static String GraphicalRepresentationHandler_button_activateDeactivateViewpoint_incorrectSelection_message;
 
     @TranslatableMessage
+    public static String GraphicalRepresentationHandler_checkBoxGroupByRepresentationDescription_label;
+
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_checkBoxGroupByViewpoint_label;
+
+    @TranslatableMessage
     public static String GraphicalRepresentationHandler_disabledViewpoint_label;
 
     @TranslatableMessage
