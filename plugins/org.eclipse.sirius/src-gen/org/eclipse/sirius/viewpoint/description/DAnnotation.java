@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.viewpoint.description;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.description.DAnnotation#getSource <em>Source</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.DAnnotation#getDetails <em>Details</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.DAnnotation#getReferences <em>References</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotation()
@@ -67,10 +69,29 @@ public interface DAnnotation extends EObject {
      * 
      * @return the value of the '<em>Details</em>' map.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotation_Details()
-     * @model mapType=
-     *        "org.eclipse.emf.ecore.EStringToStringMapEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+     * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry<org.eclipse.emf.ecore.EString,
+     *        org.eclipse.emf.ecore.EString>"
      * @generated
      */
     EMap<String, String> getDetails();
+
+    /**
+     * Returns the value of the '<em><b>References</b></em>' reference list. The list contents are of type
+     * {@link org.eclipse.emf.ecore.EObject}. <!-- begin-user-doc -->
+     * <p>
+     * This feature allows to have some information without having to search them into the entire model of the Sirius
+     * session.</br>
+     * Warning : Ideally only elements from semantic resources of the session should be referenced or else it may broke
+     * the session behavior either because resolving too soon EObject in the session or because adding a resource that
+     * is not known by Sirius session.
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>References</em>' reference list.
+     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotation_References()
+     * @model
+     * @generated
+     */
+    EList<EObject> getReferences();
 
 } // DAnnotation

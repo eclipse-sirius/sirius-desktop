@@ -62,6 +62,7 @@ public class DAnnotationItemProvider extends ItemProviderAdapter
             super.getPropertyDescriptors(object);
 
             addSourcePropertyDescriptor(object);
+            addReferencesPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -76,6 +77,18 @@ public class DAnnotationItemProvider extends ItemProviderAdapter
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnnotation_source_feature"), //$NON-NLS-1$
                         getString("_UI_PropertyDescriptor_description", "_UI_DAnnotation_source_feature", "_UI_DAnnotation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         DescriptionPackage.Literals.DANNOTATION__SOURCE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the References feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addReferencesPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnnotation_references_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DAnnotation_references_feature", "_UI_DAnnotation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.DANNOTATION__REFERENCES, true, false, true, null, null, null));
     }
 
     /**

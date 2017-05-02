@@ -11,16 +11,21 @@
  */
 package org.eclipse.sirius.viewpoint.description.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
@@ -34,6 +39,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.description.impl.DAnnotationImpl#getSource <em>Source</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.impl.DAnnotationImpl#getDetails <em>Details</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.impl.DAnnotationImpl#getReferences <em>References</em>}</li>
  * </ul>
  *
  * @generated
@@ -68,6 +74,16 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
      * @ordered
      */
     protected EMap<String, String> details;
+
+    /**
+     * The cached value of the '{@link #getReferences() <em>References</em>}' reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #getReferences()
+     * @generated
+     * @ordered
+     */
+    protected EList<EObject> references;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -131,6 +147,19 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
      * @generated
      */
     @Override
+    public EList<EObject> getReferences() {
+        if (references == null) {
+            references = new EObjectResolvingEList<EObject>(EObject.class, this, DescriptionPackage.DANNOTATION__REFERENCES);
+        }
+        return references;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case DescriptionPackage.DANNOTATION__DETAILS:
@@ -155,6 +184,8 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
             } else {
                 return getDetails().map();
             }
+        case DescriptionPackage.DANNOTATION__REFERENCES:
+            return getReferences();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -164,6 +195,7 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
      * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -172,6 +204,10 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
             return;
         case DescriptionPackage.DANNOTATION__DETAILS:
             ((EStructuralFeature.Setting) getDetails()).set(newValue);
+            return;
+        case DescriptionPackage.DANNOTATION__REFERENCES:
+            getReferences().clear();
+            getReferences().addAll((Collection<? extends EObject>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -191,6 +227,9 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
         case DescriptionPackage.DANNOTATION__DETAILS:
             getDetails().clear();
             return;
+        case DescriptionPackage.DANNOTATION__REFERENCES:
+            getReferences().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -207,6 +246,8 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
             return DAnnotationImpl.SOURCE_EDEFAULT == null ? source != null : !DAnnotationImpl.SOURCE_EDEFAULT.equals(source);
         case DescriptionPackage.DANNOTATION__DETAILS:
             return details != null && !details.isEmpty();
+        case DescriptionPackage.DANNOTATION__REFERENCES:
+            return references != null && !references.isEmpty();
         }
         return super.eIsSet(featureID);
     }

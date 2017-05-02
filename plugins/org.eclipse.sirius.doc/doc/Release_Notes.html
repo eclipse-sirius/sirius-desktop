@@ -125,11 +125,26 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius.common.ui">Changes in 
-			<code>org.eclipse.sirius.common.ui</code> 
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
-			<li><span class="label label-danger">Removed</span>  The 
+			<li><span class="label label-success">Added</span> The 
+				<code>org.eclipse.sirius.viewpoint.description.DAnnotation.references</code> feature has been added. It allows to have some information without having to search them into the entire model of the Sirius session. Ideally only elements from semantic resources of the session should be referenced or else it may broke the session behavior either because resolving too soon EObject in the session or because adding a resource that is not known by Sirius session.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.query.EObjectQuery.getImpactedRepDescriptorFromDAnnotationData()</code> method has been added to help retrieve the 
+				<code>DRepresentationDescriptors</code> which owned 
+				<code>DAnnotation</code> are referencing a given 
+				<code>EObject</code> with 
+				<code>DAnnotation.references</code>.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.common.ui">Changes in 
+			<code>org.eclipse.sirius.common.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-danger">Removed</span> The 
 				<code>org.eclipse.sirius.common.ui.tools.api.dialog.FeatureEditorDialog</code> class has been removed; use the 
 				<code>org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog</code> equivalent provided by EMF directly instead.
 			</li>
@@ -210,7 +225,7 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -238,7 +253,7 @@
 					<li>If you used to override protected methods 
 						<code>boolean isRepresentationsModel(IFile)</code> and 
 						<code>boolean isVsmModel(IFile)</code> of class 
-						<code>org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.DefaultModelingProjectResourceListener</code>, they no longer exist. They correspond to core API and is not supposed to be overridden. They are accessible through API  
+						<code>org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.DefaultModelingProjectResourceListener</code>, they no longer exist. They correspond to core API and is not supposed to be overridden. They are accessible through API 
 						<code>org.eclipse.sirius.business.api.query.FileQuery.FileQuery(IFile)</code>.
 					</li>
 					<li>All necessary classes for extension point 
@@ -379,12 +394,12 @@
 				<code>SiriusDiagramUiPreferencesKeys.PREF_PRINT_DECORATION</code> has been added in 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys</code>. If true, the decorations of the diagram elements of a diagram will be printed, when printing a diagram.
 			</li>
-			<li><span class="label label-info">Modified</span> The  
+			<li><span class="label label-info">Modified</span> The 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.DiagramEditPartService</code> class which can be used to export diagrams as images is now automatically adapting the output resolution for raster image based on maximum buffer size specified through the 
 				<code>plugin.propeties</code> file of the 
 				<code>org.eclipse.sirius.diagram.ui</code> plugin. This leads to a noticeable increase of the export image size (you can expect a 10 factor on small diagrams) and the method will no longer fail with OutOfMemory errors as bigger diagrams will lead to a lower output resolution. Implementers using this class can override the 
 				<code>DiagramEditPartService.getMaximumTotalSize()</code> method to return their own limit or 
-				<code>DiagramEditPartService.getExportResolutionFactor(DiagramEditPart, SiriusDiagramImageGenerator)</code>  and return 
+				<code>DiagramEditPartService.getExportResolutionFactor(DiagramEditPart, SiriusDiagramImageGenerator)</code> and return 
 				<code>1.0</code> to get back to the previous behavior.
 			</li>
 			<li><span class="label label-info">Moved</span> The methods of interface 
@@ -543,12 +558,12 @@ SWTBotUtils.waitAllUiEvents();
 		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> 
-				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping</code> class has  been added to handle copy/paste format with mapping information when an element target of a format pasting has many source diagram format corresponding to its key. In this case, we use the mapping information to get the more precise data format. And if no result matched, then we return the first found by using the key.
+				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping</code> class has been added to handle copy/paste format with mapping information when an element target of a format pasting has many source diagram format corresponding to its key. In this case, we use the mapping information to get the more precise data format. And if no result matched, then we return the first found by using the key.
 			</li>
 		</ul>
 		<ul>
 			<li><span class="label label-success">Added</span> 
-				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping.getFormatData(FormatDataKey, RepresentationElementMapping)</code> method has  been added to retrieve during format pasting the data format corresponding to the given key and mapping when more than one result correspond to the key. If no result matches the mapping, then the first result found by using the key is returned.
+				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping.getFormatData(FormatDataKey, RepresentationElementMapping)</code> method has been added to retrieve during format pasting the data format corresponding to the given key and mapping when more than one result correspond to the key. If no result matches the mapping, then the first result found by using the key is returned.
 			</li>
 		</ul>
 		<ul>
@@ -627,7 +642,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>UICallBack</code> in which you can have an UI feedback letting you choose if you want to open the session anyway. Warning: if you choose to proceed, there is no guarantee that the resulting session will be usable. It may even lead to data loss or corruption; use at your own risk.
 			</li>
 		</ul>
-		<p>If a viewpoint  has been defined with a more recent version of Sirius than the one you are using, the 
+		<p>If a viewpoint has been defined with a more recent version of Sirius than the one you are using, the 
 			<code>ViewpointRegistry</code> will not register it and a warning is logged in the error log view to inform the user.
 		</p>
 		<ul>
@@ -678,7 +693,7 @@ SWTBotUtils.waitAllUiEvents();
 				<em>Identifier</em> attribute of many 
 				<em>Prroperties View</em> related elements has been moved into the 
 				<em>Advanced</em> tab and renamed 
-				<em>Extension Id</em>, as it is not actually required on common use cases but only for extensibility purposes.  
+				<em>Extension Id</em>, as it is not actually required on common use cases but only for extensibility purposes.
 			</li>
 			<li><span class="label label-info">Modified</span> The property 
 				<code>Domain Class Expression</code> in 
@@ -756,7 +771,7 @@ SWTBotUtils.waitAllUiEvents();
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1020,7 +1035,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.diagram.ui</code> plug-in&#8217;s 
 				<code>Messages</code> class, and moved into the 
 				<code>org.eclipse.sirius.ui</code>'s 
-				<code>Messages</code> class.  
+				<code>Messages</code> class.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
@@ -1123,7 +1138,7 @@ SWTBotUtils.waitAllUiEvents();
 		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Sirius 4.0 introduces 
-				<strong>experimental</strong>  support for specifying the properties views of your modelers directly from inside the VSM. This feature uses the same dynamic approach as for specifying  diagrams, tables and trees, with a very flexible configuration language and no code generation involved (including live preview of any change). As of Sirius 4.0, this feature should be considered in an experimental  state with details subject to changes until Sirius 4.1, and is not installed by default. To install it, make sure either 
+				<strong>experimental</strong> support for specifying the properties views of your modelers directly from inside the VSM. This feature uses the same dynamic approach as for specifying diagrams, tables and trees, with a very flexible configuration language and no code generation involved (including live preview of any change). As of Sirius 4.0, this feature should be considered in an experimental state with details subject to changes until Sirius 4.1, and is not installed by default. To install it, make sure either 
 				<a href="http://download.eclipse.org/releases/neon">the Eclipse Neon repositry</a> or the 
 				<a href="http://download.eclipse.org/sirius/updates/releases/4.0.0/neon">Sirius 4.0</a> and 
 				<a href="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.6.0">EEF 1.6</a> repositories are available, and then to install the following features (from in the 
@@ -1149,7 +1164,7 @@ SWTBotUtils.waitAllUiEvents();
 		</p>
 		<ul>
 			<li><span class="label label-success">Added</span> All static strings defined in the VSMs which are visible to the end-user of the modeler, like viewpoint and tools names, can now be internationalized. Simply replace the name with a translation key reference of the form 
-				<code>%myUniqueKey</code>  in the VSM, and define the value in the 
+				<code>%myUniqueKey</code> in the VSM, and define the value in the 
 				<em>Viewpoint Specification Project</em>'s 
 				<code>plugin.properties</code> (for the default value), or 
 				<code>plugin_XX.properties</code> for locale 
@@ -1163,7 +1178,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.ext.emf.edit.EditingDomainServices</code> (from plug-in 
 				<code>org.eclipse.sirius.ext.emf.edit</code>) has been added with a complete set of service methods to leverage most of the features of the &#8220;EMF Edit&#8221; framework, for example the various 
 				<em>Item Providers</em> associated to semantic elements. See 
-				<a href="specifier/general/Writing_Queries.html#editing_domain_services">the documentation</a> for details.  
+				<a href="specifier/general/Writing_Queries.html#editing_domain_services">the documentation</a> for details.
 			</li>
 			<li><span class="label label-success">Added</span> The specifier can now restrict the border node authorized sides. This new option is available in the advanced tab of the border node style. See the 
 				<a href="specifier/diagrams/Diagrams.html#authorizedsides">specifier documentation</a> for more details.
@@ -1198,7 +1213,7 @@ SWTBotUtils.waitAllUiEvents();
 				<a href="developer/extensions-provide_custom_bundled_image_shape.html">developer documentation</a> for more details.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1267,11 +1282,9 @@ SWTBotUtils.waitAllUiEvents();
 			<li><span class="label label-info">Modified</span> Several methods of 
 				<code>org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper</code> now return a 
 				<code>fr.obeo.dsl.viewpoint.DView</code> instead of a 
-				<code>fr.obeo.dsl.viewpoint.DRepresentationContainer</code>:  
+				<code>fr.obeo.dsl.viewpoint.DRepresentationContainer</code>: * 
+				<code>findContainer(EObject, Viewpoint, Collection&lt;DAnalysis&gt;, DAnalysisSelector)</code>,
 				<ul>
-					<li>
-						<code>findContainer(EObject, Viewpoint, Collection&lt;DAnalysis&gt;, DAnalysisSelector)</code>,
-					</li>
 					<li>
 						<code>findContainerForAddedRepresentation(EObject, Viewpoint, Collection&lt;DAnalysis&gt;, DAnalysisSelector, DRepresentation)</code>,
 					</li>
@@ -1455,7 +1468,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>AbstractCachedSVGFigure</code>.
 			</li>
 			<li><span class="label label-info">Modified</span> 
-				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure</code>  now inherits directly from 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure</code> now inherits directly from 
 				<code>SVGFigure</code> instead of 
 				<code>AbstractCachedSVGFigure</code>.
 			</li>
@@ -1521,7 +1534,7 @@ SWTBotUtils.waitAllUiEvents();
 			<li><span class="label label-danger">Removed</span> The 
 				<code>org.eclipse.sirius.ui</code>, and thus the whole 
 				<code>org.eclipse.sirius.runtime</code> feature no longer depends on the JDT (technically the dependency towards 
-				<code>org.eclipse.jdt.core</code> has been removed). If you need the JDT Core in your environment, you will need to add the dependency explicitly.  The Sirius specification environment (
+				<code>org.eclipse.jdt.core</code> has been removed). If you need the JDT Core in your environment, you will need to add the dependency explicitly. The Sirius specification environment (
 				<code>org.eclipse.sirius.editor</code>) still depends on PDE (and thus indirectly the JDT too).
 			</li>
 		</ul>
@@ -1575,9 +1588,9 @@ SWTBotUtils.waitAllUiEvents();
 			<code>org.eclipse.sirius.common.xtext</code>
 		</h4>
 		<ul>
-			<li><span class="label label-info">Modified</span> The dependency from  
+			<li><span class="label label-info">Modified</span> The dependency from 
 				<code>org.eclipse.sirius.common.xtext</code> to the JDT plug-in 
-				<code>org.eclipse.jdt.core</code> is now optional. If you need the JDT Core in your environment, you will need to add the dependency explicitly.  The Sirius specification environment (
+				<code>org.eclipse.jdt.core</code> is now optional. If you need the JDT Core in your environment, you will need to add the dependency explicitly. The Sirius specification environment (
 				<code>org.eclipse.sirius.editor</code>) still depends on PDE (and thus indirectly the JDT too).
 			</li>
 		</ul>
@@ -1624,7 +1637,7 @@ SWTBotUtils.waitAllUiEvents();
 		<h3 id="SpecifierVisibleChanges5">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The 
-				<em>Acceleo Query Language</em> (AQL) interpreter  has been improved. AQL, and its support in Sirius, is no longer considered experimental, and instead is now the recommended query language to use for new VSMs. Improvements mostly concern better completion and validation, and more precise error reporting. In particular AQL expressions will now be able to display warnings and errors in the Interpreter view. The message displayed in the Interpreter view after an evaluation has also been improved to display the qualified name of the type of the value computed (
+				<em>Acceleo Query Language</em> (AQL) interpreter has been improved. AQL, and its support in Sirius, is no longer considered experimental, and instead is now the recommended query language to use for new VSMs. Improvements mostly concern better completion and validation, and more precise error reporting. In particular AQL expressions will now be able to display warnings and errors in the Interpreter view. The message displayed in the Interpreter view after an evaluation has also been improved to display the qualified name of the type of the value computed (
 				<code>ePackageName::eClassName</code>). The improvements realized can be viewed by clicking on the image below (click to zoom).
 			</li>
 		</ul>
@@ -1655,7 +1668,7 @@ SWTBotUtils.waitAllUiEvents();
 				<em>Horizontal Stack</em>. It allows to define complex stacks of 
 				<em>compartments</em> mixing both stack directions. While working reliably, this support is marked experimental in Sirius 3.1.0 as there are still some behaviors which do not behave as expected. If you make use of this feature, be aware that some details may still change in future releases, including 3.1.x maintenance releases.
 			</li>
-			<li><span class="label label-info">Modified</span> You now really  have the capability to set the 
+			<li><span class="label label-info">Modified</span> You now really have the capability to set the 
 				<code>BorderSizeComputationExpression</code> as 0 for style of 
 				<code>ContainerMapping</code>. Before Sirius 3.1.0, a size of 0 was interpreted as 1 at runtime. For compatibility reason, all existing 
 				<code>BorderSizeComputationExpression</code> equals to 0 for style of 
@@ -1724,7 +1737,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
 				<code>AcceleoMTLInterpreterIDEPlugin.Implementation</code>.
 			</li>
-			<li><span class="label label-info">Modified</span>  
+			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoMTLInterpreterPlugin</code> is no longer an OSGi 
 				<code>BundleActivator</code>, and instead extends 
 				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
@@ -1909,7 +1922,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalBuilder</code> used to build the content proposals with their various parameters more easily.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1964,7 +1977,7 @@ SWTBotUtils.waitAllUiEvents();
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.selectAndReveal(DialectEditor, List&lt;DRepresentationElement&gt;)</code> method has been added to explicitly indicate to reveal elements out of the screen (hidden because of the scrollbars location) when selecting them.
 			</li>
-			<li><span class="label label-warning">Deprecated</span>  
+			<li><span class="label label-warning">Deprecated</span> 
 				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.dispose()</code> method has been deprecated as an 
 				<code>IEditorInput</code> can be reused by several instances of 
 				<code>IEditorPart</code> through the navigation history view.
@@ -1992,7 +2005,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES</code> added to replace 
-				<code>org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR</code> which is deprecated  
+				<code>org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR</code> which is deprecated.
 			</li>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES_TOOLBAR</code> added to replace 
@@ -2061,7 +2074,7 @@ SWTBotUtils.waitAllUiEvents();
 		</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> The methods 
-				<code>closePerspective(String)</code>,  
+				<code>closePerspective(String)</code>, 
 				<code>closeSiriusPerspective()</code> and 
 				<code>closeModelingPerspective()</code> have been added in class 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.perspective.DesignerPerspectives</code> to allow the closing of perspectives.

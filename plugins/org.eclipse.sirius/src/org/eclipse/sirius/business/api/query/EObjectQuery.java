@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -42,6 +43,9 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.eclipse.sirius.viewpoint.description.DModelElement;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -224,6 +228,23 @@ public class EObjectQuery {
             }
             return result;
         }
+    }
+
+    /**
+     * Finds all the {@link DRepresentationDescriptor} in the session which the queried object references one of
+     * DAnnotation.references of all {@link DModelElement}.eAnnotations}. The queried EObject must be part of an opened
+     * Sirius session.
+     * 
+     * @param sourceKey
+     *            Allow to return only DRepresentationDescriptor that references queried object through a DAnnotation
+     *            that has this key for source field. If null, this parameter is ignored as filter.
+     * 
+     * @return all the searched EObjects in the same session as this EObject.
+     */
+    public List<DRepresentationDescriptor> getImpactedRepDescriptorFromDAnnotationData(String sourceKey) {
+        Collection<EObject> inverseReferences = getInverseReferences(DescriptionPackage.eINSTANCE.getDAnnotation_References());
+        return inverseReferences.stream().map(DAnnotation.class::cast).filter(annot -> sourceKey != null ? sourceKey.equals(annot.getSource()) : true).map(annot -> annot.eContainer())
+                .filter(DRepresentationDescriptor.class::isInstance).map(DRepresentationDescriptor.class::cast).collect(Collectors.toList());
     }
 
     /**

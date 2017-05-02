@@ -18,13 +18,13 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.representation.DRepresentationDescriptorToDRepresentationLinkManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.impl.DModelElementImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>DRepresentation Descriptor</b></em>'. <!--
@@ -43,7 +43,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
  *
  * @generated
  */
-public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container implements DRepresentationDescriptor {
+public class DRepresentationDescriptorImpl extends DModelElementImpl implements DRepresentationDescriptor {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->

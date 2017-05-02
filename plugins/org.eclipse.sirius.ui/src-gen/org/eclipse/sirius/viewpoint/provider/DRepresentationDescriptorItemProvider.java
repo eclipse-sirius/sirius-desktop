@@ -19,18 +19,14 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.provider.DModelElementItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor} object. <!--
@@ -38,8 +34,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
  *
  * @generated
  */
-public class DRepresentationDescriptorItemProvider extends ItemProviderAdapter
-        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class DRepresentationDescriptorItemProvider extends DModelElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -94,7 +89,7 @@ public class DRepresentationDescriptorItemProvider extends ItemProviderAdapter
 
     /**
      * This adds a property descriptor for the Rep Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addRepPathPropertyDescriptor(Object object) {
