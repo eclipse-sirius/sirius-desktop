@@ -37,6 +37,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingForDescriptionImpl#getIterableExpression
  * <em>Iterable Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingForDescriptionImpl#isForceRefresh
+ * <em>Force Refresh</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingForDescriptionImpl#getIfs <em>Ifs</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.AbstractDynamicMappingForDescriptionImpl#getExtends <em>Extends</em>}
  * </li>
@@ -87,6 +89,26 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
      * @ordered
      */
     protected String iterableExpression = AbstractDynamicMappingForDescriptionImpl.ITERABLE_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isForceRefresh() <em>Force Refresh</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #isForceRefresh()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean FORCE_REFRESH_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isForceRefresh() <em>Force Refresh</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #isForceRefresh()
+     * @generated
+     * @ordered
+     */
+    protected boolean forceRefresh = AbstractDynamicMappingForDescriptionImpl.FORCE_REFRESH_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getIfs() <em>Ifs</em>}' containment reference list. <!-- begin-user-doc --> <!--
@@ -203,6 +225,30 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
      * @generated
      */
     @Override
+    public boolean isForceRefresh() {
+        return forceRefresh;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setForceRefresh(boolean newForceRefresh) {
+        boolean oldForceRefresh = forceRefresh;
+        forceRefresh = newForceRefresh;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH, oldForceRefresh, forceRefresh));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EList<DynamicMappingIfDescription> getIfs() {
         if (ifs == null) {
             ifs = new EObjectContainmentEList<DynamicMappingIfDescription>(DynamicMappingIfDescription.class, this, PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS);
@@ -303,6 +349,8 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
             return getIterator();
         case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION:
             return getIterableExpression();
+        case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH:
+            return isForceRefresh();
         case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS:
             return getIfs();
         case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__EXTENDS:
@@ -330,6 +378,9 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
             return;
         case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION:
             setIterableExpression((String) newValue);
+            return;
+        case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH:
+            setForceRefresh((Boolean) newValue);
             return;
         case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS:
             getIfs().clear();
@@ -359,6 +410,9 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
         case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION:
             setIterableExpression(AbstractDynamicMappingForDescriptionImpl.ITERABLE_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH:
+            setForceRefresh(AbstractDynamicMappingForDescriptionImpl.FORCE_REFRESH_EDEFAULT);
+            return;
         case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS:
             getIfs().clear();
             return;
@@ -385,6 +439,8 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
         case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION:
             return AbstractDynamicMappingForDescriptionImpl.ITERABLE_EXPRESSION_EDEFAULT == null ? iterableExpression != null
                     : !AbstractDynamicMappingForDescriptionImpl.ITERABLE_EXPRESSION_EDEFAULT.equals(iterableExpression);
+        case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH:
+            return forceRefresh != AbstractDynamicMappingForDescriptionImpl.FORCE_REFRESH_EDEFAULT;
         case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS:
             return ifs != null && !ifs.isEmpty();
         case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__EXTENDS:
@@ -412,6 +468,8 @@ public abstract class AbstractDynamicMappingForDescriptionImpl extends AbstractC
         result.append(iterator);
         result.append(", iterableExpression: "); //$NON-NLS-1$
         result.append(iterableExpression);
+        result.append(", forceRefresh: "); //$NON-NLS-1$
+        result.append(forceRefresh);
         result.append(", filterIfsFromExtendedDynamicMappingForExpression: "); //$NON-NLS-1$
         result.append(filterIfsFromExtendedDynamicMappingForExpression);
         result.append(')');

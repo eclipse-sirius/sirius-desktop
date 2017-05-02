@@ -2170,8 +2170,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getAbstractDynamicMappingForDescription_Ifs() {
-        return (EReference) abstractDynamicMappingForDescriptionEClass.getEStructuralFeatures().get(2);
+    public EAttribute getAbstractDynamicMappingForDescription_ForceRefresh() {
+        return (EAttribute) abstractDynamicMappingForDescriptionEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -2180,7 +2180,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getAbstractDynamicMappingForDescription_Extends() {
+    public EReference getAbstractDynamicMappingForDescription_Ifs() {
         return (EReference) abstractDynamicMappingForDescriptionEClass.getEStructuralFeatures().get(3);
     }
 
@@ -2190,8 +2190,18 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EReference getAbstractDynamicMappingForDescription_Extends() {
+        return (EReference) abstractDynamicMappingForDescriptionEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EAttribute getAbstractDynamicMappingForDescription_FilterIfsFromExtendedDynamicMappingForExpression() {
-        return (EAttribute) abstractDynamicMappingForDescriptionEClass.getEStructuralFeatures().get(4);
+        return (EAttribute) abstractDynamicMappingForDescriptionEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -4095,6 +4105,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         abstractDynamicMappingForDescriptionEClass = createEClass(PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION);
         createEAttribute(abstractDynamicMappingForDescriptionEClass, PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERATOR);
         createEAttribute(abstractDynamicMappingForDescriptionEClass, PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION);
+        createEAttribute(abstractDynamicMappingForDescriptionEClass, PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH);
         createEReference(abstractDynamicMappingForDescriptionEClass, PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS);
         createEReference(abstractDynamicMappingForDescriptionEClass, PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__EXTENDS);
         createEAttribute(abstractDynamicMappingForDescriptionEClass, PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FILTER_IFS_FROM_EXTENDED_DYNAMIC_MAPPING_FOR_EXPRESSION);
@@ -4866,6 +4877,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEAttribute(getAbstractDynamicMappingForDescription_IterableExpression(), theDescriptionPackage.getInterpretedExpression(), "iterableExpression", null, 1, 1, //$NON-NLS-1$
                 AbstractDynamicMappingForDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getAbstractDynamicMappingForDescription_ForceRefresh(), theEcorePackage.getEBoolean(), "forceRefresh", null, 1, 1, AbstractDynamicMappingForDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEReference(getAbstractDynamicMappingForDescription_Ifs(), this.getDynamicMappingIfDescription(), null, "ifs", null, 1, -1, AbstractDynamicMappingForDescription.class, //$NON-NLS-1$
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);

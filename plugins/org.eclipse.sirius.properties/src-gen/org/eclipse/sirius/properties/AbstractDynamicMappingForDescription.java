@@ -24,6 +24,8 @@ import org.eclipse.emf.common.util.EList;
  * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getIterator <em>Iterator</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getIterableExpression
  * <em>Iterable Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#isForceRefresh <em>Force Refresh</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getIfs <em>Ifs</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getExtends <em>Extends</em>}</li>
  * <li>
@@ -90,6 +92,33 @@ public interface AbstractDynamicMappingForDescription extends AbstractControlDes
      * @generated
      */
     void setIterableExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Force Refresh</em>' attribute isn't clear, there really should be more of a
+     * description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Force Refresh</em>' attribute.
+     * @see #setForceRefresh(boolean)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getAbstractDynamicMappingForDescription_ForceRefresh()
+     * @model required="true"
+     * @generated
+     */
+    boolean isForceRefresh();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#isForceRefresh
+     * <em>Force Refresh</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Force Refresh</em>' attribute.
+     * @see #isForceRefresh()
+     * @generated
+     */
+    void setForceRefresh(boolean value);
 
     /**
      * Returns the value of the '<em><b>Ifs</b></em>' containment reference list. The list contents are of type

@@ -3840,13 +3840,21 @@ public interface PropertiesPackage extends EPackage {
     int ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION = PropertiesPackage.ABSTRACT_CONTROL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH = PropertiesPackage.ABSTRACT_CONTROL_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
      * The feature id for the '<em><b>Ifs</b></em>' containment reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS = PropertiesPackage.ABSTRACT_CONTROL_DESCRIPTION_FEATURE_COUNT + 2;
+    int ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS = PropertiesPackage.ABSTRACT_CONTROL_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Extends</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3854,7 +3862,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__EXTENDS = PropertiesPackage.ABSTRACT_CONTROL_DESCRIPTION_FEATURE_COUNT + 3;
+    int ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__EXTENDS = PropertiesPackage.ABSTRACT_CONTROL_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Filter Ifs From Extended Dynamic Mapping For Expression</b></em>' attribute. <!--
@@ -3863,7 +3871,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FILTER_IFS_FROM_EXTENDED_DYNAMIC_MAPPING_FOR_EXPRESSION = PropertiesPackage.ABSTRACT_CONTROL_DESCRIPTION_FEATURE_COUNT + 4;
+    int ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FILTER_IFS_FROM_EXTENDED_DYNAMIC_MAPPING_FOR_EXPRESSION = PropertiesPackage.ABSTRACT_CONTROL_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '<em>Abstract Dynamic Mapping For Description</em>' class. <!--
@@ -3872,7 +3880,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.ABSTRACT_CONTROL_DESCRIPTION_FEATURE_COUNT + 5;
+    int ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.ABSTRACT_CONTROL_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl
@@ -3926,13 +3934,21 @@ public interface PropertiesPackage extends EPackage {
     int DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
      * The feature id for the '<em><b>Ifs</b></em>' containment reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 2;
+    int DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Extends</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3940,7 +3956,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DYNAMIC_MAPPING_FOR_DESCRIPTION__EXTENDS = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 3;
+    int DYNAMIC_MAPPING_FOR_DESCRIPTION__EXTENDS = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Filter Ifs From Extended Dynamic Mapping For Expression</b></em>' attribute. <!--
@@ -3949,7 +3965,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DYNAMIC_MAPPING_FOR_DESCRIPTION__FILTER_IFS_FROM_EXTENDED_DYNAMIC_MAPPING_FOR_EXPRESSION = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 4;
+    int DYNAMIC_MAPPING_FOR_DESCRIPTION__FILTER_IFS_FROM_EXTENDED_DYNAMIC_MAPPING_FOR_EXPRESSION = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '<em>Dynamic Mapping For Description</em>' class. <!-- begin-user-doc
@@ -3958,7 +3974,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DYNAMIC_MAPPING_FOR_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 5;
+    int DYNAMIC_MAPPING_FOR_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.properties.impl.DynamicMappingForOverrideDescriptionImpl
@@ -4010,6 +4026,14 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int DYNAMIC_MAPPING_FOR_OVERRIDE_DESCRIPTION__ITERABLE_EXPRESSION = PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DYNAMIC_MAPPING_FOR_OVERRIDE_DESCRIPTION__FORCE_REFRESH = PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Ifs</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -9671,6 +9695,18 @@ public interface PropertiesPackage extends EPackage {
     EAttribute getAbstractDynamicMappingForDescription_IterableExpression();
 
     /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#isForceRefresh <em>Force Refresh</em>}
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Force Refresh</em>'.
+     * @see org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#isForceRefresh()
+     * @see #getAbstractDynamicMappingForDescription()
+     * @generated
+     */
+    EAttribute getAbstractDynamicMappingForDescription_ForceRefresh();
+
+    /**
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.properties.AbstractDynamicMappingForDescription#getIfs <em>Ifs</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -12831,6 +12867,14 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EAttribute ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION = PropertiesPackage.eINSTANCE.getAbstractDynamicMappingForDescription_IterableExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Force Refresh</b></em>' attribute feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH = PropertiesPackage.eINSTANCE.getAbstractDynamicMappingForDescription_ForceRefresh();
 
         /**
          * The meta object literal for the '<em><b>Ifs</b></em>' containment reference list feature. <!-- begin-user-doc

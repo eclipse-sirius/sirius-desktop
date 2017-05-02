@@ -649,6 +649,14 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.AbstractDynamicMappingForDescription"/>
       </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.abstractdynamicmappingfordescription.AbstractDynamicMappingForDescriptionForceRefreshPropertySectionSpec"
+               id="properties.section.abstractDynamicMappingForDescription.ForceRefresh"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.abstractdynamicmappingfordescription.AbstractDynamicMappingForDescriptionForceRefreshFilterSpec"
+               afterSection="properties.section.abstractDynamicMappingForDescription.IterableExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.AbstractDynamicMappingForDescription"/>
+      </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.selectoverridedescription.SelectOverrideDescriptionFilterConditionalStylesFromOverriddenSelectExpressionPropertySection"
                id="properties.section.selectOverrideDescription.FilterConditionalStylesFromOverriddenSelectExpression"

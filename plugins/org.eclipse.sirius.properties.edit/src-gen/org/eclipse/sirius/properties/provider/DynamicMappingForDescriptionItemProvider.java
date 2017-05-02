@@ -54,6 +54,7 @@ public class DynamicMappingForDescriptionItemProvider extends ControlDescription
 
             addIteratorPropertyDescriptor(object);
             addIterableExpressionPropertyDescriptor(object);
+            addForceRefreshPropertyDescriptor(object);
             addExtendsPropertyDescriptor(object);
             addFilterIfsFromExtendedDynamicMappingForExpressionPropertyDescriptor(object);
         }
@@ -83,6 +84,18 @@ public class DynamicMappingForDescriptionItemProvider extends ControlDescription
                 getString("_UI_AbstractDynamicMappingForDescription_iterableExpression_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractDynamicMappingForDescription_iterableExpression_feature", "_UI_AbstractDynamicMappingForDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 PropertiesPackage.Literals.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Force Refresh feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addForceRefreshPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractDynamicMappingForDescription_forceRefresh_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractDynamicMappingForDescription_forceRefresh_feature", "_UI_AbstractDynamicMappingForDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesPackage.Literals.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -193,6 +206,7 @@ public class DynamicMappingForDescriptionItemProvider extends ControlDescription
         switch (notification.getFeatureID(DynamicMappingForDescription.class)) {
         case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERATOR:
         case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION:
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH:
         case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__FILTER_IFS_FROM_EXTENDED_DYNAMIC_MAPPING_FOR_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

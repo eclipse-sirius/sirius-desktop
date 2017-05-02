@@ -36,6 +36,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getIterator <em>Iterator</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getIterableExpression
  * <em>Iterable Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#isForceRefresh <em>Force Refresh</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getIfs <em>Ifs</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForDescriptionImpl#getExtends <em>Extends</em>}</li>
  * <li>
@@ -85,6 +87,26 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
      * @ordered
      */
     protected String iterableExpression = DynamicMappingForDescriptionImpl.ITERABLE_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isForceRefresh() <em>Force Refresh</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #isForceRefresh()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean FORCE_REFRESH_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isForceRefresh() <em>Force Refresh</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #isForceRefresh()
+     * @generated
+     * @ordered
+     */
+    protected boolean forceRefresh = DynamicMappingForDescriptionImpl.FORCE_REFRESH_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getIfs() <em>Ifs</em>}' containment reference list. <!-- begin-user-doc --> <!--
@@ -201,6 +223,30 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
      * @generated
      */
     @Override
+    public boolean isForceRefresh() {
+        return forceRefresh;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setForceRefresh(boolean newForceRefresh) {
+        boolean oldForceRefresh = forceRefresh;
+        forceRefresh = newForceRefresh;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH, oldForceRefresh, forceRefresh));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EList<DynamicMappingIfDescription> getIfs() {
         if (ifs == null) {
             ifs = new EObjectContainmentEList<DynamicMappingIfDescription>(DynamicMappingIfDescription.class, this, PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS);
@@ -301,6 +347,8 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
             return getIterator();
         case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION:
             return getIterableExpression();
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH:
+            return isForceRefresh();
         case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS:
             return getIfs();
         case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__EXTENDS:
@@ -328,6 +376,9 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
             return;
         case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION:
             setIterableExpression((String) newValue);
+            return;
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH:
+            setForceRefresh((Boolean) newValue);
             return;
         case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS:
             getIfs().clear();
@@ -357,6 +408,9 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
         case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION:
             setIterableExpression(DynamicMappingForDescriptionImpl.ITERABLE_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH:
+            setForceRefresh(DynamicMappingForDescriptionImpl.FORCE_REFRESH_EDEFAULT);
+            return;
         case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS:
             getIfs().clear();
             return;
@@ -383,6 +437,8 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
         case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION:
             return DynamicMappingForDescriptionImpl.ITERABLE_EXPRESSION_EDEFAULT == null ? iterableExpression != null
                     : !DynamicMappingForDescriptionImpl.ITERABLE_EXPRESSION_EDEFAULT.equals(iterableExpression);
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH:
+            return forceRefresh != DynamicMappingForDescriptionImpl.FORCE_REFRESH_EDEFAULT;
         case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS:
             return ifs != null && !ifs.isEmpty();
         case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__EXTENDS:
@@ -407,6 +463,8 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
                 return PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERATOR;
             case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION:
                 return PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION;
+            case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH:
+                return PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH;
             case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS:
                 return PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS;
             case PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__EXTENDS:
@@ -433,6 +491,8 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
                 return PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERATOR;
             case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION:
                 return PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__ITERABLE_EXPRESSION;
+            case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH:
+                return PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__FORCE_REFRESH;
             case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS:
                 return PropertiesPackage.DYNAMIC_MAPPING_FOR_DESCRIPTION__IFS;
             case PropertiesPackage.ABSTRACT_DYNAMIC_MAPPING_FOR_DESCRIPTION__EXTENDS:
@@ -462,6 +522,8 @@ public class DynamicMappingForDescriptionImpl extends ControlDescriptionImpl imp
         result.append(iterator);
         result.append(", iterableExpression: "); //$NON-NLS-1$
         result.append(iterableExpression);
+        result.append(", forceRefresh: "); //$NON-NLS-1$
+        result.append(forceRefresh);
         result.append(", filterIfsFromExtendedDynamicMappingForExpression: "); //$NON-NLS-1$
         result.append(filterIfsFromExtendedDynamicMappingForExpression);
         result.append(')');
