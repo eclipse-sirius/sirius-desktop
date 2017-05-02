@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.tools.internal.wizards;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
 
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.ui.business.internal.viewpoint.ViewpointSelectionCallbackWithConfimationAndDependenciesHandling;
@@ -30,6 +32,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationDesc
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.RepresentationSelectionWizardPage;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SemanticElementSelectionWizardPage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Composite;
@@ -194,10 +197,13 @@ public class CreateRepresentationWizard extends Wizard {
                 ViewpointHelper.applyNewViewpointSelection(originalViewpointsMap, newViewpointToSelectionStateMap, session, true,
                         new ViewpointSelectionCallbackWithConfimationAndDependenciesHandling());
             }
-            // we create the new representation
-            CreateRepresentationAction action = new CreateRepresentationAction(session, semanticElementSource, representationWizardPage.getRepresentation(),
-                    new SessionLabelProvider(ViewHelper.INSTANCE.createAdapterFactory()));
-            action.run();
+            Optional<RepresentationDescription> loadedInSessionDescription = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(false), semanticElementSource)
+                    .stream().filter(rep -> EqualityHelper.areEquals(rep, representationWizardPage.getRepresentation())).findFirst();
+            if (loadedInSessionDescription.isPresent()) {
+                CreateRepresentationAction action = new CreateRepresentationAction(session, semanticElementSource, loadedInSessionDescription.get(),
+                        new SessionLabelProvider(ViewHelper.INSTANCE.createAdapterFactory()));
+                action.run();
+            }
         }
         return true;
     }
