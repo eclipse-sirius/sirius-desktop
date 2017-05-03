@@ -497,6 +497,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SessionFactoryImpl_sessionLoadingMsg;
+    
+    @TranslatableMessage
+    public static String SessionInterpreter_evaluationError;
 
     @TranslatableMessage
     public static String SessionManagerImpl_remoteServerConnectionErrorMsg;
