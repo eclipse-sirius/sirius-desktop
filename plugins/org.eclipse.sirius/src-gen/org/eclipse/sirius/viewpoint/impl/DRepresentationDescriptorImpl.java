@@ -13,7 +13,6 @@ package org.eclipse.sirius.viewpoint.impl;
 
 import java.util.Optional;
 
-import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -261,10 +260,8 @@ public class DRepresentationDescriptorImpl extends MinimalEObjectImpl.Container 
      */
     @Override
     public void setRepresentation(DRepresentation newRepresentation) {
-        Optional.ofNullable(newRepresentation).ifPresent(rep -> Assert.isNotNull(rep.eResource()));
         DRepresentation oldRepresentation = getRepresentation();
-        DRepresentationDescriptorToDRepresentationLinkManager pathManager = new DRepresentationDescriptorToDRepresentationLinkManager(this);
-        pathManager.setRepresentation(newRepresentation);
+        updateRepresentation(newRepresentation);
         if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REPRESENTATION, oldRepresentation, newRepresentation));
         }

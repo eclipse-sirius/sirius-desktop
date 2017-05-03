@@ -500,9 +500,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (receiverAuthority.canCreateIn(receiverDView)) {
             DRepresentation dRepresentation = repDescriptor.getRepresentation();
             receiverDView.eResource().getContents().add(dRepresentation);
+            // We call updateRepresentation to update the new path. We need to update the path before updating the
+            // repDescritor's parent which triggers the model explorer refresh with a wrong repPath attribute.
+            repDescriptor.updateRepresentation(dRepresentation);
             receiverDView.getOwnedRepresentationDescriptors().add(repDescriptor);
-            // We set the representation again to update the new path.
-            repDescriptor.setRepresentation(dRepresentation);
             // Add all semantic root elements pointed by the target of all
             // DSemanticDecorator of this representation (except of this root is
             // a root of a referencedAnalysis)

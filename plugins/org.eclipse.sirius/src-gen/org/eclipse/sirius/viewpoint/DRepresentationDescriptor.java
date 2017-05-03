@@ -11,8 +11,12 @@
  */
 package org.eclipse.sirius.viewpoint;
 
+import java.util.Optional;
+
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
+import org.eclipse.sirius.business.internal.representation.DRepresentationDescriptorToDRepresentationLinkManager;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
@@ -129,6 +133,20 @@ public interface DRepresentationDescriptor extends EObject {
      * @generated
      */
     void setRepresentation(DRepresentation value);
+
+    /**
+     * Updates the repPath attribute according to the given representation. This method is intended to be called if the
+     * representation instance is still the same but requires to recompute the repPath.
+     * 
+     * @param representation
+     *            the {@link DRepresentation} to update path.
+     */
+
+    default void updateRepresentation(DRepresentation representation) {
+        Optional.ofNullable(representation).ifPresent(rep -> Assert.isNotNull(rep.eResource()));
+        DRepresentationDescriptorToDRepresentationLinkManager pathManager = new DRepresentationDescriptorToDRepresentationLinkManager(this);
+        pathManager.setRepresentation(representation);
+    }
 
     /**
      * Returns the value of the '<em><b>Rep Path</b></em>' attribute. <!-- begin-user-doc -->
