@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,9 +13,11 @@ package org.eclipse.sirius.business.internal.helper.task;
 import java.util.Iterator;
 import java.util.Optional;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.operations.AbstractOperationTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.ChangeContextTask;
@@ -34,6 +36,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
@@ -49,6 +52,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RemoveElement;
 import org.eclipse.sirius.viewpoint.description.tool.SetObject;
 import org.eclipse.sirius.viewpoint.description.tool.SetValue;
 import org.eclipse.sirius.viewpoint.description.tool.Switch;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.Unset;
 
 import com.google.common.base.Function;
@@ -160,7 +164,10 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
                 task = (AbstractOperationTask) optionalTask.get();
             }
         }
-
+        Option<EObject> opt = new EObjectQuery(op).getFirstAncestorOfType(ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION);
+        if (opt.some()) {
+            task.setSourceTool((AbstractToolDescription) opt.get());
+        }
         return task;
     }
 

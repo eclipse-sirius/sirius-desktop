@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.CommandContext;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
  * An operation specific implementation of ICommandTask.
@@ -33,6 +34,9 @@ public abstract class AbstractOperationTask extends AbstractCommandTask {
 
     /** The interpreter. */
     protected IInterpreter interpreter;
+    
+    /** The tool from which this operation is defined. */
+    protected AbstractToolDescription sourceTool;
 
     /**
      * Default Constructor.
@@ -48,6 +52,14 @@ public abstract class AbstractOperationTask extends AbstractCommandTask {
         this.context = context;
         this.extPackage = extPackage;
         this.interpreter = interpreter;
+    }
+    
+    public AbstractToolDescription getSourceTool() {
+        return sourceTool;
+    }
+
+    public void setSourceTool(AbstractToolDescription tool) {
+        this.sourceTool = tool;
     }
 
     /**
