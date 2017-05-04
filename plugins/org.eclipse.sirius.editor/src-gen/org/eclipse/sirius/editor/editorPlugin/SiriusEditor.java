@@ -116,9 +116,13 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -845,6 +849,7 @@ public class SiriusEditor extends MultiPageEditorPart
                     @Override
                     public Viewer createViewer(Composite composite) {
                         Tree tree = new Tree(composite, SWT.MULTI);
+                        initRefreshListeners(tree);
                         TreeViewer newTreeViewer = new TreeViewer(tree);
                         return newTreeViewer;
                     }
@@ -894,6 +899,30 @@ public class SiriusEditor extends MultiPageEditorPart
         });
 
         updateProblemIndication();
+    }
+
+    private static final String NEEDS_REDRAW = "SiriusVSMEditor.needsRedraw";
+
+    private static final String HAS_REFRESH_LISTENERS = "SiriusVSMEditor.hasRefreshListeners";
+
+    /*
+     * Workaround for #442136/#435536: force a full widget redraw when a tree gains focus, even if the selected element
+     * is the same as it was before.
+     */
+    private void initRefreshListeners(Widget widget) {
+        // The bug is Windows-specific
+        if ("win32".equals(SWT.getPlatform()) && widget.getData(HAS_REFRESH_LISTENERS) == null) {
+            widget.setData(HAS_REFRESH_LISTENERS, true);
+            widget.addListener(SWT.FocusIn, event -> event.widget.setData(NEEDS_REDRAW, true));
+            widget.addListener(SWT.Selection, event -> {
+                if (event.widget.getData(NEEDS_REDRAW) != null) {
+                    event.widget.setData(NEEDS_REDRAW, null);
+                    if (event.widget instanceof Control) {
+                        ((Control) event.widget).redraw();
+                    }
+                }
+            });
+        }
     }
 
     /**
