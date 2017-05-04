@@ -15,7 +15,7 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
-import org.eclipse.sirius.business.internal.session.danalysis.DRepresentationLocationRule;
+import org.eclipse.sirius.business.api.session.danalysis.DRepresentationLocationRule;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 
 /**

@@ -52,10 +52,10 @@
          <attribute name="class" type="string">
             <annotation>
                <documentation>
-                  Provides a rule implementing org.eclipse.sirius.business.internal.session.danalysis.DRepresentationLocationRule that will return the new Resource URI for the given new representation.
+                  Provides a rule implementing org.eclipse.sirius.business.api.session.danalysis.DRepresentationLocationRule that will return the new Resource URI for the given new representation.
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.business.internal.session.danalysis.DRepresentationLocationRule"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.business.api.session.danalysis.DRepresentationLocationRule"/>
                </appinfo>
             </annotation>
          </attribute>
