@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.editor.internal.graphicalcomponents;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -18,14 +19,34 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.edit.ui.action.CopyAction;
+import org.eclipse.emf.edit.ui.action.CreateChildAction;
+import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
+import org.eclipse.emf.edit.ui.action.CutAction;
+import org.eclipse.emf.edit.ui.action.DeleteAction;
+import org.eclipse.emf.edit.ui.action.PasteAction;
+import org.eclipse.emf.edit.ui.action.RedoAction;
+import org.eclipse.emf.edit.ui.action.UndoAction;
+import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.emf.transaction.ResourceSetListener;
+import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.ActionContributionItem;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.IContributionManager;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -63,8 +84,11 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionContext;
+import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.NewWizardAction;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.navigator.CommonViewer;
@@ -91,11 +115,32 @@ import com.google.common.collect.Lists;
  *
  */
 public class GraphicalSemanticModelsHandler implements SessionListener, SessionManagerListener {
+
     /**
      * The common viewer id allowing to provide additional filters and content
      * providers by using CNF extension point.
      */
     public static final String SEMANTIC_MODELS_VIEWER_ID = "org.eclipse.sirius.ui.editor.internal.graphicalcomponents.semanticModelsViewer"; //$NON-NLS-1$
+
+    /**
+     * This will contain one
+     * {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding
+     * to each descriptor generated for the current selection by the item
+     * provider. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected Collection<IAction> createSiblingActions;
+
+    /**
+     * This will contain one
+     * {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to
+     * each descriptor generated for the current selection by the item provider.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected Collection<IAction> createChildActions;
 
     /**
      * Session from which semantic models are handled.
@@ -136,19 +181,34 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     private ManageSessionActionProvider manageSessionActionProvider;
 
     /**
+     * The {@link IActionBars} to populate with Ecore models actions.
+     */
+    private IActionBars actionBars;
+
+    /**
+     * A selection provider needed by EMF Ecore modification actions.
+     */
+    private ISelectionProvider selectionProvider;
+
+    /**
      * The Tree showing semantic models and representations.
      */
     private Tree modelTree;
 
     /**
-     * Handler allowing to delete a representation.
+     * This listener allow to refresh models block when changes occur and to
+     * select newly created element's tree item if such element exists.
+     * Otherwise we select the first element of the tree viewer of the model
+     * block.
      */
-    private Action deleteActionHandler;
+    private ResourceSetListenerChangeListener resourceSetListenerChangeListener;
 
     /**
-     * Handler allowing to rename a representation.
+     * This handler provides EMF Ecore models actions (like new child/sibling
+     * creation, removal, copy, paste, undo/redo etc...) in contextual pop up
+     * menu and Eclipse menu bar for a tree viewer containing Ecore resources.
      */
-    private Action renameActionHandler;
+    private EcoreActionsHandler ecoreActionsHandler;
 
     /**
      * Initialize the component with the given session.
@@ -158,10 +218,16 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      *            lifecycle.
      * @param toolkit
      *            The Form Toolkit to use to create & configure the controls.
+     * @param theActionBars
+     *            The {@link IActionBars} to populate with Ecore models actions.
+     * @param theSelectionProvider
+     *            A selection provider needed by EMF Ecore modification actions.
      */
-    public GraphicalSemanticModelsHandler(Session theSession, FormToolkit toolkit) {
+    public GraphicalSemanticModelsHandler(Session theSession, FormToolkit toolkit, IActionBars theActionBars, ISelectionProvider theSelectionProvider) {
         this.session = theSession;
         this.toolkit = toolkit;
+        this.actionBars = theActionBars;
+        this.selectionProvider = theSelectionProvider;
     }
 
     /**
@@ -171,29 +237,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      */
     public CommonViewer getTreeViewer() {
         return treeViewer;
-    }
-
-    /**
-     * Launch a representation deletion or renaming if the right key is used and
-     * the selected element is a representation.
-     * 
-     * @param event
-     */
-    private void handleKeyReleased(KeyEvent event) {
-        if (event.stateMask != 0)
-            return;
-
-        int key = event.keyCode;
-        if (key == SWT.DEL) {
-            if (deleteActionHandler.isEnabled()) {
-                deleteActionHandler.run();
-            }
-        } else if (key == SWT.F2) {
-            if (renameActionHandler.isEnabled()) {
-                renameActionHandler.run();
-            }
-        }
-
     }
 
     /**
@@ -211,6 +254,9 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         siriusCommonContentModelProvider.addRefreshViewerTrigger(session);
 
         treeViewer.getTree().getHorizontalBar().setSelection(0);
+
+        resourceSetListenerChangeListener = new ResourceSetListenerChangeListener();
+        session.getTransactionalEditingDomain().addResourceSetListener(resourceSetListenerChangeListener);
     }
 
     /**
@@ -246,9 +292,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
             }
         });
         removeSemanticModelOrRepresentationButton.setEnabled(false);
-        deleteActionHandler.setEnabled(false);
-        renameActionHandler.setEnabled(false);
-
     }
 
     /**
@@ -287,7 +330,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      * Create Model explorer navigator.
      * 
      * @param parent
-     *            the model Explorer Composite
+     *            the model Explorer Composite.
      */
     private CommonViewer createModelExplorerNavigator(Composite parent) {
         final FilteredCommonTree commonTree = new FilteredCommonTree(SEMANTIC_MODELS_VIEWER_ID, parent, SWT.MULTI, false);
@@ -312,38 +355,14 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         }
 
         contentService.update();
-        deleteActionHandler = new DeleteActionHandler(theTreeViewer);
-        renameActionHandler = new RenameActionHandler(theTreeViewer);
 
-        theTreeViewer.addSelectionChangedListener((event) -> {
-            if (event.getSelection().isEmpty()) {
-                removeSemanticModelOrRepresentationButton.setEnabled(false);
-                deleteActionHandler.setEnabled(false);
-                renameActionHandler.setEnabled(false);
-            } else {
-                TreeSelection selection = (TreeSelection) event.getSelection();
-                // The tree allows only single selections so we pick the
-                // first element.
-                Object firstElement = selection.getFirstElement();
-                if (isExternalDependency(firstElement, selection) && (firstElement instanceof EObject || firstElement instanceof Resource)
-                        && checkResources(getSemanticResources(Lists.newArrayList(firstElement)))) {
-                    removeSemanticModelOrRepresentationButton.setEnabled(true);
-                } else {
-                    if (firstElement instanceof DRepresentationDescriptor) {
-                        deleteActionHandler.setEnabled(true);
-                        renameActionHandler.setEnabled(true);
-                    } else {
-                        deleteActionHandler.setEnabled(false);
-                        renameActionHandler.setEnabled(false);
-                    }
-                    removeSemanticModelOrRepresentationButton.setEnabled(false);
-
-                }
-            }
-        });
         theTreeViewer.setSorter(new CommonItemSorter());
 
         menuManager = new MenuManager();
+
+        menuManager.setRemoveAllWhenShown(true);
+        ecoreActionsHandler = new EcoreActionsHandler(theTreeViewer, actionBars, menuManager, selectionProvider);
+        ecoreActionsHandler.initModelsActionsAndListeners();
         menuManager.addMenuListener((manager) -> {
             manageSessionActionProvider.setContext(new ActionContext(theTreeViewer.getSelection()));
             manageSessionActionProvider.fillContextMenu(menuManager);
@@ -354,14 +373,414 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         manageSessionActionProvider.initFromViewer(theTreeViewer);
         theTreeViewer.getControl().setMenu(menu);
 
-        theTreeViewer.getControl().addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent event) {
-                handleKeyReleased(event);
+        theTreeViewer.addSelectionChangedListener((event) -> {
+            if (event.getSelection().isEmpty()) {
+                removeSemanticModelOrRepresentationButton.setEnabled(false);
+            } else {
+                TreeSelection selection = (TreeSelection) event.getSelection();
+                // The tree allows only single selections so we pick the
+                // first element.
+                Object firstElement = selection.getFirstElement();
+                if (isExternalDependency(firstElement, selection) && (firstElement instanceof EObject || firstElement instanceof Resource)
+                        && checkResources(getSemanticResources(Lists.newArrayList(firstElement)))) {
+                    removeSemanticModelOrRepresentationButton.setEnabled(true);
+                } else {
+                    removeSemanticModelOrRepresentationButton.setEnabled(false);
+                }
             }
         });
 
         return theTreeViewer;
+    }
+
+    /**
+     * This handler provides EMF Ecore models actions (like new child/sibling
+     * creation, removal, copy, paste, undo/redo etc...) in contextual pop up
+     * menu and Eclipse menu bar for a tree viewer containing Ecore resources.
+     * 
+     * It relies on session editing domain to retrieve the right descriptors for
+     * each model kind present in the viewer for child/sibling creation and
+     * necessary elements for other actions.
+     * 
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
+     */
+    private class EcoreActionsHandler {
+
+        /**
+         * This is the action used to implement delete.
+         */
+        private DeleteAction deleteAction;
+
+        /**
+         * This is the action used to implement cut.
+         */
+        private CutAction cutAction;
+
+        /**
+         * This is the action used to implement copy.
+         */
+        private CopyAction copyAction;
+
+        /**
+         * This is the action used to implement paste.
+         */
+        private PasteAction pasteAction;
+
+        /**
+         * This is the action used to implement undo.
+         */
+        private UndoAction undoAction;
+
+        /**
+         * This is the action used to implement redo.
+         */
+        private RedoAction redoAction;
+
+        /**
+         * MenuManager providing new child actions.
+         */
+        private MenuManager submenuNewChildManager;
+
+        /**
+         * MenuManager providing new sibling actions.
+         */
+        private MenuManager submenuNewSiblingManager;
+
+        /**
+         * The {@link IActionBars} to populate with Ecore models actions.
+         */
+        private IActionBars actionBars;
+
+        /**
+         * A selection provider needed by actions.
+         */
+        private ISelectionProvider selectionProvider;
+
+        /**
+         * The tree viewer containing Ecore resources for which modification
+         * actions should be available.
+         */
+        private TreeViewer treeViewer;
+
+        /**
+         * The {@link MenuManager} to populate with Ecore models actions.
+         */
+        private MenuManager menuManager;
+
+        /**
+         * Handler allowing to delete a representation.
+         */
+        private Action deleteActionHandler;
+
+        /**
+         * Handler allowing to rename a representation.
+         */
+        private Action renameActionHandler;
+
+        /**
+         * Initializes the component/
+         * 
+         * @param theTreeViewer
+         *            The tree viewer containing Ecore resources for which
+         *            modification actions should be available.
+         * @param theActionBars
+         *            The {@link IActionBars} to populate with Ecore models
+         *            actions.
+         * @param theMenuManager
+         *            The {@link MenuManager} to populate with Ecore models
+         *            actions.
+         * @param theSelectionProvider
+         *            a selection provider needed by actions.
+         */
+        EcoreActionsHandler(TreeViewer theTreeViewer, IActionBars theActionBars, MenuManager theMenuManager, ISelectionProvider theSelectionProvider) {
+            this.treeViewer = theTreeViewer;
+            this.actionBars = theActionBars;
+            this.menuManager = theMenuManager;
+            this.selectionProvider = theSelectionProvider;
+        }
+
+        /**
+         * This method initializes all actions and listeners allowing to
+         * populate contextual pop-up menu and action bar with Ecore models
+         * actions like new child/sibling creation, removal, copy, paste,
+         * undo/redo etc...
+         */
+        public void initModelsActionsAndListeners() {
+            deleteActionHandler = new DeleteActionHandler(treeViewer);
+            renameActionHandler = new RenameActionHandler(treeViewer);
+            deleteActionHandler.setEnabled(false);
+            renameActionHandler.setEnabled(false);
+
+            initActionsAndActionBar();
+            initMenuListener();
+            initSelectionListener();
+
+            treeViewer.getControl().addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyReleased(KeyEvent event) {
+                    handleKeyReleased(event);
+                }
+            });
+        }
+
+        /**
+         * Initialize the selection listener updating actions regarding the
+         * current selection of the viewer.
+         */
+        private void initSelectionListener() {
+            treeViewer.addSelectionChangedListener((event) -> {
+                TreeSelection selection = (TreeSelection) event.getSelection();
+                if (event.getSelection().isEmpty()) {
+                    deleteActionHandler.setEnabled(false);
+                    renameActionHandler.setEnabled(false);
+                } else {
+                    // The tree allows only single selections so we pick the
+                    // first element.
+                    Object firstElement = selection.getFirstElement();
+                    if (firstElement instanceof EObject && !(firstElement instanceof DRepresentationDescriptor)) {
+                        actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), deleteAction);
+                        actionBars.setGlobalActionHandler(ActionFactory.RENAME.getId(), null);
+                        deleteActionHandler.setEnabled(false);
+                        renameActionHandler.setEnabled(false);
+                    } else if (firstElement instanceof DRepresentationDescriptor) {
+                        deleteActionHandler.setEnabled(true);
+                        renameActionHandler.setEnabled(true);
+                        actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), deleteActionHandler);
+                        actionBars.setGlobalActionHandler(ActionFactory.RENAME.getId(), renameActionHandler);
+                    }
+                    deleteAction.updateSelection(selection);
+                    cutAction.updateSelection(selection);
+                    copyAction.updateSelection(selection);
+                    pasteAction.updateSelection(selection);
+                    undoAction.update();
+                    redoAction.update();
+                    actionBars.updateActionBars();
+                }
+            });
+        }
+
+        /**
+         * Launch a representation deletion or renaming if the right key is used
+         * and the selected element is a representation.
+         * 
+         * @param event
+         *            key event.
+         */
+        private void handleKeyReleased(KeyEvent event) {
+            if (event.stateMask != 0)
+                return;
+
+            int key = event.keyCode;
+            if (key == SWT.DEL) {
+                if (deleteActionHandler.isEnabled()) {
+                    deleteActionHandler.run();
+                }
+            } else if (key == SWT.F2) {
+                if (renameActionHandler.isEnabled()) {
+                    renameActionHandler.run();
+                }
+            }
+
+        }
+
+        /**
+         * Initializes EMF Ecore actions allowing to modify models and fill the
+         * given action bar with it.
+         */
+        private void initActionsAndActionBar() {
+            ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
+            deleteAction = createDeleteAction();
+            deleteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
+
+            cutAction = createCutAction();
+            cutAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_CUT));
+
+            copyAction = createCopyAction();
+            copyAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY));
+
+            pasteAction = createPasteAction();
+            pasteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_PASTE));
+
+            undoAction = createUndoAction();
+            undoAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_UNDO));
+
+            redoAction = createRedoAction();
+            redoAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_REDO));
+
+            selectionProvider.addSelectionChangedListener(deleteAction);
+            selectionProvider.addSelectionChangedListener(cutAction);
+            selectionProvider.addSelectionChangedListener(copyAction);
+            selectionProvider.addSelectionChangedListener(pasteAction);
+
+            actionBars.setGlobalActionHandler(ActionFactory.UNDO.getId(), undoAction);
+            actionBars.setGlobalActionHandler(ActionFactory.REDO.getId(), redoAction);
+            actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), deleteAction);
+            actionBars.setGlobalActionHandler(ActionFactory.CUT.getId(), cutAction);
+            actionBars.setGlobalActionHandler(ActionFactory.COPY.getId(), copyAction);
+            actionBars.setGlobalActionHandler(ActionFactory.PASTE.getId(), pasteAction);
+            actionBars.setGlobalActionHandler(ActionFactory.RENAME.getId(), renameActionHandler);
+            actionBars.updateActionBars();
+        }
+
+        /**
+         * Initialize the listener allowing to populate the given menu manager
+         * with EMF ecore modification actions.
+         */
+        private void initMenuListener() {
+            menuManager.addMenuListener((manager) -> {
+                TreeSelection selection = (TreeSelection) treeViewer.getSelection();
+                List<?> selectionList = selection.toList();
+
+                Object firstElement = selection.getFirstElement();
+                if (firstElement instanceof EObject && !(firstElement instanceof DRepresentationDescriptor)) {
+                    if (selectionList.size() == 1) {
+                        // // Add the edit menu actions.
+                        Collection<?> newChildDescriptors = session.getTransactionalEditingDomain().getNewChildDescriptors(firstElement, null);
+                        createChildActions = generateCreateChildActions(newChildDescriptors, selection);
+                        Collection<?> newSiblingDescriptors = session.getTransactionalEditingDomain().getNewChildDescriptors(null, firstElement);
+                        createSiblingActions = generateCreateSiblingActions(newSiblingDescriptors, selection);
+                        submenuNewChildManager = new MenuManager("&New Child"); //$NON-NLS-1$
+                        menuManager.add(submenuNewChildManager);
+                        submenuNewSiblingManager = new MenuManager("N&ew Sibling"); //$NON-NLS-1$
+                        menuManager.add(submenuNewSiblingManager);
+                        populateManager(submenuNewChildManager, createChildActions);
+                        populateManager(submenuNewSiblingManager, createSiblingActions);
+                    }
+
+                    menuManager.add(new Separator());
+                    menuManager.add(new ActionContributionItem(undoAction));
+                    menuManager.add(new ActionContributionItem(redoAction));
+                    menuManager.add(new Separator());
+                    menuManager.add(new ActionContributionItem(cutAction));
+                    menuManager.add(new ActionContributionItem(copyAction));
+                    menuManager.add(new ActionContributionItem(pasteAction));
+                    menuManager.add(new Separator());
+                    menuManager.add(new ActionContributionItem(deleteAction));
+                    menuManager.add(new Separator());
+                }
+
+            });
+        }
+
+        /**
+         * Returns the action used to implement delete.
+         * 
+         * @see #deleteAction
+         */
+        private DeleteAction createDeleteAction() {
+            return new DeleteAction(session.getTransactionalEditingDomain(), removeAllReferencesOnDelete());
+        }
+
+        /**
+         * Returns the action used to implement cut.
+         * 
+         * @see #cutAction
+         */
+        private CutAction createCutAction() {
+            return new CutAction(session.getTransactionalEditingDomain());
+        }
+
+        /**
+         * Returns the action used to implement copy.
+         * 
+         * @see #copyAction
+         */
+        private CopyAction createCopyAction() {
+            return new CopyAction(session.getTransactionalEditingDomain());
+        }
+
+        /**
+         * Returns the action used to implement paste.
+         * 
+         * @see #pasteAction
+         */
+        private PasteAction createPasteAction() {
+            return new PasteAction(session.getTransactionalEditingDomain());
+        }
+
+        /**
+         * Returns the action used to implement undo.
+         * 
+         * @see #undoAction
+         */
+        private UndoAction createUndoAction() {
+            return new UndoAction(session.getTransactionalEditingDomain());
+        }
+
+        /**
+         * Returns the action used to implement redo.
+         * 
+         * @see #redoAction
+         */
+        private RedoAction createRedoAction() {
+            return new RedoAction(session.getTransactionalEditingDomain());
+        }
+
+        /**
+         * This determines whether or not the delete action should clean up all
+         * references to the deleted objects. It is false by default, to provide
+         * the same beahviour, by default, as in EMF 2.1 and before. You should
+         * probably override this method to return true, in order to get the
+         * new, more useful beahviour.
+         * 
+         */
+        protected boolean removeAllReferencesOnDelete() {
+            return false;
+        }
+
+        /**
+         * This generates a
+         * {@link org.eclipse.emf.edit.ui.action.CreateChildAction} for each
+         * object in <code>descriptors</code>, and returns the collection of
+         * these actions.
+         * 
+         */
+        private Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection) {
+            Collection<IAction> actions = new ArrayList<IAction>();
+            if (descriptors != null) {
+                for (Object descriptor : descriptors) {
+                    actions.add(new CreateChildAction(session.getTransactionalEditingDomain(), selection, descriptor));
+                }
+            }
+            return actions;
+        }
+
+        /**
+         * This generates a
+         * {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each
+         * object in <code>descriptors</code>, and returns the collection of
+         * these actions.
+         * 
+         */
+        private Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors, ISelection selection) {
+            Collection<IAction> actions = new ArrayList<IAction>();
+            if (descriptors != null) {
+                for (Object descriptor : descriptors) {
+                    actions.add(new CreateSiblingAction(session.getTransactionalEditingDomain(), selection, descriptor));
+                }
+            }
+            return actions;
+        }
+
+        /**
+         * This populates the specified <code>manager</code> with
+         * {@link org.eclipse.jface.action.ActionContributionItem}s based on the
+         * {@link org.eclipse.jface.action.IAction}s contained in the
+         * <code>actions</code> collection, by inserting them before the
+         * specified contribution item <code>contributionID</code>. If
+         * <code>contributionID</code> is <code>null</code>, they are simply
+         * added.
+         * 
+         * 
+         */
+        private void populateManager(IContributionManager manager, Collection<? extends IAction> actions) {
+            if (actions != null) {
+                for (IAction action : actions) {
+                    manager.add(action);
+                }
+            }
+        }
     }
 
     /**
@@ -488,12 +907,20 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     public void dispose() {
         session.removeListener(this);
         SessionManager.INSTANCE.removeSessionsListener(this);
+        if (session != null && session.getTransactionalEditingDomain() != null) {
+            session.getTransactionalEditingDomain().removeResourceSetListener(resourceSetListenerChangeListener);
+        }
         session = null;
         treeViewer = null;
         manageSessionActionProvider = null;
         siriusCommonContentModelProvider = null;
+        if (menuManager != null) {
+            menuManager.dispose();
+        }
         menuManager = null;
         toolkit = null;
+        ecoreActionsHandler = null;
+
     }
 
     @Override
@@ -522,24 +949,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
             case SessionListener.SELECTED_VIEWS_CHANGE_KIND:
             case SessionListener.VSM_UPDATED:
             case SessionListener.REPLACED:
-                PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        if (!modelTree.isDisposed()) {
-                            treeViewer.refresh();
-                            // we reset the selection to update the button
-                            // activated
-                            // state if needed.
-                            ISelection selection = treeViewer.getSelection();
-                            treeViewer.setSelection(selection);
-                        }
-                    }
-
-                });
-
-                break;
-
             case SessionListener.SYNC:
             case SessionListener.DIRTY:
                 PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
@@ -548,6 +957,11 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                     public void run() {
                         if (!modelTree.isDisposed()) {
                             treeViewer.refresh();
+                            ISelection selection = treeViewer.getSelection();
+                            if (selection.isEmpty()) {
+                                selection = new StructuredSelection(treeViewer.getTree().getItem(0).getData());
+                            }
+                            treeViewer.setSelection(selection);
                         }
                     }
 
@@ -574,6 +988,78 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                 // do nothing as we will be notified in other way
                 break;
             }
+        }
+    }
+
+    /**
+     * This listener allow to refresh models block when changes occur and to
+     * select newly created element's tree item if such element exists.
+     * Otherwise we select the first element of the tree viewer of the model
+     * block.
+     * 
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
+     */
+    private final class ResourceSetListenerChangeListener implements ResourceSetListener {
+        @Override
+        public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
+            return null;
+        }
+
+        @Override
+        public void resourceSetChanged(ResourceSetChangeEvent event) {
+            List<Notification> notifications = event.getNotifications();
+            Object newValue = null;
+            for (Notification notification : notifications) {
+                if (notification.getEventType() == Notification.ADD || notification.getEventType() == Notification.ADD_MANY) {
+                    newValue = notification.getNewValue();
+                }
+            }
+            final Object newValueFinal = newValue;
+
+            PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+
+                @Override
+                public void run() {
+                    // we refresh the models tree viewer and select newly
+                    // created element or first element is such element does not
+                    // exist.
+                    if (!modelTree.isDisposed()) {
+                        treeViewer.refresh();
+                        ISelection selection = null;
+                        if (newValueFinal != null) {
+                            selection = new StructuredSelection(newValueFinal);
+                        } else {
+                            selection = treeViewer.getSelection();
+                            if (selection.isEmpty()) {
+                                selection = new StructuredSelection(treeViewer.getTree().getItem(0).getData());
+                            }
+                        }
+                        treeViewer.setSelection(selection);
+                    }
+                }
+
+            });
+        }
+
+        @Override
+        public boolean isPrecommitOnly() {
+            return false;
+        }
+
+        @Override
+        public boolean isPostcommitOnly() {
+            return true;
+        }
+
+        @Override
+        public NotificationFilter getFilter() {
+            return null;
+        }
+
+        @Override
+        public boolean isAggregatePrecommitListener() {
+            return false;
         }
     }
 }

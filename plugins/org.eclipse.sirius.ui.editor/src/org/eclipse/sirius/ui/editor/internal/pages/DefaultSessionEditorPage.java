@@ -40,6 +40,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.IManagedForm;
@@ -110,6 +111,8 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
      */
     private FilterActionGroup filterActionGroup;
 
+    private SessionEditor editor;
+
     /**
      * Constructor.
      * 
@@ -118,9 +121,10 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
      * @param theSession
      *            the session.
      */
-    public DefaultSessionEditorPage(SessionEditor editor, Session theSession) {
-        super(editor, PAGE_ID, Messages.UI_SessionEditor_default_page_tab_label);
+    public DefaultSessionEditorPage(SessionEditor theEditor, Session theSession) {
+        super(theEditor, PAGE_ID, Messages.UI_SessionEditor_default_page_tab_label);
         this.session = theSession;
+        this.editor = theEditor;
     }
 
     @Override
@@ -199,7 +203,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         modelSectionClient.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).create());
         modelSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
         modelSection.setClient(modelSectionClient);
-        graphicalModelingHandler = new GraphicalSemanticModelsHandler(session, toolkit);
+        graphicalModelingHandler = new GraphicalSemanticModelsHandler(session, toolkit, ((IEditorSite) editor.getSite()).getActionBars(), ((IEditorSite) editor.getSite()).getSelectionProvider());
         graphicalModelingHandler.createControl(modelSectionClient);
         getSite().setSelectionProvider(graphicalModelingHandler.getTreeViewer());
 
