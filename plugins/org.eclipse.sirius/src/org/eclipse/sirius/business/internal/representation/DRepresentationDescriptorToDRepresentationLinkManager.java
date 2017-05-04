@@ -14,7 +14,6 @@ import java.util.Optional;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
@@ -95,10 +94,13 @@ public class DRepresentationDescriptorToDRepresentationLinkManager {
         ResourceDescriptor resourceDescriptor = repDescriptor.getRepPath();
         Resource resource = repDescriptor.eResource();
         if (resourceDescriptor != null) {
-            return Optional.ofNullable(resource).map(Resource::getResourceSet).map(rSet -> {
-                EObject eObject = rSet.getEObject(resourceDescriptor.getResourceURI(), false);
-                return eObject != null ? (DRepresentation) eObject : null;
-            }).orElse(null);
+            // @formatter:off
+            return Optional.ofNullable(resource).map(Resource::getResourceSet)
+                    .map(rSet -> rSet.getEObject(resourceDescriptor.getResourceURI(), false))
+                    .filter(DRepresentation.class::isInstance)
+                    .map(DRepresentation.class::cast)
+                    .orElse(null);
+            // @formatter:on
         }
         return null;
     }
