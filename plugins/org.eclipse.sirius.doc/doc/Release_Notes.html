@@ -113,6 +113,11 @@
 		<h2 id="sirius5.0.0M7">Changes in Sirius 5.0.0M7</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
+			<li><span class="label label-success">Added</span> An experimental mode to serialize representations in a different file is available with system property 
+				<code>createRepresentationInSeparateResource=true</code>. That means all new representations will be saved, by default, in a separate file with *.srm extension.
+			</li>
+		</ul>
+		<ul>
 			<li><span class="label label-info">Modified</span> The label alignment of Notes from the Palette has been modified from Juno to Luna or newer versions of Eclipse. The label alignment changed from TOP &amp; CENTER to MIDDLE &amp; LEFT. The initial alignment (TOP &amp; CENTER) has been restored.</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
@@ -126,7 +131,7 @@
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
-			<code>org.eclipse.sirius</code>
+			<code>org.eclipse.sirius</code> 
 		</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> The 
@@ -139,9 +144,61 @@
 				<code>EObject</code> with 
 				<code>DAnnotation.references</code>.
 			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.viewpoint.DRepresentationDescriptor#repPath</code> attribute has been added to hold the representation path since the 
+				<code>org.eclipse.sirius.viewpoint.DRepresentationDescriptor#representation</code> feature is derived. This attribute is not intended to be modified by client. You should use 
+				<code>org.eclipse.sirius.viewpoint.DRepresentationDescriptor.setRepresentation(DRepresentation)</code> or 
+				<code>org.eclipse.sirius.viewpoint.DRepresentationDescriptor.updateRepresentation(DRepresentation)</code> instead.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.viewpoint.DRepresentationDescriptor.updateRepresentation(DRepresentation)</code> has been added to update the repPath attribute according to the given representation. This method is intended to be called if the representation instance is still the same but requires to recompute the repPath.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.query.FileQuery.isSrmFile()</code> has been added to indicate if the file extension is dedicated to a file containing representations.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.dRepresentationLocationRule</code> extension point has been added to customize the resource location of new representations. See 
+				<a href="extensions-provide_representation_location_rule.html">Provide representation location rule (experimental)</a> for more details.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.session.danalysis.DRepresentationLocationRule</code> interface has been added to provide a customized rule to the 
+				<code>org.eclipse.sirius.dRepresentationLocationRule</code> extension point.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.helper.SiriusUtil.REPRESENTATION_FILE_EXTENSION</code> constant has been added to reference the new *.srm extension.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.session.Session.getSrmResources()</code> has been added to provide the list of representation resources (serialized as *.srm files by default).
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.query.ResourceQuery.isAirdOrSrmResource()</code> has been added to know whether the resource is a srm resource (
+				<code>org.eclipse.sirius.business.api.query.ResourceQuery.isSrmResource()</code>) or an aird resource.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.query.ResourceQuery.isSrmResource()</code> has been added to know whether the resource contains a 
+				<code>DRepresentation</code> as root element.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer.DiagramCrossReferencer(Collection&lt;Resource&gt;)</code> constructor has been added to compute the cross references on a list of resources.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.viewpoint.DRepresentationDescriptor#representation</code> feature is now derived, transient and volatile. The representation is compute by using the 
+				<code>org.eclipse.sirius.viewpoint.DRepresentationDescriptor#repPath</code> attribute.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+			<code>org.eclipse.sirius.common</code> 
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl.setFeatureToBeCrossReferencedWhiteList(Collection&lt;EReference&gt;)</code> to set a white list of references that must be referenced even if the reference is derived.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl.isIncluded(EReference)</code> has been overridden to consider features in the white list.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common.ui">Changes in 
-			<code>org.eclipse.sirius.common.ui</code>
+			<code>org.eclipse.sirius.common.ui</code> 
 		</h4>
 		<ul>
 			<li><span class="label label-danger">Removed</span> The 
@@ -1308,7 +1365,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>MetamodelDescriptorProvider</code>. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -1892,7 +1949,7 @@ SWTBotUtils.waitAllUiEvents();
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
