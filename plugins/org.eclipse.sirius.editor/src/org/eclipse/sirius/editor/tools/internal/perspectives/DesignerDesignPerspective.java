@@ -11,14 +11,12 @@
 package org.eclipse.sirius.editor.tools.internal.perspectives;
 
 import org.eclipse.sirius.editor.tools.api.perspectives.DesignPerspective;
-import org.eclipse.sirius.ui.tools.api.views.interpreterview.InterpreterView;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.sirius.ui.tools.internal.wizards.ModelingProjectWizard;
 import org.eclipse.sirius.ui.tools.internal.wizards.NewSessionWizard;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * A perspective for design.
@@ -76,12 +74,6 @@ public class DesignerDesignPerspective implements IPerspectiveFactory, DesignPer
     }
 
     private String getInterpreterViewID() {
-        // If acceleo 3 is present, the interpreter view is replaced by the
-        // acceleo one's.
-        if (PlatformUI.getWorkbench().getViewRegistry().find(ORG_ECLIPSE_ACCELEO_UI_INTERPRETER_VIEW) != null) {
-            return ORG_ECLIPSE_ACCELEO_UI_INTERPRETER_VIEW;
-        } else {
-            return InterpreterView.ID;
-        }
+        return ORG_ECLIPSE_ACCELEO_UI_INTERPRETER_VIEW;
     }
 }

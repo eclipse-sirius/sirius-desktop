@@ -19,12 +19,6 @@
             name="%category.sirius.name"/>
       <view
             category="org.eclipse.sirius.category"
-            class="org.eclipse.sirius.ui.tools.internal.views.interpreterview.DesignerInterpreterView"
-            icon="icons/full/others/information.gif"
-            id="org.eclipse.sirius.ui.tools.views.interpreterview"
-            name="%view.legacyInterpreter.name"/>
-      <view
-            category="org.eclipse.sirius.category"
             class="org.eclipse.sirius.ui.tools.internal.views.modelexplorer.ModelExplorerView"
             icon="icons/full/others/ModelExplorer.gif"
             id="org.eclipse.sirius.ui.tools.views.model.explorer"
