@@ -5,4 +5,6 @@ with source, requirements
 location Acceleo-3.7 "http://download.eclipse.org/acceleo/updates/milestones/3.7/S201703131646" {
 	org.eclipse.acceleo.feature.group lazy
 	org.eclipse.acceleo.ide.ui lazy
+    org.eclipse.acceleo.ui.interpreter.feature.group lazy
+    org.eclipse.acceleo.ui.interpreter.source.feature.group lazy
 }
