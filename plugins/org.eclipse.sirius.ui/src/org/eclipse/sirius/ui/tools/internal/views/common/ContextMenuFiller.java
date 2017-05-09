@@ -21,9 +21,11 @@ import java.util.WeakHashMap;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -44,6 +46,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
+import org.eclipse.jface.viewers.TreePath;
+import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.query.URIQuery;
@@ -171,7 +175,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
                 computeSemanticContextMenu(menu, selectedEObjects);
                 computeRepresentationContextMenu(menu, getRepresentationDescriptors(selectedObjects), selectedEObjects);
                 computeRepresentationsResourcesContextMenu(menu, getRepresentationResources(selectedObjects));
-                computeSemanticResourcesContextMenu(menu, getSemanticResources(selectedObjects));
+                computeSemanticResourcesContextMenu(menu, getSemanticResources(selectedObjects), selection);
 
                 // Add contributions
                 computeContextMenuContribution(menu, selection);
@@ -383,23 +387,55 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         return hasSharedObjectInSelection;
     }
 
-    private void computeSemanticResourcesContextMenu(IMenuManager menu, final Collection<Resource> resources) {
+    private void computeSemanticResourcesContextMenu(IMenuManager menu, final Collection<Resource> resources, ISelection selection) {
         Session session = null;
+        boolean allResourcesAreExternal = true;
         if (!resources.isEmpty()) {
             for (final Resource resource : resources) {
                 if (!resource.getContents().isEmpty()) {
                     final EObject object = resource.getContents().iterator().next();
-                    session = SessionManager.INSTANCE.getSession(object);
-                    if (session != null) {
-                        break;
+                    if (session == null) {
+                        session = SessionManager.INSTANCE.getSession(object);
+                    }
+                    allResourcesAreExternal = allResourcesAreExternal && isExternalDependency(resource, selection);
+                }
+            }
+            IProject project = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(session.getSessionResource().getURI().toPlatformString(true))).getProject();
+            boolean addAction = !resources.isEmpty() && session != null;
+            addAction = addAction && ((ModelingProject.hasModelingProjectNature(project) && allResourcesAreExternal) || !ModelingProject.hasModelingProjectNature(project));
+            if (addAction) {
+                addActionToMenu(menu, SESSION_MANAGEMENT_SEPARATOR, buildRemoveSemanticResourceAction(resources, session));
+            }
+        }
+    }
+
+    /**
+     * Returns true if the given element is an external dependency of the session.
+     * 
+     * @param element
+     *            the element from which we want to know if it is an external dependency.
+     * @param selection
+     *            the selection from which we want to know if it is an external dependency.
+     * @return true if the given element is an external dependency of the session. False otherwise.
+     */
+    private boolean isExternalDependency(Object element, ISelection selection) {
+        boolean result = false;
+        if (selection instanceof TreeSelection) {
+            if (!(element instanceof ProjectDependenciesItem) && !(element instanceof DRepresentationDescriptor)) {
+                TreePath pathsForSelection = ((TreeSelection) selection).getPathsFor(element)[0];
+                int segmentCount = pathsForSelection.getSegmentCount();
+                for (int i = 0; i < segmentCount; i++) {
+                    Object segment = pathsForSelection.getSegment(i);
+                    if (segment instanceof ProjectDependenciesItem) {
+                        result = true;
                     }
                 }
             }
+        } else {
+            result = true;
         }
+        return result;
 
-        if (!resources.isEmpty() && session != null) {
-            addActionToMenu(menu, SESSION_MANAGEMENT_SEPARATOR, buildRemoveSemanticResourceAction(resources, session));
-        }
     }
 
     private void computeSessionContextMenu(IMenuManager menu, Collection<?> selection) {

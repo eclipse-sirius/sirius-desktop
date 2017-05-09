@@ -116,7 +116,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
     /**
      * Constructor.
      * 
-     * @param editor
+     * @param theEditor
      *            the editor.
      * @param theSession
      *            the session.

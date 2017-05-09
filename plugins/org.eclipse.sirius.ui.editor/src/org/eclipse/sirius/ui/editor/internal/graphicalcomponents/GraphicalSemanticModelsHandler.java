@@ -19,6 +19,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -52,6 +55,7 @@ import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -381,8 +385,11 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                 // The tree allows only single selections so we pick the
                 // first element.
                 Object firstElement = selection.getFirstElement();
-                if (isExternalDependency(firstElement, selection) && (firstElement instanceof EObject || firstElement instanceof Resource)
-                        && checkResources(getSemanticResources(Lists.newArrayList(firstElement)))) {
+                IProject project = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(session.getSessionResource().getURI().toPlatformString(true))).getProject();
+                boolean isRemovableElement = firstElement instanceof EObject || firstElement instanceof Resource;
+                boolean enableAction = !ModelingProject.hasModelingProjectNature(project);
+                enableAction = enableAction || (isExternalDependency(firstElement, selection) && isRemovableElement && checkResources(getSemanticResources(Lists.newArrayList(firstElement))));
+                if (enableAction) {
                     removeSemanticModelOrRepresentationButton.setEnabled(true);
                 } else {
                     removeSemanticModelOrRepresentationButton.setEnabled(false);
