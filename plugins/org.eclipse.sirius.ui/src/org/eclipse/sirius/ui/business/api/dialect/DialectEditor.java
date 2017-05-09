@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,19 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.api.dialect;
 
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.sirius.ui.business.api.editor.ISiriusEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.ISaveablePart2;
-import org.eclipse.ui.ISaveablesSource;
-import org.eclipse.ui.ide.IGotoMarker;
 
 /**
  * An interface to implement for all dialect editors.
  * 
  * @author mchauvin
  */
-public interface DialectEditor extends IEditorPart, IGotoMarker, IEditingDomainProvider, ISaveablesSource, ISaveablePart2 {
+public interface DialectEditor extends ISiriusEditor {
 
     /** The property id for refresh event. */
     int PROP_REFRESH = 0x102;
@@ -45,8 +41,7 @@ public interface DialectEditor extends IEditorPart, IGotoMarker, IEditingDomainP
     void validateRepresentation();
 
     /**
-     * Get the representation displayed by this editor if there is one,
-     * <code>null</code> otherwise.
+     * Get the representation displayed by this editor if there is one, <code>null</code> otherwise.
      * 
      * @return the representation displayed
      */

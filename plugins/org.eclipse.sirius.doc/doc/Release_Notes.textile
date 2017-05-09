@@ -25,6 +25,16 @@ This plugin provides a session editor showing loaded models, representations and
 
 h4. Changes in @org.eclipse.sirius.ui@
 
+* <span class="label label-success">Added</span> An interface @org.eclipse.sirius.ui.business.api.editor.ISiriusEditor@ has been added to gather @org.eclipse.sirius.ui.editor.SessionEditor@ and @org.eclipse.sirius.ui.business.api.dialect.DialectEditor@ under the same abstraction. It allows to provide @org.eclipse.sirius.ui.business.api.session.IEditingSession@ saving functionalities for session editor or any new editor that is not a dialect editor. 
+
+* <span class="label label-success">Added</span> A method @getSiriusEditors()@  has been added to interface @org.eclipse.sirius.ui.business.api.session.IEditingSession@. It allows to retrieve all @org.eclipse.sirius.ui.business.api.editor.ISiriusEditor@ that are registered in the session.
+
+* <span class="label label-info">Modified</span> The method @attachEditor(DialectEditor)@ from the interface @org.eclipse.sirius.ui.business.api.session.IEditingSession@ has its parameter type modified from @DialectEditor@ to the new abstraction @ISiriusEditor@ to provide saving capabilities with other editors than the dialect ones.
+
+* <span class="label label-info">Modified</span> The method @detachEditor(DialectEditor)@ from the interface @org.eclipse.sirius.ui.business.api.session.IEditingSession@ has its parameter type modified from @DialectEditor@ to the new abstraction @ISiriusEditor@ to provide saving capabilities with other editors than the dialect ones.
+
+* <span class="label label-info">Modified</span> The method @detachEditor(DialectEditor, boolean)@ from the interface @org.eclipse.sirius.ui.business.api.session.IEditingSession@ has its first parameter type modified from @DialectEditor@ to the new abstraction @ISiriusEditor@ to provide saving capabilities with other editors than the dialect ones.
+
 * <span class="label label-success">Added</span> Two new methods have been added to the interface @org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback@: @selectViewpoint(Viewpoint, Session, boolean, Set<Viewpoint>, IProgressMonitor)@ and @deselectViewpoint(Viewpoint, Session, Set<Viewpoint>, IProgressMonitor)@. These methods add a new parameter that is a set of viewpoints compared to the same methods without these parameters. These set contains all viewpoints that will be deactivated/activated in addition of the one that is asked to be deactivated/activated. It allows the callback implementation to better handle viewpoint dependencies interaction by being able to know if missing dependencies will be activated or deactivated.
 
 h4. Changes in @org.eclipse.sirius@ 

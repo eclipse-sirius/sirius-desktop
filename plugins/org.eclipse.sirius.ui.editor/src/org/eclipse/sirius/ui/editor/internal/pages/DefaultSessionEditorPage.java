@@ -203,7 +203,8 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         modelSectionClient.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).create());
         modelSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
         modelSection.setClient(modelSectionClient);
-        graphicalModelingHandler = new GraphicalSemanticModelsHandler(session, toolkit, ((IEditorSite) editor.getSite()).getActionBars(), ((IEditorSite) editor.getSite()).getSelectionProvider());
+        graphicalModelingHandler = new GraphicalSemanticModelsHandler(session, toolkit, ((IEditorSite) editor.getSite()).getActionBars(), ((IEditorSite) editor.getSite()).getSelectionProvider(),
+                this.getSite());
         graphicalModelingHandler.createControl(modelSectionClient);
         getSite().setSelectionProvider(graphicalModelingHandler.getTreeViewer());
 

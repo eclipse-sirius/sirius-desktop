@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,10 +13,12 @@ package org.eclipse.sirius.ui.business.internal.session;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -34,6 +36,7 @@ import org.eclipse.sirius.tools.api.command.ui.RefreshFilter;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.editor.ISiriusEditor;
 import org.eclipse.sirius.ui.business.api.session.EditingSessionEvent;
 import org.eclipse.sirius.ui.business.api.session.EditorNameAdapter;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
@@ -60,8 +63,8 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
- * An {@link EditingSession} is responsible of keeping track of the opened
- * editors on a given model and cleaning stuffs when the every editor is closed.
+ * An {@link EditingSession} is responsible of keeping track of the opened editors on a given model and cleaning stuffs
+ * when the every editor is closed.
  * 
  * @author cbrun
  */
@@ -71,9 +74,9 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     protected Saveable saveable;
 
     /** Editors that focus a specific diagram file. */
-    private final List<DialectEditor> editors = new ArrayList<DialectEditor>();
+    private final List<ISiriusEditor> editors = new ArrayList<ISiriusEditor>();
 
-    private Map<DialectEditor, DialectEditorCloser> dialectEditorClosers = new HashMap<DialectEditor, DialectEditorCloser>();
+    private Map<ISiriusEditor, DialectEditorCloser> dialectEditorClosers = new HashMap<ISiriusEditor, DialectEditorCloser>();
 
     private NeedSaveOnCloseDetector needSaveOnCloseDetec = new NeedSaveOnCloseDetector();
 
@@ -110,14 +113,12 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     }
 
     /**
-     * Returns a new {@link SaveSessionWhenNoDialectEditorsListener} instance to
-     * use.
+     * Returns a new {@link SaveSessionWhenNoDialectEditorsListener} instance to use.
      * 
      * @param theSession
      *            session listened by the new save session listener.
      * 
-     * @return a new {@link SaveSessionWhenNoDialectEditorsListener} instance to
-     *         use.
+     * @return a new {@link SaveSessionWhenNoDialectEditorsListener} instance to use.
      */
     protected SaveSessionWhenNoDialectEditorsListener createSaveSessionWhenNoDialectEditorsListener(Session theSession) {
         return new SaveSessionWhenNoDialectEditorsListener(session);
@@ -142,27 +143,28 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
 
     @Override
     public Collection<DialectEditor> getEditors() {
-        return editors;
+        return getSiriusEditors().stream().filter(editor -> editor instanceof DialectEditor).map(editor -> (DialectEditor) editor).collect(Collectors.toSet());
     }
 
     @Override
-    public void attachEditor(final DialectEditor dialectEditor) {
-        if (!editors.contains(dialectEditor) && dialectEditor != null) {
-            editors.add(dialectEditor);
-            editorNameAdapter.registerEditor(dialectEditor);
+    public void attachEditor(final ISiriusEditor siriusEditor) {
+        if (!editors.contains(siriusEditor) && siriusEditor != null) {
+            editors.add(siriusEditor);
             needSaveOnCloseDetec.reInit();
 
-            reorderEditorsIfNeeded(dialectEditor);
-
-            if (dialectEditor.getRepresentation() != null) {
-                dialectEditorClosers.put(dialectEditor, new DialectEditorCloser(this, dialectEditor));
+            reorderEditorsIfNeeded(siriusEditor);
+            if (siriusEditor instanceof DialectEditor) {
+                DialectEditor dialectEditor = (DialectEditor) siriusEditor;
+                editorNameAdapter.registerEditor(dialectEditor);
+                if (dialectEditor.getRepresentation() != null) {
+                    dialectEditorClosers.put(dialectEditor, new DialectEditorCloser(this, dialectEditor));
+                }
             }
-
         }
     }
 
-    private void reorderEditorsIfNeeded(DialectEditor justAddedEditor) {
-        List<DialectEditor> reorderedList = Lists.newArrayList();
+    private void reorderEditorsIfNeeded(ISiriusEditor justAddedEditor) {
+        List<ISiriusEditor> reorderedList = Lists.newArrayList();
         IEditorReference[] editorReferences = null;
 
         IWorkbenchPage page = EclipseUIUtil.getActivePage();
@@ -183,7 +185,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
                 if (editor2 == null && justAddedEditor.getEditorInput() == refInput) {
                     reorderedList.add(justAddedEditor);
                 } else if (editors.contains(editor2)) {
-                    reorderedList.add((DialectEditor) editor2);
+                    reorderedList.add((ISiriusEditor) editor2);
                 }
             }
 
@@ -195,9 +197,11 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     }
 
     @Override
-    public void detachEditor(final DialectEditor dialectEditor) {
+    public void detachEditor(final ISiriusEditor dialectEditor) {
+        if (dialectEditor instanceof DialectEditor) {
+            editorNameAdapter.unregisterEditor((DialectEditor) dialectEditor);
+        }
         editors.remove(dialectEditor);
-        editorNameAdapter.unregisterEditor(dialectEditor);
         needSaveOnCloseDetec.reInit();
 
         DialectEditorCloser dialectEditorCloser = dialectEditorClosers.remove(dialectEditor);
@@ -207,11 +211,11 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     }
 
     @Override
-    public void detachEditor(final DialectEditor dialectEditor, boolean revertChanges) {
+    public void detachEditor(final ISiriusEditor dialectEditor, boolean revertChanges) {
 
         // We need to compute the closeAllDetected() before to execute the
         // detachEditor since this editor will be removed from the list.
-        boolean returnToSyncState = revertChanges && (getEditors().size() == 1 || closeAllDetected());
+        boolean returnToSyncState = revertChanges && (getSiriusEditors().size() == 1 || closeAllDetected());
         detachEditor(dialectEditor);
         if (returnToSyncState) {
             restoreToSavePointListener.returnToSyncState();
@@ -219,18 +223,18 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     }
 
     @Override
-    public void closeEditors(final boolean save, final Collection<? extends DialectEditor> editorParts) {
-        for (final DialectEditor editor : new ArrayList<DialectEditor>(editorParts)) {
+    public void closeEditors(final boolean save, final Collection<? extends ISiriusEditor> editorParts) {
+        for (final ISiriusEditor editor : new ArrayList<ISiriusEditor>(editorParts)) {
             closeEditor(editor, save);
         }
     }
 
     @Override
-    public void closeEditors(final boolean save, final DialectEditor... editorParts) {
+    public void closeEditors(final boolean save, final ISiriusEditor... editorParts) {
         closeEditors(save, Arrays.asList(editorParts));
     }
 
-    private void closeEditor(final DialectEditor editor, final boolean save) {
+    private void closeEditor(final ISiriusEditor editor, final boolean save) {
         if (DialectUIManager.INSTANCE.canHandleEditor(editor)) {
             try {
                 detachEditor(editor);
@@ -264,7 +268,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     public int promptToSaveOnClose() {
         int choice = ISaveablePart2.DEFAULT;
         if (saveable != null) {
-            boolean stillOpenElsewhere = getEditors().size() > 1 && !closeAllDetected();
+            boolean stillOpenElsewhere = getSiriusEditors().size() > 1 && !closeAllDetected();
             boolean promptStandardDialog = !restoreToSavePointListener.isAllowedToReturnToSyncState();
 
             choice = SWTUtil.showSaveDialog(session, saveable.getName(), true, stillOpenElsewhere, promptStandardDialog);
@@ -430,9 +434,9 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     @Override
     public DialectEditor getEditor(final DRepresentation representation) {
         if (representation != null) {
-            for (final DialectEditor editorPart : this.editors) {
-                if (DialectUIManager.INSTANCE.isRepresentationManagedByEditor(representation, editorPart)) {
-                    return editorPart;
+            for (final ISiriusEditor editorPart : this.editors) {
+                if (editorPart instanceof DialectEditor && DialectUIManager.INSTANCE.isRepresentationManagedByEditor(representation, editorPart)) {
+                    return (DialectEditor) editorPart;
                 }
             }
         }
@@ -447,10 +451,12 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     @Override
     public Collection<DRepresentation> getOpenedRepresantationsToRefresh() {
         Collection<DRepresentation> openedRepresantationsToRefresh = new ArrayList<DRepresentation>();
-        for (DialectEditor dialectEditor : getEditors()) {
-            DRepresentation dRepresentation = dialectEditor.getRepresentation();
-            if (dRepresentation != null) {
-                openedRepresantationsToRefresh.add(dRepresentation);
+        for (ISiriusEditor dialectEditor : getEditors()) {
+            if (dialectEditor instanceof DialectEditor) {
+                DRepresentation dRepresentation = ((DialectEditor) dialectEditor).getRepresentation();
+                if (dRepresentation != null) {
+                    openedRepresantationsToRefresh.add(dRepresentation);
+                }
             }
         }
         return openedRepresantationsToRefresh;
@@ -462,13 +468,11 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     }
 
     /**
-     * Helper to detect whether the contents of this part should be saved when
-     * the given part is closed.
+     * Helper to detect whether the contents of this part should be saved when the given part is closed.
      * 
-     * The needToBeSavedOnClose method is called just before closing the
-     * editors, re-initialization of the detector on attachment/detachment of an
-     * editor with its EditingSession allow to safely detect close all, close
-     * other and close workbench events.
+     * The needToBeSavedOnClose method is called just before closing the editors, re-initialization of the detector on
+     * attachment/detachment of an editor with its EditingSession allow to safely detect close all, close other and
+     * close workbench events.
      * 
      * @see IEditingSession#needToBeSavedOnClose(IEditorPart)
      * 
@@ -504,8 +508,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         }
 
         /**
-         * Try to detect closing of all editors on a same session from system
-         * actions:
+         * Try to detect closing of all editors on a same session from system actions:
          * <ol>
          * <li>close all</li>
          * <li>close other</li>
@@ -551,5 +554,10 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     @Override
     public void notify(EditingSessionEvent event) {
         saveSessionListener.notify(event);
+    }
+
+    @Override
+    public Collection<ISiriusEditor> getSiriusEditors() {
+        return Collections.unmodifiableList(editors);
     }
 }

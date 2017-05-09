@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.editor.internal.graphicalcomponents;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.EventObject;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -23,7 +24,8 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.command.CommandStack;
+import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.ui.action.CopyAction;
@@ -90,6 +92,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.IWorkbenchSite;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionContext;
 import org.eclipse.ui.actions.ActionFactory;
@@ -215,6 +218,18 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     private EcoreActionsHandler ecoreActionsHandler;
 
     /**
+     * Command stack listener selecting the last affected object in the viewer
+     * when a model element modification is done.
+     */
+    private CommandStackListener listener;
+
+    /**
+     * This site is used to get the shell when doing UI action from command
+     * execution
+     */
+    private IWorkbenchSite site;
+
+    /**
      * Initialize the component with the given session.
      * 
      * @param theSession
@@ -226,12 +241,16 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      *            The {@link IActionBars} to populate with Ecore models actions.
      * @param theSelectionProvider
      *            A selection provider needed by EMF Ecore modification actions.
+     * @param theSite
+     *            This site is used to get the shell when doing UI action from
+     *            command execution.
      */
-    public GraphicalSemanticModelsHandler(Session theSession, FormToolkit toolkit, IActionBars theActionBars, ISelectionProvider theSelectionProvider) {
+    public GraphicalSemanticModelsHandler(Session theSession, FormToolkit toolkit, IActionBars theActionBars, ISelectionProvider theSelectionProvider, IWorkbenchSite theSite) {
         this.session = theSession;
         this.toolkit = toolkit;
         this.actionBars = theActionBars;
         this.selectionProvider = theSelectionProvider;
+        this.site = theSite;
     }
 
     /**
@@ -397,7 +416,47 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
             }
         });
 
+        listener = new CommandStackListener() {
+            @Override
+            public void commandStackChanged(final EventObject event) {
+
+                site.getShell().getDisplay().asyncExec(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        // Try to select the last affected objects.
+                        Command mostRecentCommand = ((CommandStack) event.getSource()).getMostRecentCommand();
+                        if (mostRecentCommand != null) {
+                            setSelectionToViewer(mostRecentCommand.getAffectedObjects());
+                        }
+                    }
+                });
+            }
+        };
+        session.getTransactionalEditingDomain().getCommandStack().addCommandStackListener(listener);
         return theTreeViewer;
+    }
+
+    /**
+     * This sets the selection into whichever viewer is active.
+     * 
+     * @param selectionCollection
+     *            the selection to apply to the viewer.
+     */
+    public void setSelectionToViewer(Collection<?> selectionCollection) {
+        final Collection<?> theSelection = selectionCollection;
+        // Make sure it's okay.
+        if (theSelection != null && !theSelection.isEmpty()) {
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    // Try to select the items in the current content viewer of
+                    // the editor.
+                    treeViewer.setSelection(new StructuredSelection(theSelection.toArray()), true);
+                }
+            };
+            site.getShell().getDisplay().asyncExec(runnable);
+        }
     }
 
     /**
@@ -912,6 +971,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      * Dispose all listeners.
      */
     public void dispose() {
+        session.getTransactionalEditingDomain().getCommandStack().removeCommandStackListener(listener);
         session.removeListener(this);
         SessionManager.INSTANCE.removeSessionsListener(this);
         if (session != null && session.getTransactionalEditingDomain() != null) {
@@ -1015,14 +1075,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
 
         @Override
         public void resourceSetChanged(ResourceSetChangeEvent event) {
-            List<Notification> notifications = event.getNotifications();
-            Object newValue = null;
-            for (Notification notification : notifications) {
-                if (notification.getEventType() == Notification.ADD || notification.getEventType() == Notification.ADD_MANY) {
-                    newValue = notification.getNewValue();
-                }
-            }
-            final Object newValueFinal = newValue;
 
             PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
 
@@ -1033,16 +1085,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                     // exist.
                     if (!modelTree.isDisposed()) {
                         treeViewer.refresh();
-                        ISelection selection = null;
-                        if (newValueFinal != null) {
-                            selection = new StructuredSelection(newValueFinal);
-                        } else {
-                            selection = treeViewer.getSelection();
-                            if (selection.isEmpty()) {
-                                selection = new StructuredSelection(treeViewer.getTree().getItem(0).getData());
-                            }
-                        }
-                        treeViewer.setSelection(selection);
                     }
                 }
 

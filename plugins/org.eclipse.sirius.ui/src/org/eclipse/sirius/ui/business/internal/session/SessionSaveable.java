@@ -17,7 +17,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.IShellProvider;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
-import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.editor.ISiriusEditor;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -162,15 +162,15 @@ public class SessionSaveable extends Saveable {
         if (session != null && page != null) {
             IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
             if (uiSession != null && !uiSession.getEditors().isEmpty()) {
-                DialectEditor dialectEditor = uiSession.getEditors().iterator().next();
-                final IWorkbenchPartReference reference = page.getReference(dialectEditor);
+                ISiriusEditor siriusEditors = uiSession.getEditors().iterator().next();
+                final IWorkbenchPartReference reference = page.getReference(siriusEditors);
                 if (reference != null) {
-                    page.activate(dialectEditor);
+                    page.activate(siriusEditors);
                     return true;
                 }
 
-                if (dialectEditor instanceof IViewPart) {
-                    final IViewPart viewPart = (IViewPart) dialectEditor;
+                if (siriusEditors instanceof IViewPart) {
+                    final IViewPart viewPart = (IViewPart) siriusEditors;
                     try {
                         page.showView(viewPart.getViewSite().getId(), viewPart.getViewSite().getSecondaryId(), IWorkbenchPage.VIEW_ACTIVATE);
                     } catch (final PartInitException e) {

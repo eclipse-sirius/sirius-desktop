@@ -142,6 +142,45 @@
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> An interface 
+				<code>org.eclipse.sirius.ui.business.api.editor.ISiriusEditor</code> has been added to gather 
+				<code>org.eclipse.sirius.ui.editor.SessionEditor</code> and 
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectEditor</code> under the same abstraction. It allows to provide 
+				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code> saving functionalities for session editor or any new editor that is not a dialect editor. 
+			</li>
+		</ul>
+		<ul>
+			<li><span class="label label-success">Added</span> A method 
+				<code>getSiriusEditors()</code>  has been added to interface 
+				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code>. It allows to retrieve all 
+				<code>org.eclipse.sirius.ui.business.api.editor.ISiriusEditor</code> that are registered in the session.
+			</li>
+		</ul>
+		<ul>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>attachEditor(DialectEditor)</code> from the interface 
+				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code> has its parameter type modified from 
+				<code>DialectEditor</code> to the new abstraction 
+				<code>ISiriusEditor</code> to provide saving capabilities with other editors than the dialect ones.
+			</li>
+		</ul>
+		<ul>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>detachEditor(DialectEditor)</code> from the interface 
+				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code> has its parameter type modified from 
+				<code>DialectEditor</code> to the new abstraction 
+				<code>ISiriusEditor</code> to provide saving capabilities with other editors than the dialect ones.
+			</li>
+		</ul>
+		<ul>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>detachEditor(DialectEditor, boolean)</code> from the interface 
+				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code> has its first parameter type modified from 
+				<code>DialectEditor</code> to the new abstraction 
+				<code>ISiriusEditor</code> to provide saving capabilities with other editors than the dialect ones.
+			</li>
+		</ul>
+		<ul>
 			<li><span class="label label-success">Added</span> Two new methods have been added to the interface 
 				<code>org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback</code>: 
 				<code>selectViewpoint(Viewpoint, Session, boolean, Set&lt;Viewpoint&gt;, IProgressMonitor)</code> and 

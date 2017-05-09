@@ -34,16 +34,15 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import com.google.common.collect.Sets;
 
 /**
- * A listener to resource set change which save session if there is no dialect
- * editor opens.
+ * A listener to resource set change which save session if there is no dialect editor opens.
  * 
  * @author mchauvin
  */
 public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClient {
 
     /**
-     * The session from which Sirius resources modifications are listened to
-     * know if a save must be execute when no editors are opened.
+     * The session from which Sirius resources modifications are listened to know if a save must be execute when no
+     * editors are opened.
      */
     protected final Session session;
 
@@ -138,7 +137,7 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
     private void statusChangedInternal(Collection<ResourceStatusChange> changes) {
         final IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
 
-        if (session.isOpen() && editingSession != null && editingSession.getEditors().isEmpty() && resourceNoMoreInSync(changes)) {
+        if (session.isOpen() && editingSession != null && editingSession.getSiriusEditors().isEmpty() && resourceNoMoreInSync(changes)) {
             if (wasProjectDeletedOrRenamed(changes))
                 return;
 
@@ -155,8 +154,7 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
     /**
      * This method allows to do some treatments before saving.
      * 
-     * WARNING : Be careful not to break default Sirius saving behavior when
-     * overriding this method.
+     * WARNING : Be careful not to break default Sirius saving behavior when overriding this method.
      * 
      */
     protected void preSave() {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,10 +45,8 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
- * Implements the UI part of the "Uncontrol" operation. This class gathers the
- * required parameters from the user and the invokes the properly configured
- * {@link org.eclipse.sirius.business.internal.command.control.UncontrolCommand}
- * .
+ * Implements the UI part of the "Uncontrol" operation. This class gathers the required parameters from the user and the
+ * invokes the properly configured {@link org.eclipse.sirius.business.internal.command.control.UncontrolCommand} .
  *
  * @since 0.9.0
  *
@@ -104,10 +102,10 @@ public class SiriusUncontrolHandler extends AbstractHandler {
             // the editor input with the new DRepresentation location
             if (uncontrolRepresentations) {
                 IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
-                for (DialectEditor dialectEditor : uiSession.getEditors()) {
-                    if (dialectEditor instanceof IReusableEditor) {
-                        IReusableEditor iReusableEditor = (IReusableEditor) dialectEditor;
-                        DRepresentation representation = dialectEditor.getRepresentation();
+                for (DialectEditor editor : uiSession.getEditors()) {
+                    if (editor instanceof IReusableEditor) {
+                        IReusableEditor iReusableEditor = (IReusableEditor) editor;
+                        DRepresentation representation = editor.getRepresentation();
                         SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(representation), representation.getName(), session);
                         iReusableEditor.setInput(updatedEditorInput);
                     }
