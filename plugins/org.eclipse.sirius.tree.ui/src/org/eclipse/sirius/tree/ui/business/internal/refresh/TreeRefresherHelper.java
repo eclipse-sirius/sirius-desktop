@@ -16,7 +16,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -66,17 +66,12 @@ public final class TreeRefresherHelper {
      *            the monitor to use for monitoring the task.
      */
     public static void refreshEditor(DTreeEditor treeEditor, IStructuredSelection structuredSelection, IProgressMonitor theMonitor) {
-        theMonitor.beginTask("Refreshing", 1); //$NON-NLS-1$
-        IProgressMonitor subMonitor = new SubProgressMonitor(theMonitor, 1);
+        SubMonitor subMonitor = SubMonitor.convert(theMonitor, 1);
         IRunnableWithProgress op = getRunnable(treeEditor, structuredSelection);
         if (op != null) {
             run(op, treeEditor);
         }
-        try {
-            subMonitor.worked(1);
-        } finally {
-            subMonitor.done();
-        }
+        subMonitor.split(1);
     }
 
     /**

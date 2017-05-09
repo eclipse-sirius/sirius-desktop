@@ -13,7 +13,7 @@ package org.eclipse.sirius.table.ui.business.internal.refresh;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -50,8 +50,7 @@ public final class TableRefresherHelper {
      *            the monitor to use for monitoring the task.
      */
     public static void refreshEditor(AbstractDTableEditor tableEditor, IProgressMonitor theMonitor) {
-        theMonitor.beginTask("Refreshing", 1); //$NON-NLS-1$
-        IProgressMonitor subMonitor = new SubProgressMonitor(theMonitor, 1);
+        SubMonitor subMonitor = SubMonitor.convert(theMonitor, 1);
         final IRunnableWithProgress op = new IRunnableWithProgress() {
             @Override
             public void run(final IProgressMonitor monitor) {
@@ -65,7 +64,7 @@ public final class TableRefresherHelper {
             tableEditor.enablePropertiesUpdate(false);
             RefreshActionListenerRegistry.INSTANCE.notifyRepresentationIsAboutToBeRefreshed(tableEditor.getTableModel());
             monitorDialog.run(true, false, op);
-            subMonitor.worked(1);
+            subMonitor.split(1);
         } catch (final InvocationTargetException e) {
             MessageDialog.openError(activeShell, Messages.Refresh_error, e.getTargetException().getMessage());
             SiriusPlugin.getDefault().error(Messages.Refresh_errorDuringRefresh, e);
@@ -73,7 +72,6 @@ public final class TableRefresherHelper {
             MessageDialog.openInformation(activeShell, Messages.Refresh_cancelled, e.getMessage());
         } finally {
             tableEditor.enablePropertiesUpdate(true);
-            subMonitor.done();
         }
     }
 }
