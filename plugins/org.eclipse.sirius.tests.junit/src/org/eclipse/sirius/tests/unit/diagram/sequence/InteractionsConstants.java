@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,6 +53,8 @@ public final class InteractionsConstants {
     public static final String READ_TOOL_ID = "Read";
 
     public static final String WRITE_TOOL_ID = "Write";
+
+    public static final String FOUND_READ_TOOL_ID = "Found Read";
 
     public static final String CALL_TOOL_ID = "Call";
 

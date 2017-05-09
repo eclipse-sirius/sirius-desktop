@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,12 +9,6 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
-
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
 
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.sequence.ActionDisabledOnExtendedMessagesTest;
@@ -45,6 +39,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.ExecutionReconnectionTests;
 import org.eclipse.sirius.tests.swtbot.sequence.ExecutionSelectionEditPolicyTests;
 import org.eclipse.sirius.tests.swtbot.sequence.ExecutionTests;
 import org.eclipse.sirius.tests.swtbot.sequence.ExternalModificationsTests;
+import org.eclipse.sirius.tests.swtbot.sequence.FoundLostMessageTests;
 import org.eclipse.sirius.tests.swtbot.sequence.FrameMoveWithExpansionTest;
 import org.eclipse.sirius.tests.swtbot.sequence.FrameReparentTest;
 import org.eclipse.sirius.tests.swtbot.sequence.HeaderSequenceDiagramTests;
@@ -85,6 +80,12 @@ import org.eclipse.sirius.tests.swtbot.sequence.SyncCallInOperandReorderTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SyncCallMoveTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SyncCallTest;
 import org.eclipse.sirius.tests.unit.common.EnvironmentReportTest;
+
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * All SWTBot tests on sequence diagram.
@@ -141,6 +142,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(ExecutionMessageReconnectionTests.class);
         suite.addTestSuite(ExecutionLinkedMessageReconnectionTests.class);
         suite.addTestSuite(ExternalModificationsTests.class);
+        suite.addTestSuite(FoundLostMessageTests.class);
     }
 
     /**

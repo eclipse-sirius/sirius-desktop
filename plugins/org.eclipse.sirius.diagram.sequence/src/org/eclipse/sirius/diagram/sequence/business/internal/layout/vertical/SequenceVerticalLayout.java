@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,8 +72,8 @@ import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
 
 /**
- * Computes the appropriate graphical locations of sequence events and lifelines
- * on a sequence diagram to reflect the semantic order.
+ * Computes the appropriate graphical locations of sequence events and lifelines on a sequence diagram to reflect the
+ * semantic order.
  * 
  * @author pcdavid, mporhel
  */
@@ -110,8 +110,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     protected final Multimap<EventEnd, ISequenceEvent> endToISequencEvents;
 
     /**
-     * A map to link an {@link ISequenceEvent} to its starting and ending
-     * {@link EventEnd}.
+     * A map to link an {@link ISequenceEvent} to its starting and ending {@link EventEnd}.
      */
     protected final Multimap<ISequenceEvent, EventEnd> iSequenceEventsToEventEnds;
 
@@ -126,8 +125,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     };
 
     /**
-     * The global time range of the diagram. Can be udpated during layout
-     * computation.
+     * The global time range of the diagram. Can be udpated during layout computation.
      */
     protected Range timeRange;
 
@@ -146,8 +144,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     };
 
     /**
-     * An ordering to sort {@link Lifeline} regarding the height of their
-     * {@link InstanceRole}.
+     * An ordering to sort {@link Lifeline} regarding the height of their {@link InstanceRole}.
      */
     private final Ordering<Lifeline> heightOrdering = Ordering.natural().onResultOf(instanceRoleHeight);
 
@@ -199,8 +196,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
      * Constructor.
      * 
      * @param sequenceDiagram
-     *            the sequence diagram for which to compute the messages
-     *            locations.
+     *            the sequence diagram for which to compute the messages locations.
      */
     public SequenceVerticalLayout(SequenceDiagram sequenceDiagram) {
         super(sequenceDiagram);
@@ -348,11 +344,9 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     }
 
     /**
-     * Computes the absolute vertical (Y) location for all the messages in the
-     * sequence diagram.
+     * Computes the absolute vertical (Y) location for all the messages in the sequence diagram.
      * 
-     * @return a map associating each message edit part to the new absolute
-     *         vertical location it should have.
+     * @return a map associating each message edit part to the new absolute vertical location it should have.
      */
     private Map<EventEnd, Integer> computeEndBounds(boolean pack) {
         final Map<EventEnd, Integer> result = Maps.newLinkedHashMap();
@@ -780,8 +774,8 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     }
 
     private void lookForUnconnectedLostEnd() {
-        Collection<LostMessageEnd> allLostMessageEnds = sequenceDiagram.getAllLostMessageEnds();
-        Collection<LostMessageEnd> discoveredLostEnds = Lists.newArrayList();
+        Collection<LostMessageEnd> allLostMessageEnds = new ArrayList<>(sequenceDiagram.getAllLostMessageEnds());
+        Collection<LostMessageEnd> discoveredLostEnds = new ArrayList<>();
         for (Message knownMsgs : Iterables.filter(iSequenceEventsToEventEnds.keySet(), Message.class)) {
             ISequenceNode sourceElement = knownMsgs.getSourceElement();
             if (sourceElement instanceof LostMessageEnd) {
@@ -800,8 +794,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     }
 
     /**
-     * Determines the range of absolute Y locations in which the messages can be
-     * laid out.
+     * Determines the range of absolute Y locations in which the messages can be laid out.
      * 
      * @param pack
      *            packing layout if true.
@@ -927,8 +920,8 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     }
 
     /**
-     * Increase the time range to the given upperBound. If the current upper
-     * bounds is bigger than the parameter, it does nothing.
+     * Increase the time range to the given upperBound. If the current upper bounds is bigger than the parameter, it
+     * does nothing.
      * 
      * @param upperBound
      *            the new minimum upperBound.
@@ -940,8 +933,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     }
 
     /**
-     * Return the minimum valid lower start time on the {@link Lifeline} of the
-     * given {@link InstanceRole}.
+     * Return the minimum valid lower start time on the {@link Lifeline} of the given {@link InstanceRole}.
      * 
      * @param irep
      *            the current {@link InstanceRole}.
@@ -954,8 +946,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     }
 
     /**
-     * Register event old and init context (ends, old layout data, previous
-     * bounds flag, creators, destructors, ...).
+     * Register event old and init context (ends, old layout data, previous bounds flag, creators, destructors, ...).
      */
     protected void registerEventEnds() {
         for (EventEnd end : Lists.newArrayList(semanticOrdering)) {
