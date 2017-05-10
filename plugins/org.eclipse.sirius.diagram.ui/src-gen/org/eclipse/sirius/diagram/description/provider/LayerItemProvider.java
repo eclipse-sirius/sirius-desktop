@@ -250,7 +250,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
-     * @generated
+     * @not-generated
      */
     @Override
     public void notifyChanged(Notification notification) {
@@ -270,7 +270,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
         case org.eclipse.sirius.diagram.description.DescriptionPackage.LAYER__TOOL_SECTIONS:
         case org.eclipse.sirius.diagram.description.DescriptionPackage.LAYER__DECORATION_DESCRIPTIONS_SET:
         case org.eclipse.sirius.diagram.description.DescriptionPackage.LAYER__CUSTOMIZATION:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, true));
             return;
         }
         super.notifyChanged(notification);
