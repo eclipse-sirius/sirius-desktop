@@ -96,7 +96,7 @@ public class DRepresentationDescriptorToDRepresentationLinkManager {
         if (resourceDescriptor != null) {
             // @formatter:off
             return Optional.ofNullable(resource).map(Resource::getResourceSet)
-                    .map(rSet -> rSet.getEObject(resourceDescriptor.getResourceURI(), false))
+                    .map(rSet -> rSet.getEObject(resourceDescriptor.getResourceURI(), loadOnDemand))
                     .filter(DRepresentation.class::isInstance)
                     .map(DRepresentation.class::cast)
                     .orElse(null);

@@ -29,6 +29,7 @@ import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.query.URIQuery;
+import org.eclipse.sirius.business.internal.representation.DRepresentationDescriptorToDRepresentationLinkManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
@@ -83,6 +84,7 @@ class SessionResourcesTracker {
     void initialize(IProgressMonitor monitor) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.RESOLVE_ALL_KEY);
         Collection<DAnalysis> analyses = session.allAnalyses();
+        resolveAllDRepresentations(analyses);
         // First resolve all VSM resources used for Sirius to ignore VSM
         // resources and VSM linked resources (as viewpoint:/environment
         // resource) as new semantic element
@@ -117,6 +119,13 @@ class SessionResourcesTracker {
         semanticResources = null;
         monitor.worked(1);
         dAnalysisRefresher.initialize();
+    }
+
+    private void resolveAllDRepresentations(Collection<DAnalysis> analyses) {
+        analyses.stream().flatMap(analysis -> analysis.getOwnedViews().stream()).flatMap(view -> view.getOwnedRepresentationDescriptors().stream()).forEach(repDesc -> {
+            // get the representation with loadOnDemand=true to force loading the resource
+            new DRepresentationDescriptorToDRepresentationLinkManager(repDesc).getRepresentation(true);
+        });
     }
 
     void addAdaptersOnAnalysis(final DAnalysis analysis) {
