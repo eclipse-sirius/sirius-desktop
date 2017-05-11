@@ -55,6 +55,10 @@ h4. Changes in @org.eclipse.sirius.table@
 
 * <span class="label label-danger">Removed</span> The @DTableElementSynchronizer@ _EClass_ has been removed from the table meta-model. It only defined _EOperations_ and has been replaced with an equivalent (internal) plain Java class.
 
+h4. Changes in @org.eclipse.sirius.ui@
+
+* <span class="label label-danger">Removed</span> The old _Model Request Interpreter_ view is not available anymore. It is superseded by the _Interpreter_ view, which comes from the Acceleo project but does not actually depend on Acceleo or AQL and can be installed separately (using the feature @org.eclipse.acceleo.ui.interpreter@, which is available directly from the Sirius update-sites). The corresponding interface @org.eclipse.sirius.ui.tools.api.views.interpreterview.InterpreterView@ has been removed. Technically, the implementation code for the old _Model Request Interpreter_ view is still present if needed during the transition, but not exposed or used anywhere. It will be removed in a future version. 
+
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> The method @getTreeItem(SWTBotTreeItem[], String, boolean, boolean)@ has been added in @org.eclipse.sirius.tests.swtbot.support.utils@ to retrieve recursively a @SWTBotTreeItem@ in a @SWTBotTreeItem@ array. Compared to @getTreeItem(SWTBotTreeItem[], String)@, it adds the capability to control if the search must be done on enabled items or enabled and disabled items and if the tree must be expanded during the search to check non displayed items.

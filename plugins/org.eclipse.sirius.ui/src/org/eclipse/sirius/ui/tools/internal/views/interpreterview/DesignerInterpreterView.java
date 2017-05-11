@@ -56,7 +56,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.contentassist.ContentInstanceProposalProvider;
-import org.eclipse.sirius.ui.tools.api.views.interpreterview.InterpreterView;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters.ModelDragTargetAdapter;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -94,7 +93,7 @@ import org.eclipse.ui.part.ViewPart;
  *
  * @author cbrun
  */
-public class DesignerInterpreterView extends ViewPart implements InterpreterView {
+public class DesignerInterpreterView extends ViewPart {
 
     private static final Transfer TRANSFER = LocalSelectionTransfer.getTransfer();
 

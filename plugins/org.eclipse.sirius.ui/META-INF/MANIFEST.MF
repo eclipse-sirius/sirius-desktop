@@ -49,7 +49,6 @@ Export-Package: org.eclipse.sirius.description.contribution.provider;version="2.
  org.eclipse.sirius.ui.tools.api.provider;version="2.0.4",
  org.eclipse.sirius.ui.tools.api.views;version="2.1.0",
  org.eclipse.sirius.ui.tools.api.views.common.item;version="2.0.4",
- org.eclipse.sirius.ui.tools.api.views.interpreterview;version="2.0.4",
  org.eclipse.sirius.ui.tools.api.views.modelexplorerview;version="2.0.4",
  org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener;version="2.0.4",
  org.eclipse.sirius.ui.tools.api.wizards.page;version="2.0.4",

@@ -241,6 +241,18 @@
 				<em>EOperations</em> and has been replaced with an equivalent (internal) plain Java class.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+			<code>org.eclipse.sirius.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-danger">Removed</span> The old 
+				<em>Model Request Interpreter</em> view is not available anymore. It is superseded by the 
+				<em>Interpreter</em> view, which comes from the Acceleo project but does not actually depend on Acceleo or AQL and can be installed separately (using the feature 
+				<code>org.eclipse.acceleo.ui.interpreter</code>, which is available directly from the Sirius update-sites). The corresponding interface 
+				<code>org.eclipse.sirius.ui.tools.api.views.interpreterview.InterpreterView</code> has been removed. Technically, the implementation code for the old 
+				<em>Model Request Interpreter</em> view is still present if needed during the transition, but not exposed or used anywhere. It will be removed in a future version. 
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
@@ -352,7 +364,7 @@
 				<code>RepresentationElementIdentifier</code>) have been removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -525,7 +537,7 @@
 				<code>AbstractMetamodelPropertySectionSpec</code>. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -933,7 +945,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>updateModelsReferences(DAnalysis, Iterator&lt;DSemanticDecorator&gt;)</code> because it is more suited to the client needs.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1427,7 +1439,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.resetVariables()</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1575,7 +1587,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.MoveInDiagramDragTracker</code> has been added to declare states used by all DragTrackers which manage move in diagram using mouse middle click.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui6">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -2018,7 +2030,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.tools.api.command.IUndoableCommand</code> interface removed because it is useless since undo/redo is managed by EMF Transaction.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui6">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui7">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
