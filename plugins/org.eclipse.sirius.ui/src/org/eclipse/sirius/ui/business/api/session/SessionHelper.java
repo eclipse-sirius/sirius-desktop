@@ -14,6 +14,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
@@ -25,6 +26,7 @@ import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.internal.dialogs.RepresentationsSelectionDialog;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -45,15 +47,12 @@ public final class SessionHelper {
     }
 
     /**
-     * Open existing representations whose description has the
-     * <code>showOnStartup</code> flag.
+     * Open existing representations whose description has the <code>showOnStartup</code> flag.
      * <p>
-     * If there is only one such representation, it is opened automatically. If
-     * there are several, a dialog box opens allowing the user to select which
-     * ones to open (including none).
+     * If there is only one such representation, it is opened automatically. If there are several, a dialog box opens
+     * allowing the user to select which ones to open (including none).
      * <p>
-     * No new representations are created. Only the existing ones are
-     * candidates.
+     * No new representations are created. Only the existing ones are candidates.
      *
      * @param session
      *            the session for which to open the startup representations.
@@ -86,15 +85,13 @@ public final class SessionHelper {
     }
 
     /**
-     * Finds all the existing representations in the session which are marked as
-     * <code>showOnStartup</code> and hence candidates for being automatically
-     * opened.
+     * Finds all the existing representations in the session which are marked as <code>showOnStartup</code> and hence
+     * candidates for being automatically opened.
      *
      * @param session
      *            the session in which to look for representations.
-     * @return all the existing representations in the session which are marked
-     *         as <code>showOnStartup</code>, in no particular order. May be
-     *         empty, but not <code>null</code>.
+     * @return all the existing representations in the session which are marked as <code>showOnStartup</code>, in no
+     *         particular order. May be empty, but not <code>null</code>.
      */
     public static Collection<DRepresentation> findAllStartupCandidates(final Session session) {
         Collection<DRepresentation> candidates = new ArrayList<DRepresentation>();
@@ -102,13 +99,10 @@ public final class SessionHelper {
 
         if (!selectedViewpoints.isEmpty()) {
             Map<RepresentationDescription, Boolean> alreadyCheckedDescriptions = Maps.newHashMap();
-            Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
-            for (DRepresentation repr : allRepresentations) {
-                RepresentationDescription description = DialectManager.INSTANCE.getDescription(repr);
-                if (description != null && SessionHelper.checkStartupDescInSelectedVps(description, alreadyCheckedDescriptions, selectedViewpoints)) {
-                    candidates.add(repr);
-                }
-            }
+            candidates = DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream().filter(repDesc -> {
+                RepresentationDescription description = repDesc.getDescription();
+                return description != null && SessionHelper.checkStartupDescInSelectedVps(description, alreadyCheckedDescriptions, selectedViewpoints);
+            }).map(DRepresentationDescriptor::getRepresentation).collect(Collectors.toList());
         }
         return candidates;
     }
@@ -126,18 +120,14 @@ public final class SessionHelper {
     }
 
     /**
-     * Select which of the specified representations should really be
-     * automatically opened. If there is only one candidate, it is automatically
-     * selected. If there are more than one, the user is asked to select the
-     * ones he wants (including none) through a modal dialog box.
+     * Select which of the specified representations should really be automatically opened. If there is only one
+     * candidate, it is automatically selected. If there are more than one, the user is asked to select the ones he
+     * wants (including none) through a modal dialog box.
      *
      * @param representationsOrigin
-     *            A String representing the origin of the candidates (for
-     *            example "from projectName", or
-     *            "from representations file fileName"), or null if no precision
-     *            is needed. This information is displayed in the message of the
-     *            dialog, at the end of the message
-     *            "Select the startup representations to open"
+     *            A String representing the origin of the candidates (for example "from projectName", or "from
+     *            representations file fileName"), or null if no precision is needed. This information is displayed in
+     *            the message of the dialog, at the end of the message "Select the startup representations to open"
      * @param candidates
      *            the candidate representation to select from.
      * @return the subset of candidates which are selected for opening.

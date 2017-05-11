@@ -29,7 +29,6 @@ import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.query.URIQuery;
-import org.eclipse.sirius.business.internal.representation.DRepresentationDescriptorToDRepresentationLinkManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
@@ -38,7 +37,6 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
@@ -84,7 +82,6 @@ class SessionResourcesTracker {
     void initialize(IProgressMonitor monitor) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.RESOLVE_ALL_KEY);
         Collection<DAnalysis> analyses = session.allAnalyses();
-        resolveAllDRepresentations(analyses);
         // First resolve all VSM resources used for Sirius to ignore VSM
         // resources and VSM linked resources (as viewpoint:/environment
         // resource) as new semantic element
@@ -119,13 +116,6 @@ class SessionResourcesTracker {
         semanticResources = null;
         monitor.worked(1);
         dAnalysisRefresher.initialize();
-    }
-
-    private void resolveAllDRepresentations(Collection<DAnalysis> analyses) {
-        analyses.stream().flatMap(analysis -> analysis.getOwnedViews().stream()).flatMap(view -> view.getOwnedRepresentationDescriptors().stream()).forEach(repDesc -> {
-            // get the representation with loadOnDemand=true to force loading the resource
-            new DRepresentationDescriptorToDRepresentationLinkManager(repDesc).getRepresentation(true);
-        });
     }
 
     void addAdaptersOnAnalysis(final DAnalysis analysis) {
@@ -180,11 +170,10 @@ class SessionResourcesTracker {
         ModelUtils.resolveAll(session.getTransactionalEditingDomain().getResourceSet(), new EReferencePredicate() {
             @Override
             public boolean apply(EReference input) {
-                // Do not resolve derived features except DRepresentationDescriptor#Representation since we force the
-                // loading of all representation for now.
+                // Do not resolve derived features
                 // Do not resolve containment/container references : they are
                 // already resolved by the model structural analysis course.
-                return (!input.isDerived() || ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Representation().equals(input)) && !input.isContainer() && !input.isContainment();
+                return !input.isDerived() && !input.isContainer() && !input.isContainment();
             }
         });
     }
