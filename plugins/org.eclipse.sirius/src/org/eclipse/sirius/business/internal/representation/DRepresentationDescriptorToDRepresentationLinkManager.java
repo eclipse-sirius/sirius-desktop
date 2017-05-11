@@ -16,7 +16,9 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -81,6 +83,20 @@ public class DRepresentationDescriptorToDRepresentationLinkManager {
      * @return an Optional DRepresentation.
      */
     public Optional<DRepresentation> getRepresentation(boolean loadOnDemand) {
+        Optional<DRepresentation> representation = getRepresentationInternal(false);
+        if (loadOnDemand && !representation.isPresent()) {
+            representation = getRepresentationInternal(true);
+
+            representation.ifPresent(rep -> Optional.ofNullable(new EObjectQuery(repDescriptor).getSession()).map(Session::getSemanticCrossReferencer).ifPresent(crossRef -> {
+                crossRef.setTarget(repDescriptor);
+                rep.eAdapters().add(crossRef);
+            }));
+        }
+
+        return representation;
+    }
+
+    private Optional<DRepresentation> getRepresentationInternal(boolean loadOnDemand) {
         Optional<DRepresentationURIFragmentStrategy> fragmentStrategy = EclipseUtil
                 .getExtensionPlugins(DRepresentationURIFragmentStrategy.class, DRepresentationURIFragmentStrategy.ID, DRepresentationURIFragmentStrategy.CLASS_ATTRIBUTE).stream()
                 .filter(strategy -> strategy.providesGetter(repDescriptor)).findFirst();

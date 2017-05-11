@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableContext;
@@ -37,8 +37,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 /**
- * Action to open the given representations and init/update the corresponding ui
- * session(s).
+ * Action to open the given representations and init/update the corresponding ui session(s).
  *
  * @author mporhel
  */
@@ -79,7 +78,7 @@ public class OpenRepresentationsAction extends Action {
             IRunnableWithProgress runnable = new IRunnableWithProgress() {
                 @Override
                 public void run(final IProgressMonitor pm) {
-                    openRepresentations(representationsToOpen, pm);
+                    openRepresentations(pm);
                 }
             };
             PlatformUI.getWorkbench().getProgressService().runInUI(context, runnable, null);
@@ -93,28 +92,42 @@ public class OpenRepresentationsAction extends Action {
         }
     }
 
-    private void openRepresentations(final Collection<DRepresentationDescriptor> selection, final IProgressMonitor monitor) {
+    /**
+     * Open the representations associated to {@link DRepresentationDescriptor}.
+     * 
+     * @param monitor
+     *            the progress monitor to use for reporting progress to the user, or null indicating that no progress
+     *            should be reported and the operation cannot be cancelled.
+     */
+    private void openRepresentations(final IProgressMonitor monitor) {
         String taskName = Messages.OpenRepresentationsAction_openRepresentationTask;
-        if (selection.size() > 1) {
+        if (representationsToOpen.size() > 1) {
             taskName = Messages.OpenRepresentationsAction_openRepresentationsTask;
         }
         try {
-            monitor.beginTask(taskName, 5 * selection.size());
-            
-            for (DRepresentationDescriptor repDesc : selection) {
+            int nbRepToLoad = (int) representationsToOpen.stream().filter(repDesc -> !repDesc.isLoadedRepresentation()).count();
+            SubMonitor subMonitor = SubMonitor.convert(monitor, taskName, 6 * representationsToOpen.size() + 4 * nbRepToLoad);
+
+            for (DRepresentationDescriptor repDesc : representationsToOpen) {
+                // force representation resource loading if needed
+                if (!repDesc.isLoadedRepresentation()) {
+                    repDesc.getRepresentation();
+                    subMonitor.worked(4);
+                }
+
                 Session session = new EObjectQuery(repDesc.getTarget()).getSession();
-                monitor.worked(1);
+                subMonitor.worked(1);
 
                 if (session != null) {
-                    IEditorPart part = DialectUIManager.INSTANCE.openEditor(session, repDesc.getRepresentation(), new SubProgressMonitor(monitor, 3));
+                    IEditorPart part = DialectUIManager.INSTANCE.openEditor(session, repDesc.getRepresentation(), subMonitor.split(4));
                     if (part instanceof DialectEditor) {
                         updateUISession((DialectEditor) part, session);
-                        monitor.worked(1);
+                        subMonitor.worked(1);
                     }
                 }
             }
         } finally {
-            monitor.done();
+            SubMonitor.done(monitor);
         }
     }
 

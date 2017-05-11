@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -25,7 +24,6 @@ import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFor
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.common.base.Predicate;
@@ -68,16 +66,6 @@ public class ExportRepresentationsAction extends AbstractExportRepresentationsAc
         this.session = session;
         this.selectedEObjects = selectedEObjects;
         this.selectedRepDescriptors = selectedRepDescriptors;
-    }
-
-    @Override
-    public void run() {
-        if (!getRepresentationToExport().isEmpty()) {
-            super.run();
-        } else {
-            MessageDialog.openInformation(Display.getCurrent().getActiveShell(), Messages.ExportRepresentationsAction_noRepresentationsDialog_title,
-                    Messages.ExportRepresentationsAction_noRepresentationsDialog_message);
-        }
     }
 
     @Override

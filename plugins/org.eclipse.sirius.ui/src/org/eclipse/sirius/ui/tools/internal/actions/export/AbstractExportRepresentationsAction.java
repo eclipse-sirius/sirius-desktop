@@ -13,7 +13,9 @@ package org.eclipse.sirius.ui.tools.internal.actions.export;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -40,7 +42,6 @@ import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -52,8 +53,7 @@ import com.google.common.collect.Lists;
 public abstract class AbstractExportRepresentationsAction extends Action {
 
     /**
-     * Creates a new AbstractExportRepresentationsAction with the given text and
-     * image.
+     * Creates a new AbstractExportRepresentationsAction with the given text and image.
      * 
      * @param text
      *            the action's text, or <code>null</code> if there is no text
@@ -67,32 +67,34 @@ public abstract class AbstractExportRepresentationsAction extends Action {
     }
 
     /**
-     * Collect the diagrams to export, get the corresponding session, compute
-     * the export path and then show the path and file format dialog to the user
-     * before exporting export the diagrams.
+     * Collect the diagrams to export, get the corresponding session, compute the export path and then show the path and
+     * file format dialog to the user before exporting export the diagrams.
      */
     @Override
     public void run() {
-        Collection<DRepresentationDescriptor> collectedRepDescriptors = getRepresentationToExport();
-        Iterable<DRepresentationDescriptor> dRepresentationsToExport = Iterables.filter(collectedRepDescriptors, Predicates.notNull());
-        if (!Iterables.isEmpty(dRepresentationsToExport)) {
-            DRepresentationDescriptor firstDRepDescriptorToExport = dRepresentationsToExport.iterator().next();
+        Collection<DRepresentationDescriptor> repDescriptorsToExport = getRepresentationToExport().stream().filter(Objects::nonNull).collect(Collectors.toList());
+
+        if (!repDescriptorsToExport.isEmpty()) {
+            DRepresentationDescriptor firstDRepDescriptorToExport = repDescriptorsToExport.iterator().next();
+            // Make sure the representation is loaded
+            firstDRepDescriptorToExport.getRepresentation();
             Session session = getSession(firstDRepDescriptorToExport);
             if (session != null) {
                 IPath exportPath = getExportPath(firstDRepDescriptorToExport, session);
-
                 if (exportPath != null) {
-                    exportRepresentation(exportPath, dRepresentationsToExport, session);
+                    exportRepresentation(exportPath, repDescriptorsToExport, session);
                 }
             }
+        } else {
+            MessageDialog.openInformation(Display.getCurrent().getActiveShell(), Messages.ExportRepresentationsAction_noRepresentationsDialog_title,
+                    Messages.ExportRepresentationsAction_noRepresentationsDialog_message);
         }
     }
 
     /**
      * Collect the representations to export.
      * 
-     * @return the {@link DRepresentationDescriptor} corresponding to the
-     *         representation to export.
+     * @return the {@link DRepresentationDescriptor} corresponding to the representation to export.
      */
     protected abstract Collection<DRepresentationDescriptor> getRepresentationToExport();
 
@@ -106,8 +108,7 @@ public abstract class AbstractExportRepresentationsAction extends Action {
     protected abstract Session getSession(DRepresentationDescriptor repDescriptor);
 
     /**
-     * Display the export path and file format dialog and then export the
-     * representations.
+     * Display the export path and file format dialog and then export the representations.
      * 
      * @param exportPath
      *            the default export path.

@@ -18,10 +18,12 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.danalysis.DRepresentationLocationRule;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
  * This implementation to {@link DRepresentationLocationRule} give a behavior for representation resources in local
@@ -58,7 +60,7 @@ public class DRepLocationRuleForLocalResource implements DRepresentationLocation
      * @return the representation URI
      */
     protected URI getDedicatedRepResourceURI(DRepresentation representation, Resource airdResource) {
-        int count = 0;
+        int count = 1;
         ResourceSet resourceSet = airdResource.getResourceSet();
         URI repUri = createRepURI(airdResource, representation, count++);
         while (!isUsableURI(repUri, resourceSet, representation)) {
@@ -106,7 +108,8 @@ public class DRepLocationRuleForLocalResource implements DRepresentationLocation
     }
 
     /**
-     * Create the representation URI based on the aird resource URI. Only the last part of the segment is changed.
+     * Create the representation URI based on the aird resource URI.</br>
+     * Only the last part of the segment is changed. It will include the name of the RepresentationDescription
      * 
      * @param airdResource
      *            the aird resource
@@ -117,10 +120,10 @@ public class DRepLocationRuleForLocalResource implements DRepresentationLocation
      */
     private URI createRepURI(Resource airdResource, DRepresentation representation, int count) {
         // get the representation URI fragment
-        String repName = representation.getName().replace(' ', '_');
-        if (count > 0) {
-            repName += String.valueOf(count);
-        }
+        RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
+        String repName = description.getName().replace(' ', '_');
+        repName += "_" + String.valueOf(count); //$NON-NLS-1$
+
         URI airdURI = airdResource.getURI();
 
         List<String> srmFileSegments = new ArrayList<>(airdURI.segmentsList());
