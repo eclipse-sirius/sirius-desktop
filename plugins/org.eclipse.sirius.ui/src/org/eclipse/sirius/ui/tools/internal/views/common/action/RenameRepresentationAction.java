@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,6 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.dialog.RenameDialog;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -34,22 +33,22 @@ import org.eclipse.swt.widgets.Display;
  */
 public class RenameRepresentationAction extends Action {
 
-    private Collection<DRepresentationDescriptor> selectedRepDescriptions;
+    private Collection<DRepresentationDescriptor> selectedRepDescriptors;
 
     /**
      * Create a new instance.
      *
-     * @param selectedRepDescriptions
+     * @param selectedRepDescriptors
      *            the representations to delete
      */
-    public RenameRepresentationAction(Collection<DRepresentationDescriptor> selectedRepDescriptions) {
+    public RenameRepresentationAction(Collection<DRepresentationDescriptor> selectedRepDescriptors) {
         super(Messages.RenameRepresentationAction_name);
-        this.selectedRepDescriptions = selectedRepDescriptions;
+        this.selectedRepDescriptors = selectedRepDescriptors;
     }
 
     @Override
     public void run() {
-        for (final DRepresentationDescriptor repDesc : selectedRepDescriptions) {
+        for (final DRepresentationDescriptor repDesc : selectedRepDescriptors) {
             renameRepresentation(repDesc);
         }
     }
@@ -74,9 +73,8 @@ public class RenameRepresentationAction extends Action {
     }
 
     /**
-     * Overridden to ask to the {@link IPermissionAuthority} if we can rename
-     * all selected {@link DRepresentationDescriptor}s. If we can't rename one
-     * then the action is disabled.
+     * Overridden to ask to the {@link IPermissionAuthority} if we can rename all selected
+     * {@link DRepresentationDescriptor}s. If we can't rename one then the action is disabled.
      *
      * {@inheritDoc}
      */
@@ -84,10 +82,9 @@ public class RenameRepresentationAction extends Action {
     public boolean isEnabled() {
         boolean isEnabled = super.isEnabled();
         if (isEnabled) {
-            for (DRepresentationDescriptor dRepDescription : selectedRepDescriptions) {
-                DRepresentation dRepresentation = dRepDescription.getRepresentation();
-                IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dRepresentation);
-                if (!permissionAuthority.canEditFeature(dRepresentation, ViewpointPackage.eINSTANCE.getDRepresentation_Name().getName())) {
+            for (DRepresentationDescriptor dRepDescriptor : selectedRepDescriptors) {
+                IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dRepDescriptor);
+                if (!permissionAuthority.canEditFeature(dRepDescriptor, ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Name().getName())) {
                     isEnabled = false;
                     break;
                 }

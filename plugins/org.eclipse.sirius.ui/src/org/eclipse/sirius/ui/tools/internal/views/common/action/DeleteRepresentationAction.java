@@ -178,9 +178,8 @@ public class DeleteRepresentationAction extends Action {
     }
 
     /**
-     * Overridden to ask to the {@link IPermissionAuthority} if we can delete
-     * all selected {@link DRepresentation}s, if we can't delete one then the
-     * action is disabled.
+     * Overridden to ask to the {@link IPermissionAuthority} if we can delete all selected {@link DRepresentation}s, if
+     * we can't delete one then the action is disabled.
      * 
      * {@inheritDoc}
      */
@@ -188,9 +187,9 @@ public class DeleteRepresentationAction extends Action {
     public boolean isEnabled() {
         boolean isEnabled = super.isEnabled();
         if (isEnabled) {
-            for (DRepresentationDescriptor dRepDescription : selectedRepDescriptors) {
-                IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dRepDescription);
-                if (!permissionAuthority.canDeleteInstance(dRepDescription.getRepresentation())) {
+            for (DRepresentationDescriptor dRepDescriptor : selectedRepDescriptors) {
+                IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dRepDescriptor);
+                if (!permissionAuthority.canDeleteInstance(dRepDescriptor)) {
                     isEnabled = false;
                     break;
                 }

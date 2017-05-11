@@ -173,10 +173,10 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
 
     @Override
     public Collection<?> getChildren() {
-        final List<DRepresentationDescriptor> repDescriptorsCandidates = Lists.newArrayList(DialectManager.INSTANCE.getRepresentationDescriptors(representationDescription, session));
+        // get all DRepresentationDescriptor of the Session
+        Collection<DRepresentationDescriptor> repDescriptorsCandidates = DialectManager.INSTANCE.getRepresentationDescriptors(representationDescription, session);
 
         List<RepresentationItemImpl> representations = Lists.newArrayList();
-
         if (filterForResource) {
             for (final DRepresentationDescriptor repDescriptor : repDescriptorsCandidates) {
                 Resource representationResource = repDescriptor.eResource();
