@@ -20,6 +20,7 @@
   <extension-point id="fileModificationValidator" name="%extension-point.fileModificationValidator.name" schema="schema/fileModificationValidator.exsd"/>
   <extension-point id="resourceSetFactory" name="%extension-point.resourceSetFactory.name" schema="schema/resourceSetFactory.exsd"/>
   <extension-point id="classloading_override" name="%extension-point.classloading_override.name" schema="schema/classloading_override.exsd"/>
+  <extension-point id="package_meta_data" name="%extension-point.package_meta_data.name" schema="schema/package_meta_data.exsd"/>
   
   <extension id="org.eclipse.sirius.common.variableInterpreter" point="org.eclipse.sirius.common.expressionInterpreter">
     <expressionInterpreterProvider interpreterProviderClass="org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter" />

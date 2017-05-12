@@ -58,6 +58,7 @@ h4. Changes in @org.eclipse.sirius.common@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl.setFeatureToBeCrossReferencedWhiteList(Collection<EReference>)@ to set a white list of references that must be referenced even if the reference is derived.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl.isIncluded(EReference)@ has been overridden to consider features in the white list.
+* <span class="label label-success">Added</span> A new extension point, @org.eclipse.sirius.common.package_meta_data@ has been added. It can be used to associate user-oriented meta-data to Ecore metamodels, identified by their @nsURI@: a user-oriented name/label (as opposed to the technical nsURI), a (short) description/documentation, and a list of suggested EClasses defined in the EPackage that are good candidates as root model elements.
 
 h4. Changes in @org.eclipse.sirius.common.ui@ 
 

@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.sirius.common" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.sirius.common" id="package_meta_data" name="EPackage Meta Data"/>
+      </appInfo>
+      <documentation>
+         This extension point can be used to associate extra meta-data (label, documentation, preferred root element) to an EMF EPackage.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="ePackageMetaData"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="ePackageMetaData">
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="suggestedRoot"/>
+         </sequence>
+         <attribute name="nsURI" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The nsURI of the EPackage this applies to.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="displayName" type="string">
+            <annotation>
+               <documentation>
+                  A human readable label to associate to the EPackage.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="documentation" type="string">
+            <annotation>
+               <documentation>
+                  Documentation to associate to the EPackage. Will be rendered as HTML.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="suggestedRoot">
+      <complexType>
+         <attribute name="className" type="string">
+            <annotation>
+               <documentation>
+                  The name of an EClass which is a good candidate for being the root element of a model. The named class must be contained directly in the EPackage.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         5.0.0
+      </documentation>
+   </annotation>
+
+
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2017 Obeo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Obeo - initial API and implementation
+      </documentation>
+   </annotation>
+
+</schema>
