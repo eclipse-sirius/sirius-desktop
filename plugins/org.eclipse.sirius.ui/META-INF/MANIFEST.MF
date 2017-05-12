@@ -90,6 +90,7 @@ Export-Package: org.eclipse.sirius.description.contribution.provider;version="2.
  org.eclipse.sirius.ui.tools.internal.views.modelexplorer.property;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.modelexplorer.resourcelistener;version="5.0.0";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.wizards;version="2.0.4";x-internal:=true,
+ org.eclipse.sirius.ui.tools.internal.wizards.newmodel;version="5.0.0";x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.wizards.pages;version="2.1.0";x-internal:=true,
  org.eclipse.sirius.viewpoint.description.audit.provider;version="2.0.4",
  org.eclipse.sirius.viewpoint.description.provider;version="2.1.0",

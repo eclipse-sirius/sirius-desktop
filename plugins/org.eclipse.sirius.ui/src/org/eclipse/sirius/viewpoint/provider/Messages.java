@@ -211,6 +211,15 @@ public final class Messages {
     public static String CopyRepresentationAction_name;
 
     @TranslatableMessage
+    public static String CreateEMFModelWizard_windowTitle;
+
+    @TranslatableMessage
+    public static String CreateEMFModelWizard_modelNamePrefix;
+
+    @TranslatableMessage
+    public static String CreateEMFModelWizard_errorInstantiateRootElement;
+
+    @TranslatableMessage
     public static String CreateOrAddResourceWizard_initialEObject;
 
     @TranslatableMessage
@@ -604,6 +613,15 @@ public final class Messages {
     public static String MoveRepresentationAction_text;
 
     @TranslatableMessage
+    public static String NameAndLocationWizardPage_title;
+
+    @TranslatableMessage
+    public static String NameAndLocationWizardPage_description;
+
+    @TranslatableMessage
+    public static String NameAndLocationWizardPage_errorMessage;
+
+    @TranslatableMessage
     public static String NavigateToCommand_name;
 
     @TranslatableMessage
@@ -788,6 +806,30 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SelectAnalysisFilePage_newFileGroup_button;
+
+    @TranslatableMessage
+    public static String SelectEMFMetamodelWizardPage_title;
+
+    @TranslatableMessage
+    public static String SelectEMFMetamodelWizardPage_description;
+
+    @TranslatableMessage
+    public static String SelectEMFMetamodelWizardPage_metamodelLabel;
+
+    @TranslatableMessage
+    public static String SelectEMFMetamodelWizardPage_documentationLabel;
+
+    @TranslatableMessage
+    public static String SelectRootElementWizardPage_title;
+
+    @TranslatableMessage
+    public static String SelectRootElementWizardPage_description;
+
+    @TranslatableMessage
+    public static String SelectRootElementWizardPage_label;
+
+    @TranslatableMessage
+    public static String SelectRootElementWizardPage_checkboxLabel;
 
     @TranslatableMessage
     public static String SelectMetamodelWizardPage_browseButton;
