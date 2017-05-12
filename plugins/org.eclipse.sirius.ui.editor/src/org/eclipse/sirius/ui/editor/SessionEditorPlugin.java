@@ -10,12 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.editor;
 
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
-import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.Session;
@@ -23,6 +24,7 @@ import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.resourcelistener
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.FileEditorInput;
 import org.osgi.framework.BundleContext;
 
 public class SessionEditorPlugin extends EMFPlugin {
@@ -90,7 +92,8 @@ public class SessionEditorPlugin extends EMFPlugin {
 
                     PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
                         try {
-                            PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(new URIEditorInput(uri), SessionEditor.EDITOR_ID);
+                            PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                                    .openEditor(new FileEditorInput(ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)))), SessionEditor.EDITOR_ID);
                         } catch (PartInitException e) {
                             error("An error occurred while opening the session's editor.", e); //$NON-NLS-1$
                         }
