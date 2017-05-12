@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.editor.internal.graphicalcomponents;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,14 +20,19 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.ui.action.CopyAction;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
@@ -37,6 +43,7 @@ import org.eclipse.emf.edit.ui.action.PasteAction;
 import org.eclipse.emf.edit.ui.action.RedoAction;
 import org.eclipse.emf.edit.ui.action.UndoAction;
 import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.RollbackException;
@@ -47,6 +54,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -56,6 +64,8 @@ import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.jface.window.Window;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
@@ -63,6 +73,7 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.ui.editor.Messages;
+import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ProjectDependenciesItem;
 import org.eclipse.sirius.ui.tools.internal.actions.analysis.AddModelDependencyAction;
 import org.eclipse.sirius.ui.tools.internal.actions.analysis.RemoveSemanticResourceAction;
@@ -74,11 +85,13 @@ import org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.Filter
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.DeleteActionHandler;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.RenameActionHandler;
+import org.eclipse.sirius.ui.tools.internal.wizards.newmodel.CreateEMFModelWizard;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
@@ -93,10 +106,10 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchSite;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionContext;
 import org.eclipse.ui.actions.ActionFactory;
-import org.eclipse.ui.actions.NewWizardAction;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.navigator.INavigatorContentService;
@@ -297,7 +310,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         buttonsLayout.spacing = 5;
         buttonsComposite.setLayout(buttonsLayout);
         addButton(buttonsComposite, Messages.UI_SessionEditor_new_semantic_model_action_label, () -> {
-            new NewWizardAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow()).run();
+            createAndRegisterNewSemanticModel();
         });
         addButton(buttonsComposite, Messages.UI_SessionEditor_models_button_newSemanticModel, () -> {
             AddModelDependencyAction addModelDependencyAction = new AddModelDependencyAction(session);
@@ -315,6 +328,33 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
             }
         });
         removeSemanticModelOrRepresentationButton.setEnabled(false);
+    }
+
+    /**
+     * Use the generic model creation wizard to create a new resource, and if
+     * successful register it as a new semantic resource in the session.
+     */
+    private void createAndRegisterNewSemanticModel() {
+        IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+        IContainer context = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(session.getSessionResource().getURI().toPlatformString(true))).getParent();
+        CreateEMFModelWizard wizard = new CreateEMFModelWizard(EPackage.Registry.INSTANCE, new StructuredSelection(context));
+        if (new WizardDialog(window.getShell(), wizard).open() == Window.OK) {
+            IFile newModel = wizard.getResult();
+            if (newModel != null) {
+                try {
+                    new ProgressMonitorDialog(window.getShell()).run(false, false, monitor -> {
+                        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+                            @Override
+                            protected void doExecute() {
+                                session.addSemanticResource(URI.createPlatformResourceURI(newModel.getFullPath().toString(), true), monitor);
+                            }
+                        });
+                    });
+                } catch (InvocationTargetException | InterruptedException e) {
+                    SessionEditorPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getMessage(), e));
+                }
+            }
+        }
     }
 
     /**
