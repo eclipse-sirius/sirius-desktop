@@ -356,7 +356,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      *            the model Explorer Composite.
      */
     private CommonViewer createModelExplorerNavigator(Composite parent) {
-        final FilteredCommonTree commonTree = new FilteredCommonTree(SEMANTIC_MODELS_VIEWER_ID, parent, SWT.MULTI, false);
+        final FilteredCommonTree commonTree = new FilteredCommonTree(SEMANTIC_MODELS_VIEWER_ID, parent, SWT.MULTI | SWT.BORDER, false);
         INavigatorContentService contentService = NavigatorContentServiceFactory.INSTANCE.createContentService(SEMANTIC_MODELS_VIEWER_ID, treeViewer);
         CommonViewer theTreeViewer = commonTree.getViewer();
         contentService.createCommonContentProvider();
