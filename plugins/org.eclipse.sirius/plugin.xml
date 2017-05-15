@@ -454,5 +454,12 @@
             class="org.eclipse.sirius.business.internal.dialect.ViewpointMetamodelsProvider">
       </descriptorprovider>
    </extension>
+   <extension
+         point="org.eclipse.sirius.dRepresentationLocationRule">
+      <rule
+            class="org.eclipse.sirius.business.internal.representation.DRepLocationRuleForLocalResource"
+            priority="core">
+      </rule>
+   </extension>
 
 </plugin>

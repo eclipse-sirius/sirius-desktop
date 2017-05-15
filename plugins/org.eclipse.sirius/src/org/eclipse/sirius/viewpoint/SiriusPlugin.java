@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.api.dialect.description.MultiLanguagesValidat
 import org.eclipse.sirius.business.internal.dialect.description.InterpretedExpressionQueryProviderRegistry;
 import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRegistryListener;
 import org.eclipse.sirius.business.internal.helper.task.ModelOperationManagerRegistryListener;
+import org.eclipse.sirius.business.internal.representation.DRepresentationLocationRuleRegistryListener;
 import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistryListener;
 import org.eclipse.sirius.business.internal.session.factory.SessionFactoryRegistryListener;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessorsRegistry;
@@ -69,8 +70,7 @@ public final class SiriusPlugin extends EMFPlugin {
     private static Implementation plugin;
 
     /**
-     * create at the initialization to avoid synchronization cost in
-     * ExtendedPackageRegistry
+     * create at the initialization to avoid synchronization cost in ExtendedPackageRegistry
      */
     private static final ModelAccessorsRegistry REGISTRY = new ModelAccessorsRegistry();
 
@@ -110,32 +110,35 @@ public final class SiriusPlugin extends EMFPlugin {
         private InterpreterRegistry interRegistry;
 
         /**
-         * The registry listener that will be used to listen to sessionFactory
-         * extension changes.
+         * The registry listener that will be used to listen to sessionFactory extension changes.
          */
         private SessionFactoryRegistryListener sessionFactoryRegistryListener;
 
         /**
-         * The registry listener that will be used to listen to extension
-         * changes.
+         * The registry listener that will be used to listen to extension changes.
          */
         private DeleteHookDescriptorRegistryListener deleteHookDescriptorRegistryListener;
 
         /**
-         * The registry listener that will be used to listen to contribution
-         * changes against the external java action extension point.
+         * The registry listener that will be used to listen to contribution changes against the external java action
+         * extension point.
          */
         private ExternalJavaActionRegistryListener javaActionRegistryListener;
 
         /**
-         * The registry listener that will be used to listen to contribution
-         * changes against the external resource strategy extension point.
+         * The registry listener that will be used to listen to contribution changes against the external resource
+         * strategy extension point.
          */
         private ResourceStrategyRegistryListener resourceStrategyRegistryListener;
 
         /**
-         * The registry listener that will be used to listen to contribution
-         * changes.
+         * The registry listener that will be used to listen to contribution changes against the external
+         * dRepresentationLocationRule extension point.
+         */
+        private DRepresentationLocationRuleRegistryListener repLocationRuleRegistryListener;
+
+        /**
+         * The registry listener that will be used to listen to contribution changes.
          */
         private ModelOperationManagerRegistryListener modelOperationManagerRegistryListener;
 
@@ -175,6 +178,8 @@ public final class SiriusPlugin extends EMFPlugin {
             javaActionRegistryListener.init();
             resourceStrategyRegistryListener = new ResourceStrategyRegistryListener();
             resourceStrategyRegistryListener.init();
+            repLocationRuleRegistryListener = new DRepresentationLocationRuleRegistryListener();
+            repLocationRuleRegistryListener.init();
             modelOperationManagerRegistryListener = new ModelOperationManagerRegistryListener();
             modelOperationManagerRegistryListener.init();
             expressionQueryProviderRegistry = new InterpretedExpressionQueryProviderRegistry(Platform.getExtensionRegistry(), this);
@@ -202,6 +207,8 @@ public final class SiriusPlugin extends EMFPlugin {
             javaActionRegistryListener = null;
             resourceStrategyRegistryListener.dispose();
             resourceStrategyRegistryListener = null;
+            repLocationRuleRegistryListener.dispose();
+            repLocationRuleRegistryListener = null;
             modelOperationManagerRegistryListener.dispose();
             modelOperationManagerRegistryListener = null;
             expressionQueryProviderRegistry.dispose();

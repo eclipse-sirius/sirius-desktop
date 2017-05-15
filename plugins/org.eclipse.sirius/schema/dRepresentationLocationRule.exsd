@@ -59,6 +59,25 @@
                </appinfo>
             </annotation>
          </attribute>
+         <attribute name="priority" use="default" value="normal">
+            <annotation>
+               <documentation>
+                  the provider priority. 
+ * core is the lowest priority and is reserved for Sirius and Sirius based applications. Clients should not use that priority.
+ * normal and high are intented to be used by clients.
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="core">
+                  </enumeration>
+                  <enumeration value="normal">
+                  </enumeration>
+                  <enumeration value="high">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
       </complexType>
    </element>
 

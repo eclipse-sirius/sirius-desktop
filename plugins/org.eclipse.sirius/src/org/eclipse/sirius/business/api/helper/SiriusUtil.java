@@ -53,6 +53,9 @@ public final class SiriusUtil {
     /** The file extension for representation files. */
     public static final String REPRESENTATION_FILE_EXTENSION = "srm"; //$NON-NLS-1$
 
+    /** The name of the folder containing srm files. */
+    public static final String REPRESENTATIONS_FOLDER_NAME = ".representations"; //$NON-NLS-1$
+
     /** The "environment:/" uri scheme. */
     public static final String ENVIRONMENT_URI_SCHEME = "environment"; //$NON-NLS-1$
 

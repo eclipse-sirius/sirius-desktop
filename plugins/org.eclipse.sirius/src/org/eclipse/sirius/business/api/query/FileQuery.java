@@ -10,13 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
-import java.util.List;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
-import org.eclipse.sirius.business.api.session.danalysis.DRepresentationLocationRule;
-import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.business.internal.representation.DRepresentationLocationRuleRegistry;
 
 /**
  * Query allowing to determine the type of a file (i.e. if it contains a VSM, a DAnalysis...). It is leaner than the
@@ -87,10 +84,7 @@ public class FileQuery {
      * @return true if the file is dedicated to representations, false otherwise
      */
     public boolean isSrmFile() {
-        List<DRepresentationLocationRule> extensionPointRules = EclipseUtil.getExtensionPlugins(DRepresentationLocationRule.class, DRepresentationLocationRule.ID,
-                DRepresentationLocationRule.CLASS_ATTRIBUTE);
-
-        boolean isSrmFile = extensionPointRules.stream().filter(rule -> rule.isARepresentationResource(fileExtension)).findFirst().isPresent();
+        boolean isSrmFile = DRepresentationLocationRuleRegistry.getInstance().getRepLocationRules().stream().filter(rule -> rule.isARepresentationFileExtension(fileExtension)).findFirst().isPresent();
         if (!isSrmFile) {
             if (repResourceFactory == null) {
                 repResourceFactory = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get(SiriusUtil.REPRESENTATION_FILE_EXTENSION);

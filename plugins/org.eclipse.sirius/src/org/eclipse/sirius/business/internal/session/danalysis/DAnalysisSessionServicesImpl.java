@@ -34,6 +34,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
 import org.eclipse.sirius.business.internal.query.DRepresentationDescriptorInternalHelper;
+import org.eclipse.sirius.business.internal.representation.DRepresentationLocationManager;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
@@ -359,13 +360,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
             analysis.getOwnedViews().add(dView);
         }
 
-        Resource resourceforRepresentation = null;
-        if (Boolean.getBoolean("createRepresentationInSeparateResource")) { //$NON-NLS-1$
-            resourceforRepresentation = representationLocationManager.getOrCreateRepresentationResource(representation, dView.eResource());
-        }
-        if (resourceforRepresentation == null) {
-            resourceforRepresentation = dView.eResource();
-        }
+        Resource resourceforRepresentation = representationLocationManager.getOrCreateRepresentationResource(representation, dView.eResource());
         if (resourceforRepresentation != null) {
             session.registerResourceInCrossReferencer(resourceforRepresentation);
             resourceforRepresentation.getContents().add(representation);

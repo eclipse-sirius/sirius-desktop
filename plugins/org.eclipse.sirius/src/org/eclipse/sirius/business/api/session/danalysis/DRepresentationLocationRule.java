@@ -24,16 +24,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 public interface DRepresentationLocationRule {
 
     /**
-     * The extension point id.
-     */
-    String ID = "org.eclipse.sirius.dRepresentationLocationRule"; //$NON-NLS-1$
-
-    /**
-     * The class attribute.
-     */
-    String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
-
-    /**
      * Indicates if this {@link DRepresentationLocationRule} provides a custom URI. If not and if there is no other
      * {@link DRepresentationLocationRule} that provides, Sirius fall back to the default implementation.
      * 
@@ -43,7 +33,7 @@ public interface DRepresentationLocationRule {
      *            the DView resource
      * @return the value
      */
-    boolean provides(DRepresentation representation, Resource dViewResource);
+    boolean providesURI(DRepresentation representation, Resource dViewResource);
 
     /**
      * Provides the new URI for the given representation.
@@ -64,5 +54,5 @@ public interface DRepresentationLocationRule {
      * 
      * @return true if the fileExtension is known as a representation file
      */
-    Boolean isARepresentationResource(String fileExtension);
+    Boolean isARepresentationFileExtension(String fileExtension);
 }
