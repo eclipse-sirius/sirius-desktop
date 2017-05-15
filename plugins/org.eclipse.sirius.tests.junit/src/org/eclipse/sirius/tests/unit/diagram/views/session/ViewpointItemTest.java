@@ -10,15 +10,17 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.views.session;
 
-import static org.easymock.EasyMock.createMock;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
-import static org.easymock.EasyMock.verify;
-import junit.framework.TestCase;
+import static org.junit.Assert.assertNotEquals;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import junit.framework.TestCase;
 
 /**
  * Test class.
@@ -43,54 +45,46 @@ public class ViewpointItemTest extends TestCase {
 
     private ViewpointItem item2;
 
-    private ViewpointItem itemSameNameDifferentParent;
+    private ViewpointItem item3;
 
-    private Object[] mocks;
+    private Viewpoint viewpoint2;
 
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void setUp() throws Exception {
         super.setUp();
+        Resource newResource = new XMIResourceImpl(URI.createURI("uri1"));
+        viewpoint = DescriptionFactory.eINSTANCE.createViewpoint();
+        viewpoint2 = DescriptionFactory.eINSTANCE.createViewpoint();
 
-        viewpoint = createMock(Viewpoint.class);
+        newResource.getContents().add(viewpoint);
+        newResource.getContents().add(viewpoint2);
 
         item = new ViewpointItemImpl(null, viewpoint, parent1);
         item2 = new ViewpointItemImpl(null, viewpoint, parent1);
-        itemSameNameDifferentParent = new ViewpointItemImpl(null, viewpoint, parent2);
+        item3 = new ViewpointItemImpl(null, viewpoint2, parent1);
 
-        mocks = new Object[] { viewpoint };
-
-        // Start recording
-        expect(viewpoint.getName()).andReturn(A_NAME).anyTimes();
     }
 
     /**
      * hashCode tests.
      */
     public void testHashCode() {
-        replay(mocks);
-        // stop recording
-
-        assertEquals(item.hashCode(), item2.hashCode());
-        assertFalse(item.hashCode() == itemSameNameDifferentParent.hashCode());
-        assertFalse(item2.hashCode() == itemSameNameDifferentParent.hashCode());
-
-        verify(mocks);
+        assertTrue(item.hashCode() == item2.hashCode());
+        assertFalse(item.hashCode() == item3.hashCode());
+        assertFalse(item2.hashCode() == item3.hashCode());
     }
 
     /**
      * equals tests.
      */
     public void testEqualsObject() {
-        replay(mocks);
-        // stop recording
-
         assertEquals(item, item2);
-        assertFalse(item.equals(itemSameNameDifferentParent));
-        assertFalse(item2.equals(itemSameNameDifferentParent));
+        assertNotEquals(item, item3);
+        assertNotEquals(item2, item3);
 
-        verify(mocks);
     }
 
 }

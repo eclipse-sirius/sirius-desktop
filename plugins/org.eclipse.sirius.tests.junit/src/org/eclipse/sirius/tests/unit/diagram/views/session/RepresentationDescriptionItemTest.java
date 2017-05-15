@@ -10,16 +10,18 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.views.session;
 
-import static org.easymock.EasyMock.createMock;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
-import static org.easymock.EasyMock.verify;
-import junit.framework.TestCase;
+import static org.junit.Assert.assertNotEquals;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
+import org.eclipse.sirius.diagram.description.DescriptionFactory;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationDescriptionItemImpl;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+
+import junit.framework.TestCase;
 
 /**
  * Test class for RepresentationDescriptionItem.
@@ -38,9 +40,11 @@ public class RepresentationDescriptionItemTest extends TestCase {
 
     private RepresentationDescriptionItem item2;
 
-    private RepresentationDescriptionItem itemSameNameDifferentParent;
+    private RepresentationDescriptionItem item3;
 
     private RepresentationDescription representationDescription;
+
+    private DiagramDescription representationDescription2;
 
     private Resource resource;
 
@@ -53,50 +57,43 @@ public class RepresentationDescriptionItemTest extends TestCase {
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void setUp() throws Exception {
         super.setUp();
 
-        representationDescription = createMock(RepresentationDescription.class);
-        resource = createMock(Resource.class);
+        resource = new XMIResourceImpl(URI.createURI("uri1"));
+        representationDescription = DescriptionFactory.eINSTANCE.createDiagramDescription();
+        representationDescription2 = DescriptionFactory.eINSTANCE.createDiagramDescription();
+
+        resource.getContents().add(representationDescription);
+        resource.getContents().add(representationDescription2);
 
         item = new RepresentationDescriptionItemImpl(null, representationDescription, resource, parent1);
 
         item2 = new RepresentationDescriptionItemImpl(null, representationDescription, resource, parent1);
 
-        itemSameNameDifferentParent = new RepresentationDescriptionItemImpl(null, representationDescription, resource, parent2);
+        item3 = new RepresentationDescriptionItemImpl(null, representationDescription2, resource, parent2);
 
-        mocks = new Object[] { representationDescription, resource };
-
-        // start recording
-        expect(representationDescription.getName()).andReturn(A_NAME).anyTimes();
     }
 
     /**
      * hashCode tests.
      */
     public void testHashCode() {
-        replay(mocks);
-        // stop recording
+        assertTrue(item.hashCode() == item2.hashCode());
+        assertFalse(item.hashCode() == item3.hashCode());
+        assertFalse(item2.hashCode() == item3.hashCode());
 
-        assertEquals(item.hashCode(), item2.hashCode());
-        assertFalse(item.hashCode() == itemSameNameDifferentParent.hashCode());
-        assertFalse(item2.hashCode() == itemSameNameDifferentParent.hashCode());
-
-        verify(mocks);
     }
 
     /**
      * equals tests.
      */
     public void testEqualsObject() {
-        replay(mocks);
-        // stop recording
-
         assertEquals(item, item2);
-        assertFalse(item.equals(itemSameNameDifferentParent));
-        assertFalse(item2.equals(itemSameNameDifferentParent));
+        assertNotEquals(item, item3);
+        assertNotEquals(item2, item3);
 
-        verify(mocks);
     }
 
 }
