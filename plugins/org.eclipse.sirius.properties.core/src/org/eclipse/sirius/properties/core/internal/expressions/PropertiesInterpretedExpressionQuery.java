@@ -10,9 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.properties.core.internal.expressions;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
 
 import org.eclipse.eef.common.api.utils.Util;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
@@ -54,14 +58,8 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-
 /**
- * An {@code IInterpretedExpressionQuery} for expressions occuring inside
- * properties view descriptions.
+ * An {@code IInterpretedExpressionQuery} for expressions occuring inside properties view descriptions.
  *
  * @author pcdavid
  */
@@ -75,8 +73,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
      * @param target
      *            the VSM element on which the expression appears.
      * @param expressionAttribute
-     *            the attribute of the VSM element which defines the expression
-     *            (assumed to be an InterpredExpression).
+     *            the attribute of the VSM element which defines the expression (assumed to be an InterpredExpression).
      */
     public PropertiesInterpretedExpressionQuery(EObject target, EStructuralFeature expressionAttribute) {
         super(target, expressionAttribute);
@@ -90,9 +87,8 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
     @Override
     public Collection<EPackage> getPackagesToImport() {
         /*
-         * We can't rely on the default implementation here, as it assumes we
-         * are inside a RepresentationDescription, which is not the case for
-         * properties definitions.
+         * We can't rely on the default implementation here, as it assumes we are inside a RepresentationDescription,
+         * which is not the case for properties definitions.
          */
         if (packagesToImport == null) {
             packagesToImport = PropertiesInterpretedExpressionQuery.getEPackagesInScope(target);
@@ -103,12 +99,12 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
     @Override
     public Collection<String> getDependencies() {
         /*
-         * We can't rely on the default implementation here, as it assumes we
-         * are inside a Viewpoint, which is not the case for properties
-         * definitions.
+         * We can't rely on the default implementation here, as it assumes we are inside a Viewpoint, which is not the
+         * case for properties definitions.
          */
         if (dependencies == null) {
-            Collection<String> result = Lists.newArrayList(VSMNavigation.getJavaExtensionsInVSM(target));
+            Collection<String> result = new ArrayList<>();
+            result.addAll(VSMNavigation.getJavaExtensionsInVSM(target));
             // Make sure the implicitly registered SiriusToolServices class is
             // also visible.
             result.add(SiriusToolServices.class.getName());
@@ -118,7 +114,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
     }
 
     private static Collection<EPackage> getEPackagesInScope(EObject target) {
-        Collection<EPackage> result = Sets.newLinkedHashSet();
+        Collection<EPackage> result = new LinkedHashSet<>();
 
         boolean needsGlobalPackages = false;
         for (RepresentationDescription desc : VSMNavigation.getRepresentationDescriptionsInVSM(target)) {
@@ -126,9 +122,8 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
             result.addAll(configured);
             if (configured.isEmpty()) {
                 /*
-                 * If at least one of the possible source representations has no
-                 * explicitly configured metamodel, we must include the globally
-                 * registered packages.
+                 * If at least one of the possible source representations has no explicitly configured metamodel, we
+                 * must include the globally registered packages.
                  */
                 needsGlobalPackages = true;
             }
@@ -159,16 +154,17 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
     }
 
     private static Collection<EPackage> getAllRegisteredEPackages(Registry source) {
-        Collection<EPackage> result = Sets.newLinkedHashSet();
-        for (String nsURI : Sets.newLinkedHashSet(source.keySet())) {
+        Collection<EPackage> result = new LinkedHashSet<>();
+        Set<String> nsURIs = new LinkedHashSet<>();
+        nsURIs.addAll(source.keySet());
+        for (String nsURI : nsURIs) {
             try {
                 result.add(source.getEPackage(nsURI));
                 // CHECKSTYLE:OFF
             } catch (Throwable e) {
                 /*
-                 * anything might happen here depending on the other Eclipse
-                 * tools, and we've seen many time tools breaking all the
-                 * others.
+                 * anything might happen here depending on the other Eclipse tools, and we've seen many time tools
+                 * breaking all the others.
                  */
                 // CHECKSTYLE:ON
             }
@@ -179,7 +175,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
     @Override
     public Map<String, VariableType> getAvailableVariables() {
         if (availableVariables == null) {
-            availableVariables = Maps.newLinkedHashMap();
+            availableVariables = new LinkedHashMap<>();
         }
 
         // going through eContainer() to declare any For variable (dynamic
@@ -233,21 +229,18 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
     }
 
     /**
-     * return true if the given EObject is from PropertiesPackage or inherits
-     * from one of the EClasses of PropertiesPackage.
+     * return true if the given EObject is from PropertiesPackage or inherits from one of the EClasses of
+     * PropertiesPackage.
      * 
      * @param object
      *            any EObject
-     * @return true if the given EObject is from PropertiesPackage or inherits
-     *         from one of the EClasses of PropertiesPackage
+     * @return true if the given EObject is from PropertiesPackage or inherits from one of the EClasses of
+     *         PropertiesPackage
      */
     private boolean isFromOrInheritsPropertiesEPackage(EObject object) {
-        boolean isPropertiesElement = false;
-        Iterator<EClass> it = Iterators.concat(Iterators.singletonIterator(object.eClass()), object.eClass().getEAllSuperTypes().iterator());
-        while (!isPropertiesElement && it.hasNext()) {
-            isPropertiesElement = it.next().getEPackage() == PropertiesPackage.eINSTANCE;
-        }
-        return isPropertiesElement;
+        Stream<EClass> eClasses = Stream.concat(Stream.of(object.eClass()), object.eClass().getEAllSuperTypes().stream());
+
+        return eClasses.map(EClass::getEPackage).anyMatch(ePackage -> ePackage == PropertiesPackage.eINSTANCE);
     }
 
     @Override
@@ -285,8 +278,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
                 }
             } else if (callbackFeature == PropertiesPackage.Literals.ABSTRACT_RADIO_DESCRIPTION__INITIAL_OPERATION) {
                 /*
-                 * in the case of the radio button the type of newValue is the
-                 * return type of the candidate expression.
+                 * in the case of the radio button the type of newValue is the return type of the candidate expression.
                  */
                 availableVariables.put(EEFExpressionUtils.EEFText.NEW_VALUE, getResultType(toolContext.eContainer(), PropertiesPackage.Literals.ABSTRACT_RADIO_DESCRIPTION__CANDIDATES_EXPRESSION));
             } else if (callbackFeature == PropertiesPackage.Literals.WIDGET_ACTION__INITIAL_OPERATION) {
@@ -309,8 +301,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
     }
 
     /**
-     * The switch used to compute domainClasses for expressions used in
-     * properties definitions.
+     * The switch used to compute domainClasses for expressions used in properties definitions.
      *
      * @author pcdavid
      */
@@ -326,10 +317,8 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
         private final ToolInterpretedExpressionTargetSwitch delegateSwitch;
 
         /**
-         * By default ToolInterpretedExpressionTargetSwitch assumes operations
-         * will appear inside representations or mappings, so we override
-         * getFirstContextChangingContainer() to locate the parent
-         * GroupDescription instead.
+         * By default ToolInterpretedExpressionTargetSwitch assumes operations will appear inside representations or
+         * mappings, so we override getFirstContextChangingContainer() to locate the parent GroupDescription instead.
          */
         private static class CustomToolInterpretedExpressionTargetSwitch extends ToolInterpretedExpressionTargetSwitch {
             CustomToolInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch defaultSwitch) {
@@ -341,10 +330,8 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
                 EObject defaultResult = super.getFirstContextChangingContainer(element);
                 if (defaultResult instanceof Extension) {
                     /*
-                     * The generic algorithm in the super-class does not know
-                     * anything about the properties metamodel but will stop at
-                     * the top-level ViewExtensionDescription as it is an
-                     * Extension.
+                     * The generic algorithm in the super-class does not know anything about the properties metamodel
+                     * but will stop at the top-level ViewExtensionDescription as it is an Extension.
                      */
                     return VSMNavigation.findClosestGroupDescription(element);
                 } else {
@@ -360,7 +347,7 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
 
         @Override
         public Option<Collection<String>> doSwitch(EObject target, boolean considerFeature) {
-            Collection<String> targetTypes = Sets.newLinkedHashSet();
+            Collection<String> targetTypes = new LinkedHashSet<>();
             Option<Collection<String>> expressionTarget = Options.newSome(targetTypes);
             if (target != null) {
                 if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
@@ -389,9 +376,8 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
         }
 
         /**
-         * In this context, relevant containers are top-level pages and groups
-         * only. The root ViewExtensionDescriptions do not define anything
-         * relevant for domain class computation.
+         * In this context, relevant containers are top-level pages and groups only. The root ViewExtensionDescriptions
+         * do not define anything relevant for domain class computation.
          */
         private boolean isRelevant(EObject container) {
             return container instanceof PageDescription || container instanceof GroupDescription;

@@ -12,6 +12,7 @@ package org.eclipse.sirius.properties.core.api;
 
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -23,8 +24,6 @@ import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
 import org.eclipse.sirius.properties.core.internal.SiriusToolServices;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Provides an implementation of {@link IInterpreter} backed by an old-style {@link IInterpreterWithDiagnostic}.
@@ -52,7 +51,7 @@ public class SiriusInterpreter implements IInterpreter {
      *            An interpreter
      */
     public SiriusInterpreter(IInterpreterWithDiagnostic interpreterWithDiagnostic) {
-        this.interpreter = Preconditions.checkNotNull(interpreterWithDiagnostic);
+        this.interpreter = Objects.requireNonNull(interpreterWithDiagnostic);
     }
 
     @Override

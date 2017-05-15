@@ -11,13 +11,12 @@
 package org.eclipse.sirius.properties.core.api;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.eef.core.api.InputDescriptor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.properties.core.internal.SiriusContext;
-
-import com.google.common.collect.Sets;
 
 /**
  * An EEF InputDescriptor for elements selected in a Sirius context.
@@ -56,14 +55,13 @@ public class SiriusInputDescriptor implements InputDescriptor {
     }
 
     /**
-     * Returns all the semantic model element associated with the current
-     * selection, including secondary associated elements if any.
+     * Returns all the semantic model element associated with the current selection, including secondary associated
+     * elements if any.
      * 
-     * @return all the semantic model element associated with the current
-     *         selection.
+     * @return all the semantic model element associated with the current selection.
      */
     public Collection<EObject> getAllSemanticElements() {
-        Collection<EObject> result = Sets.newLinkedHashSet();
+        Collection<EObject> result = new LinkedHashSet<>();
         result.add(getSemanticElement());
         Option<Collection<EObject>> additional = context.getAdditionalSemanticElements();
         if (additional.some()) {
@@ -73,9 +71,8 @@ public class SiriusInputDescriptor implements InputDescriptor {
     }
 
     /**
-     * Returns the full Sirius context determined from the original input, which
-     * may include addition Sirius-specific information in addition to what can
-     * be exposed through the generic {@link InputDescriptor} API.
+     * Returns the full Sirius context determined from the original input, which may include addition Sirius-specific
+     * information in addition to what can be exposed through the generic {@link InputDescriptor} API.
      * 
      * @return the full Sirius context determined from the original input.
      */

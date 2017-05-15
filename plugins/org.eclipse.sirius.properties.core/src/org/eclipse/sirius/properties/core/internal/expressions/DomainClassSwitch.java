@@ -11,6 +11,7 @@
 package org.eclipse.sirius.properties.core.internal.expressions;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -33,20 +34,16 @@ import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
 import org.eclipse.sirius.properties.util.PropertiesSwitch;
 
-import com.google.common.collect.Sets;
-
 /**
- * Computes the domainClass (i.e. expected type of the receiver) for any
- * interpreted expression defined on properties views elements. Note that this
- * does not handle element inside a properties view description which come from
- * other Sirius package (e.g. model operations).
+ * Computes the domainClass (i.e. expected type of the receiver) for any interpreted expression defined on properties
+ * views elements. Note that this does not handle element inside a properties view description which come from other
+ * Sirius package (e.g. model operations).
  *
  * @author pcdavid
  */
 public class DomainClassSwitch extends PropertiesSwitch<Option<Collection<String>>> {
     /**
-     * Constant used in switches on feature id to consider the case when the
-     * feature must not be considered.
+     * Constant used in switches on feature id to consider the case when the feature must not be considered.
      */
     private static final int DO_NOT_CONSIDER_FEATURE = -1;
 
@@ -76,14 +73,13 @@ public class DomainClassSwitch extends PropertiesSwitch<Option<Collection<String
         if (doSwitch != null) {
             return doSwitch;
         }
-        Collection<String> defaultResult = Sets.newLinkedHashSet();
+        Collection<String> defaultResult = new LinkedHashSet<>();
         return Options.newSome(defaultResult);
     }
 
     /**
-     * Changes the behavior of this switch: if true, then the feature will be
-     * considered to calculate target types; if false, then the feature will be
-     * ignored.
+     * Changes the behavior of this switch: if true, then the feature will be considered to calculate target types; if
+     * false, then the feature will be ignored.
      *
      * @param considerFeature
      *            true if the feature should be considered, false otherwise
@@ -98,14 +94,12 @@ public class DomainClassSwitch extends PropertiesSwitch<Option<Collection<String
         switch (getFeatureId(page.eClass())) {
         case PropertiesPackage.PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
             /*
-             * A page can be activated from almost any kind of input: anything
-             * selectable from any of the representations defined in the same
-             * VSM can trigger teh evaluation of the page's
-             * semanticCandidateExpression. Technically we could compute a union
-             * of all the relevant semantic types, but in practice there is
-             * little chance that it would be more useful than just EObject.
+             * A page can be activated from almost any kind of input: anything selectable from any of the
+             * representations defined in the same VSM can trigger teh evaluation of the page's
+             * semanticCandidateExpression. Technically we could compute a union of all the relevant semantic types, but
+             * in practice there is little chance that it would be more useful than just EObject.
              */
-            Collection<String> target = Sets.newLinkedHashSet();
+            Collection<String> target = new LinkedHashSet<>();
             target.add(TypeName.EOBJECT_TYPENAME.getCompleteName());
             result = Options.newSome(target);
             break;
@@ -126,11 +120,10 @@ public class DomainClassSwitch extends PropertiesSwitch<Option<Collection<String
         switch (getFeatureId(group.eClass())) {
         case PropertiesPackage.GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
             /*
-             * A Group's semanticCandidateExpression is evaluated from the
-             * target of its referencing page, which is an instance of the
-             * page's domainClass.
+             * A Group's semanticCandidateExpression is evaluated from the target of its referencing page, which is an
+             * instance of the page's domainClass.
              */
-            Collection<String> target = Sets.newLinkedHashSet();
+            Collection<String> target = new LinkedHashSet<>();
             for (PageDescription page : VSMNavigation.findReferencingPages(group)) {
                 target.addAll(VSMNavigation.getPageDomainClass(page));
             }
@@ -196,7 +189,7 @@ public class DomainClassSwitch extends PropertiesSwitch<Option<Collection<String
     public Option<Collection<String>> caseDynamicMappingIfDescription(DynamicMappingIfDescription object) {
         return VSMNavigation.getDomainClassFromContainingGroup(object);
     }
-    
+
     private int getFeatureId(EClass eClass) {
         if (considerFeature && feature != null) {
             return eClass.getFeatureID(feature);

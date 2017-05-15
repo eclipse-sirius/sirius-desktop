@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 
@@ -45,14 +47,9 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.exception.Locke
 import org.eclipse.sirius.tools.internal.ui.RefreshHelper;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
-import com.google.common.base.Preconditions;
-import com.google.common.base.Throwables;
-import com.google.common.collect.Lists;
-
 /**
- * Integrates EEF properties views with a specific
- * {@link TransactionalEditingDomain} (for example the associated with a Sirius
- * session).
+ * Integrates EEF properties views with a specific {@link TransactionalEditingDomain} (for example the associated with a
+ * Sirius session).
  * 
  * @author pcdavid
  *
@@ -86,14 +83,12 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     private RuntimeLoggerSpy spy = new RuntimeLoggerSpy(RuntimeLoggerManager.INSTANCE);
 
     /**
-     * The {@link IPermissionAuthority} to use to obtain lock status
-     * information.
+     * The {@link IPermissionAuthority} to use to obtain lock status information.
      */
     private IPermissionAuthority auth;
 
     /**
-     * The listener that will be notified when the lock status of an element
-     * changes in Sirius.
+     * The listener that will be notified when the lock status of an element changes in Sirius.
      */
     private IAuthorityListener authListener;
 
@@ -109,7 +104,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
      *            the editing domain to integrate with.
      */
     public TransactionalEditingDomainContextAdapter(TransactionalEditingDomain ted) {
-        this.ted = Preconditions.checkNotNull(ted);
+        this.ted = Objects.requireNonNull(ted);
         ModelAccessor ma = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(ted.getResourceSet());
         this.auth = ma.getPermissionAuthority();
         this.authListener = new PermissionsListener();
@@ -218,8 +213,8 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     }
 
     /**
-     * The post-commit listener which triggers a refresh of the EEF page when
-     * possibly impacting changes occur in the Sirius session models.
+     * The post-commit listener which triggers a refresh of the EEF page when possibly impacting changes occur in the
+     * Sirius session models.
      * 
      * @author pcdavid
      */
@@ -236,22 +231,21 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
         @Override
         public void resourceSetChanged(final ResourceSetChangeEvent event) {
             if (onModelChanged != null && (forceRefreshOnRepresentationChanges() || RefreshHelper.isImpactingNotification(event.getNotifications()))) {
-                onModelChanged.accept(Lists.newArrayList(event.getNotifications()));
+                onModelChanged.accept(new ArrayList<>(event.getNotifications()));
             }
         }
     }
 
     /**
-     * Forwards permission changes notifications received from Sirius (via
-     * IAuthorityListener) to all currently registered listeners on the EEF
-     * side.
+     * Forwards permission changes notifications received from Sirius (via IAuthorityListener) to all currently
+     * registered listeners on the EEF side.
      * 
      * @author pcdavid
      */
     private final class PermissionsListener implements IAuthorityListener {
         @Override
         public void notifyIsReleased(Collection<EObject> instances) {
-            Collection<LockStatusChangeEvent> events = Lists.newArrayList();
+            Collection<LockStatusChangeEvent> events = new ArrayList<>();
             for (EObject o : instances) {
                 events.add(new LockStatusChangeEvent(o, LockStatus.UNLOCKED));
             }
@@ -265,7 +259,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
 
         @Override
         public void notifyIsLocked(Collection<EObject> instances) {
-            Collection<LockStatusChangeEvent> events = Lists.newArrayList();
+            Collection<LockStatusChangeEvent> events = new ArrayList<>();
             for (EObject o : instances) {
                 boolean lockedByMe = TransactionalEditingDomainContextAdapter.this.isLockedByMe(o);
                 events.add(new LockStatusChangeEvent(o, lockedByMe ? LockStatus.LOCKED_BY_ME : LockStatus.LOCKED_BY_OTHER));
@@ -287,13 +281,11 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     }
 
     /**
-     * Tests if an element we already know to be locked is locked by me (and not
-     * by other).
+     * Tests if an element we already know to be locked is locked by me (and not by other).
      * 
      * @param lockedElement
      *            an element we know is locked.
-     * @return <code>true</code> if the element is locked by me,
-     *         <code>false</code> otherwise.
+     * @return <code>true</code> if the element is locked by me, <code>false</code> otherwise.
      */
     protected boolean isLockedByMe(EObject lockedElement) {
         LockStatus status = getLockStatus(lockedElement);
@@ -301,10 +293,9 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     }
 
     /**
-     * A logger which only remembers the errors it was notified of. Listens to
-     * both a Sirius RuntimeLoggerManager, which receives errors in expressions
-     * evaluations, and to the plaform's ILogListener where
-     * LockedInstanceException and SecurityException are sent.
+     * A logger which only remembers the errors it was notified of. Listens to both a Sirius RuntimeLoggerManager, which
+     * receives errors in expressions evaluations, and to the plaform's ILogListener where LockedInstanceException and
+     * SecurityException are sent.
      * 
      * @author pcdavid
      */
@@ -316,21 +307,27 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
         private ILogListener platformSpy = new ILogListener() {
             @Override
             public void logging(IStatus status, String plugin) {
-                Throwable cause = (status != null && status.getException() != null) ? Throwables.getRootCause(status.getException()) : null;
+                Throwable cause = Optional.ofNullable(status).map(IStatus::getException).map(this::getRootCause).orElse(null);
                 if (cause instanceof LockedInstanceException || cause instanceof SecurityException) {
                     if (status.getSeverity() < IStatus.ERROR) {
                         /*
-                         * LockedInstanceException may be reported as plain
-                         * warnings here, but we want them to be considered as
-                         * errors for the purpose of performModelChange, so that
-                         * UIs can be correctly rolled back to a consistent
-                         * state when they occur.
+                         * LockedInstanceException may be reported as plain warnings here, but we want them to be
+                         * considered as errors for the purpose of performModelChange, so that UIs can be correctly
+                         * rolled back to a consistent state when they occur.
                          */
                         errors.add(new Status(IStatus.ERROR, status.getPlugin(), status.getCode(), status.getMessage(), status.getException()));
                     } else {
                         errors.add(status);
                     }
                 }
+            }
+
+            private Throwable getRootCause(Throwable throwable) {
+                Throwable rootCause = throwable;
+                while (rootCause.getCause() != null) {
+                    rootCause = rootCause.getCause();
+                }
+                return rootCause;
             }
         };
 

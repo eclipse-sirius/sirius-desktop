@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.properties.internal.tabprovider;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,6 @@ import org.eclipse.eef.ide.ui.properties.api.EEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptorProvider;
 import org.eclipse.eef.properties.ui.api.IEEFTabbedPropertySheetPageContributor;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -45,13 +45,7 @@ import org.eclipse.sirius.properties.defaultrules.api.DefaultRulesProvider;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IWorkbenchPart;
-
-import com.google.common.base.Preconditions;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * The {@link IEEFTabDescriptorProvider} for Eclipse Sirius.
@@ -115,18 +109,22 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
      * </pre>
      */
     private List<PageDescription> computeEffectiveDescription(SiriusInputDescriptor input, Session session) {
-        Preconditions.checkNotNull(session);
+        Objects.requireNonNull(session);
 
-        Set<ViewExtensionDescription> viewExtensionDescriptions = Sets.newLinkedHashSet();
-        for (Viewpoint viewpoint : session.getSelectedViewpoints(true)) {
-            Option<EObject> parent = new EObjectQuery(viewpoint).getFirstAncestorOfType(DescriptionPackage.Literals.GROUP);
-            if (parent.some()) {
-                Group group = (Group) parent.get();
-                Iterables.addAll(viewExtensionDescriptions, Iterables.filter(group.getExtensions(), ViewExtensionDescription.class));
-            }
-        }
+        // @formatter:off
+        Set<ViewExtensionDescription> viewExtensionDescriptions = session.getSelectedViewpoints(true).stream()
+                .map(viewpoint -> new EObjectQuery(viewpoint).getFirstAncestorOfType(DescriptionPackage.Literals.GROUP))
+                .filter(Option::some)
+                .map(Option::get)
+                .filter(Group.class::isInstance)
+                .map(Group.class::cast)
+                .flatMap(group -> group.getExtensions().stream())
+                .filter(ViewExtensionDescription.class::isInstance)
+                .map(ViewExtensionDescription.class::cast)
+                .collect(Collectors.toSet());
+        // @formatter:on
 
-        List<PageDescription> effectivePages = Lists.newArrayList();
+        List<PageDescription> effectivePages = new ArrayList<>();
         viewExtensionDescriptions.forEach(viewExtensionDescription -> {
             IVariableManager variableManager = new VariableManagerFactory().createVariableManager();
             variableManager.put(EEFExpressionUtils.SELF, viewExtensionDescription);

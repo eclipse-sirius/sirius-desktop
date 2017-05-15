@@ -11,6 +11,7 @@
 package org.eclipse.sirius.properties.core.internal;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider;
@@ -18,8 +19,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDes
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import com.google.common.collect.Sets;
 
 /**
  * The descriptor of the Properties metamodel.
@@ -29,7 +28,7 @@ import com.google.common.collect.Sets;
 public class PropertiesMetamodelDescriptorProvider implements MetamodelDescriptorProvider {
     @Override
     public Collection<MetamodelDescriptor> provides(Collection<Viewpoint> vps) {
-        Set<MetamodelDescriptor> result = Sets.newLinkedHashSet();
+        Set<MetamodelDescriptor> result = new LinkedHashSet<>();
         result.add(new EcoreMetamodelDescriptor(PropertiesPackage.eINSTANCE));
         return result;
     }
