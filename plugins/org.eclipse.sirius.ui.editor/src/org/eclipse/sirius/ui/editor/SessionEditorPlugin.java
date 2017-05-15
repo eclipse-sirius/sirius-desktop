@@ -29,6 +29,11 @@ import org.osgi.framework.BundleContext;
 
 public class SessionEditorPlugin extends EMFPlugin {
     /**
+     * This plug-in's identifier.
+     */
+    public static final String ID = "org.eclipse.sirius.ui.editor"; //$NON-NLS-1$
+    
+    /**
      * Keep track of the singleton.
      */
     public static final SessionEditorPlugin INSTANCE = new SessionEditorPlugin();

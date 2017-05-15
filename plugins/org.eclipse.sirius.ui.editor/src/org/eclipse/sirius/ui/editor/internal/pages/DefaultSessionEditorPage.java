@@ -52,12 +52,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.handlers.CollapseAllHandler;
-import org.eclipse.ui.internal.navigator.NavigatorPlugin;
 import org.eclipse.ui.internal.navigator.actions.CollapseAllAction;
 import org.eclipse.ui.internal.navigator.filters.FilterActionGroup;
 import org.eclipse.ui.internal.navigator.filters.SelectFiltersAction;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.navigator.INavigatorViewerDescriptor;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
  * Class used to create the main page of the session editor which describe
@@ -232,7 +232,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         if (!hideCollapseAllAction) {
             Action collapseAllAction = new CollapseAllAction(treeViewer);
             collapseAllAction.setToolTipText(Messages.DefaultSessionEditorPage_collapseAllAction_tooltip);
-            ImageDescriptor collapseAllIcon = getImageDescriptor("elcl16/collapseall.gif"); //$NON-NLS-1$
+            ImageDescriptor collapseAllIcon = getImageDescriptor("collapseall.png"); //$NON-NLS-1$
             collapseAllAction.setImageDescriptor(collapseAllIcon);
             collapseAllAction.setHoverImageDescriptor(collapseAllIcon);
             collapseAllHandler = new CollapseAllHandler(treeViewer);
@@ -243,7 +243,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         filterActionGroup = new FilterActionGroup(treeViewer);
         Action selectFiltersAction = new SelectFiltersAction(treeViewer, filterActionGroup);
         selectFiltersAction.setToolTipText(Messages.DefaultSessionEditorPage_selectFilterAction_tooltip);
-        ImageDescriptor selectFiltersIcon = NavigatorPlugin.getImageDescriptor("icons/full/elcl16/filter_ps.gif"); //$NON-NLS-1$
+        ImageDescriptor selectFiltersIcon = getImageDescriptor("filter_ps.png"); //$NON-NLS-1$
         selectFiltersAction.setImageDescriptor(selectFiltersIcon);
         selectFiltersAction.setHoverImageDescriptor(selectFiltersIcon);
         toolBarManager.add(selectFiltersAction);
@@ -260,7 +260,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
      * @return the image descriptor with the given relative path.
      */
     protected final ImageDescriptor getImageDescriptor(String relativePath) {
-        return NavigatorPlugin.getImageDescriptor("icons/full/" + relativePath); //$NON-NLS-1$
+        return AbstractUIPlugin.imageDescriptorFromPlugin(SessionEditorPlugin.ID, "icons/" + relativePath); //$NON-NLS-1$
     }
 
     /**
