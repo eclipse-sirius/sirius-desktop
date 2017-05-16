@@ -159,7 +159,10 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
         nsURIs.addAll(source.keySet());
         for (String nsURI : nsURIs) {
             try {
-                result.add(source.getEPackage(nsURI));
+                EPackage ePackage = source.getEPackage(nsURI);
+                if (ePackage != null) {
+                    result.add(ePackage);
+                } 
                 // CHECKSTYLE:OFF
             } catch (Throwable e) {
                 /*
