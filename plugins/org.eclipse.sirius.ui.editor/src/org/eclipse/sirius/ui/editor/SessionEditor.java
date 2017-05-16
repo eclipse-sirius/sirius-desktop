@@ -193,8 +193,10 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                 editingSession.detachEditor(this, choice == ISaveablePart2.NO);
 
             }
+            if (session.getTransactionalEditingDomain() != null) {
+                session.getTransactionalEditingDomain().getCommandStack().removeCommandStackListener(listener);
+            }
         }
-        session.getTransactionalEditingDomain().getCommandStack().removeCommandStackListener(listener);
         session = null;
         propertySheetPage = null;
     }

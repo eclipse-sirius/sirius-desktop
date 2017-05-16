@@ -971,10 +971,10 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      * Dispose all listeners.
      */
     public void dispose() {
-        session.getTransactionalEditingDomain().getCommandStack().removeCommandStackListener(listener);
-        session.removeListener(this);
         SessionManager.INSTANCE.removeSessionsListener(this);
         if (session != null && session.getTransactionalEditingDomain() != null) {
+            session.getTransactionalEditingDomain().getCommandStack().removeCommandStackListener(listener);
+            session.removeListener(this);
             session.getTransactionalEditingDomain().removeResourceSetListener(resourceSetListenerChangeListener);
         }
         session = null;

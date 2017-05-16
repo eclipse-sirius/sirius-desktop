@@ -235,7 +235,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     }
 
     private void closeEditor(final ISiriusEditor editor, final boolean save) {
-        if (DialectUIManager.INSTANCE.canHandleEditor(editor)) {
+        if (editor instanceof DialectEditor && DialectUIManager.INSTANCE.canHandleEditor(editor)) {
             try {
                 detachEditor(editor);
             } catch (IllegalStateException e) {
@@ -244,6 +244,8 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
             } finally {
                 DialectUIManager.INSTANCE.closeEditor(editor, save);
             }
+        } else if (!(editor instanceof DialectEditor)) {
+            detachEditor(editor);
         } else {
             PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().closeEditor(editor, save);
         }

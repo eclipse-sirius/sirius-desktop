@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.tools.api.views.common.item.AnalysisResourceItem;
@@ -25,6 +26,7 @@ import org.eclipse.sirius.ui.tools.api.views.common.item.ProjectDependenciesItem
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ResourcesFolderItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointsFolderItem;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -94,6 +96,31 @@ public class CommonItemSorter extends ViewerSorter {
         int result = super.compare(viewer, e1, e2);
         if (e1 instanceof RepresentationDescriptionItem && e2 instanceof RepresentationDescriptionItem) {
             result = compareRepresentationDescriptions(viewer, (RepresentationDescriptionItem) e1, (RepresentationDescriptionItem) e2);
+        } else if (e1 instanceof ViewpointItemImpl && e2 instanceof ViewpointItemImpl && result == 0) {
+            result = compareViewpoint((ViewpointItemImpl) e1, (ViewpointItemImpl) e2);
+        }
+        return result;
+    }
+
+    /**
+     * Compare two viewpoint items based on viewpoints location. A viewpoint in workspace should be presented before a
+     * viewpoint in plugin registry.
+     * 
+     * @param vp1
+     *            first viewpoint to compare
+     * @param vp2
+     *            second viewpoint to compare
+     * @return 0 if the two viewpoints of the items are either from workspace or plugin registry. -1 if vp1 is in
+     *         workspace and vp2 not. And 1 if vp1 is in plugin registry and vp2 not.
+     */
+    private int compareViewpoint(ViewpointItemImpl vp1, ViewpointItemImpl vp2) {
+        boolean vp1IsFromWorkspace = !ViewpointRegistry.getInstance().isFromPlugin(vp1.getViewpoint());
+        boolean vp2IsFromWorkspace = !ViewpointRegistry.getInstance().isFromPlugin(vp2.getViewpoint());
+        int result = 0;
+        if (vp1IsFromWorkspace && !vp2IsFromWorkspace) {
+            result = -1;
+        } else if (!vp1IsFromWorkspace && vp2IsFromWorkspace) {
+            result = 1;
         }
         return result;
     }
@@ -115,16 +142,14 @@ public class CommonItemSorter extends ViewerSorter {
     }
 
     /**
-     * Compare two representation description : to sort them by representation
-     * type, sub type and then by name.
+     * Compare two representation description : to sort them by representation type, sub type and then by name.
      * 
      * @param e1
      *            the first representation description.
      * @param e2
      *            the second representation description.
-     * @return Returns an integer value. Value is less than zero if source is
-     *         less than target, value is zero if source and target are equal,
-     *         value is greater than zero if source is greater than target.
+     * @return Returns an integer value. Value is less than zero if source is less than target, value is zero if source
+     *         and target are equal, value is greater than zero if source is greater than target.
      */
     public static int compareRepresentationDescriptions(RepresentationDescription e1, RepresentationDescription e2) {
         String defaultName = ""; //$NON-NLS-1$
@@ -149,8 +174,7 @@ public class CommonItemSorter extends ViewerSorter {
     }
 
     /*
-     * This method looks for the type which is a direct sub type of
-     * RepresentationDescription.
+     * This method looks for the type which is a direct sub type of RepresentationDescription.
      */
     private static EClass getRepresentationType(RepresentationDescription description) {
         return lookForRepresentationDescriptionType(description.eClass());
