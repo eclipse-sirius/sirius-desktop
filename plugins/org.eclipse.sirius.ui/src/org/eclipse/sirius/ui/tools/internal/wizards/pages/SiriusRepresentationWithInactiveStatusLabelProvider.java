@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 
+import java.text.MessageFormat;
+
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationDescriptionItemImpl;
@@ -55,6 +57,10 @@ public class SiriusRepresentationWithInactiveStatusLabelProvider extends SiriusR
             if (!ViewpointHelper.isViewpointEnabledInSession(viewpointItem.getSession().get(), viewpointItem.getViewpoint())) {
                 text += " (" + Messages.GraphicalRepresentationHandler_disabledViewpoint_label + ")"; //$NON-NLS-1$ //$NON-NLS-2$
             }
+        }
+        if (element instanceof RepresentationDescriptionItemImpl) {
+            RepresentationDescriptionItemImpl descriptionItem = (RepresentationDescriptionItemImpl) element;
+            text += MessageFormat.format(Messages.GraphicalRepresentationHandler_representationNumber_label, descriptionItem.getChildren().size()); // $NON-NLS-1$
         }
         return text;
     }

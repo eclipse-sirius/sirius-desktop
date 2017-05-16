@@ -10,13 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 
-import java.text.MessageFormat;
-
 import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
-import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationDescriptionItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
-import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -28,16 +24,6 @@ import org.eclipse.swt.graphics.Image;
  *
  */
 public class SiriusRepresentationLabelProvider extends SiriusCommonLabelProvider {
-
-    @Override
-    public String getText(Object element) {
-        String text = super.getText(element);
-        if (element instanceof RepresentationDescriptionItemImpl) {
-            RepresentationDescriptionItemImpl descriptionItem = (RepresentationDescriptionItemImpl) element;
-            text += MessageFormat.format(Messages.GraphicalRepresentationHandler_representationNumber_label, descriptionItem.getChildren().size()); // $NON-NLS-1$
-        }
-        return text;
-    }
 
     @Override
     public Image getImage(Object element) {
