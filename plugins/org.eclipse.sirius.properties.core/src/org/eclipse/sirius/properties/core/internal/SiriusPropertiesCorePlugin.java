@@ -40,9 +40,6 @@ import org.eclipse.sirius.properties.core.internal.preprocessor.GroupDescription
 import org.eclipse.sirius.properties.core.internal.preprocessor.PropertiesDescriptionPreprocessorSwitch;
 import org.eclipse.sirius.properties.core.internal.preprocessor.PropertyValidationRulePreprocessorLinkResolver;
 import org.eclipse.sirius.tools.internal.validation.EValidatorAdapter;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
@@ -97,74 +94,62 @@ public class SiriusPropertiesCorePlugin extends EMFPlugin {
      */
     public static class Implementation extends AbstractEEFEclipsePlugin {
         /**
-         * The name of the extension point for the {@link IDescriptionConverter}
-         * .
+         * The name of the extension point for the {@link IDescriptionConverter} .
          */
         private static final String DESCRIPTION_CONVERTER_EXTENSION_POINT = "descriptionConverter"; //$NON-NLS-1$
 
         /**
-         * The name of the extension point for the
-         * {@link IDescriptionPreprocessor} .
+         * The name of the extension point for the {@link IDescriptionPreprocessor} .
          */
         private static final String DESCRIPTION_PREPROCESSOR_EXTENSION_POINT = "descriptionPreprocessor"; //$NON-NLS-1$
 
         /**
-         * The name of the extension point for the
-         * {@link IDescriptionLinkResolver}.
+         * The name of the extension point for the {@link IDescriptionLinkResolver}.
          */
         private static final String DESCRIPTION_CONVERTER_LINK_RESOLVER_EXTENSION_POINT = "descriptionLinkResolver"; //$NON-NLS-1$
 
         /**
-         * The name of the extension point for the
-         * {@link IDescriptionLinkResolver}.
+         * The name of the extension point for the {@link IDescriptionLinkResolver}.
          */
         private static final String DESCRIPTION_PREPROCESSOR_LINK_RESOLVER_EXTENSION_POINT = "descriptionPreprocessorLinkResolver"; //$NON-NLS-1$
 
         /**
-         * The {@link IItemRegistry} used to retrieve the
-         * {@link IDescriptionConverter}.
+         * The {@link IItemRegistry} used to retrieve the {@link IDescriptionConverter}.
          */
         private IItemRegistry<IDescriptionConverter> descriptionConverterRegistry;
 
         /**
-         * The {@link IItemRegistry} used to retrieve the
-         * {@link IDescriptionPreprocessor}.
+         * The {@link IItemRegistry} used to retrieve the {@link IDescriptionPreprocessor}.
          */
         private IItemRegistry<IDescriptionPreprocessor> descriptionPreprocessorRegistry;
 
         /**
-         * The {@link IItemRegistry} used to retrieve the
-         * {@link IDescriptionLinkResolver}.
+         * The {@link IItemRegistry} used to retrieve the {@link IDescriptionLinkResolver}.
          */
         private IItemRegistry<IDescriptionLinkResolver> descriptionConverterLinkResolverRegistry;
 
         /**
-         * The {@link IItemRegistry} used to retrieve the
-         * {@link IDescriptionLinkResolver}.
+         * The {@link IItemRegistry} used to retrieve the {@link IDescriptionLinkResolver}.
          */
         private IItemRegistry<IDescriptionLinkResolver> descriptionPreprocessorLinkResolverRegistry;
 
         /**
-         * The extension registry listener for the {@link IDescriptionConverter}
-         * .
+         * The extension registry listener for the {@link IDescriptionConverter} .
          */
         private AbstractRegistryEventListener descriptionConverterListener;
 
         /**
-         * The extension registry listener for the
-         * {@link IDescriptionPreprocessor} .
+         * The extension registry listener for the {@link IDescriptionPreprocessor} .
          */
         private AbstractRegistryEventListener descriptionPreprocessorListener;
 
         /**
-         * The extension registry listener for the
-         * {@link IDescriptionLinkResolver}.
+         * The extension registry listener for the {@link IDescriptionLinkResolver}.
          */
         private AbstractRegistryEventListener descriptionConverterLinkResolverListener;
 
         /**
-         * The extension registry listener for the
-         * {@link IDescriptionLinkResolver}.
+         * The extension registry listener for the {@link IDescriptionLinkResolver}.
          */
         private AbstractRegistryEventListener descriptionPreprocessorLinkResolverListener;
 
@@ -200,10 +185,9 @@ public class SiriusPropertiesCorePlugin extends EMFPlugin {
         public void start(BundleContext context) throws Exception {
             super.start(context);
 
-         // Sets the validator for these model.
+            // Sets the validator for these model.
             EValidator.Registry.INSTANCE.put(PropertiesPackage.eINSTANCE, new EValidatorAdapter());
-            
-            
+
             IExtensionRegistry registry = Platform.getExtensionRegistry();
             this.descriptionConverterRegistry = new ItemRegistry<>();
             this.descriptionConverterListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, DESCRIPTION_CONVERTER_EXTENSION_POINT, this.descriptionConverterRegistry);
@@ -247,13 +231,11 @@ public class SiriusPropertiesCorePlugin extends EMFPlugin {
         }
 
         /**
-         * Returns the description converter used to create the EEF description
-         * EObject from the given Sirius one.
+         * Returns the description converter used to create the EEF description EObject from the given Sirius one.
          * 
          * @param description
          *            The Sirius description EObject
-         * @return The converter found or <code>null</code> if none could be
-         *         found
+         * @return The converter found or <code>null</code> if none could be found
          */
         public Optional<IDescriptionConverter> getDescriptionConverter(EObject description) {
             if (!this.hasReadDescriptionConverterRegistry) {
@@ -280,13 +262,12 @@ public class SiriusPropertiesCorePlugin extends EMFPlugin {
         }
 
         /**
-         * Returns the description preprocessor used to create the Sirius
-         * resolved description EObject from the given Sirius one.
+         * Returns the description preprocessor used to create the Sirius resolved description EObject from the given
+         * Sirius one.
          * 
          * @param description
          *            The Sirius description EObject
-         * @return The preprocessor found or <code>null</code> if none could be
-         *         found
+         * @return The preprocessor found or <code>null</code> if none could be found
          */
         public Optional<IDescriptionPreprocessor> getDescriptionPreprocessor(EObject description) {
             if (!this.hasReadDescriptionPreprocessorRegistry) {
@@ -324,8 +305,7 @@ public class SiriusPropertiesCorePlugin extends EMFPlugin {
         }
 
         /**
-         * Returns the link resolvers used to update the preprocessor
-         * description.
+         * Returns the link resolvers used to update the preprocessor description.
          * 
          * @return The link resolvers
          */

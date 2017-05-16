@@ -21,10 +21,7 @@ import org.eclipse.eef.ide.api.extensions.impl.DescriptorRegistryEventListener;
 import org.eclipse.eef.ide.api.extensions.impl.ItemRegistry;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.properties.PropertiesPackage;
-import org.eclipse.sirius.tools.internal.validation.EValidatorAdapter;
 import org.eclipse.sirius.ui.properties.api.IEditingContextAdapterProvider;
 import org.osgi.framework.BundleContext;
 
