@@ -16,6 +16,7 @@ import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressio
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQueryProvider;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
  * An {@link IInterpretedExpressionQueryProvider} for properties view
@@ -26,7 +27,7 @@ import org.eclipse.sirius.ext.base.Options;
 public class PropertiesExpressionQueryProvider implements IInterpretedExpressionQueryProvider {
     @Override
     public Option<IInterpretedExpressionQuery> getExpressionQueryFor(EObject context, EStructuralFeature expressionAttribute) {
-        if (VSMNavigation.isInsideViewExtensionDescription(context)) {
+        if (VSMNavigation.isInsideViewExtensionDescription(context) || context.eClass().getEPackage() == PropertiesPackage.eINSTANCE) {
             IInterpretedExpressionQuery value = new PropertiesInterpretedExpressionQuery(context, expressionAttribute);
             return Options.newSome(value);
         } else {
