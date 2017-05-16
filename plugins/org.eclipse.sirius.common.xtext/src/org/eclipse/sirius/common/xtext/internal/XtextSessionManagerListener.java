@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,9 +16,6 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManagerListener.Stub;
 import org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy;
 import org.eclipse.xtext.resource.XtextResource;
-
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterators;
 
 /**
  * A session manager listener which will switch the saving policy of every
@@ -59,6 +56,6 @@ public class XtextSessionManagerListener extends Stub {
     }
 
     protected boolean containsXtextResources(TransactionalEditingDomain ted) {
-        return ted.getResourceSet() != null && Iterators.any(ted.getResourceSet().getResources().iterator(), Predicates.instanceOf(XtextResource.class));
+        return ted.getResourceSet() != null && ted.getResourceSet().getResources().stream().anyMatch(XtextResource.class::isInstance);
     }
 }

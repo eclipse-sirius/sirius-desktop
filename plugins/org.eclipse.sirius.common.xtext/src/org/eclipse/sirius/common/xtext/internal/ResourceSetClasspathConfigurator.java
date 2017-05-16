@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +9,6 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.common.xtext.internal;
-
-import static com.google.common.collect.Maps.newHashMap;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,7 +51,7 @@ public class ResourceSetClasspathConfigurator {
     }
 
     private Map<URI, URI> computePlatformURIMap(IJavaProject javaProject) {
-        HashMap<URI, URI> hashMap = newHashMap(EcorePlugin.computePlatformURIMap());
+        HashMap<URI, URI> hashMap = new HashMap<>(EcorePlugin.computePlatformURIMap());
         try {
             if (!javaProject.exists())
                 return hashMap;

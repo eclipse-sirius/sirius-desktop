@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,17 +11,16 @@
 package org.eclipse.sirius.common.xtext.internal;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.SavingPolicy;
 import org.eclipse.xtext.common.types.access.TypeResource;
 import org.eclipse.xtext.resource.SaveOptions;
-
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
 
 /**
  * A saving policy dedicated to Xtext aware sessions. It actually work around
@@ -52,13 +51,13 @@ public class XtextSavingPolicy implements SavingPolicy {
     @SuppressWarnings("restriction")
     @Override
     public Collection<Resource> save(Iterable<Resource> resourcesToSave, Map<?, ?> options, IProgressMonitor monitor) {
-        Map<Object, Object> newOptions = Maps.newHashMap();
+        Map<Object, Object> newOptions = new HashMap<>();
         if (options != null) {
             newOptions.putAll(options);
         }
         newOptions.putAll(SaveOptions.newBuilder().noValidation().getOptions().toOptionsMap());
-        Iterable<Resource> writeableResourcesToSave = Iterables.filter(resourcesToSave, Predicates.not(Predicates.instanceOf(TypeResource.class)));
-        return delegate.save(writeableResourcesToSave, newOptions, monitor);
+        Stream<Resource> writeableResourcesToSave = StreamSupport.stream(resourcesToSave.spliterator(), false).filter(k -> ! (k instanceof TypeResource));
+        return delegate.save(() -> writeableResourcesToSave.iterator(), newOptions, monitor);
     }
 
 }
