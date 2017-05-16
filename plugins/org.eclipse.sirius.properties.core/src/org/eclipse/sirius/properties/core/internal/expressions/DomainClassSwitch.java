@@ -70,10 +70,11 @@ public class DomainClassSwitch extends PropertiesSwitch<Option<Collection<String
     @Override
     public Option<Collection<String>> doSwitch(EObject theEObject) {
         Option<Collection<String>> doSwitch = super.doSwitch(theEObject);
-        if (doSwitch != null) {
+        if (doSwitch != null && doSwitch.some() && doSwitch.get().size() > 0) {
             return doSwitch;
         }
         Collection<String> defaultResult = new LinkedHashSet<>();
+        defaultResult.add(TypeName.EOBJECT_TYPENAME.getCompleteName());
         return Options.newSome(defaultResult);
     }
 
