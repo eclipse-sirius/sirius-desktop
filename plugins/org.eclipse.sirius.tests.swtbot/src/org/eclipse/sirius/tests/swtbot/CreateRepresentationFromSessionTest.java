@@ -134,7 +134,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
     public void testDiagramCreationWithoutSemanticElement() {
         secondWizard("WithoutSemanticElement");
         SWTBotTreeItem[] allItems = bot.tree().getAllItems();
-        assertEquals("The session must have 2 semantic resources.", allItems.length, 2);
+        assertEquals("The session must have 0 semantic resources.", 0, allItems.length);
         for (int i = 0; i < allItems.length; i++) {
             SWTBotTreeItem swtBotTreeItem = allItems[i];
             for (int j = 0; j < swtBotTreeItem.getItems().length; j++) {
