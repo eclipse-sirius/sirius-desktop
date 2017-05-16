@@ -113,8 +113,6 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
             registry.addListener(this.contextAdapterProviderListener, PLUGIN_ID + '.' + CONTEXT_ADAPTER_PROVIDER_EXTENSION_POINT);
             this.contextAdapterProviderListener.readRegistry(registry);
 
-            // Sets the validator for these model.
-            EValidator.Registry.INSTANCE.put(PropertiesPackage.eINSTANCE, new EValidatorAdapter());
         }
 
         @Override

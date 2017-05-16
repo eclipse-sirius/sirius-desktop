@@ -26,6 +26,8 @@ import org.eclipse.eef.ide.api.extensions.impl.ItemRegistry;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EValidator;
+import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.core.api.DefaultDescriptionConverter;
 import org.eclipse.sirius.properties.core.api.DefaultDescriptionWithInitialOperationConverter;
 import org.eclipse.sirius.properties.core.api.IDescriptionConverter;
@@ -37,6 +39,10 @@ import org.eclipse.sirius.properties.core.internal.converter.SemanticValidationR
 import org.eclipse.sirius.properties.core.internal.preprocessor.GroupDescriptionPreprocessorLinkResolver;
 import org.eclipse.sirius.properties.core.internal.preprocessor.PropertiesDescriptionPreprocessorSwitch;
 import org.eclipse.sirius.properties.core.internal.preprocessor.PropertyValidationRulePreprocessorLinkResolver;
+import org.eclipse.sirius.tools.internal.validation.EValidatorAdapter;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
@@ -194,6 +200,10 @@ public class SiriusPropertiesCorePlugin extends EMFPlugin {
         public void start(BundleContext context) throws Exception {
             super.start(context);
 
+         // Sets the validator for these model.
+            EValidator.Registry.INSTANCE.put(PropertiesPackage.eINSTANCE, new EValidatorAdapter());
+            
+            
             IExtensionRegistry registry = Platform.getExtensionRegistry();
             this.descriptionConverterRegistry = new ItemRegistry<>();
             this.descriptionConverterListener = new DescriptorRegistryEventListener<>(PLUGIN_ID, DESCRIPTION_CONVERTER_EXTENSION_POINT, this.descriptionConverterRegistry);
