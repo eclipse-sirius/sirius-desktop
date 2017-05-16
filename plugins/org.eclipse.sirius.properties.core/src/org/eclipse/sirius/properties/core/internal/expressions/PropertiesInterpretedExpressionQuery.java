@@ -265,8 +265,8 @@ public final class PropertiesInterpretedExpressionQuery extends AbstractInterpre
         availableVariables.put(EEFExpressionUtils.INPUT, VariableType.fromJavaClass(SiriusInputDescriptor.class));
         if (toolContext instanceof InitialOperation) {
             EReference callbackFeature = toolContext.eContainmentFeature();
-            VariableType stringType = VariableType.fromString("java.lang.String"); //$NON-NLS-1$
-            VariableType booleanType = VariableType.fromString("java.lang.Boolean"); //$NON-NLS-1$
+            VariableType stringType = VariableType.fromJavaClass(String.class); 
+            VariableType booleanType = VariableType.fromJavaClass(Boolean.class);
             VariableType unkownType = VariableType.fromString(TypeName.EOBJECT_TYPENAME.getCompleteName());
             if (callbackFeature == PropertiesPackage.Literals.ABSTRACT_TEXT_DESCRIPTION__INITIAL_OPERATION || callbackFeature == PropertiesPackage.Literals.ABSTRACT_TEXT_AREA_DESCRIPTION__INITIAL_OPERATION) {
                 availableVariables.put(EEFExpressionUtils.EEFText.NEW_VALUE, stringType);
