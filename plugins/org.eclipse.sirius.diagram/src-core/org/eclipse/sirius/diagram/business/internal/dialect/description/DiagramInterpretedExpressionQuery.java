@@ -254,6 +254,12 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 mappings.addAll(((ContainerCreationDescription) target).getContainerMappings());
             }
             collectPotentialContainerTypes(possibleContainerTypes, possibleContainerViewTypes, mappings);
+            if (target instanceof ContainerCreationDescription) {
+                addExtraMappings(possibleContainerTypes, ((ContainerCreationDescription) target).getExtraMappings());
+            }
+            if (target instanceof NodeCreationDescription) {
+                addExtraMappings(possibleContainerTypes, ((NodeCreationDescription) target).getExtraMappings());
+            }
             availableVariables.put(IInterpreterSiriusVariables.CONTAINER, VariableType.fromStrings(possibleContainerTypes));
             availableVariables.put(IInterpreterSiriusVariables.CONTAINER_VIEW, VariableType.fromStrings(possibleContainerViewTypes));
         }
@@ -274,6 +280,15 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         }
         return availableVariables;
 
+    }
+
+    private void addExtraMappings(Collection<String> possibleContainerTypes, Collection<AbstractNodeMapping> extra) {
+        for (AbstractNodeMapping np : extra) {
+            String domainClass = np.getDomainClass();
+            if (!StringUtil.isEmpty(domainClass)) {
+                possibleContainerTypes.add(domainClass);
+            }
+        }
     }
 
     private void typeVariablesForDiagramCreationRepresentation(RepresentationCreationDescription desc, Map<String, VariableType> availableVariables) {
