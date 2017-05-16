@@ -12,6 +12,7 @@ package org.eclipse.sirius.properties.core.internal;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
@@ -153,7 +154,7 @@ public class SiriusToolServices {
      *            The input descriptor
      * @return The semantic element for the given input descriptor
      */
-    public Collection<EObject> getAllSemanticElements(SiriusInputDescriptor sid) {
+    public Set<EObject> getAllSemanticElements(SiriusInputDescriptor sid) {
         return sid.getAllSemanticElements();
     }
 
@@ -239,8 +240,8 @@ public class SiriusToolServices {
      * 
      * @return all the semantic elements associated to a given context.
      */
-    public Collection<EObject> allSemanticElements(SiriusContext ctx) {
-        Option<Collection<EObject>> elements = ctx.getAdditionalSemanticElements();
+    public List<EObject> allSemanticElements(SiriusContext ctx) {
+        Option<List<EObject>> elements = ctx.getAdditionalSemanticElements();
         if (elements.some()) {
             return elements.get();
         } else {

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.properties.core.internal;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
@@ -218,9 +219,9 @@ public final class SiriusContext {
      * 
      * @return the additional semantic elements associated to the input.
      */
-    public Option<Collection<EObject>> getAdditionalSemanticElements() {
+    public Option<List<EObject>> getAdditionalSemanticElements() {
         if (semanticDecorator instanceof DRepresentationElement) {
-            return Options.newSome((Collection<EObject>) ((DRepresentationElement) semanticDecorator).getSemanticElements());
+            return Options.newSome((List<EObject>) ((DRepresentationElement) semanticDecorator).getSemanticElements());
         } else {
             return Options.newNone();
         }

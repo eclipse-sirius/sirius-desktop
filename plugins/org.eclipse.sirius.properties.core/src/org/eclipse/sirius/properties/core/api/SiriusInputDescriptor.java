@@ -10,8 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.properties.core.api;
 
-import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.eclipse.eef.core.api.InputDescriptor;
 import org.eclipse.emf.ecore.EObject;
@@ -60,10 +61,10 @@ public class SiriusInputDescriptor implements InputDescriptor {
      * 
      * @return all the semantic model element associated with the current selection.
      */
-    public Collection<EObject> getAllSemanticElements() {
-        Collection<EObject> result = new LinkedHashSet<>();
+    public Set<EObject> getAllSemanticElements() {
+        Set<EObject> result = new LinkedHashSet<>();
         result.add(getSemanticElement());
-        Option<Collection<EObject>> additional = context.getAdditionalSemanticElements();
+        Option<List<EObject>> additional = context.getAdditionalSemanticElements();
         if (additional.some()) {
             result.addAll(additional.get());
         }
