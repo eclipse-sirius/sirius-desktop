@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
@@ -36,6 +37,7 @@ import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalReprese
 import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationDescriptionItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -169,23 +171,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
                     .getWrappedObject();
             result = true; // set to true before permission authority check
 
-            if (session instanceof DAnalysisSessionImpl) {
-                Collection<DView> containers = ((DAnalysisSessionImpl) session).getAvailableRepresentationContainers(representationDescription);
-
-                // If containers is empty, a new one will be created, so the
-                // wizard is available
-                if (!containers.isEmpty()) {
-                    // Try to find one valid container candidate
-                    result = false;
-                    for (DView container : containers) {
-                        IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);
-                        if (permissionAuthority == null || permissionAuthority.canCreateIn(container)) {
-                            result = true;
-                            break;
-                        }
-                    } // for
-                }
-            }
+            result = hasPermissionToCreateRepresentation(session, representation);
             if (result) {
                 representation = representationDescription;
                 viewpoint = ((RepresentationDescriptionItemImpl) ((StructuredSelection) selection).getFirstElement()).getViewpoint();
@@ -194,6 +180,46 @@ public class RepresentationSelectionWizardPage extends WizardPage {
             }
         }
         return result;
+    }
+
+    /**
+     * Returns true if we have permission to create a new representation instance from the given description. False
+     * otherwise.
+     * 
+     * @param theSession
+     *            the session from which we check creation permission.
+     * @param theRepresentationDescription
+     *            the description from which we check if a representation can created. I.e we have write permission on
+     *            it if it exists in the session.
+     * @return true if we have permission to create a new representation instance from the given description. False
+     *         otherwise.
+     */
+    private boolean hasPermissionToCreateRepresentation(Session theSession, RepresentationDescription theRepresentationDescription) {
+        boolean hasPermission = true;
+        if (session instanceof DAnalysisSessionImpl) {
+            // we retrieve the first descriptor pointing at the given description if such element exists.
+            Optional<DRepresentationDescriptor> loadedInSessionDescriptor = DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream()
+                    .filter(rep -> EqualityHelper.areEquals(rep.getDescription(), getRepresentation())).findFirst();
+            if (loadedInSessionDescriptor.isPresent()) {
+                // Then we check it is not contained by a container we does not have permission to write into.
+                Collection<DView> containers = ((DAnalysisSessionImpl) session).getAvailableRepresentationContainers(loadedInSessionDescriptor.get().getDescription());
+
+                // If containers is empty, a new one will be created, so the
+                // wizard is available
+                if (!containers.isEmpty()) {
+                    // Try to find one valid container candidate
+                    hasPermission = false;
+                    for (DView container : containers) {
+                        IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);
+                        if (permissionAuthority == null || permissionAuthority.canCreateIn(container)) {
+                            hasPermission = true;
+                            break;
+                        }
+                    } // for
+                }
+            }
+        }
+        return hasPermission;
     }
 
     public RepresentationDescription getRepresentation() {
