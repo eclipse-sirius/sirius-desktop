@@ -50,6 +50,7 @@ import org.osgi.framework.BundleContext;
  * 
  * @author sbegaudeau
  */
+@SuppressWarnings("restriction") // EValidatorAdapter for the validation of the properties
 public class SiriusPropertiesCorePlugin extends EMFPlugin {
     /**
      * The identifier of the plugin.
