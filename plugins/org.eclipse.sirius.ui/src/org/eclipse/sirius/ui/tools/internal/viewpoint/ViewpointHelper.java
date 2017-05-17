@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,6 +37,7 @@ import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.ext.base.Option;
@@ -60,7 +62,8 @@ import com.google.common.collect.Collections2;
 public final class ViewpointHelper {
 
     /**
-     * Function transforming a viewpoint into its optional URI.
+     * Function transforming a viewpoint into its optional viewpoint URI with
+     * {@link ViewpointURIQuery#VIEWPOINT_URI_SCHEME}.
      */
     private static Function<? super Viewpoint, ? extends String> getURIFromViewpointFunction = vp -> {
         Option<URI> uri = new ViewpointQuery(vp).getViewpointURI();
@@ -69,7 +72,19 @@ public final class ViewpointHelper {
             result = uri.get().toString();
         }
         return result;
-    };;
+    };
+
+    /**
+     * Function choosing what viewpoint to use among two having the same viewpoint URI
+     * (viewpoint:/projectName/viewpointName). We favor workspace version over the plugin one.
+     */
+    private static BinaryOperator<Viewpoint> usePluginVersionOverWorkspaceFunction = (vp1, vp2) -> {
+        URI uri = vp1.eResource().getURI();
+        if (uri.isPlatformResource()) {
+            return vp1;
+        }
+        return vp2;
+    };
 
     /**
      * Private constructor for utility class.
@@ -113,7 +128,9 @@ public final class ViewpointHelper {
      *         needed to be activated in the session before activating the viewpoint.
      */
     public static Map<String, Viewpoint> getViewpointDependencies(Collection<Viewpoint> allViewpoints, Collection<Viewpoint> selectedViewpoints, Viewpoint viewpoint) {
-        Collector<Viewpoint, ?, Map<String, Viewpoint>> viewpointUriToViewpointMapCollector = Collectors.toMap(getURIFromViewpointFunction, vp -> vp);
+        // To compute dependencies we always choose workspace one if one dependency exists in workspace and plugin
+        // version.
+        Collector<Viewpoint, ?, Map<String, Viewpoint>> viewpointUriToViewpointMapCollector = Collectors.toMap(getURIFromViewpointFunction, vp -> vp, usePluginVersionOverWorkspaceFunction);
         Map<String, Viewpoint> selectedViewpointUriToViewpoint = selectedViewpoints.stream().collect(viewpointUriToViewpointMapCollector);
         Map<String, Viewpoint> allViewpointUriToViewpoint = allViewpoints.stream().collect(viewpointUriToViewpointMapCollector);
         Set<String> viewpointsURI = selectedViewpointUriToViewpoint.keySet();
