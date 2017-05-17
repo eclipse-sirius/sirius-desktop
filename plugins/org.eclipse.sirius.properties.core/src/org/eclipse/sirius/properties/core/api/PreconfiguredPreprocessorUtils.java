@@ -81,40 +81,15 @@ public final class PreconfiguredPreprocessorUtils {
      * @return True if the EClass should be copied
      */
     private static boolean shouldCopy(EClass eClass) {
-        return isWidgetAction(eClass) || isStyle(eClass) || isInitialOperation(eClass);
-    }
+        boolean shouldCopy = false;
 
-    /**
-     * Checks if an EClass is an {@link org.eclipse.sirius.viewpoint.description.tool.InitialOperation}.
-     * 
-     * @param eClass
-     *            The eClass to test
-     * @return True if the EClass is a InitialOperation otherwise false
-     */
-    private static boolean isInitialOperation(EClass eClass) {
-        return ToolPackage.Literals.INITIAL_OPERATION.equals(eClass);
-    }
+        shouldCopy = shouldCopy || ToolPackage.Literals.INITIAL_OPERATION.equals(eClass);
 
-    /**
-     * Checks if an EClass is a {@link org.eclipse.sirius.properties.WidgetAction}.
-     * 
-     * @param eClass
-     *            The eClass to test
-     * @return True if the EClass is a WidgetAction otherwise false
-     */
-    private static boolean isWidgetAction(EClass eClass) {
-        return PropertiesPackage.Literals.WIDGET_ACTION.equals(eClass);
-    }
+        shouldCopy = shouldCopy || PropertiesPackage.Literals.WIDGET_STYLE.isSuperTypeOf(eClass);
+        shouldCopy = shouldCopy || PropertiesPackage.Literals.GROUP_STYLE.isSuperTypeOf(eClass);
+        shouldCopy = shouldCopy || PropertiesPackage.Literals.GROUP_CONDITIONAL_STYLE.isSuperTypeOf(eClass);
+        shouldCopy = shouldCopy || PropertiesPackage.Literals.WIDGET_CONDITIONAL_STYLE.isSuperTypeOf(eClass);
 
-    /**
-     * Checks if an EClass is a style.
-     * 
-     * @param eClass
-     *            The eClass to test
-     * @return True if the EClass is a style otherwise false
-     */
-    private static boolean isStyle(EClass eClass) {
-        return PropertiesPackage.Literals.WIDGET_STYLE.isSuperTypeOf(eClass) || PropertiesPackage.Literals.GROUP_STYLE.isSuperTypeOf(eClass)
-                || PropertiesPackage.Literals.GROUP_CONDITIONAL_STYLE.isSuperTypeOf(eClass) || PropertiesPackage.Literals.WIDGET_CONDITIONAL_STYLE.isSuperTypeOf(eClass);
+        return shouldCopy;
     }
 }

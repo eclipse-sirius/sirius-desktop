@@ -28,10 +28,9 @@ import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WizardModelOperation;
-import org.eclipse.sirius.properties.core.api.DefaultDescriptionPreprocessorWithFiltering;
 import org.eclipse.sirius.properties.core.api.IDescriptionPreprocessor;
 import org.eclipse.sirius.properties.core.api.OverridesProvider;
-import org.eclipse.sirius.properties.core.api.PreconfiguredPreprocessorUtils;
+import org.eclipse.sirius.properties.core.api.PreconfiguredPreprocessor;
 import org.eclipse.sirius.properties.core.api.TransformationCache;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
@@ -49,7 +48,7 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
  * @author flatombe
  * @author mbats
  */
-public class PageDescriptionPreprocessor extends DefaultDescriptionPreprocessorWithFiltering<AbstractPageDescription> {
+public class PageDescriptionPreprocessor extends PreconfiguredPreprocessor<AbstractPageDescription> {
     /**
      * This feature is handled separately.
      */
@@ -59,8 +58,7 @@ public class PageDescriptionPreprocessor extends DefaultDescriptionPreprocessorW
      * The constructor.
      */
     public PageDescriptionPreprocessor() {
-        super(AbstractPageDescription.class, PreconfiguredPreprocessorUtils.getFeaturesToFilter(PropertiesPackage.Literals.PAGE_DESCRIPTION),
-                PreconfiguredPreprocessorUtils.getFeaturesToCopy(PropertiesPackage.Literals.PAGE_DESCRIPTION));
+        super(AbstractPageDescription.class, PropertiesPackage.Literals.PAGE_DESCRIPTION);
     }
 
     @Override
