@@ -20,7 +20,13 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.emf.transaction.ResourceSetListener;
+import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -64,6 +70,8 @@ import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.DeleteActionHand
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.RenameActionHandler;
 import org.eclipse.sirius.ui.tools.internal.wizards.CreateRepresentationWizard;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SiriusRepresentationWithInactiveStatusLabelProvider;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -113,6 +121,72 @@ import com.google.common.collect.Maps;
  *
  */
 public class GraphicalRepresentationHandler implements SessionManagerListener {
+
+    /**
+     * This listener refreshes the viewer of this component when a representation is created or removed or when a model
+     * is added/removed from the session.
+     * 
+     * @author <a href=mailto:pierre.guilet@obeo.fr>Pierre Guilet</a>
+     *
+     */
+    public class RefreshViewerOnChangeResourceSetListener implements ResourceSetListener {
+
+        @Override
+        public NotificationFilter getFilter() {
+            return null;
+        }
+
+        @Override
+        public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
+            return null;
+        }
+
+        @Override
+        public void resourceSetChanged(ResourceSetChangeEvent event) {
+            List<Notification> notifications = event.getNotifications();
+            for (Notification notification : notifications) {
+                switch (notification.getEventType()) {
+                case Notification.ADD:
+                case Notification.REMOVE:
+                case Notification.ADD_MANY:
+                case Notification.REMOVE_MANY:
+                    if (notification.getNewValue() instanceof DRepresentation || notification.getOldValue() instanceof DRepresentation) {
+                        // we refresh the viewer if a representation has been added or removed from the session.
+                        PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+                            if (!treeViewer.getTree().isDisposed()) {
+                                treeViewer.refresh();
+                            }
+                        });
+                    } else if (notification.getNotifier() instanceof DAnalysis) {
+                        // a model may have been added/removed from the model so we have to update content that is
+                        // relative to loaded models.
+                        PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+                            initInput();
+                        });
+                    }
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+
+        @Override
+        public boolean isAggregatePrecommitListener() {
+            return false;
+        }
+
+        @Override
+        public boolean isPrecommitOnly() {
+            return false;
+        }
+
+        @Override
+        public boolean isPostcommitOnly() {
+            return true;
+        }
+
+    }
 
     /**
      * Session from which representations are handled.
@@ -234,6 +308,11 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      * True if the checkbox allowing to group by viewpoint or not should be shown to user.
      */
     private boolean showGroupinByCheckbox;
+
+    /**
+     * This listener refreshes the viewer of this component when a representation is created or removed.
+     */
+    private RefreshViewerOnChangeResourceSetListener refreshViewerOnChangeResourceSetListener;
 
     /**
      * This builder allow to build the graphical componant handling viewpoint and representation with wanted optional
@@ -520,6 +599,9 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         } else {
             groupByViewpoint = true;
         }
+
+        refreshViewerOnChangeResourceSetListener = new RefreshViewerOnChangeResourceSetListener();
+        session.getTransactionalEditingDomain().addResourceSetListener(refreshViewerOnChangeResourceSetListener);
 
     }
 
@@ -882,6 +964,9 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      */
     public void dispose() {
         SessionManager.INSTANCE.removeSessionsListener(this);
+        if (session != null && session.getTransactionalEditingDomain() != null) {
+            session.getTransactionalEditingDomain().removeResourceSetListener(refreshViewerOnChangeResourceSetListener);
+        }
         session = null;
         treeViewer = null;
         manageSessionActionProvider = null;

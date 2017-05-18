@@ -24,8 +24,6 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.editor.SessionEditor;
@@ -33,7 +31,6 @@ import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalSemanticModelsHandler;
 import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalRepresentationHandler;
 import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalRepresentationHandler.GraphicalRepresentationHandlerBuilder;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.layout.GridData;
@@ -67,7 +64,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
  */
-public class DefaultSessionEditorPage extends FormPage implements SessionListener, SessionManagerListener {
+public class DefaultSessionEditorPage extends FormPage implements SessionListener {
 
     /**
      * The page's unique id.
@@ -93,7 +90,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
      * This graphical component provides a viewer showing all semantic models
      * loaded in the given session.
      */
-    private GraphicalSemanticModelsHandler graphicalModelingHandler;
+    private GraphicalSemanticModelsHandler graphicalSemanticModelsHandler;
 
     /**
      * The graphical component providing a viewer showing all representations
@@ -177,11 +174,10 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         createRepresentationsControl(toolkit, rightComposite);
 
         session.addListener(this);
-        SessionManager.INSTANCE.addSessionsListener(this);
-
         // needed when opening editor from explorer views or scrollbar is not
         // visible if needed.
         scrolledForm.reflow(true);
+
     }
 
     /**
@@ -203,12 +199,13 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         modelSectionClient.setLayout(GridLayoutFactory.swtDefaults().numColumns(2).create());
         modelSectionClient.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
         modelSection.setClient(modelSectionClient);
-        graphicalModelingHandler = new GraphicalSemanticModelsHandler(session, toolkit, ((IEditorSite) editor.getSite()).getActionBars(), ((IEditorSite) editor.getSite()).getSelectionProvider(),
-                this.getSite());
-        graphicalModelingHandler.createControl(modelSectionClient);
-        getSite().setSelectionProvider(graphicalModelingHandler.getTreeViewer());
 
-        initSectionToolbar(modelSection, graphicalModelingHandler.getTreeViewer());
+        graphicalSemanticModelsHandler = new GraphicalSemanticModelsHandler(session, toolkit, ((IEditorSite) editor.getSite()).getActionBars(), ((IEditorSite) editor.getSite()).getSelectionProvider(),
+                this.getSite());
+        graphicalSemanticModelsHandler.createControl(modelSectionClient);
+        getSite().setSelectionProvider(graphicalSemanticModelsHandler.getTreeViewer());
+
+        initSectionToolbar(modelSection, graphicalSemanticModelsHandler.getTreeViewer());
     }
 
     /**
@@ -340,9 +337,9 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
             session.removeListener(this);
             session = null;
         }
-        if (graphicalModelingHandler != null) {
-            graphicalModelingHandler.dispose();
-            graphicalModelingHandler = null;
+        if (graphicalSemanticModelsHandler != null) {
+            graphicalSemanticModelsHandler.dispose();
+            graphicalSemanticModelsHandler = null;
         }
         if (graphicalRepresentationHandler != null) {
             graphicalRepresentationHandler.dispose();
@@ -356,43 +353,5 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
             filterActionGroup.dispose();
             filterActionGroup = null;
         }
-        SessionManager.INSTANCE.removeSessionsListener(this);
     }
-
-    @Override
-    public void notifyAddSession(Session newSession) {
-    }
-
-    @Override
-    public void notifyRemoveSession(Session removedSession) {
-    }
-
-    @Override
-    public void viewpointSelected(Viewpoint selectedSirius) {
-    }
-
-    @Override
-    public void viewpointDeselected(Viewpoint deselectedSirius) {
-    }
-
-    @Override
-    public void notify(Session updated, int notification) {
-        if (session.equals(updated)) {
-            switch (notification) {
-            case SessionListener.REPRESENTATION_CHANGE:
-            case SessionListener.VSM_UPDATED:
-            case SessionListener.REPLACED:
-                PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
-                    // we refresh the content of the representations block as it
-                    // may have changed regarding the handled notifications.
-                    graphicalRepresentationHandler.initInput();
-                });
-
-                break;
-            default:
-                break;
-            }
-        }
-    }
-
 }

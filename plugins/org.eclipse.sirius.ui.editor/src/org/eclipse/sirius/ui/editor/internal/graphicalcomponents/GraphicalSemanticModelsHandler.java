@@ -30,6 +30,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -86,6 +87,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.Common
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.DeleteActionHandler;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.RenameActionHandler;
 import org.eclipse.sirius.ui.tools.internal.wizards.newmodel.CreateEMFModelWizard;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -102,7 +104,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchSite;
@@ -213,7 +214,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     /**
      * The Tree showing semantic models and representations.
      */
-    private Tree modelTree;
 
     /**
      * This listener allow to refresh models block when changes occur and to
@@ -283,7 +283,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      *            the composite to be attached to.
      */
     public void createControl(Composite parentComposite) {
-        treeViewer = createModelExplorerNavigator(parentComposite);
+        createModelExplorerNavigator(parentComposite);
         createModelExplorerButton(parentComposite, treeViewer);
         session.addListener(this);
         SessionManager.INSTANCE.addSessionsListener(this);
@@ -398,48 +398,47 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     private CommonViewer createModelExplorerNavigator(Composite parent) {
         final FilteredCommonTree commonTree = new FilteredCommonTree(SEMANTIC_MODELS_VIEWER_ID, parent, SWT.MULTI | SWT.BORDER, false);
         INavigatorContentService contentService = NavigatorContentServiceFactory.INSTANCE.createContentService(SEMANTIC_MODELS_VIEWER_ID, treeViewer);
-        CommonViewer theTreeViewer = commonTree.getViewer();
+        treeViewer = commonTree.getViewer();
         contentService.createCommonContentProvider();
         contentService.createCommonLabelProvider();
-        modelTree = theTreeViewer.getTree();
         final GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
         gridData.widthHint = 300;
-        theTreeViewer.getControl().setLayoutData(gridData);
-        theTreeViewer.getTree().setHeaderVisible(false);
-        theTreeViewer.getTree().setLinesVisible(false);
+        treeViewer.getControl().setLayoutData(gridData);
+        treeViewer.getTree().setHeaderVisible(false);
+        treeViewer.getTree().setLinesVisible(false);
         siriusCommonContentModelProvider = new SiriusCommonContentProvider();
 
-        updateViewerInput(theTreeViewer);
+        updateViewerInput();
 
         INavigatorFilterService filterService = contentService.getFilterService();
         ViewerFilter[] visibleFilters = filterService.getVisibleFilters(true);
         for (int i = 0; i < visibleFilters.length; i++) {
-            theTreeViewer.addFilter(visibleFilters[i]);
+            treeViewer.addFilter(visibleFilters[i]);
         }
 
         contentService.update();
 
-        theTreeViewer.setSorter(new CommonItemSorter());
+        treeViewer.setSorter(new CommonItemSorter());
 
         menuManager = new MenuManager();
 
         menuManager.setRemoveAllWhenShown(true);
-        ecoreActionsHandler = new EcoreActionsHandler(theTreeViewer, actionBars, menuManager, selectionProvider);
+        ecoreActionsHandler = new EcoreActionsHandler(treeViewer, actionBars, menuManager, selectionProvider);
         ecoreActionsHandler.initModelsActionsAndListeners();
         menuManager.addMenuListener((manager) -> {
-            manageSessionActionProvider.setContext(new ActionContext(theTreeViewer.getSelection()));
+            manageSessionActionProvider.setContext(new ActionContext(treeViewer.getSelection()));
             manageSessionActionProvider.fillContextMenu(menuManager);
 
         });
-        Menu menu = menuManager.createContextMenu(theTreeViewer.getControl());
+        Menu menu = menuManager.createContextMenu(treeViewer.getControl());
         manageSessionActionProvider = new ManageSessionActionProvider();
-        manageSessionActionProvider.initFromViewer(theTreeViewer);
-        theTreeViewer.getControl().setMenu(menu);
+        manageSessionActionProvider.initFromViewer(treeViewer);
+        treeViewer.getControl().setMenu(menu);
 
-        theTreeViewer.addSelectionChangedListener((event) -> {
+        treeViewer.addSelectionChangedListener((event) -> {
             if (event.getSelection().isEmpty()) {
                 removeSemanticModelOrRepresentationButton.setEnabled(false);
-            } else {
+            } else if (session != null) {
                 TreeSelection selection = (TreeSelection) event.getSelection();
                 // The tree allows only single selections so we pick the
                 // first element.
@@ -468,13 +467,14 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                         Command mostRecentCommand = ((CommandStack) event.getSource()).getMostRecentCommand();
                         if (mostRecentCommand != null) {
                             setSelectionToViewer(mostRecentCommand.getAffectedObjects());
+                            actionBars.updateActionBars();
                         }
                     }
                 });
             }
         };
         session.getTransactionalEditingDomain().getCommandStack().addCommandStackListener(listener);
-        return theTreeViewer;
+        return treeViewer;
     }
 
     /**
@@ -919,26 +919,26 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     /**
      * Update the semantic models viewer with the models currently loaded in the
      * session.
-     * 
-     * @param theTreeViewer
-     *            the viewer to update.
      */
-    protected void updateViewerInput(TreeViewer theTreeViewer) {
-        Object[] children = siriusCommonContentModelProvider.getChildren(session);
-        List<Object> childrenList = Arrays.stream(children).collect(Collectors.toList());
+    public void updateViewerInput() {
+        if (session != null && treeViewer != null && treeViewer.getTree() != null && !treeViewer.getTree().isDisposed()) {
+            Object[] children = siriusCommonContentModelProvider.getChildren(session);
+            List<Object> childrenList = Arrays.stream(children).collect(Collectors.toList());
 
-        Resource sessionResource = session.getSessionResource();
-        IFile file = WorkspaceSynchronizer.getFile(sessionResource);
-        ProjectDependenciesItem projectDependenciesItem = new NoDynamicProjectDependencies(file.getProject(), session);
-        List<Object> directChildOfProjectDependency = Arrays.asList(siriusCommonContentModelProvider.getChildren(projectDependenciesItem));
+            Resource sessionResource = session.getSessionResource();
+            IFile file = WorkspaceSynchronizer.getFile(sessionResource);
+            ProjectDependenciesItem projectDependenciesItem = new NoDynamicProjectDependencies(file.getProject(), session);
+            List<Object> directChildOfProjectDependency = Arrays.asList(siriusCommonContentModelProvider.getChildren(projectDependenciesItem));
 
-        childrenList.add(projectDependenciesItem);
+            childrenList.add(projectDependenciesItem);
 
-        // We put as input only the ProjectDependenciesItemImpl and all Ecore
-        // resources not provided by this item.
-        theTreeViewer.setInput(childrenList.stream().filter(input -> !(input instanceof ViewpointsFolderItemImpl) && !directChildOfProjectDependency.contains(input)).collect(Collectors.toSet()));
-        theTreeViewer.expandToLevel(2);
-        theTreeViewer.expandToLevel(projectDependenciesItem, 2);
+            // We put as input only the ProjectDependenciesItemImpl and all
+            // Ecore
+            // resources not provided by this item.
+            treeViewer.setInput(childrenList.stream().filter(input -> !(input instanceof ViewpointsFolderItemImpl) && !directChildOfProjectDependency.contains(input)).collect(Collectors.toSet()));
+            treeViewer.expandToLevel(2);
+            treeViewer.expandToLevel(projectDependenciesItem, 2);
+        }
     }
 
     /**
@@ -999,7 +999,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         case SessionListener.SELECTED_VIEWS_CHANGE_KIND:
         case SessionListener.SEMANTIC_CHANGE:
             PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
-                updateViewerInput(treeViewer);
+                updateViewerInput();
             });
             break;
         default:
@@ -1062,7 +1062,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
 
                     @Override
                     public void run() {
-                        if (!modelTree.isDisposed()) {
+                        if (!treeViewer.getTree().isDisposed()) {
                             treeViewer.refresh();
                             ISelection selection = treeViewer.getSelection();
                             if (selection.isEmpty()) {
@@ -1080,7 +1080,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
 
                     @Override
                     public void run() {
-                        if (!modelTree.isDisposed()) {
+                        if (!treeViewer.getTree().isDisposed()) {
                             treeViewer.refresh();
                             siriusCommonContentModelProvider.addRefreshViewerTrigger(updated);
                         }
@@ -1099,10 +1099,10 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     }
 
     /**
-     * This listener allow to refresh models block when changes occur and to
-     * select newly created element's tree item if such element exists.
-     * Otherwise we select the first element of the tree viewer of the model
-     * block.
+     * This listener allow to refresh models block when changes occur to model
+     * elements to be sure item's label are the right. It also updates the
+     * viewer content when a model has potentially been created or removed so we
+     * can see the change.
      * 
      * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
      *
@@ -1116,19 +1116,33 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         @Override
         public void resourceSetChanged(ResourceSetChangeEvent event) {
 
-            PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-
-                @Override
-                public void run() {
-                    // we refresh the models tree viewer and select newly
-                    // created element or first element is such element does not
-                    // exist.
-                    if (!modelTree.isDisposed()) {
-                        treeViewer.refresh();
+            // We update the input when a root resource has been added/removed
+            // from the session.
+            for (Notification notification : event.getNotifications()) {
+                switch (notification.getEventType()) {
+                case Notification.ADD:
+                case Notification.REMOVE:
+                case Notification.ADD_MANY:
+                case Notification.REMOVE_MANY:
+                    if (notification.getNotifier() instanceof DAnalysis) {
+                        PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+                            updateViewerInput();
+                        });
                     }
+                    break;
+                default:
+                    break;
                 }
+            }
+            // we refresh treeViewer because some models items may have a
+            // different label because of a value modification.
 
+            PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
+                if (treeViewer != null && treeViewer.getTree() != null && !treeViewer.getTree().isDisposed()) {
+                    treeViewer.refresh();
+                }
             });
+
         }
 
         @Override
