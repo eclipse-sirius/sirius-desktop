@@ -86,7 +86,7 @@ public class SiriusCrossReferenceAdapterImpl extends ECrossReferenceAdapter impl
 
                     @Override
                     public boolean add(EStructuralFeature.Setting setting) {
-                        if (!isSettingTargets) {
+                        if (!isSettingTargets || SiriusCrossReferenceAdapterImpl.this.resolve()) {
                             EObject eObject = setting.getEObject();
                             EStructuralFeature eStructuralFeature = setting.getEStructuralFeature();
                             EStructuralFeature.Setting[] settingData = (EStructuralFeature.Setting[]) data;

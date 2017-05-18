@@ -241,7 +241,7 @@ public class LocalResourceCollector extends SiriusCrossReferenceAdapterImpl impl
 
                 @Override
                 public boolean add(EStructuralFeature.Setting setting) {
-                    if (!isSettingTargets) {
+                    if (!isSettingTargets || LocalResourceCollector.this.resolve()) {
                         EObject eObject = setting.getEObject();
                         EStructuralFeature eStructuralFeature = setting.getEStructuralFeature();
                         EStructuralFeature.Setting[] settingData = (EStructuralFeature.Setting[]) data;
