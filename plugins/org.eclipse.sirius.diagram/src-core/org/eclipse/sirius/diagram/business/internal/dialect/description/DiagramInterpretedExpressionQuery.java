@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -86,9 +86,8 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
- * Query allowing to get the target domain classes and available packages for a
- * given Interpreted expression. This diagram query will treat all generic
- * description elements and those related to the diagram concept.
+ * Query allowing to get the target domain classes and available packages for a given Interpreted expression. This
+ * diagram query will treat all generic description elements and those related to the diagram concept.
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
@@ -113,11 +112,10 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
      * Default constructor.
      * 
      * @param target
-     *            the target containing the InterpretedExpression (NodeMapping,
-     *            ModelOperation...)
+     *            the target containing the InterpretedExpression (NodeMapping, ModelOperation...)
      * @param feature
-     *            the feature corresponding to the InterpretedExpression to
-     *            evaluate ( NodeMapping.semanticCandidatesExpression...)
+     *            the feature corresponding to the InterpretedExpression to evaluate (
+     *            NodeMapping.semanticCandidatesExpression...)
      */
     public DiagramInterpretedExpressionQuery(EObject target, EStructuralFeature feature) {
         super(target, feature);
@@ -191,12 +189,10 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         Map<String, VariableType> availableVariables = super.getAvailableVariables();
 
         /*
-         * [428757] tool variables are not displayed in autocompletion. This
-         * patch adds hard coded variables and hence is a temporary solution.
-         * The good way would be to put those metadata on the
-         * EdgeCreationDescription EClass in the diagram.ecore metamodel and to
-         * complete the AbstractInterpretedExpressionQuery to make it able to
-         * find specific variables for concrete types.
+         * [428757] tool variables are not displayed in autocompletion. This patch adds hard coded variables and hence
+         * is a temporary solution. The good way would be to put those metadata on the EdgeCreationDescription EClass in
+         * the diagram.ecore metamodel and to complete the AbstractInterpretedExpressionQuery to make it able to find
+         * specific variables for concrete types.
          */
         if (target instanceof EdgeCreationDescription) {
             EdgeCreationDescription tool = (EdgeCreationDescription) target;
@@ -236,10 +232,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         }
         if (target instanceof ConditionalStyleDescription && this.feature == org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION) {
             /*
-             * We don't use the Ecore annotation to define the 'diagram'
-             * variable as it is only available for subclasses of
-             * ConditionalStyleDescription which are defined in the
-             * diagram.description EPackage.
+             * We don't use the Ecore annotation to define the 'diagram' variable as it is only available for subclasses
+             * of ConditionalStyleDescription which are defined in the diagram.description EPackage.
              */
             availableVariables.put(IInterpreterSiriusVariables.DIAGRAM, VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM));
         }
@@ -467,6 +461,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             Collection<String> possibleViewTypes = Sets.newLinkedHashSet();
             collectPotentialContainerTypes(possibleSemanticTypes, possibleViewTypes, tool.getNodeMappings());
 
+            changeSelfType(VariableType.fromStrings(possibleSemanticTypes));
             refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER, possibleSemanticTypes);
             refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER_VIEW, possibleViewTypes);
         }
@@ -485,6 +480,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             }
             Collection<String> possibleViewTypes = Sets.newLinkedHashSet();
             collectPotentialContainerTypes(possibleTypes, possibleViewTypes, tool.getContainerMappings());
+            changeSelfType(VariableType.fromStrings(possibleTypes));
             refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER_VIEW, possibleViewTypes);
 
             refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER, possibleTypes);
@@ -530,8 +526,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             possibleViewTypes.add(DIAGRAM_D_SEMANTIC_DIAGRAM);
         }
         /*
-         * besides the container a mapping can be re-used by another one or by a
-         * diagram description.
+         * besides the container a mapping can be re-used by another one or by a diagram description.
          */
         ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter.getCrossReferenceAdapter(mapping);
         if (crossReferencer != null) {
@@ -637,9 +632,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
     }
 
     /**
-     * An {@link IInterpretedExpressionTargetSwitch} that delegates to the
-     * defaultSwitch or the diagram specific switch, according to the package of
-     * the considered element.
+     * An {@link IInterpretedExpressionTargetSwitch} that delegates to the defaultSwitch or the diagram specific switch,
+     * according to the package of the considered element.
      * 
      * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
      * 

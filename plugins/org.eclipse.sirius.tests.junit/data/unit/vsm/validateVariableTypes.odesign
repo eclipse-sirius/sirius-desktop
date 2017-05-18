@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="vsmtypes" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="vsmtypes" version="12.0.0.2017041100">
   <ownedViewpoints name="VSMTypes">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SelfTypeInference" domainClass="interactions.Model">
       <metamodel href="http://www.eclipse.org/sirius/sample/interactions#/"/>
@@ -196,14 +196,14 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:containerView">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:edges"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.returnsAnEClassifier()">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.instanceClassName"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ownedInteractions">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.messages"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:For" expression="aql:self.returnsAListOfEPackages()">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.nsURI"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:nsURI"/>
+                <subModelOperations xsi:type="tool:For" expression="aql:self.ownedInteractions">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.participants"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:interactionUses"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.returnsANonEObjectType().message()"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ownedInteractions.combinedFragments"/>
                 <subModelOperations xsi:type="tool:For" expression="aql:interactions" iteratorName="inter">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:inter.executions"/>
                 </subModelOperations>
@@ -227,6 +227,7 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:containerView">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:edges"/>
                 </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="interactions::Interaction" referenceName="ownedInteractions"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -236,7 +237,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:name"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -438,42 +439,36 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(interactions::Interaction)">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:executions"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.name &lt;> null">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eAllContents">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(interactions::Interaction)"/>
+                  </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(interactions::Participant)">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:ownedInteractions"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:name"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="interactions::Interaction" referenceName="ownedInteractions">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="test"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.name &lt;> null and self.oclIsKindOf(interactions::Interaction)">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:executions"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not self.oclIsKindOf(interactions::Interaction)">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:Switch">
-                  <cases conditionExpression="aql:self.oclIsKindOf(interactions::Interaction)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:executions"/>
-                  </cases>
-                  <cases conditionExpression="aql:self.oclIsKindOf(interactions::Participant)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
-                  </cases>
-                  <cases conditionExpression="aql:self.name &lt;> null and self.oclIsKindOf(interactions::Interaction)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:executions"/>
-                  </cases>
-                  <cases conditionExpression="aql:not self.oclIsKindOf(interactions::Interaction)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
-                  </cases>
-                  <default/>
+                <subModelOperations xsi:type="tool:For" expression="aql:self.eAllContents()">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:i.oclIsKindOf(interactions::Interaction)">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView"/>
+                    </cases>
+                    <cases conditionExpression="aql:i.oclIsKindOf(ecore::EObject)">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eClass"/>
+                    </cases>
+                    <default/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="GenericTool" precondition="aql:element.oclIsKindOf(interactions::Interaction) and elementView.oclIsKindOf(diagram::DNode)">
+          <ownedTools xsi:type="tool:ToolDescription" name="GenericTool" precondition="aql:element.oclIsKindOf(interactions::Model) and elementView.oclIsKindOf(diagram::DNode)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:executions"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:ownedInteractions"/>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:elementView">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:width"/>
                 </subModelOperations>
@@ -638,6 +633,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:nonExistent"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="interactions::Interaction" referenceName="ownedInteraction"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -757,6 +753,8 @@
       </ownedColumnMappings>
       <intersection name="Intersection Message Participant" lineMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='XTable']/@ownedLineMappings[name='Message%20Line']" columnMapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='XTable']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="aql:self.sendingEnd.context">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
