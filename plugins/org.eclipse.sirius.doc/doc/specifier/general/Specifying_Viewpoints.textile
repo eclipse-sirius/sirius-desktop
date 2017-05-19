@@ -113,6 +113,14 @@ Also, by clicking on the button next to the text field, you can open a dialog wi
 
 !images/textAreaDialog.png!
 
+h3(#feature_name). Feature Name
+
+Some _VSM_ elements will need you to specify a _Feature Name_ (or _Reference Name_ on _Create Instance_) to configure them (Create Instance, Set, Unset, etc.). You can easily identify _Feature Name_ fields by their light green background in the _Properties_ sheet of an element.
+
+!images/featureName.png!
+
+Auto-completion is available in these fields using the _Ctrl+Space_ shortcut except if the current element type cannot be inferred, usually in the case of a generic tool where the target element will be known only at runtime.
+
 h3(#translatable_messages). Translatable Messages
 
 Many _VSM_ elements provide text fields that will be displayed when end-users reference the _VSM_ in a modeling project (Viewpoint name, tools...). Starting from Sirius 4.0, the value shown to the end users can be localized according to the user's language.  Fields which support this feature are called _Translatable_ _Messages_ and can be easily identified by their blue background in the _Properties_ sheet of an element. 
