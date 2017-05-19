@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -82,6 +82,7 @@ import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryLis
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.VerticalPositionFunction;
@@ -98,6 +99,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEd
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.EdgeTargetQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
@@ -106,7 +108,11 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ToggleFoldingStateCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.editor.tools.internal.presentation.ViewpoitnDependenciesSelectionDialog;
@@ -313,7 +319,37 @@ public class SiriusDebugView extends AbstractDebugView {
             sb.append("     " + i + ": " + connFigure.getPoints().getPoint(i).toString()).append("\n");
         }
 
+        appendGMFEdgeLabels(edge, sb);
         return sb.toString();
+    }
+
+    private void appendGMFEdgeLabels(Edge edge, StringBuilder sb) {
+        sb.append("\nLabels of edge:\n");
+        for (Object child : edge.getChildren()) {
+            if (child instanceof Node) {
+                Node node = (Node) child;
+                if (new ViewQuery(node).isForEdgeNameEditPart() && node.getLayoutConstraint() instanceof Location) {
+                    Location location = (Location) (node).getLayoutConstraint();
+                    int type = SiriusVisualIDRegistry.getVisualID(node.getType());
+                    if (type == DEdgeBeginNameEditPart.VISUAL_ID) {
+                        appendLabelLocation(sb, "Begin label", ((DEdge) node.getElement()).getBeginLabel(), location);
+                    } else if (type == DEdgeNameEditPart.VISUAL_ID) {
+                        appendLabelLocation(sb, "Center label", ((DEdge) node.getElement()).getName(), location);
+                    } else if (type == DEdgeEndNameEditPart.VISUAL_ID) {
+                        appendLabelLocation(sb, "End label", ((DEdge) node.getElement()).getEndLabel(), location);
+                    }
+                }
+            }
+        }
+    }
+
+    private void appendLabelLocation(StringBuilder sb, String labelKind, String labelName, Location location) {
+        sb.append("\n").append(labelKind).append(": ").append(labelName).append(", ");
+        sb.append(" (x: ");
+        sb.append(location.getX());
+        sb.append(", y: ");
+        sb.append(location.getY());
+        sb.append(')');
     }
 
     private void appendSequenceEventInfo(IDiagramElementEditPart part, StringBuilder sb) {
@@ -358,6 +394,10 @@ public class SiriusDebugView extends AbstractDebugView {
             sb.append("\n     . Points computed from target: ");
             sb.append(fromTargetSB);
         }
+        appendRelativeBenpointsDetails(edge, sb);
+    }
+
+    private void appendRelativeBenpointsDetails(Edge edge, StringBuilder sb) {
         sb.append("\n     . Source vectors: ");
         RelativeBendpoints bp = (RelativeBendpoints) edge.getBendpoints();
         for (int i = 0; i < bp.getPoints().size(); i++) {
@@ -369,7 +409,6 @@ public class SiriusDebugView extends AbstractDebugView {
             RelativeBendpoint rbp = (RelativeBendpoint) bp.getPoints().get(i);
             sb.append("[" + rbp.getTargetX() + ", " + rbp.getTargetY() + "] ");
         }
-        sb.append("\n");
     }
 
     private Point appendAnchorDetails(ConnectionEditPart origin, IdentityAnchor anchor, ConnectionAnchor connectionAnchor, String name, StringBuilder sb) {
