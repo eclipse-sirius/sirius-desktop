@@ -260,7 +260,7 @@
            id="org.eclipse.sirius.ui.fileForSessionTester"
            type="org.eclipse.core.resources.IFile"
            namespace="org.eclipse.sirius.ui"
-           properties="isFileForSessionTester"
+           properties="isFileForSessionTester,isSessionFile"
            class="org.eclipse.sirius.ui.tools.internal.views.common.FileHandledBySessionTester">
        </propertyTester>
        <propertyTester
@@ -607,7 +607,13 @@
 	        defaultHandler="org.eclipse.sirius.ui.tools.internal.actions.nature.ModelingToggleNatureAction"
 	        id="org.eclipse.sirius.ui.tools.internal.actions.nature.addRemoveNatureCommand"
 	        name="%_UI_ModelingProjectWizard_label">
-	</command>		
+	</command>
+ <command
+       categoryId="org.eclipse.ui.category.file"
+       defaultHandler="org.eclipse.sirius.ui.business.internal.commands.CloseSessionHandler"
+       id="org.eclipse.sirius.ui.closeSessionCommand"
+       name="%_UI_CloseSessionCommand_name">
+ </command>		
 	</extension>
 	
 		
@@ -636,5 +642,29 @@
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
-
+ <extension
+       point="org.eclipse.ui.menus">
+    <menuContribution
+          allPopups="false"
+          locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+       <command
+             commandId="org.eclipse.sirius.ui.closeSessionCommand"
+             icon="icons/full/others/close.gif"
+             id="org.eclipse.sirius.ui.closeSessionMenuContribution"
+             label="%_UI_CloseSession_label"
+             style="push">
+          <visibleWhen
+                checkEnabled="false">
+             <iterate>
+                  <adapt
+                   type="org.eclipse.core.resources.IResource">
+                <test
+                      property="org.eclipse.sirius.ui.isSessionFile">
+                </test>
+             </adapt>
+             </iterate>
+          </visibleWhen>
+       </command>
+    </menuContribution>
+ </extension>
 </plugin>
