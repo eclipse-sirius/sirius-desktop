@@ -164,6 +164,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(OpeningContextTest.class);
         suite.addTestSuite(NodeWithDecoratorSelectionTest.class);
         suite.addTestSuite(ManualAirdModificationTest.class);
+        suite.addTestSuite(SpecificClosedOrNotClosedEditorTest.class);
     }
 
     /**
@@ -293,7 +294,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ExtensionActivationOrderTest.class);
         suite.addTestSuite(ContainerDropPropertySectionsTests.class);
         suite.addTestSuite(BorderNodeSidePropertySectionTest.class);
-        suite.addTestSuite(SpecificClosedOrNotClosedEditorTest.class);
     }
 
     /**

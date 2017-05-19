@@ -270,7 +270,7 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
             // point
             // to the previous element which is a proxy and is not notified any
             // more.
-            final int dialectEditorCloserExpectedDetections = deleteSemantic ? 4 : 3;
+            final int dialectEditorCloserExpectedDetections = 4;
             // Check and close the popups.
             bot.waitUntil(new DefaultCondition() {
                 @Override
