@@ -321,7 +321,16 @@ public class EdgeLabelQuery {
         // Step 1 : Calculate old reference point (the nearest point on the edge
         // from the center of the label).
         LineSeg oldNearestSeg = PointListUtilities.getNearestSegment(oldEdgeSegments, oldCenterLabel.x, oldCenterLabel.y);
-        Point oldNearestPoint = oldNearestSeg.perpIntersect(oldCenterLabel.x, oldCenterLabel.y);
+        Point oldNearestPoint;
+        // If old nearest segment is horizontal or vertical, we don't have to
+        // use LineSeg.perpIntersect method.
+        if (oldNearestSeg.isHorizontal()) {
+            oldNearestPoint = new PrecisionPoint(oldCenterLabel.preciseX(), oldNearestSeg.getOrigin().preciseY());
+        } else if (oldNearestSeg.isVertical()) {
+            oldNearestPoint = new PrecisionPoint(oldNearestSeg.getOrigin().preciseX(), oldCenterLabel.preciseY());
+        } else {
+            oldNearestPoint = oldNearestSeg.perpIntersect(oldCenterLabel.x, oldCenterLabel.y);
+        }
 
         // Step 2 : Is there a new segment and an old segment on the same line?
         // Case of segment increased or decreased (and eventually inverted)
@@ -381,7 +390,6 @@ public class EdgeLabelQuery {
                 Point newRefPoint = new PrecisionPoint(newRefSeg.getOrigin().x + oldRatio * (newRefSeg.getTerminus().x - newRefSeg.getOrigin().x),
                         newRefSeg.getOrigin().y + oldRatio * (newRefSeg.getTerminus().y - newRefSeg.getOrigin().y));
                 fromOldToNewCenterVector = new Vector(newRefPoint.x - oldNearestPoint.x, newRefPoint.y - oldNearestPoint.y);
-
             }
         }
         if (fromOldToNewCenterVector == null) {
@@ -509,7 +517,10 @@ public class EdgeLabelQuery {
             Vector referenceVector = new Vector(referenceSegment.getTerminus().x - referenceSegment.getOrigin().x, referenceSegment.getTerminus().y - referenceSegment.getOrigin().y);
             Vector vector = new Vector(segment.getTerminus().x - segment.getOrigin().x, segment.getTerminus().y - segment.getOrigin().y);
             if (referenceVector.getLength() == 0 || vector.getLength() == 0) {
-                result = ON_SAME_LINE_SAME_DIRECTION;
+                if ((vector.getLength() == 0 && referenceSegment.containsPoint(segment.getOrigin(), 0))
+                        || (referenceVector.getLength() == 0 && segment.containsPoint(referenceSegment.getOrigin(), 0))) {
+                    result = ON_SAME_LINE_SAME_DIRECTION;
+                }
             } else {
                 double angle = referenceVector.getAngle(vector);
                 if (angle == 0 || angle == 180) {
