@@ -26,6 +26,10 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+h4. Translation Keys Changes
+
+See "this document":i18n_changes.html#sirius50 for the complete list of message keys added or removed in Sirius 5.0.
+
 h4. Changes in @org.eclipse.sirius.common@ 
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl.setFeatureToBeCrossReferencedWhiteList(Collection<EReference>)@ to set a white list of references that must be referenced even if the reference is derived.
