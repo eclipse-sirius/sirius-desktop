@@ -32,6 +32,7 @@ import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbenchPart;
@@ -60,6 +61,9 @@ public abstract class AbstractTextWithButtonPropertySection extends AbstractView
     /** The main listener */
     protected TextChangeListener listener;
 
+    /** The button control for the section. */
+    protected Button button;
+
     private boolean handleModifications;
 
     /**
@@ -72,15 +76,30 @@ public abstract class AbstractTextWithButtonPropertySection extends AbstractView
         else
             super.createControls(parent, tabbedPropertySheetPage);
 
+        boolean hasButton = getFeature().getEType() != DescriptionPackage.Literals.INTERPRETED_EXPRESSION;
+
         composite = getWidgetFactory().createFlatFormComposite(parent);
         FormData data;
 
         text = getWidgetFactory().createText(composite, ""); //$NON-NLS-1$
         data = new FormData();
         data.left = new FormAttachment(0, LABEL_WIDTH);
-        data.right = new FormAttachment(100, 0);
+        if (hasButton) {
+            data.right = new FormAttachment(95, 0);
+        } else {
+            data.right = new FormAttachment(100, 0);
+        }
         data.top = new FormAttachment(0, ITabbedPropertyConstants.VSPACE);
         text.setLayoutData(data);
+
+        if (hasButton) {
+            button = getWidgetFactory().createButton(composite, "...", SWT.PUSH);
+            data = new FormData();
+            data.left = new FormAttachment(95, 0);
+            data.right = new FormAttachment(100, 0);
+            data.top = new FormAttachment(text, 0, SWT.CENTER);
+            button.setLayoutData(data);
+        }
 
         nameLabel = getWidgetFactory().createCLabel(composite, getLabelText());
         data = new FormData();
@@ -88,6 +107,10 @@ public abstract class AbstractTextWithButtonPropertySection extends AbstractView
         data.right = new FormAttachment(text, -ITabbedPropertyConstants.HSPACE - 20);
         data.top = new FormAttachment(text, 0, SWT.CENTER);
         nameLabel.setLayoutData(data);
+
+        if (hasButton) {
+            button.addSelectionListener(createButtonListener());
+        }
 
         listener = new TextWithContentAssistChangeHelper() {
             public void textChanged(Text control) {
