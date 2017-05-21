@@ -13,7 +13,7 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="#sirius5.0.0M7">Changes in Sirius 5.0.0M7</a>
+						<a href="#sirius5.0.0">Changes in Sirius 5.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges">User-Visible Changes</a>
@@ -27,13 +27,10 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius5.0.0M6">Changes in Sirius 5.0.0M6</a>
+						<a href="#sirius4.1.2">Changes in Sirius 4.1.2</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges2">User-Visible Changes</a>
-							</li>
-							<li>
-								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
@@ -41,7 +38,7 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius4.1.2">Changes in Sirius 4.1.2</a>
+						<a href="#sirius4.1.1">Changes in Sirius 4.1.1</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges3">User-Visible Changes</a>
@@ -52,10 +49,13 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius4.1.1">Changes in Sirius 4.1.1</a>
+						<a href="#sirius4.1.0">Changes in Sirius 4.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges4">User-Visible Changes</a>
+							</li>
+							<li>
+								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
@@ -63,7 +63,7 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius4.1.0">Changes in Sirius 4.1.0</a>
+						<a href="#sirius4.0.0">Changes in Sirius 4.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges5">User-Visible Changes</a>
@@ -77,7 +77,7 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius4.0.0">Changes in Sirius 4.0.0</a>
+						<a href="#sirius3.1.0">Changes in Sirius 3.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges6">User-Visible Changes</a>
@@ -90,101 +90,73 @@
 							</li>
 						</ol>
 					</li>
-					<li>
-						<a href="#sirius3.1.0">Changes in Sirius 3.1.0</a>
-						<ol style="list-style: disc;">
-							<li>
-								<a href="#UserVisibleChanges7">User-Visible Changes</a>
-							</li>
-							<li>
-								<a href="#SpecifierVisibleChanges5">Specifier-Visible Changes</a>
-							</li>
-							<li>
-								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
-							</li>
-						</ol>
-					</li>
 				</ol>
 			</li>
 		</ol>
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
-		<h2 id="sirius5.0.0M7">Changes in Sirius 5.0.0M7</h2>
+		<h2 id="sirius5.0.0">Changes in Sirius 5.0.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> An experimental mode to serialize representations in a different file is available with system property 
 				<code>createRepresentationInSeparateResource=true</code>. That means all new representations will be saved, by default, in a separate file with *.srm extension.
 			</li>
-		</ul>
-		<ul>
+			<li><span class="label label-success">Added</span> An new 
+				<em>session editor</em> is available on 
+				<em>.aird</em> files. It provides an alternative, form-based GUI to visualize and manipulate sirius sessions which is not tied to the Modeling perspective or Model Explorer view. Sirius 5.0M6 includes a work-in-progress version of this new feature to encourage early community 
+				<a href="https://wiki.eclipse.org/Sirius/SessionEditor">feedback</a>. That version should be considered in alpha state in terms of stability an UI polish. By default, the new editor will automatically open when a session is opened, but this behavior can be disabled via a new preference in the 
+				<em>Sirius</em> category.
+			</li>
 			<li><span class="label label-info">Modified</span> The label alignment of Notes from the Palette has been modified from Juno to Luna or newer versions of Eclipse. The label alignment changed from TOP &amp; CENTER to MIDDLE &amp; LEFT. The initial alignment (TOP &amp; CENTER) has been restored.</li>
+			<li><span class="label label-info">Modified</span> The export diagram as images actions are now adapting the output resolution based on the diagram size, this leads to better resolution for small to medium diagrams (and also bigger file) and to an operation which is no longer failing with out of memory errors in case of very big diagrams.</li>
+			<li><span class="label label-info">Modified</span>The &#8220;straighten to&#8221; actions previously had a limitation concerning overlap detection. This is no longer the case. The previous known limitation was removed from the documentation (
+				<i>In case of multi-selection, the overlap check is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.</i>).
+			</li>
+			<li><span class="label label-info">Modified</span>Decorators on diagram elements are drawn over all figures. If there is an overlap between a decorator of a figure A and another figure B that is over figure A, when user clicks on the decorator, the figure B is now selected (before it was the parent figure A).</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
+			<li><span class="label label-success">Added</span> It is now possible to create one or multiple pre-configured widget(s) in a group if its domain class and if the meta-models of the properties view containing it have been specified.</li>
+			<li><span class="label label-success">Added</span> Property Views definitions now support extending and overriding Properties View Descriptions without modifying the original. See 
+				<a href="specifier/properties/Properties_View_Description.html#extensibility_features">the documentation</a> for details.
+			</li>
 			<li><span class="label label-info">Modified</span> The transient layer has been introduced in Sirius 5.0. (Refer to 
 				<a href="specifier/diagrams/Diagrams.html#Transientlayer">Sirius Specifier</a> and 
 				<a href="user/diagrams/Diagrams.html#transientLayer">Sirius User</a> documentation in Diagram chapter). Transient layer is an additional layer containing only decorations or tools. If you have such layer in your VSM, users may encounter some unexpected behaviors. If the layer is not 
 				<em>active by default</em> then it will not be applied when opening your diagram even if it was activated before. If the layer is 
 				<em>active by default</em> then it will be automatically applied when opening your diagram. We consider this behavior as a known limitation and an enhancement may be done in a further release. In the meantime, there is a workaround which consists to add a fake mapping (that is any mapping with its fields empty) so that the layer will not be considered as transient.
 			</li>
+			<li><span class="label label-info">Modified</span> The tab used to configure the metamodels used by the Properties view description is now using the same interface as the metamodels tab used to configure the representations.</li>
+			<li><span class="label label-info">Modified</span> The 
+				<code>package::Class</code> syntax for domain classes and type names in the VSM is now fully supported and the new default. It means this syntax is interpreted by Sirius and completion is provided for it when the first 
+				<code>:</code> character is entered. The legacy syntax 
+				<code>package.Class</code> is still supported for compatibility.
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
-		<h4 id="Addorg.eclipse.sirius.ui.editor">Add 
-			<code>org.eclipse.sirius.ui.editor</code>
-		</h4>
-		<p>This plugin provides a session editor showing loaded models, representations and viewpoint activation status of the session. It has functionalities allowing to change the viewpoint activation status, to create/remove representations or to load unload external models. The graphical block showing loaded models is integrated with CNF. You can provide content extension to its viewer by using an id matching the pattern 
-			<code>org.eclipse.sirius.ui.editor.graphicalcomponents.semanticModelsViewer.contentExtension.*</code>. You also can provide action extension by using an id matching the pattern 
-			<code>org.eclipse.sirius.ui.editor.graphicalcomponents.semanticModelsViewer.actionExtension.*</code>. The extension will be selectable/unselectable by using a 
-			<code>Customize View</code> button on the models block header.
-		</p>
-		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
-			<code>org.eclipse.sirius.ui</code>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+			<code>org.eclipse.sirius.common</code> 
 		</h4>
 		<ul>
-			<li><span class="label label-success">Added</span> An interface 
-				<code>org.eclipse.sirius.ui.business.api.editor.ISiriusEditor</code> has been added to gather 
-				<code>org.eclipse.sirius.ui.editor.SessionEditor</code> and 
-				<code>org.eclipse.sirius.ui.business.api.dialect.DialectEditor</code> under the same abstraction. It allows to provide 
-				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code> saving functionalities for session editor or any new editor that is not a dialect editor. 
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl.setFeatureToBeCrossReferencedWhiteList(Collection&lt;EReference&gt;)</code> to set a white list of references that must be referenced even if the reference is derived.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl.isIncluded(EReference)</code> has been overridden to consider features in the white list.
+			</li>
+			<li><span class="label label-success">Added</span> A new extension point, 
+				<code>org.eclipse.sirius.common.package_meta_data</code> has been added. It can be used to associate user-oriented meta-data to Ecore metamodels, identified by their 
+				<code>nsURI</code>: a user-oriented name/label (as opposed to the technical nsURI), a (short) description/documentation, and a list of suggested EClasses defined in the EPackage that are good candidates as root model elements.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.common.ui">Changes in 
+			<code>org.eclipse.sirius.common.ui</code> 
+		</h4>
 		<ul>
-			<li><span class="label label-success">Added</span> A method 
-				<code>getSiriusEditors()</code>  has been added to interface 
-				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code>. It allows to retrieve all 
-				<code>org.eclipse.sirius.ui.business.api.editor.ISiriusEditor</code> that are registered in the session.
-			</li>
-		</ul>
-		<ul>
-			<li><span class="label label-info">Modified</span> The method 
-				<code>attachEditor(DialectEditor)</code> from the interface 
-				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code> has its parameter type modified from 
-				<code>DialectEditor</code> to the new abstraction 
-				<code>ISiriusEditor</code> to provide saving capabilities with other editors than the dialect ones.
-			</li>
-		</ul>
-		<ul>
-			<li><span class="label label-info">Modified</span> The method 
-				<code>detachEditor(DialectEditor)</code> from the interface 
-				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code> has its parameter type modified from 
-				<code>DialectEditor</code> to the new abstraction 
-				<code>ISiriusEditor</code> to provide saving capabilities with other editors than the dialect ones.
-			</li>
-		</ul>
-		<ul>
-			<li><span class="label label-info">Modified</span> The method 
-				<code>detachEditor(DialectEditor, boolean)</code> from the interface 
-				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code> has its first parameter type modified from 
-				<code>DialectEditor</code> to the new abstraction 
-				<code>ISiriusEditor</code> to provide saving capabilities with other editors than the dialect ones.
-			</li>
-		</ul>
-		<ul>
-			<li><span class="label label-success">Added</span> Two new methods have been added to the interface 
-				<code>org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback</code>: 
-				<code>selectViewpoint(Viewpoint, Session, boolean, Set&lt;Viewpoint&gt;, IProgressMonitor)</code> and 
-				<code>deselectViewpoint(Viewpoint, Session, Set&lt;Viewpoint&gt;, IProgressMonitor)</code>. These methods add a new parameter that is a set of viewpoints compared to the same methods without these parameters. These set contains all viewpoints that will be deactivated/activated in addition of the one that is asked to be deactivated/activated. It allows the callback implementation to better handle viewpoint dependencies interaction by being able to know if missing dependencies will be activated or deactivated.
+			<li><span class="label label-danger">Removed</span> The 
+				<code>org.eclipse.sirius.common.ui.tools.api.dialog.FeatureEditorDialog</code> class has been removed; use the 
+				<code>org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog</code> equivalent provided by EMF directly instead.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
@@ -246,123 +218,6 @@
 				<code>org.eclipse.sirius.viewpoint.DRepresentationDescriptor#representation</code> feature is now derived, transient and volatile. The representation is compute by using the 
 				<code>org.eclipse.sirius.viewpoint.DRepresentationDescriptor#repPath</code> attribute.
 			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
-			<code>org.eclipse.sirius.common</code> 
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> 
-				<code>org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl.setFeatureToBeCrossReferencedWhiteList(Collection&lt;EReference&gt;)</code> to set a white list of references that must be referenced even if the reference is derived.
-			</li>
-			<li><span class="label label-success">Added</span> 
-				<code>org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl.isIncluded(EReference)</code> has been overridden to consider features in the white list.
-			</li>
-			<li><span class="label label-success">Added</span> A new extension point, 
-				<code>org.eclipse.sirius.common.package_meta_data</code> has been added. It can be used to associate user-oriented meta-data to Ecore metamodels, identified by their 
-				<code>nsURI</code>: a user-oriented name/label (as opposed to the technical nsURI), a (short) description/documentation, and a list of suggested EClasses defined in the EPackage that are good candidates as root model elements.
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common.ui">Changes in 
-			<code>org.eclipse.sirius.common.ui</code> 
-		</h4>
-		<ul>
-			<li><span class="label label-danger">Removed</span> The 
-				<code>org.eclipse.sirius.common.ui.tools.api.dialog.FeatureEditorDialog</code> class has been removed; use the 
-				<code>org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog</code> equivalent provided by EMF directly instead.
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
-			<code>org.eclipse.sirius.diagram.ui</code>
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> Constants 
-				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.SPECIFIC_STYLES</code> &amp; 
-				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.VERTICAL_ALIGNMENT</code> have been added to retrieve the initial label alignment of Notes from the Palette (see 
-				<a href="Release_Notes.html#UserVisibleChanges">user-visible changes</a> ). Currently the vertical alignment can not be changed (potential new feature later).
-			</li>
-			<li><span class="label label-info">Moved</span> The methods of interface 
-				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping</code> that are 
-				<code>getFormatData(FormatDataKey, RepresentationElementMapping)</code> and 
-				<code>addFormatData(FormatDataKey, RepresentationElementMapping, AbstractFormatData)</code> have been moved into the interface 
-				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager</code> to reduce interface numbers for less complexity.
-			</li>
-			<li><span class="label label-danger">Removed</span> The methods 
-				<code>getFormatData(FormatDataKey key)</code> and 
-				<code>addFormatData(FormatDataKey key, AbstractFormatData formatData)</code> have been removed from interface 
-				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager</code> because they were deprecated.
-			</li>
-			<li><span class="label label-danger">Removed</span> The interface 
-				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping</code> has been removed because all its methods have been moved into interface 
-				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager</code>
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.table">Changes in 
-			<code>org.eclipse.sirius.table</code>
-		</h4>
-		<ul>
-			<li><span class="label label-danger">Removed</span> The 
-				<code>DTableElementSynchronizer</code> 
-				<em>EClass</em> has been removed from the table meta-model. It only defined 
-				<em>EOperations</em> and has been replaced with an equivalent (internal) plain Java class.
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
-			<code>org.eclipse.sirius.ui</code>
-		</h4>
-		<ul>
-			<li><span class="label label-danger">Removed</span> The old 
-				<em>Model Request Interpreter</em> view is not available anymore. It is superseded by the 
-				<em>Interpreter</em> view, which comes from the Acceleo project but does not actually depend on Acceleo or AQL and can be installed separately (using the feature 
-				<code>org.eclipse.acceleo.ui.interpreter</code>, which is available directly from the Sirius update-sites). The corresponding interface 
-				<code>org.eclipse.sirius.ui.tools.api.views.interpreterview.InterpreterView</code> has been removed. Technically, the implementation code for the old 
-				<em>Model Request Interpreter</em> view is still present if needed during the transition, but not exposed or used anywhere. It will be removed in a future version. 
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
-			<code>org.eclipse.sirius.tests.swtbot.support</code>
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> The method 
-				<code>getTreeItem(SWTBotTreeItem[], String, boolean, boolean)</code> has been added in 
-				<code>org.eclipse.sirius.tests.swtbot.support.utils</code> to retrieve recursively a 
-				<code>SWTBotTreeItem</code> in a 
-				<code>SWTBotTreeItem</code> array. Compared to 
-				<code>getTreeItem(SWTBotTreeItem[], String)</code>, it adds the capability to control if the search must be done on enabled items or enabled and disabled items and if the tree must be expanded during the search to check non displayed items.
-			</li>
-		</ul>
-		<h2 id="sirius5.0.0M6">Changes in Sirius 5.0.0M6</h2>
-		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
-		<ul>
-			<li><span class="label label-success">Added</span> An new 
-				<em>session editor</em> is available on 
-				<em>.aird</em> files. It provides an alternative, form-based GUI to visualize and manipulate sirius sessions which is not tied to the Modeling perspective or Model Explorer view. Sirius 5.0M6 includes a work-in-progress version of this new feature to encourage early community 
-				<a href="https://wiki.eclipse.org/Sirius/SessionEditor">feedback</a>. That version should be considered in alpha state in terms of stability an UI polish. By default, the new editor will automatically open when a session is opened, but this behavior can be disabled via a new preference in the 
-				<em>Sirius</em> category.
-			</li>
-			<li><span class="label label-info">Modified</span> The export diagram as images actions are now adapting the output resolution based on the diagram size, this leads to better resolution for small to medium diagrams (and also bigger file) and to an operation which is no longer failing with out of memory errors in case of very big diagrams.</li>
-			<li><span class="label label-info">Modified</span>The &#8220;straighten to&#8221; actions previously had a limitation concerning overlap detection. This is no longer the case. The previous known limitation was removed from the documentation (
-				<i>In case of multi-selection, the overlap check is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.</i>).
-			</li>
-			<li><span class="label label-info">Modified</span>Decorators on diagram elements are drawn over all figures. If there is an overlap between a decorator of a figure A and another figure B that is over figure A, when user clicks on the decorator, the figure B is now selected (before it was the parent figure A).</li>
-		</ul>
-		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
-		<ul>
-			<li><span class="label label-success">Added</span> It is now possible to create one or multiple pre-configured widget(s) in a group if its domain class and if the meta-models of the properties view containing it have been specified.</li>
-			<li><span class="label label-success">Added</span> Property Views definitions now support extending and overriding Properties View Descriptions without modifying the original. See 
-				<a href="specifier/properties/Properties_View_Description.html#extensibility_features">the documentation</a> for details.
-			</li>
-			<li><span class="label label-info">Modified</span> The tab used to configure the metamodels used by the Properties view description is now using the same interface as the metamodels tab used to configure the representations.</li>
-			<li><span class="label label-info">Modified</span> The 
-				<code>package::Class</code> syntax for domain classes and type names in the VSM is now fully supported and the new default. It means this syntax is interpreted by Sirius and completion is provided for it when the first 
-				<code>:</code> character is entered. The legacy syntax 
-				<code>package.Class</code> is still supported for compatibility.
-			</li>
-		</ul>
-		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
-			<code>org.eclipse.sirius</code>
-		</h4>
-		<ul>
 			<li><span class="label label-info">Modified</span> The 
 				<code>org.eclipse.sirius.business.api.query.DViewQuery.getAllContentInRepresentations(Predicate&lt;? super EObject&gt;)</code> now takes a 
 				<code>java.util.Predicate</code> (from Java 8) as argument instead of a 
@@ -429,29 +284,34 @@
 				<code>RepresentationElementIdentifier</code>) have been removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> Two new methods have been added to the interface 
+				<code>org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback</code>: 
+				<code>selectViewpoint(Viewpoint, Session, boolean, Set&lt;Viewpoint&gt;, IProgressMonitor)</code> and 
+				<code>deselectViewpoint(Viewpoint, Session, Set&lt;Viewpoint&gt;, IProgressMonitor)</code>. These methods add a new parameter that is a set of viewpoints compared to the same methods without these parameters. These set contains all viewpoints that will be deactivated/activated in addition of the one that is asked to be deactivated/activated. It allows the callback implementation to better handle viewpoint dependencies interaction by being able to know if missing dependencies will be activated or deactivated.
+			</li>
+			<li><span class="label label-success">Added</span> An interface 
+				<code>org.eclipse.sirius.ui.business.api.editor.ISiriusEditor</code> has been added to gather 
+				<code>org.eclipse.sirius.ui.editor.SessionEditor</code> and 
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectEditor</code> under the same abstraction. It allows to provide 
+				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code> saving functionalities for session editor or any new editor that is not a dialect editor. 
+			</li>
+			<li><span class="label label-success">Added</span> A method 
+				<code>getSiriusEditors()</code>  has been added to interface 
+				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code>. It allows to retrieve all 
+				<code>org.eclipse.sirius.ui.business.api.editor.ISiriusEditor</code> that are registered in the session.
+			</li>
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.refreshEditor(DialectEditor, IProgressMonitor)</code> has been added to allow specifiers to do a full refresh of its dialect editor easily.
-			</li>
-			<li><span class="label label-info">Modified</span> The method 
-				<code>org.eclipse.sirius.ui.tools.api.assist.TextContentProposalProvider.getContentContext(String, int)</code> has been made protected instead of private to allow to use it for sub types.
-			</li>
-			<li><span class="label label-info">Modified</span> The method 
-				<code>org.eclipse.sirius.ui.tools.api.assist.TextContentProposalProvider.removeDuplicatedProposals(List&lt;ContentProposal&gt;)</code> has been made protected instead of private to allow to use it in sub types.
 			</li>
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getDefaultFontWithRuntimeSizeAndFromLabelFormat(List&lt;FontFormat&gt;)</code> has been added to allow to retrieve a font using the given format and the default Sirius font (arial) and the runtime height.
 			</li>
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getFontFromNameAndLabelFormatAndWithDefaultSize(List&lt;FontFormat&gt;, String)</code> has been added to allow to retrieve a font using the given format and the given font name and the runtime height.
-			</li>
-			<li><span class="label label-info">Modified</span> The method 
-				<code>org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.createLocalRepresentationsFile(IProject, IProgressMonitor)</code> has its return type changed from 
-				<code>void</code> to 
-				<code>Session</code> to allow callers to have access to the newly created session directly.
 			</li>
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.ui.tools.api.wizards.page.ViewpointsSelectionWizardPage.setBrowserMinWidth(int)</code> has been added to allow modification of the minimum width (with default value &#8220;0&#8221;) of the browser part of the viewpoint selection wizard.
@@ -468,11 +328,60 @@
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog.isExportDecorations()</code> has been added to know if decorations are displayed in the exported image.
 			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.export(DRepresentation, Session, IPath, ExportFormat, IProgressMonitor, boolean)</code> method has been added. Compared to the previous method signature, the boolean parameter 
+				<code>exportDecorations</code> has been added to allow to choose if the diagram element decorations will be exported or not.
+			</li>
+			<li><span class="label label-info">Modified</span> The boolean parameter 
+				<code>exportDecorations</code> has been added to 
+				<code>org.eclipse.sirius.ui.tools.api.actions.export.ExportAction.ExportAction(Session, Collection&lt;DRepresentation&gt;, IPath, ImageFileFormat, boolean, boolean)</code> constructor. It allows to choose if the diagram element decorations will be exported or not.
+			</li>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>attachEditor(DialectEditor)</code> from the interface 
+				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code> has its parameter type modified from 
+				<code>DialectEditor</code> to the new abstraction 
+				<code>ISiriusEditor</code> to provide saving capabilities with other editors than the dialect ones.
+			</li>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>detachEditor(DialectEditor)</code> from the interface 
+				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code> has its parameter type modified from 
+				<code>DialectEditor</code> to the new abstraction 
+				<code>ISiriusEditor</code> to provide saving capabilities with other editors than the dialect ones.
+			</li>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>detachEditor(DialectEditor, boolean)</code> from the interface 
+				<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code> has its first parameter type modified from 
+				<code>DialectEditor</code> to the new abstraction 
+				<code>ISiriusEditor</code> to provide saving capabilities with other editors than the dialect ones.
+			</li>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>org.eclipse.sirius.ui.tools.api.assist.TextContentProposalProvider.getContentContext(String, int)</code> has been made protected instead of private to allow to use it for sub types.
+			</li>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>org.eclipse.sirius.ui.tools.api.assist.TextContentProposalProvider.removeDuplicatedProposals(List&lt;ContentProposal&gt;)</code> has been made protected instead of private to allow to use it in sub types.
+			</li>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.createLocalRepresentationsFile(IProject, IProgressMonitor)</code> has its return type changed from 
+				<code>void</code> to 
+				<code>Session</code> to allow callers to have access to the newly created session directly.
+			</li>
+			<li><span class="label label-danger">Removed</span> The old 
+				<em>Model Request Interpreter</em> view is not available anymore. It is superseded by the 
+				<em>Interpreter</em> view, which comes from the Acceleo project but does not actually depend on Acceleo or AQL and can be installed separately (using the feature 
+				<code>org.eclipse.acceleo.ui.interpreter</code>, which is available directly from the Sirius update-sites). The corresponding interface 
+				<code>org.eclipse.sirius.ui.tools.api.views.interpreterview.InterpreterView</code> has been removed. Technically, the implementation code for the old 
+				<em>Model Request Interpreter</em> view is still present if needed during the transition, but not exposed or used anywhere. It will be removed in a future version. 
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> The utility class 
+				<code>org.eclipse.sirius.diagram.business.api.helper.decoration.DecorationHelper</code> has been added. It provides 
+				<code>updateDecorations(List&lt;Layer&gt;)</code> and 
+				<code>updateAllDecorations</code> methods that allow to update only decorations in a diagram.
+			</li>
 			<li><span class="label label-info">Moved</span> The method 
 				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshOverride.aroundRefresh(DDiagram)</code> has been moved to 
 				<code>org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension</code> to unify methods handling refresh extension under one interface. 
@@ -493,10 +402,15 @@
 				<code>NodeStyleIdentifier</code>) have been removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> Constants 
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.SPECIFIC_STYLES</code> &amp; 
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.VERTICAL_ALIGNMENT</code> have been added to retrieve the initial label alignment of Notes from the Palette (see 
+				<a href="Release_Notes.html#UserVisibleChanges">user-visible changes</a> ). Currently the vertical alignment can not be changed (potential new feature later).
+			</li>
 			<li><span class="label label-success">Added</span> The class 
 				<code>org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusDecoratorEditPolicy</code> has been added to improve the behavior of decorator selection.
 			</li>
@@ -514,9 +428,6 @@
 					<li><span class="label label-success">Added</span> 
 						<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationProviderRegistry</code> allows to register and get 
 						<code>SiriusDecorationDescriptorProvider</code>.
-					</li>
-					<li><span class="label label-danger">Removed</span> 
-						<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.AbstractSiriusDecorator</code> is removed because now useless.
 					</li>
 				</ul>
 			</li>
@@ -548,6 +459,12 @@
 				<code>addFormatData(FormatDataKey, RepresentationElementMapping, AbstractFormatData)</code> have been moved into the interface 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager</code> to reduce interface numbers for less complexity.
 			</li>
+			<li><span class="label label-info">Moved</span> The methods of interface 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping</code> that are 
+				<code>getFormatData(FormatDataKey, RepresentationElementMapping)</code> and 
+				<code>addFormatData(FormatDataKey, RepresentationElementMapping, AbstractFormatData)</code> have been moved into the interface 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager</code> to reduce interface numbers for less complexity.
+			</li>
 			<li><span class="label label-danger">Removed</span> The methods 
 				<code>getFormatData(FormatDataKey key)</code> and 
 				<code>addFormatData(FormatDataKey key, AbstractFormatData formatData)</code> have been removed from interface 
@@ -556,6 +473,30 @@
 			<li><span class="label label-danger">Removed</span> The interface 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping</code> has been removed because all its methods have been moved into interface 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager</code>
+				<ul>
+					<li><span class="label label-danger">Removed</span> 
+						<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.AbstractSiriusDecorator</code> is removed because now useless.
+					</li>
+				</ul>
+			</li>
+			<li><span class="label label-danger">Removed</span> The methods 
+				<code>getFormatData(FormatDataKey key)</code> and 
+				<code>addFormatData(FormatDataKey key, AbstractFormatData formatData)</code> have been removed from interface 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager</code> because they were deprecated.
+			</li>
+			<li><span class="label label-danger">Removed</span> The interface 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping</code> has been removed because all its methods have been moved into interface 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager</code>
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.table">Changes in 
+			<code>org.eclipse.sirius.table</code>
+		</h4>
+		<ul>
+			<li><span class="label label-danger">Removed</span> The 
+				<code>DTableElementSynchronizer</code> 
+				<em>EClass</em> has been removed from the table meta-model. It only defined 
+				<em>EOperations</em> and has been replaced with an equivalent (internal) plain Java class.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tree.ui">Changes in 
@@ -567,6 +508,14 @@
 				<code>SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE</code>. This enum value is the preference when true allowing to use runtime font height when displaying Sirius tree editor&#8217;s items instead of the one specified in the VSM.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ui.editor">Changes in 
+			<code>org.eclipse.sirius.ui.editor</code>
+		</h4>
+		<p>This plugin is new in Sirius 5.0. It provides a session editor showing loaded models, representations and viewpoint activation status of the session. It has functionalities allowing to change the viewpoint activation status, to create/remove representations or to load unload external models. The graphical block showing loaded models is integrated with CNF. You can provide content extension to its viewer by using an id matching the pattern 
+			<code>org.eclipse.sirius.ui.editor.graphicalcomponents.semanticModelsViewer.contentExtension.*</code>. You also can provide action extension by using an id matching the pattern 
+			<code>org.eclipse.sirius.ui.editor.graphicalcomponents.semanticModelsViewer.actionExtension.*</code>. The extension will be selectable/unselectable by using a 
+			<code>Customize View</code> button on the models block header.
+		</p>
 		<h4 id="Changesinorg.eclipse.sirius.properties.core">Changes in 
 			<code>org.eclipse.sirius.properties.core</code>
 		</h4>
@@ -608,30 +557,6 @@
 				<code>AbstractMetamodelPropertySectionSpec</code>. Those classes are now used for the edition of the metamodels of both the Properties view description and the various representations.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
-			<code>org.eclipse.sirius.ui</code>
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> 
-				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.export(DRepresentation, Session, IPath, ExportFormat, IProgressMonitor, boolean)</code> method has been added. Compared to the previous method signature, the boolean parameter 
-				<code>exportDecorations</code> has been added to allow to choose if the diagram element decorations will be exported or not.
-			</li>
-			<li><span class="label label-info">Modified</span> The boolean parameter 
-				<code>exportDecorations</code> has been added to 
-				<code>org.eclipse.sirius.ui.tools.api.actions.export.ExportAction.ExportAction(Session, Collection&lt;DRepresentation&gt;, IPath, ImageFileFormat, boolean, boolean)</code> constructor. It allows to choose if the diagram element decorations will be exported or not.
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
-			<code>org.eclipse.sirius.diagram</code>
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> </li>
-		</ul>
-		<p>The utility class 
-			<code>org.eclipse.sirius.diagram.business.api.helper.decoration.DecorationHelper</code> has been added. It provides 
-			<code>updateDecorations(List&lt;Layer&gt;)</code> and 
-			<code>updateAllDecorations</code> methods that allow to update only decorations in a diagram.
-		</p>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
@@ -643,10 +568,17 @@
 				<code>org.eclipse.sirius.tests.support.api.OpenedSessionsCondition</code> has been extracted from a junit test to be used by multiple junit tests. It allows to wait until a session is in opened state.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> The method 
+				<code>getTreeItem(SWTBotTreeItem[], String, boolean, boolean)</code> has been added in 
+				<code>org.eclipse.sirius.tests.swtbot.support.utils</code> to retrieve recursively a 
+				<code>SWTBotTreeItem</code> in a 
+				<code>SWTBotTreeItem</code> array. Compared to 
+				<code>getTreeItem(SWTBotTreeItem[], String)</code>, it adds the capability to control if the search must be done on enabled items or enabled and disabled items and if the tree must be expanded during the search to check non displayed items.
+			</li>
 			<li><span class="label label-success">Added</span> A new utility method 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragCentered(String, Class&lt;? extends EditPart&gt;, int, int)</code> improving the dragCentered method by adding the aimed Class in parameter.
 			</li>
@@ -686,16 +618,16 @@ SWTBotUtils.waitAllUiEvents();
 
 </pre>
 		<h2 id="sirius4.1.2">Changes in Sirius 4.1.2</h2>
-		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-success">Added</span> </li>
+			<li><span class="label label-success">Added</span> A new preference named 
+				<em>Maximum size of tabs name</em> is available in the Sirius Properties View preference page. This preference is used to shorten the tabs names when the default rules are used to render the properties view.
+			</li>
 		</ul>
-		<p>A new preference named 
-			<em>Maximum size of tabs name</em> is available in the Sirius Properties View preference page. This preference is used to shorten the tabs names when the default rules are used to render the properties view.
-			<br/>
+		<p>
 			<img border="0" src="./images/PreferencePageMaxTabName.png"/> 
 		</p>
-		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping</code> class has been added to handle copy/paste format with mapping information when an element target of a format pasting has many source diagram format corresponding to its key. In this case, we use the mapping information to get the more precise data format. And if no result matched, then we return the first found by using the key.
@@ -726,18 +658,18 @@ SWTBotUtils.waitAllUiEvents();
 			<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping.addFormatData(FormatDataKey, RepresentationElementMapping, AbstractFormatData)</code> to better handle copy/paste format cases.
 		</p>
 		<h2 id="sirius4.1.1">Changes in Sirius 4.1.1</h2>
-		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span>The &#8220;straighten to&#8221; actions were previously disabled when an edge is connected to border nodes that have several edges. It is now allowed.</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.getEStructuralFeature(DLine, DColumn)</code> method has been added to retrieve the EStructuralFeature associated to a table column.
 			</li>
 		</ul>
 		<h2 id="sirius4.1.0">Changes in Sirius 4.1.0</h2>
-		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Copy/Paste Layout has been completed with Copy/Paste Style and Copy/Paste Format. 
 				<em>Paste Format</em> is equivalent to paste 
@@ -801,7 +733,7 @@ SWTBotUtils.waitAllUiEvents();
 				<em>Ctrl+HOME</em>.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to inline a copy of the default Properties Views model inside the VSM. This is a copy of the model Sirius would use if no 
 				<em>Properties View Description</em> was specified. It can be used as a starting point for manual customization, or as a complement for elements for which you do not provide any custom rules. 
@@ -853,7 +785,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.diagram.ui.formatDataManager</code>. The deprecated extension point will be removed in the next 5.0 Sirius major release. Several classes associated with this deprecated extension point are also deprecated (see Developer-Visible Changes for details).
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> As the first step to save the DRepresentation in its own resource, 
 				<code>org.eclipse.sirius.viewpoint.DView.getOwnedRepresentationDescriptors()</code> has been added as a wrapper of the 
@@ -911,7 +843,7 @@ SWTBotUtils.waitAllUiEvents();
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1016,7 +948,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>updateModelsReferences(DAnalysis, Iterator&lt;DSemanticDecorator&gt;)</code> because it is more suited to the client needs.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1043,7 +975,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>HierarchyLabelProvider</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1053,7 +985,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>allowsCopyPasteLayout(DSemanticDecorator)</code> will be removed in the new major version.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1201,7 +1133,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>DView.ownedRepresentationDescriptors</code> addition.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -1255,7 +1187,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 		</ul>
 		<h2 id="sirius4.0.0">Changes in Sirius 4.0.0</h2>
-		<h3 id="UserVisibleChanges6">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> The user can now filter elements according to a Typed variable (String, Integer, EEnum or any EDataType). If a user applies a filter containing Typed Variables, a dialog is displayed to allow user entering the Typed Variable values. That values can be used as variables in the Condition Expression of the Variable Filter.</li>
 			<li><span class="label label-success">Added</span> When the diagram is larger than the editor, you can move it in all directions pressing the middle-button and dragging the mouse (keeping the button pressed).</li>
@@ -1275,7 +1207,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>Apply Appearance Properties</code> action has been modified to use the last selected element as base style instead of the first one.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Sirius 4.0 introduces 
 				<strong>experimental</strong> support for specifying the properties views of your modelers directly from inside the VSM. This feature uses the same dynamic approach as for specifying diagrams, tables and trees, with a very flexible configuration language and no code generation involved (including live preview of any change). As of Sirius 4.0, this feature should be considered in an experimental state with details subject to changes until Sirius 4.1, and is not installed by default. To install it, make sure either 
@@ -1341,7 +1273,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 			<li><span class="label label-info">Modified</span> The variable under VariableFilter, previously named &#8220;Variable&#8221;, is renamed to &#8220;Select Model Element Variable&#8221;. It is functionally equivalent.</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to provide a full customized tab-bar by implementing the 
 				<code>ITabbarContributor</code> through the 
@@ -1353,7 +1285,7 @@ SWTBotUtils.waitAllUiEvents();
 				<a href="developer/extensions-provide_custom_bundled_image_shape.html">developer documentation</a> for more details.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1467,7 +1399,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus</code> to reflect all kind of language validation severity (of AQL for example).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1510,7 +1442,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.resetVariables()</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui6">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1537,7 +1469,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.ui.business.api.editor.SpecificSessionManager</code> has been removed. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1658,7 +1590,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.MoveInDiagramDragTracker</code> has been added to declare states used by all DragTrackers which manage move in diagram using mouse middle click.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui7">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1699,7 +1631,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>SiriusTestCase.initViewpoint(String, Session, EObject)</code> has been deprecated because the last parameter is useless to activate a viewpoint.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -1744,7 +1676,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 		</ul>
 		<h2 id="sirius3.1.0">Changes in Sirius 3.1.0</h2>
-		<h3 id="UserVisibleChanges7">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges6">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new feature allows to snap to all shapes (instead of just to snap to sibling shapes). The <kdb>F4</kdb> shortcut key activates this mode when you resize a node, move a node or move a bendpoint of an edge, see 
 				<a href="./user/diagrams/Diagrams.html#snap_to_shapes">the documentation</a> for details.
@@ -1783,7 +1715,7 @@ SWTBotUtils.waitAllUiEvents();
 				<em>Arrange Linked Border Nodes</em> as it is border nodes which are layouted and not bordered nodes.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges5">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The 
 				<em>Acceleo Query Language</em> (AQL) interpreter has been improved. AQL, and its support in Sirius, is no longer considered experimental, and instead is now the recommended query language to use for new VSMs. Improvements mostly concern better completion and validation, and more precise error reporting. In particular AQL expressions will now be able to display warnings and errors in the Interpreter view. The message displayed in the Interpreter view after an evaluation has also been improved to display the qualified name of the type of the value computed (
@@ -1830,7 +1762,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>IPermissionAuthority</code>) of the potential to delete objects. This is the reverse order of what was done before, and can have performance impacts if the precondition is slow. The specifier will to take care to ensure a good performance for the precondition expression of the delete tool.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
 		<h4 id="Partialsupportforinternationalization">Partial support for internationalization</h4>
 		<p>Sirius 3.1 introduces partial support for internationalization: all literal strings from the runtime part of Sirius are now externalized and can be localized by third parties by providing the appropriate &#8220;language packs&#8221; as OSGi fragments. Note that this does not concern the VSM editor&#8217;s UI, the VSMs themselves, or the parts of the UI inherited from Eclipse/EMF/GEF/GMF and other libraries and frameworks used by Sirius.</p>
 		<p>Some API changes were required to enable this. While technically breaking changes if interpreting strictly the OSGi versioning rules, the major version number of the impacted bundles was not incremented as the changes only concern classes that should not impact the vast majority of users. Most breaking changes concern the plug-in/activator classes from each bundle. They are:</p>
@@ -2071,7 +2003,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalBuilder</code> used to build the content proposals with their various parameters more easily.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -2110,7 +2042,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.tools.api.command.IUndoableCommand</code> interface removed because it is useless since undo/redo is managed by EMF Transaction.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui8">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -2132,7 +2064,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>IEditorPart</code> through the navigation history view.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -2218,7 +2150,7 @@ SWTBotUtils.waitAllUiEvents();
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support4">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
