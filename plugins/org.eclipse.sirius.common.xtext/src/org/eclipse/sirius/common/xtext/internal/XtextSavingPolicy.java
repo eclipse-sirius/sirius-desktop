@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.xtext.internal;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -56,8 +58,14 @@ public class XtextSavingPolicy implements SavingPolicy {
             newOptions.putAll(options);
         }
         newOptions.putAll(SaveOptions.newBuilder().noValidation().getOptions().toOptionsMap());
-        Stream<Resource> writeableResourcesToSave = StreamSupport.stream(resourcesToSave.spliterator(), false).filter(k -> ! (k instanceof TypeResource));
-        return delegate.save(() -> writeableResourcesToSave.iterator(), newOptions, monitor);
+
+        Collection<Resource> writeableResourcesToSave = new ArrayList<>();
+        resourcesToSave.forEach(r -> {
+            if (!(r instanceof TypeResource)) {
+                writeableResourcesToSave.add(r);
+            }
+        });
+        return delegate.save(writeableResourcesToSave, newOptions, monitor);
     }
 
 }
