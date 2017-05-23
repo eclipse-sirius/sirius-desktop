@@ -161,7 +161,9 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                         // a model may have been added/removed from the model so we have to update content that is
                         // relative to loaded models.
                         PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
-                            initInput();
+                            if (!treeViewer.getTree().isDisposed()) {
+                                initInput();
+                            }
                         });
                     }
                     break;
