@@ -27,7 +27,7 @@ public class SessionEditorPreferencesInitializer extends AbstractPreferenceIniti
     @Override
     public void initializeDefaultPreferences() {
         final IPreferenceStore uiPreferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
-        uiPreferenceStore.setDefault(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_AT_MODELING_PROJECT_EXPANSION.name(), true);
+        uiPreferenceStore.setDefault(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_AT_MODELING_PROJECT_EXPANSION.name(), false);
     }
 
 }
