@@ -90,7 +90,7 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
     private void addSessionEditorFields(Composite parent) {
         Composite refreshComposite = createGroup(parent, Messages.SiriusPreferencePage_sessionEditorGroup);
 
-        autoSessionEditorOpening = new BooleanFieldEditor(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_AT_MODELING_PROJECT_EXPANSION.name(),
+        autoSessionEditorOpening = new BooleanFieldEditor(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_ON_SESSION_OPEN.name(),
                 Messages.SiriusPreferencePage_autoSessionEditorOpening, new Composite(refreshComposite, SWT.NONE));
         addField(autoSessionEditorOpening);
 

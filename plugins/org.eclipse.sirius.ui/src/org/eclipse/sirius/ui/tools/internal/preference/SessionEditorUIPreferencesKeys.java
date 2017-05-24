@@ -18,9 +18,8 @@ package org.eclipse.sirius.ui.tools.internal.preference;
  */
 public enum SessionEditorUIPreferencesKeys {
     /**
-     * Preference telling if the session's editor must be opened when expanding a modeling project with its session not
-     * yet loaded.
+     * Preference telling if the session's editor must be opened automatically when a session is opened.
      */
-    PREF_OPEN_SESSION_EDITOR_AT_MODELING_PROJECT_EXPANSION;
+    PREF_OPEN_SESSION_EDITOR_ON_SESSION_OPEN;
 
 }

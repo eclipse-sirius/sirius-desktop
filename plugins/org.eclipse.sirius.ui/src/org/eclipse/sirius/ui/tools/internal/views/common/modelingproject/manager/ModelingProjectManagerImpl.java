@@ -251,7 +251,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                         if (createAndOpenBlankRepresentationsFile) {
                             monitor.subTask(Messages.ModelingProjectManagerImpl_createRepresentationFileTask);
                             Session newSession = createLocalRepresentationsFile(project, new SubProgressMonitor(monitor, 1));
-                            if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_AT_MODELING_PROJECT_EXPANSION.name())) {
+                            if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_ON_SESSION_OPEN.name())) {
                                 Set<ISessionFileLoadingListener> sessionFileLoadingListeners = SiriusEditPlugin.getPlugin().getSessionFileLoadingListeners();
                                 for (ISessionFileLoadingListener sessionFileLoadingListener : sessionFileLoadingListeners) {
                                     sessionFileLoadingListener.notifySessionLoadedFromModelingProjectExpansion(newSession);

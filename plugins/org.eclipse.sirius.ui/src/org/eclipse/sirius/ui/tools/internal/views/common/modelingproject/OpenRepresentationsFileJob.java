@@ -156,7 +156,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
                 subMonitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_loadReferencedModelsTask, representationsFileURI.lastSegment()));
                 session = SessionManager.INSTANCE.openSession(representationsFileURI, subMonitor.newChild(14), SiriusEditPlugin.getPlugin().getUiCallback());
                 if (session != null) {
-                    if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_AT_MODELING_PROJECT_EXPANSION.name())) {
+                    if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SessionEditorUIPreferencesKeys.PREF_OPEN_SESSION_EDITOR_ON_SESSION_OPEN.name())) {
                         Set<ISessionFileLoadingListener> sessionFileLoadingListeners = SiriusEditPlugin.getPlugin().getSessionFileLoadingListeners();
                         for (ISessionFileLoadingListener sessionFileLoadingListener : sessionFileLoadingListeners) {
                             sessionFileLoadingListener.notifySessionLoadedFromModelingProjectExpansion(session);
