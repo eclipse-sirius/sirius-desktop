@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,10 +14,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
@@ -48,6 +49,7 @@ import org.eclipse.sirius.tree.ui.tools.internal.editor.provider.TreePopupMenuCo
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.internal.editor.MenuHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -111,12 +113,9 @@ public class DTreeMenuListener implements IMenuListener {
      * @param treeViewManager
      *            The manager of the TreeView
      * @param mappingToCreateActions
-     *            A map which associates {@link TreeMapping} with the
-     *            corresponding list of {@link AbstractToolAction} (
-     *            {@link org.eclipse.sirius.tree.ui.tools.internal.editor.action.CreateLineAction}
-     *            or
-     *            {@link org.eclipse.sirius.tree.ui.tools.internal.editor.action.CreateTargetColumnAction}
-     *            )
+     *            A map which associates {@link TreeMapping} with the corresponding list of {@link AbstractToolAction} (
+     *            {@link org.eclipse.sirius.tree.ui.tools.internal.editor.action.CreateLineAction} or
+     *            {@link org.eclipse.sirius.tree.ui.tools.internal.editor.action.CreateTargetColumnAction} )
      * @param createActionsForTree
      *            A list of the actions for create lines under the tree.
      */
@@ -238,13 +237,14 @@ public class DTreeMenuListener implements IMenuListener {
         final EObject semanticElement = decorator.getTarget();
         final Session session = SessionManager.INSTANCE.getSession(semanticElement);
         if (session != null) {
-            final Collection<DRepresentation> otherRepresentations = DialectManager.INSTANCE.getRepresentations(semanticElement, session);
-            for (final DRepresentation representation : otherRepresentations) {
-                if (!EcoreUtil.equals(dTree, representation) && isFromActiveViewpoint(session, representation)) {
-                    openItem.setVisible(true);
-                    ((IMenuManager) openItem.getInnerItem()).appendToGroup(EXISTING_REPRESENTATION_GROUP_SEPARATOR, MenuHelper.buildOpenRepresentationAction(session, representation, adapterFactory));
-                }
-            }
+            // build open representation actions
+            DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(dTree).getRepresentationDescriptor();
+            DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream().filter(rd -> !Objects.equals(rd, representationDescriptor))
+                    .filter(repDesc -> Objects.equals(repDesc.getTarget(), semanticElement)).filter(repDesc -> isFromActiveViewpoint(session, repDesc.getDescription())).forEach(repDesc -> {
+                        openItem.setVisible(true);
+                        ((IMenuManager) openItem.getInnerItem()).appendToGroup(EXISTING_REPRESENTATION_GROUP_SEPARATOR, MenuHelper.buildOpenRepresentationAction(session, repDesc, adapterFactory));
+                    });
+
             if (decorator instanceof DRepresentationElement) {
                 if (buildOpenRepresentationsMenu((IMenuManager) openItem.getInnerItem(), (DRepresentationElement) decorator, session)) {
                     // if at least one navigable representation menu
@@ -378,15 +378,14 @@ public class DTreeMenuListener implements IMenuListener {
     }
 
     /**
-     * Tests whether a representation description belongs to a viewpoint which
-     * is currently active in the session.
+     * Tests whether a representation description belongs to a viewpoint which is currently active in the session.
      * 
      * @param session
      *            the current session.
      * @param representationDescription
      *            the representation description to check.
-     * @return <code>true</code> if the representation description belongs to a
-     *         viewpoint which is currently active in the session.
+     * @return <code>true</code> if the representation description belongs to a viewpoint which is currently active in
+     *         the session.
      */
     private boolean isFromActiveViewpoint(final Session session, final RepresentationDescription representationDescription) {
         final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(representationDescription);
@@ -394,15 +393,13 @@ public class DTreeMenuListener implements IMenuListener {
     }
 
     /**
-     * Tests whether a representation belongs to a viewpoint which is currently
-     * active in the session.
+     * Tests whether a representation belongs to a viewpoint which is currently active in the session.
      * 
      * @param session
      *            the current session.
      * @param representation
      *            the representation to check.
-     * @return <code>true</code> if the representation belongs to a viewpoint
-     *         which is currently active in the session.
+     * @return <code>true</code> if the representation belongs to a viewpoint which is currently active in the session.
      */
     private boolean isFromActiveViewpoint(final Session session, final DRepresentation representation) {
         final RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);

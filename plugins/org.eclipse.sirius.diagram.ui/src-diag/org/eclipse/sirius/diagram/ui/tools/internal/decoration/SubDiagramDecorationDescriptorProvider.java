@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
@@ -27,6 +28,7 @@ import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -42,6 +44,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationDescri
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection;
@@ -51,10 +54,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.graphics.Image;
-
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
 
 /**
  * This {@link SiriusDecorationDescriptorProvider} provides a decoration on the bottom right corner when the element
@@ -105,17 +104,29 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
         boolean shouldHaveSubDiagramDecorator = false;
         if (target != null && target.eResource() != null) {
             if (session != null && !parentHasSameSemanticElement(node)) {
-                // Does the target element has any representation on it? Exclude
-                // the current representation itself to avoid redundant markers.
-                DRepresentation representation = new DRepresentationElementQuery(node).getParentRepresentation();
-                Predicate<DRepresentation> otherReperesentation = Predicates.not(Predicates.equalTo(representation));
-                shouldHaveSubDiagramDecorator = Iterables.any(DialectManager.INSTANCE.getRepresentations(target, session), otherReperesentation);
+                shouldHaveSubDiagramDecorator = checkExistingRepresentationDescriptors(node, session);
                 if (node.getMapping() != null && !shouldHaveSubDiagramDecorator) {
                     shouldHaveSubDiagramDecorator = checkRepresentationNavigationDescriptions(node, session);
                 }
             }
         }
         return shouldHaveSubDiagramDecorator;
+    }
+
+    /**
+     * Check if an existing {@link DRepresentationDescriptor} as the node target element as target element.
+     * 
+     * @return the value
+     */
+    private boolean checkExistingRepresentationDescriptors(DRepresentationElement node, Session session) {
+        // Does the target element has any representation on it? Exclude
+        // the current representation itself to avoid redundant markers.
+        EObject semanticObject = node.getTarget();
+        DRepresentation representation = new DRepresentationElementQuery(node).getParentRepresentation();
+        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation).getRepresentationDescriptor();
+
+        return DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream().filter(repDesc -> !Objects.equals(repDesc, representationDescriptor))
+                .filter(repDesc -> Objects.equals(repDesc.getTarget(), semanticObject)).count() > 0;
     }
 
     /**
@@ -126,13 +137,16 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
     }
 
     private boolean checkRepresentationNavigationDescriptions(DRepresentationElement element, Session session) {
-
+        boolean isAnyRepresentation = false;
         EObject target = element.getTarget();
         if (session.isOpen()) {
 
             IInterpreter interpreter = session.getInterpreter();
 
-            for (RepresentationNavigationDescription navDesc : element.getMapping().getNavigationDescriptions()) {
+            Iterator<RepresentationNavigationDescription> navDescIterator = element.getMapping().getNavigationDescriptions().iterator();
+            while (!isAnyRepresentation && navDescIterator.hasNext()) {
+                RepresentationNavigationDescription navDesc = navDescIterator.next();
+
                 if (isFromActiveViewpoint(navDesc.getRepresentationDescription(), session)) {
                     interpreter.setVariable(navDesc.getContainerVariable().getName(), target);
                     interpreter.setVariable(navDesc.getContainerViewVariable().getName(), element);
@@ -147,9 +161,7 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
                     }
 
                     if (precondition) {
-                        if (checkRepresentationNavigationDescription(interpreter, navDesc, element, session)) {
-                            return true;
-                        }
+                        isAnyRepresentation = checkRepresentationNavigationDescription(interpreter, navDesc, element, session);
                     }
 
                     interpreter.unSetVariable(navDesc.getContainerVariable().getName());
@@ -157,7 +169,7 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
                 }
             }
         }
-        return false;
+        return isAnyRepresentation;
     }
 
     private boolean isFromActiveViewpoint(final RepresentationDescription description, Session session) {
@@ -166,28 +178,20 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
     }
 
     private boolean checkRepresentationNavigationDescription(IInterpreter interpreter, RepresentationNavigationDescription navDesc, DRepresentationElement element, Session session) {
-        Collection<EObject> candidates = null;
+        Collection<EObject> candidates = new ArrayList<EObject>();
         if (!StringUtil.isEmpty(navDesc.getBrowseExpression())) {
-            candidates = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(element.getTarget(), navDesc,
-                    ToolPackage.eINSTANCE.getRepresentationNavigationDescription_BrowseExpression());
+            candidates.addAll(RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(element.getTarget(), navDesc,
+                    ToolPackage.eINSTANCE.getRepresentationNavigationDescription_BrowseExpression()));
         } else {
-            candidates = new ArrayList<EObject>();
             Iterator<EObject> it = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(element.getTarget()).eAllContents(element.getTarget());
             while (it.hasNext()) {
                 candidates.add(it.next());
             }
         }
 
-        for (EObject candidate : candidates) {
-            Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(candidate, session);
-            for (DRepresentation representation : representations) {
-                if (navDesc.getRepresentationDescription() != null && navDesc.getRepresentationDescription().equals(DialectManager.INSTANCE.getDescription(representation))) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
+        return DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream().filter(repDesc -> candidates.contains(repDesc.getTarget())).filter(repDesc -> {
+            return repDesc.getDescription().equals(navDesc.getRepresentationDescription());
+        }).count() > 0;
     }
 
     @Override

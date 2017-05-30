@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.menu;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
@@ -32,6 +31,7 @@ import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
@@ -48,20 +48,21 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.internal.editor.MenuHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchPart;
 
 /**
- * This menu contribution add a "open" menu in the DDiagram diagram editor. This
- * menu provides navigation links to Model elements or Source files.
+ * This menu contribution add a "open" menu in the DDiagram diagram editor. This menu provides navigation links to Model
+ * elements or Source files.
  * 
  * @author cbrun
  * 
@@ -124,12 +125,15 @@ public class OpenMenuContribution implements IContributionItemProvider {
                 }
                 contributeToPopupMenu(openMenuManager, null);
                 final TransactionalEditingDomain transDomain = TransactionUtil.getEditingDomain(designerDiag);
-                final Collection<DRepresentation> otherRepresentations = DialectManager.INSTANCE.getRepresentations(semantic, session);
-                for (final DRepresentation representation : otherRepresentations) {
-                    if (!EcoreUtil.equals(designerDiag, representation) && isFromActiveViewpoint(session, representation)) {
-                        openMenuManager.add(MenuHelper.buildOpenRepresentationAction(session, representation, getAdapterFactory()));
-                    }
-                }
+
+                // build open representation actions
+
+                DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(designerDiag).getRepresentationDescriptor();
+                DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream().filter(rd -> !Objects.equals(rd, representationDescriptor))
+                        .filter(repDesc -> Objects.equals(repDesc.getTarget(), semantic)).filter(repDesc -> isFromActiveViewpoint(session, repDesc.getDescription())).forEach(repDesc -> {
+                            openMenuManager.add(MenuHelper.buildOpenRepresentationAction(session, repDesc, getAdapterFactory()));
+                        });
+
                 if (designerObj instanceof DRepresentationElement) {
                     buildOpenableRepresentationsMenu(openMenuManager, designerObj, session, editpart, transDomain);
                 }
@@ -138,15 +142,14 @@ public class OpenMenuContribution implements IContributionItemProvider {
     }
 
     /**
-     * Tests whether a representation description belongs to a viewpoint which
-     * is currently active in the session.
+     * Tests whether a representation description belongs to a viewpoint which is currently active in the session.
      * 
      * @param session
      *            the current session.
      * @param representationDescription
      *            the representation description to check.
-     * @return <code>true</code> if the representation description belongs to a
-     *         viewpoint which is currently active in the session.
+     * @return <code>true</code> if the representation description belongs to a viewpoint which is currently active in
+     *         the session.
      */
     private boolean isFromActiveViewpoint(final Session session, final RepresentationDescription representationDescription) {
         final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(representationDescription);
@@ -154,15 +157,13 @@ public class OpenMenuContribution implements IContributionItemProvider {
     }
 
     /**
-     * Tests whether a representation belongs to a viewpoint which is currently
-     * active in the session.
+     * Tests whether a representation belongs to a viewpoint which is currently active in the session.
      * 
      * @param session
      *            the current session.
      * @param representation
      *            the representation to check.
-     * @return <code>true</code> if the representation belongs to a viewpoint
-     *         which is currently active in the session.
+     * @return <code>true</code> if the representation belongs to a viewpoint which is currently active in the session.
      */
     private boolean isFromActiveViewpoint(final Session session, final DRepresentation representation) {
         final RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
