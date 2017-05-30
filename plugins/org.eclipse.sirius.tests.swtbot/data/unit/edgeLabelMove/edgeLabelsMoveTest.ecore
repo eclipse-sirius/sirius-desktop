@@ -19,4 +19,75 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="C1B"/>
   </eSubpackages>
+  <eSubpackages name="P2">
+    <eClassifiers xsi:type="ecore:EClass" name="G" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="G1" abstract="true" eSuperTypes="#//P2/G"/>
+    <eClassifiers xsi:type="ecore:EClass" name="G2" abstract="true" eSuperTypes="#//P2/G"/>
+    <eClassifiers xsi:type="ecore:EClass" name="H" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="H1" abstract="true" eSuperTypes="#//P2/H"/>
+    <eClassifiers xsi:type="ecore:EClass" name="H2" abstract="true" eSuperTypes="#//P2/H"/>
+    <eClassifiers xsi:type="ecore:EClass" name="H3" abstract="true" eSuperTypes="#//P2/H"/>
+    <eClassifiers xsi:type="ecore:EClass" name="H4" abstract="true" eSuperTypes="#//P2/H"/>
+    <eClassifiers xsi:type="ecore:EClass" name="H5" abstract="true" eSuperTypes="#//P2/H"/>
+    <eClassifiers xsi:type="ecore:EClass" name="I" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="I1" abstract="true" eSuperTypes="#//P2/I"/>
+    <eClassifiers xsi:type="ecore:EClass" name="I2" abstract="true" eSuperTypes="#//P2/I"/>
+    <eClassifiers xsi:type="ecore:EClass" name="I3" abstract="true" eSuperTypes="#//P2/I"/>
+    <eClassifiers xsi:type="ecore:EClass" name="I4" abstract="true" eSuperTypes="#//P2/I"/>
+    <eClassifiers xsi:type="ecore:EClass" name="I5" abstract="true" eSuperTypes="#//P2/I"/>
+    <eClassifiers xsi:type="ecore:EClass" name="I6" abstract="true" eSuperTypes="#//P2/I"/>
+    <eClassifiers xsi:type="ecore:EClass" name="I7" abstract="true" eSuperTypes="#//P2/I"/>
+    <eClassifiers xsi:type="ecore:EClass" name="J" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="J1" abstract="true" eSuperTypes="#//P2/J"/>
+    <eClassifiers xsi:type="ecore:EClass" name="J2" abstract="true" eSuperTypes="#//P2/J"/>
+    <eClassifiers xsi:type="ecore:EClass" name="J3" abstract="true" eSuperTypes="#//P2/J"/>
+    <eClassifiers xsi:type="ecore:EClass" name="J4" abstract="true" eSuperTypes="#//P2/J"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K1" eSuperTypes="#//P2/K"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K11" eSuperTypes="#//P2/K1"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K12" eSuperTypes="#//P2/K1"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K13" eSuperTypes="#//P2/K1"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K14" eSuperTypes="#//P2/K1"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K2" eSuperTypes="#//P2/K"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K21" eSuperTypes="#//P2/K2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K22" eSuperTypes="#//P2/K2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K3" eSuperTypes="#//P2/K"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K31" eSuperTypes="#//P2/K3"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K311" eSuperTypes="#//P2/K31"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K312" eSuperTypes="#//P2/K31"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K32" eSuperTypes="#//P2/K3"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K321" eSuperTypes="#//P2/K32"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K322" eSuperTypes="#//P2/K32"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K33" eSuperTypes="#//P2/K3"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K331" eSuperTypes="#//P2/K33"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K332" eSuperTypes="#//P2/K33"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K333" eSuperTypes="#//P2/K33"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K334" eSuperTypes="#//P2/K33"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K335" eSuperTypes="#//P2/K33"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K34" eSuperTypes="#//P2/K3"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K4" eSuperTypes="#//P2/K"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K41" eSuperTypes="#//P2/K4"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K411" eSuperTypes="#//P2/K41"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K412" eSuperTypes="#//P2/K41"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K413" eSuperTypes="#//P2/K41"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K414" eSuperTypes="#//P2/K41"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K415" eSuperTypes="#//P2/K41"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K42" eSuperTypes="#//P2/K4"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K421" eSuperTypes="#//P2/K42"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K422" eSuperTypes="#//P2/K42"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K423" eSuperTypes="#//P2/K42"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K5" eSuperTypes="#//P2/K"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K51" eSuperTypes="#//P2/K5"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K52" eSuperTypes="#//P2/K5"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K53" eSuperTypes="#//P2/K5"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K54" eSuperTypes="#//P2/K5"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K55" eSuperTypes="#//P2/K5"/>
+    <eClassifiers xsi:type="ecore:EClass" name="K56" eSuperTypes="#//P2/K5"/>
+  </eSubpackages>
+  <eSubpackages name="P3">
+    <eClassifiers xsi:type="ecore:EClass" name="L">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toM" eType="#//P3/M"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="M"/>
+  </eSubpackages>
 </ecore:EPackage>
