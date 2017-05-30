@@ -309,7 +309,7 @@ public class EdgeLabelQuery {
      * @param oldCenterLabel
      *            The old center location of the label.
      * @param newDefaultLocation
-     *            The standard center location according to the label keyPoint (
+     *            The standard label location according to the label keyPoint (
      *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()}
      *            and the default snap back position (
      *            {@link LabelEditPart#getSnapBackPosition(String)}.
@@ -382,14 +382,26 @@ public class EdgeLabelQuery {
                     }
                 }
             } else if (newEdgeSegments.size() == oldEdgeSegments.size()) {
-                // The newNearestSegment as the same index in
-                // newEdgeSegments than oldNearestSegment in oldEdgeSegments
+                // The newNearestSegment has the same index in newEdgeSegments
+                // than oldNearestSegment in oldEdgeSegments
                 LineSeg newRefSeg = newEdgeSegments.get(oldEdgeSegments.indexOf(oldNearestSeg));
                 // Keep ratio on segment for newRefPoint
                 double oldRatio = oldNearestSeg.projection(oldCenterLabel.x, oldCenterLabel.y);
-                Point newRefPoint = new PrecisionPoint(newRefSeg.getOrigin().x + oldRatio * (newRefSeg.getTerminus().x - newRefSeg.getOrigin().x),
+                Point refPointOnNewSegWithOldRatio = new PrecisionPoint(newRefSeg.getOrigin().x + oldRatio * (newRefSeg.getTerminus().x - newRefSeg.getOrigin().x),
                         newRefSeg.getOrigin().y + oldRatio * (newRefSeg.getTerminus().y - newRefSeg.getOrigin().y));
-                fromOldToNewCenterVector = new Vector(newRefPoint.x - oldNearestPoint.x, newRefPoint.y - oldNearestPoint.y);
+                fromOldToNewCenterVector = new Vector(refPointOnNewSegWithOldRatio.x - oldNearestPoint.x, refPointOnNewSegWithOldRatio.y - oldNearestPoint.y);
+                if (oldRatio < 0 || 1 < oldRatio) {
+                    // If the old label location is outside of the segment, we
+                    // ensure that the distance between the label and the edge
+                    // is not higher than before. In this case, we reset the
+                    // location to its default.
+                    double oldDistance = oldNearestSeg.distanceToPoint(oldCenterLabel.x(), oldCenterLabel.y());
+                    Point potentialNewCenter = oldCenterLabel.getTranslated(fromOldToNewCenterVector.x, fromOldToNewCenterVector.y);
+                    double newDistance = newRefSeg.distanceToPoint(potentialNewCenter.x(), potentialNewCenter.y());
+                    if (newDistance > oldDistance) {
+                        fromOldToNewCenterVector = null;
+                    }
+                }
             }
         }
         if (fromOldToNewCenterVector == null) {
