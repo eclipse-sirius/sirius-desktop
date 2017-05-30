@@ -1062,7 +1062,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
 
                     @Override
                     public void run() {
-                        if (!treeViewer.getTree().isDisposed()) {
+                        if (treeViewer != null && !treeViewer.getTree().isDisposed()) {
                             treeViewer.refresh();
                             ISelection selection = treeViewer.getSelection();
                             if (selection.isEmpty()) {
@@ -1080,7 +1080,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
 
                     @Override
                     public void run() {
-                        if (!treeViewer.getTree().isDisposed()) {
+                        if (treeViewer != null && !treeViewer.getTree().isDisposed()) {
                             treeViewer.refresh();
                             siriusCommonContentModelProvider.addRefreshViewerTrigger(updated);
                         }
