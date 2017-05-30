@@ -16,6 +16,12 @@
       <topic href="doc/user/general/Modeling Project.html#Representations" label="Representations" />
       <topic href="doc/user/general/Modeling Project.html#LegacyMode" label="Legacy Mode" />
     </topic>
+    <topic href="doc/user/general/Aird_Editor.html" label="Aird Editor">
+      <topic href="doc/user/general/Aird_Editor#overview" label="Overview" />
+      <topic href="doc/user/general/Aird_Editor#opening" label="Opening the Aird Editor" />
+      <topic href="doc/user/general/Aird_Editor#semantic_models" label="Managing the Semantic Models" />
+      <topic href="doc/user/general/Aird_Editor#representations" label="Managing Representations and Viewpoints" />
+    </topic>
     <topic href="doc/user/diagrams/Diagrams.html" label="Diagrams">
       <topic href="doc/user/diagrams/Diagrams.html#introduction" label="Introduction" />
       <topic href="doc/user/diagrams/Diagrams.html#features_overview" label="Features Overview" />

@@ -1,0 +1,364 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Aird_Editor</title>
+		<link type="text/css" rel="stylesheet" href="../../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="AirdEditor">Aird Editor</h1>
+		<p>This document describes the new form-based editor for 
+			<code>aird</code> files introduced in version 5.0. This editor is associated to 
+			<code>*.aird</code> files (which contains Sirius representations data) and provides end-users complete overview of their models and representations, and direct access to the most common operations.
+		</p>
+		<p>This document assumes you are already faimiliar with the vocabulary associated with Sirius; if that is not the case, please refer to 
+			<a href="Modeling%20Project.html">the Modeling Project documentation</a> which describes in details the more &#8220;traditional&#8221; Sirius UI and the associated concepts.
+		</p>
+		<p>
+			<em>Note:</em> This new editor has been introduced with Sirius 5.0. While it is already functional, it should be considered as a first iteration, and its UI is subject to change without warnings in later versions based on experience and user feedback.
+		</p>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="#AirdEditor">Aird Editor</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="#overview">Overview</a>
+					</li>
+					<li>
+						<a href="#opening">Opening the Aird Editor</a>
+					</li>
+					<li>
+						<a href="#semantic_models">Managing the Semantic Models</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#LoadinganExistingModel">Loading an Existing Model</a>
+							</li>
+							<li>
+								<a href="#model_creation_wizard">Creating New Models</a>
+							</li>
+							<li>
+								<a href="#removing_model">Removing a Model From The aird Editor</a>
+							</li>
+							<li>
+								<a href="#quick_editing">Models Quick Editing</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#representations">Managing Representations and Viewpoints</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#visualize_viewpoints_representations">Visualizing Viewpoints and Representations</a>
+							</li>
+							<li>
+								<a href="#enable_disable_viewpoints">Enabling and Disabling Viewpoints</a>
+							</li>
+							<li>
+								<a href="#create_remove_representations">Creating and Removing Representations</a>
+							</li>
+							<li>
+								<a href="#open_representation">Opening a Sirius Modeler From a Representation</a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<h2 id="overview">Overview</h2>
+		<p>The traditional Sirius UI is centered on the 
+			<em>Modeling</em> perspective, and in particular on the 
+			<em>Model Explorer</em> view. For some use cases, especially when Sirius representations are not the primary focus of the user but only a secondary feature to support their main task, this reliance on a specific perspective or view can be inconvenient. The Aird editor is designed to provide an alternative UI to interact with Sirius that is better suited for these use cases. Because the editor is available from any perspective and directly exposes the most common user operations inside its UI, it makes it more convenient to use Sirius in a variety of contexts.
+		</p>
+		<p>Note that most of the features available from the aird editor are also available from the 
+			<em>Model Explorer</em>'s UI; the editor simply provides alternative ways to use them that can be more convenient in some contexts. There are two exceptions, described in more details below, which are currently specific to the Aird editor: the generic 
+			<a href="#model_creation_wizard">model creation wizard</a> and the ability to 
+			<a href="#quick_editing">add/remove elements directly</a> from the semantic models.
+		</p>
+		<p>Using Sirius to display and manipulate your domain models requires telling Sirius:</p>
+		<ul>
+			<li>which are the models (files) your are interested in;</li>
+			<li>which of the compatible representation types you want to make use of.</li>
+		</ul>
+		<p>Representation types are defined in plug-ins which extend Sirius and that you need to install in your environment. Which ones will be available to you depend on what concrete modelers you have installed. Sirius-based modelers can provide many alternative representation types for the same semantic models, and organize them in 
+			<em>viewpoints</em>, which corresponds to the different activities or point of views that can be applied to the models.
+		</p>
+		<p>This organization is reflected in the editor, which presents two main blocks:</p>
+		<p>
+			<img border="0" src="images/aird_editor_full.png"/>
+		</p>
+		<p>On the left, the 
+			<em>Models</em> block shows the raw semantic models, which can come from multiple files (resources), and allows you to configure which models should be loaded, to navigate inside them, to perform some basic editing tasks, and finally to create and manage Sirius representations on them.
+		</p>
+		<p>On the right the 
+			<em>Representations</em> block displays all the types of representations available and all the concrete ones already created, organized by viewpoint (by default). It also allows you to manage the representations and viewpoints. The representation types available to you will depend both on the kind of models you have loaded and which modeler plug-ins you have installed in your environment. For example if you have installed 
+			<a href="http://www.umldesigner.org/">UML Designer</a> 
+			<strong>and</strong> have at least one 
+			<code>*.uml</code> model loaded, you will find there the different kinds of UML diagrams implemented in 
+			<em>UML Designer</em>.
+		</p>
+		<h2 id="opening">Opening the Aird Editor</h2>
+		<p>The Aird editor is the default editor associated to the 
+			<code>*.aird</code> files in Eclipse. In some perspectives (e.g. 
+			<em>Java</em>), double-clicking on an 
+			<code>aird</code> file will open the editor and automatically load all the files/models needed if that it not already the case. In other contexts where double-click performs a different operation you may need to open the context menu and select 
+			<i>Open With &gt; Aird Editor</i>.
+		</p>
+		<p>It is also possible to configure Sirius to automatically open the Aird editor when an 
+			<code>*.aird</code> file is first loaded. When this mode is enabled, opening/expanding a 
+			<em>Modeling Project</em> from the 
+			<em>Model Explorer</em>, which triggers the loading of the models, will also open the editor. This behavior can be enabled via the Sirius preference 
+			<strong>
+				<i>Automatically open the aird editor when an aird file is loaded</i>
+			</strong>: 
+		</p>
+		<p>
+			<img border="0" src="images/aird_editor_pref.png"/>
+		</p>
+		<p>When this preference is activated, then aird editor is opened automatically in the following situations:</p>
+		<ul>
+			<li>After clicking 
+				<i>Finish</i> button of the 
+				<i>Create a modeling project</i> wizard, the project is created as well as its aird file. The newly created aird file is automatically opened in the editor.
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/aird_editor_modeling_project_creation_wizard.png"/>
+		</p>
+		<ul>
+			<li>When a project with the 
+				<em>Modeling</em> nature is opened from 
+				<i>Model Explorer</i> or 
+				<i>Project Explorer</i>, the aird editor is also automatically opened if it contains a main aird file.
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/aird_editor_open_project_modeling_explorer.png"/>
+		</p>
+		<ul>
+			<li>When the aird file is first expanded from a project with 
+				<em>Modeling</em> nature from 
+				<i>Model Explorer</i> or 
+				<i>Project Explorer</i> view, the aird editor is also opened automatically. 
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/aird_editor_expand_aird_file.png"/>
+		</p>
+		<p>
+			<em>Important note:</em> Closing the aird editor will not close representations you may have opened, nor unload the associated files and models. If you are using a 
+			<em>Modeling Project</em> in the 
+			<em>Model Explorer</em> view, you need to close the whole project to unload the models. In other contexts you can use the 
+			<em>Close</em> action available in the context menu of the aird file.
+		</p>
+		<h2 id="semantic_models">Managing the Semantic Models</h2>
+		<p>This section describes how to manage the semantic models associated to your aird file, which are visible in the 
+			<em>Models</em> block on the left side of the editor:
+		</p>
+		<p>
+			<img border="0" src="images/aird_editor_models_block.png"/>
+		</p>
+		<p>The 
+			<em>Models</em> block displays a tree showing all semantic models associated to the aird file, organized in two categories:
+		</p>
+		<ul>
+			<li>The models located in the same workspace project as the one containing the aird file from which editor has been opened. These are visible as root items on the graphical tree.</li>
+		</ul>
+		<ul>
+			<li>The models located in a project that is different from the project containing the aird file from which the editor has been opened. These models are visible under the 
+				<em>Project Dependencies</em> category.
+			</li>
+		</ul>
+		<p>For example:</p>
+		<p>
+			<img border="0" src="images/aird_editor_model_loading.png"/>
+		</p>
+		<p>Regardless of the category they appear in, all the semantic models associated with an aird file are fully loaded, and you can expand the tree elements to navigate inside your models. The tree can be filtered on the elements labels using the search box at the top to quickly locate specific model elements:</p>
+		<p>
+			<img border="0" src="images/aird_editor_filter_models_elements.png"/>
+		</p>
+		<p>In addition to the actual semantic elements, this view also includes all existing representations (diagrams, tables, trees). As in the case of the 
+			<em>Model Explorer</em>, the representations are available directly below the semantic element they represent, and can be opened by double-clicking on them.
+		</p>
+		<h3 id="LoadinganExistingModel">Loading an Existing Model</h3>
+		<p>To be able to edit a semantic model with a Sirius modeler, you must first tell the aird it can edit that model. There are two mechanisms to do so:</p>
+		<ul>
+			<li>An automatic one were, if your project has 
+				<em>Modeling</em> nature, any model file added inside the project will be automaticall added to the aird file.
+			</li>
+			<li>A manual one were you have two different buttons in the editor:
+				<ul>
+					<li>The 
+						<strong>
+							<i>New...</i>
+						</strong> button, which opens a wizard allowing to create a new model from any registered package and in any project you want (see the next section for more details on the wizard). The newly created model will be loaded automatically in the aird file.
+					</li>
+					<li>The 
+						<strong>
+							<i>Add</i>
+						</strong> button, which allows to load into the aird file an already existing model either from the same project or from another one.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<h3 id="model_creation_wizard">Creating New Models</h3>
+		<p>The aird editor features a generic model creation wizard that can be used to create new models files of any kind supported in the environement (i.e. instances of any installed meta-model). To create a new model, select the 
+			<i>New...</i> button. It opens a creation wizard:
+		</p>
+		<ul>
+			<li>The first page asks you to select which kind of model you want to create. It will present you all the EMF metamodels available in your installation (e.g. UML or BPMN). You can use the text field to filter among all the meta-models available (in large installations, there may be hundreds of them).</li>
+		</ul>
+		<p>
+			<img border="0" src="images\aird_editor_create_new_model.png"/>
+		</p>
+		<ul>
+			<li>Once the metamodel is selected, the second page asks for the type of the root element in the new model file. By default Sirius will try to infer good candidates for this root element type, and show only those. You can deselect the 
+				<em>Show only suggested root types</em> checkbox to reveal 
+				<strong>all</strong> the concrete types defined in the metamodel you selected.
+			</li>
+			<li>Finally, the third page of the wizard will ask you for the name and location of the new file to create. By default, the file will be created in the same project as the 
+				<code>aird</code> file and have a generated name.
+			</li>
+		</ul>
+		<h3 id="removing_model">Removing a Model From The aird Editor</h3>
+		<p>To remove a semantic model loaded in the aird file, just select it in the editor and click on the 
+			<strong>
+				<i>Remove</i>
+			</strong> button. This action does not delete the physical file.
+		</p>
+		<p>Note that if you are working inside a project with the 
+			<em>Modeling</em> nature, it is not possible to remove a semantic model which is located inside the project. Indeed, the 
+			<em>Modeling</em> nature ensures that all model files stored inside the project are always loaded in the project&#8217;s 
+			<code>aird</code> file.
+		</p>
+		<h3 id="quick_editing">Models Quick Editing</h3>
+		<p>The normal way to display and edit models with Sirius is to do it through one or several Sirius-defined representations (
+			<em>modelers</em>), which define domain-specific ways to represent and manipulate the data, and ensure some level of consistency.
+		</p>
+		<p>In some situations you may need to manipulate the model elements more directly, even if no Sirius-based modeler or tool has been defined to support your use case. The 
+			<em>aird editor</em> provides support for &#8220;quick editing&#8221; of the semantic models independently of a Sirius representation. It works like any generic EMF models editor:
+		</p>
+		<ul>
+			<li>You can right-click on a semantic element to create new children inside, or to delete it. </li>
+			<li>When you have selected an element, you can use the 
+				<em>Properties</em> view to edit its features. Note that the content of this view depends on which 
+				<em>viewpoints</em> are currently enabled. If you have enabled viewpoints which define specific properties views for your elements, these will be used instead of a generic one, so not all direct model operations may be available.
+			</li>
+		</ul>
+		<p>Keep in mind that editing the semantic models this way bypasses any high-level restrictions and rules that may be  brought by Sirius modelers. Depending on the semantic models, these direct manipulation may break domain constraints. Use with care.</p>
+		<h2 id="representations">Managing Representations and Viewpoints</h2>
+		<p>To use a Sirius modeler to edit a model element, you need to create a graphical representation for it. This representation is then editable with a Sirius modeler that can be a diagram, a tree or a table editor. Concrete representations are created from a 
+			<em>representation type</em>, which are provided by Sirius-based modelers, and organized by 
+			<em>viewpoints</em>.
+		</p>
+		<p>In addition to providing representation types from which representation can be created, viewpoints can also provide extensions to other viewpoints' representation types, adding for example new tools to them.</p>
+		<p>The following sections describe how to create/remove representations and the related functionalities.</p>
+		<h3 id="visualize_viewpoints_representations">Visualizing Viewpoints and Representations</h3>
+		<p>The aird editor has a block named 
+			<em>Representation</em> which displays all the available viewpoints (compatible with the semantic models loaded), the representation types they define, and the actual concrete representations that have been created. All these elements are organized in a tree:
+		</p>
+		<p>
+			<img border="0" src="images/aird_editor_representations_block.png"/>
+		</p>
+		<p>This 
+			<em>Representations</em> block is separated in two parts:
+		</p>
+		<ul>
+			<li>The left is the tree showing viewpoints with their representations types (showing the number of representations it contains) and representations.</li>
+			<li>The right part shows the documentation of the viewpoint of the selected element. It allows to find what viewpoint provides the representation type providing Sirius modeler functionalities fitting your needs to edit graphically your models.</li>
+		</ul>
+		<p>To the bottom of these two parts are two checkboxes, that can be used to control which elements are displayed:</p>
+		<ul>
+			<li>
+				<strong>
+					<i>Group representations by viewpoint</i>
+				</strong>: when active (the default), viewpoints items are shown in the tree. When deactivated, only representation types and their representations are shown.
+			</li>
+			<li>
+				<strong>
+					<i>Show disabled viewpoints</i>
+				</strong>: when active (the default), 
+				<strong>all</strong> the available viewpoints (and their content) which apply to the semantic elements currently loaded are displayed, even if they are currently disabled. This is useful when starting a new project as it shows you immediatly all the features that are available to you, even if you have not yet enabled any. Once you have enabled the viewpoints you need, you may want to hide the others to help focus. 
+			</li>
+		</ul>
+		<p>A viewpoint is grayed out if it is disabled. Otherwise it is enabled in the aird file.</p>
+		<p>The viewpoints shown are all the viewpoints available in your environment that are compatible with the models loaded in the aird file. So if your environment does not contain any viewpoint compatible with your models or if you have no models loaded, then the graphical representations component will be empty.</p>
+		<p>Representations can also be seen directly in the models graphical component of the aird editor under the associated model&#8217;s element if the viewpoint containing the representation type used to create the representation is activated. If not the representation will not be visible.</p>
+		<p>
+			<img border="0" src="images/aird_editor_rep_under_model.png"/>
+		</p>
+		<p>To open an exisiting representation, simply double-click on it (this works both in the 
+			<em>Representations</em> tree and in the 
+			<em>Semantics</em> tree).
+		</p>
+		<h3 id="enable_disable_viewpoints">Enabling and Disabling Viewpoints</h3>
+		<p>A viewpoint provides representation types and/or extension for other representation types. In some cases you want need to disable functionalities brought by these extensions or on the contrary to enable them. </p>
+		<p>To enable/disable a viewpoint, you can either:</p>
+		<ul>
+			<li>double click on a viewpoint item on the representations graphical component of the aird editor. It will enable or disable the viewpoint depending on its current state.</li>
+			<li>use the 
+				<strong>
+					<i>Enable</i>
+				</strong> 
+				<strong>
+					<i>Disable</i>
+				</strong> buttons after having selected one or more viewpoints.
+			</li>
+			<li>create a new representation defined in a previously disabled viewpoint. It will activate the viewpoint of the corresponding representation type.</li>
+		</ul>
+		<p>Some viewpoints have dependencies to another ones. Enabling a viewpoint will automatically enable all its dependencies. Disabling a viewpoint that is a dependency of another one will ask you to confirm its disabling as well as the ones depending on it.</p>
+		<h3 id="create_remove_representations">Creating and Removing Representations</h3>
+		<p>After having identified the representation type providing Sirius modeler functionalities you need, three methods are available to create a new representation from it and a model element to edit its content:</p>
+		<ul>
+			<li>First you can double click on a representation type from the representations graphical component of the aird editor. It opens the 
+				<strong>
+					<i>Create a new representation</i>
+				</strong> wizard. You then have to select a model element compatible with the description from which the new representation will be created.
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/aird_editor_create_rep_double_click.png"/>
+		</p>
+		<ul>
+			<li>Second you can click on the 
+				<strong>
+					<i>New</i>
+				</strong> button of the representations graphical component of the aird editor. It opens the wizard were you have first to select the representation type from which you want to create a representation before choosing the model element.
+			</li>
+		</ul>
+		<ul>
+			<li>The last method is to use the contextual menu action 
+				<strong>
+					<i>New representation</i>
+				</strong> available on right click on a model element from the models graphical component:
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/aird_editor_new_rep_menu.png"/>
+		</p>
+		<p>The menu shows only representation types compatible with the selected model element and that belong to activated viewpoints. When choosing 
+			<strong>
+				<i>Other...</i>
+			</strong> the wizard to create new representation is opened and show the representation types compatible with the selected element whether they belong to a viewpoint activated or deactivated. If you create a representation defined in a viewpoint that was previously disabled, it will be enabled automatically.
+		</p>
+		<p>You can 
+			<em>remove</em> a representation either from the representations or models graphical components of the aird editor by:
+		</p>
+		<ul>
+			<li>using the 
+				<i>Remove</i> action in the representation&#8217;s context menu;
+			</li>
+			<li>using the 
+				<i>Remove</i> button of representations block when the representation to remove is selected there; 
+			</li>
+			<li>select the representation and hit the 
+				<i>Del</i> key.
+			</li>
+		</ul>
+		<h3 id="open_representation">Opening a Sirius Modeler From a Representation</h3>
+		<p>To open a representation to edit graphically the model&#8217;s element it is associated to, you just have to double-click on it either in the models or representations graphical component of the aird editor. </p>
+		<p>If you double click on a representation in the 
+			<em>Representations</em> block that belong to a disabled viewpoint, this viewpoint will automatically be enabled before opening the representation.
+		</p>
+	</body>
+</html>
