@@ -120,7 +120,7 @@ Example of an IDescriptionPreprocessor contribution. In this example, we are pro
   &lt;li&gt;Replace the preprocessing of any existing element from properties part&lt;/li&gt;
 &lt;/ul&gt;
 
-Here is a simple example of the preprocessing of a custom widget whic reuse the PreconfiguredPreprocessor which is a generic preprocessor which will work for most of the case:
+Here is a simple example of the preprocessing of a custom widget which reuse the PreconfiguredPreprocessor which is a generic preprocessor which will work for most of the case:
 &lt;pre&gt;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.core.api.PreconfiguredPreprocessor;

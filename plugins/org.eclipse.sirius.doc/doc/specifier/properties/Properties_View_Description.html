@@ -27,6 +27,9 @@
 						</ol>
 					</li>
 					<li>
+						<a href="#categories">Categories</a>
+					</li>
+					<li>
 						<a href="#pages">Pages</a>
 					</li>
 					<li>
@@ -115,6 +118,9 @@
 							<li>
 								<a href="#extends">Extends</a>
 							</li>
+							<li>
+								<a href="#overrides">Overrides</a>
+							</li>
 						</ol>
 					</li>
 					<li>
@@ -164,14 +170,27 @@
 		</p>
 		<ul>
 			<li>
+				<a href="#categories">
+					<em>Categories</em>
+				</a>, which exist only for the specifier convenience to order his specification;
+			</li>
+		</ul>
+		<p>Inside a 
+			<em>Category</em> element, you can create:
+		</p>
+		<ul>
+			<li>
 				<a href="#pages">
 					<em>Pages</em>
-				</a>, which correspond to &#8220;tabs&#8221;;
+				</a>, which correspond to &#171;tabs&#187;;
 			</li>
 			<li>
 				<a href="#groups">
 					<em>Groups</em>
 				</a>, which represent named sections inside a page/tab which contain the actual widgets;
+			</li>
+			<li>
+				<a href="#overrides">_Overrides</a>, which allows to override part of an existing properties view description. 
 			</li>
 		</ul>
 		<p>It is recommended that the 
@@ -243,7 +262,10 @@
 				<a href="#dynamic_mappings">dynamic mappings</a> are used for advanced scenarios where the set of widgets to display can not be known statically, but instead must be computed at runtime.
 			</li>
 			<li>
-				<a href="#containers">containers and layout</a> are used to organize and layout multiple related widgets.
+				<a href="#containers_and_layout">containers and layout</a> are used to organize and layout multiple related widgets.
+			</li>
+			<li>
+				<a href="#overrides">overrides</a> are used to override the properties view of an existing properties view description.
 			</li>
 		</ul>
 		<p id="default_rules">
@@ -252,12 +274,16 @@
 			<em>only</em> these custom rules will apply, and the default ones will be ignored. If you want to mix the default rules for some of your elements and custom ones only for some specific types, you can:
 		</p>
 		<ul>
+			<li>Extend the default rules model inside your VSM: from the top-level element of the VSM model, select 
+				<em>New Properties&gt; Extend Default Properties View</em>. This will allow you to redefine the behavior of the default rules thanks to the &#171;extension mechanism&#187;#extensibility_features.
+			</li>
 			<li>Import a copy of the default rules model inside your VSM: from the top-level element of the VSM model, select 
-				<em>New &gt; Default Properties View Description</em>.
+				<em>New Properties &gt; Import Default Properties View</em>.
 			</li>
 			<li>Add your custom rules (pages and groups) and optionally update the default ones to not apply for the elements for which you provide more specific views (typically by modifying the 
 				<em>Precondition Expression</em> of the default 
-				<em>Page</em>).
+				<em>Page</em>), to do so from the top-level element of the VSM model, select 
+				<em>New Properties &gt; New Default Properties View</em>.
 			</li>
 		</ul>
 		<p>
@@ -313,7 +339,7 @@
 			<strong>Styles.</strong> Each kind of properties view element supports a rich set of possible 
 			<a href="#styling">styles</a>.
 		</p>
-		<p>To find some documentation for each properties, you can also refer to the tool-tips available directly in the editor on the &#8220;question mark&#8221; icon of each property.</p>
+		<p>To find some documentation for each properties, you can also refer to the tool-tips available directly in the editor on the &#171;question mark&#187; icon of each property.</p>
 		<p>Here is an example of a widget configuration (a single-line 
 			<a href="#text">text</a> in this case) which illustrates some of the common attributes:
 		</p>
@@ -358,7 +384,7 @@
 				<code>self</code> variable inside a 
 				<em>Page</em>, but inside a group 
 				<code>self</code> may have a different value is 
-				<em>Semantic Candidate Expressions</em> were used, so this service can be used to obtain the &#8220;original self&#8221; from anywhere.
+				<em>Semantic Candidate Expressions</em> were used, so this service can be used to obtain the &#171;original self&#187; from anywhere.
 			</li>
 			<li>
 				<code>input.getAllSemanticElements()</code>: returns 
@@ -366,7 +392,7 @@
 				<code>DRepresentationElement#semanticElements</code> if there are any.
 			</li>
 			<li>
-				<code>input.emfEditServices(EObject)</code>: provides a handle to invoke &#8220;EMF Edit&#8221;-related services on the model element specified in argument. See below for the list of services that can be called on the result.
+				<code>input.emfEditServices(EObject)</code>: provides a handle to invoke &#171;EMF Edit&#187;-related services on the model element specified in argument. See below for the list of services that can be called on the result.
 			</li>
 			<li>
 				<code>input.context()</code>: provides a handle to invoke additional services to obtain more information about the overall context of the selection. See below fot the list of services that can be called on the result.
@@ -406,7 +432,7 @@
 				<code>IItemLabelProvider</code>.
 			</li>
 			<li>
-				<code>getText(EStructuralFeature)</code>: returns the &#8220;display name&#8221; of the specified feature of 
+				<code>getText(EStructuralFeature)</code>: returns the &#171;display name&#187; of the specified feature of 
 				<code>obj</code>, as defined by its 
 				<code>IItemPropertyDescriptor</code>, or the textual representation of the feature itself (as defined by its own 
 				<code>IItemLabelProvider</code>) if no display name is defined.
@@ -462,6 +488,16 @@
 				<code>Session</code> in the context of which the selection was done. This is a Java object which can only be used by additional (custom) Java services.
 			</li>
 		</ul>
+		<h2 id="categories">Categories</h2>
+		<p>A 
+			<em>Category</em> is used to sort the 
+			<a href="#pages">pages</a> and the 
+			<a href="#groups">groups</a>. The category does not represent anything in the final user properties view, the category exists only for the specifier convenience to order the specification. For example a 
+			<em>Reused</em> category can be created to store all the groups that would be used by different 
+			<a href="#pages">pages</a> and 
+			<a href="#dialogandwizard">dialogs</a>.
+			<br/>Categories can be created 
+		</p>
 		<h2 id="pages">Pages</h2>
 		<p>A 
 			<em>Page</em> is used to represent a 
@@ -552,7 +588,7 @@
 			<a href="#widgets">
 				<em>widgets</em>
 			</a>, 
-			<a href="#containers">
+			<a href="#containers_and_layout">
 				<em>containers</em>
 			</a> to organize them, and 
 			<a href="#validation_rules">
@@ -653,8 +689,8 @@
 		<h2 id="widgets">Widgets</h2>
 		<p>A widget is used to represent model elements in the properties view and, for most of them, to allow users to edit said elements. Widgets can appear directly inside a group, a 
 			<a href="#dynamic_mappings">dynamic mapping</a> or inside a 
-			<a href="#containers">container</a>, in which case you can specify a specific 
-			<a href="#containers">layout</a> which will be used to graphically organize all the widgets inside the container.
+			<a href="#containers_and_layout">container</a>, in which case you can specify a specific 
+			<a href="#containers_and_layout">layout</a> which will be used to graphically organize all the widgets inside the container.
 		</p>
 		<p>The definition of a widget follows the general rules described 
 			<a href="#properties_view_description">above</a> to determine the semantic elements for which a widget should be created.
@@ -681,7 +717,7 @@
 			<em>Text</em> widget is used to represent a 
 			<strong>single line text</strong> in a 
 			<a href="#groups">group</a> or in a 
-			<a href="#containers">container</a>.
+			<a href="#containers_and_layout">container</a>.
 		</p>
 		<p>
 			<img border="0" src="images/widget-text.png"/>
@@ -690,7 +726,7 @@
 			<em>Text Area</em> is used to represent a 
 			<strong>multiple lines text</strong> in a 
 			<a href="#groups">group</a> or in a 
-			<a href="#containers">container</a>.
+			<a href="#containers_and_layout">container</a>.
 		</p>
 		<p>
 			<img border="0" src="images/widget-textarea.png"/>
@@ -752,7 +788,7 @@
 			<em>Button</em> is used to represent a 
 			<strong>button</strong> in a 
 			<a href="#groups">group</a> or in a 
-			<a href="#containers">container</a>, that can be used to trigger an arbitrary (configurable) operation on the model.
+			<a href="#containers_and_layout">container</a>, that can be used to trigger an arbitrary (configurable) operation on the model.
 		</p>
 		<p>
 			<img alt="Example of a button widget" title="Example of a button widget" border="0" src="images/widget-button.png"/>
@@ -779,7 +815,7 @@
 			<em>Label</em> is used to represent a 
 			<strong>non editable text</strong> in a 
 			<a href="#groups">group</a> or in a 
-			<a href="#containers">container</a>.
+			<a href="#containers_and_layout">container</a>.
 		</p>
 		<p>Here is an example which shows two label widgets:</p>
 		<p>
@@ -841,7 +877,7 @@
 			<em>Checkbox</em> is used to represent a 
 			<strong>checkbox</strong> in a 
 			<a href="#groups">group</a> or in a 
-			<a href="#containers">container</a>.
+			<a href="#containers_and_layout">container</a>.
 		</p>
 		<p>
 			<img alt="Examples of checkbox widgets" title="Examples of checkbox widgets" border="0" src="images/widget-checkbox.png"/>
@@ -875,7 +911,7 @@
 			<em>Select</em> is used to represent a 
 			<strong>combo box</strong> in a 
 			<a href="#groups">group</a> or in a 
-			<a href="#containers">container</a>.
+			<a href="#containers_and_layout">container</a>.
 		</p>
 		<p>
 			<img alt="Example of a select widget" title="Example of a select widget" border="0" src="images/widget-select.png"/>
@@ -919,7 +955,7 @@
 			<em>Radio</em> is used to represent a 
 			<strong>radio group</strong> in a 
 			<a href="#groups">group</a> or in a 
-			<a href="#containers">container</a>.
+			<a href="#containers_and_layout">container</a>.
 		</p>
 		<p>
 			<img alt="Example of a radio group widget" title="Example of a radio group widget" border="0" src="images/widget-radio.png"/>
@@ -962,7 +998,7 @@
 			<em>Hyperlink</em> is used to represent an 
 			<strong>hyperlink</strong> in a 
 			<a href="#groups">group</a> or in a 
-			<a href="#containers">container</a>.
+			<a href="#containers_and_layout">container</a>.
 		</p>
 		<p>
 			<img alt="Example of an hyperlink widget" title="Example of an hyperlink widget" border="0" src="images/widget-hyperlink.png"/>
@@ -1072,7 +1108,7 @@
 			<em>List</em> is used to represent a 
 			<strong>list with buttons</strong> in a 
 			<a href="#groups">group</a> or in a 
-			<a href="#containers">container</a>.
+			<a href="#containers_and_layout">container</a>.
 		</p>
 		<p>Depending on the parameters configuration the list widget will be represented thanks to a list and multiple buttons when 
 			<a href="#list_actions">
@@ -1101,7 +1137,7 @@
 		<p>To define the behavior, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
 			<a href="../general/Model_Operations.html">model operations</a>. A variable named 
-			<code>onClickEventKind</code> is available to determine if the operation has been triggered by a single click or double click. In case of a single click, the variable has the value &#8220;SINGLE_CLICK&#8221; and &#8220;DOUBLE_CLICK&#8221; in case of a double click.
+			<code>onClickEventKind</code> is available to determine if the operation has been triggered by a single click or double click. In case of a single click, the variable has the value &#171;SINGLE_CLICK&#187; and &#171;DOUBLE_CLICK&#187; in case of a double click.
 		</p>
 		<p>The expressions defined under the 
 			<em>Begin</em> can use the 
@@ -1170,8 +1206,8 @@
 		<p>Dynamic mappings are used for advanced scenarios where the set of widgets to display can not be known statically, but instead must be computed at runtime. A dynamic mapping contains conditional widgets definition, each of which may be instanciated zero or multiple times at runtime.</p>
 		<p>A 
 			<em>Dynamic Mapping For</em> can appear directly inside a group description, or inside a 
-			<a href="#containers">container</a>, in which case you can specify a specific 
-			<a href="#containers">layout</a>. You must specify an 
+			<a href="#containers_and_layout">container</a>, in which case you can specify a specific 
+			<a href="#containers_and_layout">layout</a>. You must specify an 
 			<em>Iterable Expression</em> which computes a list of elements to iterate over. The 
 			<em>Iterator</em> property must also be defined and corresponds to the name of the iteration variable that will be accessible inside the 
 			<em>For</em>. Inside the 
@@ -1289,32 +1325,42 @@
 		<h3 id="group_property_validation_rule">Group property validation rule</h3>
 		<p>The group property validation rule is used to define a validation rule linked to a specific widget.</p>
 		<h2 id="extensibility_features">Extensibility Features</h2>
-		<p>Sirius has specific support for extending and overriding Properties View Descriptions without modifying the original.</p>
+		<p>Sirius has specific support for extending and overriding properties view descriptions without modifying the original one. The purpose is to be able to reuse or modify a part of a properties view. Its exits two different concepts to customize a properties view description: the 
+			<a href="#extends">extension</a> and the 
+			<a href="#overriding">overriding</a>. 
+		</p>
 		<h3 id="extends">Extends</h3>
-		<p>A Page can extend another Page defined somewhere else (in another Category or in another Properties View Description). This mechanism is used to 
-			<em>specialize</em> (modify or re-use) an existing Page. This feature is available for the Pages, the Groups, the Containers, the Dynamic Mappings and the Widgets.
+		<p>A 
+			<a href="#pages">page</a> can extend another page defined somewhere else (in another 
+			<a href="#categories">category</a> or in another properties view description). This mechanism is used to 
+			<em>specialize</em> (modify or re-use) an existing page. This feature is available for the 
+			<a href="#pages">pages</a>, the 
+			<a href="#groups">groups</a>, the 
+			<a href="#containers_and_layout">containers</a>, the 
+			<a href="#dynamic_mappings">dynamic mappings</a> and the 
+			<a href="#widgets">widgets</a>.
 		</p>
 		<p>The 
 			<code>Extend</code> tab is used to specify:
 		</p>
 		<p id="extends">
-			<strong>Extends.</strong> Is used to specify the inherited element. In the tree editor, the inheritance is visible as the element is named as following : 
+			<strong>Extends.</strong> Is used to specify the inherited element thanks to a combo box it is possible to select an existing element. In the tree editor, the inheritance is visible as the element is named as following : 
 			<em>Page A</em> 
 			<strong>extends</strong> 
-			<em>Page B</em>.
+			<em>Page B</em>. Pay attention, the current specification editor allows to select the currently defined element, this will lead to an infinite loop at runtime. 
 			<br/>By default, the values of the 
-			<code>General</code> tab fields are set with the values coming from the extended element. If one of these attributes is edited in the extending element, then it 
+			<code>General</code> tab fields are set with the values coming from the extended element if these fields are not set in the extending element. If one of these attributes is edited in the extending element, then it 
 			<strong>overrides</strong> the inherited value. The same behavior is applied for mono valued containment elements. For example, if a 
 			<em>Group A</em> defines a 
 			<em>Style A</em> and extends a 
-			<em>Group B</em> wit ha 
+			<em>Group B</em> with a 
 			<em>Style B</em>, the style used to render the 
 			<em>Group A</em> is the one defined under the 
 			<em>Group A</em>, i.e 
 			<em>Style A</em> and not the one of the 
 			<em>Group B</em>.
-			<br/>If the specifier defines in the extending 
-			<code>Page</code>:
+			<br/>If the specifier defines in the extending page 
+			<code>General</code> tab:
 		</p>
 		<ul>
 			<li>
@@ -1322,7 +1368,8 @@
 				<code>Domain Class</code>, 
 				<code>Semantic Candidate Expression</code> or 
 				<code>Precondition Expression</code>, these values will 
-				<strong>override</strong> the values defined in the referenced imported description. 
+				<strong>override</strong> the values defined in the extended description. It is worth noting that the expressions are evaluated in the context of the currently extending element, exactly as if you have defined the expressions from the 
+				<code>General</code> tab. 
 			</li>
 			<li>
 				<code>Groups</code> will 
@@ -1341,10 +1388,11 @@
 		</ul>
 		<p id="filters">
 			<strong>Filter Expressions.</strong> Different filters exist depending on the element kind. These filters are used to 
-			<strong>filter</strong> which inherited elements are visible. The expression returns a 
-			<code>Boolean</code>: true, the inherited element is visible, false it is filtered.
+			<strong>filter</strong> which inherited elements are visible. The 
+			<em>Filter expression</em> is evaluated in the context of the semantic element and should return a boolean: true, the inherited element is visible, false it is filtered.
+			<br/>If the expression is not specified, all the inherited elements will be visible.
 			<br/>For each 
-			<em>Filter Expression</em>, a variable is available which represents the element which could be filtered. It is possible to filter all the inherited elements by just returning 
+			<em>Filter expression</em>, a variable is available which represents the element which could be filtered. It is possible to filter all the inherited elements by just returning 
 			<code>false</code> all the time. In this case, the elements defined under the current description 
 			<strong>overrides</strong> the elements defined in the extended description.
 			<br/>For example if a 
@@ -1364,6 +1412,186 @@
 				<code>validationRule</code> variable can be used to check if a rule must be filtered or not.
 			</li>
 		</ul>
+		<p>Following some examples of the extension mechanism usage are detailed:</p>
+		<ul>
+			<li>
+				<strong>Reuse widgets</strong>: In this example we want to specify the properties view of a Class and an interface both are defining a name attribute. A 
+				<em>Class Name</em> text widget is defined to represent the 
+				<em>Name</em> attribute of a 
+				<em>Class</em> in the properties view. This widget defines in the 
+				<em>General</em> tab:
+				<ul>
+					<li>The 
+						<em>Label Expression</em> equals to 
+						<code>Name:</code>,
+					</li>
+					<li>The 
+						<em>Help Expression</em> equals to 
+						<code>The name of the element</code>,
+					</li>
+					<li>The 
+						<em>Value Expression</em> equals to 
+						<code>aql:self.name</code>,
+					</li>
+					<li>The change value operation sets the 
+						<code>name</code> feature with the new entered value.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			<img alt="Example of the inherited text widget definition" title="Example of the inherited text widget definition" border="0" src="images/reuse-widget-general-tab.png"/> 
+		</p>
+		<p>An interface has also a 
+			<em>Name</em> attribute which must be shown in its properties view, then to define the properties of the interface, we just create a new text widget which extends the 
+			<code>Class Name Widget</code>.
+			<br/>No other fields and no change value operation need to be set for the 
+			<code>Interface Name Widget</code>, all the values will be inherited from the 
+			<code>Class Name Widget</code>.
+		</p>
+		<p>
+			<img alt="Example of the extension definition" title="Example of the extension definition" border="0" src="images/reuse-widget-extends-tab.png"/> 
+		</p>
+		<p>
+			<img alt="Example of the reuse of a widget definition" title="Example of the reuse of a widget definition" border="0" src="images/reuse-widget-general2-tab.png"/> 
+		</p>
+		<ul>
+			<li>
+				<strong>Reuse pages</strong>: Another usage of the extension mechanism is with combination of 
+				<a href="#dialogandwizard">the dialogs and the wizards</a>. The purpose is to provide the edition of the properties element from a dialog, the same properties should be available in the dialog and in the properties view. A a property view is defined for all the elements of a metamodel. Then a new tool is defined which opens a dialog when a node mapping is double-clicked from a diagram. This dialog shows the same properties than the ones represented when the element is selected from the diagram. To do this, the dialog defines a page which extends the one defined in the properties view definition.
+			</li>
+		</ul>
+		<p>
+			<img alt="Example of the reuse of a page definition in a dialog" title="Example of the reuse of a page definition in a dialog" border="0" src="images/reuse-page.png"/>
+		</p>
+		<ul>
+			<li>
+				<strong>Customize default rules</strong>: A final example of the extension mechanism is to customize the 
+				<a href="#default_rules">default rules</a> provided by Sirius. For this use case, the purpose is to override the content of the default rules in order to rename the tab label from 
+				<em>Main</em> to 
+				<em>General</em>. It is possible to extends the default rules thanks to the 
+				<em>New Properties&gt; Extend Default Properties View</em> menu available from the top-level element of the VSM model. Automatically, this creates a new page which extends the default rules. It is then possible to override the 
+				<em>Label Expression</em> of the default rules page to set the expected label 
+				<em>General</em> instead of the default one which is 
+				<em>Main</em>
+			</li>
+		</ul>
+		<p>
+			<img alt="Example of the extension of default rules" title="Example of the extension of default rules" border="0" src="images/customize-default-rules-extends.png"/>
+		</p>
+		<p>
+			<img alt="Example of the customization of default rules" title="Example of the customization of default rules" border="0" src="images/customize-default-rules-general.png"/> 
+		</p>
+		<h3 id="overrides">Overrides</h3>
+		<p>The main difference between the 
+			<a href="#extends">extend</a> mechanism and the 
+			<a href="#overrides">overrides</a> mechanism is that the extend mechanism allows to reuse some parts of a properties view specification on another hand the 
+			<a href="#overrides">override</a> mechanism allows to replace some parts of a properties view specification.
+			<br/>This means that when you define an override description it will completely replace the referenced description, this must be used when it is not possible for the specifier to modify the original description.
+		</p>
+		<p>It is possible to create an override element under a 
+			<a href="#categories">category</a> from the 
+			<em>New Override</em> menu.
+		</p>
+		<p>A page override can extend another page defined somewhere else (in another 
+			<a href="#categories">category</a> or in another properties view description). This mechanism is used to 
+			<em>replace</em> an existing page. It is possible to define :
+		</p>
+		<ul>
+			<li>page override: a 
+				<em>Page Override</em> is a page and so defines the same features as a 
+				<a href="#pages">page</a>, 
+			</li>
+			<li>group override: a 
+				<em>Group Override</em> is a group and so defines the same features as a 
+				<a href="#groups">group</a>, 
+			</li>
+			<li>container override: a 
+				<em>Container Override</em> is a container and so defines the same features as a 
+				<a href="#containers_and_layout">container</a>, 
+			</li>
+			<li>dynamic mapping override: a 
+				<em>Dynamic Mapping Override</em> is a dynamic mapping and so defines the same features as a 
+				<a href="#dynamic_mappings">dynamic mapping</a>,
+			</li>
+			<li>widget override: a 
+				<em>Widget Override</em> is a widget and so defines the same features as a 
+				<a href="#widgets">widget</a>.
+			</li>
+		</ul>
+		<p>The 
+			<code>Extend</code> tab is used to specify:
+		</p>
+		<p id="extends">
+			<strong>Extends.</strong> Is used to specify the overridden element thanks to a combo box it is possible to select an existing element. In the tree editor, the inheritance is visible as the element is named as following : 
+			<em>Page A</em> 
+			<strong>extends</strong> 
+			<em>Page B</em>. Pay attention, the current specification editor allows to select the currently defined element, this will lead to an infinite loop at runtime. 
+			<br/>By default, the values of the 
+			<code>General</code> tab fields are set with the values coming from the overridden element if these fields are not set in the extending element. If one of these attributes is edited in the extending element, then it 
+			<strong>overrides</strong> the inherited value. The same behavior is applied for mono valued containment elements. For example, if a 
+			<em>Group A</em> defines a 
+			<em>Style A</em> and extends a 
+			<em>Group B</em> with a 
+			<em>Style B</em>, the style used to render the 
+			<em>Group A</em> is the one defined under the 
+			<em>Group A</em>, i.e 
+			<em>Style A</em> and not the one of the 
+			<em>Group B</em>.
+			<br/>If the specifier defines in the extending page 
+			<code>General</code> tab:
+		</p>
+		<ul>
+			<li>
+				<code>Label Expression</code>, 
+				<code>Domain Class</code>, 
+				<code>Semantic Candidate Expression</code> or 
+				<code>Precondition Expression</code>, these values will 
+				<strong>override</strong> the values defined in the extended description. It is worth noting that the expressions are evaluated in the context of the currently extending element, exactly as if you have defined the expressions from the 
+				<code>General</code> tab. 
+			</li>
+			<li>
+				<code>Groups</code> will 
+				<strong>be aggregated</strong> to the groups defined by the referenced 
+				<code>Page</code>. 
+			</li>
+			<li>
+				<code>Page Validations</code>  will 
+				<strong>be aggregated</strong> to the validations defined by the referenced 
+				<code>Page Description</code>.
+			</li>
+			<li>In the case of a containment, such as a 
+				<code>Text</code> contained by a 
+				<code>Group</code>, the contained elements are inherited by the extending description.
+			</li>
+		</ul>
+		<p id="filters">
+			<strong>Filter Expressions.</strong> Different filters exist depending on the element kind. These filters are used to 
+			<strong>filter</strong> which inherited elements are visible. The 
+			<em>Filter expression</em> is evaluated in the context of the semantic element and should return a boolean: true, the inherited element is visible, false it is filtered.
+			<br/>If the expression is not specified, all the inherited elements will be visible.
+			<br/>For each 
+			<em>Filter expression</em>, a variable is available which represents the element which could be filtered. It is possible to filter all the inherited elements by just returning 
+			<code>false</code> all the time. In this case, the elements defined under the current description 
+			<strong>overrides</strong> the elements defined in the extended description.
+			<br/>For example if a 
+			<em>Page A</em> extends another 
+			<em>Page B</em>, the 
+			<code>Extends</code> tab allows to define:
+		</p>
+		<ul>
+			<li>The 
+				<code>Filter Groups Expression</code> is used to 
+				<strong>filter</strong> which inherited groups are visible under the page. The 
+				<code>group</code> variable can be used to check if a group must be filtered or not. 
+			</li>
+			<li>The 
+				<code>Filter Validation Rules Expression</code> is used to 
+				<strong>filter</strong> which inherited validation rules are used under the page. The 
+				<code>validationRule</code> variable can be used to check if a rule must be filtered or not.
+			</li>
+		</ul>
+		<p>If an element is overridden by many override definitions, the first encountered in the specification is applied.</p>
 		<h2 id="extension_points">Extension Points</h2>
 		<h3 id="advanced_custom_widgets_extension_points">Extension Points for Advanced Custom Widgets</h3>
 		<p>Integrating and advanced custom widget implementation requires extending several extension points:</p>
@@ -1379,6 +1607,11 @@
 			<li>
 				<code>org.eclipse.sirius.ui.properties.descriptionLinkResolver</code>: This extension point may be needed in complement to the 
 				<code>descriptionConverter</code> if some post-transformation step is needed on your transformed model to perform global link resolution.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.ui.properties.descriptionPreprocessor</code>: This extension point allows you to participate in the preprocessing of the Sirius-side VSM model with 
+				<a href="#extensibility_features">extensibility featires</a> into a 
+				<em>flatten</em> Sirius-side VSM model. 
 			</li>
 		</ul>
 		<p>Please refer to the documentation for each of these for more details. And 

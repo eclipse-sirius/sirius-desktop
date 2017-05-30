@@ -21,8 +21,12 @@ Properties view are configured by creating a _Properties View Description_ eleme
 Like many elements inside a "_VSM_":../../Glossary.html#VSM, _View Extension Description_ have an optional _Identifier_, which should be unique.
 
 Inside a _Properties View Description_ element, you can create:
+* "_Categories_":#categories, which exist only for the specifier convenience to order his specification;
+
+Inside a _Category_ element, you can create:
 * "_Pages_":#pages, which correspond to "tabs";
 * "_Groups_":#groups, which represent named sections inside a page/tab which contain the actual widgets;
+* "_Overrides":#overrides, which allows to override part of an existing properties view description. 
 
 It is recommended that the _Properties View Description_ be explicitly associated with the meta-model(s) of the semantic elements it will represent. You can add referenced meta-models from different sources in the _Metamodels_ property section of the _Properties View Description_. Sirius will work even without this association, but setting it explicitly will give you better feedback when validating your "_VSM_":../../Glossary.html#VSM.
 
@@ -47,11 +51,13 @@ This order of evaluation should be kept in mind when specifying properties view.
 * "groups":#groups, which represent properties view *Section* that can contain widgets.
 * "widgets":#widgets describe the different kind of widgets supported, like texts, buttons, labels, checkboxes, radio groups...
 * "dynamic mappings":#dynamic_mappings are used for advanced scenarios where the set of widgets to display can not be known statically, but instead must be computed at runtime.
-* "containers and layout":#containers are used to organize and layout multiple related widgets.
+* "containers and layout":#containers_and_layout are used to organize and layout multiple related widgets.
+* "overrides":#overrides are used to override the properties view of an existing properties view description.
 
 p(#default_rules). *Default Properties View Rules.* When no properties view definition is found for an element selected by the user, Sirius will apply default rules which attempt to give a usable (if generic) result for most user models. As soon as you define _some_ custom rules for your modelers, _only_ these custom rules will apply, and the default ones will be ignored. If you want to mix the default rules for some of your elements and custom ones only for some specific types, you can:
-* Import a copy of the default rules model inside your VSM: from the top-level element of the VSM model, select _New > Default Properties View Description_.
-* Add your custom rules (pages and groups) and optionally update the default ones to not apply for the elements for which you provide more specific views (typically by modifying the _Precondition Expression_ of the default _Page_).
+* Extend the default rules model inside your VSM: from the top-level element of the VSM model, select _New Properties> Extend Default Properties View_. This will allow you to redefine the behavior of the default rules thanks to the "extension mechanism"#extensibility_features.
+* Import a copy of the default rules model inside your VSM: from the top-level element of the VSM model, select _New Properties > Import Default Properties View_.
+* Add your custom rules (pages and groups) and optionally update the default ones to not apply for the elements for which you provide more specific views (typically by modifying the _Precondition Expression_ of the default _Page_), to do so from the top-level element of the VSM model, select _New Properties > New Default Properties View_.
 
 *Legacy Sirius Tabs.* By default, the legacy _Semantic_ and _Default_ tabs which show the raw properties of the selected element in a plain property grid are still visible even when you have defined custom properties views (the _Semantic_ tab is visible when the selection is from a Sirius representation; the _Default_ tab is shown when selecting from the _Model Explorer_). If you want to hide these legacy tabs and only show your custom tabs, you can do so by changing the preferences in the _Sirius > Sirius Properties View_ category.
 
@@ -120,6 +126,11 @@ Beside @self@, which represents the current context element on which an expressi
 * @semanticDecorator()@: returns the @DSemanticDecorator@ instance which was selected.
 * @session()@: return the @Session@ in the context of which the selection was done. This is a Java object which can only be used by additional (custom) Java services.
 
+h2(#categories). Categories
+
+A _Category_ is used to sort the "pages":#pages and the "groups":#groups. The category does not represent anything in the final user properties view, the category exists only for the specifier convenience to order the specification. For example a _Reused_ category can be created to store all the groups that would be used by different "pages":#pages and "dialogs":#dialogandwizard.
+Categories can be created 
+
 h2(#pages). Pages
 
 A _Page_ is used to represent a *Tab* in the properties view.
@@ -146,7 +157,7 @@ Much like the other properties view elements, you must specify the "_Identifier_
 
 The definition of a group follows the general rules described "above":#properties_view_description to determine the semantic elements for which a group should be created.
 
-A group can contain "_widgets_":#widgets, "_containers_":#containers to organize them, and "_validation rules_":#validation_rules, all of which are defined inside the group description (_New Widget > Container|Text..._ and _New > Group Validations_, respectively).
+A group can contain "_widgets_":#widgets, "_containers_":#containers_and_layout to organize them, and "_validation rules_":#validation_rules, all of which are defined inside the group description (_New Widget > Container|Text..._ and _New > Group Validations_, respectively).
 
 h3(#group_styles). Group Styles
 
@@ -174,7 +185,7 @@ table(table table-striped table-condensed).
 
 h2(#widgets). Widgets
 
-A widget is used to represent model elements in the properties view and, for most of them, to allow users to edit said elements. Widgets can appear directly inside a group, a "dynamic mapping":#dynamic_mappings or inside a "container":#containers, in which case you can specify a specific "layout":#containers which will be used to graphically organize all the widgets inside the container.
+A widget is used to represent model elements in the properties view and, for most of them, to allow users to edit said elements. Widgets can appear directly inside a group, a "dynamic mapping":#dynamic_mappings or inside a "container":#containers_and_layout, in which case you can specify a specific "layout":#containers_and_layout which will be used to graphically organize all the widgets inside the container.
 
 The definition of a widget follows the general rules described "above":#properties_view_description to determine the semantic elements for which a widget should be created.
 
@@ -182,11 +193,11 @@ Much like the other properties view elements, you can specify the widget's "_Lab
 
 h3(#text). Text / Text area
 
-A _Text_ widget is used to represent a *single line text* in a "group":#groups or in a "container":#containers.
+A _Text_ widget is used to represent a *single line text* in a "group":#groups or in a "container":#containers_and_layout.
 
 !images/widget-text.png!
 
-A _Text Area_ is used to represent a *multiple lines text* in a "group":#groups or in a "container":#containers.
+A _Text Area_ is used to represent a *multiple lines text* in a "group":#groups or in a "container":#containers_and_layout.
 
 !images/widget-textarea.png!
 
@@ -221,7 +232,7 @@ Here are examples of text and text area widgets with some of their style attribu
 
 h3(#button). Button
 
-A _Button_ is used to represent a *button* in a "group":#groups or in a "container":#containers, that can be used to trigger an arbitrary (configurable) operation on the model.
+A _Button_ is used to represent a *button* in a "group":#groups or in a "container":#containers_and_layout, that can be used to trigger an arbitrary (configurable) operation on the model.
 
 !images/widget-button.png(Example of a button widget)!
 
@@ -239,7 +250,7 @@ See the "styles":#styling section for a general presentation of how styles are d
 
 h3(#label). Label
 
-A _Label_ is used to represent a *non editable text* in a "group":#groups or in a "container":#containers.
+A _Label_ is used to represent a *non editable text* in a "group":#groups or in a "container":#containers_and_layout.
 
 Here is an example which shows two label widgets:
 
@@ -268,7 +279,7 @@ One of the responsibility of labels styles is to describe how descriptions will 
 
 h3(#checkbox). Checkbox
 
-A _Checkbox_ is used to represent a *checkbox* in a "group":#groups or in a "container":#containers.
+A _Checkbox_ is used to represent a *checkbox* in a "group":#groups or in a "container":#containers_and_layout.
 
 !images/widget-checkbox.png(Examples of checkbox widgets)!
 
@@ -288,7 +299,7 @@ See the "styles":#styling section for a general presentation of how styles are d
 
 h3(#select). Select
 
-A _Select_ is used to represent a *combo box* in a "group":#groups or in a "container":#containers.
+A _Select_ is used to represent a *combo box* in a "group":#groups or in a "container":#containers_and_layout.
 
 !images/widget-select.png(Example of a select widget)!
 
@@ -311,7 +322,7 @@ See the "styles":#styling section for a general presentation of how styles are d
 
 h3(#radio_group). Radio Group
 
-A _Radio_ is used to represent a *radio group* in a "group":#groups or in a "container":#containers.
+A _Radio_ is used to represent a *radio group* in a "group":#groups or in a "container":#containers_and_layout.
 
 !images/widget-radio.png(Example of a radio group widget)!
 
@@ -334,7 +345,7 @@ See the "styles":#styling section for a general presentation of how styles are d
 
 h3(#hyperlink). Hyperlink
 
-A _Hyperlink_ is used to represent an *hyperlink* in a "group":#groups or in a "container":#containers.
+A _Hyperlink_ is used to represent an *hyperlink* in a "group":#groups or in a "container":#containers_and_layout.
 
 !images/widget-hyperlink.png(Example of an hyperlink widget)!
 
@@ -387,7 +398,7 @@ See the "styles":#styling section for a general presentation of how styles are d
 
 h3(#list). List
 
-A _List_ is used to represent a *list with buttons* in a "group":#groups or in a "container":#containers.
+A _List_ is used to represent a *list with buttons* in a "group":#groups or in a "container":#containers_and_layout.
 
 Depending on the parameters configuration the list widget will be represented thanks to a list and multiple buttons when "_Widget Actions_":#list_actions are defined.
 
@@ -451,7 +462,7 @@ h2(#dynamic_mappings). Dynamic Mappings
 
 Dynamic mappings are used for advanced scenarios where the set of widgets to display can not be known statically, but instead must be computed at runtime. A dynamic mapping contains conditional widgets definition, each of which may be instanciated zero or multiple times at runtime.
 
-A _Dynamic Mapping For_ can appear directly inside a group description, or inside a "container":#containers, in which case you can specify a specific "layout":#containers. You must specify an _Iterable Expression_ which computes a list of elements to iterate over. The _Iterator_ property must also be defined and corresponds to the name of the iteration variable that will be accessible inside the _For_. Inside the _Dynamic Mapping For_ you can create any number of _Dynamic Mapping If_, which defines a _Predicate Expression_ and can contain *one widget*.
+A _Dynamic Mapping For_ can appear directly inside a group description, or inside a "container":#containers_and_layout, in which case you can specify a specific "layout":#containers_and_layout. You must specify an _Iterable Expression_ which computes a list of elements to iterate over. The _Iterator_ property must also be defined and corresponds to the name of the iteration variable that will be accessible inside the _For_. Inside the _Dynamic Mapping For_ you can create any number of _Dynamic Mapping If_, which defines a _Predicate Expression_ and can contain *one widget*.
 
 At runtime, for a given input element selected by the user, Sirius will evaluate the _iterable expression_, and then for each of the elements returned will instanciate the widgets defined inside _Dynamic Mapping If_ whose predicate holds true.
 
@@ -518,27 +529,87 @@ The group property validation rule is used to define a validation rule linked to
 
 h2(#extensibility_features). Extensibility Features
 
-Sirius has specific support for extending and overriding Properties View Descriptions without modifying the original.
+Sirius has specific support for extending and overriding properties view descriptions without modifying the original one. The purpose is to be able to reuse or modify a part of a properties view. Its exits two different concepts to customize a properties view description: the "extension":#extends and the "overriding":#overriding. 
 
 h3(#extends). Extends
 
-A Page can extend another Page defined somewhere else (in another Category or in another Properties View Description). This mechanism is used to _specialize_ (modify or re-use) an existing Page. This feature is available for the Pages, the Groups, the Containers, the Dynamic Mappings and the Widgets.
+A "page":#pages can extend another page defined somewhere else (in another "category":#categories or in another properties view description). This mechanism is used to _specialize_ (modify or re-use) an existing page. This feature is available for the "pages":#pages, the "groups":#groups, the "containers":#containers_and_layout, the "dynamic mappings":#dynamic_mappings and the "widgets":#widgets.
 
 The @Extend@ tab is used to specify:
 
-p(#extends). *Extends.* Is used to specify the inherited element. In the tree editor, the inheritance is visible as the element is named as following : _Page A_ *extends* _Page B_.
-By default, the values of the @General@ tab fields are set with the values coming from the extended element. If one of these attributes is edited in the extending element, then it *overrides* the inherited value. The same behavior is applied for mono valued containment elements. For example, if a _Group A_ defines a _Style A_ and extends a _Group B_ wit ha _Style B_, the style used to render the _Group A_ is the one defined under the _Group A_, i.e _Style A_ and not the one of the _Group B_.
-If the specifier defines in the extending @Page@:
-* @Label Expression@, @Domain Class@, @Semantic Candidate Expression@ or @Precondition Expression@, these values will *override* the values defined in the referenced imported description. 
+p(#extends). *Extends.* Is used to specify the inherited element thanks to a combo box it is possible to select an existing element. In the tree editor, the inheritance is visible as the element is named as following : _Page A_ *extends* _Page B_. Pay attention, the current specification editor allows to select the currently defined element, this will lead to an infinite loop at runtime. 
+By default, the values of the @General@ tab fields are set with the values coming from the extended element if these fields are not set in the extending element. If one of these attributes is edited in the extending element, then it *overrides* the inherited value. The same behavior is applied for mono valued containment elements. For example, if a _Group A_ defines a _Style A_ and extends a _Group B_ with a _Style B_, the style used to render the _Group A_ is the one defined under the _Group A_, i.e _Style A_ and not the one of the _Group B_.
+If the specifier defines in the extending page @General@ tab:
+* @Label Expression@, @Domain Class@, @Semantic Candidate Expression@ or @Precondition Expression@, these values will *override* the values defined in the extended description. It is worth noting that the expressions are evaluated in the context of the currently extending element, exactly as if you have defined the expressions from the @General@ tab. 
 * @Groups@ will *be aggregated* to the groups defined by the referenced @Page@. 
 * @Page Validations@  will *be aggregated* to the validations defined by the referenced @Page Description@.
 * In the case of a containment, such as a @Text@ contained by a @Group@, the contained elements are inherited by the extending description.
 
-p(#filters). *Filter Expressions.* Different filters exist depending on the element kind. These filters are used to *filter* which inherited elements are visible. The expression returns a @Boolean@: true, the inherited element is visible, false it is filtered.
-For each _Filter Expression_, a variable is available which represents the element which could be filtered. It is possible to filter all the inherited elements by just returning @false@ all the time. In this case, the elements defined under the current description *overrides* the elements defined in the extended description.
+p(#filters). *Filter Expressions.* Different filters exist depending on the element kind. These filters are used to *filter* which inherited elements are visible. The _Filter expression_ is evaluated in the context of the semantic element and should return a boolean: true, the inherited element is visible, false it is filtered.
+If the expression is not specified, all the inherited elements will be visible.
+For each _Filter expression_, a variable is available which represents the element which could be filtered. It is possible to filter all the inherited elements by just returning @false@ all the time. In this case, the elements defined under the current description *overrides* the elements defined in the extended description.
 For example if a _Page A_ extends another _Page B_, the @Extends@ tab allows to define:
 * The @Filter Groups Expression@ is used to *filter* which inherited groups are visible under the page. The @group@ variable can be used to check if a group must be filtered or not. 
 * The @Filter Validation Rules Expression@ is used to *filter* which inherited validation rules are used under the page. The @validationRule@ variable can be used to check if a rule must be filtered or not.
+
+Following some examples of the extension mechanism usage are detailed:
+* *Reuse widgets*: In this example we want to specify the properties view of a Class and an interface both are defining a name attribute. A _Class Name_ text widget is defined to represent the _Name_ attribute of a _Class_ in the properties view. This widget defines in the _General_ tab:
+** The _Label Expression_ equals to @Name:@,
+** The _Help Expression_ equals to @The name of the element@,
+** The _Value Expression_ equals to @aql:self.name@,
+** The change value operation sets the @name@ feature with the new entered value.
+
+!images/reuse-widget-general-tab.png(Example of the inherited text widget definition)! 
+
+An interface has also a _Name_ attribute which must be shown in its properties view, then to define the properties of the interface, we just create a new text widget which extends the @Class Name Widget@.
+No other fields and no change value operation need to be set for the @Interface Name Widget@, all the values will be inherited from the @Class Name Widget@.
+
+!images/reuse-widget-extends-tab.png(Example of the extension definition)! 
+ 
+!images/reuse-widget-general2-tab.png(Example of the reuse of a widget definition)! 
+
+* *Reuse pages*: Another usage of the extension mechanism is with combination of "the dialogs and the wizards":#dialogandwizard. The purpose is to provide the edition of the properties element from a dialog, the same properties should be available in the dialog and in the properties view. A a property view is defined for all the elements of a metamodel. Then a new tool is defined which opens a dialog when a node mapping is double-clicked from a diagram. This dialog shows the same properties than the ones represented when the element is selected from the diagram. To do this, the dialog defines a page which extends the one defined in the properties view definition.
+
+!images/reuse-page.png(Example of the reuse of a page definition in a dialog)!
+
+* *Customize default rules*: A final example of the extension mechanism is to customize the "default rules":#default_rules provided by Sirius. For this use case, the purpose is to override the content of the default rules in order to rename the tab label from _Main_ to _General_. It is possible to extends the default rules thanks to the _New Properties> Extend Default Properties View_ menu available from the top-level element of the VSM model. Automatically, this creates a new page which extends the default rules. It is then possible to override the _Label Expression_ of the default rules page to set the expected label _General_ instead of the default one which is _Main_
+
+!images/customize-default-rules-extends.png(Example of the extension of default rules)!
+
+!images/customize-default-rules-general.png(Example of the customization of default rules)! 
+ 
+h3(#overrides). Overrides
+
+The main difference between the "extend":#extends mechanism and the "overrides":#overrides mechanism is that the extend mechanism allows to reuse some parts of a properties view specification on another hand the "override":#overrides mechanism allows to replace some parts of a properties view specification.
+This means that when you define an override description it will completely replace the referenced description, this must be used when it is not possible for the specifier to modify the original description.
+
+It is possible to create an override element under a "category":#categories from the _New Override_ menu.
+
+A page override can extend another page defined somewhere else (in another "category":#categories or in another properties view description). This mechanism is used to _replace_ an existing page. It is possible to define :
+* page override: a _Page Override_ is a page and so defines the same features as a "page":#pages, 
+* group override: a _Group Override_ is a group and so defines the same features as a "group":#groups, 
+* container override: a _Container Override_ is a container and so defines the same features as a "container":#containers_and_layout, 
+* dynamic mapping override: a _Dynamic Mapping Override_ is a dynamic mapping and so defines the same features as a "dynamic mapping":#dynamic_mappings,
+* widget override: a _Widget Override_ is a widget and so defines the same features as a "widget":#widgets.
+
+The @Extend@ tab is used to specify:
+
+p(#extends). *Extends.* Is used to specify the overridden element thanks to a combo box it is possible to select an existing element. In the tree editor, the inheritance is visible as the element is named as following : _Page A_ *extends* _Page B_. Pay attention, the current specification editor allows to select the currently defined element, this will lead to an infinite loop at runtime. 
+By default, the values of the @General@ tab fields are set with the values coming from the overridden element if these fields are not set in the extending element. If one of these attributes is edited in the extending element, then it *overrides* the inherited value. The same behavior is applied for mono valued containment elements. For example, if a _Group A_ defines a _Style A_ and extends a _Group B_ with a _Style B_, the style used to render the _Group A_ is the one defined under the _Group A_, i.e _Style A_ and not the one of the _Group B_.
+If the specifier defines in the extending page @General@ tab:
+* @Label Expression@, @Domain Class@, @Semantic Candidate Expression@ or @Precondition Expression@, these values will *override* the values defined in the extended description. It is worth noting that the expressions are evaluated in the context of the currently extending element, exactly as if you have defined the expressions from the @General@ tab. 
+* @Groups@ will *be aggregated* to the groups defined by the referenced @Page@. 
+* @Page Validations@  will *be aggregated* to the validations defined by the referenced @Page Description@.
+* In the case of a containment, such as a @Text@ contained by a @Group@, the contained elements are inherited by the extending description.
+
+p(#filters). *Filter Expressions.* Different filters exist depending on the element kind. These filters are used to *filter* which inherited elements are visible. The _Filter expression_ is evaluated in the context of the semantic element and should return a boolean: true, the inherited element is visible, false it is filtered.
+If the expression is not specified, all the inherited elements will be visible.
+For each _Filter expression_, a variable is available which represents the element which could be filtered. It is possible to filter all the inherited elements by just returning @false@ all the time. In this case, the elements defined under the current description *overrides* the elements defined in the extended description.
+For example if a _Page A_ extends another _Page B_, the @Extends@ tab allows to define:
+* The @Filter Groups Expression@ is used to *filter* which inherited groups are visible under the page. The @group@ variable can be used to check if a group must be filtered or not. 
+* The @Filter Validation Rules Expression@ is used to *filter* which inherited validation rules are used under the page. The @validationRule@ variable can be used to check if a rule must be filtered or not.
+
+If an element is overridden by many override definitions, the first encountered in the specification is applied.
 
 h2(#extension_points). Extension Points
 
@@ -548,7 +619,7 @@ Integrating and advanced custom widget implementation requires extending several
 * @org.eclipse.emf.edit.childCreationExtenders@: When generating the metamodel for the custom configuration DSL of your widget, make sure EMF's @childCreationExtenders@ mechanism is properly configured so that the Sirus VSM editor will see your custom widget type and allow them to be created in the _New_ context menu.
 * @org.eclipse.sirius.ui.properties.descriptionConverter@: This extension point allows you to particpate in the conversion of the Sirius-side VSM model into the EEF DSL. With this mechanism, you can translate for the EEF runtime new elements that you have contributed in the Sirius Properties DSL.
 * @org.eclipse.sirius.ui.properties.descriptionLinkResolver@: This extension point may be needed in complement to the @descriptionConverter@ if some post-transformation step is needed on your transformed model to perform global link resolution.
-
+* @org.eclipse.sirius.ui.properties.descriptionPreprocessor@: This extension point allows you to participate in the preprocessing of the Sirius-side VSM model with "extensibility featires":#extensibility_features into a _flatten_ Sirius-side VSM model. 
 Please refer to the documentation for each of these for more details. And "the reference documentation":../../developer/extensions-properties_provide_custom_widget_advanced.html for the full details on how to actually implement your own advanced custom widgets.
 
 h3(#tab_filtering). Tab Filtering

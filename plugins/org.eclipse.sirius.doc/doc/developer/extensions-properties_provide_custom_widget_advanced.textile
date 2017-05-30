@@ -120,6 +120,58 @@ In order to help developer transform their Sirius entities into EEF entities, mu
 * org.eclipse.sirius.ui.properties.api.DefaultDescriptionWithInitialOperationConverter - Converter with support for the transformation of a basic operation into a regular expression
 * org.eclipse.sirius.ui.properties.api.DefaultStyleDescriptionConverter - Converter with support for styling
 
+h3. Contribution of the preprocessor from Sirius with extensibility features to flatten Sirius
+
+Now that you have your extension to the Sirius Properties DSL, you need to inform the Sirius bridge how to transform the concepts from your new widget with extensibility to the Sirius DSL without extends or overrides mechanism. For that an extension point is available in order to contribute an IDescriptionPreprocessor. This preprocessor will have to depend on the Sirius bridge. As a result, this code will have to go into the same plugin as the converter for best practices. We will thus contribute to the plugin named @com.example.awesomeproject.sirius.ui.properties.ext.widgets.table@. In this plugin, we will declare our description preprocessor using the following extension.
+
+pre.. 
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.ui.properties.descriptionPreprocessor">
+      <descriptor
+            class="com.example.awesomeproject.sirius.ui.properties.ext.widgets.table.internal.ExtTableDescriptionPreprocessor"
+            description="%tableDescriptionPreprocessor.Description"
+            id="com.example.awesomeproject.sirius.ui.properties.ext.widgets.table.descriptionPreprocessor"
+            label="%tableDescriptionPreprocessor.Label">
+      </descriptor>
+   </extension>
+</plugin>
+
+p. 
+The transformation from the Sirius DSL with extends/overrides to the Sirius DSL occur in two parts, first the description are converted using an IDescriptionPreprocessor and after an IDescriptionLinkResolver may be used to resolve some links. In our case, the description preprocessor will simply be used to transform a instance of @ExtTableDescription@ with extends into a flatten @ExtTableDescription@ without extends/overrides and we won't use a description link resolver since it is not useful here.
+
+
+pre.. 
+package com.example.awesomeproject.sirius.ui.properties.ext.widgets.table.internal;
+
+import java.util.Map;
+
+import com.example.awesomeproject.eef.ext.widgets.table.EEFExtTableDescription;
+import com.example.awesomeproject.eef.ext.widgets.table.EefExtWidgetsTableFactory;
+import org.eclipse.emf.ecore.EObject;
+import com.example.awesomeproject.sirius.properties.ext.widgets.table.ExtTableDescription;
+import org.eclipse.sirius.ui.properties.api.DescriptionCache;
+import org.eclipse.sirius.ui.properties.api.IDescriptionPreprocessor;
+
+public class ExtTableDescriptionPreprocessor extends PreconfiguredPreprocessor<ExtTableDescription> {
+
+    @Override
+    public boolean canHandle(EObject description) {
+        return description instanceof ExtTableDescription;
+    }
+}
+
+p. 
+An IDescriptionPreprocessor can be used to convert any element from the Sirius Properties DSL with extends/overrides to a flatten Sirius DSL.
+
+In order to help developer transform their Sirius entities into Sirius flatten entities, multiple possible super-classes are available:
+
+* org.eclipse.sirius.ui.properties.api.DefaultDescriptionPreprocessor - Preprocessor for basic transformations
+* org.eclipse.sirius.ui.properties.api.DefaultDescriptionPreprocessorWithFiltering - Preprocessor with support for ignoring some features and copying the value of some other features. This means that in the models resulting from the preprocessing, the ignored values are not copied or inherited.
+* org.eclipse.sirius.ui.properties.api.PreconfiguredPreprocessor - Preprocessor with support for most of the cases by ignoring : the extends reference, all the filters of the extension mechanism and by copying: the actions, the initial operation, the style, the conditional styles.
+
 h3. Contribution of the Properties section for the odesign
 
 If you try to edit your extension of the Sirius DSL in the odesign editor, you will find out that it does not work. In order to be able to view the properties of your widget, in our case the @onClickExpression@ and the @valueExpression@, you will need to contribute to the Properties view of the odesign editor. Since this contribution will require a dependency with the framework used for the Properties view of the odesign editor, it will require another plugin named @com.example.awesomeproject.sirius.editor.properties.ext.widgets.table@ with a dependency to at least:
