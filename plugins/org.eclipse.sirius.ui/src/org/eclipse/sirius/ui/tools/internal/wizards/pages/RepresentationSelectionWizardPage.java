@@ -95,9 +95,9 @@ public class RepresentationSelectionWizardPage extends WizardPage {
      */
     public RepresentationSelectionWizardPage(final Session root) {
         super(Messages.RepresentationSelectionWizardPage_title);
-        this.setTitle(Messages.RepresentationSelectionWizardPage_title);
-        this.session = root;
+        setTitle(Messages.RepresentationSelectionWizardPage_title);
         setMessage(Messages.RepresentationSelectionWizardPage_message);
+        this.session = root;
     }
 
     /**
@@ -110,10 +110,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
      *            The representation descriptor that should be selected by default when opening the page.
      */
     public RepresentationSelectionWizardPage(Session theSession, RepresentationDescriptionItemImpl theRepresentationDescriptionItem) {
-        super(Messages.RepresentationSelectionWizardPage_title);
-        this.setTitle(Messages.RepresentationSelectionWizardPage_title);
-        this.session = theSession;
-        setMessage(Messages.RepresentationSelectionWizardPage_message);
+        this(theSession);
         representationDescriptionItem = theRepresentationDescriptionItem;
     }
 
@@ -128,8 +125,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
      *            page.
      */
     public RepresentationSelectionWizardPage(Session theSession, EObject theSemanticSelection) {
-        super(Messages.RepresentationSelectionWizardPage_title);
-        this.session = theSession;
+        this(theSession);
         this.semanticElement = theSemanticSelection;
     }
 
