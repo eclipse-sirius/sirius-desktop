@@ -51,7 +51,6 @@ import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
-import org.eclipse.sirius.ui.tools.internal.views.ViewHelperImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.FileSessionFinder;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionWrapperContentProvider;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.AnalysisResourceItemImpl;
@@ -114,7 +113,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
      * Constructor.
      */
     public SiriusCommonContentProvider() {
-        defaultContentProvider = ViewHelper.INSTANCE.getContentProvider();
+        defaultContentProvider = ViewHelper.INSTANCE.createContentProvider();
 
         initSessionManager();
         initDoubleClickListener();
@@ -522,7 +521,6 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             linkWithEditorSelectionListener.dispose();
             linkWithEditorSelectionListener = null;
         }
-        ((ViewHelperImpl) ViewHelper.INSTANCE).resetContentProvider();
     }
 
     /**

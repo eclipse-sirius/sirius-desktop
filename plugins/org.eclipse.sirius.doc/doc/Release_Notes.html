@@ -369,6 +369,10 @@
 				<code>void</code> to 
 				<code>Session</code> to allow callers to have access to the newly created session directly.
 			</li>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>org.eclipse.sirius.ui.tools.api.views.ViewHelper.getContentProvider()</code> has been renamed into 
+				<code>createContentProvider()</code> and now returns a new instance on each invocation.
+			</li>
 			<li><span class="label label-danger">Removed</span> The old 
 				<em>Model Request Interpreter</em> view is not available anymore. It is superseded by the 
 				<em>Interpreter</em> view, which comes from the Acceleo project but does not actually depend on Acceleo or AQL and can be installed separately (using the feature 

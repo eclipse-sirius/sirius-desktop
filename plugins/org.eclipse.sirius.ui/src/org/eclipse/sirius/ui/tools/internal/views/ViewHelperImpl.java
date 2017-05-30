@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,9 +38,7 @@ import com.google.common.collect.Lists;
  */
 public final class ViewHelperImpl implements ViewHelper {
 
-    private ITreeContentProvider contentProvider;
-
-    private Collection<ISessionViewExtension> extensions = Lists.newArrayList();
+    private static Collection<ISessionViewExtension> extensions = Lists.newArrayList();
 
     /**
      * Avoid instantiation.
@@ -61,20 +59,17 @@ public final class ViewHelperImpl implements ViewHelper {
     @Override
     public AdapterFactory createAdapterFactory() {
         final List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
-        final ComposedAdapterFactory generic = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
         factories.add(DialectUIManager.INSTANCE.createAdapterFactory());
         factories.add(FeatureExtensionsUIManager.INSTANCE.createAdapterFactory());
-        factories.add(generic);
+        factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
         factories.add(new ReflectiveItemProviderAdapterFactory());
         return new ComposedAdapterFactory(factories);
     }
 
     @Override
-    public ITreeContentProvider getContentProvider() {
-        if (contentProvider == null) {
+    public ITreeContentProvider createContentProvider() {
             SessionWrapperContentProvider sessionWrapperContentProvider = new SessionWrapperContentProvider(new AdapterFactoryContentProvider(createAdapterFactory()));
-
-            contentProvider = new GroupingContentProvider(sessionWrapperContentProvider);
+            ITreeContentProvider contentProvider = new GroupingContentProvider(sessionWrapperContentProvider);
             Collection<ITreeContentProvider> liveProviders = Collections2.transform(extensions, new Function<ISessionViewExtension, ITreeContentProvider>() {
                 @Override
                 public ITreeContentProvider apply(ISessionViewExtension from) {
@@ -82,15 +77,7 @@ public final class ViewHelperImpl implements ViewHelper {
                 }
             });
             sessionWrapperContentProvider.setExtensions(liveProviders);
-        }
-        return contentProvider;
-    }
-
-    /**
-     * Reset to null the contentProvider.
-     */
-    public void resetContentProvider() {
-        contentProvider = null;
+            return contentProvider;
     }
 
     /**
