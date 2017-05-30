@@ -21,6 +21,7 @@ import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.ecore.EPackageMetaData;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.SWTError;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.KeyAdapter;
@@ -46,7 +47,7 @@ public class SelectEMFMetamodelWizardPage extends WizardPage {
 
     /** The package separator used to display qualified name of an EPackage. */
     private static final String PACKAGE_SEPARATOR = "::"; //$NON-NLS-1$
-    
+
     /** The icon used for EPackages. */
     private final Image ePacakgeIcon = ExtendedImageRegistry.getInstance().getImage(EcoreEditPlugin.INSTANCE.getImage("full/obj16/EPackage")); //$NON-NLS-1$
 
@@ -163,11 +164,15 @@ public class SelectEMFMetamodelWizardPage extends WizardPage {
                 if (selection.length == 1) {
                     dataModel.setSelectedPackage(((Entry<String, Object>) selection[0]).getValue());
                     String documentation = getDocumentation(dataModel.getSelectedPackage());
-                    documentationBrowser.setText(documentation);
+                    if (documentationBrowser != null) {
+                        documentationBrowser.setText(documentation);
+                    }
                     setPageComplete(true);
                 } else {
                     dataModel.setSelectedPackage(null);
-                    documentationBrowser.setText(""); //$NON-NLS-1$
+                    if (documentationBrowser != null) {
+                        documentationBrowser.setText(""); //$NON-NLS-1$
+                    }
                     setPageComplete(false);
                 }
             }
@@ -184,8 +189,15 @@ public class SelectEMFMetamodelWizardPage extends WizardPage {
         Label lblDocumentation = new Label(parent, SWT.NONE);
         lblDocumentation.setText(Messages.SelectEMFMetamodelWizardPage_documentationLabel);
 
-        this.documentationBrowser = new Browser(parent, SWT.BORDER);
-        this.documentationBrowser.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 2));
+        try {
+            this.documentationBrowser = new Browser(parent, SWT.BORDER);
+            this.documentationBrowser.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 2));
+        } catch (SWTError error) {
+            /*
+             * The browser could not be created: "hide" the "Documentation" label.
+             */
+            lblDocumentation.setText(""); //$NON-NLS-1$
+        }
     }
 
     /**
@@ -257,7 +269,7 @@ public class SelectEMFMetamodelWizardPage extends WizardPage {
         } else {
             String documentation = getDocumentationFromEPackageExtraData(ePackage);
             if (documentation == null) {
-                documentation = "<code>" + ePackage.getNsURI() + "</code>";  //$NON-NLS-1$//$NON-NLS-2$
+                documentation = "<code>" + ePackage.getNsURI() + "</code>"; //$NON-NLS-1$//$NON-NLS-2$
             } else {
                 documentation = documentation + "<br><br><smaller><code>" + ePackage.getNsURI() + "</code></smaller>"; //$NON-NLS-1$ //$NON-NLS-2$
             }
