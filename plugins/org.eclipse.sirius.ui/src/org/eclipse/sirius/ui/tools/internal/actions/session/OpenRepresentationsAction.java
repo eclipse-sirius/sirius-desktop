@@ -94,13 +94,13 @@ public class OpenRepresentationsAction extends Action {
     }
 
     private void openRepresentations(final Collection<DRepresentationDescriptor> selection, final IProgressMonitor monitor) {
-        String taskName = Messages.OpenRepresentationsAction_openRepresentationsTask;
+        String taskName = Messages.OpenRepresentationsAction_openRepresentationTask;
         if (selection.size() > 1) {
             taskName = Messages.OpenRepresentationsAction_openRepresentationsTask;
         }
         try {
             monitor.beginTask(taskName, 5 * selection.size());
-
+            
             for (DRepresentationDescriptor repDesc : selection) {
                 Session session = new EObjectQuery(repDesc.getTarget()).getSession();
                 monitor.worked(1);
