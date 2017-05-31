@@ -58,6 +58,7 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -234,13 +235,19 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      * Command stack listener selecting the last affected object in the viewer
      * when a model element modification is done.
      */
-    private CommandStackListener listener;
+    private CommandStackListener commandStackListener;
 
     /**
      * This site is used to get the shell when doing UI action from command
      * execution
      */
     private IWorkbenchSite site;
+
+    /**
+     * A listener reacting to selection changes. It updates activation status of
+     * remove button.
+     */
+    private ISelectionChangedListener selectionChangeListener;
 
     /**
      * Initialize the component with the given session.
@@ -435,27 +442,29 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         manageSessionActionProvider.initFromViewer(treeViewer);
         treeViewer.getControl().setMenu(menu);
 
-        treeViewer.addSelectionChangedListener((event) -> {
+        selectionChangeListener = (event) -> {
             if (event.getSelection().isEmpty()) {
                 removeSemanticModelOrRepresentationButton.setEnabled(false);
-            } else if (session != null) {
+            } else if (session != null && session.getSessionResource() != null) {
                 TreeSelection selection = (TreeSelection) event.getSelection();
-                // The tree allows only single selections so we pick the
-                // first element.
                 Object firstElement = selection.getFirstElement();
-                IProject project = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(session.getSessionResource().getURI().toPlatformString(true))).getProject();
-                boolean isRemovableElement = firstElement instanceof EObject || firstElement instanceof Resource;
-                boolean enableAction = !ModelingProject.hasModelingProjectNature(project);
-                enableAction = enableAction || (isExternalDependency(firstElement, selection) && isRemovableElement && checkResources(getSemanticResources(Lists.newArrayList(firstElement))));
-                if (enableAction) {
-                    removeSemanticModelOrRepresentationButton.setEnabled(true);
-                } else {
-                    removeSemanticModelOrRepresentationButton.setEnabled(false);
+                IFile airdFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(session.getSessionResource().getURI().toPlatformString(true)));
+                if (airdFile != null) {
+                    IProject project = airdFile.getProject();
+                    boolean isRemovableElement = firstElement instanceof EObject || firstElement instanceof Resource;
+                    boolean enableAction = !ModelingProject.hasModelingProjectNature(project);
+                    enableAction = enableAction || (isExternalDependency(firstElement, selection) && isRemovableElement && checkResources(getSemanticResources(Lists.newArrayList(firstElement))));
+                    if (enableAction) {
+                        removeSemanticModelOrRepresentationButton.setEnabled(true);
+                    } else {
+                        removeSemanticModelOrRepresentationButton.setEnabled(false);
+                    }
                 }
             }
-        });
+        };
+        treeViewer.addSelectionChangedListener(selectionChangeListener);
 
-        listener = new CommandStackListener() {
+        commandStackListener = new CommandStackListener() {
             @Override
             public void commandStackChanged(final EventObject event) {
 
@@ -473,7 +482,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                 });
             }
         };
-        session.getTransactionalEditingDomain().getCommandStack().addCommandStackListener(listener);
+        session.getTransactionalEditingDomain().getCommandStack().addCommandStackListener(commandStackListener);
         return treeViewer;
     }
 
@@ -1011,9 +1020,10 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      * Dispose all listeners.
      */
     public void dispose() {
+        treeViewer.removeSelectionChangedListener(selectionChangeListener);
         SessionManager.INSTANCE.removeSessionsListener(this);
         if (session != null && session.getTransactionalEditingDomain() != null) {
-            session.getTransactionalEditingDomain().getCommandStack().removeCommandStackListener(listener);
+            session.getTransactionalEditingDomain().getCommandStack().removeCommandStackListener(commandStackListener);
             session.removeListener(this);
             session.getTransactionalEditingDomain().removeResourceSetListener(resourceSetListenerChangeListener);
         }
