@@ -31,10 +31,21 @@
 					</li>
 					<li>
 						<a href="#pages">Pages</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#page-toolbar-action">Toolbar Actions</a>
+							</li>
+						</ol>
 					</li>
 					<li>
 						<a href="#groups">Groups</a>
 						<ol style="list-style: disc;">
+							<li>
+								<a href="#group-toolbar-action">Toolbar Actions</a>
+							</li>
+							<li>
+								<a href="#widgets-from-domain-class">Widgets From Domain Class</a>
+							</li>
 							<li>
 								<a href="#group_styles">Group Styles</a>
 							</li>
@@ -182,7 +193,7 @@
 			<li>
 				<a href="#pages">
 					<em>Pages</em>
-				</a>, which correspond to &#171;tabs&#187;;
+				</a>, which correspond to &#8220;tabs&#8221;;
 			</li>
 			<li>
 				<a href="#groups">
@@ -275,7 +286,7 @@
 		</p>
 		<ul>
 			<li>Extend the default rules model inside your VSM: from the top-level element of the VSM model, select 
-				<em>New Properties&gt; Extend Default Properties View</em>. This will allow you to redefine the behavior of the default rules thanks to the &#171;extension mechanism&#187;#extensibility_features.
+				<em>New Properties&gt; Extend Default Properties View</em>. This will allow you to redefine the behavior of the default rules thanks to the &#8220;extension mechanism&#8221;#extensibility_features.
 			</li>
 			<li>Import a copy of the default rules model inside your VSM: from the top-level element of the VSM model, select 
 				<em>New Properties &gt; Import Default Properties View</em>.
@@ -339,7 +350,7 @@
 			<strong>Styles.</strong> Each kind of properties view element supports a rich set of possible 
 			<a href="#styling">styles</a>.
 		</p>
-		<p>To find some documentation for each properties, you can also refer to the tool-tips available directly in the editor on the &#171;question mark&#187; icon of each property.</p>
+		<p>To find some documentation for each properties, you can also refer to the tool-tips available directly in the editor on the &#8220;question mark&#8221; icon of each property.</p>
 		<p>Here is an example of a widget configuration (a single-line 
 			<a href="#text">text</a> in this case) which illustrates some of the common attributes:
 		</p>
@@ -384,7 +395,7 @@
 				<code>self</code> variable inside a 
 				<em>Page</em>, but inside a group 
 				<code>self</code> may have a different value is 
-				<em>Semantic Candidate Expressions</em> were used, so this service can be used to obtain the &#171;original self&#187; from anywhere.
+				<em>Semantic Candidate Expressions</em> were used, so this service can be used to obtain the &#8220;original self&#8221; from anywhere.
 			</li>
 			<li>
 				<code>input.getAllSemanticElements()</code>: returns 
@@ -392,7 +403,7 @@
 				<code>DRepresentationElement#semanticElements</code> if there are any.
 			</li>
 			<li>
-				<code>input.emfEditServices(EObject)</code>: provides a handle to invoke &#171;EMF Edit&#187;-related services on the model element specified in argument. See below for the list of services that can be called on the result.
+				<code>input.emfEditServices(EObject)</code>: provides a handle to invoke &#8220;EMF Edit&#8221;-related services on the model element specified in argument. See below for the list of services that can be called on the result.
 			</li>
 			<li>
 				<code>input.context()</code>: provides a handle to invoke additional services to obtain more information about the overall context of the selection. See below fot the list of services that can be called on the result.
@@ -432,7 +443,7 @@
 				<code>IItemLabelProvider</code>.
 			</li>
 			<li>
-				<code>getText(EStructuralFeature)</code>: returns the &#171;display name&#187; of the specified feature of 
+				<code>getText(EStructuralFeature)</code>: returns the &#8220;display name&#8221; of the specified feature of 
 				<code>obj</code>, as defined by its 
 				<code>IItemPropertyDescriptor</code>, or the textual representation of the feature itself (as defined by its own 
 				<code>IItemLabelProvider</code>) if no display name is defined.
@@ -495,7 +506,7 @@
 			<a href="#groups">groups</a>. The category does not represent anything in the final user properties view, the category exists only for the specifier convenience to order the specification. For example a 
 			<em>Reused</em> category can be created to store all the groups that would be used by different 
 			<a href="#pages">pages</a> and 
-			<a href="#dialogandwizard">dialogs</a>.
+			<a href="../general/Model_Operations.html#dialogandwizard">dialogs</a>.
 			<br/>Categories can be created 
 		</p>
 		<h2 id="pages">Pages</h2>
@@ -539,6 +550,15 @@
 				<em>Groups</em>
 			</a> it references, which are defined directly under the 
 			<em>Properties View Description</em>. The groups are ordered in the page accordingly to their order in the groups reference list in the VSM.
+		</p>
+		<h3 id="page-toolbar-action">Toolbar Actions</h3>
+		<p>A page can also define toolbar actions which will be used to create buttons in the toolbar of the page to let the end user execute some operations easily. A 
+			<em>Toolbar Action</em> can have a tooltip by returning a string for the 
+			<em>Tooltip expression</em>. They also contain an 
+			<em>Initial Operation</em> used to define the model operations to execute when the user will click on the button. Finally a 
+			<em>Toolbar Action</em> can have an image thanks to an 
+			<em>Image expression</em>. The 
+			<em>Image expression</em> must return a string with the following structure PROJECT_NAME/IMAGE_PATH. For example: org.eclipse.sirius.sample.basicfamily.design/icons/Delete_16x16.gif. If an image is not provided or not found, a default image will be used.
 		</p>
 		<h2 id="groups">Groups</h2>
 		<p>A 
@@ -596,6 +616,23 @@
 			</a>, all of which are defined inside the group description (
 			<em>New Widget &gt; Container|Text...</em> and 
 			<em>New &gt; Group Validations</em>, respectively).
+		</p>
+		<h3 id="group-toolbar-action">Toolbar Actions</h3>
+		<p>A group can also define toolbar actions which will be used to create buttons in the toolbar of the group to let the end user execute some operations easily. A 
+			<em>Toolbar Action</em> can have a tooltip by returning a string for the 
+			<em>Tooltip expression</em>. They also contain an 
+			<em>Initial Operation</em> used to define the model operations to execute when the user will click on the button. Finally a 
+			<em>Toolbar Action</em> can have an image thanks to an 
+			<em>Image expression</em>. The 
+			<em>Image expression</em> must return a string with the following structure PROJECT_NAME/IMAGE_PATH. For example: org.eclipse.sirius.sample.basicfamily.design/icons/Delete_16x16.gif. If an image is not provided or not found, a default image will be used.
+		</p>
+		<h3 id="widgets-from-domain-class">Widgets From Domain Class</h3>
+		<p>
+			<img alt="Create easily a widget for each structural feature of your EClass" title="Create easily a widget for each structural feature of your EClass" border="0" src="images/widget-from-domain-class.png"/>
+		</p>
+		<p>By specifying the 
+			<em>Domain Class</em> of a group and by specifying the metamodels on the relevant container of the group (like the Properties View object), you will have access to a new contextual action used to create a default version of a widget for each of the structural features of your 
+			<em>Domain Class</em>. You can create all the widgets at once or only the desired ones. The configuration generated in your odesign is heavily inspired by the default rules available, as such all the EString properties will be handled by a text widget, all the EBoolean properties by a checkbox, etc.
 		</p>
 		<h3 id="group_styles">Group Styles</h3>
 		<p>See the 
@@ -797,7 +834,9 @@
 			<a href="#widgets">above</a> to determine the semantic elements for which a button should be created. It is evaluated in the context of the semantic target element.
 		</p>
 		<p>For buttons, you must define the 
-			<em>Button Label Expression</em> which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is the empty string.
+			<em>Button Label Expression</em> which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is the empty string. You can also specify an image with the 
+			<em>Image expression</em>. An image can be used instead of a button label or along with it. The 
+			<em>Image expression</em> should return a string with the structure PROJECT_NAME/IMAGE_PATH. For example: org.eclipse.sirius.sample.basicfamily.design/icons/Delete_16x16.gif
 		</p>
 		<h4 id="pushed_button">Behavior executed on click</h4>
 		<p>To define the behavior of the button when it is clicked, simply specify the behavior associated to the edition inside the 
@@ -841,7 +880,9 @@
 			<em>New &gt; Widget Action</em>). Each action has a 
 			<em>Label Expression</em> and a behavior defined by 
 			<a href="../general/Model_Operations.html">model operations</a> contained inside. If present, actions will be rendered as buttons on the right of the label itself. The button&#8217;s text is defined by the 
-			<em>Label Expression</em>, and its behavior when pushed by the model operations.
+			<em>Label Expression</em>, and its behavior when pushed by the model operations. You can also specify an image with the 
+			<em>Image expression</em>. An image can be used instead of a label or along with it. The 
+			<em>Image expression</em> should return a string with the structure PROJECT_NAME/IMAGE_PATH. For example: org.eclipse.sirius.sample.basicfamily.design/icons/Delete_16x16.gif
 		</p>
 		<h4 id="label_styles">Label Styles</h4>
 		<p>See the 
@@ -1028,7 +1069,9 @@
 			<em>New &gt; Widget Action</em>). Each action has a 
 			<em>Label Expression</em> and a behavior defined by 
 			<a href="../general/Model_Operations.html">model operations</a> contained inside. If present, actions will be rendered as buttons on the right of the label itself. The button&#8217;s text is defined by the 
-			<em>Label Expression</em>, and its behavior when pushed by the model operations.
+			<em>Label Expression</em>, and its behavior when pushed by the model operations. You can also specify an image with the 
+			<em>Image expression</em>. An image can be used instead of a button label or along with it. The 
+			<em>Image expression</em> should return a string with the structure PROJECT_NAME/IMAGE_PATH. For example: org.eclipse.sirius.sample.basicfamily.design/icons/Delete_16x16.gif
 		</p>
 		<h4 id="hyperlink_styles">Hyperlink Styles</h4>
 		<p>See the 
@@ -1097,6 +1140,10 @@
 			<em>Hyperlink</em> (for single values) or a 
 			<em>List</em> widget (for multiple values) with custom actions implementing the required behavior.
 		</p>
+		<p>In a similar fashion as the hyperlink and the list widgets, it is possible to define an 
+			<em>Initial Operation</em> on the reference widget in order to execute some model operations when the user will click on the widget. If an 
+			<em>Initial Operation</em> is configured, the single-valued version of the widget will use a hyperlink instead of a regular label.
+		</p>
 		<h4 id="reference_styles">Reference Styles</h4>
 		<p>See the 
 			<a href="#styling">styles</a> section for a general presentation of how styles are defined, including 
@@ -1137,7 +1184,7 @@
 		<p>To define the behavior, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
 			<a href="../general/Model_Operations.html">model operations</a>. A variable named 
-			<code>onClickEventKind</code> is available to determine if the operation has been triggered by a single click or double click. In case of a single click, the variable has the value &#171;SINGLE_CLICK&#187; and &#171;DOUBLE_CLICK&#187; in case of a double click.
+			<code>onClickEventKind</code> is available to determine if the operation has been triggered by a single click or double click. In case of a single click, the variable has the value &#8220;SINGLE_CLICK&#8221; and &#8220;DOUBLE_CLICK&#8221; in case of a double click.
 		</p>
 		<p>The expressions defined under the 
 			<em>Begin</em> can use the 
@@ -1150,7 +1197,9 @@
 		</p>
 		<p>For actions, you must define the 
 			<em>Label Expression</em> which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is equal to 
-			<code>...</code>.
+			<code>...</code>. You can also specify an image with the 
+			<em>Image expression</em>. An image can be used instead of a button label or along with it. The 
+			<em>Image expression</em> should return a string with the structure PROJECT_NAME/IMAGE_PATH. For example: org.eclipse.sirius.sample.basicfamily.design/icons/Delete_16x16.gif
 		</p>
 		<h4 id="list_action_pushed_button">Action Pushed Button</h4>
 		<p>To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the 
@@ -1203,7 +1252,7 @@
 			<a href="../../developer/extensions-properties_provide_custom_widget_advanced.html">the reference documentation</a> for how to actually implement your own advanced custom widgets.
 		</p>
 		<h2 id="dynamic_mappings">Dynamic Mappings</h2>
-		<p>Dynamic mappings are used for advanced scenarios where the set of widgets to display can not be known statically, but instead must be computed at runtime. A dynamic mapping contains conditional widgets definition, each of which may be instanciated zero or multiple times at runtime.</p>
+		<p>Dynamic mappings are used for advanced scenarios where the set of widgets to display can not be known statically, but instead must be computed at runtime. A dynamic mapping contains conditional widgets definition, each of which may be instantiated zero or multiple times at runtime.</p>
 		<p>A 
 			<em>Dynamic Mapping For</em> can appear directly inside a group description, or inside a 
 			<a href="#containers_and_layout">container</a>, in which case you can specify a specific 
@@ -1262,6 +1311,15 @@
 		</ul>
 		<p>Thanks to this mechanism we defined that all the 
 			<code>String</code> elements in our metamodel will be represented with a text field.
+		</p>
+		<p>Some 
+			<em>Iterable Expression</em> may return a result which can change depending on the structure of the model, contrary to the example above where the 
+			<em>Iterable Expression</em> 
+			<code>aql:self.eClass().eAllStructuralFeatures</code> will only use the structure of the metamodel. If an 
+			<em>Iterable Expression</em> leverages the state of the model, it may be required to refresh the user interface when the 
+			<em>Iterable Expression</em> is executed, as a result for such situation, you can set the boolean 
+			<em>Force Refresh</em> to true on the 
+			<em>Dynamic Mapping For</em> to indicate that the presence of dynamic mapping should trigger a full refresh. 
 		</p>
 		<h2 id="containers_and_layout">Containers and Layout</h2>
 		<p>Sirius provides a default algorithm to perform an automatic layout of all the controls in a properties view. If the default algorithm does not fit your needs, you can specify some parameters for alternate layouts directly inside the VSM. To do this you must first create a 
@@ -1327,7 +1385,7 @@
 		<h2 id="extensibility_features">Extensibility Features</h2>
 		<p>Sirius has specific support for extending and overriding properties view descriptions without modifying the original one. The purpose is to be able to reuse or modify a part of a properties view. Its exits two different concepts to customize a properties view description: the 
 			<a href="#extends">extension</a> and the 
-			<a href="#overriding">overriding</a>. 
+			<a href="#overrides">overriding</a>. 
 		</p>
 		<h3 id="extends">Extends</h3>
 		<p>A 
@@ -1458,7 +1516,7 @@
 		<ul>
 			<li>
 				<strong>Reuse pages</strong>: Another usage of the extension mechanism is with combination of 
-				<a href="#dialogandwizard">the dialogs and the wizards</a>. The purpose is to provide the edition of the properties element from a dialog, the same properties should be available in the dialog and in the properties view. A a property view is defined for all the elements of a metamodel. Then a new tool is defined which opens a dialog when a node mapping is double-clicked from a diagram. This dialog shows the same properties than the ones represented when the element is selected from the diagram. To do this, the dialog defines a page which extends the one defined in the properties view definition.
+				<a href="../general/Model_Operations.html#dialogandwizard">the dialogs and the wizards</a>. The purpose is to provide the edition of the properties element from a dialog, the same properties should be available in the dialog and in the properties view. A a property view is defined for all the elements of a metamodel. Then a new tool is defined which opens a dialog when a node mapping is double-clicked from a diagram. This dialog shows the same properties than the ones represented when the element is selected from the diagram. To do this, the dialog defines a page which extends the one defined in the properties view definition.
 			</li>
 		</ul>
 		<p>

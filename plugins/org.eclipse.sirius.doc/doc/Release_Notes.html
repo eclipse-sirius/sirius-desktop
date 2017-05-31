@@ -133,6 +133,38 @@
 				<code>:</code> character is entered. The legacy syntax 
 				<code>package.Class</code> is still supported for compatibility.
 			</li>
+			<li><span class="label label-success">Added</span> New model operations are available. You can now open a 
+				<a href="specifier/general/Model_Operations.html#dialog">dialog</a> or a 
+				<a href="specifier/general/Model_Operations.html#wizard">wizard</a> thanks to new dedicated model operations leveraging the Properties View language. You can also create new variable with the new 
+				<em>Let</em> model operation, see its 
+				<a href="specifier/general/Model_Operations.html#let">documentation</a> for more details.
+			</li>
+			<li><span class="label label-success">Added</span> You can now create 
+				<em>Toolbar Actions</em> on pages and groups in order to define small buttons in their toolbars.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<em>Buttons</em> and 
+				<em>Widget Actions</em> can now use an image along with a label thanks to the new 
+				<em>Image expression</em>.
+			</li>
+			<li><span class="label label-success">Added</span> It is now possible to execute some behavior when the end users will click on the 
+				<em>Reference Widget</em> thanks to the addition of an 
+				<em>Initial Operation</em>.
+			</li>
+			<li><span class="label label-success">Added</span> You can indicate that a 
+				<em>Dynamic Mapping For</em> should force the refresh of the user interface with the 
+				<em>Force Refresh</em> property.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<em>Categories</em> have been added in order to organize the pages and groups of the 
+				<em>Properties</em> DSL.
+			</li>
+			<li><span class="label label-info">Modified</span> The organization of the contextual actions in the odesign for the 
+				<em>Properties</em> DSL has been improved.
+			</li>
+			<li><span class="label label-info">Modified</span> Most of the concepts of the 
+				<em>Properties</em> DSL can now have an identifier, a label and some documentation.
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="TranslationKeysChanges">Translation Keys Changes</h4>
@@ -543,14 +575,20 @@
 				<code>org.eclipse.sirius.properties.core.api.SiriusDomainClassTester</code> has been added as an API for those who want to create custom model operations using the Properties framework.
 			</li>
 			<li><span class="label label-success">Added</span> The method 
-				<code>org.eclipse.sirius.ext.emf.edit.EditingDomainServices.createInstance(EClass)</code> has been added to allow the creation of a new instance from an EClass in the interpreters. 
+				<code>org.eclipse.sirius.ext.emf.edit.EditingDomainServices.createInstance(EClass)</code> has been added to allow the creation of a new instance from an EClass in the interpreters.
+			</li>
+			<li><span class="label label-info">Modified</span> The default rules have been transfered to a new dedicated plugin named 
+				<code>org.eclipse.sirius.properties.defaultrules</code>.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui.properties">Changes in 
 			<code>org.eclipse.sirius.ui.properties</code>
 		</h4>
 		<ul>
-			<li><span class="label label-info">Modified</span> All the content related to the IDescriptionConverter and ILinkResolver has been moved from the plugin org.eclipse.sirius.ui.properties to the newly created plugin org.eclipse.sirius.properties.core. It includes all the APIs and both extension points.</li>
+			<li><span class="label label-info">Modified</span> All the content related to the IDescriptionConverter and ILinkResolver has been moved from the plugin 
+				<code>org.eclipse.sirius.ui.properties</code> to the newly created plugin 
+				<code>org.eclipse.sirius.properties.core</code>. It includes all the APIs and both extension points.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.editor.properties">Changes in 
 			<code>org.eclipse.sirius.editor.properties</code>

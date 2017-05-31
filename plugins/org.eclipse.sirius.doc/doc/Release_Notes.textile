@@ -22,6 +22,14 @@ h3. Specifier-Visible Changes
 * <span class="label label-info">Modified</span> The transient layer has been introduced in Sirius 5.0. (Refer to "Sirius Specifier":specifier/diagrams/Diagrams.html#Transientlayer and "Sirius User":user/diagrams/Diagrams.html#transientLayer documentation in Diagram chapter). Transient layer is an additional layer containing only decorations or tools. If you have such layer in your VSM, users may encounter some unexpected behaviors. If the layer is not _active by default_ then it will not be applied when opening your diagram even if it was activated before. If the layer is _active by default_ then it will be automatically applied when opening your diagram. We consider this behavior as a known limitation and an enhancement may be done in a further release. In the meantime, there is a workaround which consists to add a fake mapping (that is any mapping with its fields empty) so that the layer will not be considered as transient.
 * <span class="label label-info">Modified</span> The tab used to configure the metamodels used by the Properties view description is now using the same interface as the metamodels tab used to configure the representations.
 * <span class="label label-info">Modified</span> The @package::Class@ syntax for domain classes and type names in the VSM is now fully supported and the new default. It means this syntax is interpreted by Sirius and completion is provided for it when the first @:@ character is entered. The legacy syntax @package.Class@ is still supported for compatibility.
+* <span class="label label-success">Added</span> New model operations are available. You can now open a "dialog":specifier/general/Model_Operations.html#dialog or a "wizard":specifier/general/Model_Operations.html#wizard thanks to new dedicated model operations leveraging the Properties View language. You can also create new variable with the new _Let_ model operation, see its "documentation":specifier/general/Model_Operations.html#let for more details.
+* <span class="label label-success">Added</span> You can now create _Toolbar Actions_ on pages and groups in order to define small buttons in their toolbars.
+* <span class="label label-success">Added</span> _Buttons_ and _Widget Actions_ can now use an image along with a label thanks to the new _Image expression_.
+* <span class="label label-success">Added</span> It is now possible to execute some behavior when the end users will click on the _Reference Widget_ thanks to the addition of an _Initial Operation_.
+* <span class="label label-success">Added</span> You can indicate that a _Dynamic Mapping For_ should force the refresh of the user interface with the _Force Refresh_ property.
+* <span class="label label-success">Added</span> _Categories_ have been added in order to organize the pages and groups of the _Properties_ DSL.
+* <span class="label label-info">Modified</span> The organization of the contextual actions in the odesign for the _Properties_ DSL has been improved.
+* <span class="label label-info">Modified</span> Most of the concepts of the _Properties_ DSL can now have an identifier, a label and some documentation.
 
 
 h3. Developer-Visible Changes
@@ -139,11 +147,12 @@ h4. Changes in @org.eclipse.sirius.properties.core@
 * <span class="label label-success">Added</span> The classes necessary to support the preprocessing of the odesign for the inheritance in its Properties parts are available in the API package @org.eclipse.sirius.properties.core.api@.
 * <span class="label label-success">Added</span> The class @org.eclipse.sirius.properties.core.internal.SiriusInterpreter@ has been moved as an API to @org.eclipse.sirius.properties.core.api.SiriusInterpreter@. This class could be used by those who want to create custom model operations using the Properties framework.
 * <span class="label label-success">Added</span> The class @org.eclipse.sirius.properties.core.api.SiriusDomainClassTester@ has been added as an API for those who want to create custom model operations using the Properties framework.
-* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ext.emf.edit.EditingDomainServices.createInstance(EClass)@ has been added to allow the creation of a new instance from an EClass in the interpreters. 
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ext.emf.edit.EditingDomainServices.createInstance(EClass)@ has been added to allow the creation of a new instance from an EClass in the interpreters.
+* <span class="label label-info">Modified</span> The default rules have been transfered to a new dedicated plugin named @org.eclipse.sirius.properties.defaultrules@.
 
 h4. Changes in @org.eclipse.sirius.ui.properties@
 
-* <span class="label label-info">Modified</span> All the content related to the IDescriptionConverter and ILinkResolver has been moved from the plugin org.eclipse.sirius.ui.properties to the newly created plugin org.eclipse.sirius.properties.core. It includes all the APIs and both extension points.
+* <span class="label label-info">Modified</span> All the content related to the IDescriptionConverter and ILinkResolver has been moved from the plugin @org.eclipse.sirius.ui.properties@ to the newly created plugin @org.eclipse.sirius.properties.core@. It includes all the APIs and both extension points.
 
 h4. Changes in @org.eclipse.sirius.editor.properties@
 

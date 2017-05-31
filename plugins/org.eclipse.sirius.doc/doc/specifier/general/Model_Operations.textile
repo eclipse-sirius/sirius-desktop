@@ -40,6 +40,11 @@ The _For_ element is used to loop over collections of model elements and execute
 
 After evaluating the _Expression_, each of the element in the returned collection will be bound in turn to a variable named as specified in _Iterator name_ before the sub-operations of the _For_ element are executed in sequence (once for each of the returned element). Inside the sub-operations, you can access the current element of the iteration using the variable named in _Iterator name_. The actual syntax will vary depending on the query language you use.
 
+h3(#let). Let
+
+The _Let_ operation is used in order to create a new variable which can be used by child model operations. The _Variable name_ is a fixed string used to access the variable in child model operation. The _Value expression_ is executed in order to set the value of the variable. The _Let_ operation is similar to a _For_ operation with an expression returning only one element for the iteration. If the _Variable name_ is "self", the behavior of the _Let_ will be the same as the behavior of a _Change Context_. It is not recommended to use a _Let_ with the _Variable name_ "self", prefer the _Change Context_ for a better readability of your odesign.
+
+
 h2(#model_change). Model Change Operations
 
 h3(#create_instance). Create Instance
@@ -103,6 +108,25 @@ h3(#navigation). Navigation
 This operation is specific to diagrams. It can be used to navigate to another diagram representing the current element. The _Diagram Description_ indicates the type of diagram to open, and the _Create if not existent_ flag indicates whether a new diagram of the specified type should be created on the current element if none exists.
 
 The operation does nothing if the current element is not compatible with the specified diagram type or if there is no existing diagram and the _Create if not existent_ flag is not set.
+
+
+h2(#dialogandwizard). Dialog & Wizard
+
+h3(#dialog). Open Dialog
+
+The _Open Dialog_ model operation is used in order to open a new dialog where the end user will be able to see and manipulate some pieces of information. You can change the title of the dialog with the _Title expression_. This expression must return a string. You can specify one _Page_ with various _Groups_ to specify the content of the dialog. You can leverage existing _Pages_ and _Groups_ from existing definition of your _Properties View_.
+
+A dialog can contain multiple buttons. If you do not specify any button, two will be created by default. The first one, with the label "Cancel", will close the dialog and rollback any changes made during the execution of the model operation chain. The second one, with the label "OK", will close the dialog and execute the child model operations of the dialog.   
+
+You can create _Dialog Buttons_ in a dialog in order to specify the behavior of the buttons. If at least one _Dialog Button_ is specified, the default behavior previously described will not be used anymore. For each _Dialog Button_ description, a button will be added in the user interface of the dialog. The label of the button can be specified with the _Label expression_ which must return a string. The _Is Enabled expression_ is used to determine if the button must be activated or not. This can be used to prevent the end user from finishing an action. This expression must return a boolean. An _Initial Operation_ is available on a _Dialog Button_ in order to specify the behavior to execute when the user will click on the button.
+
+The specifier can indicate that a _Dialog Button_ should be considered by default with the _default_ boolean. When a _Dialog Button_ should be used by _default_, it is focused by default when the dialog is opened. A _Dialog Button_ can also close the dialog by using the property _Close Dialog On Click_. By specifying _false_ as the value for _Close Dialog On Click_ and by using an _Initial Operation_ on the button, a specifier can easily create a button to restore a default value. Finally, a boolean is available in order to _Rollback Changes On Close_. By setting this value to true, when the button will be pressed, it will have the same behavior as a regular cancel button by rollbacking the whole model operation chain.
+
+h3(#wizard). Open Wizard
+
+The _Open Wizard_ model operation is used in order to open a new wizard to let the end user specify some information using multiple _Pages_. You can configure the title of the window by returning a string with the _Window Title_ expression. You can also configure the title and description of the wizard with the _Title_ and _Description_ expressions. Both expressions should also return a string. You can prevent the end user from finishing early the wizard and from switching to another page by returning false for the _Is Page Complete_ expression. A wizard can be closed only if all _Pages_ are completed.
+
+The wizard can also contain various _Pages_ and _Groups_ using the _Properties View_ domain specific langage available in Sirius. You can leverage existing _Pages_ and _Groups_ from existing definition of your _Properties View_. A wizard can also contain an _Initial Operation_ used to define the child model operations to execute when the user will finish the wizard. 
 
 h2(#extensions). Java Extensions
 

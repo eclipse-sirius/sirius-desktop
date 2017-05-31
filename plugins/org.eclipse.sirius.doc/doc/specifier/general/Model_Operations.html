@@ -39,6 +39,9 @@
 							<li>
 								<a href="#for">For</a>
 							</li>
+							<li>
+								<a href="#let">Let</a>
+							</li>
 						</ol>
 					</li>
 					<li>
@@ -75,6 +78,17 @@
 							</li>
 							<li>
 								<a href="#navigation">Navigation</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#dialogandwizard">Dialog &amp; Wizard</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#dialog">Open Dialog</a>
+							</li>
+							<li>
+								<a href="#wizard">Open Wizard</a>
 							</li>
 						</ol>
 					</li>
@@ -173,6 +187,20 @@
 			<em>For</em> element are executed in sequence (once for each of the returned element). Inside the sub-operations, you can access the current element of the iteration using the variable named in 
 			<em>Iterator name</em>. The actual syntax will vary depending on the query language you use.
 		</p>
+		<h3 id="let">Let</h3>
+		<p>The 
+			<em>Let</em> operation is used in order to create a new variable which can be used by child model operations. The 
+			<em>Variable name</em> is a fixed string used to access the variable in child model operation. The 
+			<em>Value expression</em> is executed in order to set the value of the variable. The 
+			<em>Let</em> operation is similar to a 
+			<em>For</em> operation with an expression returning only one element for the iteration. If the 
+			<em>Variable name</em> is &#8220;self&#8221;, the behavior of the 
+			<em>Let</em> will be the same as the behavior of a 
+			<em>Change Context</em>. It is not recommended to use a 
+			<em>Let</em> with the 
+			<em>Variable name</em> &#8220;self&#8221;, prefer the 
+			<em>Change Context</em> for a better readability of your odesign.
+		</p>
 		<h2 id="model_change">Model Change Operations</h2>
 		<h3 id="create_instance">Create Instance</h3>
 		<p>The 
@@ -270,6 +298,58 @@
 		</p>
 		<p>The operation does nothing if the current element is not compatible with the specified diagram type or if there is no existing diagram and the 
 			<em>Create if not existent</em> flag is not set.
+		</p>
+		<h2 id="dialogandwizard">Dialog &amp; Wizard</h2>
+		<h3 id="dialog">Open Dialog</h3>
+		<p>The 
+			<em>Open Dialog</em> model operation is used in order to open a new dialog where the end user will be able to see and manipulate some pieces of information. You can change the title of the dialog with the 
+			<em>Title expression</em>. This expression must return a string. You can specify one 
+			<em>Page</em> with various 
+			<em>Groups</em> to specify the content of the dialog. You can leverage existing 
+			<em>Pages</em> and 
+			<em>Groups</em> from existing definition of your 
+			<em>Properties View</em>.
+		</p>
+		<p>A dialog can contain multiple buttons. If you do not specify any button, two will be created by default. The first one, with the label &#8220;Cancel&#8221;, will close the dialog and rollback any changes made during the execution of the model operation chain. The second one, with the label &#8220;OK&#8221;, will close the dialog and execute the child model operations of the dialog.   </p>
+		<p>You can create 
+			<em>Dialog Buttons</em> in a dialog in order to specify the behavior of the buttons. If at least one 
+			<em>Dialog Button</em> is specified, the default behavior previously described will not be used anymore. For each 
+			<em>Dialog Button</em> description, a button will be added in the user interface of the dialog. The label of the button can be specified with the 
+			<em>Label expression</em> which must return a string. The 
+			<em>Is Enabled expression</em> is used to determine if the button must be activated or not. This can be used to prevent the end user from finishing an action. This expression must return a boolean. An 
+			<em>Initial Operation</em> is available on a 
+			<em>Dialog Button</em> in order to specify the behavior to execute when the user will click on the button.
+		</p>
+		<p>The specifier can indicate that a 
+			<em>Dialog Button</em> should be considered by default with the 
+			<em>default</em> boolean. When a 
+			<em>Dialog Button</em> should be used by 
+			<em>default</em>, it is focused by default when the dialog is opened. A 
+			<em>Dialog Button</em> can also close the dialog by using the property 
+			<em>Close Dialog On Click</em>. By specifying 
+			<em>false</em> as the value for 
+			<em>Close Dialog On Click</em> and by using an 
+			<em>Initial Operation</em> on the button, a specifier can easily create a button to restore a default value. Finally, a boolean is available in order to 
+			<em>Rollback Changes On Close</em>. By setting this value to true, when the button will be pressed, it will have the same behavior as a regular cancel button by rollbacking the whole model operation chain.
+		</p>
+		<h3 id="wizard">Open Wizard</h3>
+		<p>The 
+			<em>Open Wizard</em> model operation is used in order to open a new wizard to let the end user specify some information using multiple 
+			<em>Pages</em>. You can configure the title of the window by returning a string with the 
+			<em>Window Title</em> expression. You can also configure the title and description of the wizard with the 
+			<em>Title</em> and 
+			<em>Description</em> expressions. Both expressions should also return a string. You can prevent the end user from finishing early the wizard and from switching to another page by returning false for the 
+			<em>Is Page Complete</em> expression. A wizard can be closed only if all 
+			<em>Pages</em> are completed.
+		</p>
+		<p>The wizard can also contain various 
+			<em>Pages</em> and 
+			<em>Groups</em> using the 
+			<em>Properties View</em> domain specific langage available in Sirius. You can leverage existing 
+			<em>Pages</em> and 
+			<em>Groups</em> from existing definition of your 
+			<em>Properties View</em>. A wizard can also contain an 
+			<em>Initial Operation</em> used to define the child model operations to execute when the user will finish the wizard. 
 		</p>
 		<h2 id="extensions">Java Extensions</h2>
 		<p>Beyond the operations which are described above, you can also execute arbitrary Java code in the context of a tool by providing an 
