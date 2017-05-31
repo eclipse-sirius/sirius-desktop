@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -270,12 +270,15 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
                 setConnectionBendpointsCommand.setSourceMove(sourceMove);
                 setConnectionBendpointsCommand.setMoveDelta(new PrecisionPoint(moveDelta));
                 setConnectionBendpointsCommand.setEdgeAdapter(connectionEditPart);
-                setConnectionBendpointsCommand.setLabelsToUpdate(connectionEditPart);
+                setConnectionBendpointsCommand.setNewPointList(connectionEditPart);
+                if (isBothSourceAndTargetMoved(connectionEditPart, allMovedEditParts, sourceMove)) {
+                    setConnectionBendpointsCommand.setLabelsToUpdate(connectionEditPart);
+                }
                 command.add(setConnectionBendpointsCommand);
                 result = Options.newSome(command);
             } else if (connectionEditPartQuery.isEdgeWithObliqueRoutingStyle() || connectionEditPartQuery.isEdgeWithRectilinearRoutingStyle()) {
                 if (!allMovedEditParts.isEmpty()) {
-                    if ((sourceMove && !allMovedEditParts.contains(connectionEditPart.getTarget())) || (!sourceMove && !allMovedEditParts.contains(connectionEditPart.getSource()))) {
+                    if (isBothSourceAndTargetMoved(connectionEditPart, allMovedEditParts, sourceMove)) {
                         CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, Messages.ChangeBendpointsOfEdgesCommand_mapGmfToDraw2dCommandLabel);
                         // Reset the connection anchor source and target
                         // considering
@@ -302,7 +305,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
                 }
             } else if (connectionEditPart instanceof BracketEdgeEditPart) {
                 if (!allMovedEditParts.isEmpty()) {
-                    if ((sourceMove && !allMovedEditParts.contains(connectionEditPart.getTarget())) || (!sourceMove && !allMovedEditParts.contains(connectionEditPart.getSource()))) {
+                    if (isBothSourceAndTargetMoved(connectionEditPart, allMovedEditParts, sourceMove)) {
                         // Just update the label offset
                         CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, Messages.ChangeBendpointsOfEdgesCommand_updateLabelsOffsetCmdLabel);
                         PointList currentPointList = connectionEditPart.getConnectionFigure().getPoints();
@@ -317,6 +320,10 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
             }
         }
         return result;
+    }
+
+    private boolean isBothSourceAndTargetMoved(ConnectionEditPart connectionEditPart, List<AbstractGraphicalEditPart> allMovedEditParts, boolean sourceMove) {
+        return (sourceMove && !allMovedEditParts.contains(connectionEditPart.getTarget())) || (!sourceMove && !allMovedEditParts.contains(connectionEditPart.getSource()));
     }
 
     private List<AbstractGraphicalEditPart> getMovedChildren(Iterable<AbstractGraphicalEditPart> parentEditParts, boolean addSelf) {
