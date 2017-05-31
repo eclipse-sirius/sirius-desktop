@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -159,17 +159,22 @@ public class SetLabelsOffsetOperation {
     /**
      * Update the offset ({@link Bounds}) of the labels {@link Node}. This
      * method must be called after setting the newPointList and the
-     * labelToUpdate.
+     * labelToUpdate. If the methods
+     * {@link #setLabelsToUpdate(ConnectionEditPart)} or
+     * {@link #setLabelsToUpdate(ConnectionEditPart, PointList)} are not called,
+     * this method has no effect.
      */
     public void updateGMFLabelsOffset() {
-        // Update Bounds of the three labels Node (Center, Begin and End)
-        Set<Entry<Node, Point>> entries = labelsWithNewOffset.entrySet();
-        for (Entry<Node, Point> entry : entries) {
-            LayoutConstraint layoutConstraint = entry.getKey().getLayoutConstraint();
-            if (layoutConstraint instanceof Bounds) {
-                Bounds bounds = (Bounds) layoutConstraint;
-                bounds.setX(entry.getValue().x);
-                bounds.setY(entry.getValue().y);
+        if (labelsWithNewOffset != null) {
+            // Update Bounds of the three labels Node (Center, Begin and End)
+            Set<Entry<Node, Point>> entries = labelsWithNewOffset.entrySet();
+            for (Entry<Node, Point> entry : entries) {
+                LayoutConstraint layoutConstraint = entry.getKey().getLayoutConstraint();
+                if (layoutConstraint instanceof Bounds) {
+                    Bounds bounds = (Bounds) layoutConstraint;
+                    bounds.setX(entry.getValue().x);
+                    bounds.setY(entry.getValue().y);
+                }
             }
         }
     }
