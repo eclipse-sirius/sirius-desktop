@@ -17,8 +17,6 @@ import java.util.Collections;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -28,7 +26,6 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.Messages;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 
@@ -71,17 +68,14 @@ public class OpenRepresentationsAction extends Action {
 
     @Override
     public void run() {
-        Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-
         try {
-            IRunnableContext context = new ProgressMonitorDialog(shell);
             IRunnableWithProgress runnable = new IRunnableWithProgress() {
                 @Override
                 public void run(final IProgressMonitor pm) {
                     openRepresentations(pm);
                 }
             };
-            PlatformUI.getWorkbench().getProgressService().runInUI(context, runnable, null);
+            PlatformUI.getWorkbench().getProgressService().run(true, false, runnable);
         } catch (final InvocationTargetException e) {
             if (e.getCause() instanceof RuntimeException) {
                 throw (RuntimeException) e.getCause();
