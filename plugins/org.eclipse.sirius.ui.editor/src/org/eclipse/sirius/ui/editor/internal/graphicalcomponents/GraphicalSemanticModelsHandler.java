@@ -84,7 +84,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointsFolderIt
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.ManageSessionActionProvider;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.FilteredCommonTree;
-import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
+import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.RepresentationInSemanticSorter;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.DeleteActionHandler;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.RenameActionHandler;
 import org.eclipse.sirius.ui.tools.internal.wizards.newmodel.CreateEMFModelWizard;
@@ -428,8 +428,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         }
 
         contentService.update();
-
-        treeViewer.setSorter(new CommonItemSorter());
+        treeViewer.setSorter(new RepresentationInSemanticSorter());
 
         menuManager = new MenuManager();
 
@@ -936,19 +935,18 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     public void updateViewerInput() {
         if (session != null && treeViewer != null && treeViewer.getTree() != null && !treeViewer.getTree().isDisposed()) {
             Object[] children = siriusCommonContentModelProvider.getChildren(session);
-            List<Object> childrenList = Arrays.stream(children).collect(Collectors.toList());
-
+            List<Object> childrenList = new ArrayList<>();
             Resource sessionResource = session.getSessionResource();
             IFile file = WorkspaceSynchronizer.getFile(sessionResource);
             ProjectDependenciesItem projectDependenciesItem = new NoDynamicProjectDependencies(file.getProject(), session);
+            childrenList.add(projectDependenciesItem);
+            childrenList.addAll(Arrays.asList(children));
+
             List<Object> directChildOfProjectDependency = Arrays.asList(siriusCommonContentModelProvider.getChildren(projectDependenciesItem));
 
-            childrenList.add(projectDependenciesItem);
-
             // We put as input only the ProjectDependenciesItemImpl and all
-            // Ecore
-            // resources not provided by this item.
-            treeViewer.setInput(childrenList.stream().filter(input -> !(input instanceof ViewpointsFolderItemImpl) && !directChildOfProjectDependency.contains(input)).collect(Collectors.toSet()));
+            // Ecore resources not provided by this item.
+            treeViewer.setInput(childrenList.stream().filter(input -> !(input instanceof ViewpointsFolderItemImpl) && !directChildOfProjectDependency.contains(input)).collect(Collectors.toList()));
             treeViewer.expandToLevel(2);
             treeViewer.expandToLevel(projectDependenciesItem, 2);
         }
