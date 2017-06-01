@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
@@ -36,7 +37,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
@@ -193,8 +194,8 @@ public class RemoveSemanticResourceAction extends Action {
      */
     private Map<ErrorKind, Set<Resource>> checkAllResourcesAreRemovable() {
         Map<ErrorKind, Set<Resource>> errorKindToResource = new HashMap<>();
-        Set<Resource> dSemanticDecoratorsEResources = DialectManager.INSTANCE.getAllRepresentations(session).stream().filter(rep -> rep instanceof DSemanticDecorator)
-                .map(rep -> ((DSemanticDecorator) rep).getTarget() == null ? null : ((DSemanticDecorator) rep).getTarget().eResource()).collect(Collectors.toSet());
+        Set<Resource> repDescriptorEResources = DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream().map(DRepresentationDescriptor::getTarget).map(EObject::eResource)
+                .collect(Collectors.toSet());
 
         for (Resource semanticResourceToRemove : toRemove) {
             IFile airdFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(session.getSessionResource().getURI().toPlatformString(true)));
@@ -219,7 +220,7 @@ public class RemoveSemanticResourceAction extends Action {
                 }
                 controlledResources.add(semanticResourceToRemove);
             }
-            if (!(semanticResourceToRemove instanceof AirdResource) && dSemanticDecoratorsEResources.contains(semanticResourceToRemove)) {
+            if (!(semanticResourceToRemove instanceof AirdResource) && repDescriptorEResources.contains(semanticResourceToRemove)) {
                 Set<Resource> resourcesWithActiveRepresentations = errorKindToResource.get(ErrorKind.ACTIVE_REPRESENTATION);
                 if (resourcesWithActiveRepresentations == null) {
                     resourcesWithActiveRepresentations = new HashSet<>();
