@@ -288,6 +288,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
 
     @Override
     protected void okPressed() {
+        imageFormat = AbstractExportRepresentationsAsImagesDialog.resolveImageFormat(imageFormatCombo.getSelectionIndex());
         super.okPressed();
         saveDialogSettings();
     }
