@@ -20,7 +20,6 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.SWTGraphics;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
-import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.image.PartPositionInfo;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
@@ -78,6 +77,7 @@ public class SiriusDiagramImageGenerator extends DiagramImageGenerator {
         Graphics2D g2d = awtImage.createGraphics();
         g2d.setColor(Color.white);
         g2d.fillRect(0, 0, awtImage.getWidth(), awtImage.getHeight());
+        g2d.scale(factor, factor);
 
         // Check anti-aliasing preference
         IPreferenceStore preferenceStore = (IPreferenceStore) getDiagramEditPart().getDiagramPreferencesHint().getPreferenceStore();
@@ -90,7 +90,8 @@ public class SiriusDiagramImageGenerator extends DiagramImageGenerator {
 
         g2d.clip(new java.awt.Rectangle(0, 0, awtImage.getWidth(), awtImage.getHeight()));
 
-        Graphics graphics = new SiriusGraphicsToGraphics2DAdaptor(g2d, new Rectangle(0, 0, awtImage.getWidth(), awtImage.getHeight()));
+        // The sourceRect has already been scaled to the output canvas size, but we need to make sure all the figures are inside the clipping region
+        Graphics graphics = new SiriusGraphicsToGraphics2DAdaptor(g2d, new PrecisionRectangle(0, 0, rect.width / factor, rect.height / factor));
 
         RenderedMapModeGraphics mapModeGraphics = new RenderedMapModeGraphics(graphics, mm);
 
