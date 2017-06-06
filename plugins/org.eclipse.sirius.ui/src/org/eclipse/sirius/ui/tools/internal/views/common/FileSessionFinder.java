@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,9 +41,8 @@ public final class FileSessionFinder {
     }
 
     /**
-     * Retrieve the open sessions in the given list by looking for
-     * {@link Session}s and/or *.aird {@link IFile}s (only main aird for non
-     * modeling projects) or transient session with semantic files in selection.
+     * Retrieve the open sessions in the given list by looking for {@link Session}s and/or *.aird {@link IFile}s (only
+     * main aird for non modeling projects) or transient session with semantic files in selection.
      * 
      * @param listObject
      *            list of objects
@@ -60,7 +59,7 @@ public final class FileSessionFinder {
             if (selected instanceof Session) {
                 selectedSessions.add((Session) selected);
             } else if (selected instanceof IFile) {
-                Collection<Session> fileSessions = getSessionFromFile((IFile) selected, false);
+                Collection<Session> fileSessions = getSessionFromFile((IFile) selected, false, true);
                 if (fileSessions != null && !fileSessions.isEmpty()) {
                     selectedSessions.addAll(fileSessions);
                 }
@@ -77,6 +76,22 @@ public final class FileSessionFinder {
      * @return list of session associated to the given files.
      */
     public static List<Session> getRelatedSessions(final Collection<IFile> files) {
+        return getRelatedSessions(files, true, true);
+    }
+
+    /**
+     * Retrieve the open sessions related to the given file list.
+     * 
+     * @param files
+     *            list of files
+     * @param getOnlyMainSessionForNoModelingProject
+     *            true if no main sessions should be returned if such sessions exist for an IFile representing a session
+     *            and coming from a no modeling project. False otherwise.
+     * @param lookFromSemanticAndControlled
+     *            look from semantic and controlled
+     * @return list of session associated to the given files.
+     */
+    public static List<Session> getRelatedSessions(final Collection<IFile> files, boolean lookFromSemanticAndControlled, boolean getOnlyMainSessionForNoModelingProject) {
         final List<Session> selectedSessions = Lists.newArrayList();
 
         if (files == null) {
@@ -85,7 +100,7 @@ public final class FileSessionFinder {
 
         for (final IFile file : files) {
             if (file != null) {
-                Collection<Session> fileSessions = getSessionFromFile(file, true);
+                Collection<Session> fileSessions = getSessionFromFile(file, lookFromSemanticAndControlled, getOnlyMainSessionForNoModelingProject);
                 if (fileSessions != null && !fileSessions.isEmpty()) {
                     selectedSessions.addAll(fileSessions);
                 }
@@ -95,22 +110,21 @@ public final class FileSessionFinder {
     }
 
     /**
-     * Get session linked to an aird or transient session linked to its semantic
-     * resource.
+     * Get session linked to an aird or transient session linked to its semantic resource.
      */
-    private static Collection<Session> getSessionFromFile(IFile file, boolean lookFromSemanticAndControlled) {
+    private static Collection<Session> getSessionFromFile(IFile file, boolean lookFromSemanticAndControlled, boolean getOnlyMainSessionForNoModelingProject) {
         Collection<Session> sessions = Sets.newLinkedHashSet();
         boolean lookForTransientSession = !SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(file.getFileExtension());
         URI fileURI = getFileUri(file);
         for (Session session : SessionManager.INSTANCE.getSessions()) {
-            if (checkedSession(session, file, fileURI, lookForTransientSession, lookFromSemanticAndControlled)) {
+            if (checkedSession(session, file, fileURI, lookForTransientSession, lookFromSemanticAndControlled, getOnlyMainSessionForNoModelingProject)) {
                 sessions.add(session);
             }
         }
         return sessions;
     }
 
-    private static boolean checkedSession(Session session, IFile file, URI fileURI, boolean lookForTransientSession, boolean lookFromSemantic) {
+    private static boolean checkedSession(Session session, IFile file, URI fileURI, boolean lookForTransientSession, boolean lookFromSemantic, boolean getOnlyMainSessionForNoModelingProject) {
         boolean foundSession = false;
         Resource sessionResource = session.getSessionResource();
 
@@ -124,7 +138,7 @@ public final class FileSessionFinder {
                 foundSession = checkSession(fileURI, resourceToCheck);
             } else {
                 foundSession = sessionResource.getURI().equals(fileURI);
-                if (!foundSession && ModelingProject.hasModelingProjectNature(file.getProject())) {
+                if (!foundSession && (!getOnlyMainSessionForNoModelingProject || (getOnlyMainSessionForNoModelingProject && ModelingProject.hasModelingProjectNature(file.getProject())))) {
                     foundSession = checkSession(fileURI, session.getAllSessionResources());
                 }
             }
