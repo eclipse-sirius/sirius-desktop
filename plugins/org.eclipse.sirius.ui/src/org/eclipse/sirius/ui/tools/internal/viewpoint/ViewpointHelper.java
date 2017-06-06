@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.SortedMap;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.regex.Matcher;
@@ -43,15 +44,19 @@ import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
+import org.eclipse.sirius.ui.business.internal.viewpoint.ViewpointSelectionCallbackWithConfimationAndDependenciesHandling;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
+import com.google.common.collect.Maps;
 
 /**
  * Utility class containing method to handle viewpoints.
@@ -111,7 +116,27 @@ public final class ViewpointHelper {
 
         }
         return isViewpointEnabledInSession;
+    }
 
+    /**
+     * Returns the {@link Viewpoint} registered in a VSM corresponding to a viewpoint registered in a session.
+     * 
+     * @param session
+     *            the session from which we want to retrieve a viewpoint corresponding to the given one.
+     * @param viewpoint
+     *            the viewpoint from which the corresponding viewpoint in registered VSM should be returned.
+     * @return the {@link Viewpoint} registered in a VSM corresponding to a viewpoint from registered in a session. Null
+     *         if no such element exists.
+     */
+    public static Viewpoint getViewpointInVSM(Session session, Viewpoint viewpoint) {
+        ViewpointRegistry registry = ViewpointRegistry.getInstance();
+        Set<Viewpoint> viewpoints = registry.getViewpoints();
+        for (Viewpoint viewpointTemp : viewpoints) {
+            if (EqualityHelper.areEquals(viewpoint, viewpointTemp)) {
+                return viewpointTemp;
+            }
+        }
+        return null;
     }
 
     /**
@@ -208,11 +233,11 @@ public final class ViewpointHelper {
      *            the map containing viewpoint activation status after the change.
      * @param session
      *            the session to update
-     * @param callback
-     *            the callback handling user interactions needed when activating/deactivating viewpoints.
      * @param createNewRepresentations
      *            true to create new DRepresentation for RepresentationDescription having their initialization attribute
      *            at true for selected viewpoints.
+     * @param callback
+     *            the callback handling user interactions needed when activating/deactivating viewpoints.
      */
     public static void applyNewViewpointSelection(final Map<Viewpoint, Boolean> originalMap, final Map<Viewpoint, Boolean> newMap, final Session session, final boolean createNewRepresentations,
             ViewpointSelection.Callback callback) {
@@ -353,6 +378,48 @@ public final class ViewpointHelper {
             image = getEnhancedImage(image, viewpoint);
         }
         return image;
+    }
+
+    /**
+     * Activate or deactivate the viewpoint of the given {@link ViewpointItemImpl} regarding the activation parameter.
+     * 
+     * @param session
+     *            the session from which activation/deactivation will be done.
+     * @param viewpointsToHandle
+     *            the {@link ViewpointItemImpl} from which the viewpoint should be activated or deactivated.
+     * @param activateViewpoint
+     *            true if the viewpoint should be activated. False otherwise.
+     * @param askUserForDependencyActivation
+     *            If true, user is asked to confirm activation/deactivation of a viewpoint that is a dependency of the
+     *            ones that are really activated/deactivated.
+     */
+    public static void handleViewpointActivation(Session session, Set<Viewpoint> viewpointsToHandle, boolean activateViewpoint, boolean askUserForDependencyActivation) {
+        Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
+
+        final SortedMap<Viewpoint, Boolean> originalViewpointsMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
+        Collection<Viewpoint> availableViewpoints = ViewpointHelper.getAvailableViewpoints(session);
+        for (final Viewpoint viewpoint : availableViewpoints) {
+            boolean selected = false;
+
+            for (Viewpoint selectedViewpoint : selectedViewpoints) {
+                if (EqualityHelper.areEquals(selectedViewpoint, viewpoint)) {
+                    selected = true;
+                    break;
+                }
+            }
+            originalViewpointsMap.put(viewpoint, Boolean.valueOf(selected));
+        }
+        SortedMap<Viewpoint, Boolean> newViewpointToSelectionStateMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
+        newViewpointToSelectionStateMap.putAll(originalViewpointsMap);
+        for (Viewpoint viewpoint : viewpointsToHandle) {
+            newViewpointToSelectionStateMap.put(viewpoint, activateViewpoint);
+        }
+
+        Display.getCurrent().syncExec(() -> {
+            ViewpointHelper.applyNewViewpointSelection(originalViewpointsMap, newViewpointToSelectionStateMap, session, true,
+                    new ViewpointSelectionCallbackWithConfimationAndDependenciesHandling(askUserForDependencyActivation));
+        });
+
     }
 
     /**

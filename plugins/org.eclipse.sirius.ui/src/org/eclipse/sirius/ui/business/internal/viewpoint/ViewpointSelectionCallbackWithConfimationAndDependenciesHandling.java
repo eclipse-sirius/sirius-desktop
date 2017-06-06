@@ -46,14 +46,41 @@ import org.eclipse.ui.PlatformUI;
  *
  */
 public class ViewpointSelectionCallbackWithConfimationAndDependenciesHandling extends ViewpointSelectionCallbackWithConfimation {
+
+    /**
+     * If true, user is asked to confirm activation/deactivation of a viewpoint that is a dependency of the ones that
+     * are really activated/deactivated.
+     */
+    private boolean askUserForDependencyActivation;
+
+    /**
+     * Constructor.
+     * 
+     * @param doAskUserForDependencyActivation
+     *            If true, user is asked to confirm activation/deactivation of a viewpoint that is a dependency of the
+     *            ones that are really activated/deactivated.
+     */
+    public ViewpointSelectionCallbackWithConfimationAndDependenciesHandling(boolean doAskUserForDependencyActivation) {
+        super();
+        this.askUserForDependencyActivation = doAskUserForDependencyActivation;
+    }
+
+    /**
+     * Default constructor. User is asked to confirm activation/deactivation of a viewpoint that is a dependency of the
+     * ones that are really activated/deactivated.
+     */
+    public ViewpointSelectionCallbackWithConfimationAndDependenciesHandling() {
+        this(true);
+    }
+
     @Override
     public void deselectViewpoint(Viewpoint deactivatedViewpoint, Session session, Set<Viewpoint> allViewpointToDeactivate, IProgressMonitor monitor) {
         Set<Viewpoint> additionalViewpointToDeactivate = ViewpointHelper.getAdditionalViewpointsToDeactivate(deactivatedViewpoint, session).stream().filter(vp -> {
             return viewpointWillNotBeDeactivatedInSession(session, allViewpointToDeactivate, vp);
         }).collect(Collectors.toSet());
-        boolean confirmDeactivation = additionalViewpointToDeactivate.isEmpty()
-                || (!additionalViewpointToDeactivate.isEmpty() && userConfirmsDependenciesActivationStatusChange(deactivatedViewpoint, additionalViewpointToDeactivate, false));
-        if (confirmDeactivation) {
+        boolean confirmDeactivation = !additionalViewpointToDeactivate.isEmpty() && (!askUserForDependencyActivation
+                || (askUserForDependencyActivation && userConfirmsDependenciesActivationStatusChange(deactivatedViewpoint, additionalViewpointToDeactivate, false)));
+        if (additionalViewpointToDeactivate.isEmpty() || confirmDeactivation) {
             for (Viewpoint viewpointToDeactivate : additionalViewpointToDeactivate) {
                 // Deactivate dependencies of the given viewpoint that are not already deactivated or will be.
                 deselectViewpoint(viewpointToDeactivate, session, monitor);
@@ -101,9 +128,9 @@ public class ViewpointSelectionCallbackWithConfimationAndDependenciesHandling ex
             Map<String, Viewpoint> viewpointToActivateMap = viewpointDependencies.entrySet().stream().filter(entry -> {
                 return viewpointWillNotBeActivatedInSession(session, allSelectedViewpoint, entry.getValue());
             }).collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()));
-            boolean confirmActivation = viewpointToActivateMap.isEmpty()
-                    || (allDependenciesAvailable && userConfirmsDependenciesActivationStatusChange(viewpoint, viewpointToActivateMap.values(), true));
-            if (confirmActivation) {
+            boolean confirmActivation = allDependenciesAvailable
+                    && (!askUserForDependencyActivation || (askUserForDependencyActivation && userConfirmsDependenciesActivationStatusChange(viewpoint, viewpointToActivateMap.values(), true)));
+            if (viewpointToActivateMap.isEmpty() || confirmActivation) {
                 for (Viewpoint viewpointToActivate : viewpointToActivateMap.values()) {
                     selectViewpoint(viewpointToActivate, session, createNewRepresentations, monitor);
                 }
