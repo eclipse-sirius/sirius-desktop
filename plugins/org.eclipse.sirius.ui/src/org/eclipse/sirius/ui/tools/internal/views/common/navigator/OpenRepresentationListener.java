@@ -25,8 +25,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 /**
- * A double click listener which opens an editor if the clicked element is a
- * representation.
+ * A double click listener which opens an editor if the clicked element is a representation.
  * 
  * @author mchauvin
  */
@@ -43,7 +42,14 @@ public class OpenRepresentationListener implements IDoubleClickListener {
         }
     }
 
-    private Iterable<DRepresentationDescriptor> getRepresentationDescriptorsToOpen(List<?> selection) {
+    /**
+     * Return the representation descriptor to open from the selection.
+     * 
+     * @param selection
+     *            the selection from which representation descriptor to open should be returned.
+     * @return the representation descriptor to open from given selection if such element exists.
+     */
+    protected Iterable<DRepresentationDescriptor> getRepresentationDescriptorsToOpen(List<?> selection) {
 
         final Set<DRepresentationDescriptor> repDescriptors = Sets.newLinkedHashSet();
         for (final Object obj : selection) {

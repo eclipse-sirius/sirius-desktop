@@ -113,15 +113,22 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
      * Constructor.
      */
     public SiriusCommonContentProvider() {
+        this(new OpenRepresentationListener());
+    }
+
+    /**
+     * Constructor.
+     * 
+     * @param theDoubleClickListener
+     *            Listener that should be used instead of the default one that is an {@link OpenRepresentationListener}.
+     *            This component takes care of disposing the given listener when disposed from associated viewer.
+     */
+    public SiriusCommonContentProvider(IDoubleClickListener theDoubleClickListener) {
         defaultContentProvider = ViewHelper.INSTANCE.createContentProvider();
 
         initSessionManager();
-        initDoubleClickListener();
+        doubleClickListener = theDoubleClickListener;
         initExpandListener();
-    }
-
-    private void initDoubleClickListener() {
-        doubleClickListener = new OpenRepresentationListener();
     }
 
     private void initExpandListener() {

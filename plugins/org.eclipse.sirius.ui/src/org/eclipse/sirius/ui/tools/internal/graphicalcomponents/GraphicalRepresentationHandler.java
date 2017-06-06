@@ -17,8 +17,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.SortedMap;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
@@ -47,14 +47,11 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
-import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
-import org.eclipse.sirius.ui.business.internal.viewpoint.ViewpointSelectionCallbackWithConfimationAndDependenciesHandling;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
 import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
@@ -64,6 +61,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationDesc
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.ManageSessionActionProvider;
+import org.eclipse.sirius.ui.tools.internal.views.common.navigator.OpenRepresentationListenerWithViewpointActivation;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.DeleteActionHandler;
@@ -92,8 +90,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionContext;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-
-import com.google.common.collect.Maps;
 
 /**
  * This graphical component provides a {@link TreeViewer} showing all representations belonging to the given session
@@ -704,15 +700,13 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
         treeViewer.getTree().setHeaderVisible(false);
         treeViewer.getTree().setLinesVisible(false);
 
-        // treeViewer.setComparer(new IElementComparerImplementation());
-
         ColumnViewerToolTipSupport.enableFor(treeViewer);
 
         final ITreeContentProvider contentProviderToUse;
         if (contentProvider != null) {
             contentProviderToUse = contentProvider;
         } else {
-            siriusCommonContentProvider = new SiriusCommonContentProvider();
+            siriusCommonContentProvider = new SiriusCommonContentProvider(new OpenRepresentationListenerWithViewpointActivation(session));
             contentProviderToUse = siriusCommonContentProvider;
         }
         treeViewer.setContentProvider(contentProviderToUse);
@@ -792,48 +786,6 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
     }
 
     /**
-     * Activate or deactivate the viewpoint of the given {@link ViewpointItemImpl} regarding the activation parameter.
-     * 
-     * @param viewpointsToHandle
-     *            the {@link ViewpointItemImpl} from which the viewpoint should be activated or deactivated.
-     * @param selectedViewpoints
-     *            the viewpoint that are currently selected in the session.
-     * @param activateViewpoint
-     *            true if the viewpoint should be activated. False otherwise.
-     */
-    private void handleViewpointActivation(Set<ViewpointItemImpl> viewpointsToHandle, Collection<Viewpoint> selectedViewpoints, boolean activateViewpoint) {
-
-        treeViewer.getTree().setRedraw(false);
-        final SortedMap<Viewpoint, Boolean> originalViewpointsMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
-        Collection<Viewpoint> availableViewpoints = ViewpointHelper.getAvailableViewpoints(session);
-        for (final Viewpoint viewpoint : availableViewpoints) {
-            boolean selected = false;
-
-            for (Viewpoint selectedViewpoint : selectedViewpoints) {
-                if (EqualityHelper.areEquals(selectedViewpoint, viewpoint)) {
-                    selected = true;
-                    break;
-                }
-            }
-            originalViewpointsMap.put(viewpoint, Boolean.valueOf(selected));
-        }
-        SortedMap<Viewpoint, Boolean> newViewpointToSelectionStateMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
-        newViewpointToSelectionStateMap.putAll(originalViewpointsMap);
-
-        for (ViewpointItemImpl viewpointItem : viewpointsToHandle) {
-            newViewpointToSelectionStateMap.put(viewpointItem.getViewpoint(), activateViewpoint);
-        }
-
-        Display.getCurrent().syncExec(() -> {
-            ViewpointHelper.applyNewViewpointSelection(originalViewpointsMap, newViewpointToSelectionStateMap, session, true, new ViewpointSelectionCallbackWithConfimationAndDependenciesHandling());
-        });
-
-        treeViewer.getTree().setRedraw(true);
-        treeViewer.refresh();
-        treeViewer.setSelection(new StructuredSelection(viewpointsToHandle.stream().collect(Collectors.toList())));
-    }
-
-    /**
      * Create control buttons allowing to add/remove representations.
      * 
      * @param parent
@@ -889,8 +841,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                         viewpointsToActivate.add((ViewpointItemImpl) obj);
                     }
                 }
-                Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
-                handleViewpointActivation(viewpointsToActivate, selectedViewpoints, enable);
+                handleViewpointActivationFomViewer(viewpointsToActivate, enable);
             } else {
                 MessageDialog.openError(Display.getCurrent().getActiveShell(),
                         MessageFormat.format(Messages.GraphicalRepresentationHandler_button_activateDeactivateViewpoint_incorrectSelection_title,
@@ -899,6 +850,27 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                         Messages.GraphicalRepresentationHandler_button_activateDeactivateViewpoint_incorrectSelection_message);
             }
         }
+    }
+
+    /**
+     * Activate or deactivate the viewpoint of the given {@link ViewpointItemImpl} regarding the activation parameter.
+     * The redrawing functionality of this component viewer is interrupted while activating viewpoints to avoid
+     * flickering.
+     * 
+     * @param viewpointsToHandle
+     *            the {@link ViewpointItemImpl} from which the viewpoint should be activated or deactivated.
+     * @param activateViewpoint
+     *            true if the viewpoint should be activated. False otherwise.
+     */
+    private void handleViewpointActivationFomViewer(Set<ViewpointItemImpl> viewpointsToActivate, boolean enable) {
+        treeViewer.getTree().setRedraw(false);
+        Stream<Viewpoint> viewpoints = viewpointsToActivate.stream().map(viewpointItemImpl -> {
+            return viewpointItemImpl.getViewpoint();
+        });
+        ViewpointHelper.handleViewpointActivation(session, viewpoints.collect(Collectors.toSet()), enable, true);
+        treeViewer.getTree().setRedraw(true);
+        treeViewer.refresh();
+        treeViewer.setSelection(new StructuredSelection(viewpointsToActivate.stream().collect(Collectors.toList())));
     }
 
     /**
@@ -1056,16 +1028,15 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                 if (selection.getFirstElement() instanceof ViewpointItemImpl) {
                     ViewpointItemImpl viewpointItem = (ViewpointItemImpl) selection.getFirstElement();
                     boolean activateViewpoint = !ViewpointHelper.isViewpointEnabledInSession(session, viewpointItem.getViewpoint());
-                    Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
                     if (activateViewpoint) {
 
                         Set<ViewpointItemImpl> viewpointsToActivate = new HashSet<>();
                         viewpointsToActivate.add(viewpointItem);
-                        handleViewpointActivation(viewpointsToActivate, selectedViewpoints, activateViewpoint);
+                        handleViewpointActivationFomViewer(viewpointsToActivate, activateViewpoint);
                     } else {
                         Set<ViewpointItemImpl> viewpointsToActivate = new HashSet<>();
                         viewpointsToActivate.add(viewpointItem);
-                        handleViewpointActivation(viewpointsToActivate, selectedViewpoints, activateViewpoint);
+                        handleViewpointActivationFomViewer(viewpointsToActivate, activateViewpoint);
                     }
 
                 } else if (selection.getFirstElement() instanceof RepresentationDescriptionItemImpl) {
