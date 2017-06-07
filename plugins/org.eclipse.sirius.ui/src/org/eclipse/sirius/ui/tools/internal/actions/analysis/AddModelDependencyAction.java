@@ -47,16 +47,36 @@ public class AddModelDependencyAction extends Action {
     Session session;
 
     /**
+     * True if the viewpoints selection windows should be open after adding the model dependency to the session. False
+     * otherwise.
+     */
+    private boolean openViewpointSelectionAfterAddition;
+
+    /**
      * Creates a new instance of this action.
      * 
      * @param session
      *            the session for which we will add a model dependency
      */
     public AddModelDependencyAction(Session session) {
+        this(session, true);
+    }
+
+    /**
+     * Creates a new instance of this action.
+     * 
+     * @param session
+     *            the session for which we will add a model dependency
+     * @param openViewpointSelectionAfterAddition
+     *            true if the viewpoints selection windows should be open after adding the model dependency to the
+     *            session. False otherwise.
+     */
+    public AddModelDependencyAction(Session session, boolean openViewpointSelectionAfterAddition) {
         super(Messages.AddModelDependencyAction_title);
         final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/add.gif"); //$NON-NLS-1$
         setImageDescriptor(descriptor);
         this.session = session;
+        this.openViewpointSelectionAfterAddition = openViewpointSelectionAfterAddition;
     }
 
     @Override
@@ -88,7 +108,7 @@ public class AddModelDependencyAction extends Action {
                     new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()).run(true, false, semanticResourceAdditionOperation);
                     Collection<Object> results = semanticResourceAdditionOperation.getResults();
                     for (Object result : results) {
-                        if (result instanceof Session) {
+                        if (result instanceof Session && openViewpointSelectionAfterAddition) {
                             // We open a viewpoint selection dialog
                             ViewpointSelection.openViewpointsSelectionDialog((Session) result);
                         }

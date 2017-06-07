@@ -320,7 +320,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
             createAndRegisterNewSemanticModel();
         });
         addButton(buttonsComposite, Messages.UI_SessionEditor_models_button_newSemanticModel, () -> {
-            AddModelDependencyAction addModelDependencyAction = new AddModelDependencyAction(session);
+            AddModelDependencyAction addModelDependencyAction = new AddModelDependencyAction(session, false);
             addModelDependencyAction.run();
         });
         removeSemanticModelOrRepresentationButton = addButton(buttonsComposite, Messages.UI_SessionEditor_models_button_removeSemanticModel, () -> {
