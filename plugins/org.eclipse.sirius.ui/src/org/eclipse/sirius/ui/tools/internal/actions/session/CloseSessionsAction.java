@@ -53,6 +53,19 @@ public class CloseSessionsAction extends SelectionListenerAction {
     }
 
     /**
+     * Constructor.
+     * 
+     * @param text
+     *            the action text.
+     * @param session
+     *            the session that should be closed when this action is triggered instead of using selection mechanism.
+     */
+    public CloseSessionsAction(String text, Session session) {
+        super(text);
+        sessionsToCloseURI.add(session.getSessionResource().getURI());
+    }
+
+    /**
      * Looks for selected sessions to close.
      * 
      * {@inheritDoc}

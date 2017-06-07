@@ -15,13 +15,17 @@ import java.net.URL;
 import java.text.MessageFormat;
 import java.util.stream.Collectors;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionStatus;
@@ -29,6 +33,7 @@ import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.editor.internal.graphicalcomponents.GraphicalSemanticModelsHandler;
+import org.eclipse.sirius.ui.tools.internal.actions.session.CloseSessionsAction;
 import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalRepresentationHandler;
 import org.eclipse.sirius.ui.tools.internal.graphicalcomponents.GraphicalRepresentationHandler.GraphicalRepresentationHandlerBuilder;
 import org.eclipse.swt.SWT;
@@ -127,8 +132,15 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
     @Override
     protected void createFormContent(final IManagedForm managedForm) {
         super.createFormContent(managedForm);
-
         final ScrolledForm scrolledForm = managedForm.getForm();
+
+        if (ResourcesPlugin.getWorkspace() != null && ResourcesPlugin.getWorkspace().getRoot() != null && session.getSessionResource() != null && session.getSessionResource().getURI() != null) {
+            IProject sessionProject = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(session.getSessionResource().getURI().toPlatformString(true))).getProject();
+            if (!ModelingProject.hasModelingProjectNature(sessionProject)) {
+                initEditorHeaderToolbar(managedForm);
+            }
+        }
+
         FormToolkit toolkit = managedForm.getToolkit();
 
         int sessionUriSegmentSize = session.getSessionResource().getURI().segmentsList().size();
@@ -181,6 +193,21 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
     }
 
     /**
+     * Add the button allowing to close the session and thus the aird editor in
+     * the editor's header.
+     * 
+     * @param managedForm
+     *            the form from which we retrieve the toolbar manager to add the
+     *            button.
+     */
+    private void initEditorHeaderToolbar(IManagedForm managedForm) {
+        CloseSessionsAction closeSessionsAction = new CloseSessionsAction(Messages.DefaultSessionEditorPage_closeSession_action_label, session);
+        closeSessionsAction.setToolTipText(Messages.DefaultSessionEditorPage_closeSession_action_tooltip);
+        managedForm.getForm().getToolBarManager().add(closeSessionsAction);
+        managedForm.getForm().getToolBarManager().update(true);
+    }
+
+    /**
      * Create the control allowing to view the semantic models of the session.
      * 
      * @param toolkit
@@ -205,7 +232,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
         graphicalSemanticModelsHandler.createControl(modelSectionClient);
         getSite().setSelectionProvider(graphicalSemanticModelsHandler.getTreeViewer());
 
-        initSectionToolbar(modelSection, graphicalSemanticModelsHandler.getTreeViewer());
+        initModelSectionToolbar(modelSection, graphicalSemanticModelsHandler.getTreeViewer());
     }
 
     /**
@@ -217,7 +244,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
      * @param treeViewer
      *            {@link TreeViewer} impacted by collapsing and CNF buttons.
      */
-    private void initSectionToolbar(Section section, CommonViewer treeViewer) {
+    private void initModelSectionToolbar(Section section, CommonViewer treeViewer) {
         ToolBarManager toolBarManager = new ToolBarManager(SWT.FLAT);
         ToolBar toolbar = toolBarManager.createControl(section);
         final Cursor handCursor = Display.getCurrent().getSystemCursor(SWT.CURSOR_HAND);

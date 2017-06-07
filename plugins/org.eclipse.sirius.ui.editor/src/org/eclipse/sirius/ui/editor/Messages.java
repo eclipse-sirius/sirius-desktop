@@ -82,6 +82,12 @@ public final class Messages {
     @TranslatableMessage
     public static String DefaultSessionEditorPage_collapseAllAction_tooltip;
 
+    @TranslatableMessage
+    public static String DefaultSessionEditorPage_closeSession_action_tooltip;
+
+    @TranslatableMessage
+    public static String DefaultSessionEditorPage_closeSession_action_label;
+
     // CHECKSTYLE:ON
 
     private Messages() {
