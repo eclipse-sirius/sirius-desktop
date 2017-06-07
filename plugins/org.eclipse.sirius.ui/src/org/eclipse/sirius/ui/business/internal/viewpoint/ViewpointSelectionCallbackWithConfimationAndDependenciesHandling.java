@@ -122,22 +122,20 @@ public class ViewpointSelectionCallbackWithConfimationAndDependenciesHandling ex
     public void selectViewpoint(Viewpoint viewpoint, Session session, boolean createNewRepresentations, Set<Viewpoint> allSelectedViewpoint, IProgressMonitor monitor) {
         Map<String, Viewpoint> viewpointDependencies = ViewpointHelper.getViewpointDependencies(ViewpointHelper.getAvailableViewpoints(session), allSelectedViewpoint, viewpoint);
         boolean allDependenciesAvailable = viewpointDependencies.isEmpty() || viewpointDependencies.values().stream().allMatch(vp -> vp != null);
-        if (!allDependenciesAvailable) {
-            informUserViewpointActivationFailed(viewpoint, viewpointDependencies);
-        } else {
-            Map<String, Viewpoint> viewpointToActivateMap = viewpointDependencies.entrySet().stream().filter(entry -> {
+        if (allDependenciesAvailable) {
+            Map<String, Viewpoint> viewpointDependenciesToActivateMap = viewpointDependencies.entrySet().stream().filter(entry -> {
                 return viewpointWillNotBeActivatedInSession(session, allSelectedViewpoint, entry.getValue());
             }).collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()));
-            boolean confirmActivation = allDependenciesAvailable
-                    && (!askUserForDependencyActivation || (askUserForDependencyActivation && userConfirmsDependenciesActivationStatusChange(viewpoint, viewpointToActivateMap.values(), true)));
-            if (viewpointToActivateMap.isEmpty() || confirmActivation) {
-                for (Viewpoint viewpointToActivate : viewpointToActivateMap.values()) {
+            boolean confirmActivation = viewpointDependenciesToActivateMap.isEmpty() || (!askUserForDependencyActivation
+                    || (askUserForDependencyActivation && userConfirmsDependenciesActivationStatusChange(viewpoint, viewpointDependenciesToActivateMap.values(), true)));
+            if (confirmActivation) {
+                for (Viewpoint viewpointToActivate : viewpointDependenciesToActivateMap.values()) {
                     selectViewpoint(viewpointToActivate, session, createNewRepresentations, monitor);
                 }
-                if (allDependenciesAvailable) {
-                    super.selectViewpoint(viewpoint, session, createNewRepresentations, monitor);
-                }
+                super.selectViewpoint(viewpoint, session, createNewRepresentations, monitor);
             }
+        } else {
+            informUserViewpointActivationFailed(viewpoint, viewpointDependencies);
         }
     }
 
