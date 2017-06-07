@@ -895,6 +895,8 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                 toggleViewpointState((IStructuredSelection) theTreeViewer.getSelection(), false);
             }
         });
+        enableViewpointButton.setEnabled(false);
+        disableViewpointButton.setEnabled(false);
         removeRepresentationInstanceButton.setEnabled(false);
         deleteActionHandler.setEnabled(false);
         renameActionHandler.setEnabled(false);
@@ -1144,6 +1146,8 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                 removeRepresentationInstanceButton.setEnabled(false);
                 deleteActionHandler.setEnabled(false);
                 renameActionHandler.setEnabled(false);
+                enableViewpointButton.setEnabled(false);
+                disableViewpointButton.setEnabled(false);
             } else if (event.getSelection() instanceof TreeSelection) {
                 TreeSelection selection = (TreeSelection) event.getSelection();
 
@@ -1165,13 +1169,8 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                     deleteActionHandler.setEnabled(false);
                     renameActionHandler.setEnabled(false);
                 }
-                if (!selection.isEmpty()) {
-                    enableViewpointButton.setEnabled(true);
-                    disableViewpointButton.setEnabled(true);
-                } else {
-                    disableViewpointButton.setEnabled(false);
-                    enableViewpointButton.setEnabled(false);
-                }
+                enableViewpointButton.setEnabled(true);
+                disableViewpointButton.setEnabled(true);
             }
         }
     }
