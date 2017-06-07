@@ -1164,6 +1164,9 @@ public final class Messages {
     @TranslatableMessage
     public static String OtherRepresentationAction_noRepresentation_label;
 
+    @TranslatableMessage
+    public static String GraphicalRepresentationHandler_checkBoxShowDisabledViewpoints_label;
+
     // CHECKSTYLE:ON
 
     private Messages() {

@@ -282,7 +282,7 @@ public class DefaultSessionEditorPage extends FormPage implements SessionListene
 
         GraphicalRepresentationHandlerBuilder graphicalRepresentationHandlerBuilder = new GraphicalRepresentationHandler.GraphicalRepresentationHandlerBuilder(session);
         graphicalRepresentationHandler = graphicalRepresentationHandlerBuilder.activateBrowserWithViewpointAndRepresentationDescriptionInformation().activateGroupingByCheckbox()
-                .activateRepresentationAndViewpointControls().useToolkitToCreateGraphicComponents(toolkit).build();
+                .activateRepresentationAndViewpointControls().useToolkitToCreateGraphicComponents(toolkit).activateShowDisabledViewpointsCheckbox().build();
         graphicalRepresentationHandler.createControl(representationSectionClient);
         graphicalRepresentationHandler.initInput();
 
