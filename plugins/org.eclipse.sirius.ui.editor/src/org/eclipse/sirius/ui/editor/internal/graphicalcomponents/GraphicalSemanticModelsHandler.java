@@ -1070,7 +1070,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
             case SessionListener.REPLACED:
             case SessionListener.SYNC:
             case SessionListener.DIRTY:
-                PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+                PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
                     @Override
                     public void run() {
