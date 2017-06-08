@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="basicfamily" version="11.1.1.201610211630">
   <ownedViewpoints name="persons (Basic Family Starter Tutorial Solution)" modelFileExtension="basicfamily">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Persons diagram" domainClass="basicfamily.Family">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Persons diagram" domainClass="basicfamily::Family">
       <metamodel href="http://www.eclipse.org/sirius/sample/basicfamily#/"/>
       <defaultLayer name="Default">
-        <nodeMappings name="ManNode" semanticCandidatesExpression="feature:members" domainClass="basicfamily.Man">
+        <nodeMappings name="ManNode" semanticCandidatesExpression="feature:members" domainClass="basicfamily::Man">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.sample.basicfamily.starter.design/icons/man.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="WomanNode" semanticCandidatesExpression="feature:members" domainClass="basicfamily.Woman">
+        <nodeMappings name="WomanNode" semanticCandidatesExpression="feature:members" domainClass="basicfamily::Woman">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.sample.basicfamily.starter.design/icons/woman.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -38,7 +38,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="basicfamily.Man" referenceName="members">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="basicfamily::Man" referenceName="members">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'man'+container.members->filter(basicfamily::Man)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -49,7 +49,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="basicfamily.Woman" referenceName="members">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="basicfamily::Woman" referenceName="members">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'woman'+container.members->filter(basicfamily::Woman)->size()"/>
                 </subModelOperations>
               </firstModelOperations>

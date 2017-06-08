@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="basicfamily" version="11.1.1.201610211630">
   <ownedViewpoints name="persons (Basic Family Advanced Tutorial Solution)" modelFileExtension="basicfamily">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Persons diagram" domainClass="basicfamily.Family">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Persons diagram" domainClass="basicfamily::Family">
       <metamodel href="http://www.eclipse.org/sirius/sample/basicfamily#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="childrenFilter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@nodeMappings[name='ManNode'] //@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Women']/@nodeMappings[name='WomanNode']" semanticConditionExpression="aql:self.children->size()>0"/>
       </filters>
       <validationSet name="FamilyValidation">
-        <ownedRules xsi:type="validation:SemanticValidationRule" name="NoFatherChildren" level="ERROR" message="aql:self.oclAsType(basicfamily::Person).father.name+' should not be both the child and the father of '+self.oclAsType(basicfamily::Person).name" targetClass="basicfamily.Person">
+        <ownedRules xsi:type="validation:SemanticValidationRule" name="NoFatherChildren" level="ERROR" message="aql:self.oclAsType(basicfamily::Person).father.name+' should not be both the child and the father of '+self.oclAsType(basicfamily::Person).name" targetClass="basicfamily::Person">
           <audits auditExpression="aql:self.children->excludes(self.father)"/>
           <fixes name="Unset father">
             <initialOperation>
@@ -48,7 +48,7 @@
         </customization>
       </defaultLayer>
       <additionalLayers name="Men" activeByDefault="true">
-        <nodeMappings name="ManNode" labelDirectEdit="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='editName']" doubleClickDescription="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDoubleClick']" domainClass="basicfamily.Man">
+        <nodeMappings name="ManNode" labelDirectEdit="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='editName']" doubleClickDescription="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDoubleClick']" domainClass="basicfamily::Man">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.sample.basicfamily.advanced.design/icons/man.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -68,7 +68,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="basicfamily.Man" referenceName="members">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="basicfamily::Man" referenceName="members">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'man'+container.members->filter(basicfamily::Man)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -109,7 +109,7 @@
         </toolSections>
       </additionalLayers>
       <additionalLayers name="Women" activeByDefault="true">
-        <nodeMappings name="WomanNode" labelDirectEdit="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='editName']" semanticCandidatesExpression="feature:members" doubleClickDescription="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDoubleClick']" domainClass="basicfamily.Woman">
+        <nodeMappings name="WomanNode" labelDirectEdit="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='editName']" semanticCandidatesExpression="feature:members" doubleClickDescription="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDoubleClick']" domainClass="basicfamily::Woman">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.sample.basicfamily.advanced.design/icons/woman.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -129,7 +129,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="basicfamily.Woman" referenceName="members">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="basicfamily::Woman" referenceName="members">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'woman'+container.members->filter(basicfamily::Woman)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -170,7 +170,7 @@
         </toolSections>
       </additionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Relationships diagram" titleExpression="aql:'Relations of '+self.name" domainClass="basicfamily.Person">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Relationships diagram" titleExpression="aql:'Relations of '+self.name" domainClass="basicfamily::Person">
       <metamodel href="http://www.eclipse.org/sirius/sample/basicfamily#/"/>
       <defaultLayer name="Default">
         <edgeMappings name="SiblingsEdge" sourceMapping="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']" targetMapping="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']" targetFinderExpression="var:self">
@@ -181,15 +181,15 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="PersonContainer" semanticCandidatesExpression="var:self" domainClass="basicfamily.Person" childrenPresentation="List">
-          <borderedNodeMappings name="ParentNode" semanticCandidatesExpression="feature:parents" doubleClickDescription="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDoubleClick']" domainClass="basicfamily.Person">
+        <containerMappings name="PersonContainer" semanticCandidatesExpression="var:self" domainClass="basicfamily::Person" childrenPresentation="List">
+          <borderedNodeMappings name="ParentNode" semanticCandidatesExpression="feature:parents" doubleClickDescription="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDoubleClick']" domainClass="basicfamily::Person">
             <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </borderedNodeMappings>
-          <subNodeMappings name="ChildrenNode" semanticCandidatesExpression="feature:children" doubleClickDescription="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDoubleClick']" domainClass="basicfamily.Person">
+          <subNodeMappings name="ChildrenNode" semanticCandidatesExpression="feature:children" doubleClickDescription="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDoubleClick']" domainClass="basicfamily::Person">
             <style xsi:type="style:SquareDescription" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -204,8 +204,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </containerMappings>
-        <containerMappings name="SiblingContainer" semanticCandidatesExpression="var:self" domainClass="basicfamily.Person" childrenPresentation="List">
-          <subNodeMappings name="SiblingNode" semanticCandidatesExpression="aql:self.parents.children->excluding(self)" doubleClickDescription="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDoubleClick']" domainClass="basicfamily.Person">
+        <containerMappings name="SiblingContainer" semanticCandidatesExpression="var:self" domainClass="basicfamily::Person" childrenPresentation="List">
+          <subNodeMappings name="SiblingNode" semanticCandidatesExpression="aql:self.parents.children->excluding(self)" doubleClickDescription="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDoubleClick']" domainClass="basicfamily::Person">
             <style xsi:type="style:SquareDescription" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -222,15 +222,15 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Persons table" domainClass="basicfamily.Family">
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Persons table" domainClass="basicfamily::Family">
       <metamodel href="http://www.eclipse.org/sirius/sample/basicfamily#/"/>
-      <ownedLineMappings name="PersonLine" domainClass="basicfamily.Person" semanticCandidatesExpression="feature:members" headerLabelExpression="feature:name"/>
+      <ownedLineMappings name="PersonLine" domainClass="basicfamily::Person" semanticCandidatesExpression="feature:members" headerLabelExpression="feature:name"/>
       <ownedCreateLine name="createManLine" label="New Man" mapping="//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20table']/@ownedLineMappings[name='PersonLine']">
         <variables name="root" documentation="The semantic root element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
         <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
-          <subModelOperations xsi:type="tool:CreateInstance" typeName="basicfamily.Man" referenceName="members">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="basicfamily::Man" referenceName="members">
             <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'man'+container.members->filter(basicfamily::Man)->size()"/>
           </subModelOperations>
         </firstModelOperation>
@@ -240,7 +240,7 @@
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
         <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
-          <subModelOperations xsi:type="tool:CreateInstance" typeName="basicfamily.Woman" referenceName="members">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="basicfamily::Woman" referenceName="members">
             <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'woman'+container.members->filter(basicfamily::Woman)->size()"/>
           </subModelOperations>
         </firstModelOperation>
