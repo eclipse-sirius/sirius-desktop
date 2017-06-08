@@ -99,39 +99,34 @@
 		<h2 id="sirius5.0.0">Changes in Sirius 5.0.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-success">Added</span> An experimental mode to serialize representations in a different file is available with system property 
-				<code>createRepresentationInSeparateResource=true</code>. That means all new representations will be saved, by default, in a separate file with *.srm extension.
-			</li>
 			<li><span class="label label-success">Added</span> An new 
 				<em>session editor</em> is available on 
-				<em>.aird</em> files. It provides an alternative, form-based GUI to visualize and manipulate sirius sessions which is not tied to the Modeling perspective or Model Explorer view. Sirius 5.0M6 includes a work-in-progress version of this new feature to encourage early community 
-				<a href="https://wiki.eclipse.org/Sirius/SessionEditor">feedback</a>. That version should be considered in alpha state in terms of stability an UI polish. By default, the new editor will automatically open when a session is opened, but this behavior can be disabled via a new preference in the 
-				<em>Sirius</em> category.
+				<em>.aird</em> files. It provides an alternative, form-based GUI to visualize and manipulate sirius sessions which is not tied to the Modeling perspective or Model Explorer view. See 
+				<a href="user/general/Aird_Editor.html">the editor&#8217;s documentation</a> for more details.
 			</li>
-			<li><span class="label label-info">Modified</span> The label alignment of Notes from the Palette has been modified from Juno to Luna or newer versions of Eclipse. The label alignment changed from TOP &amp; CENTER to MIDDLE &amp; LEFT. The initial alignment (TOP &amp; CENTER) has been restored.</li>
-			<li><span class="label label-info">Modified</span> The export diagram as images actions are now adapting the output resolution based on the diagram size, this leads to better resolution for small to medium diagrams (and also bigger file) and to an operation which is no longer failing with out of memory errors in case of very big diagrams.</li>
-			<li><span class="label label-info">Modified</span>The &#8220;straighten to&#8221; actions previously had a limitation concerning overlap detection. This is no longer the case. The previous known limitation was removed from the documentation (
+			<li><span class="label label-info">Modified</span> The label alignment of Notes from the Palette has been modified from Juno to Luna or newer versions of Eclipse. The label alignment had changed from 
+				<em>TOP</em> &amp; 
+				<em>CENTER</em> to 
+				<em>MIDDLE</em> &amp; 
+				<em>LEFT</em> (respectively). The initial alignment (
+				<em>TOP</em> &amp; 
+				<em>CENTER</em>) has been restored.
+			</li>
+			<li><span class="label label-info">Modified</span> The 
+				<em>Export diagram as images</em> action now adatps the output resolution based on the diagram size. This leads to better resolution for small to medium diagrams (and also bigger file) and to an operation which is no longer failing with out of memory errors in case of very big diagrams.
+			</li>
+			<li><span class="label label-info">Modified</span> The &#8220;straighten to&#8221; actions previously had a limitation concerning overlap detection. This is no longer the case. The previous known limitation has been removed from the documentation (
 				<i>In case of multi-selection, the overlap check is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.</i>).
 			</li>
-			<li><span class="label label-info">Modified</span>Decorators on diagram elements are drawn over all figures. If there is an overlap between a decorator of a figure A and another figure B that is over figure A, when user clicks on the decorator, the figure B is now selected (before it was the parent figure A).</li>
+			<li><span class="label label-info">Modified</span> Decorators on diagram elements are drawn on top of other figures. If there is an overlap between a decorator of a figure A and another figure B that is over figure A, when user clicks on the decorator, the figure B is now selected (before it was the parent figure A).</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-success">Added</span> It is now possible to create one or multiple pre-configured widget(s) in a group if its domain class and if the meta-models of the properties view containing it have been specified.</li>
+			<li><span class="label label-success">Added</span> It is now possible to automatically create one or several pre-configured widget(s) in a group if its domain class and if the meta-models of the properties view containing it have been specified. The widget(s) created will be infered from the features in the domain class (e.g. a properly configured 
+				<em>Checkbox</em> widget will be created for boolean attributes).
+			</li>
 			<li><span class="label label-success">Added</span> Property Views definitions now support extending and overriding Properties View Descriptions without modifying the original. See 
 				<a href="specifier/properties/Properties_View_Description.html#extensibility_features">the documentation</a> for details.
-			</li>
-			<li><span class="label label-info">Modified</span> The transient layer has been introduced in Sirius 5.0. (Refer to 
-				<a href="specifier/diagrams/Diagrams.html#Transientlayer">Sirius Specifier</a> and 
-				<a href="user/diagrams/Diagrams.html#transientLayer">Sirius User</a> documentation in Diagram chapter). Transient layer is an additional layer containing only decorations or tools. If you have such layer in your VSM, users may encounter some unexpected behaviors. If the layer is not 
-				<em>active by default</em> then it will not be applied when opening your diagram even if it was activated before. If the layer is 
-				<em>active by default</em> then it will be automatically applied when opening your diagram. We consider this behavior as a known limitation and an enhancement may be done in a further release. In the meantime, there is a workaround which consists to add a fake mapping (that is any mapping with its fields empty) so that the layer will not be considered as transient.
-			</li>
-			<li><span class="label label-info">Modified</span> The tab used to configure the metamodels used by the Properties view description is now using the same interface as the metamodels tab used to configure the representations.</li>
-			<li><span class="label label-info">Modified</span> The 
-				<code>package::Class</code> syntax for domain classes and type names in the VSM is now fully supported and the new default. It means this syntax is interpreted by Sirius and completion is provided for it when the first 
-				<code>:</code> character is entered. The legacy syntax 
-				<code>package.Class</code> is still supported for compatibility.
 			</li>
 			<li><span class="label label-success">Added</span> New model operations are available. You can now open a 
 				<a href="specifier/general/Model_Operations.html#dialog">dialog</a> or a 
@@ -139,7 +134,7 @@
 				<em>Let</em> model operation, see its 
 				<a href="specifier/general/Model_Operations.html#let">documentation</a> for more details.
 			</li>
-			<li><span class="label label-success">Added</span> You can now create 
+			<li><span class="label label-success">Added</span> In Property Views definitions, you can now create 
 				<em>Toolbar Actions</em> on pages and groups in order to define small buttons in their toolbars.
 			</li>
 			<li><span class="label label-success">Added</span> 
@@ -158,6 +153,18 @@
 			<li><span class="label label-success">Added</span> 
 				<em>Categories</em> have been added in order to organize the pages and groups of the 
 				<em>Properties</em> DSL.
+			</li>
+			<li><span class="label label-info">Modified</span> The notion of transient layer has been introduced in Sirius 5.0. (Refer to 
+				<a href="specifier/diagrams/Diagrams.html#Transientlayer">Sirius Specifier</a> and 
+				<a href="user/diagrams/Diagrams.html#transientLayer">Sirius User</a> documentation in Diagram chapter). A transient layer is an additional layer containing only decorations or tools. If you have such layer in your VSM, users may encounter some unexpected behaviors. If the layer is not 
+				<em>active by default</em> then it will not be applied when opening your diagram even if it was activated before. If the layer is 
+				<em>active by default</em> then it will be automatically applied when opening your diagram. We consider this behavior as a known limitation and an enhancement may be done in a further release. In the meantime, there is a workaround which consists to add a fake mapping (that is any mapping with its fields empty) so that the layer will not be considered as transient.
+			</li>
+			<li><span class="label label-info">Modified</span> The tab used to configure the metamodels used by the Properties view description is now using the same interface as the metamodels tab used to configure the representations.</li>
+			<li><span class="label label-info">Modified</span> The 
+				<code>package::Class</code> syntax for domain classes and type names in the VSM is now fully supported and the new default. It means this syntax is interpreted by Sirius and completion is provided for it when the first 
+				<code>:</code> character is entered. The legacy syntax 
+				<code>package.Class</code> is still supported for compatibility.
 			</li>
 			<li><span class="label label-info">Modified</span> The organization of the contextual actions in the odesign for the 
 				<em>Properties</em> DSL has been improved.
@@ -183,7 +190,7 @@
 			</li>
 			<li><span class="label label-success">Added</span> A new extension point, 
 				<code>org.eclipse.sirius.common.package_meta_data</code> has been added. It can be used to associate user-oriented meta-data to Ecore metamodels, identified by their 
-				<code>nsURI</code>: a user-oriented name/label (as opposed to the technical nsURI), a (short) description/documentation, and a list of suggested EClasses defined in the EPackage that are good candidates as root model elements.
+				<code>nsURI</code>: a user-oriented name/label (as opposed to the technical nsURI), a (short) description/documentation, and a list of suggested EClasses defined in the EPackage that are good candidates as root model elements. These meta-data are currently used only in the generic model creation wizard integrated in the aird editor.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common.ui">Changes in 
@@ -199,6 +206,10 @@
 			<code>org.eclipse.sirius</code> 
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> An experimental mode to serialize representations in a different file is available with system property 
+				<code>createRepresentationInSeparateResource=true</code>. That means all new representations will be saved, when this property is enabled, in a separate file with 
+				<code>*.srm</code> extension.
+			</li>
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.business.api.dialect.DialectServices.canCreate(EObject, RepresentationDescription, boolean)</code> has been added to better control the checks done by already existing 
 				<code>org.eclipse.sirius.business.api.dialect.DialectServices.canCreate(EObject, RepresentationDescription)</code> method. The new boolean allow to deactivate the check verifying that the viewpoint of the given description must be activated so the method can return true.
