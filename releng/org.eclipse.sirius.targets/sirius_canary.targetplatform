@@ -5,7 +5,7 @@ include "modules/eef-nightly.tpd"
 
 with source, requirements
 
-location Sirius-Interpreter-Nightly-Neon "http://download.eclipse.org/sirius/updates/nightly/latest/neon/" {
+location Sirius-Interpreter-Nightly-Oxygen "http://download.eclipse.org/sirius/updates/nightly/latest/oxygen/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
@@ -15,7 +15,7 @@ location Eclipse-Oxygen-Integration "http://download.eclipse.org/eclipse/updates
 	org.eclipse.sdk.ide lazy
 }
 
-location Orbit-Recommended "http://download.eclipse.org/modeling/emf/cdo/orbit/latest-R" {
+location Orbit-Recommended "http://download.eclipse.org/tools/orbit/downloads/drops/R20170307180635/repository" {
 	com.google.guava lazy
 	org.junit lazy
 	org.hamcrest.core lazy
@@ -63,15 +63,16 @@ location EMF-Transaction-LastSuccessful "https://ci.eclipse.org/emfservices/job/
 	org.eclipse.emf.transaction.sdk.feature.group lazy
 }
 
-location EEF-1.5 "http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.5/S201412231052/" {
-	org.eclipse.emf.eef.runtime lazy
-}
+include "modules/eef-1.5.tpd"
 
 location Acceleo-LastSuccessful "https://hudson.eclipse.org/acceleo/job/acceleo-master/lastSuccessfulBuild/artifact/releng/org.eclipse.acceleo-updatesite/target/repository/" {
-	org.eclipse.acceleo.feature.group lazy
-	org.eclipse.acceleo.ide.ui lazy
-	org.eclipse.acceleo.query.feature.group lazy
-	org.eclipse.acceleo.query.source.feature.group lazy
+    org.eclipse.acceleo.feature.group lazy
+    org.eclipse.acceleo.ide.ui lazy
+    org.eclipse.acceleo.ui.interpreter.feature.group lazy
+    org.eclipse.acceleo.ui.interpreter.source.feature.group lazy
+    org.eclipse.acceleo.query.feature.group lazy
+    org.eclipse.acceleo.query.source.feature.group lazy
+    org.antlr.runtime [4.3.0,4.4.0)
 }
 
 location EMF-Compare-Nightly "http://download.eclipse.org/modeling/emf/compare/updates/nightly/latest/" {
@@ -82,7 +83,7 @@ location GMF-Notation-LastSuccessful "https://ci.eclipse.org/gmf-runtime/job/gmf
 	org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
 }
 
-location GMF-Runtime-LastSuccessful "https://hudson.eclipse.org/gmf-runtime/job/gmf-runtime-master/lastSuccessfulBuild/artifact/update-site/" {
+location GMF-Runtime-LastSuccessful "https://ci.eclipse.org/gmf-runtime/job/gmf-runtime-master/lastSuccessfulBuild/artifact/update-site/" {
 	org.eclipse.gmf.runtime.sdk.feature.group lazy
 }
 

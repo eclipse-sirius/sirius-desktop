@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_canary" sequenceNumber="1489670805">
+<target name="sirius_canary" sequenceNumber="1496906218">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -16,7 +16,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
-      <repository id="Sirius-Interpreter-Nightly-Neon" location="http://download.eclipse.org/sirius/updates/nightly/latest/neon/"/>
+      <repository id="Sirius-Interpreter-Nightly-Oxygen" location="http://download.eclipse.org/sirius/updates/nightly/latest/oxygen/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.ide" version="0.0.0"/>
@@ -31,7 +31,7 @@
       <unit id="org.hamcrest.library" version="0.0.0"/>
       <unit id="org.apache.log4j" version="0.0.0"/>
       <unit id="org.easymock" version="0.0.0"/>
-      <repository id="Orbit-Recommended" location="http://download.eclipse.org/modeling/emf/cdo/orbit/latest-R"/>
+      <repository id="Orbit-Recommended" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20170307180635/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.draw2d.sdk.feature.group" version="0.0.0"/>
@@ -78,14 +78,17 @@
       <repository id="EMF-Transaction-LastSuccessful" location="https://ci.eclipse.org/emfservices/job/emf-transaction-master/lastSuccessfulBuild/artifact/update-site/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.emf.eef.runtime" version="0.0.0"/>
-      <repository id="EEF-1.5" location="http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.5/S201412231052/"/>
+      <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.1.201601141612"/>
+      <repository id="EEF-1.5" location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.5/R201601141612"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.acceleo.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.acceleo.ide.ui" version="0.0.0"/>
+      <unit id="org.eclipse.acceleo.ui.interpreter.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.acceleo.ui.interpreter.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.acceleo.query.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.acceleo.query.source.feature.group" version="0.0.0"/>
+      <unit id="org.antlr.runtime" version="4.3.0.v201502022030"/>
       <repository id="Acceleo-LastSuccessful" location="https://hudson.eclipse.org/acceleo/job/acceleo-master/lastSuccessfulBuild/artifact/releng/org.eclipse.acceleo-updatesite/target/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
@@ -98,7 +101,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="0.0.0"/>
-      <repository id="GMF-Runtime-LastSuccessful" location="https://hudson.eclipse.org/gmf-runtime/job/gmf-runtime-master/lastSuccessfulBuild/artifact/update-site/"/>
+      <repository id="GMF-Runtime-LastSuccessful" location="https://ci.eclipse.org/gmf-runtime/job/gmf-runtime-master/lastSuccessfulBuild/artifact/update-site/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
