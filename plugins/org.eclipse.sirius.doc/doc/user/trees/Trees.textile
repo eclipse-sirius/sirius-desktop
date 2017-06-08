@@ -43,7 +43,7 @@ There are several ways to activate the edition of a tree item:
 
 Once the edit mode is enabled, simply enter your text and hit _Return_ to validate. The expected format of the edit string and its interpretation depends on how the tree's configuration has been set up to interpret the text you enter.
 
-h2. Tree Items Drag and Drop
+h2(#dragndrop). Tree Items Drag and Drop
 
 Drag and drop is a feature which can be enabled by the specifier in the tree configuration. It is turned off by default.
 
@@ -57,12 +57,12 @@ A quick outline is available with the shortcut @Ctrl@ + @O@. This allows you to 
 
 The star, @*@, is a joker character, allowing you to search with more complicated patterns. Regarding this, an element is found if there is a word in its name or one of its attributes that match with the text in the filter, so if you want to search within words too, add @*@ at the start of your pattern. Also, you can navigate along the matching elements with @↑@ and @↓@, and go to the selected element in your editor with @Enter@.
 
-h2. Overriding tree item height
+h2(#font_override). Overriding Tree Items Font
 
-The tree editor always specify a font height to use when displaying tree items. If this height does not render well on your machine for any reason, you can tell Sirius to use the font height of your environment.
+The tree editor always specify a font and text size to use when displaying tree items. If these do not render well on your machine for any reason, you can tell Sirius to use the default font from your environment instead.
 
 To do so, go to "Window>Preferences". In the preference window: 
-* select the Sirius Tree preferences and check the preference "Always use standard font size".
- !images/runtime_font_height_preference.png!
-* reopen all the tree editors currently opened. The font height used is now your runtime one.
+* select the Sirius Tree preferences and check the preference "Always use standard font".
+ !images/runtime_font_preference.png!
+* reopen all the tree editors currently opened. The font used is now your runtime one.
 

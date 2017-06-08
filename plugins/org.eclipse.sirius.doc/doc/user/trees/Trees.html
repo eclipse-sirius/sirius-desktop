@@ -29,13 +29,13 @@
 						<a href="#editing">Editing Tree Items</a>
 					</li>
 					<li>
-						<a href="#TreeItemsDragandDrop">Tree Items Drag and Drop</a>
+						<a href="#dragndrop">Tree Items Drag and Drop</a>
 					</li>
 					<li>
 						<a href="#quick_outline">Quick Outline</a>
 					</li>
 					<li>
-						<a href="#Overridingtreeitemheight">Overriding tree item height</a>
+						<a href="#font_override">Overriding Tree Items Font</a>
 					</li>
 				</ol>
 			</li>
@@ -88,7 +88,7 @@
 		<p>Once the edit mode is enabled, simply enter your text and hit 
 			<em>Return</em> to validate. The expected format of the edit string and its interpretation depends on how the tree&#8217;s configuration has been set up to interpret the text you enter.
 		</p>
-		<h2 id="TreeItemsDragandDrop">Tree Items Drag and Drop</h2>
+		<h2 id="dragndrop">Tree Items Drag and Drop</h2>
 		<p>Drag and drop is a feature which can be enabled by the specifier in the tree configuration. It is turned off by default.</p>
 		<p>Simply select the Tree Items you would like to drag, and drop them inside an other Tree Item. Most of the time, this will result in the dropped element being added to the new location, but the exact effect of the operation is entirely dependent on how the tree was configured by its specifier.</p>
 		<p>Notice that it may also possible to drag elements from other Eclipse views. Again, this depends on how the tree was configured.</p>
@@ -104,15 +104,15 @@
 			<code>↓</code>, and go to the selected element in your editor with 
 			<code>Enter</code>.
 		</p>
-		<h2 id="Overridingtreeitemheight">Overriding tree item height</h2>
-		<p>The tree editor always specify a font height to use when displaying tree items. If this height does not render well on your machine for any reason, you can tell Sirius to use the font height of your environment.</p>
+		<h2 id="font_override">Overriding Tree Items Font</h2>
+		<p>The tree editor always specify a font and text size to use when displaying tree items. If these do not render well on your machine for any reason, you can tell Sirius to use the default font from your environment instead.</p>
 		<p>To do so, go to &#8220;Window&gt;Preferences&#8221;. In the preference window: </p>
 		<ul>
-			<li>select the Sirius Tree preferences and check the preference &#8220;Always use standard font size&#8221;.</li>
+			<li>select the Sirius Tree preferences and check the preference &#8220;Always use standard font&#8221;.</li>
 		</ul>
-		<img border="0" src="images/runtime_font_height_preference.png"/>
+		<img border="0" src="images/runtime_font_preference.png"/>
 		<ul>
-			<li>reopen all the tree editors currently opened. The font height used is now your runtime one.</li>
+			<li>reopen all the tree editors currently opened. The font used is now your runtime one.</li>
 		</ul>
 	</body>
 </html>

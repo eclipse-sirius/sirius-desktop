@@ -66,8 +66,8 @@ h3. Message Keys Added
 * @org.eclipse.sirius.tree.ui.provider.Messages.EditorRefresh_error@
 * @org.eclipse.sirius.tree.ui.provider.Messages.EditorRefresh_refreshCancelled@
 * @org.eclipse.sirius.tree.ui.provider.Messages.EditorRefresh_treeRefreshError@
-* @org.eclipse.sirius.tree.ui.provider.Messages.SiriusTreePreferencePage_alwaysUseStandardFontSize@
-* @org.eclipse.sirius.tree.ui.provider.Messages.SiriusTreePreferencePage_alwaysUseStandardFontSize_help@
+* @org.eclipse.sirius.tree.ui.provider.Messages.SiriusTreePreferencePage_alwaysUseStandardFont@
+* @org.eclipse.sirius.tree.ui.provider.Messages.SiriusTreePreferencePage_alwaysUseStandardFont_help@
 * @org.eclipse.sirius.tree.ui.provider.Messages.SiriusTreePreferencePage_globalGroupName@
 * @org.eclipse.sirius.ui.editor.Messages.DefaultSessionEditorPage_collapseAllAction_tooltip@
 * @org.eclipse.sirius.ui.editor.Messages.DefaultSessionEditorPage_selectFilterAction_tooltip@

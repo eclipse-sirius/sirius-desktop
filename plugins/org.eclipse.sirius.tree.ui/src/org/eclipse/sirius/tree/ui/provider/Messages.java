@@ -117,13 +117,13 @@ public final class Messages {
     public static String TreeQuickOutlineHandler_quickOutline;
 
     @TranslatableMessage
-    public static String SiriusTreePreferencePage_alwaysUseStandardFontSize;
+    public static String SiriusTreePreferencePage_alwaysUseStandardFont;
 
     @TranslatableMessage
     public static String SiriusTreePreferencePage_globalGroupName;
 
     @TranslatableMessage
-    public static String SiriusTreePreferencePage_alwaysUseStandardFontSize_help;
+    public static String SiriusTreePreferencePage_alwaysUseStandardFont_help;
 
     // CHECKSTYLE:ON
 

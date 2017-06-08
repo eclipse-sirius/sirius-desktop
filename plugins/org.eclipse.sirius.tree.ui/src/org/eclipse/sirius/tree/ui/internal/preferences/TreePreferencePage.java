@@ -51,8 +51,8 @@ public class TreePreferencePage extends FieldEditorPreferencePage implements IWo
     private void addFields(Composite parent) {
         Composite refreshComposite = createGroup(parent, Messages.SiriusTreePreferencePage_globalGroupName);
 
-        alwaysUseStandardFontSize = new BooleanFieldEditorWithHelp(SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE.name(), Messages.SiriusTreePreferencePage_alwaysUseStandardFontSize,
-                Messages.SiriusTreePreferencePage_alwaysUseStandardFontSize_help, new Composite(refreshComposite, SWT.NONE));
+        alwaysUseStandardFontSize = new BooleanFieldEditorWithHelp(SiriusTreeUiPreferencesKeys.PREF_ALWAYS_USE_STANDARD_FONT_SIZE.name(), Messages.SiriusTreePreferencePage_alwaysUseStandardFont,
+                Messages.SiriusTreePreferencePage_alwaysUseStandardFont_help, new Composite(refreshComposite, SWT.NONE));
         addField(alwaysUseStandardFontSize);
     }
 
