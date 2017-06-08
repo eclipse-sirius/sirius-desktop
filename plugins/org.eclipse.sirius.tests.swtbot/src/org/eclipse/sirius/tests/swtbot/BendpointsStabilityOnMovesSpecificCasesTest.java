@@ -207,7 +207,7 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * Test that first point is moved has expected and that draw2d and GMF last
      * points are consistency.
      */
-    public void _testFirstPointConsistency() {
+    public void testFirstPointConsistency() {
         final Point moveDelta = new Point(20, 20);
         AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta);
         testFirstPointConsistency(moveDelta, 0, assertPointLocationFunction);
@@ -218,7 +218,7 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * points are consistency. In this case, the first segment is merged with
      * the second one.
      */
-    public void _testFirstPointConsistencyWithMergeSegment() {
+    public void testFirstPointConsistencyWithMergeSegment() {
         final Point moveDelta = new Point(0, 99);
         AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta) {
             Point otherExpectedPoint;
@@ -262,7 +262,7 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * Test that first point is moved has expected and that draw2d and GMF last
      * points are consistency (when the first segment is inverted).
      */
-    public void _testFirstPointConsistencyWithFirstSegmentInverted() {
+    public void testFirstPointConsistencyWithFirstSegmentInverted() {
         final Point moveDelta = new Point(340, 0);
         AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta) {
             @Override
@@ -305,7 +305,7 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * Test that last point is moved has expected and that draw2d and GMF last
      * points are consistency.
      */
-    public void _testLastPointConsistency() {
+    public void testLastPointConsistency() {
         Point moveDelta = new Point(-20, 50);
         AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta);
         testLastPointConsistency(moveDelta, 0, assertPointLocationFunction);
@@ -316,7 +316,7 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * points are consistency. In this case, the last segment is merged with the
      * previous one.
      */
-    public void _testLastPointConsistencyWithMergeSegment() {
+    public void testLastPointConsistencyWithMergeSegment() {
         Point moveDelta = new Point(0, -139);
         AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta) {
             Point otherExpectedPoint;
@@ -345,7 +345,7 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * Test that last point is moved has expected and that draw2d and GMF last
      * points are consistency (when the last segment is removed).
      */
-    public void _testLastPointConsistencyWithLastSegmentRemoval() {
+    public void testLastPointConsistencyWithLastSegmentRemoval() {
         final Point moveDelta = new Point(-120, 50);
         AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta) {
             @Override
@@ -360,7 +360,7 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * Test that last point is moved has expected and that draw2d and GMF last
      * points are consistency (when the last segment is inverted).
      */
-    public void _testLastPointConsistencyWithLastSegmentInverted() {
+    public void testLastPointConsistencyWithLastSegmentInverted() {
         final Point moveDelta = new Point(-340, 0);
         AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta) {
             @Override
