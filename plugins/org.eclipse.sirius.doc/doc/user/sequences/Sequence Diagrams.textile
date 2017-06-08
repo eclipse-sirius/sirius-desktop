@@ -10,7 +10,7 @@ Sirius supports a special kind of diagrams which reuse the notations and convent
 
   !images/full_sequence_example.png!
 
-These diagrams behave mostly like normal Sirius diagrams, but in order to ensure the consistency of the models they represent, they have some restrictions. They also support some additional features or change the classical behavior of some features.
+These diagrams behave mostly like normal Sirius diagrams, but in order to ensure the consistency of the model they represent, they have some restrictions. They also support some additional features or change the classical behavior of some features.
 
 This document only describes the specificities of sequence diagrams. Unless otherwise stated here, all the features of normal Sirius diagrams apply also to sequence diagrams, so you can refer to "the general diagrams user manual":../diagrams/Diagrams.html for more information.
 
@@ -22,7 +22,7 @@ h2(#semantics). Sequence Diagrams Semantics
 
 As their name says, sequence diagrams are meant to represent ordered sequences of elements. Typically, they represent _events_ sent and received between some entities over _time_. The canonical case is a UML Sequence Diagram (where the notation comes from), which represents the messages exchanged between objects in a software system.
 
-The most important consequence of this is that contrary to what happens on a classical diagram, _the relative graphical positions of elements on a sequence diagram have strong meaning_. This is true for the vertical placement and for the left-to-right order of lifelines. However placing a message above or below another one has a strong implication on the ordering of the events they represent, and thus on the structure of the underlying semantic model which is represented. Sirius works hard to ensure that what you see on you sequence diagram (in terms of vertical ordering of elements and horizontal ordering of lifelines) always correspond to the semantic ordering of the represented events.
+The most important consequence of this is that contrary to what happens on a classical diagram, _the relative graphical positions of elements on a sequence diagram have strong meaning_. This is true for the vertical placement and for the left-to-right order of lifelines. However placing a message above or below another one has a strong implication on the ordering of the events they represent, and thus on the structure of the underlying semantic model which is represented. Sirius works hard to ensure that what you see on your sequence diagram (in terms of vertical ordering of elements and horizontal ordering of lifelines) always correspond to the semantic ordering of the represented events.
 
 This works both ways:
 * Assuming your diagram is synchronized (i.e. you are in _Automatic Refresh_ mode or your manually refreshed it since the last semantic changes), Sirius will always organize the elements on the diagram in a way which is compatible with the semantic ordering of the events: if you see an execution _E1_ placed above another execution _E2_, you can be sure the events corresponding to _E1_ happen before the events of _E2_ in the semantic model.

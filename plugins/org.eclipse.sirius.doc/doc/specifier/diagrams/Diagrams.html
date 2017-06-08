@@ -148,7 +148,7 @@
 			<em>Model Explorer</em>, end-users will be able to create new instances of this diagram on semantic elements of this type (assuming the corresponding viewpoint is enabled in the 
 			<em>Modeling Project</em>). The syntax for the domain class name can be the basic name, like 
 			<code>Package</code>, a qualified name using name of the EMF EPackage which defines the type, like 
-			<code>uml.Package</code>, or a fully qualified URI like 
+			<code>uml::Package</code>, or a fully qualified URI like 
 			<code>http://www.eclipse.org/uml2/3.0.0/UML#//Package</code>.
 		</p>
 		<p>By default, new diagrams can be created on 
@@ -177,20 +177,13 @@
 			<em>Initialization</em> and 
 			<em>Show on startup</em> flags control whether diagram instances are created and/or opened automatically without user intervention. If 
 			<em>Initialization</em> is set, then when the viewpoint which contains this diagram description is enabled, instances of this diagram description will be automatically created on all compatible semantic elements. If 
-			<em>Show on startup</em> in set, then when a modeling project is opened which contains instances of this diagram description, they will be opened: if only one such representation exist, it will be opened automatically; if there are more than one, a dialog box will appear to allow the user to select which one(s) to open. 
+			<em>Show on startup</em> is set, then when a modeling project is opened which contains instances of this diagram description, they will be opened: if only one such representation exist, it will be opened automatically; if there are more than one, a dialog box will appear to allow the user to select which one(s) to open. 
 			<strong>WARNING</strong>: Then 
 			<em>Initialization</em> flag can have a negative impact on performance: if it is set on a given diagram, then when the user enables the viewpoint which defines this diagram Sirius will attempt to find all possible elements in the semantic model on which it may be possible to create such a diagram. This can take a long time on big semantic models.
 		</p>
 		<p>If 
 			<em>Enable Popup Bars</em> flag is set, then when the end-user leaves the mouse pointer still on a diagram (or diagram element) for a small time, a 
 			<em>popup bar</em> will appear with shortcut buttons to all the tools which can be applied in this context. It can be useful to create elements without going to the palette to select tools, but it can also become visually distracting if too many tools are available in the popup bar.
-		</p>
-		<p>The 
-			<em>Reused Mappings</em> and 
-			<em>Reused Tools</em> properties in the 
-			<em>Imports</em> category are depreciated. They should not be used for new diagram descriptions. If you have existing diagram descriptions which use these features (or which contained mappings directly inside the 
-			<em>Diagram Description</em>), these should be moved inside the 
-			<em>Default Layer</em> of the diagram instead.
 		</p>
 		<p>The content of the 
 			<em>Diagram Description</em> is mostly made of 
@@ -418,7 +411,7 @@
 			</li>
 			<li>
 				<em>Unsynchronizable</em>: This is the default. This mode is similar to 
-				<em>Synchronized</em> be default, but hives some control to end-users: if they put the whole diagram in 
+				<em>Synchronized</em> be default, but gives some control to end-users: if they put the whole diagram in 
 				<em>Unsynchronized mode</em> (using the context menu on the diagram), all the diagram&#8217;s mappings which are 
 				<em>Unsynchronizable</em> will behave as if they were 
 				<em>Unsynchronized</em>. They will go back to a 
@@ -595,9 +588,7 @@
 				<code>SQUARE</code> The gauges are aligned in a square, which may not be complete. Gauges are added from left to right in lines, and lines added from top to bottom.
 			</li>
 		</ul>
-		<p>You can specify the gauge composite&#8217;s border color using a color sub-element,
-			<br/>which can be any of:
-		</p>
+		<p>You can specify the gauge composite&#8217;s border color using a color sub-element.</p>
 		<p>Gauge composites need one or more 
 			<strong>Gauge Section</strong>, which represent an individual gauge. Each 
 			<em>Gauge Section</em> has a 
@@ -1062,7 +1053,7 @@
 			<br/>The first edge, the highest one, is oriented to the node&#8217;s center
 		</p>
 		<h4 id="bracket_edge_style">Bracket Edge Style</h4>
-		<p>The bracket edge figure is designed to be drawn from the middle of a node side to the middle of another node side.The user can move the main segment and rotate the figure (horizontal-&gt; vertical or vertical-&gt;horizontal).</p>
+		<p>The bracket edge figure is designed to be drawn from the middle of a node side to the middle of another node side. The user can move the main segment and rotate the figure (horizontal-&gt; vertical or vertical-&gt;horizontal).</p>
 		<p>	
 			<img border="0" src="images/styles/Edge_Style_bracketStyle.png"/>
 		</p>
