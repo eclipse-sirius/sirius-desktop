@@ -41,6 +41,9 @@
       <topic href="doc/user/trees/Trees.html#managing" label="Creating, Renaming and Deleting Trees" />
       <topic href="doc/user/trees/Trees.html#items" label="Adding and Removing Tree Items" />
       <topic href="doc/user/trees/Trees.html#editing" label="Editing Tree Items" />
+      <topic href="doc/user/trees/Trees.html#dragndrop" label="Tree Items Drag and Drop" />
+      <topic href="doc/user/trees/Trees.html#quick_outline" label="Quick Outline" />
+      <topic href="doc/user/trees/Trees.html#font_override" label="Overriding Tree Items Font" />
     </topic>
     <topic href="doc/user/properties/Properties%20View.html" label="Properties Views"/>
     <anchor id="moreUserRefs" />
