@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -100,7 +100,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
         PrecisionRectangle targetBounds = new PrecisionRectangle(GraphicalHelper.getAbsoluteBoundsIn100Percent((IGraphicalEditPart) connectionEditPart.getTarget()));
         boolean isEdgeWithRectilinearRoutingStyle = new ConnectionEditPartQuery(connectionEditPart).isEdgeWithRectilinearRoutingStyle();
         if (sourceMove) {
-            moveFirstSegmentAndRefPointAccordingToSourcetMove(moveDelta, isEdgeWithRectilinearRoutingStyle, sourceBounds, targetBounds, sourceRefPoint, targetRefPoint, connectionPointList);
+            moveFirstSegmentAndRefPointAccordingToSourceMove(moveDelta, isEdgeWithRectilinearRoutingStyle, sourceBounds, targetBounds, sourceRefPoint, targetRefPoint, connectionPointList);
         } else {
             moveLastSegmentAndRefPointAccordingToTargetMove(moveDelta, isEdgeWithRectilinearRoutingStyle, sourceBounds, targetBounds, sourceRefPoint, targetRefPoint, connectionPointList);
         }
@@ -126,7 +126,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
      * @param connectionPointList
      *            The point list to adapt
      */
-    private static void moveFirstSegmentAndRefPointAccordingToSourcetMove(Point moveDelta, boolean isEdgeWithRectilinearRoutingStyle, PrecisionRectangle sourceBounds, PrecisionRectangle targetBounds,
+    private static void moveFirstSegmentAndRefPointAccordingToSourceMove(Point moveDelta, boolean isEdgeWithRectilinearRoutingStyle, PrecisionRectangle sourceBounds, PrecisionRectangle targetBounds,
             Point sourceRefPoint, Point targetRefPoint, PointList connectionPointList) {
         // Move reference point
         sourceRefPoint.performTranslate(moveDelta.x, moveDelta.y);
@@ -145,15 +145,28 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
                 // This code is not needed if the edge has only 2 points.
                 removePointsInViews(connectionPointList, (PrecisionRectangle) sourceBounds.getTranslated(moveDelta), sourceRefPoint, targetBounds, targetRefPoint);
             }
-        } else {
-            // Compute intersection between the line
-            // (tempSourceRefPoint<-->second point) and the source node
-            // 2-Compute intersection
+        } else if (connectionPointList.size() > 2) {
+            // Compute intersection between the line (moved
+            // sourceRefPoint<-->second point) and the source node
             Option<Point> intersectionPoint = GraphicalHelper.getIntersection(sourceRefPoint, connectionPointList.getPoint(1), sourceBounds.getTranslated(moveDelta), false);
             if (intersectionPoint.some()) {
                 connectionPointList.setPoint(intersectionPoint.get(), 0);
             } else {
                 connectionPointList.setPoint(connectionPointList.getPoint(0).translate(moveDelta), 0);
+            }
+        } else {
+            // If the edge has only one segment, we must compute the
+            // intersection between the line (moved
+            // sourceRefPoint<-->targetRefPoint) the source and target nodes
+            Option<Point> sourceIntersectionPoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, sourceBounds.getTranslated(moveDelta), false);
+            if (sourceIntersectionPoint.some()) {
+                connectionPointList.setPoint(sourceIntersectionPoint.get(), 0);
+            } else {
+                connectionPointList.setPoint(connectionPointList.getPoint(0).translate(moveDelta), 0);
+            }
+            Option<Point> targetIntersectionPoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, targetBounds, false);
+            if (targetIntersectionPoint.some()) {
+                connectionPointList.setPoint(targetIntersectionPoint.get(), 1);
             }
         }
     }
@@ -197,10 +210,10 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
                 // This code is not needed if the edge has only 2 points.
                 removePointsInViews(connectionPointList, sourceBounds, sourceRefPoint, (PrecisionRectangle) targetBounds.getTranslated(moveDelta), targetRefPoint);
             }
-        } else {
+        } else if (connectionPointList.size() > 2) {
             // Compute intersection between the line
-            // (tempTargetRefPoint<-->second to last point) and the target node
-            // 2-Compute intersection
+            // (moved targetRefPoint<-->second to last point) and the target
+            // node
             Option<Point> intersectionPoint = GraphicalHelper.getIntersection(targetRefPoint, connectionPointList.getPoint(connectionPointList.size() - 2), targetBounds.getTranslated(moveDelta),
                     false);
             if (intersectionPoint.some()) {
@@ -208,7 +221,20 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
             } else {
                 connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 1).translate(moveDelta), connectionPointList.size() - 1);
             }
-
+        } else {
+            // If the edge has only one segment, we must compute the
+            // intersection between the line (sourceRefPoint<-->moved
+            // targetRefPoint) and the source and target nodes
+            Option<Point> sourceIntersectionPoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, sourceBounds, false);
+            if (sourceIntersectionPoint.some()) {
+                connectionPointList.setPoint(sourceIntersectionPoint.get(), connectionPointList.size() - 2);
+            }
+            Option<Point> targetIntersectionPoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, targetBounds.getTranslated(moveDelta), false);
+            if (targetIntersectionPoint.some()) {
+                connectionPointList.setPoint(targetIntersectionPoint.get(), connectionPointList.size() - 1);
+            } else {
+                connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 1).translate(moveDelta), connectionPointList.size() - 1);
+            }
         }
     }
 
