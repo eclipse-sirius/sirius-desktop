@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -373,6 +373,35 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
 
     /**
      * Test that last point is moved has expected and that draw2d and GMF last
+     * points are consistency when the segment is inverted. In this case, the
+     * first point is also moved.
+     */
+    public void testPointsConsistencyOfObliqueEdgeAfterInversion() {
+        editor.close();
+        SWTBotUtils.waitAllUiEvents();
+        // Open the other testing diagram editor
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Diag3", "newDiag3", DSemanticDiagram.class, true, true);
+
+        final Point moveDelta = new Point(-250, 0);
+        AssertPointLocationFunction assertLastPointLocationFunction = new AssertPointLocationFunction(moveDelta) {
+            @Override
+            public Point getExpectedPoint() {
+                return originalPoint.getTranslated(moveDelta).getTranslated(new Point(movedNodeBounds.width(), 0));
+            }
+        };
+        SWTBotGefEditPart targetEditPart = editor.getEditPart("C1", IAbstractDiagramNodeEditPart.class);
+        final Rectangle nodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) targetEditPart.part());
+        AssertPointLocationFunction assertFirstPointLocationFunction = new AssertPointLocationFunction(moveDelta) {
+            @Override
+            public Point getExpectedPoint() {
+                return originalPoint.getTranslated(new Point(-nodeBounds.width(), 0));
+            }
+        };
+        testLastPointConsistency(moveDelta, 0, assertLastPointLocationFunction, true, assertFirstPointLocationFunction);
+    }
+
+    /**
+     * Test that last point is moved has expected and that draw2d and GMF last
      * points are consistency.
      * 
      * @param moveDelta
@@ -404,6 +433,30 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      *            true if the edge has only two points, false otherwise
      */
     private void testLastPointConsistency(Point moveDelta, int nbGMFPointsDelta, AssertPointLocationFunction assertPointLocationFunction, boolean edgeWithOnly2Points) {
+        testLastPointConsistency(moveDelta, nbGMFPointsDelta, assertPointLocationFunction, edgeWithOnly2Points, null);
+    }
+
+    /**
+     * Test that last point is moved has expected and that draw2d and GMF last
+     * points are consistency.
+     * 
+     * @param moveDelta
+     *            The delta from which the source node will be moved
+     * @param nbGMFPointsDelta
+     *            Number of GMF points that are added (or removed) after the
+     *            move.
+     * @param assertLastPointLocationFunction
+     *            the function to use to check the expected last point location
+     *            after move
+     * @param edgeWithOnly2Points
+     *            true if the edge has only two points, false otherwise
+     * @param assertSecondToLastPointLocationFunction
+     *            the function to use to check the expected first point location
+     *            after move, null if the second to last point is not expected
+     *            to be moved
+     */
+    private void testLastPointConsistency(Point moveDelta, int nbGMFPointsDelta, AssertPointLocationFunction assertLastPointLocationFunction, boolean edgeWithOnly2Points,
+            AssertPointLocationFunction assertSecondToLastPointLocationFunction) {
         String nodeToMoveName = "C2";
         editor.reveal(nodeToMoveName);
         // Step 2: store the previous bendpoints
@@ -421,11 +474,20 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
         assertEquals("Drag as failed: selection should be the same before and after drag.", editPartToMove, editor.selectedEditParts().get(0));
         // Step 4: Check bendpoints
         if (edgeWithOnly2Points) {
-            assertPointLocationFunction.setData(previousPoints.getLastPoint(), previousPoints.getFirstPoint(), nodeBounds);
+            assertLastPointLocationFunction.setData(previousPoints.getLastPoint(), previousPoints.getFirstPoint(), nodeBounds);
+            if (assertSecondToLastPointLocationFunction != null) {
+                assertSecondToLastPointLocationFunction.setData(previousPoints.getFirstPoint(), previousPoints.getLastPoint(), nodeBounds);
+            }
         } else {
-            assertPointLocationFunction.setData(previousPoints.getLastPoint(), previousPoints.getPoint(previousPoints.size() - 3), nodeBounds);
+            assertLastPointLocationFunction.setData(previousPoints.getLastPoint(), previousPoints.getPoint(previousPoints.size() - 3), nodeBounds);
+            if (assertSecondToLastPointLocationFunction != null) {
+                assertSecondToLastPointLocationFunction.setData(previousPoints.getFirstPoint(), previousPoints.getPoint(2), nodeBounds);
+            }
         }
-        compareActualBendpointsWithExpected(editor, connectionEditPart, previousPoints, moveDelta, nodeBounds, false, nbGMFPointsDelta, assertPointLocationFunction);
+        compareActualBendpointsWithExpected(editor, connectionEditPart, previousPoints, moveDelta, nodeBounds, false, nbGMFPointsDelta, assertLastPointLocationFunction);
+        if (assertSecondToLastPointLocationFunction != null) {
+            compareActualBendpointsWithExpected(editor, connectionEditPart, previousPoints, moveDelta, nodeBounds, true, nbGMFPointsDelta, assertSecondToLastPointLocationFunction);
+        }
     }
 
     /**
@@ -438,7 +500,7 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      *            Number of GMF points that are added (or removed) after the
      *            move.
      * @param assertPointLocationFunction
-     *            the function to use to check the expected last point location
+     *            the function to use to check the expected first point location
      *            after move
      */
     private void testFirstPointConsistency(Point moveDelta, int nbGMFPointsDelta, AssertPointLocationFunction assertPointLocationFunction) {
@@ -455,7 +517,7 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      *            Number of GMF points that are added (or removed) after the
      *            move.
      * @param assertPointLocationFunction
-     *            the function to use to check the expected last point location
+     *            the function to use to check the expected first point location
      *            after move
      * @param edgeWithOnly2Points
      *            true if the edge has only two points, false otherwise
