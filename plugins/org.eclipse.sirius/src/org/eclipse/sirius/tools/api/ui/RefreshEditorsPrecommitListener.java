@@ -158,7 +158,8 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
         // DialectEditor interface) */
         Option<? extends Command> result = Options.newNone();
         Collection<DRepresentation> representationsToRefresh = new LinkedHashSet<DRepresentation>();
-        if (isChanged) {
+        // if ForceRefresh is activate and automaticRefresh is disable, only the current diagram is refreshed.
+        if (isChanged && isAutoRefresh()) {
             representationsToRefresh.addAll(RefreshFilterManager.INSTANCE.getOpenedRepresantationsToRefresh());
         }
         representationsToRefresh.addAll(representationsToForceRefresh);

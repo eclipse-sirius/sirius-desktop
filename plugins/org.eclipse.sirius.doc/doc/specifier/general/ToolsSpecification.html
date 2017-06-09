@@ -30,7 +30,7 @@
 		<p>
 			<strong>Force Refresh.</strong> Tools have a 
 			<em>Force Refresh</em> flag. As most tools only perform a local change in the underlying model, by default Sirius will try to optimize its refresh operation (which synchronizes the graphical view with the state of the underlying semantic model) by only refreshing elements of the mappings explicitly associated with the tool. If you know your tool will have side-effects which can change other parts of the diagram, set the 
-			<em>Force Refresh</em> flag to force Sirius to perform a complete refresh of the whole diagram after the tool is executed. This ensures a perfect synchronization of the graphical representation with the state of the underlying model, possibly at the cost of performance and reactivity on big diagrams.
+			<em>Force Refresh</em> flag to force Sirius to perform a complete refresh of the whole diagram after the tool is executed. This ensures a perfect synchronization of the graphical representation with the state of the underlying model, possibly at the cost of performance and reactivity on big diagrams. The refresh will be effective only on the current diagram and not on all opened diagrams.
 		</p>
 		<p>
 			<strong>Selection after tool execution.</strong> The 

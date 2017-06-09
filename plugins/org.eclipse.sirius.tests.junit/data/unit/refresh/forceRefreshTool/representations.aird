@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
+  <viewpoint:DAnalysis xmi:id="_Ms_J0FtMEeebnrt9BUfJZA" selectedViews="_GrHRgFtNEeebnrt9BUfJZA" version="11.1.6.201706261600">
+    <semanticResources>Vp3616.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_GrHRgFtNEeebnrt9BUfJZA">
+      <viewpoint xmi:type="description:Viewpoint" href="Vp3616.odesign#//@ownedViewpoints[name='MyVp3616Viewpoint']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_JGqt8FtNEeebnrt9BUfJZA" name="firstDiag" representation="_JGrVAFtNEeebnrt9BUfJZA">
+        <description xmi:type="description_1:DiagramDescription" href="Vp3616.odesign#//@ownedViewpoints[name='MyVp3616Viewpoint']/@ownedRepresentations[name='PackageDiag']"/>
+        <target xmi:type="ecore:EPackage" href="Vp3616.ecore#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_K6rCMFtNEeebnrt9BUfJZA" name="secondDiag" representation="_K6tecFtNEeebnrt9BUfJZA">
+        <description xmi:type="description_1:DiagramDescription" href="Vp3616.odesign#//@ownedViewpoints[name='MyVp3616Viewpoint']/@ownedRepresentations[name='PackageDiag']"/>
+        <target xmi:type="ecore:EPackage" href="Vp3616.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram xmi:id="_JGrVAFtNEeebnrt9BUfJZA" name="firstDiag">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_JGrVAVtNEeebnrt9BUfJZA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_JGrVAltNEeebnrt9BUfJZA"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_JHLEQFtNEeebnrt9BUfJZA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_JHLEQVtNEeebnrt9BUfJZA" type="Sirius" element="_JGrVAFtNEeebnrt9BUfJZA" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_JHLEQltNEeebnrt9BUfJZA"/>
+      </data>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="Vp3616.odesign#//@ownedViewpoints[name='MyVp3616Viewpoint']/@ownedRepresentations[name='PackageDiag']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_JGrVA1tNEeebnrt9BUfJZA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="Vp3616.odesign#//@ownedViewpoints[name='MyVp3616Viewpoint']/@ownedRepresentations[name='PackageDiag']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="Vp3616.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram xmi:id="_K6tecFtNEeebnrt9BUfJZA" name="secondDiag">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_K6tecVtNEeebnrt9BUfJZA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_K6tecltNEeebnrt9BUfJZA"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_K6uFgFtNEeebnrt9BUfJZA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_K6uFgVtNEeebnrt9BUfJZA" type="Sirius" element="_K6tecFtNEeebnrt9BUfJZA" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_K6uFgltNEeebnrt9BUfJZA"/>
+      </data>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="Vp3616.odesign#//@ownedViewpoints[name='MyVp3616Viewpoint']/@ownedRepresentations[name='PackageDiag']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_K6tec1tNEeebnrt9BUfJZA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="Vp3616.odesign#//@ownedViewpoints[name='MyVp3616Viewpoint']/@ownedRepresentations[name='PackageDiag']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="Vp3616.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

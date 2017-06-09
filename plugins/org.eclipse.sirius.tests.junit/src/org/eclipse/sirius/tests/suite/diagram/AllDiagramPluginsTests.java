@@ -186,6 +186,7 @@ import org.eclipse.sirius.tests.unit.diagram.refresh.DNodeListChildrenReoderingO
 import org.eclipse.sirius.tests.unit.diagram.refresh.DanglingReferencesTest;
 import org.eclipse.sirius.tests.unit.diagram.refresh.DiagramElementMappingHelperTest;
 import org.eclipse.sirius.tests.unit.diagram.refresh.DiagramSynchronizerTest;
+import org.eclipse.sirius.tests.unit.diagram.refresh.ForceRefreshToolTest;
 import org.eclipse.sirius.tests.unit.diagram.refresh.LabelExpressionOnEdgeCreationTest;
 import org.eclipse.sirius.tests.unit.diagram.refresh.MultiMappingImportChainsWithSameSemanticTest;
 import org.eclipse.sirius.tests.unit.diagram.refresh.RefreshToolTipTest;
@@ -385,6 +386,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(DiagramSynchronizerTest.class);
         suite.addTestSuite(DiagramElementMappingHelperTest.class);
         suite.addTestSuite(DNodeListChildrenReoderingOnChildDirectEditTests.class);
+        suite.addTestSuite(ForceRefreshToolTest.class);
         suite.addTestSuite(LabelExpressionOnEdgeCreationTest.class);
         suite.addTestSuite(RefreshToolTipTest.class);
         suite.addTestSuite(DAnalysisModelsUpdateTests.class);
