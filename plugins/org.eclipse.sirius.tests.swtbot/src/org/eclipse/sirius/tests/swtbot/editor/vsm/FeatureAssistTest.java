@@ -37,8 +37,6 @@ public class FeatureAssistTest extends AbstractContentAssistTest {
 
     private static final String COLUMN_MAPPING_NODE = "stubLooseFocus";
 
-    private static final String NODE_NAME = "EPackage";
-
     private static final String GROUP_NAME = "featureTest";
 
     private static final String TABLE_REPRESENTATION_NAME = "featureTestTable";
@@ -138,8 +136,8 @@ public class FeatureAssistTest extends AbstractContentAssistTest {
             semanticCandidateExpressionText.setFocus();
             semanticCandidateExpressionText.setText("");
 
-            // Unfocus the semantic candidate expression and add text to another
-            // text area
+            // Unfocus the semantic candidate expression (to validate it) and
+            // add text to another text area
             final SWTBotText semanticElementText = propertiesBot.bot().text("stubLooseFocus");
             semanticElementText.setFocus();
             semanticElementText.setText(firstTextToSet);
@@ -148,6 +146,10 @@ public class FeatureAssistTest extends AbstractContentAssistTest {
             // content
             semanticCandidateExpressionText.setFocus();
             semanticCandidateExpressionText.setText("");
+            // Unfocus the semantic candidate expression (to validate it) and
+            // focus it again
+            semanticElementText.setFocus();
+            semanticCandidateExpressionText.setFocus();
 
             // Use of content assist
             selectContentAssistProposal(semanticCandidateExpressionText, 0, 0);

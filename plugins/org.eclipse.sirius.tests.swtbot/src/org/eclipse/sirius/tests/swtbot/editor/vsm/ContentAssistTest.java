@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMHelper;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -85,18 +86,32 @@ public class ContentAssistTest extends AbstractContentAssistTest {
             final SWTBotText semanticCandidateExpressionText = propertiesBot.bot().text("feature:eContents");
             semanticCandidateExpressionText.setFocus();
             semanticCandidateExpressionText.setText("aql:self.aa");
-
-            // Unfocus the semantic candidate expression and add text to another
-            // text area
+            // Ensure that
+            // org.eclipse.sirius.editor.editorPlugin.SiriusEditor.SiriusEditor().new
+            // CommandStackListener() {...}.commandStackChanged(EventObject) is
+            // called before continue
+            SWTBotUtils.waitAllUiEvents();
+            // Unfocus the semantic candidate expression (to validate it)
             final SWTBotText semanticElementText = propertiesBot.bot().text("EPackage");
             semanticElementText.setFocus();
-            semanticElementText.setText("EPackage");
+            // Ensure that
+            // org.eclipse.sirius.editor.editorPlugin.SiriusEditor.SiriusEditor().new
+            // CommandStackListener() {...}.commandStackChanged(EventObject) is
+            // called before continue
+            SWTBotUtils.waitAllUiEvents();
 
             // Focus back on the semantic candidate expression and modify its
             // content
             semanticCandidateExpressionText.setFocus();
             semanticCandidateExpressionText.setText("aql:");
+            // Ensure that
+            // org.eclipse.sirius.editor.editorPlugin.SiriusEditor.SiriusEditor().new
+            // CommandStackListener() {...}.commandStackChanged(EventObject) is
+            // called before continue
+            semanticElementText.setFocus();
+            SWTBotUtils.waitAllUiEvents();
 
+            semanticCandidateExpressionText.setFocus();
             String initialText = semanticCandidateExpressionText.getText();
 
             // Use of content assist

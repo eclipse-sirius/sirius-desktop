@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
+import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.allOf;
+import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.widgetOfType;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -18,6 +21,7 @@ import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
@@ -27,8 +31,10 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
+import org.eclipse.swtbot.swt.finder.widgets.SiriusSWTBotTable;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.keys.IBindingService;
+import org.hamcrest.Matcher;
 
 import com.google.common.collect.Lists;
 
@@ -40,8 +46,7 @@ import com.google.common.collect.Lists;
 public abstract class AbstractContentAssistTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
-     * Add the content assist proposal on index indexOfContentAssistProposal to
-     * SWTBotText textToActivateContentAssit.
+     * Add the content assist proposal on index indexOfContentAssistProposal to SWTBotText textToActivateContentAssit.
      * 
      * @param text
      *            text of a property section
@@ -56,24 +61,18 @@ public abstract class AbstractContentAssistTest extends AbstractSiriusSwtBotGefT
         setCursorPosition(text, cursorPosition);
 
         return UIThreadRunnable.syncExec(new Result<String>() {
+            @Override
             public String run() {
                 SWTBotShell contentAssistShell = openContentAssist(text);
-                SWTBotTable contentAssistTable = contentAssistShell.bot().table();
+
+                SWTBot swtBot = contentAssistShell.bot();
+                Matcher matcher = allOf(widgetOfType(Table.class));
+                SiriusSWTBotTable contentAssistTable = new SiriusSWTBotTable((Table) swtBot.widget(matcher, 0), matcher);
 
                 String contentAssistProposalText = contentAssistTable.getTableItem(indexOfContentAssistProposal).getText();
 
-                // Simulate user selection
-                // 1. double click
+                // Simulate user selection by double click
                 contentAssistTable.doubleClick(indexOfContentAssistProposal, 0);
-                contentAssistTable.select(indexOfContentAssistProposal);
-
-                // 2. event
-                Event event = new Event();
-                event.type = SWT.DefaultSelection;
-                event.display = contentAssistTable.getTableItem(indexOfContentAssistProposal).display;
-                event.widget = contentAssistTable.widget;
-                event.item = contentAssistTable.getTableItem(indexOfContentAssistProposal).widget;
-                contentAssistTable.widget.notifyListeners(SWT.DefaultSelection, event);
 
                 return contentAssistProposalText;
             }
@@ -94,6 +93,7 @@ public abstract class AbstractContentAssistTest extends AbstractSiriusSwtBotGefT
         setCursorPosition(text, cursorPosition);
 
         return UIThreadRunnable.syncExec(new Result<Collection<String>>() {
+            @Override
             public Collection<String> run() {
 
                 SWTBotShell contentAssistShell = openContentAssist(text);
@@ -117,6 +117,7 @@ public abstract class AbstractContentAssistTest extends AbstractSiriusSwtBotGefT
      */
     private void setCursorPosition(final SWTBotText text, final int cursorPosition) {
         UIThreadRunnable.syncExec(new VoidResult() {
+            @Override
             public void run() {
                 text.widget.setSelection(cursorPosition);
             }
@@ -129,7 +130,7 @@ public abstract class AbstractContentAssistTest extends AbstractSiriusSwtBotGefT
     private SWTBotShell openContentAssist(final SWTBotText text) {
         final int shellsNumberBeforeContentAssist = bot.shells().length;
 
-        IBindingService bindingService = (IBindingService) PlatformUI.getWorkbench().getService(IBindingService.class);
+        IBindingService bindingService = PlatformUI.getWorkbench().getService(IBindingService.class);
         String binding = bindingService.getActiveBindingsFor("org.eclipse.ui.edit.text.contentAssist.proposals")[0].format();
         KeyStroke keyStroke = null;
         try {
@@ -148,14 +149,17 @@ public abstract class AbstractContentAssistTest extends AbstractSiriusSwtBotGefT
         // Wait the display of the content proposal shell.
         bot.waitUntil(new ICondition() {
 
+            @Override
             public boolean test() throws Exception {
                 return bot.shells().length == shellsNumberBeforeContentAssist + 1;
             }
 
+            @Override
             public void init(SWTBot bot) {
                 // Nothing
             }
 
+            @Override
             public String getFailureMessage() {
                 return "There is not the expected number of shells";
             }
@@ -163,6 +167,7 @@ public abstract class AbstractContentAssistTest extends AbstractSiriusSwtBotGefT
 
         bot.waitUntil(new ICondition() {
 
+            @Override
             public boolean test() throws Exception {
                 int openShells = 0;
                 int visibleShells = 0;
@@ -177,10 +182,12 @@ public abstract class AbstractContentAssistTest extends AbstractSiriusSwtBotGefT
                 return openShells >= 2 && visibleShells >= 2;
             }
 
+            @Override
             public void init(SWTBot bot) {
                 // Nothing
             }
 
+            @Override
             public String getFailureMessage() {
                 return "There is not the expected number of shells";
             }
