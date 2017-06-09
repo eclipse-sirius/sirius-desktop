@@ -454,9 +454,9 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                 IFile airdFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(session.getSessionResource().getURI().toPlatformString(true)));
                 if (airdFile != null) {
                     IProject project = airdFile.getProject();
-                    boolean isRemovableElement = firstElement instanceof EObject || firstElement instanceof Resource;
-                    boolean enableAction = !ModelingProject.hasModelingProjectNature(project);
-                    enableAction = enableAction || (isExternalDependency(firstElement, selection) && isRemovableElement && checkResources(getSemanticResources(Lists.newArrayList(firstElement))));
+                    boolean enableAction = (firstElement instanceof EObject || firstElement instanceof Resource) && !ModelingProject.hasModelingProjectNature(project);
+                    enableAction = enableAction || (isExternalDependency(firstElement, selection));
+                    enableAction = enableAction && checkResources(getSemanticResources(Lists.newArrayList(firstElement)));
                     if (enableAction) {
                         removeSemanticModelOrRepresentationButton.setEnabled(true);
                     } else {
