@@ -13,6 +13,14 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
+						<a href="#sirius5.1.0">Changes in Sirius 5.1.0</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
+							</li>
+						</ol>
+					</li>
+					<li>
 						<a href="#sirius5.0.1">Changes in Sirius 5.0.1</a>
 					</li>
 					<li>
@@ -22,7 +30,7 @@
 								<a href="#UserVisibleChanges">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
@@ -58,7 +66,7 @@
 								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
@@ -72,7 +80,7 @@
 								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
@@ -86,7 +94,7 @@
 								<a href="#UserVisibleChanges6">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges5">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
@@ -99,6 +107,14 @@
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
+		<h2 id="sirius5.1.0">Changes in Sirius 5.1.0</h2>
+		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> In manual refresh mode (
+				<em>Automatic Refresh</em> Sirius preference disabled), when the 
+				<em>Force Refresh</em> option of a tool is enabled in your VSM, only the current representation is refreshed when the tool is applied. Before this version, all open representations were refreshed.
+			</li>
+		</ul>
 		<h2 id="sirius5.0.1">Changes in Sirius 5.0.1</h2>
 		<p>Sirius 5.0.1 is a maintenance release with only bugfixes and small tweaks to the UI of 
 			<a href="user/general/Aird_Editor.html">the aird editor</a>.
@@ -127,7 +143,7 @@
 			</li>
 			<li><span class="label label-info">Modified</span> Decorators on diagram elements are drawn on top of other figures. If there is an overlap between a decorator of a figure A and another figure B that is over figure A, when user clicks on the decorator, the figure B is now selected (before it was the parent figure A).</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to automatically create one or several pre-configured widget(s) in a group if its domain class and if the meta-models of the properties view containing it have been specified. The widget(s) created will be infered from the features in the domain class (e.g. a properly configured 
 				<em>Checkbox</em> widget will be created for boolean attributes).
@@ -802,7 +818,7 @@ SWTBotUtils.waitAllUiEvents();
 				<em>Ctrl+HOME</em>.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to inline a copy of the default Properties Views model inside the VSM. This is a copy of the model Sirius would use if no 
 				<em>Properties View Description</em> was specified. It can be used as a starting point for manual customization, or as a complement for elements for which you do not provide any custom rules. 
@@ -1276,7 +1292,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>Apply Appearance Properties</code> action has been modified to use the last selected element as base style instead of the first one.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Sirius 4.0 introduces 
 				<strong>experimental</strong> support for specifying the properties views of your modelers directly from inside the VSM. This feature uses the same dynamic approach as for specifying diagrams, tables and trees, with a very flexible configuration language and no code generation involved (including live preview of any change). As of Sirius 4.0, this feature should be considered in an experimental state with details subject to changes until Sirius 4.1, and is not installed by default. To install it, make sure either 
@@ -1784,7 +1800,7 @@ SWTBotUtils.waitAllUiEvents();
 				<em>Arrange Linked Border Nodes</em> as it is border nodes which are layouted and not bordered nodes.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges5">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The 
 				<em>Acceleo Query Language</em> (AQL) interpreter has been improved. AQL, and its support in Sirius, is no longer considered experimental, and instead is now the recommended query language to use for new VSMs. Improvements mostly concern better completion and validation, and more precise error reporting. In particular AQL expressions will now be able to display warnings and errors in the Interpreter view. The message displayed in the Interpreter view after an evaluation has also been improved to display the qualified name of the type of the value computed (

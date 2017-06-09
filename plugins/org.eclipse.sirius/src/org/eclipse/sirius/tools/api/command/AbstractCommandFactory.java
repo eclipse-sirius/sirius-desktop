@@ -22,6 +22,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -65,8 +66,7 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.tools.api.command.ICommandFactory#buildCreateRepresentationFromDescription(org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription,
-     *      org.eclipse.sirius.viewpoint.DRepresentationElement,
-     *      java.lang.String)
+     *      org.eclipse.sirius.viewpoint.DRepresentationElement, java.lang.String)
      */
     @Override
     public CreateRepresentationCommand buildCreateRepresentationFromDescription(final RepresentationCreationDescription desc, final DRepresentationElement element, final String newDiagramName) {
@@ -98,13 +98,12 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
     }
 
     /**
-     * Append the refresh representation task if necessary. The refresh task is
-     * appended if the <code>toolDescription.isForceRefresh()</code> is
-     * <code>true</code> or if {@link #autoRefreshView} is <code>true</code>.
+     * Append the refresh representation task if necessary. The refresh task is appended if the
+     * <code>toolDescription.isForceRefresh()</code> is <code>true</code> or if {@link #autoRefreshView} is
+     * <code>true</code>.
      * 
      * @param semanticDecorator
-     *            the semantic decorator whose parent representation should be
-     *            refreshed.
+     *            the semantic decorator whose parent representation should be refreshed.
      * @param result
      *            the command.
      * @param toolDescription
@@ -145,7 +144,13 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
                         // - It could be possible that no editor is opened on it
                         // - The tool should probably made a modification only
                         // in the aird model (and this not launches a refresh)
-                        session.getRefreshEditorsListener().addRepresentationToForceRefresh(representationToRefresh);
+                        if (toolDescription == null) {
+                            for (DRepresentation dRepresentation : RefreshFilterManager.INSTANCE.getOpenedRepresantationsToRefresh()) {
+                                session.getRefreshEditorsListener().addRepresentationToForceRefresh(dRepresentation);
+                            }
+                        } else {
+                            session.getRefreshEditorsListener().addRepresentationToForceRefresh(representationToRefresh);
+                        }
                     }
                 });
             }
@@ -153,13 +158,12 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
     }
 
     /**
-     * Append the refresh representation task if necessary. The refresh task is
-     * appended if the <code>toolDescription.isForceRefresh()</code> is
-     * <code>true</code> or if {@link #autoRefreshView} is <code>true</code>.
+     * Append the refresh representation task if necessary. The refresh task is appended if the
+     * <code>toolDescription.isForceRefresh()</code> is <code>true</code> or if {@link #autoRefreshView} is
+     * <code>true</code>.
      * 
      * @param semanticDecorator
-     *            the semantic decorator whose parent representation should be
-     *            refreshed.
+     *            the semantic decorator whose parent representation should be refreshed.
      * @param result
      *            the command.
      * @param toolDescription
