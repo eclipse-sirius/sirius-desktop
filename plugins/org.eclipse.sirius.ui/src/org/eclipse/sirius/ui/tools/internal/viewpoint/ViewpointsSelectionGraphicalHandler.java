@@ -43,6 +43,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
@@ -334,38 +335,63 @@ public class ViewpointsSelectionGraphicalHandler {
     public void setBrowserInput(final Viewpoint viewpoint) {
 
         /* browser may be null if its creation fail */
-        if (browser != null) {
+        if (browser != null && viewpoint != null) {
             String content = null;
-            if (containsHTMLDocumentation(viewpoint)) {
-                content = getContentWhenHtml(viewpoint);
+            if (containsHTMLDocumentation(viewpoint.getEndUserDocumentation())) {
+                content = getContentWhenHtml(viewpoint.getEndUserDocumentation(), viewpoint.eResource().getURI());
             } else {
-                content = getContentWhenNoHtml(viewpoint);
+                content = getContentWhenNoHtml(viewpoint.getEndUserDocumentation());
             }
             browser.setText(content);
+        } else if (browser != null) {
+            browser.setText("<br><br><center><b>" + Messages.ViewpointsSelectionWizardPage_documentation_title + "</b></center>"); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+    }
+
+    /***
+     * Set the browser input from given representation description. * @param viewpoint the viewpoint to document
+     * 
+     * @param representationDescription
+     *            the representation description to document
+     */
+    public void setBrowserInput(final Viewpoint viewpoint, final RepresentationDescription representationDescription) {
+
+        /* browser may be null if its creation fail */
+        if (browser != null && representationDescription != null && viewpoint != null) {
+            String userDocumentation;
+            if (!StringUtil.isEmpty(representationDescription.getEndUserDocumentation())) {
+                userDocumentation = representationDescription.getEndUserDocumentation();
+            } else {
+                userDocumentation = viewpoint.getEndUserDocumentation();
+            }
+            String content = null;
+            if (containsHTMLDocumentation(userDocumentation)) {
+                content = getContentWhenHtml(userDocumentation, representationDescription.eResource().getURI());
+            } else {
+                content = getContentWhenNoHtml(userDocumentation);
+            }
+            browser.setText(content);
+        } else if (browser != null) {
+            browser.setText("<br><br><center><b>" + Messages.ViewpointsSelectionWizardPage_documentation_title + "</b></center>"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
     /*
      * The following code (HTML handling ) and methods could move to another class.
      */
-    private boolean containsHTMLDocumentation(Viewpoint viewpoint) {
-        if (viewpoint != null) {
-            final String doc = viewpoint.getEndUserDocumentation();
-            if (!StringUtil.isEmpty(doc)) {
-                return doc.startsWith("<html>"); //$NON-NLS-1$
-            }
+    private boolean containsHTMLDocumentation(String endUserDocumentation) {
+        if (!StringUtil.isEmpty(endUserDocumentation)) {
+            return endUserDocumentation.startsWith("<html>"); //$NON-NLS-1$
         }
         return false;
     }
 
-    private String getContentWhenHtml(Viewpoint viewpoint) {
-
-        final String document = viewpoint.getEndUserDocumentation();
+    private String getContentWhenHtml(String endUserDocumentation, URI uri) {
 
         Set<String> urlToRewrite = Sets.newLinkedHashSet();
-        extractUrlToRewrite(document, urlToRewrite);
+        extractUrlToRewrite(endUserDocumentation, urlToRewrite);
 
-        return rewriteURLs(viewpoint, document, urlToRewrite);
+        return rewriteURLs(uri, endUserDocumentation, urlToRewrite);
     }
 
     private void extractUrlToRewrite(String document, Set<String> urlToRewrite) {
@@ -382,12 +408,12 @@ public class ViewpointsSelectionGraphicalHandler {
         }
     }
 
-    private String rewriteURLs(Viewpoint viewpoint, String document, Set<String> urls) {
+    private String rewriteURLs(URI uri, String document, Set<String> urls) {
 
         String newDocument = document;
 
         for (final String url : urls) {
-            newDocument = newDocument.replace(url, rewriteURL(viewpoint, url));
+            newDocument = newDocument.replace(url, rewriteURL(uri, url));
         }
 
         StringBuilder css = new StringBuilder();
@@ -398,8 +424,7 @@ public class ViewpointsSelectionGraphicalHandler {
         return newDocument;
     }
 
-    private String rewriteURL(Viewpoint viewpoint, String url) {
-        final URI uri = viewpoint.eResource().getURI();
+    private String rewriteURL(URI uri, String url) {
         String pluginId = uri.segment(1);
 
         String rewrittenURL = ""; //$NON-NLS-1$
@@ -429,9 +454,9 @@ public class ViewpointsSelectionGraphicalHandler {
         return rewrittenURL;
     }
 
-    private String getContentWhenNoHtml(Viewpoint viewpoint) {
+    private String getContentWhenNoHtml(String endUserDocumentation) {
         StringBuilder content = new StringBuilder();
-        return begin(content).head(content).body(content, viewpoint).end(content);
+        return begin(content).head(content).body(content, endUserDocumentation).end(content);
     }
 
     private ViewpointsSelectionGraphicalHandler begin(StringBuilder content) {
@@ -446,18 +471,13 @@ public class ViewpointsSelectionGraphicalHandler {
         return this;
     }
 
-    private ViewpointsSelectionGraphicalHandler body(StringBuilder content, Viewpoint viewpoint) {
+    private ViewpointsSelectionGraphicalHandler body(StringBuilder content, String endUserDocumentation) {
         content.append("<body>"); //$NON-NLS-1$
 
-        if (viewpoint == null) {
-            content.append("<br><br><center><b>").append(Messages.ViewpointsSelectionWizardPage_documentation_title).append("</b></center>"); //$NON-NLS-1$ //$NON-NLS-2$
+        if (!StringUtil.isEmpty(endUserDocumentation)) {
+            content.append(endUserDocumentation);
         } else {
-            final String endUserDocumentation = viewpoint.getEndUserDocumentation();
-            if (!StringUtil.isEmpty(endUserDocumentation)) {
-                content.append(viewpoint.getEndUserDocumentation());
-            } else {
-                content.append(Messages.ViewpointsSelectionWizardPage_documentation_none);
-            }
+            content.append(Messages.ViewpointsSelectionWizardPage_documentation_none);
         }
         content.append("</body>"); //$NON-NLS-1$
         return this;

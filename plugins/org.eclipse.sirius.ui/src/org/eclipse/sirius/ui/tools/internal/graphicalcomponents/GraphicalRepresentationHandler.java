@@ -1194,11 +1194,13 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                     viewpointsSelectionGraphicalHandler.setBrowserInput(((ViewpointItemImpl) firstElement).getViewpoint());
                 } else if (firstElement instanceof RepresentationDescriptionItemImpl) {
                     RepresentationDescriptionItemImpl representationDescriptionItemImpl = (RepresentationDescriptionItemImpl) firstElement;
-                    viewpointsSelectionGraphicalHandler.setBrowserInput(representationDescriptionItemImpl.getViewpoint());
+                    viewpointsSelectionGraphicalHandler.setBrowserInput(representationDescriptionItemImpl.getViewpoint(),
+                            (RepresentationDescription) representationDescriptionItemImpl.getWrappedObject());
                 } else if (firstElement instanceof RepresentationItemImpl) {
                     RepresentationItemImpl representationItem = (RepresentationItemImpl) firstElement;
                     RepresentationDescriptionItemImpl representationDescriptionItemImpl = (RepresentationDescriptionItemImpl) representationItem.getParent();
-                    viewpointsSelectionGraphicalHandler.setBrowserInput(representationDescriptionItemImpl.getViewpoint());
+                    viewpointsSelectionGraphicalHandler.setBrowserInput(representationDescriptionItemImpl.getViewpoint(),
+                            (RepresentationDescription) representationDescriptionItemImpl.getWrappedObject());
                 }
             }
         }
