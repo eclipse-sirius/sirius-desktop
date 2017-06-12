@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -129,6 +129,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.MigrationLabelBoundsToLoc
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfCollapsedBorderedNodeTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfHideLabelFilterInconsistencyTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationRoutingStyleEndUserOverrideTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.NoteShapeDefaultLabelAlignmentMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.OptionalLayerToAdditionalLayerMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ReferencedModelResourceMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RemoveAcceleoReferencesMigrationTest;
@@ -217,6 +218,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(MigrationFromSirius1_0_0_M5Test.class);
         suite.addTestSuite(ComputedStyleDescriptionCachePackingFileMigrationParticipantTests.class);
         suite.addTestSuite(RgbValuesEDataTypeMigrationTest.class);
+        suite.addTestSuite(NoteShapeDefaultLabelAlignmentMigrationTest.class);
         suite.addTestSuite(ConvertViewpointModelingProjectToSiriusModelingProjectTest.class);
         suite.addTestSuite(FontFormatMigrationTest.class);
         suite.addTestSuite(BorderSizeMigrationTest.class);
