@@ -1275,6 +1275,18 @@ public final class Messages {
     public static String SiriusVisualIDRegistry_parseError;
 
     @TranslatableMessage
+    public static String SnapBackDistantLabelsMigrationParticipant_oneLabelSnapBacked;
+
+    @TranslatableMessage
+    public static String SnapBackDistantLabelsMigrationParticipant_nodesMoved;
+
+    @TranslatableMessage
+    public static String SnapBackDistantLabelsMigrationParticipant_severalLabelsSnapBacked;
+
+    @TranslatableMessage
+    public static String SnapBackDistantLabelsMigrationParticipant_title;
+
+    @TranslatableMessage
     public static String SpecificationMenuContribution_openDefinitionMenuLabel;
 
     @TranslatableMessage

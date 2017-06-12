@@ -145,6 +145,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.RepairWithActivatedFilter
 import org.eclipse.sirius.tests.unit.diagram.migration.RgbValuesEDataTypeMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RunRepairTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SetVersionTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.SnapBackDistantLabelsMigrationTest;
 import org.eclipse.sirius.tests.unit.multipageeditor.SiriusMultiPageEditorTest;
 import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesTest;
 import org.eclipse.sirius.tests.unit.perf.common.Session1MillionTests;
@@ -221,6 +222,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(ComputedStyleDescriptionCachePackingFileMigrationParticipantTests.class);
         suite.addTestSuite(RgbValuesEDataTypeMigrationTest.class);
         suite.addTestSuite(NoteShapeDefaultLabelAlignmentMigrationTest.class);
+        suite.addTestSuite(SnapBackDistantLabelsMigrationTest.class);
         suite.addTestSuite(ConvertViewpointModelingProjectToSiriusModelingProjectTest.class);
         suite.addTestSuite(FontFormatMigrationTest.class);
         suite.addTestSuite(BorderSizeMigrationTest.class);
