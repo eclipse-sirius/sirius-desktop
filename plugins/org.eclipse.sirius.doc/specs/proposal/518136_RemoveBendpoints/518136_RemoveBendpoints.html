@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationRemovebendpointsonrectilinearedges">Sirius Evolution Specification: Remove bend-points on rectilinear edges </h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>: Remove bend-points on rectilinear edges on diagram.
+		</p>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2017-06-12</td>
+				<td>jmallet</td>
+				<td>Initial version.</td>
+			</tr>
+			<tr>
+				<td>v1.0</td>
+				<td>PROPOSAL</td>
+				<td>2017-06-14</td>
+				<td>jmallet</td>
+				<td>Updated version.</td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets</em>:
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=518136">Bugzilla #518136, Enable action to remove bend-points of rectilinear edges</a>
+			</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>The goal of this evolution is to authorize end user to remove bend-points on a rectilinear edge to simplify the edge. The routing of the edge after the execution of the action is detailed just below.</p>
+		<h2 id="Stateoftheexisting">State of the existing</h2>
+		<p>Currently, there is already an action to remove bend-points.
+			<br/>This action has been added with 
+			<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=443108">bugzilla 443108</a>.
+			<br/>It is only available on edges with a &#171;Straight&#187; routing style (see 
+			<a href="https://www.eclipse.org/sirius/doc/user/diagrams/Diagrams.html#RemoveBendpoints">documentation</a> or 
+			<a href="http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/diff/plugins/org.eclipse.sirius.doc/doc/user/diagrams/Diagrams.textile?id=f9e3c2d55727e9f866a9a8e54fc6e5b60d3afc99">corresponding commit</a> ).
+		</p>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<h3 id="Firstapproach">First approach</h3>
+		<p>There exist already a feature called &#171;Closest Distance&#187; in the appearance tab of properties view when edge is selected. This feature routes the edge by choosing the shortest distance.
+			<br/>However, the behavior of our action will not be the same as &#171;Closest Distance&#187;, because this feature has only effect on DrawD2 (interpretation of GMF data to display edge) but not on GMF model. With experience, this is generally a bad idea.
+		</p>
+		<h3 id="MainProposedFix">Main Proposed Fix</h3>
+		<p>To realize this action, the following algorithm is proposed :</p>   1 &#8211; Compute starting (on source) and ending (on target) side according to the intersection between the source (and also the target) and the line from the center of the source and the center of the target.
+		<p>
+			<img border="0" src="images/ComputeStartingEnding.png"/>    
+		</p>   2 &#8211; If the side are both horizontal or vertical, the resulting edge will have 3 segments. The second segment is localized on the middle of the first point and the last point of the edge.
+		<p>
+			<img border="0" src="images/EdgeWithThreeSegments.png"/>
+		</p>   3 &#8211; If the side are not both horizontal or vertical, the resulting edge will have 2 segments. 
+		<p>
+			<img border="0" src="images/EdgeWithTwoSegments.png"/>
+		</p>   4 &#8211; If edge relies border nodes, the resulting edge will follow the two previous rules. Sometimes the resulting edge will cross over its container, there is no avoidance process when the new edge is computing.  
+		<p>
+			<img border="0" src="images/BorderNodeWithSegment.png"/>    
+		</p>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<h3 id="MetamodelChanges">Metamodel Changes</h3>
+		<p>There is no change in metamodel for this evolution.</p>
+		<h3 id="UserInterfaceChanges">User Interface Changes</h3>
+		<p>&#171;Remove Bend-points&#187; action in the contextual menu when user click on a rectililinear edge will be enabled.</p>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<p>Updates:</p>
+		<ul>
+			<li>The user documentation for the &#171;Remove Bend-points&#187; action</li>
+			<li>The release note</li>
+		</ul>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<p>All cases described for rectilinear edge must be tested, i.e. one test where side are both horizontal or vertical, an other where side are not both horizontal or vertical and a last one using border node.</p>
+	</body>
+</html>

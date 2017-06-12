@@ -1,0 +1,71 @@
+h1. Sirius Evolution Specification: Remove bend-points on rectilinear edges 
+
+h2. Preamble
+
+_Summary_: Remove bend-points on rectilinear edges on diagram.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2017-06-12 | jmallet    | Initial version. |
+| v1.0        | PROPOSAL | 2017-06-14 | jmallet    | Updated version. |
+
+_Relevant tickets_:
+* "Bugzilla #518136, Enable action to remove bend-points of rectilinear edges":https://bugs.eclipse.org/bugs/show_bug.cgi?id=518136
+
+h2. Introduction
+
+The goal of this evolution is to authorize end user to remove bend-points on a rectilinear edge to simplify the edge. The routing of the edge after the execution of the action is detailed just below.
+
+h2. State of the existing
+
+Currently, there is already an action to remove bend-points.
+This action has been added with "bugzilla 443108":https://bugs.eclipse.org/bugs/show_bug.cgi?id=443108.
+It is only available on edges with a "Straight" routing style (see "documentation":https://www.eclipse.org/sirius/doc/user/diagrams/Diagrams.html#RemoveBendpoints or "corresponding commit":http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/diff/plugins/org.eclipse.sirius.doc/doc/user/diagrams/Diagrams.textile?id=f9e3c2d55727e9f866a9a8e54fc6e5b60d3afc99 ).
+
+
+h2. Detailed Specification
+
+h3. First approach
+
+There exist already a feature called "Closest Distance" in the appearance tab of properties view when edge is selected. This feature routes the edge by choosing the shortest distance.
+However, the behavior of our action will not be the same as "Closest Distance", because this feature has only effect on DrawD2 (interpretation of GMF data to display edge) but not on GMF model. With experience, this is generally a bad idea.
+
+h3. Main Proposed Fix
+
+To realize this action, the following algorithm is proposed :
+
+    1 - Compute starting (on source) and ending (on target) side according to the intersection between the source (and also the target) and the line from the center of the source and the center of the target.
+    
+!images/ComputeStartingEnding.png!    
+    
+    2 - If the side are both horizontal or vertical, the resulting edge will have 3 segments. The second segment is localized on the middle of the first point and the last point of the edge.
+    
+!images/EdgeWithThreeSegments.png!
+    
+    3 - If the side are not both horizontal or vertical, the resulting edge will have 2 segments. 
+
+!images/EdgeWithTwoSegments.png!
+
+    4 - If edge relies border nodes, the resulting edge will follow the two previous rules. Sometimes the resulting edge will cross over its container, there is no avoidance process when the new edge is computing.  
+    
+!images/BorderNodeWithSegment.png!    
+
+h2. Backward Compatibility and Migration Paths
+
+h3. Metamodel Changes
+
+There is no change in metamodel for this evolution.
+
+h3. User Interface Changes
+
+"Remove Bend-points" action in the contextual menu when user click on a rectililinear edge will be enabled.
+
+h3. Documentation Changes
+
+Updates:
+* The user documentation for the "Remove Bend-points" action
+* The release note
+
+h2. Tests and Non-regression strategy
+
+All cases described for rectilinear edge must be tested, i.e. one test where side are both horizontal or vertical, an other where side are not both horizontal or vertical and a last one using border node.
+
