@@ -105,6 +105,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchSite;
@@ -479,7 +480,15 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                         // Try to select the last affected objects.
                         Command mostRecentCommand = ((CommandStack) event.getSource()).getMostRecentCommand();
                         if (mostRecentCommand != null) {
-                            setSelectionToViewer(mostRecentCommand.getAffectedObjects());
+                            Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
+                            if (!affectedObjects.isEmpty()) {
+                                setSelectionToViewer(affectedObjects);
+                            } else {
+                                Tree tree = treeViewer.getTree();
+                                if (!tree.isDisposed() && tree.getItems().length > 0 && !tree.getItem(0).isDisposed()) {
+                                    setSelectionToViewer(Lists.newArrayList(tree.getItem(0).getData()));
+                                }
+                            }
                             actionBars.updateActionBars();
                         }
                     }
