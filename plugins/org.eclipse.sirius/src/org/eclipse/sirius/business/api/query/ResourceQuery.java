@@ -13,6 +13,7 @@ package org.eclipse.sirius.business.api.query;
 import java.util.Collection;
 import java.util.Optional;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -116,7 +117,8 @@ public class ResourceQuery {
      * @return true if the resource is a representation resource, otherwise false.
      */
     public boolean isSrmResource() {
-        return Optional.ofNullable(resource.getContents().get(0)).filter(DRepresentation.class::isInstance).isPresent();
+        EList<EObject> contents = resource.getContents();
+        return Optional.ofNullable(contents.isEmpty() ? null : resource.getContents().get(0)).filter(DRepresentation.class::isInstance).isPresent();
     }
 
     /**
