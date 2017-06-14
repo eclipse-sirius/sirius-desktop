@@ -24,13 +24,17 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.notation.Bendpoints;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
+import org.eclipse.gmf.runtime.notation.Routing;
+import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.EdgeLabelQuery;
+import org.eclipse.sirius.diagram.ui.tools.internal.routers.RectilinearEdgeUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -47,6 +51,11 @@ import com.google.common.collect.Lists;
  *
  */
 public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void> {
+
+    /**
+     * Relative position for center anchor.
+     */
+    private static final String CENTERED_RELATIVE_POINT = "(0.5,0.5)"; //$NON-NLS-1$
 
     private ConnectionNodeEditPart editPart;
 
@@ -66,7 +75,6 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
         if (model instanceof Edge) {
             Bendpoints bendpoints = ((Edge) model).getBendpoints();
             if (bendpoints instanceof RelativeBendpoints) {
-                ((RelativeBendpoints) bendpoints).setPoints(Lists.newArrayList());
                 computeNewBendpoints();
             }
         }
@@ -75,16 +83,38 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
 
     private void computeNewBendpoints() {
         IFigure figure = editPart.getFigure();
-        if (figure instanceof Connection) {
-            Point absoluteSrcAnchorCoordinates = ((Connection) figure).getSourceAnchor().getReferencePoint();
-            Point absoluteTgtAnchorCoordinates = ((Connection) figure).getTargetAnchor().getReferencePoint();
+        Edge edge = (Edge) editPart.getModel();
+        Bendpoints bendpoints = ((Edge) editPart.getModel()).getBendpoints();
+        RelativeBendpoints relativeBendpoints = (RelativeBendpoints) bendpoints;
+        // Number of bend-points composing the edge before remove action.
+        int originalNbPoint = relativeBendpoints.getPoints().size();
 
-            // convert coordinates into logical coordinates
-            GraphicalHelper.screen2logical(absoluteSrcAnchorCoordinates, editPart);
-            GraphicalHelper.screen2logical(absoluteTgtAnchorCoordinates, editPart);
+        if (figure instanceof Connection) {
+            Point absoluteSrcAnchorCoordinates = null;
+            Point absoluteTgtAnchorCoordinates = null;
 
             Rectangle srcAbsoluteBounds = getFigureBounds(editPart.getSource());
             Rectangle tgtAbsoluteBounds = getFigureBounds(editPart.getTarget());
+
+            EdgeQuery edgeQuery = new EdgeQuery(edge);
+            Routing routingStyle = edgeQuery.getRoutingStyle();
+            // Compute anchor logical coordinates
+            if (Routing.MANUAL_LITERAL.equals(routingStyle)) {
+                absoluteSrcAnchorCoordinates = ((Connection) figure).getSourceAnchor().getReferencePoint();
+                absoluteTgtAnchorCoordinates = ((Connection) figure).getTargetAnchor().getReferencePoint();
+
+                // convert coordinates into logical coordinates
+                GraphicalHelper.screen2logical(absoluteSrcAnchorCoordinates, editPart);
+                GraphicalHelper.screen2logical(absoluteTgtAnchorCoordinates, editPart);
+            } else if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
+                int newX = srcAbsoluteBounds.x + srcAbsoluteBounds.width / 2;
+                int newY = srcAbsoluteBounds.y + srcAbsoluteBounds.height / 2;
+                absoluteSrcAnchorCoordinates = new Point(newX, newY);
+
+                newX = tgtAbsoluteBounds.x + tgtAbsoluteBounds.width / 2;
+                newY = tgtAbsoluteBounds.y + tgtAbsoluteBounds.height / 2;
+                absoluteTgtAnchorCoordinates = new Point(newX, newY);
+            }
 
             // we compute the new bendpoints by computing the intersection
             // points between the source and the target anchors.
@@ -92,8 +122,30 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
                 Option<Point> srcConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, srcAbsoluteBounds, true);
                 Option<Point> tgtConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, tgtAbsoluteBounds, false);
 
-                if (srcConnectionBendpoint.some() && tgtConnectionBendpoint.some()) {
-                    setNewBendpoints(srcConnectionBendpoint.get(), tgtConnectionBendpoint.get(), absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates);
+                Point srcPoint = srcConnectionBendpoint.get();
+                Point tgtPoint = tgtConnectionBendpoint.get();
+                PointList pointList = null;
+                if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
+                    pointList = RectilinearEdgeUtil.computeRectilinearCenteredBendpoints(srcAbsoluteBounds, tgtAbsoluteBounds, srcPoint, tgtPoint);
+                } else {
+                    pointList = new PointList();
+                    pointList.addPoint(srcPoint);
+                    pointList.addPoint(tgtPoint);
+                }
+                if (srcConnectionBendpoint.some() && tgtConnectionBendpoint.some() && originalNbPoint > pointList.size()) {
+                    if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
+                        // Set GMF Anchor on figure center
+                        IdentityAnchor srcAnchor = NotationFactory.eINSTANCE.createIdentityAnchor();
+                        IdentityAnchor tgtAnchor = NotationFactory.eINSTANCE.createIdentityAnchor();
+                        srcAnchor.setId(CENTERED_RELATIVE_POINT);
+                        tgtAnchor.setId(CENTERED_RELATIVE_POINT);
+                        edge.setSourceAnchor(srcAnchor);
+                        edge.setTargetAnchor(tgtAnchor);
+                    }
+                    // Remove bend-points
+                    relativeBendpoints.setPoints(Lists.newArrayList());
+                    // Add new bend-points
+                    setNewBendpoints(pointList, absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates);
                 }
 
             }
@@ -101,12 +153,9 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
 
     }
 
-    private void setNewBendpoints(Point sourceConnection, Point targetConnection, Point absoluteSrcAnchorCoordinates, Point absoluteTgtAnchorCoordinates) {
+    private void setNewBendpoints(PointList pointList, Point absoluteSrcAnchorCoordinates, Point absoluteTgtAnchorCoordinates) {
         Object model = editPart.getModel();
         if (model instanceof Edge) {
-            PointList pointList = new PointList();
-            pointList.addPoint(sourceConnection);
-            pointList.addPoint(targetConnection);
             GMFNotationUtilities.setGMFBendpoints((Edge) model, pointList, absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates);
             // For each label, reset the offset to default
             List<?> children = editPart.getChildren();

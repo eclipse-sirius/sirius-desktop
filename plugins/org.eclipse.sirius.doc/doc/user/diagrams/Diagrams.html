@@ -294,7 +294,9 @@
 			<em>Snap to grid</em>, and unlike to snap for node, there is no guide drawn during the move.
 		</p>
 		<h4 id="RemoveBendpoints">Remove Bend-points</h4>
-		<p>You can define some bend-points (or inflection points) on an edge. It is possible to remove all these bend-points to retrieve the original Straight edge. This action is available within the edge context menu or by using the shortcut &#8220;Ctrl&#8221; + &#8220;Shift&#8221; + &#8220;-&#8221;. This action is only available on edges with a &#8220;Straight&#8221; routing style.</p>
+		<p>You can define some bend-points (or inflection points) on an edge. It is possible to remove bend-points to retrieve simple edge. 
+			<br/>For oblique edges, all bend-points will be removed to retrieve the original Straight edge.
+		</p>
 		<p>The edge state just after its creation:
 			<br/>
 			<img border="0" src="images/beforeBendpoints.png"/>
@@ -307,6 +309,18 @@
 			<br/>
 			<img border="0" src="images/afterRemoveBendpoints.png"/>
 		</p>
+		<p>For rectilinear edges, bend-points will be removed to retrieve a rectilinear edge with source and target connection points centered on the middle of the source or target node appropriate side. One additional  bend-point is inserted if source side and target side are in opposite direction. Two intermediates bend-points are inserted if source side and target side are in the same direction.
+			<br/>If number of bend-points can not be reduced, remove action will be inefficient (for example, case when the rectilinear edge is straight).
+		</p>
+		<p>The rectilinear edge after defining some bend-points:
+			<br/>
+			<img border="0" src="images/rectilinearWithBendpoints.png"/>
+		</p>
+		<p>The user executes the &#8220;Remove Bend-points&#8221; action:
+			<br/>
+			<img border="0" src="images/rectilinearAfterRemoveBendpoints.png"/>
+		</p>
+		<p>This action is available within the edge context menu or by using the shortcut &#8220;Ctrl&#8221; + &#8220;Shift&#8221; + &#8220;-&#8221; and it is not available on edges with a &#8220;Tree&#8221; routing style.</p>
 		<h4 id="straighten_an_edge">Straighten an edge</h4>
 		<p>There are four actions to straighten an edge, i.e. to transform an edge to an horizontal, or vertical, straight edge (with only one starting point and one ending point).
 			<br/>If the edge is connected to a border node, the border node is moved too.

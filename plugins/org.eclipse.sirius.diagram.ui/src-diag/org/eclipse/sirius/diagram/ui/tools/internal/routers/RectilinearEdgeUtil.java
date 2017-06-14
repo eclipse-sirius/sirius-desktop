@@ -15,6 +15,8 @@ package org.eclipse.sirius.diagram.ui.tools.internal.routers;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
 
@@ -27,8 +29,7 @@ import org.eclipse.sirius.diagram.description.CenteringStyle;
 public final class RectilinearEdgeUtil {
 
     /**
-     * The minimal distance between an edge connection and the first bendpoint
-     * to add (if we need to add bendpoints).
+     * The minimal distance between an edge connection and the first bendpoint to add (if we need to add bendpoints).
      */
     private static final int MINIMAL_SEGMENT_SIZE = 20;
 
@@ -40,14 +41,11 @@ public final class RectilinearEdgeUtil {
      * Centers the edge ends of the given rectilinear point list.
      * 
      * @param line
-     *            the point list (in absolute coordinates). We assume this list
-     *            is rectilinear.
+     *            the point list (in absolute coordinates). We assume this list is rectilinear.
      * @param srcRefPoint
-     *            the source anchor absolute location. Must be centered if the
-     *            centering style is BOTH or SOURCE.
+     *            the source anchor absolute location. Must be centered if the centering style is BOTH or SOURCE.
      * @param tgtRefPoint
-     *            the target anchor absolute location. Must be centered if the
-     *            centering style is BOTH or TARGET.
+     *            the target anchor absolute location. Must be centered if the centering style is BOTH or TARGET.
      * @param centeringStyle
      *            the centering style.
      */
@@ -66,14 +64,12 @@ public final class RectilinearEdgeUtil {
     }
 
     /**
-     * Adds transitional bendpoints in the cases where centering one segment
-     * changes the other segment orientation.
+     * Adds transitional bendpoints in the cases where centering one segment changes the other segment orientation.
      * 
      * @param line
      *            the rectilinear edge point list.
      * @param absoluteAnchorCoordinates
-     *            the anchor absolute coordinates where the segment should be
-     *            aligned
+     *            the anchor absolute coordinates where the segment should be aligned
      * @param isFirst
      *            true if it concerns the source or false for the target.
      */
@@ -86,12 +82,10 @@ public final class RectilinearEdgeUtil {
     }
 
     /**
-     * For straight edges, we need to had 2 bendpoints at the middle of the line
-     * to center only one segment at time.
+     * For straight edges, we need to had 2 bendpoints at the middle of the line to center only one segment at time.
      * 
      * @param line
-     *            the current 2 points list. This point list will be modified by
-     *            adding two points in the middle.
+     *            the current 2 points list. This point list will be modified by adding two points in the middle.
      */
     private static void addPointForStraightEdge(PointList line) {
         Point pointToInsert = null;
@@ -111,8 +105,8 @@ public final class RectilinearEdgeUtil {
     }
 
     /**
-     * In the case of an edge with 3 bendpoints (the edge forms a "L"), shifting
-     * one segment could change the other segment connection point.
+     * In the case of an edge with 3 bendpoints (the edge forms a "L"), shifting one segment could change the other
+     * segment connection point.
      * 
      * @param newLine
      *            the edge point list.
@@ -141,15 +135,14 @@ public final class RectilinearEdgeUtil {
     }
 
     /**
-     * Adds two bendpoints on the segment we want to align with the anchor. That
-     * avoids to break the other segment when centering this one. (in case of
-     * edge with 3 bendpoints that means two perpendicular segments).
+     * Adds two bendpoints on the segment we want to align with the anchor. That avoids to break the other segment when
+     * centering this one. (in case of edge with 3 bendpoints that means two perpendicular segments).
      * 
      * @param line
      *            the point list to add new bendpoints.
      * @param isFirst
-     *            true if the first segment is concerned (from the source),
-     *            false for the second one (the last from the target).
+     *            true if the first segment is concerned (from the source), false for the second one (the last from the
+     *            target).
      */
     private static void addPointForLEdge(PointList line, boolean isFirst) {
         LineSeg segment = getSegment(line, isFirst);
@@ -194,8 +187,7 @@ public final class RectilinearEdgeUtil {
      * @param absoluteAnchorCoordinates
      *            the anchor coordinates.
      * @param isFirst
-     *            true to align the first segment (from the source), false to
-     *            align the last one (from the target).
+     *            true to align the first segment (from the source), false to align the last one (from the target).
      */
     private static void alignSegmentTowardAnchor(PointList line, Point absoluteAnchorCoordinates, boolean isFirst) {
         LineSeg segment = getSegment(line, isFirst);
@@ -224,9 +216,8 @@ public final class RectilinearEdgeUtil {
      *            the edge point list.
      * @param isFirst
      *            true to get the first segment, false to get the last one.
-     * @return the segment. The origin point is always the one connected to the
-     *         shape. For the first segment, the origin is the first point, for
-     *         the last segment, the origin is the last point.
+     * @return the segment. The origin point is always the one connected to the shape. For the first segment, the origin
+     *         is the first point, for the last segment, the origin is the last point.
      */
     private static LineSeg getSegment(PointList line, boolean isFirst) {
         if (isFirst) {
@@ -237,10 +228,8 @@ public final class RectilinearEdgeUtil {
     }
 
     /**
-     * From
-     * org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter.
-     * removeRedundantPoints(PointList) Iterates through points of a polyline
-     * and does the following: if 3 points lie on the same line the middle point
+     * From org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter. removeRedundantPoints(PointList)
+     * Iterates through points of a polyline and does the following: if 3 points lie on the same line the middle point
      * is removed
      * 
      * @param line
@@ -274,5 +263,112 @@ public final class RectilinearEdgeUtil {
             line.addAll(newLine);
         }
         return line.size() != initialNumberOfPoints;
+    }
+
+    /**
+     * Compute the point list (in absolute coordinates) composing rectilinear edge. Points are aligned with center of
+     * source or target node side from which the edge is connected.
+     * 
+     * @param srcAbsoluteBounds
+     *            figure bounds of the edge source
+     * @param tgtAbsoluteBounds
+     *            figure bounds of the edge target
+     * @param srcPoint
+     *            source point of the rectilinear edge
+     * @param tgtPoint
+     *            target point of the rectilinear edge
+     * @return the point list (in absolute coordinates) composing rectilinear edge.
+     */
+    public static PointList computeRectilinearCenteredBendpoints(Rectangle srcAbsoluteBounds, Rectangle tgtAbsoluteBounds, Point srcPoint, Point tgtPoint) {
+        PointList pointList = new PointList();
+        // check if source and target side of connection is horizontal
+        LineSeg srcSeg = getBoundSideIntersection(srcPoint, srcAbsoluteBounds);
+        LineSeg tgtSeg = getBoundSideIntersection(tgtPoint, tgtAbsoluteBounds);
+        if (srcSeg != null && tgtSeg != null) {
+            Point middleSrcSegment = getMiddleOfSegment(srcSeg);
+            Point middleTgtSegment = getMiddleOfSegment(tgtSeg);
+            if (srcSeg.isHorizontal()) {
+                srcPoint.setX(middleSrcSegment.x);
+                pointList.addPoint(srcPoint);
+                if (srcPoint.x == tgtPoint.x) {
+                    // edge is vertical
+                    tgtPoint.setX(middleTgtSegment.x);
+                } else if (tgtSeg.isHorizontal()) {
+                    // edge is composed of 3 segments (4 points)
+                    tgtPoint.setX(middleTgtSegment.x);
+                    int middleY = (srcPoint.y + tgtPoint.y) / 2;
+                    pointList.addPoint(new Point(srcPoint.x, middleY));
+                    pointList.addPoint(new Point(tgtPoint.x, middleY));
+                } else {
+                    // edge is composed of 2 segments (3 points)
+                    tgtPoint.setY(middleTgtSegment.y);
+                    pointList.addPoint(new Point(srcPoint.x, tgtPoint.y));
+                }
+                pointList.addPoint(tgtPoint);
+            } else {
+                srcPoint.setY(middleSrcSegment.y);
+                pointList.addPoint(srcPoint);
+                if (srcPoint.y == tgtPoint.y) {
+                    // edge is horizontal
+                    tgtPoint.setY(middleTgtSegment.y);
+                } else if (tgtSeg.isVertical()) {
+                    // edge is composed of 3 segments (4 points)
+                    tgtPoint.setY(middleTgtSegment.y);
+                    int middleX = (srcPoint.x + tgtPoint.x) / 2;
+                    pointList.addPoint(new Point(middleX, srcPoint.y));
+                    pointList.addPoint(new Point(middleX, tgtPoint.y));
+                } else {
+                    // edge is composed of 2 segments (3 points)
+                    tgtPoint.setX(middleTgtSegment.x);
+                    pointList.addPoint(new Point(tgtPoint.x, srcPoint.y));
+                }
+                pointList.addPoint(tgtPoint);
+            }
+        }
+        return pointList;
+    }
+
+    /**
+     * Get the segment of bounds figure which include a given point.
+     * 
+     * @param boundPoint
+     *            point of the figure bounds
+     * @param bounds
+     *            bounds of the figure
+     * @return the segment of bounds figure which include a given point.
+     */
+    private static LineSeg getBoundSideIntersection(Point boundPoint, Rectangle bounds) {
+        LineSeg seg = null;
+        if (boundPoint != null && bounds != null) {
+            Point topLeftCorner = new Point(bounds.x, bounds.y);
+            Point topRightCorner = new Point(bounds.x + bounds.width, bounds.y);
+            Point btmLeftCorner = new Point(bounds.x, bounds.y + bounds.height);
+            Point btmRightCorner = new Point(bounds.x + bounds.width, bounds.y + bounds.height);
+            if (bounds.x == boundPoint.x) {
+                seg = new LineSeg(topLeftCorner, btmLeftCorner);
+            } else if (bounds.x + bounds.width == boundPoint.x) {
+                seg = new LineSeg(topRightCorner, btmRightCorner);
+            } else if (bounds.y == boundPoint.y) {
+                seg = new LineSeg(topLeftCorner, topRightCorner);
+            } else if (bounds.y + bounds.height == boundPoint.y) {
+                seg = new LineSeg(btmLeftCorner, btmRightCorner);
+            }
+        }
+        return seg;
+    }
+
+    /**
+     * Get the middle point of a given segment.
+     * 
+     * @param segment
+     *            segment to determine the middle
+     * @return the middle of the segment.
+     */
+    private static Point getMiddleOfSegment(LineSeg segment) {
+        if (segment != null) {
+            return new PrecisionPoint((segment.getOrigin().x + segment.getTerminus().x) * 0.5d, (segment.getOrigin().y + segment.getTerminus().y) * 0.5d);
+        } else {
+            return null;
+        }
     }
 }

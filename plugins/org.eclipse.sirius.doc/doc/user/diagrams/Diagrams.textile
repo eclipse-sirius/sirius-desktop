@@ -130,7 +130,8 @@ It is possible to snap the bend-points to all shapes by pressing <kdb>F4</kdb> s
 
 h4. Remove Bend-points
 
-You can define some bend-points (or inflection points) on an edge. It is possible to remove all these bend-points to retrieve the original Straight edge. This action is available within the edge context menu or by using the shortcut "Ctrl" + "Shift" + "-". This action is only available on edges with a "Straight" routing style.
+You can define some bend-points (or inflection points) on an edge. It is possible to remove bend-points to retrieve simple edge. 
+For oblique edges, all bend-points will be removed to retrieve the original Straight edge.
 
 The edge state just after its creation:
 !images/beforeBendpoints.png!
@@ -140,6 +141,17 @@ The user defines some bend-points:
 
 The user executes the "Remove Bend-points" action:
 !images/afterRemoveBendpoints.png!
+
+For rectilinear edges, bend-points will be removed to retrieve a rectilinear edge with source and target connection points centered on the middle of the source or target node appropriate side. One additional  bend-point is inserted if source side and target side are in opposite direction. Two intermediates bend-points are inserted if source side and target side are in the same direction.
+If number of bend-points can not be reduced, remove action will be inefficient (for example, case when the rectilinear edge is straight).
+
+The rectilinear edge after defining some bend-points:
+!images/rectilinearWithBendpoints.png!
+
+The user executes the "Remove Bend-points" action:
+!images/rectilinearAfterRemoveBendpoints.png!
+
+This action is available within the edge context menu or by using the shortcut "Ctrl" + "Shift" + "-" and it is not available on edges with a "Tree" routing style.
 
 h4(#straighten_an_edge). Straighten an edge
 

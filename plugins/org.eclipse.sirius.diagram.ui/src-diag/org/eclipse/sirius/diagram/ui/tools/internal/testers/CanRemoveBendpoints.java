@@ -31,7 +31,7 @@ public class CanRemoveBendpoints extends PropertyTester {
             Object model = ((ConnectionNodeEditPart) receiver).getModel();
             if (model instanceof Edge) {
                 EdgeQuery edgeQuery = new EdgeQuery((Edge) model);
-                return edgeQuery.isEdgeWithObliqueRoutingStyle();
+                return edgeQuery.isEdgeWithObliqueRoutingStyle() || edgeQuery.isEdgeWithRectilinearRoutingStyle();
             }
         }
         return false;

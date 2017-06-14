@@ -16,6 +16,9 @@
 						<a href="#sirius5.1.0">Changes in Sirius 5.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
+								<a href="#UserVisibleChanges">User-Visible Changes</a>
+							</li>
+							<li>
 								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
 							</li>
 							<li>
@@ -30,7 +33,7 @@
 						<a href="#sirius5.0.0">Changes in Sirius 5.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges">User-Visible Changes</a>
+								<a href="#UserVisibleChanges2">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
@@ -44,7 +47,7 @@
 						<a href="#sirius4.1.2">Changes in Sirius 4.1.2</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges2">User-Visible Changes</a>
+								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
@@ -55,7 +58,7 @@
 						<a href="#sirius4.1.1">Changes in Sirius 4.1.1</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges3">User-Visible Changes</a>
+								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
@@ -66,7 +69,7 @@
 						<a href="#sirius4.1.0">Changes in Sirius 4.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges4">User-Visible Changes</a>
+								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
@@ -80,7 +83,7 @@
 						<a href="#sirius4.0.0">Changes in Sirius 4.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges5">User-Visible Changes</a>
+								<a href="#UserVisibleChanges6">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
@@ -94,7 +97,7 @@
 						<a href="#sirius3.1.0">Changes in Sirius 3.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges6">User-Visible Changes</a>
+								<a href="#UserVisibleChanges7">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges5">Specifier-Visible Changes</a>
@@ -111,6 +114,12 @@
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
 		<h2 id="sirius5.1.0">Changes in Sirius 5.1.0</h2>
+		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Added</span> The end user can now 
+				<a href="user/diagrams/Diagrams.html#RemoveBendpoints">remove all bend-points</a> on rectilinear edges. It was only possible on oblique edges before. This action is available on edge context menu &#8220;Remove Bend-points&#8221; or by using the shortcut &#8220;Ctrl&#8221; + &#8220;Shift&#8221; + &#8220;-&#8221;. If number of bend-points can not be reduced, remove action will be inefficient. 
+			</li>
+		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> An 
@@ -149,7 +158,7 @@
 			<a href="user/general/Aird_Editor.html">the aird editor</a>.
 		</p>
 		<h2 id="sirius5.0.0">Changes in Sirius 5.0.0</h2>
-		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> An new 
 				<em>aird editor</em> is available on 
@@ -739,7 +748,7 @@ SWTBotUtils.waitAllUiEvents();
 
 </pre>
 		<h2 id="sirius4.1.2">Changes in Sirius 4.1.2</h2>
-		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new preference named 
 				<em>Maximum size of tabs name</em> is available in the Sirius Properties View preference page. This preference is used to shorten the tabs names when the default rules are used to render the properties view.
@@ -779,7 +788,7 @@ SWTBotUtils.waitAllUiEvents();
 			<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping.addFormatData(FormatDataKey, RepresentationElementMapping, AbstractFormatData)</code> to better handle copy/paste format cases.
 		</p>
 		<h2 id="sirius4.1.1">Changes in Sirius 4.1.1</h2>
-		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span>The &#8220;straighten to&#8221; actions were previously disabled when an edge is connected to border nodes that have several edges. It is now allowed.</li>
 		</ul>
@@ -790,7 +799,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 		</ul>
 		<h2 id="sirius4.1.0">Changes in Sirius 4.1.0</h2>
-		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Copy/Paste Layout has been completed with Copy/Paste Style and Copy/Paste Format. 
 				<em>Paste Format</em> is equivalent to paste 
@@ -1308,7 +1317,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 		</ul>
 		<h2 id="sirius4.0.0">Changes in Sirius 4.0.0</h2>
-		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges6">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> The user can now filter elements according to a Typed variable (String, Integer, EEnum or any EDataType). If a user applies a filter containing Typed Variables, a dialog is displayed to allow user entering the Typed Variable values. That values can be used as variables in the Condition Expression of the Variable Filter.</li>
 			<li><span class="label label-success">Added</span> When the diagram is larger than the editor, you can move it in all directions pressing the middle-button and dragging the mouse (keeping the button pressed).</li>
@@ -1797,7 +1806,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 		</ul>
 		<h2 id="sirius3.1.0">Changes in Sirius 3.1.0</h2>
-		<h3 id="UserVisibleChanges6">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges7">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new feature allows to snap to all shapes (instead of just to snap to sibling shapes). The <kdb>F4</kdb> shortcut key activates this mode when you resize a node, move a node or move a bendpoint of an edge, see 
 				<a href="./user/diagrams/Diagrams.html#snap_to_shapes">the documentation</a> for details.

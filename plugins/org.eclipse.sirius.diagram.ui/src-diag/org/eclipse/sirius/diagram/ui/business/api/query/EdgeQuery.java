@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -176,11 +176,8 @@ public class EdgeQuery {
      */
     public boolean isEdgeWithTreeRoutingStyle() {
         boolean isEdgeTreeRoutingStyle = false;
-        ConnectorStyle connectorStyle = getConnectorStyle();
-        if (connectorStyle != null) {
-            if (Routing.TREE_LITERAL.getLiteral().equals(connectorStyle.getRouting().getLiteral())) {
-                isEdgeTreeRoutingStyle = true;
-            }
+        if (Routing.TREE_LITERAL.equals(getRoutingStyle())) {
+            isEdgeTreeRoutingStyle = true;
         }
         return isEdgeTreeRoutingStyle;
     }
@@ -192,11 +189,8 @@ public class EdgeQuery {
      */
     public boolean isEdgeWithRectilinearRoutingStyle() {
         boolean isEdgeRectilinearRoutingStyle = false;
-        ConnectorStyle connectorStyle = getConnectorStyle();
-        if (connectorStyle != null) {
-            if (Routing.RECTILINEAR_LITERAL.getLiteral().equals(connectorStyle.getRouting().getLiteral())) {
-                isEdgeRectilinearRoutingStyle = true;
-            }
+        if (Routing.RECTILINEAR_LITERAL.equals(getRoutingStyle())) {
+            isEdgeRectilinearRoutingStyle = true;
         }
         return isEdgeRectilinearRoutingStyle;
     }
@@ -208,13 +202,23 @@ public class EdgeQuery {
      */
     public boolean isEdgeWithObliqueRoutingStyle() {
         boolean isEdgeObliqueRoutingStyle = false;
-        ConnectorStyle connectorStyle = getConnectorStyle();
-        if (connectorStyle != null) {
-            if (Routing.MANUAL_LITERAL.getLiteral().equals(connectorStyle.getRouting().getLiteral())) {
-                isEdgeObliqueRoutingStyle = true;
-            }
+        if (Routing.MANUAL_LITERAL.equals(getRoutingStyle())) {
+            isEdgeObliqueRoutingStyle = true;
         }
         return isEdgeObliqueRoutingStyle;
+    }
+
+    /**
+     * Get the routing style of the current edge.
+     * 
+     * @return the routing style of the current edge.
+     */
+    public Routing getRoutingStyle() {
+        ConnectorStyle connectorStyle = getConnectorStyle();
+        if (connectorStyle != null) {
+            return connectorStyle.getRouting();
+        }
+        return null;
     }
 
     private ConnectorStyle getConnectorStyle() {
