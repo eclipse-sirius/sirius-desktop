@@ -140,21 +140,6 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     }
 
     @Override
-    public Collection<DRepresentation> getRepresentations(EObject semantic, Session session) {
-        return getRepresentations(session, CustomDataConstants.DREPRESENTATION, semantic);
-    }
-
-    @Override
-    public Collection<DRepresentation> getAllRepresentations(Session session) {
-        return getRepresentations(session, CustomDataConstants.DREPRESENTATION, null);
-    }
-
-    @Override
-    public Collection<DRepresentation> getRepresentations(RepresentationDescription representationDescription, Session session) {
-        return getRepresentations(session, CustomDataConstants.DREPRESENTATION_FROM_DESCRIPTION, representationDescription);
-    }
-
-    @Override
     public boolean canRefresh(DRepresentation representation) {
         return isSupported(representation) && areRequiredViewpointsSelected(representation);
     }
@@ -277,29 +262,6 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
             Iterables.addAll(result, getAvailableRepresentationDescriptions(vp, semantic));
         }
         return result;
-    }
-
-    /**
-     * Finds all the supported representations in a session which have the specified key/value pair in their custom
-     * data.
-     * 
-     * @param session
-     *            the session in which to look for representations.
-     * @param key
-     *            the key to look for in the representations' custom data.
-     * @param value
-     *            the value associated to the key in the representations' custom data.
-     * @return all the supported representations in a session which have the specified key/value pair in their custom
-     *         data.
-     */
-    protected Collection<DRepresentation> getRepresentations(Session session, String key, EObject value) {
-        Collection<DRepresentation> reps = Lists.newArrayList();
-        for (EObject representation : session.getServices().getCustomData(key, value)) {
-            if (representation instanceof DRepresentation && isSupported((DRepresentation) representation)) {
-                reps.add((DRepresentation) representation);
-            }
-        }
-        return reps;
     }
 
     /**

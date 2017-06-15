@@ -15,6 +15,7 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.dialect.DialectManagerImpl;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
@@ -88,4 +89,37 @@ public interface DialectManager extends DialectServices {
      * @return the list of representation descriptors.
      */
     Collection<DRepresentationDescriptor> getRepresentationDescriptors(RepresentationDescription representationDescription, Session session);
+
+    /**
+     * Return the representations, of the given session, whose target is the given {@code semantic}.</br>
+     * This methods will load all the targeted representations.
+     * 
+     * @param semantic
+     *            targeted semantic element.
+     * @param session
+     *            the current session.
+     * @return the list of representations.
+     */
+    Collection<DRepresentation> getRepresentations(EObject semantic, Session session);
+
+    /**
+     * Return all the representations of the given session.</br>
+     * This methods will load all the representations.
+     * 
+     * @param session
+     *            the current session.
+     * @return the list of representations.
+     */
+    Collection<DRepresentation> getAllRepresentations(Session session);
+
+    /**
+     * Return the representations, of the given session, from a description.
+     * 
+     * @param representationDescription
+     *            the representation description instance
+     * @param session
+     *            the current session.
+     * @return the list of representations.
+     */
+    Collection<DRepresentation> getRepresentations(RepresentationDescription representationDescription, Session session);
 }

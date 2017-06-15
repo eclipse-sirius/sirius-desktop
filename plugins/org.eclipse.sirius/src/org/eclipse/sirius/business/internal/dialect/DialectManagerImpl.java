@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -244,15 +245,13 @@ public class DialectManagerImpl implements DialectManager {
 
     @Override
     public synchronized Collection<DRepresentation> getRepresentations(final EObject semantic, final Session session) {
+        Collection<DRepresentation> reps = null;
         if (semantic != null) {
-            return findAllRepresentations(semantic, session);
+            reps = findAllRepresentations(semantic, session);
         } else {
-            final Collection<DRepresentation> reps = new ArrayList<DRepresentation>();
-            for (final Dialect dialect : dialects.values()) {
-                reps.addAll(dialect.getServices().getRepresentations(semantic, session));
-            }
-            return reps;
+            reps = getAllRepresentations(session);
         }
+        return reps;
     }
 
     private Collection<DRepresentation> findAllRepresentations(EObject semantic, Session session) {
@@ -268,19 +267,14 @@ public class DialectManagerImpl implements DialectManager {
 
     @Override
     public Collection<DRepresentation> getRepresentations(final RepresentationDescription representationDescription, final Session session) {
-        final Collection<DRepresentation> reps = new ArrayList<DRepresentation>();
-        for (final Dialect dialect : dialects.values()) {
-            reps.addAll(dialect.getServices().getRepresentations(representationDescription, session));
-        }
+        Collection<DRepresentation> reps = getRepresentationDescriptors(representationDescription, session).stream().map(repDesc -> repDesc.getRepresentation()).filter(Objects::nonNull)
+                .collect(Collectors.toList());
         return reps;
     }
 
     @Override
     public Collection<DRepresentation> getAllRepresentations(final Session session) {
-        final Collection<DRepresentation> reps = new ArrayList<DRepresentation>();
-        for (final Dialect dialect : dialects.values()) {
-            reps.addAll(dialect.getServices().getAllRepresentations(session));
-        }
+        Collection<DRepresentation> reps = getAllRepresentationDescriptors(session).stream().map(repDesc -> repDesc.getRepresentation()).filter(Objects::nonNull).collect(Collectors.toList());
         return reps;
     }
 

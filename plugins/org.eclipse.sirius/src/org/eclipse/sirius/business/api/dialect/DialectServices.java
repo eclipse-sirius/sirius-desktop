@@ -85,37 +85,6 @@ public interface DialectServices {
     DRepresentation copyRepresentation(DRepresentation representation, String name, Session session, IProgressMonitor monitor);
 
     /**
-     * Return the representations provided by the dialect.
-     * 
-     * @param semantic
-     *            targeted semantic element.
-     * @param session
-     *            the current session.
-     * @return the list of representations contributed by this dialect.
-     */
-    Collection<DRepresentation> getRepresentations(EObject semantic, Session session);
-
-    /**
-     * Return all the representations provided by the dialect.
-     * 
-     * @param session
-     *            the current session.
-     * @return the list of representations contributed by this dialect.
-     */
-    Collection<DRepresentation> getAllRepresentations(Session session);
-
-    /**
-     * Return the representations provided by the dialect from a description.
-     * 
-     * @param representationDescription
-     *            the representation description instance
-     * @param session
-     *            the current session.
-     * @return the list of representations contributed by this dialect.
-     */
-    Collection<DRepresentation> getRepresentations(RepresentationDescription representationDescription, Session session);
-
-    /**
      * Refresh the actual representation description used for the specified representation when the context changes.
      * 
      * @param representation
