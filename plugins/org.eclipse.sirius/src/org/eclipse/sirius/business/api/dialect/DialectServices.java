@@ -116,37 +116,6 @@ public interface DialectServices {
     Collection<DRepresentation> getRepresentations(RepresentationDescription representationDescription, Session session);
 
     /**
-     * Return the representation descriptors provided by the dialect.
-     * 
-     * @param semantic
-     *            targeted semantic element.
-     * @param session
-     *            the current session.
-     * @return the list of representation descriptors contributed by this dialect.
-     */
-    Collection<DRepresentationDescriptor> getRepresentationDescriptors(EObject semantic, Session session);
-
-    /**
-     * Return all the representation descriptors provided by the dialect.
-     * 
-     * @param session
-     *            the current session.
-     * @return the list of representation descriptors contributed by this dialect.
-     */
-    Collection<DRepresentationDescriptor> getAllRepresentationDescriptors(Session session);
-
-    /**
-     * Return the representation descriptors provided by the dialect from a description.
-     * 
-     * @param representationDescription
-     *            the representation description instance
-     * @param session
-     *            the current session.
-     * @return the list of representation descriptors contributed by this dialect.
-     */
-    Collection<DRepresentationDescriptor> getRepresentationDescriptors(RepresentationDescription representationDescription, Session session);
-
-    /**
      * Refresh the actual representation description used for the specified representation when the context changes.
      * 
      * @param representation
@@ -208,7 +177,7 @@ public interface DialectServices {
      * @see DialectServices#getRequiredViewpoints(DRepresentation)
      */
     boolean canRefresh(DRepresentation representation);
-    
+
     /**
      * Tell whether the dialect is able to create a representation from the given representation description and the
      * semantic object.

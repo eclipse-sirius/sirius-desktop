@@ -138,12 +138,8 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
             datas.addAll(getGMFDiagramsData(associatedInstance, resources));
         } else if (CustomDataConstants.DREPRESENTATION.equals(key)) {
             datas = getRepresentationData(associatedInstance, analysisAndReferenced);
-        } else if (CustomDataConstants.DREPRESENTATION_DESCRIPTOR.equals(key)) {
-            datas = getRepresentationDescriptorData(associatedInstance, analysisAndReferenced);
         } else if (CustomDataConstants.DREPRESENTATION_FROM_DESCRIPTION.equals(key)) {
             datas = getRepresentationFromDescData(associatedInstance, analysisAndReferenced);
-        } else if (CustomDataConstants.DREPRESENTATION_DESCRIPTOR_FROM_DESCRIPTION.equals(key)) {
-            datas = getRepresentationDescriptorsFromDescData(associatedInstance, analysisAndReferenced);
         } else if (CustomDataConstants.DFEATUREEXTENSION.equals(key)) {
             datas = getFeatureExtensionsData(associatedInstance, resources);
         } else {
@@ -209,46 +205,6 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         return runnable.getResult();
     }
 
-    private Collection<EObject> getRepresentationDescriptorData(final EObject associatedInstance, final Collection<DAnalysis> analysisAndReferenced) {
-        RunnableWithResult<Collection<EObject>> runnable = new RunnableWithResult.Impl<Collection<EObject>>() {
-            @Override
-            public void run() {
-                Collection<EObject> datas = new ArrayList<EObject>();
-                for (DAnalysis analysis : analysisAndReferenced) {
-                    for (final DView view : analysis.getOwnedViews()) {
-                        final Iterator<DRepresentationDescriptor> it = view.getOwnedRepresentationDescriptors().iterator();
-                        while (it.hasNext()) {
-                            final DRepresentationDescriptor rep = it.next();
-                            final EObject element = rep.getTarget();
-                            if (element != null && element == associatedInstance) {
-                                datas.add(rep);
-                            } else if (associatedInstance == null) {
-                                datas.add(rep);
-                            }
-                        }
-                    }
-                }
-                setResult(datas);
-            }
-
-        };
-        if (associatedInstance != null) {
-            TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(associatedInstance);
-            if (domain != null) {
-                try {
-                    TransactionUtil.runExclusive(domain, runnable);
-                } catch (InterruptedException e) {
-                    SiriusPlugin.getDefault().error(e.getLocalizedMessage(), e);
-                }
-            } else {
-                runnable.run();
-            }
-        } else {
-            runnable.run();
-        }
-        return runnable.getResult();
-    }
-
     private Collection<EObject> getRepresentationFromDescData(final EObject associatedInstance, Collection<DAnalysis> analysisAndReferenced) {
         final Collection<EObject> datas = Lists.newArrayList();
         for (DAnalysis analysis : analysisAndReferenced) {
@@ -259,23 +215,6 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
                     final RepresentationDescription currentRepresentationDescription = DialectManager.INSTANCE.getDescription(rep);
                     if (EqualityHelper.areEquals(currentRepresentationDescription, associatedInstance)) {
                         datas.add(rep);
-                    }
-                }
-            }
-        }
-        return datas;
-    }
-
-    private Collection<EObject> getRepresentationDescriptorsFromDescData(final EObject repDescription, Collection<DAnalysis> analysisAndReferenced) {
-        final Collection<EObject> datas = Lists.newArrayList();
-        for (DAnalysis analysis : analysisAndReferenced) {
-            for (final DView view : analysis.getOwnedViews()) {
-                final Iterator<DRepresentationDescriptor> it = view.getOwnedRepresentationDescriptors().iterator();
-                while (it.hasNext()) {
-                    final DRepresentationDescriptor repDesc = it.next();
-                    final RepresentationDescription currentRepresentationDescription = repDesc.getDescription();
-                    if (EqualityHelper.areEquals(currentRepresentationDescription, repDescription)) {
-                        datas.add(repDesc);
                     }
                 }
             }

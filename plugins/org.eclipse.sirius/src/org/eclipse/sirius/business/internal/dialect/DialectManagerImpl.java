@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
@@ -35,8 +35,10 @@ import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressio
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -284,13 +286,11 @@ public class DialectManagerImpl implements DialectManager {
 
     @Override
     public Collection<DRepresentationDescriptor> getRepresentationDescriptors(EObject semantic, Session session) {
-        final Collection<DRepresentationDescriptor> repDescriptors = new ArrayList<DRepresentationDescriptor>();
+        Collection<DRepresentationDescriptor> repDescriptors = null;
         if (semantic != null) {
-            return findAllRepresentationDescriptors(semantic, session);
+            repDescriptors = findAllRepresentationDescriptors(semantic, session);
         } else {
-            for (final Dialect dialect : dialects.values()) {
-                repDescriptors.addAll(dialect.getServices().getRepresentationDescriptors(semantic, session));
-            }
+            repDescriptors = getAllRepresentationDescriptors(session);
         }
         return repDescriptors;
     }
@@ -309,20 +309,21 @@ public class DialectManagerImpl implements DialectManager {
 
     @Override
     public Collection<DRepresentationDescriptor> getAllRepresentationDescriptors(Session session) {
-        final Collection<DRepresentationDescriptor> reps = new ArrayList<DRepresentationDescriptor>();
-        for (final Dialect dialect : dialects.values()) {
-            reps.addAll(dialect.getServices().getAllRepresentationDescriptors(session));
+        List<DRepresentationDescriptor> foundRepDescs = new ArrayList<>();
+        if (session instanceof DAnalysisSession) {
+            foundRepDescs = ((DAnalysisSession) session).allAnalyses().stream().flatMap(a -> a.getOwnedViews().stream()).flatMap(v -> v.getOwnedRepresentationDescriptors().stream())
+                    .collect(Collectors.toList());
         }
-        return reps;
+        return foundRepDescs;
     }
 
     @Override
     public Collection<DRepresentationDescriptor> getRepresentationDescriptors(RepresentationDescription representationDescription, Session session) {
-        final Collection<DRepresentationDescriptor> reps = new LinkedHashSet<DRepresentationDescriptor>();
-        for (final Dialect dialect : dialects.values()) {
-            reps.addAll(dialect.getServices().getRepresentationDescriptors(representationDescription, session));
-        }
-        return reps;
+
+        List<DRepresentationDescriptor> repDescriptors = getAllRepresentationDescriptors(session).stream().filter(repDesc -> {
+            return EqualityHelper.areEquals(repDesc.getDescription(), representationDescription);
+        }).collect(Collectors.toList());
+        return repDescriptors;
     }
 
     @Override

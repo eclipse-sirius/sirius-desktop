@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -155,24 +155,6 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     }
 
     @Override
-    public Collection<DRepresentationDescriptor> getRepresentationDescriptors(EObject semantic, Session session) {
-        return getRepresentationDescriptors(session, CustomDataConstants.DREPRESENTATION_DESCRIPTOR, semantic);
-    }
-
-    @Override
-    public Collection<DRepresentationDescriptor> getAllRepresentationDescriptors(Session session) {
-        return getRepresentationDescriptors(session, CustomDataConstants.DREPRESENTATION_DESCRIPTOR, null);
-    }
-
-    @Override
-    public Collection<DRepresentationDescriptor> getRepresentationDescriptors(RepresentationDescription representationDescription, Session session) {
-        return getRepresentationDescriptors(session, CustomDataConstants.DREPRESENTATION_DESCRIPTOR_FROM_DESCRIPTION, representationDescription);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public boolean canRefresh(DRepresentation representation) {
         return isSupported(representation) && areRequiredViewpointsSelected(representation);
     }
@@ -315,29 +297,6 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
         for (EObject representation : session.getServices().getCustomData(key, value)) {
             if (representation instanceof DRepresentation && isSupported((DRepresentation) representation)) {
                 reps.add((DRepresentation) representation);
-            }
-        }
-        return reps;
-    }
-
-    /**
-     * Finds all the supported representation descriptors in a session which have the specified key/value pair in their
-     * custom data.
-     * 
-     * @param session
-     *            the session in which to look for representation descriptors.
-     * @param key
-     *            the key to look for in the representation descriptors' custom data.
-     * @param value
-     *            the value associated to the key in the representation descriptors's custom data.
-     * @return all the supported representation descriptors in a session which have the specified key/value pair in
-     *         their custom data.
-     */
-    protected Collection<DRepresentationDescriptor> getRepresentationDescriptors(Session session, String key, EObject value) {
-        Collection<DRepresentationDescriptor> reps = Lists.newArrayList();
-        for (EObject repDescriptor : session.getServices().getCustomData(key, value)) {
-            if (repDescriptor instanceof DRepresentationDescriptor && isSupported(((DRepresentationDescriptor) repDescriptor).getRepresentation())) {
-                reps.add((DRepresentationDescriptor) repDescriptor);
             }
         }
         return reps;

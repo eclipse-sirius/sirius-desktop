@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,10 +10,17 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.dialect;
 
+import java.util.Collection;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.dialect.DialectManagerImpl;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
- * Instance managing the dialects.
+ * Instance managing the dialects. </br>
+ * This interface must not be implemented by clients.
  * 
  * @author cbrun
  * 
@@ -49,4 +56,36 @@ public interface DialectManager extends DialectServices {
      *            dialect to disable.
      */
     void disableDialect(Dialect dialect);
+
+    /**
+     * Return the representations, of the given session, whose target is the given {@code semantic}.</br>
+     * This methods will load all the targeted representations.
+     * 
+     * @param semantic
+     *            targeted semantic element.
+     * @param session
+     *            the current session.
+     * @return the list of representation descriptors.
+     */
+    Collection<DRepresentationDescriptor> getRepresentationDescriptors(EObject semantic, Session session);
+
+    /**
+     * Return all the representations of the given session.</br>
+     * 
+     * @param session
+     *            the current session.
+     * @return the list of representation descriptors.
+     */
+    Collection<DRepresentationDescriptor> getAllRepresentationDescriptors(Session session);
+
+    /**
+     * Return the representations, of the given session, from a description.
+     * 
+     * @param representationDescription
+     *            the representation description instance
+     * @param session
+     *            the current session.
+     * @return the list of representation descriptors.
+     */
+    Collection<DRepresentationDescriptor> getRepresentationDescriptors(RepresentationDescription representationDescription, Session session);
 }
