@@ -1173,6 +1173,13 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 }
             }
 
+            // We initialize the cross referencer and put it as adapter of this session before initializing local
+            // triggers to be sure that RepresentationChangedAdapter will always be after the cross referencer in
+            // adapted objects. It avoids refreshing the Model Explorer listening to the RCA before updating the cross
+            // referencer with new created representations. And thus missing the new created representation under its
+            // associated model element when refreshing Model Explorer.
+            registerResourceInCrossReferencer(sessionResource);
+
             DViewOperations.on(this).updateSelectedViewpointsData(new SubProgressMonitor(monitor, 10));
             initLocalTriggers();
 
