@@ -1023,6 +1023,10 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
      * Dispose all listeners.
      */
     public void dispose() {
+        if (siriusCommonContentModelProvider != null) {
+            siriusCommonContentModelProvider.dispose();
+        }
+        siriusCommonContentModelProvider = null;
         treeViewer.removeSelectionChangedListener(selectionChangeListener);
         SessionManager.INSTANCE.removeSessionsListener(this);
         if (session != null && session.getTransactionalEditingDomain() != null) {
@@ -1033,7 +1037,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         session = null;
         treeViewer = null;
         manageSessionActionProvider = null;
-        siriusCommonContentModelProvider = null;
         if (menuManager != null) {
             menuManager.dispose();
         }

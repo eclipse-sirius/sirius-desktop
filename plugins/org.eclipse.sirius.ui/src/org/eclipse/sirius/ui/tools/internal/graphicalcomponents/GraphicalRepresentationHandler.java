@@ -1009,6 +1009,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
      * Dispose all listeners.
      */
     public void dispose() {
+        siriusCommonContentProvider.dispose();
         SessionManager.INSTANCE.removeSessionsListener(this);
         if (session != null && session.getTransactionalEditingDomain() != null) {
             session.getTransactionalEditingDomain().removeResourceSetListener(refreshViewerOnChangeResourceSetListener);
