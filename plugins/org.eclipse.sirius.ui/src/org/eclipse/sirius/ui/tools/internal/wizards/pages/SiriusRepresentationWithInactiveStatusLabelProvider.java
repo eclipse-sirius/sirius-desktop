@@ -15,6 +15,7 @@ import java.text.MessageFormat;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationDescriptionItemImpl;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointItemImpl;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.graphics.Color;
@@ -33,12 +34,14 @@ public class SiriusRepresentationWithInactiveStatusLabelProvider extends SiriusR
         // the session of the current opened editor.
         Color result = null;
         if (element instanceof ViewpointItemImpl) {
-
             ViewpointItemImpl viewpointItem = (ViewpointItemImpl) element;
-
             if (!ViewpointHelper.isViewpointEnabledInSession(viewpointItem.getSession().get(), viewpointItem.getViewpoint())) {
                 result = VisualBindingManager.getDefault().getColorFromName("gray"); //$NON-NLS-1$
             }
+        } else if (element instanceof RepresentationDescriptionItemImpl) {
+            result = getForeground(((RepresentationDescriptionItemImpl) element).getParent());
+        } else if (element instanceof RepresentationItemImpl) {
+            result = getForeground(((RepresentationItemImpl) element).getParent());
         }
         if (result == null) {
             result = super.getForeground(element);
