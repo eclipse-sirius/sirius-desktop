@@ -263,7 +263,17 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         edgeLabelExpectedPosition.put("refToC1BEnd", DELTA_TO_COMPUTE_FROM_RATIO);
         doTestMoveNodesOnlyMovesFirstOrLastBendpoint(diagramDescriptionName, diagramName, Lists.newArrayList(new Point(50, -200)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "C1B");
 
-        if (!failures.isEmpty()) {
+        logFailures();
+    }
+
+    /**
+     * Log the failures if <code>failures</code> is not empty.
+     * 
+     * @throws AssertionFailedError
+     *             In case of problem
+     */
+	protected void logFailures() throws AssertionFailedError {
+		if (!failures.isEmpty()) {
             String message = "";
             for (AssertionFailedError assertion : failures) {
                 message = message + "\n" + assertion.getMessage();
@@ -271,7 +281,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
 
             throw new AssertionFailedError(failures.size() + " failures found : " + message);
         }
-    }
+	}
 
     /**
      * Ensures that when moving the source/target node of the edge, the labels
@@ -373,14 +383,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         edgeLabelExpectedPosition.put("refToBEnd", new Dimension(0, 0));
         doTestMoveNodesOnlyMovesFirstOrLastBendpoint(DIAGRAM_DESCRIPTION_NAME, diagramName, Lists.newArrayList(new Point(350, 0)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, true, "A");
 
-        if (!failures.isEmpty()) {
-            String message = "";
-            for (AssertionFailedError assertion : failures) {
-                message = message + "\n" + assertion.getMessage();
-            }
-
-            throw new AssertionFailedError(failures.size() + " failures found : " + message);
-        }
+        logFailures();
     }
 
     /**
@@ -425,14 +428,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         edgeLabelExpectedPosition.put("refToFBegin", new Dimension(0, 0));
         doTestMoveSegment(DIAGRAM_DESCRIPTION_NAME, diagramName, Lists.newArrayList(new Point(20, 0)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "E", "F", 1);
 
-        if (!failures.isEmpty()) {
-            String message = "";
-            for (AssertionFailedError assertion : failures) {
-                message = message + "\n" + assertion.getMessage();
-            }
-
-            throw new AssertionFailedError(failures.size() + " failures found : " + message);
-        }
+        logFailures();
     }
 
     /**
@@ -451,14 +447,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         doTestMoveSegment(DIAGRAM_DESCRIPTION_NAME, diagramName, Lists.newArrayList(new Point(0, 20), new Point(0, -10), new Point(0, -40)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "C1A",
                 "C1B", 2);
 
-        if (!failures.isEmpty()) {
-            String message = "";
-            for (AssertionFailedError assertion : failures) {
-                message = message + "\n" + assertion.getMessage();
-            }
-
-            throw new AssertionFailedError(failures.size() + " failures found : " + message);
-        }
+        logFailures();
     }
 
     /**
@@ -525,14 +514,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         edgeLabelExpectedPosition.put("refToBCenter", DELTA_TO_COMPUTE_FROM_RATIO);
         doTestMovePointOnEdge(diagramName, Lists.newArrayList(new Point(0, 33)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "A", "B", 1);
 
-        if (!failures.isEmpty()) {
-            String message = "";
-            for (AssertionFailedError assertion : failures) {
-                message = message + "\n" + assertion.getMessage();
-            }
-
-            throw new AssertionFailedError(failures.size() + " failures found : " + message);
-        }
+        logFailures();
     }
 
     /**
@@ -578,14 +560,46 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         edgeLabelExpectedPosition.put("refToDCenter", DELTA_TO_COMPUTE_FROM_RATIO);
         doTestMoveNodesOnlyMovesFirstOrLastBendpoint(DIAGRAM_DESCRIPTION_NAME, diagramName, Lists.newArrayList(new Point(-50, 0)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, false, "D");
 
-        if (!failures.isEmpty()) {
-            String message = "";
-            for (AssertionFailedError assertion : failures) {
-                message = message + "\n" + assertion.getMessage();
-            }
+        logFailures();
+    }
 
-            throw new AssertionFailedError(failures.size() + " failures found : " + message);
-        }
+
+    /**
+     * Ensures that when moving the source/target node of the edge, the labels
+     * of this edges are correctly located in various configuration (zoom level,
+     * scroll bars, initial position of the label, node move style, ...). This
+     * method corresponds to a specific case where a bug has been detected
+     * (short path for the only one segment and a label outside of the segment).
+     */
+    public void testLabelStabilityWhenMovingNodeOfObliqueEdgeWithShortSegmentPath() {
+        // There are two nodes connected by an edge with 3 segments with
+        // OBLIQUE STYLE
+        String diagramName = "DiagramWithSmallObliqueEdge";
+        Map<String, Dimension> edgeLabelExpectedPosition = Maps.newLinkedHashMap();
+
+        // If the edge is moved "away", the label is "reseted" to its default
+        // location. This case corresponds to an old ratio less than 0 or more
+        // than 1 (label outside of the edge) and the new ratio is higher than
+        // the old.
+        edgeLabelExpectedPosition.put("toMCenter", DELTA_TO_COMPUTE_FROM_STANDARD);
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(DIAGRAM_DESCRIPTION_NAME, diagramName, Lists.newArrayList(new Point(700, 250)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, true, "L");
+
+        // Same as above but more closer
+        edgeLabelExpectedPosition.clear();
+        edgeLabelExpectedPosition.put("toMCenter", DELTA_TO_COMPUTE_FROM_STANDARD);
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(DIAGRAM_DESCRIPTION_NAME, diagramName, Lists.newArrayList(new Point(-150, 150)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, true, "L");
+
+        // Same as above but with same old ratio on new segment
+        edgeLabelExpectedPosition.clear();
+        edgeLabelExpectedPosition.put("toMCenter", DELTA_TO_COMPUTE_FROM_RATIO);
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(DIAGRAM_DESCRIPTION_NAME, diagramName, Lists.newArrayList(new Point(-150, 125)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, true, "L");
+
+        // If the edge is "reverted" on the same line, the ratio is applied.
+        edgeLabelExpectedPosition.clear();
+        edgeLabelExpectedPosition.put("toMCenter", DELTA_TO_COMPUTE_FROM_INVERTED_RATIO);
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(DIAGRAM_DESCRIPTION_NAME, diagramName, Lists.newArrayList(new Point(-300, 0)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, true, "L");
+
+        logFailures();
     }
 
     /**
@@ -661,14 +675,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         diagramEditor.close();
         SWTBotUtils.waitAllUiEvents();
 
-        if (!failures.isEmpty()) {
-            String message = "";
-            for (AssertionFailedError assertion : failures) {
-                message = message + "\n" + assertion.getMessage();
-            }
-
-            throw new AssertionFailedError(failures.size() + " failures found : " + message);
-        }
+        logFailures();
     }
 
     /**
@@ -710,27 +717,23 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         edgeLabelExpectedPosition.put("refToBCenter", new Dimension(0, 0));
         doTestMoveSegment(DIAGRAM_DESCRIPTION_NAME, diagramName, Lists.newArrayList(new Point(0, -100)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "A", "B", 2, false);
 
-        if (!failures.isEmpty()) {
-            String message = "";
-            for (AssertionFailedError assertion : failures) {
-                message = message + "\n" + assertion.getMessage();
-            }
-
-            throw new AssertionFailedError(failures.size() + " failures found : " + message);
-        }
+        logFailures();
     }
 
     /**
      * Ensures that by dragging or arranging edit parts with the given names,
      * bendpoints are moved as expected.
      *
+     * @param diagramDescriptionName
+     *            diagram description name
      * @param diagramName
      *            diagram name
-     * @param routingStylesToTest
-     *            used to determine on which diagram(s) we should perform this
-     *            test
      * @param moveDeltas
      *            all the move deltas to use for dragging elements.
+     * @param edgeLabelDeltas
+     *            The expected move delta for each label. The constants
+     *            DELTA_TO* can be used instead of a precise mode delta. In this
+     *            case, the delta is computed dynamically.
      * @param zoomLevel
      *            the {@link ZoomLevel} to use for this test
      * @param nodesToMove
@@ -745,20 +748,23 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
      * Ensures that by dragging or arranging edit parts with the given names,
      * bendpoints are moved as expected.
      *
+     * @param diagramDescriptionName
+     *            diagram description name
      * @param diagramName
      *            diagram name
-     * @param routingStylesToTest
-     *            used to determine on which diagram(s) we should perform this
-     *            test
      * @param moveDeltas
      *            all the move deltas to use for dragging elements.
+     * @param edgeLabelDeltas
+     *            The expected move delta for each label. The constants
+     *            DELTA_TO* can be used instead of a precise mode delta. In this
+     *            case, the delta is computed dynamically.
      * @param zoomLevel
      *            the {@link ZoomLevel} to use for this test
-     * @param nodesToMove
-     *            name of the Edit parts to move
      * @param isToleranceAccepted
      *            true if the expected point can be imprecise (this is the case
      *            for oblique edges)
+     * @param nodesToMove
+     *            name of the Edit parts to move
      */
     private void doTestMoveNodesOnlyMovesFirstOrLastBendpoint(String diagramDescriptionName, String diagramName, Collection<Point> moveDeltas, Map<String, Dimension> edgeLabelDeltas,
             ZoomLevel zoomLevel, boolean isToleranceAccepted, String... nodesToMove) {
@@ -961,7 +967,7 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
             } else if (!DELTA_TO_COMPUTE_FROM_RATIO.equals(expectedDelta) && !DELTA_TO_COMPUTE_FROM_INVERTED_RATIO.equals(expectedDelta)
                     && !DELTA_TO_COMPUTE_FROM_ROTATED_RATIO.equals(expectedDelta)) {
                 // Normal case, translated by delta
-                Point expectedLabelPosition = initialLabelLocation.getTranslated(labelNameToDelta.getValue());
+            	Point expectedLabelPosition = initialLabelLocation.getTranslated(expectedDelta);
                 expectedLabelPositions.put(labelNameToDelta.getKey(), new LabelPositionData(expectedLabelPosition));
             } else {
                 // Compute ratio of current reference point
@@ -994,6 +1000,33 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         return expectedLabelPositions;
     }
 
+    /**
+     * Ensures that when moving the source and the target node of the edge, the
+     * labels of this edges are correctly located in various configuration (zoom
+     * level, scrollbars, initial position of the label, node move style, ...).
+     */
+    public void testLabelStabilityWhenMovingNodeOfTreeEdge() {
+        // There are two nodes connected by an edge with 3 segments with
+        // TREE STYLE
+        String diagramName = "DiagWithNodeAndTreeLayoutAndIconOnEdgeLabel";
+        Map<String, Dimension> edgeLabelExpectedPosition = Maps.newLinkedHashMap();
+        edgeLabelExpectedPosition.put("superTypesOf K11", new Dimension(-2150, 225));
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(diagramName, diagramName, Lists.newArrayList(new Point(-2150, 225)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, true, "K1", "K11");
+        edgeLabelExpectedPosition.clear();
+        edgeLabelExpectedPosition.put("superTypesOf K11", new Dimension(-2144, 224));
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(diagramName, diagramName, Lists.newArrayList(new Point(-536, 56)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_25, true, "K1", "K11");
+
+        diagramName = "DiagWithNodeAndTreeLayout";
+        edgeLabelExpectedPosition.clear();
+        edgeLabelExpectedPosition.put("superTypesOf K11", new Dimension(-2150, 225));
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(diagramName, diagramName, Lists.newArrayList(new Point(-2150, 225)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, true, "K1", "K11");
+        edgeLabelExpectedPosition.clear();
+        edgeLabelExpectedPosition.put("superTypesOf K11", new Dimension(-2144, 224));
+        doTestMoveNodesOnlyMovesFirstOrLastBendpoint(diagramName, diagramName, Lists.newArrayList(new Point(-536, 56)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_25, true, "K1", "K11");
+
+        logFailures();
+    }
+    
     /**
      * Class containing data to retrieve label location. Either:
      * <UL>
