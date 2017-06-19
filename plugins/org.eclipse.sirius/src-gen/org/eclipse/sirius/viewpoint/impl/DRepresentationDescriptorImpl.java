@@ -234,12 +234,13 @@ public class DRepresentationDescriptorImpl extends DModelElementImpl implements 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     public DRepresentation getRepresentation() {
-        DRepresentation representation = basicGetRepresentation();
-        return representation != null && representation.eIsProxy() ? (DRepresentation) eResolveProxy((InternalEObject) representation) : representation;
+        DRepresentationDescriptorToDRepresentationLinkManager pathManager = new DRepresentationDescriptorToDRepresentationLinkManager(this);
+        Optional<DRepresentation> representation = pathManager.getRepresentation(true);
+        return representation.orElse(null);
     }
 
     /**

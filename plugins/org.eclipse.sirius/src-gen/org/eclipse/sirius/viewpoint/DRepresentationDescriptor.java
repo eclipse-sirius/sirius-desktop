@@ -124,6 +124,17 @@ public interface DRepresentationDescriptor extends DModelElement {
     DRepresentation getRepresentation();
 
     /**
+     * Tells if the representation associated this {@link DRepresentationDescriptor} is loaded.</br>
+     * Knowing that {@code getRepresentation} will load the representation, the method is useful for client that would
+     * implement the representation lazy loading.
+     * 
+     * @return true if the representation is loaded.
+     */
+    default boolean isLoadedRepresentation() {
+        return eIsSet(ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Representation());
+    }
+
+    /**
      * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getRepresentation
      * <em>Representation</em>}' reference. <!-- begin-user-doc -->If the newRepresentation value is not null, the
      * newRepresentation.eResource must not be null.<!-- end-user-doc -->
@@ -142,7 +153,6 @@ public interface DRepresentationDescriptor extends DModelElement {
      * @param representation
      *            the {@link DRepresentation} to update path.
      */
-
     default void updateRepresentation(DRepresentation representation) {
         Optional.ofNullable(representation).ifPresent(rep -> Assert.isNotNull(rep.eResource()));
         DRepresentationDescriptorToDRepresentationLinkManager pathManager = new DRepresentationDescriptorToDRepresentationLinkManager(this);
