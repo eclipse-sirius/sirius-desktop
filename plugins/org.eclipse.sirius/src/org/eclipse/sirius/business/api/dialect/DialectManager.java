@@ -103,6 +103,19 @@ public interface DialectManager extends DialectServices {
     Collection<DRepresentation> getRepresentations(EObject semantic, Session session);
 
     /**
+     * Return the representations, of the given session, whose target is the given {@code semantic}. If {@code semantic}
+     * is null, this methods acts as {@code getAllLoadedRepresentations(Session)}</br>
+     * This methods will return ONLY the representations that are loaded.
+     * 
+     * @param semantic
+     *            targeted semantic element.
+     * @param session
+     *            the current session.
+     * @return the non null list of representations.
+     */
+    Collection<DRepresentation> getLoadedRepresentations(EObject semantic, Session session);
+
+    /**
      * Return all the representations of the given session.</br>
      * This methods will load all the representations.
      * 
@@ -111,6 +124,16 @@ public interface DialectManager extends DialectServices {
      * @return the list of representations.
      */
     Collection<DRepresentation> getAllRepresentations(Session session);
+
+    /**
+     * Return all the representations of the given session.</br>
+     * This methods will return ONLY the representations that are loaded.
+     * 
+     * @param session
+     *            the current session.
+     * @return the non null list of representations.
+     */
+    Collection<DRepresentation> getAllLoadedRepresentations(Session session);
 
     /**
      * Return the representations, of the given session, from a description.

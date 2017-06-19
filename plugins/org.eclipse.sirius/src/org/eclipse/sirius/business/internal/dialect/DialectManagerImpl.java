@@ -254,6 +254,18 @@ public class DialectManagerImpl implements DialectManager {
         return reps;
     }
 
+    @Override
+    public synchronized Collection<DRepresentation> getLoadedRepresentations(final EObject semantic, final Session session) {
+        Collection<DRepresentation> reps = null;
+        if (semantic != null) {
+            reps = findAllRepresentationDescriptors(semantic, session).stream().filter(DRepresentationDescriptor::isLoadedRepresentation).map(DRepresentationDescriptor::getRepresentation)
+                    .collect(Collectors.toList());
+        } else {
+            reps = getAllLoadedRepresentations(session);
+        }
+        return reps;
+    }
+
     private Collection<DRepresentation> findAllRepresentations(EObject semantic, Session session) {
         Collection<DRepresentation> result = Lists.newArrayList();
         ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
@@ -275,6 +287,13 @@ public class DialectManagerImpl implements DialectManager {
     @Override
     public Collection<DRepresentation> getAllRepresentations(final Session session) {
         Collection<DRepresentation> reps = getAllRepresentationDescriptors(session).stream().map(repDesc -> repDesc.getRepresentation()).filter(Objects::nonNull).collect(Collectors.toList());
+        return reps;
+    }
+
+    @Override
+    public Collection<DRepresentation> getAllLoadedRepresentations(final Session session) {
+        Collection<DRepresentation> reps = getAllRepresentationDescriptors(session).stream().filter(DRepresentationDescriptor::isLoadedRepresentation).map(DRepresentationDescriptor::getRepresentation)
+                .collect(Collectors.toList());
         return reps;
     }
 
