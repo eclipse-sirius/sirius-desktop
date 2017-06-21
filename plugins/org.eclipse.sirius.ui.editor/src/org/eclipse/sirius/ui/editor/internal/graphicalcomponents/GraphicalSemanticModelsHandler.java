@@ -18,11 +18,11 @@ import java.util.EventObject;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
@@ -58,27 +58,25 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
+import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.ui.editor.Messages;
 import org.eclipse.sirius.ui.editor.SessionEditorPlugin;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ProjectDependenciesItem;
 import org.eclipse.sirius.ui.tools.internal.actions.analysis.AddModelDependencyAction;
 import org.eclipse.sirius.ui.tools.internal.actions.analysis.RemoveSemanticResourceAction;
+import org.eclipse.sirius.ui.tools.internal.views.common.action.DeleteRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.NoDynamicProjectDependencies;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointsFolderItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.ManageSessionActionProvider;
@@ -89,10 +87,7 @@ import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.DeleteActionHand
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.RenameActionHandler;
 import org.eclipse.sirius.ui.tools.internal.wizards.newmodel.CreateEMFModelWizard;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
@@ -118,9 +113,6 @@ import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.navigator.INavigatorContentService;
 import org.eclipse.ui.navigator.INavigatorFilterService;
 import org.eclipse.ui.navigator.NavigatorContentServiceFactory;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * This graphical component provides a {@link CommonViewer} from CNF showing all
@@ -245,12 +237,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     private IWorkbenchSite site;
 
     /**
-     * A listener reacting to selection changes. It updates activation status of
-     * remove button.
-     */
-    private ISelectionChangedListener selectionChangeListener;
-
-    /**
      * Initialize the component with the given session.
      * 
      * @param theSession
@@ -329,13 +315,22 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                 final IStructuredSelection selection = (IStructuredSelection) theTreeViewer.getSelection();
                 Collection<?> selectedObjects = selection.toList();
                 if (!selectedObjects.isEmpty()) {
-                    RemoveSemanticResourceAction removeSemanticResourceAction = new RemoveSemanticResourceAction(getSemanticResources(selectedObjects), session);
-                    removeSemanticResourceAction.run();
+                    Collection<Resource> semanticResources = getSemanticResources(selectedObjects);
+                    if (!semanticResources.isEmpty()) {
+                        RemoveSemanticResourceAction removeSemanticResourceAction = new RemoveSemanticResourceAction(semanticResources, session);
+                        removeSemanticResourceAction.run();
+                    }
+
+                    Set<DRepresentationDescriptor> repToDelete = selectedObjects.stream().filter(DRepresentationDescriptor.class::isInstance).map(DRepresentationDescriptor.class::cast)
+                            .collect(Collectors.toSet());
+                    if (!repToDelete.isEmpty()) {
+                        DeleteRepresentationAction deleteRepresentationAction = new DeleteRepresentationAction(repToDelete);
+                        deleteRepresentationAction.run();
+                    }
                 }
                 theTreeViewer.refresh();
             }
         });
-        removeSemanticModelOrRepresentationButton.setEnabled(false);
     }
 
     /**
@@ -363,38 +358,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                 }
             }
         }
-    }
-
-    /**
-     * Return true if the resources can be deleted. I.e it is not a controlled
-     * resource and no representation are based on a semantic element of the
-     * resources.
-     * 
-     * @param toRemove
-     *            all semantic resources to remove.
-     * @return true if the resources can be deleted. I.e it is not a controlled
-     *         resource and no representation are based on a semantic element of
-     *         the resources. False otherwise.
-     */
-    private boolean checkResources(Collection<Resource> toRemove) {
-        boolean okForRemove = true;
-        if (session instanceof DAnalysisSessionEObject) {
-            // Controlled resource should be removed with uncontrol command
-            okForRemove = !Iterables.removeAll(toRemove, ((DAnalysisSessionEObject) session).getControlledResources());
-        }
-
-        if (okForRemove) {
-            for (final DRepresentation representation : DialectManager.INSTANCE.getAllRepresentations(session)) {
-                if (representation instanceof DSemanticDecorator) {
-                    final DSemanticDecorator decorator = (DSemanticDecorator) representation;
-                    if (decorator.getTarget() != null && toRemove.contains(decorator.getTarget().eResource())) {
-                        okForRemove = false;
-                        break;
-                    }
-                }
-            }
-        }
-        return okForRemove;
     }
 
     /**
@@ -447,28 +410,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         manageSessionActionProvider.initFromViewer(treeViewer);
         treeViewer.getControl().setMenu(menu);
 
-        selectionChangeListener = (event) -> {
-            if (event.getSelection().isEmpty()) {
-                removeSemanticModelOrRepresentationButton.setEnabled(false);
-            } else if (session != null && session.getSessionResource() != null) {
-                TreeSelection selection = (TreeSelection) event.getSelection();
-                Object firstElement = selection.getFirstElement();
-                IFile airdFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(session.getSessionResource().getURI().toPlatformString(true)));
-                if (airdFile != null) {
-                    IProject project = airdFile.getProject();
-                    boolean enableAction = (firstElement instanceof EObject || firstElement instanceof Resource) && !ModelingProject.hasModelingProjectNature(project);
-                    enableAction = enableAction || (isExternalDependency(firstElement, selection));
-                    enableAction = enableAction && checkResources(getSemanticResources(Lists.newArrayList(firstElement)));
-                    if (enableAction) {
-                        removeSemanticModelOrRepresentationButton.setEnabled(true);
-                    } else {
-                        removeSemanticModelOrRepresentationButton.setEnabled(false);
-                    }
-                }
-            }
-        };
-        treeViewer.addSelectionChangedListener(selectionChangeListener);
-
         commandStackListener = new CommandStackListener() {
             @Override
             public void commandStackChanged(final EventObject event) {
@@ -486,7 +427,9 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                             } else {
                                 Tree tree = treeViewer.getTree();
                                 if (!tree.isDisposed() && tree.getItems().length > 0 && !tree.getItem(0).isDisposed()) {
-                                    setSelectionToViewer(Lists.newArrayList(tree.getItem(0).getData()));
+                                    List<Object> selectionCollection = new ArrayList<Object>();
+                                    selectionCollection.add(tree.getItem(0).getData());
+                                    setSelectionToViewer(selectionCollection);
                                 }
                             }
                             actionBars.updateActionBars();
@@ -912,33 +855,6 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     }
 
     /**
-     * Returns true if the given element is an external dependency of the
-     * session.
-     * 
-     * @param element
-     *            the element from which we want to know if it is an external
-     *            dependency.
-     * @param selection
-     *            the selection from which we want to know if it is an external
-     *            dependency.
-     * @return true if the given element is an external dependency of the
-     *         session. False otherwise.
-     */
-    private boolean isExternalDependency(Object element, TreeSelection selection) {
-        if (!(element instanceof ProjectDependenciesItem) && !(element instanceof DRepresentationDescriptor)) {
-            TreePath pathsForSelection = selection.getPathsFor(element)[0];
-            int segmentCount = pathsForSelection.getSegmentCount();
-            for (int i = 0; i < segmentCount; i++) {
-                Object segment = pathsForSelection.getSegment(i);
-                if (segment instanceof ProjectDependenciesItem) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
      * Update the semantic models viewer with the models currently loaded in the
      * session.
      */
@@ -980,7 +896,7 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
                 } else if (object instanceof EObject) {
                     EObject eObject = (EObject) object;
                     Resource eResource = eObject.eResource();
-                    if (eResource != null) {
+                    if (eResource != null && !(eResource instanceof AirdResource)) {
                         semanticResources.add(eResource);
                     }
                 }
@@ -1034,9 +950,8 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
     public void dispose() {
         if (siriusCommonContentModelProvider != null) {
             siriusCommonContentModelProvider.dispose();
+            siriusCommonContentModelProvider = null;
         }
-        siriusCommonContentModelProvider = null;
-        treeViewer.removeSelectionChangedListener(selectionChangeListener);
         SessionManager.INSTANCE.removeSessionsListener(this);
         if (session != null && session.getTransactionalEditingDomain() != null) {
             session.getTransactionalEditingDomain().getCommandStack().removeCommandStackListener(commandStackListener);
@@ -1048,8 +963,8 @@ public class GraphicalSemanticModelsHandler implements SessionListener, SessionM
         manageSessionActionProvider = null;
         if (menuManager != null) {
             menuManager.dispose();
+            menuManager = null;
         }
-        menuManager = null;
         toolkit = null;
         ecoreActionsHandler = null;
 

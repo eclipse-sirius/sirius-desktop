@@ -1167,6 +1167,18 @@ public final class Messages {
     @TranslatableMessage
     public static String GraphicalRepresentationHandler_checkBoxShowDisabledViewpoints_label;
 
+    @TranslatableMessage
+    public static String RemoveSemanticResourceAction_Active_Representation_Message;
+
+    @TranslatableMessage
+    public static String RemoveSemanticResourceAction_Controlled_Resources_Message;
+
+    @TranslatableMessage
+    public static String RemoveSemanticResourceAction_Not_External_Dependency_Message;
+
+    @TranslatableMessage
+    public static String RemoveSemanticResourceAction_Error_Removal_Title;
+
     // CHECKSTYLE:ON
 
     private Messages() {
